@@ -46,9 +46,6 @@
 					<effect type="slide" end="0,20" time="180" tween="sine" delay="80" />
 				</animation>
 				<control type="group" id="5000">
-					<include content="Visible_Right_Delayed">
-						<param name="id" value="movies"/>
-					</include>
 					<control type="grouplist" id="5001">
 						<include>WidgetGroupListCommon</include>
 						<include content="HomeNavigationButtons">
@@ -60,6 +57,12 @@
 							<param name="widget_header" value="$LOCALIZE[31010]"/>
 							<param name="widget_target" value="videos"/>
 							<param name="list_id" value="5100"/>
+						</include>
+						<include content="WidgetLandscape" condition="true">
+							<param name="content_path" value="pvr://channels/tv/*"/>
+							<param name="widget_header" value="$LOCALIZE[31000]"/>
+							<param name="widget_target" value="videos"/>
+							<param name="list_id" value="5200"/>
 						</include>
 						<include content="WidgetLandscape" condition="Library.HasContent(movies)">
 							<param name="content_path" value="special://skin/playlists/recent_unwatched_movies.xsp"/>
@@ -94,7 +97,6 @@
 				<animation type="Conditional" condition="ControlGroup(99).HasFocus" reversible="true">
 					<effect type="slide" start="0" end="520" time="400" tween="cubic" easing="out" />
 				</animation>
-				<depth>DepthContentPanel</depth>
 				<include>OpenClose_Left</include>
 				<include content="ContentPanel">
 					<param name="width" value="522" />
