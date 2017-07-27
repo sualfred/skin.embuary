@@ -101,7 +101,7 @@
 				<width>455</width>
 				<height>256</height>
 				<texture fallback="$PARAM[fallback_image]" scalediffuse="false" diffuse="items/mask_wide.png" background="true">$VAR[IconLandscape]</texture>
-				<aspectratio>scale</aspectratio>
+				<aspectratio>keep</aspectratio>
 			</control>
 			<control type="image">
 				<left>-4</left>
@@ -159,19 +159,6 @@
 				<righttexture>-</righttexture>
 				<info>ListItem.Progress</info>
 			</control>
-
-			<control type="progress">
-				<top>480</top>
-				<width>320</width>
-				<height>8</height>
-				<info>ListItem.PercentPlayed</info>
-				<texturebg border="2">views/ProgressBack.png</texturebg>
-				<lefttexture>-</lefttexture>
-				<midtexture border="2">views/ProgressBar.png</midtexture>
-				<righttexture>-</righttexture>
-				<overlaytexture>-</overlaytexture>
-				<visible>ListItem.IsResumable</visible>
-			</control>
 			<control type="group">
 				<left>134</left>
 				<top>8</top>
@@ -179,10 +166,11 @@
 			</control>
 		</definition>
 	</include>
+
+	<!-- Square -->
 	<include name="SquareLayout">
 		<param name="main_label">$INFO[ListItem.Title]</param>
 		<param name="sub_label">$INFO[ListItem.TVShowTitle]</param>
-		<param name="thumb_label">$INFO[ListItem.Season,,x]$INFO[ListItem.Episode]</param>
 		<param name="fallback_image">DefaultTVShows.png</param>
 		<param name="focused">false</param>
 		<definition>
@@ -196,9 +184,14 @@
 			<control type="image">
 				<width>277</width>
 				<height>277</height>
-				<texture fallback="$PARAM[fallback_image]" scalediffuse="false" diffuse="items/mask_square.png" background="true">$VAR[IconSquare]</texture>
-				<aspectratio>scale</aspectratio>
+				<texture fallback="$PARAM[fallback_image]" scalediffuse="true" diffuse="items/mask_square.png" background="true">$VAR[IconSquare]</texture>
+				<aspectratio>stretch</aspectratio>
 			</control>
+			<include content="progress">
+				<param name="top" value="273"/>
+				<param name="width" value="277"/>
+				<param name="visible" value="!Integer.IsEqual(ListItem.PercentPlayed,0) | String.StartsWith(ListItem.Path,pvr://)"/>
+			</include>
 			<control type="image">
 				<left>-4</left>
 				<top>-4</top>
@@ -245,27 +238,13 @@
 					<align>center</align>
 				</control>
 			</control>
-			<control type="progress">
-				<left>20</left>
-				<top>258</top>
-				<width>276</width>
-				<height>1</height>
-				<texturebg></texturebg>
-				<midtexture colordiffuse="button_focus" border="3">progress/texturebg_alt_white.png</midtexture>
-				<info>ListItem.PercentPlayed</info>
-				<visible>!Integer.IsEqual(ListItem.PercentPlayed,0)</visible>
-			</control>
-			<control type="group">
-				<left>134</left>
-				<top>8</top>
-				<include>UserRatingCircle</include>
-			</control>
 		</definition>
 	</include>
+
+	<!-- Button -->
 	<include name="ButtonLayout">
 		<param name="main_label">$INFO[ListItem.Title]</param>
 		<param name="sub_label">$INFO[ListItem.TVShowTitle]</param>
-		<param name="thumb_label">$INFO[ListItem.Season,,x]$INFO[ListItem.Episode]</param>
 		<param name="fallback_image">DefaultTVShows.png</param>
 		<param name="focused">false</param>
 		<definition>
