@@ -83,6 +83,7 @@
 			</control>
 		</definition>
 	</include>
+	<!-- Landscape -->
 	<include name="LandscapeLayout">
 		<param name="main_label">$INFO[ListItem.Title]</param>
 		<param name="sub_label">$INFO[ListItem.TVShowTitle]</param>
@@ -101,7 +102,7 @@
 				<width>455</width>
 				<height>256</height>
 				<texture fallback="$PARAM[fallback_image]" scalediffuse="false" diffuse="items/mask_wide.png" background="true">$VAR[IconLandscape]</texture>
-				<aspectratio>keep</aspectratio>
+				<aspectratio>stretch</aspectratio>
 			</control>
 			<control type="image">
 				<left>-4</left>
@@ -314,6 +315,57 @@
 				<left>134</left>
 				<top>8</top>
 				<include>UserRatingCircle</include>
+			</control>
+		</definition>
+	</include>
+	<include name="SmallButtonLayout">
+		<param name="main_label">$INFO[ListItem.Title]</param>
+		<param name="sub_label">$INFO[ListItem.TVShowTitle]</param>
+		<param name="fallback_image">DefaultTVShows.png</param>
+		<param name="focused">false</param>
+		<definition>
+			<control type="image">
+				<top>-2</top>
+				<left>-2</left>
+				<width>206</width>
+				<height>50</height>
+				<texture border="10" colordiffuse="grey">items/shadow_smallbutton.png</texture>
+			</control>
+			<control type="image">
+				<left>10</left>
+				<width>40</width>
+				<height>44</height>
+				<texture fallback="$PARAM[fallback_image]">$INFO[ListItem.Icon]</texture>
+				<aspectratio>keep</aspectratio>
+			</control>
+			<control type="label">
+				<top>5</top>
+				<left>60</left>
+				<width>140</width>
+				<height>44</height>
+				<label>$INFO[ListItem.Label]</label>
+				<font>font10</font>
+				<shadowcolor>text_shadow</shadowcolor>
+				<scroll>$PARAM[focused]</scroll>
+				<align>left</align>
+			</control>
+			<control type="image">
+				<left>-4</left>
+				<top>-4</top>
+				<width>208</width>
+				<height>52</height>
+				<texture border="10" colordiffuse="blue">items/focus_smallbutton.png</texture>
+				<aspectratio>stretch</aspectratio>
+				<visible>$PARAM[focused]</visible>
+				<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
+			</control>
+			<control type="label">
+				<top>178</top>
+				<width>130</width>
+				<label>$PARAM[thumb_label]</label>
+				<font>font20_title</font>
+				<shadowcolor>text_shadow</shadowcolor>
+				<align>center</align>
 			</control>
 		</definition>
 	</include>

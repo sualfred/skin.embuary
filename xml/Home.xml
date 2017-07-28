@@ -52,72 +52,59 @@
 				<control type="group">
 					<control type="grouplist" id="5001">
 						<include>WidgetGroupListCommon</include>
-
 						<!-- Navigation -->
 						<include content="HomeNavigationButtons">
 							<param name="widget_header" value="$LOCALIZE[14211]"/>
 							<param name="list_id" value="1001"/>
 						</include>
-
-						<include content="WidgetSpacer">
-							<param name="id">1101</param>
-							<param name="visible">true</param>
-						</include>
-
-						<!-- Widgets -->
+						<!-- Paused -->
 						<include content="WidgetLandscape" condition="Library.HasContent(movies)">
-							<param name="content_path" value="plugin://script.skin.helper.widgets/?action=inprogressandrecommended&mediatype=media&reload=$INFO[Window(Home).Property(widgetreload)]"/>
+							<param name="content_path" value="plugin://script.skin.helper.widgets/?action=inprogressandrecommended&amp;mediatype=media&amp;reload=$INFO[Window(Home).Property(widgetreload)]"/>
 							<param name="widget_header" value="$LOCALIZE[31010]"/>
 							<param name="widget_target" value="videos"/>
 							<param name="list_id" value="1002"/>
 						</include>
-
-						<include content="WidgetSpacer">
-							<param name="id">1102</param>
-							<param name="visible">true</param>
-						</include>
-
+						<!-- PVR 
+						<include content="SmallNavigationButtons" condition="true">
+							<param name="content_path" value="PVRbuttons"/>
+							<param name="widget_header" value="$LOCALIZE[14204]"/>
+							<param name="widget_target" value="pvr"/>
+							<param name="list_id" value="1003"/>
+						</include>-->
 						<include content="WidgetPVR" condition="true">
 							<param name="content_path" value="pvr://channels/tv/*"/>
 							<param name="widget_header" value="$LOCALIZE[31000]"/>
 							<param name="widget_target" value="videos"/>
-							<param name="list_id" value="1003"/>
-						</include>
-
-						<include content="WidgetSpacer">
-							<param name="id">1103</param>
-							<param name="visible">true</param>
-						</include>
-						
-						<include content="WidgetLandscape" condition="Library.HasContent(movies)">
-							<param name="content_path" value="special://skin/playlists/recent_unwatched_movies.xsp"/>
-							<param name="widget_header" value="$LOCALIZE[20386]"/>
-							<param name="widget_target" value="videos"/>
+							<param name="main_label">$INFO[ListItem.Title]</param>
+							<param name="sub_label">$INFO[ListItem.StartTime] - $INFO[ListItem.EndTime]</param>
 							<param name="list_id" value="1004"/>
 						</include>
-
-						<include content="WidgetSpacer">
-							<param name="id">1104</param>
-							<param name="visible">true</param>
+						<!-- Inprogress shows -->
+						<include content="WidgetLandscape" condition="Library.HasContent(tvshows)">
+							<param name="content_path" value="special://skin/playlists/video/InProgressTVShows.xsp"/>
+							<param name="widget_header" value="$LOCALIZE[626]"/>
+							<param name="widget_target" value="videos"/>
+							<param name="main_label">$INFO[ListItem.Title]</param>
+							<param name="sub_label">$INFO[ListItem.Property(UnWatchedEpisodes),$LOCALIZE[16101]: ]</param>
+							<param name="list_id" value="1005"/>
 						</include>
-						
+						<!-- New movies -->
 						<include content="WidgetPoster" condition="Library.HasContent(movies)">
 							<param name="content_path" value="special://skin/playlists/unwatched_movies.xsp"/>
 							<param name="widget_header" value="$LOCALIZE[31007]"/>
 							<param name="widget_target" value="videos"/>
-							<param name="list_id" value="1005"/>
-						</include>
-
-						<include content="WidgetSpacer">
-							<param name="id">1105</param>
-							<param name="visible">true</param>
-						</include>
-						
-						<include content="WidgetSquare" condition="Library.HasContent(movies)">
-							<param name="content_path" value="special://skin/playlists/random_movies.xsp"/>
-							<param name="widget_header" value="$LOCALIZE[31006]"/>
-							<param name="widget_target" value="videos"/>
+							<param name="main_label">$INFO[ListItem.Title]</param>
+							<param name="sub_label">$INFO[ListItem.Year]</param>
 							<param name="list_id" value="1006"/>
+						</include>
+						<!-- New albums -->
+						<include content="WidgetSquare" condition="Library.HasContent(movies)">
+							<param name="content_path" value="musicdb://recentlyaddedalbums/"/>
+							<param name="widget_header" value="$LOCALIZE[31006]"/>
+							<param name="widget_target" value="music"/>
+							<param name="main_label">$INFO[ListItem.Album]</param>
+							<param name="sub_label">$INFO[ListItem.Artist]</param>
+							<param name="list_id" value="1007"/>
 						</include>
 					</control>
 					<include content="ImageWidget" condition="!Library.HasContent(movies)">

@@ -12,13 +12,14 @@
 	</include>
 	<include name="CategoryLabel">
 		<param name="visible">true</param>
+		<param name="top">80</param>
 		<definition>
 			<control type="label" id="$PARAM[list_id]666">
 				<left>90</left>
-				<top>80</top>
+				<top>$PARAM[top]</top>
 				<width>900</width>
 				<height>90</height>
-				<label>$PARAM[label] ></label>
+				<label>$PARAM[label]</label>
 				<shadowcolor>text_shadow</shadowcolor>
 				<visible>$PARAM[visible]</visible>
 				<visible>Integer.IsGreater(Container($PARAM[list_id]).NumItems,0) | Container($PARAM[list_id]).IsUpdating</visible>
@@ -67,55 +68,7 @@
 		</definition>
 	</include>
 	<!-- new -->
-	<include name="HomeNavigationButtons">
-		<param name="main_label">$INFO[ListItem.Label]</param>
-		<param name="visible">true</param>
-		<definition>
-			<include content="CategoryLabel">
-				<param name="label">$PARAM[widget_header]</param>
-				<param name="list_id" value="$PARAM[list_id]"/>
-				<param name="visible" value="$PARAM[visible]"/>
-			</include>
-			<include content="BusyListSpinner">
-				<param name="list_id" value="$PARAM[list_id]"/>
-				<param name="visible" value="$PARAM[visible]"/>
-			</include>
-			<control type="list" id="$PARAM[list_id]">
-				<left>0</left>
-				<top>110</top>
-				<right>0</right>
-				<orientation>horizontal</orientation>
-				<height>376</height>
-				<visible>$PARAM[visible]</visible>
-				<visible>Integer.IsGreater(Container($PARAM[list_id]).NumItems,0) | Container($PARAM[list_id]).IsUpdating</visible>
-				<itemlayout width="310" height="340">
-					<control type="group">
-						<left>100</left>
-						<top>22</top>
-						<include content="ButtonLayout">
-							<param name="main_label" value="$PARAM[main_label]" />
-							<param name="sub_label" value="$PARAM[sub_label]" />
-							<param name="thumb_label" value="$PARAM[thumb_label]" />
-							<param name="focused" value="false" />
-						</include>
-					</control>					
-				</itemlayout>
-				<focusedlayout width="310" height="340">
-					<control type="group">
-						<left>100</left>
-						<top>22</top>
-						<include content="ButtonLayout">
-							<param name="main_label" value="$PARAM[main_label]" />
-							<param name="sub_label" value="$PARAM[sub_label]" />
-							<param name="thumb_label" value="$PARAM[thumb_label]" />
-							<param name="focused" value="true" />
-						</include>
-					</control>	
-				</focusedlayout>
-				<include>NavigationButtons</include>
-			</control>
-		</definition>
-	</include>
+
 
 	<include name="NavigationButtons">
 		<content>
@@ -136,11 +89,136 @@
 				<onclick>ActivateWindow(music,library://music)</onclick>
 			</item>
 		</content>
+	</include>	
+	<include name="PVRButtons">
+		<content>
+			<item>
+				<label>$LOCALIZE[14301]</label>
+				<onclick>ActivateWindow(videos,library://video/movies)</onclick>
+			</item>
+			<item>
+				<label>$LOCALIZE[19069]</label>
+				<onclick>ActivateWindow(videos,library://video/tvshows)</onclick>
+			</item>
+			<item>
+				<label>$LOCALIZE[19017]</label>
+				<onclick>ActivateWindow(tvchannels)</onclick>
+			</item>
+			<item>
+				<label>$LOCALIZE[19040]</label>
+				<onclick>ActivateWindow(music,library://music)</onclick>
+			</item>
+		</content>
+	</include>
+
+	<include name="HomeNavigationButtons">
+		<param name="main_label">$INFO[ListItem.Label]</param>
+		<param name="visible">true</param>
+		<definition>
+			<include content="CategoryLabel">
+				<param name="label">$PARAM[widget_header]</param>
+				<param name="list_id" value="$PARAM[list_id]"/>
+				<param name="visible" value="$PARAM[visible]"/>
+			</include>
+			<include content="BusyListSpinner">
+				<param name="list_id" value="$PARAM[list_id]"/>
+				<param name="visible" value="$PARAM[visible]"/>
+			</include>
+			<control type="list" id="$PARAM[list_id]">
+				<left>0</left>
+				<top>110</top>
+				<right>0</right>
+				<orientation>horizontal</orientation>
+				<height>336</height>
+				<visible>$PARAM[visible]</visible>
+				<visible>Integer.IsGreater(Container($PARAM[list_id]).NumItems,0) | Container($PARAM[list_id]).IsUpdating</visible>
+				<itemlayout width="295" height="340">
+					<control type="group">
+						<left>100</left>
+						<top>22</top>
+						<include content="ButtonLayout">
+							<param name="main_label" value="$PARAM[main_label]" />
+							<param name="sub_label" value="$PARAM[sub_label]" />
+							<param name="thumb_label" value="$PARAM[thumb_label]" />
+							<param name="focused" value="false" />
+						</include>
+					</control>					
+				</itemlayout>
+				<focusedlayout width="295" height="340">
+					<control type="group">
+						<left>100</left>
+						<top>22</top>
+						<include content="ButtonLayout">
+							<param name="main_label" value="$PARAM[main_label]" />
+							<param name="sub_label" value="$PARAM[sub_label]" />
+							<param name="thumb_label" value="$PARAM[thumb_label]" />
+							<param name="focused" value="true" />
+						</include>
+					</control>	
+				</focusedlayout>
+				<include>NavigationButtons</include>
+			</control>
+			<include content="WidgetSpacer">
+				<param name="id">$PARAM[list_id]1</param>
+				<param name="visible">Integer.IsGreater(Container($PARAM[list_id]).NumItems,0) | Container($PARAM[list_id]).IsUpdating</param>
+			</include>
+		</definition>
+	</include>
+
+	<include name="SmallNavigationButtons">
+		<param name="main_label" value="$PARAM[main_label]" />
+		<param name="sub_label" value="$PARAM[sub_label]" />
+		<param name="visible">true</param>
+		<definition>
+			<include content="CategoryLabel">
+				<param name="label">$PARAM[widget_header]</param>
+				<param name="list_id" value="$PARAM[list_id]"/>
+				<param name="visible" value="$PARAM[visible]"/>
+			</include>
+			<include content="BusyListSpinner">
+				<param name="list_id" value="$PARAM[list_id]"/>
+				<param name="visible" value="$PARAM[visible]"/>
+			</include>
+			<control type="list" id="$PARAM[list_id]">
+				<left>0</left>
+				<top>110</top>
+				<right>0</right>
+				<orientation>horizontal</orientation>
+				<height>170</height>
+				<visible>$PARAM[visible]</visible>
+				<visible>Integer.IsGreater(Container($PARAM[list_id]).NumItems,0) | Container($PARAM[list_id]).IsUpdating</visible>
+				<itemlayout width="211" height="340">
+					<control type="group">
+						<left>100</left>
+						<top>22</top>
+						<include content="SmallButtonLayout">
+							<param name="main_label" value="$PARAM[main_label]" />
+							<param name="sub_label" value="$PARAM[sub_label]" />
+							<param name="thumb_label" value="$PARAM[thumb_label]" />
+							<param name="focused" value="false" />
+						</include>
+					</control>					
+				</itemlayout>
+				<focusedlayout width="211" height="340">
+					<control type="group">
+						<left>100</left>
+						<top>22</top>
+						<include content="SmallButtonLayout">
+							<param name="main_label" value="$PARAM[main_label]" />
+							<param name="sub_label" value="$PARAM[sub_label]" />
+							<param name="thumb_label" value="$PARAM[thumb_label]" />
+							<param name="focused" value="true" />
+						</include>
+					</control>	
+				</focusedlayout>
+				<include>PVRButtons</include>
+			</control>
+		</definition>
 	</include>
 
 	<include name="WidgetPoster">
-		<param name="main_label">$INFO[ListItem.Title]</param>
-		<param name="sub_label">$INFO[ListItem.Year]</param>
+		<param name="main_label">$PARAM[main_label]</param>
+		<param name="sub_label">$PARAM[sub_label]</param>
 		<param name="sortby"></param>
 		<param name="visible">True</param>
 		<param name="sortorder">ascending</param>
@@ -186,12 +264,16 @@
 				</focusedlayout>
 				<content sortby="$PARAM[sortby]" sortorder="$PARAM[sortorder]" target="$PARAM[widget_target]" limit="$PARAM[widget_limit]">$PARAM[content_path]</content>
 			</control>
+			<include content="WidgetSpacer">
+				<param name="id">$PARAM[list_id]1</param>
+				<param name="visible">Integer.IsGreater(Container($PARAM[list_id]).NumItems,0) | Container($PARAM[list_id]).IsUpdating</param>
+			</include>
 		</definition>
 	</include>
 
 	<include name="WidgetLandscape">
-		<param name="main_label">$INFO[ListItem.Title]</param>
-		<param name="sub_label">$INFO[ListItem.Year]</param>
+		<param name="main_label">$PARAM[main_label]</param>
+		<param name="sub_label">$PARAM[sub_label]</param>
 		<param name="sortby"></param>
 		<param name="visible">True</param>
 		<param name="sortorder">ascending</param>
@@ -237,12 +319,16 @@
 				</focusedlayout>
 				<content sortby="$PARAM[sortby]" sortorder="$PARAM[sortorder]" target="$PARAM[widget_target]" limit="$PARAM[widget_limit]">$PARAM[content_path]</content>
 			</control>
+			<include content="WidgetSpacer">
+				<param name="id">$PARAM[list_id]1</param>
+				<param name="visible">Integer.IsGreater(Container($PARAM[list_id]).NumItems,0) | Container($PARAM[list_id]).IsUpdating</param>
+			</include>
 		</definition>
 	</include>
 
 	<include name="WidgetSquare">
-		<param name="main_label">$INFO[ListItem.Title]</param>
-		<param name="sub_label">$INFO[ListItem.Year]</param>
+		<param name="main_label">$PARAM[main_label]</param>
+		<param name="sub_label">$PARAM[sub_label]</param>
 		<param name="sortby"></param>
 		<param name="visible">True</param>
 		<param name="sortorder">ascending</param>
@@ -288,19 +374,83 @@
 				</focusedlayout>
 				<content sortby="$PARAM[sortby]" sortorder="$PARAM[sortorder]" target="$PARAM[widget_target]" limit="$PARAM[widget_limit]">$PARAM[content_path]</content>
 			</control>
+			<include content="WidgetSpacer">
+				<param name="id">$PARAM[list_id]1</param>
+				<param name="visible">Integer.IsGreater(Container($PARAM[list_id]).NumItems,0) | Container($PARAM[list_id]).IsUpdating</param>
+			</include>
 		</definition>
 	</include>
 
 	<include name="WidgetPVR">
-		<param name="main_label">$INFO[ListItem.Title]</param>
-		<param name="sub_label">$INFO[ListItem.StartTime] - $INFO[ListItem.EndTime]</param>
+		<param name="main_label">$PARAM[main_label]</param>
+		<param name="sub_label">$PARAM[sub_label]</param>
 		<param name="sortby"></param>
 		<param name="visible">True</param>
 		<param name="sortorder">ascending</param>
 		<param name="widget_limit">15</param>
 		<definition>
 			<include content="CategoryLabel">
+				<param name="label">$LOCALIZE[14204]</param>
+				<param name="list_id" value="$PARAM[list_id]"/>
+			</include>
+			<control type="grouplist" id="$PARAM[list_id]2">
+				<top>122</top>
+				<left>98</left>
+				<height>50</height>
+				<orientation>horizontal</orientation>
+				<itemgap>5</itemgap>
+				<control type="button" id="$PARAM[list_id]21">
+					<top>-2</top>
+					<left>-2</left>
+					<width min="50">auto</width>
+					<height>50</height>
+					<font>font9bold</font>
+					<textoffsetx>20</textoffsetx>
+					<label>$LOCALIZE[14301]</label>
+					<texturefocus border="10" colordiffuse="emby">items/shadow_smallbutton.png</texturefocus>
+					<texturenofocus border="10" colordiffuse="grey">items/shadow_smallbutton.png</texturenofocus>
+					<ondown>SetFocus($PARAM[list_id])</ondown>
+				</control>
+				<control type="button" id="$PARAM[list_id]22">
+					<top>-2</top>
+					<left>-2</left>
+					<width min="50">auto</width>
+					<height>50</height>
+					<font>font9bold</font>
+					<textoffsetx>20</textoffsetx>
+					<label>$LOCALIZE[19069]</label>
+					<texturefocus border="10" colordiffuse="emby">items/shadow_smallbutton.png</texturefocus>
+					<texturenofocus border="10" colordiffuse="grey">items/shadow_smallbutton.png</texturenofocus>
+					<ondown>SetFocus($PARAM[list_id])</ondown>
+				</control>
+				<control type="button" id="$PARAM[list_id]23">
+					<top>-2</top>
+					<left>-2</left>
+					<width min="50">auto</width>
+					<height>50</height>
+					<font>font9bold</font>
+					<textoffsetx>20</textoffsetx>
+					<label>$LOCALIZE[19017]</label>
+					<texturefocus border="10" colordiffuse="emby">items/shadow_smallbutton.png</texturefocus>
+					<texturenofocus border="10" colordiffuse="grey">items/shadow_smallbutton.png</texturenofocus>
+					<ondown>SetFocus($PARAM[list_id])</ondown>
+				</control>
+				<control type="button" id="$PARAM[list_id]24">
+					<top>-2</top>
+					<left>-2</left>
+					<width min="50">auto</width>
+					<height>50</height>
+					<font>font9bold</font>
+					<textoffsetx>20</textoffsetx>
+					<label>$LOCALIZE[19040]</label>
+					<texturefocus border="10" colordiffuse="emby">items/shadow_smallbutton.png</texturefocus>
+					<texturenofocus border="10" colordiffuse="grey">items/shadow_smallbutton.png</texturenofocus>
+					<ondown>SetFocus($PARAM[list_id])</ondown>
+				</control>
+			</control>
+			<include content="CategoryLabel">
 				<param name="label">$PARAM[widget_header]</param>
+				<param name="top">180</param>
 				<param name="list_id" value="$PARAM[list_id]"/>
 			</include>
 			<control type="fixedlist" id="$PARAM[list_id]">
@@ -308,6 +458,7 @@
 				<top>105</top>
 				<right>0</right>
 				<height>457</height>
+					<onup>SetFocus($PARAM[list_id]2)</onup>
 				<include content="WidgetListCommon">
 					<param name="list_id" value="$PARAM[list_id]"/>
 				</include>
@@ -339,6 +490,10 @@
 				</focusedlayout>
 				<content sortby="$PARAM[sortby]" sortorder="$PARAM[sortorder]" target="$PARAM[widget_target]" limit="$PARAM[widget_limit]">$PARAM[content_path]</content>
 			</control>
+			<include content="WidgetSpacer">
+				<param name="id">$PARAM[list_id]1</param>
+				<param name="visible">Integer.IsGreater(Container($PARAM[list_id]).NumItems,0) | Container($PARAM[list_id]).IsUpdating</param>
+			</include>
 		</definition>
 	</include>
 </includes>
