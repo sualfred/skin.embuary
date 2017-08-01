@@ -2,17 +2,20 @@
 <includes>
 	<!-- Common Layout Includes -->
 	<include name="widget_headline">
-		<control type="label">
-			<top>25</top>
-			<left>50</left>
-			<width>1000</width>
-			<height>87</height>
-			<font>Med20</font>
-			<align>left</align>
-			<aligny>center</aligny>
-			<textcolor>white</textcolor>
-			<label>$PARAM[headline]</label>
-		</control>
+		<param name="top">25</param>
+		<definition>
+			<control type="label">
+				<top>$PARAM[top]</top>
+				<left>50</left>
+				<width>1000</width>
+				<height>87</height>
+				<font>Med20</font>
+				<align>left</align>
+				<aligny>center</aligny>
+				<textcolor>white</textcolor>
+				<label>$PARAM[headline]</label>
+			</control>
+		</definition>
 	</include>
 
 	<include name="widget_labels">
@@ -171,7 +174,7 @@
 			</include>
 		</definition>
 	</include>
-	
+
 	<!-- Landscape -->
 	<include name="LandscapeLayout">
 		<param name="mainlabel">$INFO[ListItem.Title]</param>

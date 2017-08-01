@@ -520,4 +520,72 @@
 			</control>
 		</definition>
 	</include>
+	<!-- PVR -->
+	<include name="PVRSquareWidget">
+		<param name="id">$PARAM[id]</param>
+		<param name="visible" default="true">$PARAM[visible]</param>
+		<param name="icon" default="$INFO[ListItem.Icon]">$PARAM[icon]</param>
+		<param name="headline" default="widget">$PARAM[headline]</param>
+		<param name="mainlabel" default="$INFO[ListItem.Label]">$PARAM[mainlabel]</param>
+		<param name="sublabel">$PARAM[sublabel]</param>
+		<param name="content">$PARAM[content]</param>
+		<param name="onup" default="100">$PARAM[onup]</param>
+		<param name="ondown">$PARAM[ondown]</param>
+		<definition>
+			<control type="group" id="$PARAM[id]1">
+				<visible>$PARAM[visible]</visible>
+				<visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</visible>
+				<width>1920</width>
+				<height>617</height>
+				<include content="PVRWidgetButtons">
+					<param name="pvrid" value="202"/>
+					<param name="id" value="201"/>
+					<param name="onup" value="200"/>
+					<param name="ondown" value="202"/>
+					<param name="headline" value="$LOCALIZE[14204]"/>
+				</include>
+				<include content="widget_headline">
+					<param name="top">145</param>U
+					<param name="headline">$PARAM[headline]</param>
+				</include>
+				<control type="fixedlist" id="$PARAM[id]">
+					<top>150</top>
+					<width>1920</width>
+					<height>595</height>
+					<scrolltime>200</scrolltime>
+					<movement>5</movement>
+					<orientation>horizontal</orientation>
+					<preloaditems>4</preloaditems>
+					<ondown>$PARAM[ondown]</ondown>
+					<onright>noop</onright>
+					<onup>$PARAM[onup]</onup>
+					<itemlayout width="297">
+						<control type="group">							
+							<left>55</left>
+							<top>64</top>
+							<include content="SquareLayout">
+								<param name="mainlabel" value="$PARAM[mainlabel]" />
+								<param name="sublabel" value="$PARAM[sublabel]" />
+								<param name="focused" value="false" />
+								<param name="id" value="$PARAM[id]" />
+							</include>
+						</control>
+					</itemlayout>
+					<focusedlayout width="297">
+						<control type="group">							
+							<left>55</left>
+							<top>64</top>
+							<include content="SquareLayout">
+								<param name="mainlabel" value="$PARAM[mainlabel]" />
+								<param name="sublabel" value="$PARAM[sublabel]" />
+								<param name="focused" value="true" />
+								<param name="id" value="$PARAM[id]" />
+							</include>
+						</control>
+					</focusedlayout>
+					<content sortby="$PARAM[sortby]" sortorder="$PARAM[sortorder]" target="$PARAM[widget_target]" limit="$PARAM[widget_limit]">$PARAM[content]</content>
+				</control>
+			</control>
+		</definition>
+	</include>
 </includes>
