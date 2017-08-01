@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+	<include name="WideWidget">
+		<param name="id">$PARAM[id]</param>
+		<param name="visible" default="true">$PARAM[visible]</param>
+		<param name="icon" default="$INFO[ListItem.Icon]">$PARAM[icon]</param>
+		<param name="headline" default="widget">$PARAM[headline]</param>
+		<param name="mainlabel" default="$INFO[ListItem.Label]">$PARAM[mainlabel]</param>
+		<param name="sublabel">$PARAM[sublabel]</param>
+		<param name="content">$PARAM[content]</param>
+		<param name="onup" default="100">$PARAM[onup]</param>
+		<param name="ondown">$PARAM[ondown]</param>
+		<definition>
+			<control type="group" id="$PARAM[id]1">
+				<visible>$PARAM[visible]</visible>
+				<visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</visible>
+				<width>1920</width>
+				<height>536</height>
+				<control type="label">
+					<top>25</top>
+					<left>60</left>
+					<width>1000</width>
+					<height>87</height>
+					<font>font12</font>
+					<align>left</align>
+					<aligny>center</aligny>
+					<textcolor>FFFFFFFF</textcolor>
+					<label>[UPPERCASE]$PARAM[headline][/UPPERCASE]</label>
+				</control>
+				<control type="fixedlist" id="$PARAM[id]">
+					<top>30</top>
+					<width>1920</width>
+					<height>446</height>
+					<movement>3</movement>
+					<scrolltime>200</scrolltime>
+					<orientation>horizontal</orientation>
+					<preloaditems>4</preloaditems>
+					<ondown>$PARAM[ondown]</ondown>
+					<onright>noop</onright>
+					<onup>$PARAM[onup]</onup>
+					<itemlayout width="459">
+						<control type="group">
+							<left>55</left>
+							<top>64</top>
+							<include content="LandscapeLayout">
+								<param name="main_label" value="$PARAM[mainlabel]" />
+								<param name="sub_label" value="$PARAM[sublabel]" />
+								<param name="focused" value="false" />
+							</include>
+						</control>
+						<control type="group">
+							<visible>false</visible>
+							<left>55</left>
+							<top>64</top>
+							<control type="image">
+								<left>-40</left>
+								<top>-40</top>
+								<width>622</width>
+								<height>389</height>
+								<texture border="42">script.plex/drop-shadow.png</texture>
+							</control>
+							<control type="group">
+								<left>5</left>
+								<top>5</top>
+								<control type="image">
+									<width>532</width>
+									<height>299</height>
+									<texture background="true">$PARAM[icon]</texture>
+									<aspectratio>scale</aspectratio>
+								</control>
+								<control type="label">
+									<scroll>false</scroll>
+									<top>309</top>
+									<width>532</width>
+									<height>35</height>
+									<font>font10</font>
+									<align>center</align>
+									<aligny>center</aligny>
+									<textcolor>FFFFFFFF</textcolor>
+									<label>$PARAM[mainlabel]</label>
+								</control>
+								<control type="label">
+									<scroll>false</scroll>
+									<top>337</top>
+									<width>532</width>
+									<height>35</height>
+									<font>font10</font>
+									<align>center</align>
+									<aligny>center</aligny>
+									<textcolor>FFFFFFFF</textcolor>
+									<label>$PARAM[sublabel]</label>
+								</control>
+							</control>
+						</control>
+					</itemlayout>
+					<focusedlayout width="459">
+						<control type="group">
+							<left>55</left>
+							<top>64</top>
+							<include content="LandscapeLayout">
+								<param name="main_label" value="$PARAM[mainlabel]" />
+								<param name="sub_label" value="$PARAM[sublabel]" />
+								<param name="focused" value="true" />
+							</include>
+						</control>
+						<control type="group">
+							<visible>false</visible>
+							<left>55</left>
+							<top>64</top>
+							<control type="image">
+								<visible>Control.HasFocus($PARAM[id])</visible>
+								<left>-40</left>
+								<top>-40</top>
+								<width>622</width>
+								<height>389</height>
+								<texture border="42">script.plex/drop-shadow.png</texture>
+							</control>
+							<control type="group">
+								<left>5</left>
+								<top>5</top>
+								<control type="image">
+									<width>532</width>
+									<height>299</height>
+									<texture background="true">$PARAM[icon]</texture>
+									<aspectratio>scale</aspectratio>
+								</control>
+								<control type="label">
+									<scroll>false</scroll>
+									<top>309</top>
+									<width>532</width>
+									<height>35</height>
+									<font>font10</font>
+									<align>center</align>
+									<aligny>center</aligny>
+									<textcolor>FFFFFFFF</textcolor>
+									<label>$PARAM[mainlabel]</label>
+								</control>
+								<control type="label">
+									<scroll>false</scroll>
+									<top>337</top>
+									<width>532</width>
+									<height>35</height>
+									<font>font10</font>
+									<align>center</align>
+									<aligny>center</aligny>
+									<textcolor>FFFFFFFF</textcolor>
+									<label>$PARAM[sublabel]</label>
+								</control>
+							</control>
+							<control type="image">
+								<visible>Control.HasFocus($PARAM[id])</visible>
+								<width>542</width>
+								<height>309</height>
+								<texture border="10">script.plex/home/selected.png</texture>
+							</control>
+						</control>
+					</focusedlayout>
+					<content sortby="$PARAM[sortby]" sortorder="$PARAM[sortorder]" target="$PARAM[widget_target]" limit="$PARAM[widget_limit]">$PARAM[content]</content>
+				</control>
+			</control>
+		</definition>
+	</include>
+	<include name="PosterWidget">
+		<param name="id">$PARAM[id]</param>
+		<param name="visible" default="true">$PARAM[visible]</param>
+		<param name="icon" default="$INFO[ListItem.Icon]">$PARAM[icon]</param>
+		<param name="headline" default="widget">$PARAM[headline]</param>
+		<param name="mainlabel" default="$INFO[ListItem.Label]">$PARAM[mainlabel]</param>
+		<param name="sublabel">$PARAM[sublabel]</param>
+		<param name="content">$PARAM[content]</param>
+		<param name="onup" default="100">$PARAM[onup]</param>
+		<param name="ondown">$PARAM[ondown]</param>
+		<definition>
+			<control type="group" id="$PARAM[id]1">
+				<visible>$PARAM[visible]</visible>
+				<visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</visible>
+				<width>1920</width>
+				<height>685</height>
+				<control type="label">
+					<top>25</top>
+					<left>60</left>
+					<width>1000</width>
+					<height>87</height>
+					<font>font12</font>
+					<align>left</align>
+					<aligny>center</aligny>
+					<textcolor>FFFFFFFF</textcolor>
+					<label>[UPPERCASE]$PARAM[headline][/UPPERCASE]</label>
+				</control>
+				<control type="fixedlist" id="$PARAM[id]">
+					<top>30</top>
+					<width>1920</width>
+					<height>595</height>
+					<scrolltime>200</scrolltime>
+					<movement>5</movement>
+					<orientation>horizontal</orientation>
+					<preloaditems>4</preloaditems>
+					<ondown>$PARAM[ondown]</ondown>
+					<onright>noop</onright>
+					<onup>$PARAM[onup]</onup>
+					<itemlayout width="297">
+						<control type="group">							
+							<left>55</left>
+							<top>64</top>
+							<include content="PosterLayout">
+								<param name="main_label" value="$PARAM[mainlabel]" />
+								<param name="sub_label" value="$PARAM[sublabel]" />
+								<param name="focused" value="false" />
+							</include>
+						</control>
+						<control type="group">
+							<visible>false</visible>
+							<left>55</left>
+							<top>64</top>
+							<control type="image">
+								<left>-40</left>
+								<top>-40</top>
+								<width>334</width>
+								<height>451</height>
+								<texture border="42">script.plex/drop-shadow.png</texture>
+							</control>
+							<control type="group">
+								<left>5</left>
+								<top>5</top>
+								<control type="image">
+									<width>244</width>
+									<height>361</height>
+									<texture background="true">$PARAM[icon]</texture>
+									<aspectratio>scale</aspectratio>
+								</control>
+								<control type="label">
+									<scroll>false</scroll>
+									<top>371</top>
+									<width>244</width>
+									<height>35</height>
+									<font>font10</font>
+									<align>center</align>
+									<aligny>center</aligny>
+									<textcolor>FFFFFFFF</textcolor>
+									<label>$PARAM[mainlabel]</label>
+								</control>
+								<control type="label">
+									<scroll>false</scroll>
+									<top>398</top>
+									<width>244</width>
+									<height>35</height>
+									<font>font10</font>
+									<align>center</align>
+									<aligny>center</aligny>
+									<textcolor>FFFFFFFF</textcolor>
+									<label>$PARAM[sublabel]</label>
+								</control>
+							</control>
+						</control>
+					</itemlayout>
+					<focusedlayout width="297">
+						<control type="group">							
+							<left>55</left>
+							<top>64</top>
+
+							<include content="PosterLayout">
+								<param name="main_label" value="$PARAM[mainlabel]" />
+								<param name="sub_label" value="$PARAM[sublabel]" />
+								<param name="focused" value="true" />
+							</include>
+						</control>
+						<control type="group">
+							<visible>false</visible>
+							<left>55</left>
+							<top>64</top>
+							<control type="image">
+								<visible>Control.HasFocus($PARAM[id])</visible>
+								<left>-40</left>
+								<top>-40</top>
+								<width>334</width>
+								<height>451</height>
+								<texture border="42">script.plex/drop-shadow.png</texture>
+							</control>
+							<control type="group">
+								<left>5</left>
+								<top>5</top>
+								<control type="image">
+									<width>244</width>
+									<height>361</height>
+									<texture background="true">$PARAM[icon]</texture>
+									<aspectratio>scale</aspectratio>
+								</control>
+								<control type="label">
+									<scroll>false</scroll>
+									<top>371</top>
+									<width>244</width>
+									<height>35</height>
+									<font>font10</font>
+									<align>center</align>
+									<aligny>center</aligny>
+									<textcolor>FFFFFFFF</textcolor>
+									<label>$PARAM[mainlabel]</label>
+								</control>
+								<control type="label">
+									<scroll>false</scroll>
+									<top>398</top>
+									<width>244</width>
+									<height>35</height>
+									<font>font10</font>
+									<align>center</align>
+									<aligny>center</aligny>
+									<textcolor>FFFFFFFF</textcolor>
+									<label>$PARAM[sublabel]</label>
+								</control>
+							</control>
+							<control type="image">
+								<visible>Control.HasFocus($PARAM[id])</visible>
+								<width>254</width>
+								<height>371</height>
+								<texture border="10">script.plex/home/selected.png</texture>
+							</control>
+						</control>
+					</focusedlayout>
+					<content sortby="$PARAM[sortby]" sortorder="$PARAM[sortorder]" target="$PARAM[widget_target]" limit="$PARAM[widget_limit]">$PARAM[content]</content>
+				</control>
+			</control>
+		</definition>
+	</include>
+</includes>

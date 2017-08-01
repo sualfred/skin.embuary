@@ -17,33 +17,29 @@
 			<control type="image">
 				<width>277</width>
 				<height>415</height>
-				<texture fallback="$PARAM[fallback_image]" scalediffuse="false" diffuse="items/mask_poster.png" background="true">$VAR[IconPoster]</texture>
+				<texture fallback="$PARAM[fallback_image]" scalediffuse="true" diffuse="items/mask_poster.png" background="true">$INFO[ListItem.Art(poster)]</texture>
 				<aspectratio>stretch</aspectratio>
 			</control>
+			<control type="progress">
+				<top>410</top>
+				<width>277</width>
+				<height>5</height>
+				<texturebg border="2">views/ProgressBack.png</texturebg>
+				<lefttexture>-</lefttexture>
+				<midtexture border="2">views/ProgressBar.png</midtexture>
+				<righttexture>-</righttexture>
+				<info>ListItem.PercentPlayed</info>
+				<visible>Integer.IsGreater(ListItem.PercentPlayed,0)</visible>
+			</control>
 			<control type="image">
-				<left>-4</left>
+				<left>-9</left>
 				<top>-4</top>
-				<width>285</width>
-				<height>423</height>
+				<width>295</width>
+				<height>433</height>
 				<texture colordiffuse="green">items/focus_poster.png</texture>
 				<aspectratio>scale</aspectratio>
 				<visible>$PARAM[focused]</visible>
 				<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
-			</control>
-			<control type="label">
-				<top>178</top>
-				<width>455</width>
-				<label>$PARAM[thumb_label]</label>
-				<font>font20_title</font>
-				<shadowcolor>text_shadow</shadowcolor>
-				<align>center</align>
-			</control>
-			<control type="image">
-				<left>20</left>
-				<top>175</top>
-				<width>32</width>
-				<height>32</height>
-				<texture>$VAR[WallWatchedIconVar]</texture>
 			</control>
 			<control type="group">
 				<visible>!Window.IsActive(videos)</visible>
@@ -66,21 +62,6 @@
 					<align>center</align>
 				</control>
 			</control>
-			<control type="progress">
-				<top>420</top>
-				<width>277</width>
-				<height>5</height>
-				<texturebg border="2">views/ProgressBack.png</texturebg>
-				<lefttexture>-</lefttexture>
-				<midtexture border="2">views/ProgressBar.png</midtexture>
-				<righttexture>-</righttexture>
-				<info>ListItem.Progress</info>
-			</control>
-			<control type="group">
-				<left>134</left>
-				<top>8</top>
-				<include>UserRatingCircle</include>
-			</control>
 		</definition>
 	</include>
 	<!-- Landscape -->
@@ -94,40 +75,36 @@
 			<control type="image">
 				<top>-2</top>
 				<left>-2</left>
-				<width>461</width>
-				<height>262</height>
+				<width>446</width>
+				<height>254</height>
 				<texture>items/shadow_wide.png</texture>
 			</control>
 			<control type="image">
-				<width>455</width>
-				<height>256</height>
+				<width>440</width>
+				<height>248</height>
 				<texture fallback="$PARAM[fallback_image]" scalediffuse="false" diffuse="items/mask_wide.png" background="true">$VAR[IconLandscape]</texture>
 				<aspectratio>stretch</aspectratio>
 			</control>
+			<control type="progress">
+				<top>243</top>
+				<width>440</width>
+				<height>5</height>
+				<texturebg colordiffuse="black" border="2">common/ProgressBack.png</texturebg>
+				<lefttexture>-</lefttexture>
+				<midtexture colordiffuse="emby"  border="2">common/ProgressBar.png</midtexture>
+				<righttexture>-</righttexture>
+				<info>ListItem.PercentPlayed</info>
+				<visible>Integer.IsGreater(ListItem.PercentPlayed,0)</visible>
+			</control>
 			<control type="image">
-				<left>-4</left>
+				<left>-9</left>
 				<top>-4</top>
-				<width>463</width>
-				<height>264</height>
+				<width>458</width>
+				<height>265</height>
 				<texture colordiffuse="green">items/focus_wide.png</texture>
 				<aspectratio>scale</aspectratio>
 				<visible>$PARAM[focused]</visible>
 				<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
-			</control>
-			<control type="label">
-				<top>178</top>
-				<width>455</width>
-				<label>$PARAM[thumb_label]</label>
-				<font>font20_title</font>
-				<shadowcolor>text_shadow</shadowcolor>
-				<align>center</align>
-			</control>
-			<control type="image">
-				<left>20</left>
-				<top>175</top>
-				<width>32</width>
-				<height>32</height>
-				<texture>$VAR[WallWatchedIconVar]</texture>
 			</control>
 			<control type="group">
 				<visible>!Window.IsActive(videos)</visible>
@@ -149,21 +126,6 @@
 					<scroll>$PARAM[focused]</scroll>
 					<align>center</align>
 				</control>
-			</control>
-			<control type="progress">
-				<top>251</top>
-				<width>455</width>
-				<height>5</height>
-				<texturebg colordiffuse="black" border="2">common/ProgressBack.png</texturebg>
-				<lefttexture>-</lefttexture>
-				<midtexture colordiffuse="emby"  border="2">common/ProgressBar.png</midtexture>
-				<righttexture>-</righttexture>
-				<info>ListItem.Progress</info>
-			</control>
-			<control type="group">
-				<left>134</left>
-				<top>8</top>
-				<include>UserRatingCircle</include>
 			</control>
 		</definition>
 	</include>

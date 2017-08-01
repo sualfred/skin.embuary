@@ -5,7 +5,7 @@
 		<height>100%</height>
 		<width>100%</width>
 		<scrolltime tween="cubic" easing="out">500</scrolltime>
-		<itemgap>-160</itemgap>
+		<itemgap>0</itemgap>
 		<onup>20000</onup>
 		<ondown>20001</ondown>
 		<usecontrolcoords>true</usecontrolcoords>
@@ -19,7 +19,7 @@
 				<top>$PARAM[top]</top>
 				<width>900</width>
 				<height>90</height>
-				<label>$PARAM[label]</label>
+				<label>$PARAM[label]    $INFO[Container($PARAM[list_id]).CurrentItem]/$INFO[Container($PARAM[list_id]).Items]</label>
 				<shadowcolor>text_shadow</shadowcolor>
 				<visible>$PARAM[visible]</visible>
 				<visible>Integer.IsGreater(Container($PARAM[list_id]).NumItems,0) | Container($PARAM[list_id]).IsUpdating</visible>
@@ -228,7 +228,7 @@
 				<param name="label">$PARAM[widget_header]</param>
 				<param name="list_id" value="$PARAM[list_id]"/>
 			</include>
-			<control type="fixedlist" id="$PARAM[list_id]">
+			<control type="$PARAM[list_style]" id="$PARAM[list_id]">
 				<left>0</left>
 				<top>105</top>
 				<right>0</right>
@@ -236,6 +236,8 @@
 				<include content="WidgetListCommon">
 					<param name="list_id" value="$PARAM[list_id]"/>
 				</include>
+				<movement>5</movement>
+				<defaultcontrol always="true">1</defaultcontrol>
 				<visible>$PARAM[visible]</visible>
 				<visible>Integer.IsGreater(Container($PARAM[list_id]).NumItems,0) | Container($PARAM[list_id]).IsUpdating</visible>
 				<itemlayout width="297" height="470">
@@ -283,14 +285,16 @@
 				<param name="label">$PARAM[widget_header]</param>
 				<param name="list_id" value="$PARAM[list_id]"/>
 			</include>
-			<control type="fixedlist" id="$PARAM[list_id]">
+			<control type="$PARAM[list_style]" id="$PARAM[list_id]">
 				<left>0</left>
 				<top>105</top>
 				<right>0</right>
 				<height>446</height>
+				<defaultcontrol always="true">1</defaultcontrol>
 				<include content="WidgetListCommon">
 					<param name="list_id" value="$PARAM[list_id]"/>
 				</include>
+				<movement>2</movement>
 				<visible>$PARAM[visible]</visible>
 				<visible>Integer.IsGreater(Container($PARAM[list_id]).NumItems,0) | Container($PARAM[list_id]).IsUpdating</visible>
 				<itemlayout width="474" height="470">
@@ -338,11 +342,12 @@
 				<param name="label">$PARAM[widget_header]</param>
 				<param name="list_id" value="$PARAM[list_id]"/>
 			</include>
-			<control type="fixedlist" id="$PARAM[list_id]">
+			<control type="$PARAM[list_style]" id="$PARAM[list_id]">
 				<left>0</left>
 				<top>105</top>
 				<right>0</right>
 				<height>467</height>
+				<movement>5</movement>
 				<include content="WidgetListCommon">
 					<param name="list_id" value="$PARAM[list_id]"/>
 				</include>
@@ -394,6 +399,8 @@
 				<param name="list_id" value="$PARAM[list_id]"/>
 			</include>
 			<control type="grouplist" id="$PARAM[list_id]2">
+				<enable>Integer.IsGreater(Container($PARAM[list_id]).NumItems,0) | Container($PARAM[list_id]).IsUpdating</enable>
+				<visible>Integer.IsGreater(Container($PARAM[list_id]).NumItems,0) | Container($PARAM[list_id]).IsUpdating</visible>
 				<top>122</top>
 				<left>98</left>
 				<height>50</height>
@@ -453,16 +460,18 @@
 				<param name="top">180</param>
 				<param name="list_id" value="$PARAM[list_id]"/>
 			</include>
-			<control type="fixedlist" id="$PARAM[list_id]">
+			<control type="$PARAM[list_style]" id="$PARAM[list_id]">
 				<left>0</left>
 				<top>105</top>
 				<right>0</right>
 				<height>457</height>
+				<movement>5</movement>
 					<onup>SetFocus($PARAM[list_id]2)</onup>
 				<include content="WidgetListCommon">
 					<param name="list_id" value="$PARAM[list_id]"/>
 				</include>
 				<visible>$PARAM[visible]</visible>
+				<enable>Integer.IsGreater(Container($PARAM[list_id]).NumItems,0) | Container($PARAM[list_id]).IsUpdating</enable>
 				<visible>Integer.IsGreater(Container($PARAM[list_id]).NumItems,0) | Container($PARAM[list_id]).IsUpdating</visible>
 				<itemlayout width="296" height="470">
 					<control type="group">
