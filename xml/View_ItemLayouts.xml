@@ -47,7 +47,7 @@
 	<include name="bubble_overlay">
 		<control type="group">
 			<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png) | Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0)</visible>
-			<right>-25</right>
+			<right>-27</right>
 			<top>10</top>
 			<width>44</width>
 			<height>44</height>
@@ -80,6 +80,36 @@
 				<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
 			</control>
 		</control>
+	</include>
+
+	<include name="list_mask">
+		<param name="top" default="94"/>
+		<definition>
+			<control type="group">
+				<visible>Container($PARAM[id]).HasNext + Control.HasFocus($PARAM[id])</visible>
+				<animation effect="fade" start="0" end="100" time="200" tween="sine">Visible</animation>
+				<animation effect="fade" start="100" end="0" time="0">Hidden</animation>
+				<control type="image">
+					<top>$PARAM[top]</top>
+					<right>0</right>
+					<width>145</width>
+					<height>$PARAM[height]</height>
+					<texture>items/listmask.png</texture>
+					<aspectratio>stretch</aspectratio>
+				</control>
+				<control type="label">
+					<top>$PARAM[top]</top>
+					<right>0</right>
+					<width>55</width>
+					<height>$PARAM[height]</height>
+					<label></label>
+					<font>FontAwesome50bold</font>
+					<shadowcolor>text_shadow</shadowcolor>
+					<align>center</align>					
+					<aligny>center</aligny>
+				</control>
+			</control>
+		</definition>
 	</include>
 
 
@@ -291,20 +321,76 @@
 			<control type="image">
 				<width>276</width>
 				<height>156</height>
-				<texture colordiffuse="green">items/mask_button.png</texture>
+				<texture colordiffuse="ff010202">items/mask_button.png</texture>
 			</control>
-			<control type="image">
-				<width>276</width>
-				<height>156</height>
-				<texture fallback="$PARAM[fallback_image]">$INFO[ListItem.Icon]</texture>
-				<aspectratio>keep</aspectratio>
+			<control type="group">
+				<left>6</left>
+				<top>6</top>
+				<control type="image">
+					<width>62</width>
+					<height>107</height>
+					<texture background="true">$INFO[ListItem.Property(Art1)]</texture>
+					<aspectratio>scale</aspectratio>
+				</control>
+				<control type="image">
+					<left>67</left>
+					<width>62</width>
+					<height>107</height>
+					<texture background="true">$INFO[ListItem.Property(Art2)]</texture>
+					<aspectratio>scale</aspectratio>
+				</control>
+				<control type="image">
+					<left>135</left>
+					<width>62</width>
+					<height>107</height>
+					<texture background="true">$INFO[ListItem.Property(Art3)]</texture>
+					<aspectratio>scale</aspectratio>
+				</control>
+				<control type="image">
+					<left>203</left>
+					<width>62</width>
+					<height>107</height>
+					<texture background="true">$INFO[ListItem.Property(Art4)]</texture>
+					<aspectratio>scale</aspectratio>
+				</control>
+			</control>
+			<control type="group">
+				<left>6</left>
+				<top>114</top>
+				<control type="image">
+					<width>62</width>
+					<height>107</height>
+					<texture flipy="true" scaleddiffuse="false" diffuse="items/mirror_mask.png" background="true">$INFO[ListItem.Property(Art1)]</texture>
+					<aspectratio>scale</aspectratio>
+				</control>
+				<control type="image">
+					<left>67</left>
+					<width>62</width>
+					<height>107</height>
+					<texture flipy="true" scaleddiffuse="false" diffuse="items/mirror_mask.png" background="true">$INFO[ListItem.Property(Art2)]</texture>
+					<aspectratio>scale</aspectratio>
+				</control>
+				<control type="image">
+					<left>135</left>
+					<width>62</width>
+					<height>107</height>
+					<texture flipy="true" scaleddiffuse="false" diffuse="items/mirror_mask.png" background="true">$INFO[ListItem.Property(Art3)]</texture>
+					<aspectratio>scale</aspectratio>
+				</control>
+				<control type="image">
+					<left>203</left>
+					<width>62</width>
+					<height>107</height>
+					<texture flipy="true" scaleddiffuse="false" diffuse="items/mirror_mask.png" background="true">$INFO[ListItem.Property(Art4)]</texture>
+					<aspectratio>scale</aspectratio>
+				</control>
 			</control>
 			<control type="image">
 				<left>-10</left>
 				<top>-4</top>
 				<width>297</width>
 				<height>174</height>
-				<texture colordiffuse="blue">items/focus_button.png</texture>
+				<texture colordiffuse="green">items/focus_button.png</texture>
 				<aspectratio>stretch</aspectratio>
 				<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
 				<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>

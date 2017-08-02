@@ -13,20 +13,20 @@
 				<visible>$PARAM[visible]</visible>
 				<visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</visible>
 				<width>1920</width>
-				<height>567</height>
+				<height>467</height>
 				<include content="widget_headline">
 					<param name="headline">$PARAM[headline]</param>
 				</include>
 				<control type="fixedlist" id="$PARAM[id]">
 					<top>30</top>
 					<width>1920</width>
-					<height>427</height>
 					<scrolltime>200</scrolltime>
 					<movement>5</movement>
 					<orientation>horizontal</orientation>
 					<preloaditems>4</preloaditems>
 					<ondown>$PARAM[ondown]</ondown>
 					<onright>noop</onright>
+					<onleft>noop</onleft>
 					<onup>$PARAM[onup]</onup>
 					<itemlayout width="297">
 						<control type="group">							
@@ -54,100 +54,36 @@
 						<item>
 							<label>$LOCALIZE[342]</label>
 							<onclick>ActivateWindow(videos,library://video/movies)</onclick>
+							<property name="art1">$INFO[Container(51).ListItem(0).Art(poster)]</property>
+							<property name="art2">$INFO[Container(51).ListItem(1).Art(poster)]</property>
+							<property name="art3">$INFO[Container(51).ListItem(2).Art(poster)]</property>
+							<property name="art4">$INFO[Container(51).ListItem(3).Art(poster)]</property>
 						</item>
 						<item>
 							<label>$LOCALIZE[20364]</label>
 							<onclick>ActivateWindow(videos,library://video/tvshows)</onclick>
+							<property name="art1">$INFO[Container(52).ListItem(0).Art(poster)]</property>
+							<property name="art2">$INFO[Container(52).ListItem(1).Art(poster)]</property>
+							<property name="art3">$INFO[Container(52).ListItem(2).Art(poster)]</property>
+							<property name="art4">$INFO[Container(52).ListItem(3).Art(poster)]</property>
 						</item>
 						<item>
 							<label>$LOCALIZE[14204]</label>
 							<onclick>ActivateWindow(tvchannels)</onclick>
+							<property name="art1">$INFO[Container(53).ListItem(0).Art(thumb)]</property>
+							<property name="art2">$INFO[Container(53).ListItem(1).Art(thumb)]</property>
+							<property name="art3">$INFO[Container(53).ListItem(2).Art(thumb)]</property>
+							<property name="art4">$INFO[Container(53).ListItem(3).Art(thumb)]</property>
 						</item>
 						<item>
 							<label>$LOCALIZE[2]</label>
 							<onclick>ActivateWindow(music,library://music)</onclick>
+							<property name="art1">$INFO[Container(54).ListItem(0).Art(thumb)]</property>
+							<property name="art2">$INFO[Container(54).ListItem(1).Art(thumb)]</property>
+							<property name="art3">$INFO[Container(54).ListItem(2).Art(thumb)]</property>
+							<property name="art4">$INFO[Container(54).ListItem(3).Art(thumb)]</property>
 						</item>
 					</content>
-				</control>
-			</control>
-		</definition>
-	</include>
-	<!-- PVR Buttons -->
-	<include name="PVRWidgetButtons">
-		<param name="id">$PARAM[id]</param>
-		<param name="visible" default="true">$PARAM[visible]</param>
-		<param name="headline" default="widget">$PARAM[headline]</param>
-		<param name="mainlabel" default="$INFO[ListItem.Label]">$PARAM[mainlabel]</param>
-		<param name="onup" default="100">$PARAM[onup]</param>
-		<param name="ondown">$PARAM[ondown]</param>
-		<param name="pvrid">$PARAM[pvrid]</param>
-		<definition>
-			<control type="group" id="$PARAM[id]1">
-				<visible>$PARAM[visible]</visible>
-				<visible>Integer.IsGreater(Container($PARAM[pvrid]).NumItems,0) | Container($PARAM[pvrid]).IsUpdating</visible>
-				<width>1920</width>
-				<height>170</height>
-				<include content="widget_headline">
-					<param name="headline">$PARAM[headline]</param>
-				</include>
-				<control type="grouplist" id="$PARAM[id]">
-					<top>90</top>
-					<left>52</left>
-					<height>50</height>
-					<orientation>horizontal</orientation>
-					<itemgap>5</itemgap>
-					<control type="button" id="$PARAM[id]01">
-						<top>-2</top>
-						<left>-2</left>
-						<width min="50">auto</width>
-						<height>50</height>
-						<font>med18</font>
-						<textoffsetx>20</textoffsetx>
-						<label>$LOCALIZE[14301]</label>
-						<texturefocus border="10" colordiffuse="emby">items/shadow_smallbutton.png</texturefocus>
-						<texturenofocus border="10" colordiffuse="grey">items/shadow_smallbutton.png</texturenofocus>
-						<onup>SetFocus($PARAM[onup])</onup>
-						<ondown>SetFocus($PARAM[ondown])</ondown>
-					</control>
-					<control type="button" id="$PARAM[id]02">
-						<top>-2</top>
-						<left>-2</left>
-						<width min="50">auto</width>
-						<height>50</height>
-						<font>med18</font>
-						<textoffsetx>20</textoffsetx>
-						<label>$LOCALIZE[19069]</label>
-						<texturefocus border="10" colordiffuse="emby">items/shadow_smallbutton.png</texturefocus>
-						<texturenofocus border="10" colordiffuse="grey">items/shadow_smallbutton.png</texturenofocus>
-						<onup>SetFocus($PARAM[onup])</onup>
-						<ondown>SetFocus($PARAM[ondown])</ondown>
-					</control>
-					<control type="button" id="$PARAM[id]03">
-						<top>-2</top>
-						<left>-2</left>
-						<width min="50">auto</width>
-						<height>50</height>
-						<font>med18</font>
-						<textoffsetx>20</textoffsetx>
-						<label>$LOCALIZE[19017]</label>
-						<texturefocus border="10" colordiffuse="emby">items/shadow_smallbutton.png</texturefocus>
-						<texturenofocus border="10" colordiffuse="grey">items/shadow_smallbutton.png</texturenofocus>
-						<onup>SetFocus($PARAM[onup])</onup>
-						<ondown>SetFocus($PARAM[ondown])</ondown>
-					</control>
-					<control type="button" id="$PARAM[id]04">
-						<top>-2</top>
-						<left>-2</left>
-						<width min="50">auto</width>
-						<height>50</height>
-						<font>med18</font>
-						<textoffsetx>20</textoffsetx>
-						<label>$LOCALIZE[19040]</label>
-						<texturefocus border="10" colordiffuse="emby">items/shadow_smallbutton.png</texturefocus>
-						<texturenofocus border="10" colordiffuse="grey">items/shadow_smallbutton.png</texturenofocus>
-						<onup>SetFocus($PARAM[onup])</onup>
-						<ondown>SetFocus($PARAM[ondown])</ondown>
-					</control>
 				</control>
 			</control>
 		</definition>
@@ -168,20 +104,20 @@
 				<visible>$PARAM[visible]</visible>
 				<visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</visible>
 				<width>1920</width>
-				<height>676</height>
+				<height>576</height>
 				<include content="widget_headline">
 					<param name="headline">$PARAM[headline]</param>
 				</include>
 				<control type="fixedlist" id="$PARAM[id]">
 					<top>30</top>
 					<width>1920</width>
-					<height>446</height>
 					<movement>3</movement>
 					<scrolltime>200</scrolltime>
 					<orientation>horizontal</orientation>
 					<preloaditems>4</preloaditems>
 					<ondown>$PARAM[ondown]</ondown>
 					<onright>noop</onright>
+					<onleft>noop</onleft>
 					<onup>$PARAM[onup]</onup>
 					<itemlayout width="459">
 						<control type="group">
@@ -193,50 +129,6 @@
 								<param name="focused" value="false" />
 								<param name="id" value="$PARAM[id]" />
 							</include>
-						</control>
-						<control type="group">
-							<visible>false</visible>
-							<left>55</left>
-							<top>64</top>
-							<control type="image">
-								<left>-40</left>
-								<top>-40</top>
-								<width>622</width>
-								<height>389</height>
-								<texture border="42">script.plex/drop-shadow.png</texture>
-							</control>
-							<control type="group">
-								<left>5</left>
-								<top>5</top>
-								<control type="image">
-									<width>532</width>
-									<height>299</height>
-									<texture background="true">$PARAM[icon]</texture>
-									<aspectratio>scale</aspectratio>
-								</control>
-								<control type="label">
-									<scroll>false</scroll>
-									<top>309</top>
-									<width>532</width>
-									<height>35</height>
-									<font>Reg14</font>
-									<align>center</align>
-									<aligny>center</aligny>
-									<textcolor>FFFFFFFF</textcolor>
-									<label>$PARAM[mainlabel]</label>
-								</control>
-								<control type="label">
-									<scroll>false</scroll>
-									<top>337</top>
-									<width>532</width>
-									<height>35</height>
-									<font>Reg14</font>
-									<align>center</align>
-									<aligny>center</aligny>
-									<textcolor>FFFFFFFF</textcolor>
-									<label>$PARAM[sublabel]</label>
-								</control>
-							</control>
 						</control>
 					</itemlayout>
 					<focusedlayout width="459">
@@ -250,60 +142,13 @@
 								<param name="id" value="$PARAM[id]" />
 							</include>
 						</control>
-						<control type="group">
-							<visible>false</visible>
-							<left>55</left>
-							<top>64</top>
-							<control type="image">
-								<visible>Control.HasFocus($PARAM[id])</visible>
-								<left>-40</left>
-								<top>-40</top>
-								<width>622</width>
-								<height>389</height>
-								<texture border="42">script.plex/drop-shadow.png</texture>
-							</control>
-							<control type="group">
-								<left>5</left>
-								<top>5</top>
-								<control type="image">
-									<width>532</width>
-									<height>299</height>
-									<texture background="true">$PARAM[icon]</texture>
-									<aspectratio>scale</aspectratio>
-								</control>
-								<control type="label">
-									<scroll>false</scroll>
-									<top>309</top>
-									<width>532</width>
-									<height>35</height>
-									<font>Reg14</font>
-									<align>center</align>
-									<aligny>center</aligny>
-									<textcolor>FFFFFFFF</textcolor>
-									<label>$PARAM[mainlabel]</label>
-								</control>
-								<control type="label">
-									<scroll>false</scroll>
-									<top>337</top>
-									<width>532</width>
-									<height>35</height>
-									<font>Reg14</font>
-									<align>center</align>
-									<aligny>center</aligny>
-									<textcolor>FFFFFFFF</textcolor>
-									<label>$PARAM[sublabel]</label>
-								</control>
-							</control>
-							<control type="image">
-								<visible>Control.HasFocus($PARAM[id])</visible>
-								<width>542</width>
-								<height>309</height>
-								<texture border="10">script.plex/home/selected.png</texture>
-							</control>
-						</control>
 					</focusedlayout>
 					<content sortby="$PARAM[sortby]" sortorder="$PARAM[sortorder]" target="$PARAM[widget_target]" limit="$PARAM[widget_limit]">$PARAM[content]</content>
 				</control>
+				<include content="list_mask">
+					<param name="height" value="248"/>
+					<param name="id" value="$PARAM[id]"/>
+				</include>
 			</control>
 		</definition>
 	</include>
@@ -321,20 +166,20 @@
 				<visible>$PARAM[visible]</visible>
 				<visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</visible>
 				<width>1920</width>
-				<height>835</height>
+				<height>735</height>
 				<include content="widget_headline">
 					<param name="headline">$PARAM[headline]</param>
 				</include>
 				<control type="fixedlist" id="$PARAM[id]">
 					<top>30</top>
 					<width>1920</width>
-					<height>595</height>
 					<scrolltime>200</scrolltime>
 					<movement>5</movement>
 					<orientation>horizontal</orientation>
 					<preloaditems>4</preloaditems>
 					<ondown>$PARAM[ondown]</ondown>
 					<onright>noop</onright>
+					<onleft>noop</onleft>
 					<onup>$PARAM[onup]</onup>
 					<itemlayout width="297">
 						<control type="group">							
@@ -346,50 +191,6 @@
 								<param name="focused" value="false" />
 								<param name="id" value="$PARAM[id]" />
 							</include>
-						</control>
-						<control type="group">
-							<visible>false</visible>
-							<left>55</left>
-							<top>64</top>
-							<control type="image">
-								<left>-40</left>
-								<top>-40</top>
-								<width>334</width>
-								<height>451</height>
-								<texture border="42">script.plex/drop-shadow.png</texture>
-							</control>
-							<control type="group">
-								<left>5</left>
-								<top>5</top>
-								<control type="image">
-									<width>244</width>
-									<height>361</height>
-									<texture background="true">$PARAM[icon]</texture>
-									<aspectratio>scale</aspectratio>
-								</control>
-								<control type="label">
-									<scroll>false</scroll>
-									<top>371</top>
-									<width>244</width>
-									<height>35</height>
-									<font>Reg14</font>
-									<align>center</align>
-									<aligny>center</aligny>
-									<textcolor>FFFFFFFF</textcolor>
-									<label>$PARAM[mainlabel]</label>
-								</control>
-								<control type="label">
-									<scroll>false</scroll>
-									<top>398</top>
-									<width>244</width>
-									<height>35</height>
-									<font>Reg14</font>
-									<align>center</align>
-									<aligny>center</aligny>
-									<textcolor>FFFFFFFF</textcolor>
-									<label>$PARAM[sublabel]</label>
-								</control>
-							</control>
 						</control>
 					</itemlayout>
 					<focusedlayout width="297">
@@ -403,60 +204,13 @@
 								<param name="id" value="$PARAM[id]" />
 							</include>
 						</control>
-						<control type="group">
-							<visible>false</visible>
-							<left>55</left>
-							<top>64</top>
-							<control type="image">
-								<visible>Control.HasFocus($PARAM[id])</visible>
-								<left>-40</left>
-								<top>-40</top>
-								<width>334</width>
-								<height>451</height>
-								<texture border="42">script.plex/drop-shadow.png</texture>
-							</control>
-							<control type="group">
-								<left>5</left>
-								<top>5</top>
-								<control type="image">
-									<width>244</width>
-									<height>361</height>
-									<texture background="true">$PARAM[icon]</texture>
-									<aspectratio>scale</aspectratio>
-								</control>
-								<control type="label">
-									<scroll>false</scroll>
-									<top>371</top>
-									<width>244</width>
-									<height>35</height>
-									<font>Reg14</font>
-									<align>center</align>
-									<aligny>center</aligny>
-									<textcolor>FFFFFFFF</textcolor>
-									<label>$PARAM[mainlabel]</label>
-								</control>
-								<control type="label">
-									<scroll>false</scroll>
-									<top>398</top>
-									<width>244</width>
-									<height>35</height>
-									<font>Reg14</font>
-									<align>center</align>
-									<aligny>center</aligny>
-									<textcolor>FFFFFFFF</textcolor>
-									<label>$PARAM[sublabel]</label>
-								</control>
-							</control>
-							<control type="image">
-								<visible>Control.HasFocus($PARAM[id])</visible>
-								<width>254</width>
-								<height>371</height>
-								<texture border="10">script.plex/home/selected.png</texture>
-							</control>
-						</control>
 					</focusedlayout>
 					<content sortby="$PARAM[sortby]" sortorder="$PARAM[sortorder]" target="$PARAM[widget_target]" limit="$PARAM[widget_limit]">$PARAM[content]</content>
 				</control>
+				<include content="list_mask">
+					<param name="height" value="417"/>
+					<param name="id" value="$PARAM[id]"/>
+				</include>
 			</control>
 		</definition>
 	</include>
@@ -476,20 +230,20 @@
 				<visible>$PARAM[visible]</visible>
 				<visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</visible>
 				<width>1920</width>
-				<height>697</height>
+				<height>597</height>
 				<include content="widget_headline">
 					<param name="headline">$PARAM[headline]</param>
 				</include>
 				<control type="fixedlist" id="$PARAM[id]">
 					<top>30</top>
 					<width>1920</width>
-					<height>595</height>
 					<scrolltime>200</scrolltime>
 					<movement>5</movement>
 					<orientation>horizontal</orientation>
 					<preloaditems>4</preloaditems>
 					<ondown>$PARAM[ondown]</ondown>
 					<onright>noop</onright>
+					<onleft>noop</onleft>
 					<onup>$PARAM[onup]</onup>
 					<itemlayout width="297">
 						<control type="group">							
@@ -517,33 +271,99 @@
 					</focusedlayout>
 					<content sortby="$PARAM[sortby]" sortorder="$PARAM[sortorder]" target="$PARAM[widget_target]" limit="$PARAM[widget_limit]">$PARAM[content]</content>
 				</control>
+				<include content="list_mask">
+					<param name="height" value="277"/>
+					<param name="id" value="$PARAM[id]"/>
+				</include>
 			</control>
 		</definition>
 	</include>
 	<!-- PVR -->
 	<include name="PVRSquareWidget">
-		<param name="id">$PARAM[id]</param>
-		<param name="visible" default="true">$PARAM[visible]</param>
-		<param name="icon" default="$INFO[ListItem.Icon]">$PARAM[icon]</param>
-		<param name="headline" default="widget">$PARAM[headline]</param>
-		<param name="mainlabel" default="$INFO[ListItem.Label]">$PARAM[mainlabel]</param>
-		<param name="sublabel">$PARAM[sublabel]</param>
-		<param name="content">$PARAM[content]</param>
-		<param name="onup" default="100">$PARAM[onup]</param>
-		<param name="ondown">$PARAM[ondown]</param>
+		<param name="visible" default="true"/>
+		<param name="enable" default="true"/>
+		<param name="icon" default="$INFO[ListItem.Icon]"/>
+		<param name="headline" default="widget"/>
+		<param name="mainlabel" default="$INFO[ListItem.Label]"/>
+		<param name="onup" default="100"/>
 		<definition>
 			<control type="group" id="$PARAM[id]1">
 				<visible>$PARAM[visible]</visible>
 				<visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</visible>
 				<width>1920</width>
-				<height>827</height>
-				<include content="PVRWidgetButtons">
-					<param name="pvrid" value="202"/>
-					<param name="id" value="201"/>
-					<param name="onup" value="200"/>
-					<param name="ondown" value="202"/>
-					<param name="headline" value="$LOCALIZE[14204]"/>
+				<height>727</height>
+				<include content="widget_headline">
+					<param name="headline">$LOCALIZE[19191]</param>
 				</include>
+				<control type="grouplist" id="$PARAM[id]01">
+					<top>90</top>
+					<left>52</left>
+					<height>50</height>
+					<orientation>horizontal</orientation>
+					<itemgap>5</itemgap>
+					<onright>noop</onright>
+					<onleft>noop</onleft>
+					<onup>SetFocus($PARAM[onup])</onup>
+					<ondown>SetFocus($PARAM[ondown])</ondown>
+					<control type="button" id="$PARAM[id]02">
+						<top>-2</top>
+						<left>-2</left>
+						<width min="50">auto</width>
+						<height>50</height>
+						<font>med18</font>
+						<textoffsetx>20</textoffsetx>
+						<label>$LOCALIZE[14301]</label>
+						<texturefocus border="10" colordiffuse="emby">items/shadow_smallbutton.png</texturefocus>
+						<texturenofocus border="10" colordiffuse="grey">items/shadow_smallbutton.png</texturenofocus>
+						<onup>SetFocus($PARAM[onup])</onup>
+						<ondown>SetFocus($PARAM[id])</ondown>
+						<enable>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</enable>
+					</control>
+					<control type="button" id="$PARAM[id]03">
+						<top>-2</top>
+						<left>-2</left>
+						<width min="50">auto</width>
+						<height>50</height>
+						<font>med18</font>
+						<textoffsetx>20</textoffsetx>
+						<label>$LOCALIZE[19069]</label>
+						<texturefocus border="10" colordiffuse="emby">items/shadow_smallbutton.png</texturefocus>
+						<texturenofocus border="10" colordiffuse="grey">items/shadow_smallbutton.png</texturenofocus>
+						<onup>SetFocus($PARAM[onup])</onup>
+						<ondown>SetFocus($PARAM[id])</ondown>
+						<enable>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</enable>
+					</control>
+					<control type="button" id="$PARAM[id]04">
+						<top>-2</top>
+						<left>-2</left>
+						<width min="50">auto</width>
+						<height>50</height>
+						<font>med18</font>
+						<textoffsetx>20</textoffsetx>
+						<label>$LOCALIZE[19017]</label>
+						<texturefocus border="10" colordiffuse="emby">items/shadow_smallbutton.png</texturefocus>
+						<texturenofocus border="10" colordiffuse="grey">items/shadow_smallbutton.png</texturenofocus>
+						<onup>SetFocus($PARAM[onup])</onup>
+						<ondown>SetFocus($PARAM[id])</ondown>
+						<enable>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</enable>
+					</control>
+					<control type="button" id="$PARAM[id]05">
+						<top>-2</top>
+						<left>-2</left>
+						<width min="50">auto</width>
+						<height>50</height>
+						<font>med18</font>
+						<textoffsetx>20</textoffsetx>
+						<label>$LOCALIZE[19040]</label>
+						<texturefocus border="10" colordiffuse="emby">items/shadow_smallbutton.png</texturefocus>
+						<texturenofocus border="10" colordiffuse="grey">items/shadow_smallbutton.png</texturenofocus>
+						<onup>SetFocus($PARAM[onup])</onup>
+						<ondown>SetFocus($PARAM[id])</ondown>
+						<enable>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</enable>
+					</control>
+				</control>
+
+
 				<include content="widget_headline">
 					<param name="top">145</param>U
 					<param name="headline">$PARAM[headline]</param>
@@ -551,14 +371,14 @@
 				<control type="fixedlist" id="$PARAM[id]">
 					<top>150</top>
 					<width>1920</width>
-					<height>595</height>
 					<scrolltime>200</scrolltime>
 					<movement>5</movement>
 					<orientation>horizontal</orientation>
 					<preloaditems>4</preloaditems>
 					<ondown>$PARAM[ondown]</ondown>
 					<onright>noop</onright>
-					<onup>$PARAM[onup]</onup>
+					<onleft>noop</onleft>
+					<onup>$PARAM[id]01</onup>
 					<itemlayout width="297">
 						<control type="group">							
 							<left>55</left>
@@ -585,6 +405,11 @@
 					</focusedlayout>
 					<content sortby="$PARAM[sortby]" sortorder="$PARAM[sortorder]" target="$PARAM[widget_target]" limit="$PARAM[widget_limit]">$PARAM[content]</content>
 				</control>
+				<include content="list_mask">
+					<param name="top" value="214"/>
+					<param name="height" value="277"/>
+					<param name="id" value="$PARAM[id]"/>
+				</include>
 			</control>
 		</definition>
 	</include>
