@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+	<!-- FullScreenDimensions -->
+	<include name="FullscreenDimensions">
+		<width>1920</width>
+		<height>1080</height>
+	</include>
+	<!-- Panel -->	
+	<include name="ContentPanel">
+		<param name="width">320</param>
+		<param name="left">0</param>
+		<param name="right"></param>
+		<param name="top">-10%</param>
+		<param name="height">120%</param>
+		<param name="flipx">false</param>
+		<definition>
+			<control type="image">
+				<texture colordiffuse="panel">common/white.jpg</texture>
+				<width>$PARAM[width]</width>
+				<left>$PARAM[left]</left>
+				<right>$PARAM[right]</right>
+				<top>$PARAM[top]</top>
+				<height>$PARAM[height]</height>
+			</control>
+		</definition>
+	</include>
+	<!-- Side Menu Button Layout -->
+	<include name="SideMenuButton">
+		<param name="width">400</param>
+		<param name="icon_left">15%</param>
+		<param name="label_left">25%</param>
+		<param name="focused">false</param>
+		<definition>
+			<control type="group">
+				<width>$PARAM[width]</width>
+				<height>50</height>
+				<control type="image">
+					<height>50</height>
+					<width>$PARAM[width]</width>
+					<texture colordiffuse="panel_hover">common/white.jpg</texture>
+					<aspectratio>stretch</aspectratio>
+					<visible>$PARAM[focused] + Control.HasFocus($PARAM[submenu_id])</visible>
+				</control>
+				<control type="label">
+					<top>4</top>
+					<left>$PARAM[icon_left]</left>
+					<height>40</height>
+					<aligny>center</aligny>
+					<align>left</align>
+					<font>FontAwesome20Light</font>
+					<fontcolor>panel_text</fontcolor>
+					<label>$INFO[ListItem.Property(icon)]</label>
+					<shadowcolor>text_shadow</shadowcolor>
+				</control>
+				<control type="label">
+					<top>5</top>
+					<left>$PARAM[label_left]</left>
+					<height>40</height>
+					<aligny>center</aligny>
+					<font>light24</font>
+					<fontcolor>panel_text</fontcolor>
+					<label>$INFO[ListItem.Label]</label>
+					<shadowcolor>text_shadow</shadowcolor>
+				</control>
+			</control>
+		</definition>
+	</include>
+	<!-- Side Menu -->
+	<include name="SidePanel">
+		<param name="width">400</param>
+		<param name="onright">10</param>
+		<definition>
+			<control type="group" id="9999">
+					<height>100%</height>
+				<left>-$PARAM[width]</left>
+				<animation type="Conditional" condition="ControlGroup(9999).HasFocus" reversible="true">
+					<effect type="slide" start="0,0" end="$PARAM[width],0" time="400" tween="cubic" easing="inout" />
+				</animation>
+				<include content="ContentPanel">
+					<param name="width" value="$PARAM[width]"/>
+				</include>
+				<control type="grouplist">
+					<top>10</top>
+					<width>$PARAM[width]</width>
+					<height>100%</height>
+					<orientation>vertical</orientation>
+					<itemgap>0</itemgap>
+					<!--top-->
+					<control type="list" id="99990">
+						<width>$PARAM[width]</width>
+						<height>60</height>
+						<movement>6</movement>
+						<focusposition>1</focusposition>
+						<onright>10</onright>
+						<onup>noop</onup>
+						<ondown>SetFocus(99991)</ondown>
+						<scrolltime tween="cubic" easing="out">500</scrolltime>
+						<itemlayout height="50">
+							<include content="SideMenuButton">
+								<param name="icon_left">15</param>
+								<param name="label_left">60</param>
+								<param name="submenu_id">99990</param>
+							</include>
+						</itemlayout>
+						<focusedlayout height="50">
+							<include content="SideMenuButton">
+								<param name="icon_left">15</param>
+								<param name="label_left">60</param>
+								<param name="focused">true</param>
+								<param name="submenu_id">99990</param>
+							</include>
+						</focusedlayout>
+						<content>
+							<item>
+								<label>$LOCALIZE[10000]</label>
+								<onclick>ActivateWindow(Home)</onclick>
+								<property name="icon"></property>
+							</item>
+						</content>
+					</control>
+					<!-- seperator -->
+					<control type="image" id="99980">
+						<height>1</height>
+						<width>$PARAM[width]</width>
+						<texture colordiffuse="panel_hover">common/white.jpg</texture>
+						<aspectratio>stretch</aspectratio>
+					</control>
+					<!-- headline -->
+					<control type="label" id="99981">
+						<width>$PARAM[width]</width>
+						<height>50</height>
+						<font>Bold22</font>
+						<label>$LOCALIZE[14211]</label>
+						<textoffsety>5</textoffsety>
+						<textoffsetx>15</textoffsetx>
+					</control>
+					<!-- main -->
+					<control type="list" id="99991">
+						<width>$PARAM[width]</width>
+						<height>320</height>
+						<movement>6</movement>
+						<focusposition>1</focusposition>
+						<onright>10</onright>
+						<onup>99990</onup>
+						<ondown>99992</ondown>
+						<scrolltime tween="cubic" easing="out">500</scrolltime>
+						<itemlayout height="50">
+							<include content="SideMenuButton">
+								<param name="icon_left">55</param>
+								<param name="label_left">100</param>
+								<param name="submenu_id">99991</param>
+							</include>
+						</itemlayout>
+						<focusedlayout height="50">
+							<include content="SideMenuButton">
+								<param name="icon_left">55</param>
+								<param name="label_left">100</param>
+								<param name="focused">true</param>
+								<param name="submenu_id">99991</param>
+							</include>
+						</focusedlayout>
+						<content>
+							<item>
+								<label>$LOCALIZE[342]</label>
+								<onclick condition="Library.HasContent(movies)">ActivateWindow(Videos,videodb://movies/titles/,return)</onclick>
+								<onclick condition="!Library.HasContent(movies)">ActivateWindow(Videos,sources://video/,return)</onclick>
+								<property name="icon"></property>
+							</item>
+							<item>
+								<label>$LOCALIZE[20343]</label>
+								<onclick condition="Library.HasContent(tvshows)">ActivateWindow(Videos,videodb://tvshows/titles/,return)</onclick>
+								<onclick condition="!Library.HasContent(tvshows)">ActivateWindow(Videos,sources://video/,return)</onclick>
+								<property name="icon"></property>
+							</item>
+							<item>
+								<label>$LOCALIZE[3]</label>
+								<onclick>ActivateWindow(Videos,root)</onclick>
+								<property name="icon"></property>
+							</item>
+							<item>
+								<label>$LOCALIZE[14204]</label>
+								<onclick>ActivateWindow(TVChannels)</onclick>
+								<property name="icon"></property>
+							</item>
+							<item>
+								<label>$LOCALIZE[2]</label>
+								<onclick>ActivateWindow(Music,root,return)</onclick>
+								<property name="menu_id">$NUMBER[7000]</property>
+								<property name="icon"></property>
+							</item>
+							<item>
+								<label>$LOCALIZE[1]</label>
+								<onclick>ActivateWindow(Pictures)</onclick>
+								<property name="icon"></property>
+							</item>
+						</content>
+					</control>
+					<!-- seperator -->
+					<control type="image" id="99982">
+						<height>1</height>
+						<width>$PARAM[width]</width>
+						<texture colordiffuse="panel_hover">common/white.jpg</texture>
+						<aspectratio>stretch</aspectratio>
+					</control>
+					<!-- headline -->
+					<control type="label" id="99983">
+						<width>$PARAM[width]</width>
+						<height>50</height>
+						<font>Bold22</font>
+						<label>$LOCALIZE[15034]</label>
+						<textoffsety>5</textoffsety>
+						<textoffsetx>15</textoffsetx>
+					</control>
+					<!-- misc -->
+					<control type="list" id="99992">
+						<width>$PARAM[width]</width>
+						<height>850</height>
+						<movement>6</movement>
+						<focusposition>1</focusposition>
+						<onright>10</onright>
+						<onup>99991</onup>
+						<ondown>noop</ondown>
+						<scrolltime tween="cubic" easing="out">500</scrolltime>
+						<itemlayout height="50">
+							<include content="SideMenuButton">
+								<param name="icon_left">55</param>
+								<param name="label_left">100</param>
+								<param name="submenu_id">99992</param>
+							</include>
+						</itemlayout>
+						<focusedlayout height="50">
+							<include content="SideMenuButton">
+								<param name="icon_left">55</param>
+								<param name="label_left">100</param>
+								<param name="focused">true</param>
+								<param name="submenu_id">99992</param>
+							</include>
+						</focusedlayout>
+						<content>
+							<item>
+								<label>$LOCALIZE[427]</label>
+								<onclick>PlayDisc</onclick>
+								<property name="icon"></property>
+								<!--<visible>System.HasMediaDVD</visible>-->
+							</item>
+							<item>
+								<label>$LOCALIZE[24001]</label>
+								<onclick>ActivateWindow(1100)</onclick>
+								<property name="icon"></property>
+							</item>
+							<item>
+								<label>$LOCALIZE[10134]</label>
+								<onclick>ActivateWindow(favourites)</onclick>
+								<property name="icon"></property>
+							</item>
+							<item>
+								<label>$LOCALIZE[8]</label>
+								<onclick condition="!String.IsEmpty(Weather.Plugin)">ActivateWindow(Weather)</onclick>
+								<onclick condition="String.IsEmpty(Weather.Plugin)">ReplaceWindow(servicesettings,weather)</onclick>
+								<property name="icon"></property>
+							</item>
+						</content>
+					</control>
+
+
+					<!-- misc -->
+
+					<control type="grouplist" id="700">
+						<visible>false</visible>
+						<orientation>horizontal</orientation>
+						<itemgap>0</itemgap>
+						<left>-8</left>
+						<width>480</width>
+						<height>110</height>
+						<top>100</top>
+						<onup>SetFocus(9000)</onup>
+						<onup>PageDown</onup>
+						<onup>PageDown</onup>
+						<ondown>SetFocus(9000)</ondown>
+						<ondown>PageUp</ondown>
+						<ondown>PageUp</ondown>
+						<onright>2000</onright>
+						<align>justify</align>
+						<include content="IconButton">
+							<param name="control_id" value="804" />
+							<param name="onclick" value="ActivateWindow(shutdownmenu)" />
+							<param name="icon" value="icons/power.png" />
+							<param name="label" value="$LOCALIZE[33060]" />
+						</include>
+						<include content="IconButton">
+							<param name="control_id" value="802" />
+							<param name="onclick" value="ActivateWindow(settings)" />
+							<param name="icon" value="icons/settings.png" />
+							<param name="label" value="$LOCALIZE[21417]" />
+						</include>
+						<include content="IconButton">
+							<param name="control_id" value="801" />
+							<param name="onclick" value="ActivateWindow(1107)" />
+							<param name="icon" value="icons/search.png" />
+							<param name="label" value="$LOCALIZE[137]" />
+						</include>
+						<include content="IconButton">
+							<param name="control_id" value="803" />
+							<param name="onclick" value="Fullscreen" />
+							<param name="icon" value="icons/now-playing/fullscreen.png" />
+							<param name="label" value="$LOCALIZE[31000]" />
+							<param name="visible" value="Player.HasMedia" />
+						</include>
+					</control>
+				</control>
+			</control>
+		</definition>
+	</include>
+
+</includes>
