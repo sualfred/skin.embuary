@@ -61,13 +61,15 @@
 				<usecontrolcoords>true</usecontrolcoords>
 				<scrolltime tween="sine" easing="out">400</scrolltime>
 
+				<include>Bounce_Up_Down</include>
+
 				<include content="WidgetSpacer">
-					<param name="height" value="200"/>
+					<param name="id" value="101"/>
 				</include>
 
 				<include content="WidgetMenu">
 					<param name="id" value="100"/>
-					<param name="onup" value="90"/>
+					<param name="onup" value="6666"/>
 					<param name="ondown" value="200"/>
 					<param name="headline" value="$LOCALIZE[14211]"/>
 				</include>
@@ -131,27 +133,29 @@
 				<include content="SquareWidget">
 					<param name="id" value="205"/>
 					<param name="onup" value="204"/>
-					<param name="ondown" value="206"/>
+					<param name="ondown" value="SetProperty(BounceDown,1,home)"/>
 					<param name="headline" value="$LOCALIZE[359]"/>
 					<param name="mainlabel" value="$INFO[ListItem.Album]"/>
 					<param name="sublabel" value="$INFO[ListItem.Artist]"/>
 					<param name="icon" value="$INFO[ListItem.Icon]"/>
 					<param name="content" value="musicdb://recentlyaddedalbums/"/>
 				</include>
-
 			</control>
 		</control>
 
 		
 		<include>BottomBar</include>
-		<include>HeaderBar</include>
+		<include content="HeaderBar">
+			<param name="id">10</param>
+			<param name="sidebar_id">9999</param>
+		</include>
 
 		<!-- diffuse -->
 		<control type="image">
 			<include>FullscreenDimensions</include>
 			<texture colordiffuse="88000000">common/white.jpg</texture>
 			<aspectratio>stretch</aspectratio>
-			<visible>!ControlGroup(10).HasFocus</visible>
+			<visible>!ControlGroup(10).HasFocus + !ControlGroup(6666).HasFocus</visible>
 			<include>Visible_Fade</include>
 		</control>
 
