@@ -2,173 +2,170 @@
 <window>
 	<defaultcontrol always="true">50</defaultcontrol>
 	<backgroundcolor>background</backgroundcolor>
-	<views>50,51,52,53,54,55,500,501,502</views>
+	<views>51,50</views>
 	<menucontrol>9000</menucontrol>
 	<controls>
-		<include>DefaultBackground</include>
+
+		<!--<include>View_50_List</include>-->
+
+		
 		<control type="group">
-			<animation effect="fade" start="100" end="0" time="200" tween="sine" condition="$EXP[infodialog_active]">Conditional</animation>
-			<include>View_50_List</include>
-			<include>View_51_Poster</include>
-			<include>View_52_IconWall</include>
-			<include>View_53_Shift</include>
-			<include>View_54_InfoWall</include>
-			<include>View_55_WideList</include>
-			<include>View_500_Wall</include>
-			<include>View_501_Banner</include>
-			<include>View_502_FanArt</include>
-			<control type="group">
-				<depth>DepthContentPanel</depth>
-				<include>OpenClose_Left</include>
-				<visible>Control.IsVisible(55)</visible>
-				<include>Visible_Left</include>
-				<include>ListThumbInfoPanel</include>
-			</control>
-			<control type="group">
-				<depth>DepthContentPanel</depth>
-				<include>OpenClose_Left</include>
-				<visible>Control.IsVisible(50) | Control.Isvisible(54) | [Control.IsVisible(501) + String.IsEqual(Skin.AspectRatio,21:9)]</visible>
-				<include>Visible_Left</include>
-				<include content="ContentPanel">
-					<param name="width" value="656" />
-				</include>
-				<control type="group">
-					<width>550</width>
-					<control type="textbox">
-						<top>120</top>
-						<left>30</left>
-						<width>550</width>
-						<aligny>center</aligny>
-						<height>110</height>
-						<font>font36_title</font>
-						<label>$INFO[ListItem.Label]</label>
-					</control>
-					<control type="textbox">
-						<left>30</left>
-						<top>240</top>
-						<width>525</width>
-						<bottom>100</bottom>
-						<visible>!ListItem.IsCollection</visible>
-						<label>$INFO[ListItem.Tagline,[I],[/I][CR][CR]]$INFO[ListItem.Plot][CR][CR]</label>
-						<autoscroll delay="10000" time="3000" repeat="10000">Skin.HasSetting(autoscroll)</autoscroll>
-					</control>
-					<control type="textbox">
-						<left>30</left>
-						<top>360</top>
-						<width>530</width>
-						<height>413</height>
-						<align>center</align>
-						<aligny>center</aligny>
-						<font>font27</font>
-						<textcolor>80FFFFFF</textcolor>
-						<label>$LOCALIZE[19055]</label>
-						<visible>String.IsEmpty(Listitem.Plot) + String.IsEmpty(Listitem.Tagline) + !ListItem.IsCollection + !ListItem.IsParentFolder</visible>
-					</control>
+			<visible>Control.IsVisible(51)</visible>
+			<include content="JumpToLetter">
+				<param name="top">85</param>
+				<param name="left">120</param>
+			</include>
+			<!-- poster -->
+			<control id="51" type="panel">
+				<top>100</top>
+				<width>1920</width>
+				<height>950</height>
+				<onup>noop</onup>
+				<ondown>noop</ondown>
+				<onleft>9999</onleft>
+				<onright>noop</onright>
+				<scrolltime>200</scrolltime>
+				<movement>2</movement>
+				<orientation>horizontal</orientation>
+				<preloaditems>4</preloaditems>
+				<defaultcontrol always="true">0</defaultcontrol>
+				<viewtype label="535">panel</viewtype>
+				<visible>true</visible>
+				<itemlayout width="297" height="435">
 					<control type="group">
-						<left>20</left>
-						<top>245</top>
-						<visible>ListItem.IsCollection</visible>
-						<include content="InfoList">
-							<param name="bottom" value="108" />
-							<param name="width" value="540" />
-							<param name="sortby" value="year" />
-							<param name="sortorder" value="descending" />
-							<param name="font" value="font13" />
+						<left>55</left>
+						<top>64</top>
+						<include content="PosterLayout">
+							<param name="mainlabel" value="$PARAM[mainlabel]" />
+							<param name="sublabel" value="$PARAM[sublabel]" />
+							<param name="focused" value="false" />
+							<param name="id" value="51" />
 						</include>
 					</control>
-				</control>
-			</control>
-			<include content="TopBar">
-				<param name="breadcrumbs_label" value="$VAR[BreadcrumbsVideoVar]" />
-			</include>
-			<include content="BottomBar">
-				<param name="info_visible" value="true" />
-			</include>
-			<control type="group">
-				<depth>DepthBars</depth>
-				<bottom>0</bottom>
-				<height>70</height>
-				<animation effect="fade" start="0" end="100" time="300" delay="300">WindowOpen</animation>
-				<animation effect="fade" start="100" end="0" time="200">WindowClose</animation>
-				<include condition="!Skin.HasSetting(hide_mediaflags)">MediaFlags</include>
-			</control>
-			<include>CommonScrollbars</include>
-			<include>MediaMenuMouseOverlay</include>
-			<control type="group">
-				<include>MediaMenuCommon</include>
-				<control type="grouplist" id="9000">
-					<top>50</top>
-					<include>MediaMenuListCommon</include>
-					<control type="button" id="10">
-						<description>Watched Toggle</description>
-						<include>MediaMenuItemsCommon</include>
-						<label>$LOCALIZE[20367]</label>
-						<label2>[B]$INFO[Container.NumItems][/B]</label2>
-						<visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.content(seasons) | Container.Content(episodes)</visible>
+				</itemlayout>
+				<focusedlayout width="297" height="435">
+					<control type="group">							
+						<left>55</left>
+						<top>64</top>
+						<include content="PosterLayout">
+							<param name="mainlabel" value="$PARAM[mainlabel]" />
+							<param name="sublabel" value="$PARAM[sublabel]" />
+							<param name="focused" value="true" />
+							<param name="id" value="51" />
+						</include>
 					</control>
-					<control type="label" id="203">
-						<include>MediaMenuLabelCommon</include>
-						<label>$LOCALIZE[31020]</label>
-					</control>
-					<control type="radiobutton" id="16">
-						<description>PartyMode</description>
-						<label>$LOCALIZE[589]</label>
-						<include>MediaMenuItemsCommon</include>
-						<visible>Container.Content(MusicVideos)</visible>
-					</control>
-					<control type="radiobutton" id="11">
-						<description>Unlock Shares</description>
-						<include>MediaMenuItemsCommon</include>
-						<label>$LOCALIZE[20336]</label>
-						<onclick>mastermode</onclick>
-						<selected>system.ismaster</selected>
-						<visible>system.haslocks</visible>
-					</control>
-					<control type="togglebutton" id="619">
-						<description>Update library</description>
-						<include>MediaMenuItemsCommon</include>
-						<label>$LOCALIZE[653]</label>
-						<onclick>UpdateLibrary(video)</onclick>
-						<visible>!Container.Content(addons)+ String.IsEmpty(Container.PluginName)</visible>
-						<altlabel>$LOCALIZE[13353]</altlabel>
-						<usealttexture>library.isscanningvideo</usealttexture>
-					</control>
-					<control type="button" id="612">
-						<description>Go to playlist</description>
-						<include>MediaMenuItemsCommon</include>
-						<label>$LOCALIZE[31056]</label>
-						<onclick>ActivateWindow(videoplaylist)</onclick>
-						<visible>Integer.IsGreater(Playlist.Length(video),0)</visible>
-					</control>
-					<control type="button" id="621">
-						<description>Get more</description>
-						<include>MediaMenuItemsCommon</include>
-						<label>$LOCALIZE[21452]</label>
-						<onclick>ActivateWindow(addonbrowser,addons://more/video/,return)</onclick>
-						<visible>Container.Content(addons)</visible>
-					</control>
-					<control type="button" id="622">
-						<include>MediaMenuItemsCommon</include>
-						<label>$LOCALIZE[31117]</label>
-						<onclick condition="System.HasAddon(plugin.library.node.editor)">ActivateWindow(programs,plugin://plugin.library.node.editor/?ltype=video,return)</onclick>
-						<onclick condition="!System.HasAddon(plugin.library.node.editor)">InstallAddon(plugin.library.node.editor)</onclick>
-						<visible>Container.Content() + String.IsEmpty(Container.PluginName)</visible>
-					</control>
-					<control type="button" id="623">
-						<include>MediaMenuItemsCommon</include>
-						<label>$LOCALIZE[31009]</label>
-						<onclick>InstallAddon(resource.images.studios.white)</onclick>
-						<visible>Container.Content(studios) + !System.HasAddon(resource.images.studios.white)</visible>
-					</control>
-					<control type="button" id="624">
-						<include>MediaMenuItemsCommon</include>
-						<label>$LOCALIZE[10140]</label>
-						<onclick>Addon.OpenSettings($INFO[Container.PluginName])</onclick>
-						<visible>!String.IsEmpty(Container.PluginName)</visible>
-					</control>
-					<include>MediaMenuNowPlaying</include>
-				</control>
+				</focusedlayout>
 			</control>
 		</control>
+
+		<control type="group">
+			<visible>Control.IsVisible(50)</visible>
+			<!-- Thumb image -->
+			<control type="group">
+				<left>55</left>
+				<top>150</top>
+				<include content="SquareLayout">
+					<param name="visible">!Container.Content(movies) + !Container.Content(tvshows)</param>
+				</include>
+				<include content="LandscapeLayout">
+					<param name="visible">Container.Content(tvshows)</param>
+				</include>
+				<include content="PosterLayout">
+					<param name="visible">Container.Content(movies)</param>
+				</include>
+				<control type="image">
+					<top>48</top>
+					<width>480</width>
+					<height>600</height>
+					<aspectratio align="center">scale</aspectratio>
+					<texture background="true" fallback="DefaultAlbumCover.png">$INFO[ListItem.Icon]</texture>
+					<visible>false</visible>
+				</control>
+			</control>
+			<!-- Title -->
+			<control type="group">
+				<left>600</left>
+				<top>145</top>
+				<control type="label">
+					<width>840</width>
+					<height>48</height>
+					<font>Med48</font>
+					<label>$INFO[Container.Foldername]</label>
+				</control>
+				<control type="label">
+					<top>57</top>
+					<width>840</width>
+					<height>32</height>
+					<font>Med32</font>
+					<label>Subline</label>
+				</control>
+			</control>
+			<!-- List -->
+			<control id="50" type="list">
+				<left>600</left>
+				<top>292</top>
+				<width>1000</width>
+				<height>900</height>
+				<onup>noop</onup>
+				<ondown>noop</ondown>
+				<onleft>9999</onleft>
+				<onright>noop</onright>
+				<defaultcontrol always="true">0</defaultcontrol>
+				<focusposition>1</focusposition>
+				<orientation>vertical</orientation>
+				<viewtype label="535">list</viewtype>
+				<scrolltime>0</scrolltime>
+				<visible>true</visible>
+				<itemlayout height="101" width="1000">
+					<control type="group">
+						<control type="label">
+							<width>500</width>
+							<height>31</height>
+							<font>Light32</font>
+							<textcolor>ff636466</textcolor>
+							<label>$INFO[ListItem.Label]</label>
+						</control>
+						<control type="label">
+							<width>500</width>
+							<height>31</height>
+							<align>right</align>
+							<font>Light32</font>
+							<textcolor>ff636466</textcolor>
+							<label>$INFO[ListItem.Label]</label>
+						</control>
+					</control>
+				</itemlayout>
+				<focusedlayout height="101" width="1000">
+					<control type="group">
+						<control type="label">
+							<width>500</width>
+							<height>31</height>
+							<font>Light32</font>
+							<textcolor>emby</textcolor>
+							<label>$INFO[ListItem.Label]</label>
+						</control>
+					</control>
+				</focusedlayout>
+			</control>
+		</control>
+
+		<!-- header bar -->
+		<include content="HeaderBar">
+			<param name="id">10</param>
+			<param name="sidebar_id">9999</param>
+		</include>
+		<!-- diffuse -->
+		<control type="image">
+			<include>FullscreenDimensions</include>
+			<texture colordiffuse="88000000">common/white.jpg</texture>
+			<aspectratio>stretch</aspectratio>
+			<visible>false</visible>
+			<visible>!ControlGroup(50).HasFocus + !ControlGroup(6666).HasFocus</visible>
+			<include>Visible_Fade</include>
+		</control>
+		<!-- side panel -->
+		<include content="SidePanel">
+			<param name="onright">50</param>
+		</include>
 	</controls>
 </window>

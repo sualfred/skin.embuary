@@ -49,7 +49,7 @@
 					<control type="button" id="66660">
 						<width>auto</width>
 						<font>med17</font>
-						<fontcolor>panel_text</fontcolor>
+						<textcolor>panel_text</textcolor>
 						<focusedcolor>emby</focusedcolor>
 						<label>$LOCALIZE[31000]</label>
 						<onclick>ActivateWindow(home)</onclick>
@@ -57,7 +57,7 @@
 					<control type="button" id="66661">
 						<width>auto</width>
 						<font>med17</font>
-						<fontcolor>panel_text</fontcolor>
+						<textcolor>panel_text</textcolor>
 						<focusedcolor>emby</focusedcolor>
 						<label>$LOCALIZE[1036]</label>
 						<onclick>ActivateWindow(favourites)</onclick>
@@ -65,7 +65,7 @@
 					<control type="button" id="66662">
 						<width>auto</width>
 						<font>med17</font>
-						<fontcolor>panel_text</fontcolor>
+						<textcolor>panel_text</textcolor>
 						<focusedcolor>emby</focusedcolor>
 						<label>$LOCALIZE[137]</label>
 						<onclick>noop</onclick>
@@ -163,7 +163,7 @@
 			<control type="group" id="99$PARAM[nr]">
 				<height>55</height>
 				<control type="image">
-					<top>5</top>
+					<top>9</top>
 					<height>1</height>
 					<width>$PARAM[width]</width>
 					<texture colordiffuse="panel_hover">common/white.jpg</texture>
@@ -171,13 +171,12 @@
 				</control>
 				<!-- headline -->
 				<control type="label">
-					<top>3</top>
+					<top>20</top>
 					<width>$PARAM[width]</width>
 					<height>50</height>
 					<font>Med20</font>
 					<textcolor>panel_text</textcolor>
 					<label>$PARAM[label]</label>
-					<textoffsety>15</textoffsety>
 					<textoffsetx>15</textoffsetx>
 				</control>
 			</control>
@@ -200,9 +199,9 @@
 				</include>
 				<!-- grouplist -->
 				<control type="grouplist" id="9999">
-					<top>5</top>
+					<top>9</top>
 					<width>$PARAM[width]</width>
-					<height>1070</height>
+					<height>1062</height>
 					<orientation>vertical</orientation>
 					<itemgap>0</itemgap>
 					<!--top-->
@@ -210,7 +209,7 @@
 						<param name="id">900</param>
 						<param name="onup">noop</param>
 						<param name="ondown">901</param>
-						<param name="onright">10</param>
+						<param name="onright">$PARAM[onright]</param>
 						<param name="label">31000</param>
 						<param name="icon"></param>
 						<param name="action1">ActivateWindow(Home)</param>
@@ -361,6 +360,84 @@
 						<param name="action1">Skin.ToggleSetting(DebugInfo)</param>
 					</include>
 				</control>
+			</control>
+		</definition>
+	</include>
+
+	<!-- Jump to letter -->
+	<include name="JumpToLetter">
+		<param name="id">7000</param>
+		<param name="width">1920</param>
+		<definition>
+			<control type="panel" id="$PARAM[ID]">
+				<left>$PARAM[left]</left>
+				<top>$PARAM[top]</top>
+				<width>$PARAM[width]</width>
+				<height>80</height>
+				<ondown>SetFocus(50)</ondown>
+				<onup>SetFocus(50)</onup>
+				<scrolltime>0</scrolltime>
+				<orientation>vertical</orientation>
+				<defaultcontrol>0</defaultcontrol>
+				<itemlayout height="40" width="60">
+					<control type="textbox">
+						<width>40</width>
+						<height>40</height>
+						<font>med20</font>
+						<align>center</align>
+						<aligny>center</aligny>
+						<textcolor>panel_text</textcolor>
+						<label>$INFO[ListItem.Label]</label>
+						<visible>String.IsEmpty(ListItem.Property(NotAvailable))</visible>
+					</control>
+					<control type="textbox">
+						<width>40</width>
+						<height>40</height>
+						<font>med20</font>
+						<align>center</align>
+						<aligny>center</aligny>
+						<textcolor>grey</textcolor>
+						<label>$INFO[ListItem.Label]</label>
+						<visible>!String.IsEmpty(ListItem.Property(NotAvailable))</visible>
+					</control>
+					<control type="textbox">
+						<width>40</width>
+						<height>40</height>
+						<font>med20</font>
+						<align>center</align>
+						<aligny>center</aligny>
+						<textcolor>blue</textcolor>
+						<label>$INFO[ListItem.Label]</label>
+						<visible>StringCompare(ListItem.Label,Container.ListItem.SortLetter)</visible>
+					</control>
+				</itemlayout>
+				<focusedlayout height="40" width="60">
+					<control type="group">
+						<visible>!Control.HasFocus($PARAM[ID])</visible>
+						<control type="textbox">
+							<width>40</width>
+							<height>40</height>
+							<font>med20</font>
+							<align>center</align>
+							<aligny>center</aligny>
+							<textcolor>panel_text</textcolor>
+							<label>$INFO[ListItem.Label]</label>
+						</control>
+					</control>
+					<control type="group">
+						<visible>Control.HasFocus($PARAM[ID])</visible>
+						<control type="textbox">
+							<width>40</width>
+							<height>40</height>
+							<font>med20</font>
+							<align>center</align>
+							<aligny>center</aligny>
+							<textcolor>focused</textcolor>
+							<label>$INFO[ListItem.Label]</label>
+						</control>
+					</control>
+				</focusedlayout>
+				<content>plugin://script.skin.helper.service/?action=alphabet&amp;reload=$INFO[Container.NumItems]</content>
 			</control>
 		</definition>
 	</include>
