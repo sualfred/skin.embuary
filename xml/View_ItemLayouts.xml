@@ -20,7 +20,6 @@
 
 	<include name="widget_labels">
 		<control type="group">
-			<visible>!Window.IsActive(videos)</visible>
 			<top>$PARAM[top]</top>
 			<width>$PARAM[width]</width>
 			<control type="label">
@@ -47,8 +46,8 @@
 	<include name="bubble_overlay">
 		<control type="group">
 			<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png) | Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0)</visible>
-			<right>-27</right>
-			<top>9</top>
+			<right>10</right>
+			<top>10</top>
 			<width>44</width>
 			<height>44</height>
 			<control type="image">
@@ -84,8 +83,8 @@
 
 	<include name="bubble_play">
 		<control type="group">
-			<right>-25</right>
-			<top>$PARAM[top]</top>
+			<right>10</right>
+			<bottom>10</bottom>
 			<width>38</width>
 			<height>38</height>
 			<control type="image">
@@ -109,6 +108,7 @@
 
 	<include name="list_mask">
 		<param name="top" default="94"/>
+		<param name="width" default="145"/>
 		<definition>
 			<control type="group">
 				<visible>Container($PARAM[id]).HasNext + Control.HasFocus($PARAM[id])</visible>
@@ -117,7 +117,7 @@
 				<control type="image">
 					<top>$PARAM[top]</top>
 					<right>0</right>
-					<width>145</width>
+					<width>$PARAM[width]</width>
 					<height>$PARAM[height]</height>
 					<texture>items/listmask.png</texture>
 					<aspectratio>stretch</aspectratio>
@@ -206,10 +206,14 @@
 					<texture fallback="$PARAM[fallback_image]" scalediffuse="false" diffuse="items/mask_poster.png" background="true">$INFO[ListItem.Art(poster)]</texture>
 					<aspectratio>stretch</aspectratio>
 				</control>
-				<include>bubble_overlay</include>
-				<include content="bubble_play">
-					<param name="top" value="367"/>
-				</include>
+				<control type="group">
+					<width>277</width>
+					<height>415</height>
+					<include>bubble_overlay</include>
+					<include content="bubble_play">
+						<param name="top" value="367"/>
+					</include>
+				</control>
 				<control type="progress">
 					<top>410</top>
 					<width>277</width>
@@ -234,6 +238,74 @@
 				<include content="widget_labels">
 					<param name="top">427</param>
 					<param name="width">277</param>
+					<param name="mainlabel">$PARAM[mainlabel]</param>
+					<param name="sublabel">$PARAM[sublabel]</param>
+					<param name="focused">$PARAM[focused]</param>
+				</include>
+			</control>
+		</definition>
+	</include>
+	<!-- Poster Smaller-->
+	<include name="PosterLayoutSmall">
+		<param name="mainlabel">$INFO[ListItem.Title]</param>
+		<param name="sublabel">$INFO[ListItem.TVShowTitle]</param>
+		<param name="focused">false</param>
+		<param name="visible">true</param>
+		<definition>
+			<control type="group">
+				<visible>$PARAM[visible]</visible>
+				<control type="image">
+					<top>-2</top>
+					<left>-2</left>
+					<width>243</width>
+					<height>361</height>
+					<texture>items/shadow_poster_small.png</texture>
+				</control>
+				<control type="image">
+					<width>277</width>
+					<height>415</height>
+					<texture colordiffuse="green" scalediffuse="false" diffuse="items/mask_poster.png">common/white.jpg</texture>
+					<aspectratio>stretch</aspectratio>
+					<visible>String.IsEmpty(ListItem.Art(poster))</visible>
+				</control>
+				<control type="image">
+					<width>237</width>
+					<height>355</height>
+					<texture fallback="$PARAM[fallback_image]" scalediffuse="false" diffuse="items/mask_poster_small.png" background="true">$INFO[ListItem.Art(poster)]</texture>
+					<aspectratio>stretch</aspectratio>
+				</control>
+				<control type="group">
+					<width>237</width>
+					<height>355</height>
+					<include>bubble_overlay</include>
+					<include content="bubble_play">
+						<param name="top" value="367"/>
+					</include>
+				</control>
+				<control type="progress">
+					<top>350</top>
+					<width>237</width>
+					<height>5</height>
+					<texturebg border="2">views/ProgressBack.png</texturebg>
+					<lefttexture>-</lefttexture>
+					<midtexture border="2">views/ProgressBar.png</midtexture>
+					<righttexture>-</righttexture>
+					<info>ListItem.PercentPlayed</info>
+					<visible>Integer.IsGreater(ListItem.PercentPlayed,0)</visible>
+				</control>
+				<control type="image">
+					<left>-12</left>
+					<top>-7</top>
+					<width>261</width>
+					<height>379</height>
+					<texture colordiffuse="focused">items/focus_poster_small.png</texture>
+					<aspectratio>scale</aspectratio>
+					<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
+					<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
+				</control>
+				<include content="widget_labels">						
+					<param name="top">367</param>
+					<param name="width">237</param>
 					<param name="mainlabel">$PARAM[mainlabel]</param>
 					<param name="sublabel">$PARAM[sublabel]</param>
 					<param name="focused">$PARAM[focused]</param>
@@ -272,10 +344,14 @@
 					<texture scalediffuse="false" diffuse="items/mask_wide.png" background="true">$VAR[IconLandscape]</texture>
 					<aspectratio>scale</aspectratio>
 				</control>
-				<include>bubble_overlay</include>
-				<include content="bubble_play">
-					<param name="top" value="200"/>
-				</include>
+				<control type="group">
+					<width>440</width>
+					<height>248</height>
+					<include>bubble_overlay</include>
+					<include content="bubble_play">
+						<param name="top" value="200"/>
+					</include>
+				</control>
 				<control type="progress">
 					<top>243</top>
 					<width>440</width>
@@ -337,10 +413,14 @@
 					<texture scalediffuse="true" diffuse="items/mask_square.png" background="true">$INFO[ListItem.Art(thumb)]</texture>
 					<aspectratio>stretch</aspectratio>
 				</control>
-				<include>bubble_overlay</include>
-				<include content="bubble_play">
-					<param name="top" value="229"/>
-				</include>
+				<control type="group">
+					<width>277</width>
+					<height>277</height>
+					<include>bubble_overlay</include>
+					<include content="bubble_play">
+						<param name="top" value="229"/>
+					</include>
+				</control>
 				<include content="progress">
 					<param name="top" value="273"/>
 					<param name="width" value="277"/>

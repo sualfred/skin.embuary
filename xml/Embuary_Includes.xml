@@ -5,6 +5,21 @@
 		<width>1920</width>
 		<height>1080</height>
 	</include>
+	<!-- Background -->
+	<include name="Background">
+		<param name="id">50</param>
+		<definition>
+			<control type="image">
+				<include>FullscreenDimensions</include>
+				<texture>$INFO[Container($PARAM[id]).ListItem.Art(fanart)]</texture>
+				<fadetime>400</fadetime>
+			</control>
+			<control type="image">
+				<include>FullscreenDimensions</include>
+				<texture>common/wp_overlay2.png</texture>
+			</control>
+		</definition>
+	</include>
 	<!-- HeaderBar -->
 	<include name="HeaderBar">
 		<param name="id">10</param>
@@ -19,22 +34,34 @@
 					<texture colordiffuse="ff000000">common/white.jpg</texture>
 					<aspectratio>stretch</aspectratio>
 				</control>
-				<control type="label">
-					<height>58</height>
-					<width>20</width>
-					<top>-1</top>
-					<left>19</left>
-					<aligny>center</aligny>
-					<font>FontAwesome16Light</font>
-					<label></label>
-				</control>
-				<control type="image">
+				<control type="grouplist">
+					<left>10</left>
 					<height>20</height>
-					<width>98</width>
+					<width>1920</width>
 					<top>19</top>
-					<left>50</left>
-					<texture>common/embuary_small.png</texture>
-					<aspectratio>keep</aspectratio>
+					<orientation>horizontal</orientation>
+					<itemgap>10</itemgap>
+					<control type="label">
+						<width>20</width>
+						<left>19</left>
+						<aligny>center</aligny>
+						<font>FontAwesome16Light</font>
+						<label></label>
+					</control>
+					<control type="image">
+						<height>20</height>
+						<width>98</width>
+						<texture>common/embuary_small.png</texture>
+						<aspectratio>keep</aspectratio>
+						<visible>Window.IsActive(home)</visible>
+					</control>
+					<control type="label">
+						<width>200</width>
+						<left>19</left>
+						<aligny>center</aligny>
+						<font>med22</font>
+						<label>$VAR[ContainerContent]</label>
+					</control>
 				</control>
 				<control type="grouplist" id="6666">
 					<height>20</height>
@@ -359,6 +386,15 @@
 						<param name="icon"></param>
 						<param name="action1">Skin.ToggleSetting(DebugInfo)</param>
 					</include>
+					<include content="SideMenuButton">
+						<param name="id">914</param>
+						<param name="onup">913</param>
+						<param name="ondown">915</param>
+						<param name="onright">$PARAM[onright]</param>
+						<param name="label">$LOCALIZE[582]</param>
+						<param name="icon"></param>
+						<param name="action1">Container.NextViewMode</param>
+					</include>
 				</control>
 			</control>
 		</definition>
@@ -367,60 +403,70 @@
 	<!-- Jump to letter -->
 	<include name="JumpToLetter">
 		<param name="id">7000</param>
-		<param name="width">1920</param>
 		<definition>
 			<control type="panel" id="$PARAM[ID]">
-				<left>$PARAM[left]</left>
-				<top>$PARAM[top]</top>
-				<width>$PARAM[width]</width>
+				<centerleft>50%</centerleft>
+				<width>1215</width>
 				<height>80</height>
 				<ondown>SetFocus(50)</ondown>
 				<onup>SetFocus(50)</onup>
 				<scrolltime>0</scrolltime>
 				<orientation>vertical</orientation>
 				<defaultcontrol>0</defaultcontrol>
-				<itemlayout height="40" width="60">
+				<itemlayout height="40" width="45">
+					<control type="image">
+						<top>6</top>
+						<left>5</left>
+						<width>29</width>
+						<height>29</height>
+						<texture colordiffuse="emby">items/mask_mini.png</texture>
+						<visible>StringCompare(ListItem.Label,Container.ListItem.SortLetter)</visible>
+					</control>
 					<control type="textbox">
 						<width>40</width>
 						<height>40</height>
-						<font>med20</font>
+						<font>Med18</font>
 						<align>center</align>
 						<aligny>center</aligny>
-						<textcolor>panel_text</textcolor>
+						<textcolor>softgrey</textcolor>
+						<shadowcolor>text_shadow</shadowcolor>
 						<label>$INFO[ListItem.Label]</label>
 						<visible>String.IsEmpty(ListItem.Property(NotAvailable))</visible>
 					</control>
 					<control type="textbox">
 						<width>40</width>
 						<height>40</height>
-						<font>med20</font>
+						<font>Med18</font>
 						<align>center</align>
 						<aligny>center</aligny>
 						<textcolor>grey</textcolor>
+						<shadowcolor>text_shadow</shadowcolor>
 						<label>$INFO[ListItem.Label]</label>
 						<visible>!String.IsEmpty(ListItem.Property(NotAvailable))</visible>
 					</control>
 					<control type="textbox">
 						<width>40</width>
 						<height>40</height>
-						<font>med20</font>
+						<font>Med18</font>
 						<align>center</align>
 						<aligny>center</aligny>
-						<textcolor>blue</textcolor>
+						<textcolor>white</textcolor>
+						<shadowcolor>text_shadow</shadowcolor>
 						<label>$INFO[ListItem.Label]</label>
 						<visible>StringCompare(ListItem.Label,Container.ListItem.SortLetter)</visible>
 					</control>
 				</itemlayout>
-				<focusedlayout height="40" width="60">
+				<focusedlayout height="40" width="45">
 					<control type="group">
 						<visible>!Control.HasFocus($PARAM[ID])</visible>
 						<control type="textbox">
 							<width>40</width>
 							<height>40</height>
-							<font>med20</font>
+							<font>Med18</font>
 							<align>center</align>
 							<aligny>center</aligny>
-							<textcolor>panel_text</textcolor>
+							<textcolor>softgrey</textcolor>
+							<shadowcolor>text_shadow</shadowcolor>
 							<label>$INFO[ListItem.Label]</label>
 						</control>
 					</control>
@@ -429,10 +475,11 @@
 						<control type="textbox">
 							<width>40</width>
 							<height>40</height>
-							<font>med20</font>
+							<font>Med18</font>
 							<align>center</align>
 							<aligny>center</aligny>
 							<textcolor>focused</textcolor>
+							<shadowcolor>text_shadow</shadowcolor>
 							<label>$INFO[ListItem.Label]</label>
 						</control>
 					</control>

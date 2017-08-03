@@ -6,20 +6,26 @@
 	<menucontrol>9000</menucontrol>
 	<controls>
 
-		<!--<include>View_50_List</include>-->
-
 		
+		<include content="Background">
+			<param name="id" value="$VAR[VisibleContainer]"/>
+		</include>
+
+		<control type="group">
+			<top>88</top>
+			<width>1920</width>
+			<height>40</height>
+			<include content="JumpToLetter">
+			</include>
+		</control>
+
 		<control type="group">
 			<visible>Control.IsVisible(51)</visible>
-			<include content="JumpToLetter">
-				<param name="top">85</param>
-				<param name="left">120</param>
-			</include>
 			<!-- poster -->
 			<control id="51" type="panel">
 				<top>100</top>
 				<width>1920</width>
-				<height>950</height>
+				<height>1080</height>
 				<onup>noop</onup>
 				<ondown>noop</ondown>
 				<onleft>9999</onleft>
@@ -30,32 +36,39 @@
 				<preloaditems>4</preloaditems>
 				<defaultcontrol always="true">0</defaultcontrol>
 				<viewtype label="535">panel</viewtype>
+				<pagecontrol>17</pagecontrol>
 				<visible>true</visible>
-				<itemlayout width="297" height="435">
+				<itemlayout width="257" height="445">
 					<control type="group">
 						<left>55</left>
 						<top>64</top>
-						<include content="PosterLayout">
-							<param name="mainlabel" value="$PARAM[mainlabel]" />
-							<param name="sublabel" value="$PARAM[sublabel]" />
+						<include content="PosterLayoutSmall">
+							<param name="mainlabel" value="$VAR[MainListLabel]" />
+							<param name="sublabel" value="$VAR[SubListLabel]" />
 							<param name="focused" value="false" />
 							<param name="id" value="51" />
 						</include>
 					</control>
 				</itemlayout>
-				<focusedlayout width="297" height="435">
+				<focusedlayout width="257" height="445">
 					<control type="group">							
 						<left>55</left>
 						<top>64</top>
-						<include content="PosterLayout">
-							<param name="mainlabel" value="$PARAM[mainlabel]" />
-							<param name="sublabel" value="$PARAM[sublabel]" />
+						<include content="PosterLayoutSmall">
+							<param name="mainlabel" value="$VAR[MainListLabel]" />
+							<param name="sublabel" value="$VAR[SubListLabel]" />
 							<param name="focused" value="true" />
 							<param name="id" value="51" />
 						</include>
 					</control>
 				</focusedlayout>
-			</control>
+			</control>			
+			<include content="list_mask">
+				<param name="height" value="1080"/>
+				<param name="width" value="75"/>
+				<param name="top" value="25"/>
+				<param name="id" value="51"/>
+			</include>
 		</control>
 
 		<control type="group">
@@ -154,13 +167,26 @@
 			<param name="id">10</param>
 			<param name="sidebar_id">9999</param>
 		</include>
+			<control type="scrollbar" id="17">
+				<left>0</left>
+				<bottom>0</bottom>
+				<width>1920</width>
+				<height>5</height>
+				<visible>true</visible>
+				<texturesliderbackground colordiffuse="black">common/ProgressBack.png</texturesliderbackground>
+				<texturesliderbar colordiffuse="emby">common/ProgressBar.png</texturesliderbar>
+				<texturesliderbarfocus/>
+				<textureslidernib/>
+				<textureslidernibfocus/>
+				<orientation>horizontal</orientation>
+				<showonepage>false</showonepage>
+			</control>
 		<!-- diffuse -->
 		<control type="image">
 			<include>FullscreenDimensions</include>
 			<texture colordiffuse="88000000">common/white.jpg</texture>
 			<aspectratio>stretch</aspectratio>
-			<visible>false</visible>
-			<visible>!ControlGroup(50).HasFocus + !ControlGroup(6666).HasFocus</visible>
+			<visible>!Control.HasFocus(51) + !ControlGroup(6666).HasFocus</visible>
 			<include>Visible_Fade</include>
 		</control>
 		<!-- side panel -->

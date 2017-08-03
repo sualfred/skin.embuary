@@ -14,5 +14,23 @@
 		<value condition="!String.IsEmpty(ListItem.Art(thumb))">$INFO[ListItem.Art(thumb)]</value>
 		<value>$INFO[ListItem.Icon]</value>
 	</variable>
+	<variable name="MainListLabel">
+		<value condition="String.IsEqual(ListItem.DBType,episode)">$INFO[ListItem.TvShowTitle]</value>
+		<value condition="String.IsEqual(ListItem.DBType,season)">$INFO[ListItem.TvShowTitle]</value>
+		<value>$INFO[ListItem.Label]</value>
+	</variable>
+	<variable name="SubListLabel">
+		<value condition="String.IsEqual(ListItem.DBType,episode)">$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, ]$INFO[ListItem.Label]</value>
+		<value condition="String.IsEqual(ListItem.DBType,season)">$INFO[ListItem.Season,$LOCALIZE[20373] ]</value>
+		<value condition="String.IsEqual(ListItem.DBType,movie)">$INFO[ListItem.Year]</value>
+	</variable>
+	<variable name="VisibleContainer">
+		<value condition="Control.IsVisible(50)">50</value>
+		<value condition="Control.IsVisible(51)">51</value>
+	</variable>
+	<variable name="ContainerContent">
+		<value condition="String.StartsWith(Container.FolderPath,videodb://movies)">$LOCALIZE[342]</value>
+		<value>$INFO[Container.Foldername]</value>
+	</variable>
 
 </includes>
