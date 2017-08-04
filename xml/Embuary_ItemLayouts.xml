@@ -245,7 +245,7 @@
 			</control>
 		</definition>
 	</include>
-	<!-- Poster Smaller-->
+	<!-- Poster Smaller -->
 	<include name="PosterLayoutSmall">
 		<param name="mainlabel">$INFO[ListItem.Title]</param>
 		<param name="sublabel">$INFO[ListItem.TVShowTitle]</param>
@@ -262,9 +262,9 @@
 					<texture>items/shadow_poster_small.png</texture>
 				</control>
 				<control type="image">
-					<width>277</width>
-					<height>415</height>
-					<texture colordiffuse="green" scalediffuse="false" diffuse="items/mask_poster.png">common/white.jpg</texture>
+					<width>237</width>
+					<height>355</height>
+					<texture colordiffuse="green" scalediffuse="false" diffuse="items/mask_poster_small.png">common/white.jpg</texture>
 					<aspectratio>stretch</aspectratio>
 					<visible>String.IsEmpty(ListItem.Art(poster))</visible>
 				</control>
@@ -318,7 +318,6 @@
 	<include name="LandscapeLayout">
 		<param name="mainlabel">$INFO[ListItem.Title]</param>
 		<param name="sublabel">$INFO[ListItem.TVShowTitle]</param>
-		<param name="thumb_label">$INFO[ListItem.Season,,x]$INFO[ListItem.Episode]</param>
 		<param name="focused">false</param>
 		<param name="visible">true</param>
 		<definition>
@@ -376,6 +375,74 @@
 				<include content="widget_labels">
 					<param name="top">258</param>
 					<param name="width">440</param>
+					<param name="mainlabel">$PARAM[mainlabel]</param>
+					<param name="sublabel">$PARAM[sublabel]</param>
+					<param name="focused">$PARAM[focused]</param>
+				</include>
+			</control>
+		</definition>
+	</include>
+	<!-- Landscape Smaller -->
+	<include name="LandscapeLayoutSmall">
+		<param name="mainlabel">$INFO[ListItem.Title]</param>
+		<param name="sublabel">$INFO[ListItem.TVShowTitle]</param>
+		<param name="focused">false</param>
+		<param name="visible">true</param>
+		<definition>
+			<control type="group">
+				<visible>$PARAM[visible]</visible>
+				<control type="image">
+					<top>-2</top>
+					<left>-2</left>
+					<width>436</width>
+					<height>248</height>
+					<texture>items/shadow_wide_small.png</texture>
+				</control>
+				<control type="image">
+					<width>430</width>
+					<height>242</height>
+					<texture colordiffuse="green" scalediffuse="false" diffuse="items/mask_wide_small.png">common/white.jpg</texture>
+					<aspectratio>stretch</aspectratio>
+					<visible>String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(fanart))</visible>
+				</control>
+				<control type="image">
+					<width>430</width>
+					<height>242</height>
+					<texture scalediffuse="false" diffuse="items/mask_wide_small.png" background="true">$VAR[IconLandscape]</texture>
+					<aspectratio>scale</aspectratio>
+				</control>
+				<control type="group">
+					<width>430</width>
+					<height>242</height>
+					<include>bubble_overlay</include>
+					<include content="bubble_play">
+						<param name="top" value="200"/>
+					</include>
+				</control>
+				<control type="progress">
+					<top>237</top>
+					<width>430</width>
+					<height>5</height>
+					<texturebg colordiffuse="black" border="2">common/ProgressBack.png</texturebg>
+					<lefttexture>-</lefttexture>
+					<midtexture colordiffuse="emby"  border="2">common/ProgressBar.png</midtexture>
+					<righttexture>-</righttexture>
+					<info>ListItem.PercentPlayed</info>
+					<visible>Integer.IsGreater(ListItem.PercentPlayed,0)</visible>
+				</control>
+				<control type="image">
+					<left>-12</left>
+					<top>-7</top>
+					<width>454</width>
+					<height>266</height>
+					<texture colordiffuse="focused">items/focus_wide.png</texture>
+					<aspectratio>scale</aspectratio>
+					<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
+					<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
+				</control>
+				<include content="widget_labels">
+					<param name="top">252</param>
+					<param name="width">430</param>
 					<param name="mainlabel">$PARAM[mainlabel]</param>
 					<param name="sublabel">$PARAM[sublabel]</param>
 					<param name="focused">$PARAM[focused]</param>

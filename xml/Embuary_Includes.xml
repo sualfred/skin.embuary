@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+	<!-- Expressions -->
+	<expression name="ExpJumpToLetter">
+		[String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[561]) | String.IsEqual(Container.SortMethod,$LOCALIZE[558]) | String.IsEqual(Container.SortMethod,$LOCALIZE[557]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556])]
+	</expression>
 	<!-- FullScreenDimensions -->
 	<include name="FullscreenDimensions">
 		<width>1920</width>
@@ -23,9 +27,10 @@
 	<!-- HeaderBar -->
 	<include name="HeaderBar">
 		<param name="id">10</param>
+		<param name="enabled">true</param>
 		<definition>
 			<control type="group">
-				<animation effect="slide" start="0,0" end="0,-58"  time="200" condition="Container($PARAM[id]).HasPrevious" tween="linear" easing="inout">Conditional</animation>
+				<animation effect="slide" start="0,0" end="0,-58"  time="200" condition="Container($PARAM[id]).HasPrevious + $PARAM[enabled]" tween="linear" easing="inout">Conditional</animation>
 				<control type="image">
 					<height>58</height>
 					<width>1920</width>
