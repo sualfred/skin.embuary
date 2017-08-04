@@ -404,12 +404,12 @@
 	<include name="JumpToLetter">
 		<param name="id">7000</param>
 		<definition>
-			<control type="panel" id="$PARAM[ID]">
+			<control type="panel" id="$PARAM[id]">
 				<centerleft>50%</centerleft>
 				<width>1215</width>
 				<height>80</height>
 				<ondown>SetFocus(50)</ondown>
-				<onup>SetFocus(50)</onup>
+				<onup>SetFocus(6666)</onup>
 				<scrolltime>0</scrolltime>
 				<orientation>vertical</orientation>
 				<defaultcontrol>0</defaultcontrol>
@@ -457,8 +457,16 @@
 					</control>
 				</itemlayout>
 				<focusedlayout height="40" width="45">
+					<control type="image">
+						<top>6</top>
+						<left>5</left>
+						<width>29</width>
+						<height>29</height>
+						<texture colordiffuse="emby">items/mask_mini.png</texture>
+						<visible>StringCompare(ListItem.Label,Container.ListItem.SortLetter)</visible>
+					</control>
 					<control type="group">
-						<visible>!Control.HasFocus($PARAM[ID])</visible>
+						<visible>!Control.HasFocus($PARAM[id])</visible>
 						<control type="textbox">
 							<width>40</width>
 							<height>40</height>
@@ -471,14 +479,20 @@
 						</control>
 					</control>
 					<control type="group">
-						<visible>Control.HasFocus($PARAM[ID])</visible>
+						<visible>Control.HasFocus($PARAM[id])</visible>
+						<control type="image">
+							<left>-6</left>
+							<width>51</width>
+							<height>51</height>
+							<texture colordiffuse="emby">items/focus_mini.png</texture>
+						</control>
 						<control type="textbox">
 							<width>40</width>
 							<height>40</height>
 							<font>Med18</font>
 							<align>center</align>
 							<aligny>center</aligny>
-							<textcolor>focused</textcolor>
+							<textcolor>white</textcolor>
 							<shadowcolor>text_shadow</shadowcolor>
 							<label>$INFO[ListItem.Label]</label>
 						</control>
