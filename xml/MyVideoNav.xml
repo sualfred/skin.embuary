@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
-	<defaultcontrol always="true">51</defaultcontrol>
+	<defaultcontrol always="true">50</defaultcontrol>
 	<backgroundcolor>background</backgroundcolor>
-	<views>52,51</views>
+	<views>50,51,52,53</views>
 	<menucontrol>9000</menucontrol>
 	<controls>
 
@@ -12,13 +12,15 @@
 		</include>
 
 		<control type="group">
-			<animation effect="slide" start="0,0" end="0,-10" time="0" condition="Control.IsVisible(52)">Conditional</animation>
-			<top>88</top>
+			<animation effect="slide" start="0,0" end="0,-14" time="0" condition="Control.IsVisible(50)">Conditional</animation>
+			<animation effect="slide" start="0,0" end="0,5" time="0" condition="Control.IsVisible(52)">Conditional</animation>
+			<top>93</top>
 			<width>1920</width>
 			<height>40</height>
 			<control type="group">
-				<visible>[Container.HasNext | Container.HasPrevious] + $EXP[ExpJumpToLetter]</visible>
-				<include content="JumpToLetter"/>
+				<include content="JumpToLetter">
+					<param name="visible" value="[Container.HasNext | Container.HasPrevious] + $EXP[ExpJumpToLetter]"/>
+				</include>
 			</control>
 			<control type="label">
 				<visible>![Container.HasNext | Container.HasPrevious] | !$EXP[ExpJumpToLetter]</visible>
@@ -34,18 +36,19 @@
 			</control>
 		</control>
 
-		<!-- wide -->
+		<!-- wide 50 -->
 		<control type="group">
-			<visible>Control.IsVisible(52)</visible>
-			<animation condition="Integer.IsGreater(Container(52).NumItems,6) + Integer.IsLess(Container(52).NumItems,10)" effect="slide" start="0,0" end="225,0">Conditional</animation>
-			<animation condition="Integer.IsGreater(Container(52).NumItems,3) + Integer.IsLess(Container(52).NumItems,7)" effect="slide" start="0,0" end="450,0">Conditional</animation>
-			<animation condition="Integer.IsLess(Container(52).NumItems,4)" effect="slide" start="0,0" end="675,0">Conditional</animation>
+			<visible>Control.IsVisible(50)</visible>
+			<animation condition="Integer.IsGreater(Container(50).NumItems,6) + Integer.IsLess(Container(50).NumItems,10)" effect="slide" start="0,0" end="225,0">Conditional</animation>
+			<animation condition="Integer.IsGreater(Container(50).NumItems,3) + Integer.IsLess(Container(50).NumItems,7)" effect="slide" start="0,0" end="450,0">Conditional</animation>
+			<animation condition="Integer.IsLess(Container(50).NumItems,4)" effect="slide" start="0,0" end="675,0">Conditional</animation>
 			<!-- poster -->
-			<control id="52" type="panel">
-				<top>80</top>
+			<control id="50" type="panel">
+				<top>77</top>
 				<width>1920</width>
 				<height>1080</height>
-				<onup>SetFocus(7000)</onup>
+				<onup condition="Control.IsVisible(7000)">SetFocus(7000)</onup>
+				<onup condition="!Control.IsVisible(7000)">SetFocus(6666)</onup>
 				<ondown>noop</ondown>
 				<onleft>9999</onleft>
 				<onright>noop</onright>
@@ -61,11 +64,11 @@
 					<control type="group">
 						<left>70</left>
 						<top>64</top>
-						<include content="LandscapeLayoutSmall">
+						<include content="LandscapeLayoutDB">
 							<param name="mainlabel" value="$VAR[MainListLabel]" />
 							<param name="sublabel" value="" />
 							<param name="focused" value="false" />
-							<param name="id" value="52" />
+							<param name="id" value="50" />
 						</include>
 					</control>
 				</itemlayout>
@@ -73,24 +76,25 @@
 					<control type="group">							
 						<left>70</left>
 						<top>64</top>
-						<include content="LandscapeLayoutSmall">
+						<include content="LandscapeLayoutDB">
 							<param name="mainlabel" value="$VAR[MainListLabel]" />
 							<param name="sublabel" value="" />
 							<param name="focused" value="true" />
-							<param name="id" value="52" />
+							<param name="id" value="50" />
 						</include>
 					</control>
 				</focusedlayout>
-			</control>			
+			</control>
 			<include content="list_mask">
-				<param name="height" value="1080"/>
+				<param name="height" value="1022"/>
 				<param name="width" value="75"/>
-				<param name="top" value="25"/>
-				<param name="id" value="52"/>
+				<param name="top" value="58"/>
+				<param name="id" value="50"/>
+				<param name="visible_forced" value="true"/>
 			</include>
 		</control>
 
-		<!-- Poster -->
+		<!-- Poster 51 -->
 		<control type="group">
 			<visible>Control.IsVisible(51)</visible>
 			<animation condition="Integer.IsGreaterOrEqual(Container(51).NumItems,11) + Integer.IsLessOrEqual(Container(51).NumItems,12)" effect="slide" start="0,0" end="128,0">Conditional</animation>
@@ -101,10 +105,11 @@
 			<animation condition="Integer.IsLessOrEqual(Container(51).NumItems,2)" effect="slide" start="0,0" end="771,0">Conditional</animation>
 			<!-- poster -->
 			<control id="51" type="panel">
-				<top>100</top>
+				<top>105</top>
 				<width>auto</width>
 				<height>1080</height>
-				<onup>SetFocus(7000)</onup>
+				<onup condition="Control.IsVisible(7000)">SetFocus(7000)</onup>
+				<onup condition="!Control.IsVisible(7000)">SetFocus(6666)</onup>
 				<ondown>noop</ondown>
 				<onleft>9999</onleft>
 				<onright>noop</onright>
@@ -120,7 +125,7 @@
 					<control type="group">
 						<left>70.5</left>
 						<top>64</top>
-						<include content="PosterLayoutSmall">
+						<include content="PosterLayoutDB">
 							<param name="mainlabel" value="$VAR[MainListLabel]" />
 							<param name="sublabel" value="$VAR[SubListLabel]" />
 							<param name="focused" value="false" />
@@ -132,72 +137,110 @@
 					<control type="group">							
 						<left>70.5</left>
 						<top>64</top>
-						<include content="PosterLayoutSmall">
+						<include content="PosterLayoutDB">
 							<param name="mainlabel" value="$VAR[MainListLabel]" />
 							<param name="sublabel" value="$VAR[SubListLabel]" />
 							<param name="focused" value="true" />
 							<param name="id" value="51" />
+							<param name="visible_forced" value="true"/>
 						</include>
 					</control>
 				</focusedlayout>
 			</control>			
 			<include content="list_mask">
-				<param name="height" value="1080"/>
+				<param name="height" value="1022"/>
 				<param name="width" value="75"/>
-				<param name="top" value="25"/>
+				<param name="top" value="58"/>
 				<param name="id" value="51"/>
+				<param name="visible_forced" value="true"/>
 			</include>
 		</control>
 
+		<!-- square 52 -->
 		<control type="group">
-			<visible>false</visible>
-			<visible>Control.IsVisible(50)</visible>
+			<visible>Control.IsVisible(52)</visible>
+			<animation condition="Integer.IsGreaterOrEqual(Container(52).NumItems,7) + Integer.IsLessOrEqual(Container(52).NumItems,8)" effect="slide" start="0,0" end="180,0">Conditional</animation>
+			<animation condition="Integer.IsGreaterOrEqual(Container(52).NumItems,5) + Integer.IsLessOrEqual(Container(52).NumItems,6)" effect="slide" start="0,0" end="360,0">Conditional</animation>
+			<animation condition="Integer.IsGreaterOrEqual(Container(52).NumItems,3) + Integer.IsLessOrEqual(Container(52).NumItems,4)" effect="slide" start="0,0" end="540,0">Conditional</animation>
+			<animation condition="Integer.IsLessOrEqual(Container(52).NumItems,2)" effect="slide" start="0,0" end="720,0">Conditional</animation>
+			<!-- poster -->
+			<control id="52" type="panel">
+				<top>115</top>
+				<width>1920</width>
+				<height>1080</height>
+				<onup condition="Control.IsVisible(7000)">SetFocus(7000)</onup>
+				<onup condition="!Control.IsVisible(7000)">SetFocus(6666)</onup>
+				<ondown>noop</ondown>
+				<onleft>9999</onleft>
+				<onright>noop</onright>
+				<scrolltime>200</scrolltime>
+				<movement>2</movement>
+				<orientation>horizontal</orientation>
+				<preloaditems>4</preloaditems>
+				<defaultcontrol always="true">0</defaultcontrol>
+				<viewtype label="535">panel</viewtype>
+				<pagecontrol>17</pagecontrol>
+				<visible>true</visible>
+				<itemlayout width="360" height="440">
+					<control type="group">
+						<left>70</left>
+						<top>64</top>
+						<include content="SquareLayoutDB">
+							<param name="mainlabel" value="$VAR[MainListLabel]" />
+							<param name="sublabel" value="$VAR[SubListLabel]" />
+							<param name="focused" value="false" />
+							<param name="id" value="52" />
+						</include>
+					</control>
+				</itemlayout>
+				<focusedlayout width="360" height="440">
+					<control type="group">							
+						<left>70</left>
+						<top>64</top>
+						<include content="SquareLayoutDB">
+							<param name="mainlabel" value="$VAR[MainListLabel]" />
+							<param name="sublabel" value="$VAR[SubListLabel]" />
+							<param name="focused" value="true" />
+							<param name="id" value="52" />
+						</include>
+					</control>
+				</focusedlayout>
+			</control>
+			<include content="list_mask">
+				<param name="height" value="1022"/>
+				<param name="width" value="75"/>
+				<param name="top" value="58"/>
+				<param name="id" value="52"/>
+				<param name="visible_forced" value="true"/>
+			</include>
+		</control>
+
+		<!-- list 53 -->
+		<control type="group">
+			<visible>Control.IsVisible(53)</visible>
 			<!-- Thumb image -->
 			<control type="group">
-				<left>55</left>
-				<top>150</top>
-				<include content="SquareLayout">
-					<param name="visible">!Container.Content(movies) + !Container.Content(tvshows)</param>
-				</include>
-				<include content="LandscapeLayout">
-					<param name="visible">Container.Content(tvshows)</param>
-				</include>
-				<include content="PosterLayout">
-					<param name="visible">Container.Content(movies)</param>
-				</include>
-				<control type="image">
-					<top>48</top>
-					<width>480</width>
-					<height>600</height>
-					<aspectratio align="center">scale</aspectratio>
-					<texture background="true" fallback="DefaultAlbumCover.png">$INFO[ListItem.Icon]</texture>
-					<visible>false</visible>
-				</control>
-			</control>
-			<!-- Title -->
-			<control type="group">
-				<left>600</left>
-				<top>145</top>
-				<control type="label">
-					<width>840</width>
-					<height>48</height>
-					<font>Med48</font>
-					<label>$INFO[Container.Foldername]</label>
-				</control>
-				<control type="label">
-					<top>57</top>
-					<width>840</width>
-					<height>32</height>
-					<font>Med32</font>
-					<label>Subline</label>
+				<visible>true</visible>
+				<right>70</right>
+				<top>168</top>
+				<width>590</width>
+				<include content="LandscapeLayoutBig"/>
+
+				<control type="textbox">
+					<top>430</top>
+					<width>590</width>
+					<height>500</height>
+					<label>$INFO[ListItem.TagLine,,[CR][CR]][COLOR lightgrey]$INFO[ListItem.Genre][/COLOR]</label>
+					<font>Reg22</font>
+					<shadowcolor>text_shadow</shadowcolor>
+					<align>center</align>
 				</control>
 			</control>
 			<!-- List -->
-			<control id="50" type="list">
-				<left>600</left>
-				<top>292</top>
-				<width>1000</width>
-				<height>900</height>
+			<control id="53" type="list">
+				<top>168</top>
+				<width>1230</width>
+				<height>916</height>
 				<onup>noop</onup>
 				<ondown>noop</ondown>
 				<onleft>9999</onleft>
@@ -206,39 +249,31 @@
 				<focusposition>1</focusposition>
 				<orientation>vertical</orientation>
 				<viewtype label="535">list</viewtype>
+				<pagecontrol>18</pagecontrol>
 				<scrolltime>0</scrolltime>
+				<preloaditems>4</preloaditems>
 				<visible>true</visible>
-				<itemlayout height="101" width="1000">
+				<itemlayout height="110" width="1160">
 					<control type="group">
-						<control type="label">
-							<width>500</width>
-							<height>31</height>
-							<font>Light32</font>
-							<textcolor>ff636466</textcolor>
-							<label>$INFO[ListItem.Label]</label>
-						</control>
-						<control type="label">
-							<width>500</width>
-							<height>31</height>
-							<align>right</align>
-							<font>Light32</font>
-							<textcolor>ff636466</textcolor>
-							<label>$INFO[ListItem.Label]</label>
-						</control>
+						<left>70</left>
+						<include content="ListLayout">
+						</include>
 					</control>
 				</itemlayout>
-				<focusedlayout height="101" width="1000">
+				<focusedlayout height="110" width="1160">
 					<control type="group">
-						<control type="label">
-							<width>500</width>
-							<height>31</height>
-							<font>Light32</font>
-							<textcolor>emby</textcolor>
-							<label>$INFO[ListItem.Label]</label>
-						</control>
+						<left>70</left>
+						<include content="ListLayout">
+							<param name="focused" value="true"/>
+						</include>
 					</control>
 				</focusedlayout>
 			</control>
+			<include content="list_mask_vertical">
+				<param name="height" value="65"/>
+				<param name="id" value="53"/>
+				<param name="visible_forced" value="true"/>
+			</include>
 		</control>
 
 		<!-- header bar -->
@@ -260,18 +295,35 @@
 			<textureslidernibfocus/>
 			<orientation>horizontal</orientation>
 			<showonepage>false</showonepage>
+			<visible>!Control.IsVisible(53)</visible>
+		</control>
+		<control type="scrollbar" id="18">
+			<top>58</top>
+			<left>0</left>
+			<bottom>0</bottom>
+			<width>5</width>
+			<height>1042</height>
+			<visible>true</visible>
+			<texturesliderbackground colordiffuse="black">common/ProgressBack.png</texturesliderbackground>
+			<texturesliderbar colordiffuse="emby">common/ProgressBar.png</texturesliderbar>
+			<texturesliderbarfocus/>
+			<textureslidernib/>
+			<textureslidernibfocus/>
+			<orientation>vertical</orientation>
+			<showonepage>false</showonepage>
+			<visible>Control.IsVisible(53)</visible>
 		</control>
 		<!-- diffuse -->
 		<control type="image">
 			<include>FullscreenDimensions</include>
 			<texture colordiffuse="88000000">common/white.jpg</texture>
 			<aspectratio>stretch</aspectratio>
-			<visible>!Control.HasFocus(51) + !Control.HasFocus(52) + !ControlGroup(6666).HasFocus + !Control.HasFocus(7000)</visible>
+			<visible>!Control.HasFocus(50) + !Control.HasFocus(51) + !Control.HasFocus(52) + !Control.HasFocus(53) + !ControlGroup(6666).HasFocus + !Control.HasFocus(7000)</visible>
 			<include>Visible_Fade</include>
 		</control>
 		<!-- side panel -->
 		<include content="SidePanel">
-			<param name="onright">51</param>
+			<param name="onright">50</param>
 		</include>
 	</controls>
 </window>

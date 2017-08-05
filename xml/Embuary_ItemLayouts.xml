@@ -46,8 +46,8 @@
 	<include name="bubble_overlay">
 		<control type="group">
 			<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png) | Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0)</visible>
-			<right>10</right>
-			<top>10</top>
+			<right>8</right>
+			<top>9</top>
 			<width>44</width>
 			<height>44</height>
 			<control type="image">
@@ -80,9 +80,36 @@
 			</control>
 		</control>
 	</include>
+	<include name="bubble_mini_overlay">
+		<control type="group">
+			<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
+			<left>$PARAM[left]</left>
+			<top>$PARAM[top]</top>
+			<width>36</width>
+			<height>36</height>
+			<control type="image">
+				<width>36</width>
+				<height>36</height>
+				<texture colordiffuse="emby">items/bubble_mini.png</texture>
+				<aspectratio>keep</aspectratio>
+			</control>
+			<control type="label">
+				<top>8</top>
+				<left>2</left>
+				<width>36</width>
+				<height>36</height>
+				<label></label>
+				<font>FontAwesome16Light</font>
+				<shadowcolor>text_shadow</shadowcolor>
+				<align>center</align>
+				<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
+			</control>
+		</control>
+	</include>
 
 	<include name="bubble_play">
 		<control type="group">
+			<visible>[!String.IsEmpty(ListItem.DBtype) | String.StartsWith(ListItem.Path,pvr://)]</visible>
 			<right>10</right>
 			<bottom>10</bottom>
 			<width>38</width>
@@ -109,9 +136,10 @@
 	<include name="list_mask">
 		<param name="top" default="94"/>
 		<param name="width" default="145"/>
+		<param name="visible_forced" default="false"/>
 		<definition>
 			<control type="group">
-				<visible>Container($PARAM[id]).HasNext + Control.HasFocus($PARAM[id])</visible>
+				<visible>[Container($PARAM[id]).HasNext + Control.HasFocus($PARAM[id])] | [Container($PARAM[id]).HasNext + $PARAM[visible_forced]]</visible>1
 				<animation effect="fade" start="0" end="100" time="200" tween="sine">Visible</animation>
 				<animation effect="fade" start="100" end="0" time="0">Hidden</animation>
 				<control type="image">
@@ -128,6 +156,37 @@
 					<width>55</width>
 					<height>$PARAM[height]</height>
 					<label></label>
+					<font>Material50</font>
+					<shadowcolor>text_shadow</shadowcolor>
+					<align>center</align>					
+					<aligny>center</aligny>
+				</control>
+			</control>
+		</definition>
+	</include>
+
+	<include name="list_mask_vertical">
+		<param name="height" default="145"/>
+		<param name="width" default="1920"/>
+		<param name="visible_forced" default="false"/>
+		<definition>
+			<control type="group">
+				<visible>[Container($PARAM[id]).HasNext + Control.HasFocus($PARAM[id])] | [Container($PARAM[id]).HasNext + $PARAM[visible_forced]]</visible>1
+				<animation effect="fade" start="0" end="100" time="200" tween="sine">Visible</animation>
+				<animation effect="fade" start="100" end="0" time="0">Hidden</animation>
+				<control type="image">
+					<bottom>0</bottom>
+					<right>0</right>
+					<width>$PARAM[width]</width>
+					<height>$PARAM[height]</height>
+					<texture>items/listmask_vertical.png</texture>
+					<aspectratio>stretch</aspectratio>
+				</control>
+				<control type="label">
+					<bottom>0</bottom>
+					<width>1920</width>
+					<height>35</height>
+					<label></label>
 					<font>Material50</font>
 					<shadowcolor>text_shadow</shadowcolor>
 					<align>center</align>					
@@ -200,11 +259,22 @@
 					<aspectratio>stretch</aspectratio>
 					<visible>String.IsEmpty(ListItem.Art(poster))</visible>
 				</control>
+				<control type="textbox">
+					<top>10</top>
+					<left>10</left>
+					<width>237</width>
+					<height>375</height>
+					<font>Light24</font>
+					<align>center</align>
+					<aligny>center</aligny>
+					<label>$PARAM[mainlabel]</label>
+					<visible>String.IsEmpty(ListItem.Art(poster))</visible>
+				</control>
 				<control type="image">
 					<width>277</width>
 					<height>415</height>
 					<texture fallback="$PARAM[fallback_image]" scalediffuse="false" diffuse="items/mask_poster.png" background="true">$INFO[ListItem.Art(poster)]</texture>
-					<aspectratio>stretch</aspectratio>
+					<aspectratio>scale</aspectratio>
 				</control>
 				<control type="group">
 					<width>277</width>
@@ -245,8 +315,8 @@
 			</control>
 		</definition>
 	</include>
-	<!-- Poster Smaller -->
-	<include name="PosterLayoutSmall">
+	<!-- Poster DB -->
+	<include name="PosterLayoutDB">
 		<param name="mainlabel">$INFO[ListItem.Title]</param>
 		<param name="sublabel">$INFO[ListItem.TVShowTitle]</param>
 		<param name="focused">false</param>
@@ -259,20 +329,31 @@
 					<left>-2</left>
 					<width>243</width>
 					<height>361</height>
-					<texture>items/shadow_poster_small.png</texture>
+					<texture>items/shadow_poster_db.png</texture>
 				</control>
 				<control type="image">
 					<width>237</width>
 					<height>355</height>
-					<texture colordiffuse="green" scalediffuse="false" diffuse="items/mask_poster_small.png">common/white.jpg</texture>
+					<texture colordiffuse="green" scalediffuse="false" diffuse="items/mask_poster_db.png">common/white.jpg</texture>
 					<aspectratio>stretch</aspectratio>
+					<visible>String.IsEmpty(ListItem.Art(poster))</visible>
+				</control>
+				<control type="textbox">
+					<top>10</top>
+					<left>10</left>
+					<width>217</width>
+					<height>335</height>
+					<font>Light24</font>
+					<align>center</align>
+					<aligny>center</aligny>
+					<label>$PARAM[mainlabel]</label>
 					<visible>String.IsEmpty(ListItem.Art(poster))</visible>
 				</control>
 				<control type="image">
 					<width>237</width>
 					<height>355</height>
-					<texture fallback="$PARAM[fallback_image]" scalediffuse="false" diffuse="items/mask_poster_small.png" background="true">$INFO[ListItem.Art(poster)]</texture>
-					<aspectratio>stretch</aspectratio>
+					<texture fallback="$PARAM[fallback_image]" scalediffuse="false" diffuse="items/mask_poster_db.png" background="true">$INFO[ListItem.Art(poster)]</texture>
+					<aspectratio>scale</aspectratio>
 				</control>
 				<control type="group">
 					<width>237</width>
@@ -298,7 +379,7 @@
 					<top>-7</top>
 					<width>261</width>
 					<height>379</height>
-					<texture colordiffuse="focused">items/focus_poster_small.png</texture>
+					<texture colordiffuse="focused">items/focus_poster_db.png</texture>
 					<aspectratio>scale</aspectratio>
 					<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
 					<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
@@ -335,6 +416,17 @@
 					<height>248</height>
 					<texture colordiffuse="green" scalediffuse="false" diffuse="items/mask_wide.png">common/white.jpg</texture>
 					<aspectratio>stretch</aspectratio>
+					<visible>String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(fanart))</visible>
+				</control>
+				<control type="textbox">
+					<top>10</top>
+					<left>10</left>
+					<width>420</width>
+					<height>228</height>
+					<font>Light24</font>
+					<align>center</align>
+					<aligny>center</aligny>
+					<label>$PARAM[mainlabel]</label>
 					<visible>String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(fanart))</visible>
 				</control>
 				<control type="image">
@@ -382,8 +474,8 @@
 			</control>
 		</definition>
 	</include>
-	<!-- Landscape Smaller -->
-	<include name="LandscapeLayoutSmall">
+	<!-- Landscape DB -->
+	<include name="LandscapeLayoutDB">
 		<param name="mainlabel">$INFO[ListItem.Title]</param>
 		<param name="sublabel">$INFO[ListItem.TVShowTitle]</param>
 		<param name="focused">false</param>
@@ -396,19 +488,30 @@
 					<left>-2</left>
 					<width>436</width>
 					<height>248</height>
-					<texture>items/shadow_wide_small.png</texture>
+					<texture>items/shadow_wide_db.png</texture>
 				</control>
 				<control type="image">
 					<width>430</width>
 					<height>242</height>
-					<texture colordiffuse="green" scalediffuse="false" diffuse="items/mask_wide_small.png">common/white.jpg</texture>
+					<texture colordiffuse="green" scalediffuse="false" diffuse="items/mask_wide_db.png">common/white.jpg</texture>
 					<aspectratio>stretch</aspectratio>
+					<visible>String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(fanart))</visible>
+				</control>
+				<control type="textbox">
+					<top>10</top>
+					<left>10</left>
+					<width>410</width>
+					<height>222</height>
+					<font>Light24</font>
+					<align>center</align>
+					<aligny>center</aligny>
+					<label>$PARAM[mainlabel]</label>
 					<visible>String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(fanart))</visible>
 				</control>
 				<control type="image">
 					<width>430</width>
 					<height>242</height>
-					<texture scalediffuse="false" diffuse="items/mask_wide_small.png" background="true">$VAR[IconLandscape]</texture>
+					<texture scalediffuse="false" diffuse="items/mask_wide_db.png" background="true">$VAR[IconLandscape]</texture>
 					<aspectratio>scale</aspectratio>
 				</control>
 				<control type="group">
@@ -435,7 +538,7 @@
 					<top>-7</top>
 					<width>454</width>
 					<height>266</height>
-					<texture colordiffuse="focused">items/focus_wide.png</texture>
+					<texture colordiffuse="focused">items/focus_wide_db.png</texture>
 					<aspectratio>scale</aspectratio>
 					<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
 					<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
@@ -443,6 +546,86 @@
 				<include content="widget_labels">
 					<param name="top">252</param>
 					<param name="width">430</param>
+					<param name="mainlabel">$PARAM[mainlabel]</param>
+					<param name="sublabel">$PARAM[sublabel]</param>
+					<param name="focused">$PARAM[focused]</param>
+				</include>
+			</control>
+		</definition>
+	</include>
+	<!-- Landscape BIG -->
+	<include name="LandscapeLayoutBig">
+		<param name="mainlabel">$VAR[MainListLabel]</param>
+		<param name="sublabel">$VAR[SubListLabel]</param>
+		<param name="focused">false</param>
+		<param name="visible">true</param>
+		<definition>
+			<control type="group">
+				<visible>$PARAM[visible]</visible>
+				<control type="image">
+					<top>-2</top>
+					<left>-2</left>
+					<width>596</width>
+					<height>338</height>
+					<texture>items/shadow_wide_big.png</texture>
+				</control>
+				<control type="image">
+					<width>590</width>
+					<height>332</height>
+					<texture colordiffuse="green" scalediffuse="false" diffuse="items/mask_wide_big.png">common/white.jpg</texture>
+					<aspectratio>stretch</aspectratio>
+					<visible>String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(fanart))</visible>
+				</control>
+				<control type="textbox">
+					<top>10</top>
+					<left>10</left>
+					<width>560</width>
+					<height>318</height>
+					<font>Light24</font>
+					<align>center</align>
+					<aligny>center</aligny>
+					<label>$PARAM[mainlabel]</label>
+					<visible>String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(fanart))</visible>
+				</control>
+				<control type="image">
+					<width>590</width>
+					<height>332</height>
+					<texture scalediffuse="false" diffuse="items/mask_wide_db.png" background="true">$VAR[IconLandscape]</texture>
+					<fadetime>400</fadetime>
+					<aspectratio>scale</aspectratio>
+				</control>
+				<control type="group">
+					<width>590</width>
+					<height>332</height>
+					<include>bubble_overlay</include>
+					<include content="bubble_play">
+						<param name="top" value="200"/>
+					</include>
+				</control>
+				<control type="progress">
+					<top>327</top>
+					<width>590</width>
+					<height>5</height>
+					<texturebg colordiffuse="black" border="2">common/ProgressBack.png</texturebg>
+					<lefttexture>-</lefttexture>
+					<midtexture colordiffuse="emby"  border="2">common/ProgressBar.png</midtexture>
+					<righttexture>-</righttexture>
+					<info>ListItem.PercentPlayed</info>
+					<visible>Integer.IsGreater(ListItem.PercentPlayed,0)</visible>
+				</control>
+				<control type="image">
+					<left>-12</left>
+					<top>-7</top>
+					<width>614</width>
+					<height>357</height>
+					<texture colordiffuse="focused">items/focus_wide_big.png</texture>
+					<aspectratio>scale</aspectratio>
+					<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
+					<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
+				</control>
+				<include content="widget_labels">
+					<param name="top">348</param>
+					<param name="width">590</param>
 					<param name="mainlabel">$PARAM[mainlabel]</param>
 					<param name="sublabel">$PARAM[sublabel]</param>
 					<param name="focused">$PARAM[focused]</param>
@@ -474,6 +657,17 @@
 					<aspectratio>stretch</aspectratio>
 					<visible>String.IsEmpty(ListItem.Art(thumb))</visible>
 				</control>
+				<control type="textbox">
+					<top>10</top>
+					<left>10</left>
+					<width>257</width>
+					<height>257</height>
+					<font>Light24</font>
+					<align>center</align>
+					<aligny>center</aligny>
+					<label>$PARAM[mainlabel]</label>
+					<visible>String.IsEmpty(ListItem.Art(thumb))</visible>
+				</control>
 				<control type="image">
 					<width>277</width>
 					<height>277</height>
@@ -489,7 +683,7 @@
 					</include>
 				</control>
 				<include content="progress">
-					<param name="top" value="273"/>
+					<param name="top" value="272"/>
 					<param name="width" value="277"/>
 					<param name="visible" value="!Integer.IsEqual(ListItem.PercentPlayed,0) | String.StartsWith(ListItem.Path,pvr://)"/>
 				</include>
@@ -506,6 +700,79 @@
 				<include content="widget_labels">
 					<param name="top">287</param>
 					<param name="width">277</param>
+					<param name="mainlabel">$PARAM[mainlabel]</param>
+					<param name="sublabel">$PARAM[sublabel]</param>
+					<param name="focused">$PARAM[focused]</param>
+				</include>
+			</control>
+		</definition>
+	</include>
+	<!-- Square -->
+	<include name="SquareLayoutDB">
+		<param name="mainlabel">$INFO[ListItem.Title]</param>
+		<param name="sublabel">$INFO[ListItem.TVShowTitle]</param>
+		<param name="focused">false</param>
+		<param name="visible">true</param>
+		<definition>
+			<control type="group">
+				<visible>$PARAM[visible]</visible>
+				<control type="image">
+					<top>-2</top>
+					<left>-2</left>
+					<width>346</width>
+					<height>346</height>
+					<texture>items/shadow_square_db.png</texture>
+				</control>
+				<control type="image">
+					<width>340</width>
+					<height>340</height>
+					<texture colordiffuse="green" scalediffuse="false" diffuse="items/mask_square_db.png">common/white.jpg</texture>
+					<aspectratio>stretch</aspectratio>
+					<visible>String.IsEmpty(ListItem.Art(thumb))</visible>
+				</control>
+				<control type="textbox">
+					<top>10</top>
+					<left>10</left>
+					<width>320</width>
+					<height>320</height>
+					<font>Light24</font>
+					<align>center</align>
+					<aligny>center</aligny>
+					<label>$PARAM[mainlabel]</label>
+					<visible>String.IsEmpty(ListItem.Art(thumb))</visible>
+				</control>
+				<control type="image">
+					<width>340</width>
+					<height>340</height>
+					<texture scalediffuse="true" diffuse="items/mask_square_db.png" background="true">$INFO[ListItem.Art(thumb)]</texture>
+					<aspectratio>stretch</aspectratio>
+				</control>
+				<control type="group">
+					<width>340</width>
+					<height>340</height>
+					<include>bubble_overlay</include>
+					<include content="bubble_play">
+						<param name="top" value="229"/>
+					</include>
+				</control>
+				<include content="progress">
+					<param name="top" value="335"/>
+					<param name="width" value="340"/>
+					<param name="visible" value="!Integer.IsEqual(ListItem.PercentPlayed,0) | String.StartsWith(ListItem.Path,pvr://)"/>
+				</include>
+				<control type="image">
+					<left>-12</left>
+					<top>-7</top>
+					<width>364</width>
+					<height>364</height>
+					<texture colordiffuse="focused">items/focus_square_db.png</texture>
+					<aspectratio>scale</aspectratio>
+					<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
+					<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
+				</control>
+				<include content="widget_labels">
+					<param name="top">350</param>
+					<param name="width">340</param>
 					<param name="mainlabel">$PARAM[mainlabel]</param>
 					<param name="sublabel">$PARAM[sublabel]</param>
 					<param name="focused">$PARAM[focused]</param>
@@ -627,6 +894,76 @@
 				<param name="sublabel">$PARAM[sublabel]</param>
 				<param name="focused">$PARAM[focused]</param>
 			</include>
+		</definition>
+	</include>
+
+	<!-- List -->
+	<include name="ListLayout">
+		<param name="focused">false</param>
+		<param name="mainlabel">$VAR[MainListLabel]</param>
+		<param name="sublabel">$VAR[SubListLabel]</param>
+		<param name="rightlabel">$INFO[ListItem.Duration,, $LOCALIZE[12391]]</param>
+		<definition>
+
+			<control type="image">
+				<left>-70</left>
+				<top>-5</top>
+				<height>110</height>
+				<width>1190</width>
+				<texture colordiffuse="hover">common/white.jpg</texture>
+				<aspectratio>stretch</aspectratio>
+				<visible>$PARAM[focused]</visible>
+			</control>
+
+			<control type="image">
+				<top>-2</top>
+				<left>-2</left>
+				<width>73</width>
+				<height>106</height>
+				<texture>items/shadow_poster_mini.png</texture>
+				<visible>!String.IsEmpty(ListItem.Art(poster))</visible>
+			</control>
+			<control type="image">
+				<width>67</width>
+				<height>100</height>
+				<texture scalediffuse="false" diffuse="items/mask_poster_mini.png" background="true">$INFO[ListItem.Art(poster)]</texture>
+				<aspectratio>scale</aspectratio>
+			</control>
+			<include content="bubble_mini_overlay">
+				<param name="left" value="45"/>
+				<param name="top" value="5"/>
+			</include>
+			<control type="label">
+				<top>20</top>
+				<left>100</left>
+				<width>990</width>
+				<height>31</height>
+				<font>Reg24</font>
+				<textcolor>white</textcolor>
+				<shadowcolor>text_shadow</shadowcolor>
+				<label>$PARAM[mainlabel]</label>
+			</control>
+			<control type="label">
+				<left>100</left>
+				<top>51</top>
+				<width>990</width>
+				<height>31</height>
+				<font>reg24</font>
+				<textcolor>lightgrey</textcolor>
+				<shadowcolor>text_shadow</shadowcolor>
+				<label>$PARAM[sublabel]</label>
+			</control>
+			<control type="label">
+				<top>20</top>
+				<right>0</right>
+				<width>400</width>
+				<height>31</height>
+				<align>right</align>
+				<font>reg24</font>
+				<textcolor>white</textcolor>
+				<shadowcolor>text_shadow</shadowcolor>
+				<label>$PARAM[rightlabel]</label>
+			</control>
 		</definition>
 	</include>
 </includes>
