@@ -366,65 +366,6 @@
 			</control>
 		</definition>
 	</include>
-	<include name="MediaFlags">
-		<control type="grouplist">
-			<orientation>horizontal</orientation>
-			<right>20</right>
-			<top>0</top>
-			<height>70</height>
-			<align>right</align>
-			<itemgap>28</itemgap>
-			<width>1900</width>
-			<usecontrolcoords>true</usecontrolcoords>
-			<control type="group">
-				<width>150</width>
-				<top>-5</top>
-				<visible>String.IsEqual(ListItem.DBtype,tvshow)</visible>
-				<include content="MediaFlag">
-					<param name="texture" value="$INFO[ListItem.Studio,resource://resource.images.studios.white/,.png]" />
-				</include>
-			</control>
-			<control type="group">
-				<top>10</top>
-				<width>200</width>
-				<include content="InfoFlag">
-					<param name="visible" value="[String.IsEqual(ListItem.DBtype,tvshow) | String.IsEqual(ListItem.DBtype,episode)] + !String.IsEmpty(ListItem.Premiered)" />
-					<param name="icon" value="lists/year.png" />
-					<param name="label" value="$INFO[ListItem.Premiered]" />
-				</include>
-			</control>
-			<control type="group">
-				<width>115</width>
-				<visible>!String.IsEmpty(ListItem.Duration)</visible>
-				<control type="label">
-					<width>115</width>
-					<height>60</height>
-					<align>center</align>
-					<aligny>center</aligny>
-					<label>$INFO[ListItem.Duration,, $LOCALIZE[31132]]</label>
-					<font>font_flag</font>
-				</control>
-				<include content="MediaFlag">
-					<param name="texture" value="flags/flag.png" />
-				</include>
-			</control>
-			<include content="MediaFlag">
-				<param name="texture" value="$INFO[ListItem.AudioChannels,flags/audiochannel/,.png]" />
-				<param name="visible" value="!String.IsEmpty(ListItem.AudioChannels)" />
-			</include>
-			<include content="MediaFlag">
-				<param name="texture" value="$INFO[ListItem.AudioCodec,flags/audiocodec/,.png]" />
-				<param name="visible" value="!String.IsEmpty(ListItem.AudioCodec)" />
-			</include>
-			<!-- 			<include content="MediaFlag">
-																						<param name="texture" value="$INFO[ListItem.VideoAspect,flags/aspectratio/,.png]" />
-																					</include> -->
-			<include content="MediaFlag">
-				<param name="texture" value="$VAR[ResolutionFlagVar]" />
-				<param name="visible" value="!String.IsEmpty(ListItem.VideoResolution)" />
-			</include>
-		</control>
-	</include>
 	<include name="WeatherIcon">
 		<control type="group">
 			<width>268</width>
