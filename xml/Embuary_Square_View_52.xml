@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+	<include name="Square_View_52">
+		<control type="group">
+			<visible>Control.IsVisible(52)</visible>
+			<animation condition="Integer.IsGreaterOrEqual(Container(52).NumItems,7) + Integer.IsLessOrEqual(Container(52).NumItems,8)" effect="slide" start="0,0" end="180,0">Conditional</animation>
+			<animation condition="Integer.IsGreaterOrEqual(Container(52).NumItems,5) + Integer.IsLessOrEqual(Container(52).NumItems,6)" effect="slide" start="0,0" end="360,0">Conditional</animation>
+			<animation condition="Integer.IsGreaterOrEqual(Container(52).NumItems,3) + Integer.IsLessOrEqual(Container(52).NumItems,4)" effect="slide" start="0,0" end="540,0">Conditional</animation>
+			<animation condition="Integer.IsLessOrEqual(Container(52).NumItems,2)" effect="slide" start="0,0" end="720,0">Conditional</animation>
+			<!-- poster -->
+			<control id="52" type="panel">
+				<visible>!Container.Content(seasons) + !Container.Content(episodes)</visible>
+				<top>115</top>
+				<width>1920</width>
+				<height>1080</height>
+				<onup condition="Control.IsVisible(7000)">SetFocus(7000)</onup>
+				<onup condition="!Control.IsVisible(7000)">SetFocus(6666)</onup>
+				<ondown>noop</ondown>
+				<onleft>9999</onleft>
+				<onright>noop</onright>
+				<scrolltime>200</scrolltime>
+				<movement>2</movement>
+				<orientation>horizontal</orientation>
+				<preloaditems>4</preloaditems>
+				<defaultcontrol always="true">0</defaultcontrol>
+				<viewtype label="535">panel</viewtype>
+				<pagecontrol>17</pagecontrol>
+				<itemlayout width="360" height="440">
+					<control type="group">
+						<left>70</left>
+						<top>64</top>
+						<include content="SquareLayoutDB">
+							<param name="mainlabel" value="$VAR[MainListLabel]" />
+							<param name="sublabel" value="$VAR[SubListLabel]" />
+							<param name="focused" value="false" />
+							<param name="id" value="52" />
+						</include>
+					</control>
+				</itemlayout>
+				<focusedlayout width="360" height="440">
+					<include>SetPropertyOnFocus</include>
+					<control type="group">							
+						<left>70</left>
+						<top>64</top>
+						<include content="SquareLayoutDB">
+							<param name="mainlabel" value="$VAR[MainListLabel]" />
+							<param name="sublabel" value="$VAR[SubListLabel]" />
+							<param name="focused" value="true" />
+							<param name="id" value="52" />
+						</include>
+					</control>
+				</focusedlayout>
+			</control>
+			<include content="list_mask">
+				<param name="height" value="1022"/>
+				<param name="width" value="75"/>
+				<param name="top" value="58"/>
+				<param name="id" value="52"/>
+				<param name="visible_forced" value="true"/>
+			</include>
+			<include content="ScrollbarHorizontal"/>
+		</control>
+	</include>
+</includes>

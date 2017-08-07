@@ -39,6 +39,7 @@
 		<value>$INFO[Container.Foldername]</value>
 	</variable>
 	<variable name="ListItemResolution">
+		<value condition="Integer.IsLess(ListItem.VideoResolution,710)">SD</value>
 		<value condition="[Integer.IsGreater(ListItem.VideoResolution,710) + !Integer.IsGreater(ListItem.VideoResolution,730)]">720p</value>
 		<value condition="String.IsEqual(ListItem.VideoResolution,1080)">1080p</value>
 		<value condition="String.IsEqual(ListItem.VideoResolution,4K)">4K</value>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+	<include name="List_View_53">
+		<control type="group">
+			<visible>Control.IsVisible(53)</visible>
+			<!-- Thumb image -->
+			<control type="group">
+				<visible>true</visible>
+				<right>70</right>
+				<top>168</top>
+				<width>590</width>
+				<include content="LandscapeLayoutBig"/>
+				<control type="grouplist">
+					<orientation>vertical</orientation>
+					<top>415</top>
+					<height>500</height>
+					<align>top</align>
+					<itemgap>00</itemgap>
+					<width>590</width>
+					<control type="grouplist">
+						<orientation>horizontal</orientation>
+						<top>500</top>
+						<height>70</height>
+						<align>center</align>
+						<itemgap>10</itemgap>
+						<width>590</width>
+						<include>MediaFlags</include>
+					</control>
+					<control type="textbox">
+						<width>590</width>
+						<height>100</height>
+						<label>$INFO[ListItem.TagLine,,[CR][CR]]</label>
+						<font>Reg22</font>
+						<shadowcolor>text_shadow</shadowcolor>
+						<align>center</align>
+					</control>					
+				</control>
+			</control>
+			<!-- List -->
+			<control id="53" type="list">
+				<visible>!Container.Content(seasons) + !Container.Content(episodes)</visible>
+				<top>168</top>
+				<width>1230</width>
+				<height>916</height>
+				<onup condition="Control.IsVisible(7000)">SetFocus(7000)</onup>
+				<onup condition="!Control.IsVisible(7000)">SetFocus(6666)</onup>
+				<onright condition="Control.IsVisible(7000)">SetFocus(7000)</onright>
+				<onright condition="!Control.IsVisible(7000)">SetFocus(6666)</onright>
+				<ondown>noop</ondown>
+				<onleft>9999</onleft>
+				<defaultcontrol always="true">0</defaultcontrol>
+				<focusposition>1</focusposition>
+				<orientation>vertical</orientation>
+				<viewtype label="535">list</viewtype>
+				<pagecontrol>17</pagecontrol>
+				<scrolltime>0</scrolltime>
+				<preloaditems>4</preloaditems>
+				<itemlayout height="110" width="1160">
+					<control type="group">
+						<left>70</left>
+						<include content="ListLayout">
+						</include>
+					</control>
+				</itemlayout>
+				<focusedlayout height="110" width="1160">
+					<include>SetPropertyOnFocus</include>
+					<control type="group">
+						<left>70</left>
+						<include content="ListLayout">
+							<param name="focused" value="true"/>
+						</include>
+					</control>
+				</focusedlayout>
+			</control>
+			<include content="list_mask_vertical">
+				<param name="height" value="65"/>
+				<param name="id" value="53"/>
+				<param name="visible_forced" value="true"/>
+			</include>
+			<include content="ScrollbarVertical"/>
+		</control>
+	</include>
+</includes>

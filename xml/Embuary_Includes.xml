@@ -563,20 +563,11 @@
 			<width min="50">auto</width>
 			<height>46</height>
 			<font>reg16</font>
-			<label>$INFO[ListItem.Premiered,$LOCALIZE[20416]: ]</label>
-			<textoffsetx>15</textoffsetx>
-			<align>center</align>
-			<texturenofocus border="10">items/tiny_button.png</texturenofocus>
-			<texturefocus border="10">items/tiny_button.png</texturefocus>
-			<visible>!String.IsEmpty(ListItem.Premiered)</visible>
-		</control>
-		<control type="button">
-			<width min="50">auto</width>
-			<height>46</height>
-			<font>reg16</font>
 			<label>$VAR[ListItemResolution]</label>
 			<textoffsetx>15</textoffsetx>
 			<align>center</align>
+			<enabledcolor>lightgrey</enabledcolor>
+			<enabled>false</enabled>
 			<texturenofocus border="10">items/tiny_button.png</texturenofocus>
 			<texturefocus border="10">items/tiny_button.png</texturefocus>
 			<visible>!String.IsEmpty(ListItem.VideoResolution)</visible>
@@ -588,6 +579,8 @@
 			<label>$INFO[ListItem.VideoCodec]</label>
 			<textoffsetx>15</textoffsetx>
 			<align>center</align>
+			<enabledcolor>lightgrey</enabledcolor>
+			<enabled>false</enabled>
 			<texturenofocus border="10">items/tiny_button.png</texturenofocus>
 			<texturefocus border="10">items/tiny_button.png</texturefocus>
 			<visible>!String.IsEmpty(ListItem.VideoCodec)</visible>
@@ -599,6 +592,8 @@
 			<label>$VAR[ListItemAudio]</label>
 			<textoffsetx>15</textoffsetx>
 			<align>center</align>
+			<enabledcolor>lightgrey</enabledcolor>
+			<enabled>false</enabled>
 			<texturenofocus border="10">items/tiny_button.png</texturenofocus>
 			<texturefocus border="10">items/tiny_button.png</texturefocus>
 			<visible>!String.IsEmpty(ListItem.AudioChannels) + !String.IsEmpty(ListItem.AudioCodec)</visible>
@@ -610,6 +605,8 @@
 			<label>$INFO[ListItem.DateAdded,$LOCALIZE[570]: ]</label>
 			<textoffsetx>15</textoffsetx>
 			<align>center</align>
+			<enabledcolor>lightgrey</enabledcolor>
+			<enabled>false</enabled>
 			<texturenofocus border="10">items/tiny_button.png</texturenofocus>
 			<texturefocus border="10">items/tiny_button.png</texturefocus>
 			<visible>!String.IsEmpty(ListItem.DateAdded)</visible>
@@ -653,6 +650,55 @@
 			<onfocus condition="Container.Content(tvshows)">SetProperty(TVShowDBID,$INFO[ListItem.DBID],home)</onfocus>
 			<onfocus condition="Container.Content(tvshows)">SetProperty(TVShowPremiered,$INFO[ListItem.Premiered],home)</onfocus>
 			<onfocus condition="Container.Content(tvshows)">SetProperty(TVShowOverlay,$INFO[ListItem.Overlay],home)</onfocus>
+			<onfocus condition="Container.Content(tvshows)">SetProperty(TVShowTotalSeasons,$INFO[ListItem.Property(TotalSeasons)],home)</onfocus>
+			<onfocus condition="Container.Content(tvshows)">SetProperty(TVShowTotalEpisodes,$INFO[ListItem.Property(TotalEpisodes)],home)</onfocus>
 		</control>
+	</include>
+	<!-- Scrollbars -->
+	<include name="ScrollbarHorizontal">
+		<param name="id">17</param>
+		<param name="width">1920</param>
+		<param name="bottom">0</param>
+		<param name="height">5</param>
+		<param name="visible">true</param>
+		<definition>
+			<control type="scrollbar" id="$PARAM[id]">
+				<left>0</left>
+				<bottom>$PARAM[bottom]</bottom>
+				<width>$PARAM[width]</width>
+				<height>$PARAM[height]</height>
+				<texturesliderbackground colordiffuse="black">common/ProgressBack.png</texturesliderbackground>
+				<texturesliderbar colordiffuse="emby">common/ProgressBar.png</texturesliderbar>
+				<texturesliderbarfocus/>
+				<textureslidernib/>
+				<textureslidernibfocus/>
+				<orientation>horizontal</orientation>
+				<showonepage>false</showonepage>
+				<visible>$PARAM[visible]</visible>
+			</control>
+		</definition>
+	</include>
+	<include name="ScrollbarVertical">
+		<param name="id">17</param>
+		<param name="width">5</param>
+		<param name="top">58</param>
+		<param name="height">1042</param>
+		<param name="visible">true</param>
+		<definition>
+			<control type="scrollbar" id="$PARAM[id]">
+				<left>0</left>
+				<top>$PARAM[top]</top>
+				<width>$PARAM[width]</width>
+				<height>$PARAM[height]</height>
+				<texturesliderbackground colordiffuse="black">common/ProgressBack.png</texturesliderbackground>
+				<texturesliderbar colordiffuse="emby">common/ProgressBar.png</texturesliderbar>
+				<texturesliderbarfocus/>
+				<textureslidernib/>
+				<textureslidernibfocus/>
+				<orientation>vertical</orientation>
+				<showonepage>false</showonepage>
+				<visible>$PARAM[visible]</visible>
+			</control>
+		</definition>
 	</include>
 </includes>

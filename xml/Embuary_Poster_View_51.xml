@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+	<include name="Poster_View_51">
+		<control type="group">
+			<visible>Control.IsVisible(51)</visible>
+			<animation condition="Integer.IsGreaterOrEqual(Container(51).NumItems,11) + Integer.IsLessOrEqual(Container(51).NumItems,12)" effect="slide" start="0,0" end="128,0">Conditional</animation>
+			<animation condition="Integer.IsGreaterOrEqual(Container(51).NumItems,9) + Integer.IsLessOrEqual(Container(51).NumItems,10)" effect="slide" start="0,0" end="257,0">Conditional</animation>
+			<animation condition="Integer.IsGreaterOrEqual(Container(51).NumItems,7) + Integer.IsLessOrEqual(Container(51).NumItems,8)" effect="slide" start="0,0" end="385,0">Conditional</animation>
+			<animation condition="Integer.IsGreaterOrEqual(Container(51).NumItems,5) + Integer.IsLessOrEqual(Container(51).NumItems,6)" effect="slide" start="0,0" end="514,0">Conditional</animation>
+			<animation condition="Integer.IsGreaterOrEqual(Container(51).NumItems,3) + Integer.IsLessOrEqual(Container(51).NumItems,4)" effect="slide" start="0,0" end="642,0">Conditional</animation>
+			<animation condition="Integer.IsLessOrEqual(Container(51).NumItems,2)" effect="slide" start="0,0" end="771,0">Conditional</animation>
+			<!-- poster -->
+			<control id="51" type="panel">
+				<visible>!Container.Content(seasons) + !Container.Content(episodes)</visible>
+				<top>105</top>
+				<width>auto</width>
+				<height>1080</height>
+				<onup condition="Control.IsVisible(7000)">SetFocus(7000)</onup>
+				<onup condition="!Control.IsVisible(7000)">SetFocus(6666)</onup>
+				<ondown>noop</ondown>
+				<onleft>9999</onleft>
+				<onright>noop</onright>
+				<scrolltime>200</scrolltime>
+				<movement>2</movement>
+				<orientation>horizontal</orientation>
+				<preloaditems>4</preloaditems>
+				<defaultcontrol always="true">0</defaultcontrol>
+				<viewtype label="535">panel</viewtype>
+				<pagecontrol>17</pagecontrol>
+				<itemlayout width="257" height="445">
+					<control type="group">
+						<left>70.5</left>
+						<top>64</top>
+						<include content="PosterLayoutDB">
+							<param name="mainlabel" value="$VAR[MainListLabel]" />
+							<param name="sublabel" value="$VAR[SubListLabel]" />
+							<param name="focused" value="false" />
+							<param name="id" value="51" />
+						</include>
+					</control>
+				</itemlayout>
+				<focusedlayout width="257" height="445">
+					<include>SetPropertyOnFocus</include>
+					<control type="group">							
+						<left>70.5</left>
+						<top>64</top>
+						<include content="PosterLayoutDB">
+							<param name="mainlabel" value="$VAR[MainListLabel]" />
+							<param name="sublabel" value="$VAR[SubListLabel]" />
+							<param name="focused" value="true" />
+							<param name="id" value="51" />
+							<param name="visible_forced" value="true"/>
+						</include>
+					</control>
+				</focusedlayout>
+			</control>			
+			<include content="list_mask">
+				<param name="height" value="1022"/>
+				<param name="width" value="75"/>
+				<param name="top" value="58"/>
+				<param name="id" value="51"/>
+				<param name="visible_forced" value="true"/>
+			</include>
+			<include content="ScrollbarHorizontal"/>
+		</control>
+	</include>
+</includes>
