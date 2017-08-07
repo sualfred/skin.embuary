@@ -28,9 +28,10 @@
 	<include name="HeaderBar">
 		<param name="id">10</param>
 		<param name="enabled">true</param>
+		<param name="custom_animation">false</param>
 		<definition>
 			<control type="group">
-				<animation effect="slide" start="0,0" end="0,-58"  time="200" condition="[Container($PARAM[id]).HasPrevious + $PARAM[enabled]] | $PARAM[custom_animation]" tween="linear" easing="inout">Conditional</animation>
+				<animation effect="slide" start="0,0" end="0,-58"  time="200" condition="[Container($PARAM[id]).HasPrevious + $PARAM[enabled]] | [$PARAM[custom_animation]]" tween="linear" easing="inout">Conditional</animation>
 				<control type="image">
 					<height>58</height>
 					<width>1920</width>
@@ -237,19 +238,25 @@
 			</control>
 		</definition>
 	</include>
+
+	<!-- diffuse -->
+	<include name="DiffuseMask">
+		<control type="image">
+			<include>FullscreenDimensions</include>
+			<texture colordiffuse="CC000000">common/white.jpg</texture>
+			<aspectratio>stretch</aspectratio>
+			<visible>$PARAM[visible]</visible>
+			<include>Visible_Fade</include>
+		</control>
+	</include>
 	<!-- Side Menu -->
 	<include name="SidePanel">
 		<param name="width">400</param>
 		<param name="onright">10</param>
 		<definition>
-			<!-- diffuse -->
-			<control type="image">
-				<include>FullscreenDimensions</include>
-				<texture colordiffuse="88000000">common/white.jpg</texture>
-				<aspectratio>stretch</aspectratio>
-				<visible>ControlGroup(9999).HasFocus</visible>
-				<include>Visible_Fade</include>
-			</control>
+			<include content="DiffuseMask">
+				<param name="visible">ControlGroup(9999).HasFocus</param>
+			</include>
 			<control type="group">
 				<animation type="Conditional" condition="ControlGroup(9999).HasFocus" reversible="true">
 					<effect type="slide" start="0,0" end="$PARAM[width],0" time="400" tween="cubic" easing="inout" />
@@ -699,6 +706,22 @@
 				<showonepage>false</showonepage>
 				<visible>$PARAM[visible]</visible>
 			</control>
+		</definition>
+	</include>
+
+	<include name="CommonButton">
+		<param name="height">50</param>
+		<param name="width">100%</param>
+		<definition>
+			<width>$PARAM[width]</width>
+			<height>$PARAM[height]</height>
+			<align>left</align>
+			<textoffsetx>20</textoffsetx>
+			<font>med18</font>
+			<textcolor>white</textcolor>
+			<textshadow>text_shadow</textshadow>
+			<texturefocus colordiffuse="panel_hover">common/menu_back.png</texturefocus>
+			<texturenofocus colordiffuse="panel">common/menu_back.png</texturenofocus>
 		</definition>
 	</include>
 </includes>

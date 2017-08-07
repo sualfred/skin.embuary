@@ -201,7 +201,7 @@
 						<movement>6</movement>
 						<orientation>horizontal</orientation>
 						<preloaditems>4</preloaditems>
-						<ondown>202</ondown>
+						<ondown>302</ondown>
 						<include content="Bounce_Right">
 							<param name="id">55</param>
 						</include>
@@ -254,16 +254,17 @@
 					<param name="headline">$LOCALIZE[206]</param>
 					<param name="left">65</param>
 				</include>
-				<control type="list" id="202">
+				<control type="list" id="302">
 					<top>30</top>
 					<width>1920</width>
 					<scrolltime>200</scrolltime>
 					<movement>6</movement>
 					<orientation>horizontal</orientation>
 					<preloaditems>4</preloaditems>
-					<ondown>203</ondown>
+					<ondown>303</ondown>
+					<onback>50</onback>
 					<include content="Bounce_Right">
-						<param name="id">202</param>
+						<param name="id">302</param>
 					</include>
 					<onright>SetProperty(BounceRight,1,home)</onright>
 					<onright>noop</onright>
@@ -275,7 +276,7 @@
 							<top>64</top>
 							<include content="CastLayout">
 								<param name="focused" value="false" />
-								<param name="id" value="202" />
+								<param name="id" value="302" />
 							</include>
 						</control>
 					</itemlayout>
@@ -285,7 +286,7 @@
 							<top>64</top>
 							<include content="CastLayout">
 								<param name="focused" value="true" />
-								<param name="id" value="202" />
+								<param name="id" value="302" />
 							</include>
 						</control>
 					</focusedlayout>
@@ -294,19 +295,20 @@
 				<include content="list_mask">
 					<param name="height" value="355"/>
 					<param name="width" value="75"/>
-					<param name="id" value="202"/>
+					<param name="id" value="302"/>
 				</include>
 			</control>
 
 			<!-- More like this -->
 			<control type="group">
+				<visible>Integer.IsGreater(Container(303).NumItems,0) | Container(303).IsUpdating</visible>
 				<width>1920</width>
 				<height>560</height>
 				<include content="widget_headline">
 					<param name="headline">$LOCALIZE[31002]</param>
 					<param name="left">65</param>
 				</include>
-				<control type="list" id="203">
+				<control type="list" id="303">
 					<top>30</top>
 					<width>1920</width>
 					<scrolltime>200</scrolltime>
@@ -314,20 +316,21 @@
 					<orientation>horizontal</orientation>
 					<preloaditems>4</preloaditems>
 					<ondown>noop</ondown>
+					<onback>50</onback>
 					<include content="Bounce_Right">
-						<param name="id">204</param>
+						<param name="id">303</param>
 					</include>
 					<onright>SetProperty(BounceRight,1,home)</onright>
 					<onright>noop</onright>
 					<onleft>9999</onleft>
-					<onup>202</onup>
+					<onup>302</onup>
 					<itemlayout width="257">
 						<control type="group">							
 							<left>70</left>
 							<top>64</top>
 							<include content="PosterLayoutDB">
 								<param name="focused" value="false" />
-								<param name="id" value="203" />
+								<param name="id" value="303" />
 							</include>
 						</control>
 					</itemlayout>
@@ -337,7 +340,7 @@
 							<top>64</top>
 							<include content="PosterLayoutDB">
 								<param name="focused" value="true" />
-								<param name="id" value="203" />
+								<param name="id" value="303" />
 							</include>
 						</control>
 					</focusedlayout>
@@ -346,7 +349,7 @@
 				<include content="list_mask">
 					<param name="height" value="355"/>
 					<param name="width" value="75"/>
-					<param name="id" value="203"/>
+					<param name="id" value="303"/>
 				</include>
 			</control>
 
