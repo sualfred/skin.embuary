@@ -9,7 +9,63 @@
 				<right>70</right>
 				<top>168</top>
 				<width>590</width>
-				<include content="LandscapeLayoutBig"/>
+				<control type="group">
+					<control type="image">
+						<top>-2</top>
+						<left>-2</left>
+						<width>596</width>
+						<height>338</height>
+						<texture>items/shadow_wide_big.png</texture>
+					</control>
+					<control type="image">
+						<width>590</width>
+						<height>332</height>
+						<texture colordiffuse="green" scalediffuse="false" diffuse="items/mask_wide_big.png">common/white.jpg</texture>
+						<aspectratio>stretch</aspectratio>
+						<visible>String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(fanart)) + ![!String.IsEmpty(ListItem.Art(thumb)) + Container.Content(episodes)]</visible>
+					</control>
+					<control type="textbox">
+						<top>10</top>
+						<left>10</left>
+						<width>570</width>
+						<height>312</height>
+						<font>Light24</font>
+						<align>center</align>
+						<aligny>center</aligny>
+						<label>$VAR[MainListLabel]</label>
+						<visible>String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(fanart)) + ![!String.IsEmpty(ListItem.Art(thumb)) + Container.Content(episodes)]</visible>
+					</control>
+					<control type="image">
+						<width>590</width>
+						<height>332</height>
+						<texture scalediffuse="false" diffuse="items/mask_wide_db.png" background="true">$VAR[IconLandscape]</texture>
+						<fadetime>400</fadetime>
+						<aspectratio>scale</aspectratio>
+					</control>
+					<control type="group">
+						<width>590</width>
+						<height>332</height>
+						<include>bubble_overlay</include>
+						<include content="bubble_play">
+							<param name="top" value="200"/>
+						</include>
+					</control>
+					<control type="progress">
+						<top>327</top>
+						<width>590</width>
+						<height>5</height>
+						<texturebg colordiffuse="black" border="2">common/ProgressBack.png</texturebg>
+						<lefttexture>-</lefttexture>
+						<midtexture colordiffuse="emby"  border="2">common/ProgressBar.png</midtexture>
+						<righttexture>-</righttexture>
+						<info>ListItem.PercentPlayed</info>
+						<visible>Integer.IsGreater(ListItem.PercentPlayed,0)</visible>
+					</control>
+					<include content="widget_labels">
+						<param name="top">348</param>
+						<param name="width">590</param>
+					</include>
+				</control>
 				<control type="grouplist">
 					<orientation>vertical</orientation>
 					<top>415</top>

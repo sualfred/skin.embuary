@@ -21,6 +21,8 @@
 
 	<include name="widget_labels">
 		<param name="visible_labels">true</param>
+		<param name="mainlabel">$VAR[MainListLabel]</param>
+		<param name="sublabel">$VAR[SubListLabel]</param>
 		<definition>
 			<control type="group">
 				<top>$PARAM[top]</top>
@@ -322,7 +324,7 @@
 		</definition>
 	</include>
 	<!-- Poster DB -->
-	<include name="PosterLayoutDB">
+	<include name="PosterLayout_Size2">
 		<param name="mainlabel">$INFO[ListItem.Title]</param>
 		<param name="sublabel">$INFO[ListItem.TVShowTitle]</param>
 		<param name="focused">false</param>
@@ -570,7 +572,7 @@
 		</definition>
 	</include>
 	<!-- Landscape DB -->
-	<include name="LandscapeLayoutDB">
+	<include name="LandscapeLayout_Size2">
 		<param name="mainlabel">$INFO[ListItem.Title]</param>
 		<param name="sublabel">$INFO[ListItem.TVShowTitle]</param>
 		<param name="focused">false</param>
@@ -641,87 +643,6 @@
 				<include content="widget_labels">
 					<param name="top">252</param>
 					<param name="width">430</param>
-					<param name="mainlabel">$PARAM[mainlabel]</param>
-					<param name="sublabel">$PARAM[sublabel]</param>
-					<param name="focused">$PARAM[focused]</param>
-					<param name="visible_labels">$PARAM[visible_labels]</param>
-				</include>
-			</control>
-		</definition>
-	</include>
-	<!-- Landscape BIG -->
-	<include name="LandscapeLayoutBig">
-		<param name="mainlabel">$VAR[MainListLabel]</param>
-		<param name="sublabel">$VAR[SubListLabel]</param>
-		<param name="focused">false</param>
-		<param name="visible">true</param>
-		<definition>
-			<control type="group">
-				<visible>$PARAM[visible]</visible>
-				<control type="image">
-					<top>-2</top>
-					<left>-2</left>
-					<width>596</width>
-					<height>338</height>
-					<texture>items/shadow_wide_big.png</texture>
-				</control>
-				<control type="image">
-					<width>590</width>
-					<height>332</height>
-					<texture colordiffuse="green" scalediffuse="false" diffuse="items/mask_wide_big.png">common/white.jpg</texture>
-					<aspectratio>stretch</aspectratio>
-					<visible>String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(fanart)) + ![!String.IsEmpty(ListItem.Art(thumb)) + Container.Content(episodes)]</visible>
-				</control>
-				<control type="textbox">
-					<top>10</top>
-					<left>10</left>
-					<width>560</width>
-					<height>318</height>
-					<font>Light24</font>
-					<align>center</align>
-					<aligny>center</aligny>
-					<label>$PARAM[mainlabel]</label>
-					<visible>String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(fanart)) + ![!String.IsEmpty(ListItem.Art(thumb)) + Container.Content(episodes)]</visible>
-				</control>
-				<control type="image">
-					<width>590</width>
-					<height>332</height>
-					<texture scalediffuse="false" diffuse="items/mask_wide_db.png" background="true">$VAR[IconLandscape]</texture>
-					<fadetime>400</fadetime>
-					<aspectratio>scale</aspectratio>
-				</control>
-				<control type="group">
-					<width>590</width>
-					<height>332</height>
-					<include>bubble_overlay</include>
-					<include content="bubble_play">
-						<param name="top" value="200"/>
-					</include>
-				</control>
-				<control type="progress">
-					<top>327</top>
-					<width>590</width>
-					<height>5</height>
-					<texturebg colordiffuse="black" border="2">common/ProgressBack.png</texturebg>
-					<lefttexture>-</lefttexture>
-					<midtexture colordiffuse="emby"  border="2">common/ProgressBar.png</midtexture>
-					<righttexture>-</righttexture>
-					<info>ListItem.PercentPlayed</info>
-					<visible>Integer.IsGreater(ListItem.PercentPlayed,0)</visible>
-				</control>
-				<control type="image">
-					<left>-12</left>
-					<top>-7</top>
-					<width>614</width>
-					<height>357</height>
-					<texture colordiffuse="focused">items/focus_wide_big.png</texture>
-					<aspectratio>scale</aspectratio>
-					<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
-					<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
-				</control>
-				<include content="widget_labels">
-					<param name="top">348</param>
-					<param name="width">590</param>
 					<param name="mainlabel">$PARAM[mainlabel]</param>
 					<param name="sublabel">$PARAM[sublabel]</param>
 					<param name="focused">$PARAM[focused]</param>
@@ -806,7 +727,7 @@
 		</definition>
 	</include>
 	<!-- Square DB -->
-	<include name="SquareLayoutDB">
+	<include name="SquareLayout_Size2">
 		<param name="mainlabel">$INFO[ListItem.Title]</param>
 		<param name="sublabel">$INFO[ListItem.TVShowTitle]</param>
 		<param name="focused">false</param>
