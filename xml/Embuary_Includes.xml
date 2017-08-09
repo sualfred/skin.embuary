@@ -177,21 +177,19 @@
 						<textcolor>panel_text</textcolor>
 						<focusedcolor>emby</focusedcolor>
 						<label>$LOCALIZE[587]</label>
-						<onclick>noop</onclick>
+						<onclick>SetFocus(4000)</onclick>
 						<visible>Window.IsActive(videos)</visible>
 					</control>
-					<control type="togglebutton" id="4">
+					<control type="button" id="2">
 						<texturefocus/>
 						<texturenofocus/>
 						<width>auto</width>
 						<font>med17</font>
 						<textcolor>panel_text</textcolor>
 						<focusedcolor>emby</focusedcolor>
-						<label>$LOCALIZE[580]</label>
 						<onclick>noop</onclick>
 						<visible>Window.IsActive(videos)</visible>
 					</control>
-
 				</control>
 				<control type="label">
 					<height>58</height>
@@ -638,54 +636,46 @@
 	<include name="MediaFlags">
 		<control type="button">
 			<width min="50">auto</width>
-			<height>46</height>
+			<height>48</height>
 			<font>reg16</font>
 			<label>$VAR[ListItemResolution]</label>
 			<textoffsetx>15</textoffsetx>
 			<align>center</align>
 			<enabledcolor>lightgrey</enabledcolor>
 			<enabled>false</enabled>
-			<texturenofocus border="10">items/tiny_button.png</texturenofocus>
-			<texturefocus border="10">items/tiny_button.png</texturefocus>
 			<visible>!String.IsEmpty(ListItem.VideoResolution)</visible>
 		</control>
 		<control type="button">
 			<width min="50">auto</width>
-			<height>46</height>
+			<height>48</height>
 			<font>reg16</font>
 			<label>$INFO[ListItem.VideoCodec]</label>
 			<textoffsetx>15</textoffsetx>
 			<align>center</align>
 			<enabledcolor>lightgrey</enabledcolor>
 			<enabled>false</enabled>
-			<texturenofocus border="10">items/tiny_button.png</texturenofocus>
-			<texturefocus border="10">items/tiny_button.png</texturefocus>
 			<visible>!String.IsEmpty(ListItem.VideoCodec)</visible>
 		</control>
 		<control type="button">
 			<width min="50">auto</width>
-			<height>46</height>
+			<height>48</height>
 			<font>reg16</font>
 			<label>$VAR[ListItemAudio]</label>
 			<textoffsetx>15</textoffsetx>
 			<align>center</align>
 			<enabledcolor>lightgrey</enabledcolor>
 			<enabled>false</enabled>
-			<texturenofocus border="10">items/tiny_button.png</texturenofocus>
-			<texturefocus border="10">items/tiny_button.png</texturefocus>
 			<visible>!String.IsEmpty(ListItem.AudioChannels) + !String.IsEmpty(ListItem.AudioCodec)</visible>
 		</control>
 		<control type="button">
 			<width min="50">auto</width>
-			<height>46</height>
+			<height>48</height>
 			<font>reg16</font>
 			<label>$INFO[ListItem.DateAdded,$LOCALIZE[570]: ]</label>
 			<textoffsetx>15</textoffsetx>
 			<align>center</align>
 			<enabledcolor>lightgrey</enabledcolor>
 			<enabled>false</enabled>
-			<texturenofocus border="10">items/tiny_button.png</texturenofocus>
-			<texturefocus border="10">items/tiny_button.png</texturefocus>
 			<visible>!String.IsEmpty(ListItem.DateAdded)</visible>
 		</control>
 	</include>
@@ -786,12 +776,15 @@
 			<width>$PARAM[width]</width>
 			<height>$PARAM[height]</height>
 			<align>left</align>
+			<aligny>center</aligny>
 			<textoffsetx>20</textoffsetx>
 			<font>med18</font>
 			<textcolor>white</textcolor>
 			<textshadow>text_shadow</textshadow>
 			<texturefocus colordiffuse="panel_hover">common/menu_back.png</texturefocus>
 			<texturenofocus colordiffuse="panel">common/menu_back.png</texturenofocus>
+			<alttexturefocus colordiffuse="panel_hover">common/menu_back.png</alttexturefocus>
+			<alttexturenofocus colordiffuse="panel">common/menu_back.png</alttexturenofocus>
 		</definition>
 	</include>
 </includes>

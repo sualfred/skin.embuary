@@ -3,7 +3,7 @@
 	<defaultcontrol always="true">50</defaultcontrol>
 	<backgroundcolor>background</backgroundcolor>
 	<views>50,51,52,53,54,55</views>
-	<menucontrol>9000</menucontrol>
+	<menucontrol>9999</menucontrol>
 	<!--<onunload>ClearProperty(TVShowRating,home)</onunload>
 	<onunload>ClearProperty(TVShowDBID,home)</onunload>
 	<onunload>ClearProperty(TVShowPremiered,home)</onunload>
@@ -18,7 +18,7 @@
 		</include>
 
 
-	
+
 
 		<include>Wide_View_50</include>
 		<include>Poster_View_51</include>
@@ -50,6 +50,74 @@
 				<textcolor>softgrey</textcolor>
 				<shadowcolor>text_shadow</shadowcolor>
 				<label>$INFO[Container.SortMethod,$LOCALIZE[581] ","]$INFO[Container.SortOrder, / $LOCALIZE[580] ","]</label>
+			</control>
+		</control>
+
+
+		<!-- Menu control -->
+		<control type="group">
+			<visible>ControlGroup(4000).HasFocus</visible>
+			<include>FullscreenDimensions</include>
+			<include>Visible_PopupOpenClose</include>
+			<include content="DiffuseMask">
+				<param name="visible">true</param>
+			</include>
+			<control type="group">
+				<centerleft>50%</centerleft>
+				<width>284</width>
+				<centertop>50%</centertop>
+				<height>970</height>
+				<control type="grouplist" id="4000">
+					<orientation>vertical</orientation>
+					<height>auto</height>
+					<align>center</align>
+					<itemgap>0</itemgap>
+					<onright>50</onright>
+					<onleft>50</onleft>
+					<onback>50</onback>
+					<usecontrolcoords>true</usecontrolcoords>
+					<control type="image">
+						<width>100%</width>
+						<height>10</height>
+						<texture colordiffuse="panel">common/menu_top.png</texture>
+					</control>
+					<control type="button" id="10">
+						<include content="CommonButton"/>
+						<label>$LOCALIZE[341]</label>
+					</control>
+					<control type="togglebutton" id="4">
+						<include content="CommonButton"/>
+						<label>$LOCALIZE[580]: $LOCALIZE[584]</label>
+						<altlabel>$LOCALIZE[580]: $LOCALIZE[585]</altlabel>
+					</control>
+					<control type="button" id="3">
+						<include content="CommonButton"/>
+					</control>
+					<control type="button" id="5">
+						<include content="CommonButton"/>
+						<label>Switch to file mode</label>
+						<visible>false</visible>
+					</control>
+					<control type="button" id="6">
+						<include content="CommonButton"/>
+						<label>$LOCALIZE[341]</label>
+						<visible>System.HasMediaDVD</visible>
+					</control>
+					<control type="button" id="11">
+						<include content="CommonButton"/>
+						<label>Unlock shares</label>
+						<visible>false</visible>
+					</control>
+					<control type="button" id="19">
+						<include content="CommonButton"/>
+						<label>$LOCALIZE[31008]</label>
+					</control>
+					<control type="image">
+						<width>100%</width>
+						<height>10</height>
+						<texture colordiffuse="panel">common/menu_bottom.png</texture>
+					</control>
+				</control>
 			</control>
 		</control>
 
