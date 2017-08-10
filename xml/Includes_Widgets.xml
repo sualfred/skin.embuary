@@ -8,6 +8,7 @@
 	<include name="WideWidget">
 		<param name="id">$PARAM[id]</param>
 		<param name="visible" default="true">$PARAM[visible]</param>
+		<param name="content_visibility" default="true">$PARAM[content_visibility]</param>
 		<param name="headline" default="widget">$PARAM[headline]</param>
 		<param name="mainlabel" default="$VAR[MainListLabel]">$PARAM[mainlabel]</param>
 		<param name="sublabel" default="$VAR[SubListLabel]">$PARAM[sublabel]</param>
@@ -16,6 +17,7 @@
 		<param name="content">$PARAM[content]</param>
 		<param name="sortby">$PARAM[sortby]</param>
 		<param name="sortdirection">$PARAM[sortdirection]</param>
+		<param name="use_custom_content" default="true">$PARAM[use_custom_content]</param>
 		<definition>
 			<control type="group">
 				<visible>$PARAM[visible]</visible>
@@ -28,6 +30,7 @@
 						<param name="left">65</param>
 					</include>
 					<control type="list" id="$PARAM[id]">
+						<visible>$PARAM[content_visibility]</visible>
 						<top>30</top>
 						<width>1920</width>
 						<scrolltime>200</scrolltime>
@@ -67,10 +70,14 @@
 								</include>
 							</control>
 						</focusedlayout>
-						<content sortby="$PARAM[sortby]" sortdirection="$PARAM[sortdirection]">$PARAM[content]</content>
+						<include condition="$PARAM[use_custom_content]" content="WidgetContentPath">
+							<param name="sortby">$PARAM[sortby]</param>
+							<param name="sortdirection">$PARAM[sortdirectio]</param>
+							<param name="content">$PARAM[content]</param>
+						</include>
 					</control>
 					<include content="list_mask">
-						<param name="height" value="355"/>
+						<param name="height" value="242"/>
 						<param name="width" value="75"/>
 						<param name="id" value="$PARAM[id]"/>
 					</include>
@@ -87,6 +94,7 @@
 	<include name="PosterWidget">
 		<param name="id">$PARAM[id]</param>
 		<param name="visible" default="true">$PARAM[visible]</param>
+		<param name="content_visibility" default="true">$PARAM[content_visibility]</param>
 		<param name="visible_scrollbar" default="false">$PARAM[visible_scrollbar]</param>
 		<param name="headline" default="widget">$PARAM[headline]</param>
 		<param name="mainlabel" default="$VAR[MainListLabel]">$PARAM[mainlabel]</param>
@@ -110,6 +118,7 @@
 						<param name="left">65</param>
 					</include>
 					<control type="list" id="$PARAM[id]">
+						<visible>$PARAM[content_visibility]</visible>
 						<top>30</top>
 						<width>1920</width>
 						<scrolltime>200</scrolltime>

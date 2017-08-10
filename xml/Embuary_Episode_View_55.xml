@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 	<include name="Episode_View_55">
-		<!-- season 54 -->
+		<!-- Hidden scrollbar -->
+		<control id="96" type="scrollbar">
+			<left>-1200</left>
+			<width>100</width>
+			<height>1</height>
+			<showonepage>false</showonepage>
+			<orientation>vertical</orientation>
+		</control>
+		<!-- season 55 -->
 		<control type="grouplist" id="550">
 			<visible>Control.IsVisible(55)</visible>
 			<width>2130</width>
@@ -9,16 +17,14 @@
 			<orientation>vertical</orientation>
 			<usecontrolcoords>true</usecontrolcoords>
 			<scrolltime tween="sine" easing="out">400</scrolltime>
-			<itemgap>-75</itemgap>
-			
-			<!-- Seasons -->
+			<itemgap>-80</itemgap>
+			<!-- Meta -->
 			<control type="group">
 				<width>1920</width>
-				<height>952</height>				
-				<!-- Thumb image -->
+				<height>604</height>
 				<control type="group">
-					<top>90</top>
-					<height>440</height>
+					<top>128</top>
+					<height>435</height>
 					<width>1920</width>
 					<!-- poster -->
 					<control type="group">
@@ -26,37 +32,37 @@
 						<control type="image">
 							<top>-2</top>
 							<left>-2</left>
-							<width>283</width>
-							<height>421</height>
+							<width>282</width>
+							<height>420</height>
 							<texture>items/shadow_poster.png</texture>
 						</control>
 						<control type="image">
-							<width>277</width>
-							<height>415</height>
+							<width>276</width>
+							<height>414</height>
 							<texture colordiffuse="green" scalediffuse="false" diffuse="items/mask_poster.png">common/white.jpg</texture>
 							<aspectratio>stretch</aspectratio>
-							<visible>String.IsEmpty(ListItem.Art(poster))</visible>
+							<visible>String.IsEmpty(ListItem.Art(tvshow.poster))</visible>
 						</control>
 						<control type="textbox">
 							<top>10</top>
 							<left>10</left>
-							<width>237</width>
-							<height>375</height>
+							<width>256</width>
+							<height>394</height>
 							<font>Light24</font>
 							<align>center</align>
 							<aligny>center</aligny>
-							<label>$PARAM[mainlabel]</label>
+							<label>$INFO[ListItem.TvShowTitle]</label>
 							<visible>String.IsEmpty(ListItem.Art(tvshow.poster))</visible>
 						</control>
 						<control type="image">
-							<width>277</width>
-							<height>415</height>
+							<width>276</width>
+							<height>414</height>
 							<texture scalediffuse="false" diffuse="items/mask_poster.png" background="true">$INFO[ListItem.Art(tvshow.poster)]</texture>
 							<aspectratio>scale</aspectratio>
 						</control>
 						<control type="group">
-							<width>277</width>
-							<height>415</height>
+							<width>276</width>
+							<height>414</height>
 							<control type="group">
 								<visible>String.IsEqual(Window(home).Property(TVShowOverlay),OverlayWatched.png)</visible>
 								<right>8</right>
@@ -93,7 +99,7 @@
 						<control type="label">
 							<width>1040</width>
 							<height>60</height>
-							<label>$INFO[ListItem.TvShowTitle]</label>
+							<label>$INFO[ListItem.Title]</label>
 							<font>Reg37</font>
 							<shadowcolor>text_shadow</shadowcolor>
 						</control>
@@ -102,22 +108,6 @@
 							<width>1040</width>
 							<itemgap>5</itemgap>
 							<orientation>horizontal</orientation>
-							<control type="label">
-								<width>auto</width>
-								<height>24</height>
-								<label>$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E]   </label>
-								<font>reg20</font>
-								<shadowcolor>text_shadow</shadowcolor>
-								<visible>!String.IsEmpty(ListItem.Episode)</visible>
-							</control>
-							<control type="label">
-								<width>auto</width>
-								<height>24</height>
-								<label>$INFO[ListItem.Duration,, $LOCALIZE[12391]]   </label>
-								<font>reg20</font>
-								<shadowcolor>text_shadow</shadowcolor>
-								<visible>!String.IsEmpty(ListItem.Duration)</visible>
-							</control>
 							<control type="label">
 								<width>auto</width>
 								<height>24</height>
@@ -134,6 +124,14 @@
 								<font>reg20</font>
 								<shadowcolor>text_shadow</shadowcolor>
 								<visible>!String.IsEmpty(ListItem.Rating)</visible>
+							</control>
+							<control type="label">
+								<width>auto</width>
+								<height>24</height>
+								<label>$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E]   </label>
+								<font>reg20</font>
+								<shadowcolor>text_shadow</shadowcolor>
+								<visible>!String.IsEmpty(ListItem.Episode)</visible>
 							</control>
 							<control type="label">
 								<width>auto</width>
@@ -162,21 +160,68 @@
 						</control>
 						<control type="grouplist">
 							<orientation>horizontal</orientation>
-							<top>500</top>
-							<height>70</height>
-							<itemgap>10</itemgap>
+							<height>65</height>
+							<itemgap>5</itemgap>
 							<width>1040</width>
 							<include>MediaFlags</include>
 						</control>
+						<control type="grouplist" id="100">
+							<height>65</height>
+							<orientation>horizontal</orientation>
+							<itemgap>5</itemgap>
+							<include content="Bounce_Right">
+								<param name="id">100</param>
+							</include>
+							<onright>SetProperty(BounceRight,1,home)</onright>
+							<onright>noop</onright>
+							<onleft>9999</onleft>
+							<control type="button" id="101">
+								<top>-2</top>
+								<left>-2</left>
+								<width min="50">auto</width>
+								<height>50</height>
+								<font>med18</font>
+								<textcolor>white</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<selectedcolor>white</selectedcolor>
+								<textoffsetx>20</textoffsetx>
+								<label>$LOCALIZE[31014]</label>
+								<texturefocus border="10" colordiffuse="emby">items/shadow_smallbutton.png</texturefocus>
+								<texturenofocus border="10" colordiffuse="grey">items/shadow_smallbutton.png</texturenofocus>
+								<onclick>ActivateWindow(movieinformation)</onclick>
+								<onup>SetFocus(6666)</onup>
+								<ondown>SetFocus(54)</ondown>
+							</control>
+							<control type="button" id="97">
+								<visible>Control.IsVisible(96)</visible>
+								<top>-2</top>
+								<left>-2</left>
+								<width min="50">auto</width>
+								<height>50</height>
+								<font>med18</font>
+								<textcolor>white</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<selectedcolor>white</selectedcolor>
+								<textoffsetx>20</textoffsetx>
+								<label>$LOCALIZE[31013]</label>
+								<texturefocus border="10" colordiffuse="emby">items/shadow_smallbutton.png</texturefocus>
+								<texturenofocus border="10" colordiffuse="grey">items/shadow_smallbutton.png</texturenofocus>
+								<onclick>RunScript(script.toolbox,info=textviewer,header=,text='$ESCINFO[ListItem.Plot]')</onclick>
+								<onup>SetFocus(6666)</onup>
+								<ondown>SetFocus(54)</ondown>
+							</control>
+						</control>
 						<control type="textbox">
 							<width>1040</width>
-							<height>235</height>
+							<height>145</height>
 							<align>justify</align>
 							<aligny>top</aligny>
 							<label>$INFO[ListItem.Plot]</label>
 							<font>Light24</font>
 							<shadowcolor>text_shadow</shadowcolor>
-						</control>			
+							<autoscroll>false</autoscroll>
+							<pagecontrol>96</pagecontrol>
+						</control>
 					</control>
 					<!-- logo -->
 					<control type="image">
@@ -186,174 +231,47 @@
 						<texture>$INFO[ListItem.Art(tvshow.clearlogo)]</texture>
 						<aspectratio>keep</aspectratio>
 					</control>
-				</control>
-				<control type="group">
-					<top>481</top>
-					<include content="widget_headline">
-						<param name="headline">$LOCALIZE[20360]</param>
-						<param name="left">65</param>
-					</include>
-					<control type="list" id="55">
-						<visible>Container.Content(episodes)</visible>
-						<top>30</top>
-						<width>1920</width>
-						<scrolltime>200</scrolltime>
-						<movement>6</movement>
-						<orientation>horizontal</orientation>
-						<preloaditems>4</preloaditems>
-						<ondown>302</ondown>
-						<include content="Bounce_Right">
-							<param name="id">55</param>
-						</include>
-						<onright>SetProperty(BounceRight,1,home)</onright>
-						<onright>noop</onright>
-						<onleft>9999</onleft>
-						<onup>7000</onup>
-						<pagecontrol>17</pagecontrol>
-						<viewtype label="$LOCALIZE[31007]">list</viewtype>
-						<itemlayout width="450">
-							<control type="group">							
-								<left>70</left>
-								<top>64</top>
-								<include content="LandscapeLayout_Size2">
-									<param name="mainlabel" value="$VAR[MainListLabel]" />
-									<param name="sublabel" value="$INFO[ListItem.Duration,, $LOCALIZE[12391]]" />
-									<param name="focused" value="false" />
-									<param name="id" value="55" />
-								</include>
-							</control>
-						</itemlayout>
-						<focusedlayout width="450">
-							<control type="group">							
-								<left>70</left>
-								<top>64</top>
-								<include content="LandscapeLayout_Size2">
-									<param name="mainlabel" value="$VAR[MainListLabel]" />
-									<param name="sublabel" value="$INFO[ListItem.Duration,, $LOCALIZE[12391]]" />
-									<param name="focused" value="true" />
-									<param name="id" value="55" />
-								</include>
-							</control>
-						</focusedlayout>
+					<control type="label" id="97">
+						<left>1420</left>
+						<top>380</top>
+						<width>auto</width>
+						<font>Material44</font>
+						<textcolor>panel_text</textcolor>
+						<label></label>
+						<visible>Control.IsVisible(96)</visible>
 					</control>
-					<include content="list_mask">
-						<param name="height" value="355"/>
-						<param name="width" value="75"/>
-						<param name="id" value="55"/>
-					</include>
-					<include content="ScrollbarHorizontal">
-						<param name="bottom" value="43"/>
-					</include>
 				</control>
 			</control>
-
+			<!-- Next Up -->
+			<include content="WideWidget">
+				<param name="id" value="55"/>
+				<param name="sublabel" value=""/>
+				<param name="sortby" value="playcount"/>
+				<param name="sortdirection" value="descending"/>
+				<param name="headline" value="$LOCALIZE[31012]"/>
+				<param name="onup" value="100"/>
+				<param name="ondown" value="200"/>
+				<param name="use_custom_content" value="false"/>				
+				<param name="content_visibility">Container.Content(episodes)</param>
+			</include>
 			<!-- Cast -->
-			<control type="group">
-				<width>1920</width>
-				<height>580</height>
-				<include content="widget_headline">
-					<param name="headline">$LOCALIZE[206]</param>
-					<param name="left">65</param>
-				</include>
-				<control type="list" id="302">
-					<top>30</top>
-					<width>1920</width>
-					<scrolltime>200</scrolltime>
-					<movement>6</movement>
-					<orientation>horizontal</orientation>
-					<preloaditems>4</preloaditems>
-					<ondown>303</ondown>
-					<onback>50</onback>
-					<include content="Bounce_Right">
-						<param name="id">302</param>
-					</include>
-					<onright>SetProperty(BounceRight,1,home)</onright>
-					<onright>noop</onright>
-					<onleft>9999</onleft>
-					<onup>55</onup>
-					<itemlayout width="257">
-						<control type="group">							
-							<left>70</left>
-							<top>64</top>
-							<include content="CastLayout">
-								<param name="focused" value="false" />
-								<param name="id" value="302" />
-							</include>
-						</control>
-					</itemlayout>
-					<focusedlayout width="257">
-						<control type="group">							
-							<left>70</left>
-							<top>64</top>
-							<include content="CastLayout">
-								<param name="focused" value="true" />
-								<param name="id" value="302" />
-							</include>
-						</control>
-					</focusedlayout>
-					<content>plugin://script.skin.helper.service/?action=getcast&amp;tvshow=$INFO[ListItem.TvShowTitle]</content>
-				</control>
-				<include content="list_mask">
-					<param name="height" value="355"/>
-					<param name="width" value="75"/>
-					<param name="id" value="302"/>
-				</include>
-			</control>
-
+			<include content="CastWidget">
+				<param name="id" value="200"/>
+				<param name="mainlabel" value="$INFO[ListItem.Label]"/>
+				<param name="sublabel" value="$INFO[ListItem.Label2]"/>
+				<param name="headline" value="$LOCALIZE[206]"/>
+				<param name="onup" value="55"/>
+				<param name="ondown" value="300"/>
+				<param name="content" value="plugin://script.skin.helper.service/?action=getcast&amp;tvshow=$INFO[ListItem.TvShowTitle]"/>
+			</include>
 			<!-- More like this -->
-			<control type="group">
-				<visible>Integer.IsGreater(Container(303).NumItems,0) | Container(303).IsUpdating</visible>
-				<width>1920</width>
-				<height>560</height>
-				<include content="widget_headline">
-					<param name="headline">$LOCALIZE[31002]</param>
-					<param name="left">65</param>
-				</include>
-				<control type="list" id="303">
-					<top>30</top>
-					<width>1920</width>
-					<scrolltime>200</scrolltime>
-					<movement>6</movement>
-					<orientation>horizontal</orientation>
-					<preloaditems>4</preloaditems>
-					<ondown>noop</ondown>
-					<onback>50</onback>
-					<include content="Bounce_Right">
-						<param name="id">303</param>
-					</include>
-					<onright>SetProperty(BounceRight,1,home)</onright>
-					<onright>noop</onright>
-					<onleft>9999</onleft>
-					<onup>302</onup>
-					<itemlayout width="257">
-						<control type="group">							
-							<left>70</left>
-							<top>64</top>
-							<include content="PosterLayout_Size2">
-								<param name="focused" value="false" />
-								<param name="id" value="303" />
-							</include>
-						</control>
-					</itemlayout>
-					<focusedlayout width="257">
-						<control type="group">							
-							<left>70</left>
-							<top>64</top>
-							<include content="PosterLayout_Size2">
-								<param name="focused" value="true" />
-								<param name="id" value="303" />
-							</include>
-						</control>
-					</focusedlayout>
-					<content>plugin://script.skin.helper.widgets/?action=similarshows&amp;imdbid=$INFO[Window(home).Property(TVShowDBID)]</content>
-				</control>
-				<include content="list_mask">
-					<param name="height" value="355"/>
-					<param name="width" value="75"/>
-					<param name="id" value="303"/>
-				</include>
-			</control>
-
+			<include content="PosterWidget">
+				<param name="id" value="300"/>
+				<param name="headline" value="$LOCALIZE[31002]"/>
+				<param name="content" value="plugin://script.skin.helper.widgets/?action=similarshows&amp;imdbid=$INFO[Window(home).Property(TVShowIMDB)]"/>
+				<param name="onup" value="200"/>
+				<param name="ondown" value="noop"/>
+			</include>
 		</control>
 	</include>
 </includes>
