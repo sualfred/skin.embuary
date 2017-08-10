@@ -23,6 +23,7 @@
 		<param name="visible_labels">true</param>
 		<param name="mainlabel">$VAR[MainListLabel]</param>
 		<param name="sublabel">$VAR[SubListLabel]</param>
+		<param name="textoffsetx" default="0">$PARAM[textoffsetx]</param>
 		<definition>
 			<control type="group">
 				<top>$PARAM[top]</top>
@@ -35,6 +36,7 @@
 					<shadowcolor>text_shadow</shadowcolor>
 					<scroll>$PARAM[focused]</scroll>
 					<align>center</align>
+					<textoffsetx>$PARAM[textoffsetx]</textoffsetx>
 				</control>
 				<control type="label">
 					<top>30</top>
@@ -45,6 +47,7 @@
 					<shadowcolor>text_shadow</shadowcolor>
 					<scroll>$PARAM[focused]</scroll>
 					<align>center</align>
+					<textoffsetx>$PARAM[textoffsetx]</textoffsetx>
 				</control>
 			</control>
 		</definition>
@@ -422,22 +425,22 @@
 				</control>
 				<control type="image">
 					<width>237</width>
+					<height>430</height>
+					<texture colordiffuse="panel" scalediffuse="false">common/white.jpg</texture>
+					<aspectratio>stretch</aspectratio>
+				</control>
+				<control type="image">
+					<width>237</width>
 					<height>355</height>
 					<texture colordiffuse="green" scalediffuse="false" diffuse="items/mask_poster_db.png">common/white.jpg</texture>
 					<aspectratio>stretch</aspectratio>
 					<visible>String.IsEmpty(ListItem.Art(thumb))</visible>
 				</control>
-				<control type="image">
-					<width>237</width>
-					<height>430</height>
-					<texture colordiffuse="panel" scalediffuse="false">common/white.jpg</texture>
-					<aspectratio>stretch</aspectratio>
-				</control>
 				<control type="textbox">
 					<top>10</top>
 					<left>10</left>
-					<width>217</width>
-					<height>410</height>
+					<width>237</width>
+					<height>335</height>
 					<font>Light24</font>
 					<align>center</align>
 					<aligny>center</aligny>
@@ -467,6 +470,7 @@
 					<param name="sublabel">$PARAM[sublabel]</param>
 					<param name="focused">$PARAM[focused]</param>
 					<param name="visible_labels">$PARAM[visible_labels]</param>
+					<param name="textoffsetx">5</param>
 				</include>
 			</control>
 		</definition>
@@ -560,7 +564,7 @@
 					</include>
 				</control>
 				<include content="progress">
-					<param name="top" value="234"/>
+					<param name="top" value="235"/>
 					<param name="width" value="424"/>
 				</include>
 				<control type="image">
