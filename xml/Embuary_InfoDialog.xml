@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+	<!-- movie -->
+	<include name="MovieInfoLayout">
+		<control type="grouplist" id="500">
+			<width>2130</width>
+			<height>100%</height>
+			<orientation>vertical</orientation>
+			<usecontrolcoords>true</usecontrolcoords>
+			<scrolltime tween="sine" easing="out">400</scrolltime>
+			<itemgap>-80</itemgap>
+			<!-- Meta -->
+			<control type="group">
+				<width>1920</width>
+				<height>604</height>
+				<control type="group">
+					<top>128</top>
+					<height>435</height>
+					<width>1920</width>
+					<!-- poster -->
+					<control type="group">
+						<left>70</left>
+						<control type="image">
+							<top>-2</top>
+							<left>-2</left>
+							<width>282</width>
+							<height>420</height>
+							<texture>items/shadow_poster.png</texture>
+						</control>
+						<control type="image">
+							<width>276</width>
+							<height>414</height>
+							<texture colordiffuse="green" scalediffuse="false" diffuse="items/mask_poster.png">common/white.jpg</texture>
+							<aspectratio>stretch</aspectratio>
+							<visible>String.IsEmpty(ListItem.Art(poster))</visible>
+						</control>
+						<control type="textbox">
+							<top>10</top>
+							<left>10</left>
+							<width>256</width>
+							<height>394</height>
+							<font>Light24</font>
+							<align>center</align>
+							<aligny>center</aligny>
+							<label>$INFO[ListItem.Label]</label>
+							<visible>String.IsEmpty(ListItem.Art(poster))</visible>
+						</control>
+						<control type="image">
+							<width>276</width>
+							<height>414</height>
+							<texture scalediffuse="false" diffuse="items/mask_poster.png" background="true">$INFO[ListItem.Art(poster)]</texture>
+							<aspectratio>scale</aspectratio>
+						</control>
+						<control type="group">
+							<width>276</width>
+							<height>414</height>
+							<control type="group">
+								<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
+								<right>8</right>
+								<top>9</top>
+								<width>44</width>
+								<height>44</height>
+								<control type="image">
+									<width>44</width>
+									<height>44</height>
+									<texture colordiffuse="emby">items/bubble_small.png</texture>
+									<aspectratio>keep</aspectratio>
+								</control>
+								<control type="label">
+									<top>9</top>
+									<left>2</left>
+									<width>44</width>
+									<height>44</height>
+									<label></label>
+									<font>FontAwesome20Light</font>
+									<shadowcolor>text_shadow</shadowcolor>
+									<align>center</align>
+								</control>
+							</control>
+						</control>
+					</control>
+					<!-- meta -->
+					<control type="grouplist">
+						<left>370</left>
+						<orientation>vertical</orientation>
+						<height>500</height>
+						<align>top</align>
+						<itemgap>0</itemgap>
+						<width>1480</width>
+						<control type="label">
+							<width>1040</width>
+							<height>60</height>
+							<label>$INFO[ListItem.Title]</label>
+							<font>Reg37</font>
+							<shadowcolor>text_shadow</shadowcolor>
+						</control>
+						<control type="grouplist">
+							<height>40</height>
+							<width>1040</width>
+							<itemgap>5</itemgap>
+							<orientation>horizontal</orientation>
+							<control type="label">
+								<width>auto</width>
+								<height>24</height>
+								<label></label>
+								<font>Material24</font>
+								<textcolor>red</textcolor>
+								<shadowcolor>text_shadow</shadowcolor>
+								<visible>!String.IsEmpty(ListItem.Rating)</visible>
+							</control>
+							<control type="label">
+								<width>auto</width>
+								<height>24</height>
+								<label>$INFO[ListItem.Rating]   </label>
+								<font>reg20</font>
+								<shadowcolor>text_shadow</shadowcolor>
+								<visible>!String.IsEmpty(ListItem.Rating)</visible>
+							</control>
+							<control type="label">
+								<width>auto</width>
+								<height>24</height>
+								<label>$LOCALIZE[20074]: $INFO[ListItem.Mpaa]   </label>
+								<font>reg20</font>
+								<shadowcolor>text_shadow</shadowcolor>
+								<visible>!String.IsEmpty(ListItem.Mpaa)</visible>
+							</control>
+							<control type="label">
+								<width>auto</width>
+								<height>24</height>
+								<label>$INFO[ListItem.Year]   </label>
+								<font>reg20</font>
+								<shadowcolor>text_shadow</shadowcolor>
+								<visible>!String.IsEmpty(ListItem.Year)</visible>
+							</control>
+						</control>
+						<control type="label">
+							<width>auto</width>
+							<height>40</height>
+							<label>$INFO[ListItem.Genre]</label>
+							<font>reg20</font>
+							<textcolor>emby</textcolor>
+							<shadowcolor>text_shadow</shadowcolor>
+						</control>
+						<control type="grouplist">
+							<orientation>horizontal</orientation>
+							<height>65</height>
+							<itemgap>5</itemgap>
+							<width>1040</width>
+							<include>MediaFlags</include>
+						</control>
+						<control type="grouplist" id="100">
+							<height>65</height>
+							<orientation>horizontal</orientation>
+							<itemgap>5</itemgap>
+							<include content="Bounce_Right">
+								<param name="id">100</param>
+							</include>
+							<onright>SetProperty(BounceRight,1,home)</onright>
+							<onright>noop</onright>
+							<onleft>9999</onleft>
+							<control type="button" id="8">
+								<top>-2</top>
+								<left>-2</left>
+								<width min="50">auto</width>
+								<height>50</height>
+								<font>med18</font>
+								<textcolor>white</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<selectedcolor>white</selectedcolor>
+								<textoffsetx>20</textoffsetx>
+								<label>$VAR[VideoInfoButton8]</label>
+								<texturefocus border="10" colordiffuse="emby">items/shadow_smallbutton.png</texturefocus>
+								<texturenofocus border="10" colordiffuse="grey">items/shadow_smallbutton.png</texturenofocus>
+								<onup>SetFocus(6666)</onup>
+								<ondown>SetFocus(50)</ondown>
+							</control>
+							<control type="button" id="97">
+								<visible>Control.IsVisible(96)</visible>
+								<top>-2</top>
+								<left>-2</left>
+								<width min="50">auto</width>
+								<height>50</height>
+								<font>med18</font>
+								<textcolor>white</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<selectedcolor>white</selectedcolor>
+								<textoffsetx>20</textoffsetx>
+								<label>Show full plot</label>
+								<texturefocus border="10" colordiffuse="emby">items/shadow_smallbutton.png</texturefocus>
+								<texturenofocus border="10" colordiffuse="grey">items/shadow_smallbutton.png</texturenofocus>
+								<onclick>RunScript(script.toolbox,info=textviewer,header=,text='$ESCINFO[ListItem.Plot]')</onclick>
+								<onup>SetFocus(6666)</onup>
+								<ondown>SetFocus(50)</ondown>
+							</control>
+							<control type="button" id="11">
+								<visible>!String.IsEmpty(ListItem.Trailer)</visible>
+								<top>-2</top>
+								<left>-2</left>
+								<width min="50">auto</width>
+								<height>50</height>
+								<font>med18</font>
+								<textcolor>white</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<selectedcolor>white</selectedcolor>
+								<textoffsetx>20</textoffsetx>
+								<label>$LOCALIZE[20410]</label>
+								<texturefocus border="10" colordiffuse="emby">items/shadow_smallbutton.png</texturefocus>
+								<texturenofocus border="10" colordiffuse="grey">items/shadow_smallbutton.png</texturenofocus>
+								<onup>SetFocus(6666)</onup>
+								<ondown>SetFocus(50)</ondown>
+							</control>
+							<control type="button" id="6">
+								<top>-2</top>
+								<left>-2</left>
+								<width min="50">auto</width>
+								<height>50</height>
+								<font>med18</font>
+								<textcolor>white</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<selectedcolor>white</selectedcolor>
+								<textoffsetx>20</textoffsetx>
+								<label>$LOCALIZE[184]</label>
+								<texturefocus border="10" colordiffuse="emby">items/shadow_smallbutton.png</texturefocus>
+								<texturenofocus border="10" colordiffuse="grey">items/shadow_smallbutton.png</texturenofocus>
+								<onup>SetFocus(6666)</onup>
+								<ondown>SetFocus(50)</ondown>
+							</control>
+						</control>
+						<control type="textbox">
+							<width>1040</width>
+							<height>145</height>
+							<align>justify</align>
+							<aligny>top</aligny>
+							<label>$INFO[ListItem.Plot]</label>
+							<font>Light24</font>
+							<shadowcolor>text_shadow</shadowcolor>
+							<autoscroll>false</autoscroll>
+							<pagecontrol>96</pagecontrol>
+						</control>
+					</control>
+					<!-- logo -->
+					<control type="image">
+						<right>70</right>
+						<width>400</width>
+						<height>155</height>
+						<texture>$INFO[ListItem.Art(clearlogo)]</texture>
+						<aspectratio>keep</aspectratio>
+					</control>
+					<control type="label" id="97">
+						<left>1420</left>
+						<top>380</top>
+						<width>auto</width>
+						<font>Material44</font>
+						<textcolor>panel_text</textcolor>
+						<label></label>
+						<visible>Control.IsVisible(96)</visible>
+					</control>
+				</control>
+			</control>
+			<!-- Cast -->
+			<include content="CastWidget">
+				<param name="id" value="50"/>
+				<param name="mainlabel" value="$INFO[ListItem.Label]"/>
+				<param name="sublabel" value="$INFO[ListItem.Label2]"/>
+				<param name="headline" value="$LOCALIZE[206]"/>
+				<param name="onup" value="100"/>
+				<param name="ondown" value="300"/>
+				<param name="use_custom_content" value="false"/>
+			</include>
+			<!-- More like this -->
+			<include content="PosterWidget">
+				<param name="id" value="300"/>
+				<param name="headline" value="$LOCALIZE[31002]"/>
+				<param name="content" value="plugin://script.skin.helper.widgets/?action=similar&amp;mediatype=movies&amp;imdbid=$INFO[ListItem.IMDBNumber]"/>
+				<param name="onup" value="50"/>
+				<param name="ondown" value="noop"/>
+			</include>
+		</control>
+	</include>
+	<!-- tvshow -->
+	<include name="TVShowInfoLayout">
+		<control type="grouplist" id="500">
+			<width>2130</width>
+			<height>100%</height>
+			<orientation>vertical</orientation>
+			<usecontrolcoords>true</usecontrolcoords>
+			<scrolltime tween="sine" easing="out">400</scrolltime>
+			<itemgap>-80</itemgap>
+			<!-- Meta -->
+			<control type="group">
+				<width>1920</width>
+				<height>604</height>
+				<control type="group">
+					<top>128</top>
+					<height>435</height>
+					<width>1920</width>
+					<!-- poster -->
+					<control type="group">
+						<left>70</left>
+						<control type="image">
+							<top>-2</top>
+							<left>-2</left>
+							<width>282</width>
+							<height>420</height>
+							<texture>items/shadow_poster.png</texture>
+						</control>
+						<control type="image">
+							<width>276</width>
+							<height>414</height>
+							<texture colordiffuse="green" scalediffuse="false" diffuse="items/mask_poster.png">common/white.jpg</texture>
+							<aspectratio>stretch</aspectratio>
+							<visible>String.IsEmpty(ListItem.Art(poster))</visible>
+						</control>
+						<control type="textbox">
+							<top>10</top>
+							<left>10</left>
+							<width>256</width>
+							<height>394</height>
+							<font>Light24</font>
+							<align>center</align>
+							<aligny>center</aligny>
+							<label>$INFO[ListItem.Label]</label>
+							<visible>String.IsEmpty(ListItem.Art(poster))</visible>
+						</control>
+						<control type="image">
+							<width>276</width>
+							<height>414</height>
+							<texture scalediffuse="false" diffuse="items/mask_poster.png" background="true">$INFO[ListItem.Art(poster)]</texture>
+							<aspectratio>scale</aspectratio>
+						</control>
+						<control type="group">
+							<width>276</width>
+							<height>414</height>
+							<control type="group">
+								<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
+								<right>8</right>
+								<top>9</top>
+								<width>44</width>
+								<height>44</height>
+								<control type="image">
+									<width>44</width>
+									<height>44</height>
+									<texture colordiffuse="emby">items/bubble_small.png</texture>
+									<aspectratio>keep</aspectratio>
+								</control>
+								<control type="label">
+									<top>9</top>
+									<left>2</left>
+									<width>44</width>
+									<height>44</height>
+									<label></label>
+									<font>FontAwesome20Light</font>
+									<shadowcolor>text_shadow</shadowcolor>
+									<align>center</align>
+								</control>
+							</control>
+						</control>
+					</control>
+					<!-- meta -->
+					<control type="grouplist">
+						<left>370</left>
+						<orientation>vertical</orientation>
+						<height>500</height>
+						<align>top</align>
+						<itemgap>0</itemgap>
+						<width>1480</width>
+						<control type="label">
+							<width>1040</width>
+							<height>60</height>
+							<label>$INFO[ListItem.Title]</label>
+							<font>Reg37</font>
+							<shadowcolor>text_shadow</shadowcolor>
+						</control>
+						<control type="grouplist">
+							<height>40</height>
+							<width>1040</width>
+							<itemgap>5</itemgap>
+							<orientation>horizontal</orientation>
+							<control type="label">
+								<width>auto</width>
+								<height>24</height>
+								<label></label>
+								<font>Material24</font>
+								<textcolor>red</textcolor>
+								<shadowcolor>text_shadow</shadowcolor>
+								<visible>!String.IsEmpty(ListItem.Rating)</visible>
+							</control>
+							<control type="label">
+								<width>auto</width>
+								<height>24</height>
+								<label>$INFO[ListItem.Rating]   </label>
+								<font>reg20</font>
+								<shadowcolor>text_shadow</shadowcolor>
+								<visible>!String.IsEmpty(ListItem.Rating)</visible>
+							</control>
+							<control type="label">
+								<width>auto</width>
+								<height>24</height>
+								<label>$INFO[ListItem.Property(TotalSeasons),$LOCALIZE[33054]: ]   </label>
+								<font>reg20</font>
+								<shadowcolor>text_shadow</shadowcolor>
+								<visible>!String.IsEmpty(ListItem.Property(TotalSeasons))</visible>
+							</control>
+							<control type="label">
+								<width>auto</width>
+								<height>24</height>
+								<label>$INFO[ListItem.Property(TotalEpisodes),$LOCALIZE[20360]: ]   </label>
+								<font>reg20</font>
+								<shadowcolor>text_shadow</shadowcolor>
+								<visible>!String.IsEmpty(ListItem.Property(TotalEpisodes))</visible>
+							</control>
+							<control type="label">
+								<width>auto</width>
+								<height>24</height>
+								<label>$LOCALIZE[20074]: $INFO[ListItem.Mpaa]   </label>
+								<font>reg20</font>
+								<shadowcolor>text_shadow</shadowcolor>
+								<visible>!String.IsEmpty(ListItem.Mpaa)</visible>
+							</control>
+							<control type="label">
+								<width>auto</width>
+								<height>24</height>
+								<label>$INFO[ListItem.Premiered,$LOCALIZE[20416]: ]   </label>
+								<font>reg20</font>
+								<shadowcolor>text_shadow</shadowcolor>
+								<visible>!String.IsEmpty(ListItem.Premiered)</visible>
+							</control>
+						</control>
+						<control type="label">
+							<width>auto</width>
+							<height>40</height>
+							<label>$INFO[ListItem.Genre]</label>
+							<font>reg20</font>
+							<textcolor>emby</textcolor>
+							<shadowcolor>text_shadow</shadowcolor>
+						</control>
+						<control type="grouplist">
+							<orientation>horizontal</orientation>
+							<height>65</height>
+							<itemgap>5</itemgap>
+							<width>1040</width>
+							<include>MediaFlags</include>
+						</control>
+						<control type="grouplist" id="100">
+							<height>65</height>
+							<orientation>horizontal</orientation>
+							<itemgap>5</itemgap>
+							<include content="Bounce_Right">
+								<param name="id">100</param>
+							</include>
+							<onright>SetProperty(BounceRight,1,home)</onright>
+							<onright>noop</onright>
+							<onleft>9999</onleft>
+							<control type="button" id="8">
+								<top>-2</top>
+								<left>-2</left>
+								<width min="50">auto</width>
+								<height>50</height>
+								<font>med18</font>
+								<textcolor>white</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<selectedcolor>white</selectedcolor>
+								<textoffsetx>20</textoffsetx>
+								<label>$VAR[VideoInfoButton8]</label>
+								<texturefocus border="10" colordiffuse="emby">items/shadow_smallbutton.png</texturefocus>
+								<texturenofocus border="10" colordiffuse="grey">items/shadow_smallbutton.png</texturenofocus>
+								<onup>SetFocus(6666)</onup>
+								<ondown>SetFocus(200)</ondown>
+							</control>
+							<control type="button" id="97">
+								<visible>Control.IsVisible(96)</visible>
+								<top>-2</top>
+								<left>-2</left>
+								<width min="50">auto</width>
+								<height>50</height>
+								<font>med18</font>
+								<textcolor>white</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<selectedcolor>white</selectedcolor>
+								<textoffsetx>20</textoffsetx>
+								<label>Show full plot</label>
+								<texturefocus border="10" colordiffuse="emby">items/shadow_smallbutton.png</texturefocus>
+								<texturenofocus border="10" colordiffuse="grey">items/shadow_smallbutton.png</texturenofocus>
+								<onclick>RunScript(script.toolbox,info=textviewer,header=,text='$ESCINFO[ListItem.Plot]')</onclick>
+								<onup>SetFocus(6666)</onup>
+								<ondown>SetFocus(200)</ondown>
+							</control>
+							<control type="button" id="11">
+								<visible>!String.IsEmpty(ListItem.Trailer)</visible>
+								<top>-2</top>
+								<left>-2</left>
+								<width min="50">auto</width>
+								<height>50</height>
+								<font>med18</font>
+								<textcolor>white</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<selectedcolor>white</selectedcolor>
+								<textoffsetx>20</textoffsetx>
+								<label>$LOCALIZE[20410]</label>
+								<texturefocus border="10" colordiffuse="emby">items/shadow_smallbutton.png</texturefocus>
+								<texturenofocus border="10" colordiffuse="grey">items/shadow_smallbutton.png</texturenofocus>
+								<onup>SetFocus(6666)</onup>
+								<ondown>SetFocus(200)</ondown>
+							</control>
+							<control type="button" id="6">
+								<top>-2</top>
+								<left>-2</left>
+								<width min="50">auto</width>
+								<height>50</height>
+								<font>med18</font>
+								<textcolor>white</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<selectedcolor>white</selectedcolor>
+								<textoffsetx>20</textoffsetx>
+								<label>$LOCALIZE[184]</label>
+								<texturefocus border="10" colordiffuse="emby">items/shadow_smallbutton.png</texturefocus>
+								<texturenofocus border="10" colordiffuse="grey">items/shadow_smallbutton.png</texturenofocus>
+								<onup>SetFocus(6666)</onup>
+								<ondown>SetFocus(200)</ondown>
+							</control>
+						</control>
+						<control type="textbox">
+							<width>1040</width>
+							<height>145</height>
+							<align>justify</align>
+							<aligny>top</aligny>
+							<label>$INFO[ListItem.Plot]</label>
+							<font>Light24</font>
+							<shadowcolor>text_shadow</shadowcolor>
+							<autoscroll>false</autoscroll>
+							<pagecontrol>96</pagecontrol>
+						</control>
+					</control>
+					<!-- logo -->
+					<control type="image">
+						<right>70</right>
+						<width>400</width>
+						<height>155</height>
+						<texture>$INFO[ListItem.Art(clearlogo)]</texture>
+						<aspectratio>keep</aspectratio>
+					</control>
+					<control type="label" id="97">
+						<left>1420</left>
+						<top>380</top>
+						<width>auto</width>
+						<font>Material44</font>
+						<textcolor>panel_text</textcolor>
+						<label></label>
+						<visible>Control.IsVisible(96)</visible>
+					</control>
+				</control>
+			</control>
+			<!-- Next Up -->
+			<include content="WideWidget">
+				<param name="id" value="200"/>
+				<param name="sublabel" value=""/>
+				<param name="sortby" value="playcount"/>
+				<param name="sortdirection" value="descending"/>
+				<param name="content" value="videodb://inprogresstvshows/$INFO[ListItem.DBID]/-2/?tvshowid=$INFO[ListItem.DBID]"/>
+				<param name="headline" value="$LOCALIZE[31012]"/>
+				<param name="onup" value="100"/>
+				<param name="ondown" value="50"/>
+			</include>
+			<!-- Cast -->
+			<include content="CastWidget">
+				<param name="id" value="50"/>
+				<param name="mainlabel" value="$INFO[ListItem.Label]"/>
+				<param name="sublabel" value="$INFO[ListItem.Label2]"/>
+				<param name="headline" value="$LOCALIZE[206]"/>
+				<param name="onup" value="200"/>
+				<param name="ondown" value="300"/>
+				<param name="use_custom_content" value="false"/>
+			</include>
+			<!-- More like this -->
+			<include content="PosterWidget">
+				<param name="id" value="300"/>
+				<param name="headline" value="$LOCALIZE[31002]"/>
+				<param name="content" value="plugin://script.skin.helper.widgets/?action=similarshows&amp;imdbid=$INFO[ListItem.IMDBNumber]"/>
+				<param name="onup" value="50"/>
+				<param name="ondown" value="noop"/>
+			</include>
+		</control>
+	</include>
+</includes>
