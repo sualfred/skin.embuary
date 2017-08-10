@@ -3,182 +3,138 @@
 	<defaultcontrol always="true">9000</defaultcontrol>
 	<backgroundcolor>background</backgroundcolor>
 	<controls>
-		<include>DefaultBackground</include>
-		<control type="multiimage">
-			<depth>DepthBackground</depth>
-			<include>FullScreenDimensions</include>
-			<aspectratio>scale</aspectratio>
-			<animation effect="zoom" center="auto" end="102,102" time="0" condition="Integer.IsGreater(System.StereoscopicMode,0)">conditional</animation>
-			<animation effect="fade" start="0" end="100" time="400" reversible="true" condition="!Window.Previous(SettingsCategory.xml)">WindowOpen</animation>
-			<animation effect="fade" start="100" end="0" time="300" reversible="true" condition="!Window.Next(SettingsCategory.xml)">WindowClose</animation>
-			<animation effect="fade" time="400">VisibleChange</animation>
-			<imagepath colordiffuse="35FFFFFF">$INFO[Skin.String(HomeFanart.path)]settings$INFO[Skin.String(HomeFanart.ext)]</imagepath>
-			<visible>!Player.HasMedia + !String.IsEmpty(Skin.String(HomeFanart.path))</visible>
+		<!-- Background -->
+		<include content="Background"/>
+		<!-- Settings -->
+		<control type="group">
+			<animation condition="Integer.IsGreater(Container(9000).NumItems,6) + Integer.IsLess(Container(9000).NumItems,10)" effect="slide" start="0,0" end="222,0">Conditional</animation>
+			<animation condition="Integer.IsGreater(Container(9000).NumItems,3) + Integer.IsLess(Container(9000).NumItems,7)" effect="slide" start="0,0" end="444,0">Conditional</animation>
+			<animation condition="Integer.IsLess(Container(9000).NumItems,4)" effect="slide" start="0,0" end="666,0">Conditional</animation>
+			<!-- wide -->
+			<control id="9000" type="panel">
+				<top>77</top>
+				<width>1920</width>
+				<height>1080</height>
+				<onup condition="Control.IsVisible(7000)">SetFocus(7000)</onup>
+				<onup condition="!Control.IsVisible(7000)">SetFocus(6666)</onup>
+				<ondown>noop</ondown>
+				<onleft>9999</onleft>
+				<onright>noop</onright>
+				<scrolltime>200</scrolltime>
+				<movement>2</movement>
+				<orientation>horizontal</orientation>
+				<preloaditems>4</preloaditems>
+				<defaultcontrol always="true">0</defaultcontrol>
+				<viewtype label="$LOCALIZE[31004]">panel</viewtype>
+				<pagecontrol>17</pagecontrol>
+				<itemlayout width="444" height="305">
+					<control type="group">
+						<left>82</left>
+						<top>64</top>
+						<include content="LandscapeLayout">
+							<param name="focused" value="false" />
+							<param name="id" value="9000" />
+						</include>
+					</control>
+				</itemlayout>
+				<focusedlayout width="444" height="305">
+					<include>SetPropertyOnFocus</include>
+					<control type="group">							
+						<left>82</left>
+						<top>64</top>
+						<include content="LandscapeLayout">
+							<param name="focused" value="true" />
+							<param name="id" value="9000" />
+						</include>
+					</control>
+				</focusedlayout>				
+				<content>
+					<item>
+						<label>$LOCALIZE[14201]</label>
+						<onclick>ActivateWindow(PlayerSettings)</onclick>
+						<icon>icons/settings/player.png</icon>
+					</item>
+					<item>
+						<label>$LOCALIZE[14212]</label>
+						<onclick>ActivateWindow(MediaSettings)</onclick>
+						<icon>icons/settings/media.png</icon>
+					</item>
+					<item>
+						<label>$LOCALIZE[14205]</label>
+						<onclick>ActivateWindow(PVRSettings)</onclick>
+						<icon>icons/settings/livetv.png</icon>
+					</item>
+					<item>
+						<label>$LOCALIZE[14208]</label>
+						<onclick>ActivateWindow(ServiceSettings)</onclick>
+						<icon>icons/settings/network.png</icon>
+					</item>
+					<item>
+						<label>$LOCALIZE[14207]</label>
+						<onclick>ActivateWindow(InterfaceSettings)</onclick>
+						<icon>icons/settings/interface.png</icon>
+					</item>
+					<item>
+						<label>$LOCALIZE[20077]</label>
+						<onclick>ActivateWindow(SkinSettings)</onclick>
+						<icon>icons/settings/skin.png</icon>
+					</item>
+					<item>
+						<label>$LOCALIZE[14210]</label>
+						<onclick>ActivateWindow(Profiles)</onclick>
+						<icon>icons/settings/profiles.png</icon>
+					</item>
+					<item>
+						<label>$LOCALIZE[14209]</label>
+						<onclick>ActivateWindow(SystemSettings)</onclick>
+						<icon>icons/settings/system.png</icon>
+					</item>
+					<item>
+						<label>LibreELEC</label>
+						<onclick>RunAddon(service.libreelec.settings)</onclick>
+						<icon>icons/settings/libreelec.png</icon>
+						<visible>System.HasAddon(service.libreelec.settings)</visible>
+					</item>
+					<item>
+						<label>$LOCALIZE[138]</label>
+						<onclick>ActivateWindow(systeminfo)</onclick>
+						<icon>icons/settings/sysinfo.png</icon>
+					</item>
+					<item>
+						<label>Event Log</label>
+						<onclick>ActivateWindow(eventlog)</onclick>
+						<icon>icons/settings/eventlog.png</icon>
+					</item>
+					<item>
+						<label>$LOCALIZE[10003]</label>
+						<onclick>ActivateWindow(filemanager)</onclick>
+						<icon>icons/settings/filemanager.png</icon>
+					</item>
+					<item>
+						<label>$LOCALIZE[24001]</label>
+						<onclick>ActivateWindow(addonbrowser)</onclick>
+						<icon>icons/settings/addons.png</icon>
+					</item>
+				</content>
+			</control>
+			<include content="list_mask">
+				<param name="height" value="1022"/>
+				<param name="width" value="75"/>
+				<param name="top" value="58"/>
+				<param name="id" value="9000"/>
+				<param name="visible_forced" value="true"/>
+			</include>
+			<include content="ScrollbarHorizontal"/>
 		</control>
-		<control type="panel" id="9000">
-			<centerleft>50%</centerleft>
-			<width>1720</width>
-			<centertop>50%</centertop>
-			<height>870</height>
-			<onleft>9000</onleft>
-			<onright>9000</onright>
-			<onup>9000</onup>
-			<ondown>9000</ondown>
-			<include>OpenClose_Right</include>
-			<itemlayout height="290" width="430">
-				<control type="image">
-					<width>430</width>
-					<height>270</height>
-					<texture>dialogs/dialog-bg-nobo.png</texture>
-					<bordertexture border="21">overlays/shadow.png</bordertexture>
-					<bordersize>20</bordersize>
-				</control>
-				<control type="image">
-					<left>20</left>
-					<top>180</top>
-					<width>390</width>
-					<height>70</height>
-					<texture colordiffuse="border_alpha">colors/black.png</texture>
-				</control>
-				<control type="image">
-					<centerleft>50%</centerleft>
-					<top>20</top>
-					<width>240</width>
-					<height>160</height>
-					<texture>$INFO[ListItem.Icon]</texture>
-					<align>center</align>
-					<aspectratio>scale</aspectratio>
-				</control>
-				<control type="label">
-					<left>30</left>
-					<top>190</top>
-					<width>370</width>
-					<height>400</height>
-					<label>$INFO[ListItem.Label]</label>
-					<align>center</align>
-				</control>
-			</itemlayout>
-			<focusedlayout height="290" width="430">
-				<control type="group">
-					<depth>DepthContentPopout</depth>
-					<animation type="Focus" reversible="false">
-						<effect type="zoom" center="200,125" start="100" end="108" time="250" tween="sine" />
-					</animation>
-					<animation type="UnFocus" reversible="false">
-						<effect type="zoom" center="200,125" start="108" end="100" time="250" tween="sine" />
-					</animation>
-					<control type="image">
-						<width>430</width>
-						<height>270</height>
-						<texture>dialogs/dialog-bg-nobo.png</texture>
-						<bordertexture border="21">overlays/shadow.png</bordertexture>
-						<bordersize>20</bordersize>
-					</control>
-					<control type="image">
-						<width>430</width>
-						<height>270</height>
-						<texture colordiffuse="button_focus">colors/grey.png</texture>
-						<bordersize>20</bordersize>
-						<include>Animation_FocusTextureFade</include>
-					</control>
-					<control type="image">
-						<left>20</left>
-						<top>180</top>
-						<width>390</width>
-						<height>70</height>
-						<texture colordiffuse="border_alpha">colors/black.png</texture>
-					</control>
-					<control type="image">
-						<centerleft>50%</centerleft>
-						<top>20</top>
-						<width>240</width>
-						<height>160</height>
-						<texture>$INFO[ListItem.Icon]</texture>
-						<align>center</align>
-						<aspectratio>scale</aspectratio>
-					</control>
-					<control type="label">
-						<left>30</left>
-						<top>190</top>
-						<width>370</width>
-						<height>400</height>
-						<label>$INFO[ListItem.Label]</label>
-						<align>center</align>
-					</control>
-				</control>
-			</focusedlayout>
-			<content>
-				<item>
-					<label>$LOCALIZE[14201]</label>
-					<onclick>ActivateWindow(PlayerSettings)</onclick>
-					<icon>icons/settings/player.png</icon>
-				</item>
-				<item>
-					<label>$LOCALIZE[14212]</label>
-					<onclick>ActivateWindow(MediaSettings)</onclick>
-					<icon>icons/settings/media.png</icon>
-				</item>
-				<item>
-					<label>$LOCALIZE[14205]</label>
-					<onclick>ActivateWindow(PVRSettings)</onclick>
-					<icon>icons/settings/livetv.png</icon>
-				</item>
-				<item>
-					<label>$LOCALIZE[14208]</label>
-					<onclick>ActivateWindow(ServiceSettings)</onclick>
-					<icon>icons/settings/network.png</icon>
-				</item>
-				<item>
-					<label>$LOCALIZE[14207]</label>
-					<onclick>ActivateWindow(InterfaceSettings)</onclick>
-					<icon>icons/settings/interface.png</icon>
-				</item>
-				<item>
-					<label>$LOCALIZE[20077]</label>
-					<onclick>ActivateWindow(SkinSettings)</onclick>
-					<icon>icons/settings/skin.png</icon>
-				</item>
-				<item>
-					<label>$LOCALIZE[14210]</label>
-					<onclick>ActivateWindow(Profiles)</onclick>
-					<icon>icons/settings/profiles.png</icon>
-				</item>
-				<item>
-					<label>$LOCALIZE[14209]</label>
-					<onclick>ActivateWindow(SystemSettings)</onclick>
-					<icon>icons/settings/system.png</icon>
-				</item>
-				<item>
-					<label>LibreELEC</label>
-					<onclick>RunAddon(service.libreelec.settings)</onclick>
-					<icon>icons/settings/libreelec.png</icon>
-					<visible>System.HasAddon(service.libreelec.settings)</visible>
-				</item>
-				<item>
-					<label>$LOCALIZE[138]</label>
-					<onclick>ActivateWindow(systeminfo)</onclick>
-					<icon>icons/settings/sysinfo.png</icon>
-				</item>
-				<item>
-					<label>$LOCALIZE[31067]</label>
-					<onclick>ActivateWindow(eventlog)</onclick>
-					<icon>icons/settings/eventlog.png</icon>
-				</item>
-				<item>
-					<label>$LOCALIZE[10003]</label>
-					<onclick>ActivateWindow(filemanager)</onclick>
-					<icon>icons/settings/filemanager.png</icon>
-				</item>
-				<!-- <item>
-					<label>$LOCALIZE[24001]</label>
-					<onclick>ActivateWindow(addonbrowser)</onclick>
-					<icon>icons/settings/addons.png</icon>
-				</item> -->
-			</content>
-		</control>
-		<include content="TopBar">
-			<param name="breadcrumbs_label" value="$LOCALIZE[13000]" />
+		<!-- header bar -->
+		<include content="HeaderBar">		
+			<param name="id">9000</param>
+			<param name="enabled">false</param>
+			<param name="sidebar_id">9999</param>
 		</include>
-		<include>BottomBar</include>
+		<!-- side panel -->
+		<include content="SidePanel">
+			<param name="onright">9000</param>
+		</include>
 	</controls>
 </window>
