@@ -90,6 +90,7 @@
 	<!-- HeaderBar -->
 	<include name="HeaderBar">
 		<param name="id">10</param>
+		<param name="sidebar_id">9999</param>
 		<param name="enabled">true</param>
 		<param name="custom_animation">false</param>
 		<param name="header_label">$VAR[ContainerContent]</param>
@@ -188,6 +189,16 @@
 						<focusedcolor>emby</focusedcolor>
 						<onclick>noop</onclick>
 						<visible>Window.IsActive(videos)</visible>
+					</control>
+					<control type="button" id="66664">
+						<include>NoTextures</include>
+						<width>auto</width>
+						<font>med17</font>
+						<textcolor>panel_text</textcolor>
+						<focusedcolor>emby</focusedcolor>
+						<label>$LOCALIZE[19141]: $INFO[Control.GetLabel(30)]</label>
+						<onclick>SendClick(28)</onclick>
+						<visible>Window.IsActive(MyPVRChannels.xml) | Window.IsActive(MyPVRGuide.xml)</visible>
 					</control>
 				</control>
 				<control type="label">

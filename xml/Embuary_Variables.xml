@@ -4,6 +4,16 @@
 		<!--folder-->
 		<value condition="true"></value>
 	</variable>
+	<variable name="ContainerContent">
+		<value condition="Window.IsVisible(movieinformation) + String.IsEqual(ListItem.DBType,tvshow)">$LOCALIZE[20351]</value>
+		<value condition="Window.IsVisible(movieinformation) + String.IsEqual(ListItem.DBType,movie)">$LOCALIZE[10524]</value>
+		<value condition="!String.IsEmpty(Container.ShowTitle)">$INFO[Container.ShowTitle]</value>
+		<value condition="Window.IsVisible(tvguide) | Window.IsVisible(radioguide)">$LOCALIZE[19069]</value>
+		<value condition="String.StartsWith(Container.FolderPath,videodb://movies)">$LOCALIZE[342]</value>
+		<value condition="String.StartsWith(Container.FolderPath,videodb://tvshows)">$LOCALIZE[20343]</value>
+		<value condition="String.StartsWith(Container.FolderPath,musicdb://)">$LOCALIZE[2]</value>
+		<value>$INFO[Container.Foldername]</value>
+	</variable>
 	<variable name="IconLandscape">
 		<value condition="[[Control.IsVisible(54) + Container.Content(seasons)] | Window.IsVisible(movieinformation)] + !String.IsEmpty(ListItem.Art(thumb))">$INFO[ListItem.Art(thumb)]</value>
 		<value condition="[[Control.IsVisible(54) + Container.Content(seasons)] | Window.IsVisible(movieinformation)] + !String.IsEmpty(ListItem.Art(landscape))">$INFO[ListItem.Art(landscape)]</value>
@@ -39,15 +49,8 @@
 		<value condition="Control.IsVisible(51)">51</value>
 		<value condition="Control.IsVisible(52)">52</value>
 		<value condition="Control.IsVisible(53)">53</value>
-	</variable>
-	<variable name="ContainerContent">
-		<value condition="Window.IsVisible(movieinformation) + String.IsEqual(ListItem.DBType,tvshow)">$LOCALIZE[20351]</value>
-		<value condition="Window.IsVisible(movieinformation) + String.IsEqual(ListItem.DBType,movie)">$LOCALIZE[10524]</value>
-		<value condition="!String.IsEmpty(Container.ShowTitle)">$INFO[Container.ShowTitle]</value>
-		<value condition="String.StartsWith(Container.FolderPath,videodb://movies)">$LOCALIZE[342]</value>
-		<value condition="String.StartsWith(Container.FolderPath,videodb://tvshows)">$LOCALIZE[20343]</value>
-		<value condition="String.StartsWith(Container.FolderPath,musicdb://)">$LOCALIZE[2]</value>
-		<value>$INFO[Container.Foldername]</value>
+		<value condition="Control.IsVisible(54)">54</value>
+		<value condition="Control.IsVisible(55)">55</value>
 	</variable>
 	<variable name="ListItemResolution">
 		<value condition="Integer.IsLess(ListItem.VideoResolution,710)">SD</value>
