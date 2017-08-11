@@ -2,6 +2,9 @@
 <includes>
 	<!-- movie -->
 	<include name="MovieInfoLayout">
+		<!-- Background -->
+		<include>Background</include>
+		<!-- Dialog -->
 		<control type="grouplist" id="500">
 			<width>2130</width>
 			<height>100%</height>
@@ -185,10 +188,10 @@
 								<focusedcolor>white</focusedcolor>
 								<selectedcolor>white</selectedcolor>
 								<textoffsetx>20</textoffsetx>
-								<label>Show full plot</label>
+								<label>$LOCALIZE[31013]</label>
 								<texturefocus border="10" colordiffuse="emby">items/shadow_smallbutton.png</texturefocus>
 								<texturenofocus border="10" colordiffuse="grey">items/shadow_smallbutton.png</texturenofocus>
-								<onclick>RunScript(script.toolbox,info=textviewer,header=,text='$ESCINFO[ListItem.Plot]')</onclick>
+								<onclick>RunScript(script.toolbox,info=textviewer,header=,text='$ESCVAR[TinyInfoDialogPlot]')</onclick>
 								<onup>SetFocus(6666)</onup>
 								<ondown>SetFocus(50)</ondown>
 							</control>
@@ -279,6 +282,9 @@
 	</include>
 	<!-- tvshow -->
 	<include name="TVShowInfoLayout">
+		<!-- Background -->
+		<include>Background</include>
+		<!-- Dialog -->
 		<control type="grouplist" id="500">
 			<width>2130</width>
 			<height>100%</height>
@@ -478,10 +484,10 @@
 								<focusedcolor>white</focusedcolor>
 								<selectedcolor>white</selectedcolor>
 								<textoffsetx>20</textoffsetx>
-								<label>Show full plot</label>
+								<label>$LOCALIZE[31013]</label>
 								<texturefocus border="10" colordiffuse="emby">items/shadow_smallbutton.png</texturefocus>
 								<texturenofocus border="10" colordiffuse="grey">items/shadow_smallbutton.png</texturenofocus>
-								<onclick>RunScript(script.toolbox,info=textviewer,header=,text='$ESCINFO[ListItem.Plot]')</onclick>
+								<onclick>RunScript(script.toolbox,info=textviewer,header=,text='$ESCVAR[TinyInfoDialogPlot]')</onclick>
 								<onup>SetFocus(6666)</onup>
 								<ondown>SetFocus(200)</ondown>
 							</control>
@@ -579,6 +585,57 @@
 				<param name="onup" value="50"/>
 				<param name="ondown" value="noop"/>
 			</include>
+		</control>
+	</include>
+	<!-- tiny -->
+	<include name="TinyInfoLayout">
+		<control type="group">
+			<include>Dialog_PopupOpenClose</include>
+			<include content="DiffuseMask">
+				<param name="visible">true</param>
+			</include>
+			<control type="group">
+				<centerleft>50%</centerleft>
+				<centertop>50%</centertop>
+				<width>773</width>
+				<height>660</height>
+				<control type="image">
+					<width>773</width>
+					<height>660</height>
+					<texture border="10">common/dialog_back.png</texture>
+				</control>
+				<control id="10" type="textbox">
+					<centerleft>50%</centerleft>
+					<centertop>50%</centertop>
+					<width>688</width>
+					<height>580</height>
+					<font>Reg30Spaced</font>
+					<textcolor>white</textcolor>
+					<shadowcolor>text_shadow</shadowcolor>
+					<pagecontrol>100</pagecontrol>
+					<autoscroll>false</autoscroll>
+					<align>justify</align>
+					<aligny>center</aligny>
+					<label>$VAR[TinyInfoDialogPlot]</label>
+				</control>
+				<!-- Scrollbar -->
+				<control id="100" type="scrollbar">
+					<right>5</right>
+					<top>5</top>
+					<width>5</width>
+					<height>650</height>
+					<onup>noop</onup>
+					<ondown>noop</ondown>
+					<onleft>Close</onleft>
+					<onright>Close</onright>
+					<showonepage>false</showonepage>
+					<orientation>vertical</orientation>
+					<texturesliderbackground colordiffuse="black">common/ProgressBack.png</texturesliderbackground>
+					<texturesliderbar colordiffuse="emby">common/ProgressBar.png</texturesliderbar>
+					<texturesliderbarfocus colordiffuse="emby">common/ProgressBar.png</texturesliderbarfocus>
+					<visible allowhiddenfocus="true">Control.HasFocus(3000)</visible>
+				</control>
+			</control>
 		</control>
 	</include>
 </includes>

@@ -1,75 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <window>
-	<defaultcontrol always="true">1000</defaultcontrol>
-	<include>Animation_DialogPopupOpenClose</include>
+	<defaultcontrol always="true">3000</defaultcontrol>
+	<include>Dialog_PopupOpenClose</include>
+	<onunload>ClearProperty(OpenTextViewer,home)</onunload>
+	<onunload>ClearProperty(NoLabel,home)</onunload>
 	<controls>
+		<control id="1" type="label">
+			<font>-</font>
+		</control>
+		<control id="5" type="textbox">
+			<font>-</font>
+		</control>
+		<include content="DiffuseMask">
+			<param name="visible">true</param>
+		</include>
 		<control type="group">
-			<left>13%</left>
+			<centerleft>50%</centerleft>
 			<centertop>50%</centertop>
-			<height>770</height>
-			<include content="DialogBackgroundCommons">
-				<param name="width" value="84%" />
-				<param name="height" value="770" />
-				<param name="header_label" value="$LOCALIZE[13406]" />
-				<param name="header_id" value="1" />
-			</include>
-			<control type="textbox" id="5">
-				<left>1%</left>
-				<top>85</top>
-				<width>82%</width>
-				<height>647</height>
-				<shadowcolor>black</shadowcolor>
+			<width>773</width>
+			<height>660</height>
+			<control type="image">
+				<width>773</width>
+				<height>660</height>
+				<texture border="10">common/dialog_back.png</texture>
+			</control>
+			<control id="10" type="textbox">
+				<centerleft>50%</centerleft>
+				<centertop>50%</centertop>
+				<width>688</width>
+				<height>580</height>
+				<font>Reg30Spaced</font>
+				<textcolor>white</textcolor>
+				<shadowcolor>text_shadow</shadowcolor>
 				<pagecontrol>3000</pagecontrol>
-				<font>font14</font>
+				<autoscroll>false</autoscroll>
+				<align>justify</align>
+				<aligny>center</aligny>
+				<label>$INFO[Control.GetLabel(5),[LIGHT],[/LIGHT]]</label>
+				<visible>!String.IsEmpty(Window(home).Property(NoLabel))</visible>
 			</control>
-			<control type="scrollbar" id="3000">
-				<include>HiddenObject</include>
-				<ondown>3000</ondown>
-				<onup>3000</onup>
+			<control id="10" type="textbox">
+				<centerleft>50%</centerleft>
+				<centertop>50%</centertop>
+				<width>688</width>
+				<height>580</height>
+				<font>Reg30Spaced</font>
+				<textcolor>white</textcolor>
+				<shadowcolor>text_shadow</shadowcolor>
+				<pagecontrol>3000</pagecontrol>
+				<autoscroll>false</autoscroll>
+				<align>justify</align>
+				<aligny>center</aligny>
+				<label>$INFO[Control.GetLabel(1),[B],[/B][CR]]$INFO[Control.GetLabel(5),[LIGHT],[/LIGHT]]</label>
+				<visible>String.IsEmpty(Window(home).Property(NoLabel))</visible>
 			</control>
-		</control>
-		<control type="button" id="1000">
-			<include>HiddenObject</include>
-			<onclick>Action(Close)</onclick>
-			<onup>PageUp(3000)</onup>
-			<ondown>PageDown(3000)</ondown>
-		</control>
-		<control type="button">
-			<centerleft>50%</centerleft>
-			<top>113</top>
-			<width>48</width>
-			<height>20</height>
-			<texturefocus colordiffuse="button_focus" flipy="true">overlays/arrowdown.png</texturefocus>
-			<texturenofocus colordiffuse="button_focus" flipy="true">overlays/arrowdown.png</texturenofocus>
-			<onclick>SetFocus(3000)</onclick>
-			<onclick>Up</onclick>
-			<visible>Control.IsVisible(3000) + Integer.IsGreater(Container(5).CurrentPage,1)</visible>
-			<animation effect="zoom" start="100,0" end="100,100" center="auto" time="200" delay="10">VisibleChange</animation>
-		</control>
-		<control type="button">
-			<centerleft>50%</centerleft>
-			<top>940</top>
-			<width>48</width>
-			<height>20</height>
-			<onclick>SetFocus(3000)</onclick>
-			<onclick>Down</onclick>
-			<texturefocus colordiffuse="button_focus">overlays/arrowdown.png</texturefocus>
-			<texturenofocus colordiffuse="button_focus">overlays/arrowdown.png</texturenofocus>
-			<visible>Control.IsVisible(3000) + !String.IsEqual(Container(5).CurrentPage,Container(5).NumPages)</visible>
-			<animation effect="zoom" start="100,0" end="100,100" center="auto" time="200" delay="10">VisibleChange</animation>
-		</control>
-		<control type="label">
-			<left>1310</left>
-			<top>880</top>
-			<width>330</width>
-			<height>35</height>
-			<font>font12</font>
-			<textcolor>grey</textcolor>
-			<align>right</align>
-			<aligny>center</aligny>
-			<label>$LOCALIZE[31035] [COLOR=button_focus]$INFO[Container(5).CurrentPage]/$INFO[Container(5).NumPages][/COLOR]</label>
-			<wrapmultiline>true</wrapmultiline>
-			<visible>Integer.IsGreater(Container(5).NumPages,1)</visible>
+			<!-- Scrollbar -->
+			<control id="3000" type="scrollbar">
+				<right>5</right>
+				<top>5</top>
+				<width>5</width>
+				<height>650</height>
+				<onup>noop</onup>
+				<ondown>noop</ondown>
+				<onleft>Close</onleft>
+				<onright>Close</onright>
+				<showonepage>false</showonepage>
+				<orientation>vertical</orientation>
+				<texturesliderbackground colordiffuse="black">common/ProgressBack.png</texturesliderbackground>
+				<texturesliderbar colordiffuse="emby">common/ProgressBar.png</texturesliderbar>
+				<texturesliderbarfocus colordiffuse="emby">common/ProgressBar.png</texturesliderbarfocus>
+				<visible allowhiddenfocus="true">Control.HasFocus(3000)</visible>
+			</control>
 		</control>
 	</controls>
 </window>

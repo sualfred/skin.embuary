@@ -71,5 +71,10 @@
 		<value condition="!String.IsEqual(ListItem.DBType,tvshow) + !String.IsEqual(ListItem.DBType,season)">$LOCALIZE[31010]</value>
 		<value>$LOCALIZE[31011]</value>
 	</variable>
-
+	<variable name="TinyInfoDialogPlot">
+		<value condition="String.IsEqual(ListItem.DBType,Episode)">[B]$INFO[ListItem.TvShowTitle,,[CR]]$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, ]$INFO[ListItem.Title,,[CR]][/B]$INFO[ListItem.Plot]</value>
+		<value condition="String.IsEqual(ListItem.DBType,Season)">$INFO[ListItem.TVShowTitle,[B],[/B][CR]]$INFO[ListItem.Plot]</value>
+		<value condition="String.IsEqual(ListItem.DBType,TVShow)">$INFO[ListItem.TVShowTitle,[B],[/B][CR]]$INFO[ListItem.Plot]</value>
+		<value>$INFO[ListItem.Title,[B],[/B][CR]]$INFO[ListItem.Plot]</value>
+	</variable>
 </includes>

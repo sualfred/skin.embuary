@@ -10,16 +10,10 @@
 			<showonepage>false</showonepage>
 			<orientation>vertical</orientation>
 		</control>
-		<!-- Background -->
-		<include content="Background">
-			<param name="id" value="$VAR[VisibleContainer]"/>
-		</include>
 		<!-- Content -->
-
 		<include condition="String.IsEqual(ListItem.DBType,movie)">MovieInfoLayout</include>
 		<include condition="String.IsEqual(ListItem.DBType,tvshow)">TVShowInfoLayout</include>
 		<include condition="!String.IsEqual(ListItem.DBType,movie) + !String.IsEqual(ListItem.DBType,tvshow)">TinyInfoLayout</include>
-
 		<!-- header bar -->
 		<include content="HeaderBar">		
 			<param name="id">100</param>
