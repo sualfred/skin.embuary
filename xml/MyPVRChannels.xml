@@ -11,14 +11,14 @@
 	<onunload>ClearProperty(TVShowTotalSeasons,home)</onunload>
 	<onunload>ClearProperty(TVShowTotalEpisodes,home)</onunload>-->
 	<controls>
-
+		<control type="label" id="29">
+			<include>HiddenObject</include>
+		</control>
 		<include content="Background">
 			<param name="id" value="$VAR[VisibleContainer]"/>
 		</include>
-
 		<control type="group">	
 			<include>Window_OpenClose</include>
-
 			<include content="Wide_View_50">
 				<param name="mainlabel">$INFO[ListItem.StartTime,, - ]$INFO[ListItem.EndTime,,: ]$INFO[ListItem.Title]</param>
 				<param name="thumblabel">$INFO[ListItem.Label]</param>
@@ -32,7 +32,6 @@
 				<param name="thumblabel">$INFO[ListItem.Label]</param>
 				<param name="rightlabel">$INFO[ListItem.StartTime,, - ]$INFO[ListItem.EndTime]</param>
 			</include>
-
 			<control type="group">
 				<visible>!Control.IsVisible(54) + !Control.IsVisible(55)</visible>
 				<animation effect="slide" start="0,0" end="0,-14" time="0" condition="Control.IsVisible(50)">Conditional</animation>
@@ -58,9 +57,7 @@
 					<label>$INFO[Container.SortMethod,$LOCALIZE[581] ","]$INFO[Container.SortOrder, / $LOCALIZE[580] ","]</label>
 				</control>
 			</control>
-
 		</control>
-
 		<!-- Menu control -->
 		<control type="group">
 			<visible>ControlGroup(4000).HasFocus</visible>
@@ -88,10 +85,6 @@
 						<height>10</height>
 						<texture colordiffuse="panel">common/menu_top.png</texture>
 					</control>
-					<control type="button" id="10">
-						<include content="CommonButton"/>
-						<label>$LOCALIZE[341]</label>
-					</control>
 					<control type="togglebutton" id="4">
 						<include content="CommonButton"/>
 						<label>$LOCALIZE[580]: $LOCALIZE[584]</label>
@@ -100,24 +93,15 @@
 					<control type="button" id="3">
 						<include content="CommonButton"/>
 					</control>
-					<control type="button" id="5">
+					<control type="radiobutton" id="6">
 						<include content="CommonButton"/>
-						<label>Switch to file mode</label>
-						<visible>false</visible>
+						<label>$LOCALIZE[31019]</label>
+						<label2></label2>
 					</control>
-					<control type="button" id="6">
-						<include content="CommonButton"/>
-						<label>$LOCALIZE[341]</label>
-						<visible>System.HasMediaDVD</visible>
-					</control>
-					<control type="button" id="11">
-						<include content="CommonButton"/>
-						<label>Unlock shares</label>
-						<visible>false</visible>
-					</control>
-					<control type="button" id="19">
+					<control type="radiobutton" id="31">
 						<include content="CommonButton"/>
 						<label>$LOCALIZE[31008]</label>
+						<label2></label2>
 					</control>
 					<control type="image">
 						<width>100%</width>
@@ -127,9 +111,6 @@
 				</control>
 			</control>
 		</control>
-
-
-
 		<!-- header bar -->
 		<include content="HeaderBar">		
 			<param name="id">50</param>

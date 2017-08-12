@@ -39,6 +39,12 @@
 		<texturedownfocus>-</texturedownfocus>
 		<textureupdisabled>-</textureupdisabled>
 		<texturedowndisabled>-</texturedowndisabled>
+		<textureradioonfocus>-</textureradioonfocus>
+		<textureradioonnofocus>-</textureradioonnofocus>
+		<textureradioofffocus>-</textureradioofffocus>
+		<textureradiooffnofocus>-</textureradiooffnofocus>
+		<radiowidth>-</radiowidth>
+		<radioheight>-</radioheight>
 	</include>
 	<!-- Spacer for grouplists -->
 	<include name="Spacer">
@@ -145,53 +151,38 @@
 					<ondown>SetFocus($PARAM[id])</ondown>
 					<onleft>$PARAM[sidebar_id]</onleft>
 					<onright>noop</onright>
-					<control type="button" id="66660">
-						<include>NoTextures</include>
-						<width>auto</width>
-						<font>med17</font>
-						<textcolor>panel_text</textcolor>
-						<focusedcolor>emby</focusedcolor>
+					<control type="button" id="6601">
+						<include>HeaderButton</include>
 						<label>$LOCALIZE[31000]</label>
 						<onclick>ActivateWindow(home)</onclick>
 					</control>
-					<control type="button" id="66661">>
-						<include>NoTextures</include>
-						<width>auto</width>
-						<font>med17</font>
-						<textcolor>panel_text</textcolor>
-						<focusedcolor>emby</focusedcolor>
+					<control type="button" id="6602">
+						<include>HeaderButton</include>
 						<label>$LOCALIZE[1036]</label>
 						<onclick>ActivateWindow(favourites)</onclick>
 					</control>
-					<control type="button" id="66662">>
-						<include>NoTextures</include>
-						<width>auto</width>
-						<font>med17</font>
-						<textcolor>panel_text</textcolor>
-						<focusedcolor>emby</focusedcolor>
+					<control type="button" id="6603">
+						<include>HeaderButton</include>
 						<label>$LOCALIZE[137]</label>
 						<onclick>RunScript(script.globalsearch)</onclick>
 					</control>
-					<control type="button" id="66663">>
-						<include>NoTextures</include>
-						<width>auto</width>
-						<font>med17</font>
-						<textcolor>panel_text</textcolor>
-						<focusedcolor>emby</focusedcolor>
+					<control type="button" id="6604">
+						<include>HeaderButton</include>
 						<label>$LOCALIZE[587]</label>
 						<onclick>SetFocus(4000)</onclick>
-						<visible>Window.IsActive(videos)</visible>
+						<visible>[Window.IsVisible(videos) | Window.IsVisible(MyPVRChannels.xml)] + !$EXP[ExpInfoDialogActive]</visible>
 					</control>
-					<control type="button" id="2">>
-						<include>NoTextures</include>
-						<width>auto</width>
-						<font>med17</font>
-						<textcolor>panel_text</textcolor>
-						<focusedcolor>emby</focusedcolor>
-						<onclick>noop</onclick>
-						<visible>Window.IsActive(videos)</visible>
+					<control type="button" id="2">
+						<include>HeaderButton</include>
+						<visible>[Window.IsVisible(videos) | Window.IsVisible(MyPVRChannels.xml)] + !$EXP[ExpInfoDialogActive]</visible>
 					</control>
-					<control type="button" id="66664">
+					<control type="button" id="6605">
+						<include>HeaderButton</include>
+						<label>$LOCALIZE[19141]: $INFO[Control.GetLabel(29)]</label>
+						<onclick>SendClick(28)</onclick>
+						<visible>[Window.IsVisible(MyPVRChannels.xml)] + !$EXP[ExpInfoDialogActive]</visible>
+					</control>
+					<control type="button" id="6606">
 						<include>NoTextures</include>
 						<width>auto</width>
 						<font>med17</font>
@@ -199,7 +190,7 @@
 						<focusedcolor>emby</focusedcolor>
 						<label>$LOCALIZE[19141]: $INFO[Control.GetLabel(30)]</label>
 						<onclick>SendClick(28)</onclick>
-						<visible>Window.IsActive(MyPVRChannels.xml) | Window.IsActive(MyPVRGuide.xml)</visible>
+						<visible>[Window.IsVisible(MyPVRGuide.xml)] + !$EXP[ExpInfoDialogActive]</visible>
 					</control>
 				</control>
 				<control type="label">
@@ -642,7 +633,6 @@
 		</definition>
 	</include>
 	<!-- Flags -->
-
 	<include name="MediaFlags">
 		<control type="button">
 			<width min="50">auto</width>
@@ -687,6 +677,53 @@
 			<enabledcolor>lightgrey</enabledcolor>
 			<enabled>false</enabled>
 			<visible>!String.IsEmpty(ListItem.DateAdded)</visible>
+		</control>
+	</include>
+	<!-- PVR Flags -->
+	<include name="PVRFlags">
+		<control type="button">
+			<width min="50">auto</width>
+			<height>48</height>
+			<font>reg16</font>
+			<label>$LOCALIZE[31022]</label>
+			<textoffsetx>15</textoffsetx>
+			<align>center</align>
+			<enabledcolor>lightgrey</enabledcolor>
+			<enabled>false</enabled>
+			<visible>ListItem.IsEncrypted</visible>
+		</control>
+		<control type="button">
+			<width min="50">auto</width>
+			<height>48</height>
+			<font>reg16</font>
+			<label>$LOCALIZE[31023]</label>
+			<textoffsetx>15</textoffsetx>
+			<align>center</align>
+			<enabledcolor>lightgrey</enabledcolor>
+			<enabled>false</enabled>
+			<visible>ListItem.IsRecording</visible>
+		</control>
+		<control type="button">
+			<width min="50">auto</width>
+			<height>48</height>
+			<font>reg16</font>
+			<label>$LOCALIZE[31024]</label>
+			<textoffsetx>15</textoffsetx>
+			<align>center</align>
+			<enabledcolor>lightgrey</enabledcolor>
+			<enabled>false</enabled>
+			<visible>ListItem.HasTimer</visible>
+		</control>
+		<control type="button">
+			<width min="50">auto</width>
+			<height>48</height>
+			<font>reg16</font>
+			<label>$LOCALIZE[31025]</label>
+			<textoffsetx>15</textoffsetx>
+			<align>center</align>
+			<enabledcolor>lightgrey</enabledcolor>
+			<enabled>false</enabled>
+			<visible>ListItem.HasTimerSchedule</visible>
 		</control>
 	</include>
 	<!-- Invisible focus button -->
@@ -779,6 +816,20 @@
 			<texturenofocus colordiffuse="panel">common/menu_back.png</texturenofocus>
 			<alttexturefocus colordiffuse="panel_hover">common/menu_back.png</alttexturefocus>
 			<alttexturenofocus colordiffuse="panel">common/menu_back.png</alttexturenofocus>
+			<textureradioonfocus>-</textureradioonfocus>
+			<textureradioonnofocus>-</textureradioonnofocus>
+			<textureradioofffocus>-</textureradioofffocus>
+			<textureradiooffnofocus>-</textureradiooffnofocus>
+			<radiowidth>-</radiowidth>
+			<radioheight>-</radioheight>
 		</definition>
+	</include>
+	<!-- Header Button -->
+	<include name="HeaderButton">		
+		<include>NoTextures</include>
+		<width>auto</width>
+		<font>med17</font>
+		<textcolor>panel_text</textcolor>
+		<focusedcolor>emby</focusedcolor>
 	</include>
 </includes>
