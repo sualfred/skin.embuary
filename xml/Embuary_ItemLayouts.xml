@@ -55,7 +55,7 @@
 
 	<include name="bubble_overlay">
 		<control type="group">
-			<visible>Integer.IsEqual(ListItem.Property(UnWatchedEpisodes),0) | String.IsEqual(ListItem.Overlay,OverlayWatched.png) | Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0)</visible>
+			<visible>[String.IsEqual(ListItem.DBtype,tvshow) + !String.IsEmpty(ListItem.Property(UnWatchedEpisodes)) + Integer.IsLess(ListItem.Property(UnWatchedEpisodes),1)] | String.IsEqual(ListItem.Overlay,OverlayWatched.png) | Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0)</visible>
 			<right>8</right>
 			<top>9</top>
 			<width>44</width>
@@ -86,7 +86,7 @@
 				<font>FontAwesome20Light</font>
 				<shadowcolor>text_shadow</shadowcolor>
 				<align>center</align>
-				<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png) | Integer.IsEqual(ListItem.Property(UnWatchedEpisodes),0)</visible>
+				<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png) | [String.IsEqual(ListItem.DBtype,tvshow) + !String.IsEmpty(ListItem.Property(UnWatchedEpisodes)) + Integer.IsLess(ListItem.Property(UnWatchedEpisodes),1)]</visible>
 			</control>
 		</control>
 	</include>
