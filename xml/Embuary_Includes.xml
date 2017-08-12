@@ -4,6 +4,7 @@
 	<expression name="ExpJumpToLetter">
 		[[Container.Content(movies) | Container.Content(episodes) | Container.Content(songs) | Container.Content(tvshows) | Container.Content(seasons)] + [String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[561]) | String.IsEqual(Container.SortMethod,$LOCALIZE[558]) | String.IsEqual(Container.SortMethod,$LOCALIZE[557]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556])]]
 	</expression>
+	<expression name="ExpInfoDialogActive">[Window.IsActive(musicinformation) | Window.IsActive(songinformation) | Window.IsActive(movieinformation) | Window.IsActive(addoninformation) | Window.IsActive(pvrguideinfo) | Window.IsActive(pvrrecordinginfo) | Window.IsActive(pictureinfo) | Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(script-script.extendedinfo-VideoList.xml)]</expression>
 	<!-- FullScreenDimensions -->
 	<include name="FullscreenDimensions">
 		<width>1920</width>
@@ -15,13 +16,13 @@
 			<include>FullscreenDimensions</include>
 			<texture>$INFO[ListItem.Art(fanart)]</texture>
 			<fadetime>400</fadetime>
-			<visible>!Window.IsActive(home)</visible>
+			<visible>![Window.IsActive(home) | Window.IsActive(1120) | Window.IsActive(1121)] | $EXP[ExpInfoDialogActive]</visible>
 		</control>
 		<control type="image">
 			<include>FullscreenDimensions</include>
 			<texture>$INFO[Container(50).ListItem.Art(fanart)]</texture>
 			<fadetime>400</fadetime>
-			<visible>Window.IsActive(home)</visible>
+			<visible>[Window.IsActive(home) | Window.IsActive(1120) | Window.IsActive(1121)] + !$EXP[ExpInfoDialogActive]</visible>
 		</control>
 		<control type="image">
 			<include>FullscreenDimensions</include>
@@ -217,7 +218,6 @@
 	<include name="ContentPanel">
 		<param name="width">400</param>
 		<param name="left">0</param>
-		<param name="right"></param>
 		<param name="height">100%</param>
 		<definition>
 			<control type="image">
@@ -342,8 +342,8 @@
 				<left>-$PARAM[width]</left>
 				<!-- background -->
 				<include content="ContentPanel">
-					<param name="width" value="$PARAM[width]"/>
-					<param name="height" value="100%"/>
+					<param name="width">$PARAM[width]</param>
+					<param name="height">100%</param>
 				</include>
 				<!-- grouplist -->
 				<control type="grouplist" id="9999">
@@ -689,35 +689,6 @@
 			<visible>!String.IsEmpty(ListItem.DateAdded)</visible>
 		</control>
 	</include>
-	<include name="MediaFlags2">
-		<control type="group">
-			<width>115</width>
-			<visible>!String.IsEmpty(ListItem.Duration)</visible>
-			<control type="label">
-				<width>115</width>
-				<height>60</height>
-				<align>center</align>
-				<aligny>center</aligny>
-				<label>$INFO[ListItem.Duration,, $LOCALIZE[31132]]</label>
-				<font>font_flag</font>
-			</control>
-			<include content="MediaFlag">
-				<param name="texture" value="flags/flag.png" />
-			</include>
-		</control>
-		<include content="MediaFlag">
-			<param name="texture" value="$INFO[ListItem.AudioChannels,flags/audiochannel/,.png]" />
-			<param name="visible" value="!String.IsEmpty(ListItem.AudioChannels)" />
-		</include>
-		<include content="MediaFlag">
-			<param name="texture" value="$INFO[ListItem.AudioCodec,flags/audiocodec/,.png]" />
-			<param name="visible" value="!String.IsEmpty(ListItem.AudioCodec)" />
-		</include>
-		<include content="MediaFlag">
-			<param name="texture" value="$VAR[ResolutionFlagVar]" />
-			<param name="visible" value="!String.IsEmpty(ListItem.VideoResolution)" />
-		</include>
-	</include>
 	<!-- Invisible focus button -->
 	<include name="SetPropertyOnFocus">
 		<control type="button">
@@ -779,7 +750,19 @@
 			</control>
 		</definition>
 	</include>
-
+	<!-- Grey Button -->
+	<include name="GreyButton">
+		<width min="50">auto</width>
+		<height>50</height>
+		<font>med18</font>
+		<textcolor>white</textcolor>
+		<focusedcolor>white</focusedcolor>
+		<selectedcolor>white</selectedcolor>
+		<textoffsetx>20</textoffsetx>
+		<texturefocus border="10" colordiffuse="emby">items/shadow_smallbutton.png</texturefocus>
+		<texturenofocus border="10" colordiffuse="grey">items/shadow_smallbutton.png</texturenofocus>
+	</include>
+	<!-- Common Button -->
 	<include name="CommonButton">
 		<param name="height">50</param>
 		<param name="width">100%</param>

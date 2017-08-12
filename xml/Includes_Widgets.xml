@@ -6,18 +6,12 @@
 	<!-- ##### OTHER ##### -->
 	<!-- Landscape -->
 	<include name="WideWidget">
-		<param name="id">$PARAM[id]</param>
-		<param name="visible" default="true">$PARAM[visible]</param>
-		<param name="content_visibility" default="true">$PARAM[content_visibility]</param>
-		<param name="headline" default="widget">$PARAM[headline]</param>
-		<param name="mainlabel" default="$VAR[MainListLabel]">$PARAM[mainlabel]</param>
-		<param name="sublabel" default="$VAR[SubListLabel]">$PARAM[sublabel]</param>
-		<param name="onup">$PARAM[onup]</param>
-		<param name="ondown">$PARAM[ondown]</param>
-		<param name="content">$PARAM[content]</param>
-		<param name="sortby">$PARAM[sortby]</param>
-		<param name="sortdirection">$PARAM[sortdirection]</param>
-		<param name="use_custom_content" default="true">$PARAM[use_custom_content]</param>
+		<param name="visible">true</param>
+		<param name="content_visibility">true</param>
+		<param name="headline">$LOCALIZE[416]</param>
+		<param name="mainlabel">$VAR[MainListLabel]</param>
+		<param name="sublabel">$VAR[SubListLabel]</param>
+		<param name="use_custom_content">true</param>
 		<definition>
 			<control type="group">
 				<visible>$PARAM[visible]</visible>
@@ -92,20 +86,13 @@
 	</include>
 	<!-- Poster -->	
 	<include name="PosterWidget">
-		<param name="id">$PARAM[id]</param>
-		<param name="visible" default="true">$PARAM[visible]</param>
-		<param name="content_visibility" default="true">$PARAM[content_visibility]</param>
-		<param name="visible_scrollbar" default="false">$PARAM[visible_scrollbar]</param>
-		<param name="headline" default="widget">$PARAM[headline]</param>
-		<param name="mainlabel" default="$VAR[MainListLabel]">$PARAM[mainlabel]</param>
-		<param name="sublabel" default="$VAR[SubListLabel]">$PARAM[sublabel]</param>
-		<param name="onup">$PARAM[onup]</param>
-		<param name="ondown">$PARAM[ondown]</param>
-		<param name="content">$PARAM[content]</param>
-		<param name="sortby">$PARAM[sortby]</param>
-		<param name="sortdirection">$PARAM[sortdirection]</param>
-		<param name="use_custom_content" default="true">$PARAM[use_custom_content]</param>
-		<param name="height" default="581">$PARAM[height]</param>
+		<param name="visible">true</param>
+		<param name="content_visibility">true</param>
+		<param name="headline">$LOCALIZE[416]</param>
+		<param name="mainlabel">$VAR[MainListLabel]</param>
+		<param name="sublabel">$VAR[SubListLabel]</param>
+		<param name="use_custom_content">true</param>
+		<param name="height">581</param>
 		<definition>
 			<control type="group">
 				<visible>$PARAM[visible]</visible>
@@ -180,18 +167,12 @@
 	</include>
 	<!-- Cast -->	
 	<include name="CastWidget">
-		<param name="id">$PARAM[id]</param>
-		<param name="visible" default="true">$PARAM[visible]</param>
-		<param name="visible_scrollbar" default="false">$PARAM[visible_scrollbar]</param>
-		<param name="headline" default="widget">$PARAM[headline]</param>
-		<param name="mainlabel" default="$VAR[MainListLabel]">$PARAM[mainlabel]</param>
-		<param name="sublabel" default="$VAR[SubListLabel]">$PARAM[sublabel]</param>
-		<param name="onup">$PARAM[onup]</param>
-		<param name="ondown">$PARAM[ondown]</param>
-		<param name="content">$PARAM[content]</param>
-		<param name="sortby">$PARAM[sortby]</param>
-		<param name="sortdirection">$PARAM[sortdirection]</param>
-		<param name="use_custom_content" default="true">$PARAM[use_custom_content]</param>
+		<param name="visible">true</param>
+		<param name="visible_scrollbar">false</param>
+		<param name="headline">$LOCALIZE[416]</param>
+		<param name="mainlabel">$VAR[MainListLabel]</param>
+		<param name="sublabel">$VAR[SubListLabel]</param>
+		<param name="use_custom_content">true</param>
 		<definition>
 			<control type="group">
 				<visible>$PARAM[visible]</visible>
@@ -266,12 +247,9 @@
 	<!-- ##### HOME ##### -->
 	<!-- Menu Buttons -->
 	<include name="HomeWidgetMenu">
-		<param name="id">$PARAM[id]</param>
-		<param name="visible" default="true">$PARAM[visible]</param>
-		<param name="headline" default="widget">$PARAM[headline]</param>
-		<param name="mainlabel" default="$INFO[ListItem.Label]">$PARAM[mainlabel]</param>
-		<param name="onup" default="100">$PARAM[onup]</param>
-		<param name="ondown">$PARAM[ondown]</param>
+		<param name="visible">true</param>
+		<param name="headline">$LOCALIZE[416]</param>
+		<param name="onup">100</param>
 		<definition>
 			<control type="group" id="$PARAM[id]1">
 				<visible>$PARAM[visible]</visible>
@@ -318,7 +296,8 @@
 					<content>
 						<item>
 							<label>$LOCALIZE[342]</label>
-							<onclick>ActivateWindow(videos,videodb://movies/titles/,return)</onclick>
+							<onclick>ActivateWindow(1120,return)</onclick>
+							<!--<onclick>ActivateWindow(videos,videodb://movies/titles/,return)</onclick>-->
 							<property name="art1">$INFO[Container(51).ListItem(0).Art(poster)]</property>
 							<property name="art2">$INFO[Container(51).ListItem(1).Art(poster)]</property>
 							<property name="art3">$INFO[Container(51).ListItem(2).Art(poster)]</property>
@@ -326,7 +305,8 @@
 						</item>
 						<item>
 							<label>$LOCALIZE[20364]</label>
-							<onclick>ActivateWindow(videos,videodb://tvshows/titles/,return)</onclick>
+							<onclick>ActivateWindow(1121,return)</onclick>
+							<!--<onclick>ActivateWindow(videos,videodb://tvshows/titles/,return)</onclick>-->
 							<property name="art1">$INFO[Container(52).ListItem(0).Art(poster)]</property>
 							<property name="art2">$INFO[Container(52).ListItem(1).Art(poster)]</property>
 							<property name="art3">$INFO[Container(52).ListItem(2).Art(poster)]</property>
@@ -364,15 +344,11 @@
 	</include>
 	<!-- Wide -->
 	<include name="HomeWideWidget">
-		<param name="id">$PARAM[id]</param>
-		<param name="visible" default="true">$PARAM[visible]</param>
-		<param name="icon" default="$INFO[ListItem.Icon]">$PARAM[icon]</param>
-		<param name="headline" default="widget">$PARAM[headline]</param>
-		<param name="mainlabel" default="$INFO[ListItem.Label]">$PARAM[mainlabel]</param>
-		<param name="sublabel">$PARAM[sublabel]</param>
-		<param name="content">$PARAM[content]</param>
-		<param name="onup" default="100">$PARAM[onup]</param>
-		<param name="ondown">$PARAM[ondown]</param>
+		<param name="visible">true</param>
+		<param name="headline">$LOCALIZE[416]</param>
+		<param name="mainlabel">$VAR[MainListLabel]</param>
+		<param name="sublabel">$VAR[SubListLabel]</param>
+		<param name="layout">LandscapeLayout</param>
 		<definition>
 			<control type="group" id="$PARAM[id]1">
 				<visible>$PARAM[visible]</visible>
@@ -401,7 +377,7 @@
 						<control type="group">
 							<left>72</left>
 							<top>64</top>
-							<include content="LandscapeLayout">
+							<include content="$PARAM[layout]">
 								<param name="mainlabel" value="$PARAM[mainlabel]" />
 								<param name="sublabel" value="$PARAM[sublabel]" />
 								<param name="focused" value="false" />
@@ -413,7 +389,7 @@
 						<control type="group">
 							<left>72</left>
 							<top>64</top>
-							<include content="LandscapeLayout">
+							<include content="$PARAM[layout]">
 								<param name="mainlabel" value="$PARAM[mainlabel]" />
 								<param name="sublabel" value="$PARAM[sublabel]" />
 								<param name="focused" value="true" />
@@ -432,13 +408,10 @@
 	</include>
 	<!-- Poster -->
 	<include name="HomePosterWidget">
-		<param name="id">$PARAM[id]</param>
-		<param name="visible" default="true">$PARAM[visible]</param>
-		<param name="icon" default="$INFO[ListItem.Icon]">$PARAM[icon]</param>
-		<param name="headline" default="widget">$PARAM[headline]</param>
-		<param name="content">$PARAM[content]</param>
-		<param name="onup" default="100">$PARAM[onup]</param>
-		<param name="ondown">$PARAM[ondown]</param>
+		<param name="visible">true</param>
+		<param name="headline">$LOCALIZE[416]</param>
+		<param name="mainlabel">$VAR[MainListLabel]</param>
+		<param name="sublabel">$VAR[SubListLabel]</param>
 		<definition>
 			<control type="group" id="$PARAM[id]1">
 				<visible>$PARAM[visible]</visible>
@@ -498,15 +471,10 @@
 	</include>
 	<!-- Square -->
 	<include name="HomeSquareWidget">
-		<param name="id">$PARAM[id]</param>
-		<param name="visible" default="true">$PARAM[visible]</param>
-		<param name="icon" default="$INFO[ListItem.Icon]">$PARAM[icon]</param>
-		<param name="headline" default="widget">$PARAM[headline]</param>
-		<param name="mainlabel" default="$INFO[ListItem.Label]">$PARAM[mainlabel]</param>
-		<param name="sublabel">$PARAM[sublabel]</param>
-		<param name="content">$PARAM[content]</param>
-		<param name="onup" default="100">$PARAM[onup]</param>
-		<param name="ondown">$PARAM[ondown]</param>
+		<param name="visible">true</param>
+		<param name="headline">$LOCALIZE[416]</param>
+		<param name="mainlabel">$VAR[MainListLabel]</param>
+		<param name="sublabel">$VAR[SubListLabel]</param>
 		<definition>
 			<control type="group" id="$PARAM[id]1">
 				<visible>$PARAM[visible]</visible>
@@ -566,12 +534,10 @@
 	</include>
 	<!-- PVR -->
 	<include name="PVRHomeSquareWidget">
-		<param name="visible" default="true"/>
-		<param name="enable" default="true"/>
-		<param name="icon" default="$INFO[ListItem.Icon]"/>
-		<param name="headline" default="widget"/>
-		<param name="mainlabel" default="$INFO[ListItem.Label]"/>
-		<param name="onup" default="100"/>
+		<param name="visible">true</param>
+		<param name="headline">$LOCALIZE[416]</param>
+		<param name="mainlabel">$VAR[MainListLabel]</param>
+		<param name="sublabel">$VAR[SubListLabel]</param>
 		<definition>
 			<control type="group" id="$PARAM[id]1">
 				<visible>$PARAM[visible]</visible>
@@ -596,69 +562,29 @@
 					<onup>SetFocus($PARAM[onup])</onup>
 					<ondown>SetFocus($PARAM[ondown])</ondown>
 					<control type="button" id="$PARAM[id]02">
-						<top>-2</top>
-						<left>-2</left>
-						<width min="50">auto</width>
-						<height>50</height>
-						<font>med18</font>
-						<textcolor>white</textcolor>
-						<focusedcolor>white</focusedcolor>
-						<selectedcolor>white</selectedcolor>
-						<textoffsetx>20</textoffsetx>
+						<include>GreyButton</include>
 						<label>$LOCALIZE[14301]</label>
-						<texturefocus border="10" colordiffuse="emby">items/shadow_smallbutton.png</texturefocus>
-						<texturenofocus border="10" colordiffuse="grey">items/shadow_smallbutton.png</texturenofocus>
 						<onup>SetFocus($PARAM[onup])</onup>
 						<ondown>SetFocus($PARAM[id])</ondown>
 						<enable>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</enable>
 					</control>
 					<control type="button" id="$PARAM[id]03">
-						<top>-2</top>
-						<left>-2</left>
-						<width min="50">auto</width>
-						<height>50</height>
-						<font>med18</font>
-						<textcolor>white</textcolor>
-						<focusedcolor>white</focusedcolor>
-						<selectedcolor>white</selectedcolor>
-						<textoffsetx>20</textoffsetx>
+						<include>GreyButton</include>
 						<label>$LOCALIZE[19069]</label>
-						<texturefocus border="10" colordiffuse="emby">items/shadow_smallbutton.png</texturefocus>
-						<texturenofocus border="10" colordiffuse="grey">items/shadow_smallbutton.png</texturenofocus>
 						<onup>SetFocus($PARAM[onup])</onup>
 						<ondown>SetFocus($PARAM[id])</ondown>
 						<enable>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</enable>
 					</control>
 					<control type="button" id="$PARAM[id]04">
-						<top>-2</top>
-						<left>-2</left>
-						<width min="50">auto</width>
-						<height>50</height>
-						<font>med18</font>
-						<textcolor>white</textcolor>
-						<focusedcolor>white</focusedcolor>
-						<selectedcolor>white</selectedcolor>
-						<textoffsetx>20</textoffsetx>
+						<include>GreyButton</include>
 						<label>$LOCALIZE[19017]</label>
-						<texturefocus border="10" colordiffuse="emby">items/shadow_smallbutton.png</texturefocus>
-						<texturenofocus border="10" colordiffuse="grey">items/shadow_smallbutton.png</texturenofocus>
 						<onup>SetFocus($PARAM[onup])</onup>
 						<ondown>SetFocus($PARAM[id])</ondown>
 						<enable>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</enable>
 					</control>
 					<control type="button" id="$PARAM[id]05">
-						<top>-2</top>
-						<left>-2</left>
-						<width min="50">auto</width>
-						<height>50</height>
-						<font>med18</font>
-						<textcolor>white</textcolor>
-						<focusedcolor>white</focusedcolor>
-						<selectedcolor>white</selectedcolor>
-						<textoffsetx>20</textoffsetx>
+						<include>GreyButton</include>
 						<label>$LOCALIZE[19040]</label>
-						<texturefocus border="10" colordiffuse="emby">items/shadow_smallbutton.png</texturefocus>
-						<texturenofocus border="10" colordiffuse="grey">items/shadow_smallbutton.png</texturenofocus>
 						<onup>SetFocus($PARAM[onup])</onup>
 						<ondown>SetFocus($PARAM[id])</ondown>
 						<enable>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</enable>

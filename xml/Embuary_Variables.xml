@@ -5,6 +5,8 @@
 		<value condition="true"></value>
 	</variable>
 	<variable name="ContainerContent">
+		<value condition="Window.IsVisible(1120)">$LOCALIZE[342]</value>
+		<value condition="Window.IsVisible(1121)">$LOCALIZE[20343]</value>
 		<value condition="Window.IsVisible(movieinformation) + String.IsEqual(ListItem.DBType,tvshow)">$LOCALIZE[20351]</value>
 		<value condition="Window.IsVisible(movieinformation) + String.IsEqual(ListItem.DBType,movie)">$LOCALIZE[10524]</value>
 		<value condition="!String.IsEmpty(Container.ShowTitle)">$INFO[Container.ShowTitle]</value>
@@ -16,10 +18,12 @@
 	</variable>
 	<variable name="IconLandscape">
 		<value condition="[[Control.IsVisible(54) + Container.Content(seasons)] | Window.IsVisible(movieinformation)] + !String.IsEmpty(ListItem.Art(thumb))">$INFO[ListItem.Art(thumb)]</value>
+		<value condition="[[Control.IsVisible(54) + Container.Content(seasons)] | Window.IsVisible(movieinformation)] + !String.IsEmpty(ListItem.Art(tvshow.landscape))">$INFO[ListItem.Art(tvshow.landscape)]</value>
 		<value condition="[[Control.IsVisible(54) + Container.Content(seasons)] | Window.IsVisible(movieinformation)] + !String.IsEmpty(ListItem.Art(landscape))">$INFO[ListItem.Art(landscape)]</value>
 		<value condition="[[Control.IsVisible(54) + Container.Content(seasons)] | Window.IsVisible(movieinformation)] + !String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
 		<value condition="String.StartsWith(ListItem.Path,pvr://)">$INFO[ListItem.Art(thumb)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(thumb)) + Container.Content(episodes)">$INFO[ListItem.Art(thumb)]</value>
+		<value condition="!String.IsEmpty(ListItem.Art(tvshow.landscape))">$INFO[ListItem.Art(tvshow.landscape)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(landscape))">$INFO[ListItem.Art(landscape)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(Thumb))">$INFO[ListItem.Art(Thumb)]</value>
