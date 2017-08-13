@@ -13,6 +13,7 @@
 			<usecontrolcoords>true</usecontrolcoords>
 			<scrolltime tween="sine" easing="out">400</scrolltime>
 			<itemgap>-80</itemgap>
+			<include>Bounce_Up_Down</include>
 			<!-- Meta -->
 			<control type="group">
 				<width>1920</width>
@@ -119,6 +120,14 @@
 								<font>reg20</font>
 								<shadowcolor>text_shadow</shadowcolor>
 								<visible>!String.IsEmpty(ListItem.Rating)</visible>
+							</control>
+							<control type="label">
+								<width>auto</width>
+								<height>24</height>
+								<label>$INFO[ListItem.Duration,$LOCALIZE[180]: , $LOCALIZE[12391]]   </label>
+								<font>reg20</font>
+								<shadowcolor>text_shadow</shadowcolor>
+								<visible>!String.IsEmpty(ListItem.Duration)</visible>
 							</control>
 							<control type="label">
 								<width>auto</width>
@@ -233,7 +242,13 @@
 				<param name="headline" value="$LOCALIZE[31002]"/>
 				<param name="content" value="plugin://script.skin.helper.widgets/?action=similar&amp;mediatype=movies&amp;imdbid=$INFO[ListItem.IMDBNumber]"/>
 				<param name="onup" value="50"/>
-				<param name="ondown" value="noop"/>
+				<param name="ondown" value="400"/>
+			</include>
+			<!-- Media Info -->
+			<include content="InfoDialogMediaInfo">
+				<param name="id" value="400"/>
+				<param name="onup" value="300"/>
+				<param name="ondown" value="SetProperty(BounceDown,1,home)"/>
 			</include>
 		</control>
 	</include>
@@ -250,6 +265,7 @@
 			<usecontrolcoords>true</usecontrolcoords>
 			<scrolltime tween="sine" easing="out">400</scrolltime>
 			<itemgap>-80</itemgap>
+			<include>Bounce_Up_Down</include>
 			<!-- Meta -->
 			<control type="group">
 				<width>1920</width>
@@ -497,7 +513,7 @@
 				<param name="headline" value="$LOCALIZE[31002]"/>
 				<param name="content" value="plugin://script.skin.helper.widgets/?action=similarshows&amp;imdbid=$INFO[ListItem.IMDBNumber]"/>
 				<param name="onup" value="50"/>
-				<param name="ondown" value="noop"/>
+				<param name="ondown" value="SetProperty(BounceDown,1,home)"/>
 			</include>
 		</control>
 	</include>
@@ -529,7 +545,6 @@
 					<pagecontrol>100</pagecontrol>
 					<autoscroll>false</autoscroll>
 					<align>justify</align>
-					<aligny>center</aligny>
 					<label>$VAR[TinyInfoDialogPlot]</label>
 				</control>
 				<!-- Scrollbar -->
@@ -548,6 +563,93 @@
 					<texturesliderbar colordiffuse="emby">common/ProgressBar.png</texturesliderbar>
 					<texturesliderbarfocus colordiffuse="emby">common/ProgressBar.png</texturesliderbarfocus>
 					<visible allowhiddenfocus="true">Control.HasFocus(3000)</visible>
+				</control>
+			</control>
+		</control>
+	</include>
+	<!-- MediaInfo -->
+	<include name="InfoDialogMediaInfo">
+		<control type="group">
+			<width>1920</width>
+			<height>350</height>
+			<control type="button" id="$PARAM[id]">
+				<include>NoTextures</include>
+				<top>25</top>
+				<left>50</left>
+				<width>1000</width>
+				<height>87</height>
+				<font>Med20</font>
+				<align>left</align>
+				<aligny>center</aligny>
+				<textcolor>white</textcolor>
+				<focusedcolor>emby</focusedcolor>
+				<label>$LOCALIZE[544]</label>
+				<onclick>noop</onclick>
+				<onup>$PARAM[onup]</onup>
+				<ondown>$PARAM[ondown]</ondown>
+			</control>
+			<control type="grouplist">
+				<left>70</left>
+				<top>94</top>
+				<width>1920</width>
+				<left>70</left>
+				<itemgap>5</itemgap>
+				<orientation>vertical</orientation>
+				<usecontrolcoords>true</usecontrolcoords>
+				<control type="label">
+					<width>1200</width>
+					<height>30</height>
+					<wrapmultiline>true</wrapmultiline>
+					<font>Reg20</font>
+					<aligny>bottom</aligny>
+					<textcolor>white</textcolor>
+					<shadowcolor>text_shadow</shadowcolor>
+					<label>[COLOR softgrey]$LOCALIZE[21800]:[/COLOR]  $INFO[ListItem.FileName]</label>
+					<visible>!String.IsEmpty(ListItem.FileName)</visible>
+				</control>
+				<control type="label">
+					<width>1200</width>
+					<height>30</height>
+					<wrapmultiline>true</wrapmultiline>
+					<font>Reg20</font>
+					<aligny>bottom</aligny>
+					<textcolor>white</textcolor>
+					<shadowcolor>text_shadow</shadowcolor>
+					<label>[COLOR softgrey]$LOCALIZE[573]:[/COLOR]  $INFO[ListItem.Path]</label>
+					<visible>!String.IsEmpty(ListItem.Path)</visible>
+				</control>
+				<control type="label">
+					<width>1200</width>
+					<height>30</height>
+					<wrapmultiline>true</wrapmultiline>
+					<font>Reg20</font>
+					<aligny>bottom</aligny>
+					<textcolor>white</textcolor>
+					<shadowcolor>text_shadow</shadowcolor>
+					<label>[COLOR softgrey]$LOCALIZE[291]:[/COLOR]  $INFO[ListItem.VideoResolution]$INFO[ListItem.VideoCodec, ,]$INFO[ListItem.VideoAspect, ,AR]$INFO[ListItem.StereoscopicMode, ]</label>
+					<visible>!String.IsEmpty(ListItem.VideoResolution)</visible>
+				</control>
+				<control type="label">
+					<width>1200</width>
+					<height>30</height>
+					<wrapmultiline>true</wrapmultiline>
+					<font>Reg20</font>
+					<aligny>bottom</aligny>
+					<textcolor>white</textcolor>
+					<shadowcolor>text_shadow</shadowcolor>
+					<label>[COLOR softgrey]$LOCALIZE[292]:[/COLOR]  $INFO[ListItem.Property(AudioLanguage.1),, ]$INFO[ListItem.Property(AudioChannels.1),,ch ]$INFO[ListItem.Property(AudioCodec.1),, ]$INFO[ListItem.Property(AudioLanguage.2),| , ]$INFO[ListItem.Property(AudioChannels.2),,ch ]$INFO[ListItem.Property(AudioCodec.2),, ]$INFO[ListItem.Property(AudioLanguage.3),| , ]$INFO[ListItem.Property(AudioChannels.3),,ch ]$INFO[ListItem.Property(AudioCodec.3),, ]$INFO[ListItem.Property(AudioLanguage.4),| , ]$INFO[ListItem.Property(AudioChannels.4),,ch ]$INFO[ListItem.Property(AudioCodec.4),, ]$INFO[ListItem.Property(AudioLanguage.5),| , ]$INFO[ListItem.Property(AudioChannels.5),,ch ]$INFO[ListItem.Property(AudioCodec.5),, ]</label>
+					<visible>!String.IsEmpty(ListItem.Property(AudioLanguage.1))</visible>
+				</control>
+				<control type="label">
+					<width>1200</width>
+					<height>30</height>
+					<wrapmultiline>true</wrapmultiline>
+					<font>Reg20</font>
+					<aligny>bottom</aligny>
+					<textcolor>white</textcolor>
+					<shadowcolor>text_shadow</shadowcolor>
+					<label>[COLOR softgrey]$LOCALIZE[459]:[/COLOR]  $INFO[ListItem.Property(SubtitleLanguage.1),, ]$INFO[ListItem.Property(SubtitleLanguage.2),| , ]$INFO[ListItem.Property(SubtitleLanguage.3),| , ]$INFO[ListItem.Property(SubtitleLanguage.4),| , ]$INFO[ListItem.Property(SubtitleLanguage.5),| , ]</label>
+					<visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.1))</visible>
 				</control>
 			</control>
 		</control>
