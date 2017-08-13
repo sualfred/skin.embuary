@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <window>
-	<defaultcontrol always="true">3000</defaultcontrol>
+	<defaultcontrol always="true">101</defaultcontrol>
 	<include>Dialog_PopupOpenClose</include>
 	<onunload>ClearProperty(OpenTextViewer,home)</onunload>
-	<onunload>ClearProperty(NoLabel,home)</onunload>
 	<controls>
 		<control id="1" type="label">
 			<font>-</font>
@@ -11,65 +10,60 @@
 		<control id="5" type="textbox">
 			<font>-</font>
 		</control>
-		<include content="DiffuseMask">
-			<param name="visible">true</param>
-		</include>
+		<control type="image">
+			<include>FullscreenDimensions</include>
+			<texture colordiffuse="background_diffuse">common/white.jpg</texture>
+		</control>
 		<control type="group">
 			<centerleft>50%</centerleft>
 			<centertop>50%</centertop>
-			<width>773</width>
-			<height>660</height>
-			<control type="image">
-				<width>773</width>
-				<height>660</height>
-				<texture colordiffuse="panel" border="10">common/dialog_back.png</texture>
-			</control>
+			<width>774</width>
+			<height>700</height>
 			<control id="10" type="textbox">
 				<centerleft>50%</centerleft>
-				<centertop>50%</centertop>
-				<width>688</width>
-				<height>580</height>
-				<font>Light26Spaced</font>
-				<textcolor>white</textcolor>
+				<width>734</width>
+				<height>620</height>
+				<font>Reg26Spaced</font>
+				<textcolor>text_white</textcolor>
 				<shadowcolor>text_shadow</shadowcolor>
 				<pagecontrol>3000</pagecontrol>
 				<autoscroll>false</autoscroll>
-				<align>justify</align>
-				<aligny>center</aligny>
-				<label>$INFO[Control.GetLabel(5)]</label>
-				<visible>!String.IsEmpty(Window(home).Property(NoLabel))</visible>
-			</control>
-			<control id="10" type="textbox">
-				<centerleft>50%</centerleft>
-				<centertop>50%</centertop>
-				<width>688</width>
-				<height>580</height>
-				<font>Light26Spaced</font>
-				<textcolor>white</textcolor>
-				<shadowcolor>text_shadow</shadowcolor>
-				<pagecontrol>3000</pagecontrol>
-				<autoscroll>false</autoscroll>
-				<align>justify</align>
+				<align>center</align>
 				<aligny>center</aligny>
 				<label>$INFO[Control.GetLabel(1),[B],[/B][CR]]$INFO[Control.GetLabel(5)]</label>
-				<visible>String.IsEmpty(Window(home).Property(NoLabel))</visible>
 			</control>
 			<!-- Scrollbar -->
 			<control id="3000" type="scrollbar">
 				<right>5</right>
-				<top>5</top>
 				<width>5</width>
-				<height>650</height>
+				<height>620</height>
 				<onup>noop</onup>
 				<ondown>noop</ondown>
 				<onleft>Close</onleft>
 				<onright>Close</onright>
 				<showonepage>false</showonepage>
 				<orientation>vertical</orientation>
-				<texturesliderbackground colordiffuse="black">common/ProgressBack.png</texturesliderbackground>
+				<texturesliderbackground/>
 				<texturesliderbar colordiffuse="emby">common/ProgressBar.png</texturesliderbar>
 				<texturesliderbarfocus colordiffuse="emby">common/ProgressBar.png</texturesliderbarfocus>
-				<visible allowhiddenfocus="true">Control.HasFocus(3000)</visible>
+			</control>
+			<!-- Button -->
+			<control type="grouplist" id="100">
+				<bottom>0</bottom>
+				<height>65</height>
+				<width>774</width>
+				<orientation>horizontal</orientation>
+				<itemgap>5</itemgap>
+				<align>center</align>
+				<onright>noop</onright>
+				<onleft>noop</onleft>
+				<control type="button" id="101">
+					<include>GreyButton</include>
+					<label>$LOCALIZE[15067]</label>
+					<onclick>close</onclick>
+					<onup>PageUp(3000)</onup>
+					<ondown>PageDown(3000)</ondown>
+				</control>
 			</control>
 		</control>
 	</controls>

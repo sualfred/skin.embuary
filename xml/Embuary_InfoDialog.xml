@@ -521,48 +521,60 @@
 	<include name="TinyInfoLayout">
 		<control type="group">
 			<include>Dialog_PopupOpenClose</include>
-			<include content="DiffuseMask">
-				<param name="visible">true</param>
-			</include>
+			<control type="image">
+				<include>FullscreenDimensions</include>
+				<texture colordiffuse="background_diffuse">common/white.jpg</texture>
+			</control>
 			<control type="group">
 				<centerleft>50%</centerleft>
 				<centertop>50%</centertop>
-				<width>773</width>
-				<height>660</height>
-				<control type="image">
-					<width>773</width>
-					<height>660</height>
-					<texture colordiffuse="panel" border="10">common/dialog_back.png</texture>
-				</control>
+				<width>774</width>
+				<height>700</height>
 				<control id="10" type="textbox">
 					<centerleft>50%</centerleft>
-					<centertop>50%</centertop>
-					<width>688</width>
-					<height>580</height>
-					<font>Light26Spaced</font>
-					<textcolor>white</textcolor>
+					<width>734</width>
+					<height>620</height>
+					<font>Reg26Spaced</font>
+					<textcolor>text_white</textcolor>
 					<shadowcolor>text_shadow</shadowcolor>
-					<pagecontrol>100</pagecontrol>
+					<pagecontrol>3000</pagecontrol>
 					<autoscroll>false</autoscroll>
-					<align>justify</align>
+					<align>center</align>
+					<aligny>center</aligny>
 					<label>$VAR[TinyInfoDialogPlot]</label>
 				</control>
 				<!-- Scrollbar -->
-				<control id="100" type="scrollbar">
+				<control id="3000" type="scrollbar">
 					<right>5</right>
-					<top>5</top>
 					<width>5</width>
-					<height>650</height>
+					<height>620</height>
 					<onup>noop</onup>
 					<ondown>noop</ondown>
 					<onleft>Close</onleft>
 					<onright>Close</onright>
 					<showonepage>false</showonepage>
 					<orientation>vertical</orientation>
-					<texturesliderbackground colordiffuse="black">common/ProgressBack.png</texturesliderbackground>
+					<texturesliderbackground/>
 					<texturesliderbar colordiffuse="emby">common/ProgressBar.png</texturesliderbar>
 					<texturesliderbarfocus colordiffuse="emby">common/ProgressBar.png</texturesliderbarfocus>
-					<visible allowhiddenfocus="true">Control.HasFocus(3000)</visible>
+				</control>
+				<!-- Button -->
+				<control type="grouplist" id="100">
+					<bottom>0</bottom>
+					<height>65</height>
+					<width>774</width>
+					<orientation>horizontal</orientation>
+					<itemgap>5</itemgap>
+					<align>center</align>
+					<onright>noop</onright>
+					<onleft>noop</onleft>
+					<control type="button" id="101">
+						<include>GreyButton</include>
+						<label>$LOCALIZE[15067]</label>
+						<onclick>close</onclick>
+						<onup>PageUp(3000)</onup>
+						<ondown>PageDown(3000)</ondown>
+					</control>
 				</control>
 			</control>
 		</control>
