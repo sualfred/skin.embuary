@@ -85,16 +85,18 @@
 		<value>$INFO[ListItem.Title,[B],[/B][CR][CR]]$INFO[ListItem.Plot]</value>
 	</variable>
 	<variable name="PVRTimerIcon">
-		<value condition="ListItem.IsRecording">icons/pvr/PVR-IsRecording.png</value>
-		<value condition="ListItem.HasTimerSchedule + ListItem.TimerHasError">icons/pvr/PVR-HasTimerScheduleError.png</value>
-		<value condition="ListItem.HasTimer + ListItem.TimerHasError">icons/pvr/PVR-HasTimerError.png</value>
-		<value condition="ListItem.HasTimerSchedule + ListItem.TimerHasConflict">icons/pvr/PVR-HasTimerScheduleConflict.png</value>
+		<value condition="ListItem.IsRecording">icons/pvr/icon_recording.png</value>
+		<value condition="ListItem.HasTimerSchedule + ListItem.TimerHasError">icons/pvr/icon_timer_error.png</value>
+		<value condition="ListItem.HasTimer + ListItem.TimerHasError">icons/pvr/icon_record_error.png</value>
+		<value condition="ListItem.HasTimerSchedule + ListItem.TimerHasConflict">icons/pvr/icon_timer_conflict.png</value>
 		<value condition="ListItem.HasTimer + ListItem.TimerHasConflict">icons/pvr/PVR-HasTimerConflict.png</value>
-		<value condition="ListItem.HasRecording">icons/pvr/PVR-HasRecording.png</value>
-		<value condition="ListItem.HasTimerSchedule + !ListItem.TimerIsActive">icons/pvr/PVR-HasTimerScheduleDisabled.png</value>
-		<value condition="ListItem.HasTimer + !ListItem.TimerIsActive">icons/pvr/PVR-HasTimerDisabled.png</value>
-		<value condition="ListItem.HasTimerSchedule">icons/pvr/PVR-HasTimerSchedule.png</value>
-		<value condition="ListItem.HasTimer">icons/pvr/PVR-HasTimer.png</value>
+		<value condition="ListItem.HasRecording">icons/pvr/icon_recording.png</value>
+		<value condition="ListItem.HasTimerSchedule">icons/pvr/icon_timer.png</value>
+		<value condition="ListItem.HasTimer">icons/pvr/icon_recording.png</value>
+	</variable>
+	<variable name="PVRTimerStatus">
+		<value condition="!ListItem.TimerIsActive">softgrey</value>
+		<value>red</value>
 	</variable>
 	<variable name="TuneInLabel">
 		<value condition="VideoPlayer.Content(livetv)">$LOCALIZE[19165]</value>
