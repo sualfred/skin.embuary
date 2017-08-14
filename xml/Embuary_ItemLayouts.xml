@@ -54,6 +54,14 @@
 	</include>
 
 	<include name="bubble_overlay">
+		<control type="image" id="2">
+			<right>10</right>
+			<top>10</top>
+			<width>32</width>
+			<height>28</height>
+			<texture colordiffuse="red">$VAR[PVRTimerIcon]</texture>
+			<aspectratio align="right">keep</aspectratio>
+		</control>
 		<control type="group">
 			<visible>[String.IsEqual(ListItem.DBtype,tvshow) + !String.IsEmpty(ListItem.Property(UnWatchedEpisodes)) + Integer.IsLess(ListItem.Property(UnWatchedEpisodes),1)] | String.IsEqual(ListItem.Overlay,OverlayWatched.png) | Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0)</visible>
 			<right>8</right>
