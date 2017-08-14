@@ -240,7 +240,7 @@
 				<midtexture colordiffuse="emby"  border="2">common/ProgressBar.png</midtexture>
 				<righttexture>-</righttexture>
 				<info>ListItem.Progress</info>
-				<visible>String.StartsWith(ListItem.Path,pvr://)</visible>
+				<visible>String.StartsWith(ListItem.Path,pvr://channels)</visible>
 			</control>
 			<control type="progress">
 				<top>$PARAM[top]</top>
@@ -252,7 +252,7 @@
 				<midtexture colordiffuse="emby"  border="2">common/ProgressBar.png</midtexture>
 				<righttexture>-</righttexture>
 				<info>ListItem.PercentPlayed</info>
-				<visible>!String.StartsWith(ListItem.Path,pvr://) + Integer.IsGreater(ListItem.PercentPlayed,0)</visible>
+				<visible>!String.StartsWith(ListItem.Path,pvr://channels) + Integer.IsGreater(ListItem.PercentPlayed,0)</visible>
 			</control>
 		</definition>
 	</include>
