@@ -91,6 +91,10 @@
 		<value condition="String.IsEqual(ListItem.DBType,TVShow)">$INFO[ListItem.TVShowTitle,[B],[/B][CR][CR]]$INFO[ListItem.Plot]</value>
 		<value>$INFO[ListItem.Title,[B],[/B][CR][CR]]$INFO[ListItem.Plot]</value>
 	</variable>
+	<variable name="ListViewPlot">
+		<value condition="Window.IsVisible(tvrecordings)">$INFO[ListItem.Plot]</value>
+		<value>$INFO[ListItem.Tagline,[B],[/B][CR][CR]]$INFO[ListItem.Plot]</value>
+	</variable>
 	<variable name="PVRTimerIcon">
 		<value condition="ListItem.IsRecording">icons/pvr/icon_recording.png</value>
 		<value condition="ListItem.HasTimerSchedule + ListItem.TimerHasError">icons/pvr/icon_timer_error.png</value>
@@ -214,5 +218,40 @@
 	<variable name="ListItemDuration">
 		<value condition="String.Contains(ListItem.Duration,:)">$INFO[ListItem.Duration]</value>
 		<value>$INFO[ListItem.Duration,, $LOCALIZE[12391]]</value>
+	</variable>
+	<variable name="PVRGenreColors">
+		<value condition="String.IsEqual(ListItem.Property(GenreType),0)">grid_label</value>
+		<value condition="String.IsEqual(ListItem.Property(GenreType),16)">blue</value>
+		<value condition="String.IsEqual(ListItem.Property(GenreType),32)">grid_label</value>
+		<value condition="String.IsEqual(ListItem.Property(GenreType),48)">turquoise</value>
+		<value condition="String.IsEqual(ListItem.Property(GenreType),64)">red</value>
+		<value condition="String.IsEqual(ListItem.Property(GenreType),80)">orange</value>
+		<value condition="String.IsEqual(ListItem.Property(GenreType),96)">grid_label</value>
+		<value condition="String.IsEqual(ListItem.Property(GenreType),112)">grid_label</value>
+		<value condition="String.IsEqual(ListItem.Property(GenreType),128)">grid_label</value>
+		<value condition="String.IsEqual(ListItem.Property(GenreType),144)">grid_label</value>
+		<value condition="String.IsEqual(ListItem.Property(GenreType),160)">grid_label</value>
+		<value condition="String.IsEqual(ListItem.Property(GenreType),176)">grid_label</value>
+		<value condition="String.IsEqual(ListItem.Property(GenreType),192)">grid_label</value>
+		<value condition="String.IsEqual(ListItem.Property(GenreType),208)">grid_label</value>
+		<value condition="String.IsEqual(ListItem.Property(GenreType),224)">grid_label</value>
+		<value condition="String.IsEqual(ListItem.Property(GenreType),240)">grid_label</value>
+		<value>grid_label</value>
+		<!--0 = other/unknown
+		16 = moviedrama
+		32 = news
+		48 = show
+		64 = sports
+		80 = child
+		96 = music
+		112 = arts
+		128 = social
+		144 = science
+		160 = hobby
+		176 = special
+		192 = other/unknown
+		208 = other/unknown
+		224 = other/unknown
+		240 = other/unknown-->
 	</variable>
 </includes>

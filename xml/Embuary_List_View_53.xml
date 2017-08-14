@@ -4,6 +4,14 @@
 		<param name="mainlabel">$VAR[MainListLabel]</param>
 		<param name="sublabel">$VAR[SubListLabel]</param>
 		<definition>
+			<!-- Hidden scrollbar -->
+			<control id="96" type="scrollbar">
+				<left>-1200</left>
+				<width>100</width>
+				<height>1</height>
+				<showonepage>false</showonepage>
+				<orientation>vertical</orientation>
+			</control>
 			<control type="group">
 				<include>Visible_OpenClose</include>
 				<visible>Control.IsVisible(53)</visible>
@@ -11,7 +19,7 @@
 				<control type="group">
 					<visible>true</visible>
 					<right>70</right>
-					<top>168</top>
+					<top>133</top>
 					<width>590</width>
 					<control type="group">
 						<control type="image">
@@ -111,24 +119,32 @@
 						<align>top</align>
 						<itemgap>00</itemgap>
 						<width>590</width>			
-						<control type="textbox">
+						<control type="textbox" id="97">
 							<width>590</width>
 							<height>455</height>
 							<align>justify</align>
 							<aligny>top</aligny>
-							<label>$INFO[ListItem.TagLine,,[CR][CR]]$INFO[ListItem.EpisodeName,,[CR][CR]]$INFO[ListItem.Plot]</label>
+							<label>$VAR[ListViewPlot]</label>
 							<font>Light24Spaced</font>
 							<shadowcolor>text_shadow</shadowcolor>
-							<autoscroll delay="6000" time="3000" repeat="10000">true</autoscroll>
-						</control>					
+							<autoscroll>false</autoscroll>
+						</control>
+						<control type="label">
+							<width>auto</width>
+							<align>center</align>
+							<font>Material44</font>
+							<textcolor>panel_text</textcolor>
+							<label></label>
+							<visible>Container(97).HasNext</visible>
+						</control>				
 					</control>
 				</control>
 				<!-- List -->
 				<control id="53" type="list">
 					<visible>!Container.Content(seasons) + !Container.Content(episodes)</visible>
-					<top>158</top>
+					<top>128</top>
 					<width>1230</width>
-					<height>916</height>
+					<height>946</height>
 					<onup condition="Control.IsVisible(7000)">SetFocus(7000)</onup>
 					<onup condition="!Control.IsVisible(7000)">SetFocus(6666)</onup>
 					<onright condition="Control.IsVisible(7000)">SetFocus(7000)</onright>
@@ -147,7 +163,10 @@
 							<top>10</top>
 							<left>70</left>
 							<include content="ListLayout">
+								<param name="mainlabel">$PARAM[mainlabel]</param>
+								<param name="sublabel">$PARAM[sublabel]</param>
 								<param name="rightlabel">$PARAM[rightlabel]</param>
+								<param name="rightlabel2">$PARAM[rightlabel2]</param>
 							</include>
 						</control>
 					</itemlayout>
@@ -158,18 +177,22 @@
 							<left>70</left>
 							<include content="ListLayout">
 								<param name="focused" value="true"/>
+								<param name="mainlabel">$PARAM[mainlabel]</param>
+								<param name="sublabel">$PARAM[sublabel]</param>
 								<param name="rightlabel">$PARAM[rightlabel]</param>
+								<param name="rightlabel2">$PARAM[rightlabel2]</param>
 							</include>
 						</control>
 					</focusedlayout>
 				</control>
-				<include content="list_mask_vertical">
-					<param name="height" value="65"/>
-					<param name="id" value="53"/>
-					<param name="visible_forced" value="true"/>
-				</include>
 				<include content="ScrollbarVertical"/>
 			</control>
+			<include content="list_mask_vertical">
+				<param name="height" value="70"/>
+				<param name="icon_width" value="1230"/>
+				<param name="id" value="53"/>
+				<param name="visible_forced" value="true"/>
+			</include>
 		</definition>
 	</include>
 </includes>

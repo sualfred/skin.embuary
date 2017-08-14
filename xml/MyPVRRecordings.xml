@@ -2,253 +2,124 @@
 <window>
 	<defaultcontrol always="true">50</defaultcontrol>
 	<backgroundcolor>background</backgroundcolor>
-	<views>50</views>
-	<menucontrol>9000</menucontrol>
+	<views>50,52,53</views>
+	<menucontrol>9999</menucontrol>
 	<controls>
-		<include>DefaultBackground</include>
-		<control type="group">
-			<animation effect="fade" start="100" end="0" time="200" tween="sine" condition="$EXP[infodialog_active]">Conditional</animation>
-			<control type="group">
-				<include>OpenClose_Left</include>
-				<control type="fixedlist" id="50">
-					<left>0</left>
-					<top>list_y_offset</top>
-					<right>778</right>
-					<bottom>list_y_offset</bottom>
-					<onleft>9000</onleft>
-					<onright>73</onright>
-					<onup>50</onup>
-					<ondown>50</ondown>
-					<movement>3</movement>
-					<focusposition>5</focusposition>
-					<pagecontrol>73</pagecontrol>
-					<scrolltime>200</scrolltime>
-					<focusedlayout height="80" width="tvrecordings_width">
-						<control type="image">
-							<left>0</left>
-							<top>0</top>
-							<right>0</right>
-							<height>80</height>
-							<texture colordiffuse="button_focus">lists/focus.png</texture>
-							<animation effect="fade" start="100" end="0" time="0" condition="!Control.HasFocus(50)">Conditional</animation>
-						</control>
-						<control type="image">
-							<left>21</left>
-							<top>30</top>
-							<width>32</width>
-							<height>32</height>
-							<texture colordiffuse="white">$VAR[ListWatchedIconVar]</texture>
-						</control>
-						<control type="label">
-							<left>75</left>
-							<top>0</top>
-							<height>80</height>
-							<right>30</right>
-							<aligny>center</aligny>
-							<scroll>true</scroll>
-							<label>$INFO[ListItem.Label]$INFO[ListItem.EpisodeName, (,)]</label>
-						</control>
-						<control type="label">
-							<left>15</left>
-							<top>0</top>
-							<height>80</height>
-							<right>20</right>
-							<align>right</align>
-							<aligny>center</aligny>
-							<label>$INFO[ListItem.Label2]</label>
-						</control>
-					</focusedlayout>
-					<itemlayout height="80" width="tvrecordings_width">
-						<control type="image">
-							<left>21</left>
-							<top>30</top>
-							<width>32</width>
-							<height>32</height>
-							<texture>$VAR[ListWatchedIconVar]</texture>
-						</control>
-						<control type="label">
-							<left>75</left>
-							<top>0</top>
-							<height>80</height>
-							<right>30</right>
-							<aligny>center</aligny>
-							<label>$INFO[ListItem.Label]$INFO[ListItem.EpisodeName, (,)]</label>
-						</control>
-						<control type="label">
-							<left>15</left>
-							<top>0</top>
-							<height>80</height>
-							<right>20</right>
-							<align>right</align>
-							<aligny>center</aligny>
-							<label>$INFO[ListItem.Label2]</label>
-							<textcolor>grey</textcolor>
-							<shadowcolor>text_shadow</shadowcolor>
-						</control>
-					</itemlayout>
-				</control>
-			</control>
-			<control type="group">
-				<depth>DepthContentPanel</depth>
-				<include>OpenClose_Right</include>
-				<right>0</right>
-				<width>820</width>
-				<include content="ContentPanel">
-					<param name="left" value="-62" />
-					<param name="width" value="970" />
-					<param name="top" value="-20" />
-					<param name="flipx" value="true" />
-				</include>
-				<control type="scrollbar" id="73">
-					<left>-40</left>
-					<top>list_y_offset</top>
-					<width>12</width>
-					<bottom>list_y_offset</bottom>
-					<onleft>50</onleft>
-					<onright>50</onright>
-					<orientation>vertical</orientation>
-					<animation effect="zoom" start="100,100" end="50,100" center="-40,0" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(73)">conditional</animation>
-				</control>
-				<control type="group">
-					<visible>!ListItem.IsFolder</visible>
-					<top>180</top>
-					<control type="label">
-						<left>170</left>
-						<top>57</top>
-						<width>560</width>
-						<height>262</height>
-						<wrapmultiline>true</wrapmultiline>
-						<label>$INFO[ListItem.Duration,$LOCALIZE[180]: ][CR]$INFO[ListItem.Date,$LOCALIZE[552]: ]</label>
-					</control>
-					<control type="label">
-						<left>170</left>
-						<top>10</top>
-						<width>560</width>
-						<height>262</height>
-						<font>font36_title</font>
-						<label>$INFO[ListItem.ChannelName]</label>
-					</control>
-					<control type="image">
-						<left>-20</left>
-						<top>15</top>
-						<width>150</width>
-						<height>120</height>
-						<fadetime>200</fadetime>
-						<aspectratio>keep</aspectratio>
-						<texture>$INFO[ListItem.Icon]</texture>
-					</control>
-					<control type="label">
-						<top>195</top>
-						<width>750</width>
-						<height>262</height>
-						<font>font36_title</font>
-						<label>$INFO[ListItem.Title]</label>
-					</control>
-					<control type="label">
-						<top>240</top>
-						<width>750</width>
-						<height>70</height>
-						<label>[I]$INFO[ListItem.EpisodeName][/I]</label>
-					</control>
-					<control type="textbox">
-						<top>284</top>
-						<width>750</width>
-						<bottom>95</bottom>
-						<align>justify</align>
-						<label>$INFO[ListItem.Plot]</label>
-						<autoscroll delay="10000" time="3000" repeat="10000">Skin.HasSetting(autoscroll)</autoscroll>
-					</control>
-				</control>
-				<control type="group">
-					<visible>ListItem.IsFolder</visible>
-					<top>180</top>
-					<control type="label">
-						<top>10</top>
-						<width>560</width>
-						<height>262</height>
-						<label>$LOCALIZE[19076] ($INFO[Container(5000).NumItems,[B],[/B] $LOCALIZE[31036]])</label>
-						<font>font37</font>
-						<visible>ListItem.IsFolder + !ListItem.IsParentFolder</visible>
-					</control>
-					<control type="group">
-						<left>-10</left>
-						<top>60</top>
-						<visible>ListItem.IsFolder + !ListItem.IsParentFolder</visible>
-						<control type="panel" id="5000">
-							<top>20</top>
-							<width>780</width>
-							<bottom>200</bottom>
-							<orientation>vertical</orientation>
-							<focusedlayout height="100" width="780">
-								<control type="label">
-									<left>10</left>
-									<height>90</height>
-									<width>780</width>
-									<aligny>center</aligny>
-									<label>$INFO[ListItem.Date,[COLOR grey],[/COLOR][CR]]$INFO[ListItem.Label]$INFO[ListItem.EpisodeName, (,)]</label>
-									<shadowcolor>text_shadow</shadowcolor>
-								</control>
-							</focusedlayout>
-							<itemlayout height="100" width="780">
-								<control type="label">
-									<left>10</left>
-									<height>90</height>
-									<width>$PARAM[width]</width>
-									<aligny>center</aligny>
-									<label>$INFO[ListItem.Date,[COLOR grey],[/COLOR][CR]]$INFO[ListItem.Label]$INFO[ListItem.EpisodeName, (,)]</label>
-									<shadowcolor>text_shadow</shadowcolor>
-								</control>
-							</itemlayout>
-							<content sortby="date" sortorder="descending">$INFO[ListItem.FilenameAndPath]</content>
-						</control>
-					</control>
-				</control>
-			</control>
-			<include content="TopBar">
-				<param name="breadcrumbs_label" value="$VAR[BreadcrumbsPVRRecordingsVar]" />
-			</include>
-			<include content="BottomBar">
-				<param name="info_visible" value="true" />
-			</include>
-			<control type="group">
-				<depth>DepthBars</depth>
-				<right>0</right>
-				<width>820</width>
-				<include>OpenClose_Right</include>
-				<bottom>0</bottom>
-				<height>60</height>
-				<control type="label">
-					<description>Disk usage text</description>
-					<width>550</width>
-					<height>20</height>
-					<label>$INFO[PVR.backenddiskspace]</label>
-					<shadowcolor>black</shadowcolor>
-					<align>right</align>
-					<font>font30_title</font>
-					<visible>!Integer.IsGreater(PVR.backenddiskspaceprogr,100)</visible>
-				</control>
-				<control type="progress">
-					<description>Disk usage bar</description>
-					<left>570</left>
-					<top>17</top>
-					<width>200</width>
-					<height>12</height>
-					<info>PVR.backenddiskspaceprogr</info>
-					<visible>!Integer.IsGreater(PVR.backenddiskspaceprogr,100)</visible>
-				</control>
-			</control>
-			<control type="group">
-				<include>MediaMenuCommon</include>
-				<include>PVRSideBar</include>
-			</control>
+		<control type="button" id="2">
+			<include>HiddenObject</include>
 		</control>
 		<control type="label" id="29">
-			<font></font>
 			<include>HiddenObject</include>
 		</control>
-		<control type="label" id="30">
-			<font></font>
-			<include>HiddenObject</include>
+		<include content="Background"/>
+		<control type="group">	
+			<include>Window_OpenClose</include>
+			<include content="Wide_View_50">
+				<param name="mainlabel">$INFO[ListItem.Label]$INFO[ListItem.Episodename, - ]</param>
+				<param name="thumblabel">$INFO[ListItem.Channelname]</param>
+			</include>
+			<include content="Square_View_52">
+				<param name="mainlabel">$INFO[ListItem.Label]</param>
+				<param name="sublabel">$INFO[ListItem.Episodename]</param>
+				<param name="thumblabel">$INFO[ListItem.Channelname]</param>
+			</include>
+			<include content="List_View_53">
+				<param name="mainlabel">$INFO[ListItem.Label]</param>
+				<param name="sublabel">$INFO[ListItem.Episodename]</param>
+				<param name="thumblabel">$INFO[ListItem.Label]</param>
+				<param name="rightlabel">$VAR[ListItemDuration]</param>
+				<param name="rightlabel2">$INFO[ListItem.Date]</param>
+			</include>
+			<control type="group">
+				<visible>!Control.IsVisible(54) + !Control.IsVisible(55)</visible>
+				<animation effect="slide" start="0,0" end="0,-14" time="0" condition="Control.IsVisible(50)">Conditional</animation>
+				<animation effect="slide" start="0,0" end="0,5" time="0" condition="Control.IsVisible(52)">Conditional</animation>
+				<animation effect="slide" start="0,0" end="0,-18" time="0" condition="Control.IsVisible(53)">Conditional</animation>
+				<top>93</top>
+				<width>1920</width>
+				<height>40</height>
+				<control type="group">
+					<include content="JumpToLetter">
+						<param name="visible" value="[Container.HasNext | Container.HasPrevious] + $EXP[ExpJumpToLetter]"/>
+					</include>
+				</control>
+				<control type="label">
+					<visible>![Container.HasNext | Container.HasPrevious] | !$EXP[ExpJumpToLetter]</visible>
+					<centerleft>50%</centerleft>
+					<width>1215</width>
+					<height>40</height>
+					<font>Med18</font>
+					<align>center</align>
+					<aligny>center</aligny>
+					<textcolor>softgrey</textcolor>
+					<shadowcolor>text_shadow</shadowcolor>
+					<label>$INFO[Container.SortMethod,$LOCALIZE[581] ","]$INFO[Container.SortOrder, / $LOCALIZE[580] ","]</label>
+				</control>
+			</control>
 		</control>
+		<!-- Menu control -->
+		<control type="group">
+			<visible>ControlGroup(4000).HasFocus</visible>
+			<include>FullscreenDimensions</include>
+			<include>Visible_PopupOpenClose</include>
+			<include content="DiffuseMask">
+				<param name="visible">true</param>
+			</include>
+			<control type="group">
+				<centerleft>50%</centerleft>
+				<width>284</width>
+				<centertop>50%</centertop>
+				<height>970</height>
+				<control type="grouplist" id="4000">
+					<orientation>vertical</orientation>
+					<height>auto</height>
+					<align>center</align>
+					<itemgap>0</itemgap>
+					<onright>50</onright>
+					<onleft>50</onleft>
+					<onback>50</onback>
+					<usecontrolcoords>true</usecontrolcoords>
+					<control type="image">
+						<width>100%</width>
+						<height>10</height>
+						<texture colordiffuse="panel">common/menu_top.png</texture>
+					</control>
+					<control type="togglebutton" id="4">
+						<include content="CommonButton"/>
+						<label>$LOCALIZE[580]: $LOCALIZE[584]</label>
+						<altlabel>$LOCALIZE[580]: $LOCALIZE[585]</altlabel>
+					</control>
+					<control type="button" id="3">
+						<include content="CommonButton"/>
+					</control>
+					<control type="radiobutton" id="5">
+						<include content="CommonButton"/>
+						<label>$LOCALIZE[31031]</label>
+						<label2></label2>
+					</control>
+					<control type="radiobutton" id="7">
+						<include content="CommonButton"/>
+						<label>$LOCALIZE[31032]</label>
+						<label2></label2>
+					</control>
+					<control type="image">
+						<width>100%</width>
+						<height>10</height>
+						<texture colordiffuse="panel">common/menu_bottom.png</texture>
+					</control>
+				</control>
+			</control>
+		</control>
+		<!-- header bar -->
+		<include content="HeaderBar">		
+			<param name="id">50</param>
+			<param name="enabled">false</param>
+			<param name="sidebar_id">9999</param>
+			<param name="custom_animation">[Container(540).HasPrevious | Container(550).HasPrevious]</param>
+		</include>
+		<!-- side panel -->
+		<include content="SidePanel">
+			<param name="onright">50</param>
+		</include>
 	</controls>
 </window>
