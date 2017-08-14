@@ -75,37 +75,27 @@
 				<param name="id" value="200"/>
 				<param name="onup" value="100"/>
 				<param name="ondown" value="201"/>
-				<param name="headline" value="$LOCALIZE[133]"/>
-				<param name="widget_target" value="music"/>
-				<param name="content" value="musicdb://artists/"/>
-			</include>
-
-			<include content="HomeSquareWidget">
-				<param name="id" value="201"/>
-				<param name="onup" value="200"/>
-				<param name="ondown" value="202"/>
-				<param name="headline" value="$LOCALIZE[132]"/>
-				<param name="widget_target" value="music"/>
-				<param name="content" value="musicdb://albums/"/>
-			</include>
-
-			<include content="HomeSquareWidget">
-				<param name="id" value="202"/>
-				<param name="onup" value="201"/>
-				<param name="ondown" value="203"/>
 				<param name="headline" value="$LOCALIZE[359]"/>
 				<param name="widget_target" value="music"/>
 				<param name="content" value="musicdb://recentlyaddedalbums/"/>
 			</include>
 
 			<include content="HomeSquareWidget">
-				<param name="id" value="203"/>
-				<param name="onup" value="202"/>
-				<param name="ondown" value="SetProperty(BounceDown,1,home)"/>
+				<param name="id" value="201"/>
+				<param name="onup" value="200"/>
+				<param name="ondown" value="202"/>
 				<param name="headline" value="$LOCALIZE[517]"/>
-				<param name="sortby" value="lastplayed"/>
 				<param name="widget_target" value="music"/>
 				<param name="content" value="musicdb://recentlyplayedalbums/"/>
+			</include>
+
+			<include content="HomeSquareWidget">
+				<param name="id" value="202"/>
+				<param name="onup" value="201"/>
+				<param name="ondown" value="SetProperty(BounceDown,1,home)"/>
+				<param name="headline" value="$LOCALIZE[31017]"/>
+				<param name="widget_target" value="music"/>
+				<param name="content" value="plugin://script.skin.helper.widgets/?action=recommended&amp;mediatype=albums&amp;reload=$INFO[Window(Home).Property(widgetreload-music)]"/>
 			</include>
 
 		</control>
