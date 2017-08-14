@@ -4,7 +4,7 @@
 	<expression name="ExpJumpToLetter">
 		[[Container.Content(movies) | Container.Content(episodes) | Container.Content(songs) | Container.Content(tvshows) | Container.Content(seasons)] + [String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[561]) | String.IsEqual(Container.SortMethod,$LOCALIZE[558]) | String.IsEqual(Container.SortMethod,$LOCALIZE[557]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556])]]
 	</expression>
-	<expression name="ExpInfoDialogActive">[Window.IsVisible(musicinformation) | Window.IsVisible(songinformation) | Window.IsVisible(movieinformation) | Window.IsVisible(addoninformation) | Window.IsVisible(pvrguideinfo) | Window.IsVisible(pvrrecordinginfo) | Window.IsVisible(pictureinfo) | Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(script-script.extendedinfo-VideoList.xml)]</expression>
+	<expression name="ExpInfoDialogActive">[Window.IsVisible(musicinformation) | Window.IsVisible(songinformation) | [Window.IsVisible(movieinformation) + [String.IsEqual(ListItem.DBtype,movie) | String.IsEqual(ListItem.DBtype,tvshow)]] | Window.IsVisible(addoninformation) | Window.IsVisible(pvrguideinfo) | Window.IsVisible(pvrrecordinginfo) | Window.IsVisible(pictureinfo) | Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(script-script.extendedinfo-VideoList.xml)]</expression>
 	<!-- FullScreenDimensions -->
 	<include name="FullscreenDimensions">
 		<width>1920</width>
@@ -147,7 +147,7 @@
 						<width>98</width>
 						<texture>common/embuary_small.png</texture>
 						<aspectratio>keep</aspectratio>
-						<visible>Window.IsActive(home)</visible>
+						<visible>Window.IsVisible(home) + !$EXP[ExpInfoDialogActive]</visible>
 					</control>
 					<control type="label">
 						<width>auto</width>
@@ -324,7 +324,6 @@
 			</control>
 		</definition>
 	</include>
-
 	<!-- diffuse -->
 	<include name="DiffuseMask">
 		<control type="image">
@@ -764,6 +763,15 @@
 			<onfocus condition="Container.Content(tvshows)">SetProperty(TVShowTotalSeasons,$INFO[ListItem.Property(TotalSeasons)],home)</onfocus>
 			<onfocus condition="Container.Content(tvshows)">SetProperty(TVShowTotalEpisodes,$INFO[ListItem.Property(TotalEpisodes)],home)</onfocus>
 		</control>
+	</include>
+	<include name="UnloadSetProperties">
+		<onunload condition="Window.Next(home)">ClearProperty(TVShowRating,home)</onunload>
+		<onunload condition="Window.Next(home)">ClearProperty(TVShowDBID,home)</onunload>
+		<onunload condition="Window.Next(home)">ClearProperty(TVShowIMDB,home)</onunload>
+		<onunload condition="Window.Next(home)">ClearProperty(TVShowPremiered,home)</onunload>
+		<onunload condition="Window.Next(home)">ClearProperty(TVShowOverlay,home)</onunload>
+		<onunload condition="Window.Next(home)">ClearProperty(TVShowTotalSeasons,home)</onunload>
+		<onunload condition="Window.Next(home)">ClearProperty(TVShowTotalEpisodes,home)</onunload>
 	</include>
 	<!-- Scrollbars -->
 	<include name="ScrollbarHorizontal">
