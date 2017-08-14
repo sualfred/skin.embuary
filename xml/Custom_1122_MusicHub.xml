@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<window id="1120">
+<window id="1122">
 	<defaultcontrol always="true">101</defaultcontrol>
 	<backgroundcolor>background</backgroundcolor>
 	<controls>
 		<!-- background -->
-		<include>Background</include>
+		<include content="Background">
+			<param name="content" value="special://skin/playlists/music/artists.xsp"/>
+		</include>
 
 		<!-- hub -->
 		<control type="grouplist" id="10">
@@ -28,7 +30,7 @@
 				<height>300</height>
 				<control type="group">
 					<include content="widget_headline">
-						<param name="headline">$LOCALIZE[342]$INFO[Window(home).Property(Movies.Count), (,)]</param>
+						<param name="headline">$LOCALIZE[2]</param>
 						<param name="left">65</param>
 					</include>
 					<control type="grouplist" id="100">
@@ -42,12 +44,24 @@
 						<onup>6666</onup>
 						<ondown>200</ondown>
 						<control type="button" id="101">
-							<label>$LOCALIZE[31015]</label>
-							<onclick>ActivateWindow(videos,videodb://movies/titles,return)</onclick>
+							<label>$LOCALIZE[31027]</label>
+							<onclick>ActivateWindow(music,musicdb://artists,return)</onclick>
 							<onup>6666</onup>
 							<ondown>200</ondown>
 						</control>
 						<control type="button" id="102">
+							<label>$LOCALIZE[31028]</label>
+							<onclick>ActivateWindow(music,musicdb://albums,return)</onclick>
+							<onup>6666</onup>
+							<ondown>200</ondown>
+						</control>
+						<control type="button" id="103">
+							<label>$LOCALIZE[31029]</label>
+							<onclick>ActivateWindow(music,musicdb://root,return)</onclick>
+							<onup>6666</onup>
+							<ondown>200</ondown>
+						</control>
+						<control type="button" id="104">
 							<label>$LOCALIZE[137]</label>
 							<onclick>RunScript(script.globalsearch)</onclick>
 							<onup>6666</onup>
@@ -57,51 +71,41 @@
 				</control>
 			</control>
 
-			<include content="HomeWideWidget">
+			<include content="HomeSquareWidget">
 				<param name="id" value="200"/>
 				<param name="onup" value="100"/>
 				<param name="ondown" value="201"/>
-				<param name="headline" value="$LOCALIZE[575]"/>
-				<param name="widget_target" value="videos"/>
-				<param name="content" value="special://skin/playlists/video/InProgressMovies.xsp"/>
+				<param name="headline" value="$LOCALIZE[133]"/>
+				<param name="widget_target" value="music"/>
+				<param name="content" value="musicdb://artists/"/>
 			</include>
 
-			<include content="HomePosterWidget">
+			<include content="HomeSquareWidget">
 				<param name="id" value="201"/>
 				<param name="onup" value="200"/>
 				<param name="ondown" value="202"/>
-				<param name="headline" value="$LOCALIZE[20386]"/>
-				<param name="widget_target" value="videos"/>
-				<param name="content" value="special://skin/playlists/video/RecentlyAddedMovies.xsp"/>
+				<param name="headline" value="$LOCALIZE[132]"/>
+				<param name="widget_target" value="music"/>
+				<param name="content" value="musicdb://albums/"/>
 			</include>
 
-			<include content="HomeWideWidget">
+			<include content="HomeSquareWidget">
 				<param name="id" value="202"/>
-				<param name="layout" value="GenreLayout"/>
 				<param name="onup" value="201"/>
 				<param name="ondown" value="203"/>
-				<param name="headline" value="Genre"/>
-				<param name="widget_target" value="videos"/>
-				<param name="sortby" value="sorttitle"/>
-				<param name="content" value="plugin://script.skin.helper.widgets/?action=browsegenres&amp;mediatype=movies&amp;limit=1000"/>
+				<param name="headline" value="$LOCALIZE[359]"/>
+				<param name="widget_target" value="music"/>
+				<param name="content" value="musicdb://recentlyaddedalbums/"/>
 			</include>
 
-			<include content="HomePosterWidget">
+			<include content="HomeSquareWidget">
 				<param name="id" value="203"/>
 				<param name="onup" value="202"/>
-				<param name="ondown" value="204"/>
-				<param name="headline" value="$LOCALIZE[31017]"/>
-				<param name="widget_target" value="videos"/>
-				<param name="content" value="plugin://script.skin.helper.widgets/?action=recommended&amp;mediatype=movies&amp;reload=$INFO[Window(Home).Property(widgetreload-movies)]"/>
-			</include>
-
-			<include content="HomePosterWidget">
-				<param name="id" value="204"/>
-				<param name="onup" value="203"/>
 				<param name="ondown" value="SetProperty(BounceDown,1,home)"/>
-				<param name="headline" value="$LOCALIZE[31018]"/>
-				<param name="widget_target" value="videos"/>
-				<param name="content" value="plugin://script.skin.helper.widgets/?action=similar&amp;mediatype=movies&amp;reload=$INFO[Window(Home).Property(widgetreload2)]"/>
+				<param name="headline" value="$LOCALIZE[517]"/>
+				<param name="sortby" value="lastplayed"/>
+				<param name="widget_target" value="music"/>
+				<param name="content" value="musicdb://recentlyplayedalbums/"/>
 			</include>
 
 		</control>

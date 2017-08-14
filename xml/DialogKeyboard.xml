@@ -8,7 +8,7 @@
 	<controls>
 		<control type="image">
 			<include>FullscreenDimensions</include>
-			<texture colordiffuse="dark_back">common/white.jpg</texture>
+			<texture colordiffuse="background">common/white.jpg</texture>
 		</control>
 		<!-- Dialog group -->
 		<control type="group">
@@ -129,28 +129,28 @@
 						<control type="image">
 							<width>228</width>
 							<height>68</height>
-							<texture border="10" colordiffuse="light_button">items/tiny_button_mask.png</texture>
+							<texture border="10" colordiffuse="lightbutton">dialogs/keyboard/keyboard_button_mask.png</texture>
 							<visible>String.Contains(Control.GetLabel(303),*)</visible>
 						</control>
 						<!-- Caps lock off-->
 						<control type="image">
 							<width>228</width>
 							<height>68</height>
-							<texture border="10">items/tiny_button.png</texture>
+							<texture border="10" colordiffuse="darkbutton">dialogs/keyboard/keyboard_button_mask.png</texture>
 							<visible>!String.Contains(Control.GetLabel(303),*)</visible>
 						</control>
 						<!-- Shift on -->
 						<control type="image">
 							<width>228</width>
 							<height>68</height>
-							<texture border="10" colordiffuse="light_button">items/tiny_button_mask.png</texture>
+							<texture border="10" colordiffuse="lightbutton">dialogs/keyboard/keyboard_button_mask.png</texture>
 							<visible>String.Contains(Control.GetLabel(302),*)</visible>
 						</control>
 						<!-- Shift off -->
 						<control type="image">
 							<width>228</width>
 							<height>68</height>
-							<texture border="10">items/tiny_button.png</texture>
+							<texture border="10" colordiffuse="darkbutton">dialogs/keyboard/keyboard_button_mask.png</texture>
 							<visible>!String.Contains(Control.GetLabel(302),*)</visible>
 						</control>
 					</control>
@@ -207,6 +207,7 @@
 							<font>Material20</font>
 							<width>228</width>
 							<label></label>
+							<align>center</align>
 							<texturenofocus>-</texturenofocus>
 							<textureradioonfocus>-</textureradioonfocus>
 							<textureradioonnofocus>-</textureradioonnofocus>
@@ -231,6 +232,7 @@
 							<font>Material20</font>
 							<width>228</width>
 							<label></label>
+							<align>center</align>
 							<texturenofocus>-</texturenofocus>
 							<textureradioonfocus>-</textureradioonfocus>
 							<textureradioonnofocus>-</textureradioonnofocus>
@@ -800,14 +802,14 @@
 						<control type="image">
 							<width>68</width>
 							<height>68</height>
-							<texture border="10" colordiffuse="light_button">items/tiny_button_mask.png</texture>
+							<texture border="10" colordiffuse="lightbutton">dialogs/keyboard/keyboard_button_mask.png</texture>
 							<visible>String.Contains(Control.GetLabel(304),*)</visible>
 						</control>
 						<!-- Symbols off -->
 						<control type="image">
 							<width>68</width>
 							<height>68</height>
-							<texture border="10">items/tiny_button.png</texture>
+							<texture border="10" colordiffuse="darkbutton">dialogs/keyboard/keyboard_button_mask.png</texture>
 							<visible>!String.Contains(Control.GetLabel(304),*)</visible>
 						</control>
 					</control>
@@ -822,6 +824,7 @@
 						<!-- Symbols -->
 						<control id="304" type="radiobutton">
 							<font>Material20</font>
+							<align>center</align>
 							<include>KeyboardButtons</include>
 							<onup>160</onup>
 							<ondown>309</ondown>

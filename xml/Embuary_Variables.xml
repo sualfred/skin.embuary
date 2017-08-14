@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+	<variable name="BackgroundSource">
+		<value condition="!String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
+		<value>$INFO[Container(90000).ListItem.Art(fanart)]</value>
+	</variable>
 	<variable name="DefaultIcon">
 		<!--folder-->
 		<value condition="true"></value>
@@ -7,6 +11,7 @@
 	<variable name="ContainerContent">
 		<value condition="Window.IsVisible(1120)">$LOCALIZE[342]</value>
 		<value condition="Window.IsVisible(1121)">$LOCALIZE[20343]</value>
+		<value condition="Window.IsVisible(1123)">$LOCALIZE[24001]</value>
 		<value condition="Window.IsVisible(movieinformation) + String.IsEqual(ListItem.DBType,tvshow)">$LOCALIZE[20351]</value>
 		<value condition="Window.IsVisible(movieinformation) + String.IsEqual(ListItem.DBType,movie)">$LOCALIZE[10524]</value>
 		<value condition="!String.IsEmpty(Container.ShowTitle)">$INFO[Container.ShowTitle]</value>
@@ -203,5 +208,9 @@
 		<value condition="String.EndsWith(Control.GetLabel(32),3)">3</value>
 		<value condition="String.EndsWith(Control.GetLabel(32),2)">2</value>
 		<value condition="String.EndsWith(Control.GetLabel(32),1)">1</value>
+	</variable>
+	<variable name="ListItemDuration">
+		<value condition="String.Contains(ListItem.Duration,:)">$INFO[ListItem.Duration]</value>
+		<value>$INFO[ListItem.Duration,, $LOCALIZE[12391]]</value>
 	</variable>
 </includes>

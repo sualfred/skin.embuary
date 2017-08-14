@@ -124,7 +124,7 @@
 							<control type="label">
 								<width>auto</width>
 								<height>24</height>
-								<label>$INFO[ListItem.Duration,$LOCALIZE[180]: , $LOCALIZE[12391]]   </label>
+								<label>$LOCALIZE[180]: $VAR[ListItemDuration]   </label>
 								<font>reg20</font>
 								<shadowcolor>text_shadow</shadowcolor>
 								<visible>!String.IsEmpty(ListItem.Duration)</visible>
@@ -168,14 +168,12 @@
 							<onright>noop</onright>
 							<onleft>9999</onleft>
 							<control type="button" id="8">
-								<include>GreyButton</include>
 								<label>$VAR[VideoInfoButton8]</label>
 								<onup>SetFocus(6666)</onup>
 								<ondown>SetFocus(50)</ondown>
 							</control>
 							<control type="button" id="97">
 								<visible>Control.IsVisible(96)</visible>
-								<include>GreyButton</include>
 								<label>$LOCALIZE[31013]</label>
 								<onclick>RunScript(script.toolbox,info=textviewer,header=,text='$ESCVAR[TinyInfoDialogPlot]')</onclick>
 								<onup>SetFocus(6666)</onup>
@@ -183,13 +181,11 @@
 							</control>
 							<control type="button" id="11">
 								<visible>!String.IsEmpty(ListItem.Trailer)</visible>
-								<include>GreyButton</include>
 								<label>$LOCALIZE[20410]</label>
 								<onup>SetFocus(6666)</onup>
 								<ondown>SetFocus(50)</ondown>
 							</control>
 							<control type="button" id="6">
-								<include>GreyButton</include>
 								<label>$LOCALIZE[184]</label>
 								<onup>SetFocus(6666)</onup>
 								<ondown>SetFocus(50)</ondown>
@@ -251,6 +247,13 @@
 				<param name="ondown" value="SetProperty(BounceDown,1,home)"/>
 			</include>
 		</control>
+		<!-- header bar -->
+		<include content="HeaderBar">		
+			<param name="id">100</param>
+			<param name="enabled">false</param>
+			<param name="sidebar_id">9999</param>
+			<param name="custom_animation">Container(500).HasPrevious</param>
+		</include>
 	</include>
 	<!-- tvshow -->
 	<include name="TVShowInfoLayout">
@@ -428,14 +431,12 @@
 							<onright>noop</onright>
 							<onleft>9999</onleft>
 							<control type="button" id="8">
-								<include>GreyButton</include>
 								<label>$VAR[VideoInfoButton8]</label>
 								<onup>SetFocus(6666)</onup>
 								<ondown>SetFocus(200)</ondown>
 							</control>
 							<control type="button" id="97">
 								<visible>Control.IsVisible(96)</visible>
-								<include>GreyButton</include>
 								<label>$LOCALIZE[31013]</label>
 								<onclick>RunScript(script.toolbox,info=textviewer,header=,text='$ESCVAR[TinyInfoDialogPlot]')</onclick>
 								<onup>SetFocus(6666)</onup>
@@ -443,13 +444,11 @@
 							</control>
 							<control type="button" id="11">
 								<visible>!String.IsEmpty(ListItem.Trailer)</visible>
-								<include>GreyButton</include>
 								<label>$LOCALIZE[20410]</label>
 								<onup>SetFocus(6666)</onup>
 								<ondown>SetFocus(200)</ondown>
 							</control>
 							<control type="button" id="6">
-								<include>GreyButton</include>
 								<label>$LOCALIZE[184]</label>
 								<onup>SetFocus(6666)</onup>
 								<ondown>SetFocus(200)</ondown>
@@ -516,6 +515,13 @@
 				<param name="ondown" value="SetProperty(BounceDown,1,home)"/>
 			</include>
 		</control>
+		<!-- header bar -->
+		<include content="HeaderBar">		
+			<param name="id">100</param>
+			<param name="enabled">false</param>
+			<param name="sidebar_id">9999</param>
+			<param name="custom_animation">Container(500).HasPrevious</param>
+		</include>
 	</include>
 	<!-- tiny -->
 	<include name="TinyInfoLayout">
@@ -569,7 +575,6 @@
 					<onright>noop</onright>
 					<onleft>noop</onleft>
 					<control type="button" id="101">
-						<include>GreyButton</include>
 						<label>$LOCALIZE[15067]</label>
 						<onclick>close</onclick>
 						<onup>PageUp(3000)</onup>

@@ -4,7 +4,7 @@
 	<expression name="ExpJumpToLetter">
 		[[Container.Content(movies) | Container.Content(episodes) | Container.Content(songs) | Container.Content(tvshows) | Container.Content(seasons)] + [String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[561]) | String.IsEqual(Container.SortMethod,$LOCALIZE[558]) | String.IsEqual(Container.SortMethod,$LOCALIZE[557]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556])]]
 	</expression>
-	<expression name="ExpInfoDialogActive">[Window.IsActive(musicinformation) | Window.IsActive(songinformation) | Window.IsActive(movieinformation) | Window.IsActive(addoninformation) | Window.IsActive(pvrguideinfo) | Window.IsActive(pvrrecordinginfo) | Window.IsActive(pictureinfo) | Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(script-script.extendedinfo-VideoList.xml)]</expression>
+	<expression name="ExpInfoDialogActive">[Window.IsVisible(musicinformation) | Window.IsVisible(songinformation) | Window.IsVisible(movieinformation) | Window.IsVisible(addoninformation) | Window.IsVisible(pvrguideinfo) | Window.IsVisible(pvrrecordinginfo) | Window.IsVisible(pictureinfo) | Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(script-script.extendedinfo-VideoList.xml)]</expression>
 	<!-- FullScreenDimensions -->
 	<include name="FullscreenDimensions">
 		<width>1920</width>
@@ -23,22 +23,24 @@
 	</include>
 	<!-- Background -->
 	<include name="Background">
-		<control type="image">
-			<include>FullscreenDimensions</include>
-			<texture>$INFO[ListItem.Art(fanart)]</texture>
-			<fadetime>400</fadetime>
-			<visible>![Window.IsActive(home) | Window.IsActive(1120) | Window.IsActive(1121)] | $EXP[ExpInfoDialogActive]</visible>
-		</control>
-		<control type="image">
-			<include>FullscreenDimensions</include>
-			<texture>$INFO[Container(50).ListItem.Art(fanart)]</texture>
-			<fadetime>400</fadetime>
-			<visible>[Window.IsActive(home) | Window.IsActive(1120) | Window.IsActive(1121)] + !$EXP[ExpInfoDialogActive]</visible>
-		</control>
-		<control type="image">
-			<include>FullscreenDimensions</include>
-			<texture>common/wp_overlay2.png</texture>
-		</control>
+		<param name="content">special://skin/playlists/video/randommovies.xsp</param>
+		<definition>
+			<control type="list" id="90000">
+				<include>HiddenObject</include>
+				<itemlayout/>
+				<focusedlayout/>
+				<content limit="1">$PARAM[content]</content>
+			</control>
+			<control type="image">
+				<include>FullscreenDimensions</include>
+				<texture>$VAR[BackgroundSource]</texture>
+				<fadetime>400</fadetime>
+			</control>
+			<control type="image">
+				<include>FullscreenDimensions</include>
+				<texture>common/wp_overlay2.png</texture>
+			</control>
+		</definition>
 	</include>
 	<!-- No textures -->
 	<include name="NoTextures">
@@ -72,15 +74,29 @@
 			</control>
 		</definition>
 	</include>
+	<!-- Empty Keyboard Buttons -->
+	<include name="EmptyKeyboardButtons">
+		<control type="image">
+			<width>68</width>
+			<height>68</height>
+			<align>center</align>
+			<aligny>center</aligny>
+			<texture border="10" colordiffuse="darkbutton">dialogs/keyboard/keyboard_button_mask.png</texture>
+			<animation effect="fade" end="33" start="0" time="0" condition="!Control.IsVisible($PARAM[ID])">Conditional</animation>
+		</control>
+	</include>
 	<!-- Keyboard buttons -->
 	<include name="KeyboardButtons">
 		<width>68</width>
 		<height>68</height>
-		<align>center</align>
-		<aligny>center</aligny>
-		<font>med20</font>
+		<font>bold20</font>
+		<textoffsetx>15</textoffsetx>
+		<textcolor>white</textcolor>
+		<disabledcolor>lightgrey</disabledcolor>
+		<focusedcolor>white</focusedcolor>
 		<shadowcolor>text_shadow</shadowcolor>
-		<texturefocus border="10" colordiffuse="emby">items/tiny_button_mask.png</texturefocus>
+		<texturenofocus border="10" colordiffuse="darkbutton">dialogs/keyboard/keyboard_button_mask.png</texturenofocus>
+		<texturefocus border="10" colordiffuse="buttonfocus_green">dialogs/keyboard/keyboard_button_mask.png</texturefocus>
 	</include>
 	<!-- Numeric buttons -->
 	<include name="NumericButtons">
@@ -94,17 +110,6 @@
 		<texturefocus border="2">dialogs/KeyboardButtonFO.png</texturefocus>
 		<texturenofocus border="2">dialogs/KeyboardButtonNF.png</texturenofocus>
 	</include>
-	<!-- Empty Keyboard Buttons -->
-	<include name="EmptyKeyboardButtons">
-		<control type="image">
-			<width>68</width>
-			<height>68</height>
-			<align>center</align>
-			<aligny>center</aligny>
-			<texture border="10" colordiffuse="dark_button">items/tiny_button_mask.png</texture>
-			<animation effect="fade" end="33" start="0" time="0" condition="!Control.IsVisible($PARAM[ID])">Conditional</animation>
-		</control>
-	</include>
 	<!-- HeaderBar -->
 	<include name="HeaderBar">
 		<param name="id">10</param>
@@ -114,7 +119,6 @@
 		<param name="header_label">$VAR[ContainerContent]</param>
 		<definition>
 			<control type="group">
-				<visible>!$EXP[ExpInfoDialogActive]</visible>
 				<animation effect="slide" start="0,0" end="0,-58"  time="200" condition="[Container($PARAM[id]).HasPrevious + $PARAM[enabled]] | [$PARAM[custom_animation]]" tween="linear" easing="inout">Conditional</animation>
 				<control type="image">
 					<height>58</height>
@@ -195,7 +199,7 @@
 						<visible>[Window.IsVisible(MyPVRChannels.xml)] + !$EXP[ExpInfoDialogActive]</visible>
 					</control>
 					<control type="button" id="6606">
-						<include>NoTextures</include>
+						<include>HeaderButton</include>
 						<width>auto</width>
 						<font>med17</font>
 						<textcolor>panel_text</textcolor>
@@ -648,44 +652,52 @@
 		<control type="button">
 			<width min="50">auto</width>
 			<height>48</height>
-			<font>reg16</font>
+			<font>reg18</font>
 			<label>$VAR[ListItemResolution]</label>
 			<textoffsetx>15</textoffsetx>
 			<align>center</align>
 			<enabledcolor>lightgrey</enabledcolor>
+			<texturefocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturefocus>
+			<texturenofocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturenofocus>
 			<enabled>false</enabled>
 			<visible>!String.IsEmpty(ListItem.VideoResolution)</visible>
 		</control>
 		<control type="button">
 			<width min="50">auto</width>
 			<height>48</height>
-			<font>reg16</font>
+			<font>reg18</font>
 			<label>$INFO[ListItem.VideoCodec]</label>
 			<textoffsetx>15</textoffsetx>
 			<align>center</align>
 			<enabledcolor>lightgrey</enabledcolor>
+			<texturefocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturefocus>
+			<texturenofocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturenofocus>
 			<enabled>false</enabled>
 			<visible>!String.IsEmpty(ListItem.VideoCodec)</visible>
 		</control>
 		<control type="button">
 			<width min="50">auto</width>
 			<height>48</height>
-			<font>reg16</font>
+			<font>reg18</font>
 			<label>$VAR[ListItemAudio]</label>
 			<textoffsetx>15</textoffsetx>
 			<align>center</align>
 			<enabledcolor>lightgrey</enabledcolor>
+			<texturefocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturefocus>
+			<texturenofocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturenofocus>
 			<enabled>false</enabled>
 			<visible>!String.IsEmpty(ListItem.AudioChannels) + !String.IsEmpty(ListItem.AudioCodec)</visible>
 		</control>
 		<control type="button">
 			<width min="50">auto</width>
 			<height>48</height>
-			<font>reg16</font>
+			<font>reg18</font>
 			<label>$INFO[ListItem.DateAdded,$LOCALIZE[570]: ]</label>
 			<textoffsetx>15</textoffsetx>
 			<align>center</align>
 			<enabledcolor>lightgrey</enabledcolor>
+			<texturefocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturefocus>
+			<texturenofocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturenofocus>
 			<enabled>false</enabled>
 			<visible>!String.IsEmpty(ListItem.DateAdded)</visible>
 		</control>
@@ -764,11 +776,6 @@
 				<bottom>$PARAM[bottom]</bottom>
 				<width>$PARAM[width]</width>
 				<height>$PARAM[height]</height>
-				<texturesliderbackground colordiffuse="black">common/ProgressBack.png</texturesliderbackground>
-				<texturesliderbar colordiffuse="emby">common/ProgressBar.png</texturesliderbar>
-				<texturesliderbarfocus/>
-				<textureslidernib/>
-				<textureslidernibfocus/>
 				<orientation>horizontal</orientation>
 				<showonepage>false</showonepage>
 				<visible>$PARAM[visible]</visible>
@@ -787,29 +794,11 @@
 				<top>$PARAM[top]</top>
 				<width>$PARAM[width]</width>
 				<height>$PARAM[height]</height>
-				<texturesliderbackground colordiffuse="black">common/ProgressBack.png</texturesliderbackground>
-				<texturesliderbar colordiffuse="emby">common/ProgressBar.png</texturesliderbar>
-				<texturesliderbarfocus/>
-				<textureslidernib/>
-				<textureslidernibfocus/>
 				<orientation>vertical</orientation>
 				<showonepage>false</showonepage>
 				<visible>$PARAM[visible]</visible>
 			</control>
 		</definition>
-	</include>
-	<!-- Grey Button -->
-	<include name="GreyButton">
-		<width min="50">auto</width>
-		<height>50</height>
-		<font>med20</font>
-		<textcolor>white</textcolor>
-		<focusedcolor>white</focusedcolor>
-		<selectedcolor>white</selectedcolor>
-		<shadowcolor>text_shadow</shadowcolor>
-		<textoffsetx>20</textoffsetx>
-		<texturefocus border="10" colordiffuse="emby">items/shadow_smallbutton.png</texturefocus>
-		<texturenofocus border="10" colordiffuse="grey">items/shadow_smallbutton.png</texturenofocus>
 	</include>
 	<!-- Common Button -->
 	<include name="CommonButton">
@@ -839,6 +828,7 @@
 	<!-- Header Button -->
 	<include name="HeaderButton">		
 		<include>NoTextures</include>
+		<height>20</height>
 		<width>auto</width>
 		<font>med18</font>
 		<textcolor>panel_text</textcolor>
