@@ -136,27 +136,32 @@
 				<texturesliderbar colordiffuse="emby">common/ProgressBar.png</texturesliderbar>
 				<texturesliderbarfocus colordiffuse="emby">common/ProgressBar.png</texturesliderbarfocus>
 			</control>
-			<control type="image">
-				<centerleft>50%</centerleft>
-				<bottom>65</bottom>
-				<width>363</width>
-				<height>1</height>
-				<texture colordiffuse="panel_hover">common/white.jpg</texture>
-			</control>
-			<control type="button" id="7">
-				<centerleft>50%</centerleft>
+			<control type="group">
 				<bottom>10</bottom>
-				<width>363</width>
+				<width>100%</width>
 				<height>50</height>
-				<align>center</align>
-				<aligny>center</aligny>
-				<textoffsetx>20</textoffsetx>
-				<font>med18</font>
-				<textcolor>white</textcolor>
-				<textshadow>text_shadow</textshadow>
-				<texturefocus colordiffuse="panel_hover">common/white.jpg</texturefocus>
-				<texturenofocus colordiffuse="panel">common/white.jpg</texturenofocus>
-				<onup>3</onup>
+				<control type="image">
+					<width>100%</width>
+					<height>50</height>
+					<texture border="10" colordiffuse="panel">common/menu_back.png</texture>
+				</control>
+				<control type="grouplist">
+					<width>100%</width>
+					<height>50</height>
+					<align>center</align>
+					<onright>noop</onright>
+					<onleft>noop</onleft>
+					<ondown>noop</ondown>
+					<orientation>horizontal</orientation>
+					<control type="button" id="5">
+						<label>$LOCALIZE[21452]</label>
+						<onup>SetFocus(3)</onup>
+					</control>
+					<control type="button" id="7">
+						<label>$LOCALIZE[137]</label>
+						<onup>SetFocus(3)</onup>
+					</control>
+				</control>
 			</control>
 		</control>
 	</controls>
