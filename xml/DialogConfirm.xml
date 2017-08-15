@@ -1,54 +1,84 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <window>
-	<include>Animation_DialogPopupOpenClose</include>
-	<depth>DepthDialog+</depth>
+	<defaultcontrol always="true">100</defaultcontrol>
+	<include>Dialog_PopupOpenClose</include>	
 	<controls>
-		<control type="group">
-			<height>390</height>
-			<centertop>50%</centertop>
+		<include content="ScrollbarVertical">
+			<param name="id">3000</param>
+			<param name="visible">false</param>
+		</include>
+		<control type="image">
+			<include>FullscreenDimensions</include>
+			<texture colordiffuse="background_diffuse">common/white.jpg</texture>
+		</control>
+		<control type="grouplist">
 			<centerleft>50%</centerleft>
-			<width>915</width>
-			<include content="DialogBackgroundCommons">
-				<param name="width" value="915" />
-				<param name="height" value="380" />
-				<param name="header_label" value="" />
-				<param name="header_id" value="1" />
-			</include>
-			<control type="textbox" id="9">
-				<left>30</left>
-				<top>82</top>
-				<width>855</width>
-				<height>165</height>
-				<label></label>
-				<autoscroll time="3000" delay="4000" repeat="5000">true</autoscroll>
-			</control>
-			<control type="progress" id="20">
-				<left>45</left>
-				<top>252</top>
-				<width>825</width>
-				<height>24</height>
-				<info>System.Progressbar</info>
-			</control>
-			<control type="grouplist" id="9000">
-				<orientation>horizontal</orientation>
-				<left>0</left>
-				<top>280</top>
-				<width>915</width>
+			<centertop>50%</centertop>
+			<width>800</width>
+			<height max="940">auto</height>
+			<orientation>vertical</orientation>
+			<itemgap>20</itemgap>
+			<align>center</align>
+			<!-- headline -->	
+			<control id="1" type="label">
+				<centerleft>50%</centerleft>
+				<width>100%</width>
+				<height>26</height>
+				<font>Med26Spaced</font>
+				<textcolor>text_white</textcolor>
+				<shadowcolor>text_shadow</shadowcolor>
+				<autoscroll>false</autoscroll>
 				<align>center</align>
-				<include content="DefaultDialogButton">
-					<param name="id" value="11" />
-					<param name="label" value="" />
-				</include>
-				<include content="DefaultDialogButton">
-					<param name="id" value="10" />
-					<param name="label" value="" />
-				</include>
-				<include content="DefaultDialogButton">
-					<param name="id" value="12" />
-					<param name="label" value="" />
-				</include>
+				<aligny>top</aligny>
+			</control>
+			<!-- message -->	
+			<control id="9" type="textbox">
+				<centerleft>50%</centerleft>
+				<width>100%</width>
+				<height max="745">auto</height>
+				<font>Reg26Spaced</font>
+				<textcolor>text_white</textcolor>
+				<shadowcolor>text_shadow</shadowcolor>
+				<autoscroll>false</autoscroll>
+				<align>center</align>
+				<aligny>top</aligny>
+				<pagecontrol>3000</pagecontrol>
+			</control>
+			<!-- progress -->			
+			<control type="progress" id="20">
+				<width>100%</width>
+				<height>20</height>
+				<texturebg colordiffuse="black" border="2">common/ProgressBack.png</texturebg>
+				<lefttexture>-</lefttexture>
+				<midtexture colordiffuse="emby"  border="2">common/ProgressBar.png</midtexture>
+				<righttexture>-</righttexture>
+				<info>ListItem.Progress</info>
+			</control>
+			<!-- Button -->
+			<control type="grouplist" id="100">
+				<height>50</height>
+				<width>100%</width>
+				<orientation>horizontal</orientation>
+				<itemgap>5</itemgap>
+				<align>center</align>
+				<onright>noop</onright>
+				<onleft>noop</onleft>
+				<control type="button" id="11">
+					<label>$LOCALIZE[15067]</label>
+					<onup>PageUp(3000)</onup>
+					<ondown>PageDown(3000)</ondown>
+				</control>
+				<control type="button" id="10">
+					<label>$LOCALIZE[15067]</label>
+					<onup>PageUp(3000)</onup>
+					<ondown>PageDown(3000)</ondown>
+				</control>
+				<control type="button" id="12">
+					<label>$LOCALIZE[15067]</label>
+					<onup>PageUp(3000)</onup>
+					<ondown>PageDown(3000)</ondown>
+				</control>
 			</control>
 		</control>
 	</controls>
 </window>
-

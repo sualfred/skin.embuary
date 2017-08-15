@@ -87,11 +87,13 @@
 		<value condition="!String.IsEqual(ListItem.DBType,tvshow) + !String.IsEqual(ListItem.DBType,season)">$LOCALIZE[31010]</value>
 		<value>$LOCALIZE[31011]</value>
 	</variable>
+	<variable name="TinyInfoDialogHeadline">
+		<value condition="!String.IsEmpty(ListItem.DBType,TvShowTitle)">$INFO[ListItem.TvShowTitle]</value>
+		<value>$INFO[ListItem.Title]</value>
+	</variable>
 	<variable name="TinyInfoDialogPlot">
-		<value condition="String.IsEqual(ListItem.DBType,Episode)">[B]$INFO[ListItem.TvShowTitle,,[CR]]$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, ]$INFO[ListItem.Title,,[CR][CR]][/B]$INFO[ListItem.Duration,$LOCALIZE[180]: , $LOCALIZE[12391][CR][CR]]$INFO[ListItem.Plot]</value>
-		<value condition="String.IsEqual(ListItem.DBType,Season)">$INFO[ListItem.TVShowTitle,[B],[/B][CR][CR]]$INFO[ListItem.Plot]</value>
-		<value condition="String.IsEqual(ListItem.DBType,TVShow)">$INFO[ListItem.TVShowTitle,[B],[/B][CR][CR]]$INFO[ListItem.Plot]</value>
-		<value>$INFO[ListItem.Title,[B],[/B][CR][CR]]$INFO[ListItem.Plot]</value>
+		<value condition="String.IsEqual(ListItem.DBType,Episode)">$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, ]$INFO[ListItem.Title,,[CR][CR]]$INFO[ListItem.Duration,$LOCALIZE[180]: , $LOCALIZE[12391][CR][CR]]$INFO[ListItem.Plot]</value>
+		<value>$INFO[ListItem.Plot]</value>
 	</variable>
 	<variable name="ListViewPlot">
 		<value condition="Window.IsVisible(tvrecordings)">$INFO[ListItem.Plot]</value>
