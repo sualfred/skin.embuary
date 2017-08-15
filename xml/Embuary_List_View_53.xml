@@ -3,6 +3,7 @@
 	<include name="List_View_53">
 		<param name="mainlabel">$VAR[MainListLabel]</param>
 		<param name="sublabel">$VAR[SubListLabel]</param>
+		<param name="thumblabel">$VAR[MainListLabel]</param>
 		<definition>
 			<!-- Hidden scrollbar -->
 			<control id="96" type="scrollbar">
@@ -36,14 +37,14 @@
 								<height>332</height>
 								<texture colordiffuse="green" scalediffuse="false" diffuse="items/mask_wide_big.png">common/white.jpg</texture>
 								<aspectratio>stretch</aspectratio>
-								<visible>String.IsEmpty(ListItem.Art(thumb))</visible>
+								<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
 							</control>
 							<control type="image">
 								<width>590</width>
 								<height>332</height>
 								<texture colordiffuse="darkbutton" scalediffuse="false" diffuse="items/mask_wide_big.png">common/white.jpg</texture>
 								<aspectratio>stretch</aspectratio>
-								<visible>!String.IsEmpty(ListItem.Art(thumb))</visible>
+								<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
 							</control>
 							<control type="textbox">
 								<top>10</top>
@@ -53,8 +54,8 @@
 								<font>Light24</font>
 								<align>center</align>
 								<aligny>center</aligny>
-								<label>$VAR[MainListLabel]</label>
-								<visible>String.IsEmpty(ListItem.Art(thumb))</visible>
+								<label>$PARAM[thumblabel]</label>
+								<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
 							</control>
 							<control type="image">
 								<width>590</width>

@@ -1286,18 +1286,19 @@
 				<visible>$PARAM[focused]</visible>
 			</control>
 			<control type="group">
-				<visible>String.StartsWith(ListItem.Path,pvr://)</visible>
+				<visible>![Container.Content(tvshows) | Container.Content(movies)]</visible>
 				<top>13</top>
 				<control type="image">
 					<width>67</width>
 					<height>67</height>
-					<texture scalediffuse="false" diffuse="items/mask_square_mini.png" background="true">$INFO[ListItem.Art(thumb)]</texture>
+					<texture scalediffuse="false" diffuse="items/mask_square_mini.png" background="true">$INFO[ListItem.Icon]</texture>
 					<aspectratio>keep</aspectratio>
 					<bordersize>0</bordersize>
+					<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
 				</control>
 			</control>
 			<control type="group">
-				<visible>!String.StartsWith(ListItem.Path,pvr://)</visible>
+				<visible>Container.Content(tvshows) | Container.Content(movies)</visible>
 				<control type="image">
 					<top>-2</top>
 					<left>-2</left>

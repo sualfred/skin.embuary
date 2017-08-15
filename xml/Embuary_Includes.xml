@@ -186,7 +186,7 @@
 						<include>HeaderButton</include>
 						<label>$LOCALIZE[587]</label>
 						<onclick>SetFocus(4000)</onclick>
-						<visible>[Window.IsVisible(videos) | Window.IsVisible(music) | Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRrecordings.xml)] + !$EXP[ExpInfoDialogActive]</visible>
+						<visible>[Window.IsVisible(videos) | Window.IsVisible(music) | Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRrecordings.xml) | Window.IsVisible(MyPVRTimers.xml) | Window.IsVisible(MyPVRSearch.xml)] + !$EXP[ExpInfoDialogActive]</visible>
 					</control>
 					<control type="button" id="6605">
 						<include>HeaderButton</include>
@@ -196,11 +196,17 @@
 					</control>
 					<control type="button" id="6606">
 						<include>HeaderButton</include>
+						<label>$INFO[Control.GetLabel(28)]</label>
+						<onclick>SendClick(28)</onclick>
+						<visible>[Window.IsVisible(MyPVRTimers.xml) | Window.IsVisible(MyPVRSearch.xml)] + !$EXP[ExpInfoDialogActive]</visible>
+					</control>
+					<control type="button" id="6607">
+						<include>HeaderButton</include>
 						<label>$LOCALIZE[19141]: $INFO[Control.GetLabel(29)]</label>
 						<onclick>SendClick(28)</onclick>
 						<visible>[Window.IsVisible(MyPVRChannels.xml)] + !$EXP[ExpInfoDialogActive]</visible>
 					</control>
-					<control type="button" id="6607">
+					<control type="button" id="6608">
 						<include>HeaderButton</include>
 						<width>auto</width>
 						<font>med17</font>

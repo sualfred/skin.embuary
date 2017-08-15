@@ -1,155 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
-	<defaultcontrol always="true">50</defaultcontrol>
-	<menucontrol>9000</menucontrol>
-	<views>50</views>
-	<menucontrol>6053</menucontrol>
+	<defaultcontrol always="true">53</defaultcontrol>
+	<backgroundcolor>background</backgroundcolor>
+	<views>53</views>
+	<menucontrol>9999</menucontrol>
 	<controls>
-		<include>DefaultBackground</include>
-		<control type="group">
-			<animation effect="fade" start="100" end="0" time="200" tween="sine" condition="$EXP[infodialog_active]">Conditional</animation>
-			<control type="group">
-				<visible>Control.IsVisible(50)</visible>
-				<include>OpenClose_Left</include>
-				<include>Visible_Left</include>
-				<control type="fixedlist" id="50">
-					<left>0</left>
-					<top>list_y_offset</top>
-					<right>918</right>
-					<bottom>list_y_offset</bottom>
-					<onup>50</onup>
-					<ondown>50</ondown>
-					<onleft>9000</onleft>
-					<onright>77</onright>
-					<movement>2</movement>
-					<focusposition>3</focusposition>
-					<pagecontrol>77</pagecontrol>
-					<scrolltime>200</scrolltime>
-					<itemlayout height="100" width="tvchannelslist_width">
-						<control type="label">
-							<visible>String.IsEmpty(ListItem.Date)</visible>
-							<left>120</left>
-							<top>0</top>
-							<right>30</right>
-							<height>100</height>
-							<font>font36_title</font>
-							<aligny>center</aligny>
-							<label>$INFO[ListItem.Label]</label>
-						</control>
-						<control type="group">
-							<visible>!String.IsEmpty(ListItem.Date)</visible>
-							<control type="image">
-								<left>25</left>
-								<top>10</top>
-								<width>80</width>
-								<height>80</height>
-								<texture fallback="DefaultTVShows.png">$INFO[Listitem.ActualIcon]</texture>
-								<aspectratio>keep</aspectratio>
-								<visible>!String.IsEmpty(ListItem.ActualIcon)</visible>
-							</control>
-							<control type="label">
-								<left>120</left>
-								<top>10</top>
-								<right>30</right>
-								<height>100</height>
-								<aligny>top</aligny>
-								<label>$INFO[ListItem.ChannelName][COLOR grey]$INFO[ListItem.Label, - ][/COLOR]</label>
-							</control>
-							<control type="label">
-								<left>120</left>
-								<top>20</top>
-								<width>350</width>
-								<height>100</height>
-								<font>font12</font>
-								<aligny>center</aligny>
-								<label>$INFO[ListItem.Date]</label>
-							</control>
-						</control>
-					</itemlayout>
-					<focusedlayout height="100" width="tvchannelslist_width">
-						<control type="image">
-							<left>0</left>
-							<top>0</top>
-							<right>0</right>
-							<height>101</height>
-							<texture colordiffuse="button_focus">lists/focus.png</texture>
-							<visible>Control.HasFocus(50)</visible>
-						</control>
-						<control type="label">
-							<visible>String.IsEmpty(ListItem.Date)</visible>
-							<left>120</left>
-							<top>0</top>
-							<right>30</right>
-							<height>100</height>
-							<font>font36_title</font>
-							<aligny>center</aligny>
-							<label>$INFO[ListItem.Label]</label>
-						</control>
-						<control type="group">
-							<visible>!String.IsEmpty(ListItem.Date)</visible>
-							<control type="image">
-								<left>25</left>
-								<top>10</top>
-								<width>80</width>
-								<height>80</height>
-								<texture fallback="DefaultTVShows.png">$INFO[Listitem.ActualIcon]</texture>
-								<aspectratio>keep</aspectratio>
-								<visible>!String.IsEmpty(ListItem.ActualIcon)</visible>
-							</control>
-							<control type="label">
-								<left>120</left>
-								<top>10</top>
-								<right>30</right>
-								<height>100</height>
-								<aligny>top</aligny>
-								<label>$INFO[ListItem.ChannelName]$INFO[ListItem.Label, - ]</label>
-							</control>
-							<control type="label">
-								<left>120</left>
-								<top>20</top>
-								<width>350</width>
-								<height>100</height>
-								<font>font12</font>
-								<aligny>center</aligny>
-								<label>$INFO[ListItem.Date]</label>
-							</control>
-						</control>
-					</focusedlayout>
-				</control>
-			</control>
-			<control type="group">
-				<depth>DepthContentPanel</depth>
-				<width>870</width>
-				<right>0</right>
-				<include>OpenClose_Right</include>
-				<include content="ContentPanel">
-					<param name="left" value="-68" />
-					<param name="width" value="970" />
-					<param name="top" value="-20" />
-					<param name="flipx" value="true" />
-				</include>
-				<control type="scrollbar" id="77">
-					<left>-45</left>
-					<top>0</top>
-					<width>12</width>
-					<height>100%</height>
-					<onleft>50</onleft>
-					<onright>50</onright>
-					<orientation>vertical</orientation>
-					<animation effect="zoom" start="100,100" end="50,100" center="-45,0" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(77)">conditional</animation>
-				</control>
-				<include>PVRInfoPanel</include>
-			</control>
-			<include content="TopBar">
-				<param name="breadcrumbs_label" value="$VAR[BreadcrumbsPVRSearchVar]" />
-			</include>
-			<include content="BottomBar">
-				<param name="info_visible" value="true" />
+		<control type="label" id="28">
+			<include>HiddenObject</include>
+		</control>
+		<include content="Background"/>
+		<control type="group">	
+			<include>Window_OpenClose</include>
+			<include content="List_View_53">
+				<param name="mainlabel">$INFO[ListItem.Label]</param>
+				<param name="sublabel">$INFO[ListItem.Channelname]</param>
+				<param name="thumblabel">$INFO[ListItem.Label]</param>
+				<param name="rightlabel">$INFO[ListItem.Date]</param>
+				<param name="rightlabel2">$INFO[ListItem.Comment]</param>
 			</include>
 			<control type="group">
-				<include>MediaMenuCommon</include>
-				<include>PVRSideBar</include>
+				<top>75</top>
+				<width>1920</width>
+				<height>40</height>
+				<control type="group">
+					<include content="JumpToLetter">
+						<param name="visible" value="[Container.HasNext | Container.HasPrevious] + $EXP[ExpJumpToLetter]"/>
+					</include>
+				</control>
+				<control type="label">
+					<visible>![Container.HasNext | Container.HasPrevious] | !$EXP[ExpJumpToLetter]</visible>
+					<centerleft>50%</centerleft>
+					<width>1215</width>
+					<height>40</height>
+					<font>Med18</font>
+					<align>center</align>
+					<aligny>center</aligny>
+					<textcolor>softgrey</textcolor>
+					<shadowcolor>text_shadow</shadowcolor>
+					<label>$INFO[Container.SortMethod,$LOCALIZE[581] ","]$INFO[Container.SortOrder, / $LOCALIZE[580] ","]</label>
+				</control>
 			</control>
 		</control>
+		<!-- Menu control -->
+		<control type="group">
+			<visible>ControlGroup(4000).HasFocus</visible>
+			<include>FullscreenDimensions</include>
+			<include>Visible_PopupOpenClose</include>
+			<include content="DiffuseMask">
+				<param name="visible">true</param>
+			</include>
+			<control type="group">
+				<centerleft>50%</centerleft>
+				<width>284</width>
+				<centertop>50%</centertop>
+				<height>970</height>
+				<control type="grouplist" id="4000">
+					<orientation>vertical</orientation>
+					<height>auto</height>
+					<align>center</align>
+					<itemgap>0</itemgap>
+					<onright>50</onright>
+					<onleft>50</onleft>
+					<onback>50</onback>
+					<usecontrolcoords>true</usecontrolcoords>
+					<control type="image">
+						<width>100%</width>
+						<height>10</height>
+						<texture colordiffuse="panel">common/menu_top.png</texture>
+					</control>
+					<control type="togglebutton" id="4">
+						<include content="CommonButton"/>
+						<label>$LOCALIZE[580]: $LOCALIZE[584]</label>
+						<altlabel>$LOCALIZE[580]: $LOCALIZE[585]</altlabel>
+					</control>
+					<control type="button" id="3">
+						<include content="CommonButton"/>
+					</control>
+					<control type="image">
+						<width>100%</width>
+						<height>10</height>
+						<texture colordiffuse="panel">common/menu_bottom.png</texture>
+					</control>
+				</control>
+			</control>
+		</control>
+		<!-- header bar -->
+		<include content="HeaderBar">		
+			<param name="id">50</param>
+			<param name="enabled">false</param>
+			<param name="sidebar_id">9999</param>
+		</include>
+		<!-- side panel -->
+		<include content="SidePanel">
+			<param name="onright">50</param>
+		</include>
 	</controls>
 </window>
