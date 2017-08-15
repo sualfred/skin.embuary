@@ -763,16 +763,16 @@
 				<control type="image">
 					<width>276</width>
 					<height>276</height>
-					<texture colordiffuse="green" scalediffuse="false" diffuse="items/mask_square_db.png">common/white.jpg</texture>
+					<texture colordiffuse="green" scalediffuse="false" diffuse="items/mask_square.png">common/white.jpg</texture>
 					<aspectratio>stretch</aspectratio>
-					<visible>String.IsEmpty(ListItem.Art(thumb))</visible>
+					<visible>String.IsEmpty(Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
 				</control>
 				<control type="image">
 					<width>276</width>
 					<height>276</height>
-					<texture colordiffuse="thumb_background" scalediffuse="false" diffuse="items/mask_square_db.png">common/white.jpg</texture>
+					<texture colordiffuse="thumb_background" scalediffuse="false" diffuse="items/mask_square.png">common/white.jpg</texture>
 					<aspectratio>stretch</aspectratio>
-					<visible>!String.IsEmpty(ListItem.Art(thumb))</visible>
+					<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
 				</control>
 				<control type="textbox">
 					<top>10</top>
@@ -783,22 +783,22 @@
 					<align>center</align>
 					<aligny>center</aligny>
 					<label>$PARAM[thumblabel]</label>
-					<visible>String.IsEmpty(ListItem.Art(thumb))</visible>
+					<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
 				</control>
 				<control type="image">
 					<width>276</width>
 					<height>276</height>
-					<texture scalediffuse="true" diffuse="items/mask_square_db.png" background="true">$INFO[ListItem.Art(thumb)]</texture>
+					<texture scalediffuse="true" diffuse="items/mask_square.png" background="true">$INFO[ListItem.Icon]</texture>
 					<aspectratio>stretch</aspectratio>
-					<visible>!String.StartsWith(ListItem.Path,pvr://)</visible>
+					<visible>!String.StartsWith(ListItem.Path,pvr://) + !String.StartsWith(ListItem.Icon,Default)</visible>
 				</control>
 				<control type="image">
 					<width>276</width>
 					<height>276</height>
-					<texture scalediffuse="true" diffuse="items/mask_square_db.png" background="true">$INFO[ListItem.Art(thumb)]</texture>
+					<texture scalediffuse="true" diffuse="items/mask_square.png" background="true">$INFO[ListItem.Icon]</texture>
 					<aspectratio>keep</aspectratio>
 					<bordersize>20</bordersize>
-					<visible>String.StartsWith(ListItem.Path,pvr://)</visible>
+					<visible>String.StartsWith(ListItem.Path,pvr://) + !String.StartsWith(ListItem.Icon,Default)</visible>
 				</control>
 				<control type="group">
 					<width>276</width>
@@ -856,14 +856,14 @@
 					<height>340</height>
 					<texture colordiffuse="green" scalediffuse="false" diffuse="items/mask_square_db.png">common/white.jpg</texture>
 					<aspectratio>stretch</aspectratio>
-					<visible>String.IsEmpty(ListItem.Art(thumb))</visible>
+					<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
 				</control>
 				<control type="image">
 					<width>340</width>
 					<height>340</height>
 					<texture colordiffuse="thumb_background" scalediffuse="false" diffuse="items/mask_square_db.png">common/white.jpg</texture>
 					<aspectratio>stretch</aspectratio>
-					<visible>!String.IsEmpty(ListItem.Art(thumb))</visible>
+					<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
 				</control>
 				<control type="textbox">
 					<top>10</top>
@@ -874,22 +874,22 @@
 					<align>center</align>
 					<aligny>center</aligny>
 					<label>$PARAM[thumblabel]</label>
-					<visible>String.IsEmpty(ListItem.Art(thumb))</visible>
+					<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
 				</control>
 				<control type="image">
 					<width>340</width>
 					<height>340</height>
-					<texture scalediffuse="true" diffuse="items/mask_square_db.png" background="true">$INFO[ListItem.Art(thumb)]</texture>
+					<texture scalediffuse="true" diffuse="items/mask_square_db.png" background="true">$INFO[ListItem.Icon]</texture>
 					<aspectratio>stretch</aspectratio>
-					<visible>!String.StartsWith(ListItem.Path,pvr://)</visible>
+					<visible>!String.StartsWith(ListItem.Path,pvr://) + !String.StartsWith(ListItem.Icon,Default)</visible>
 				</control>
 				<control type="image">
 					<width>340</width>
 					<height>340</height>
-					<texture scalediffuse="true" diffuse="items/mask_square_db.png" background="true">$INFO[ListItem.Art(thumb)]</texture>
+					<texture scalediffuse="true" diffuse="items/mask_square_db.png" background="true">$INFO[ListItem.Icon]</texture>
 					<aspectratio>keep</aspectratio>
 					<bordersize>20</bordersize>
-					<visible>String.StartsWith(ListItem.Path,pvr://)</visible>
+					<visible>String.StartsWith(ListItem.Path,pvr://) + !String.StartsWith(ListItem.Icon,Default)</visible>
 				</control>
 				<control type="group">
 					<width>340</width>

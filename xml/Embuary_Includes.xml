@@ -192,7 +192,7 @@
 						<include>HeaderButton</include>
 						<label>$INFO[Control.GetLabel(2)]</label>
 						<onclick>Container.NextViewMode</onclick>
-						<visible>[Window.IsVisible(videos) | Window.IsVisible(music) | Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRrecordings.xml)] + !$EXP[ExpInfoDialogActive]</visible>
+						<visible>[Window.IsVisible(videos) | Window.IsVisible(music) | Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRrecordings.xml) | Window.IsVisible(addonbrowser)] + !$EXP[ExpInfoDialogActive]</visible>
 					</control>
 					<control type="button" id="6606">
 						<include>HeaderButton</include>
@@ -714,46 +714,109 @@
 		<control type="button">
 			<width min="50">auto</width>
 			<height>48</height>
-			<font>reg16</font>
+			<font>reg18</font>
 			<label>$LOCALIZE[31022]</label>
 			<textoffsetx>15</textoffsetx>
 			<align>center</align>
 			<enabledcolor>lightgrey</enabledcolor>
 			<enabled>false</enabled>
 			<visible>ListItem.IsEncrypted</visible>
+			<texturefocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturefocus>
+			<texturenofocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturenofocus>
 		</control>
 		<control type="button">
 			<width min="50">auto</width>
 			<height>48</height>
-			<font>reg16</font>
+			<font>reg18</font>
 			<label>$LOCALIZE[31023]</label>
 			<textoffsetx>15</textoffsetx>
 			<align>center</align>
 			<enabledcolor>lightgrey</enabledcolor>
 			<enabled>false</enabled>
 			<visible>ListItem.IsRecording</visible>
+			<texturefocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturefocus>
+			<texturenofocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturenofocus>
 		</control>
 		<control type="button">
 			<width min="50">auto</width>
 			<height>48</height>
-			<font>reg16</font>
+			<font>reg18</font>
 			<label>$LOCALIZE[31024]</label>
 			<textoffsetx>15</textoffsetx>
 			<align>center</align>
 			<enabledcolor>lightgrey</enabledcolor>
 			<enabled>false</enabled>
 			<visible>ListItem.HasTimer</visible>
+			<texturefocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturefocus>
+			<texturenofocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturenofocus>
 		</control>
 		<control type="button">
 			<width min="50">auto</width>
 			<height>48</height>
-			<font>reg16</font>
+			<font>reg18</font>
 			<label>$LOCALIZE[31025]</label>
 			<textoffsetx>15</textoffsetx>
 			<align>center</align>
 			<enabledcolor>lightgrey</enabledcolor>
 			<enabled>false</enabled>
 			<visible>ListItem.HasTimerSchedule</visible>
+			<texturefocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturefocus>
+			<texturenofocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturenofocus>
+		</control>
+	</include>
+	<!-- Addon Flags -->
+	<include name="AddonFlags">
+		<control type="button">
+			<width min="50">auto</width>
+			<height>48</height>
+			<font>reg18</font>
+			<label>$LOCALIZE[31035]</label>
+			<textoffsetx>15</textoffsetx>
+			<align>center</align>
+			<enabledcolor>lightgrey</enabledcolor>
+			<enabled>false</enabled>
+			<texturefocus border="10" colordiffuse="red">items/shadow_smallbutton.png</texturefocus>
+			<texturenofocus border="10" colordiffuse="red">items/shadow_smallbutton.png</texturenofocus>
+			<visible>!String.IsEmpty(ListItem.AddonBroken)</visible>
+		</control>
+		<control type="button">
+			<width min="50">auto</width>
+			<height>48</height>
+			<font>reg18</font>
+			<label>$LOCALIZE[289] $INFO[ListItem.AddonSize]</label>
+			<textoffsetx>15</textoffsetx>
+			<align>center</align>
+			<enabledcolor>lightgrey</enabledcolor>
+			<enabled>false</enabled>
+			<texturefocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturefocus>
+			<texturenofocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturenofocus>
+			<visible>!String.IsEmpty(ListItem.AddonSize)</visible>
+		</control>
+		<control type="button">
+			<width min="50">auto</width>
+			<height>48</height>
+			<font>reg18</font>
+			<label>$LOCALIZE[12013]: $INFO[ListItem.AddonInstallDate]</label>
+			<textoffsetx>15</textoffsetx>
+			<align>center</align>
+			<enabledcolor>lightgrey</enabledcolor>
+			<enabled>false</enabled>
+			<texturefocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturefocus>
+			<texturenofocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturenofocus>
+			<visible>!String.IsEmpty(ListItem.AddonInstallDate)</visible>
+		</control>
+		<control type="button">
+			<width min="50">auto</width>
+			<height>48</height>
+			<font>reg18</font>
+			<label>$LOCALIZE[12014]: $INFO[ListItem.AddonLastUpdated]</label>
+			<textoffsetx>15</textoffsetx>
+			<align>center</align>
+			<enabledcolor>lightgrey</enabledcolor>
+			<enabled>false</enabled>
+			<texturefocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturefocus>
+			<texturenofocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturenofocus>
+			<visible>!String.IsEmpty(ListItem.AddonLastUpdated)</visible>
 		</control>
 	</include>
 	<!-- Invisible focus button -->
