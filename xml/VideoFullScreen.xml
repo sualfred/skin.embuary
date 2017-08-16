@@ -28,7 +28,7 @@
 					<bottom>0</bottom>
 					<width>100%</width>
 					<height>200</height>
-					<texture colordiffuse="black">views/player/mask_bottom.png</texture>
+					<texture colordiffuse="background_diffuse">views/player/mask_bottom.png</texture>
 				</control>
 				<control type="image" id="1">
 					<bottom>20</bottom>
@@ -43,7 +43,7 @@
 					<width>250</width>
 					<height>375</height>
 					<texture scalediffuse="false" colordiffuse="thumb_background" diffuse="views/player/mask_poster.png">common/white.jpg</texture>
-					<aspectratio>scale</aspectratio>
+					<aspectratio>stretch</aspectratio>
 				</control>
 				<control type="image" id="1">
 					<bottom>29</bottom>
@@ -51,7 +51,7 @@
 					<width>250</width>
 					<height>375</height>
 					<texture scalediffuse="false" diffuse="views/player/mask_poster.png">$INFO[Player.Art(tvshow.poster)]</texture>
-					<aspectratio>scale</aspectratio>
+					<aspectratio>stretch</aspectratio>
 				</control>
 				<!--  Cache bar -->
 				<control type="progress" id="99">
@@ -147,96 +147,22 @@
 				</control>
 				<!-- bottom label section -->
 				<control type="grouplist" id="1">
+					<visible>!Window.IsVisible(VideoOSD)</visible>
 					<orientation>horizontal</orientation>
-					<height>30</height>
+					<height>50</height>
 					<bottom>50</bottom>
 					<left>309</left>
 					<right>20</right>
 					<itemgap>0</itemgap>
-
-					<control type="label" id="1">
-						<width>40</width>
-						<height>30</height>
-						<aligny>center</aligny>
-						<label></label>
-						<font>Material34</font>
-						<shadowcolor>text_shadow</shadowcolor>
-					</control>
-					<control type="label" id="1">
-						<width>40</width>
-						<height>30</height>
-						<aligny>center</aligny>
-						<label></label>
-						<font>Material34</font>
-						<shadowcolor>text_shadow</shadowcolor>
-					</control>
-					<control type="label" id="1">
-						<width>40</width>
-						<height>30</height>
-						<aligny>center</aligny>
-						<label></label>
-						<font>Material34</font>
-						<shadowcolor>text_shadow</shadowcolor>
-					</control>
-					<control type="label" id="1">
-						<width>40</width>
-						<height>30</height>
-						<aligny>center</aligny>
-						<label></label>
-						<font>Material34</font>
-						<shadowcolor>text_shadow</shadowcolor>
-					</control>
-					<control type="label" id="1">
-						<width>40</width>
-						<height>30</height>
-						<aligny>center</aligny>
-						<label></label>
-						<font>Material34</font>
-						<shadowcolor>text_shadow</shadowcolor>
-					</control>
-					<control type="label" id="1">
-						<width>40</width>
-						<height>30</height>
-						<aligny>center</aligny>
-						<label></label>
-						<font>Material34</font>
-						<shadowcolor>text_shadow</shadowcolor>
-					</control>
-					<control type="label" id="1">
-						<width>40</width>
-						<height>30</height>
-						<aligny>center</aligny>
-						<label></label>
-						<font>Material34</font>
-						<shadowcolor>text_shadow</shadowcolor>
-					</control>
 					<!--  Current position -->
 					<control type="label" id="1">
 						<width>auto</width>
-						<height>30</height>
+						<height>50</height>
 						<aligny>center</aligny>
 						<font>reg20</font>
 						<shadowcolor>text_shadow</shadowcolor>
-						<label>$VAR[PlayerTime]</label>
-					</control>
-					<!--  Divider -->
-					<control type="label" id="1">
-						<width>auto</width>
-						<height>30</height>
-						<aligny>center</aligny>
-						<font>reg20</font>
-						<shadowcolor>text_shadow</shadowcolor>
+						<label>$VAR[PlayerTime] / $VAR[PlayerDuration]</label>
 						<visible>!String.IsEmpty(Player.Time) + !String.IsEmpty(Player.Duration)</visible>
-						<label> / </label>
-					</control>
-					<!--  Total length -->
-					<control type="label" id="1">
-						<width>auto</width>
-						<height>30</height>
-						<aligny>center</aligny>
-						<font>reg20</font>
-						<shadowcolor>text_shadow</shadowcolor>
-						<label>$VAR[PlayerDuration]</label>
 					</control>
 				</control>
 

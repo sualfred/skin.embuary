@@ -915,7 +915,6 @@
 		<focusedcolor>emby</focusedcolor>
 	</include>
 	<!-- Settings Button -->
-
 	<include name="SettingsButton">
 		<param name="height">50</param>
 		<param name="width">100%</param>
@@ -931,5 +930,40 @@
 			<texturefocus colordiffuse="panel_hover">common/white.jpg</texturefocus>
 			<texturenofocus />
 		</definition>
+	</include>
+	<!-- Player Control Buttons -->
+	<include name="PlayerButtons">
+		<texturenofocus>icons/player/$PARAM[type]_nf.png</texturenofocus>
+		<texturefocus colordiffuse="emby">icons/player/$PARAM[type]_fo.png</texturefocus>
+		<width>50</width>
+		<height>50</height>
+	</include>
+	<include name="PlayerControlButtons">		
+		<include>NoTextures</include>
+		<textoffsetx>0</textoffsetx>
+		<width>60</width>
+		<height>30</height>
+		<aligny>center</aligny>
+		<align>left</align>
+		<font>Material38</font>
+		<textcolor>white</textcolor>
+		<focusedcolor>emby</focusedcolor>
+		<shadowcolor>text_shadow</shadowcolor>
+	</include>
+	<include name="PlayerControlButtonsBack">
+		<control type="image">
+			<width>60</width>
+			<height>50</height>
+			<texture colordiffuse="emby_diffuse">views/player/focus_button.png</texture>
+			<aspectratio>keep</aspectratio>
+			<animation effect="fade" start="100" end="0" time="0" condition="!Control.HasFocus($PARAM[id])">Conditional</animation>
+			<animation effect="fade" start="0" end="100" time="100" condition="Control.HasFocus($PARAM[id])">Conditional</animation>
+		</control>
+	</include>
+	<!-- Seeking Padding -->	
+	<include name="osd_padding">
+		<height>82</height>
+		<width>15.91</width>
+		<texture>-</texture>
 	</include>
 </includes>

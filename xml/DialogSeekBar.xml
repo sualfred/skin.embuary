@@ -3,267 +3,390 @@
 	<visible>Player.Seeking | Player.DisplayAfterSeek | [Player.Paused + !Player.Caching] | Player.Forwarding | Player.Rewinding | Player.ShowInfo | Window.IsActive(fullscreeninfo) | Window.IsActive(videoosd) | Window.IsActive(musicosd) | Window.IsActive(playerprocessinfo) | !IsEmpty(Player.SeekNumeric)</visible>
 	<visible>!Window.IsActive(sliderdialog)</visible>
 	<visible>Window.IsActive(visualisation) | Window.IsActive(fullscreenvideo)</visible>
-	<include>Animation_BottomSlide</include>
-	<depth>DepthOSD</depth>
 	<zorder>0</zorder>
 	<controls>
 		<control type="group">
-			<bottom>0</bottom>
-			<height>190</height>
-			<control type="image">
-				<left>-40</left>
-				<width>120%</width>
-				<height>200</height>
-				<texture flipy="true">frame/osdfade.png</texture>
-			</control>
-			<control type="group">
-				<visible>!Window.IsVisible(videoosd) + !Window.IsVisible(musicosd)</visible>
-				<animation effect="fade" time="200">VisibleChange</animation>
-				<control type="image">
-					<left>30</left>
-					<top>90</top>
-					<width>120</width>
-					<height>99</height>
-					<texture>$INFO[MusicPlayer.Codec,flags/audiocodec/,.png]</texture>
-					<aspectratio>keep</aspectratio>
-					<visible>!Player.ChannelPreviewActive</visible>
-				</control>
-				<control type="image">
-					<left>200</left>
-					<top>120</top>
-					<width>264</width>
-					<height>40</height>
-					<texture>$INFO[MusicPlayer.UserRating,flags/starrating/,.png]</texture>
-					<aspectratio>keep</aspectratio>
-				</control>
-				<control type="label">
-					<top>110</top>
-					<left>20</left>
-					<width>400</width>
-					<height>50</height>
-					<aligny>center</aligny>
-					<font>font30</font>
-					<wrapmultiline>true</wrapmultiline>
-					<label>[COLOR button_focus]$LOCALIZE[21396]:[CR][/COLOR]$INFO[player.chapter]$INFO[player.chaptercount, / ]</label>
-					<visible>player.chaptercount</visible>
-				</control>
-				<control type="group">
-					<visible>Player.Recording + !PVR.ChannelPreviewActive</visible>
-					<control type="image">
-						<top>100</top>
-						<left>20</left>
-						<width>74</width>
-						<height>74</height>
-						<texture>osd/fullscreen/buttons/record.png</texture>
-					</control>
-					<control type="label">
-						<top>110</top>
-						<left>90</left>
-						<width>400</width>
-						<height>50</height>
-						<aligny>center</aligny>
-						<font>font25_title</font>
-						<label>$LOCALIZE[19158]</label>
-					</control>
-				</control>
-				<control type="label">
-					<top>110</top>
-					<right>20</right>
-					<width>400</width>
-					<height>50</height>
-					<align>right</align>
-					<aligny>center</aligny>
-					<font>font30</font>
-					<wrapmultiline>true</wrapmultiline>
-					<visible>!Window.IsActive(fullscreeninfo)</visible>
-					<animation effect="fade" time="200">VisibleChange</animation>
-					<label>$INFO[Player.TimeRemaining,[COLOR button_focus]$LOCALIZE[31134]:[CR][/COLOR]]</label>
-				</control>
-			</control>
-			<control type="label">
-				<centerleft>50%</centerleft>
-				<top>110</top>
-				<width>50%</width>
-				<height>75</height>
-				<align>center</align>
-				<aligny>bottom</aligny>
-				<animation delay="0" effect="slide" time="120" start="0,0" end="0,-20" tween="sine" easing="inout" condition="!String.IsEmpty(Control.GetLabel(40000))">Conditional</animation>
-				<label>$VAR[SeekTimeLabelVar]</label>
-				<font>font45</font>
-				<shadowcolor>black</shadowcolor>
-				<visible>!Player.ChannelPreviewActive</visible>
-				<animation effect="fade" start="0" end="100" time="200" delay="1000">Visible</animation>
-			</control>
-			<control type="label" id="40000">
-				<centerleft>50%</centerleft>
-				<top>134</top>
-				<width>50%</width>
-				<height>60</height>
-				<align>center</align>
-				<aligny>center</aligny>
-				<label>$VAR[SeekLabel]</label>
-				<shadowcolor>black</shadowcolor>
-			</control>
-			<control type="group" id="6000">
-				<top>-5</top>
-				<visible>PVR.IsTimeShift + !Player.ChannelPreviewActive</visible>
-				<animation effect="fade" time="300">VisibleChange</animation>
-				<control type="label">
-					<top>0</top>
-					<right>20</right>
-					<width>400</width>
-					<height>50</height>
-					<align>right</align>
-					<aligny>center</aligny>
-					<font>font30</font>
-					<label>$INFO[PVR.TimeShiftEnd]</label>
-				</control>
-				<control type="label">
-					<top>0</top>
-					<left>20</left>
-					<width>400</width>
-					<height>50</height>
-					<align>left</align>
-					<aligny>center</aligny>
-					<font>font30</font>
-					<label>$INFO[PVR.TimeShiftStart]</label>
-				</control>
-				<control type="label">
-					<top>0</top>
-					<left>20</left>
-					<right>20</right>
-					<height>50</height>
-					<align>center</align>
-					<aligny>center</aligny>
-					<font>font30</font>
-					<label>[B]$LOCALIZE[31026][/B] $INFO[PVR.timeshiftcur]</label>
-				</control>
-				<control type="progress">
-					<left>0</left>
-					<top>50</top>
-					<width>100%</width>
-					<height>15</height>
-					<info>PVR.timeshiftprogress</info>
-					<texturebg border="3" colordiffuse="60FFFFFF">colors/white50.png</texturebg>
-					<midtexture>colors/white50.png</midtexture>
-				</control>
-			</control>
-			<control type="progress">
-				<left>0</left>
-				<top>70</top>
-				<width>100%</width>
-				<height>15</height>
-				<info>Player.ProgressCache</info>
-				<texturebg border="3" colordiffuse="60FFFFFF">colors/white50.png</texturebg>
-				<midtexture>colors/white50.png</midtexture>
-				<visible>!Player.ChannelPreviewActive</visible>
-			</control>
-			<control type="progress">
-				<left>0</left>
-				<top>70</top>
-				<width>100%</width>
-				<height>15</height>
-				<info>Player.Progress</info>
-				<texturebg border="3" colordiffuse="60FFFFFF">colors/white50.png</texturebg>
-				<midtexture colordiffuse="button_focus">colors/white.png</midtexture>
-			</control>
+			<!-- Seekbar nib -->
 			<control type="slider" id="401">
-				<left>5</left>
-				<top>65</top>
-				<width>100%</width>
-				<height>25</height>
-				<texturesliderbar colordiffuse="00FFFFFF">osd/progress/nub_bar.png</texturesliderbar>
-				<textureslidernib colordiffuse="button_focus">osd/progress/nub_bar.png</textureslidernib>
-				<textureslidernibfocus colordiffuse="button_focus">colors/white.png</textureslidernibfocus>
-				<visible>!VideoPlayer.Content(livetv)</visible>
-			</control>
-		</control>
-		<control type="group">
-			<visible>Player.ShowInfo + VideoPlayer.Content(LiveTV) + Window.IsActive(fullscreenvideo) + !Window.IsActive(fullscreeninfo)</visible>
-			<animation effect="fade" time="400">VisibleChange</animation>
-			<animation effect="slide" end="0,-80" time="150" condition="Control.IsVisible(6000)">conditional</animation>
-			<bottom>0</bottom>
-			<height>380</height>
-			<control type="image">
-				<left>0</left>
-				<width>100%</width>
-				<height>240</height>
-				<texture>dialogs/dialog-bg-nobo.png</texture>
-			</control>
-			<control type="image">
-				<left>30</left>
-				<top>20</top>
-				<width>200</width>
-				<height>200</height>
-				<aspectratio aligny="center">keep</aspectratio>
-				<texture>$INFO[Player.Art(thumb)]</texture>
-			</control>
-			<control type="label">
-				<left>20</left>
-				<width>220</width>
-				<top>-80</top>
-				<height>25</height>
-				<label>$INFO[VideoPlayer.ChannelNumberLabel]</label>
-				<shadowcolor>black</shadowcolor>
-				<align>center</align>
-				<font>WeatherTemp</font>
-				<aligny>center</aligny>
-			</control>
-			<control type="label">
+				<bottom>138</bottom>
+				<left>309</left>
 				<right>20</right>
-				<width>800</width>
-				<top>190</top>
-				<height>25</height>
-				<label>$INFO[VideoPlayer.NextTitle,[COLOR grey]$LOCALIZE[19031]: [/COLOR], - ][COLOR button_focus]$INFO[VideoPlayer.NextStartTime]$INFO[VideoPlayer.NextEndTime: ][/COLOR]</label>
-				<align>right</align>
-				<aligny>center</aligny>
-				<visible>VideoPlayer.HasEpg</visible>
-			</control>
-			<control type="label">
-				<left>260</left>
-				<right>50</right>
-				<top>20</top>
-				<height>25</height>
-				<label>$INFO[VideoPlayer.Title]$INFO[VideoPlayer.EpisodeName, (,)]</label>
-				<align>left</align>
-				<font>font36_title</font>
-				<aligny>center</aligny>
-			</control>
-			<control type="textbox">
-				<left>260</left>
-				<top>55</top>
-				<right>50</right>
-				<height>120</height>
-				<label fallback="416">$INFO[VideoPlayer.Plot]</label>
-				<align>justify</align>
-				<autoscroll delay="5000" repeat="7500" time="5000"></autoscroll>
-			</control>
-			<control type="grouplist">
-				<left>260</left>
-				<top>175</top>
-				<width>600</width>
-				<height>100</height>
-				<align>left</align>
+				<height>8</height>
 				<orientation>horizontal</orientation>
-				<itemgap>10</itemgap>
-				<visible>!Player.ChannelPreviewActive</visible>
-				<animation effect="fade" start="0" end="100" time="200" delay="1000">Visible</animation>
-				<include content="MediaFlag">
-					<param name="texture" value="$INFO[VideoPlayer.AudioChannels,flags/audiochannel/,.png]" />
-					<param name="visible" value="!String.IsEmpty(VideoPlayer.AudioChannels)" />
-				</include>
-				<include content="MediaFlag">
-					<param name="texture" value="$INFO[VideoPlayer.AudioCodec,flags/audiocodec/,.png]" />
-					<param name="visible" value="!String.IsEmpty(VideoPlayer.AudioCodec)" />
-				</include>
-				<include content="MediaFlag">
-					<param name="texture" value="$INFO[VideoPlayer.VideoAspect,flags/aspectratio/,.png]" />
-					<param name="visible" value="!String.IsEmpty(VideoPlayer.VideoAspect)" />
-				</include>
-				<include content="MediaFlag">
-					<param name="texture" value="$INFO[VideoPlayer.VideoCodec,flags/videocodec/,.png]" />
-					<param name="visible" value="!String.IsEmpty(VideoPlayer.VideoCodec)" />
-				</include>
+				<texturesliderbar colordiffuse="00ffffff">common/ProgressBack.png</texturesliderbar>
+				<textureslidernib colordiffuse="emby">views/player/nib_bubble.png</textureslidernib>
+				<textureslidernibfocus colordiffuse="emby">views/player/nib_bubble.png</textureslidernibfocus>
+				<info>Player.SeekTime</info>
+				<visible>Player.Forwarding | Player.Rewinding | Player.Seeking</visible>
+			</control>
+			<!-- Forwarding Rewinding Indicator -->
+			<control type="group">
+				<visible>false</visible>
+				<!--<visible>!Player.Paused + [Player.Forwarding | Player.Rewinding]</visible>-->
+				<control id="1" type="progress">
+					<left>92</left>
+					<bottom>200</bottom>
+					<width>1591</width>
+					<!--<width>1735</width>-->
+					<height>11</height>
+					<reveal>true</reveal>
+					<info>Player.Progress</info>
+					<texturebg>-</texturebg>
+					<lefttexture>-</lefttexture>
+					<midtexture>-</midtexture>
+					<righttexture>-</righttexture>
+					<overlaytexture>-</overlaytexture>
+					<textureslidernib>osd/osd_seek_bar.png</textureslidernib>
+					<textureslidernibfocus>osd/osd_seek_bar.png</textureslidernibfocus>
+				</control>
+				<control type="grouplist">
+					<left>319</left>
+					<top>801</top>
+					<width>1591</width>
+					<height>80</height>
+					<itemgap>0</itemgap>
+					<orientation>horizontal</orientation>
+					<usecontrolcoords>true</usecontrolcoords>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),10)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),11)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),12)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),13)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),14)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),15)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),16)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),17)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),18)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),19)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),20)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),21)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),22)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),23)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),24)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),25)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),26)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),27)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),28)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),29)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),30)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),31)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),32)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),33)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),34)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),35)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),36)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),37)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),38)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),39)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),40)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),41)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),42)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),43)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),44)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),45)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),46)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),47)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),48)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),49)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),50)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),51)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),52)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),53)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),54)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),55)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),56)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),57)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),58)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),59)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),60)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),61)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),62)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),63)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),64)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),65)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),66)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),67)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),68)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),69)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),70)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),71)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),72)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),73)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),74)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),75)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),76)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),77)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),78)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),79)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),80)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),81)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),82)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),83)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),84)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),85)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),86)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),87)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),88)</visible>
+					</control>
+					<control type="image">
+						<include>osd_padding</include>
+						<visible>Integer.IsGreater(Control.GetLabel(1),89)</visible>
+					</control>
+					<control type="group">
+						<width>150</width>
+						<height>80</height>
+						<control type="image">
+							<width>150</width>
+							<height>80</height>
+							<texture colordiffuse="panel">common/white.jpg</texture>
+						</control>
+						<control type="label">
+							<top>17</top>
+							<width>150</width>
+							<height>30</height>
+							<align>center</align>
+							<aligny>top</aligny>
+							<font>Light27</font>
+							<textcolor>ffffffff</textcolor>
+							<label>$VAR[PlayerTime]</label>
+						</control>
+					</control>
+				</control>
 			</control>
 		</control>
 	</controls>
