@@ -3,81 +3,67 @@
 	<!-- extendedprogressdialog -->
 	<zorder>2</zorder>
 	<controls>
+		<control type="progress" id="32">
+			<include>HiddenObject</include>
+		</control>
 		<!-- Dialog -->
 		<control type="group">			
 			<visible>!Window.IsActive(fullscreenvideo) + !Window.IsActive(visualisation) + !Window.IsVisible(notification)</visible>
 			<include>Dialog_OpenClose</include>
-			<right>-50</right>
-			<top>-50</top>
-			<width>636</width>
-			<height>128</height>
+			<width>500</width>
+			<height>92</height>
+			<right>0</right>
 			<!-- Background image -->
 			<control type="image">
-				<left>48</left>
-				<top>48</top>
-				<width>540</width>
-				<height>128</height>
 				<texture colordiffuse="panel" border="10">common/dialog_back.png</texture>
 			</control>
 			<!-- icon -->
 			<control type="group">
-				<left>54</left>
-				<top>54</top>
-				<width>116</width>
-				<height>116</height>
+				<centertop>50%</centertop>
+				<left>10</left>
+				<width>80</width>
+				<height>80</height>
 				<!-- Icon back -->
 				<control type="image">
-					<width>116</width>
-					<height>116</height>
 					<texture>dialogs/progress/bg.png</texture>
 				</control>
 				<control type="image">
-					<width>116</width>
-					<height>116</height>
-					<texture>dialogs/progress/bg_circle.png</texture>
+					<texture>dialogs/progress/100.png</texture>
+					<colordiffuse>thumb_background</colordiffuse>
 				</control>
 				<control type="image">
-					<width>116</width>
-					<height>116</height>
 					<texture>dialogs/progress/$VAR[ExtendedProgressCircle].png</texture>
-					<colordiffuse>softgrey</colordiffuse>
+					<colordiffuse>emby</colordiffuse>
 				</control>
 				<control type="image">
-					<width>116</width>
-					<height>116</height>
 					<texture>dialogs/progress/13.png</texture>
-					<colordiffuse>emby</colordiffuse>
+					<colordiffuse>white</colordiffuse>
 					<animation center="auto" condition="true" effect="rotate" end="-360" loop="true" reversible="false" time="1500">Conditional</animation>
 				</control>
 				<!-- Icon -->
 				<control type="image">
-					<width>116</width>
-					<height>116</height>
 					<texture>dialogs/notification/downloading.png</texture>
 				</control>
 			</control>
-			<control type="group">
-				<top>80</top>
-				<!-- Heading -->
-				<control id="30" type="label">
-					<left>182</left>
-					<width>388</width>
-					<height>64</height>
-					<font>Med24</font>
-					<textcolor>white</textcolor>
-					<shadowcolor>text_shadow</shadowcolor>
-				</control>
-				<!-- Details -->
-				<control id="31" type="label">
-					<top>34</top>
-					<left>182</left>
-					<width>388</width>
-					<height>64</height>
-					<font>Reg22</font>
-					<scroll>true</scroll>
-					<textcolor>panel_text</textcolor>
-					<shadowcolor>text_shadow</shadowcolor>
-				</control>
+			<!-- Heading -->
+			<control id="30" type="label">
+				<top>15</top>
+				<left>100</left>
+				<right>20</right>
+				<font>Med24</font>
+				<textcolor>white</textcolor>
+				<shadowcolor>text_shadow</shadowcolor>
+			</control>
+			<!-- Details -->
+			<control id="31" type="label">
+				<top>50</top>
+				<left>100</left>
+				<right>20</right>
+				<right>10</right>
+				<font>Reg22</font>
+				<scroll>true</scroll>
+				<textcolor>panel_text</textcolor>
+				<shadowcolor>text_shadow</shadowcolor>
 			</control>
 		</control>
 	</controls>
