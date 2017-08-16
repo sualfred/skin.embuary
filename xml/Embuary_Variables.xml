@@ -77,6 +77,20 @@
 		<value condition="String.IsEqual(ListItem.VideoResolution,1080)">1080p</value>
 		<value condition="String.IsEqual(ListItem.VideoResolution,4K)">4K</value>
 	</variable>
+	<variable name="PlayerResolution">
+		<value condition="Integer.IsLess(VideoPlayer.VideoResolution,710)">SD</value>
+		<value condition="[Integer.IsGreater(VideoPlayer.VideoResolution,710) + !Integer.IsGreater(ListItem.VideoResolution,730)]">720p</value>
+		<value condition="String.IsEqual(VideoPlayer.VideoResolution,1080)">1080p</value>
+		<value condition="String.IsEqual(VideoPlayer.VideoResolution,4K)">4K</value>
+	</variable>
+	<variable name="PlayerTime">
+		<value condition="Integer.IsGreater(Player.Duration(h),0)">$INFO[Player.Time(h:mm:ss)]</value>
+		<value>$INFO[Player.Time(mm:ss)]</value>
+	</variable>
+	<variable name="PlayerDuration">
+		<value condition="Integer.IsGreater(Player.Duration(h),0)">$INFO[Player.Duration(h:mm:ss)]</value>
+		<value>$INFO[Player.Duration(mm:ss)]</value>
+	</variable>
 	<variable name="ListItemAudio">
 		<value condition="Integer.IsEqual(ListItem.AudioChannels,1)">Mono</value>
 		<value condition="Integer.IsEqual(ListItem.AudioChannels,2)">Stereo</value>
@@ -228,40 +242,31 @@
 	<variable name="ListItemDuration">
 		<value condition="String.Contains(ListItem.Duration,:)">$INFO[ListItem.Duration]</value>
 		<value>$INFO[ListItem.Duration,, $LOCALIZE[12391]]</value>
+	</variable>	
+	<variable name="PlayerTitleImage">
+		<value condition="Player.HasAudio">$INFO[MusicPlayer.Cover]</value>
+		<value condition="VideoPlayer.Content(livetv) + !String.IsEmpty(VideoPlayer.Cover)">$INFO[VideoPlayer.Cover]</value>
+		<value condition="VideoPlayer.Content(livetv)">views/pvr_fallback.png</value>
+		<value condition="!String.IsEmpty(Player.Art(clearlogo))">$INFO[Player.Art(clearlogo)]</value>
+		<value condition="!String.IsEmpty(Player.Art(tvshow.clearlogo))">$INFO[Player.Art(tvshow.clearlogo)]</value>
 	</variable>
-	<variable name="PVRGenreColors">
-		<value condition="String.IsEqual(ListItem.Property(GenreType),0)">grid_label</value>
-		<value condition="String.IsEqual(ListItem.Property(GenreType),16)">blue</value>
-		<value condition="String.IsEqual(ListItem.Property(GenreType),32)">grid_label</value>
-		<value condition="String.IsEqual(ListItem.Property(GenreType),48)">turquoise</value>
-		<value condition="String.IsEqual(ListItem.Property(GenreType),64)">red</value>
-		<value condition="String.IsEqual(ListItem.Property(GenreType),80)">orange</value>
-		<value condition="String.IsEqual(ListItem.Property(GenreType),96)">grid_label</value>
-		<value condition="String.IsEqual(ListItem.Property(GenreType),112)">grid_label</value>
-		<value condition="String.IsEqual(ListItem.Property(GenreType),128)">grid_label</value>
-		<value condition="String.IsEqual(ListItem.Property(GenreType),144)">grid_label</value>
-		<value condition="String.IsEqual(ListItem.Property(GenreType),160)">grid_label</value>
-		<value condition="String.IsEqual(ListItem.Property(GenreType),176)">grid_label</value>
-		<value condition="String.IsEqual(ListItem.Property(GenreType),192)">grid_label</value>
-		<value condition="String.IsEqual(ListItem.Property(GenreType),208)">grid_label</value>
-		<value condition="String.IsEqual(ListItem.Property(GenreType),224)">grid_label</value>
-		<value condition="String.IsEqual(ListItem.Property(GenreType),240)">grid_label</value>
-		<value>grid_label</value>
-		<!--0 = other/unknown
-		16 = moviedrama
-		32 = news
-		48 = show
-		64 = sports
-		80 = child
-		96 = music
-		112 = arts
-		128 = social
-		144 = science
-		160 = hobby
-		176 = special
-		192 = other/unknown
-		208 = other/unknown
-		224 = other/unknown
-		240 = other/unknown-->
+	<variable name="PlayerFullLabel">
+		<value condition="!String.IsEmpty(MusicPlayer.Title)">$INFO[MusicPlayer.Artist,, - ]$INFO[MusicPlayer.Title]</value>
+		<value condition="VideoPlayer.Content(livetv)">$INFO[VideoPlayer.ChannelName]$INFO[VideoPlayer.Title, - ]</value>
+		<value condition="!String.IsEmpty(VideoPlayer.TVShowTitle)">$INFO[VideoPlayer.TVShowTitle]$INFO[VideoPlayer.Season, S,:]$INFO[VideoPlayer.Episode,E, ]$INFO[VideoPlayer.Title]</value>
+		<value>$INFO[VideoPlayer.Title]</value>
+	</variable>
+	<variable name="PlayerBigLabel">
+		<value condition="!String.IsEmpty(MusicPlayer.Title)">$INFO[MusicPlayer.Title]</value>
+		<value condition="VideoPlayer.Content(livetv) + !String.IsEmpty(VideoPlayer.Title)">$INFO[VideoPlayer.Channelnumber,,. ]$INFO[VideoPlayer.ChannelName]</value>
+		<value condition="!String.IsEmpty(VideoPlayer.TVShowTitle)">$INFO[VideoPlayer.TVShowTitle]</value>
+		<value>$INFO[VideoPlayer.Title]</value>
+	</variable>
+	<variable name="PlayerSmallLabel">
+		<value condition="!String.IsEmpty(MusicPlayer.Artist)">$INFO[MusicPlayer.Artist]$INFO[MusicPlayer.Album, / ,]</value>
+		<value condition="VideoPlayer.Content(livetv) + String.IsEmpty(VideoPlayer.Title)">$LOCALIZE[195]</value>
+		<value condition="VideoPlayer.Content(livetv)">$INFO[VideoPlayer.Title]</value>
+		<value condition="!String.IsEmpty(VideoPlayer.TVShowTitle)">$INFO[VideoPlayer.Title]</value>
+		<value condition="VideoPlayer.Content(movies)">$LOCALIZE[20338]</value>
 	</variable>
 </includes>
