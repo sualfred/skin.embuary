@@ -4,10 +4,16 @@
 	<onload>SetProperty(showvideoinfo,1,home)</onload>
 	<onload>AlarmClock(PreloadTimeout,ClearProperty(showvideoinfo,home),00:04,silent)</onload>
 	<controls>
+		<!-- Busy spinner -->
+		<control type="group" id="99">
+			<visible>Player.Paused + Player.Caching</visible>
+			<include>FullscreenBusySpinner</include>
+		</control>
+		<!-- OSD -->
 		<control type="group" id="1">
 			<visible>Window.IsVisible(videoosd) | Window.IsVisible(seekbar) | Player.Paused | !String.IsEmpty(Window(home).Property(showvideoinfo))</visible>
 			<animation effect="fade" start="0" end="100" time="0">Visible</animation>
-			<animation effect="fade" start="100" end="0" time="400m" delay="2000">Hidden</animation>
+			<animation effect="fade" start="100" end="0" time="400m" delay="2000">Hidden</animation>			
 			<!--Top-->
 			<control type="group" id="1">
 				<control type="image" id="1">
@@ -23,21 +29,41 @@
 					<texture>$VAR[PlayerClearlogo]</texture>
 					<aspectratio align="left">keep</aspectratio>
 				</control>
-				<control type="label" id="1">
+				<control type="grouplist" id="1">
 					<top>10</top>
+					<left>960</left>
 					<right>29</right>
 					<height>100</height>
 					<align>right</align>
-					<aligny>top</aligny>
-					<font>Med40</font>
-					<width>200</width>
-					<label>$INFO[System.Time]</label>
+					<orientation>horizontal</orientation>
+					<control type="label" id="1">
+						<width>auto</width>
+						<align>right</align>
+						<aligny>top</aligny>
+						<font>Material49</font>
+						<label></label>
+						<visible>Player.Paused</visible>
+					</control>
+					<control type="label" id="1">
+						<width>auto</width>
+						<align>right</align>
+						<aligny>top</aligny>
+						<font>Med40</font>
+						<label>$LOCALIZE[112]     </label>
+						<visible>Player.Paused</visible>
+					</control>
+					<control type="label" id="1">
+						<align>right</align>
+						<width>auto</width>
+						<aligny>top</aligny>
+						<font>Med40</font>
+						<label>$INFO[System.Time]</label>
+					</control>
 				</control>
 			</control>
-
 			<!--Bottom-->
 			<control type="group" id="1">
-				<bottom>0</bottom>
+				<!-- mask -->
 				<control type="image" id="1">
 					<bottom>0</bottom>
 					<width>100%</width>
@@ -78,8 +104,7 @@
 						<texture diffuse="views/player/mask_poster.png">$VAR[PlayerIcon]</texture>
 						<aspectratio scalediffuse="false">stretch</aspectratio>
 					</control>
-				</control>
-				
+				</control>				
 				<!-- Square -->
 				<control type="group" id="1">
 					<visible>String.IsEmpty(Player.Art(poster)) + String.IsEmpty(Player.Art(tvshow.poster))</visible>
@@ -95,8 +120,30 @@
 						<left>29</left>
 						<width>250</width>
 						<height>250</height>
+						<texture colordiffuse="green" diffuse="views/player/mask_square.png">common/white.jpg</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<visible>String.IsEmpty(VideoPlayer.Cover)</visible>
+					</control>
+					<control type="textbox" id="1">
+						<bottom>39</bottom>
+						<left>39</left>
+						<width>230</width>
+						<height>230</height>
+						<font>Light24</font>
+						<textcolor>white</textcolor>
+						<align>center</align>
+						<aligny>center</aligny>
+						<label>$INFO[Player.Title]</label>
+						<visible>String.IsEmpty(VideoPlayer.Cover)</visible>
+					</control>
+					<control type="image" id="1">
+						<bottom>29</bottom>
+						<left>29</left>
+						<width>250</width>
+						<height>250</height>
 						<texture colordiffuse="thumb_background" diffuse="views/player/mask_square.png">common/white.jpg</texture>
 						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<visible>!String.IsEmpty(VideoPlayer.Cover)</visible>
 					</control>
 					<control type="image" id="1">
 						<bottom>29</bottom>
@@ -118,7 +165,7 @@
 						<visible>!VideoPlayer.Content(livetv)</visible>
 					</control>
 				</control>
-
+				<!-- Progress bars -->
 				<control type="group" id="1">
 					<!--  Cache bar -->
 					<control type="progress" id="99">
@@ -180,7 +227,6 @@
 					</control>
 				</control>
 
-
 				<!-- Label section -->
 				<control type="grouplist" id="1">
 					<include>PlayerIsLiveTVSlide</include>
@@ -223,6 +269,7 @@
 						<label>$VAR[PlayerResolution]   </label>
 						<font>reg24</font>
 						<shadowcolor>text_shadow</shadowcolor>
+						<visible>!VideoPlayer.Content(livetv)</visible>
 						<visible>!String.IsEmpty(VideoPlayer.VideoResolution)</visible>
 					</control>
 					<control type="label" id="1">
@@ -265,7 +312,7 @@
 						<label>$LOCALIZE[19031]: $INFO[VideoPlayer.NextTitle]</label>
 					</control>
 				</control>
-				<!-- bottom label section -->
+				<!-- Bottom label section -->
 				<control type="grouplist" id="1">
 					<visible>!Window.IsVisible(VideoOSD)</visible>
 					<orientation>horizontal</orientation>
