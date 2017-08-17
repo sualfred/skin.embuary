@@ -30,6 +30,20 @@
 		<value condition="String.StartsWith(Container.FolderPath,musicdb://)">$LOCALIZE[2]</value>
 		<value>$INFO[Container.Foldername]</value>
 	</variable>
+	<variable name="PlayerClearlogo">
+		<value condition="!String.IsEmpty(Player.Art(tvshow.poster))">$INFO[Player.Art(tvshow.clearlogo)]</value>
+		<value condition="!String.IsEmpty(Player.Art(poster))">$INFO[Player.Art(clearlogo)]</value>
+	</variable>
+	<variable name="PlayerTimeLabels">
+		<value condition="!Pvr.IsTimeShift">$VAR[PlayerTime]$VAR[PlayerDuration, / ]$INFO[Player.FinishTime,  -  $LOCALIZE[31037] ]</value>
+		<value>$VAR[PlayerTime]$VAR[PlayerDuration, / ]</value>
+	</variable>
+	<variable name="PlayerIcon">
+		<value condition="!String.IsEmpty(Player.Art(tvshow.poster))">$INFO[Player.Art(tvshow.poster)]</value>
+		<value condition="!String.IsEmpty(Player.Art(poster))">$INFO[Player.Art(poster)]</value>
+		<value condition="!String.IsEmpty(VideoPlayer.Cover)">$INFO[VideoPlayer.Cover]</value>
+		<value condition="!String.IsEmpty(MusicPlayer.Cover)">$INFO[MusicPlayer.Cover]</value>
+	</variable>
 	<variable name="IconLandscape">
 		<value condition="[[Control.IsVisible(54) + Container.Content(seasons)] | Window.IsVisible(movieinformation)] + !String.IsEmpty(ListItem.Art(thumb))">$INFO[ListItem.Art(thumb)]</value>
 		<value condition="[[Control.IsVisible(54) + Container.Content(seasons)] | Window.IsVisible(movieinformation)] + !String.IsEmpty(ListItem.Art(tvshow.landscape))">$INFO[ListItem.Art(tvshow.landscape)]</value>
@@ -252,8 +266,8 @@
 	</variable>
 	<variable name="PlayerFullLabel">
 		<value condition="!String.IsEmpty(MusicPlayer.Title)">$INFO[MusicPlayer.Artist,, - ]$INFO[MusicPlayer.Title]</value>
-		<value condition="VideoPlayer.Content(livetv)">$INFO[VideoPlayer.ChannelName]$INFO[VideoPlayer.Title, - ]</value>
-		<value condition="!String.IsEmpty(VideoPlayer.TVShowTitle)">$INFO[VideoPlayer.TVShowTitle]$INFO[VideoPlayer.Season, S,:]$INFO[VideoPlayer.Episode,E, ]$INFO[VideoPlayer.Title]</value>
+		<value condition="VideoPlayer.Content(livetv)">$INFO[VideoPlayer.Channelnumber,,. ]$INFO[VideoPlayer.ChannelName]$INFO[VideoPlayer.Title, - ]</value>
+		<value condition="!String.IsEmpty(VideoPlayer.TVShowTitle)">$INFO[VideoPlayer.Season,S,:]$INFO[VideoPlayer.Episode,E, - ]$INFO[VideoPlayer.Title]</value>
 		<value>$INFO[VideoPlayer.Title]</value>
 	</variable>
 	<variable name="PlayerBigLabel">

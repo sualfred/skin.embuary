@@ -8,25 +8,48 @@
 		<control type="group">
 			<!-- Seekbar nib -->
 			<control type="slider" id="401">
-				<bottom>138</bottom>
+				<visible>Player.Forwarding | Player.Rewinding | Player.Seeking | !String.IsEmpty(Player.SeekOffset)</visible>
+				<bottom>103</bottom>
 				<left>309</left>
-				<right>20</right>
+				<right>31</right>
 				<height>8</height>
 				<orientation>horizontal</orientation>
 				<texturesliderbar colordiffuse="00ffffff">common/ProgressBack.png</texturesliderbar>
 				<textureslidernib colordiffuse="emby">views/player/nib_bubble.png</textureslidernib>
 				<textureslidernibfocus colordiffuse="emby">views/player/nib_bubble.png</textureslidernibfocus>
 				<info>Player.SeekTime</info>
-				<visible>Player.Forwarding | Player.Rewinding | Player.Seeking</visible>
+			</control>
+			<control type="group">
+				<visible>Player.Forwarding | Player.Rewinding | Player.Seeking | !String.IsEmpty(Player.SeekOffset)</visible>
+				<include>OSD_Seek_Position</include>
+				<left>309</left>
+				<bottom>125</bottom>
+				<width>158</width>
+				<height>70</height>
+				<control type="image">
+					<width>158</width>
+					<height>70</height>
+					<texture colordiffuse="panel">common/white.jpg</texture>
+					<bordertexture colordiffuse="grey" border="1">common/white.jpg</bordertexture>
+					<bordersize>1</bordersize>
+				</control>
+				<control type="label">
+					<width>158</width>
+					<height>70</height>
+					<align>center</align>
+					<aligny>center</aligny>
+					<font>med26</font>
+					<textcolor>ffffffff</textcolor>
+					<label>$INFO[Player.SeekTime]</label>
+				</control>
 			</control>
 			<!-- Forwarding Rewinding Indicator -->
 			<control type="group">
-				<visible>false</visible>
 				<!--<visible>!Player.Paused + [Player.Forwarding | Player.Rewinding]</visible>-->
 				<control id="1" type="progress">
 					<left>92</left>
 					<bottom>200</bottom>
-					<width>1591</width>
+					<width>1580</width>
 					<!--<width>1735</width>-->
 					<height>11</height>
 					<reveal>true</reveal>
@@ -39,354 +62,9 @@
 					<textureslidernib>osd/osd_seek_bar.png</textureslidernib>
 					<textureslidernibfocus>osd/osd_seek_bar.png</textureslidernibfocus>
 				</control>
-				<control type="grouplist">
-					<left>319</left>
-					<top>801</top>
-					<width>1591</width>
-					<height>80</height>
-					<itemgap>0</itemgap>
-					<orientation>horizontal</orientation>
-					<usecontrolcoords>true</usecontrolcoords>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),10)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),11)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),12)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),13)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),14)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),15)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),16)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),17)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),18)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),19)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),20)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),21)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),22)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),23)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),24)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),25)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),26)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),27)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),28)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),29)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),30)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),31)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),32)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),33)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),34)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),35)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),36)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),37)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),38)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),39)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),40)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),41)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),42)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),43)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),44)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),45)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),46)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),47)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),48)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),49)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),50)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),51)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),52)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),53)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),54)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),55)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),56)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),57)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),58)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),59)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),60)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),61)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),62)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),63)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),64)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),65)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),66)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),67)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),68)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),69)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),70)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),71)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),72)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),73)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),74)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),75)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),76)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),77)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),78)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),79)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),80)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),81)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),82)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),83)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),84)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),85)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),86)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),87)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),88)</visible>
-					</control>
-					<control type="image">
-						<include>osd_padding</include>
-						<visible>Integer.IsGreater(Control.GetLabel(1),89)</visible>
-					</control>
-					<control type="group">
-						<width>150</width>
-						<height>80</height>
-						<control type="image">
-							<width>150</width>
-							<height>80</height>
-							<texture colordiffuse="panel">common/white.jpg</texture>
-						</control>
-						<control type="label">
-							<top>17</top>
-							<width>150</width>
-							<height>30</height>
-							<align>center</align>
-							<aligny>top</aligny>
-							<font>Light27</font>
-							<textcolor>ffffffff</textcolor>
-							<label>$VAR[PlayerTime]</label>
-						</control>
-					</control>
-				</control>
+
+
+
 			</control>
 		</control>
 	</controls>

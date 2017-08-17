@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <window>
 	<defaultcontrol></defaultcontrol>
+	<onload>SetProperty(showvideoinfo,1,home)</onload>
+	<onload>AlarmClock(PreloadTimeout,ClearProperty(showvideoinfo,home),00:04,silent)</onload>
 	<controls>
 		<control type="group" id="1">
-
+			<visible>Window.IsVisible(videoosd) | Window.IsVisible(seekbar) | Player.Paused | !String.IsEmpty(Window(home).Property(showvideoinfo))</visible>
+			<animation effect="fade" start="0" end="100" time="0">Visible</animation>
+			<animation effect="fade" start="100" end="0" time="400m" delay="2000">Hidden</animation>
 			<!--Top-->
 			<control type="group" id="1">
 				<control type="image" id="1">
@@ -13,11 +17,21 @@
 					<texture colordiffuse="black">views/player/mask_top.png</texture>
 				</control>
 				<control type="image" id="1">
-					<top>29</top>
+					<top>10</top>
 					<left>29</left>
 					<height>100</height>
-					<texture>$INFO[Player.Art(tvshow.clearlogo)]</texture>
+					<texture>$VAR[PlayerClearlogo]</texture>
 					<aspectratio align="left">keep</aspectratio>
+				</control>
+				<control type="label" id="1">
+					<top>10</top>
+					<right>29</right>
+					<height>100</height>
+					<align>right</align>
+					<aligny>top</aligny>
+					<font>Med40</font>
+					<width>200</width>
+					<label>$INFO[System.Time]</label>
 				</control>
 			</control>
 
@@ -27,73 +41,160 @@
 				<control type="image" id="1">
 					<bottom>0</bottom>
 					<width>100%</width>
-					<height>200</height>
-					<texture colordiffuse="background_diffuse">views/player/mask_bottom.png</texture>
+					<height>180</height>
+					<texture colordiffuse="black">views/player/mask_bottom.png</texture>
+					<visible>!VideoPlayer.Content(livetv)</visible>
 				</control>
 				<control type="image" id="1">
-					<bottom>20</bottom>
-					<left>20</left>
-					<width>268</width>
-					<height>393</height>
-					<texture>views/player/shadow_poster.png</texture>
+					<bottom>0</bottom>
+					<width>100%</width>
+					<height>216</height>
+					<texture colordiffuse="black">views/player/mask_bottom.png</texture>
+					<visible>VideoPlayer.Content(livetv)</visible>
 				</control>
-				<control type="image" id="1">
-					<bottom>29</bottom>
-					<left>29</left>
-					<width>250</width>
-					<height>375</height>
-					<texture scalediffuse="false" colordiffuse="thumb_background" diffuse="views/player/mask_poster.png">common/white.jpg</texture>
-					<aspectratio>stretch</aspectratio>
+				<!-- Poster -->
+				<control type="group" id="1">
+					<visible>!String.IsEmpty(Player.Art(poster)) | !String.IsEmpty(Player.Art(tvshow.poster))</visible>
+					<control type="image" id="1">
+						<bottom>20</bottom>
+						<left>20</left>
+						<width>268</width>
+						<height>393</height>
+						<texture>views/player/shadow_poster.png</texture>
+					</control>
+					<control type="image" id="1">
+						<bottom>29</bottom>
+						<left>29</left>
+						<width>250</width>
+						<height>375</height>
+						<texture colordiffuse="thumb_background" diffuse="views/player/mask_poster.png">common/white.jpg</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+					</control>
+					<control type="image" id="1">
+						<bottom>29</bottom>
+						<left>29</left>
+						<width>250</width>
+						<height>375</height>
+						<texture diffuse="views/player/mask_poster.png">$VAR[PlayerIcon]</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+					</control>
 				</control>
-				<control type="image" id="1">
-					<bottom>29</bottom>
-					<left>29</left>
-					<width>250</width>
-					<height>375</height>
-					<texture scalediffuse="false" diffuse="views/player/mask_poster.png">$INFO[Player.Art(tvshow.poster)]</texture>
-					<aspectratio>stretch</aspectratio>
+				
+				<!-- Square -->
+				<control type="group" id="1">
+					<visible>String.IsEmpty(Player.Art(poster)) + String.IsEmpty(Player.Art(tvshow.poster))</visible>
+					<control type="image" id="1">
+						<bottom>20</bottom>
+						<left>20</left>
+						<width>268</width>
+						<height>268</height>
+						<texture>views/player/shadow_square.png</texture>
+					</control>
+					<control type="image" id="1">
+						<bottom>29</bottom>
+						<left>29</left>
+						<width>250</width>
+						<height>250</height>
+						<texture colordiffuse="thumb_background" diffuse="views/player/mask_square.png">common/white.jpg</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+					</control>
+					<control type="image" id="1">
+						<bottom>29</bottom>
+						<left>29</left>
+						<width>250</width>
+						<height>250</height>
+						<texture diffuse="views/player/mask_square.png">$VAR[PlayerIcon]</texture>
+						<bordersize>20</bordersize>
+						<aspectratio scalediffuse="false">keep</aspectratio>
+						<visible>VideoPlayer.Content(livetv)</visible>
+					</control>
+					<control type="image" id="1">
+						<bottom>29</bottom>
+						<left>29</left>
+						<width>250</width>
+						<height>250</height>
+						<texture diffuse="views/player/mask_square.png">$VAR[PlayerIcon]</texture>
+						<aspectratio scalediffuse="false">keep</aspectratio>
+						<visible>!VideoPlayer.Content(livetv)</visible>
+					</control>
 				</control>
-				<!--  Cache bar -->
-				<control type="progress" id="99">
-					<bottom>130</bottom>
-					<left>309</left>
-					<right>20</right>
-					<height>5</height>
-					<reveal>true</reveal>
-					<info>Player.ProgressCache</info>
-					<texturebg colordiffuse="background_diffuse">common/ProgressBack.png</texturebg>
-					<lefttexture>-</lefttexture>
-					<midtexture colordiffuse="white">common/ProgressBar.png</midtexture>
-					<righttexture>-</righttexture>
-					<overlaytexture>-</overlaytexture>
+
+				<control type="group" id="1">
+					<!--  Cache bar -->
+					<control type="progress" id="99">
+						<bottom>95</bottom>
+						<left>309</left>
+						<right>31</right>
+						<height>5</height>
+						<reveal>true</reveal>
+						<info>Player.ProgressCache</info>
+						<texturebg colordiffuse="grey">common/ProgressBack.png</texturebg>
+						<lefttexture>-</lefttexture>
+						<midtexture colordiffuse="white">common/ProgressBar.png</midtexture>
+						<righttexture>-</righttexture>
+						<overlaytexture>-</overlaytexture>
+					</control>
+					<!-- Video progress bar -->
+					<control type="progress" id="99">
+						<bottom>95</bottom>
+						<left>309</left>
+						<right>31</right>
+						<height>5</height>
+						<reveal>true</reveal>
+						<info>Player.Progress</info>
+						<texturebg colordiffuse="grey">common/ProgressBack.png</texturebg>
+						<lefttexture>-</lefttexture>
+						<midtexture colordiffuse="emby">common/ProgressBar.png</midtexture>
+						<righttexture>-</righttexture>
+						<overlaytexture>-</overlaytexture>
+						<visible>!VideoPlayer.Content(livetv)</visible>
+					</control>
+					<!-- LiveTV + timeshift progress bar -->
+					<control type="progress" id="99">
+						<bottom>95</bottom>
+						<left>309</left>
+						<right>31</right>
+						<height>5</height>
+						<reveal>true</reveal>
+						<info>Player.Progress</info>
+						<texturebg colordiffuse="grey">common/ProgressBack.png</texturebg>
+						<lefttexture>-</lefttexture>
+						<midtexture colordiffuse="blue">common/ProgressBar.png</midtexture>
+						<righttexture>-</righttexture>
+						<overlaytexture>-</overlaytexture>
+						<visible>VideoPlayer.Content(livetv)</visible>
+					</control>
+					<control type="progress" id="99">
+						<bottom>95</bottom>
+						<left>309</left>
+						<right>31</right>
+						<height>5</height>
+						<reveal>true</reveal>
+						<info>PVR.Progress</info>
+						<texturebg colordiffuse="aa404040">common/ProgressBack.png</texturebg>
+						<lefttexture>-</lefttexture>
+						<midtexture colordiffuse="emby">common/ProgressBar.png</midtexture>
+						<righttexture>-</righttexture>
+						<overlaytexture>-</overlaytexture>
+						<visible>VideoPlayer.Content(livetv)</visible>
+					</control>
 				</control>
-				<!--  Progress bar -->
-				<control type="progress" id="99">
-					<bottom>130</bottom>
-					<left>309</left>
-					<right>20</right>
-					<height>5</height>
-					<reveal>true</reveal>
-					<info>Player.Progress</info>
-					<texturebg colordiffuse="background_diffuse">common/ProgressBack.png</texturebg>
-					<lefttexture>-</lefttexture>
-					<midtexture colordiffuse="emby">common/ProgressBar.png</midtexture>
-					<righttexture>-</righttexture>
-					<overlaytexture>-</overlaytexture>
-				</control>
+
+
 				<!-- Label section -->
 				<control type="grouplist" id="1">
+					<include>PlayerIsLiveTVSlide</include>
 					<orientation>horizontal</orientation>
-					<height>30</height>
-					<bottom>150</bottom>
+					<height>31</height>
+					<bottom>125</bottom>
 					<left>309</left>
-					<right>20</right>
+					<right>30</right>
 					<itemgap>0</itemgap>
 					<control type="label" id="1">
 						<width>auto</width>
 						<height>30</height>
-						<aligny>bottom</aligny>
-						<font>med26</font>
+						<aligny>center</aligny>
+						<font>med24</font>
 						<shadowcolor>text_shadow</shadowcolor>
 						<label>$VAR[PlayerFullLabel]   </label>
 					</control>
@@ -102,7 +203,7 @@
 						<height>30</height>
 						<aligny>center</aligny>
 						<label>$INFO[VideoPlayer.Year]   </label>
-						<font>reg20</font>
+						<font>reg24</font>
 						<shadowcolor>text_shadow</shadowcolor>
 						<visible>!String.IsEmpty(VideoPlayer.Year)</visible>
 					</control>
@@ -111,7 +212,7 @@
 						<height>30</height>
 						<aligny>center</aligny>
 						<label>$LOCALIZE[20074]: $INFO[VideoPlayer.Mpaa]   </label>
-						<font>reg20</font>
+						<font>reg24</font>
 						<shadowcolor>text_shadow</shadowcolor>
 						<visible>!String.IsEmpty(VideoPlayer.Mpaa)</visible>
 					</control>
@@ -120,7 +221,7 @@
 						<height>30</height>
 						<aligny>center</aligny>
 						<label>$VAR[PlayerResolution]   </label>
-						<font>reg20</font>
+						<font>reg24</font>
 						<shadowcolor>text_shadow</shadowcolor>
 						<visible>!String.IsEmpty(VideoPlayer.VideoResolution)</visible>
 					</control>
@@ -139,10 +240,29 @@
 						<height>30</height>
 						<aligny>center</aligny>
 						<label>$INFO[VideoPlayer.Rating]   </label>
-						<font>reg20</font>
+						<font>reg24</font>
 						<shadowcolor>text_shadow</shadowcolor>
 						<shadowcolor>text_shadow</shadowcolor>
 						<visible>!String.IsEmpty(VideoPlayer.Rating)</visible>
+					</control>
+				</control>
+				<!-- PVR Next Up -->
+				<control type="grouplist" id="1">
+					<visible>VideoPlayer.Content(livetv)</visible>
+					<orientation>horizontal</orientation>
+					<height>31</height>
+					<bottom>125</bottom>
+					<left>309</left>
+					<right>30</right>
+					<itemgap>0</itemgap>
+					<control type="label" id="1">
+						<width>auto</width>
+						<height>30</height>
+						<aligny>center</aligny>
+						<font>reg24</font>
+						<textcolor>softgrey</textcolor>
+						<shadowcolor>text_shadow</shadowcolor>
+						<label>$LOCALIZE[19031]: $INFO[VideoPlayer.NextTitle]</label>
 					</control>
 				</control>
 				<!-- bottom label section -->
@@ -150,7 +270,7 @@
 					<visible>!Window.IsVisible(VideoOSD)</visible>
 					<orientation>horizontal</orientation>
 					<height>50</height>
-					<bottom>50</bottom>
+					<bottom>30</bottom>
 					<left>309</left>
 					<right>20</right>
 					<itemgap>0</itemgap>
@@ -159,10 +279,25 @@
 						<width>auto</width>
 						<height>50</height>
 						<aligny>center</aligny>
-						<font>reg20</font>
+						<font>reg24</font>
 						<shadowcolor>text_shadow</shadowcolor>
-						<label>$VAR[PlayerTime] / $VAR[PlayerDuration]</label>
+						<label>$VAR[PlayerTimeLabels]</label>
 						<visible>!String.IsEmpty(Player.Time) + !String.IsEmpty(Player.Duration)</visible>
+					</control>
+					<control type="label" id="1">
+						<description>Spacer</description>
+						<width>15</width>
+					</control>
+					<!--  Timeshift position -->
+					<control type="label" id="1">
+						<width>auto</width>
+						<height>50</height>
+						<aligny>center</aligny>
+						<font>reg24</font>
+						<textcolor>emby</textcolor>
+						<shadowcolor>text_shadow</shadowcolor>
+						<label>$LOCALIZE[31038]</label>
+						<visible>Pvr.IsTimeShift</visible>
 					</control>
 				</control>
 
