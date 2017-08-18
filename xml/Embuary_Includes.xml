@@ -31,10 +31,15 @@
 				<focusedlayout/>
 				<content limit="1">$PARAM[content]</content>
 			</control>
+			<control type="videowindow">
+				<include>FullscreenDimensions</include>
+				<visible>Player.HasVideo</visible>
+			</control>
 			<control type="image">
 				<include>FullscreenDimensions</include>
 				<texture>$VAR[BackgroundSource]</texture>
 				<fadetime>400</fadetime>
+				<visible>!Player.HasVideo</visible>
 			</control>
 			<control type="image">
 				<include>FullscreenDimensions</include>
@@ -333,6 +338,7 @@
 	<!-- diffuse -->
 	<include name="DiffuseMask">
 		<control type="image">
+			<include>Visible_Fade</include>
 			<include>FullscreenDimensions</include>
 			<texture colordiffuse="CC000000">common/white.jpg</texture>
 			<aspectratio>stretch</aspectratio>
@@ -709,6 +715,48 @@
 			<visible>!String.IsEmpty(ListItem.DateAdded)</visible>
 		</control>
 	</include>
+	<!-- Player Flags -->
+	<include name="PlayerFlags">
+		<control type="button">
+			<width min="50">auto</width>
+			<height>48</height>
+			<font>reg18</font>
+			<label>$VAR[PlayerResolution]</label>
+			<textoffsetx>15</textoffsetx>
+			<align>center</align>
+			<enabledcolor>lightgrey</enabledcolor>
+			<texturefocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturefocus>
+			<texturenofocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturenofocus>
+			<enabled>false</enabled>
+			<visible>!String.IsEmpty(VideoPlayer.VideoResolution)</visible>
+		</control>
+		<control type="button">
+			<width min="50">auto</width>
+			<height>48</height>
+			<font>reg18</font>
+			<label>$INFO[VideoPlayer.VideoCodec]</label>
+			<textoffsetx>15</textoffsetx>
+			<align>center</align>
+			<enabledcolor>lightgrey</enabledcolor>
+			<texturefocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturefocus>
+			<texturenofocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturenofocus>
+			<enabled>false</enabled>
+			<visible>!String.IsEmpty(VideoPlayer.VideoCodec)</visible>
+		</control>
+		<control type="button">
+			<width min="50">auto</width>
+			<height>48</height>
+			<font>reg18</font>
+			<label>$VAR[PlayerAudio]</label>
+			<textoffsetx>15</textoffsetx>
+			<align>center</align>
+			<enabledcolor>lightgrey</enabledcolor>
+			<texturefocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturefocus>
+			<texturenofocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturenofocus>
+			<enabled>false</enabled>
+			<visible>!String.IsEmpty(VideoPlayer.AudioChannels) + !String.IsEmpty(VideoPlayer.AudioCodec)</visible>
+		</control>
+	</include>
 	<!-- PVR Flags -->
 	<include name="PVRFlags">
 		<control type="button">
@@ -918,7 +966,7 @@
 	<include name="SettingsButton">
 		<param name="height">50</param>
 		<param name="width">100%</param>
-		<param name="textoffsetx">20</param>
+		<param name="textoffsetx">15</param>
 		<definition>
 			<textoffsetx>$PARAM[textoffsetx]</textoffsetx>
 			<width>$PARAM[width]</width>
@@ -927,6 +975,7 @@
 			<align>left</align>
 			<invalidcolor>invalid</invalidcolor>
 			<selectedcolor>selected</selectedcolor>
+			<disabledcolor>grey</disabledcolor>
 			<texturefocus colordiffuse="panel_hover">common/white.jpg</texturefocus>
 			<texturenofocus />
 		</definition>

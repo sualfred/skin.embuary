@@ -82,6 +82,7 @@
 				<label>$INFO[ListItem.Property(UnWatchedEpisodes)]</label>
 				<font>Bold14</font>
 				<shadowcolor>text_shadow</shadowcolor>
+				<selectedcolor>white</selectedcolor>
 				<align>center</align>
 				<visible>Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0)</visible>
 			</control>
@@ -93,6 +94,7 @@
 				<label></label>
 				<font>FontAwesome20Light</font>
 				<shadowcolor>text_shadow</shadowcolor>
+				<selectedcolor>white</selectedcolor>
 				<align>center</align>
 				<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png) | [String.IsEqual(ListItem.DBtype,tvshow) + !String.IsEmpty(ListItem.Property(UnWatchedEpisodes)) + Integer.IsLess(ListItem.Property(UnWatchedEpisodes),1)]</visible>
 			</control>
@@ -120,6 +122,7 @@
 				<label></label>
 				<font>FontAwesome16Light</font>
 				<shadowcolor>text_shadow</shadowcolor>
+				<selectedcolor>white</selectedcolor>
 				<align>center</align>
 				<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
 			</control>
@@ -147,6 +150,7 @@
 				<label></label>
 				<font>FontAwesome14Light</font>
 				<shadowcolor>text_shadow</shadowcolor>
+				<selectedcolor>white</selectedcolor>
 				<align>center</align>
 			</control>
 		</control>
@@ -264,6 +268,26 @@
 				<righttexture>-</righttexture>
 				<info>ListItem.PercentPlayed</info>
 				<visible>!String.StartsWith(ListItem.Path,pvr://channels) + Integer.IsGreater(ListItem.PercentPlayed,0)</visible>
+			</control>
+		</definition>
+	</include>
+	<include name="PlayerProgress">
+		<param name="visible">true</param>
+		<param name="width">100</param>
+		<param name="height">2</param>
+		<param name="top">0</param>
+		<param name="left">0</param>
+		<definition>
+			<control type="progress">
+				<top>$PARAM[top]</top>
+				<left>$PARAM[left]</left>
+				<width>$PARAM[width]</width>
+				<height>$PARAM[height]</height>
+				<texturebg colordiffuse="black" border="2">common/ProgressBack.png</texturebg>
+				<lefttexture>-</lefttexture>
+				<midtexture colordiffuse="emby"  border="2">common/ProgressBar.png</midtexture>
+				<righttexture>-</righttexture>
+				<info>Player.Progress</info>
 			</control>
 		</definition>
 	</include>

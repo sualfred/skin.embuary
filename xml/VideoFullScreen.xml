@@ -122,7 +122,7 @@
 						<height>250</height>
 						<texture colordiffuse="green" diffuse="views/player/mask_square.png">common/white.jpg</texture>
 						<aspectratio scalediffuse="false">stretch</aspectratio>
-						<visible>String.IsEmpty(VideoPlayer.Cover)</visible>
+						<visible>String.IsEmpty(VideoPlayer.Cover) | String.StartsWith(VideoPlayer.Cover,Default)</visible>
 					</control>
 					<control type="textbox" id="1">
 						<bottom>39</bottom>
@@ -134,7 +134,7 @@
 						<align>center</align>
 						<aligny>center</aligny>
 						<label>$INFO[Player.Title]</label>
-						<visible>String.IsEmpty(VideoPlayer.Cover)</visible>
+						<visible>String.IsEmpty(VideoPlayer.Cover) | String.StartsWith(VideoPlayer.Cover,Default)</visible>
 					</control>
 					<control type="image" id="1">
 						<bottom>29</bottom>
@@ -143,7 +143,7 @@
 						<height>250</height>
 						<texture colordiffuse="thumb_background" diffuse="views/player/mask_square.png">common/white.jpg</texture>
 						<aspectratio scalediffuse="false">stretch</aspectratio>
-						<visible>!String.IsEmpty(VideoPlayer.Cover)</visible>
+						<visible>!String.IsEmpty(VideoPlayer.Cover) + !String.StartsWith(VideoPlayer.Cover,Default)</visible>
 					</control>
 					<control type="image" id="1">
 						<bottom>29</bottom>

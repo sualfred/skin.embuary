@@ -1,120 +1,153 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
-	<defaultcontrol always="true">9</defaultcontrol>
-	<include>Dialog_PopupOpenClose</include>
-	<controls>
-		<include content="DiffuseMask">
-			<param name="visible">true</param>
-		</include>
+	<defaultcontrol always="true">9</defaultcontrol>	
+	<controls>		
+		<control type="label" id="20">
+			<include>HiddenObject</include>
+		</control>
+		<include>Background</include>
 		<control type="group">
-			<centertop>50%</centertop>
-			<centerleft>50%</centerleft>
-			<height>740</height>
-			<width>1205</width>
-			<control type="image">
-				<width>100%</width>
-				<height>100%</height>
-				<texture border="10" colordiffuse="panel">common/dialog_back.png</texture>
+			<include>Window_OpenClose</include>
+			<!-- left -->
+			<include content="ContentPanel">
+			</include>
+			<control type="group">
+				<top>73</top>
+				<include content="SideMenuHeadline">
+					<param name="nr">1</param>
+					<param name="label">$LOCALIZE[5]</param>
+				</include>
+				<control type="grouplist" id="9">
+					<left>0</left>
+					<top>55</top>
+					<bottom>130</bottom>
+					<width>400</width>
+					<usecontrolcoords>true</usecontrolcoords>
+					<onleft>9999</onleft>
+					<onright>2</onright>
+					<onup>6666</onup>
+					<ondown>1000</ondown>
+				</control>
+				<control type="button" id="13">
+					<description>Default Category Button</description>
+					<width>400</width>
+					<height>50</height>
+					<align>left</align>
+					<aligny>center</aligny>
+					<font>Reg20</font>
+					<textoffsetx>50</textoffsetx>
+					<textcolor>panel_text</textcolor>
+					<focusedcolor>panel_text</focusedcolor>
+					<selectedcolor>panel_text</selectedcolor>
+					<shadowcolor>text_shadow</shadowcolor>
+					<texturefocus colordiffuse="panel_hover">common/white.jpg</texturefocus>
+					<include>NoTextures</include>
+				</control>
 			</control>
-			<control type="image">
-				<top>5</top>
-				<right>362</right>
-				<width>1</width>
-				<height>730</height>
-				<texture colordiffuse="grey">common/white.jpg</texture>
-			</control>
-			<!-- category -->
-			<control type="grouplist" id="9">
-				<right>10</right>
-				<top>10</top>
-				<width>345</width>
-				<height>600</height>
-				<itemgap>5</itemgap>
-				<orientation>vertical</orientation>
-				<onleft>2</onleft>
-				<onright>noop</onright>
-				<onup>noop</onup>
-				<ondown>10</ondown>
-			</control>
-			<control type="button" id="13">
-				<description>Default Category Button</description>
-				<width>345</width>
-			</control>
-			<!-- button group -->
-			<control type="grouplist" id="9001">
-				<right>10</right>
-				<bottom>10</bottom>
-				<width>345</width>
-				<height>160</height>
-				<itemgap>5</itemgap>
-				<orientation>vertical</orientation>
-				<onleft>2</onleft>
-				<onright>noop</onright>
+			<control type="grouplist" id="1000">
+				<left>5</left>
+				<bottom>50</bottom>
+				<height>250</height>
+				<align>bottom</align>
 				<onup>9</onup>
+				<onright>2</onright>
 				<ondown>noop</ondown>
 				<control type="button" id="10">
-					<width>345</width>
+					<width>390</width>
 					<label>$LOCALIZE[186]</label>
 				</control>
 				<control type="button" id="11">
-					<width>345</width>
+					<width>390</width>
 					<label>$LOCALIZE[222]</label>
 				</control>
 				<control type="button" id="12">
-					<width>345</width>
+					<width>390</width>
 					<label>$LOCALIZE[409]</label>
 				</control>
 			</control>
-			<!-- options -->
-			<control type="grouplist" id="2">
-				<description>control area</description>
-				<left>5</left>
-				<top>10</top>
-				<width>837</width>
-				<height>720</height>
-				<onup>noop</onup>
-				<ondown>noop</ondown>
-				<onright>9</onright>
-				<onright>noop</onright>
-				<itemgap>5</itemgap>
+			<!-- right -->
+			<control type="group">
+				<control type="grouplist" id="2">
+					<description>control area</description>
+					<top>128</top>
+					<left>400</left>
+					<pagecontrol>60</pagecontrol>
+					<right>0</right>
+					<bottom>50</bottom>
+					<onleft>9</onleft>
+					<onright>noop</onright>
+					<onup>6666</onup>
+					<ondown>noop</ondown>
+					<usecontrolcoords>true</usecontrolcoords>
+				</control>
+				<control type="button" id="13">
+					<description>Default Button</description>
+					<include content="SettingsButton">
+						<param name="textoffsetx">35</param>
+					</include>
+				</control>
+				<control type="button" id="3">
+					<description>Default Button</description>
+					<include content="SettingsButton">
+						<param name="textoffsetx">35</param>
+					</include>
+				</control>
+				<control type="radiobutton" id="4">
+					<description>Default RadioButton</description>
+					<include content="SettingsButton">
+						<param name="textoffsetx">35</param>
+					</include>
+				</control>
+				<control type="spincontrolex" id="5">
+					<description>Default SpinControlex</description>
+					<include content="SettingsButton">
+						<param name="textoffsetx">35</param>
+					</include>
+				</control>
+				<control type="sliderex" id="8">
+					<description>Default Slider</description>
+					<include content="SettingsButton">
+						<param name="textoffsetx">35</param>
+					</include>
+				</control>
+				<control type="image" id="6">
+					<description>separator image</description>
+					<visible>false</visible>
+				</control>
+				<control type="label" id="7">
+					<description>Default Label</description>
+					<height>50</height>
+					<font>med20</font>
+					<textoffsetx>25</textoffsetx>
+					<textcolor>panel_text</textcolor>
+					<shadowcolor>text_shadow</shadowcolor>
+					<aligny>center</aligny>
+				</control>				
+				<include content="list_mask_vertical">
+					<param name="height" value="70"/>
+					<param name="left" value="400"/>
+					<param name="right" value="0"/>
+					<param name="id" value="2"/>
+					<param name="visible_forced" value="true"/>
+				</include>
 			</control>
-			<control type="button" id="13">
-				<description>Default Category Button</description>
-				<height>120</height>
-				<width>390</width>
-				<textoffsetx>20</textoffsetx>
-				<align>center</align>
-				<aligny>center</aligny>
-				<font>font25_title</font>
-				<texturenofocus border="40">buttons/dialogbutton-nofo.png</texturenofocus>
-			</control>
-			<control type="button" id="3">
-				<include>SettingsButton</include>
-			</control>
-			<control type="radiobutton" id="4">
-				<include>SettingsButton</include>
-				<textwidth>900</textwidth>
-			</control>
-			<control type="spincontrolex" id="5">
-				<include>SettingsButton</include>
-				<textwidth>900</textwidth>
-			</control>
-			<control type="label" id="7">
-				<height>50</height>
-				<font>med20</font>
-				<textoffsetx>10</textoffsetx>
-				<textcolor>panel_text</textcolor>
-				<shadowcolor>text_shadow</shadowcolor>
-				<aligny>center</aligny>
-			</control>
-			<control type="image" id="6">
-				<description>separator image</description>
-				<texture/>
-				<visible>false</visible>
-			</control>
-			<control type="sliderex" id="8">
-				<include>SettingsButton</include>
+			<control type="scrollbar" id="60">
+				<right>0</right>
+				<top>58</top>
+				<width>5</width>
+				<bottom>0</bottom>
+				<orientation>vertical</orientation>
 			</control>
 		</control>
+		<!-- header bar -->
+		<include content="HeaderBar">		
+			<param name="id">9</param>
+			<param name="enabled">false</param>
+			<param name="sidebar_id">9999</param>
+		</include>
+		<!-- side panel -->
+		<include content="SidePanel">
+			<param name="onright">9</param>
+		</include>
 	</controls>
 </window>
