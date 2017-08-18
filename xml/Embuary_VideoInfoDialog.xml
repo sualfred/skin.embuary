@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
-	<!-- movie -->
+	<!-- PVR -->
 	<include name="VideoPVRInfoLayout">		
 		<!-- Background -->
 		<include>Background</include>
@@ -72,7 +72,7 @@
 							<param name="top">348</param>
 							<param name="width">590</param>
 							<param name="mainlabel">$INFO[VideoPlayer.Channelname]</param>
-							<param name="sublabel"/>
+							<param name="sublabel">$INFO[VideoPlayer.StartTime]$INFO[VideoPlayer.EndTime, - ]</param>
 						</include>
 					</control>
 				</control>
@@ -168,7 +168,7 @@
 			<param name="sidebar_id">9999</param>
 		</include>
 	</include>
-	<!-- movie -->
+	<!-- Move/TVShow -->
 	<include name="VideoInfoLayout">
 		<!-- Background -->
 		<include>Background</include>
@@ -330,7 +330,7 @@
 								<ondown>SetFocus(50)</ondown>
 							</control>
 						</control>
-						<control type="textbox">
+						<control type="textbox" id="98">
 							<width>1040</width>
 							<height>125</height>
 							<align>justify</align>
@@ -357,7 +357,7 @@
 						<font>Material34</font>
 						<textcolor>panel_text</textcolor>
 						<label></label>
-						<visible>Control.IsVisible(96)</visible>
+						<visible>Container(98).HasNext</visible>
 					</control>
 				</control>
 			</control>
