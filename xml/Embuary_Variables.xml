@@ -153,6 +153,39 @@
 		<value condition="VideoPlayer.Content(livetv)">$LOCALIZE[19165]</value>
 		<value>$LOCALIZE[31020]</value>
 	</variable>
+	<variable name="VolumeIconCircle">
+		<value condition="Player.Muted">0</value>
+		<value condition="Integer.IsGreaterOrEqual(player.volume,10)">$INFO[Control.GetLabel(404)]</value>
+		<value condition="Integer.IsGreaterOrEqual(player.volume,9)">9</value>
+		<value condition="Integer.IsGreaterOrEqual(player.volume,8)">8</value>
+		<value condition="Integer.IsGreaterOrEqual(player.volume,7)">7</value>
+		<value condition="Integer.IsGreaterOrEqual(player.volume,6)">6</value>
+		<value condition="Integer.IsGreaterOrEqual(player.volume,5)">5</value>
+		<value condition="Integer.IsGreaterOrEqual(player.volume,4)">4</value>
+		<value condition="Integer.IsGreaterOrEqual(player.volume,3)">3</value>
+		<value condition="Integer.IsGreaterOrEqual(player.volume,2)">2</value>
+		<value condition="Integer.IsGreaterOrEqual(player.volume,1)">1</value>
+		<value condition="Integer.IsGreaterOrEqual(player.volume,0)">0</value>
+	</variable>
+	<variable name="VolumeIcon">
+		<value condition="Player.Muted"></value>
+		<value condition="Integer.IsGreater(player.volume,75)"></value>
+		<value condition="Integer.IsGreater(player.volume,25)"></value>
+		<value condition="!Integer.IsGreater(player.volume,25)"></value>
+	</variable>
+	<variable name="VolumeDetails">
+		<value condition="!Player.Muted + Integer.IsGreaterOrEqual(player.volume,10)">$INFO[Control.GetLabel(404),,%]</value>
+		<value condition="Integer.IsGreaterOrEqual(player.volume,9)">9%</value>
+		<value condition="Integer.IsGreaterOrEqual(player.volume,8)">8%</value>
+		<value condition="Integer.IsGreaterOrEqual(player.volume,7)">7%</value>
+		<value condition="Integer.IsGreaterOrEqual(player.volume,6)">6%</value>
+		<value condition="Integer.IsGreaterOrEqual(player.volume,5)">5%</value>
+		<value condition="Integer.IsGreaterOrEqual(player.volume,4)">4%</value>
+		<value condition="Integer.IsGreaterOrEqual(player.volume,3)">3%</value>
+		<value condition="Integer.IsGreaterOrEqual(player.volume,2)">2%</value>
+		<value condition="Integer.IsGreaterOrEqual(player.volume,1)">1%</value>
+		<value>$LOCALIZE[31043]</value>
+	</variable>
 	<variable name="ExtendedProgressCircle">
 		<value condition="String.IsEqual(Control.GetLabel(32),100)">100</value>
 		<value condition="String.IsEqual(Control.GetLabel(32),99)">99</value>

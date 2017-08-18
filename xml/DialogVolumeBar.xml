@@ -1,49 +1,83 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<zorder>4</zorder>
 	<controls>
+		<!-- Progress -->
+		<control id="404" type="progress">
+			<include>HiddenObject</include>
+			<info>player.volume</info>
+		</control>
+		<!-- Dialog -->
 		<control type="group">
-			<visible>!Window.IsActive(startup)</visible>
-			<centerleft>50%</centerleft>
-			<width>112</width>
-			<top>0</top>
-			<animation effect="fade" start="100" end="0" time="200" delay="1000" condition="Player.Muted">Conditional</animation>
-			<animation effect="fade" start="0" end="100" time="150">WindowOpen</animation>
-			<animation effect="fade" start="100" end="0" time="150">WindowClose</animation>
-			<control type="progress" id="29999">
-				<include>HiddenObject</include>
-				<info>Player.Volume</info>
-			</control>
+			<include>Dialog_OpenClose</include>
+			<width>350</width>
+			<height>92</height>
+			<right>0</right>
+			<!-- Background image -->
 			<control type="image">
-				<left>12</left>
-				<top>5</top>
-				<width>88</width>
-				<height>88</height>
-				<texture>osd/buffer-bg.png</texture>
-				<visible>Window.IsActive(fullscreenvideo) | Window.IsActive(slideshow)</visible>
+				<texture colordiffuse="panel" border="10">common/dialog_back.png</texture>
 			</control>
-			<control type="image">
-				<left>22</left>
+			<!-- icon -->
+			<control type="group">
+				<centertop>50%</centertop>
+				<left>10</left>
+				<width>80</width>
+				<height>80</height>
+				<!-- Icon back -->
+				<control type="image">
+					<texture>dialogs/progress/bg.png</texture>
+				</control>
+				<control type="image">
+					<texture>dialogs/progress/100.png</texture>
+					<colordiffuse>thumb_background</colordiffuse>
+				</control>
+				<control type="image">
+					<texture>dialogs/progress/$VAR[VolumeIconCircle].png</texture>	
+					<colordiffuse>emby</colordiffuse>
+				</control>
+				<!-- Icon -->
+				<control type="textbox">
+					<align>center</align>
+					<aligny>center</aligny>
+					<font>Material24</font>
+					<textcolor>text_white</textcolor>
+					<label>$VAR[VolumeIcon]</label>
+				</control>
+			</control>			
+			<!-- Heading -->
+			<control type="label">
 				<top>15</top>
-				<width>68</width>
-				<height>68</height>
-				<texture>dialogs/extendedprogress/loading-back.png</texture>
-				<animation effect="fade" start="100" end="0" delay="300" time="500" tween="sine" condition="Player.Muted">Conditional</animation>
+				<left>100</left>
+				<right>20</right>
+				<font>Med24</font>
+				<textcolor>white</textcolor>
+				<shadowcolor>text_shadow</shadowcolor>
+				<label>$LOCALIZE[13376]</label>
 			</control>
-			<control type="image">
-				<left>22</left>
-				<top>15</top>
-				<width>68</width>
-				<height>68</height>
-				<texture>$INFO[Control.GetLabel(29999),dialogs/volume/progress/p,.png]</texture>
-				<animation effect="fade" start="100" end="0" delay="300" time="500" tween="sine" condition="Player.Muted">Conditional</animation>
+			<!-- Details -->
+			<control type="label">
+				<top>50</top>
+				<left>100</left>
+				<right>20</right>
+				<right>10</right>
+				<font>Reg22</font>
+				<scroll>true</scroll>
+				<textcolor>panel_text</textcolor>
+				<shadowcolor>text_shadow</shadowcolor>
+				<label>$VAR[VolumeDetails]</label>			
+				<visible>!player.passthrough</visible>
 			</control>
-			<control type="image">
-				<left>36</left>
-				<top>29</top>
-				<width>40</width>
-				<height>40</height>
-				<texture colordiffuse="white">$VAR[VolumeIconVar]</texture>
+			<control type="label">
+				<top>50</top>
+				<left>100</left>
+				<right>20</right>
+				<right>10</right>
+				<font>Reg22</font>
+				<scroll>true</scroll>
+				<textcolor>panel_text</textcolor>
+				<shadowcolor>text_shadow</shadowcolor>
+				<label>$LOCALIZE[29802]</label>
+				<visible>player.passthrough</visible>
 			</control>
 		</control>
 	</controls>
