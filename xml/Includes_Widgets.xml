@@ -23,6 +23,10 @@
 						<param name="headline">$PARAM[headline]</param>
 						<param name="left">65</param>
 					</include>
+					<include content="WidgetLoadingSpinner">
+						<param name="id" value="$PARAM[id]"/>
+						<param name="height" value="242"/>
+					</include>
 					<control type="list" id="$PARAM[id]">
 						<visible>$PARAM[content_visibility]</visible>
 						<top>30</top>
@@ -104,6 +108,10 @@
 						<param name="headline">$PARAM[headline]</param>
 						<param name="left">65</param>
 					</include>
+					<include content="WidgetLoadingSpinner">
+						<param name="id" value="$PARAM[id]"/>
+						<param name="height" value="355"/>
+					</include>
 					<control type="list" id="$PARAM[id]">
 						<visible>$PARAM[content_visibility]</visible>
 						<top>30</top>
@@ -183,6 +191,10 @@
 					<include content="widget_headline">
 						<param name="headline">$PARAM[headline]</param>
 						<param name="left">65</param>
+					</include>
+					<include content="WidgetLoadingSpinner">
+						<param name="id" value="$PARAM[id]"/>
+						<param name="height" value="355"/>
 					</include>
 					<control type="list" id="$PARAM[id]">
 						<top>30</top>
@@ -311,6 +323,7 @@
 							<property name="art4">$INFO[Container(52).ListItem(3).Art(poster)]</property>
 						</item>
 						<item>
+							<visible>Pvr.HasTVChannels</visible>
 							<label>$LOCALIZE[14204]</label>
 							<onclick>ActivateWindow(1124,return)</onclick>
 							<property name="art1">$INFO[Container(53).ListItem(0).Art(thumb)]</property>
@@ -354,6 +367,10 @@
 				<height>556</height>
 				<include content="widget_headline">
 					<param name="headline">$PARAM[headline]</param>
+				</include>
+				<include content="WidgetLoadingSpinner">
+					<param name="id" value="$PARAM[id]"/>
+					<param name="height" value="239"/>
 				</include>
 				<control type="list" id="$PARAM[id]">
 					<top>30</top>
@@ -460,8 +477,12 @@
 					<content sortby="$PARAM[sortby]" sortorder="$PARAM[sortorder]" target="$PARAM[widget_target]" limit="$PARAM[widget_limit]">$PARAM[content]</content>
 				</control>
 				<include content="list_mask">
-					<param name="height" value="415"/>
+					<param name="height" value="414"/>
 					<param name="id" value="$PARAM[id]"/>
+				</include>
+				<include content="WidgetLoadingSpinner">
+					<param name="id" value="$PARAM[id]"/>
+					<param name="height" value="414"/>
 				</include>
 			</control>
 		</definition>
@@ -480,6 +501,10 @@
 				<height>575</height>
 				<include content="widget_headline">
 					<param name="headline">$PARAM[headline]</param>
+				</include>
+				<include content="WidgetLoadingSpinner">
+					<param name="id" value="$PARAM[id]"/>
+					<param name="height" value="277"/>
 				</include>
 				<control type="list" id="$PARAM[id]">
 					<top>30</top>
@@ -590,6 +615,11 @@
 				<include content="widget_headline">
 					<param name="top">145</param>
 					<param name="headline">$PARAM[headline]</param>
+				</include>
+				<include content="WidgetLoadingSpinner">
+					<param name="id" value="$PARAM[id]"/>
+					<param name="height" value="239"/>
+					<param name="top" value="214"/>
 				</include>
 				<control type="list" id="$PARAM[id]">
 					<top>150</top>

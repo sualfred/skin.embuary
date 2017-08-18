@@ -18,7 +18,7 @@
 			</control>
 		</definition>
 	</include>
-
+	<!-- Widget labels -->
 	<include name="widget_labels">
 		<param name="visible_labels">true</param>
 		<param name="mainlabel">$VAR[MainListLabel]</param>
@@ -52,7 +52,7 @@
 			</control>
 		</definition>
 	</include>
-
+	<!-- Upper overlay -->
 	<include name="bubble_overlay">
 		<control type="image" id="2">
 			<right>10</right>
@@ -98,6 +98,7 @@
 			</control>
 		</control>
 	</include>
+	<!-- List overlay -->
 	<include name="bubble_mini_overlay">
 		<control type="group">
 			<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
@@ -124,7 +125,7 @@
 			</control>
 		</control>
 	</include>
-
+	<!-- Play icon -->
 	<include name="bubble_play">
 		<control type="group">
 			<visible>[!String.IsEmpty(ListItem.DBtype) | String.StartsWith(ListItem.Path,pvr://)]</visible>
@@ -150,7 +151,7 @@
 			</control>
 		</control>
 	</include>
-
+	<!-- HasNext arrow -->
 	<include name="list_mask">
 		<param name="top" default="94"/>
 		<param name="width" default="100"/>
@@ -182,7 +183,6 @@
 			</control>
 		</definition>
 	</include>
-
 	<include name="list_mask_vertical">
 		<param name="left" default="0"/>
 		<param name="right" default="0"/>
@@ -217,8 +217,7 @@
 			</control>
 		</definition>
 	</include>
-
-
+	<!-- Spacer -->
 	<include name="WidgetSpacer">
 		<param name="visible">true</param>
 		<param name="height">200</param>
@@ -234,7 +233,7 @@
 			</control>
 		</definition>
 	</include>
-
+	<!-- Progress -->
 	<include name="progress">
 		<param name="visible">true</param>
 		<param name="width">100</param>
@@ -268,8 +267,22 @@
 			</control>
 		</definition>
 	</include>
-
-
+	<!-- Loading spinner -->
+	<include name="WidgetLoadingSpinner">
+		<param name="left">60</param>
+		<param name="top">94</param>
+		<definition>
+			<control type="image">
+				<left>$PARAM[left]</left>
+				<top>$PARAM[top]</top>
+				<height>$PARAM[height]</height>
+				<width>150</width>
+				<texture colordiffuse="lightgrey">common/busy_spinner150.gif</texture>
+				<aspectratio align="center" aligny="center">keep</aspectratio>
+				<visible>Container($PARAM[id]).IsUpdating</visible>
+			</control>
+		</definition>
+	</include>
 	<!-- Poster -->
 	<include name="PosterLayout">
 		<param name="mainlabel">$VAR[MainListLabel]</param>
