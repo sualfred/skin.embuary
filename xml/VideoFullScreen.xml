@@ -11,7 +11,7 @@
 		</control>
 		<!-- OSD -->
 		<control type="group" id="1">
-			<visible>Window.IsVisible(videoosd) | Window.IsVisible(seekbar) | Player.Paused | !String.IsEmpty(Window(home).Property(showvideoinfo))</visible>
+			<visible>Window.IsVisible(videoosd) | Window.IsVisible(seekbar) | Player.Paused | Window.IsVisible(volumebar) | !String.IsEmpty(Window(home).Property(showvideoinfo))</visible>
 			<animation effect="fade" start="0" end="100" time="0">Visible</animation>
 			<animation effect="fade" start="100" end="0" time="400m" delay="2000">Hidden</animation>			
 			<!--Top-->
@@ -134,7 +134,19 @@
 						<align>center</align>
 						<aligny>center</aligny>
 						<label>$INFO[Player.Title]</label>
-						<visible>String.IsEmpty(VideoPlayer.Cover) | String.StartsWith(VideoPlayer.Cover,Default)</visible>
+						<visible>!VideoPlayer.Content(livetv) + [String.IsEmpty(VideoPlayer.Cover) | String.StartsWith(VideoPlayer.Cover,Default)]</visible>
+					</control>
+					<control type="textbox" id="1">
+						<bottom>39</bottom>
+						<left>39</left>
+						<width>230</width>
+						<height>230</height>
+						<font>Light24</font>
+						<textcolor>white</textcolor>
+						<align>center</align>
+						<aligny>center</aligny>
+						<label>$INFO[VideoPlayer.Channelname]</label>
+						<visible>VideoPlayer.Content(livetv) + [String.IsEmpty(VideoPlayer.Cover) | String.StartsWith(VideoPlayer.Cover,Default)]</visible>
 					</control>
 					<control type="image" id="1">
 						<bottom>29</bottom>
@@ -189,7 +201,7 @@
 						<height>5</height>
 						<reveal>true</reveal>
 						<info>Player.Progress</info>
-						<texturebg colordiffuse="grey">common/ProgressBack.png</texturebg>
+						<texturebg colordiffuse="00ffffff">common/ProgressBack.png</texturebg>
 						<lefttexture>-</lefttexture>
 						<midtexture colordiffuse="emby">common/ProgressBar.png</midtexture>
 						<righttexture>-</righttexture>
@@ -204,7 +216,7 @@
 						<height>5</height>
 						<reveal>true</reveal>
 						<info>Player.Progress</info>
-						<texturebg colordiffuse="grey">common/ProgressBack.png</texturebg>
+						<texturebg colordiffuse="00ffffff">common/ProgressBack.png</texturebg>
 						<lefttexture>-</lefttexture>
 						<midtexture colordiffuse="blue">common/ProgressBar.png</midtexture>
 						<righttexture>-</righttexture>
@@ -218,7 +230,7 @@
 						<height>5</height>
 						<reveal>true</reveal>
 						<info>PVR.Progress</info>
-						<texturebg colordiffuse="aa404040">common/ProgressBack.png</texturebg>
+						<texturebg colordiffuse="00ffffff">common/ProgressBack.png</texturebg>
 						<lefttexture>-</lefttexture>
 						<midtexture colordiffuse="emby">common/ProgressBar.png</midtexture>
 						<righttexture>-</righttexture>
@@ -346,6 +358,43 @@
 						<label>$LOCALIZE[31038]</label>
 						<visible>Pvr.IsTimeShift</visible>
 					</control>
+				</control>
+				<!-- Volume -->
+				<!-- Icon -->
+				<control type="label" id="1">
+					<bottom>23</bottom>
+					<right>231</right>
+					<height>50</height>
+					<width>auto</width>
+					<align>center</align>
+					<font>Material34</font>
+					<textcolor>text_white</textcolor>
+					<label>$VAR[VolumeIcon]</label>
+				</control>
+				<control type="progress" id="1">
+					<bottom>53</bottom>
+					<right>31</right>
+					<width>150</width>
+					<height>5</height>
+					<info>player.volume</info>
+					<texturebg colordiffuse="grey">common/ProgressBack.png</texturebg>
+					<lefttexture>-</lefttexture>
+					<midtexture colordiffuse="emby">common/ProgressBar.png</midtexture>
+					<righttexture>-</righttexture>
+					<overlaytexture>-</overlaytexture>
+					<visible>Integer.IsGreater(player.volume,1)</visible>
+				</control>
+				<control type="progress" id="1">
+					<bottom>53</bottom>
+					<right>31</right>
+					<width>150</width>
+					<height>5</height>
+					<texturebg colordiffuse="grey">common/ProgressBack.png</texturebg>
+					<lefttexture>-</lefttexture>
+					<midtexture colordiffuse="ff00000">common/ProgressBar.png</midtexture>
+					<righttexture>-</righttexture>
+					<overlaytexture>-</overlaytexture>
+					<visible>!Integer.IsGreater(player.volume,1)</visible>
 				</control>
 			</control>
 		</control>
