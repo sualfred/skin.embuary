@@ -184,37 +184,32 @@
 							<onright>SetProperty(BounceRight,1,home)</onright>
 							<onright>noop</onright>
 							<onleft>9999</onleft>
-							<control type="button" id="101">
-								<top>-2</top>
-								<left>-2</left>
+							<control type="togglebutton" id="101">
 								<width min="50">auto</width>
 								<height>50</height>
-								<font>med18</font>
+								<font>med20</font>
 								<textcolor>white</textcolor>
 								<focusedcolor>white</focusedcolor>
 								<selectedcolor>white</selectedcolor>
+								<shadowcolor>text_shadow</shadowcolor>
 								<textoffsetx>20</textoffsetx>
-								<label>$LOCALIZE[31014]</label>
-								<texturefocus border="10" colordiffuse="emby">items/shadow_smallbutton.png</texturefocus>
-								<texturenofocus border="10" colordiffuse="grey">items/shadow_smallbutton.png</texturenofocus>
-								<onclick>ActivateWindow(movieinformation)</onclick>
+								<aligny>center</aligny>
+								<align>center</align>
+								<texturefocus border="10" colordiffuse="buttonfocus_green">items/shadow_smallbutton.png</texturefocus>
+								<texturenofocus border="10" colordiffuse="greybutton">items/shadow_smallbutton.png</texturenofocus>
+								<alttexturefocus border="10" colordiffuse="buttonfocus_green">items/shadow_smallbutton.png</alttexturefocus>
+								<alttexturenofocus border="10" colordiffuse="greybutton">items/shadow_smallbutton.png</alttexturenofocus>
+								<pulseonselect>no</pulseonselect>
+								<label>$LOCALIZE[16102]</label>
+								<altlabel>$LOCALIZE[16101]</altlabel>
+								<onclick>ToggleWatched</onclick>
 								<onup>SetFocus(6666)</onup>
 								<ondown>SetFocus(54)</ondown>
+								<selected>!String.IsEqual(ListItem.Overlay,OverlayWatched.png)</selected>
 							</control>
 							<control type="button" id="97">
 								<visible>Control.IsVisible(96)</visible>
-								<top>-2</top>
-								<left>-2</left>
-								<width min="50">auto</width>
-								<height>50</height>
-								<font>med18</font>
-								<textcolor>white</textcolor>
-								<focusedcolor>white</focusedcolor>
-								<selectedcolor>white</selectedcolor>
-								<textoffsetx>20</textoffsetx>
 								<label>$LOCALIZE[31013]</label>
-								<texturefocus border="10" colordiffuse="emby">items/shadow_smallbutton.png</texturefocus>
-								<texturenofocus border="10" colordiffuse="grey">items/shadow_smallbutton.png</texturenofocus>
 								<onclick>RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.TVShowTitle]',message='$ESCVAR[TinyInfoDialogPlot]')</onclick>
 								<onup>SetFocus(6666)</onup>
 								<ondown>SetFocus(54)</ondown>
@@ -222,11 +217,11 @@
 						</control>
 						<control type="textbox">
 							<width>1040</width>
-							<height>145</height>
+							<height>125</height>
 							<align>justify</align>
 							<aligny>top</aligny>
 							<label>$INFO[ListItem.Plot]</label>
-							<font>Light24</font>
+							<font>Light24Spaced</font>
 							<shadowcolor>text_shadow</shadowcolor>
 							<autoscroll>false</autoscroll>
 							<pagecontrol>96</pagecontrol>
@@ -241,10 +236,10 @@
 						<aspectratio>keep</aspectratio>
 					</control>
 					<control type="label" id="97">
-						<left>1420</left>
-						<top>380</top>
+						<left>366</left>
+						<top>386</top>
 						<width>auto</width>
-						<font>Material44</font>
+						<font>Material34</font>
 						<textcolor>panel_text</textcolor>
 						<label></label>
 						<visible>Control.IsVisible(96)</visible>
