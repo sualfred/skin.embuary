@@ -62,7 +62,8 @@
 		<value>$INFO[ListItem.Label]</value>
 	</variable>
 	<variable name="SubListLabel">
-		<value condition="[Window.IsVisible(videos) | Window.IsVisible(music) | Window.IsVisible(programs) | Window.IsVisible(MyPVRRecordings.xml) | Window.IsVisible(addonbrowser)] + ListItem.IsFolder">$LOCALIZE[19076]</value>
+		<value condition="ListItem.IsParentFolder">$LOCALIZE[31044]</value>
+		<value condition="[Window.IsVisible(videos) | Window.IsVisible(music) | Window.IsVisible(programs) | Window.IsVisible(MyPVRRecordings.xml) | Window.IsVisible(addonbrowser)] + ListItem.IsFolder + !ListItem.IsParentFolder">$LOCALIZE[19076]</value>
 		<value condition="Window.IsVisible(addonbrowser)">$INFO[ListItem.AddonType]</value>
 		<value condition="String.StartsWith(ListItem.Path,pvr://)">$INFO[ListItem.Label]</value>
 		<value condition="String.IsEqual(ListItem.DBType,episode)">$INFO[ListItem.TvShowTitle]</value>
