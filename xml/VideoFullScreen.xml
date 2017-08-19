@@ -33,14 +33,63 @@
 					<top>10</top>
 					<left>960</left>
 					<right>29</right>
-					<height>100</height>
+					<height>50</height>
 					<align>right</align>
 					<orientation>horizontal</orientation>
+					<itemgap>10</itemgap>
+					<control type="label" id="1">
+						<width>auto</width>
+						<align>right</align>
+						<aligny>center</aligny>
+						<font>Material40</font>
+						<label></label>
+						<visible>[Player.Seeking | Player.DisplayAfterSeek] + !String.IsEmpty(Player.SeekStepSize)</visible>
+					</control>
 					<control type="label" id="1">
 						<width>auto</width>
 						<align>right</align>
 						<aligny>top</aligny>
-						<font>Material49</font>
+						<font>Med40</font>
+						<label>$INFO[Player.SeekStepSize]     </label>
+						<visible>[Player.Seeking | Player.DisplayAfterSeek] + !String.IsEmpty(Player.SeekStepSize)</visible>
+					</control>
+					<control type="label" id="1">
+						<width>auto</width>
+						<align>right</align>
+						<aligny>center</aligny>
+						<font>Material40</font>
+						<label></label>
+						<visible>Player.Rewinding</visible>
+					</control>
+					<control type="label" id="1">
+						<width>auto</width>
+						<align>right</align>
+						<aligny>top</aligny>
+						<font>Med40</font>
+						<label>Rewinding$VAR[PlayerForwardRewind, (,)]     </label>
+						<visible>Player.Rewinding</visible>
+					</control>
+					<control type="label" id="1">
+						<width>auto</width>
+						<align>right</align>
+						<aligny>center</aligny>
+						<font>Material40</font>
+						<label></label>
+						<visible>Player.Forwarding</visible>
+					</control>
+					<control type="label" id="1">
+						<width>auto</width>
+						<align>right</align>
+						<aligny>top</aligny>
+						<font>Med40</font>
+						<label>Forwarding$VAR[PlayerForwardRewind, (,)]     </label>
+						<visible>Player.Forwarding</visible>
+					</control>
+					<control type="label" id="1">
+						<width>auto</width>
+						<align>right</align>
+						<aligny>center</aligny>
+						<font>Material40</font>
 						<label></label>
 						<visible>Player.Paused</visible>
 					</control>
