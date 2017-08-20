@@ -41,16 +41,16 @@
 						<width>auto</width>
 						<align>right</align>
 						<font>Material40</font>
-						<label></label>
-						<visible>[Player.Seeking | Player.DisplayAfterSeek] + !String.IsEmpty(Player.SeekStepSize)</visible>
+						<label>$VAR[PlayerSeekStepIcon]</label>
+						<visible>!String.IsEmpty(Player.SeekStepSize) | !String.IsEmpty(Player.SeekOffset)</visible>
 					</control>
 					<control type="label" id="1">
 						<width>auto</width>
 						<align>right</align>
 						<aligny>top</aligny>
 						<font>Med34</font>
-						<label>$INFO[Player.SeekStepSize]     </label>
-						<visible>[Player.Seeking | Player.DisplayAfterSeek] + !String.IsEmpty(Player.SeekStepSize)</visible>
+						<label>$VAR[PlayerSeekStepLabel]     </label>
+						<visible>!String.IsEmpty(Player.SeekStepSize) | !String.IsEmpty(Player.SeekOffset)</visible>
 					</control>
 					<control type="label" id="1">
 						<width>auto</width>

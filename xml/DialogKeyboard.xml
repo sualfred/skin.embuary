@@ -3,18 +3,19 @@
 	<!-- virtualkeyboard -->
 	<defaultcontrol always="true">300</defaultcontrol>
 	<onunload>ClearProperty(DisableSuggestions,home)</onunload>
-	<include>Dialog_PopupOpenClose</include>
 	<zorder>99</zorder>
 	<controls>
 		<control type="image">
+			<include>Visible_Fade</include>
 			<include>FullscreenDimensions</include>
 			<texture colordiffuse="background">common/white.jpg</texture>
 		</control>
 		<!-- Dialog group -->
 		<control type="group">
+			<visible>!Window.IsVisible(numericinput)</visible>
+			<include>Dialog_PopupOpenClose</include>
 			<centerleft>50%</centerleft>
 			<width>1188</width>
-			<animation condition="Window.IsVisible(numericinput)" easing="inout" effect="fade" end="0" start="100" time="120" tween="sine">Conditional</animation>
 			<!-- Search field -->
 			<control type="group">
 				<top>60</top>
@@ -37,7 +38,7 @@
 					<top>115</top>
 					<width>1127</width>
 					<height>2</height>
-					<texture colordiffuse="emby">common/white.jpg</texture>y
+					<texture colordiffuse="emby">common/white.jpg</texture>
 				</control>
 				<!-- icon -->
 				<control type="label">
@@ -208,6 +209,8 @@
 							<width>228</width>
 							<label></label>
 							<align>center</align>
+							<radiowidth>1</radiowidth>
+							<radioheight>1</radioheight>
 							<texturenofocus>-</texturenofocus>
 							<textureradioonfocus>-</textureradioonfocus>
 							<textureradioonnofocus>-</textureradioonnofocus>
@@ -233,6 +236,8 @@
 							<width>228</width>
 							<label></label>
 							<align>center</align>
+							<radiowidth>1</radiowidth>
+							<radioheight>1</radioheight>
 							<texturenofocus>-</texturenofocus>
 							<textureradioonfocus>-</textureradioonfocus>
 							<textureradioonnofocus>-</textureradioonnofocus>
@@ -825,15 +830,17 @@
 						<control id="304" type="radiobutton">
 							<font>Material20</font>
 							<align>center</align>
-							<include>KeyboardButtons</include>
-							<onup>160</onup>
-							<ondown>309</ondown>
-							<label></label>
+							<radiowidth>1</radiowidth>
+							<radioheight>1</radioheight>
 							<texturenofocus>-</texturenofocus>
 							<textureradioonfocus>-</textureradioonfocus>
 							<textureradioonnofocus>-</textureradioonnofocus>
 							<textureradioofffocus>-</textureradioofffocus>
 							<textureradiooffnofocus>-</textureradiooffnofocus>
+							<include>KeyboardButtons</include>
+							<onup>160</onup>
+							<ondown>309</ondown>
+							<label></label>
 						</control>
 						<!-- IP address -->
 						<control id="307" type="button">

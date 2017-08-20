@@ -341,4 +341,12 @@
 		<value condition="Player.Rewinding16x">16x</value>
 		<value condition="Player.Rewinding32x">32x</value>
 	</variable>
+	<variable name="PlayerSeekStepIcon">
+		<value condition="[!String.IsEmpty(Player.SeekOffset) + !String.Contains(Player.SeekOffset,-)] | [!String.IsEmpty(Player.SeekStepSize) + !String.Contains(Player.SeekStepSize,-)]"></value>
+		<value condition="[!String.IsEmpty(Player.SeekOffset) + String.Contains(Player.SeekOffset,-)] | [!String.IsEmpty(Player.SeekStepSize) + String.Contains(Player.SeekStepSize,-)]"></value>
+	</variable>
+	<variable name="PlayerSeekStepLabel">
+		<value condition="!String.IsEmpty(Player.SeekStepSize)">$INFO[Player.SeekStepSize]</value>
+		<value condition="!String.IsEmpty(Player.SeekOffset)">$INFO[Player.SeekOffset]</value>
+	</variable>
 </includes>
