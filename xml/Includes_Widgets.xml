@@ -23,10 +23,27 @@
 						<param name="headline">$PARAM[headline]</param>
 						<param name="left">65</param>
 					</include>
-					<include content="WidgetLoadingSpinner">
-						<param name="id" value="$PARAM[id]"/>
-						<param name="height" value="242"/>
-					</include>
+					<control type="group">
+						<visible>Container($PARAM[id]).IsUpdating</visible>
+						<left>70</left>
+						<top>94</top>
+						<width>430</width>
+						<height>242</height>
+						<control type="image">
+							<top>-2</top>
+							<left>-2</left>
+							<width>436</width>
+							<height>248</height>
+							<texture>items/shadow_wide_db.png</texture>
+						</control>
+						<control type="image">
+							<width>430</width>
+							<height>242</height>
+							<texture colordiffuse="blue" diffuse="items/mask_wide_db.png">common/white.jpg</texture>
+							<aspectratio scalediffuse="false">stretch</aspectratio>
+						</control>
+						<include content="WidgetLoadingSpinner"/>
+					</control>
 					<control type="list" id="$PARAM[id]">
 						<visible>$PARAM[content_visibility]</visible>
 						<top>30</top>
@@ -108,10 +125,27 @@
 						<param name="headline">$PARAM[headline]</param>
 						<param name="left">65</param>
 					</include>
-					<include content="WidgetLoadingSpinner">
-						<param name="id" value="$PARAM[id]"/>
-						<param name="height" value="355"/>
-					</include>
+					<control type="group">
+						<visible>Container($PARAM[id]).IsUpdating</visible>
+						<left>70</left>
+						<top>94</top>
+						<width>237</width>
+						<height>355</height>
+						<control type="image">
+							<top>-2</top>
+							<left>-2</left>
+							<width>243</width>
+							<height>361</height>
+							<texture>items/shadow_poster_db.png</texture>
+						</control>
+						<control type="image">
+							<width>237</width>
+							<height>355</height>
+							<texture colordiffuse="blue" diffuse="items/mask_poster_db.png">common/white.jpg</texture>
+							<aspectratio scalediffuse="false">stretch</aspectratio>
+						</control>
+						<include content="WidgetLoadingSpinner"/>
+					</control>
 					<control type="list" id="$PARAM[id]">
 						<visible>$PARAM[content_visibility]</visible>
 						<top>30</top>
@@ -192,10 +226,27 @@
 						<param name="headline">$PARAM[headline]</param>
 						<param name="left">65</param>
 					</include>
-					<include content="WidgetLoadingSpinner">
-						<param name="id" value="$PARAM[id]"/>
-						<param name="height" value="355"/>
-					</include>
+					<control type="group">
+						<visible>Container($PARAM[id]).IsUpdating</visible>
+						<left>70</left>
+						<top>94</top>
+						<width>237</width>
+						<height>355</height>
+						<control type="image">
+							<top>-2</top>
+							<left>-2</left>
+							<width>243</width>
+							<height>361</height>
+							<texture>items/shadow_poster_db.png</texture>
+						</control>
+						<control type="image">
+							<width>237</width>
+							<height>355</height>
+							<texture colordiffuse="blue" diffuse="items/mask_poster_db.png">common/white.jpg</texture>
+							<aspectratio scalediffuse="false">stretch</aspectratio>
+						</control>
+						<include content="WidgetLoadingSpinner"/>
+					</control>
 					<control type="list" id="$PARAM[id]">
 						<top>30</top>						
 						<width>1920</width>
@@ -390,10 +441,27 @@
 				<include content="widget_headline">
 					<param name="headline">$PARAM[headline]</param>
 				</include>
-				<include content="WidgetLoadingSpinner">
-					<param name="id" value="$PARAM[id]"/>
-					<param name="height" value="239"/>
-				</include>
+				<control type="group">
+					<visible>Container($PARAM[id]).IsUpdating</visible>
+					<left>72</left>
+					<top>94</top>
+					<width>424</width>
+					<height>239</height>					
+					<control type="image">
+						<top>-2</top>
+						<left>-2</left>
+						<width>430</width>
+						<height>245</height>
+						<texture>items/shadow_wide.png</texture>
+					</control>
+					<control type="image">
+						<width>424</width>
+						<height>239</height>
+						<texture colordiffuse="blue" diffuse="items/mask_wide.png">common/white.jpg</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+					</control>
+					<include content="WidgetLoadingSpinner"/>
+				</control>
 				<control type="list" id="$PARAM[id]">
 					<top>30</top>
 					<width>2120</width>
@@ -457,6 +525,27 @@
 				<include content="widget_headline">
 					<param name="headline">$PARAM[headline]</param>
 				</include>
+				<control type="group">
+					<visible>Container($PARAM[id]).IsUpdating</visible>
+					<left>72</left>
+					<top>94</top>
+					<width>276</width>
+					<height>414</height>			
+					<control type="image">
+						<top>-2</top>
+						<left>-2</left>
+						<width>282</width>
+						<height>420</height>
+						<texture>items/shadow_poster.png</texture>
+					</control>
+					<control type="image">
+						<width>276</width>
+						<height>414</height>
+						<texture colordiffuse="blue" diffuse="items/mask_poster.png">common/white.jpg</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+					</control>
+					<include content="WidgetLoadingSpinner"/>
+				</control>
 				<control type="list" id="$PARAM[id]">
 					<top>30</top>
 					<width>1920</width>
@@ -502,10 +591,6 @@
 					<param name="height" value="414"/>
 					<param name="id" value="$PARAM[id]"/>
 				</include>
-				<include content="WidgetLoadingSpinner">
-					<param name="id" value="$PARAM[id]"/>
-					<param name="height" value="414"/>
-				</include>
 			</control>
 		</definition>
 	</include>
@@ -524,10 +609,27 @@
 				<include content="widget_headline">
 					<param name="headline">$PARAM[headline]</param>
 				</include>
-				<include content="WidgetLoadingSpinner">
-					<param name="id" value="$PARAM[id]"/>
-					<param name="height" value="277"/>
-				</include>
+				<control type="group">
+					<visible>Container($PARAM[id]).IsUpdating</visible>
+					<left>72</left>
+					<top>94</top>
+					<width>276</width>
+					<height>276</height>		
+					<control type="image">
+						<top>-2</top>
+						<left>-2</left>
+						<width>282</width>
+						<height>282</height>
+						<texture>items/shadow_square.png</texture>
+					</control>
+					<control type="image">
+						<width>276</width>
+						<height>276</height>
+						<texture colordiffuse="blue" diffuse="items/mask_square.png">common/white.jpg</texture>
+						<aspectratio>stretch</aspectratio>
+					</control>
+					<include content="WidgetLoadingSpinner"/>
+				</control>
 				<control type="list" id="$PARAM[id]">
 					<top>30</top>
 					<width>1920</width>
@@ -638,11 +740,27 @@
 					<param name="top">145</param>
 					<param name="headline">$PARAM[headline]</param>
 				</include>
-				<include content="WidgetLoadingSpinner">
-					<param name="id" value="$PARAM[id]"/>
-					<param name="height" value="239"/>
-					<param name="top" value="214"/>
-				</include>
+				<control type="group">
+					<visible>Container($PARAM[id]).IsUpdating</visible>
+					<left>72</left>
+					<top>214</top>
+					<width>276</width>
+					<height>276</height>		
+					<control type="image">
+						<top>-2</top>
+						<left>-2</left>
+						<width>282</width>
+						<height>282</height>
+						<texture>items/shadow_square.png</texture>
+					</control>
+					<control type="image">
+						<width>276</width>
+						<height>276</height>
+						<texture colordiffuse="blue" diffuse="items/mask_square.png">common/white.jpg</texture>
+						<aspectratio>stretch</aspectratio>
+					</control>
+					<include content="WidgetLoadingSpinner"/>
+				</control>
 				<control type="list" id="$PARAM[id]">
 					<top>150</top>
 					<width>1920</width>
