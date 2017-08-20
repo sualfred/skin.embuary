@@ -20,7 +20,7 @@
 				<info>Player.SeekTime</info>
 			</control>
 			<control type="group">
-				<visible>Player.Forwarding | Player.Rewinding | Player.Seeking | !String.IsEmpty(Player.SeekOffset)</visible>
+				<visible>Player.Forwarding | Player.Rewinding | Player.Seeking | !String.IsEmpty(Player.SeekOffset) | !String.IsEmpty(Player.SeekNumeric)</visible>
 				<include>OSD_Seek_Position</include>
 				<left>309</left>
 				<bottom>125</bottom>
@@ -41,30 +41,18 @@
 					<font>med26</font>
 					<textcolor>ffffffff</textcolor>
 					<label>$INFO[Player.SeekTime]</label>
+					<visible>String.IsEmpty(Player.SeekNumeric)</visible>
 				</control>
-			</control>
-			<!-- Forwarding Rewinding Indicator -->
-			<control type="group">
-				<!--<visible>!Player.Paused + [Player.Forwarding | Player.Rewinding]</visible>-->
-				<control id="1" type="progress">
-					<left>92</left>
-					<bottom>200</bottom>
-					<width>1580</width>
-					<!--<width>1735</width>-->
-					<height>11</height>
-					<reveal>true</reveal>
-					<info>Player.Progress</info>
-					<texturebg>-</texturebg>
-					<lefttexture>-</lefttexture>
-					<midtexture>-</midtexture>
-					<righttexture>-</righttexture>
-					<overlaytexture>-</overlaytexture>
-					<textureslidernib>osd/osd_seek_bar.png</textureslidernib>
-					<textureslidernibfocus>osd/osd_seek_bar.png</textureslidernibfocus>
+				<control type="label">
+					<width>158</width>
+					<height>70</height>
+					<align>center</align>
+					<aligny>center</aligny>
+					<font>med26</font>
+					<textcolor>ffffffff</textcolor>
+					<label>$INFO[Player.SeekNumeric]</label>
+					<visible>!String.IsEmpty(Player.SeekNumeric)</visible>
 				</control>
-
-
-
 			</control>
 		</control>
 	</controls>

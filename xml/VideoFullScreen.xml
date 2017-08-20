@@ -10,26 +10,26 @@
 			<include>FullscreenBusySpinner</include>
 		</control>
 		<!-- OSD -->
-		<control type="group" id="1">
+		<control type="group" id="99">
 			<visible>Window.IsVisible(videoosd) | Window.IsVisible(seekbar) | Player.Paused | Window.IsVisible(volumebar) | !String.IsEmpty(Window(home).Property(showvideoinfo))</visible>
 			<animation effect="fade" start="0" end="100" time="0">Visible</animation>
 			<animation effect="fade" start="100" end="0" time="400m" delay="2000">Hidden</animation>			
 			<!--Top-->
-			<control type="group" id="1">
-				<control type="image" id="1">
+			<control type="group" id="99">
+				<control type="image" id="99">
 					<top>0</top>
 					<width>100%</width>
 					<height>224</height>
 					<texture colordiffuse="black">views/player/mask_top.png</texture>
 				</control>
-				<control type="image" id="1">
+				<control type="image" id="99">
 					<top>10</top>
 					<left>29</left>
-					<height>100</height>
+					<height>60</height>
 					<texture>$VAR[PlayerClearlogo]</texture>
 					<aspectratio align="left">keep</aspectratio>
 				</control>
-				<control type="grouplist" id="1">
+				<control type="grouplist" id="99">
 					<top>5</top>
 					<left>960</left>
 					<right>29</right>
@@ -37,14 +37,14 @@
 					<align>right</align>
 					<orientation>horizontal</orientation>
 					<itemgap>10</itemgap>
-					<control type="label" id="1">
+					<control type="label" id="99">
 						<width>auto</width>
 						<align>right</align>
 						<font>Material40</font>
 						<label>$VAR[PlayerSeekStepIcon]</label>
 						<visible>!String.IsEmpty(Player.SeekStepSize) | !String.IsEmpty(Player.SeekOffset)</visible>
 					</control>
-					<control type="label" id="1">
+					<control type="label" id="99">
 						<width>auto</width>
 						<align>right</align>
 						<aligny>top</aligny>
@@ -52,14 +52,14 @@
 						<label>$VAR[PlayerSeekStepLabel]     </label>
 						<visible>!String.IsEmpty(Player.SeekStepSize) | !String.IsEmpty(Player.SeekOffset)</visible>
 					</control>
-					<control type="label" id="1">
+					<control type="label" id="99">
 						<width>auto</width>
 						<align>right</align>
 						<font>Material40</font>
 						<label></label>
 						<visible>Player.Rewinding</visible>
 					</control>
-					<control type="label" id="1">
+					<control type="label" id="99">
 						<width>auto</width>
 						<align>right</align>
 						<aligny>top</aligny>
@@ -67,14 +67,14 @@
 						<label>Rewinding$VAR[PlayerForwardRewind, ]     </label>
 						<visible>Player.Rewinding</visible>
 					</control>
-					<control type="label" id="1">
+					<control type="label" id="99">
 						<width>auto</width>
 						<align>right</align>
 						<font>Material40</font>
 						<label></label>
 						<visible>Player.Forwarding</visible>
 					</control>
-					<control type="label" id="1">
+					<control type="label" id="99">
 						<width>auto</width>
 						<align>right</align>
 						<aligny>top</aligny>
@@ -82,14 +82,14 @@
 						<label>Forwarding$VAR[PlayerForwardRewind, ]     </label>
 						<visible>Player.Forwarding</visible>
 					</control>
-					<control type="label" id="1">
+					<control type="label" id="99">
 						<width>auto</width>
 						<align>right</align>
 						<font>Material40</font>
 						<label></label>
 						<visible>Player.Paused</visible>
 					</control>
-					<control type="label" id="1">
+					<control type="label" id="99">
 						<width>auto</width>
 						<align>right</align>
 						<aligny>top</aligny>
@@ -97,7 +97,7 @@
 						<label>$LOCALIZE[112]     </label>
 						<visible>Player.Paused</visible>
 					</control>
-					<control type="label" id="1">
+					<control type="label" id="99">
 						<align>right</align>
 						<width>auto</width>
 						<aligny>top</aligny>
@@ -107,16 +107,16 @@
 				</control>
 			</control>
 			<!--Bottom-->
-			<control type="group" id="1">
+			<control type="group" id="99">
 				<!-- mask -->
-				<control type="image" id="1">
+				<control type="image" id="99">
 					<bottom>0</bottom>
 					<width>100%</width>
 					<height>180</height>
 					<texture colordiffuse="black">views/player/mask_bottom.png</texture>
 					<visible>!VideoPlayer.Content(livetv)</visible>
 				</control>
-				<control type="image" id="1">
+				<control type="image" id="99">
 					<bottom>0</bottom>
 					<width>100%</width>
 					<height>216</height>
@@ -124,16 +124,16 @@
 					<visible>VideoPlayer.Content(livetv)</visible>
 				</control>
 				<!-- Poster -->
-				<control type="group" id="1">
+				<control type="group" id="99">
 					<visible>!String.IsEmpty(Player.Art(poster)) | !String.IsEmpty(Player.Art(tvshow.poster))</visible>
-					<control type="image" id="1">
+					<control type="image" id="99">
 						<bottom>20</bottom>
 						<left>20</left>
 						<width>268</width>
 						<height>393</height>
 						<texture>views/player/shadow_poster.png</texture>
 					</control>
-					<control type="image" id="1">
+					<control type="image" id="99">
 						<bottom>29</bottom>
 						<left>29</left>
 						<width>250</width>
@@ -141,7 +141,7 @@
 						<texture colordiffuse="thumb_background" diffuse="views/player/mask_poster.png">common/white.jpg</texture>
 						<aspectratio scalediffuse="false">stretch</aspectratio>
 					</control>
-					<control type="image" id="1">
+					<control type="image" id="99">
 						<bottom>29</bottom>
 						<left>29</left>
 						<width>250</width>
@@ -151,16 +151,16 @@
 					</control>
 				</control>				
 				<!-- Square -->
-				<control type="group" id="1">
+				<control type="group" id="99">
 					<visible>String.IsEmpty(Player.Art(poster)) + String.IsEmpty(Player.Art(tvshow.poster))</visible>
-					<control type="image" id="1">
+					<control type="image" id="99">
 						<bottom>20</bottom>
 						<left>20</left>
 						<width>268</width>
 						<height>268</height>
 						<texture>views/player/shadow_square.png</texture>
 					</control>
-					<control type="image" id="1">
+					<control type="image" id="99">
 						<bottom>29</bottom>
 						<left>29</left>
 						<width>250</width>
@@ -169,7 +169,7 @@
 						<aspectratio scalediffuse="false">stretch</aspectratio>
 						<visible>String.IsEmpty(VideoPlayer.Cover) | String.StartsWith(VideoPlayer.Cover,Default)</visible>
 					</control>
-					<control type="textbox" id="1">
+					<control type="textbox" id="99">
 						<bottom>39</bottom>
 						<left>39</left>
 						<width>230</width>
@@ -181,7 +181,7 @@
 						<label>$INFO[Player.Title]</label>
 						<visible>!VideoPlayer.Content(livetv) + [String.IsEmpty(VideoPlayer.Cover) | String.StartsWith(VideoPlayer.Cover,Default)]</visible>
 					</control>
-					<control type="textbox" id="1">
+					<control type="textbox" id="99">
 						<bottom>39</bottom>
 						<left>39</left>
 						<width>230</width>
@@ -193,7 +193,7 @@
 						<label>$INFO[VideoPlayer.Channelname]</label>
 						<visible>VideoPlayer.Content(livetv) + [String.IsEmpty(VideoPlayer.Cover) | String.StartsWith(VideoPlayer.Cover,Default)]</visible>
 					</control>
-					<control type="image" id="1">
+					<control type="image" id="99">
 						<bottom>29</bottom>
 						<left>29</left>
 						<width>250</width>
@@ -202,7 +202,7 @@
 						<aspectratio scalediffuse="false">stretch</aspectratio>
 						<visible>!String.IsEmpty(VideoPlayer.Cover) + !String.StartsWith(VideoPlayer.Cover,Default)</visible>
 					</control>
-					<control type="image" id="1">
+					<control type="image" id="99">
 						<bottom>29</bottom>
 						<left>29</left>
 						<width>250</width>
@@ -210,20 +210,20 @@
 						<texture diffuse="views/player/mask_square.png">$VAR[PlayerIcon]</texture>
 						<bordersize>20</bordersize>
 						<aspectratio scalediffuse="false">keep</aspectratio>
-						<visible>VideoPlayer.Content(livetv)</visible>
+						<visible>VideoPlayer.Content(livetv) + !String.StartsWith(VideoPlayer.Cover,Default)</visible>
 					</control>
-					<control type="image" id="1">
+					<control type="image" id="99">
 						<bottom>29</bottom>
 						<left>29</left>
 						<width>250</width>
 						<height>250</height>
 						<texture diffuse="views/player/mask_square.png">$VAR[PlayerIcon]</texture>
 						<aspectratio scalediffuse="false">keep</aspectratio>
-						<visible>!VideoPlayer.Content(livetv)</visible>
+						<visible>!VideoPlayer.Content(livetv) + !String.StartsWith(VideoPlayer.Cover,Default)</visible>
 					</control>
 				</control>
 				<!-- Progress bars -->
-				<control type="group" id="1">
+				<control type="group" id="99">
 					<!--  Cache bar -->
 					<control type="progress" id="99">
 						<bottom>95</bottom>
@@ -285,7 +285,7 @@
 				</control>
 
 				<!-- Label section -->
-				<control type="grouplist" id="1">
+				<control type="grouplist" id="99">
 					<include>PlayerIsLiveTVSlide</include>
 					<orientation>horizontal</orientation>
 					<height>31</height>
@@ -293,7 +293,7 @@
 					<left>309</left>
 					<right>30</right>
 					<itemgap>0</itemgap>
-					<control type="label" id="1">
+					<control type="label" id="99">
 						<width>auto</width>
 						<height>30</height>
 						<aligny>center</aligny>
@@ -301,7 +301,7 @@
 						<shadowcolor>text_shadow</shadowcolor>
 						<label>$VAR[PlayerFullLabel]   </label>
 					</control>
-					<control type="label" id="1">
+					<control type="label" id="99">
 						<width>auto</width>
 						<height>30</height>
 						<aligny>center</aligny>
@@ -310,7 +310,7 @@
 						<shadowcolor>text_shadow</shadowcolor>
 						<visible>!String.IsEmpty(VideoPlayer.Year)</visible>
 					</control>
-					<control type="label" id="1">
+					<control type="label" id="99">
 						<width>auto</width>
 						<height>30</height>
 						<aligny>center</aligny>
@@ -319,7 +319,7 @@
 						<shadowcolor>text_shadow</shadowcolor>
 						<visible>!String.IsEmpty(VideoPlayer.Mpaa)</visible>
 					</control>
-					<control type="label" id="1">
+					<control type="label" id="99">
 						<width>auto</width>
 						<height>30</height>
 						<aligny>center</aligny>
@@ -329,7 +329,7 @@
 						<visible>!VideoPlayer.Content(livetv)</visible>
 						<visible>!String.IsEmpty(VideoPlayer.VideoResolution)</visible>
 					</control>
-					<control type="label" id="1">
+					<control type="label" id="99">
 						<width>auto</width>
 						<height>30</height>
 						<aligny>center</aligny>
@@ -339,7 +339,7 @@
 						<shadowcolor>text_shadow</shadowcolor>
 						<visible>!String.IsEmpty(VideoPlayer.Rating)</visible>
 					</control>
-					<control type="label" id="1">
+					<control type="label" id="99">
 						<width>auto</width>
 						<height>30</height>
 						<aligny>center</aligny>
@@ -351,7 +351,7 @@
 					</control>
 				</control>
 				<!-- PVR Next Up -->
-				<control type="grouplist" id="1">
+				<control type="grouplist" id="99">
 					<visible>VideoPlayer.Content(livetv)</visible>
 					<orientation>horizontal</orientation>
 					<height>31</height>
@@ -359,7 +359,7 @@
 					<left>309</left>
 					<right>30</right>
 					<itemgap>0</itemgap>
-					<control type="label" id="1">
+					<control type="label" id="99">
 						<width>auto</width>
 						<height>30</height>
 						<aligny>center</aligny>
@@ -370,7 +370,7 @@
 					</control>
 				</control>
 				<!-- Bottom label section -->
-				<control type="grouplist" id="1">
+				<control type="grouplist" id="99">
 					<visible>!Window.IsVisible(VideoOSD)</visible>
 					<orientation>horizontal</orientation>
 					<height>50</height>
@@ -379,7 +379,7 @@
 					<right>20</right>
 					<itemgap>0</itemgap>
 					<!--  Current position -->
-					<control type="label" id="1">
+					<control type="label" id="99">
 						<width>auto</width>
 						<height>50</height>
 						<aligny>center</aligny>
@@ -388,12 +388,12 @@
 						<label>$VAR[PlayerTimeLabels]</label>
 						<visible>!String.IsEmpty(Player.Time) + !String.IsEmpty(Player.Duration)</visible>
 					</control>
-					<control type="label" id="1">
+					<control type="label" id="99">
 						<description>Spacer</description>
 						<width>15</width>
 					</control>
 					<!--  Timeshifted label -->
-					<control type="label" id="1">
+					<control type="label" id="99">
 						<width>auto</width>
 						<height>50</height>
 						<aligny>center</aligny>
@@ -406,7 +406,7 @@
 				</control>
 				<!-- Volume -->
 				<!-- Icon -->
-				<control type="label" id="1">
+				<control type="label" id="99">
 					<bottom>23</bottom>
 					<right>231</right>
 					<height>50</height>
@@ -416,7 +416,7 @@
 					<textcolor>text_white</textcolor>
 					<label>$VAR[VolumeIcon]</label>
 				</control>
-				<control type="progress" id="1">
+				<control type="progress" id="99">
 					<bottom>53</bottom>
 					<right>31</right>
 					<width>150</width>
@@ -429,7 +429,7 @@
 					<overlaytexture>-</overlaytexture>
 					<visible>Integer.IsGreater(player.volume,1)</visible>
 				</control>
-				<control type="progress" id="1">
+				<control type="progress" id="99">
 					<bottom>53</bottom>
 					<right>31</right>
 					<width>150</width>
