@@ -307,6 +307,65 @@
 			</control>
 		</definition>
 	</include>
+	<!-- Profiles -->
+	<include name="ProfileWidget">
+		<param name="visible">true</param>
+		<param name="headline">$LOCALIZE[416]</param>
+		<param name="mainlabel">$VAR[MainListLabel]</param>
+		<param name="sublabel">$VAR[SubListLabel]</param>
+		<param name="use_custom_content">true</param>
+		<definition>
+			<control type="group" id="$PARAM[id]1">
+				<visible>$PARAM[visible]</visible>
+				<visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</visible>
+				<width>1920</width>
+				<height>390</height>
+				<control type="list" id="$PARAM[id]">
+					<width>1920</width>
+					<scrolltime>200</scrolltime>
+					<movement>5</movement>
+					<orientation>horizontal</orientation>
+					<preloaditems>4</preloaditems>
+					<ondown>$PARAM[ondown]</ondown>
+					<include content="Bounce_Right">
+						<param name="id">$PARAM[id]</param>
+					</include>
+					<onright>SetProperty(BounceRight,1,home)</onright>
+					<onright>noop</onright>
+					<onleft>9999</onleft>
+					<onup>$PARAM[onup]</onup>
+					<itemlayout width="296">
+						<control type="group">
+							<left>70</left>
+							<top>64</top>
+							<include content="ProfileLayout">
+								<param name="mainlabel" value="$PARAM[mainlabel]" />
+								<param name="sublabel" value="$PARAM[sublabel]" />
+								<param name="focused" value="false" />
+								<param name="id" value="$PARAM[id]" />
+							</include>
+						</control>
+					</itemlayout>
+					<focusedlayout width="296">
+						<control type="group">							
+							<left>70</left>
+							<top>64</top>
+							<include content="ProfileLayout">
+								<param name="mainlabel" value="$PARAM[mainlabel]" />
+								<param name="sublabel" value="$PARAM[sublabel]" />
+								<param name="focused" value="true" />
+								<param name="id" value="$PARAM[id]" />
+							</include>
+						</control>
+					</focusedlayout>
+				</control>
+				<include content="list_mask">
+					<param name="height" value="277"/>
+					<param name="id" value="$PARAM[id]"/>
+				</include>
+			</control>
+		</definition>
+	</include>
 	<!-- ##### HOME ##### -->
 	<!-- Menu Buttons -->
 	<include name="HomeWidgetMenu">

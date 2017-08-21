@@ -961,6 +961,104 @@
 		</definition>
 	</include>
 
+	<!-- Profiles -->
+	<include name="ProfileLayout">
+		<param name="mainlabel">$VAR[MainListLabel]</param>
+		<param name="sublabel">$VAR[SubListLabel]</param>
+		<param name="thumblabel">$VAR[MainListLabel]</param>
+		<param name="focused">false</param>
+		<param name="visible">true</param>
+		<definition>
+			<control type="group">
+				<visible>$PARAM[visible]</visible>
+				<control type="image">
+					<top>-2</top>
+					<left>-2</left>
+					<width>282</width>
+					<height>282</height>
+					<texture>items/shadow_square.png</texture>
+				</control>
+				<control type="image">
+					<width>276</width>
+					<height>322</height>
+					<texture colordiffuse="panel">common/white.jpg</texture>
+					<aspectratio scalediffuse="false">stretch</aspectratio>
+				</control>
+				<control type="image">
+					<width>276</width>
+					<height>276</height>
+					<texture colordiffuse="green" diffuse="items/mask_square.png">common/white.jpg</texture>
+					<aspectratio>stretch</aspectratio>
+					<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+				</control>
+				<control type="image">
+					<width>276</width>
+					<height>276</height>
+					<texture colordiffuse="thumb_background" diffuse="items/mask_square.png">common/white.jpg</texture>
+					<aspectratio scalediffuse="false">stretch</aspectratio>
+					<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
+				</control>
+				<control type="textbox">
+					<top>10</top>
+					<left>10</left>
+					<width>256</width>
+					<height>256</height>
+					<font>Light24</font>
+					<align>center</align>
+					<aligny>center</aligny>
+					<label>$PARAM[thumblabel]</label>
+					<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+				</control>
+				<control type="image">
+					<width>276</width>
+					<height>276</height>
+					<texture diffuse="items/mask_square.png" background="true">$INFO[ListItem.Icon]</texture>
+					<aspectratio scalediffuse="false">stretch</aspectratio>
+					<visible>!String.StartsWith(ListItem.Path,pvr://) + !String.StartsWith(ListItem.Icon,Default)</visible>
+				</control>
+				<control type="image">
+					<width>276</width>
+					<height>276</height>
+					<texture diffuse="items/mask_square.png" background="true">$INFO[ListItem.Icon]</texture>
+					<aspectratio scalediffuse="false">keep</aspectratio>
+					<bordersize>20</bordersize>
+					<visible>String.StartsWith(ListItem.Path,pvr://) + !String.StartsWith(ListItem.Icon,Default)</visible>
+				</control>
+				<control type="group">
+					<width>276</width>
+					<height>276</height>
+					<include>bubble_overlay</include>
+					<include content="bubble_play">
+						<param name="top" value="229"/>
+					</include>
+				</control>
+				<include content="progress">
+					<param name="top" value="273"/>
+					<param name="width" value="276"/>
+				</include>
+				<control type="image">
+					<left>-12</left>
+					<top>-7</top>
+					<width>300</width>
+					<height>300</height>
+					<texture colordiffuse="focused">items/focus_square.png</texture>
+					<aspectratio>scale</aspectratio>
+					<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
+					<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
+				</control>
+				<include content="widget_labels">
+					<param name="top">286</param>
+					<param name="width">276</param>
+					<param name="id">$PARAM[id]</param>
+					<param name="mainlabel">$PARAM[mainlabel]</param>
+					<param name="sublabel">$PARAM[sublabel]</param>
+					<param name="focused">$PARAM[focused]</param>
+					<param name="visible_labels">$PARAM[visible_labels]</param>
+				</include>
+			</control>
+		</definition>
+	</include>
+
 	<!-- Genre -->
 	<include name="GenreLayout">
 		<param name="mainlabel">$VAR[MainListLabel]</param>
