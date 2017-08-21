@@ -3,25 +3,45 @@
 	<defaultcontrol always="true">2</defaultcontrol>
 	<backgroundcolor>background</backgroundcolor>
 	<controls>
+		<include>Background</include>
 		<control type="group">
-
 			<animation condition="Integer.IsEqual(Container(2).NumItems,6)" effect="slide" start="0,0" end="12,0">Conditional</animation>
 			<animation condition="Integer.IsEqual(Container(2).NumItems,5)" effect="slide" start="0,0" end="160,0">Conditional</animation>
 			<animation condition="Integer.IsEqual(Container(2).NumItems,4)" effect="slide" start="0,0" end="308,0">Conditional</animation>
 			<animation condition="Integer.IsEqual(Container(2).NumItems,3)" effect="slide" start="0,0" end="456,0">Conditional</animation>
 			<animation condition="Integer.IsEqual(Container(2).NumItems,2)" effect="slide" start="0,0" end="604,0">Conditional</animation>
 			<animation condition="Integer.IsEqual(Container(2).NumItems,1)" effect="slide" start="0,0" end="752,0">Conditional</animation>
-
 			<top>70</top>
 			<include content="ProfileWidget">
 				<param name="id" value="2"/>
-				<param name="onup" value="204"/>
+				<param name="onup" value="6666"/>
+				<param name="ondown" value="1000"/>
 				<param name="headline" value="$LOCALIZE[13200]"/>
 				<param name="mainlabel" value="$INFO[ListItem.Label]"/>
 				<param name="use_custom_content" value="false"/>
 			</include>
+		</control>		
+		<control type="grouplist" id="1000">
+			<width>500</width>
+			<centerleft>50%</centerleft>
+			<top>390</top>
+			<height>250</height>
+			<align>bottom</align>
+			<onup>2</onup>
+			<onright>noop</onright>
+			<ondown>noop</ondown>
+			<control type="radiobutton" id="4">
+				<width>500</width>
+				<label>$LOCALIZE[10029]</label>
+			</control>
+			<control type="button" id="5">
+				<width>500</width>
+				<align>left</align>		
+					<label>Autologin</label>
+					<label2>$INFO[System.ProfileAutoLogin]</label2>
+				<label>$LOCALIZE[222]</label>
+			</control>
 		</control>
-
 		<!-- header bar -->
 		<include content="HeaderBar">		
 			<param name="id">2</param>
