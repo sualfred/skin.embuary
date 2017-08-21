@@ -257,6 +257,12 @@
 	</include>
 	<!-- tvshow -->
 	<include name="TVShowInfoLayout">
+		<control id="8" type="togglebutton">
+			<include>HiddenObject</include>
+			<label>$VAR[VideoInfoButton8]</label>
+			<onfocus>Select</onfocus>
+			<onfocus>101</onfocus>
+		</control>
 		<!-- Background -->
 		<include>Background</include>
 		<!-- Dialog -->
@@ -430,10 +436,12 @@
 							<itemgap>5</itemgap>
 							<onright>noop</onright>
 							<onleft>9999</onleft>
-							<control type="button" id="8">
+							<control type="button" id="101">
 								<label>$VAR[VideoInfoButton8]</label>
 								<onup>SetFocus(6666)</onup>
 								<ondown>SetFocus(200)</ondown>
+								<onclick>SetProperty(InfoDialogCloseFocus,1,home)</onclick>
+								<onclick>close</onclick>
 							</control>
 							<control type="button" id="97">
 								<visible>Control.IsVisible(96)</visible>
