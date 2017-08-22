@@ -3,6 +3,9 @@
 	<include name="WidgetContentPath">
 		<content sortby="$PARAM[sortby]" sortdirection="$PARAM[sortdirection]">$PARAM[content]</content>
 	</include>
+	<include name="WidgetOnClick">
+		<onclick>$PARAM[onclick]</onclick>
+	</include>
 	<!-- ##### OTHER ##### -->
 	<!-- Landscape -->
 	<include name="WideWidget">
@@ -492,6 +495,7 @@
 		<param name="sublabel">$VAR[SubListLabel]</param>
 		<param name="layout">LandscapeLayout</param>
 		<param name="use_custom_content">true</param>
+		<param name="use_custom_onclick">false</param>
 		<definition>
 			<control type="group" id="$PARAM[id]1">
 				<visible>$PARAM[visible]</visible>
@@ -537,6 +541,9 @@
 					<onright>noop</onright>
 					<onleft>9999</onleft>
 					<onup>$PARAM[onup]</onup>
+					<include condition="$PARAM[use_custom_onclick]" content="WidgetOnClick">
+						<param name="onclick" value="$PARAM[onclick]"/>
+					</include>
 					<itemlayout width="444">
 						<control type="group">
 							<left>72</left>
@@ -581,6 +588,7 @@
 		<param name="mainlabel">$VAR[MainListLabel]</param>
 		<param name="sublabel">$VAR[SubListLabel]</param>
 		<param name="use_custom_content">true</param>
+		<param name="use_custom_onclick">false</param>
 		<definition>
 			<control type="group" id="$PARAM[id]1">
 				<visible>$PARAM[visible]</visible>
@@ -626,6 +634,9 @@
 					<onright>noop</onright>
 					<onleft>9999</onleft>
 					<onup>$PARAM[onup]</onup>
+					<include condition="$PARAM[use_custom_onclick]" content="WidgetOnClick">
+						<param name="onclick" value="$PARAM[onclick]"/>
+					</include>
 					<itemlayout width="296">
 						<control type="group">							
 							<left>72</left>
@@ -670,6 +681,7 @@
 		<param name="mainlabel">$VAR[MainListLabel]</param>
 		<param name="sublabel">$VAR[SubListLabel]</param>
 		<param name="use_custom_content">true</param>
+		<param name="use_custom_onclick">false</param>
 		<definition>
 			<control type="group" id="$PARAM[id]1">
 				<visible>$PARAM[visible]</visible>
@@ -715,6 +727,9 @@
 					<onright>noop</onright>
 					<onleft>9999</onleft>
 					<onup>$PARAM[onup]</onup>
+					<include condition="$PARAM[use_custom_onclick]" content="WidgetOnClick">
+						<param name="onclick" value="$PARAM[onclick]"/>
+					</include>
 					<itemlayout width="296">
 						<control type="group">							
 							<left>72</left>
@@ -759,6 +774,7 @@
 		<param name="mainlabel">$VAR[MainListLabel]</param>
 		<param name="sublabel">$VAR[SubListLabel]</param>
 		<param name="use_custom_content">true</param>
+		<param name="use_custom_onclick">false</param>
 		<definition>
 			<control type="group" id="$PARAM[id]1">
 				<visible>$PARAM[visible]</visible>
@@ -847,6 +863,9 @@
 					<onright>noop</onright>
 					<onleft>9999</onleft>
 					<onup>$PARAM[id]01</onup>
+					<include condition="$PARAM[use_custom_onclick]" content="WidgetOnClick">
+						<param name="onclick" value="$PARAM[onclick]"/>
+					</include>
 					<itemlayout width="296">
 						<control type="group">							
 							<left>72</left>
