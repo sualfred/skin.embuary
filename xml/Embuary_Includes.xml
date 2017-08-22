@@ -147,13 +147,14 @@
 						<aligny>center</aligny>
 						<font>Material24</font>
 						<label>&#xE5C4;</label>
+						<visible>!Window.IsVisible(loginscreen)</visible>
 					</control>
 					<control type="image">
 						<height>58</height>
 						<width>98</width>
 						<texture>common/embuary_small.png</texture>
 						<aspectratio>keep</aspectratio>
-						<visible>Window.IsVisible(home) + !$EXP[ExpInfoDialogActive]</visible>
+						<visible>[Window.IsVisible(home) | Window.IsVisible(loginscreen)] + !$EXP[ExpInfoDialogActive]</visible>
 					</control>
 					<control type="label">
 						<width>auto</width>
@@ -164,6 +165,7 @@
 					</control>
 				</control>
 				<control type="grouplist" id="6666">
+					<visible>!Window.IsVisible(loginscreen)</visible>
 					<height>58</height>
 					<width>1920</width>
 					<top>0</top>
