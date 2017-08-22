@@ -66,9 +66,6 @@
 		<value>$INFO[ListItem.Label]</value>
 	</variable>
 	<variable name="SubListLabel">
-		<value condition="ListItem.IsParentFolder">$LOCALIZE[31044]</value>
-		<value condition="[Window.IsVisible(videos) | Window.IsVisible(music) | Window.IsVisible(programs) | Window.IsVisible(MyPVRRecordings.xml) | Window.IsVisible(addonbrowser)] + ListItem.IsFolder + !ListItem.IsParentFolder">$LOCALIZE[19076]</value>
-		<value condition="Window.IsVisible(addonbrowser)">$INFO[ListItem.AddonType]</value>
 		<value condition="String.StartsWith(ListItem.Path,pvr://)">$INFO[ListItem.Label]</value>
 		<value condition="String.IsEqual(ListItem.DBType,episode)">$INFO[ListItem.TvShowTitle]</value>
 		<value condition="String.IsEqual(ListItem.DBType,season)">$INFO[ListItem.TvShowTitle]</value>
@@ -76,6 +73,9 @@
 		<value condition="String.IsEqual(ListItem.DBType,tvshow)">$INFO[ListItem.Year]</value>
 		<value condition="String.IsEqual(ListItem.DBType,album)">$INFO[ListItem.Artist]</value>
 		<value condition="String.IsEqual(ListItem.DBType,song)">$INFO[ListItem.Artist]</value>
+		<value condition="ListItem.IsParentFolder">$LOCALIZE[31044]</value>
+		<value condition="[Window.IsVisible(videos) | Window.IsVisible(music) | Window.IsVisible(programs) | Window.IsVisible(MyPVRRecordings.xml) | Window.IsVisible(addonbrowser)] + ListItem.IsFolder + !ListItem.IsParentFolder">$LOCALIZE[19076]</value>
+		<value condition="Window.IsVisible(addonbrowser)">$INFO[ListItem.AddonType]</value>
 	</variable>
 	<variable name="VisibleContainer">
 		<value condition="Control.IsVisible(50)">50</value>
@@ -303,7 +303,7 @@
 		<value>$INFO[ListItem.Duration,, $LOCALIZE[12391]]</value>
 	</variable>
 	<variable name="PlayerFullLabel">
-		<value condition="!String.IsEmpty(MusicPlayer.Title)">$INFO[MusicPlayer.Artist,, - ]$INFO[MusicPlayer.Title]</value>
+		<value condition="!String.IsEmpty(MusicPlayer.Title)">$INFO[MusicPlayer.Artist,, - ]$INFO[MusicPlayer.Tracknumber,,. ]$INFO[MusicPlayer.Title]</value>
 		<value condition="VideoPlayer.Content(livetv)">$INFO[VideoPlayer.Channelnumber,,. ]$INFO[VideoPlayer.ChannelName]$INFO[VideoPlayer.Title, - ]</value>
 		<value condition="!String.IsEmpty(VideoPlayer.TVShowTitle)">$INFO[VideoPlayer.Season,S,:]$INFO[VideoPlayer.Episode,E, - ]$INFO[VideoPlayer.Title]</value>
 		<value>$INFO[VideoPlayer.Title]</value>
@@ -318,7 +318,7 @@
 		<value condition="!String.IsEmpty(Player.Art(poster))">$INFO[Player.Art(clearlogo)]</value>
 	</variable>
 	<variable name="PlayerTimeLabels">
-		<value condition="!Pvr.IsTimeShift">$VAR[PlayerTime]$VAR[PlayerDuration, / ]$INFO[Player.FinishTime,  -  $LOCALIZE[31037] ]</value>
+		<value condition="!Pvr.IsTimeShift + Player.HasVideo">$VAR[PlayerTime]$VAR[PlayerDuration, / ]$INFO[Player.FinishTime,  -  $LOCALIZE[31037] ]</value>
 		<value>$VAR[PlayerTime]$VAR[PlayerDuration, / ]</value>
 	</variable>
 	<variable name="PlayerIcon">

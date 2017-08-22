@@ -3,6 +3,12 @@
 	<include name="PlayerIsLiveTVSlide">
 		<animation effect="slide" time="0" start="0,0" end="0,-36" condition="VideoPlayer.Content(livetv)">Conditional</animation>
 	</include>
+	<include name="VisAnimation">
+		<animation effect="zoom" start="110" end="130" center="auto" time="14000" pulse="true" condition="!Skin.HasSetting(VisAnimationDisabled)" reversible="false">Conditional</animation>
+		<animation effect="slide" start="-20,-20" end="40,40" time="15000" pulse="true" condition="!Skin.HasSetting(VisAnimationDisabled)" reversible="false">Conditional</animation>
+		<animation effect="zoom" end="100" center="auto" time="0" condition="Skin.HasSetting(VisAnimationDisabled)" reversible="false">Conditional</animation>
+		<animation effect="slide" end="0,0" time="0" condition="Skin.HasSetting(VisAnimationDisabled)" reversible="false">Conditional</animation>
+	</include>
 	<include name="OSD_Seek_Position">
 		<animation effect="slide" end="15.8,0" time="0" condition="Integer.IsGreater(Control.GetLabel(401),5)">Conditional</animation>
 		<animation effect="slide" end="15.8,0" time="0" condition="Integer.IsGreater(Control.GetLabel(401),6)">Conditional</animation>
