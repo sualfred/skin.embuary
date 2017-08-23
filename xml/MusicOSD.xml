@@ -59,23 +59,31 @@
 					<selected>Playlist.IsRandom</selected>
 					<onclick>PlayerControl(random)</onclick>
 				</control>
-				<control type="group" id="620">
+				<control type="group" id="612">
 					<width>50</width>
 					<heigth>50</heigth>
 					<control type="image">
 						<texture colordiffuse="$VAR[PlaylistRepeatButtonColor]">$VAR[PlaylistRepeatButtonTexture]</texture>
 					</control>
-					<control type="togglebutton" id="612">
+					<control type="togglebutton" id="613">
 						<texturenofocus>-</texturenofocus>
 						<texturefocus>-</texturefocus>
 						<alttexturenofocus>-</alttexturenofocus>
 						<alttexturefocus>-</alttexturefocus>
 						<onleft>611</onleft>
-						<onright>610</onright>
+						<onright>614</onright>
 						<onclick>PlayerControl(Repeat)</onclick>
 					</control>
 				</control>
-				<control type="button" id="610">
+				<control type="button" id="614">
+					<include content="PlayerButtons">
+						<param name="type" value="playlist"/>
+					</include>
+					<onclick>close</onclick>
+					<onclick>ActivateWindow(musicplaylist)</onclick>
+					<visible>Integer.IsGreater(MusicPlayer.PlaylistLength,0)</visible>
+				</control>
+				<control type="button" id="615">
 					<include content="PlayerButtons">
 						<param name="type" value="config"/>
 					</include>

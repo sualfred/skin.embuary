@@ -26,11 +26,11 @@
 					<onclick>PlayerControl(Rewind)</onclick>
 				</control>
 				<control type="togglebutton" id="603">
+					<alttexturenofocus>icons/player/pause_nf.png</alttexturenofocus>
+					<alttexturefocus colordiffuse="emby">icons/player/pause_fo.png</alttexturefocus>
 					<include content="PlayerButtons">
 						<param name="type" value="play"/>
 					</include>
-					<alttexturenofocus>icons/player/pause_nf.png</alttexturenofocus>
-					<alttexturefocus colordiffuse="emby">icons/player/pause_fo.png</alttexturefocus>
 					<selected>!Player.Paused + !Player.Forwarding + !Player.Rewinding + !Player.Seeking</selected>
 					<onclick>PlayerControl(Play)</onclick>
 				</control>
@@ -78,6 +78,21 @@
 					<visible>VideoPlayer.HasMenu</visible>
 				</control>
 				<control type="button" id="610">
+					<include content="PlayerButtons">
+						<param name="type" value="bookmark"/>
+					</include>
+					<onclick>close</onclick>
+					<onclick>ActivateWindow(videobookmarks)</onclick>
+				</control>
+				<control type="button" id="611">
+					<include content="PlayerButtons">
+						<param name="type" value="playlist"/>
+					</include>
+					<onclick>close</onclick>
+					<onclick>ActivateWindow(videoplaylist)</onclick>
+					<visible>Integer.IsGreater(VideoPlayer.PlaylistLength,0)</visible>
+				</control>
+				<control type="button" id="612">
 					<include content="PlayerButtons">
 						<param name="type" value="config"/>
 					</include>
