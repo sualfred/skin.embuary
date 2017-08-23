@@ -502,7 +502,7 @@
 				<param name="id" value="200"/>
 				<param name="sublabel" value=""/>
 				<param name="sortby" value="playcount"/>
-				<param name="sortdirection" value="descending"/>
+				<param name="sortorder" value="descending"/>
 				<param name="content" value="videodb://inprogresstvshows/$INFO[ListItem.DBID]/-2/?tvshowid=$INFO[ListItem.DBID]"/>
 				<param name="headline" value="$LOCALIZE[31012]"/>
 				<param name="onup" value="100"/>
@@ -777,10 +777,10 @@
 							<control type="label">
 								<width>auto</width>
 								<height>24</height>
-								<label>$INFO[Window(home).Property(SkinHelper.ListItem.AlbumCount),$LOCALIZE[132]: ]   </label>
+								<label>$INFO[Container(200).NumItems,$LOCALIZE[132]: ]   </label>
 								<font>reg22</font>
 								<shadowcolor>text_shadow</shadowcolor>
-								<visible>!String.IsEmpty(Window(home).Property(SkinHelper.ListItem.AlbumCount))</visible>
+								<visible>!String.IsEmpty(Container(200).NumItems)</visible>
 							</control>
 							<control type="label">
 								<width>auto</width>
@@ -1011,18 +1011,18 @@
 							<control type="label">
 								<width>auto</width>
 								<height>24</height>
-								<label>$INFO[Window(home).Property(SkinHelper.ListItem.SongCount),$LOCALIZE[182]: ]   </label>
+								<label>$INFO[ListItem.Year]   </label>
 								<font>reg22</font>
 								<shadowcolor>text_shadow</shadowcolor>
-								<visible>!String.IsEmpty(Window(home).Property(SkinHelper.ListItem.SongCount))</visible>
+								<visible>!String.IsEmpty(ListItem.Year)</visible>
 							</control>
 							<control type="label">
 								<width>auto</width>
 								<height>24</height>
-								<label>$INFO[Window(home).Property(SkinHelper.ListItem.Duration),$LOCALIZE[180]: , $LOCALIZE[12391]]   </label>
+								<label>$INFO[Container(200).NumItems,$LOCALIZE[182]: ]   </label>
 								<font>reg22</font>
 								<shadowcolor>text_shadow</shadowcolor>
-								<visible>!String.IsEmpty(Window(home).Property(SkinHelper.ListItem.Duration))</visible>
+								<visible>!String.IsEmpty(Container(200).NumItems)</visible>
 							</control>
 						</control>
 						<control type="label">

@@ -147,6 +147,7 @@
 						<aligny>center</aligny>
 						<font>Material24</font>
 						<label>&#xE5C4;</label>
+						<textcolor>text_white</textcolor>
 						<visible>!Window.IsVisible(loginscreen)</visible>
 					</control>
 					<control type="image">
@@ -160,7 +161,8 @@
 						<width>auto</width>
 						<left>19</left>
 						<aligny>center</aligny>
-						<font>med22</font>
+						<font>med20</font>
+						<textcolor>text_white</textcolor>
 						<label>$PARAM[header_label]</label>
 					</control>
 				</control>
@@ -217,7 +219,6 @@
 					<control type="button" id="6608">
 						<include>HeaderButton</include>
 						<width>auto</width>
-						<font>med17</font>
 						<textcolor>panel_text</textcolor>
 						<focusedcolor>emby</focusedcolor>
 						<label>$LOCALIZE[19141]: $INFO[Control.GetLabel(30)]</label>
@@ -225,14 +226,69 @@
 						<visible>[Window.IsVisible(MyPVRGuide.xml)] + !$EXP[ExpInfoDialogActive]</visible>
 					</control>
 				</control>
-				<control type="label">
+				<control type="grouplist">
+					<top>0</top>
 					<height>58</height>
 					<width>400</width>
 					<right>19</right>
-					<aligny>center</aligny>
+					<orientation>horizontal</orientation>
+					<itemgap>10</itemgap>
 					<align>right</align>
-					<font>med22</font>
-					<label>$INFO[System.Time]</label>
+					<control type="label">
+						<height>58</height>
+						<width>auto</width>
+						<right>19</right>
+						<aligny>center</aligny>
+						<align>right</align>
+						<font>med20</font>
+						<textcolor>text_white</textcolor>
+						<label>$INFO[System.Time]</label>
+						<visible>!Player.HasMedia</visible>
+					</control>
+					<control type="label">
+						<width>25</width>
+						<left>19</left>
+						<aligny>center</aligny>
+						<font>Material24</font>
+						<label></label>
+						<textcolor>text_white</textcolor>
+						<visible>Player.HasMedia</visible>
+					</control>
+					<control type="label">
+						<height>58</height>
+						<width>auto</width>
+						<right>19</right>
+						<aligny>center</aligny>
+						<align>right</align>
+						<font>med20</font>
+						<textcolor>text_white</textcolor>
+						<label>$INFO[Player.Title]</label>
+						<visible>Player.HasMedia</visible>
+					</control>
+					<control type="label">
+						<height>58</height>
+						<width>auto</width>
+						<right>19</right>
+						<aligny>center</aligny>
+						<align>right</align>
+						<font>med20</font>
+						<textcolor>text_white</textcolor>
+						<label>$VAR[PlayerTime]</label>
+						<visible>Player.HasMedia</visible>
+					</control>
+				</control>
+				<control type="progress">
+					<top>56</top>
+					<left>0</left>
+					<right>0</right>
+					<height>2</height>
+					<reveal>true</reveal>
+					<info>Player.Progress</info>
+					<texturebg colordiffuse="grey">common/ProgressBack.png</texturebg>
+					<lefttexture>-</lefttexture>
+					<midtexture colordiffuse="emby">common/ProgressBar.png</midtexture>
+					<righttexture>-</righttexture>
+					<overlaytexture>-</overlaytexture>
 				</control>
 			</control>
 		</definition>
