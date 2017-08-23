@@ -80,7 +80,7 @@
 				<control type="grouplist">
 					<left>684</left>
 					<orientation>vertical</orientation>
-					<height>1020</height>
+					<height>920</height>
 					<width>1166</width>
 					<align>top</align>
 					<itemgap>0</itemgap>
@@ -92,6 +92,19 @@
 						<shadowcolor>text_shadow</shadowcolor>
 					</control>
 					<control type="grouplist">
+						<height>60</height>
+						<width>1166</width>
+						<itemgap>5</itemgap>
+						<orientation>horizontal</orientation>
+						<control type="label">
+							<width>auto</width>
+							<height>60</height>
+							<label>$INFO[VideoPlayer.EpisodeName]   </label>
+							<font>Reg37</font>
+							<shadowcolor>text_shadow</shadowcolor>
+						</control>
+					</control>
+					<control type="grouplist">
 						<height>40</height>
 						<width>1166</width>
 						<itemgap>5</itemgap>
@@ -99,18 +112,17 @@
 						<control type="label">
 							<width>auto</width>
 							<height>24</height>
-							<label>$INFO[VideoPlayer.EpisodeName]   </label>
+							<label>$INFO[VideoPlayer.Starttime]$INFO[VideoPlayer.Endtime, - ]   </label>
 							<font>reg22</font>
 							<shadowcolor>text_shadow</shadowcolor>
 						</control>
-					</control>
-					<control type="label">
-						<width>1166</width>
-						<height>40</height>
-						<label>$INFO[VideoPlayer.Genre]</label>
-						<font>reg22</font>
-						<textcolor>emby</textcolor>
-						<shadowcolor>text_shadow</shadowcolor>
+						<control type="label">
+							<width>auto</width>
+							<height>24</height>
+							<label>$INFO[VideoPlayer.Channelnumber,,. ]$INFO[VideoPlayer.Channelname]   </label>
+							<font>reg22</font>
+							<shadowcolor>text_shadow</shadowcolor>
+						</control>
 					</control>
 					<control type="grouplist">
 						<orientation>horizontal</orientation>
@@ -120,7 +132,7 @@
 						<include>PlayerFlags</include>
 					</control>
 					<control type="grouplist" id="100">
-						<height>65</height>
+						<height>75</height>
 						<orientation>horizontal</orientation>
 						<itemgap>5</itemgap>
 						<onleft>9999</onleft>
@@ -137,9 +149,17 @@
 							<onup>SetFocus(6666)</onup>
 						</control>
 					</control>
+					<control type="label">
+						<width>1166</width>
+						<height>40</height>
+						<label>$INFO[VideoPlayer.Genre]</label>
+						<font>reg22</font>
+						<textcolor>emby</textcolor>
+						<shadowcolor>text_shadow</shadowcolor>
+					</control>
 					<control type="textbox">
 						<width>1166</width>
-						<height>590</height>
+						<height>585</height>
 						<align>justify</align>
 						<aligny>top</aligny>
 						<label>$INFO[VideoPlayer.Plot]</label>
@@ -149,16 +169,6 @@
 						<pagecontrol>96</pagecontrol>
 					</control>
 				</control>
-			</control>			
-			<control type="label" id="97">
-				<top>986</top>
-				<left>680</left>
-				<width>auto</width>
-				<heigth>50</heigth>
-				<font>Material34</font>
-				<textcolor>panel_text</textcolor>
-				<label></label>
-				<visible>Control.IsVisible(96)</visible>
 			</control>
 		</control>
 		<!-- header bar -->
