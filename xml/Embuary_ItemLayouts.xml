@@ -1195,51 +1195,43 @@
 				<height>162</height>
 				<texture>items/shadow_button.png</texture>
 			</control>
-			<control type="image">
-				<width>276</width>
-				<height>156</height>
-				<texture colordiffuse="blue">items/mask_button.png</texture>
-				<aspectratio>stretch</aspectratio>
-				<visible>String.IsEmpty(ListItem.Property(Art1))</visible>
-			</control>
-			<control type="image">
-				<width>276</width>
-				<height>156</height>
-				<texture colordiffuse="ff010202">items/mask_button.png</texture>
-				<visible>!String.IsEmpty(ListItem.Property(Art1))</visible>
-			</control>
-			<control type="label">
-				<width>276</width>
-				<height>156</height>
-				<font>Light24</font>
-				<textoffsetx>10</textoffsetx>
-				<align>center</align>
-				<aligny>center</aligny>
-				<label>$INFO[ListItem.Label]</label>
-				<visible>String.IsEmpty(ListItem.Property(Art1))</visible>
-			</control>
-			<control type="label">
-				<width>276</width>
-				<height>156</height>
-				<font>Light24</font>
-				<textoffsetx>10</textoffsetx>
-				<align>center</align>
-				<aligny>center</aligny>
-				<label>$INFO[ListItem.Label]</label>
-				<visible>String.IsEmpty(ListItem.Property(Art1))</visible>
+			<control type="group">
+				<visible>String.IsEmpty(ListItem.Property(Art1)) | String.IsEmpty(ListItem.Property(Art2)) | String.IsEmpty(ListItem.Property(Art3)) | String.IsEmpty(ListItem.Property(Art4))</visible>
+				<control type="image">
+					<width>276</width>
+					<height>156</height>
+					<texture colordiffuse="blue">items/mask_button.png</texture>
+					<aspectratio>stretch</aspectratio>
+				</control>
+				<control type="label">
+					<width>276</width>
+					<height>156</height>
+					<font>Light24</font>
+					<textoffsetx>10</textoffsetx>
+					<align>center</align>
+					<aligny>center</aligny>
+					<label>$INFO[ListItem.Label]</label>
+				</control>
 			</control>
 			<control type="group">
+				<visible>!String.IsEmpty(ListItem.Property(Art1)) + !String.IsEmpty(ListItem.Property(Art2)) + !String.IsEmpty(ListItem.Property(Art3)) + !String.IsEmpty(ListItem.Property(Art4))</visible>
+				<control type="image">
+					<width>276</width>
+					<height>156</height>
+					<texture colordiffuse="ff010202">items/mask_button.png</texture>
+				</control>
+			</control>
+			<control type="group">
+				<visible>!String.IsEmpty(ListItem.Property(Art1)) + !String.IsEmpty(ListItem.Property(Art2)) + !String.IsEmpty(ListItem.Property(Art3)) + !String.IsEmpty(ListItem.Property(Art4))</visible>
 				<left>6</left>
 				<top>6</top>
 				<control type="image">
-					<visible>!String.IsEmpty(ListItem.Property(Art1))</visible>
 					<width>62</width>
 					<height>107</height>
 					<texture colordiffuse="thumb_background">common/white.jpg</texture>
 					<aspectratio>scale</aspectratio>
 				</control>
 				<control type="image">
-					<visible>!String.IsEmpty(ListItem.Property(Art2))</visible>
 					<left>67</left>
 					<width>62</width>
 					<height>107</height>
@@ -1247,7 +1239,6 @@
 					<aspectratio>scale</aspectratio>
 				</control>
 				<control type="image">
-					<visible>!String.IsEmpty(ListItem.Property(Art3))</visible>
 					<left>135</left>
 					<width>62</width>
 					<height>107</height>
@@ -1255,7 +1246,6 @@
 					<aspectratio>scale</aspectratio>
 				</control>
 				<control type="image">
-					<visible>!String.IsEmpty(ListItem.Property(Art4))</visible>
 					<left>203</left>
 					<width>62</width>
 					<height>107</height>
@@ -1291,17 +1281,16 @@
 				</control>
 			</control>
 			<control type="group">
+				<visible>!String.IsEmpty(ListItem.Property(Art1)) + !String.IsEmpty(ListItem.Property(Art2)) + !String.IsEmpty(ListItem.Property(Art3)) + !String.IsEmpty(ListItem.Property(Art4))</visible>
 				<left>6</left>
 				<top>114</top>
 				<control type="image">
-					<visible>!String.IsEmpty(ListItem.Property(Art1))</visible>
 					<width>62</width>
 					<height>107</height>
 					<texture flipy="true" diffuse="items/mirror_mask.png" colordiffuse="thumb_background">common/white.jpg</texture>
 					<aspectratio scalediffuse="false">scale</aspectratio>
 				</control>
 				<control type="image">
-					<visible>!String.IsEmpty(ListItem.Property(Art2))</visible>
 					<left>67</left>
 					<width>62</width>
 					<height>107</height>
@@ -1309,7 +1298,6 @@
 					<aspectratio scalediffuse="false">scale</aspectratio>
 				</control>
 				<control type="image">
-					<visible>!String.IsEmpty(ListItem.Property(Art3))</visible>
 					<left>135</left>
 					<width>62</width>
 					<height>107</height>
@@ -1317,7 +1305,6 @@
 					<aspectratio scalediffuse="false">scale</aspectratio>
 				</control>
 				<control type="image">
-					<visible>!String.IsEmpty(ListItem.Property(Art4))</visible>
 					<left>203</left>
 					<width>62</width>
 					<height>107</height>

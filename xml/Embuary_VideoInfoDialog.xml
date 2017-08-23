@@ -225,139 +225,137 @@
 							<aspectratio scalediffuse="false">scale</aspectratio>
 						</control>
 					</control>
-					<!-- meta -->
-					<control type="grouplist">
-						<left>370</left>
-						<orientation>vertical</orientation>
-						<height>500</height>
-						<align>top</align>
-						<itemgap>0</itemgap>
-						<width>1480</width>
-						<control type="label">
-							<width>1040</width>
-							<height>60</height>
-							<label>$INFO[VideoPlayer.Title]</label>
-							<font>Reg37</font>
-							<shadowcolor>text_shadow</shadowcolor>
-						</control>
+					<!-- Meta -->
+					<control type="group">
+						<width>1920</width>
+						<height>604</height>
 						<control type="grouplist">
-							<height>40</height>
-							<width>1040</width>
-							<itemgap>5</itemgap>
-							<orientation>horizontal</orientation>
+							<left>370</left>
+							<orientation>vertical</orientation>
+							<height>500</height>
+							<align>top</align>
+							<itemgap>0</itemgap>
+							<width>1480</width>
 							<control type="label">
-								<width>auto</width>
-								<height>24</height>
-								<label></label>
-								<font>Material24</font>
-								<textcolor>red</textcolor>
+								<width>1040</width>
+								<height>60</height>
+								<label>$INFO[VideoPlayer.Title]</label>
+								<font>Reg37</font>
 								<shadowcolor>text_shadow</shadowcolor>
-								<visible>!String.IsEmpty(VideoPlayer.Rating)</visible>
+							</control>
+							<control type="grouplist">
+								<height>40</height>
+								<width>1040</width>
+								<itemgap>5</itemgap>
+								<orientation>horizontal</orientation>
+								<control type="label">
+									<width>auto</width>
+									<height>24</height>
+									<label></label>
+									<font>Material24</font>
+									<textcolor>red</textcolor>
+									<shadowcolor>text_shadow</shadowcolor>
+									<visible>!String.IsEmpty(VideoPlayer.Rating)</visible>
+								</control>
+								<control type="label">
+									<width>auto</width>
+									<height>24</height>
+									<label>$INFO[VideoPlayer.Rating]   </label>
+									<font>reg22</font>
+									<shadowcolor>text_shadow</shadowcolor>
+									<visible>!String.IsEmpty(VideoPlayer.Rating)</visible>
+								</control>
+								<control type="label">
+									<width>auto</width>
+									<height>24</height>
+									<label>$INFO[VideoPlayer.Season,S,:]$INFO[VideoPlayer.Episode,E]   </label>
+									<font>reg22</font>
+									<shadowcolor>text_shadow</shadowcolor>
+									<visible>!String.IsEmpty(VideoPlayer.Episode)</visible>
+								</control>
+								<control type="label">
+									<width>auto</width>
+									<height>24</height>
+									<label>$LOCALIZE[180]: $VAR[PlayerDuration]   </label>
+									<font>reg22</font>
+									<shadowcolor>text_shadow</shadowcolor>
+									<visible>!String.IsEmpty(Player.Duration)</visible>
+								</control>
+								<control type="label">
+									<width>auto</width>
+									<height>24</height>
+									<label>$LOCALIZE[20074]: $INFO[VideoPlayer.Mpaa]   </label>
+									<font>reg20</font>
+									<shadowcolor>text_shadow</shadowcolor>
+									<visible>!String.IsEmpty(VideoPlayer.Mpaa)</visible>
+								</control>
+								<control type="label">
+									<width>auto</width>
+									<height>24</height>
+									<label>$INFO[VideoPlayer.Year]   </label>
+									<font>reg22</font>
+									<shadowcolor>text_shadow</shadowcolor>
+									<visible>!String.IsEmpty(VideoPlayer.Year) + VideoPlayer.Content(movies)</visible>
+								</control>
+							</control>
+							<control type="grouplist" id="100">
+								<height>75</height>
+								<orientation>horizontal</orientation>
+								<itemgap>5</itemgap>
+								<onright>noop</onright>
+								<onleft>9999</onleft>
+								<control type="button" id="8">
+									<label>$LOCALIZE[15067]</label>
+									<onclick>close</onclick>
+									<onup>SetFocus(6666)</onup>
+									<ondown>SetFocus(50)</ondown>
+								</control>
+								<control type="button" id="97">
+									<visible>Control.IsVisible(96)</visible>
+									<label>$LOCALIZE[31013]</label>
+									<onclick>RunScript(script.skin.helper.service,action=textviewer,header='$ESCVAR[TinyInfoDialogHeadline]',message='$ESCVAR[TinyInfoDialogPlot]')</onclick>
+									<onup>SetFocus(6666)</onup>
+									<ondown>SetFocus(50)</ondown>
+								</control>
 							</control>
 							<control type="label">
 								<width>auto</width>
-								<height>24</height>
-								<label>$INFO[VideoPlayer.Rating]   </label>
+								<height>40</height>
+								<label>$INFO[VideoPlayer.Genre]</label>
 								<font>reg22</font>
+								<textcolor>emby</textcolor>
 								<shadowcolor>text_shadow</shadowcolor>
-								<visible>!String.IsEmpty(VideoPlayer.Rating)</visible>
+							</control>
+							<control type="textbox">
+								<width>100%</width>
+								<height>130</height>
+								<align>justify</align>
+								<aligny>top</aligny>
+								<label>$INFO[VideoPlayer.Tagline,[B],[/B][CR]]$INFO[VideoPlayer.Plot]</label>
+								<font>Light24Spaced</font>
+								<shadowcolor>text_shadow</shadowcolor>
+								<autoscroll>false</autoscroll>
+								<pagecontrol>96</pagecontrol>
 							</control>
 							<control type="label">
-								<width>auto</width>
-								<height>24</height>
-								<label>$INFO[VideoPlayer.Season,S,:]$INFO[VideoPlayer.Episode,E]   </label>
-								<font>reg22</font>
-								<shadowcolor>text_shadow</shadowcolor>
-								<visible>!String.IsEmpty(VideoPlayer.Episode)</visible>
+								<height>20</height>
 							</control>
-							<control type="label">
-								<width>auto</width>
-								<height>24</height>
-								<label>$LOCALIZE[180]: $VAR[PlayerDuration]   </label>
-								<font>reg22</font>
-								<shadowcolor>text_shadow</shadowcolor>
-								<visible>!String.IsEmpty(Player.Duration)</visible>
-							</control>
-							<control type="label">
-								<width>auto</width>
-								<height>24</height>
-								<label>$LOCALIZE[20074]: $INFO[VideoPlayer.Mpaa]   </label>
-								<font>reg20</font>
-								<shadowcolor>text_shadow</shadowcolor>
-								<visible>!String.IsEmpty(VideoPlayer.Mpaa)</visible>
-							</control>
-							<control type="label">
-								<width>auto</width>
-								<height>24</height>
-								<label>$INFO[VideoPlayer.Year]   </label>
-								<font>reg22</font>
-								<shadowcolor>text_shadow</shadowcolor>
-								<visible>!String.IsEmpty(VideoPlayer.Year) + VideoPlayer.Content(movies)</visible>
+							<control type="grouplist">
+								<orientation>horizontal</orientation>
+								<height>65</height>
+								<itemgap>5</itemgap>
+								<width>1040</width>
+								<include>PlayerFlags</include>
 							</control>
 						</control>
-						<control type="label">
-							<width>auto</width>
-							<height>40</height>
-							<label>$INFO[VideoPlayer.Genre]</label>
-							<font>reg22</font>
-							<textcolor>emby</textcolor>
-							<shadowcolor>text_shadow</shadowcolor>
+						<!-- logo -->
+						<control type="image">
+							<right>70</right>
+							<width>400</width>
+							<height>155</height>
+							<texture>$VAR[PlayerClearlogo]</texture>
+							<aspectratio>keep</aspectratio>
 						</control>
-						<control type="grouplist">
-							<orientation>horizontal</orientation>
-							<height>65</height>
-							<itemgap>5</itemgap>
-							<width>1040</width>
-							<include>PlayerFlags</include>
-						</control>
-						<control type="grouplist" id="100">
-							<height>65</height>
-							<orientation>horizontal</orientation>
-							<itemgap>5</itemgap>
-							<onright>noop</onright>
-							<onleft>9999</onleft>
-							<control type="button" id="8">
-								<label>$LOCALIZE[15067]</label>
-								<onclick>close</onclick>
-								<onup>SetFocus(6666)</onup>
-								<ondown>SetFocus(50)</ondown>
-							</control>
-							<control type="button" id="97">
-								<visible>Control.IsVisible(96)</visible>
-								<label>$LOCALIZE[31013]</label>
-								<onclick>RunScript(script.skin.helper.service,action=textviewer,header='$ESCVAR[TinyInfoDialogHeadline]',message='$ESCVAR[TinyInfoDialogPlot]')</onclick>
-								<onup>SetFocus(6666)</onup>
-								<ondown>SetFocus(50)</ondown>
-							</control>
-						</control>
-						<control type="textbox" id="98">
-							<width>1040</width>
-							<height>125</height>
-							<align>justify</align>
-							<aligny>top</aligny>
-							<label>$INFO[VideoPlayer.Plot]</label>
-							<font>Light24Spaced</font>
-							<shadowcolor>text_shadow</shadowcolor>
-							<autoscroll>false</autoscroll>
-							<pagecontrol>96</pagecontrol>
-						</control>
-					</control>
-					<!-- logo -->
-					<control type="image">
-						<right>70</right>
-						<width>400</width>
-						<height>155</height>
-						<texture>$VAR[PlayerClearlogo]</texture>
-						<aspectratio>keep</aspectratio>
-					</control>
-					<control type="label" id="97">
-						<left>366</left>
-						<top>386</top>
-						<width>auto</width>
-						<font>Material34</font>
-						<textcolor>panel_text</textcolor>
-						<label></label>
-						<visible>Container(98).HasNext</visible>
 					</control>
 				</control>
 			</control>
