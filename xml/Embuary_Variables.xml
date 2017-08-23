@@ -356,6 +356,16 @@
 		<value condition="!String.IsEmpty(Player.SeekStepSize)">$INFO[Player.SeekStepSize]</value>
 		<value condition="!String.IsEmpty(Player.SeekOffset)">$INFO[Player.SeekOffset]</value>
 	</variable>
+	<variable name="PlaylistRepeatButtonColor">
+		<value condition="Playlist.IsRepeatOne | Playlist.IsRepeat | Control.HasFocus(612)">emby</value>
+	</variable>
+	<variable name="PlaylistRepeatButtonTexture">
+		<value condition="Playlist.IsRepeatOne + Control.HasFocus(612)">icons/player/repeat1_fo.png</value>
+		<value condition="Playlist.IsRepeat + Control.HasFocus(612)">icons/player/repeat_fo.png</value>
+		<value condition="Control.HasFocus(612)">icons/player/repeat_fo.png</value>
+		<value condition="Playlist.IsRepeatOne">icons/player/repeat1_nf.png</value>
+		<value>icons/player/repeat_nf.png</value>
+	</variable>
 	<variable name="VideoHWDecoder">
 		<value condition="Player.Process(videohwdecoder)">HW</value>
 		<value>SW</value>

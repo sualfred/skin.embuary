@@ -26,11 +26,11 @@
 					<onclick>PlayerControl(Rewind)</onclick>
 				</control>
 				<control type="togglebutton" id="603">
+					<alttexturenofocus>icons/player/pause_nf.png</alttexturenofocus>
+					<alttexturefocus colordiffuse="emby">icons/player/pause_fo.png</alttexturefocus>
 					<include content="PlayerButtons">
 						<param name="type" value="play"/>
 					</include>
-					<alttexturenofocus>icons/player/pause_nf.png</alttexturenofocus>
-					<alttexturefocus colordiffuse="emby">icons/player/pause_fo.png</alttexturefocus>
 					<selected>!Player.Paused + !Player.Forwarding + !Player.Rewinding + !Player.Seeking</selected>
 					<onclick>PlayerControl(Play)</onclick>
 				</control>
@@ -51,6 +51,29 @@
 						<param name="type" value="next"/>
 					</include>
 					<onclick>PlayerControl(Next)</onclick>
+				</control>
+				<control type="togglebutton" id="611">
+					<include content="PlayerButtons">
+						<param name="type" value="shuffle"/>
+					</include>
+					<selected>Playlist.IsRandom</selected>
+					<onclick>PlayerControl(random)</onclick>
+				</control>
+				<control type="group" id="620">
+					<width>50</width>
+					<heigth>50</heigth>
+					<control type="image">
+						<texture colordiffuse="$VAR[PlaylistRepeatButtonColor]">$VAR[PlaylistRepeatButtonTexture]</texture>
+					</control>
+					<control type="togglebutton" id="612">
+						<texturenofocus>-</texturenofocus>
+						<texturefocus>-</texturefocus>
+						<alttexturenofocus>-</alttexturenofocus>
+						<alttexturefocus>-</alttexturefocus>
+						<onleft>611</onleft>
+						<onright>610</onright>
+						<onclick>PlayerControl(Repeat)</onclick>
+					</control>
 				</control>
 				<control type="button" id="610">
 					<include content="PlayerButtons">
