@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 	<include name="WidgetContentPath">
-		<content sortby="$PARAM[sortby]" sortdirection="$PARAM[sortdirection]">$PARAM[content]</content>
+		<content target="$PARAM[widget_target]" sortby="$PARAM[sortby]" sortdirection="$PARAM[sortdirection]">$PARAM[content]</content>
 	</include>
 	<include name="WidgetOnClick">
 		<onclick>$PARAM[onclick]</onclick>
@@ -89,6 +89,7 @@
 							</control>
 						</focusedlayout>
 						<include condition="$PARAM[use_custom_content]" content="WidgetContentPath">
+							<param name="widget_target">$PARAM[widget_target]</param>
 							<param name="sortby">$PARAM[sortby]</param>
 							<param name="sortdirection">$PARAM[sortdirectio]</param>
 							<param name="content">$PARAM[content]</param>
@@ -191,6 +192,7 @@
 							</control>
 						</focusedlayout>
 						<include condition="$PARAM[use_custom_content]" content="WidgetContentPath">
+							<param name="widget_target">$PARAM[widget_target]</param>
 							<param name="sortby">$PARAM[sortby]</param>
 							<param name="sortdirection">$PARAM[sortdirectio]</param>
 							<param name="content">$PARAM[content]</param>
@@ -291,6 +293,7 @@
 							</control>
 						</focusedlayout>
 						<include condition="$PARAM[use_custom_content]" content="WidgetContentPath">
+							<param name="widget_target">$PARAM[widget_target]</param>
 							<param name="sortby">$PARAM[sortby]</param>
 							<param name="sortdirection">$PARAM[sortdirectio]</param>
 							<param name="content">$PARAM[content]</param>
@@ -569,6 +572,7 @@
 						</control>
 					</focusedlayout>
 					<include condition="$PARAM[use_custom_content]" content="WidgetContentPath">
+						<param name="widget_target">$PARAM[widget_target]</param>
 						<param name="sortby">$PARAM[sortby]</param>
 						<param name="sortdirection">$PARAM[sortdirectio]</param>
 						<param name="content">$PARAM[content]</param>
@@ -662,6 +666,7 @@
 						</control>
 					</focusedlayout>
 					<include condition="$PARAM[use_custom_content]" content="WidgetContentPath">
+						<param name="widget_target">$PARAM[widget_target]</param>
 						<param name="sortby">$PARAM[sortby]</param>
 						<param name="sortdirection">$PARAM[sortdirectio]</param>
 						<param name="content">$PARAM[content]</param>
@@ -682,12 +687,13 @@
 		<param name="sublabel">$VAR[SubListLabel]</param>
 		<param name="use_custom_content">true</param>
 		<param name="use_custom_onclick">false</param>
+		<param name="height">575</param>
 		<definition>
 			<control type="group" id="$PARAM[id]1">
 				<visible>$PARAM[visible]</visible>
 				<visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</visible>
 				<width>1920</width>
-				<height>575</height>
+				<height>$PARAM[height]</height>
 				<include content="widget_headline">
 					<param name="headline">$PARAM[headline]</param>
 				</include>
@@ -755,6 +761,7 @@
 						</control>
 					</focusedlayout>
 					<include condition="$PARAM[use_custom_content]" content="WidgetContentPath">
+						<param name="widget_target">$PARAM[widget_target]</param>
 						<param name="sortby">$PARAM[sortby]</param>
 						<param name="sortdirection">$PARAM[sortdirectio]</param>
 						<param name="content">$PARAM[content]</param>
@@ -891,6 +898,7 @@
 						</control>
 					</focusedlayout>
 					<include condition="$PARAM[use_custom_content]" content="WidgetContentPath">
+						<param name="widget_target">$PARAM[widget_target]</param>
 						<param name="sortby">$PARAM[sortby]</param>
 						<param name="sortdirection">$PARAM[sortdirectio]</param>
 						<param name="content">$PARAM[content]</param>

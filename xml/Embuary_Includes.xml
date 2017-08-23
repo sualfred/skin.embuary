@@ -2,7 +2,7 @@
 <includes>
 	<!-- Expressions -->
 	<expression name="ExpJumpToLetter">
-		[[Container.Content(movies) | Container.Content(episodes) | Container.Content(songs) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(artists) | Container.Content(albums) | Container.Content(addons)] + [String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[561]) | String.IsEqual(Container.SortMethod,$LOCALIZE[558]) | String.IsEqual(Container.SortMethod,$LOCALIZE[557]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556])]]
+		[[Container.Content(movies) | Container.Content(episodes) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(artists) | Container.Content(albums) | Container.Content(addons)] + [String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[561]) | String.IsEqual(Container.SortMethod,$LOCALIZE[558]) | String.IsEqual(Container.SortMethod,$LOCALIZE[557]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556])]]
 	</expression>
 	<expression name="ExpInfoDialogActive">[Window.IsVisible(musicinformation) | Window.IsVisible(songinformation) | [Window.IsVisible(movieinformation) + [String.IsEqual(ListItem.DBtype,movie) | String.IsEqual(ListItem.DBtype,tvshow)]] | Window.IsVisible(addoninformation) | Window.IsVisible(pvrguideinfo) | Window.IsVisible(pvrrecordinginfo) | Window.IsVisible(pictureinfo) | Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(script-script.extendedinfo-VideoList.xml)]</expression>
 	<!-- FullScreenDimensions -->
@@ -23,7 +23,7 @@
 	</include>
 	<!-- Background -->
 	<include name="Background">
-		<param name="content">special://skin/playlists/video/randommovies.xsp</param>
+		<param name="content">special://skin/playlists/video/InProgressMovies.xsp</param>
 		<definition>
 			<control type="list" id="90000">
 				<include>HiddenObject</include>
@@ -718,6 +718,22 @@
 			<visible>!String.IsEmpty(ListItem.DateAdded)</visible>
 		</control>
 	</include>
+	<!-- Music Flags -->
+	<include name="MusicFlag">
+		<control type="button">
+			<width min="50">auto</width>
+			<height>48</height>
+			<font>reg18</font>
+			<label>$INFO[ListItem.DateAdded,$LOCALIZE[570]: ]</label>
+			<textoffsetx>15</textoffsetx>
+			<align>center</align>
+			<enabledcolor>lightgrey</enabledcolor>
+			<texturefocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturefocus>
+			<texturenofocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturenofocus>
+			<enabled>false</enabled>
+			<visible>!String.IsEmpty(ListItem.DateAdded)</visible>
+		</control>
+	</include>
 	<!-- Player Flags -->
 	<include name="PlayerFlags">
 		<control type="button">
@@ -875,6 +891,7 @@
 		<control type="button">
 			<texturefocus>-</texturefocus>
 			<texturenofocus>-</texturenofocus>
+			<onfocus condition="Container.Content(artists)">SetProperty(ArtistDBID,$INFO[ListItem.DBID],home)</onfocus>
 			<onfocus condition="Container.Content(tvshows)">SetProperty(TVShowRating,$INFO[ListItem.Rating],home)</onfocus>
 			<onfocus condition="Container.Content(tvshows)">SetProperty(TVShowDBID,$INFO[ListItem.DBID],home)</onfocus>
 			<onfocus condition="Container.Content(tvshows)">SetProperty(TVShowIMDB,$INFO[ListItem.IMDBnumber],home)</onfocus>
@@ -885,6 +902,7 @@
 		</control>
 	</include>
 	<include name="UnloadSetProperties">
+		<onunload condition="Window.Next(home)">ClearProperty(ArtistDBID,home)</onunload>
 		<onunload condition="Window.Next(home)">ClearProperty(TVShowRating,home)</onunload>
 		<onunload condition="Window.Next(home)">ClearProperty(TVShowDBID,home)</onunload>
 		<onunload condition="Window.Next(home)">ClearProperty(TVShowIMDB,home)</onunload>

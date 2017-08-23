@@ -684,4 +684,454 @@
 			</control>
 		</control>
 	</include>
+	<!-- Artist -->
+	<include name="ArtistInfoLayout">
+		<control type="grouplist" id="500">
+			<include>Window_OpenClose</include>
+			<width>2130</width>
+			<height>100%</height>
+			<orientation>vertical</orientation>
+			<usecontrolcoords>true</usecontrolcoords>
+			<scrolltime tween="sine" easing="out">400</scrolltime>
+			<itemgap>-80</itemgap>
+			<include>Bounce_Up_Down</include>
+			<!-- Meta -->
+			<control type="group">
+				<width>1920</width>
+				<height>595</height>
+				<control type="group">
+					<top>128</top>
+					<height>435</height>
+					<width>1920</width>
+					<!-- Thumb image -->
+					<control type="group">
+						<left>70</left>
+						<width>590</width>
+						<control type="image">
+							<top>-2</top>
+							<left>-2</left>
+							<width>346</width>
+							<height>346</height>
+							<texture>items/shadow_square_db.png</texture>
+						</control>
+						<control type="image">
+							<width>340</width>
+							<height>340</height>
+							<texture colordiffuse="green" diffuse="items/mask_square_db.png">common/white.jpg</texture>
+							<aspectratio scalediffuse="false">stretch</aspectratio>
+							<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+						</control>
+						<control type="image">
+							<width>340</width>
+							<height>340</height>
+							<texture colordiffuse="thumb_background" diffuse="items/mask_square_db.png">common/white.jpg</texture>
+							<aspectratio scalediffuse="false">stretch</aspectratio>
+							<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
+						</control>
+						<control type="textbox">
+							<top>10</top>
+							<left>10</left>
+							<width>320</width>
+							<height>320</height>
+							<font>Light24</font>
+							<align>center</align>
+							<aligny>center</aligny>
+							<label>$INFO[ListItem.Label]</label>
+							<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+						</control>
+						<control type="image">
+							<width>340</width>
+							<height>340</height>
+							<texture diffuse="items/mask_square_db.png" background="true">$INFO[ListItem.Icon]</texture>
+							<aspectratio scalediffuse="false">stretch</aspectratio>
+							<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
+						</control>
+					</control>
+					<!-- meta -->
+					<control type="grouplist">
+						<left>434</left>
+						<orientation>vertical</orientation>
+						<height>1020</height>
+						<width>1416</width>
+						<align>top</align>
+						<itemgap>0</itemgap>
+						<control type="label">
+							<width>100%</width>
+							<height>60</height>
+							<label>$INFO[ListItem.Label]</label>
+							<font>Reg37</font>
+							<shadowcolor>text_shadow</shadowcolor>
+						</control>
+						<control type="grouplist">
+							<height>40</height>
+							<width>100%</width>
+							<itemgap>5</itemgap>
+							<orientation>horizontal</orientation>
+							<control type="label">
+								<width>auto</width>
+								<height>24</height>
+								<label>$INFO[Window(home).Property(SkinHelper.ListItem.AlbumCount),$LOCALIZE[132]: ]   </label>
+								<font>reg22</font>
+								<shadowcolor>text_shadow</shadowcolor>
+								<visible>!String.IsEmpty(Window(home).Property(SkinHelper.ListItem.AlbumCount))</visible>
+							</control>
+							<control type="label">
+								<width>auto</width>
+								<height>24</height>
+								<label>$INFO[ListItem.Property(Artist_Formed),$LOCALIZE[21894]: ]   </label>
+								<font>reg22</font>
+								<shadowcolor>text_shadow</shadowcolor>
+								<visible>!String.IsEmpty(ListItem.Property(Artist_Formed))</visible>
+							</control>
+							<control type="label">
+								<width>auto</width>
+								<height>24</height>
+								<label>$INFO[ListItem.Property(Artist_Disbanded),$LOCALIZE[21896]: ]   </label>
+								<font>reg22</font>
+								<shadowcolor>text_shadow</shadowcolor>
+								<visible>!String.IsEmpty(ListItem.Property(Artist_Disbanded))</visible>
+							</control>
+							<control type="label">
+								<width>auto</width>
+								<height>24</height>
+								<label>$INFO[ListItem.Property(Artist_Mood),$LOCALIZE[175]: ]   </label>
+								<font>reg22</font>
+								<shadowcolor>text_shadow</shadowcolor>
+								<visible>!String.IsEmpty(ListItem.Property(Artist_Mood))</visible>
+							</control>
+						</control>
+						<control type="label">
+							<width>100%</width>
+							<height>40</height>
+							<label>$INFO[ListItem.Genre]</label>
+							<font>reg22</font>
+							<textcolor>emby</textcolor>
+							<shadowcolor>text_shadow</shadowcolor>
+						</control>
+						<control type="grouplist" id="100">
+							<height>65</height>
+							<orientation>horizontal</orientation>
+							<itemgap>5</itemgap>
+							<onleft>9999</onleft>
+							<onright>noop</onright>
+							<control type="button" id="101">
+								<label>$LOCALIZE[22083]</label>
+								<ondown>SetFocus(200)</ondown>
+								<onup>SetFocus(6666)</onup>
+								<onclick>PlayMedia(musicdb://songs/?artistid=$INFO[ListItem.DBID],isdir)</onclick>
+							</control>
+							<control type="button" id="102">
+								<ondown>SetFocus(200)</ondown>
+								<onup>SetFocus(6666)</onup>
+								<label>$LOCALIZE[31034]</label>
+								<onclick>RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.Label]',message='$ESCINFO[ListItem.Property(Artist_Description)]')</onclick>
+								<visible>Container(97).HasNext</visible>
+							</control>
+							<control type="button" id="6">
+								<ondown>SetFocus(200)</ondown>
+								<onup>SetFocus(6666)</onup>
+								<visible>Control.IsEnabled(6)</visible>
+							</control>
+							<control type="button" id="7">
+								<ondown>SetFocus(200)</ondown>
+								<onup>SetFocus(6666)</onup>
+								<visible>Control.IsEnabled(7)</visible>
+							</control>
+							<control type="button" id="10">
+								<ondown>SetFocus(200)</ondown>
+								<onup>SetFocus(6666)</onup>
+								<visible>Control.IsEnabled(10)</visible>
+							</control>
+							<control type="button" id="12">
+								<ondown>SetFocus(200)</ondown>
+								<onup>SetFocus(6666)</onup>
+								<visible>Control.IsEnabled(12)</visible>
+							</control>
+						</control>
+						<control type="textbox" id="97">
+							<width>100%</width>
+							<height>185</height>
+							<align>justify</align>
+							<aligny>top</aligny>
+							<label>$INFO[ListItem.Property(Artist_Description)]</label>
+							<font>Light24Spaced</font>
+							<shadowcolor>text_shadow</shadowcolor>
+							<autoscroll>false</autoscroll>
+							<pagecontrol>96</pagecontrol>
+						</control>
+					</control>
+				</control>			
+				<control type="label" id="97">
+					<top>515</top>
+					<left>430</left>
+					<width>auto</width>
+					<heigth>50</heigth>
+					<font>Material34</font>
+					<textcolor>panel_text</textcolor>
+					<label></label>
+					<visible>Control.IsVisible(96)</visible>
+				</control>
+			</control>
+			<!-- Albums -->
+			<include content="HomeSquareWidget">
+				<param name="id" value="200"/>
+				<param name="onup" value="100"/>
+				<param name="ondown" value="300"/>
+				<param name="height" value="502"/>
+				<param name="mainlabel" value="$INFO[ListItem.Album]"/>
+				<param name="sublabel" value="$INFO[ListItem.Artist]"/>
+				<param name="headline" value="$LOCALIZE[132]"/>
+				<param name="use_custom_onclick" value="true"/>
+				<param name="onclick" value="PlayMedia($INFO[ListItem.FolderPath],isdir)"/>
+				<param name="widget_target" value="music"/>
+				<param name="sortby" value="sorttitle"/>
+				<param name="sortorder" value="descending"/>
+				<param name="content" value="musicdb://artists/$INFO[ListItem.DBID]/"/>
+			</include>
+			<!-- All songs -->
+			<include content="HomeSquareWidget">
+				<param name="id" value="300"/>
+				<param name="onup" value="200"/>
+				<param name="ondown" value="SetProperty(BounceDown,1,home)"/>
+				<param name="height" value="502"/>
+				<param name="mainlabel" value="$INFO[ListItem.Tracknumber,,. ]$INFO[ListItem.Title]"/>
+				<param name="sublabel" value="$INFO[ListItem.Album]"/>
+				<param name="headline" value="$LOCALIZE[182]"/>
+				<param name="content" value="musicdb://songs/?artistid=$INFO[ListItem.DBID]"/>
+			</include>
+		</control>
+	</include>
+	<!-- Album -->
+	<include name="AlbumInfoLayout">
+		<control type="grouplist" id="500">
+			<include>Window_OpenClose</include>
+			<width>2130</width>
+			<height>100%</height>
+			<orientation>vertical</orientation>
+			<usecontrolcoords>true</usecontrolcoords>
+			<scrolltime tween="sine" easing="out">400</scrolltime>
+			<itemgap>-80</itemgap>
+			<include>Bounce_Up_Down</include>
+			<!-- Meta -->
+			<control type="group">
+				<width>1920</width>
+				<height>530</height>
+				<control type="group">
+					<top>128</top>
+					<height>435</height>
+					<width>1920</width>
+					<!-- Thumb image -->
+					<control type="group">
+						<left>70</left>
+						<width>590</width>
+						<control type="image">
+							<top>-2</top>
+							<left>-2</left>
+							<width>346</width>
+							<height>346</height>
+							<texture>items/shadow_square_db.png</texture>
+						</control>
+						<control type="image">
+							<width>340</width>
+							<height>340</height>
+							<texture colordiffuse="green" diffuse="items/mask_square_db.png">common/white.jpg</texture>
+							<aspectratio scalediffuse="false">stretch</aspectratio>
+							<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+						</control>
+						<control type="image">
+							<width>340</width>
+							<height>340</height>
+							<texture colordiffuse="thumb_background" diffuse="items/mask_square_db.png">common/white.jpg</texture>
+							<aspectratio scalediffuse="false">stretch</aspectratio>
+							<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
+						</control>
+						<control type="textbox">
+							<top>10</top>
+							<left>10</left>
+							<width>320</width>
+							<height>320</height>
+							<font>Light24</font>
+							<align>center</align>
+							<aligny>center</aligny>
+							<label>$INFO[ListItem.Label]</label>
+							<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+						</control>
+						<control type="image">
+							<width>340</width>
+							<height>340</height>
+							<texture diffuse="items/mask_square_db.png" background="true">$INFO[ListItem.Icon]</texture>
+							<aspectratio scalediffuse="false">stretch</aspectratio>
+							<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
+						</control>
+					</control>
+					<!-- meta -->
+					<control type="grouplist">
+						<left>434</left>
+						<orientation>vertical</orientation>
+						<height>1020</height>
+						<width>1416</width>
+						<align>top</align>
+						<itemgap>0</itemgap>
+						<control type="label">
+							<width>100%</width>
+							<height>60</height>
+							<label>$INFO[ListItem.Label]</label>
+							<font>Reg37</font>
+							<shadowcolor>text_shadow</shadowcolor>
+						</control>
+						<control type="grouplist">
+							<height>40</height>
+							<width>100%</width>
+							<itemgap>5</itemgap>
+							<orientation>horizontal</orientation>
+							<control type="label">
+								<width>auto</width>
+								<height>24</height>
+								<label>$INFO[Window(home).Property(SkinHelper.ListItem.AlbumCount),$LOCALIZE[132]: ]   </label>
+								<font>reg22</font>
+								<shadowcolor>text_shadow</shadowcolor>
+								<visible>!String.IsEmpty(Window(home).Property(SkinHelper.ListItem.AlbumCount))</visible>
+							</control>
+							<control type="label">
+								<width>auto</width>
+								<height>24</height>
+								<label>$INFO[Window(home).Property(SkinHelper.ListItem.Duration),, $LOCALIZE[12391]]   </label>
+								<font>reg22</font>
+								<shadowcolor>text_shadow</shadowcolor>
+								<visible>!String.IsEmpty(Window(home).Property(SkinHelper.ListItem.Duration))</visible>
+							</control>
+							<control type="label">
+								<width>auto</width>
+								<height>24</height>
+								<label>$INFO[Window(home).Property(SkinHelper.ListItem.SongCount),, $LOCALIZE[182]]   </label>
+								<font>reg22</font>
+								<shadowcolor>text_shadow</shadowcolor>
+								<visible>!String.IsEmpty(Window(home).Property(SkinHelper.ListItem.SongCount))</visible>
+							</control>
+							<control type="label">
+								<width>auto</width>
+								<height>24</height>
+								<label>$LOCALIZE[31033]: $INFO[ListItem.AddonCreator]   </label>
+								<font>reg22</font>
+								<shadowcolor>text_shadow</shadowcolor>
+								<visible>!String.IsEmpty(ListItem.AddonCreator)</visible>
+							</control>
+						</control>
+						<control type="label">
+							<width>100%</width>
+							<height>40</height>
+							<label>$INFO[ListItem.Genre]</label>
+							<font>reg22</font>
+							<textcolor>emby</textcolor>
+							<shadowcolor>text_shadow</shadowcolor>
+						</control>
+						<control type="grouplist" id="100">
+							<height>65</height>
+							<orientation>horizontal</orientation>
+							<itemgap>5</itemgap>
+							<onleft>9999</onleft>
+							<onright>noop</onright>
+							<control type="button" id="101">
+								<label>$LOCALIZE[21333]</label>
+								<ondown>SetFocus(200)</ondown>
+								<onup>SetFocus(6666)</onup>
+							</control>
+							<control type="button" id="102">
+								<ondown>SetFocus(200)</ondown>
+								<onup>SetFocus(6666)</onup>
+								<label>$LOCALIZE[31034]</label>
+								<onclick>RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.Label]',message='$ESCINFO[ListItem.Property(Artist_Description)]')</onclick>
+								<visible>Container(97).HasNext</visible>
+							</control>
+							<control type="button" id="6">
+								<ondown>SetFocus(200)</ondown>
+								<onup>SetFocus(6666)</onup>
+								<visible>Control.IsEnabled(6)</visible>
+							</control>
+							<control type="button" id="7">
+								<ondown>SetFocus(200)</ondown>
+								<onup>SetFocus(6666)</onup>
+								<visible>Control.IsEnabled(7)</visible>
+							</control>
+							<control type="button" id="10">
+								<ondown>SetFocus(200)</ondown>
+								<onup>SetFocus(6666)</onup>
+								<visible>Control.IsEnabled(10)</visible>
+							</control>
+							<control type="button" id="12">
+								<ondown>SetFocus(200)</ondown>
+								<onup>SetFocus(6666)</onup>
+								<visible>Control.IsEnabled(12)</visible>
+							</control>
+							<control type="button" id="13">
+								<ondown>SetFocus(200)</ondown>
+								<onup>SetFocus(6666)</onup>
+								<visible>String.IsEqual(ListItem.DBtype,song)</visible>
+							</control>
+						</control>
+						<control type="textbox" id="97">
+							<width>100%</width>
+							<height>130</height>
+							<align>justify</align>
+							<aligny>top</aligny>
+							<label>$INFO[ListItem.Property(Artist_Description)]</label>
+							<font>Light24Spaced</font>
+							<shadowcolor>text_shadow</shadowcolor>
+							<autoscroll>false</autoscroll>
+							<pagecontrol>96</pagecontrol>
+						</control>
+					</control>
+				</control>			
+				<control type="label" id="97">
+					<top>445</top>
+					<left>430</left>
+					<width>auto</width>
+					<heigth>50</heigth>
+					<font>Material34</font>
+					<textcolor>panel_text</textcolor>
+					<label></label>
+					<visible>Control.IsVisible(96)</visible>
+				</control>
+			</control>
+			<!-- Tracks -->
+			<include content="HomeSquareWidget">
+				<param name="visible" value="String.IsEqual(ListItem.DBtype,album)"/>
+				<param name="id" value="200"/>
+				<param name="onup" value="100"/>
+				<param name="ondown" value="300"/>
+				<param name="height" value="472"/>
+				<param name="mainlabel" value="$INFO[ListItem.Label]"/>
+				<param name="sublabel" value="$INFO[ListItem.Label2]"/>
+				<param name="headline" value="$LOCALIZE[182]"/>
+				<param name="widget_target" value="music"/>
+				<param name="content" value="musicdb://albums/$INFO[ListItem.DBID]"/>
+			</include>
+			<!-- Albums -->
+			<include content="HomeSquareWidget">
+				<param name="id" value="300"/>
+				<param name="onup" value="200"/>
+				<param name="ondown" value="400"/>
+				<param name="height" value="472"/>
+				<param name="mainlabel" value="$INFO[ListItem.Label]"/>
+				<param name="sublabel" value="$INFO[ListItem.Label2]"/>
+				<param name="headline" value="$LOCALIZE[132]"/>
+				<param name="use_custom_onclick" value="true"/>
+				<param name="onclick" value="PlayMedia($INFO[ListItem.FolderPath],isdir)"/>
+				<param name="widget_target" value="music"/>
+				<param name="content" value="musicdb://artists/$INFO[Window(home).Property(ArtistDBID)]"/>
+			</include>
+			<!-- All tracks -->
+			<include content="HomeSquareWidget">
+				<param name="id" value="400"/>
+				<param name="onup" value="300"/>
+				<param name="ondown" value="SetProperty(BounceDown,1,home)"/>
+				<param name="height" value="472"/>
+				<param name="mainlabel" value="$INFO[ListItem.Title]"/>
+				<param name="sublabel" value="$INFO[ListItem.Album]"/>
+				<param name="thumblabel" value="$INFO[ListItem.Title]"/>
+				<param name="headline" value="$LOCALIZE[182]"/>
+				<param name="content" value="musicdb://songs/?artistid=$INFO[ListItem.DBID]"/>
+			</include>
+		</control>
+	</include>
 </includes>
