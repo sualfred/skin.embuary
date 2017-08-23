@@ -372,6 +372,109 @@
 			</control>
 		</definition>
 	</include>
+	<!-- Square -->
+	<include name="SquareWidget">
+		<param name="visible">true</param>
+		<param name="content_visibility">true</param>
+		<param name="headline">$LOCALIZE[416]</param>
+		<param name="mainlabel">$VAR[MainListLabel]</param>
+		<param name="sublabel">$VAR[SubListLabel]</param>
+		<param name="use_custom_content">true</param>
+		<param name="height">502</param>
+		<definition>
+			<control type="group">
+				<visible>$PARAM[visible]</visible>
+				<visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</visible>
+				<width>1920</width>
+				<height>$PARAM[height]</height>
+				<control type="group">
+					<include content="widget_headline">
+						<param name="headline">$PARAM[headline]</param>
+						<param name="left">65</param>
+					</include>
+					<control type="group">
+						<visible>Container($PARAM[id]).IsUpdating</visible>
+						<left>70</left>
+						<top>94</top>
+						<width>276</width>
+						<height>276</height>		
+						<control type="image">
+							<top>-2</top>
+							<left>-2</left>
+							<width>282</width>
+							<height>282</height>
+							<texture>items/shadow_square.png</texture>
+						</control>
+						<control type="image">
+							<width>276</width>
+							<height>276</height>
+							<texture colordiffuse="blue" diffuse="items/mask_square.png">common/white.jpg</texture>
+							<aspectratio>stretch</aspectratio>
+						</control>
+						<include content="WidgetLoadingSpinner"/>
+					</control>
+					<control type="list" id="$PARAM[id]">
+						<visible>$PARAM[content_visibility]</visible>
+						<top>30</top>
+						<width>1920</width>
+						<scrolltime>200</scrolltime>
+						<orientation>horizontal</orientation>
+						<preloaditems>4</preloaditems>
+						<ondown>$PARAM[ondown]</ondown>
+						<onup>$PARAM[onup]</onup>
+						<include content="Bounce_Right">
+							<param name="id">$PARAM[id]</param>
+						</include>
+						<onright>SetProperty(BounceRight,1,home)</onright>
+						<onright>noop</onright>
+						<onleft>9999</onleft>
+						<pagecontrol>$PARAM[id]1</pagecontrol>
+						<viewtype label="$PARAM[list_name]">list</viewtype>
+						<itemlayout width="296">
+							<control type="group">							
+								<left>70</left>
+								<top>64</top>
+								<include content="SquareLayout">
+									<param name="mainlabel" value="$PARAM[mainlabel]" />
+									<param name="sublabel" value="$PARAM[sublabel]" />
+									<param name="focused" value="false" />
+									<param name="id" value="$PARAM[id]" />
+								</include>
+							</control>
+						</itemlayout>
+						<focusedlayout width="296">
+							<control type="group">							
+								<left>70</left>
+								<top>64</top>
+								<include content="SquareLayout">
+									<param name="mainlabel" value="$PARAM[mainlabel]" />
+									<param name="sublabel" value="$PARAM[sublabel]" />
+									<param name="focused" value="true" />
+									<param name="id" value="$PARAM[id]" />
+								</include>
+							</control>
+						</focusedlayout>
+						<include condition="$PARAM[use_custom_content]" content="WidgetContentPath">
+							<param name="widget_target">$PARAM[widget_target]</param>
+							<param name="sortby">$PARAM[sortby]</param>
+							<param name="sortdirection">$PARAM[sortdirectio]</param>
+							<param name="content">$PARAM[content]</param>
+						</include>
+					</control>
+					<include content="list_mask">
+						<param name="height" value="277"/>
+						<param name="width" value="75"/>
+						<param name="id" value="$PARAM[id]"/>
+					</include>
+					<include content="ScrollbarHorizontal">
+						<param name="id" value="$PARAM[id]1"/>
+						<param name="bottom" value="43"/>
+						<param name="visible" value="Control.HasFocus($PARAM[id])"/>
+					</include>
+				</control>
+			</control>
+		</definition>
+	</include>
 	<!-- ##### HOME ##### -->
 	<!-- Menu Buttons -->
 	<include name="HomeWidgetMenu">
