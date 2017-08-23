@@ -2,13 +2,8 @@
 <window>
 	<!-- mediasource -->
 	<defaultcontrol always="true">100</defaultcontrol>
+	<include>UnloadSetProperties</include>
 	<controls>
-		<!-- Hidden -->
-		<control type="radiobutton" id="13">
-			<include>HiddenObject</include>
-			<onfocus>select</onfocus>
-			<onfocus>SetFocus(101)</onfocus>
-		</control>
 		<control id="96" type="scrollbar">
 			<left>-1200</left>
 			<width>100</width>
@@ -18,21 +13,9 @@
 		</control>
 		<!-- Background -->
 		<include>Background</include>
-
 		<!-- Content -->
 		<include condition="String.IsEqual(ListItem.DBType,artist)">ArtistInfoLayout</include>
 		<include condition="String.IsEqual(ListItem.DBType,album)">AlbumInfoLayout</include>
 		<include condition="!String.IsEqual(ListItem.DBType,artist) + !String.IsEqual(ListItem.DBType,album)">TinyInfoLayout</include>
-
-		<!-- header bar -->
-		<include content="HeaderBar">		
-			<param name="id">100</param>
-			<param name="enabled">false</param>
-			<param name="sidebar_id">9999</param>
-		</include>
-		<!-- side panel -->
-		<include content="SidePanel">
-			<param name="onright">100</param>
-		</include>
 	</controls>
 </window>
