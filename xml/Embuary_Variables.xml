@@ -40,12 +40,16 @@
 		<value condition="String.StartsWith(Container.FolderPath,musicdb://)">$LOCALIZE[2]</value>
 		<value>$INFO[Container.Foldername]</value>
 	</variable>
+	<variable name="ListItemClearlogo">
+		<value condition="!String.IsEmpty(ListItem.Art(tvshow.poster))">$INFO[ListItem.Art(tvshow.clearlogo)]</value>
+		<value condition="!String.IsEmpty(ListItem.Art(poster))">$INFO[ListItem.Art(clearlogo)]</value>
+	</variable>
 	<variable name="IconLandscape">
 		<value condition="Window.IsVisible(videobookmarks) + !String.StartsWith(ListItem.Icon,Default)">$INFO[ListItem.Icon]</value>
-		<value condition="[[Control.IsVisible(54) + Container.Content(seasons)] | Window.IsVisible(movieinformation)] + !String.IsEmpty(ListItem.Art(thumb))">$INFO[ListItem.Art(thumb)]</value>
-		<value condition="[[Control.IsVisible(54) + Container.Content(seasons)] | Window.IsVisible(movieinformation)] + !String.IsEmpty(ListItem.Art(tvshow.landscape))">$INFO[ListItem.Art(tvshow.landscape)]</value>
-		<value condition="[[Control.IsVisible(54) + Container.Content(seasons)] | Window.IsVisible(movieinformation)] + !String.IsEmpty(ListItem.Art(landscape))">$INFO[ListItem.Art(landscape)]</value>
-		<value condition="[[Control.IsVisible(54) + Container.Content(seasons)] | Window.IsVisible(movieinformation)] + !String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
+		<value condition="[[Control.IsVisible(54) + Container.Content(seasons)] | Window.IsVisible(movieinformation) | [Window.IsVisible(videoplaylist) + String.IsEqual(ListItem.DBType,episode)]] + !String.IsEmpty(ListItem.Art(thumb))">$INFO[ListItem.Art(thumb)]</value>
+		<value condition="[[Control.IsVisible(54) + Container.Content(seasons)] | Window.IsVisible(movieinformation) | Window.IsVisible(videoplaylist)] + !String.IsEmpty(ListItem.Art(tvshow.landscape))">$INFO[ListItem.Art(tvshow.landscape)]</value>
+		<value condition="[[Control.IsVisible(54) + Container.Content(seasons)] | Window.IsVisible(movieinformation) | Window.IsVisible(videoplaylist)] + !String.IsEmpty(ListItem.Art(landscape))">$INFO[ListItem.Art(landscape)]</value>
+		<value condition="[[Control.IsVisible(54) + Container.Content(seasons)] | Window.IsVisible(movieinformation) | Window.IsVisible(videoplaylist)] + !String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
 		<value condition="String.StartsWith(ListItem.Path,pvr://) + !String.StartsWith(ListItem.Icon,Default)">$INFO[ListItem.Icon]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(thumb)) + Container.Content(episodes)">$INFO[ListItem.Art(thumb)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(tvshow.landscape))">$INFO[ListItem.Art(tvshow.landscape)]</value>
