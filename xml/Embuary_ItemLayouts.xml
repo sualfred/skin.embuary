@@ -675,20 +675,20 @@
 					<texture>items/shadow_wide_db.png</texture>
 				</control>
 				<control type="group">
-					<visible>String.StartsWith(ListItem.Path,pvr://)</visible>
+					<visible>String.StartsWith(ListItem.Path,pvr://) | Window.IsVisible(videobookmarks)</visible>
 					<control type="image">
 						<width>430</width>
 						<height>242</height>
 						<texture colordiffuse="green" diffuse="items/mask_wide_db.png">common/white.jpg</texture>
 						<aspectratio scalediffuse="false">stretch</aspectratio>
-						<visible>String.IsEmpty(ListItem.Art(thumb))</visible>
+						<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
 					</control>
 					<control type="image">
 						<width>430</width>
 						<height>242</height>
 						<texture colordiffuse="thumb_background" diffuse="items/mask_wide_db.png">common/white.jpg</texture>
 						<aspectratio scalediffuse="false">stretch</aspectratio>
-						<visible>!String.IsEmpty(ListItem.Art(thumb))</visible>
+						<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
 					</control>
 					<control type="textbox">
 						<top>10</top>
@@ -699,7 +699,7 @@
 						<align>center</align>
 						<aligny>center</aligny>
 						<label>$PARAM[thumblabel]</label>
-						<visible>String.IsEmpty(ListItem.Art(thumb))</visible>
+						<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
 					</control>
 					<control type="image">
 						<width>430</width>
@@ -707,10 +707,18 @@
 						<texture diffuse="items/mask_wide_db.png" background="true">$VAR[IconLandscape]</texture>
 						<aspectratio scalediffuse="false">keep</aspectratio>
 						<bordersize>20</bordersize>
+						<visible>!Window.IsVisible(videobookmarks)</visible>
+					</control>
+					<control type="image">
+						<width>430</width>
+						<height>242</height>
+						<texture diffuse="items/mask_wide_db.png" background="true">$VAR[IconLandscape]</texture>
+						<aspectratio scalediffuse="false">scale</aspectratio>
+						<visible>Window.IsVisible(videobookmarks)</visible>
 					</control>
 				</control>
 				<control type="group">
-					<visible>!String.StartsWith(ListItem.Path,pvr://)</visible>
+					<visible>!String.StartsWith(ListItem.Path,pvr://) + !Window.IsVisible(videobookmarks)</visible>
 					<control type="image">
 						<width>430</width>
 						<height>242</height>
