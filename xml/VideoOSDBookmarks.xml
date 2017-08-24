@@ -1,135 +1,231 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <window>
-	<defaultcontrol always="true">2</defaultcontrol>
-	<include>Animation_DialogPopupOpenClose</include>
+	<defaultcontrol always="true">100</defaultcontrol>
 	<controls>
-		<control type="button">
-			<description>background close area</description>
-			<left>0</left>
-			<top>0</top>
-			<width>100%</width>
-			<bottom>546</bottom>
-			<texturefocus />
-			<texturenofocus />
-			<onclick>Action(close)</onclick>
+		<!-- Hidden scrollbar -->
+		<control id="96" type="scrollbar">
+			<left>-1200</left>
+			<width>100</width>
+			<height>1</height>
+			<showonepage>false</showonepage>
+			<orientation>vertical</orientation>
 		</control>
-		<control type="group">
-			<bottom>0</bottom>
-			<height>550</height>
-			<control type="image">
-				<left>0</left>
-				<width>100%</width>
-				<height>410</height>
-				<animation effect="fade" start="0" end="100" time="300">WindowOpen</animation>
-				<animation effect="fade" start="100" end="0" time="300">WindowClose</animation>
-				<texture colordiffuse="E6FFFFFF">dialogs/dialog-bg-nobo.png</texture>
-			</control>
-			<control type="textbox">
-				<left>0</left>
-				<top>1</top>
+		<!-- Content -->
+		<!-- Background -->
+		<include>Background</include>
+		<!-- Dialog -->
+		<control type="grouplist" id="500">
+			<include>Window_OpenClose</include>
+			<width>2130</width>
+			<height>100%</height>
+			<orientation>vertical</orientation>
+			<usecontrolcoords>true</usecontrolcoords>
+			<scrolltime tween="sine" easing="out">400</scrolltime>
+			<itemgap>-80</itemgap>
+			<include>Bounce_Up_Down</include>
+			<!-- Meta -->
+			<control type="group">
 				<width>1920</width>
-				<height>410</height>
-				<align>center</align>
-				<aligny>center</aligny>
-				<font>font45_title</font>
-				<label>$LOCALIZE[31155]</label>
-				<visible>Integer.IsEqual(Container(11).NumItems,0)</visible>
-			</control>
-			<control type="grouplist" id="9001">
-				<orientation>horizontal</orientation>
-				<left>0</left>
-				<top>-10</top>
-				<width>100%</width>
-				<align>center</align>
-				<height>100</height>
-				<onup>11</onup>
-				<ondown>11</ondown>
-				<include content="DefaultDialogButton">
-					<param name="id" value="2" />
-					<param name="label" value="$LOCALIZE[294]" />
-					<param name="width" value="350" />
-				</include>
-				<include content="DefaultDialogButton">
-					<param name="id" value="3" />
-					<param name="label" value="$LOCALIZE[296]" />
-					<param name="width" value="350" />
-				</include>
-				<include content="DefaultDialogButton">
-					<param name="id" value="4" />
-					<param name="label" value="$LOCALIZE[20406]" />
-					<param name="width" value="350" />
-					<param name="visible" value="Control.IsEnabled(4)" />
-				</include>
-			</control>
-			<control type="panel" id="11">
-				<left>0</left>
-				<top>81</top>
-				<width>100%</width>
-				<height>350</height>
-				<onup>9001</onup>
-				<ondown>9001</ondown>
-				<preloaditems>2</preloaditems>
-				<scrolltime tween="sine">200</scrolltime>
-				<orientation>horizontal</orientation>
-				<itemlayout width="360" height="340">
+				<height>604</height>
+				<control type="group">
+					<top>128</top>
+					<height>435</height>
+					<width>1920</width>
+					<!-- poster -->
 					<control type="group">
 						<left>70</left>
 						<control type="image">
-							<left>0</left>
-							<top>5</top>
-							<width>330</width>
-							<height>250</height>
-							<aspectratio>scale</aspectratio>
-							<texture border="4" fallback="DefaultVideo.png">$INFO[ListItem.Art(thumb)]</texture>
-							<bordertexture colordiffuse="border_alpha">colors/black.png</bordertexture>
-							<bordersize>4</bordersize>
+							<top>-2</top>
+							<left>-2</left>
+							<width>282</width>
+							<height>420</height>
+							<texture>items/shadow_poster.png</texture>
 						</control>
-						<control type="label">
-							<left>20</left>
-							<top>255</top>
-							<width>290</width>
-							<height>40</height>
-							<label>$INFO[ListItem.Label][CR][COLOR grey]$INFO[ListItem.Label2][/COLOR]</label>
-							<font>font12</font>
-							<shadowcolor>text_shadow</shadowcolor>
+						<control type="image">
+							<width>276</width>
+							<height>414</height>
+							<texture colordiffuse="green" diffuse="items/mask_poster.png">common/white.jpg</texture>
+							<aspectratio scalediffuse="false">stretch</aspectratio>
+							<visible>String.IsEmpty(Player.Art(poster)) + String.IsEmpty(Player.Art(tvshow.poster))</visible>
+						</control>
+						<control type="textbox">
+							<top>10</top>
+							<left>10</left>
+							<width>256</width>
+							<height>394</height>
+							<font>Light24</font>
 							<align>center</align>
+							<aligny>center</aligny>
+							<label>$VAR[PlayerTitleLabel]</label>
+							<visible>String.IsEmpty(Player.Art(poster)) + String.IsEmpty(Player.Art(tvshow.poster))</visible>
+						</control>
+						<control type="image">
+							<width>276</width>
+							<height>414</height>
+							<texture diffuse="items/mask_poster.png" background="true">$VAR[PlayerIcon]</texture>
+							<aspectratio scalediffuse="false">scale</aspectratio>
 						</control>
 					</control>
-				</itemlayout>
-				<focusedlayout width="360" height="340">
+					<!-- Meta -->
 					<control type="group">
-						<left>70</left>
-						<control type="image">
-							<left>0</left>
-							<top>5</top>
-							<width>330</width>
-							<height>250</height>
-							<aspectratio>scale</aspectratio>
-							<texture border="4" fallback="DefaultVideo.png">$INFO[ListItem.Art(thumb)]</texture>
-							<bordertexture colordiffuse="border_alpha">colors/black.png</bordertexture>
-							<bordersize>4</bordersize>
+						<width>1920</width>
+						<height>604</height>
+						<control type="grouplist">
+							<left>370</left>
+							<orientation>vertical</orientation>
+							<height>500</height>
+							<align>top</align>
+							<itemgap>0</itemgap>
+							<width>1480</width>
+							<control type="label">
+								<width>1040</width>
+								<height>60</height>
+								<label>$INFO[VideoPlayer.Title]</label>
+								<font>Reg37</font>
+								<shadowcolor>text_shadow</shadowcolor>
+							</control>
+							<control type="grouplist">
+								<height>40</height>
+								<width>1040</width>
+								<itemgap>5</itemgap>
+								<orientation>horizontal</orientation>
+								<control type="label">
+									<width>auto</width>
+									<height>24</height>
+									<label></label>
+									<font>Material24</font>
+									<textcolor>red</textcolor>
+									<shadowcolor>text_shadow</shadowcolor>
+									<visible>!String.IsEmpty(VideoPlayer.Rating)</visible>
+								</control>
+								<control type="label">
+									<width>auto</width>
+									<height>24</height>
+									<label>$INFO[VideoPlayer.Rating]   </label>
+									<font>reg22</font>
+									<shadowcolor>text_shadow</shadowcolor>
+									<visible>!String.IsEmpty(VideoPlayer.Rating)</visible>
+								</control>
+								<control type="label">
+									<width>auto</width>
+									<height>24</height>
+									<label>$INFO[VideoPlayer.Season,S,:]$INFO[VideoPlayer.Episode,E]   </label>
+									<font>reg22</font>
+									<shadowcolor>text_shadow</shadowcolor>
+									<visible>!String.IsEmpty(VideoPlayer.Episode)</visible>
+								</control>
+								<control type="label">
+									<width>auto</width>
+									<height>24</height>
+									<label>$LOCALIZE[180]: $VAR[PlayerDuration]   </label>
+									<font>reg22</font>
+									<shadowcolor>text_shadow</shadowcolor>
+									<visible>!String.IsEmpty(Player.Duration)</visible>
+								</control>
+								<control type="label">
+									<width>auto</width>
+									<height>24</height>
+									<label>$LOCALIZE[20074]: $INFO[VideoPlayer.Mpaa]   </label>
+									<font>reg20</font>
+									<shadowcolor>text_shadow</shadowcolor>
+									<visible>!String.IsEmpty(VideoPlayer.Mpaa)</visible>
+								</control>
+								<control type="label">
+									<width>auto</width>
+									<height>24</height>
+									<label>$INFO[VideoPlayer.Year]   </label>
+									<font>reg22</font>
+									<shadowcolor>text_shadow</shadowcolor>
+									<visible>!String.IsEmpty(VideoPlayer.Year) + VideoPlayer.Content(movies)</visible>
+								</control>
+							</control>
+							<control type="grouplist" id="100">
+								<height>75</height>
+								<orientation>horizontal</orientation>
+								<itemgap>5</itemgap>
+								<onright>noop</onright>
+								<onleft>9999</onleft>
+								<control type="button" id="2">
+									<label>$LOCALIZE[294]</label>
+									<onup>SetFocus(6666)</onup>
+									<ondown>SetFocus(11)</ondown>
+								</control>
+								<control type="button" id="3">
+									<label>$LOCALIZE[296]</label>
+									<onup>SetFocus(6666)</onup>
+									<ondown>SetFocus(11)</ondown>
+								</control>
+								<control type="button" id="97">
+									<visible>Control.IsVisible(96)</visible>
+									<label>$LOCALIZE[31013]</label>
+									<onclick>RunScript(script.skin.helper.service,action=textviewer,header='$ESCVAR[TinyInfoDialogHeadline]',message='$ESCVAR[TinyInfoDialogPlot]')</onclick>
+									<onup>SetFocus(6666)</onup>
+									<ondown>SetFocus(11)</ondown>
+								</control>
+							</control>
+							<control type="label">
+								<width>auto</width>
+								<height>40</height>
+								<label>$INFO[VideoPlayer.Genre]</label>
+								<font>reg22</font>
+								<textcolor>emby</textcolor>
+								<shadowcolor>text_shadow</shadowcolor>
+							</control>
+							<control type="textbox">
+								<width>100%</width>
+								<height>130</height>
+								<align>justify</align>
+								<aligny>top</aligny>
+								<label>$INFO[VideoPlayer.Tagline,[B],[/B][CR]]$INFO[VideoPlayer.Plot]</label>
+								<font>Light24Spaced</font>
+								<shadowcolor>text_shadow</shadowcolor>
+								<autoscroll>false</autoscroll>
+								<pagecontrol>96</pagecontrol>
+							</control>
+							<control type="label">
+								<height>20</height>
+							</control>
+							<control type="grouplist">
+								<orientation>horizontal</orientation>
+								<height>65</height>
+								<itemgap>5</itemgap>
+								<width>1040</width>
+								<include>PlayerFlags</include>
+							</control>
 						</control>
-						<control type="label">
-							<left>20</left>
-							<top>255</top>
-							<width>290</width>
-							<height>40</height>
-							<label>$INFO[ListItem.Label][CR][COLOR grey]$INFO[ListItem.Label2][/COLOR]</label>
-							<font>font12</font>
-							<shadowcolor>text_shadow</shadowcolor>
-							<align>center</align>
-						</control>
+						<!-- logo -->
 						<control type="image">
-							<left>0</left>
-							<top>5</top>
-							<width>330</width>
-							<height>250</height>
-							<texture border="8" colordiffuse="button_focus">buttons/thumbnail_focused.png</texture>
-							<visible>Control.HasFocus(11)</visible>
+							<right>70</right>
+							<width>400</width>
+							<height>155</height>
+							<texture>$VAR[PlayerClearlogo]</texture>
+							<aspectratio>keep</aspectratio>
 						</control>
 					</control>
-				</focusedlayout>
+				</control>
 			</control>
+			<!-- Cast -->
+			<include content="WideWidget">
+				<param name="id" value="11"/>
+				<param name="mainlabel" value="$INFO[ListItem.Label]"/>
+				<param name="sublabel" value="$INFO[ListItem.Label2]"/>
+				<param name="headline" value="$LOCALIZE[298]"/>
+				<param name="onup" value="100"/>
+				<param name="ondown" value="SetProperty(BounceDown,1,home)"/>
+				<param name="use_custom_content" value="false"/>
+				<param name="height" value="468"/>
+			</include>
 		</control>
+		<!-- header bar -->
+		<include content="HeaderBar">		
+			<param name="id">100</param>
+			<param name="enabled">false</param>
+			<param name="sidebar_id">9999</param>
+			<param name="custom_animation">Container(500).HasPrevious</param>
+		</include>
+		<!-- side panel -->
+		<include content="SidePanel">
+			<param name="onright">100</param>
+		</include>
 	</controls>
 </window>
