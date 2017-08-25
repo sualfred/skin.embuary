@@ -30,7 +30,13 @@
 			<include>VisAnimation</include>
 			<visible>Skin.HasSetting(VisRandomFanart) + !Skin.HasSetting(VisFanartDisabled)</visible>
 		</control>
-
+		<!-- Busy spinner -->
+		<control type="group" id="99">
+			<visible>Player.Caching</visible>
+			<include content="FullscreenBusySpinner">
+				<param name="colordiffuse" value="white"/>
+			</include>
+		</control>
 		<!-- OSD -->
 		<control type="group" id="99">
 			<visible>Window.IsVisible(musicosd) | Window.IsVisible(seekbar) | Player.Paused | Window.IsVisible(volumebar) | !String.IsEmpty(Window(home).Property(showvisinfo))</visible>
@@ -291,20 +297,7 @@
 					<left>309</left>
 					<right>20</right>
 					<itemgap>0</itemgap>
-					<!--  Current position -->
-					<control type="label" id="99">
-						<width>auto</width>
-						<height>50</height>
-						<aligny>center</aligny>
-						<font>reg24</font>
-						<shadowcolor>text_shadow</shadowcolor>
-						<label>$VAR[PlayerTimeLabels]</label>
-						<visible>!String.IsEmpty(Player.Time)</visible>
-					</control>
-					<control type="label" id="99">
-						<description>Spacer</description>
-						<width>15</width>
-					</control>
+					<include>PlayerBottomLabels</include>
 				</control>
 				<!-- Volume -->
 				<!-- Icon -->

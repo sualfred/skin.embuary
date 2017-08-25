@@ -3,6 +3,64 @@
 	<onload>Dialog.Close(fullscreeninfo)</onload>
 	<defaultcontrol always="true">603</defaultcontrol>
 	<controls>
+		<!-- Menu -->
+		<control type="group">
+			<visible>ControlGroup(700).HasFocus + !Window.IsVisible(DialogSettings.xml) + !Window.IsVisible(playerprocessinfo) + !Window.IsVisible(visualisationpresetlist)</visible>
+			<include>Visible_PopupOpenClose</include>
+			<centerleft>50%</centerleft>
+			<width>384</width>
+			<centertop>50%</centertop>
+			<height>970</height>
+			<control type="grouplist" id="700">
+				<orientation>vertical</orientation>
+				<height>auto</height>
+				<align>center</align>
+				<itemgap>0</itemgap>
+				<onright>close</onright>
+				<onleft>close</onleft>
+				<onback>612</onback>
+				<usecontrolcoords>true</usecontrolcoords>
+				<control type="image">
+					<width>100%</width>
+					<height>10</height>
+					<texture border="5" colordiffuse="panel">common/menu_top.png</texture>
+				</control>
+				<control type="button" id="701">
+					<include content="CommonButton"/>
+					<label>$LOCALIZE[250]</label>
+					<onclick>ActivateWindow(visualisationpresetlist)</onclick>
+				</control>
+				<control type="button" id="702">
+					<include content="CommonButton"/>
+					<label>$LOCALIZE[31039]</label>
+					<onclick>ActivateWindow(osdaudiosettings)</onclick>
+				</control>
+				<control type="button" id="703">
+					<include content="CommonButton"/>
+					<label>$LOCALIZE[590]</label>
+					<label2>[COLOR lightgrey]$VAR[PlaylistShuffleButtonLabel][/COLOR]</label2>
+					<onclick>PlayerControl(random)</onclick>
+					<visible>!String.IsEqual(Playlist.Length(music),0)</visible>
+				</control>
+				<control type="button" id="704">
+					<include content="CommonButton"/>
+					<label>$LOCALIZE[486]</label>
+					<label2>[COLOR lightgrey]$VAR[PlaylistRepeatButtonLabel][/COLOR]</label2>
+					<onclick>PlayerControl(Repeat)</onclick>
+					<visible>!String.IsEqual(Playlist.Length(music),0)</visible>
+				</control>
+				<control type="button" id="705">
+					<include content="CommonButton"/>
+					<label>$LOCALIZE[31041]</label>
+					<onclick>ActivateWindow(playerprocessinfo)</onclick>
+				</control>
+				<control type="image">
+					<width>100%</width>
+					<height>10</height>
+					<texture border="5" colordiffuse="panel">common/menu_bottom.png</texture>
+				</control>
+			</control>
+		</control>
 		<!--Bottom-->
 		<control type="group" id="1">
 			<bottom>0</bottom>
@@ -52,30 +110,7 @@
 					</include>
 					<onclick>PlayerControl(Next)</onclick>
 				</control>
-				<control type="togglebutton" id="611">
-					<include content="PlayerButtons">
-						<param name="type" value="shuffle"/>
-					</include>
-					<selected>Playlist.IsRandom</selected>
-					<onclick>PlayerControl(random)</onclick>
-				</control>
-				<control type="group" id="612">
-					<width>50</width>
-					<heigth>50</heigth>
-					<control type="image">
-						<texture colordiffuse="$VAR[PlaylistRepeatButtonColor]">$VAR[PlaylistRepeatButtonTexture]</texture>
-					</control>
-					<control type="togglebutton" id="613">
-						<texturenofocus>-</texturenofocus>
-						<texturefocus>-</texturefocus>
-						<alttexturenofocus>-</alttexturenofocus>
-						<alttexturefocus>-</alttexturefocus>
-						<onleft>611</onleft>
-						<onright>614</onright>
-						<onclick>PlayerControl(Repeat)</onclick>
-					</control>
-				</control>
-				<control type="button" id="614">
+				<control type="button" id="607">
 					<include content="PlayerButtons">
 						<param name="type" value="playlist"/>
 					</include>
@@ -83,50 +118,17 @@
 					<onclick>ActivateWindow(musicplaylist)</onclick>
 					<visible>Integer.IsGreater(MusicPlayer.PlaylistLength,0)</visible>
 				</control>
-				<control type="button" id="615">
+				<control type="button" id="6080">
 					<include content="PlayerButtons">
 						<param name="type" value="config"/>
 					</include>
-					<onclick>SetProperty(Dialog.NumItems,3)</onclick>
-					<onclick>SetProperty(Dialog.1.Label,$LOCALIZE[13395])</onclick>
-					<onclick>SetProperty(Dialog.1.BuiltIn,ActivateWindow(visualisationpresetlist))</onclick>
-					<onclick>SetProperty(Dialog.2.Label,$LOCALIZE[31039])</onclick>
-					<onclick>SetProperty(Dialog.2.BuiltIn,ActivateWindow(osdaudiosettings))</onclick>
-					<onclick>SetProperty(Dialog.3.Label,$LOCALIZE[31040])</onclick>
-					<onclick>SetProperty(Dialog.3.BuiltIn,ActivateWindow(subtitlesearch))</onclick>
-					<onclick>SetProperty(Dialog.4.Label,$LOCALIZE[31041])</onclick>
-					<onclick>SetProperty(Dialog.4.BuiltIn,ActivateWindow(playerprocessinfo))</onclick>
-					<onclick>RunScript(script.toolbox,info=selectdialog,header=$LOCALIZE[33063])</onclick> 
+					<onclick>SetFocus(700)</onclick>
 				</control>
 				<control type="label">
 					<description>Spacer</description>
 					<width>10</width>
 				</control>
-				<!--  Current position -->
-				<control type="label" id="1">
-					<width>auto</width>
-					<height>50</height>
-					<aligny>center</aligny>
-					<font>reg24</font>
-					<shadowcolor>text_shadow</shadowcolor>
-					<label>$VAR[PlayerTimeLabels]</label>
-					<visible>!String.IsEmpty(Player.Time)</visible>
-				</control>
-				<control type="label">
-					<description>Spacer</description>
-					<width>15</width>
-				</control>
-				<!--  Timeshift position -->
-				<control type="label" id="1">
-					<width>auto</width>
-					<height>50</height>
-					<aligny>center</aligny>
-					<font>reg24</font>
-					<textcolor>emby</textcolor>
-					<shadowcolor>text_shadow</shadowcolor>
-					<label>$LOCALIZE[31038]</label>
-					<visible>Pvr.IsTimeShift</visible>
-				</control>
+				<include>PlayerBottomLabels</include>
 			</control>
 		</control>
 	</controls>

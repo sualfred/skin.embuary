@@ -1063,12 +1063,70 @@
 	</include>
 	<!-- Busy spinner -->
 	<include name="FullscreenBusySpinner">
-		<control type="image" id="99">
-			<centerleft>50%</centerleft>
-			<centertop>50%</centertop>
-			<width>150</width>
-			<height>150</height>
-			<texture colordiffuse="green">common/spinner.gif</texture>
+		<param name="colordiffuse">green</param>
+		<definition>
+			<control type="image" id="99">
+				<centerleft>50%</centerleft>
+				<centertop>50%</centertop>
+				<width>150</width>
+				<height>150</height>
+				<texture colordiffuse="$PARAM[colordiffuse]">common/spinner.gif</texture>
+			</control>
+		</definition>
+	</include>
+	<!-- Player bottom labels -->
+	<include name="PlayerBottomLabels">
+		<control type="label" id="99">
+			<width>auto</width>
+			<height>50</height>
+			<aligny>center</aligny>
+			<font>reg24</font>
+			<shadowcolor>text_shadow</shadowcolor>
+			<label>$VAR[PlayerTimeLabels]</label>
+			<visible>!String.IsEmpty(Player.Time)</visible>
+		</control>
+		<control type="label" id="99">
+			<description>Spacer</description>
+			<width>15</width>
+			<visible>!String.IsEmpty(Player.Time)</visible>
+		</control>
+		<control type="label" id="99">
+			<height>50</height>
+			<width>auto</width>
+			<aligny>center</aligny>
+			<font>Material34</font>
+			<textcolor>text_white</textcolor>
+			<label>$VAR[PlaylistRepeatLabel]</label>
+			<visible>Playlist.IsRepeat | Playlist.IsRepeatOne</visible>
+		</control>
+		<control type="label" id="99">
+			<description>Spacer</description>
+			<width>15</width>
+			<visible>Playlist.IsRepeat | Playlist.IsRepeatOne</visible>
+		</control>
+		<control type="label" id="99">
+			<height>50</height>
+			<width>auto</width>
+			<aligny>center</aligny>
+			<font>Material34</font>
+			<textcolor>text_white</textcolor>
+			<label></label>
+			<visible>Playlist.IsRandom</visible>
+		</control>
+		<control type="label" id="99">
+			<description>Spacer</description>
+			<width>15</width>
+			<visible>Playlist.IsRandom</visible>
+		</control>
+		<control type="label" id="99">
+			<width>auto</width>
+			<height>50</height>
+			<aligny>center</aligny>
+			<font>reg24</font>
+			<textcolor>emby</textcolor>
+			<shadowcolor>text_shadow</shadowcolor>
+			<label>$LOCALIZE[31038]</label>
+			<visible>Pvr.IsTimeShift</visible>
 		</control>
 	</include>
 </includes>
