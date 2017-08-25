@@ -11,24 +11,25 @@
 			<visible>Visualisation.Enabled</visible>
 		</control>
 		<!-- Fanart -->
-		<control type="image">
-			<include>FullscreenDimensions</include>
-			<fadetime>400</fadetime>
-			<texture background="true">$INFO[Window(Home).Property(SkinHelper.Player.Art.Fanart)]</texture>
-			<include>VisAnimation</include>
-			<colordiffuse>vis_diffuse</colordiffuse>
-			<visible>!Skin.HasSetting(VisFanartDisabled) + [!Skin.HasSetting(VisRandomFanart) | String.IsEmpty(Window(Home).Property(SkinHelper.Player.Art.ExtraFanArt))]</visible>
-		</control>
-		<control type="multiimage">
-			<include>FullscreenDimensions</include>
-			<fadetime>400</fadetime>
-			<randomize>true</randomize>
-			<aspectratio>scale</aspectratio>
-			<timeperimage>10000</timeperimage>
-			<imagepath background="true">$INFO[Window(Home).Property(SkinHelper.Player.Art.ExtraFanArt)]</imagepath>
-			<colordiffuse>vis_diffuse</colordiffuse>
-			<include>VisAnimation</include>
-			<visible>Skin.HasSetting(VisRandomFanart) + !Skin.HasSetting(VisFanartDisabled)</visible>
+		<control type="group">
+			<animation effect="fade" end="33" start="100" time="0" condition="Visualisation.Enabled">Conditional</animation>
+			<control type="image">
+				<include>FullscreenDimensions</include>
+				<fadetime>400</fadetime>
+				<texture background="true">$INFO[Window(Home).Property(SkinHelper.Player.Art.Fanart)]</texture>
+				<include>VisAnimation</include>
+				<visible>!Skin.HasSetting(VisFanartDisabled) + [!Skin.HasSetting(VisRandomFanart) | String.IsEmpty(Window(Home).Property(SkinHelper.Player.Art.ExtraFanArt))]</visible>
+			</control>
+			<control type="multiimage">
+				<include>FullscreenDimensions</include>
+				<fadetime>400</fadetime>
+				<randomize>true</randomize>
+				<aspectratio>scale</aspectratio>
+				<timeperimage>10000</timeperimage>
+				<imagepath background="true">$INFO[Window(Home).Property(SkinHelper.Player.Art.ExtraFanArt)]</imagepath>
+				<include>VisAnimation</include>
+				<visible>Skin.HasSetting(VisRandomFanart) + !Skin.HasSetting(VisFanartDisabled)</visible>
+			</control>
 		</control>
 		<!-- Busy spinner -->
 		<control type="group" id="99">
