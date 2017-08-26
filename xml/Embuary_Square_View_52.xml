@@ -8,7 +8,7 @@
 			<animation condition="Integer.IsGreaterOrEqual(Container(52).NumItems,5) + Integer.IsLessOrEqual(Container(52).NumItems,6)" effect="slide" start="0,0" end="360,0">Conditional</animation>
 			<animation condition="Integer.IsGreaterOrEqual(Container(52).NumItems,3) + Integer.IsLessOrEqual(Container(52).NumItems,4)" effect="slide" start="0,0" end="540,0">Conditional</animation>
 			<animation condition="Integer.IsLessOrEqual(Container(52).NumItems,2)" effect="slide" start="0,0" end="720,0">Conditional</animation>
-			<!-- poster -->
+			<!-- square -->
 			<control id="52" type="panel">
 				<visible>!Container.Content(seasons) + !Container.Content(episodes) + !Container.Content(movies) + !Container.Content(tvshows)</visible>
 				<top>115</top>
@@ -18,7 +18,10 @@
 				<onup condition="!Control.IsVisible(7000)">SetFocus(6666)</onup>
 				<ondown>noop</ondown>
 				<onleft>9999</onleft>
-				<onright>noop</onright>
+				<include content="Bounce_Right">
+					<param name="id">52</param>
+				</include>
+				<onright>SetProperty(BounceRight,1,home)</onright>
 				<scrolltime>200</scrolltime>
 				<movement>2</movement>
 				<orientation>horizontal</orientation>

@@ -1488,122 +1488,75 @@
 			</control>
 		</definition>
 	</include>
-	<!-- Favourites List -->
-	<include name="FavListLayout">
-		<param name="focused">false</param>
+	<!-- Square Favourites -->
+	<include name="SquareFavourits">
 		<param name="mainlabel">$VAR[MainListLabel]</param>
 		<param name="sublabel">$VAR[SubListLabel]</param>
-		<param name="rightlabel">$VAR[ListItemDuration]</param>
+		<param name="thumblabel">$VAR[MainListLabel]</param>
+		<param name="focused">false</param>
+		<param name="visible">true</param>
 		<definition>
-			<control type="image">
-				<left>-70</left>
-				<top>-5</top>
-				<height>1</height>
-				<width>1190</width>
-				<texture colordiffuse="list_hover">common/white.jpg</texture>
-				<aspectratio>stretch</aspectratio>
-				<visible>!$PARAM[focused]</visible>
-			</control>
-			<control type="image">
-				<left>-70</left>
-				<top>-5</top>
-				<height>110</height>
-				<width>1190</width>
-				<texture colordiffuse="list_hover">common/white.jpg</texture>
-				<aspectratio>stretch</aspectratio>
-				<visible>$PARAM[focused]</visible>
-			</control>
 			<control type="group">
-				<visible>![Container.Content(tvshows) | Container.Content(movies)]</visible>
-				<top>13</top>
-				<control type="image">
-					<width>67</width>
-					<height>67</height>
-					<texture diffuse="items/mask_square_mini.png" background="true">$INFO[ListItem.Icon]</texture>
-					<aspectratio scalediffuse="false">keep</aspectratio>
-					<bordersize>0</bordersize>
-					<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
-				</control>
-			</control>
-			<control type="group">
-				<visible>Container.Content(tvshows) | Container.Content(movies)</visible>
+				<visible>$PARAM[visible]</visible>
 				<control type="image">
 					<top>-2</top>
 					<left>-2</left>
-					<width>73</width>
-					<height>106</height>
-					<texture>items/shadow_poster_mini.png</texture>
+					<width>346</width>
+					<height>346</height>
+					<texture>items/shadow_square_db.png</texture>
 				</control>
 				<control type="image">
-					<width>67</width>
-					<height>100</height>
-					<texture colordiffuse="green" diffuse="items/mask_poster_mini.png" background="true">common/white.jpg</texture>
-					<aspectratio scalediffuse="false">scale</aspectratio>
-					<visible>String.IsEmpty(ListItem.Art(poster)) + String.IsEmpty(ListItem.Art(tvshow.poster))</visible>
+					<width>340</width>
+					<height>340</height>
+					<texture colordiffuse="green" diffuse="items/mask_square_db.png">common/white.jpg</texture>
+					<aspectratio scalediffuse="false">stretch</aspectratio>
+					<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+				</control>
+				<control type="image">
+					<width>340</width>
+					<height>340</height>
+					<texture colordiffuse="thumb_background" diffuse="items/mask_square_db.png">common/white.jpg</texture>
+					<aspectratio scalediffuse="false">stretch</aspectratio>
+					<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
 				</control>
 				<control type="textbox">
 					<top>10</top>
 					<left>10</left>
-					<width>47</width>
-					<height>80</height>
-					<font>Material24</font>
+					<width>320</width>
+					<height>320</height>
+					<font>Light24</font>
 					<align>center</align>
 					<aligny>center</aligny>
-					<label>$VAR[DefaultIcon]</label>
-					<visible>String.IsEmpty(ListItem.Art(poster)) + String.IsEmpty(ListItem.Art(tvshow.poster))</visible>
+					<label>$PARAM[thumblabel]</label>
+					<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
 				</control>
 				<control type="image">
-					<width>67</width>
-					<height>100</height>
-					<texture diffuse="items/mask_poster_mini.png" background="true">$VAR[IconPoster]</texture>
-					<aspectratio scalediffuse="false">scale</aspectratio>
+					<width>340</width>
+					<height>340</height>
+					<texture diffuse="items/mask_square_db.png" background="true">$INFO[ListItem.Icon]</texture>
+					<aspectratio scalediffuse="true">keep</aspectratio>
+					<bordersize>20</bordersize>
+					<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
 				</control>
-				<include content="bubble_mini_overlay">
-					<param name="left" value="45"/>
-					<param name="top" value="5"/>
+				<control type="image">
+					<left>-12</left>
+					<top>-7</top>
+					<width>364</width>
+					<height>364</height>
+					<texture colordiffuse="focused">items/focus_square_db.png</texture>
+					<aspectratio>scale</aspectratio>
+					<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
+					<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
+				</control>
+				<include content="widget_labels">
+					<param name="top">350</param>
+					<param name="width">340</param>
+					<param name="id">$PARAM[id]</param>
+					<param name="mainlabel">$PARAM[mainlabel]</param>
+					<param name="sublabel">$PARAM[sublabel]</param>
+					<param name="focused">$PARAM[focused]</param>
+					<param name="visible_labels">$PARAM[visible_labels]</param>
 				</include>
-			</control>
-			<control type="label">
-				<top>20</top>
-				<left>100</left>
-				<width>990</width>
-				<height>31</height>
-				<font>Reg24</font>
-				<textcolor>white</textcolor>
-				<shadowcolor>text_shadow</shadowcolor>
-				<label>$PARAM[mainlabel]</label>
-			</control>
-			<control type="label">
-				<left>100</left>
-				<top>51</top>
-				<width>990</width>
-				<height>31</height>
-				<font>reg24</font>
-				<textcolor>lightgrey</textcolor>
-				<shadowcolor>text_shadow</shadowcolor>
-				<label>$PARAM[sublabel]</label>
-			</control>
-			<control type="label">
-				<top>20</top>
-				<right>0</right>
-				<width>400</width>
-				<height>31</height>
-				<align>right</align>
-				<font>reg24</font>
-				<textcolor>white</textcolor>
-				<shadowcolor>text_shadow</shadowcolor>
-				<label>$PARAM[rightlabel]</label>
-			</control>
-			<control type="label">
-				<top>51</top>
-				<right>0</right>
-				<width>400</width>
-				<height>31</height>
-				<align>right</align>
-				<font>reg24</font>
-				<textcolor>lightgrey</textcolor>
-				<shadowcolor>text_shadow</shadowcolor>
-				<label>$PARAM[rightlabel2]</label>
 			</control>
 		</definition>
 	</include>

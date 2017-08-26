@@ -5,186 +5,65 @@
 		<param name="sublabel">$VAR[SubListLabel]</param>
 		<param name="thumblabel">$VAR[MainListLabel]</param>
 		<definition>
-			<!-- Hidden scrollbar -->
-			<control id="96" type="scrollbar">
-				<left>-1200</left>
-				<width>100</width>
-				<height>1</height>
-				<showonepage>false</showonepage>
-				<orientation>vertical</orientation>
-			</control>
 			<control type="group">
 				<include>Visible_OpenClose</include>
-				<!-- Thumb image -->
-				<control type="group">
-					<visible>true</visible>
-					<right>70</right>
-					<top>133</top>
-					<width>590</width>
-					<control type="group">
-						<control type="image">
-							<top>-2</top>
-							<left>-2</left>
-							<width>596</width>
-							<height>338</height>
-							<texture>items/shadow_wide_big.png</texture>
-						</control>
-						<control type="group">
-							<visible>String.StartsWith(ListItem.Path,pvr://)</visible>
-							<control type="image">
-								<width>590</width>
-								<height>332</height>
-								<texture colordiffuse="green" diffuse="items/mask_wide_big.png">common/white.jpg</texture>
-								<aspectratio scalediffuse="false">stretch</aspectratio>
-								<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
-							</control>
-							<control type="image">
-								<width>590</width>
-								<height>332</height>
-								<texture colordiffuse="darkbutton" diffuse="items/mask_wide_big.png">common/white.jpg</texture>
-								<aspectratio scalediffuse="false">stretch</aspectratio>
-								<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
-							</control>
-							<control type="textbox">
-								<top>10</top>
-								<left>10</left>
-								<width>570</width>
-								<height>312</height>
-								<font>Light24</font>
-								<align>center</align>
-								<aligny>center</aligny>
-								<label>$PARAM[thumblabel]</label>
-								<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
-							</control>
-							<control type="image">
-								<width>590</width>
-								<height>332</height>
-								<texture diffuse="items/mask_wide_db.png" background="true">$INFO[ListItem.Thumb]</texture>
-								<fadetime>200</fadetime>
-								<aspectratio scalediffuse="false">keep</aspectratio>
-								<bordersize>20</bordersize>
-							</control>
-						</control>
-						<control type="group">
-							<visible>!String.StartsWith(ListItem.Path,pvr://)</visible>
-							<control type="image">
-								<width>590</width>
-								<height>332</height>
-								<texture colordiffuse="green" diffuse="items/mask_wide_big.png">common/white.jpg</texture>
-								<aspectratio scalediffuse="false">stretch</aspectratio>
-								<visible>String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(fanart)) + ![!String.IsEmpty(ListItem.Art(thumb)) + Container.Content(episodes)]</visible>
-							</control>
-							<control type="textbox">
-								<top>10</top>
-								<left>10</left>
-								<width>570</width>
-								<height>312</height>
-								<font>Light24</font>
-								<align>center</align>
-								<aligny>center</aligny>
-								<label>$VAR[MainListLabel]</label>
-								<visible>String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(fanart)) + ![!String.IsEmpty(ListItem.Art(thumb)) + Container.Content(episodes)]</visible>
-							</control>
-							<control type="image">
-								<width>590</width>
-								<height>332</height>
-								<texture diffuse="items/mask_wide_db.png" background="true">$INFO[ListItem.Thumb]</texture>
-								<fadetime>400</fadetime>
-								<aspectratio scalediffuse="false">keep</aspectratio>
-							</control>
-						</control>
-						<control type="group">
-							<width>590</width>
-							<height>332</height>
-							<include>bubble_overlay</include>
-							<include content="bubble_play">
-								<param name="top" value="200"/>
-							</include>
-						</control>
-						<include content="progress">
-							<param name="top" value="328"/>
-							<param name="width" value="590"/>
-						</include>
-						<include content="widget_labels">
-							<param name="top">348</param>
-							<param name="width">590</param>
-							<param name="mainlabel">$PARAM[mainlabel]</param>
-							<param name="sublabel">$PARAM[sublabel]</param>
-						</include>
-					</control>
-					<control type="grouplist">
-						<orientation>vertical</orientation>
-						<top>425</top>
-						<height>500</height>
-						<align>top</align>
-						<itemgap>00</itemgap>
-						<width>590</width>			
-						<control type="textbox" id="97">
-							<width>590</width>
-							<height>455</height>
-							<align>justify</align>
-							<aligny>top</aligny>
-							<label>$VAR[ListViewPlot]</label>
-							<font>Light24Spaced</font>
-							<shadowcolor>text_shadow</shadowcolor>
-							<autoscroll>false</autoscroll>
-						</control>
-						<control type="label">
-							<width>auto</width>
-							<align>center</align>
-							<font>Material44</font>
-							<textcolor>panel_text</textcolor>
-							<label></label>
-							<visible>Container(97).HasNext</visible>
-						</control>				
-					</control>
-				</control>
-				<!-- List -->
-				<control id="450" type="list">
-					<top>128</top>
-					<width>1230</width>
-					<height>946</height>
+				<animation condition="Integer.IsGreaterOrEqual(Container(450).NumItems,7) + Integer.IsLessOrEqual(Container(450).NumItems,8)" effect="slide" start="0,0" end="180,0">Conditional</animation>
+				<animation condition="Integer.IsGreaterOrEqual(Container(450).NumItems,5) + Integer.IsLessOrEqual(Container(450).NumItems,6)" effect="slide" start="0,0" end="360,0">Conditional</animation>
+				<animation condition="Integer.IsGreaterOrEqual(Container(450).NumItems,3) + Integer.IsLessOrEqual(Container(450).NumItems,4)" effect="slide" start="0,0" end="540,0">Conditional</animation>
+				<animation condition="Integer.IsLessOrEqual(Container(450).NumItems,2)" effect="slide" start="0,0" end="720,0">Conditional</animation>
+				<!-- square -->
+				<control id="450" type="panel">
+					<top>115</top>
+					<width>1920</width>
+					<height>1080</height>
 					<onup condition="Control.IsVisible(7000)">SetFocus(7000)</onup>
 					<onup condition="!Control.IsVisible(7000)">SetFocus(6666)</onup>
-					<onright condition="Control.IsVisible(7000)">SetFocus(7000)</onright>
-					<onright condition="!Control.IsVisible(7000)">SetFocus(6666)</onright>
 					<ondown>noop</ondown>
 					<onleft>9999</onleft>
-					<defaultcontrol always="true">0</defaultcontrol>
-					<focusposition>1</focusposition>
-					<orientation>vertical</orientation>
-					<viewtype label="535">list</viewtype>
-					<pagecontrol>17</pagecontrol>
-					<scrolltime>0</scrolltime>
+					<include content="Bounce_Right">
+						<param name="id">450</param>
+					</include>
+					<onright>SetProperty(BounceRight,1,home)</onright>
+					<scrolltime>200</scrolltime>
+					<movement>2</movement>
+					<orientation>horizontal</orientation>
 					<preloaditems>4</preloaditems>
-					<itemlayout height="110" width="1160">
+					<defaultcontrol always="true">0</defaultcontrol>
+					<viewtype label="$LOCALIZE[31005]">panel</viewtype>
+					<pagecontrol>17</pagecontrol>
+					<itemlayout width="360" height="440">
 						<control type="group">
-							<top>10</top>
 							<left>70</left>
-							<include content="FavListLayout">
-								<param name="mainlabel">$INFO[ListItem.Label]</param>
+							<top>64</top>
+							<include content="SquareFavourits">
+								<param name="mainlabel" value="$INFO[ListItem.Label]" />
+								<param name="focused" value="false" />
+								<param name="id" value="450" />
 							</include>
 						</control>
 					</itemlayout>
-					<focusedlayout height="110" width="1160">
-						<control type="group">
-							<top>10</top>
+					<focusedlayout width="360" height="440">
+						<include>SetPropertyOnFocus</include>
+						<control type="group">							
 							<left>70</left>
-							<include content="FavListLayout">
-								<param name="focused" value="true"/>
-								<param name="mainlabel">$INFO[ListItem.Label]</param>
+							<top>64</top>
+							<include content="SquareFavourits">
+								<param name="mainlabel" value="$INFO[ListItem.Label]" />
+								<param name="focused" value="true" />
+								<param name="id" value="450" />
 							</include>
 						</control>
 					</focusedlayout>
 				</control>
-				<include content="ScrollbarVertical"/>
+				<include content="list_mask">
+					<param name="height" value="1022"/>
+					<param name="width" value="75"/>
+					<param name="top" value="58"/>
+					<param name="id" value="52"/>
+					<param name="visible_forced" value="true"/>
+				</include>
+				<include content="ScrollbarHorizontal"/>
 			</control>
-			<include content="list_mask_vertical">
-				<param name="height" value="70"/>
-				<param name="icon_width" value="1230"/>
-				<param name="id" value="53"/>
-				<param name="visible_forced" value="true"/>
-			</include>
 		</definition>
 	</include>
 </includes>
