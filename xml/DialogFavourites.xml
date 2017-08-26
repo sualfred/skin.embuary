@@ -1,76 +1,122 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!--450-->
 <window>
 	<defaultcontrol always="true">450</defaultcontrol>
-	<include>Animation_DialogPopupOpenClose</include>
+	<backgroundcolor>background</backgroundcolor>
+	<menucontrol>9999</menucontrol>
 	<controls>
+		<include>Background</include>
+
+		<control type="group">			
+			<include>Window_OpenClose</include>
+
+			<include>Favourites_View_450</include>
+
+			<control type="group">
+				<visible>!Control.IsVisible(54) + !Control.IsVisible(55)</visible>
+				<animation effect="slide" start="0,0" end="0,-14" time="0" condition="Control.IsVisible(50)">Conditional</animation>
+				<animation effect="slide" start="0,0" end="0,5" time="0" condition="Control.IsVisible(52)">Conditional</animation>
+				<animation effect="slide" start="0,0" end="0,-18" time="0" condition="Control.IsVisible(53)">Conditional</animation>
+				<top>93</top>
+				<width>1920</width>
+				<height>40</height>
+				<control type="group">
+					<include content="JumpToLetter">
+						<param name="visible" value="[Container.HasNext | Container.HasPrevious] + $EXP[ExpJumpToLetter]"/>
+					</include>
+				</control>
+				<control type="label">
+					<visible>![Container.HasNext | Container.HasPrevious] | !$EXP[ExpJumpToLetter]</visible>
+					<centerleft>50%</centerleft>
+					<width>1215</width>
+					<height>40</height>
+					<font>Med18</font>
+					<align>center</align>
+					<aligny>center</aligny>
+					<textcolor>softgrey</textcolor>
+					<shadowcolor>text_shadow</shadowcolor>
+					<label>$INFO[Container.SortMethod,$LOCALIZE[581] ","]$INFO[Container.SortOrder, / $LOCALIZE[580] ","]</label>
+				</control>
+			</control>
+
+		</control>
+
+		<!-- Menu control -->
 		<control type="group">
-			<centertop>50%</centertop>
-			<centerleft>50%</centerleft>
-			<width>1540</width>
-			<height>858</height>
-			<include content="DialogBackgroundCommons">
-				<param name="width" value="1540" />
-				<param name="height" value="858" />
-				<param name="header_label" value="$LOCALIZE[1036]" />
-				<param name="header_id" value="2" />
+			<visible>ControlGroup(4000).HasFocus</visible>
+			<include>FullscreenDimensions</include>
+			<include>Visible_PopupOpenClose</include>
+			<include content="DiffuseMask">
+				<param name="visible">true</param>
 			</include>
-			<include content="UpDownArrows">
-				<param name="container_id" value="450" />
-				<param name="posx" value="746" />
-				<param name="up_posy" value="-40" />
-				<param name="down_posy" value="876" />
-			</include>
-			<control type="scrollbar" id="60">
-				<right>0</right>
-				<top>70</top>
-				<width>12</width>
-				<bottom>0</bottom>
-				<onleft>450</onleft>
-				<onright>450</onright>
-				<orientation>vertical</orientation>
-			</control>
-			<control type="panel" id="450">
-				<left>10</left>
-				<top>70</top>
-				<width>1600</width>
-				<bottom>0</bottom>
-				<onleft>60</onleft>
-				<onright>60</onright>
-				<onup>450</onup>
-				<ondown>450</ondown>
-				<preloaditems>2</preloaditems>
-				<pagecontrol>60</pagecontrol>
-				<scrolltime tween="sine">200</scrolltime>
-				<orientation>vertical</orientation>
-				<itemlayout width="300" height="380">
-					<control type="group">
-						<top>10</top>
-						<include content="InfoWallMusicLayout">
-							<param name="fallback_image" value="DefaultFavourites.png" />
-						</include>
+			<control type="group">
+				<centerleft>50%</centerleft>
+				<width>284</width>
+				<centertop>50%</centertop>
+				<height>970</height>
+				<control type="grouplist" id="4000">
+					<orientation>vertical</orientation>
+					<height>auto</height>
+					<align>center</align>
+					<itemgap>0</itemgap>
+					<onright>50</onright>
+					<onleft>50</onleft>
+					<onback>50</onback>
+					<usecontrolcoords>true</usecontrolcoords>
+					<control type="image">
+						<width>100%</width>
+						<height>10</height>
+						<texture colordiffuse="panel">common/menu_top.png</texture>
 					</control>
-				</itemlayout>
-				<focusedlayout width="300">
-					<control type="group">
-						<top>10</top>
-						<include content="InfoWallMusicLayout">
-							<param name="fallback_image" value="DefaultFavourites.png" />
-							<param name="focused" value="true" />
-						</include>
+					<control type="button" id="10">
+						<include content="CommonButton"/>
+						<label>$LOCALIZE[341]</label>
 					</control>
-				</focusedlayout>
-			</control>
-			<control type="textbox">
-				<left>300</left>
-				<top>90</top>
-				<width>900</width>
-				<bottom>0</bottom>
-				<aligny>center</aligny>
-				<align>center</align>
-				<label>$LOCALIZE[31025]</label>
-				<font>font45_title</font>
-				<visible>Integer.IsEqual(Container(450).NumItems,0)</visible>
+					<control type="togglebutton" id="4">
+						<include content="CommonButton"/>
+						<label>$LOCALIZE[580]: $LOCALIZE[584]</label>
+						<altlabel>$LOCALIZE[580]: $LOCALIZE[585]</altlabel>
+					</control>
+					<control type="button" id="3">
+						<include content="CommonButton"/>
+					</control>
+					<control type="button" id="5">
+						<include content="CommonButton"/>
+						<label>Switch to file mode</label>
+						<visible>false</visible>
+					</control>
+					<control type="button" id="6">
+						<include content="CommonButton"/>
+						<label>$LOCALIZE[341]</label>
+						<visible>System.HasMediaDVD</visible>
+					</control>
+					<control type="button" id="11">
+						<include content="CommonButton"/>
+						<label>Unlock shares</label>
+						<visible>false</visible>
+					</control>
+					<control type="button" id="19">
+						<include content="CommonButton"/>
+						<label>$LOCALIZE[31008]</label>
+					</control>
+					<control type="image">
+						<width>100%</width>
+						<height>10</height>
+						<texture colordiffuse="panel">common/menu_bottom.png</texture>
+					</control>
+				</control>
 			</control>
 		</control>
+
+		<!-- header bar -->
+		<include content="HeaderBar">		
+			<param name="id">50</param>
+			<param name="enabled">false</param>
+			<param name="sidebar_id">9999</param>
+			<param name="custom_animation">[[Control.IsVisible(54) + Container(540).HasPrevious]] | [Control.IsVisible(55) + Container(550).HasPrevious]</param>
+		</include>
+		<!-- side panel -->
+		<include content="SidePanel">
+			<param name="onright">50</param>
+		</include>
 	</controls>
 </window>
