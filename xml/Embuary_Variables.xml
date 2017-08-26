@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 	<!-- Embcon/Native DB vars -->
+	<variable name="View55_Cast_Content">
+		<value condition="String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">plugin://plugin.video.embycon?mode=WIDGET_CONTENT_CAST&amp;id=$INFO[Window(home).Property(EmbyID)]</value>
+		<value>plugin://script.skin.helper.service/?action=getcast&amp;tvshow=$INFO[Window(home).Property(TVShowDBID)]</value>
+	</variable>
 	<variable name="View54_Cast_Content">
 		<value condition="String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">plugin://plugin.video.embycon?mode=WIDGET_CONTENT_CAST&amp;id=$INFO[Window(home).Property(EmbyID)]</value>
 		<value>plugin://script.skin.helper.service/?action=getcast&amp;tvshow=$INFO[Window(home).Property(TVShowDBID)]</value>
@@ -9,9 +13,22 @@
 		<value condition="String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">plugin://plugin.video.embycon?mode=WIDGET_CONTENT_NEXTUP&amp;id=$INFO[Window(home).Property(EmbyID)]</value>
 		<value>videodb://inprogresstvshows/$INFO[Window(home).Property(TVShowDBID)]/-2/?tvshowid=$INFO[Window(home).Property(TVShowDBID)]</value>
 	</variable>
+	<variable name="InfoDialog_NextUp_Content">
+		<value condition="String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">plugin://plugin.video.embycon?mode=WIDGET_CONTENT_NEXTUP&amp;id=$INFO[ListItem.Property(id)]</value>
+		<value>videodb://inprogresstvshows/$INFO[ListItem.DBID]/-2/?tvshowid=$INFO[ListItem.DBID]</value>
+	</variable>
+	<variable name="View55_MoreLikeThis_Content">
+		<value condition="String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">plugin://plugin.video.embycon?mode=WIDGET_CONTENT_SIMILAR&amp;id=$INFO[Window(home).Property(EmbyID)]</value>
+		<value>plugin://script.skin.helper.widgets/?action=similarshows&amp;imdbid=$INFO[Window(home).Property(TVShowIMDB)]</value>
+	</variable>
 	<variable name="View54_MoreLikeThis_Content">
 		<value condition="String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">plugin://plugin.video.embycon?mode=WIDGET_CONTENT_SIMILAR&amp;id=$INFO[Window(home).Property(EmbyID)]</value>
 		<value>plugin://script.skin.helper.widgets/?action=similarshows&amp;imdbid=$INFO[Window(home).Property(TVShowIMDB)]</value>
+	</variable>
+	<variable name="InfoDialog_MoreLikeThis_Content">
+		<value condition="String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">plugin://plugin.video.embycon?mode=WIDGET_CONTENT_SIMILAR&amp;id=$INFO[ListItem.Property(id)]</value>
+		<value condition="String.IsEqual(ListItem.DBType,movie)">plugin://script.skin.helper.widgets/?action=similar&amp;mediatype=movies&amp;imdbid=$INFO[ListItem.IMDBNumber]</value>
+		<value>plugin://script.skin.helper.widgets/?action=similarshows&amp;imdbid=$INFO[ListItem.IMDBNumber]</value>
 	</variable>
 
 	<variable name="BackgroundSource">

@@ -238,13 +238,13 @@
 					</control>
 				</control>
 			</control>
-			<!-- Next Up -->
+			<!-- Episodes -->
 			<include content="WideWidget">
 				<param name="id" value="55"/>
 				<param name="sublabel" value=""/>
 				<param name="sortby" value="playcount"/>
 				<param name="sortorder" value="descending"/>
-				<param name="headline" value="$LOCALIZE[31012]"/>
+				<param name="headline" value="$LOCALIZE[20360]"/>
 				<param name="onup" value="100"/>
 				<param name="ondown" value="200"/>
 				<param name="use_custom_content" value="false"/>				
@@ -260,15 +260,15 @@
 				<param name="headline" value="$LOCALIZE[206]"/>
 				<param name="onup" value="55"/>
 				<param name="ondown" value="300"/>
-				<param name="content" value="plugin://script.skin.helper.service/?action=getcast&amp;tvshow=$INFO[Window(home).Property(TVShowDBID)]"/>
+				<param name="content" value="$VAR[View55_Cast_Content]"/>
 			</include>
 			<!-- More like this -->
 			<include content="PosterWidget">
 				<param name="id" value="300"/>
 				<param name="headline" value="$LOCALIZE[31002]"/>
-				<param name="content" value="plugin://script.skin.helper.widgets/?action=similarshows&amp;imdbid=$INFO[Window(home).Property(TVShowIMDB)]"/>
 				<param name="onup" value="200"/>
-				<param name="ondown" value="noop"/>
+				<param name="ondown" value="SetProperty(BounceDown,1,home)"/>
+				<param name="content" value="$VAR[View55_MoreLikeThis_Content]"/>
 			</include>
 		</control>
 	</include>
