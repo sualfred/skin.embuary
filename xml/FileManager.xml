@@ -1,122 +1,259 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <window>
 	<defaultcontrol always="true">20</defaultcontrol>
 	<controls>
-		<include>DefaultBackground</include>
-		<control type="image">
-			<description>Dialog Header image</description>
-			<centerleft>50%</centerleft>
-			<centertop>50%</centertop>
-			<width>68</width>
-			<height>68</height>
-			<texture colordiffuse="button_focus" border="2">icons/file-manager/left-right.png</texture>
-			<animation effect="fade" start="0" end="100" time="300" delay="100">WindowOpen</animation>
-			<animation effect="fade" start="100" end="0" time="160">WindowClose</animation>
-		</control>
+		<include>Background</include>
 		<control type="group">
-			<left>0</left>
-			<include>OpenClose_Left</include>
-			<include content="ContentPanel">
-				<param name="width" value="872" />
-			</include>
-			<include content="FileManagerPanel">
-				<param name="header_label" value="" />
-				<param name="list_id" value="20" />
-				<param name="scrollbar_id" value="60" />
-				<param name="onleft_id" value="60" />
-				<param name="onright_id" value="21" />
-				<param name="width" value="812" />
-			</include>
-			<control type="scrollbar" id="60">
-				<top>80</top>
-				<left>0</left>
-				<width>12</width>
-				<bottom>80</bottom>
-				<onleft>20</onleft>
-				<onright>20</onright>
+			<include>Window_OpenClose</include>
+			<top>58</top>
+			<!-- left col -->
+			<control type="grouplist">
+				<left>135</left>
+				<centertop>50%</centertop>
+				<width>800</width>
+				<height max="940">auto</height>
 				<orientation>vertical</orientation>
-				<animation effect="zoom" end="50,100" time="300" tween="sine" center="0,0" easing="inout" condition="!Control.HasFocus(60)">conditional</animation>
-				<texturesliderbackground />
+				<itemgap>20</itemgap>
+				<align>center</align>
+				<!-- heading -->
+				<control type="group">
+					<height>50</height>
+					<control type="label" id="101">
+						<width>800</width>
+						<height>48</height>
+						<font>Reg24</font>
+						<aligny>center</aligny>
+						<textoffsetx>5</textoffsetx>
+						<textcolor>text_white</textcolor>
+					</control>
+					<control type="image">
+						<width>800</width>
+						<top>45</top>
+						<height>2</height>
+						<texture colordiffuse="emby">common/white.jpg</texture>
+						<aspectratio>stretch</aspectratio>
+					</control>
+				</control>
+				<!-- list -->
+				<control type="group">
+					<height>770</height>
+					<control type="image">
+						<height>770</height>
+						<texture colordiffuse="thumb_background">common/white.jpg</texture>
+						<aspectratio>stretch</aspectratio>
+					</control>
+					<control type="list" id="20">
+						<centerleft>50%</centerleft>
+						<top>10</top>
+						<height>750</height>
+						<onup>6666</onup>
+						<onleft>9999</onleft>
+						<onright>21</onright>
+						<ondown>noop</ondown>
+						<pagecontrol>60</pagecontrol>
+						<scrolltime>200</scrolltime>
+						<itemlayout height="50" width="800">
+							<control type="image">
+								<height>50</height>
+								<width>50</width>
+								<left>5</left>
+								<bordersize>5</bordersize>
+								<texture background="true">$INFO[ListItem.Icon]</texture>
+							</control>
+							<control type="label">
+								<right>20</right>
+								<left>60</left>
+								<height>50</height>
+								<aligny>center</aligny>
+								<font>Reg24</font>
+								<textcolor>white</textcolor>
+								<textshadow>text_shadow</textshadow>
+								<label>$INFO[ListItem.Label]</label>
+							</control>
+						</itemlayout>
+						<focusedlayout height="50" width="800">
+							<control type="group">
+								<visible>!Control.HasFocus(20)</visible>
+								<control type="image">
+									<height>50</height>
+									<width>50</width>
+									<left>5</left>
+									<bordersize>5</bordersize>
+									<texture background="true">$INFO[ListItem.Icon]</texture>
+								</control>
+								<control type="label">
+									<right>20</right>
+									<left>60</left>
+									<height>50</height>
+									<aligny>center</aligny>
+									<font>Reg24</font>
+									<textcolor>white</textcolor>
+									<textshadow>text_shadow</textshadow>
+									<label>$INFO[ListItem.Label]</label>
+								</control>
+							</control>
+							<control type="group">
+								<visible>Control.HasFocus(20)</visible>
+								<control type="image">
+									<height>50</height>
+									<width>50</width>
+									<left>5</left>
+									<bordersize>5</bordersize>
+									<texture colordiffuse="emby" background="true">$INFO[ListItem.Icon]</texture>
+								</control>
+								<control type="label">
+									<right>20</right>
+									<left>60</left>
+									<height>50</height>
+									<aligny>center</aligny>
+									<font>Reg24</font>
+									<textcolor>emby</textcolor>
+									<textshadow>text_shadow</textshadow>
+									<label>$INFO[ListItem.Label]</label>
+								</control>
+							</control>
+						</focusedlayout>
+					</control>
+					<control type="scrollbar" id="60">
+						<right>0</right>
+						<top>0</top>
+						<bottom>0</bottom>
+						<width>4</width>
+						<orientation>vertical</orientation>
+						<showonepage>false</showonepage>
+						<texturesliderbar colordiffuse="softgrey">common/ProgressBar.png</texturesliderbar>
+					</control>
+				</control>
+			</control>
+			<!-- right col -->
+			<control type="grouplist">
+				<right>135</right>
+				<centertop>50%</centertop>
+				<width>800</width>
+				<height max="940">auto</height>
+				<orientation>vertical</orientation>
+				<itemgap>20</itemgap>
+				<align>center</align>
+				<!-- heading -->
+				<control type="group">
+					<height>50</height>
+					<control type="label" id="102">
+						<width>800</width>
+						<height>48</height>
+						<font>Reg24</font>
+						<aligny>center</aligny>
+						<textoffsetx>5</textoffsetx>
+						<textcolor>text_white</textcolor>
+					</control>
+					<control type="image">
+						<width>800</width>
+						<top>45</top>
+						<height>2</height>
+						<texture colordiffuse="emby">common/white.jpg</texture>
+						<aspectratio>stretch</aspectratio>
+					</control>
+				</control>
+				<!-- list -->
+				<control type="group">
+					<height>770</height>
+					<control type="image">
+						<height>770</height>
+						<texture colordiffuse="thumb_background">common/white.jpg</texture>
+						<aspectratio>stretch</aspectratio>
+					</control>
+					<control type="list" id="21">
+						<centerleft>50%</centerleft>
+						<top>10</top>
+						<height>750</height>
+						<onup>6666</onup>
+						<onleft>20</onleft>
+						<onright>noop</onright>
+						<ondown>noop</ondown>
+						<pagecontrol>70</pagecontrol>
+						<scrolltime>200</scrolltime>
+						<itemlayout height="50" width="800">
+							<control type="image">
+								<height>50</height>
+								<width>50</width>
+								<left>5</left>
+								<bordersize>5</bordersize>
+								<texture background="true">$INFO[ListItem.Icon]</texture>
+							</control>
+							<control type="label">
+								<right>20</right>
+								<left>60</left>
+								<height>50</height>
+								<aligny>center</aligny>
+								<font>Reg24</font>
+								<textcolor>white</textcolor>
+								<textshadow>text_shadow</textshadow>
+								<label>$INFO[ListItem.Label]</label>
+							</control>
+						</itemlayout>
+						<focusedlayout height="50" width="800">
+							<control type="group">
+								<visible>!Control.HasFocus(21)</visible>
+								<control type="image">
+									<height>50</height>
+									<width>50</width>
+									<left>5</left>
+									<bordersize>5</bordersize>
+									<texture background="true">$INFO[ListItem.Icon]</texture>
+								</control>
+								<control type="label">
+									<right>20</right>
+									<left>60</left>
+									<height>50</height>
+									<aligny>center</aligny>
+									<font>Reg24</font>
+									<textcolor>white</textcolor>
+									<textshadow>text_shadow</textshadow>
+									<label>$INFO[ListItem.Label]</label>
+								</control>
+							</control>
+							<control type="group">
+								<visible>Control.HasFocus(21)</visible>
+								<control type="image">
+									<height>50</height>
+									<width>50</width>
+									<left>5</left>
+									<bordersize>5</bordersize>
+									<texture colordiffuse="emby" background="true">$INFO[ListItem.Icon]</texture>
+								</control>
+								<control type="label">
+									<right>20</right>
+									<left>60</left>
+									<height>50</height>
+									<aligny>center</aligny>
+									<font>Reg24</font>
+									<textcolor>emby</textcolor>
+									<textshadow>text_shadow</textshadow>
+									<label>$INFO[ListItem.Label]</label>
+								</control>
+							</control>
+						</focusedlayout>
+					</control>
+					<control type="scrollbar" id="70">
+						<right>0</right>
+						<top>0</top>
+						<bottom>0</bottom>
+						<width>4</width>
+						<orientation>vertical</orientation>
+						<showonepage>false</showonepage>
+						<texturesliderbar colordiffuse="softgrey">common/ProgressBar.png</texturesliderbar>
+					</control>
+				</control>
 			</control>
 		</control>
-		<control type="group">
-			<width>818</width>
-			<right>0</right>
-			<include>OpenClose_Right</include>
-			<include content="ContentPanel">
-				<param name="width" value="878" />
-				<param name="flipx" value="true" />
-				<param name="left" value="-20" />
-			</include>
-			<include content="FileManagerPanel">
-				<param name="header_id" value="102" />
-				<param name="header_label" value="" />
-				<param name="list_id" value="21" />
-				<param name="scrollbar_id" value="61" />
-				<param name="onleft_id" value="20" />
-				<param name="onright_id" value="61" />
-				<param name="width" value="817" />
-			</include>
-			<control type="scrollbar" id="61">
-				<left>800</left>
-				<animation effect="slide" end="5,0" time="0" condition="true">Conditional</animation>
-				<top>80</top>
-				<width>12</width>
-				<bottom>80</bottom>
-				<onleft>21</onleft>
-				<onright>21</onright>
-				<animation effect="zoom" end="50,100" time="300" tween="sine" center="812,0" easing="inout" condition="!Control.HasFocus(61)">conditional</animation>
-				<texturesliderbackground />
-				<orientation>vertical</orientation>
-			</control>
-		</control>
-		<include content="TopBar">
-			<param name="breadcrumbs_label" value="$LOCALIZE[7]" />
+		<!-- header bar -->
+		<include content="HeaderBar">		
+			<param name="id">20</param>
+			<param name="enabled">false</param>
+			<param name="sidebar_id">9999</param>
 		</include>
-		<include>BottomBar</include>
-		<control type="group">
-			<bottom>0</bottom>
-			<height>65</height>
-			<animation effect="fade" start="0" end="100" time="400">WindowOpen</animation>
-			<animation effect="fade" start="100" end="0" time="300">WindowClose</animation>
-			<control type="label">
-				<right>730</right>
-				<width>400</width>
-				<height>48</height>
-				<aligny>center</aligny>
-				<align>right</align>
-				<shadowcolor>text_shadow</shadowcolor>
-				<label>$INFO[Container(21).CurrentItem,, / ]$INFO[Container(21).NumItems]</label>
-			</control>
-			<control type="label" id="102">
-				<right>40</right>
-				<width>600</width>
-				<height>48</height>
-				<font>font30_title</font>
-				<align>right</align>
-				<aligny>center</aligny>
-				<label>$PARAM[header_label]</label>
-				<haspath>true</haspath>
-				<shadowcolor>black</shadowcolor>
-			</control>
-			<control type="label">
-				<left>730</left>
-				<width>400</width>
-				<height>48</height>
-				<aligny>center</aligny>
-				<shadowcolor>text_shadow</shadowcolor>
-				<label>$INFO[Container(20).CurrentItem,, / ]$INFO[Container(20).NumItems]</label>
-			</control>
-			<control type="label" id="101">
-				<left>40</left>
-				<width>600</width>
-				<height>48</height>
-				<font>font30_title</font>
-				<aligny>center</aligny>
-				<label>$PARAM[header_label]</label>
-				<haspath>true</haspath>
-				<shadowcolor>black</shadowcolor>
-			</control>
-		</control>
+		<!-- side panel -->
+		<include content="SidePanel">
+			<param name="onright">20</param>
+		</include>
 	</controls>
 </window>
