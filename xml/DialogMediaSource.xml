@@ -1,148 +1,142 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <window>
-	<defaultcontrol>10</defaultcontrol>
-	<include>Animation_DialogPopupOpenClose</include>
+	<defaultcontrol always="true">100</defaultcontrol>
 	<controls>
-		<control type="group">
-		<centertop>50%</centertop>
-		<height>750</height>
-		<centerleft>50%</centerleft>
-		<width>1200</width>
-		<include content="DialogBackgroundCommons">
-			<param name="width" value="1200" />
-			<param name="height" value="750" />
-			<param name="header_label" value="$LOCALIZE[13406]" />
-			<param name="header_id" value="2" />
+		<include content="ScrollbarVertical">
+			<param name="id">3000</param>
+			<param name="visible">false</param>
 		</include>
-		<control type="label">
-			<description>path label</description>
-			<left>30</left>
-			<top>90</top>
-			<width>1140</width>
-			<height>30</height>
-			<align>center</align>
-			<aligny>center</aligny>
-			<font>font12</font>
-			<label>$LOCALIZE[1021]</label>
-		</control>
 		<control type="image">
-			<left>25</left>
-			<top>145</top>
-			<width>860</width>
-			<height>285</height>
-			<texture border="40">buttons/dialogbutton-nofo.png</texture>
+			<include>Visible_Fade</include>
+			<include>FullscreenDimensions</include>
+			<texture colordiffuse="background">common/white.jpg</texture>
 		</control>
-		<control type="list" id="10">
-			<left>45</left>
-			<top>165</top>
-			<width>820</width>
-			<height>245</height>
-			<onup>9001</onup>
-			<onleft>9000</onleft>
-			<onright>60</onright>
-			<ondown>12</ondown>
-			<pagecontrol>60</pagecontrol>
-			<scrolltime>200</scrolltime>
-			<itemlayout height="70" width="820">
-				<control type="label">
-					<left>10</left>
-					<right>10</right>
-					<top>0</top>
-					<bottom>0</bottom>
-					<aligny>center</aligny>
-					<textcolor>grey</textcolor>
-					<label>$INFO[ListItem.Label]</label>
+		<control type="grouplist">
+			<include>Dialog_PopupOpenClose</include>
+			<centerleft>50%</centerleft>
+			<centertop>50%</centertop>
+			<width>800</width>
+			<height max="940">auto</height>
+			<orientation>vertical</orientation>
+			<itemgap>20</itemgap>
+			<align>center</align>
+			<!-- edit -->
+			<control type="group">
+				<height>50</height>
+				<control id="12" type="edit">
+					<width>800</width>
+					<height>48</height>
+					<ondown>10</ondown>
+					<font>Reg24</font>
+					<textcolor>white</textcolor>
+					<focusedcolor>emby</focusedcolor>
+					<hinttext>[COLOR text_white]$LOCALIZE[21899][/COLOR]</hinttext>
+					<onup>noop</onup>
+					<onleft>noop</onleft>
+					<onright>noop</onright>
+					<ondown>10</ondown>
 				</control>
-			</itemlayout>
-			<focusedlayout height="70" width="820">
 				<control type="image">
-					<left>0</left>
-					<top>0</top>
-					<bottom>0</bottom>
-					<right>0</right>
-					<visible>Control.HasFocus(10)</visible>
-					<texture colordiffuse="button_focus">lists/focus.png</texture>
+					<width>800</width>
+					<top>45</top>
+					<height>2</height>
+					<texture colordiffuse="emby">common/white.jpg</texture>
+					<aspectratio>stretch</aspectratio>
 				</control>
-				<control type="label">
-					<left>10</left>
-					<top>0</top>
-					<bottom>0</bottom>
-					<right>10</right>
-					<aligny>center</aligny>
-					<label>$INFO[ListItem.Label]</label>
+			</control>
+			<!-- list -->
+			<control type="group">
+				<height>270</height>
+				<control type="image">
+					<height>270</height>
+					<texture colordiffuse="thumb_background">common/white.jpg</texture>
+					<aspectratio>stretch</aspectratio>
 				</control>
-			</focusedlayout>
-		</control>
-		<control type="scrollbar" id="60">
-			<left>870</left>
-			<top>166</top>
-			<width>12</width>
-			<height>243</height>
-			<onleft>10</onleft>
-			<onright>9000</onright>
-			<orientation>vertical</orientation>
-		</control>
-		<control type="grouplist" id="9000">
-			<left>880</left>
-			<top>147</top>
-			<orientation>vertical</orientation>
-			<onleft>10</onleft>
-			<onright>10</onright>
-			<ondown>12</ondown>
-			<itemgap>-7</itemgap>
-			<include content="DefaultDialogButton">
-				<param name="id" value="11" />
-				<param name="label" value="$LOCALIZE[1024]" />
-			</include>
-			<include content="DefaultDialogButton">
-				<param name="id" value="13" />
-				<param name="label" value="$LOCALIZE[15019]" />
-			</include>
-			<include content="DefaultDialogButton">
-				<param name="id" value="14" />
-				<param name="label" value="$LOCALIZE[1210]" />
-			</include>
-		</control>
-		<control type="label">
-			<description>Name label</description>
-			<left>30</left>
-			<top>460</top>
-			<width>1140</width>
-			<height>30</height>
-			<align>center</align>
-			<aligny>center</aligny>
-			<font>font12</font>
-			<label>$LOCALIZE[1022]</label>
-		</control>
-		<control type="edit" id="12">
-			<description>Name Button</description>
-			<left>30</left>
-			<top>500</top>
-			<width>1140</width>
-			<height>90</height>
-			<align>center</align>
-			<aligny>center</aligny>
-			<label></label>
-			<onup>10</onup>
-			<ondown>9001</ondown>
-		</control>
-		<control type="grouplist" id="9001">
-			<left>0</left>
-			<bottom>40</bottom>
-			<height>100</height>
-			<width>1200</width>
-			<align>center</align>
-			<orientation>horizontal</orientation>
-			<onup>12</onup>
-			<include content="DefaultDialogButton">
-				<param name="id" value="18" />
-				<param name="label" value="$LOCALIZE[186]" />
-			</include>
-			<include content="DefaultDialogButton">
-				<param name="id" value="19" />
-				<param name="label" value="$LOCALIZE[222]" />
-			</include>
-		</control>
+				<control type="list" id="10">
+					<centerleft>50%</centerleft>
+					<top>10</top>
+					<height>250</height>
+					<onup>12</onup>
+					<onleft>noop</onleft>
+					<onright>noop</onright>
+					<ondown>100</ondown>
+					<pagecontrol>60</pagecontrol>
+					<scrolltime>200</scrolltime>
+					<itemlayout height="50" width="800">
+						<control type="label">
+							<width>100%</width>
+							<heigth>50</heigth>
+							<font>Reg26Spaced</font>
+							<textcolor>text_white</textcolor>
+							<shadowcolor>text_shadow</shadowcolor>
+							<autoscroll>false</autoscroll>
+							<align>center</align>
+							<aligny>top</aligny>
+							<label>$INFO[ListItem.Label]</label>
+						</control>
+					</itemlayout>
+					<focusedlayout height="50" width="800">
+						<control type="label">
+							<width>100%</width>
+							<heigth>50</heigth>
+							<font>Reg26Spaced</font>
+							<textcolor>text_white</textcolor>
+							<shadowcolor>text_shadow</shadowcolor>
+							<autoscroll>false</autoscroll>
+							<align>center</align>
+							<aligny>top</aligny>
+							<label>$INFO[ListItem.Label]</label>
+							<visible>!Control.HasFocus(10)</visible>
+						</control>
+						<control type="label">
+							<width>100%</width>
+							<heigth>50</heigth>
+							<font>Reg26Spaced</font>
+							<textcolor>emby</textcolor>
+							<shadowcolor>text_shadow</shadowcolor>
+							<autoscroll>false</autoscroll>
+							<align>center</align>
+							<aligny>top</aligny>
+							<label>$INFO[ListItem.Label]</label>
+							<visible>Control.HasFocus(10)</visible>
+						</control>
+					</focusedlayout>
+				</control>
+			</control>
+			<!-- Button -->
+			<control type="grouplist" id="100">
+				<height>50</height>
+				<width>100%</width>
+				<orientation>horizontal</orientation>
+				<itemgap>5</itemgap>
+				<align>center</align>
+				<onright>noop</onright>
+				<onleft>noop</onleft>
+				<control type="button" id="18">
+					<visible>Control.IsEnabled(18)</visible>
+					<label>$LOCALIZE[186]</label>
+					<onup>SetFocus(10)</onup>
+				</control>
+				<control type="button" id="11">
+					<label>$LOCALIZE[1024]</label>
+					<onup>SetFocus(10)</onup>
+				</control>
+				<control type="button" id="13">
+					<visible>Control.IsEnabled(13)</visible>
+					<label>$LOCALIZE[15019]</label>
+					<onup>SetFocus(10)</onup>
+				</control>
+				<control type="button" id="14">
+					<visible>Control.IsEnabled(14)</visible>
+					<label>$LOCALIZE[1210]</label>
+					<onup>SetFocus(10)</onup>
+				</control>
+				<control type="button" id="19">
+					<visible>Control.IsEnabled(19)</visible>
+					<label>$LOCALIZE[222]</label>
+					<onup>SetFocus(10)</onup>
+				</control>
+			</control>
 		</control>
 	</controls>
 </window>

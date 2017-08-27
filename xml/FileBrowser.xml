@@ -1,192 +1,230 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <window>
-	<defaultcontrol always="true">450</defaultcontrol>
+	<defaultcontrol always="true">100</defaultcontrol>
 	<controls>
-		<include content="DiffuseMask">
-			<param name="visible">!VideoPlayer.IsFullscreen</param>
+		<include content="ScrollbarVertical">
+			<param name="id">3000</param>
+			<param name="visible">false</param>
 		</include>
-		<control type="group">
+		<control type="image">
+			<include>Visible_Fade</include>
+			<include>FullscreenDimensions</include>
+			<texture colordiffuse="background">common/white.jpg</texture>
+		</control>
+		<control type="grouplist">
 			<include>Dialog_PopupOpenClose</include>
 			<centerleft>50%</centerleft>
 			<centertop>50%</centertop>
-			<width>533</width>
-			<height>631</height>
-			<control type="image">
-				<width>533</width>
-				<height>631</height>
-				<texture colordiffuse="panel" border="10">common/dialog_back.png</texture>
-			</control>
-			<control type="list" id="450">
-				<centerleft>50%</centerleft>
-				<top>10</top>
-				<width>523</width>
-				<height>550</height>
-				<pagecontrol>17</pagecontrol>
-				<onup>noop</onup>
-				<onleft>close</onleft>
-				<onright>close</onright>
-				<ondown>9000</ondown>
-				<itemlayout width="523" height="50">
-					<control type="image">
-						<width>100%</width>
-						<height>50</height>
-						<texture colordiffuse="panel">common/white.jpg</texture>
-					</control>
-					<control type="image">
-						<height>50</height>
-						<width>50</width>
-						<left>5</left>
-						<bordersize>5</bordersize>
-						<texture background="true">$INFO[ListItem.Icon]</texture>
-					</control>
-					<control type="label">
-						<right>20</right>
-						<left>60</left>
-						<height>50</height>
-						<aligny>center</aligny>
-						<font>med20</font>
-						<textcolor>white</textcolor>
-						<textshadow>text_shadow</textshadow>
-						<label>$INFO[ListItem.Label]</label>
-					</control>
-				</itemlayout>
-				<focusedlayout width="523" height="50">
-					<control type="image">
-						<width>100%</width>
-						<height>50</height>
-						<texture colordiffuse="panel">common/white.jpg</texture>
-						<visible>!Control.HasFocus(450)</visible>
-					</control>
-					<control type="image">
-						<width>100%</width>
-						<height>50</height>
-						<texture colordiffuse="panel_hover">common/white.jpg</texture>
-						<visible>Control.HasFocus(450)</visible>
-					</control>
-					<control type="image">
-						<height>50</height>
-						<width>50</width>
-						<left>5</left>
-						<bordersize>5</bordersize>
-						<texture background="true">$INFO[ListItem.Icon]</texture>
-					</control>
-					<control type="label">
-						<right>20</right>
-						<left>60</left>
-						<height>50</height>
-						<aligny>center</aligny>
-						<font>med20</font>
-						<textcolor>white</textcolor>
-						<textshadow>text_shadow</textshadow>
-						<label>$INFO[ListItem.Label]</label>
-					</control>
-				</focusedlayout>
-			</control>
-			<control type="list" id="451">
-				<centerleft>50%</centerleft>
-				<top>10</top>
-				<width>523</width>
-				<height>550</height>
-				<pagecontrol>17</pagecontrol>
-				<onup>noop</onup>
-				<onleft>close</onleft>
-				<onright>close</onright>
-				<ondown>9000</ondown>
-				<itemlayout width="523" height="50">
-					<control type="image">
-						<width>100%</width>
-						<height>50</height>
-						<texture colordiffuse="panel">common/white.jpg</texture>
-					</control>
-					<control type="image">
-						<height>50</height>
-						<width>50</width>
-						<left>5</left>
-						<bordersize>5</bordersize>
-						<texture background="true">$INFO[ListItem.Icon]</texture>
-					</control>
-					<control type="label">
-						<right>20</right>
-						<left>60</left>
-						<height>50</height>
-						<aligny>center</aligny>
-						<font>med20</font>
-						<textcolor>white</textcolor>
-						<textshadow>text_shadow</textshadow>
-						<label>$INFO[ListItem.Label]</label>
-					</control>
-				</itemlayout>
-				<focusedlayout width="523" height="50">
-					<control type="image">
-						<width>100%</width>
-						<height>50</height>
-						<texture colordiffuse="panel">common/white.jpg</texture>
-						<visible>!Control.HasFocus(451)</visible>
-					</control>
-					<control type="image">
-						<width>100%</width>
-						<height>50</height>
-						<texture colordiffuse="panel_hover">common/white.jpg</texture>
-						<visible>Control.HasFocus(451)</visible>
-					</control>
-					<control type="image">
-						<height>50</height>
-						<width>50</width>
-						<left>5</left>
-						<bordersize>5</bordersize>
-						<texture background="true">$INFO[ListItem.Icon]</texture>
-					</control>
-					<control type="label">
-						<right>20</right>
-						<left>60</left>
-						<height>50</height>
-						<aligny>center</aligny>
-						<font>med20</font>
-						<textcolor>white</textcolor>
-						<textshadow>text_shadow</textshadow>
-						<label>$INFO[ListItem.Label]</label>
-					</control>
-				</focusedlayout>
-			</control>
+			<width>800</width>
+			<height max="940">auto</height>
+			<orientation>vertical</orientation>
+			<itemgap>20</itemgap>
+			<align>center</align>
+			<!-- edit -->
 			<control type="group">
-				<bottom>12</bottom>
-				<width>100%</width>
 				<height>50</height>
-				<control type="image">
-					<width>100%</width>
-					<height>50</height>
-					<texture border="10" colordiffuse="panel">common/menu_back.png</texture>
+				<control type="label">
+					<width>800</width>
+					<height>48</height>
+					<font>Reg24</font>
+					<aligny>center</aligny>
+					<textoffsetx>5</textoffsetx>
+					<textcolor>text_white</textcolor>
+					<label>$LOCALIZE[10126]</label>
 				</control>
-				<control type="grouplist" id="9000">
-					<width>100%</width>
-					<height>50</height>
-					<align>center</align>
-					<onright>noop</onright>
+				<control type="image">
+					<width>800</width>
+					<top>45</top>
+					<height>2</height>
+					<texture colordiffuse="emby">common/white.jpg</texture>
+					<aspectratio>stretch</aspectratio>
+				</control>
+			</control>
+			<!-- list -->
+			<control type="group">
+				<height>470</height>
+				<control type="image">
+					<height>470</height>
+					<texture colordiffuse="thumb_background">common/white.jpg</texture>
+					<aspectratio>stretch</aspectratio>
+				</control>
+				<control type="list" id="450">
+					<centerleft>50%</centerleft>
+					<top>10</top>
+					<height>450</height>
+					<onup>12</onup>
 					<onleft>noop</onleft>
-					<ondown>noop</ondown>
-					<orientation>horizontal</orientation>
-					<itemgap>4</itemgap>
-					<control type="button" id="413">
-						<label>$LOCALIZE[186]</label>
-						<onup>450</onup>
-					</control>
-					<control type="button" id="414">
-						<label>$LOCALIZE[222]</label>
-						<onup>450</onup>
-					</control>
-					<control type="button" id="415">
-						<label>$LOCALIZE[119]</label>
-						<visible>Control.IsEnabled(415)</visible>
-						<onup>450</onup>
-					</control>
-					<control type="button" id="416">
-						<label>$LOCALIZE[749]</label>
-						<visible>Control.IsEnabled(416)</visible>
-						<onup>450</onup>
-					</control>
+					<onright>noop</onright>
+					<ondown>100</ondown>
+					<pagecontrol>60</pagecontrol>
+					<scrolltime>200</scrolltime>
+					<itemlayout height="50" width="800">
+						<control type="image">
+							<height>50</height>
+							<width>50</width>
+							<left>5</left>
+							<bordersize>5</bordersize>
+							<texture background="true">$INFO[ListItem.Icon]</texture>
+						</control>
+						<control type="label">
+							<right>20</right>
+							<left>60</left>
+							<height>50</height>
+							<aligny>center</aligny>
+							<font>Reg24</font>
+							<textcolor>white</textcolor>
+							<textshadow>text_shadow</textshadow>
+							<label>$INFO[ListItem.Label]</label>
+						</control>
+					</itemlayout>
+					<focusedlayout height="50" width="800">
+						<control type="group">
+							<visible>!Control.HasFocus(450)</visible>
+							<control type="image">
+								<height>50</height>
+								<width>50</width>
+								<left>5</left>
+								<bordersize>5</bordersize>
+								<texture background="true">$INFO[ListItem.Icon]</texture>
+							</control>
+							<control type="label">
+								<right>20</right>
+								<left>60</left>
+								<height>50</height>
+								<aligny>center</aligny>
+								<font>Reg24</font>
+								<textcolor>white</textcolor>
+								<textshadow>text_shadow</textshadow>
+								<label>$INFO[ListItem.Label]</label>
+							</control>
+						</control>
+						<control type="group">
+							<visible>Control.HasFocus(450)</visible>
+							<control type="image">
+								<height>50</height>
+								<width>50</width>
+								<left>5</left>
+								<bordersize>5</bordersize>
+								<texture colordiffuse="emby" background="true">$INFO[ListItem.Icon]</texture>
+							</control>
+							<control type="label">
+								<right>20</right>
+								<left>60</left>
+								<height>50</height>
+								<aligny>center</aligny>
+								<font>Reg24</font>
+								<textcolor>emby</textcolor>
+								<textshadow>text_shadow</textshadow>
+								<label>$INFO[ListItem.Label]</label>
+							</control>
+						</control>
+					</focusedlayout>
+				</control>
+				<control type="list" id="451">
+					<centerleft>50%</centerleft>
+					<top>10</top>
+					<height>450</height>
+					<onup>12</onup>
+					<onleft>noop</onleft>
+					<onright>noop</onright>
+					<ondown>100</ondown>
+					<pagecontrol>60</pagecontrol>
+					<scrolltime>200</scrolltime>
+					<itemlayout height="50" width="800">
+						<control type="image">
+							<height>50</height>
+							<width>50</width>
+							<left>5</left>
+							<bordersize>5</bordersize>
+							<texture background="true">$INFO[ListItem.Icon]</texture>
+						</control>
+						<control type="label">
+							<right>20</right>
+							<left>60</left>
+							<height>50</height>
+							<aligny>center</aligny>
+							<font>Reg24</font>
+							<textcolor>white</textcolor>
+							<textshadow>text_shadow</textshadow>
+							<label>$INFO[ListItem.Label]</label>
+						</control>
+					</itemlayout>
+					<focusedlayout height="50" width="800">
+						<control type="group">
+							<visible>!Control.HasFocus(451)</visible>
+							<control type="image">
+								<height>50</height>
+								<width>50</width>
+								<left>5</left>
+								<bordersize>5</bordersize>
+								<texture background="true">$INFO[ListItem.Icon]</texture>
+							</control>
+							<control type="label">
+								<right>20</right>
+								<left>60</left>
+								<height>50</height>
+								<aligny>center</aligny>
+								<font>Reg24</font>
+								<textcolor>white</textcolor>
+								<textshadow>text_shadow</textshadow>
+								<label>$INFO[ListItem.Label]</label>
+							</control>
+						</control>
+						<control type="group">
+							<visible>Control.HasFocus(451)</visible>
+							<control type="image">
+								<height>50</height>
+								<width>50</width>
+								<left>5</left>
+								<bordersize>5</bordersize>
+								<texture colordiffuse="emby" background="true">$INFO[ListItem.Icon]</texture>
+							</control>
+							<control type="label">
+								<right>20</right>
+								<left>60</left>
+								<height>50</height>
+								<aligny>center</aligny>
+								<font>Reg24</font>
+								<textcolor>emby</textcolor>
+								<textshadow>text_shadow</textshadow>
+								<label>$INFO[ListItem.Label]</label>
+							</control>
+						</control>
+					</focusedlayout>
+				</control>
+			</control>
+			<!-- Button -->
+			<control type="grouplist" id="100">
+				<height>50</height>
+				<width>100%</width>
+				<orientation>horizontal</orientation>
+				<itemgap>5</itemgap>
+				<align>center</align>
+				<onright>noop</onright>
+				<onleft>noop</onleft>
+				<control type="button" id="413">
+					<label>$LOCALIZE[186]</label>
+					<onup condition="Control.IsVisible(451)">451</onup>
+					<onup condition="Control.IsVisible(450)">450</onup>
+				</control>
+				<control type="button" id="414">
+					<label>$LOCALIZE[222]</label>
+					<onup condition="Control.IsVisible(451)">451</onup>
+					<onup condition="Control.IsVisible(450)">450</onup>
+				</control>
+				<control type="button" id="415">
+					<label>$LOCALIZE[119]</label>
+					<visible>Control.IsEnabled(415)</visible>
+					<onup condition="Control.IsVisible(451)">451</onup>
+					<onup condition="Control.IsVisible(450)">450</onup>
+				</control>
+				<control type="button" id="416">
+					<label>$LOCALIZE[749]</label>
+					<visible>Control.IsEnabled(416)</visible>
+					<onup condition="Control.IsVisible(451)">451</onup>
+					<onup condition="Control.IsVisible(450)">450</onup>
 				</control>
 			</control>
 		</control>
-
 	</controls>
 </window>
