@@ -952,7 +952,11 @@
 			<onfocus condition="Container.Content(tvshows)">SetProperty(TVShowTotalSeasons,$INFO[ListItem.Property(TotalSeasons)],home)</onfocus>
 			<onfocus condition="Container.Content(tvshows)">SetProperty(TVShowTotalEpisodes,$INFO[ListItem.Property(TotalEpisodes)],home)</onfocus>
 
-			<onfocus condition="Container.Content(tvshows)">SetProperty(EmbyID,$INFO[ListItem.Property(id)],home)</onfocus>
+			<onfocus condition="Container.Content(tvshows) + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">SetProperty(EmbyID,$INFO[ListItem.Property(id)],home)</onfocus>
+			<onfocus condition="Container.Content(tvshows) + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">SetProperty(EmbyTVShowClearlogo,$INFO[ListItem.Art(clearlogo)],home)</onfocus>
+			<onfocus condition="Container.Content(tvshows) + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">SetProperty(EmbyTVShowPlot,$ESCINFO[ListItem.Plot],home)</onfocus>
+			<onfocus condition="Container.Content(tvshows) + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">SetProperty(EmbyMPAA,$INFO[ListItem.MPAA],home)</onfocus>
+			<onfocus condition="Container.Content(tvshows) + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">SetProperty(EmbyGenre,$INFO[ListItem.Genre],home)</onfocus>
 		</control>
 	</include>
 	<include name="UnloadSetProperties">
@@ -964,6 +968,11 @@
 		<onunload condition="Window.Next(home)">ClearProperty(TVShowOverlay,home)</onunload>
 		<onunload condition="Window.Next(home)">ClearProperty(TVShowTotalSeasons,home)</onunload>
 		<onunload condition="Window.Next(home)">ClearProperty(TVShowTotalEpisodes,home)</onunload>
+		<onunload condition="Window.Next(home)">ClearProperty(EmbyID,home)</onunload>
+		<onunload condition="Window.Next(home)">ClearProperty(EmbyTVShowClearlogo,home)</onunload>
+		<onunload condition="Window.Next(home)">ClearProperty(EmbyTVShowPlot,home)</onunload>
+		<onunload condition="Window.Next(home)">ClearProperty(EmbyMPAA,home)</onunload>
+		<onunload condition="Window.Next(home)">ClearProperty(EmbyGenre,home)</onunload>
 	</include>
 	<!-- Scrollbars -->
 	<include name="ScrollbarHorizontal">

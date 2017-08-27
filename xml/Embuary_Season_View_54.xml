@@ -153,6 +153,14 @@
 							<control type="label">
 								<width>auto</width>
 								<height>24</height>
+								<label>$LOCALIZE[20074]: $INFO[Window(home).Property(EmbyMPAA)]   </label>
+								<font>reg22</font>
+								<shadowcolor>text_shadow</shadowcolor>
+								<visible>String.IsEmpty(ListItem.Mpaa) + !String.IsEmpty(Window(home).Property(EmbyMPAA)) + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)</visible>
+							</control>
+							<control type="label">
+								<width>auto</width>
+								<height>24</height>
 								<label>$INFO[Window(home).Property(TVShowPremiered),$LOCALIZE[20416]: ]   </label>
 								<font>reg22</font>
 								<shadowcolor>text_shadow</shadowcolor>
@@ -181,12 +189,21 @@
 							<textcolor>emby</textcolor>
 							<shadowcolor>text_shadow</shadowcolor>
 						</control>
+						<control type="label">
+							<width>auto</width>
+							<height>40</height>
+							<label>$INFO[Window(home).Property(EmbyGenre)]</label>
+							<font>reg22</font> 
+							<textcolor>emby</textcolor>
+							<shadowcolor>text_shadow</shadowcolor>
+							<visible>String.IsEmpty(ListItem.Genre) + !String.IsEmpty(Window(home).Property(EmbyGenre)) + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)</visible>
+						</control>
 						<control type="textbox">
 							<width>100%</width>
 							<height>185</height>
 							<align>justify</align>
 							<aligny>top</aligny>
-							<label>$INFO[ListItem.Plot]</label>
+							<label>$VAR[SeasonViewPlot]</label>
 							<font>Light24Spaced</font>
 							<shadowcolor>text_shadow</shadowcolor>
 							<autoscroll>false</autoscroll>
@@ -198,7 +215,7 @@
 						<right>70</right>
 						<width>400</width>
 						<height>155</height>
-						<texture>$INFO[ListItem.Art(tvshow.clearlogo)]</texture>
+						<texture>$VAR[ListItemClearlogo]</texture>
 						<aspectratio>keep</aspectratio>
 					</control>
 				</control>
