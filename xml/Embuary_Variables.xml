@@ -134,16 +134,16 @@
 		<value condition="Control.IsVisible(55)">55</value>
 	</variable>
 	<variable name="ListItemResolution">
-		<value condition="Integer.IsLess(ListItem.VideoResolution,710)">SD</value>
-		<value condition="[Integer.IsGreater(ListItem.VideoResolution,710) + !Integer.IsGreater(ListItem.VideoResolution,730)]">720p</value>
-		<value condition="String.IsEqual(ListItem.VideoResolution,1080)">1080p</value>
 		<value condition="String.IsEqual(ListItem.VideoResolution,4K)">4K</value>
+		<value condition="String.IsEqual(ListItem.VideoResolution,1080)">1080p</value>
+		<value condition="String.IsEqual(ListItem.VideoResolution,720)">720p</value>
+		<value>SD</value>
 	</variable>
 	<variable name="PlayerResolution">
-		<value condition="Integer.IsLess(VideoPlayer.VideoResolution,710)">SD</value>
-		<value condition="[Integer.IsGreater(VideoPlayer.VideoResolution,710) + !Integer.IsGreater(ListItem.VideoResolution,730)]">720p</value>
-		<value condition="String.IsEqual(VideoPlayer.VideoResolution,1080)">1080p</value>
 		<value condition="String.IsEqual(VideoPlayer.VideoResolution,4K)">4K</value>
+		<value condition="String.IsEqual(VideoPlayer.VideoResolution,1080)">1080p</value>
+		<value condition="String.IsEqual(VideoPlayer.VideoResolution,720)">720p</value>
+		<value>SD</value>
 	</variable>
 	<variable name="PlayerTime">
 		<value condition="Integer.IsGreater(Player.Duration(h),0)">$INFO[Player.Time(h:mm:ss)]</value>
