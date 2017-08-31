@@ -44,6 +44,7 @@
 		<value>$LOCALIZE[351]</value>
 	</variable>
 	<variable name="ContainerContent">
+		<value condition="Window.IsVisible(DialogPVRChannelManager.xml)">$LOCALIZE[19199]</value>
 		<value condition="Window.IsVisible(skinsettings)">$LOCALIZE[31058]</value>
 		<value condition="Window.IsVisible(filemanager)">$LOCALIZE[7]</value>
 		<value condition="Window.IsVisible(musicplaylist)">$LOCALIZE[10500]</value>
@@ -433,5 +434,9 @@
 	<variable name="VideoHWDecoder">
 		<value condition="Player.Process(videohwdecoder)">HW</value>
 		<value>SW</value>
+	</variable>
+	<variable name="PVRChannelMgrHeader">
+		<value condition="!String.IsEmpty(Window.Property(IsRadio))">$LOCALIZE[19199] - $LOCALIZE[19024]</value>
+		<value>$LOCALIZE[19199] - $LOCALIZE[19023]</value>
 	</variable>
 </includes>

@@ -177,22 +177,28 @@
 					<ondown>SetFocus($PARAM[id])</ondown>
 					<onleft>$PARAM[sidebar_id]</onleft>
 					<onright>noop</onright>
-					<control type="button" id="6601">
+					<control type="button" id="6600">
 						<include>HeaderButton</include>
 						<label>$LOCALIZE[31000]</label>
 						<onclick>Dialog.Close(all,true)</onclick>
 						<onclick>ActivateWindow(home)</onclick>
 					</control>
-					<control type="button" id="6602">
+					<control type="button" id="6601">
 						<include>HeaderButton</include>
 						<label>$LOCALIZE[1036]</label>
 						<onclick>ActivateWindow(favourites)</onclick>
 						<visible>!Window.IsVisible(favourites)</visible>
 					</control>
-					<control type="button" id="6603">
+					<control type="button" id="6602">
 						<include>HeaderButton</include>
 						<label>$LOCALIZE[137]</label>
 						<onclick>RunScript(script.globalsearch)</onclick>
+					</control>
+					<control type="button" id="6603">
+						<include>HeaderButton</include>
+						<label>$LOCALIZE[20012]</label>
+						<onclick condition="!String.IsEqual(Playlist.Length(video),0)">ActivateWindow(videoplaylist)</onclick>
+						<visible>!String.IsEqual(Playlist.Length(video),0)</visible>
 					</control>
 					<control type="button" id="6604">
 						<include>HeaderButton</include>
