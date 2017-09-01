@@ -1,77 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
-	<defaultcontrol always="true">9001</defaultcontrol>
-	<include>Animation_DialogPopupOpenClose</include>
+	<defaultcontrol>100</defaultcontrol>
 	<controls>
+		<include content="DiffuseMask">
+			<param name="visible">true</param>
+		</include>
 		<control type="group">
+			<visible>!Window.IsVisible(selectdialog)</visible>
+			<include>Dialog_PopupOpenClose</include>
+			<include>Visible_PopupOpenClose</include>
 			<centerleft>50%</centerleft>
-			<width>960</width>
-			<top>330</top>
-			<include content="DialogBackgroundCommons">
-				<param name="width" value="960" />
-				<param name="height" value="500" />
-				<param name="header_label" value="$LOCALIZE[21421]" />
-				<param name="header_id" value="2" />
-			</include>
-			<control type="label">
-				<description>Rule match label</description>
-				<left>20</left>
-				<top>65</top>
-				<width>720</width>
-				<include>SettingsLabelCommon</include>
-				<label>$LOCALIZE[21422]</label>
-			</control>
-			<control type="grouplist" id="9001">
-				<left>30</left>
-				<top>100</top>
+			<width>484</width>
+			<centertop>50%</centertop>
+			<height>970</height>
+			<control type="grouplist" id="100">
 				<orientation>vertical</orientation>
-				<onup>9000</onup>
-				<ondown>9000</ondown>
+				<height>auto</height>
+				<align>center</align>
+				<itemgap>0</itemgap>
+				<onright>18</onright>
+				<onleft>18</onleft>
+				<usecontrolcoords>true</usecontrolcoords>
+				<control type="image">
+					<width>100%</width>
+					<height>10</height>
+					<texture border="5" colordiffuse="panel">common/menu_top.png</texture>
+				</control>
 				<control type="button" id="15">
-					<description>Rule Field</description>
-					<include>SettingsItemCommon</include>
-					<width>900</width>
+					<include content="CommonButton"/>
 				</control>
 				<control type="button" id="16">
-					<description>Rule operator</description>
-					<width>900</width>
-					<include>SettingsItemCommon</include>
+					<include content="CommonButton"/>
+					<ondown>17</ondown>
 				</control>
-				<control type="grouplist" id="9002">
-					<left>30</left>
-					<top>200</top>
-					<orientation>horizontal</orientation>
-					<control type="edit" id="17">
-						<description>Value Button</description>
-						<width>600</width>
-						<include>SettingsItemCommon</include>
-						<hinttext>$LOCALIZE[31103]</hinttext>
+				<control type="group" id="101">
+					<width>100%</width>
+					<height>50</height>
+					<control type="image">
+						<width>100%</width>
+						<height>50</height>
+						<texture border="10" colordiffuse="panel">common/menu_back.png</texture>
 					</control>
-					<control type="button" id="20">
-						<description>Browse Button</description>
-						<width>300</width>
-						<include>SettingsItemCommon</include>
+					<control type="grouplist" >
+						<height>50</height>
+						<align>left</align>
+						<onright>20</onright>
+						<onleft>17</onleft>
+						<ondown>noop</ondown>
+						<orientation>horizontal</orientation>
+						<control type="edit" id="17">
+							<width>414</width>
+							<include>NoTextures</include>
+							<include>CommonButton</include>
+							<hinttext>$LOCALIZE[31008]</hinttext>
+							<focusedcolor>emby</focusedcolor>
+							<onup>16</onup>
+							<ondown>18</ondown>
+						</control>
+						<control type="button" id="20">
+							<width>70</width>
+							<include>NoTextures</include>
+							<focusedcolor>emby</focusedcolor>
+							<font>Material24</font>
+							<align>right</align>
+							<label></label>
+							<onup>16</onup>
+							<ondown>18</ondown>
+						</control>
+					</control>
+				</control>
+				<control type="group" id="102">
+					<width>100%</width>
+					<height>62</height>
+					<control type="image">
+						<width>100%</width>
+						<height>62</height>
+						<texture border="10" colordiffuse="panel">common/menu_back.png</texture>
+					</control>
+					<control type="grouplist">
+						<top>10</top>
+						<left>15</left>
+						<right>15</right>
+						<height>50</height>
 						<align>center</align>
-						<label>$LOCALIZE[1024]</label>
+						<onright>19</onright>
+						<onleft>18</onleft>
+						<ondown>noop</ondown>
+						<orientation>horizontal</orientation>
+						<control type="button" id="18">
+							<label>186</label>
+							<onup>17</onup>
+						</control>
+						<control type="button" id="19">
+							<label>222</label>
+							<onup>17</onup>
+						</control>
 					</control>
 				</control>
-			</control>
-			<control type="grouplist" id="9000">
-				<orientation>horizontal</orientation>
-				<left>0</left>
-				<top>410</top>
-				<width>960</width>
-				<align>center</align>
-				<onup>9002</onup>
-				<ondown>15</ondown>
-				<include content="DefaultDialogButton">
-					<param name="id" value="18" />
-					<param name="label" value="$LOCALIZE[186]" />
-				</include>
-				<include content="DefaultDialogButton">
-					<param name="id" value="19" />
-					<param name="label" value="$LOCALIZE[222]" />
-				</include>
+				<control type="image">
+					<width>100%</width>
+					<height>10</height>
+					<texture border="5" colordiffuse="panel">common/menu_bottom.png</texture>
+				</control>
 			</control>
 		</control>
 	</controls>
