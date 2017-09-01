@@ -190,7 +190,17 @@
 						<height>250</height>
 						<texture diffuse="views/player/mask_square.png">$VAR[PlayerIcon]</texture>
 						<aspectratio scalediffuse="false">scale</aspectratio>
-						<visible>!String.StartsWith(MusicPlayer.Cover,Default)</visible>
+						<visible>!String.StartsWith(MusicPlayer.Cover,Default) + !String.StartsWith(Player.Filenameandpath,pvr://)</visible>
+					</control>
+					<control type="image" id="99">
+						<bottom>29</bottom>
+						<left>29</left>
+						<width>250</width>
+						<height>250</height>
+						<texture diffuse="views/player/mask_square.png">$VAR[PlayerIcon]</texture>
+						<aspectratio scalediffuse="false">keep</aspectratio>
+						<bordersize>20</bordersize>
+						<visible>!String.StartsWith(MusicPlayer.Cover,Default) + String.StartsWith(Player.Filenameandpath,pvr://)</visible>
 					</control>
 				</control>
 				<!-- Progress bars -->
