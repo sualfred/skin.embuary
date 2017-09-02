@@ -1,5 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+	<!-- Embcon widget vars -->
+	<variable name="EmbyCon_InProgressMedia">
+		<value condition="[System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideEmbyConWidgets)]">plugin://plugin.video.embycon/?mode=WIDGET_CONTENT&amp;type=inprogress_movies</value>
+	</variable>
+	<variable name="EmbyCon_InProgressMovies">
+		<value condition="[System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideEmbyConWidgets)]">plugin://plugin.video.embycon/?mode=WIDGET_CONTENT&amp;type=inprogress_movies</value>
+	</variable>
+	<variable name="EmbyCon_InProgressShows">
+		<value condition="[System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideEmbyConWidgets)]">plugin://plugin.video.embycon/?mode=WIDGET_CONTENT&amp;type=inprogress_episodes</value>
+	</variable>
+	<variable name="EmbyCon_NextUpEpisodes">
+		<value condition="[System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideEmbyConWidgets)]">plugin://plugin.video.embycon/?mode=WIDGET_CONTENT&amp;type=nextup_episodes</value>
+	</variable>
+	<variable name="EmbyCon_RecentMovies">
+		<value condition="[System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideEmbyConWidgets)]">plugin://plugin.video.embycon/?mode=WIDGET_CONTENT&amp;type=recent_movies</value>
+	</variable>
+	<variable name="EmbyCon_RecentEpisodes">
+		<value condition="[System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideEmbyConWidgets)]">plugin://plugin.video.embycon/?mode=WIDGET_CONTENT&amp;type=recent_episodes</value>
+	</variable>
+	<variable name="EmbyCon_MovieGenres">
+		<value condition="[System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideEmbyConWidgets)]">plugin://plugin.video.embycon/?mode=MOVIE_GENRA</value>
+	</variable>
+	<variable name="EmbyCon_Movies">
+		<value condition="[System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideEmbyConWidgets)]">plugin://plugin.video.embycon/?item_type=Movie&amp;media_type=Movies&amp;mode=SHOW_CONTENT</value>
+	</variable>
+	<variable name="EmbyCon_SimilarMovies">
+		<value condition="[System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideEmbyConWidgets)]">plugin://plugin.video.embycon?mode=WIDGET_CONTENT_SUGGESTIONS</value>
+	</variable>
 	<!-- Embcon/Native DB vars -->
 	<variable name="View55_Cast_Content">
 		<value condition="String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">plugin://plugin.video.embycon?mode=WIDGET_CONTENT_CAST&amp;id=$INFO[Window(home).Property(EmbyID)]</value>

@@ -86,7 +86,7 @@
 				<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 				<param name="sublabel" value="$INFO[ListItem.Year]"/>
 				<param name="widget_target" value="videos"/>
-				<param name="content" value="plugin://plugin.video.embycon/?mode=WIDGET_CONTENT&amp;type=inprogress_movies"/>
+				<param name="content" value="$VAR[EmbyCon_InProgressMovies]"/>
 			</include>
 			<!-- Recently added -->
 			<include content="HomePosterWidget">
@@ -109,7 +109,7 @@
 				<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 				<param name="sublabel" value="$INFO[ListItem.Year]"/>
 				<param name="widget_target" value="videos"/>
-				<param name="content" value="plugin://plugin.video.embycon/?mode=WIDGET_CONTENT&amp;type=recent_movies"/>
+				<param name="content" value="$VAR[EmbyCon_RecentMovies]"/>
 			</include>
 			<!-- Genres -->
 			<include content="HomeWideWidget">
@@ -131,7 +131,7 @@
 				<param name="widget_target" value="videos"/>
 				<param name="sortby" value="sorttitle"/>
 				<param name="layout" value="GenreLayout"/>
-				<param name="content" value="plugin://plugin.video.embycon/?mode=MOVIE_GENRA"/>
+				<param name="content" value="$VAR[EmbyCon_MovieGenres]"/>
 			</include>
 			<!-- Recommended -->
 			<include content="HomePosterWidget">
@@ -158,7 +158,7 @@
 				<param name="widget_target" value="videos"/>
 				<param name="sortby" value="rating"/>
 				<param name="sortorder" value="descending"/>
-				<param name="content" value="plugin://plugin.video.embycon/?item_type=Movie&amp;media_type=Movies&amp;mode=SHOW_CONTENT"/>
+				<param name="content" value="$VAR[EmbyCon_Movies]"/>
 			</include>
 			<!-- similar -->
 			<include content="HomePosterWidget">
@@ -181,7 +181,7 @@
 				<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 				<param name="sublabel" value="$INFO[ListItem.Year]"/>
 				<param name="widget_target" value="videos"/>
-				<param name="content" value="plugin://plugin.video.embycon?mode=WIDGET_CONTENT_SUGGESTIONS"/>
+				<param name="content" value="$VAR[EmbyCon_SimilarMovies]"/>
 			</include>
 
 		</control>
