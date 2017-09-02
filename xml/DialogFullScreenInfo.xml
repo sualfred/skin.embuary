@@ -11,9 +11,9 @@
 			<orientation>vertical</orientation>
 		</control>
 		<!-- Content -->
-		<include condition="VideoPlayer.Content(livetv)">VideoPVRInfoLayout</include>
+		<include condition="[VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)]">VideoPVRInfoLayout</include>
 		<include condition="VideoPlayer.Content(movies) | VideoPlayer.Content(episodes)">VideoInfoLayout</include>
-		<include condition="!VideoPlayer.Content(movies) + !VideoPlayer.Content(episodes) + !VideoPlayer.Content(livetv)">TinyInfoLayout</include>
+		<include condition="!VideoPlayer.Content(movies) + !VideoPlayer.Content(episodes) + ![VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)]">TinyInfoLayout</include>
 		<!-- side panel -->
 		<include content="SidePanel">
 			<param name="onright">100</param>
