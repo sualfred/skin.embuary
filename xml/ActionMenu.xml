@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window id="3301" type="dialog">
+	<defaultcontrol always="true">3000</defaultcontrol>
+    <zorder>2</zorder>
+    <controls>
+        <!-- EmbyCon dialog -->
+        <control type="group">
+            <include content="DiffuseMask">
+                <param name="visible">!VideoPlayer.IsFullscreen</param>
+            </include>
+            <control type="group">
+                <include>Dialog_PopupOpenClose</include>
+                <centerleft>50%</centerleft>
+                <centertop>50%</centertop>
+                <width>380</width>
+                <height>270</height>
+                <control type="image">
+                    <width>380</width>
+                    <height>270</height>
+                    <texture colordiffuse="panel" border="10">common/dialog_back.png</texture>
+                </control>
+                <control type="list" id="3000">
+                    <centerleft>50%</centerleft>
+                    <top>10</top>
+                    <width>370</width>
+                    <height>250</height>
+                    <pagecontrol>17</pagecontrol>
+                    <onup>noop</onup>
+                    <onleft>5</onleft>
+                    <onright>5</onright>
+                    <ondown>7</ondown>
+                    <itemlayout width="370" height="50">
+                        <control type="label">
+                            <width>100%</width>
+                            <height>50</height>
+                            <aligny>center</aligny>
+                            <textoffsetx>20</textoffsetx>
+                            <font>med20</font>
+                            <textcolor>white</textcolor>
+                            <textshadow>text_shadow</textshadow>
+                            <label>$INFO[ListItem.Label]</label>
+                        </control>
+                    </itemlayout>
+                    <focusedlayout width="370" height="50">
+                        <control type="image">
+                            <width>100%</width>
+                            <height>50</height>
+                            <texture colordiffuse="panel">common/white.jpg</texture>
+                            <visible>!Control.HasFocus(3000)</visible>
+                        </control>
+                        <control type="image">
+                            <width>100%</width>
+                            <height>50</height>
+                            <texture colordiffuse="panel_hover">common/white.jpg</texture>
+                            <visible>Control.HasFocus(3000)</visible>
+                        </control>
+                        <control type="label">
+                            <width>100%</width>
+                            <height>50</height>
+                            <aligny>center</aligny>
+                            <textoffsetx>20</textoffsetx>
+                            <font>med20</font>
+                            <textcolor>white</textcolor>
+                            <textshadow>text_shadow</textshadow>
+                            <label>$INFO[ListItem.Label]</label>
+                        </control>
+                    </focusedlayout>
+                </control>
+            </control>
+        </control>
+
+	</controls>
+</window>
