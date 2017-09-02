@@ -212,7 +212,7 @@
 						<texture diffuse="views/player/mask_square.png">$VAR[PlayerIcon]</texture>
 						<bordersize>20</bordersize>
 						<aspectratio scalediffuse="false">keep</aspectratio>
-						<visible>VideoPlayer.Content(livetv) + !String.StartsWith(VideoPlayer.Cover,Default)</visible>
+						<visible>[VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)] + !String.StartsWith(VideoPlayer.Cover,Default)</visible>
 					</control>
 					<control type="image" id="99">
 						<bottom>29</bottom>
@@ -221,7 +221,7 @@
 						<height>250</height>
 						<texture diffuse="views/player/mask_square.png">$VAR[PlayerIcon]</texture>
 						<aspectratio scalediffuse="false">keep</aspectratio>
-						<visible>!VideoPlayer.Content(livetv) + !String.StartsWith(VideoPlayer.Cover,Default)</visible>
+						<visible>![VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)] + !String.StartsWith(VideoPlayer.Cover,Default)</visible>
 					</control>
 				</control>
 				<!-- Progress bars -->
