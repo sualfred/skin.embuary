@@ -52,70 +52,115 @@
 			<include content="WidgetSpacer">
 				<param name="id" value="101"/>
 			</include>
-
+			<!-- Library -->
 			<include content="HomeWidgetMenu">
 				<param name="id" value="100"/>
 				<param name="onup" value="6666"/>
 				<param name="ondown" value="200"/>
 				<param name="headline" value="$LOCALIZE[14211]"/>
 			</include>
-
+			<!-- In progress -->
 			<include content="HomeWideWidget">
+				<param name="visible" value="!Skin.HasSetting(HideLibaryWidgets)"/>
 				<param name="id" value="200"/>
 				<param name="onup" value="100"/>
-				<param name="ondown" value="20101"/>
+				<param name="ondown" value="201"/>
 				<param name="headline" value="$LOCALIZE[575]"/>
 				<param name="widget_target" value="videos"/>
 				<param name="content" value="plugin://script.skin.helper.widgets/?action=inprogressshowsandmovies&amp;mediatype=media&amp;reload=$INFO[Window(Home).Property(widgetreload)]"/>
 			</include>
-
-
-			<include content="PVRHomeSquareWidget">							
+			<include content="HomeWideWidget">
+				<param name="visible" value="!Skin.HasSetting(HideEmbyConWidgets)"/>
 				<param name="id" value="201"/>
 				<param name="onup" value="200"/>
-				<param name="ondown" value="202"/>
+				<param name="ondown" value="20201"/>
+				<param name="headline" value="EmbyCon $LOCALIZE[575]"/>
+				<param name="widget_target" value="videos"/>
+				<param name="content" value="plugin://plugin.video.embycon/?mode=WIDGET_CONTENT&amp;type=inprogress_movies"/>
+			</include>
+			<!-- PVR -->
+			<include content="PVRHomeSquareWidget">
+				<param name="visible" value="!Skin.HasSetting(HidePVRWidgets)"/>		
+				<param name="id" value="202"/>
+				<param name="onup" value="201"/>
+				<param name="ondown" value="203"/>
 				<param name="headline" value="$LOCALIZE[575]"/>
 				<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 				<param name="sublabel" value="$INFO[ListItem.StartTime] - $INFO[ListItem.EndTime]"/>
 				<param name="content" value="pvr://channels/tv/*"/>
 			</include>
-
-			<include content="HomeWideWidget">							
-				<param name="id" value="202"/>
-				<param name="onup" value="201"/>
-				<param name="ondown" value="203"/>
-				<param name="headline" value="$LOCALIZE[626]"/>
-				<param name="mainlabel" value="$INFO[ListItem.TvShowTitle]"/>
-				<param name="sublabel" value="$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title]"/>
-				<!--<param name="content" value="plugin://plugin.video.embycon/?mode=WIDGET_CONTENT&amp;type=nextup_episodes"/>-->
-				<param name="content" value="plugin://script.skin.helper.widgets/?action=next&amp;mediatype=episodes&amp;reload=$INFO[Window(Home).Property(widgetreload)]"/>
-			</include>
-
-			<include content="HomePosterWidget">
+			<!-- Next up episodes -->
+			<include content="HomeWideWidget">
+				<param name="visible" value="!Skin.HasSetting(HideLibaryWidgets)"/>
 				<param name="id" value="203"/>
 				<param name="onup" value="202"/>
 				<param name="ondown" value="204"/>
+				<param name="headline" value="$LOCALIZE[626]"/>
+				<param name="mainlabel" value="$INFO[ListItem.TvShowTitle]"/>
+				<param name="sublabel" value="$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title]"/>
+				<param name="content" value="plugin://script.skin.helper.widgets/?action=next&amp;mediatype=episodes&amp;reload=$INFO[Window(Home).Property(widgetreload)]"/>
+			</include>
+			<include content="HomeWideWidget">
+				<param name="visible" value="!Skin.HasSetting(HideEmbyConWidgets)"/>
+				<param name="id" value="204"/>
+				<param name="onup" value="203"/>
+				<param name="ondown" value="205"/>
+				<param name="headline" value="EmbyCon $LOCALIZE[626]"/>
+				<param name="mainlabel" value="$INFO[ListItem.TvShowTitle]"/>
+				<param name="sublabel" value="$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title]"/>
+				<param name="content" value="plugin://plugin.video.embycon/?mode=WIDGET_CONTENT&amp;type=nextup_episodes"/>
+			</include>
+			<!-- Recently added movies -->
+			<include content="HomePosterWidget">
+				<param name="visible" value="!Skin.HasSetting(HideLibaryWidgets)"/>
+				<param name="id" value="205"/>
+				<param name="onup" value="204"/>
+				<param name="ondown" value="206"/>
 				<param name="headline" value="$LOCALIZE[20386]"/>
 				<param name="mainlabel" value="$INFO[ListItem.Label]"/>
 				<param name="sublabel" value="$INFO[ListItem.Year]"/>
 				<param name="widget_target" value="videos"/>
 				<param name="content" value="special://skin/playlists/video/RecentlyAddedMovies.xsp"/>
 			</include>
-
+			<include content="HomePosterWidget">
+				<param name="visible" value="!Skin.HasSetting(HideEmbyConWidgets)"/>
+				<param name="id" value="206"/>
+				<param name="onup" value="205"/>
+				<param name="ondown" value="207"/>
+				<param name="headline" value="EmbyCon $LOCALIZE[20386]"/>
+				<param name="mainlabel" value="$INFO[ListItem.Label]"/>
+				<param name="sublabel" value="$INFO[ListItem.Year]"/>
+				<param name="widget_target" value="videos"/>
+				<param name="content" value="plugin://plugin.video.embycon/?mode=WIDGET_CONTENT&amp;type=recent_movies"/>
+			</include>
+			<!-- Recently added episodes -->
 			<include content="HomeWideWidget">
-				<param name="id" value="204"/>
-				<param name="onup" value="203"/>
-				<param name="ondown" value="205"/>
+				<param name="visible" value="!Skin.HasSetting(HideLibaryWidgets)"/>
+				<param name="id" value="207"/>
+				<param name="onup" value="206"/>
+				<param name="ondown" value="208"/>
 				<param name="headline" value="$LOCALIZE[20387]"/>
 				<param name="mainlabel" value="$INFO[ListItem.Label]"/>
 				<param name="sublabel" value="$INFO[ListItem.Year]"/>
 				<param name="widget_target" value="videos"/>
 				<param name="content" value="special://skin/playlists/video/RecentlyUpdatedTVShows.xsp"/>
 			</include>
-
+			<include content="HomeWideWidget">
+				<param name="visible" value="!Skin.HasSetting(HideEmbyConWidgets)"/>
+				<param name="id" value="208"/>
+				<param name="onup" value="207"/>
+				<param name="ondown" value="209"/>
+				<param name="headline" value="EmbyCon $LOCALIZE[20387]"/>
+				<param name="mainlabel" value="$INFO[ListItem.Label]"/>
+				<param name="sublabel" value="$INFO[ListItem.Year]"/>
+				<param name="widget_target" value="videos"/>
+				<param name="content" value="plugin://plugin.video.embycon/?mode=WIDGET_CONTENT&amp;type=recent_episodes"/>
+			</include>
+			<!-- Recently added albums -->
 			<include content="HomeSquareWidget">
-				<param name="id" value="205"/>
-				<param name="onup" value="204"/>
+				<param name="visible" value="!Skin.HasSetting(HideLibaryWidgets)"/>
+				<param name="id" value="209"/>
+				<param name="onup" value="208"/>
 				<param name="ondown" value="SetProperty(BounceDown,1,home)"/>
 				<param name="headline" value="$LOCALIZE[359]"/>
 				<param name="mainlabel" value="$INFO[ListItem.Album]"/>
