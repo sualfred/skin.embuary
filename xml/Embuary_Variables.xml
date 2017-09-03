@@ -20,10 +20,10 @@
 		<value condition="[System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideEmbyConWidgets)]">plugin://plugin.video.embycon/?mode=WIDGET_CONTENT&amp;type=recent_episodes</value>
 	</variable>
 	<variable name="EmbyCon_MovieGenres">
-		<value condition="[System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideEmbyConWidgets)]">plugin://plugin.video.embycon?mode=WIDGET_CONTENT_URL&amp;url=Genres%3FSortBy%3DSortName%26SortOrder%3DAscending%26IncludeItemTypes%3DMovie%26Recursive%3Dtrue%26EnableTotalRecordCount%3Dfalse%26ParentId%3D7a2175bccb1f1a94152cbd2b2bae8f6d%26userId%3D%7Buserid%7D&amp;action=1</value>
+		<value condition="[System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideEmbyConWidgets)]">plugin://plugin.video.embycon/?mode=MOVIE_GENRE</value>
 	</variable>
 	<variable name="EmbyCon_TVShowGenres">
-		<value condition="[System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideEmbyConWidgets)]">plugin://plugin.video.embycon/?mode=MOVIE_GENRA</value>
+		<value condition="[System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideEmbyConWidgets)]">plugin://plugin.video.embycon/?mode=SERIES_GENRE</value>
 	</variable>
 	<variable name="EmbyCon_Movies">
 		<value condition="[System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideEmbyConWidgets)]">plugin://plugin.video.embycon/?item_type=Movie&amp;media_type=Movies&amp;mode=SHOW_CONTENT</value>
@@ -38,13 +38,13 @@
 		<value condition="[System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideEmbyConWidgets)]">plugin://plugin.video.embycon?mode=WIDGET_CONTENT_SUGGESTIONS</value>
 	</variable>
 	<!-- Embcon/Native DB vars -->
-	<variable name="View55_Cast_Content">
+	<variable name="View_Cast_Content">
 		<value condition="String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">plugin://plugin.video.embycon?mode=WIDGET_CONTENT_CAST&amp;id=$INFO[Window(home).Property(EmbyID)]</value>
-		<value>plugin://script.skin.helper.service/?action=getcast&amp;tvshow=$INFO[Window(home).Property(TVShowDBID)]</value>
+		<value>plugin://script.skin.helper.service/?action=getcast&amp;tvshow=$INFO[ListItem.TvShowTitle]</value>
 	</variable>
-	<variable name="View54_Cast_Content">
+	<variable name="View_Cast_Content">
 		<value condition="String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">plugin://plugin.video.embycon?mode=WIDGET_CONTENT_CAST&amp;id=$INFO[Window(home).Property(EmbyID)]</value>
-		<value>plugin://script.skin.helper.service/?action=getcast&amp;tvshow=$INFO[Window(home).Property(TVShowDBID)]</value>
+		<value>plugin://script.skin.helper.service/?action=getcast&amp;tvshow=$INFO[ListItem.TvShowTitle]</value>
 	</variable>
 	<variable name="View54_NextUp_Content">
 		<value condition="String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">plugin://plugin.video.embycon?mode=WIDGET_CONTENT_NEXTUP&amp;id=$INFO[Window(home).Property(EmbyID)]</value>
