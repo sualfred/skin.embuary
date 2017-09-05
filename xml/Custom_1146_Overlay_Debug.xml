@@ -2,6 +2,7 @@
 <window id="1146" type="dialog">
 	<zorder>100</zorder>
 	<visible>!Window.IsVisible(startup)</visible>
+	<!--<onload>Skin.SetString(teststring,$INFO[Container.FolderPath])</onload>-->
 	<controls>
 		<!-- Window/Dialog debug -->
 		<control type="grouplist">
@@ -12,6 +13,15 @@
 			<itemgap>12</itemgap>
 			<visible>Skin.HasSetting(DebugInfo)</visible>
 			<!-- Temp labels -->
+			<control type="label">
+				<width>780</width>
+				<height>21</height>
+				<textcolor>FF0000FF</textcolor>
+				<shadowcolor>FF000000</shadowcolor>
+				<font>med18</font>
+				<align>left</align>
+				<label>temp $INFO[Window(home).Property(PlayItem)]</label>
+			</control>
 			<control type="label">
 				<width>780</width>
 				<height>21</height>

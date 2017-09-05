@@ -5,6 +5,7 @@
 	</include>
 	<include name="WidgetOnClick">
 		<onclick>$PARAM[onclick]</onclick>
+		<onclick>$PARAM[onclick2]</onclick>
 	</include>
 	<!-- ##### OTHER ##### -->
 	<!-- Landscape -->
@@ -663,13 +664,14 @@
 					</control>
 					<include content="WidgetLoadingSpinner"/>
 				</control>
-				<control type="list" id="$PARAM[id]">
+				<control type="fixedlist" id="$PARAM[id]">
 					<top>30</top>
 					<width>2120</width>
 					<movement>3</movement>
 					<scrolltime>200</scrolltime>
 					<orientation>horizontal</orientation>
 					<preloaditems>4</preloaditems>
+					<movement>3</movement>
 					<ondown>$PARAM[ondown]</ondown>
 					<include content="Bounce_Right">
 						<param name="id">$PARAM[id]</param>
@@ -680,6 +682,7 @@
 					<onup>$PARAM[onup]</onup>
 					<include condition="$PARAM[use_custom_onclick]" content="WidgetOnClick">
 						<param name="onclick" value="$PARAM[onclick]"/>
+						<param name="onclick2" value="$PARAM[onclick2]"/>
 					</include>
 					<itemlayout width="444">
 						<control type="group">
@@ -759,7 +762,7 @@
 					</control>
 					<include content="WidgetLoadingSpinner"/>
 				</control>
-				<control type="list" id="$PARAM[id]">
+				<control type="fixedlist" id="$PARAM[id]">
 					<top>30</top>
 					<width>1920</width>
 					<scrolltime>200</scrolltime>
@@ -776,6 +779,7 @@
 					<onup>$PARAM[onup]</onup>
 					<include condition="$PARAM[use_custom_onclick]" content="WidgetOnClick">
 						<param name="onclick" value="$PARAM[onclick]"/>
+						<param name="onclick2" value="$PARAM[onclick2]"/>
 					</include>
 					<itemlayout width="296">
 						<control type="group">							
@@ -826,6 +830,7 @@
 		<param name="use_custom_content">true</param>
 		<param name="use_custom_onclick">false</param>
 		<param name="height">575</param>
+		<param name="layout">SquareLayout</param>
 		<definition>
 			<control type="group" id="$PARAM[id]1">
 				<visible>$PARAM[visible]</visible>
@@ -873,12 +878,13 @@
 					<onup>$PARAM[onup]</onup>
 					<include condition="$PARAM[use_custom_onclick]" content="WidgetOnClick">
 						<param name="onclick" value="$PARAM[onclick]"/>
+						<param name="onclick2" value="$PARAM[onclick2]"/>
 					</include>
 					<itemlayout width="296">
 						<control type="group">							
 							<left>72</left>
 							<top>64</top>
-							<include content="SquareLayout">
+							<include content="$PARAM[layout]">
 								<param name="mainlabel" value="$PARAM[mainlabel]" />
 								<param name="sublabel" value="$PARAM[sublabel]" />
 								<param name="focused" value="false" />
@@ -891,7 +897,7 @@
 						<control type="group">							
 							<left>72</left>
 							<top>64</top>
-							<include content="SquareLayout">
+							<include content="$PARAM[layout]">
 								<param name="mainlabel" value="$PARAM[mainlabel]" />
 								<param name="sublabel" value="$PARAM[sublabel]" />
 								<param name="focused" value="true" />
