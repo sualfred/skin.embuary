@@ -155,7 +155,7 @@
 						<width>98</width>
 						<texture>common/embuary_small.png</texture>
 						<aspectratio>keep</aspectratio>
-						<visible>[Window.IsVisible(home) | Window.IsVisible(loginscreen)] + !Window.IsVisible(script-globalsearch-main.xml) + !$EXP[ExpInfoDialogActive]</visible>
+						<visible>[Window.IsVisible(home) | Window.IsVisible(loginscreen)] + !Window.IsVisible(script-globalsearch-main.xml) + !Window.IsVisible(favourites) + !$EXP[ExpInfoDialogActive]</visible>
 					</control>
 					<control type="label">
 						<width>auto</width>
@@ -340,6 +340,7 @@
 		<param name="action2">noop</param>
 		<param name="onright">10</param>
 		<param name="visible">true</param>
+		<param name="closepanel">true</param>
 		<definition>
 			<control type="group">
 				<visible>$PARAM[visible]</visible>
@@ -380,6 +381,7 @@
 					<selectedcolor>panel_text</selectedcolor>
 					<shadowcolor>text_shadow</shadowcolor>
 					<label>$PARAM[label]</label>
+					<onclick condition="$PARAM[closepanel]">back</onclick>
 					<onclick condition="$PARAM[condition1]">$PARAM[action1]</onclick>
 					<onclick condition="$PARAM[condition2]">$PARAM[action2]</onclick>
 				</control>
@@ -547,7 +549,7 @@
 						<param name="onright">$PARAM[onright]</param>
 						<param name="label">24001</param>
 						<param name="icon">&#xE5C3;</param>
-						<param name="action1">ActivateWindow(1100)</param>
+						<param name="action1">ActivateWindow(addonbrowser)</param>
 					</include>
 					<include content="SideMenuButton">
 						<param name="id">909</param>
@@ -624,16 +626,7 @@
 					<include content="SideMenuButton">
 						<param name="id">916</param>
 						<param name="onup">915</param>
-						<param name="ondown">917</param>
-						<param name="onright">$PARAM[onright]</param>
-						<param name="label">$LOCALIZE[582]</param>
-						<param name="icon">&#xE8EB;</param>
-						<param name="action1">Container.NextViewMode</param>
-					</include>
-					<include content="SideMenuButton">
-						<param name="id">917</param>
-						<param name="onup">916</param>
-						<param name="ondown">917</param>
+						<param name="ondown">916</param>
 						<param name="onright">$PARAM[onright]</param>
 						<param name="label">20183</param>
 						<param name="icon">&#xE868;</param>
