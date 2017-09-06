@@ -1,106 +1,265 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <window>
-	<defaultcontrol always="true">6</defaultcontrol>
-	<menucontrol>9000</menucontrol>
+	<defaultcontrol always="true">50</defaultcontrol>
 	<controls>
-		<include>DefaultBackground</include>
-		<control type="group">
-			<include>OpenClose_Left</include>
-			<left>302</left>
-			<include content="FileManagerPanel">
-				<param name="header_id" value="22" />
-				<param name="header_label" value="$LOCALIZE[20094]" />
-				<param name="list_id" value="50" />
-				<param name="scrollbar_id" value="60" />
-				<param name="onleft_id" value="9000" />
-				<param name="onright_id" value="60" />
-				<param name="width" value="playlisteditorlist_width" />
-			</include>
+		<control type="label" id="101">
+			<include>HiddenObject</include>
 		</control>
+		<include>Background</include>
 		<control type="group">
-			<include>OpenClose_Left</include>
-			<include content="ContentPanel">
-				<param name="width" value="360" />
-			</include>
-			<control type="grouplist" id="9000">
-				<left>0</left>
-				<top>160</top>
-				<onright>50</onright>
-				<onleft>100</onleft>
-				<itemgap>-20</itemgap>
-				<control type="button" id="6">
-					<description>Button Network</description>
-					<include content="DefaultSettingButton">
-						<param name="height" value="120" />
-					</include>
-					<width>300</width>
-					<label>$LOCALIZE[502]</label>
-				</control>
-				<control type="button" id="7">
-					<include content="DefaultSettingButton">
-						<param name="height" value="120" />
-					</include>
-					<width>300</width>
-					<label>$LOCALIZE[190]</label>
-				</control>
-				<control type="button" id="8">
-					<include content="DefaultSettingButton">
-						<param name="height" value="120" />
-					</include>
-					<width>300</width>
-					<label>$LOCALIZE[192]</label>
-				</control>
-			</control>
-		</control>
-		<control type="group">
-			<include>OpenClose_Right</include>
-			<width>845</width>
-			<right>0</right>
-			<include content="ContentPanel">
-				<param name="width" value="1100" />
-				<param name="left" value="-21" />
-			</include>
-			<include content="FileManagerPanel">
-				<param name="header_id" value="23" />
-				<param name="header_label" value="$LOCALIZE[13350]" />
-				<param name="list_id" value="100" />
-				<param name="scrollbar_id" value="61" />
-				<param name="onleft_id" value="60" />
-				<param name="onright_id" value="61" />
-				<param name="width" value="850" />
-			</include>
-			<control type="scrollbar" id="60">
-				<left>0</left>
-				<top>80</top>
-				<width>12</width>
-				<bottom>80</bottom>
-				<onleft>50</onleft>
-				<onright>100</onright>
-				<texturesliderbackground />
-				<animation effect="zoom" end="50,100" time="300" tween="sine" center="0,0" easing="inout" condition="!Control.HasFocus(60)">conditional</animation>
+			<include>Window_OpenClose</include>
+			<top>58</top>
+			<!-- left col -->
+			<control type="grouplist">
+				<left>135</left>
+				<centertop>50%</centertop>
+				<width>800</width>
+				<height max="940">auto</height>
 				<orientation>vertical</orientation>
+				<itemgap>20</itemgap>
+				<align>center</align>
+				<!-- heading -->
+				<control type="group">
+					<height>50</height>
+					<control type="label">
+						<width>800</width>
+						<height>48</height>
+						<font>Reg24</font>
+						<aligny>center</aligny>
+						<textoffsetx>5</textoffsetx>
+						<textcolor>text_white</textcolor>
+						<label>$LOCALIZE[744]</label>
+					</control>
+					<control type="image">
+						<width>100%</width>
+						<top>45</top>
+						<height>2</height>
+						<texture colordiffuse="lightgrey">common/white.jpg</texture>
+						<aspectratio>stretch</aspectratio>
+					</control>
+					<control type="image">
+						<width>100%</width>
+						<top>45</top>
+						<height>2</height>
+						<texture colordiffuse="emby">common/white.jpg</texture>
+						<aspectratio>stretch</aspectratio>
+						<include>WindowOpen_GreenBar</include>
+					</control>
+				</control>
+				<!-- list -->
+				<control type="group">
+					<height>520</height>
+					<control type="image">
+						<height>520</height>
+						<texture colordiffuse="thumb_background">common/white.jpg</texture>
+						<aspectratio>stretch</aspectratio>
+					</control>
+					<control type="list" id="50">
+						<centerleft>50%</centerleft>
+						<top>10</top>
+						<height>500</height>
+						<onup>6666</onup>
+						<onleft>9999</onleft>
+						<onright>100</onright>
+						<ondown>200</ondown>
+						<pagecontrol>70</pagecontrol>
+						<scrolltime>200</scrolltime>
+						<itemlayout height="50" width="800">
+							<control type="image">
+								<height>50</height>
+								<width>50</width>
+								<left>5</left>
+								<bordersize>5</bordersize>
+								<texture background="true">$INFO[ListItem.Icon]</texture>
+							</control>
+							<control type="label">
+								<right>20</right>
+								<left>60</left>
+								<height>50</height>
+								<aligny>center</aligny>
+								<font>Reg24</font>
+								<textcolor>white</textcolor>
+								<textshadow>text_shadow</textshadow>
+								<label>$INFO[ListItem.Label]$INFO[ListItem.Label2,[COLOR softgrey] [,][/COLOR]]</label>
+							</control>
+						</itemlayout>
+						<focusedlayout height="50" width="800">
+							<control type="image">
+								<width>100%</width>
+								<height>50</height>
+								<texture colordiffuse="list_hover2">common/white.jpg</texture>
+								<visible>Control.HasFocus(50)</visible>
+							</control>
+							<control type="image">
+								<height>50</height>
+								<width>50</width>
+								<left>5</left>
+								<bordersize>5</bordersize>
+								<texture background="true">$INFO[ListItem.Icon]</texture>
+							</control>
+							<control type="label">
+								<right>20</right>
+								<left>60</left>
+								<height>50</height>
+								<aligny>center</aligny>
+								<font>Reg24</font>
+								<textcolor>white</textcolor>
+								<textshadow>text_shadow</textshadow>
+								<label>$INFO[ListItem.Label]$INFO[ListItem.Label2,[COLOR softgrey] [,][/COLOR]]</label>
+							</control>
+						</focusedlayout>
+					</control>
+					<control type="scrollbar" id="70">
+						<right>0</right>
+						<top>0</top>
+						<bottom>0</bottom>
+						<width>4</width>
+						<orientation>vertical</orientation>
+						<showonepage>false</showonepage>
+						<texturesliderbar colordiffuse="softgrey">common/ProgressBar.png</texturesliderbar>
+					</control>
+				</control>
+				<!-- Button -->
+				<control type="grouplist" id="200">
+					<bottom>0</bottom>
+					<height>100</height>
+					<width>100%</width>
+					<orientation>horizontal</orientation>
+					<itemgap>5</itemgap>
+					<align>center</align>
+					<onright>100</onright>
+					<onleft>9999</onleft>
+					<control type="button" id="6">
+						<label>$LOCALIZE[31067]</label>
+						<onup>SetFocus(50)</onup>
+					</control>
+					<control type="button" id="7">
+						<label>$LOCALIZE[190]</label>
+						<onup>SetFocus(50)</onup>
+					</control>
+					<control type="button" id="8">
+						<label>$LOCALIZE[192]</label>
+						<onup>SetFocus(50)</onup>
+					</control>
+				</control>
 			</control>
-			<control type="scrollbar" id="61">
-				<left>834</left>
-				<top>80</top>
-				<width>12</width>
-				<bottom>80</bottom>
-				<onleft>100</onleft>
-				<onright>9000</onright>
-				<texturesliderbackground></texturesliderbackground>
-				<animation effect="zoom" end="50,100" time="300" tween="sine" center="848,0" easing="inout" condition="!Control.HasFocus(61)">conditional</animation>
+			<!-- right col -->
+			<control type="grouplist">
+				<right>135</right>
+				<centertop>50%</centertop>
+				<width>800</width>
+				<height max="940">auto</height>
 				<orientation>vertical</orientation>
+				<itemgap>20</itemgap>
+				<align>center</align>
+				<!-- heading -->
+				<control type="group">
+					<height>50</height>
+					<control type="label">
+						<width>800</width>
+						<height>48</height>
+						<font>Reg24</font>
+						<aligny>center</aligny>
+						<textoffsetx>5</textoffsetx>
+						<textcolor>text_white</textcolor>
+						<label>$LOCALIZE[13350]</label>
+					</control>
+					<control type="image">
+						<width>100%</width>
+						<top>45</top>
+						<height>2</height>
+						<texture colordiffuse="lightgrey">common/white.jpg</texture>
+						<aspectratio>stretch</aspectratio>
+					</control>
+					<control type="image">
+						<width>800</width>
+						<top>45</top>
+						<height>2</height>
+						<texture colordiffuse="emby">common/white.jpg</texture>
+						<aspectratio>stretch</aspectratio>
+						<include>WindowOpen_GreenBar</include>
+					</control>
+				</control>
+				<!-- list -->
+				<control type="group">
+					<height>520</height>
+					<control type="image">
+						<height>520</height>
+						<texture colordiffuse="thumb_background">common/white.jpg</texture>
+						<aspectratio>stretch</aspectratio>
+					</control>
+					<control type="list" id="100">
+						<centerleft>50%</centerleft>
+						<top>10</top>
+						<height>500</height>
+						<onup>6666</onup>
+						<onleft>50</onleft>
+						<onright>noop</onright>
+						<ondown>200</ondown>
+						<pagecontrol>60</pagecontrol>
+						<scrolltime>200</scrolltime>
+						<itemlayout height="50" width="800">
+							<control type="label">
+								<right>20</right>
+								<left>20</left>
+								<height>50</height>
+								<aligny>center</aligny>
+								<font>Reg24</font>
+								<textcolor>white</textcolor>
+								<textshadow>text_shadow</textshadow>
+								<label>$INFO[ListItem.Label]</label>
+							</control>
+						</itemlayout>
+						<focusedlayout height="50" width="800">
+							<control type="image">
+								<width>100%</width>
+								<height>50</height>
+								<texture colordiffuse="list_hover2">common/white.jpg</texture>
+								<visible>Control.HasFocus(100)</visible>
+							</control>
+							<control type="label">
+								<right>20</right>
+								<left>20</left>
+								<height>50</height>
+								<aligny>center</aligny>
+								<font>Reg24</font>
+								<textcolor>white</textcolor>
+								<textshadow>text_shadow</textshadow>
+								<label>$INFO[ListItem.Label]</label>
+							</control>
+						</focusedlayout>
+					</control>
+					<control type="scrollbar" id="60">
+						<right>0</right>
+						<top>0</top>
+						<bottom>0</bottom>
+						<width>4</width>
+						<orientation>vertical</orientation>
+						<showonepage>false</showonepage>
+						<texturesliderbackground>-</texturesliderbackground>
+						<texturesliderbar colordiffuse="softgrey">common/ProgressBar.png</texturesliderbar>
+					</control>
+				</control>
+				<control type="textbox">
+					<right>0</right>
+					<left>0</left>
+					<height>100</height>
+					<font>reg22</font>
+					<align>center</align>
+					<label>$INFO[Control.GetLabel(101),$LOCALIZE[31068]: ]</label>
+				</control>
 			</control>
 		</control>
-		<include content="TopBar">
-			<param name="breadcrumbs_label" value="$LOCALIZE[10503][COLOR=button_focus][/COLOR]" />
+
+		<!-- header bar -->
+		<include content="HeaderBar">		
+			<param name="id">50</param>
+			<param name="enabled">false</param>
+			<param name="sidebar_id">9999</param>
 		</include>
-		<include>BottomBar</include>
-		<include content="BottomBarTwoListInfo">
-			<param name="left_container_id">50</param>
-			<param name="left_scrollbar_id">60</param>
-			<param name="right_container_id">100</param>
-			<param name="right_scrollbar_id">61</param>
+		<!-- side panel -->
+		<include content="SidePanel">
+			<param name="onright">50</param>
 		</include>
 	</controls>
 </window>
