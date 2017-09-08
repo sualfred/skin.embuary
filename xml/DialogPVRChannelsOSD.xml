@@ -1,6 +1,176 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
-	<onload>close</onload>
-	<onload>ActivateWindow(tvchannels)</onload>
-	<controls/>
+	<defaultcontrol>11</defaultcontrol>
+	<controls>
+		<control type="group">
+			<control type="image">
+				<include>Visible_Fade</include>
+				<include>FullscreenDimensions</include>
+				<texture colordiffuse="background_diffuse">common/white.jpg</texture>
+				<visible>!Window.IsVisible(pvrguideinfo)</visible>
+			</control>
+			<control type="grouplist">
+				<visible>!Window.IsVisible(pvrguideinfo)</visible>
+				<include>Dialog_PopupOpenClose</include>
+				<include>Visible_PopupOpenClose</include>
+				<centerleft>50%</centerleft>
+				<centertop>50%</centertop>
+				<width>800</width>
+				<height max="940">auto</height>
+				<orientation>vertical</orientation>
+				<itemgap>20</itemgap>
+				<align>center</align>
+				<!-- edit -->
+				<control type="group">
+					<height>50</height>
+					<control type="label">
+						<width>100%</width>
+						<height>48</height>
+						<font>Reg24</font>
+						<aligny>center</aligny>
+						<textoffsetx>5</textoffsetx>
+						<textcolor>text_white</textcolor>
+						<label>$LOCALIZE[31070] - $INFO[VideoPlayer.ChannelGroup]</label>
+					</control>
+					<control type="image">
+						<width>100%</width>
+						<top>45</top>
+						<height>2</height>
+						<texture colordiffuse="lightgrey">common/white.jpg</texture>
+						<aspectratio>stretch</aspectratio>
+					</control>
+					<control type="image">
+						<width>100%</width>
+						<top>45</top>
+						<height>2</height>
+						<texture colordiffuse="emby">common/white.jpg</texture>
+						<aspectratio>stretch</aspectratio>
+						<include>WindowOpen_GreenBar</include>
+					</control>
+				</control>
+				<!-- list -->
+				<control type="group">
+					<height>520</height>
+					<control type="image">
+						<height>520</height>
+						<texture colordiffuse="thumb_background">common/white.jpg</texture>
+						<aspectratio>stretch</aspectratio>
+					</control>
+					<control type="list" id="11">
+						<centerleft>50%</centerleft>
+						<top>10</top>
+						<height>500</height>
+						<onup>12</onup>
+						<onleft>PreviousChannelGroup</onleft>
+						<onright>NextChannelGroup</onright>
+						<ondown>100</ondown>
+						<pagecontrol>60</pagecontrol>
+						<scrolltime>200</scrolltime>
+						<itemlayout height="100" width="800">
+							<control type="image">
+								<height>100%</height>
+								<width>75</width>
+								<left>10</left>
+								<bordersize>5</bordersize>
+								<texture background="true">$INFO[ListItem.Icon]</texture>
+								<aspectratio>keep</aspectratio>
+							</control>
+							<control type="label">
+								<top>8</top>
+								<right>100</right>
+								<left>100</left>
+								<height>50</height>
+								<aligny>center</aligny>
+								<font>Reg24</font>
+								<textcolor>white</textcolor>
+								<textshadow>text_shadow</textshadow>
+								<label>$INFO[ListItem.Channelnumber,,. ]$INFO[ListItem.Label]</label>
+							</control>
+							<control type="label">
+								<top>42</top>
+								<right>100</right>
+								<left>100</left>
+								<height>50</height>
+								<aligny>center</aligny>
+								<font>Reg24</font>
+								<textcolor>lightgrey</textcolor>
+								<textshadow>text_shadow</textshadow>
+								<label fallback="19055">$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, - ,  ]$INFO[ListItem.Label2]</label>
+							</control>
+							<control type="progress">
+								<centertop>50%</centertop>
+								<right>10</right>
+								<width>75</width>
+								<height>10</height>
+								<texturebg colordiffuse="black" border="2">common/ProgressBack.png</texturebg>
+								<lefttexture>-</lefttexture>
+								<midtexture colordiffuse="emby"  border="2">common/ProgressBar.png</midtexture>
+								<righttexture>-</righttexture>
+								<info>ListItem.Progress</info>
+							</control>
+						</itemlayout>
+						<focusedlayout height="100" width="800">
+							<control type="image">
+								<width>100%</width>
+								<height>100%</height>
+								<texture colordiffuse="list_hover2">common/white.jpg</texture>
+								<visible>Control.HasFocus(11)</visible>
+							</control>
+							<control type="image">
+								<height>100%</height>
+								<width>75</width>
+								<left>10</left>
+								<bordersize>5</bordersize>
+								<texture background="true">$INFO[ListItem.Icon]</texture>
+								<aspectratio>keep</aspectratio>
+							</control>
+							<control type="label">
+								<top>8</top>
+								<right>100</right>
+								<left>100</left>
+								<height>50</height>
+								<aligny>center</aligny>
+								<font>Reg24</font>
+								<textcolor>white</textcolor>
+								<textshadow>text_shadow</textshadow>
+								<label>$INFO[ListItem.Channelnumber,,. ]$INFO[ListItem.Label]</label>
+							</control>
+							<control type="label">
+								<top>42</top>
+								<right>100</right>
+								<left>100</left>
+								<height>50</height>
+								<aligny>center</aligny>
+								<font>Reg24</font>
+								<textcolor>lightgrey</textcolor>
+								<textshadow>text_shadow</textshadow>
+								<label fallback="19055">$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, - ,  ]$INFO[ListItem.Label2]</label>
+							</control>
+							<control type="progress">
+								<centertop>50%</centertop>
+								<right>10</right>
+								<width>75</width>
+								<height>10</height>
+								<texturebg colordiffuse="black" border="2">common/ProgressBack.png</texturebg>
+								<lefttexture>-</lefttexture>
+								<midtexture colordiffuse="emby"  border="2">common/ProgressBar.png</midtexture>
+								<righttexture>-</righttexture>
+								<info>ListItem.Progress</info>
+							</control>
+						</focusedlayout>
+					</control>
+					<control type="scrollbar" id="60">
+						<right>0</right>
+						<top>0</top>
+						<bottom>0</bottom>
+						<width>4</width>
+						<orientation>vertical</orientation>
+						<showonepage>false</showonepage>
+						<texturesliderbackground colordiffuse="00ffffff">common/ProgressBack.png</texturesliderbackground>
+						<texturesliderbar colordiffuse="softgrey">common/ProgressBar.png</texturesliderbar>
+					</control>
+				</control>
+			</control>
+		</control>
+	</controls>
 </window>
