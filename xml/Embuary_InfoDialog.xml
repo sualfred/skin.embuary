@@ -152,6 +152,18 @@
 							<itemgap>5</itemgap>
 							<onright>noop</onright>
 							<onleft>9999</onleft>
+							<control type="button" id="101">
+								<label>$LOCALIZE[15067]</label>
+								<onup>SetFocus(6666)</onup>
+								<ondown>SetFocus(200)</ondown>
+								<onclick>close</onclick>
+							</control>
+							<control type="button" id="102">
+								<label>$LOCALIZE[15067]</label>
+								<onup>SetFocus(6666)</onup>
+								<ondown>SetFocus(200)</ondown>
+								<onclick>close</onclick>
+							</control>
 							<control type="button" id="8">
 								<label>$VAR[VideoInfoButton8]</label>
 								<onup>SetFocus(6666)</onup>
@@ -430,11 +442,18 @@
 							<onright>noop</onright>
 							<onleft>9999</onleft>
 							<control type="button" id="101">
+								<label>$LOCALIZE[15067]</label>
+								<onup>SetFocus(6666)</onup>
+								<ondown>SetFocus(200)</ondown>
+								<onclick>close</onclick>
+							</control>
+							<control type="button" id="102">
 								<label>$VAR[VideoInfoButton8]</label>
 								<onup>SetFocus(6666)</onup>
 								<ondown>SetFocus(200)</ondown>
 								<onclick>SetProperty(InfoDialogCloseFocus,1,home)</onclick>
 								<onclick>close</onclick>
+								<visible>!Window.IsVisible(home) | String.IsEqual(ListItem.DBType,movie)</visible>
 							</control>
 							<control type="button" id="97">
 								<visible>Control.IsVisible(96)</visible>
@@ -816,12 +835,18 @@
 							<onleft>9999</onleft>
 							<onright>noop</onright>
 							<control type="button" id="101">
+								<label>$LOCALIZE[15067]</label>
+								<onup>SetFocus(6666)</onup>
+								<ondown>SetFocus(200)</ondown>
+								<onclick>close</onclick>
+							</control>
+							<control type="button" id="102">
 								<label>$LOCALIZE[22083]</label>
 								<ondown>SetFocus(200)</ondown>
 								<onup>SetFocus(6666)</onup>
 								<onclick>PlayMedia(musicdb://songs/?artistid=$INFO[ListItem.DBID],isdir)</onclick>
 							</control>
-							<control type="button" id="102">
+							<control type="button" id="103">
 								<ondown>SetFocus(200)</ondown>
 								<onup>SetFocus(6666)</onup>
 								<label>$LOCALIZE[31034]</label>
@@ -1024,12 +1049,18 @@
 							<onleft>9999</onleft>
 							<onright>noop</onright>
 							<control type="button" id="101">
+								<label>$LOCALIZE[15067]</label>
+								<onup>SetFocus(6666)</onup>
+								<ondown>SetFocus(200)</ondown>
+								<onclick>close</onclick>
+							</control>
+							<control type="button" id="102">
 								<label>$LOCALIZE[22083]</label>
 								<ondown>SetFocus(200)</ondown>
 								<onup>SetFocus(6666)</onup>
 								<onclick>PlayMedia(musicdb://albums/$INFO[ListItem.DBID],isdir)</onclick>
 							</control>
-							<control type="button" id="102">
+							<control type="button" id="103">
 								<ondown>SetFocus(200)</ondown>
 								<onup>SetFocus(6666)</onup>
 								<label>$LOCALIZE[31034]</label>
