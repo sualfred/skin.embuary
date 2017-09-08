@@ -179,12 +179,34 @@
 								<ondown>SetFocus(200)</ondown>
 								<onclick>back</onclick>
 							</control>
-							<control type="button" id="97">
+							<control type="button" id="110">
 								<visible>Control.IsVisible(96)</visible>
 								<label>$LOCALIZE[31013]</label>
 								<onclick>RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.TVShowTitle]',message='$ESCINFO[ListItem.Plot]')</onclick>
 								<onup>SetFocus(6666)</onup>
 								<ondown>SetFocus(54)</ondown>
+							</control>
+							<control type="togglebutton" id="102">
+								<width>50</width>
+								<height>50</height>
+								<font>material24</font>
+								<textcolor>white</textcolor>
+								<focusedcolor>white</focusedcolor>
+								<selectedcolor>white</selectedcolor>
+								<shadowcolor>text_shadow</shadowcolor>
+								<aligny>center</aligny>
+								<align>center</align>
+								<texturefocus colordiffuse="buttonfocus_green">items/roundbutton.png</texturefocus>
+								<texturenofocus colordiffuse="greybutton">items/roundbutton.png</texturenofocus>
+								<alttexturefocus colordiffuse="buttonfocus_green">items/roundbutton.png</alttexturefocus>
+								<alttexturenofocus colordiffuse="greybutton">items/roundbutton.png</alttexturenofocus>
+								<pulseonselect>no</pulseonselect>
+								<label>[B][/B]</label>
+								<altlabel>[B][COLOR red][/COLOR][/B]</altlabel>
+								<onclick>ToggleWatched</onclick>
+								<onup>SetFocus(6666)</onup>
+								<ondown>SetFocus(54)</ondown>
+								<selected>String.IsEqual(ListItem.Overlay,OverlayWatched.png) | Integer.IsGreaterOrEqual(ListItem.PlayCount,1) | [String.IsEqual(ListItem.DBtype,tvshow) + !String.IsEmpty(ListItem.Property(UnWatchedEpisodes)) + Integer.IsLess(ListItem.Property(UnWatchedEpisodes),1)]</selected>
 							</control>
 						</control>
 						<control type="label">
