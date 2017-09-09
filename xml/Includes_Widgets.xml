@@ -567,7 +567,7 @@
 						<item>
 							<label>$LOCALIZE[3]</label>
 							<onclick>ActivateWindow(videos,root)</onclick>
-							<visible>!Library.HasContent(movies) + !Library.HasContent(tvshows)</visible>
+							<visible>!Library.HasContent(movies) + !Library.HasContent(tvshows) + !System.HasAddon(plugin.video.embycon)</visible>
 						</item>
 						<item>
 							<label>$LOCALIZE[342]</label>
@@ -576,7 +576,7 @@
 							<property name="art2">$INFO[Container(51).ListItem(1).Art(poster)]</property>
 							<property name="art3">$INFO[Container(51).ListItem(2).Art(poster)]</property>
 							<property name="art4">$INFO[Container(51).ListItem(3).Art(poster)]</property>
-							<visible>Library.HasContent(movies)</visible>
+							<visible>Library.HasContent(movies) | System.HasAddon(plugin.video.embycon)</visible>
 						</item>
 						<item>
 							<label>$LOCALIZE[20343]</label>
@@ -585,7 +585,7 @@
 							<property name="art2">$INFO[Container(52).ListItem(1).Art(poster)]</property>
 							<property name="art3">$INFO[Container(52).ListItem(2).Art(poster)]</property>
 							<property name="art4">$INFO[Container(52).ListItem(3).Art(poster)]</property>
-							<visible>Library.HasContent(tvshows)</visible>
+							<visible>Library.HasContent(tvshows) | System.HasAddon(plugin.video.embycon)</visible>
 						</item>
 						<item>
 							<label>$LOCALIZE[31042]</label>
