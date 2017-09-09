@@ -61,6 +61,58 @@
 				</control>
 			</control>
 		</control>
+		<control type="group">
+			<visible>ControlGroup(800).HasFocus + !Window.IsVisible(DialogSettings.xml) + !Window.IsVisible(playerprocessinfo)</visible>
+			<include>Visible_PopupOpenClose</include>
+			<centerleft>50%</centerleft>
+			<width>384</width>
+			<centertop>50%</centertop>
+			<height>970</height>
+			<control type="grouplist" id="800">
+				<orientation>vertical</orientation>
+				<height>auto</height>
+				<align>center</align>
+				<itemgap>0</itemgap>
+				<onright>close</onright>
+				<onleft>close</onleft>
+				<onback>609</onback>
+				<usecontrolcoords>true</usecontrolcoords>
+				<control type="image">
+					<width>100%</width>
+					<height>10</height>
+					<texture border="5" colordiffuse="panel">common/menu_top.png</texture>
+				</control>
+				<control type="button" id="803">
+					<include content="CommonButton"/>
+					<label>$LOCALIZE[19023]</label>
+					<onclick>Dialog.Close(videoosd)</onclick>
+					<onclick>ActivateWindow(pvrosdchannels)</onclick>
+				</control>
+				<control type="button" id="804">
+					<include content="CommonButton"/>
+					<label>$LOCALIZE[31071]</label>
+					<onclick>Dialog.Close(videoosd)</onclick>
+					<onclick>ActivateWindow(pvrosdguide)</onclick>
+				</control>
+				<control type="button" id="802">
+					<include content="CommonButton"/>
+					<label>$LOCALIZE[4]</label>
+					<onclick>Dialog.Close(videoosd)</onclick>
+					<onclick>ActivateWindow(tvguide)</onclick>
+				</control>
+				<control type="button" id="801">
+					<include content="CommonButton"/>
+					<label>$LOCALIZE[14233]</label>
+					<onclick>Dialog.Close(videoosd)</onclick>
+					<onclick>ActivateWindow(Teletext)</onclick>
+				</control>
+				<control type="image">
+					<width>100%</width>
+					<height>10</height>
+					<texture border="5" colordiffuse="panel">common/menu_bottom.png</texture>
+				</control>
+			</control>
+		</control>
 		<!--Player Controls-->
 		<control type="group" id="1">
 			<bottom>0</bottom>
@@ -121,6 +173,10 @@
 					<visible>Player.CanRecord</visible>
 					<visible>VideoPlayer.Content(livetv)</visible>
 				</control>
+				<control type="label" id="630">
+					<description>Spacer</description>
+					<width>10</width>
+				</control>
 				<control type="button" id="608">
 					<include content="PlayerButtons">
 						<param name="type" value="info"/>
@@ -132,8 +188,9 @@
 					<include content="PlayerButtons">
 						<param name="type" value="menu"/>
 					</include>
-					<onclick>PlayerControl(ShowVideoMenu)</onclick>
-					<visible>VideoPlayer.HasMenu</visible>
+					<onclick condition="VideoPlayer.HasMenu">PlayerControl(ShowVideoMenu)</onclick>
+					<onclick condition="VideoPlayer.Content(livetv)">SetFocus(800)</onclick>
+					<visible>VideoPlayer.HasMenu | VideoPlayer.Content(livetv)</visible>
 				</control>
 				<control type="button" id="610">
 					<include content="PlayerButtons">
