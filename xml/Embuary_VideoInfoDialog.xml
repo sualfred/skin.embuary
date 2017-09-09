@@ -249,6 +249,14 @@
 							<control type="label">
 								<width>1040</width>
 								<height>60</height>
+								<label>$INFO[VideoPlayer.TvShowTitle]</label>
+								<font>Reg37</font>
+								<shadowcolor>text_shadow</shadowcolor>
+								<visible>VideoPlayer.Content(episodes)</visible>
+							</control>
+							<control type="label">
+								<width>1040</width>
+								<height>60</height>
 								<label>$INFO[VideoPlayer.Title]</label>
 								<font>Reg37</font>
 								<shadowcolor>text_shadow</shadowcolor>
@@ -309,7 +317,7 @@
 								</control>
 							</control>
 							<control type="grouplist" id="100">
-								<height>75</height>
+								<height>65</height>
 								<orientation>horizontal</orientation>
 								<itemgap>5</itemgap>
 								<onright>noop</onright>
@@ -329,16 +337,21 @@
 								</control>
 							</control>
 							<control type="label">
+								<height>10</height>
+								<visible>!VideoPlayer.Content(episodes)</visible>
+							</control>
+							<control type="label">
 								<width>auto</width>
 								<height>40</height>
 								<label>$INFO[VideoPlayer.Genre]</label>
 								<font>reg22</font>
 								<textcolor>emby</textcolor>
 								<shadowcolor>text_shadow</shadowcolor>
+								<visible>!VideoPlayer.Content(episodes)</visible>
 							</control>
 							<control type="textbox">
 								<width>100%</width>
-								<height>130</height>
+								<height>125</height>
 								<align>justify</align>
 								<aligny>top</aligny>
 								<label>$INFO[VideoPlayer.Tagline,[B],[/B][CR]]$INFO[VideoPlayer.Plot]</label>
@@ -349,6 +362,11 @@
 							</control>
 							<control type="label">
 								<height>20</height>
+								<visible>!VideoPlayer.Content(episodes)</visible>
+							</control>
+							<control type="label">
+								<height>15</height>
+								<visible>VideoPlayer.Content(episodes)</visible>
 							</control>
 							<control type="grouplist">
 								<orientation>horizontal</orientation>
