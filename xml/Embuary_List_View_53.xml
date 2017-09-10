@@ -20,7 +20,7 @@
 				<control type="group">
 					<visible>true</visible>
 					<right>70</right>
-					<top>133</top>
+					<top>163</top>
 					<width>590</width>
 					<control type="group">
 						<control type="image">
@@ -111,6 +111,7 @@
 							<param name="width">590</param>
 							<param name="mainlabel">$PARAM[mainlabel]</param>
 							<param name="sublabel">$PARAM[sublabel]</param>
+							<param name="fallbacklabel">$PARAM[fallbacklabel]</param>
 						</include>
 					</control>
 					<control type="grouplist">
@@ -122,7 +123,7 @@
 						<width>590</width>			
 						<control type="textbox" id="97">
 							<width>590</width>
-							<height>455</height>
+							<height>400</height>
 							<align>justify</align>
 							<aligny>top</aligny>
 							<label>$VAR[ListViewPlot]</label>
@@ -143,7 +144,7 @@
 				<!-- List -->
 				<control id="53" type="list">
 					<visible>!Container.Content(seasons) + !Container.Content(episodes)</visible>
-					<top>128</top>
+					<top>158</top>
 					<width>1230</width>
 					<height>946</height>
 					<onup condition="Control.IsVisible(7000)">SetFocus(7000)</onup>
@@ -168,6 +169,7 @@
 								<param name="sublabel">$PARAM[sublabel]</param>
 								<param name="rightlabel">$PARAM[rightlabel]</param>
 								<param name="rightlabel2">$PARAM[rightlabel2]</param>
+								<param name="fallbacklabel">$PARAM[fallbacklabel]</param>
 							</include>
 						</control>
 					</itemlayout>
@@ -182,18 +184,27 @@
 								<param name="sublabel">$PARAM[sublabel]</param>
 								<param name="rightlabel">$PARAM[rightlabel]</param>
 								<param name="rightlabel2">$PARAM[rightlabel2]</param>
+								<param name="fallbacklabel">$PARAM[fallbacklabel]</param>
 							</include>
 						</control>
 					</focusedlayout>
 				</control>
 				<include content="ScrollbarVertical"/>
 			</control>
-			<include content="list_mask_vertical">
-				<param name="height" value="70"/>
-				<param name="icon_width" value="1230"/>
-				<param name="id" value="53"/>
-				<param name="visible_forced" value="true"/>
-			</include>
+			<control type="group">
+				<visible>Container(53).HasNext</visible>1
+				<animation effect="fade" start="0" end="100" time="200" tween="sine">Visible</animation>
+				<animation effect="fade" start="100" end="0" time="0">Hidden</animation>
+				<left>0</left>
+				<right>0</right>
+				<control type="image">
+					<bottom>0</bottom>
+					<width>100%</width>
+					<height>40</height>
+					<texture>items/listmask_vertical.png</texture>
+					<aspectratio>stretch</aspectratio>
+				</control>
+			</control>
 		</definition>
 	</include>
 </includes>

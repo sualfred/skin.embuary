@@ -31,7 +31,7 @@
 				<visible>$PARAM[visible_labels]</visible>
 				<control type="label">
 					<width>$PARAM[width]</width>
-					<label>$PARAM[mainlabel]</label>
+					<label fallback="$PARAM[fallbacklabel]">$PARAM[mainlabel]</label>
 					<font>Reg23</font>
 					<shadowcolor>text_shadow</shadowcolor>
 					<scroll>$PARAM[focused] + Control.HasFocus($PARAM[id])</scroll>
@@ -255,7 +255,7 @@
 				<midtexture colordiffuse="emby"  border="2">common/ProgressBar.png</midtexture>
 				<righttexture>-</righttexture>
 				<info>ListItem.Progress</info>
-				<visible>String.StartsWith(ListItem.Path,pvr://channels)</visible>
+				<visible>String.StartsWith(ListItem.Path,pvr://channels) + Integer.IsGreater(ListItem.Progress,0)</visible>
 			</control>
 			<control type="progress">
 				<top>$PARAM[top]</top>
@@ -1456,14 +1456,13 @@
 			</control>
 			<control type="group">
 				<visible>![Container.Content(tvshows) | Container.Content(movies)]</visible>
-				<top>13</top>
+				<top>17</top>
 				<control type="image">
 					<width>67</width>
 					<height>67</height>
 					<texture diffuse="items/mask_square_mini.png" background="true">$INFO[ListItem.Icon]</texture>
 					<aspectratio scalediffuse="false">keep</aspectratio>
 					<bordersize>0</bordersize>
-					<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
 				</control>
 			</control>
 			<control type="group">
@@ -1505,19 +1504,19 @@
 				</include>
 			</control>
 			<control type="label">
-				<top>20</top>
+				<top>21</top>
 				<left>100</left>
-				<width>990</width>
+				<right>250</right>
 				<height>31</height>
 				<font>Reg24</font>
 				<textcolor>white</textcolor>
 				<shadowcolor>text_shadow</shadowcolor>
-				<label>$PARAM[mainlabel]</label>
+				<label fallback="$PARAM[fallbacklabel]">$PARAM[mainlabel]</label>
 			</control>
 			<control type="label">
 				<left>100</left>
-				<top>51</top>
-				<width>990</width>
+				<top>52</top>
+				<right>250</right>
 				<height>31</height>
 				<font>reg24</font>
 				<textcolor>lightgrey</textcolor>
@@ -1525,9 +1524,9 @@
 				<label>$PARAM[sublabel]</label>
 			</control>
 			<control type="label">
-				<top>20</top>
+				<top>21</top>
 				<right>0</right>
-				<width>400</width>
+				<width>300</width>
 				<height>31</height>
 				<align>right</align>
 				<font>reg24</font>
@@ -1536,9 +1535,9 @@
 				<label>$PARAM[rightlabel]</label>
 			</control>
 			<control type="label">
-				<top>51</top>
+				<top>52</top>
 				<right>0</right>
-				<width>400</width>
+				<width>300</width>
 				<height>31</height>
 				<align>right</align>
 				<font>reg24</font>
