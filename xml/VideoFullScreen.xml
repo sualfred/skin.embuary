@@ -13,7 +13,8 @@
 		</control>
 		<!-- OSD -->
 		<control type="group" id="99">
-			<visible>[Window.IsVisible(videoosd) | Window.IsVisible(seekbar) | Player.Paused | Window.IsVisible(volumebar) | !String.IsEmpty(Window(home).Property(showvideoinfo))] + !Window.IsVisible(pvrosdchannels) + !Window.IsVisible(Teletext)</visible>
+			<visible>true</visible>
+			<!--<visible>[Window.IsVisible(videoosd) | Window.IsVisible(seekbar) | Player.Paused | Window.IsVisible(volumebar) | !String.IsEmpty(Window(home).Property(showvideoinfo))] + !Window.IsVisible(pvrosdchannels) + !Window.IsVisible(Teletext)</visible>-->
 			<animation effect="fade" start="0" end="100" time="0">Visible</animation>
 			<animation effect="fade" start="100" end="0" time="400m" delay="2000" condition="!Window.IsVisible(pvrosdchannels) + !Window.IsVisible(Teletext)">Hidden</animation>			
 			<!--Top-->
@@ -116,14 +117,14 @@
 					<width>100%</width>
 					<height>180</height>
 					<texture colordiffuse="black">views/player/mask_bottom.png</texture>
-					<visible>!VideoPlayer.Content(livetv)</visible>
+					<visible>!VideoPlayer.Content(livetv) + !String.StartsWith(Player.Filenameandpath,pvr://)</visible>
 				</control>
 				<control type="image" id="99">
 					<bottom>0</bottom>
 					<width>100%</width>
 					<height>216</height>
 					<texture colordiffuse="black">views/player/mask_bottom.png</texture>
-					<visible>VideoPlayer.Content(livetv)</visible>
+					<visible>VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)</visible>
 				</control>
 				<!-- Poster -->
 				<control type="group" id="99">
@@ -181,7 +182,7 @@
 						<align>center</align>
 						<aligny>center</aligny>
 						<label>$INFO[Player.Title]</label>
-						<visible>!VideoPlayer.Content(livetv) + [String.IsEmpty(VideoPlayer.Cover) | String.StartsWith(VideoPlayer.Cover,Default)]</visible>
+						<visible>![VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)] + [String.IsEmpty(VideoPlayer.Cover) | String.StartsWith(VideoPlayer.Cover,Default)]</visible>
 					</control>
 					<control type="textbox" id="99">
 						<bottom>39</bottom>
@@ -193,7 +194,7 @@
 						<align>center</align>
 						<aligny>center</aligny>
 						<label>$INFO[VideoPlayer.Channelname]</label>
-						<visible>VideoPlayer.Content(livetv) + [String.IsEmpty(VideoPlayer.Cover) | String.StartsWith(VideoPlayer.Cover,Default)]</visible>
+						<visible>[VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)] + [String.IsEmpty(VideoPlayer.Cover) | String.StartsWith(VideoPlayer.Cover,Default)]</visible>
 					</control>
 					<control type="image" id="99">
 						<bottom>29</bottom>
@@ -285,10 +286,9 @@
 						<visible>VideoPlayer.Content(livetv)</visible>
 					</control>
 				</control>
-
 				<!-- Label section -->
 				<control type="grouplist" id="99">
-					<include>PlayerIsLiveTVSlide</include>
+					<animation effect="slide" time="0" start="0,0" end="0,-36" condition="VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)">Conditional</animation>
 					<orientation>horizontal</orientation>
 					<height>31</height>
 					<bottom>125</bottom>
@@ -354,7 +354,7 @@
 				</control>
 				<!-- PVR EpisodeNamei -->
 				<control type="grouplist" id="99">
-					<visible>VideoPlayer.Content(livetv)</visible>
+					<visible>VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)</visible>
 					<orientation>horizontal</orientation>
 					<height>31</height>
 					<bottom>125</bottom>
@@ -378,7 +378,7 @@
 						<font>reg24</font>
 						<textcolor>softgrey</textcolor>
 						<shadowcolor>text_shadow</shadowcolor>
-						<label>$LOCALIZE[19031]: $INFO[VideoPlayer.NextTitle]</label>
+						<label>$INFO[VideoPlayer.NextTitle,$LOCALIZE[19031]: ]</label>
 					</control>
 				</control>
 				<!-- Bottom label section -->

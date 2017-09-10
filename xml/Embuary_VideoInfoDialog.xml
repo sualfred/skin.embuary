@@ -45,7 +45,7 @@
 							<font>Light24</font>
 							<align>center</align>#
 							<aligny>center</aligny>
-							<label>$VAR[MainListLabel]</label>
+							<label>$INFO[VideoPlayer.Channelname]</label>
 							<visible>String.IsEmpty(VideoPlayer.Cover) | String.StartsWith(VideoPlayer.Cover,Default)</visible>
 						</control>
 						<control type="image">
@@ -54,7 +54,8 @@
 							<texture diffuse="items/mask_wide_db.png" background="true">$VAR[PlayerIcon]</texture>
 							<fadetime>200</fadetime>
 							<aspectratio scalediffuse="false">keep</aspectratio>
-							<bordersize>20</bordersize>
+							<bordersize>20</bordersize>							
+							<visible>!String.StartsWith(VideoPlayer.Cover,Default)</visible>
 						</control>
 						<control type="group">
 							<width>590</width>
@@ -67,11 +68,6 @@
 						<include content="PlayerProgress">
 							<param name="top" value="328"/>
 							<param name="width" value="590"/>
-						</include>
-						<include content="widget_labels">
-							<param name="top">348</param>
-							<param name="width">590</param>
-							<param name="mainlabel">$INFO[VideoPlayer.Channelname]</param>
 						</include>
 					</control>
 				</control>
@@ -215,7 +211,7 @@
 							<height>414</height>
 							<texture colordiffuse="green" diffuse="items/mask_poster.png">common/white.jpg</texture>
 							<aspectratio scalediffuse="false">stretch</aspectratio>
-							<visible>String.IsEmpty(Player.Art(poster)) + String.IsEmpty(Player.Art(tvshow.poster))</visible>
+							<visible>[String.IsEmpty(Player.Art(poster)) + String.IsEmpty(Player.Art(tvshow.poster))] | String.StartsWith(VideoPlayer.Cover,Default)</visible>
 						</control>
 						<control type="textbox">
 							<top>10</top>
@@ -226,13 +222,14 @@
 							<align>center</align>
 							<aligny>center</aligny>
 							<label>$VAR[PlayerTitleLabel]</label>
-							<visible>String.IsEmpty(Player.Art(poster)) + String.IsEmpty(Player.Art(tvshow.poster))</visible>
+							<visible>[String.IsEmpty(Player.Art(poster)) + String.IsEmpty(Player.Art(tvshow.poster))] | String.StartsWith(VideoPlayer.Cover,Default)</visible>
 						</control>
 						<control type="image">
 							<width>276</width>
 							<height>414</height>
 							<texture diffuse="items/mask_poster.png" background="true">$VAR[PlayerIcon]</texture>
 							<aspectratio scalediffuse="false">scale</aspectratio>
+							<visible>!String.StartsWith(VideoPlayer.Cover,Default)</visible>
 						</control>
 					</control>
 					<!-- Meta -->
