@@ -167,6 +167,7 @@
 					</control>
 				</control>
 				<control type="grouplist" id="6666">
+					<animation effect="fade" start="1" end="100" delay="1000">WindowOpen</animation>
 					<visible>!Window.IsVisible(loginscreen)</visible>
 					<height>58</height>
 					<width>1920</width>
@@ -192,7 +193,7 @@
 					<control type="button" id="6602">
 						<include>HeaderButton</include>
 						<label>$LOCALIZE[137]</label>
-						<onclick>RunScript(script.globalsearch)</onclick>
+						<include>search_action</include>
 					</control>
 					<!--6603 free-->
 					<control type="button" id="6604">
@@ -1194,5 +1195,17 @@
 			<label>$LOCALIZE[31038]</label>
 			<visible>Pvr.IsTimeShift</visible>
 		</control>
+	</include>
+	<include name="search_action">
+		<onclick condition="!System.HasAddon(plugin.video.embycon)">RunScript(script.globalsearch)</onclick>
+		<onclick condition="System.HasAddon(plugin.video.embycon)">SetProperty(Dialog.1.Label,$LOCALIZE[31072])</onclick>
+		<onclick condition="System.HasAddon(plugin.video.embycon)">SetProperty(Dialog.1.BuiltIn,RunScript(script.globalsearch))</onclick>
+		<onclick condition="System.HasAddon(plugin.video.embycon)">SetProperty(Dialog.2.Label,$LOCALIZE[31073])</onclick>
+		<onclick condition="System.HasAddon(plugin.video.embycon)">SetProperty(Dialog.2.BuiltIn,ActivateWindow(videos,plugin://plugin.video.embycon/?item_type=Movie&amp;mode=NEW_SEARCH))</onclick>
+		<onclick condition="System.HasAddon(plugin.video.embycon)">SetProperty(Dialog.3.Label,$LOCALIZE[31074])</onclick>
+		<onclick condition="System.HasAddon(plugin.video.embycon)">SetProperty(Dialog.3.BuiltIn,ActivateWindow(videos,plugin://plugin.video.embycon/?item_type=Series&amp;mode=NEW_SEARCH))</onclick>
+		<onclick condition="System.HasAddon(plugin.video.embycon)">SetProperty(Dialog.4.Label,$LOCALIZE[31075])</onclick>
+		<onclick condition="System.HasAddon(plugin.video.embycon)">SetProperty(Dialog.4.BuiltIn,ActivateWindow(videos,plugin://plugin.video.embycon/?item_type=Episode&amp;mode=NEW_SEARCH))</onclick>
+		<onclick condition="System.HasAddon(plugin.video.embycon)">RunScript(script.toolbox,info=selectdialog,header=$LOCALIZE[137])</onclick> 
 	</include>
 </includes>
