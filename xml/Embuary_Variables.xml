@@ -78,6 +78,7 @@
 	</variable>
 
 	<variable name="BackgroundSource">
+		<value condition="!String.IsEmpty(Window.Property(background))">$INFO[Window.Property(background)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
 		<value>$INFO[Container(90000).ListItem.Art(fanart)]</value>
 	</variable>
@@ -90,6 +91,7 @@
 		<value>$LOCALIZE[351]</value>
 	</variable>
 	<variable name="ContainerContent">
+		<value condition="Window.IsVisible(script-nextup-notification-PostPlayInfo.xml)">$LOCALIZE[31079]</value>
 		<value condition="Window.IsVisible(musicplaylisteditor)">$LOCALIZE[10503]</value>
 		<value condition="Window.IsVisible(weather)">$LOCALIZE[8]</value>
 		<value condition="Window.IsVisible(favourites)">$LOCALIZE[1036]</value>
