@@ -166,7 +166,7 @@
 	<variable name="MainListLabel">
 		<value condition="String.StartsWith(ListItem.Path,pvr://) + !String.IsEmpty(ListItem.Title)">$INFO[ListItem.Title]</value>
 		<value condition="String.StartsWith(ListItem.Path,pvr://)">$INFO[ListItem.Label]</value>
-		<value condition="String.IsEqual(ListItem.DBType,episode)">$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, ]$INFO[ListItem.Title]</value>
+		<value condition="String.IsEqual(ListItem.DBType,episode)">$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title]</value>
 		<value condition="String.IsEqual(ListItem.DBType,season) + !String.IsEmpty(ListItem.Season)">$INFO[ListItem.Season,$LOCALIZE[20373] ]</value>
 		<value condition="String.IsEqual(ListItem.DBType,song)">$INFO[ListItem.Tracknumber,,. ]$INFO[ListItem.Title]</value>
 		<value>$INFO[ListItem.Label]</value>
@@ -245,7 +245,7 @@
 	</variable>
 	<variable name="TinyInfoDialogPlot">
 		<value condition="Window.IsVisible(DialogFullScreenInfo.xml)">$INFO[VideoPlayer.Season,S,:]$INFO[VideoPlayer.Episode,E, ]$INFO[VideoPlayer.Title,,[CR][CR]]$INFO[VideoPlayer.Duration,$LOCALIZE[180]: ,[CR][CR]]$INFO[VideoPlayer.Plot]</value>
-		<value condition="String.IsEqual(ListItem.DBType,Episode)">$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, ]$INFO[ListItem.Title,,[CR][CR]]$INFO[ListItem.Duration,$LOCALIZE[180]: , $LOCALIZE[12391][CR][CR]]$INFO[ListItem.Plot]</value>
+		<value condition="String.IsEqual(ListItem.DBType,Episode)">$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title,,[CR][CR]]$INFO[ListItem.Duration,$LOCALIZE[180]: , $LOCALIZE[12391][CR][CR]]$INFO[ListItem.Plot]</value>
 		<value condition="String.IsEqual(ListItem.DBType,song)">$INFO[ListItem.Duration,$LOCALIZE[180]: ,[CR][CR]]$INFO[ListItem.Artist]$INFO[ListItem.Album, - ,[CR][CR]]$INFO[ListItem.Property(Album_Description)]</value>
 		<value>$INFO[ListItem.Plot]</value>
 	</variable>
@@ -415,6 +415,7 @@
 		<value condition="!String.IsEmpty(MusicPlayer.Title) + !String.Contains(MusicPlayer.Title,pvr.hts_)">$INFO[MusicPlayer.Artist,, - ]$INFO[MusicPlayer.Tracknumber,,. ]$INFO[MusicPlayer.Title]</value>
 		<value condition="!String.IsEmpty(MusicPlayer.Title)">$INFO[MusicPlayer.Artist]</value>
 		<value condition="VideoPlayer.Content(livetv)">$INFO[VideoPlayer.Channelnumber,,. ]$INFO[VideoPlayer.ChannelName]$INFO[VideoPlayer.Title, - ]</value>
+		<value condition="!String.IsEmpty(VideoPlayer.TVShowTitle) + !VideoPlayer.IsFullscreen">$INFO[VideoPlayer.TVShowTitle,, - ]$INFO[VideoPlayer.Season,S,:]$INFO[VideoPlayer.Episode,E, - ]$INFO[VideoPlayer.Title]</value>
 		<value condition="!String.IsEmpty(VideoPlayer.TVShowTitle)">$INFO[VideoPlayer.Season,S,:]$INFO[VideoPlayer.Episode,E, - ]$INFO[VideoPlayer.Title]</value>
 		<value>$INFO[VideoPlayer.Title]</value>
 	</variable>
