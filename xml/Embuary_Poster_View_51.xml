@@ -4,29 +4,16 @@
 		<control type="group">
 			<include>Visible_OpenClose</include>
 			<visible>Control.IsVisible(51)</visible>
-			<animation condition="Integer.IsGreaterOrEqual(Container(51).NumItems,11) + Integer.IsLessOrEqual(Container(51).NumItems,12)" effect="slide" start="0,0" end="128,0">Conditional</animation>
-			<animation condition="Integer.IsGreaterOrEqual(Container(51).NumItems,9) + Integer.IsLessOrEqual(Container(51).NumItems,10)" effect="slide" start="0,0" end="257,0">Conditional</animation>
-			<animation condition="Integer.IsGreaterOrEqual(Container(51).NumItems,7) + Integer.IsLessOrEqual(Container(51).NumItems,8)" effect="slide" start="0,0" end="385,0">Conditional</animation>
-			<animation condition="Integer.IsGreaterOrEqual(Container(51).NumItems,5) + Integer.IsLessOrEqual(Container(51).NumItems,6)" effect="slide" start="0,0" end="514,0">Conditional</animation>
-			<animation condition="Integer.IsGreaterOrEqual(Container(51).NumItems,3) + Integer.IsLessOrEqual(Container(51).NumItems,4)" effect="slide" start="0,0" end="642,0">Conditional</animation>
-			<animation condition="Integer.IsLessOrEqual(Container(51).NumItems,2)" effect="slide" start="0,0" end="771,0">Conditional</animation>
-			<!-- poster -->
 			<control id="51" type="panel">
 				<visible>!Container.Content(seasons) + !Container.Content(episodes)</visible>
-				<top>105</top>
 				<width>auto</width>
 				<height>1080</height>
-				<onup condition="Control.IsVisible(7000)">SetFocus(7000)</onup>
-				<onup condition="!Control.IsVisible(7000)">SetFocus(6666)</onup>
+				<onright condition="Control.IsVisible(7000)">SetFocus(7000)</onright>
+				<onup>SetFocus(6666)</onup>
 				<ondown>noop</ondown>
 				<onleft>9999</onleft>
-				<include content="Bounce_Right">
-					<param name="id">51</param>
-				</include>
-				<onright>SetProperty(BounceRight,1,home)</onright>
-				<scrolltime>200</scrolltime>
-				<movement>2</movement>
-				<orientation>horizontal</orientation>
+				<scrolltime tween="sine" easing="out">400</scrolltime>
+				<orientation>vertical</orientation>
 				<preloaditems>4</preloaditems>
 				<defaultcontrol always="true">0</defaultcontrol>
 				<viewtype label="$LOCALIZE[20021]">panel</viewtype>
@@ -34,7 +21,7 @@
 				<itemlayout width="257" height="445">
 					<control type="group">
 						<left>70.5</left>
-						<top>64</top>
+						<top>122</top>
 						<include content="PosterLayout_Size2">
 							<param name="mainlabel" value="$VAR[MainListLabel]" />
 							<param name="sublabel" value="$VAR[SubListLabel]" />
@@ -47,7 +34,7 @@
 					<include>SetPropertyOnFocus</include>
 					<control type="group">							
 						<left>70.5</left>
-						<top>64</top>
+						<top>122</top>
 						<include content="PosterLayout_Size2">
 							<param name="mainlabel" value="$VAR[MainListLabel]" />
 							<param name="sublabel" value="$VAR[SubListLabel]" />
@@ -57,15 +44,26 @@
 						</include>
 					</control>
 				</focusedlayout>
-			</control>			
-			<include content="list_mask">
-				<param name="height" value="1022"/>
-				<param name="width" value="75"/>
-				<param name="top" value="58"/>
+			</control>
+			<include content="list_mask_vertical_top">
+				<param name="height" value="70"/>
+				<param name="left" value="0"/>
+				<param name="right" value="0"/>
 				<param name="id" value="51"/>
 				<param name="visible_forced" value="true"/>
 			</include>
-			<include content="ScrollbarHorizontal"/>
+			<include content="list_mask_vertical">
+				<param name="height" value="70"/>
+				<param name="left" value="0"/>
+				<param name="right" value="0"/>
+				<param name="id" value="51"/>
+				<param name="visible_forced" value="true"/>
+			</include>
+			<include content="JumpToLetter_vertical"/>
+			<include content="ScrollbarVertical">
+				<param name="top" value="0"/>
+				<param name="height" value="100%"/>
+			</include>
 		</control>
 	</include>
 </includes>

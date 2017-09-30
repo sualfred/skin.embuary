@@ -221,6 +221,42 @@
 			</control>
 		</definition>
 	</include>
+	<include name="list_mask_vertical_top">
+		<param name="left" default="0"/>
+		<param name="right" default="0"/>
+		<param name="top" default="0"/>
+		<param name="height" default="145"/>
+		<param name="width" default="100%"/>
+		<param name="icon_width" default="100%"/>
+		<param name="visible_forced" default="false"/>
+		<definition>
+			<control type="group">
+				<visible>[Container($PARAM[id]).HasPrevious + Control.HasFocus($PARAM[id])] | [Container($PARAM[id]).HasPrevious + $PARAM[visible_forced]]</visible>1
+				<animation effect="fade" start="0" end="100" time="200" tween="sine">Visible</animation>
+				<animation effect="fade" start="100" end="0" time="0">Hidden</animation>
+				<left>$PARAM[left]</left>
+				<right>$PARAM[right]</right>
+				<top>$PARAM[top]</top>
+				<control type="image">
+					<top>0</top>
+					<width>$PARAM[width]</width>
+					<height>$PARAM[height]</height>
+					<texture flipy="true">items/listmask_vertical.png</texture>
+					<aspectratio>stretch</aspectratio>
+				</control>
+				<control type="label">
+					<top>10</top>
+					<width>$PARAM[icon_width]</width>
+					<height>35</height>
+					<label></label>
+					<font>Material50</font>
+					<shadowcolor>text_shadow</shadowcolor>
+					<align>center</align>					
+					<aligny>center</aligny>
+				</control>
+			</control>
+		</definition>
+	</include>
 	<!-- Spacer -->
 	<include name="WidgetSpacer">
 		<param name="visible">true</param>
@@ -1443,20 +1479,20 @@
 				<width>1190</width>
 				<texture colordiffuse="list_hover">common/white.jpg</texture>
 				<aspectratio>stretch</aspectratio>
-				<visible>!$PARAM[focused]</visible>
+				<visible>!$PARAM[focused] | !Control.HasFocus($PARAM[id])</visible>
 			</control>
 			<control type="image">
 				<left>-70</left>
 				<top>-5</top>
-				<height>110</height>
+				<height>120</height>
 				<width>1190</width>
 				<texture colordiffuse="list_hover">common/white.jpg</texture>
 				<aspectratio>stretch</aspectratio>
-				<visible>$PARAM[focused]</visible>
+				<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
 			</control>
 			<control type="group">
 				<visible>![Container.Content(tvshows) | Container.Content(movies)]</visible>
-				<top>17</top>
+				<top>22</top>
 				<control type="image">
 					<width>67</width>
 					<height>67</height>
@@ -1467,6 +1503,7 @@
 			</control>
 			<control type="group">
 				<visible>Container.Content(tvshows) | Container.Content(movies)</visible>
+				<top>5</top>
 				<control type="image">
 					<top>-2</top>
 					<left>-2</left>
@@ -1504,7 +1541,7 @@
 				</include>
 			</control>
 			<control type="label">
-				<top>21</top>
+				<top>26</top>
 				<left>100</left>
 				<right>250</right>
 				<height>31</height>
@@ -1515,7 +1552,7 @@
 			</control>
 			<control type="label">
 				<left>100</left>
-				<top>52</top>
+				<top>57</top>
 				<right>250</right>
 				<height>31</height>
 				<font>reg24</font>
@@ -1524,7 +1561,7 @@
 				<label>$PARAM[sublabel]</label>
 			</control>
 			<control type="label">
-				<top>21</top>
+				<top>26</top>
 				<right>0</right>
 				<width>300</width>
 				<height>31</height>
@@ -1535,7 +1572,7 @@
 				<label>$PARAM[rightlabel]</label>
 			</control>
 			<control type="label">
-				<top>52</top>
+				<top>57</top>
 				<right>0</right>
 				<width>300</width>
 				<height>31</height>

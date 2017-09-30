@@ -7,33 +7,24 @@
 			<control type="group">
 				<include>Visible_OpenClose</include>
 				<visible>Control.IsVisible(50)</visible>
-				<animation condition="Integer.IsGreater(Container(50).NumItems,6) + Integer.IsLess(Container(50).NumItems,10)" effect="slide" start="0,0" end="222,0">Conditional</animation>
-				<animation condition="Integer.IsGreater(Container(50).NumItems,3) + Integer.IsLess(Container(50).NumItems,7)" effect="slide" start="0,0" end="444,0">Conditional</animation>
-				<animation condition="Integer.IsLess(Container(50).NumItems,4)" effect="slide" start="0,0" end="666,0">Conditional</animation>
-				<!-- wide -->
 				<control id="50" type="panel">
 					<visible>!Container.Content(seasons) + !Container.Content(episodes)</visible>
-					<top>77</top>
 					<width>1920</width>
 					<height>1080</height>
-					<onup condition="Control.IsVisible(7000)">SetFocus(7000)</onup>
-					<onup condition="!Control.IsVisible(7000)">SetFocus(6666)</onup>
+					<onright condition="Control.IsVisible(7000)">SetFocus(7000)</onright>
+					<onup>SetFocus(6666)</onup>
 					<ondown>noop</ondown>
 					<onleft>9999</onleft>
-					<include content="Bounce_Right">
-						<param name="id">50</param>
-					</include>
-					<onright>SetProperty(BounceRight,1,home)</onright>
-					<movement>2</movement>
-					<orientation>horizontal</orientation>
+					<orientation>vertical</orientation>
 					<preloaditems>4</preloaditems>
 					<defaultcontrol always="true">0</defaultcontrol>
 					<viewtype label="$LOCALIZE[31004]">panel</viewtype>
 					<pagecontrol>17</pagecontrol>
+					<scrolltime tween="sine" easing="out">400</scrolltime>
 					<itemlayout width="444" height="305">
 						<control type="group">
 							<left>82</left>
-							<top>64</top>
+							<top>116</top>
 							<include content="LandscapeLayout">
 								<param name="mainlabel" value="$PARAM[mainlabel]" />
 								<param name="sublabel" value="" />
@@ -47,7 +38,7 @@
 						<include>SetPropertyOnFocus</include>
 						<control type="group">						
 							<left>82</left>
-							<top>64</top>
+							<top>116</top>
 							<include content="LandscapeLayout">
 								<param name="mainlabel" value="$PARAM[mainlabel]" />
 								<param name="sublabel" value="" />
@@ -58,14 +49,25 @@
 						</control>
 					</focusedlayout>
 				</control>
-				<include content="list_mask">
-					<param name="height" value="1022"/>
-					<param name="width" value="75"/>
-					<param name="top" value="58"/>
+				<include content="list_mask_vertical_top">
+					<param name="height" value="70"/>
+					<param name="left" value="0"/>
+					<param name="right" value="0"/>
 					<param name="id" value="50"/>
 					<param name="visible_forced" value="true"/>
 				</include>
-				<include content="ScrollbarHorizontal"/>
+				<include content="list_mask_vertical">
+					<param name="height" value="70"/>
+					<param name="left" value="0"/>
+					<param name="right" value="0"/>
+					<param name="id" value="50"/>
+					<param name="visible_forced" value="true"/>
+				</include>
+				<include content="JumpToLetter_vertical"/>
+				<include content="ScrollbarVertical">
+					<param name="top" value="0"/>
+					<param name="height" value="100%"/>
+				</include>
 			</control>
 		</definition>
 	</include>

@@ -79,7 +79,6 @@
 						<font>med20</font>
 						<textcolor>text_white</textcolor>
 						<label>$INFO[System.Time]</label>
-						<visible>!Player.HasMedia</visible>
 					</control>
 					<control type="image">
 						<animation effect="slide" end="0,10" time="0" condition="true">Conditional</animation>
@@ -87,48 +86,8 @@
 						<width>38</width>
 						<texture diffuse="items/roundbutton.png">$VAR[UserAvatar]</texture>
 						<aspectratio scalediffuse="false">stretch</aspectratio>
-						<visible>!Player.HasMedia + [!String.StartsWith(System.ProfileThumb,Default) | System.HasAddon(plugin.video.emby) | System.HasAddon(plugin.video.plexkodiconnect)]</visible>
+						<visible>[!String.StartsWith(System.ProfileThumb,Default) | System.HasAddon(plugin.video.emby) | System.HasAddon(plugin.video.plexkodiconnect)]</visible>
 					</control>
-					<control type="label">
-						<height>58</height>
-						<width>auto</width>
-						<aligny>center</aligny>
-						<align>right</align>
-						<font>med20</font>
-						<textcolor>text_white</textcolor>
-						<label>$INFO[Player.Title]</label>
-						<visible>Player.HasMedia</visible>
-					</control>
-					<control type="label">
-						<width>25</width>
-						<aligny>center</aligny>
-						<font>Material24</font>
-						<label></label>
-						<textcolor>text_white</textcolor>
-						<visible>Player.HasMedia + !Player.Paused</visible>
-					</control>
-					<control type="label">
-						<width>25</width>
-						<aligny>center</aligny>
-						<font>Material24</font>
-						<label></label>
-						<textcolor>text_white</textcolor>
-						<visible>Player.HasMedia + Player.Paused</visible>
-					</control>
-				</control>
-				<control type="progress">
-					<top>56</top>
-					<left>0</left>
-					<right>0</right>
-					<height>2</height>
-					<reveal>true</reveal>
-					<info>Player.Progress</info>
-					<texturebg colordiffuse="grey">common/ProgressBack.png</texturebg>
-					<lefttexture>-</lefttexture>
-					<midtexture colordiffuse="emby">common/ProgressBar.png</midtexture>
-					<righttexture>-</righttexture>
-					<overlaytexture>-</overlaytexture>
-					<visible>Player.HasMedia</visible>
 				</control>
 			</control>
 		</definition>

@@ -441,74 +441,33 @@
 			</control>
 		</definition>
 	</include>
-	<!-- Jump to letter -->
-	<include name="JumpToLetter">
+	<!-- Jump to letter layout -->
+	<include name="JumpToLetter_vertical">
 		<param name="id">7000</param>
+		<param name="top">0</param>
+		<param name="visible">[Container.HasNext | Container.HasPrevious] + $EXP[ExpJumpToLetter]</param>
 		<definition>
-			<control type="panel" id="$PARAM[id]">
-				<visible>$PARAM[visible]</visible>
-				<centerleft>50%</centerleft>
-				<width>1215</width>
-				<height>80</height>
-				<ondown>SetFocus(50)</ondown>
-				<onup>SetFocus(6666)</onup>
-				<scrolltime>0</scrolltime>
-				<orientation>vertical</orientation>
-				<defaultcontrol>0</defaultcontrol>
-				<itemlayout height="40" width="45">
-					<control type="image">
-						<top>6</top>
-						<left>5</left>
-						<width>29</width>
-						<height>29</height>
-						<texture colordiffuse="emby">items/mask_mini.png</texture>
-						<visible>StringCompare(ListItem.Label,Container.ListItem.SortLetter)</visible>
-					</control>
-					<control type="textbox">
-						<width>40</width>
-						<height>40</height>
-						<font>Med18</font>
-						<align>center</align>
-						<aligny>center</aligny>
-						<textcolor>softgrey</textcolor>
-						<shadowcolor>text_shadow</shadowcolor>
-						<label>$INFO[ListItem.Label]</label>
-						<visible>String.IsEmpty(ListItem.Property(NotAvailable))</visible>
-					</control>
-					<control type="textbox">
-						<width>40</width>
-						<height>40</height>
-						<font>Med18</font>
-						<align>center</align>
-						<aligny>center</aligny>
-						<textcolor>grey</textcolor>
-						<shadowcolor>text_shadow</shadowcolor>
-						<label>$INFO[ListItem.Label]</label>
-						<visible>!String.IsEmpty(ListItem.Property(NotAvailable))</visible>
-					</control>
-					<control type="textbox">
-						<width>40</width>
-						<height>40</height>
-						<font>Med18</font>
-						<align>center</align>
-						<aligny>center</aligny>
-						<textcolor>white</textcolor>
-						<shadowcolor>text_shadow</shadowcolor>
-						<label>$INFO[ListItem.Label]</label>
-						<visible>StringCompare(ListItem.Label,Container.ListItem.SortLetter)</visible>
-					</control>
-				</itemlayout>
-				<focusedlayout height="40" width="45">
-					<control type="image">
-						<top>6</top>
-						<left>5</left>
-						<width>29</width>
-						<height>29</height>
-						<texture colordiffuse="emby">items/mask_mini.png</texture>
-						<visible>StringCompare(ListItem.Label,Container.ListItem.SortLetter)</visible>
-					</control>
-					<control type="group">
-						<visible>!Control.HasFocus($PARAM[id])</visible>
+			<control type="group">
+				<top>$PARAM[top]</top>
+				<control type="panel" id="$PARAM[id]">
+					<visible>$PARAM[visible]</visible>
+					<right>5</right>
+					<width>45</width>
+					<centertop>50%</centertop>	
+					<height>950</height>	
+					<onleft>SetFocus(50)</onleft>
+					<scrolltime>0</scrolltime>
+					<orientation>vertical</orientation>
+					<defaultcontrol>0</defaultcontrol>
+					<itemlayout height="35" width="45">
+						<control type="image">
+							<top>6</top>
+							<left>5</left>
+							<width>29</width>
+							<height>29</height>
+							<texture colordiffuse="emby">items/mask_mini.png</texture>
+							<visible>StringCompare(ListItem.Label,Container.ListItem.SortLetter)</visible>
+						</control>
 						<control type="textbox">
 							<width>40</width>
 							<height>40</height>
@@ -518,15 +477,18 @@
 							<textcolor>softgrey</textcolor>
 							<shadowcolor>text_shadow</shadowcolor>
 							<label>$INFO[ListItem.Label]</label>
+							<visible>String.IsEmpty(ListItem.Property(NotAvailable))</visible>
 						</control>
-					</control>
-					<control type="group">
-						<visible>Control.HasFocus($PARAM[id])</visible>
-						<control type="image">
-							<left>-6</left>
-							<width>51</width>
-							<height>51</height>
-							<texture colordiffuse="emby">items/focus_mini.png</texture>
+						<control type="textbox">
+							<width>40</width>
+							<height>40</height>
+							<font>Med18</font>
+							<align>center</align>
+							<aligny>center</aligny>
+							<textcolor>grey</textcolor>
+							<shadowcolor>text_shadow</shadowcolor>
+							<label>$INFO[ListItem.Label]</label>
+							<visible>!String.IsEmpty(ListItem.Property(NotAvailable))</visible>
 						</control>
 						<control type="textbox">
 							<width>40</width>
@@ -537,10 +499,53 @@
 							<textcolor>white</textcolor>
 							<shadowcolor>text_shadow</shadowcolor>
 							<label>$INFO[ListItem.Label]</label>
+							<visible>StringCompare(ListItem.Label,Container.ListItem.SortLetter)</visible>
 						</control>
-					</control>
-				</focusedlayout>
-				<content>plugin://script.skin.helper.service/?action=alphabet&amp;reload=$INFO[Container.NumItems]</content>
+					</itemlayout>
+					<focusedlayout height="35" width="45">
+						<control type="image">
+							<top>6</top>
+							<left>5</left>
+							<width>29</width>
+							<height>29</height>
+							<texture colordiffuse="emby">items/mask_mini.png</texture>
+							<visible>StringCompare(ListItem.Label,Container.ListItem.SortLetter)</visible>
+						</control>
+						<control type="group">
+							<visible>!Control.HasFocus($PARAM[id])</visible>
+							<control type="textbox">
+								<width>40</width>
+								<height>40</height>
+								<font>Med18</font>
+								<align>center</align>
+								<aligny>center</aligny>
+								<textcolor>softgrey</textcolor>
+								<shadowcolor>text_shadow</shadowcolor>
+								<label>$INFO[ListItem.Label]</label>
+							</control>
+						</control>
+						<control type="group">
+							<visible>Control.HasFocus($PARAM[id])</visible>
+							<control type="image">
+								<left>-6</left>
+								<width>51</width>
+								<height>51</height>
+								<texture colordiffuse="emby">items/focus_mini.png</texture>
+							</control>
+							<control type="textbox">
+								<width>40</width>
+								<height>40</height>
+								<font>Med18</font>
+								<align>center</align>
+								<aligny>center</aligny>
+								<textcolor>white</textcolor>
+								<shadowcolor>text_shadow</shadowcolor>
+								<label>$INFO[ListItem.Label]</label>
+							</control>
+						</control>
+					</focusedlayout>
+					<content>plugin://script.skin.helper.service/?action=alphabet&amp;reload=$INFO[Container.NumItems]</content>
+				</control>
 			</control>
 		</definition>
 	</include>

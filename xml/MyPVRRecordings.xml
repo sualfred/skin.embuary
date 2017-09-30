@@ -30,32 +30,6 @@
 				<param name="rightlabel">$VAR[ListItemDuration]</param>
 				<param name="rightlabel2">$INFO[ListItem.Date]</param>
 			</include>
-			<control type="group">
-				<visible>!Control.IsVisible(54) + !Control.IsVisible(55)</visible>
-				<animation effect="slide" start="0,0" end="0,-14" time="0" condition="Control.IsVisible(50)">Conditional</animation>
-				<animation effect="slide" start="0,0" end="0,5" time="0" condition="Control.IsVisible(52)">Conditional</animation>
-				<animation effect="slide" start="0,0" end="0,-3" time="0" condition="Control.IsVisible(53)">Conditional</animation>
-				<top>93</top>
-				<width>1920</width>
-				<height>40</height>
-				<control type="group">
-					<include content="JumpToLetter">
-						<param name="visible" value="[Container.HasNext | Container.HasPrevious] + $EXP[ExpJumpToLetter]"/>
-					</include>
-				</control>
-				<control type="label">
-					<visible>![Container.HasNext | Container.HasPrevious] | !$EXP[ExpJumpToLetter]</visible>
-					<centerleft>50%</centerleft>
-					<width>1215</width>
-					<height>40</height>
-					<font>Med18</font>
-					<align>center</align>
-					<aligny>center</aligny>
-					<textcolor>softgrey</textcolor>
-					<shadowcolor>text_shadow</shadowcolor>
-					<label>$INFO[Container.SortMethod,$LOCALIZE[581] ","]$INFO[Container.SortOrder, / $LOCALIZE[580] ","]</label>
-				</control>
-			</control>
 		</control>
 		<!-- Menu control -->
 		<control type="group">
@@ -115,7 +89,7 @@
 			<param name="id">50</param>
 			<param name="enabled">false</param>
 			<param name="sidebar_id">9999</param>
-			<param name="custom_animation">[Container(540).HasPrevious | Container(550).HasPrevious]</param>
+			<param name="custom_animation">[[Control.IsVisible(54) + Container(540).HasPrevious]] | [Control.IsVisible(55) + Container(550).HasPrevious] | [Control.IsVisible(51) + [Integer.IsGreaterOrEqual(Container(51).CurrentItem,15) | Container(51).HasPrevious]] | [Control.IsVisible(50) + [Integer.IsGreaterOrEqual(Container(50).CurrentItem,13) | Container(50).HasPrevious]] | [Control.IsVisible(52) + [Integer.IsGreaterOrEqual(Container(52).CurrentItem,11) | Container(52).HasPrevious]]</param>
 		</include>
 		<!-- side panel -->
 		<include content="SidePanel">

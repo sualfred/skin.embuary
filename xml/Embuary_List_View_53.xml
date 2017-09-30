@@ -5,22 +5,70 @@
 		<param name="sublabel">$VAR[SubListLabel]</param>
 		<param name="thumblabel">$VAR[MainListLabel]</param>
 		<definition>
-			<!-- Hidden scrollbar -->
-			<control id="96" type="scrollbar">
-				<left>-1200</left>
-				<width>100</width>
-				<height>1</height>
-				<showonepage>false</showonepage>
-				<orientation>vertical</orientation>
-			</control>
 			<control type="group">
 				<include>Visible_OpenClose</include>
 				<visible>Control.IsVisible(53)</visible>
+				<!-- List -->
+				<control id="53" type="list">
+					<visible>!Container.Content(seasons) + !Container.Content(episodes)</visible>
+					<top>90</top>
+					<width>1230</width>
+					<height>950</height>
+					<onup>SetFocus(6666)</onup>
+					<onright condition="Control.IsVisible(7000)">SetFocus(7000)</onright>
+					<ondown>noop</ondown>
+					<onleft>9999</onleft>
+					<defaultcontrol always="true">0</defaultcontrol>
+					<focusposition>1</focusposition>
+					<orientation>vertical</orientation>
+					<viewtype label="535">list</viewtype>
+					<pagecontrol>17</pagecontrol>
+					<scrolltime tween="sine" easing="out">400</scrolltime>
+					<preloaditems>4</preloaditems>
+					<itemlayout height="120" width="1160">
+						<control type="group">
+							<top>60</top>
+							<left>70</left>
+							<include content="ListLayout">
+								<param name="id">53</param>
+								<param name="mainlabel">$PARAM[mainlabel]</param>
+								<param name="sublabel">$PARAM[sublabel]</param>
+								<param name="rightlabel">$PARAM[rightlabel]</param>
+								<param name="rightlabel2">$PARAM[rightlabel2]</param>
+								<param name="fallbacklabel">$PARAM[fallbacklabel]</param>
+							</include>
+						</control>
+					</itemlayout>
+					<focusedlayout height="120" width="1160">
+						<include>SetPropertyOnFocus</include>
+						<control type="group">
+							<top>60</top>
+							<left>70</left>
+							<include content="ListLayout">
+								<param name="focused" value="true"/>
+								<param name="id">53</param>
+								<param name="mainlabel">$PARAM[mainlabel]</param>
+								<param name="sublabel">$PARAM[sublabel]</param>
+								<param name="rightlabel">$PARAM[rightlabel]</param>
+								<param name="rightlabel2">$PARAM[rightlabel2]</param>
+								<param name="fallbacklabel">$PARAM[fallbacklabel]</param>
+							</include>
+						</control>
+					</focusedlayout>
+				</control>
+				<!-- Hidden scrollbar -->
+				<control id="96" type="scrollbar">
+					<left>-1200</left>
+					<width>100</width>
+					<height>1</height>
+					<showonepage>false</showonepage>
+					<orientation>vertical</orientation>
+				</control>
 				<!-- Thumb image -->
 				<control type="group">
 					<visible>true</visible>
-					<right>70</right>
-					<top>163</top>
+					<right>90</right>
+					<top>145</top>
 					<width>590</width>
 					<control type="group">
 						<control type="image">
@@ -141,69 +189,37 @@
 						</control>				
 					</control>
 				</control>
-				<!-- List -->
-				<control id="53" type="list">
-					<visible>!Container.Content(seasons) + !Container.Content(episodes)</visible>
-					<top>158</top>
-					<width>1230</width>
-					<height>946</height>
-					<onup condition="Control.IsVisible(7000)">SetFocus(7000)</onup>
-					<onup condition="!Control.IsVisible(7000)">SetFocus(6666)</onup>
-					<onright condition="Control.IsVisible(7000)">SetFocus(7000)</onright>
-					<onright condition="!Control.IsVisible(7000)">SetFocus(6666)</onright>
-					<ondown>noop</ondown>
-					<onleft>9999</onleft>
-					<defaultcontrol always="true">0</defaultcontrol>
-					<focusposition>1</focusposition>
-					<orientation>vertical</orientation>
-					<viewtype label="535">list</viewtype>
-					<pagecontrol>17</pagecontrol>
-					<scrolltime>0</scrolltime>
-					<preloaditems>4</preloaditems>
-					<itemlayout height="110" width="1160">
-						<control type="group">
-							<top>10</top>
-							<left>70</left>
-							<include content="ListLayout">
-								<param name="mainlabel">$PARAM[mainlabel]</param>
-								<param name="sublabel">$PARAM[sublabel]</param>
-								<param name="rightlabel">$PARAM[rightlabel]</param>
-								<param name="rightlabel2">$PARAM[rightlabel2]</param>
-								<param name="fallbacklabel">$PARAM[fallbacklabel]</param>
-							</include>
-						</control>
-					</itemlayout>
-					<focusedlayout height="110" width="1160">
-						<include>SetPropertyOnFocus</include>
-						<control type="group">
-							<top>10</top>
-							<left>70</left>
-							<include content="ListLayout">
-								<param name="focused" value="true"/>
-								<param name="mainlabel">$PARAM[mainlabel]</param>
-								<param name="sublabel">$PARAM[sublabel]</param>
-								<param name="rightlabel">$PARAM[rightlabel]</param>
-								<param name="rightlabel2">$PARAM[rightlabel2]</param>
-								<param name="fallbacklabel">$PARAM[fallbacklabel]</param>
-							</include>
-						</control>
-					</focusedlayout>
-				</control>
-				<include content="ScrollbarVertical"/>
-			</control>
-			<control type="group">
-				<visible>Container(53).HasNext</visible>1
-				<animation effect="fade" start="0" end="100" time="200" tween="sine">Visible</animation>
-				<animation effect="fade" start="100" end="0" time="0">Hidden</animation>
-				<left>0</left>
-				<right>0</right>
 				<control type="image">
-					<bottom>0</bottom>
-					<width>100%</width>
-					<height>40</height>
-					<texture>items/listmask_vertical.png</texture>
-					<aspectratio>stretch</aspectratio>
+					<height>90</height>
+					<width>1920</width>
+					<top>58</top>
+					<texture flipy="true">items/listview_mask.png</texture>
 				</control>
+				<control type="image">
+					<height>90</height>
+					<width>1920</width>
+					<bottom>10</bottom>
+					<texture>items/listview_mask.png</texture>
+				</control>
+				<include content="list_mask_vertical_top">
+					<param name="height" value="70"/>
+					<param name="left" value="0"/>
+					<param name="right" value="0"/>
+					<param name="top" value="58"/>
+					<param name="id" value="53"/>
+					<param name="visible_forced" value="true"/>
+				</include>
+				<include content="list_mask_vertical">
+					<param name="height" value="70"/>
+					<param name="left" value="0"/>
+					<param name="right" value="0"/>
+					<param name="id" value="53"/>
+					<param name="visible_forced" value="true"/>
+				</include>
+				<include content="ScrollbarVertical"/>
+				<include content="JumpToLetter_vertical">
+					<param name="top" value="58"/>
+				</include>
 			</control>
 		</definition>
 	</include>
