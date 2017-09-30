@@ -185,6 +185,30 @@
 					<aligny>center</aligny>
 				</control>
 			</control>
+			<control type="group">
+				<visible>[Container($PARAM[id]).HasPrevious + Control.HasFocus($PARAM[id])] | [Container($PARAM[id]).HasPrevious + $PARAM[visible_forced]]</visible>1
+				<animation effect="fade" start="0" end="100" time="200" tween="sine">Visible</animation>
+				<animation effect="fade" start="100" end="0" time="0">Hidden</animation>
+				<control type="image">
+					<top>$PARAM[top]</top>
+					<left>0</left>
+					<width>$PARAM[width]</width>
+					<height>$PARAM[height]</height>
+					<texture flipx="true">items/listmask.png</texture>
+					<aspectratio>stretch</aspectratio>
+				</control>
+				<control type="label">
+					<top>$PARAM[top]</top>
+					<left>0</left>
+					<width>55</width>
+					<height>$PARAM[height]</height>
+					<label></label>
+					<font>Material50</font>
+					<shadowcolor>text_shadow</shadowcolor>
+					<align>center</align>					
+					<aligny>center</aligny>
+				</control>
+			</control>
 		</definition>
 	</include>
 	<include name="list_mask_vertical">
