@@ -111,9 +111,18 @@
 					<control type="image">
 						<animation effect="slide" end="0,10" time="0" condition="true">Conditional</animation>
 						<height>38</height>
+						<width>28</width>
+						<texture>$VAR[PlayerIcon]</texture>
+						<aspectratio>keep</aspectratio>
+						<visible>!String.IsEmpty(Player.Art(tvshow.poster)) | !String.IsEmpty(Player.Art(poster))</visible>
+					</control>
+					<control type="image">
+						<animation effect="slide" end="0,10" time="0" condition="true">Conditional</animation>
+						<height>38</height>
 						<width>58</width>
 						<texture>$VAR[PlayerIcon]</texture>
 						<aspectratio>keep</aspectratio>
+						<visible>String.IsEmpty(Player.Art(tvshow.poster)) + String.IsEmpty(Player.Art(poster))</visible>
 					</control>
 					<control type="label">
 						<height>58</height>
