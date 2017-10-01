@@ -65,6 +65,12 @@
 							<onup>6666</onup>
 							<ondown>200</ondown>
 						</control>
+						<control type="button" id="105">
+							<label>$LOCALIZE[19024]</label>
+							<onclick>ActivateWindow(radiochannels)</onclick>
+							<onup>6666</onup>
+							<ondown>200</ondown>
+						</control>
 					</control>
 				</control>
 			</control>
@@ -96,11 +102,23 @@
 			<include content="HomeSquareWidget">
 				<param name="id" value="202"/>
 				<param name="onup" value="201"/>
-				<param name="ondown" value="SetProperty(BounceDown,1,home)"/>
+				<param name="ondown" value="203"/>
 				<param name="headline" value="$LOCALIZE[575]"/>
 				<param name="mainlabel" value="$VAR[PVRWidgetMainListLabel]"/>
 				<param name="sublabel" value="$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, - ]"/>
 				<param name="content" value="pvr://channels/tv/*"/>
+			</include>
+
+			<include content="HomeSquareWidget">
+				<param name="id" value="203"/>
+				<param name="onup" value="202"/>
+				<param name="ondown" value="SetProperty(BounceDown,1,home)"/>
+				<param name="headline" value="$LOCALIZE[31082]"/>
+				<param name="mainlabel" value="$VAR[PVRWidgetMainListLabel]"/>
+				<param name="sublabel" value="$INFO[ListItem.StartTime]$INFO[ListItem.EndTime - ]"/>
+				<param name="sortby" value="lastplayed"/>
+				<param name="sortorder" value="descending"/>
+				<param name="content" value="pvr://channels/radio/*?view=lastplayed"/>
 			</include>
 
 		</control>
