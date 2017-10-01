@@ -25,25 +25,28 @@
 	<include name="Background">
 		<param name="content">special://skin/playlists/video/RandomMovies.xsp</param>
 		<definition>
-			<control type="list" id="90000">
-				<include>HiddenObject</include>
-				<itemlayout/>
-				<focusedlayout/>
-				<content limit="1">$PARAM[content]</content>
-			</control>
-			<control type="videowindow">
-				<include>FullscreenDimensions</include>
-				<visible>Player.HasVideo</visible>
-			</control>
-			<control type="image">
-				<include>FullscreenDimensions</include>
-				<texture>$VAR[BackgroundSource]</texture>
-				<fadetime>400</fadetime>
-				<visible>!Player.HasVideo</visible>
-			</control>
-			<control type="image">
-				<include>FullscreenDimensions</include>
-				<texture>common/wp_overlay2.png</texture>
+			<control type="group">
+				<visible>!Skin.HasSetting(HideBackground)</visible>
+				<control type="list" id="90000">
+					<include>HiddenObject</include>
+					<itemlayout/>
+					<focusedlayout/>
+					<content limit="1">$PARAM[content]</content>
+				</control>
+				<control type="videowindow">
+					<include>FullscreenDimensions</include>
+					<visible>Player.HasVideo + !Skin.HasSetting(HideBackgroundPlayback)</visible>
+				</control>
+				<control type="image">
+					<include>FullscreenDimensions</include>
+					<texture>$VAR[BackgroundSource]</texture>
+					<fadetime>400</fadetime>
+					<visible>!Player.HasVideo | Skin.HasSetting(HideBackgroundPlayback)</visible>
+				</control>
+				<control type="image">
+					<include>FullscreenDimensions</include>
+					<texture>common/wp_overlay2.png</texture>
+				</control>
 			</control>
 		</definition>
 	</include>

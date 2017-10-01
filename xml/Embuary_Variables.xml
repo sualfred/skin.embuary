@@ -78,6 +78,7 @@
 	</variable>
 
 	<variable name="BackgroundSource">
+		<value condition="Skin.HasSetting(ShowStaticBackgroundImage) + !String.IsEmpty(Skin.String(StaticBackgroundImage))">$INFO[Skin.String(StaticBackgroundImage)]</value>
 		<value condition="!String.IsEmpty(Window.Property(background))">$INFO[Window.Property(background)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
 		<value>$INFO[Container(90000).ListItem.Art(fanart)]</value>

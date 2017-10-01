@@ -23,7 +23,6 @@
 					<width>470</width>
 					<usecontrolcoords>true</usecontrolcoords>
 					<onleft>9999</onleft>
-					<onright>200</onright>
 					<onup>6666</onup>
 					<ondown>noop</ondown>
 					<control type="button" id="101">
@@ -39,14 +38,31 @@
 						<shadowcolor>text_shadow</shadowcolor>
 						<texturefocus colordiffuse="panel_hover">common/white.jpg</texturefocus>
 						<include>NoTextures</include>
-						<label>Widgets</label>
+						<label>$LOCALIZE[19190]</label>
+						<onright>200</onright>
+					</control>
+					<control type="button" id="102">
+						<width>400</width>
+						<height>50</height>
+						<align>left</align>
+						<aligny>center</aligny>
+						<font>Reg22</font>
+						<textoffsetx>50</textoffsetx>
+						<textcolor>panel_text</textcolor>
+						<focusedcolor>panel_text</focusedcolor>
+						<selectedcolor>panel_text</selectedcolor>
+						<shadowcolor>text_shadow</shadowcolor>
+						<texturefocus colordiffuse="panel_hover">common/white.jpg</texturefocus>
+						<include>NoTextures</include>
+						<label>$LOCALIZE[31083]</label>
+						<onright>300</onright>
 					</control>
 				</control>
 			</control>
 			<!-- right -->
 			<control type="group">
 				<control type="grouplist" id="200">
-					<description>control area</description>
+					<visible>ControlGroup(100).HasFocus(101)</visible>
 					<top>128</top>
 					<left>400</left>
 					<pagecontrol>60</pagecontrol>
@@ -64,7 +80,71 @@
 						<textcolor>panel_text</textcolor>
 						<shadowcolor>text_shadow</shadowcolor>
 						<aligny>center</aligny>
-						<label>Widgets</label>
+						<label>$LOCALIZE[19190]</label>
+					</control>
+					<control type="radiobutton" id="201">
+						<include content="SettingsButton">
+							<param name="textoffsetx">35</param>
+						</include>
+						<onclick>Skin.ToggleSetting(HideBackground)</onclick>
+						<selected>!Skin.HasSetting(HideBackground)</selected>
+						<label>$LOCALIZE[31087]</label>
+					</control>
+					<control type="radiobutton" id="202">
+						<include content="SettingsButton">
+							<param name="textoffsetx">35</param>
+						</include>
+						<onclick>Skin.ToggleSetting(HideBackgroundPlayback)</onclick>
+						<selected>!Skin.HasSetting(HideBackgroundPlayback)</selected>
+						<label>$LOCALIZE[31088]</label>
+					</control>
+					<control type="label" id="203">
+						<height>50</height>
+						<font>med22</font>
+						<textoffsetx>25</textoffsetx>
+						<textcolor>panel_text</textcolor>
+						<shadowcolor>text_shadow</shadowcolor>
+						<aligny>center</aligny>
+						<label>$LOCALIZE[33070]</label>
+					</control>
+					<control type="radiobutton" id="204">
+						<include content="SettingsButton">
+							<param name="textoffsetx">35</param>
+						</include>
+						<onclick>Skin.ToggleSetting(ShowStaticBackgroundImage)</onclick>
+						<selected>Skin.HasSetting(ShowStaticBackgroundImage)</selected>
+						<label>Use own static background image</label>
+					</control>
+					<control type="button" id="205">
+						<include content="SettingsButton">
+							<param name="textoffsetx">35</param>
+						</include>
+						<onclick>Skin.SetImage(StaticBackgroundImage)</onclick>
+						<label>- Custom image</label>
+						<label2>$INFO[Skin.String(StaticBackgroundImage)]</label2>
+						<enable>Skin.HasSetting(ShowStaticBackgroundImage)</enable>
+					</control>
+				</control>		
+				<control type="grouplist" id="300">
+					<visible>ControlGroup(100).HasFocus(102)</visible>
+					<top>128</top>
+					<left>400</left>
+					<pagecontrol>60</pagecontrol>
+					<right>0</right>
+					<bottom>50</bottom>
+					<onleft>100</onleft>
+					<onright>noop</onright>
+					<onup>6666</onup>
+					<ondown>noop</ondown>
+					<usecontrolcoords>true</usecontrolcoords>
+					<control type="label">
+						<height>50</height>
+						<font>med22</font>
+						<textoffsetx>25</textoffsetx>
+						<textcolor>panel_text</textcolor>
+						<shadowcolor>text_shadow</shadowcolor>
+						<aligny>center</aligny>
+						<label>$LOCALIZE[31083]</label>
 					</control>
 					<control type="radiobutton" id="201">
 						<include content="SettingsButton">
@@ -72,7 +152,7 @@
 						</include>
 						<onclick>Skin.ToggleSetting(HideLibaryWidgets)</onclick>
 						<selected>!Skin.HasSetting(HideLibaryWidgets)</selected>
-						<label>Show widgets based on the local Kodi library</label>
+						<label>$LOCALIZE[31084]</label>
 					</control>
 					<control type="radiobutton" id="202">
 						<include content="SettingsButton">
@@ -80,15 +160,24 @@
 						</include>
 						<onclick>Skin.ToggleSetting(EnableEmbyConWidgets)</onclick>
 						<selected>Skin.HasSetting(EnableEmbyConWidgets)</selected>
-						<label>Show widgets based on the EmbyCon plugin</label>
+						<label>$LOCALIZE[31085]</label>
 					</control>
-					<control type="radiobutton" id="203">
+					<control type="label" id="203">
+						<height>50</height>
+						<font>med22</font>
+						<textoffsetx>25</textoffsetx>
+						<textcolor>panel_text</textcolor>
+						<shadowcolor>text_shadow</shadowcolor>
+						<aligny>center</aligny>
+						<label>$LOCALIZE[14204]</label>
+					</control>
+					<control type="radiobutton" id="204">
 						<include content="SettingsButton">
 							<param name="textoffsetx">35</param>
 						</include>
 						<onclick>Skin.ToggleSetting(HidePVRWidgets)</onclick>
 						<selected>!Skin.HasSetting(HidePVRWidgets)</selected>
-						<label>Show PVR widgets</label>
+						<label>$LOCALIZE[31086]</label>
 					</control>
 				</control>		
 				<include content="list_mask_vertical">
