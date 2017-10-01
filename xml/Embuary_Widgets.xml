@@ -588,7 +588,7 @@
 							<visible>Library.HasContent(tvshows) | System.HasAddon(plugin.video.embycon)</visible>
 						</item>
 						<item>
-							<label>$LOCALIZE[31042]</label>
+							<label>$VAR[PVRLabel]</label>
 							<onclick>ActivateWindow(1124,return)</onclick>
 							<property name="art1">$INFO[Container(53).ListItem(0).Art(thumb)]</property>
 							<property name="art2">$INFO[Container(53).ListItem(1).Art(thumb)]</property>
@@ -939,7 +939,7 @@
 				<width>1920</width>
 				<height>705</height>
 				<include content="widget_headline">
-					<param name="headline">$LOCALIZE[31042]</param>
+					<param name="headline">$VAR[PVRLabel]</param>
 				</include>
 				<control type="grouplist" id="$PARAM[id]01">
 					<top>90</top>
@@ -956,7 +956,7 @@
 					<onup>$PARAM[onup]</onup>
 					<ondown>$PARAM[ondown]</ondown>
 					<control type="button" id="$PARAM[id]02">
-						<label>$LOCALIZE[14301]</label>
+						<label>$LOCALIZE[19023]</label>
 						<onup>$PARAM[onup]</onup>
 						<ondown>$PARAM[id]</ondown>
 						<onclick>ActivateWindow(tvchannels)</onclick>
@@ -981,6 +981,13 @@
 						<onup>$PARAM[onup]</onup>
 						<ondown>$PARAM[id]</ondown>
 						<onclick>ActivateWindow(tvtimers)</onclick>
+						<enable>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</enable>
+					</control>
+					<control type="button" id="$PARAM[id]06">
+						<label>$LOCALIZE[19024]</label>
+						<onup>$PARAM[onup]</onup>
+						<ondown>$PARAM[id]</ondown>
+						<onclick>ActivateWindow(radiochannels)</onclick>
 						<enable>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</enable>
 					</control>
 				</control>

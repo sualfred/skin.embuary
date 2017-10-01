@@ -115,7 +115,7 @@
 		<value condition="Window.IsVisible(1121)">$LOCALIZE[20343]</value>
 		<value condition="Window.IsVisible(1122)">$LOCALIZE[2]</value>
 		<value condition="Window.IsVisible(1123)">$LOCALIZE[24001]</value>
-		<value condition="Window.IsVisible(1124)">$LOCALIZE[14204]</value>
+		<value condition="Window.IsVisible(1124)">$VAR[PVRLabel]</value>
 		<value condition="Window.IsVisible(musicinformation) + String.IsEqual(ListItem.DBType,album)">$LOCALIZE[10523]</value>
 		<value condition="Window.IsVisible(musicinformation) + String.IsEqual(ListItem.DBType,artist)">$LOCALIZE[21891]</value>
 		<value condition="Window.IsVisible(movieinformation) + String.IsEqual(ListItem.DBType,tvshow)">$LOCALIZE[20351]</value>
@@ -504,5 +504,10 @@
 		<value condition="System.HasAddon(plugin.video.emby)">$INFO[Window(Home).Property(EmbyUserImage)]</value>
 		<value condition="System.HasAddon(plugin.video.plexkodiconnect)">$INFO[Window(Home).Property(PlexUserImage)]</value>
 		<value>$INFO[System.ProfileThumb]</value>
+	</variable>
+	<variable name="PVRLabel">
+		<value condition="Pvr.HasRadioChannels + Pvr.HasTVChannels">$LOCALIZE[31042] &amp; $LOCALIZE[19021]</value>
+		<value condition="Pvr.HasTVChannels">$LOCALIZE[31042]</value>
+		<value condition="Pvr.HasRadioChannels">$LOCALIZE[19021]</value>
 	</variable>
 </includes>
