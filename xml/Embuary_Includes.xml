@@ -1016,4 +1016,49 @@
 		<onclick condition="System.HasAddon(plugin.video.embycon)">SetProperty(Dialog.4.BuiltIn,ActivateWindow(videos,plugin://plugin.video.embycon/?item_type=Episode&amp;mode=NEW_SEARCH))</onclick>
 		<onclick condition="System.HasAddon(plugin.video.embycon)">RunScript(script.toolbox,info=selectdialog,header=$LOCALIZE[137])</onclick> 
 	</include>
+	<include name="SkinHelperRatings">
+		<param name="type">ListItem</param>
+		<definition>			
+			<control type="image">								
+				<animation effect="slide" end="0,3" time="0" condition="true">Conditional</animation>
+				<width>24</width>
+				<height>20</height>
+				<texture>icons/rating/metacritics_logo.png</texture>
+				<aspectratio>keep</aspectratio>
+				<visible>!String.IsEmpty(Window(Home).Property(SkinHelper.$PARAM[type].Rating.MC))</visible>
+			</control>
+			<control type="label">
+				<width>auto</width>
+				<height>24</height>
+				<label>$INFO[Window(Home).Property(SkinHelper.$PARAM[type].Rating.MC),,%]   </label>
+				<font>reg22</font>
+				<shadowcolor>text_shadow</shadowcolor>
+				<visible>!String.IsEmpty(Window(Home).Property(SkinHelper.$PARAM[type].Rating.MC))</visible>
+			</control>
+			<control type="image">								
+				<animation effect="slide" end="0,3" time="0" condition="true">Conditional</animation>
+				<width>24</width>
+				<height>20</height>
+				<texture>icons/rating/rotten_fresh.png</texture>
+				<aspectratio>keep</aspectratio>
+				<visible>!String.IsEmpty(Window(Home).Property(SkinHelper.$PARAM[type].RottenTomatoes.Rating)) + Integer.IsGreater(Window(Home).Property(SkinHelper.$PARAM[type].RottenTomatoes.Rating),59)</visible>
+			</control>
+			<control type="image">								
+				<animation effect="slide" end="0,3" time="0" condition="true">Conditional</animation>
+				<width>24</width>
+				<height>20</height>
+				<texture>icons/rating/rotten_rotten.png</texture>
+				<aspectratio>keep</aspectratio>
+				<visible>!String.IsEmpty(Window(Home).Property(SkinHelper.$PARAM[type].RottenTomatoes.Rating)) + !Integer.IsGreater(Window(Home).Property(SkinHelper.$PARAM[type].RottenTomatoes.Rating),59)</visible>
+			</control>
+			<control type="label">
+				<width>auto</width>
+				<height>24</height>
+				<label>$INFO[Window(Home).Property(SkinHelper.$PARAM[type].RottenTomatoes.Rating),,%]   </label>
+				<font>reg22</font>
+				<shadowcolor>text_shadow</shadowcolor>
+				<visible>!String.IsEmpty(Window(Home).Property(SkinHelper.$PARAM[type].RottenTomatoes.Rating))</visible>
+			</control>
+		</definition>
+	</include>
 </includes>
