@@ -208,7 +208,6 @@
 			<font>Material24</font>
 			<include>HeaderButton</include>
 			<label></label>
-			<label>$LOCALIZE[587]</label>
 			<onclick>SetFocus(4000)</onclick>
 			<visible>[Window.IsVisible(videos) | Window.IsVisible(music) | Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRrecordings.xml) | Window.IsVisible(MyPVRTimers.xml) | Window.IsVisible(MyPVRSearch.xml) | Window.IsVisible(programs)] + !$EXP[ExpInfoDialogActive]</visible>
 		</control>
@@ -216,9 +215,8 @@
 			<font>Material24</font>
 			<label></label>
 			<include>HeaderButton</include>
-			<label>$INFO[Control.GetLabel(2)]</label>
 			<onclick>Container.NextViewMode</onclick>
-			<visible>[Window.IsVisible(videos) | Window.IsVisible(music) | Window.IsVisible(programs) | Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRrecordings.xml) | Window.IsVisible(addonbrowser)] + !$EXP[ExpInfoDialogActive]</visible>
+			<visible>[Window.IsVisible(videos) | Window.IsVisible(music) | Window.IsVisible(programs) | Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRrecordings.xml) | Window.IsVisible(addonbrowser)] + !$EXP[ExpInfoDialogActive] + !Container.Content(seasons) + !Container.Content(episodes)</visible>
 		</control>
 		<control type="button" id="6606">
 			<include>HeaderButton</include>
