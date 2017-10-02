@@ -1,5 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+	<variable name="ContainerContent">
+		<value condition="Window.IsVisible(script-nextup-notification-PostPlayInfo.xml)">$LOCALIZE[31079]</value>
+		<value condition="Window.IsVisible(musicplaylisteditor)">$LOCALIZE[10503]</value>
+		<value condition="Window.IsVisible(weather)">$LOCALIZE[8]</value>
+		<value condition="Window.IsVisible(favourites)">$LOCALIZE[1036]</value>
+		<value condition="Window.IsVisible(smartplaylisteditor)">$LOCALIZE[10136]</value>
+		<value condition="Window.IsVisible(DialogPVRChannelManager.xml)">$LOCALIZE[19199]</value>
+		<value condition="Window.IsVisible(skinsettings)">$LOCALIZE[31058]</value>
+		<value condition="Window.IsVisible(filemanager)">$LOCALIZE[7]</value>
+		<value condition="Window.IsVisible(musicplaylist)">$LOCALIZE[10500]</value>
+		<value condition="Window.IsVisible(videoplaylist)">$LOCALIZE[10028]</value>
+		<value condition="Window.IsVisible(videobookmarks)">$LOCALIZE[298]</value>
+		<value condition="Window.IsVisible(systeminfo)">$LOCALIZE[138]</value>
+		<value condition="Window.IsVisible(profiles)">$LOCALIZE[10130]</value>
+		<value condition="Window.IsVisible(script-globalsearch-main.xml)">$LOCALIZE[283]</value>
+		<value condition="Window.IsVisible(DialogFullScreenInfo.xml) + VideoPlayer.Content(livetv)">$LOCALIZE[19166]</value>
+		<value condition="Window.IsVisible(DialogFullScreenInfo.xml) + VideoPlayer.Content(movies)">$LOCALIZE[10524]</value>
+		<value condition="Window.IsVisible(DialogFullScreenInfo.xml) + VideoPlayer.Content(episodes)">$LOCALIZE[20352]</value>
+		<value condition="Window.IsVisible(DialogAddonSettings.xml)">$INFO[Control.GetLabel(20)]</value>
+		<value condition="Window.IsVisible(SettingsCategory.xml)">$LOCALIZE[5]: $INFO[Control.GetLabel(2)]</value>
+		<value condition="Window.IsVisible(Settings.xml)">$LOCALIZE[5]</value>
+		<value condition="Window.IsVisible(1120)">$LOCALIZE[342]</value>
+		<value condition="Window.IsVisible(1121)">$LOCALIZE[20343]</value>
+		<value condition="Window.IsVisible(1122)">$LOCALIZE[2]</value>
+		<value condition="Window.IsVisible(1123)">$LOCALIZE[24001]</value>
+		<value condition="Window.IsVisible(1124)">$VAR[PVRLabel]</value>
+		<value condition="Window.IsVisible(musicinformation) + String.IsEqual(ListItem.DBType,album)">$LOCALIZE[10523]</value>
+		<value condition="Window.IsVisible(musicinformation) + String.IsEqual(ListItem.DBType,artist)">$LOCALIZE[21891]</value>
+		<value condition="Window.IsVisible(movieinformation) + String.IsEqual(ListItem.DBType,tvshow)">$LOCALIZE[20351]</value>
+		<value condition="Window.IsVisible(movieinformation) + String.IsEqual(ListItem.DBType,movie)">$LOCALIZE[10524]</value>
+		<value condition="Window.IsVisible(movieinformation) + String.IsEqual(ListItem.DBType,episode)">$LOCALIZE[20352]</value>
+		<value condition="!String.IsEmpty(Container.ShowTitle)">$INFO[Container.ShowTitle]</value>
+		<value condition="Window.IsVisible(MyPVRGuide.xml)">$LOCALIZE[19069]</value>
+		<value condition="Window.IsVisible(MyPVRRecordings.xml)">$LOCALIZE[19017]</value>
+		<value condition="String.StartsWith(Container.FolderPath,videodb://movies)">$LOCALIZE[342]</value>
+		<value condition="String.StartsWith(Container.FolderPath,videodb://tvshows)">$LOCALIZE[20343]</value>
+		<value condition="String.StartsWith(Container.FolderPath,musicdb://)">$LOCALIZE[2]</value>
+		<value>$INFO[Container.Foldername]</value>
+	</variable>
+	<variable name="ContainerCountLabel">
+		<value condition="Container.Content(movies)">$INFO[Container.NumItems]</value>
+		<value condition="Container.Content(tvshows)">$INFO[Container.NumItems]</value>
+		<value condition="Container.Content(albums)">$INFO[Container.NumItems]</value>
+		<value condition="Container.Content(songs)">$INFO[Container.NumItems]</value>
+		<value condition="Container.Content(artists)">$INFO[Container.NumItems]</value>
+	</variable>
 	<!-- Embcon widget vars -->
 	<variable name="EmbyCon_InProgressMedia">
 		<value condition="[System.HasAddon(plugin.video.embycon) + Skin.HasSetting(EnableEmbyConWidgets)]">plugin://plugin.video.embycon?mode=WIDGET_CONTENT_URL&amp;url=Users%2F%7Buserid%7D%2FItems%3FSortBy%3DDatePlayed%26SortOrder%3DDescending%26Filters%3DIsResumable%26Limit%3D12%26Recursive%3Dtrue%26Fields%3DPrimaryImageAspectRatio%252CBasicSyncInfo%26CollapseBoxSetItems%3Dfalse%26ExcludeLocationTypes%3DVirtual%26ImageTypeLimit%3D1%26EnableImageTypes%3DPrimary%252CBackdrop%252CThumb%26EnableTotalRecordCount%3Dfalse%26MediaTypes%3DVideo</value>
@@ -90,45 +136,6 @@
 	<variable name="FakeButtonAddonInfo13">
 		<value condition="String.EndsWith(Control.GetLabel(13),(*))">$LOCALIZE[19074]</value>
 		<value>$LOCALIZE[351]</value>
-	</variable>
-	<variable name="ContainerContent">
-		<value condition="Window.IsVisible(script-nextup-notification-PostPlayInfo.xml)">$LOCALIZE[31079]</value>
-		<value condition="Window.IsVisible(musicplaylisteditor)">$LOCALIZE[10503]</value>
-		<value condition="Window.IsVisible(weather)">$LOCALIZE[8]</value>
-		<value condition="Window.IsVisible(favourites)">$LOCALIZE[1036]</value>
-		<value condition="Window.IsVisible(smartplaylisteditor)">$LOCALIZE[10136]</value>
-		<value condition="Window.IsVisible(DialogPVRChannelManager.xml)">$LOCALIZE[19199]</value>
-		<value condition="Window.IsVisible(skinsettings)">$LOCALIZE[31058]</value>
-		<value condition="Window.IsVisible(filemanager)">$LOCALIZE[7]</value>
-		<value condition="Window.IsVisible(musicplaylist)">$LOCALIZE[10500]</value>
-		<value condition="Window.IsVisible(videoplaylist)">$LOCALIZE[10028]</value>
-		<value condition="Window.IsVisible(videobookmarks)">$LOCALIZE[298]</value>
-		<value condition="Window.IsVisible(systeminfo)">$LOCALIZE[138]</value>
-		<value condition="Window.IsVisible(profiles)">$LOCALIZE[10130]</value>
-		<value condition="Window.IsVisible(script-globalsearch-main.xml)">$LOCALIZE[283]</value>
-		<value condition="Window.IsVisible(DialogFullScreenInfo.xml) + VideoPlayer.Content(livetv)">$LOCALIZE[19166]</value>
-		<value condition="Window.IsVisible(DialogFullScreenInfo.xml) + VideoPlayer.Content(movies)">$LOCALIZE[10524]</value>
-		<value condition="Window.IsVisible(DialogFullScreenInfo.xml) + VideoPlayer.Content(episodes)">$LOCALIZE[20352]</value>
-		<value condition="Window.IsVisible(DialogAddonSettings.xml)">$INFO[Control.GetLabel(20)]</value>
-		<value condition="Window.IsVisible(SettingsCategory.xml)">$LOCALIZE[5]: $INFO[Control.GetLabel(2)]</value>
-		<value condition="Window.IsVisible(Settings.xml)">$LOCALIZE[5]</value>
-		<value condition="Window.IsVisible(1120)">$LOCALIZE[342]</value>
-		<value condition="Window.IsVisible(1121)">$LOCALIZE[20343]</value>
-		<value condition="Window.IsVisible(1122)">$LOCALIZE[2]</value>
-		<value condition="Window.IsVisible(1123)">$LOCALIZE[24001]</value>
-		<value condition="Window.IsVisible(1124)">$VAR[PVRLabel]</value>
-		<value condition="Window.IsVisible(musicinformation) + String.IsEqual(ListItem.DBType,album)">$LOCALIZE[10523]</value>
-		<value condition="Window.IsVisible(musicinformation) + String.IsEqual(ListItem.DBType,artist)">$LOCALIZE[21891]</value>
-		<value condition="Window.IsVisible(movieinformation) + String.IsEqual(ListItem.DBType,tvshow)">$LOCALIZE[20351]</value>
-		<value condition="Window.IsVisible(movieinformation) + String.IsEqual(ListItem.DBType,movie)">$LOCALIZE[10524]</value>
-		<value condition="Window.IsVisible(movieinformation) + String.IsEqual(ListItem.DBType,episode)">$LOCALIZE[20352]</value>
-		<value condition="!String.IsEmpty(Container.ShowTitle)">$INFO[Container.ShowTitle]</value>
-		<value condition="Window.IsVisible(MyPVRGuide.xml)">$LOCALIZE[19069]</value>
-		<value condition="Window.IsVisible(MyPVRRecordings.xml)">$LOCALIZE[19017]</value>
-		<value condition="String.StartsWith(Container.FolderPath,videodb://movies)">$LOCALIZE[342]</value>
-		<value condition="String.StartsWith(Container.FolderPath,videodb://tvshows)">$LOCALIZE[20343]</value>
-		<value condition="String.StartsWith(Container.FolderPath,musicdb://)">$LOCALIZE[2]</value>
-		<value>$INFO[Container.Foldername]</value>
 	</variable>
 	<variable name="ListItemClearlogo">
 		<value condition="!String.IsEmpty(ListItem.Art(tvshow.clearlogo))">$INFO[ListItem.Art(tvshow.clearlogo)]</value>
