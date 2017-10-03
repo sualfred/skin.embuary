@@ -17,33 +17,6 @@
 			<include>Wide_View_50</include>
 			<include>Square_View_52</include>
 			<include>List_View_53</include>
-
-			<control type="group">
-				<animation effect="slide" start="0,0" end="0,-14" time="0" condition="Control.IsVisible(50)">Conditional</animation>
-				<animation effect="slide" start="0,0" end="0,5" time="0" condition="Control.IsVisible(52)">Conditional</animation>
-				<animation effect="slide" start="0,0" end="0,-3" time="0" condition="Control.IsVisible(53)">Conditional</animation>
-				<top>93</top>
-				<width>1920</width>
-				<height>40</height>
-				<control type="group">
-					<include content="JumpToLetter">
-						<param name="visible" value="[Container.HasNext | Container.HasPrevious] + $EXP[ExpJumpToLetter]"/>
-					</include>
-				</control>
-				<control type="label">
-					<visible>![Container.HasNext | Container.HasPrevious] | !$EXP[ExpJumpToLetter]</visible>
-					<centerleft>50%</centerleft>
-					<width>1215</width>
-					<height>40</height>
-					<font>Med18</font>
-					<align>center</align>
-					<aligny>center</aligny>
-					<textcolor>softgrey</textcolor>
-					<shadowcolor>text_shadow</shadowcolor>
-					<label>$INFO[Container.SortMethod,$LOCALIZE[581] ","]$INFO[Container.SortOrder, / $LOCALIZE[580] ","]</label>
-				</control>
-			</control>
-
 		</control>
 
 		<!-- Menu control -->
