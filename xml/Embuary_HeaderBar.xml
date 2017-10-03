@@ -248,7 +248,7 @@
 			<label></label>
 			<include>HeaderButton</include>
 			<onclick>Container.NextViewMode</onclick>
-			<visible>[Window.IsVisible(videos) | Window.IsVisible(music) | Window.IsVisible(programs) | Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRrecordings.xml) | Window.IsVisible(addonbrowser)] + !$EXP[ExpInfoDialogActive] + !Container.Content(seasons) + !Container.Content(episodes)</visible>
+			<visible>[Container.Content(episodes) + String.StartsWith(Container.FolderPath,plugin://) + !String.StartsWith(Container.FolderPath,plugin://plugin.video.embycon)] | [[Window.IsVisible(videos) | Window.IsVisible(music) | Window.IsVisible(programs) | Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRrecordings.xml) | Window.IsVisible(addonbrowser)] + !$EXP[ExpInfoDialogActive] + !Container.Content(seasons) + !Container.Content(episodes)]</visible>
 		</control>
 		<control type="button" id="6609">
 			<font>Material24</font>
