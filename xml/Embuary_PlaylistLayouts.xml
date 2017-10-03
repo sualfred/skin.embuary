@@ -83,6 +83,38 @@
 								<control type="label">
 									<width>auto</width>
 									<height>24</height>
+									<label>$INFO[ListItem.Year]   </label>
+									<font>reg22</font>
+									<shadowcolor>text_shadow</shadowcolor>
+									<visible>!String.IsEmpty(ListItem.Year) + String.IsEqual(ListItem.DBType,movie)</visible>
+								</control>
+								<control type="label">
+									<width>auto</width>
+									<height>24</height>
+									<label>$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E]   </label>
+									<font>reg22</font>
+									<shadowcolor>text_shadow</shadowcolor>
+									<visible>!String.IsEmpty(ListItem.Episode)</visible>
+								</control>
+								<control type="label">
+									<width>auto</width>
+									<height>24</height>
+									<label>$LOCALIZE[20074]: $INFO[ListItem.Mpaa]   </label>
+									<font>reg20</font>
+									<shadowcolor>text_shadow</shadowcolor>
+									<visible>!String.IsEmpty(ListItem.Mpaa)</visible>
+								</control>
+								<control type="label">
+									<width>auto</width>
+									<height>24</height>
+									<label>$VAR[DurationMinutes]   </label>
+									<font>reg22</font>
+									<shadowcolor>text_shadow</shadowcolor>
+									<visible>!String.IsEmpty(ListItem.Duration)</visible>
+								</control>
+								<control type="label">
+									<width>auto</width>
+									<height>24</height>
 									<label></label>
 									<font>Material24</font>
 									<textcolor>red</textcolor>
@@ -96,38 +128,6 @@
 									<font>reg22</font>
 									<shadowcolor>text_shadow</shadowcolor>
 									<visible>!String.IsEmpty(ListItem.Rating)</visible>
-								</control>
-								<control type="label">
-									<width>auto</width>
-									<height>24</height>
-									<label>$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E]   </label>
-									<font>reg22</font>
-									<shadowcolor>text_shadow</shadowcolor>
-									<visible>!String.IsEmpty(ListItem.Episode)</visible>
-								</control>
-								<control type="label">
-									<width>auto</width>
-									<height>24</height>
-									<label>$LOCALIZE[180]: $VAR[ListItemDuration]   </label>
-									<font>reg22</font>
-									<shadowcolor>text_shadow</shadowcolor>
-									<visible>!String.IsEmpty(ListItem.Duration)</visible>
-								</control>
-								<control type="label">
-									<width>auto</width>
-									<height>24</height>
-									<label>$LOCALIZE[20074]: $INFO[ListItem.Mpaa]   </label>
-									<font>reg20</font>
-									<shadowcolor>text_shadow</shadowcolor>
-									<visible>!String.IsEmpty(ListItem.Mpaa)</visible>
-								</control>
-								<control type="label">
-									<width>auto</width>
-									<height>24</height>
-									<label>$INFO[ListItem.Year]   </label>
-									<font>reg22</font>
-									<shadowcolor>text_shadow</shadowcolor>
-									<visible>!String.IsEmpty(ListItem.Year) + String.IsEqual(ListItem.DBType,movie)</visible>
 								</control>
 							</control>
 							<control type="grouplist" id="100">
