@@ -183,10 +183,21 @@
 				<param name="widget_target" value="videos"/>
 				<param name="content" value="$VAR[EmbyCon_SimilarMovies]"/>
 			</include>
-			<!-- Fav movies -->
+			<!-- top 250 -->
 			<include content="HomePosterWidget">
 				<param name="id" value="210"/>
 				<param name="onup" value="209"/>
+				<param name="ondown" value="211"/>
+				<param name="headline" value="$LOCALIZE[31097]"/>
+				<param name="mainlabel" value="$INFO[ListItem.Label]"/>
+				<param name="sublabel" value="$INFO[ListItem.Year]"/>
+				<param name="widget_target" value="videos"/>
+				<param name="content" value="plugin://script.skin.helper.widgets/?action=top250&amp;mediatype=movies&amp;reload=$INFO[Window(Home).Property(widgetreload2)]"/>
+			</include>
+			<!-- Fav movies -->
+			<include content="HomePosterWidget">
+				<param name="id" value="211"/>
+				<param name="onup" value="210"/>
 				<param name="ondown" value="SetProperty(BounceDown,1,home)"/>
 				<param name="headline" value="$LOCALIZE[31062]"/>
 				<param name="sublabel" value="$INFO[ListItem.Year]"/>
