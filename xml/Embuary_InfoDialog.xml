@@ -1175,16 +1175,16 @@
 				<param name="content" value="musicdb://songs/?artistid=$INFO[ListItem.DBID]"/>
 			</include>
 		</control>
-		<!-- side panel -->
-		<include content="SidePanel">
-			<param name="onright">500</param>
-		</include>
 		<!-- header bar -->
 		<include content="HeaderBar">		
 			<param name="id">500</param>
 			<param name="enabled">false</param>
 			<param name="sidebar_id">9999</param>
 			<param name="custom_animation">Container(500).HasPrevious</param>
+		</include>
+		<!-- side panel -->
+		<include content="SidePanel">
+			<param name="onright">500</param>
 		</include>
 	</include>
 	<!-- Album -->
@@ -1385,7 +1385,7 @@
 				<param name="use_custom_onclick" value="true"/>
 				<param name="onclick" value="PlayMedia($INFO[ListItem.FolderPath],isdir)"/>
 				<param name="widget_target" value="music"/>
-				<param name="content" value="musicdb://artists/$INFO[Window(home).Property(ArtistDBID)]"/>
+				<param name="content" value="$VAR[InfoDialog_ArtistAlbums]"/>
 			</include>
 			<!-- All tracks -->
 			<include content="SquareWidget">
@@ -1396,19 +1396,19 @@
 				<param name="sublabel" value="$INFO[ListItem.Album]"/>
 				<param name="headline" value="$LOCALIZE[182]"/>
 				<param name="sortby" value="track"/>
-				<param name="content" value="musicdb://songs/?artistid=$INFO[Window(home).Property(ArtistDBID)]"/>
+				<param name="content" value="$VAR[InfoDialog_ArtistTracks]"/>
 			</include>
 		</control>
-		<!-- side panel -->
-		<include content="SidePanel">
-			<param name="onright">500</param>
-		</include>
 		<!-- header bar -->
 		<include content="HeaderBar">		
 			<param name="id">500</param>
 			<param name="enabled">false</param>
 			<param name="sidebar_id">9999</param>
 			<param name="custom_animation">Container(500).HasPrevious</param>
+		</include>
+		<!-- side panel -->
+		<include content="SidePanel">
+			<param name="onright">500</param>
 		</include>
 	</include>
 </includes>
