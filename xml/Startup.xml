@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
-	<onload>ReplaceWindow($INFO[System.StartupWindow])</onload>
 	<onload>Skin.SetBool(SkinHelper.EnableMusicArt)</onload>
-	<onload condition="System.GetBool(filelists.showparentdiritems)">RunScript(script.skin.helper.service,action=togglekodisetting,setting=filelists.showparentdiritems)</onload>
+	<onload condition="!Skin.HasSetting(EmbuaryFirstRun)">ReplaceWindow(1119)</onload>
+	<onload condition="Skin.HasSetting(EmbuaryFirstRun)">ReplaceWindow($INFO[System.StartupWindow])</onload>
 	<controls />
 </window>
