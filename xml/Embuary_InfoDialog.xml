@@ -583,85 +583,64 @@
 					<top>128</top>
 					<height>435</height>
 					<width>1920</width>
-					<!-- poster -->
+					<!-- thumb -->
 					<control type="group">
 						<left>70</left>
 						<control type="image">
-							<top>-2</top>
-							<left>-2</left>
-							<width>282</width>
-							<height>420</height>
-							<texture>items/shadow_poster.png</texture>
+							<width>430</width>
+							<height>242</height>
+							<texture colordiffuse="green" diffuse="items/mask_wide_db.png">common/white.jpg</texture>
+							<aspectratio scalediffuse="false">stretch</aspectratio>
+							<visible>String.IsEmpty(ListItem.Art(tvshow.landscape)) + String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(fanart)) + ![!String.IsEmpty(ListItem.Art(thumb)) + Container.Content(episodes)]</visible>
 						</control>
 						<control type="image">
-							<width>276</width>
-							<height>414</height>
-							<texture colordiffuse="green" diffuse="items/mask_poster.png">common/white.jpg</texture>
+							<width>430</width>
+							<height>242</height>
+							<texture colordiffuse="thumb_background" diffuse="items/mask_wide_db.png">common/white.jpg</texture>
 							<aspectratio scalediffuse="false">stretch</aspectratio>
-							<visible>String.IsEmpty(ListItem.Art(tvshow.poster))</visible>
+							<visible>![String.IsEmpty(ListItem.Art(tvshow.landscape)) + String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(fanart)) + ![!String.IsEmpty(ListItem.Art(thumb)) + Container.Content(episodes)]]</visible>
 						</control>
 						<control type="textbox">
 							<top>10</top>
 							<left>10</left>
-							<width>256</width>
-							<height>394</height>
+							<width>410</width>
+							<height>222</height>
 							<font>Light24</font>
 							<align>center</align>
 							<aligny>center</aligny>
-							<label>$INFO[ListItem.Title]</label>
-							<visible>String.IsEmpty(ListItem.Art(tvshow.poster))</visible>
+							<label>$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title]</label>
+							<visible>String.IsEmpty(ListItem.Art(tvshow.landscape)) + String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(fanart)) + ![!String.IsEmpty(ListItem.Art(thumb)) + Container.Content(episodes)]</visible>
 						</control>
 						<control type="image">
-							<width>276</width>
-							<height>414</height>
-							<texture diffuse="items/mask_poster.png" background="true">$INFO[ListItem.Art(tvshow.poster)]</texture>
+							<width>430</width>
+							<height>242</height>
+							<texture diffuse="items/mask_wide_db.png" background="true">$VAR[IconLandscape]</texture>
 							<aspectratio scalediffuse="false">scale</aspectratio>
 						</control>
 						<control type="group">
-							<width>276</width>
-							<height>414</height>
-							<control type="group">
-								<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
-								<right>8</right>
-								<top>9</top>
-								<width>44</width>
-								<height>44</height>
-								<control type="image">
-									<width>44</width>
-									<height>44</height>
-									<texture colordiffuse="emby">items/bubble_small.png</texture>
-									<aspectratio>keep</aspectratio>
-								</control>
-								<control type="label">
-									<top>9</top>
-									<left>2</left>
-									<width>44</width>
-									<height>44</height>
-									<label></label>
-									<font>FontAwesome20Light</font>
-									<shadowcolor>text_shadow</shadowcolor>
-									<align>center</align>
-								</control>
-							</control>
+							<width>430</width>
+							<height>242</height>
+							<include>bubble_overlay</include>
+							<include>bubble_play</include>
 						</control>
 					</control>
 					<!-- meta -->
 					<control type="grouplist">
-						<left>370</left>
+						<left>524</left>
 						<orientation>vertical</orientation>
 						<height>500</height>
 						<align>top</align>
 						<itemgap>0</itemgap>
-						<width>1480</width>
+						<right>70</right>
 						<control type="label">
-							<width>1040</width>
+							<width>886</width>
 							<height>60</height>
 							<label>$INFO[ListItem.TvShowTitle]</label>
 							<font>Reg37</font>
 							<shadowcolor>text_shadow</shadowcolor>
 						</control>
 						<control type="label">
-							<width>1040</width>
+							<width>886</width>
 							<height>60</height>
 							<label>$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title]</label>
 							<font>Reg37</font>
@@ -669,7 +648,7 @@
 						</control>
 						<control type="grouplist">
 							<height>40</height>
-							<width>1040</width>
+							<width>886</width>
 							<itemgap>5</itemgap>
 							<orientation>horizontal</orientation>
 							<control type="label">
