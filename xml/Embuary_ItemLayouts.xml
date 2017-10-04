@@ -384,14 +384,14 @@
 					<height>414</height>
 					<texture colordiffuse="green" diffuse="items/mask_poster.png">common/white.jpg</texture>
 					<aspectratio scalediffuse="false">stretch</aspectratio>
-					<visible>String.IsEmpty(ListItem.Art(poster))</visible>
+					<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
 				</control>
 				<control type="image">
 					<width>276</width>
 					<height>414</height>
 					<texture colordiffuse="thumb_background" diffuse="items/mask_poster.png">common/white.jpg</texture>
 					<aspectratio scalediffuse="false">stretch</aspectratio>
-					<visible>!String.IsEmpty(ListItem.Art(poster))</visible>
+					<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
 				</control>
 				<control type="textbox">
 					<top>10</top>
@@ -402,13 +402,14 @@
 					<align>center</align>
 					<aligny>center</aligny>
 					<label>$PARAM[thumblabel]</label>
-					<visible>String.IsEmpty(ListItem.Art(poster))</visible>
+					<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
 				</control>
 				<control type="image">
 					<width>276</width>
 					<height>414</height>
-					<texture diffuse="items/mask_poster.png" background="true">$INFO[ListItem.Art(poster)]</texture>
+					<texture diffuse="items/mask_poster.png" background="true">$VAR[IconPoster]</texture>
 					<aspectratio scalediffuse="false">scale</aspectratio>
+					<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
 				</control>
 				<control type="group">
 					<width>276</width>
@@ -470,14 +471,14 @@
 					<height>355</height>
 					<texture colordiffuse="green" diffuse="items/mask_poster_db.png">common/white.jpg</texture>
 					<aspectratio scalediffuse="false">stretch</aspectratio>
-					<visible>String.IsEmpty(ListItem.Art(poster)) + String.IsEmpty(ListItem.Art(tvshow.poster))</visible>
+					<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
 				</control>
 				<control type="image">
 					<width>237</width>
 					<height>355</height>
 					<texture colordiffuse="thumb_background" diffuse="items/mask_poster_db.png">common/white.jpg</texture>
 					<aspectratio scalediffuse="false">stretch</aspectratio>
-					<visible>!String.IsEmpty(ListItem.Art(poster)) | !String.IsEmpty(ListItem.Art(tvshow.poster))</visible>
+					<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
 				</control>
 				<control type="textbox">
 					<top>10</top>
@@ -488,13 +489,14 @@
 					<align>center</align>
 					<aligny>center</aligny>
 					<label>$PARAM[thumblabel]</label>
-					<visible>String.IsEmpty(ListItem.Art(poster)) + String.IsEmpty(ListItem.Art(tvshow.poster))</visible>
+					<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
 				</control>
 				<control type="image">
 					<width>237</width>
 					<height>355</height>
 					<texture diffuse="items/mask_poster_db.png" background="true">$VAR[IconPoster]</texture>
 					<aspectratio scalediffuse="false">scale</aspectratio>
+					<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
 				</control>
 				<control type="group">
 					<width>237</width>
@@ -628,75 +630,45 @@
 					<height>245</height>
 					<texture>items/shadow_wide.png</texture>
 				</control>
-				<control type="group">
-					<visible>String.StartsWith(ListItem.Path,pvr://)</visible>
-					<control type="image">
-						<width>424</width>
-						<height>239</height>
-						<texture colordiffuse="green" diffuse="items/mask_wide.png">common/white.jpg</texture>
-						<aspectratio scalediffuse="false">stretch</aspectratio>
-						<visible>String.IsEmpty(ListItem.Art(thumb))</visible>
-					</control>
-					<control type="image">
-						<width>424</width>
-						<height>239</height>
-						<texture colordiffuse="thumb_background" diffuse="items/mask_wide.png">common/white.jpg</texture>
-						<aspectratio scalediffuse="false">stretch</aspectratio>
-						<visible>!String.IsEmpty(ListItem.Art(thumb))</visible>
-					</control>
-					<control type="textbox">
-						<top>10</top>
-						<left>10</left>
-						<width>404</width>
-						<height>219</height>
-						<font>Light24</font>
-						<align>center</align>
-						<aligny>center</aligny>
-						<label>$PARAM[thumblabel]</label>						
-						<visible>String.IsEmpty(ListItem.Art(thumb))</visible>
-					</control>
-					<control type="image">
-						<width>424</width>
-						<height>239</height>
-						<texture diffuse="items/mask_wide.png" background="true">$INFO[ListItem.Art(thumb)]</texture>
-						<aspectratio scalediffuse="false">keep</aspectratio>
-						<bordersize>20</bordersize>
-					</control>
+				<control type="image">
+					<width>424</width>
+					<height>239</height>
+					<texture colordiffuse="green" diffuse="items/mask_wide.png">common/white.jpg</texture>
+					<aspectratio scalediffuse="false">stretch</aspectratio>
+					<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
 				</control>
-				<control type="group">
-					<visible>!String.StartsWith(ListItem.Path,pvr://)</visible>
-					<control type="image">
-						<width>424</width>
-						<height>239</height>
-						<texture colordiffuse="green" diffuse="items/mask_wide.png">common/white.jpg</texture>
-						<aspectratio scalediffuse="false">stretch</aspectratio>
-						<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
-					</control>
-					<control type="image">
-						<width>424</width>
-						<height>239</height>
-						<texture colordiffuse="thumb_background" diffuse="items/mask_wide.png">common/white.jpg</texture>
-						<aspectratio scalediffuse="false">stretch</aspectratio>
-						<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
-					</control>
-					<control type="textbox">
-						<top>10</top>
-						<left>10</left>
-						<width>404</width>
-						<height>219</height>
-						<font>Light24</font>
-						<align>center</align>
-						<aligny>center</aligny>
-						<label>$PARAM[thumblabel]</label>
-						<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
-					</control>
-					<control type="image">
-						<width>424</width>
-						<height>239</height>
-						<texture diffuse="items/mask_wide.png" background="true">$VAR[IconLandscape]</texture>
-						<aspectratio scalediffuse="false">scale</aspectratio>
-						<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
-					</control>
+				<control type="image">
+					<width>424</width>
+					<height>239</height>
+					<texture colordiffuse="thumb_background" diffuse="items/mask_wide.png">common/white.jpg</texture>
+					<aspectratio scalediffuse="false">stretch</aspectratio>
+					<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
+				</control>
+				<control type="textbox">
+					<top>10</top>
+					<left>10</left>
+					<width>404</width>
+					<height>219</height>
+					<font>Light24</font>
+					<align>center</align>
+					<aligny>center</aligny>
+					<label>$PARAM[thumblabel]</label>
+					<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+				</control>
+				<control type="image">
+					<width>424</width>
+					<height>239</height>
+					<texture diffuse="items/mask_wide.png" background="true">$INFO[ListItem.Icon]</texture>
+					<aspectratio scalediffuse="false">keep</aspectratio>
+					<bordersize>20</bordersize>
+					<visible>String.StartsWith(ListItem.Path,pvr://) + !String.StartsWith(ListItem.Icon,Default)</visible>
+				</control>
+				<control type="image">
+					<width>424</width>
+					<height>239</height>
+					<texture diffuse="items/mask_wide.png" background="true">$VAR[IconLandscape]</texture>
+					<aspectratio scalediffuse="false">scale</aspectratio>
+					<visible>!String.StartsWith(ListItem.Path,pvr://) + !String.StartsWith(ListItem.Icon,Default)</visible>
 				</control>
 				<control type="group">
 					<width>424</width>
@@ -753,82 +725,45 @@
 					<height>248</height>
 					<texture>items/shadow_wide_db.png</texture>
 				</control>
-				<control type="group">
-					<visible>String.StartsWith(ListItem.Path,pvr://) | Window.IsVisible(videobookmarks)</visible>
-					<control type="image">
-						<width>430</width>
-						<height>242</height>
-						<texture colordiffuse="green" diffuse="items/mask_wide_db.png">common/white.jpg</texture>
-						<aspectratio scalediffuse="false">stretch</aspectratio>
-						<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
-					</control>
-					<control type="image">
-						<width>430</width>
-						<height>242</height>
-						<texture colordiffuse="thumb_background" diffuse="items/mask_wide_db.png">common/white.jpg</texture>
-						<aspectratio scalediffuse="false">stretch</aspectratio>
-						<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
-					</control>
-					<control type="textbox">
-						<top>10</top>
-						<left>10</left>
-						<width>410</width>
-						<height>222</height>
-						<font>Light24</font>
-						<align>center</align>
-						<aligny>center</aligny>
-						<label>$PARAM[thumblabel]</label>
-						<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
-					</control>
-					<control type="image">
-						<width>430</width>
-						<height>242</height>
-						<texture diffuse="items/mask_wide_db.png" background="true">$VAR[IconLandscape]</texture>
-						<aspectratio scalediffuse="false">keep</aspectratio>
-						<bordersize>20</bordersize>
-						<visible>!Window.IsVisible(videobookmarks)</visible>
-					</control>
-					<control type="image">
-						<width>430</width>
-						<height>242</height>
-						<texture diffuse="items/mask_wide_db.png" background="true">$VAR[IconLandscape]</texture>
-						<aspectratio scalediffuse="false">scale</aspectratio>
-						<visible>Window.IsVisible(videobookmarks)</visible>
-					</control>
+				<control type="image">
+					<width>430</width>
+					<height>242</height>
+					<texture colordiffuse="green" diffuse="items/mask_wide_db.png">common/white.jpg</texture>
+					<aspectratio scalediffuse="false">stretch</aspectratio>
+					<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
 				</control>
-				<control type="group">
-					<visible>!String.StartsWith(ListItem.Path,pvr://) + !Window.IsVisible(videobookmarks)</visible>
-					<control type="image">
-						<width>430</width>
-						<height>242</height>
-						<texture colordiffuse="green" diffuse="items/mask_wide_db.png">common/white.jpg</texture>
-						<aspectratio scalediffuse="false">stretch</aspectratio>
-						<visible>String.IsEmpty(ListItem.Art(tvshow.landscape)) + String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(fanart)) + ![!String.IsEmpty(ListItem.Art(thumb)) + Container.Content(episodes)]</visible>
-					</control>
-					<control type="image">
-						<width>430</width>
-						<height>242</height>
-						<texture colordiffuse="thumb_background" diffuse="items/mask_wide_db.png">common/white.jpg</texture>
-						<aspectratio scalediffuse="false">stretch</aspectratio>
-						<visible>![String.IsEmpty(ListItem.Art(tvshow.landscape)) + String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(fanart)) + ![!String.IsEmpty(ListItem.Art(thumb)) + Container.Content(episodes)]]</visible>
-					</control>
-					<control type="textbox">
-						<top>10</top>
-						<left>10</left>
-						<width>410</width>
-						<height>222</height>
-						<font>Light24</font>
-						<align>center</align>
-						<aligny>center</aligny>
-						<label>$PARAM[thumblabel]</label>
-						<visible>String.IsEmpty(ListItem.Art(tvshow.landscape)) + String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(fanart)) + ![!String.IsEmpty(ListItem.Art(thumb)) + Container.Content(episodes)]</visible>
-					</control>
-					<control type="image">
-						<width>430</width>
-						<height>242</height>
-						<texture diffuse="items/mask_wide_db.png" background="true">$VAR[IconLandscape]</texture>
-						<aspectratio scalediffuse="false">scale</aspectratio>
-					</control>
+				<control type="image">
+					<width>430</width>
+					<height>242</height>
+					<texture colordiffuse="thumb_background" diffuse="items/mask_wide_db.png">common/white.jpg</texture>
+					<aspectratio scalediffuse="false">stretch</aspectratio>
+					<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
+				</control>
+				<control type="textbox">
+					<top>10</top>
+					<left>10</left>
+					<width>410</width>
+					<height>222</height>
+					<font>Light24</font>
+					<align>center</align>
+					<aligny>center</aligny>
+					<label>$PARAM[thumblabel]</label>
+					<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+				</control>
+				<control type="image">
+					<width>430</width>
+					<height>242</height>
+					<texture diffuse="items/mask_wide_db.png" background="true">$INFO[ListItem.Icon]</texture>
+					<aspectratio scalediffuse="false">keep</aspectratio>
+					<bordersize>20</bordersize>
+					<visible>String.StartsWith(ListItem.Path,pvr://) + !String.StartsWith(ListItem.Icon,Default)</visible>
+				</control>
+				<control type="image">
+					<width>430</width>
+					<height>242</height>
+					<texture diffuse="items/mask_wide_db.png" background="true">$VAR[IconLandscape]</texture>
+					<aspectratio scalediffuse="false">scale</aspectratio>
+					<visible>!String.StartsWith(ListItem.Path,pvr://) + !String.StartsWith(ListItem.Icon,Default)</visible>
 				</control>
 				<control type="group">
 					<width>430</width>
