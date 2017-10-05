@@ -4,9 +4,9 @@
 	<backgroundcolor>background</backgroundcolor>
 	<controls>
 		<include>Background</include>
+		<!-- left -->
 		<control type="group">
 			<include>Window_OpenClose</include>
-			<!-- left -->
 			<include content="ContentPanel">
 			</include>
 			<control type="group">
@@ -60,9 +60,10 @@
 				</control>
 			</control>
 		</control>
+		<!-- right  -->
 		<control type="group">
+			<top>58</top>
 			<include>Window_OpenClose</include>
-			<!-- right col -->
 			<control type="grouplist">
 				<left>500</left>
 				<right>100</right>
@@ -112,17 +113,18 @@
 				</control>
 				<!-- list -->
 				<control type="group">
-					<height>770</height>
+					<height>720</height>
 					<control type="image">
-						<height>770</height>
+						<height>720</height>
 						<texture colordiffuse="thumb_background">common/white.jpg</texture>
 						<aspectratio>stretch</aspectratio>
 					</control>
+					<!-- background -->
 					<control type="grouplist" id="200">
 						<visible>ControlGroup(100).HasFocus(101)</visible>
 						<centerleft>50%</centerleft>
 						<top>10</top>
-						<height>750</height>
+						<height>700</height>
 						<onup>6666</onup>
 						<onleft>100</onleft>
 						<onright>noop</onright>
@@ -132,7 +134,7 @@
 						<control type="label">
 							<height>50</height>
 							<font>med22</font>
-							<textoffsetx>15</textoffsetx>
+							<textoffsetx>20</textoffsetx>
 							<textcolor>panel_text</textcolor>
 							<shadowcolor>text_shadow</shadowcolor>
 							<aligny>center</aligny>
@@ -184,11 +186,12 @@
 							<visible>Skin.HasSetting(ShowStaticBackgroundImage)</visible>
 						</control>
 					</control>
+					<!-- widgets -->
 					<control type="grouplist" id="300">
 						<visible>ControlGroup(100).HasFocus(102)</visible>
 						<centerleft>50%</centerleft>
 						<top>10</top>
-						<height>750</height>
+						<height>700</height>
 						<onup>6666</onup>
 						<onleft>100</onleft>
 						<onright>noop</onright>
@@ -205,7 +208,7 @@
 							<aligny>center</aligny>
 							<label>$LOCALIZE[31083]</label>
 						</control>
-						<control type="radiobutton" id="201">
+						<control type="radiobutton" id="301">
 							<include content="SettingsButton">
 								<param name="textoffsetx">35</param>
 							</include>
@@ -213,7 +216,7 @@
 							<selected>!Skin.HasSetting(HideLibaryWidgets)</selected>
 							<label>$LOCALIZE[31084]</label>
 						</control>
-						<control type="radiobutton" id="202">
+						<control type="radiobutton" id="302">
 							<include content="SettingsButton">
 								<param name="textoffsetx">35</param>
 							</include>
@@ -222,7 +225,7 @@
 							<label>$LOCALIZE[31085]</label>
 						</control>
 						<!-- default widgets -->
-						<control type="label" id="203">
+						<control type="label" id="303">
 							<height>50</height>
 							<font>med22</font>
 							<textoffsetx>15</textoffsetx>
@@ -231,7 +234,7 @@
 							<aligny>center</aligny>
 							<label>$LOCALIZE[31086]</label>
 						</control>
-						<control type="radiobutton" id="204">
+						<control type="radiobutton" id="304">
 							<include content="SettingsButton">
 								<param name="textoffsetx">35</param>
 							</include>
@@ -239,7 +242,7 @@
 							<selected>!Skin.HasSetting(HideWidgetContinue)</selected>
 							<label>$LOCALIZE[31080]</label>
 						</control>
-						<control type="radiobutton" id="205">
+						<control type="radiobutton" id="305">
 							<include content="SettingsButton">
 								<param name="textoffsetx">35</param>
 							</include>
@@ -247,7 +250,7 @@
 							<selected>!Skin.HasSetting(HideWidgetPVR)</selected>
 							<label>$LOCALIZE[14204]</label>
 						</control>
-						<control type="radiobutton" id="206">
+						<control type="radiobutton" id="306">
 							<include content="SettingsButton">
 								<param name="textoffsetx">35</param>
 							</include>
@@ -255,7 +258,7 @@
 							<selected>!Skin.HasSetting(HideWidgetNextup)</selected>
 							<label>$LOCALIZE[31012]</label>
 						</control>
-						<control type="radiobutton" id="207">
+						<control type="radiobutton" id="307">
 							<include content="SettingsButton">
 								<param name="textoffsetx">35</param>
 							</include>
@@ -263,7 +266,7 @@
 							<selected>!Skin.HasSetting(HideWidgetNewMovies)</selected>
 							<label>$LOCALIZE[20386]</label>
 						</control>
-						<control type="radiobutton" id="208">
+						<control type="radiobutton" id="308">
 							<include content="SettingsButton">
 								<param name="textoffsetx">35</param>
 							</include>
@@ -271,7 +274,7 @@
 							<selected>!Skin.HasSetting(HideWidgetNewEpisodes)</selected>
 							<label>$LOCALIZE[31081]</label>
 						</control>
-						<control type="radiobutton" id="209">
+						<control type="radiobutton" id="309">
 							<include content="SettingsButton">
 								<param name="textoffsetx">35</param>
 							</include>
@@ -280,7 +283,7 @@
 							<label>$LOCALIZE[359]</label>
 						</control>
 						<!-- custom widgets -->
-						<control type="label" id="210">
+						<control type="label" id="310">
 							<height>50</height>
 							<font>med22</font>
 							<textoffsetx>15</textoffsetx>
@@ -317,6 +320,13 @@
 						<showonepage>false</showonepage>
 						<texturesliderbar colordiffuse="softgrey">common/ProgressBar.png</texturesliderbar>
 					</control>
+				</control>
+				<control type="textbox">
+					<right>0</right>
+					<left>0</left>
+					<height>100</height>
+					<font>reg22</font>
+					<label>$VAR[SettingHelpText]</label>
 				</control>
 			</control>
 		</control>
