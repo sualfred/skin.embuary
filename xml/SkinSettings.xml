@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
-	<defaultcontrol>100</defaultcontrol>
+	<defaultcontrol always="true">100</defaultcontrol>
 	<backgroundcolor>background</backgroundcolor>
 	<controls>
 		<include>Background</include>
@@ -10,7 +10,7 @@
 			<include content="ContentPanel">
 			</include>
 			<control type="group">
-				<top>73</top>
+				<top>112</top>
 				<include content="SideMenuHeadline">
 					<param name="nr">1</param>
 					<param name="label">$LOCALIZE[5]</param>
@@ -59,181 +59,264 @@
 					</control>
 				</control>
 			</control>
-			<!-- right -->
-			<control type="group">
-				<control type="grouplist" id="200">
-					<visible>ControlGroup(100).HasFocus(101)</visible>
-					<top>128</top>
-					<left>400</left>
-					<pagecontrol>60</pagecontrol>
-					<right>0</right>
-					<bottom>50</bottom>
-					<onleft>100</onleft>
-					<onright>noop</onright>
-					<onup>6666</onup>
-					<ondown>noop</ondown>
-					<usecontrolcoords>true</usecontrolcoords>
-					<control type="label">
-						<height>50</height>
-						<font>med22</font>
-						<textoffsetx>25</textoffsetx>
-						<textcolor>panel_text</textcolor>
-						<shadowcolor>text_shadow</shadowcolor>
-						<aligny>center</aligny>
-						<label>$LOCALIZE[19190]</label>
-					</control>
-					<control type="radiobutton" id="201">
-						<include content="SettingsButton">
-							<param name="textoffsetx">35</param>
-						</include>
-						<onclick>Skin.ToggleSetting(HideBackground)</onclick>
-						<selected>!Skin.HasSetting(HideBackground)</selected>
-						<label>$LOCALIZE[31087]</label>
-					</control>
-					<control type="radiobutton" id="202">
-						<include content="SettingsButton">
-							<param name="textoffsetx">35</param>
-						</include>
-						<onclick>Skin.ToggleSetting(HideBackgroundPlayback)</onclick>
-						<selected>!Skin.HasSetting(HideBackgroundPlayback)</selected>
-						<label>$LOCALIZE[31088]</label>
-					</control>
-					<control type="label" id="203">
-						<height>50</height>
-						<font>med22</font>
-						<textoffsetx>25</textoffsetx>
-						<textcolor>panel_text</textcolor>
-						<shadowcolor>text_shadow</shadowcolor>
-						<aligny>center</aligny>
-						<label>$LOCALIZE[33070]</label>
-					</control>
-					<control type="radiobutton" id="204">
-						<include content="SettingsButton">
-							<param name="textoffsetx">35</param>
-						</include>
-						<onclick>Skin.ToggleSetting(ShowStaticBackgroundImage)</onclick>
-						<selected>Skin.HasSetting(ShowStaticBackgroundImage)</selected>
-						<label>Use own static background image</label>
-					</control>
-					<control type="button" id="205">
-						<include content="SettingsButton">
-							<param name="textoffsetx">35</param>
-						</include>
-						<onclick>Skin.SetImage(StaticBackgroundImage)</onclick>
-						<label>- Custom image</label>
-						<label2>$INFO[Skin.String(StaticBackgroundImage)]</label2>
-						<enable>Skin.HasSetting(ShowStaticBackgroundImage)</enable>
-					</control>
-				</control>		
-				<control type="grouplist" id="300">
-					<visible>ControlGroup(100).HasFocus(102)</visible>
-					<top>128</top>
-					<left>400</left>
-					<pagecontrol>60</pagecontrol>
-					<right>0</right>
-					<bottom>50</bottom>
-					<onleft>100</onleft>
-					<onright>noop</onright>
-					<onup>6666</onup>
-					<ondown>noop</ondown>
-					<usecontrolcoords>true</usecontrolcoords>
-					<control type="label">
-						<height>50</height>
-						<font>med22</font>
-						<textoffsetx>25</textoffsetx>
-						<textcolor>panel_text</textcolor>
-						<shadowcolor>text_shadow</shadowcolor>
-						<aligny>center</aligny>
-						<label>$LOCALIZE[31083]</label>
-					</control>
-					<control type="radiobutton" id="201">
-						<include content="SettingsButton">
-							<param name="textoffsetx">35</param>
-						</include>
-						<onclick>Skin.ToggleSetting(HideLibaryWidgets)</onclick>
-						<selected>!Skin.HasSetting(HideLibaryWidgets)</selected>
-						<label>$LOCALIZE[31084]</label>
-					</control>
-					<control type="radiobutton" id="202">
-						<include content="SettingsButton">
-							<param name="textoffsetx">35</param>
-						</include>
-						<onclick>Skin.ToggleSetting(EnableEmbyConWidgets)</onclick>
-						<selected>Skin.HasSetting(EnableEmbyConWidgets)</selected>
-						<label>$LOCALIZE[31085]</label>
-					</control>
-					<control type="label" id="203">
-						<height>50</height>
-						<font>med22</font>
-						<textoffsetx>25</textoffsetx>
-						<textcolor>panel_text</textcolor>
-						<shadowcolor>text_shadow</shadowcolor>
-						<aligny>center</aligny>
-						<label>$LOCALIZE[14204]</label>
-					</control>
-					<control type="radiobutton" id="204">
-						<include content="SettingsButton">
-							<param name="textoffsetx">35</param>
-						</include>
-						<onclick>Skin.ToggleSetting(HidePVRWidgets)</onclick>
-						<selected>!Skin.HasSetting(HidePVRWidgets)</selected>
-						<label>$LOCALIZE[31086]</label>
-					</control>
-					<control type="label" id="210">
-						<height>50</height>
-						<font>med22</font>
-						<textoffsetx>25</textoffsetx>
-						<textcolor>panel_text</textcolor>
-						<shadowcolor>text_shadow</shadowcolor>
-						<aligny>center</aligny>
-						<label>Custom widgets</label>
-					</control>
-					<include content="CustomWidgetTemplate">
-						<param name="id" value="1"/>
-					</include>
-					<include content="CustomWidgetTemplate">
-						<param name="id" value="2"/>
-					</include>
-					<include content="CustomWidgetTemplate">
-						<param name="id" value="3"/>
-					</include>
-					<include content="CustomWidgetTemplate">
-						<param name="id" value="4"/>
-					</include>
-					<include content="CustomWidgetTemplate">
-						<param name="id" value="5"/>
-					</include>
-					<include content="CustomWidgetTemplate">
-						<param name="id" value="6"/>
-					</include>
-				</control>		
-				<include content="list_mask_vertical">
-					<param name="height" value="70"/>
-					<param name="left" value="400"/>
-					<param name="right" value="0"/>
-					<param name="id" value="5"/>
-					<param name="visible_forced" value="true"/>
-				</include>
-			</control>
-			<control type="scrollbar" id="60">
-				<right>0</right>
-				<top>58</top>
-				<width>5</width>
-				<bottom>0</bottom>
+		</control>
+		<control type="group">
+			<include>Window_OpenClose</include>
+			<!-- right col -->
+			<control type="grouplist">
+				<left>500</left>
+				<right>100</right>
+				<centertop>50%</centertop>
+				<height max="940">auto</height>
 				<orientation>vertical</orientation>
-			</control>
-			<control type="group">
-				<include>OpenClose_Right</include>
-				<control type="textbox" id="6">
-					<description>description area</description>
-					<left>510</left>
-					<bottom>25</bottom>
-					<right>60</right>
-					<height>102</height>
-					<font>font12</font>
-					<align>justify</align>
-					<textcolor>button_focus</textcolor>
-					<autoscroll time="3000" delay="5000" repeat="5000">true</autoscroll>
+				<itemgap>20</itemgap>
+				<align>center</align>
+				<!-- heading -->
+				<control type="group">
+					<height>50</height>
+					<control type="label">
+						<width>800</width>
+						<height>48</height>
+						<font>Reg24</font>
+						<aligny>center</aligny>
+						<textoffsetx>5</textoffsetx>
+						<textcolor>text_white</textcolor>
+						<label>$LOCALIZE[31102]</label>
+						<visible>ControlGroup(100).HasFocus(101)</visible>
+					</control>
+					<control type="label">
+						<width>800</width>
+						<height>48</height>
+						<font>Reg24</font>
+						<aligny>center</aligny>
+						<textoffsetx>5</textoffsetx>
+						<textcolor>text_white</textcolor>
+						<label>$LOCALIZE[31103]</label>
+						<visible>ControlGroup(100).HasFocus(102)</visible>
+					</control>
+					<control type="image">
+						<width>100%</width>
+						<top>45</top>
+						<height>2</height>
+						<texture colordiffuse="lightgrey">common/white.jpg</texture>
+						<aspectratio>stretch</aspectratio>
+					</control>
+					<control type="image">
+						<width>100%</width>
+						<top>45</top>
+						<height>2</height>
+						<texture colordiffuse="emby">common/white.jpg</texture>
+						<aspectratio>stretch</aspectratio>
+						<include>WindowOpen_GreenBar</include>
+					</control>
+				</control>
+				<!-- list -->
+				<control type="group">
+					<height>770</height>
+					<control type="image">
+						<height>770</height>
+						<texture colordiffuse="thumb_background">common/white.jpg</texture>
+						<aspectratio>stretch</aspectratio>
+					</control>
+					<control type="grouplist" id="200">
+						<visible>ControlGroup(100).HasFocus(101)</visible>
+						<centerleft>50%</centerleft>
+						<top>10</top>
+						<height>750</height>
+						<onup>6666</onup>
+						<onleft>100</onleft>
+						<onright>noop</onright>
+						<ondown>noop</ondown>
+						<pagecontrol>70</pagecontrol>
+						<scrolltime>200</scrolltime>
+						<control type="label">
+							<height>50</height>
+							<font>med22</font>
+							<textoffsetx>15</textoffsetx>
+							<textcolor>panel_text</textcolor>
+							<shadowcolor>text_shadow</shadowcolor>
+							<aligny>center</aligny>
+							<label>$LOCALIZE[19190]</label>
+						</control>
+						<control type="radiobutton" id="201">
+							<include content="SettingsButton">
+								<param name="textoffsetx">35</param>
+							</include>
+							<onclick>Skin.ToggleSetting(HideBackground)</onclick>
+							<selected>!Skin.HasSetting(HideBackground)</selected>
+							<label>$LOCALIZE[31087]</label>
+						</control>
+						<control type="radiobutton" id="202">
+							<include content="SettingsButton">
+								<param name="textoffsetx">35</param>
+							</include>
+							<onclick>Skin.ToggleSetting(HideBackgroundPlayback)</onclick>
+							<selected>!Skin.HasSetting(HideBackgroundPlayback)</selected>
+							<label>$LOCALIZE[31088]</label>
+						</control>
+						<control type="label" id="203">
+							<height>50</height>
+							<font>med22</font>
+							<textoffsetx>15</textoffsetx>
+							<textcolor>panel_text</textcolor>
+							<shadowcolor>text_shadow</shadowcolor>
+							<aligny>center</aligny>
+							<label>$LOCALIZE[33070]</label>
+						</control>
+						<control type="radiobutton" id="204">
+							<include content="SettingsButton">
+								<param name="textoffsetx">35</param>
+							</include>
+							<onclick>Skin.ToggleSetting(ShowStaticBackgroundImage)</onclick>
+							<selected>Skin.HasSetting(ShowStaticBackgroundImage)</selected>
+							<label>Use own static background image</label>
+						</control>
+						<control type="button" id="205">
+							<textcolor>emby</textcolor>
+							<texturenofocus colordiffuse="33000000">common/white.jpg</texturenofocus>
+							<include content="SettingsButton">
+								<param name="textoffsetx">35</param>
+							</include>
+							<onclick>Skin.SetImage(StaticBackgroundImage)</onclick>
+							<label>• Custom image</label>
+							<label2>$INFO[Skin.String(StaticBackgroundImage)]</label2>
+							<enable>Skin.HasSetting(ShowStaticBackgroundImage)</enable>
+							<visible>Skin.HasSetting(ShowStaticBackgroundImage)</visible>
+						</control>
+					</control>
+					<control type="grouplist" id="300">
+						<visible>ControlGroup(100).HasFocus(102)</visible>
+						<centerleft>50%</centerleft>
+						<top>10</top>
+						<height>750</height>
+						<onup>6666</onup>
+						<onleft>100</onleft>
+						<onright>noop</onright>
+						<ondown>noop</ondown>
+						<pagecontrol>70</pagecontrol>
+						<scrolltime>200</scrolltime>
+						<!-- local / embycon source -->
+						<control type="label">
+							<height>50</height>
+							<font>med22</font>
+							<textoffsetx>15</textoffsetx>
+							<textcolor>panel_text</textcolor>
+							<shadowcolor>text_shadow</shadowcolor>
+							<aligny>center</aligny>
+							<label>$LOCALIZE[31083]</label>
+						</control>
+						<control type="radiobutton" id="201">
+							<include content="SettingsButton">
+								<param name="textoffsetx">35</param>
+							</include>
+							<onclick>Skin.ToggleSetting(HideLibaryWidgets)</onclick>
+							<selected>!Skin.HasSetting(HideLibaryWidgets)</selected>
+							<label>$LOCALIZE[31084]</label>
+						</control>
+						<control type="radiobutton" id="202">
+							<include content="SettingsButton">
+								<param name="textoffsetx">35</param>
+							</include>
+							<onclick>Skin.ToggleSetting(EnableEmbyConWidgets)</onclick>
+							<selected>Skin.HasSetting(EnableEmbyConWidgets)</selected>
+							<label>$LOCALIZE[31085]</label>
+						</control>
+						<!-- default widgets -->
+						<control type="label" id="203">
+							<height>50</height>
+							<font>med22</font>
+							<textoffsetx>15</textoffsetx>
+							<textcolor>panel_text</textcolor>
+							<shadowcolor>text_shadow</shadowcolor>
+							<aligny>center</aligny>
+							<label>$LOCALIZE[31086]</label>
+						</control>
+						<control type="radiobutton" id="204">
+							<include content="SettingsButton">
+								<param name="textoffsetx">35</param>
+							</include>
+							<onclick>Skin.ToggleSetting(HideWidgetContinue)</onclick>
+							<selected>!Skin.HasSetting(HideWidgetContinue)</selected>
+							<label>$LOCALIZE[31080]</label>
+						</control>
+						<control type="radiobutton" id="205">
+							<include content="SettingsButton">
+								<param name="textoffsetx">35</param>
+							</include>
+							<onclick>Skin.ToggleSetting(HideWidgetPVR)</onclick>
+							<selected>!Skin.HasSetting(HideWidgetPVR)</selected>
+							<label>$LOCALIZE[14204]</label>
+						</control>
+						<control type="radiobutton" id="206">
+							<include content="SettingsButton">
+								<param name="textoffsetx">35</param>
+							</include>
+							<onclick>Skin.ToggleSetting(HideWidgetNextup)</onclick>
+							<selected>!Skin.HasSetting(HideWidgetNextup)</selected>
+							<label>$LOCALIZE[31012]</label>
+						</control>
+						<control type="radiobutton" id="207">
+							<include content="SettingsButton">
+								<param name="textoffsetx">35</param>
+							</include>
+							<onclick>Skin.ToggleSetting(HideWidgetNewMovies)</onclick>
+							<selected>!Skin.HasSetting(HideWidgetNewMovies)</selected>
+							<label>$LOCALIZE[20386]</label>
+						</control>
+						<control type="radiobutton" id="208">
+							<include content="SettingsButton">
+								<param name="textoffsetx">35</param>
+							</include>
+							<onclick>Skin.ToggleSetting(HideWidgetNewEpisodes)</onclick>
+							<selected>!Skin.HasSetting(HideWidgetNewEpisodes)</selected>
+							<label>$LOCALIZE[31081]</label>
+						</control>
+						<control type="radiobutton" id="209">
+							<include content="SettingsButton">
+								<param name="textoffsetx">35</param>
+							</include>
+							<onclick>Skin.ToggleSetting(HideWidgetNewAlbums)</onclick>
+							<selected>!Skin.HasSetting(HideWidgetNewAlbums)</selected>
+							<label>$LOCALIZE[359]</label>
+						</control>
+						<!-- custom widgets -->
+						<control type="label" id="210">
+							<height>50</height>
+							<font>med22</font>
+							<textoffsetx>15</textoffsetx>
+							<textcolor>panel_text</textcolor>
+							<shadowcolor>text_shadow</shadowcolor>
+							<aligny>center</aligny>
+							<label>Custom widgets</label>
+						</control>
+						<include content="CustomWidgetTemplate">
+							<param name="id" value="1"/>
+						</include>
+						<include content="CustomWidgetTemplate">
+							<param name="id" value="2"/>
+						</include>
+						<include content="CustomWidgetTemplate">
+							<param name="id" value="3"/>
+						</include>
+						<include content="CustomWidgetTemplate">
+							<param name="id" value="4"/>
+						</include>
+						<include content="CustomWidgetTemplate">
+							<param name="id" value="5"/>
+						</include>
+						<include content="CustomWidgetTemplate">
+							<param name="id" value="6"/>
+						</include>
+					</control>
+					<control type="scrollbar" id="70">
+						<right>0</right>
+						<top>0</top>
+						<bottom>0</bottom>
+						<width>4</width>
+						<orientation>vertical</orientation>
+						<showonepage>false</showonepage>
+						<texturesliderbar colordiffuse="softgrey">common/ProgressBar.png</texturesliderbar>
+					</control>
 				</control>
 			</control>
 		</control>
