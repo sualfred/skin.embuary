@@ -127,7 +127,7 @@
 				</control>
 				<!-- Poster -->
 				<control type="group" id="99">
-					<visible>[!String.IsEmpty(Player.Art(poster)) | !String.IsEmpty(Player.Art(tvshow.poster))] + [VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)]</visible>
+					<visible>[!String.IsEmpty(Player.Art(poster)) | !String.IsEmpty(Player.Art(tvshow.poster))] + ![VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)]</visible>
 					<control type="image" id="99">
 						<bottom>20</bottom>
 						<left>20</left>
@@ -344,7 +344,7 @@
 						<width>auto</width>
 						<height>30</height>
 						<aligny>center</aligny>
-						<label>$LOCALIZE[20074]: $INFO[VideoPlayer.Mpaa]   </label>
+						<label>$INFO[VideoPlayer.Mpaa]   </label>
 						<font>reg24</font>
 						<shadowcolor>text_shadow</shadowcolor>
 						<visible>!String.IsEmpty(VideoPlayer.Mpaa)</visible>
