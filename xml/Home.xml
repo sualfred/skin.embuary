@@ -39,7 +39,7 @@
 			<include>HiddenObject</include>
 			<itemlayout/>
 			<focusedlayout/>
-			<content limit="4" sortby="random">pvr://channels/radio/*</content>
+			<content limit="1" sortby="random">pvr://channels/tv/*?view=lastplayed</content>
 		</control>
 		<!-- background -->
 		<include>Background</include>
@@ -87,14 +87,28 @@
 			</include>
 			<!-- PVR -->
 			<include content="PVRHomeSquareWidget">
-				<param name="visible" value="!Skin.HasSetting(HidePVRWidgets) + !Skin.HasSetting(HideWidgetPVR)"/>		
+				<param name="visible" value="!Skin.HasSetting(HidePVRWidgets) + !Skin.HasSetting(HideWidgetPVR) + [!Skin.HasSetting(PreferLastTunedPVRChannels) | [Skin.HasSetting(PreferLastTunedPVRChannels) + !Integer.IsGreater(Container(56).NumItems,0)]]"/>		
 				<param name="id" value="202"/>
 				<param name="onup" value="201"/>
 				<param name="ondown" value="203"/>
 				<param name="headline" value="$LOCALIZE[575]"/>
 				<param name="mainlabel" value="$INFO[ListItem.Title]"/>
-				<param name="sublabel" value="$INFO[ListItem.StartTime] - $INFO[ListItem.EndTime]"/>
+				<param name="thumblabel" value="$INFO[ListItem.Channelname]"/>
+				<param name="sublabel" value="$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, - ]"/>
 				<param name="content" value="pvr://channels/tv/*"/>
+			</include>
+			<include content="PVRHomeSquareWidget">
+				<param name="visible" value="!Skin.HasSetting(HidePVRWidgets) + !Skin.HasSetting(HideWidgetPVR) + Skin.HasSetting(PreferLastTunedPVRChannels) + Integer.IsGreater(Container(56).NumItems,0)"/>		
+				<param name="id" value="202"/>
+				<param name="onup" value="201"/>
+				<param name="ondown" value="203"/>
+				<param name="headline" value="$LOCALIZE[31030]"/>
+				<param name="mainlabel" value="$VAR[PVRWidgetMainListLabel]"/>
+				<param name="thumblabel" value="$INFO[ListItem.Channelname]"/>
+				<param name="sublabel" value="$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, - ]"/>
+				<param name="sortby" value="lastplayed"/>
+				<param name="sortorder" value="descending"/>
+				<param name="content" value="pvr://channels/tv/*?view=lastplayed"/>
 			</include>
 			<!-- Next up episodes -->
 			<include content="HomeWideWidget">
