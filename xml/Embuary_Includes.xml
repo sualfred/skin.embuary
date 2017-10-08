@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 	<!-- Expressions -->
-	<expression name="ExpJumpToLetter">
-		[[Container.Content(movies) | Container.Content(episodes) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(artists) | Container.Content(albums) | Container.Content(addons)] + [String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[561]) | String.IsEqual(Container.SortMethod,$LOCALIZE[558]) | String.IsEqual(Container.SortMethod,$LOCALIZE[557]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556])]]
-	</expression>
 	<expression name="ExpInfoDialogActive">[Window.IsVisible(musicinformation) | Window.IsVisible(movieinformation) | Window.IsVisible(addoninformation) | Window.IsVisible(pvrguideinfo) | Window.IsVisible(pvrrecordinginfo) | Window.IsVisible(pictureinfo) | Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(script-script.extendedinfo-VideoList.xml)]</expression>
 	<!-- FullScreenDimensions -->
 	<include name="FullscreenDimensions">
@@ -449,7 +446,7 @@
 	<include name="JumpToLetter_vertical">
 		<param name="id">7000</param>
 		<param name="top">0</param>
-		<param name="visible">[Container.HasNext | Container.HasPrevious] + $EXP[ExpJumpToLetter]</param>
+		<param name="visible">[Container.HasNext | Container.HasPrevious] + [[Container.Content(movies) | Container.Content(episodes) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(artists) | Container.Content(albums) | Container.Content(addons)] + [String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[561]) | String.IsEqual(Container.SortMethod,$LOCALIZE[558]) | String.IsEqual(Container.SortMethod,$LOCALIZE[557]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556])]]</param>
 		<definition>
 			<control type="group">
 				<top>$PARAM[top]</top>
