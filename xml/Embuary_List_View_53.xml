@@ -78,69 +78,47 @@
 							<height>338</height>
 							<texture>items/shadow_wide_big.png</texture>
 						</control>
-						<control type="group">
-							<visible>String.StartsWith(ListItem.Path,pvr://)</visible>
-							<control type="image">
-								<width>590</width>
-								<height>332</height>
-								<texture colordiffuse="green" diffuse="items/mask_wide_big.png">common/white.jpg</texture>
-								<aspectratio scalediffuse="false">stretch</aspectratio>
-								<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
-							</control>
-							<control type="image">
-								<width>590</width>
-								<height>332</height>
-								<texture colordiffuse="darkbutton" diffuse="items/mask_wide_big.png">common/white.jpg</texture>
-								<aspectratio scalediffuse="false">stretch</aspectratio>
-								<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
-							</control>
-							<control type="textbox">
-								<top>10</top>
-								<left>10</left>
-								<width>570</width>
-								<height>312</height>
-								<font>Light24</font>
-								<align>center</align>
-								<aligny>center</aligny>
-								<label>$PARAM[thumblabel]</label>
-								<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
-							</control>
-							<control type="image">
-								<width>590</width>
-								<height>332</height>
-								<texture diffuse="items/mask_wide_db.png" background="true">$VAR[IconLandscape]</texture>
-								<fadetime>200</fadetime>
-								<aspectratio scalediffuse="false">keep</aspectratio>
-								<bordersize>20</bordersize>
-							</control>
+						<control type="image">
+							<width>590</width>
+							<height>332</height>
+							<texture colordiffuse="green" diffuse="items/mask_wide_big.png">common/white.jpg</texture>
+							<aspectratio scalediffuse="false">stretch</aspectratio>
+							<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
 						</control>
-						<control type="group">
-							<visible>!String.StartsWith(ListItem.Path,pvr://)</visible>
-							<control type="image">
-								<width>590</width>
-								<height>332</height>
-								<texture colordiffuse="green" diffuse="items/mask_wide_big.png">common/white.jpg</texture>
-								<aspectratio scalediffuse="false">stretch</aspectratio>
-								<visible>String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(fanart)) + ![!String.IsEmpty(ListItem.Art(thumb)) + Container.Content(episodes)]</visible>
-							</control>
-							<control type="textbox">
-								<top>10</top>
-								<left>10</left>
-								<width>570</width>
-								<height>312</height>
-								<font>Light24</font>
-								<align>center</align>
-								<aligny>center</aligny>
-								<label>$VAR[MainListLabel]</label>
-								<visible>String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(fanart)) + ![!String.IsEmpty(ListItem.Art(thumb)) + Container.Content(episodes)]</visible>
-							</control>
-							<control type="image">
-								<width>590</width>
-								<height>332</height>
-								<texture diffuse="items/mask_wide_db.png" background="true">$VAR[IconLandscape]</texture>
-								<fadetime>400</fadetime>
-								<aspectratio scalediffuse="false">scale</aspectratio>
-							</control>
+						<control type="image">
+							<width>590</width>
+							<height>332</height>
+							<texture colordiffuse="darkbutton" diffuse="items/mask_wide_big.png">common/white.jpg</texture>
+							<aspectratio scalediffuse="false">stretch</aspectratio>
+							<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
+						</control>
+						<control type="textbox">
+							<top>10</top>
+							<left>10</left>
+							<width>570</width>
+							<height>312</height>
+							<font>Light24</font>
+							<align>center</align>
+							<aligny>center</aligny>
+							<label>$PARAM[thumblabel]</label>
+							<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+						</control>
+						<control type="image">
+							<width>590</width>
+							<height>332</height>
+							<texture diffuse="items/mask_wide_db.png" background="true">$VAR[IconLandscape]</texture>
+							<fadetime>200</fadetime>
+							<aspectratio scalediffuse="false">keep</aspectratio>
+							<bordersize>20</bordersize>
+							<visible>String.StartsWith(ListItem.Path,pvr://) + !String.StartsWith(ListItem.Icon,Default)</visible>
+						</control>
+						<control type="image">
+							<width>590</width>
+							<height>332</height>
+							<texture diffuse="items/mask_wide_db.png" background="true">$VAR[IconLandscape]</texture>
+							<fadetime>400</fadetime>
+							<aspectratio scalediffuse="false">scale</aspectratio>
+							<visible>!String.StartsWith(ListItem.Path,pvr://) + !String.StartsWith(ListItem.Icon,Default)</visible>
 						</control>
 						<control type="group">
 							<width>590</width>
