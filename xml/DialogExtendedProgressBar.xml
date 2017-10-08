@@ -1,73 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<!-- extendedprogressdialog -->
-	<zorder>2</zorder>
+	<zorder>100</zorder>
 	<controls>
 		<control type="progress" id="32">
 			<include>HiddenObject</include>
-		</control>
-		<!-- Dialog -->
-		<control type="group">			
-			<visible>!Window.IsActive(fullscreenvideo) + !Window.IsActive(visualisation) + !Window.IsVisible(notification)</visible>
-			<include>Dialog_OpenClose</include>
-			<width>500</width>
-			<height>92</height>
-			<right>0</right>
-			<!-- Background image -->
+		</control><control type="group">
+			<animation effect="slide" start="0,0" end="0,58"  time="200">WindowCLose</animation>
+			<animation effect="slide" start="0,58" end="0,0"  time="200">WindowOpen</animation>
 			<control type="image">
-				<texture colordiffuse="panel" border="10">common/dialog_back.png</texture>
+				<height>58</height>
+				<width>1920</width>
+				<bottom>0</bottom>
+				<left>0</left>
+				<texture colordiffuse="footerbar">common/white.jpg</texture>
+				<aspectratio>stretch</aspectratio>
 			</control>
-			<!-- icon -->
-			<control type="group">
-				<centertop>50%</centertop>
+			<control type="grouplist">
 				<left>10</left>
-				<width>80</width>
-				<height>80</height>
-				<!-- Icon back -->
-				<control type="image">
-					<texture>dialogs/progress/bg.png</texture>
+				<height>58</height>
+				<width>1920</width>
+				<bottom>0</bottom>
+				<orientation>horizontal</orientation>
+				<itemgap>10</itemgap>
+				<!-- Icon -->			
+				<control type="group">
+					<left>10</left>
+					<width>58</width>
+					<height>58</height>
+					<!-- Icon back -->
+					<control type="image">
+						<texture>dialogs/progress/bg.png</texture>
+					</control>
+					<control type="image">
+						<texture>dialogs/progress/100.png</texture>
+						<colordiffuse>thumb_background</colordiffuse>
+					</control>
+					<control type="image">
+						<texture>dialogs/progress/$VAR[ExtendedProgressCircle].png</texture>
+						<colordiffuse>emby</colordiffuse>
+					</control>
+					<control type="image">
+						<texture>dialogs/progress/13.png</texture>
+						<colordiffuse>white</colordiffuse>
+						<animation center="auto" condition="true" effect="rotate" end="-360" loop="true" reversible="false" time="1500">Conditional</animation>
+					</control>
+					<!-- Icon -->
+					<control type="textbox">
+						<align>center</align>
+						<aligny>center</aligny>
+						<font>Material24</font>
+						<textcolor>text_white</textcolor>
+						<label></label>
+					</control>
 				</control>
-				<control type="image">
-					<texture>dialogs/progress/100.png</texture>
-					<colordiffuse>thumb_background</colordiffuse>
-				</control>
-				<control type="image">
-					<texture>dialogs/progress/$VAR[ExtendedProgressCircle].png</texture>
-					<colordiffuse>emby</colordiffuse>
-				</control>
-				<control type="image">
-					<texture>dialogs/progress/13.png</texture>
-					<colordiffuse>white</colordiffuse>
-					<animation center="auto" condition="true" effect="rotate" end="-360" loop="true" reversible="false" time="1500">Conditional</animation>
-				</control>
-				<!-- Icon -->
-				<control type="textbox">
-					<align>center</align>
+				<control type="label" id="30">
+					<height>58</height>
+					<width>auto</width>
 					<aligny>center</aligny>
-					<font>Material24</font>
+					<align>right</align>
+					<font>med20</font>
 					<textcolor>text_white</textcolor>
-					<label></label>
+				</control>
+				<control type="label" id="30">
+					<height>58</height>
+					<width>auto</width>
+					<aligny>center</aligny>
+					<align>right</align>
+					<font>med20</font>
+					<textcolor>text_white</textcolor>
+					<label>-</label>
+				</control>
+				<control type="label" id="31">
+					<height>58</height>
+					<width>auto</width>
+					<aligny>center</aligny>
+					<align>right</align>
+					<font>med20</font>
+					<textcolor>text_white</textcolor>
 				</control>
 			</control>
-			<!-- Heading -->
-			<control id="30" type="label">
-				<top>15</top>
-				<left>100</left>
-				<right>20</right>
-				<font>Med24</font>
-				<textcolor>white</textcolor>
-				<shadowcolor>text_shadow</shadowcolor>
-			</control>
-			<!-- Details -->
-			<control id="31" type="label">
-				<top>50</top>
-				<left>100</left>
-				<right>20</right>
-				<right>10</right>
-				<font>Reg22</font>
-				<scroll>true</scroll>
-				<textcolor>panel_text</textcolor>
-				<shadowcolor>text_shadow</shadowcolor>
+			<control type="grouplist">
+				<bottom>0</bottom>
+				<height>58</height>
+				<width>400</width>
+				<right>19</right>
+				<orientation>horizontal</orientation>
+				<itemgap>10</itemgap>
+				<align>right</align>
+				<control type="label">
+					<height>58</height>
+					<width>auto</width>
+					<aligny>center</aligny>
+					<font>med20</font>
+					<textcolor>text_white</textcolor>
+					<label>$INFO[Control.GetLabel(32),,%]</label>
+				</control>
 			</control>
 		</control>
 	</controls>
