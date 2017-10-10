@@ -1,5 +1,167 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window id="1110" type="dialog">
 	<zorder>99</zorder>	
-	<controls/>
+	<!--<visible>!Window.IsVisible(startup)</visible>-->
+	<visible>false</visible>
+	<controls>
+		<!-- 
+		3000 - Title
+		3001 - Plot
+		3002 - Season/Episode
+		3003 - Rating
+		3004 - First Aired
+		3005 - TV Show Fanart
+		3006 - TV Show ClearArt
+		3007 - TV Show Title
+		3008 - Episode Thumb
+		3009 - TV Show Poster
+		3010 - TV Show Landscape
+		3011 - Video Resolution
+		3012 - Watch Now Button
+		3013 - Cancel Button
+		3015 - Season Number
+		3016 - Episode Number
+		3018 - Play Count
+	-->
+	<control type="label" id="3000">
+		<visible>false</visible>
+	</control>
+	<control type="textbox" id="3001">
+		<visible>false</visible>
+	</control>
+	<control type="label" id="3002">
+		<visible>false</visible>
+	</control>
+	<control type="label" id="3003">
+		<visible>false</visible>
+	</control>
+	<control type="label" id="3004">
+		<visible>false</visible>
+	</control>
+	<control type="image" id="3005">
+		<visible>false</visible>
+	</control>
+	<control type="image" id="3006">
+		<visible>false</visible>
+	</control>
+	<control type="image" id="3008">
+		<visible>false</visible>
+	</control>
+	<control type="image" id="3009">
+		<visible>false</visible>
+	</control>
+	<control type="image" id="3010">
+		<visible>false</visible>
+	</control>
+	<control type="label" id="3011">
+		<visible>false</visible>
+	</control>
+	<control type="button" id="3012">
+		<include>HiddenObject</include>
+		<onback>SendClick(3013)</onback>
+	</control>
+	<control type="button" id="3013">
+		<include>HiddenObject</include>
+	</control>
+	<control type="label" id="3015">
+		<visible>false</visible>
+	</control>
+	<control type="label" id="3016">
+		<visible>false</visible>
+	</control>
+	<control type="label" id="3018">
+		<visible>false</visible>
+	</control>
+	<control type="grouplist">
+		<right>90</right>
+		<bottom>90</bottom>
+		<width>430</width>
+		<height max="940">auto</height>
+		<orientation>vertical</orientation>
+		<itemgap>20</itemgap>
+		<align>center</align>
+		<!-- heading -->
+		<control type="group">
+			<height>50</height>
+			<control type="label">
+				<width>100%</width>
+				<height>48</height>
+				<font>Reg24</font>
+				<aligny>center</aligny>
+				<textoffsetx>5</textoffsetx>
+				<textcolor>text_white</textcolor>
+				<label>$LOCALIZE[31012]</label>
+			</control>
+			<control type="image">
+				<width>100%</width>
+				<top>45</top>
+				<height>2</height>
+				<texture colordiffuse="lightgrey">common/white.jpg</texture>
+				<aspectratio>stretch</aspectratio>
+			</control>
+			<control type="image">
+				<width>100%</width>
+				<top>45</top>
+				<height>2</height>
+				<texture colordiffuse="emby">common/white.jpg</texture>
+				<aspectratio>stretch</aspectratio>
+				<include>WindowOpen_GreenBar</include>
+			</control>
+		</control>
+		<control type="group">
+			<control type="image">
+				<width>424</width>
+				<height>325</height>
+				<texture colordiffuse="thumb_background">common/white.jpg</texture>
+				<aspectratio scalediffuse="false">stretch</aspectratio>
+			</control>
+			<control type="image">
+				<top>-2</top>
+				<left>-2</left>
+				<width>430</width>
+				<height>245</height>
+				<texture>items/shadow_wide.png</texture>
+			</control>
+			<control type="image">
+				<width>424</width>
+				<height>239</height>
+				<texture colordiffuse="green" diffuse="items/mask_wide.png">common/white.jpg</texture>
+				<aspectratio scalediffuse="false">stretch</aspectratio>
+				<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+			</control>
+			<control type="image">
+				<width>424</width>
+				<height>239</height>
+				<texture colordiffuse="thumb_background" diffuse="items/mask_wide.png">common/white.jpg</texture>
+				<aspectratio scalediffuse="false">stretch</aspectratio>
+				<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
+			</control>
+			<control type="textbox">
+				<top>10</top>
+				<left>10</left>
+				<width>404</width>
+				<height>219</height>
+				<font>Light24</font>
+				<align>center</align>
+				<aligny>center</aligny>
+				<label>$PARAM[thumblabel]</label>
+				<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+			</control>
+			<control type="image">
+				<width>424</width>
+				<height>239</height>
+				<texture diffuse="items/mask_wide.png" background="true">$INFO[Player.Art(thumb)]</texture>
+				<aspectratio scalediffuse="false">scale</aspectratio>
+				<visible>!String.StartsWith(ListItem.Path,pvr://) + !String.StartsWith(ListItem.Icon,Default)</visible>
+			</control>
+			<include content="widget_labels">
+				<param name="top">251</param>
+				<param name="width">424</param>
+				<param name="mainlabel">$INFO[Control.GetLabel(3015),S,:]$INFO[Control.GetLabel(3016),E, - ]$INFO[Control.GetLabel(3000)]</param>
+				<param name="sublabel">$INFO[Control.GetLabel(3007)]</param>
+			</include>
+		</control>
+	</control>
+
+</controls>
 </window>
