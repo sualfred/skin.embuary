@@ -78,19 +78,19 @@
 						<aligny>center</aligny>
 						<font>med20</font>
 						<textcolor>text_white</textcolor>
-						<label>$INFO[Window(weather).Property(Current.Temperature)]$INFO[System.TemperatureUnits]</label>
-						<visible>!Skin.HasSetting(HideHeaderWeather) + !String.IsEmpty(Window(weather).Property(Current.Temperature))</visible>
+						<label>$INFO[Weather.Temperature]</label>
+						<visible>!Skin.HasSetting(HideHeaderWeather) + !String.IsEmpty(Weather.Temperature) + !String.Contains(Weather.Temperature,$LOCALIZE[503])</visible>
 					</control>
 					<control type="image">
 						<animation effect="slide" end="0,10" time="0" condition="true">Conditional</animation>
 						<height>38</height>
 						<width>38</width>
-						<texture colordiffuse="text_white">$INFO[Window(weather).Property(Current.fanartcode),resource://resource.images.weathericons.outline-hd/,.png]</texture>
+						<texture colordiffuse="text_white">$INFO[Weather.fanartcode,resource://resource.images.weathericons.outline-hd/,.png]</texture>
 						<aspectratio scalediffuse="false">stretch</aspectratio>
-						<visible>!Skin.HasSetting(HideHeaderWeather) + !String.IsEmpty(Window(weather).Property(Current.Temperature))</visible>
+						<visible>!Skin.HasSetting(HideHeaderWeather) + !String.IsEmpty(Weather.Temperature) + !String.Contains(Weather.Temperature,$LOCALIZE[503])</visible>
 					</control>
 					<control type="label">						
-						<visible>!Skin.HasSetting(HideHeaderWeather) + !String.IsEmpty(Window(weather).Property(Current.Temperature))</visible>
+						<visible>!Skin.HasSetting(HideHeaderWeather) + !String.IsEmpty(Weather.Temperature) + !String.Contains(Weather.Temperature,$LOCALIZE[503])</visible>
 						<width>5</width>
 					</control>
 					<control type="label">
