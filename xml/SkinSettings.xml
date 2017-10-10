@@ -38,7 +38,7 @@
 						<shadowcolor>text_shadow</shadowcolor>
 						<texturefocus colordiffuse="panel_hover">common/white.jpg</texturefocus>
 						<include>NoTextures</include>
-						<label>$LOCALIZE[19190]</label>
+						<label>$LOCALIZE[480]</label>
 						<onright>200</onright>
 					</control>
 					<control type="button" id="102">
@@ -119,7 +119,7 @@
 						<texture colordiffuse="thumb_background">common/white.jpg</texture>
 						<aspectratio>stretch</aspectratio>
 					</control>
-					<!-- background -->
+					<!-- appearancesettings -->
 					<control type="grouplist" id="200">
 						<visible>ControlGroup(100).HasFocus(101)</visible>
 						<centerleft>50%</centerleft>
@@ -184,6 +184,56 @@
 							<label2>$INFO[Skin.String(StaticBackgroundImage)]</label2>
 							<enable>Skin.HasSetting(ShowStaticBackgroundImage)</enable>
 							<visible>Skin.HasSetting(ShowStaticBackgroundImage)</visible>
+						</control>
+						<control type="label" id="206">
+							<height>50</height>
+							<font>med22</font>
+							<textoffsetx>15</textoffsetx>
+							<textcolor>panel_text</textcolor>
+							<shadowcolor>text_shadow</shadowcolor>
+							<aligny>center</aligny>
+							<label>$LOCALIZE[31109]</label>
+						</control>
+						<control type="radiobutton" id="207">
+							<include content="SettingsButton">
+								<param name="textoffsetx">35</param>
+							</include>
+							<onclick>Skin.ToggleSetting(HideHeaderWeather)</onclick>
+							<selected>!Skin.HasSetting(HideHeaderWeather)</selected>
+							<label>$LOCALIZE[31110]</label>
+						</control>
+						<control type="label" id="220">
+							<height>50</height>
+							<font>med22</font>
+							<textoffsetx>15</textoffsetx>
+							<textcolor>panel_text</textcolor>
+							<shadowcolor>text_shadow</shadowcolor>
+							<aligny>center</aligny>
+							<label>$LOCALIZE[31001]</label>
+						</control>
+						<control type="radiobutton" id="221">
+							<include content="SettingsButton">
+								<param name="textoffsetx">35</param>
+							</include>
+							<onclick>Skin.ToggleSetting(KioskMode)</onclick>
+							<selected>Skin.HasSetting(KioskMode)</selected>
+							<label>$LOCALIZE[31112]</label>
+						</control>
+						<control type="radiobutton" id="222">
+							<include content="SettingsButton">
+								<param name="textoffsetx">35</param>
+							</include>
+							<onclick>Skin.ToggleSetting(HideVideoUpdate)</onclick>
+							<selected>!Skin.HasSetting(HideVideoUpdate)</selected>
+							<label>$LOCALIZE[31113]</label>
+						</control>
+						<control type="radiobutton" id="223">
+							<include content="SettingsButton">
+								<param name="textoffsetx">35</param>
+							</include>
+							<onclick>Skin.ToggleSetting(HideMusicUpdate)</onclick>
+							<selected>!Skin.HasSetting(HideMusicUpdate)</selected>
+							<label>$LOCALIZE[31114]</label>
 						</control>
 					</control>
 					<!-- widgets -->

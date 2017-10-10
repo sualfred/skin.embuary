@@ -78,6 +78,27 @@
 						<aligny>center</aligny>
 						<font>med20</font>
 						<textcolor>text_white</textcolor>
+						<label>$INFO[Window(weather).Property(Current.Temperature)]$INFO[System.TemperatureUnits]</label>
+						<visible>!Skin.HasSetting(HideHeaderWeather) + !String.IsEmpty(Window(weather).Property(Current.Temperature))</visible>
+					</control>
+					<control type="image">
+						<animation effect="slide" end="0,10" time="0" condition="true">Conditional</animation>
+						<height>38</height>
+						<width>38</width>
+						<texture>$INFO[Window(weather).Property(Current.fanartcode),resource://resource.images.weathericons.outline-hd/,.png]</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<visible>!Skin.HasSetting(HideHeaderWeather) + !String.IsEmpty(Window(weather).Property(Current.Temperature))</visible>
+					</control>
+					<control type="label">						
+						<visible>!Skin.HasSetting(HideHeaderWeather) + !String.IsEmpty(Window(weather).Property(Current.Temperature))</visible>
+						<width>5</width>
+					</control>
+					<control type="label">
+						<height>58</height>
+						<width>auto</width>
+						<aligny>center</aligny>
+						<font>med20</font>
+						<textcolor>text_white</textcolor>
 						<label>$INFO[System.Time]</label>
 					</control>
 					<control type="image">
@@ -232,23 +253,23 @@
 			<width>auto</width>
 			<textcolor>panel_text</textcolor>
 			<focusedcolor>emby</focusedcolor>
-			<label>Change location</label>
+			<label>$LOCALIZE[31111]</label>
 			<onclick>SetFocus(4000)</onclick>
-			<visible>Window.IsVisible(weather)</visible>
+			<visible>Window.IsVisible(weather) + !Skin.HasSetting(KioskMode)</visible>
 		</control>
 		<control type="button" id="6607">
 			<font>Material24</font>
 			<include>HeaderButton</include>
 			<label></label>
 			<onclick>SetFocus(4000)</onclick>
-			<visible>[Window.IsVisible(videos) | Window.IsVisible(music) | Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRrecordings.xml) | Window.IsVisible(MyPVRTimers.xml) | Window.IsVisible(MyPVRSearch.xml) | Window.IsVisible(programs)] + !$EXP[ExpInfoDialogActive]</visible>
+			<visible>[Window.IsVisible(videos) | Window.IsVisible(music) | Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRrecordings.xml) | Window.IsVisible(MyPVRTimers.xml) | Window.IsVisible(MyPVRSearch.xml) | Window.IsVisible(programs)] + !$EXP[ExpInfoDialogActive] + !Skin.HasSetting(KioskMode)</visible>
 		</control>
 		<control type="button" id="6608">
 			<font>Material24</font>
 			<label></label>
 			<include>HeaderButton</include>
 			<onclick>Container.NextViewMode</onclick>
-			<visible>[Container.Content(episodes) + String.StartsWith(Container.FolderPath,plugin://) + !String.StartsWith(Container.FolderPath,plugin://plugin.video.embycon)] | [[Window.IsVisible(videos) | Window.IsVisible(music) | Window.IsVisible(programs) | Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRrecordings.xml) | Window.IsVisible(addonbrowser)] + !$EXP[ExpInfoDialogActive] + !Container.Content(seasons) + !Container.Content(episodes)]</visible>
+			<visible>[[Container.Content(episodes) + String.StartsWith(Container.FolderPath,plugin://) + !String.StartsWith(Container.FolderPath,plugin://plugin.video.embycon)] | [[Window.IsVisible(videos) | Window.IsVisible(music) | Window.IsVisible(programs) | Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRrecordings.xml) | Window.IsVisible(addonbrowser)] + !$EXP[ExpInfoDialogActive] + !Container.Content(seasons) + !Container.Content(episodes)]] + !Skin.HasSetting(KioskMode)</visible>
 		</control>
 		<control type="button" id="6609">
 			<font>Material24</font>
