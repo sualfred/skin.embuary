@@ -101,13 +101,21 @@
 						<textcolor>text_white</textcolor>
 						<label>$INFO[System.Time]</label>
 					</control>
-					<control type="image">
+					<control type="group">
 						<animation effect="slide" end="0,10" time="0" condition="true">Conditional</animation>
 						<height>38</height>
 						<width>38</width>
-						<texture diffuse="items/roundbutton.png">$VAR[UserAvatar]</texture>
-						<aspectratio scalediffuse="false">stretch</aspectratio>
-						<visible>[!String.StartsWith(System.ProfileThumb,Default) | System.HasAddon(plugin.video.emby) | System.HasAddon(plugin.video.plexkodiconnect)]</visible>
+						<control type="image">
+							<height>38</height>
+							<width>38</width>
+							<texture colordiffuse="blue">items/roundbutton.png</texture>
+						</control>
+						<control type="image">
+							<height>38</height>
+							<width>38</width>
+							<texture diffuse="items/roundbutton.png">$VAR[UserAvatar]</texture>
+							<aspectratio scalediffuse="false">stretch</aspectratio>
+						</control>
 					</control>
 				</control>
 			</control>
