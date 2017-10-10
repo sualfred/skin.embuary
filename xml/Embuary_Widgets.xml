@@ -9,9 +9,7 @@
 	</include>
 	<include name="CustomWidgetTemplate">
 		<control type="radiobutton" id="2$PARAM[id]1">
-			<include content="SettingsButton">
-				<param name="textoffsetx">35</param>
-			</include>
+			<include>SettingsButton</include>
 			<onclick>Skin.ToggleSetting(UserWidget$PARAM[id])</onclick>
 			<selected>Skin.HasSetting(UserWidget$PARAM[id])</selected>
 			<label>$LOCALIZE[31100] #$PARAM[id]</label>
@@ -19,9 +17,7 @@
 		<control type="button" id="2$PARAM[id]2">
 			<textcolor>emby</textcolor>
 			<texturenofocus colordiffuse="33000000">common/white.jpg</texturenofocus>
-			<include content="SettingsButton">
-				<param name="textoffsetx">35</param>
-			</include>
+			<include>SettingsButton</include>
 			<onclick>RunScript(script.skinshortcuts,type=widgets&amp;showNone=True&amp;grouping=embuary&amp;skinWidgetName=UserWidget$PARAM[id]_name&amp;skinWidgetTarget=UserWidget$PARAM[id]_target&amp;skinWidgetPath=UserWidget$PARAM[id]_path)</onclick>
 			<label>• $LOCALIZE[573]</label>
 			<label2>$INFO[Skin.String(UserWidget$PARAM[id]_path)]</label2>
@@ -31,9 +27,7 @@
 		<control type="button" id="2$PARAM[id]3">
 			<textcolor>emby</textcolor>
 			<texturenofocus colordiffuse="33000000">common/white.jpg</texturenofocus>
-			<include content="SettingsButton">
-				<param name="textoffsetx">35</param>
-			</include>
+			<include>SettingsButton</include>
 			<onclick>Skin.SetString(UserWidget$PARAM[id]_name)</onclick>
 			<label>• $LOCALIZE[21864]</label>
 			<label2>$INFO[Skin.String(UserWidget$PARAM[id]_name)]</label2>
@@ -43,9 +37,7 @@
 		<control type="button" id="2$PARAM[id]4">
 			<textcolor>emby</textcolor>
 			<texturenofocus colordiffuse="33000000">common/white.jpg</texturenofocus>
-			<include content="SettingsButton">
-				<param name="textoffsetx">35</param>
-			</include>
+			<include>SettingsButton</include>
 			<onclick>RunScript(script.skin.helper.service,action=setskinsetting,setting=UserWidget$PARAM[id]_layout,header=$LOCALIZE[31099])</onclick>
 			<label>• $LOCALIZE[31101]</label>
 			<label2>$INFO[Skin.String(UserWidget$PARAM[id]_layout.label)]</label2>
