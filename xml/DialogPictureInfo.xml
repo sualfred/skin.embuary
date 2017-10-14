@@ -1,126 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
 <window>
-	<depth>DepthOSD</depth>
-	<defaultcontrol always="true">9000</defaultcontrol>
-	<onload>SetProperty(infobackground,$ESCINFO[ListItem.FolderPath],home)</onload>
-	<onunload>ClearProperty(infobackground,home)</onunload>
+	<defaultcontrol always="true">100</defaultcontrol>
 	<controls>
-		<control type="group">
-			<centertop>50%</centertop>
-			<height>1080</height>
+		<control type="image">
+			<include>Visible_Fade</include>
+			<include>FullscreenDimensions</include>
+			<texture colordiffuse="background_diffuse">common/white.jpg</texture>
+		</control>
+		<include content="ScrollbarVertical">
+			<param name="id">3000</param>
+			<param name="visible">false</param>
+		</include>
+		<control type="grouplist">
+			<include>Dialog_PopupOpenClose</include>
 			<centerleft>50%</centerleft>
-			<width>1920</width>
-			<control type="group">
-				<visible>!Window.IsActive(Slideshow)</visible>
-				<include>OpenClose_Left</include>
-				<top>160</top>
-				<control type="image">
-					<left>70</left>
-					<width>1280</width>
-					<height>820</height>
-					<texture border="21">dialogs/dialog-bg.png</texture>
-				</control>
-				<control type="image">
-					<left>120</left>
-					<top>50</top>
-					<width>1180</width>
-					<height>720</height>
-					<aspectratio aligny="center">keep</aspectratio>
-					<bordertexture colordiffuse="border_alpha">colors/black.png</bordertexture>
-					<bordersize>4</bordersize>
-					<texture border="4" background="true" fallback="colors/black.png">$INFO[ListItem.FolderPath]</texture>
-				</control>
+			<centertop>50%</centertop>
+			<width>800</width>
+			<height max="940">auto</height>
+			<orientation>vertical</orientation>
+			<itemgap>20</itemgap>
+			<align>center</align>
+			<!-- Thumb image -->
+			<control type="grouplist">
+				<height>338</height>
+				<width>100%</width>
+				<orientation>horizontal</orientation>
+				<itemgap>5</itemgap>
+				<align>center</align>
+				<onright>noop</onright>
+				<onleft>noop</onleft>
+				<control type="group">
+					<width>596</width>
+					<control type="image">
+						<top>-2</top>
+						<left>-2</left>
+						<width>596</width>
+						<height>338</height>
+						<texture>items/shadow_wide_big.png</texture>
+					</control>
+					<control type="image">
+						<width>590</width>
+						<height>332</height>
+						<texture colordiffuse="green" diffuse="items/mask_wide_big.png">common/white.jpg</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="image">
+						<width>590</width>
+						<height>332</height>
+						<texture colordiffuse="darkbutton" diffuse="items/mask_wide_big.png">common/white.jpg</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="textbox">
+						<top>10</top>
+						<left>10</left>
+						<width>570</width>
+						<height>312</height>
+						<font>Light24</font>
+						<align>center</align>
+						<aligny>center</aligny>
+						<label>$PARAM[thumblabel]</label>
+						<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="image">
+						<width>590</width>
+						<height>332</height>
+						<texture diffuse="items/mask_wide_db.png" background="true">$VAR[IconLandscape]</texture>
+						<aspectratio scalediffuse="false">keep</aspectratio>
+						<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+				</control>1
 			</control>
-			<control type="group">
-				<include>OpenClose_Right</include>
-				<top>160</top>
-				<control type="image">
-					<description>background image</description>
-					<right>70</right>
-					<width>510</width>
-					<height>820</height>
-					<texture border="22">dialogs/dialog-bg.png</texture>
-				</control>
-				<include content="UpDownArrows">
-					<param name="container_id" value="5" />
-					<param name="posx" value="1590" />
-					<param name="up_posy" value="-20" />
-					<param name="down_posy" value="820" />
-				</include>
-				<control type="group" id="9000">
-					<control type="scrollbar" id="60">
-						<left>1840</left>
-						<top>20</top>
-						<width>12</width>
-						<height>780</height>
-						<orientation>vertical</orientation>
+			<!-- message -->	
+			<control id="5" type="list">
+				<centerleft>50%</centerleft>
+				<width>100%</width>
+				<height>300</height>
+				<autoscroll>false</autoscroll>
+				<align>center</align>
+				<aligny>top</aligny>
+				<pagecontrol>3000</pagecontrol>
+				<focusedlayout height="50" width="800">
+					<control type="label">
+						<left>10</left>
+						<height>50</height>
+						<aligny>center</aligny>
+						<font>Reg26Spaced</font>
+						<label>$INFO[ListItem.Label]</label>
+						<textcolor>softgrey</textcolor>
+						<shadowcolor>text_shadow</shadowcolor>
 					</control>
-					<control type="list" id="5">
-						<right>70</right>
-						<top>30</top>
-						<width>480</width>
-						<height>750</height>
-						<orientation>vertical</orientation>
-						<onleft>Dialog.Close(all,true)</onleft>
-						<onleft>Action(left)</onleft>
-						<onleft>info</onleft>
-						<onright>Dialog.Close(all,true)</onright>
-						<onright>Action(right)</onright>
-						<onright>info</onright>
-						<onup>5</onup>
-						<ondown>5</ondown>
-						<pagecontrol>60</pagecontrol>
-						<focusedlayout height="50">
-							<control type="label">
-								<left>10</left>
-								<height>50</height>
-								<width>430</width>
-								<aligny>center</aligny>
-								<font>font12</font>
-								<label>$INFO[ListItem.Label]</label>
-								<textcolor>button_focus</textcolor>
-								<shadowcolor>text_shadow</shadowcolor>
-							</control>
-							<control type="label">
-								<left>10</left>
-								<height>50</height>
-								<width>430</width>
-								<align>right</align>
-								<font>font12</font>
-								<aligny>center</aligny>
-								<label>$INFO[ListItem.Label2]</label>
-								<shadowcolor>text_shadow</shadowcolor>
-							</control>
-						</focusedlayout>
-						<itemlayout height="50">
-							<control type="label">
-								<left>10</left>
-								<height>50</height>
-								<width>430</width>
-								<aligny>center</aligny>
-								<label>$INFO[ListItem.Label]</label>
-								<font>font12</font>
-								<textcolor>button_focus</textcolor>
-								<shadowcolor>text_shadow</shadowcolor>
-							</control>
-							<control type="label">
-								<left>10</left>
-								<height>50</height>
-								<width>430</width>
-								<align>right</align>
-								<font>font12</font>
-								<aligny>center</aligny>
-								<label>$INFO[ListItem.Label2]</label>
-								<shadowcolor>text_shadow</shadowcolor>
-							</control>
-						</itemlayout>
+					<control type="label">
+						<right>10</right>
+						<height>50</height>
+						<align>right</align>
+						<font>Reg26Spaced</font>
+						<aligny>center</aligny>
+						<label>$INFO[ListItem.Label2]</label>
+						<shadowcolor>text_shadow</shadowcolor>
 					</control>
+				</focusedlayout>
+				<itemlayout height="50" width="800">
+					<control type="label">
+						<left>10</left>
+						<height>50</height>
+						<aligny>center</aligny>
+						<label>$INFO[ListItem.Label]</label>
+						<font>Reg26Spaced</font>
+						<textcolor>softgrey</textcolor>
+						<shadowcolor>text_shadow</shadowcolor>
+					</control>
+					<control type="label">
+						<right>10</right>
+						<height>50</height>
+						<align>right</align>
+						<font>Reg26Spaced</font>
+						<aligny>center</aligny>
+						<label>$INFO[ListItem.Label2]</label>
+						<shadowcolor>text_shadow</shadowcolor>
+					</control>
+				</itemlayout>
+			</control>
+			<!-- Button -->
+			<control type="grouplist" id="100">
+				<height>50</height>
+				<width>100%</width>
+				<orientation>horizontal</orientation>
+				<itemgap>5</itemgap>
+				<align>center</align>
+				<onright>noop</onright>
+				<onleft>noop</onleft>
+				<control type="button" id="101">
+					<label>$LOCALIZE[15067]</label>
+					<onclick>close</onclick>
+					<onup>PageUp(3000)</onup>
+					<ondown>PageDown(3000)</ondown>
 				</control>
 			</control>
 		</control>
-		<include content="InfoDialogTopBarInfo">
-			<param name="main_label" value="$INFO[ListItem.Label]" />
-			<param name="sub_label" value="$INFO[ListItem.PictureDateTime]" />
-		</include>
 	</controls>
 </window>

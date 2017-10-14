@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 	<variable name="ContainerContent">
+		<value condition="Window.IsVisible(pictures)">$LOCALIZE[1213]</value>
 		<value condition="Window.IsVisible(EventLog.xml)">$LOCALIZE[31108]</value>
 		<value condition="Window.IsVisible(script-nextup-notification-PostPlayInfo.xml)">$LOCALIZE[31079]</value>
 		<value condition="Window.IsVisible(musicplaylisteditor)">$LOCALIZE[10503]</value>
@@ -214,6 +215,8 @@
 		<value condition="ListItem.IsParentFolder">$LOCALIZE[31044]</value>
 		<value condition="[Window.IsVisible(videos) | Window.IsVisible(music) | Window.IsVisible(programs) | Window.IsVisible(MyPVRRecordings.xml) | Window.IsVisible(addonbrowser)] + ListItem.IsFolder + !ListItem.IsParentFolder">$LOCALIZE[19076]</value>
 		<value condition="Window.IsVisible(addonbrowser)">$INFO[ListItem.AddonType]</value>
+		<value condition="Container.Content(images)">$INFO[ListItem.size]</value>
+		<value condition="Control.IsVisible(53) + ListItem.IsFolder">$LOCALIZE[19076]</value>
 	</variable>
 	<variable name="VisibleContainer">
 		<value condition="Control.IsVisible(50)">50</value>
