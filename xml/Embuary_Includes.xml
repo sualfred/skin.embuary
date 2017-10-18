@@ -988,16 +988,16 @@
 		</control>
 	</include>
 	<include name="search_action">
-		<onclick condition="!System.HasAddon(plugin.video.embycon)">RunScript(script.globalsearch)</onclick>
-		<onclick condition="System.HasAddon(plugin.video.embycon)">SetProperty(Dialog.1.Label,$LOCALIZE[31072])</onclick>
-		<onclick condition="System.HasAddon(plugin.video.embycon)">SetProperty(Dialog.1.BuiltIn,RunScript(script.globalsearch))</onclick>
-		<onclick condition="System.HasAddon(plugin.video.embycon)">SetProperty(Dialog.2.Label,$LOCALIZE[31073])</onclick>
-		<onclick condition="System.HasAddon(plugin.video.embycon)">SetProperty(Dialog.2.BuiltIn,ActivateWindow(videos,plugin://plugin.video.embycon/?item_type=Movie&amp;mode=NEW_SEARCH))</onclick>
-		<onclick condition="System.HasAddon(plugin.video.embycon)">SetProperty(Dialog.3.Label,$LOCALIZE[31074])</onclick>
-		<onclick condition="System.HasAddon(plugin.video.embycon)">SetProperty(Dialog.3.BuiltIn,ActivateWindow(videos,plugin://plugin.video.embycon/?item_type=Series&amp;mode=NEW_SEARCH))</onclick>
-		<onclick condition="System.HasAddon(plugin.video.embycon)">SetProperty(Dialog.4.Label,$LOCALIZE[31075])</onclick>
-		<onclick condition="System.HasAddon(plugin.video.embycon)">SetProperty(Dialog.4.BuiltIn,ActivateWindow(videos,plugin://plugin.video.embycon/?item_type=Episode&amp;mode=NEW_SEARCH))</onclick>
-		<onclick condition="System.HasAddon(plugin.video.embycon)">RunScript(script.toolbox,info=selectdialog,header=$LOCALIZE[137])</onclick> 
+		<onclick condition="!System.HasAddon(plugin.video.embycon) | Skin.HasSetting(HideEmbyConHubButtons)">RunScript(script.globalsearch)</onclick>
+		<onclick condition="System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideEmbyConHubButtons)">SetProperty(Dialog.1.Label,$LOCALIZE[31072])</onclick>
+		<onclick condition="System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideEmbyConHubButtons)">SetProperty(Dialog.1.BuiltIn,RunScript(script.globalsearch))</onclick>
+		<onclick condition="System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideEmbyConHubButtons)">SetProperty(Dialog.2.Label,$LOCALIZE[31073])</onclick>
+		<onclick condition="System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideEmbyConHubButtons)">SetProperty(Dialog.2.BuiltIn,ActivateWindow(videos,plugin://plugin.video.embycon/?item_type=Movie&amp;mode=NEW_SEARCH))</onclick>
+		<onclick condition="System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideEmbyConHubButtons)">SetProperty(Dialog.3.Label,$LOCALIZE[31074])</onclick>
+		<onclick condition="System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideEmbyConHubButtons)">SetProperty(Dialog.3.BuiltIn,ActivateWindow(videos,plugin://plugin.video.embycon/?item_type=Series&amp;mode=NEW_SEARCH))</onclick>
+		<onclick condition="System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideEmbyConHubButtons)">SetProperty(Dialog.4.Label,$LOCALIZE[31075])</onclick>
+		<onclick condition="System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideEmbyConHubButtons)">SetProperty(Dialog.4.BuiltIn,ActivateWindow(videos,plugin://plugin.video.embycon/?item_type=Episode&amp;mode=NEW_SEARCH))</onclick>
+		<onclick condition="System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideEmbyConHubButtons)">RunScript(script.toolbox,info=selectdialog,header=$LOCALIZE[137])</onclick> 
 	</include>
 	<include name="SkinHelperRatings">
 		<param name="type">ListItem</param>
