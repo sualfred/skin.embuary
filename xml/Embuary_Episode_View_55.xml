@@ -29,7 +29,7 @@
 			<!-- Meta -->
 			<control type="group">
 				<width>1920</width>
-				<height>604</height>
+				<height>960</height>
 				<control type="group">
 					<top>128</top>
 					<height>435</height>
@@ -216,29 +216,33 @@
 						<aspectratio>keep</aspectratio>
 					</control>
 				</control>
+				<control type="group">
+					<top>524</top>
+					<!-- Episodes -->
+					<include content="WideWidget">
+						<param name="id" value="55"/>
+						<param name="onup" value="100"/>
+						<param name="ondown" value="1000"/>
+						<param name="sublabel" value=""/>
+						<param name="sortby" value="playcount"/>
+						<param name="sortorder" value="descending"/>
+						<param name="headline" value="$LOCALIZE[20360]"/>
+						<param name="use_custom_content" value="false"/>				
+						<param name="content_visibility" value="Container.Content(episodes) + [!String.StartsWith(Container.FolderPath,plugin://) | String.StartsWith(Container.FolderPath,plugin://plugin.video.embycon)]"/>
+						<param name="list_name" value="$LOCALIZE[20359]"/>
+						<param name="height" value="438"/>
+					</include>
+				</control>
 			</control>
-			<!-- Episodes -->
-			<include content="WideWidget">
-				<param name="id" value="55"/>
-				<param name="sublabel" value=""/>
-				<param name="sortby" value="playcount"/>
-				<param name="sortorder" value="descending"/>
-				<param name="headline" value="$LOCALIZE[20360]"/>
-				<param name="onup" value="100"/>
-				<param name="ondown" value="1000"/>
-				<param name="use_custom_content" value="false"/>				
-				<param name="content_visibility" value="Container.Content(episodes) + [!String.StartsWith(Container.FolderPath,plugin://) | String.StartsWith(Container.FolderPath,plugin://plugin.video.embycon)]"/>
-				<param name="list_name" value="$LOCALIZE[20359]"/>
-				<param name="height" value="438"/>
-			</include>
 			<!-- Cast -->
 			<include content="CastWidget">
 				<param name="id" value="1000"/>
+				<param name="onup" value="55"/>
+				<param name="ondown" value="SetProperty(BounceDown,1,home)"/>
+				<param name="onback" value="55"/>
 				<param name="mainlabel" value="$INFO[ListItem.Label]"/>
 				<param name="sublabel" value="$INFO[ListItem.Label2]"/>
 				<param name="headline" value="$LOCALIZE[206]"/>
-				<param name="onup" value="55"/>
-				<param name="ondown" value="SetProperty(BounceDown,1,home)"/>
 				<param name="content" value="$VAR[View_Cast_Content]"/>
 			</include>
 		</control>
