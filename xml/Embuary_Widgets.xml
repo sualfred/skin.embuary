@@ -291,7 +291,7 @@
 						<param name="left">65</param>
 					</include>
 					<control type="group">
-						<visible>Container($PARAM[id]).IsUpdating + !Integer.IsGreater(Container($PARAM[id]).NumItems,0)</visible>
+						<visible>Container($PARAM[id]).IsUpdating | !Integer.IsGreater(Container($PARAM[id]).NumItems,0)</visible>
 						<left>70</left>
 						<top>94</top>
 						<width>237</width>
@@ -309,7 +309,21 @@
 							<texture colordiffuse="blue" diffuse="items/mask_poster_db.png">common/white.jpg</texture>
 							<aspectratio scalediffuse="false">stretch</aspectratio>
 						</control>
-						<include content="WidgetLoadingSpinner"/>
+						<control type="textbox">
+							<top>10</top>
+							<left>10</left>
+							<width>217</width>
+							<height>335</height>
+							<font>Material50</font>
+							<align>center</align>
+							<aligny>center</aligny>
+							<label></label>
+							<visible>!Container($PARAM[id]).IsUpdating + !Integer.IsGreater(Container($PARAM[id]).NumItems,0)</visible>
+						</control>
+						<control type="group">
+							<visible>Container($PARAM[id]).IsUpdating</visible>
+							<include content="WidgetLoadingSpinner"/>
+						</control>
 					</control>
 					<control type="fixedlist" id="$PARAM[id]">
 						<visible>$PARAM[content_visibility]</visible>
