@@ -573,7 +573,7 @@
 			<width min="50">auto</width>
 			<height>48</height>
 			<font>reg18</font>
-			<label>$VAR[ListItemResolution]</label>
+			<label>[UPPERCASE]$VAR[ListItemResolution][/UPPERCASE]</label>
 			<textoffsetx>15</textoffsetx>
 			<align>center</align>
 			<enabledcolor>lightgrey</enabledcolor>
@@ -586,7 +586,7 @@
 			<width min="50">auto</width>
 			<height>48</height>
 			<font>reg18</font>
-			<label>$INFO[ListItem.VideoCodec]</label>
+			<label>[UPPERCASE]$INFO[ListItem.VideoCodec][/UPPERCASE]</label>
 			<textoffsetx>15</textoffsetx>
 			<align>center</align>
 			<enabledcolor>lightgrey</enabledcolor>
@@ -594,6 +594,19 @@
 			<texturenofocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturenofocus>
 			<enabled>false</enabled>
 			<visible>!String.IsEmpty(ListItem.VideoCodec)</visible>
+		</control>
+		<control type="button">
+			<width min="50">auto</width>
+			<height>48</height>
+			<font>reg18</font>
+			<label>$VAR[ListItemAudioChannels]</label>
+			<textoffsetx>15</textoffsetx>
+			<align>center</align>
+			<enabledcolor>lightgrey</enabledcolor>
+			<texturefocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturefocus>
+			<texturenofocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturenofocus>
+			<enabled>false</enabled>
+			<visible>!String.IsEmpty(ListItem.AudioChannels)</visible>
 		</control>
 		<control type="button">
 			<width min="50">auto</width>
@@ -628,7 +641,7 @@
 			<width min="50">auto</width>
 			<height>48</height>
 			<font>reg18</font>
-			<label>$VAR[PlayerResolution]</label>
+			<label>[UPPERCASE]$VAR[PlayerResolution][/UPPERCASE]</label>
 			<textoffsetx>15</textoffsetx>
 			<align>center</align>
 			<enabledcolor>lightgrey</enabledcolor>
@@ -641,7 +654,7 @@
 			<width min="50">auto</width>
 			<height>48</height>
 			<font>reg18</font>
-			<label>$INFO[VideoPlayer.VideoCodec]</label>
+			<label>[UPPERCASE]$INFO[VideoPlayer.VideoCodec][/UPPERCASE]</label>
 			<textoffsetx>15</textoffsetx>
 			<align>center</align>
 			<enabledcolor>lightgrey</enabledcolor>
@@ -649,6 +662,19 @@
 			<texturenofocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturenofocus>
 			<enabled>false</enabled>
 			<visible>!String.IsEmpty(VideoPlayer.VideoCodec)</visible>
+		</control>
+		<control type="button">
+			<width min="50">auto</width>
+			<height>48</height>
+			<font>reg18</font>
+			<label>$VAR[PlayerAudioChannels]</label>
+			<textoffsetx>15</textoffsetx>
+			<align>center</align>
+			<enabledcolor>lightgrey</enabledcolor>
+			<texturefocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturefocus>
+			<texturenofocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturenofocus>
+			<enabled>false</enabled>
+			<visible>!String.IsEmpty(VideoPlayer.AudioChannels)</visible>
 		</control>
 		<control type="button">
 			<width min="50">auto</width>
