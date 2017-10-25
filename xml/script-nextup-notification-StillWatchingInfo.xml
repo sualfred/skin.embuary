@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<defaultcontrol always="true">4012</defaultcontrol>
+	<onload>Dialog.Close(fullscreeninfo,true)</onload>
+	<onload>Dialog.Close(videoosd,true)</onload>	
+	<controls>		
+		<!--4000 - Label
+		4001 - TV Show Poster
+		4002 - Episode Thumb
+		4003 - Rating
+		4004 - First Aired
+		4005 - TV Show Landscape
+		4006 - Plot
+		4007 - TV Show Fanart
+		4008 - Season Number
+		4009 - Episode Number
+		4010 - Title
+		4011 - Video Resolution
+		4012 - Continue Watching Button
+		4013 - Cancel Button
+		4014 - TV Show ClearArt
+		4018 - Play Count-->
+		<control type="label" id="4000">
+			<visible>false</visible>
+		</control>
+		<control type="textbox" id="4001">
+			<visible>false</visible>
+		</control>
+		<control type="label" id="4002">
+			<visible>false</visible>
+		</control>
+		<control type="label" id="4003">
+			<visible>false</visible>
+		</control>
+		<control type="label" id="4004">
+			<visible>false</visible>
+		</control>
+		<control type="image" id="4005">
+			<visible>false</visible>
+		</control>
+		<control type="image" id="4006">
+			<visible>false</visible>
+		</control>
+		<control type="label" id="4007">
+			<visible>false</visible>
+		</control>
+		<control type="image" id="4008">
+			<visible>false</visible>
+		</control>
+		<control type="image" id="4009">
+			<visible>false</visible>
+		</control>
+		<control type="image" id="4010">
+			<visible>false</visible>
+		</control>
+		<control type="label" id="4011">
+			<visible>false</visible>
+		</control>
+		<control type="button" id="4013">
+			<include>HiddenObject</include>
+		</control>
+		<control type="label" id="4015">
+			<visible>false</visible>
+		</control>
+		<control type="label" id="4016">
+			<visible>false</visible>
+		</control>
+		<control type="label" id="4018">
+			<visible>false</visible>
+		</control>
+		<control type="grouplist">
+			<width>430</width>
+			<right>90</right>
+			<bottom>90</bottom>
+			<height>455</height>
+			<orientation>vertical</orientation>
+			<itemgap>20</itemgap>
+			<control type="group">
+				<height>50</height>
+				<control type="label">
+					<width>100%</width>
+					<height>48</height>
+					<font>Reg24</font>
+					<aligny>center</aligny>
+					<textoffsetx>5</textoffsetx>
+					<textcolor>text_white</textcolor>
+					<label>$LOCALIZE[31130]</label>
+				</control>
+				<control type="image">
+					<width>100%</width>
+					<top>45</top>
+					<height>2</height>
+					<texture colordiffuse="lightgrey">common/white.jpg</texture>
+					<aspectratio>stretch</aspectratio>
+				</control>
+				<control type="image">
+					<width>100%</width>
+					<top>45</top>
+					<height>2</height>
+					<texture colordiffuse="emby">common/white.jpg</texture>
+					<aspectratio>stretch</aspectratio>
+					<include>WindowOpen_GreenBar</include>
+				</control>
+			</control>			
+			<control type="group">
+				<height>385</height>
+				<control type="image">
+					<top>5</top>
+					<width>424</width>
+					<height>380</height>
+					<texture colordiffuse="thumb_background">common/white.jpg</texture>
+					<aspectratio scalediffuse="false">stretch</aspectratio>
+				</control>
+				<control type="image">
+					<top>-2</top>
+					<left>-2</left>
+					<width>430</width>
+					<height>245</height>
+					<texture>items/shadow_wide.png</texture>
+				</control>
+				<control type="image">
+					<width>424</width>
+					<height>239</height>
+					<texture colordiffuse="green" diffuse="items/mask_wide.png">common/white.jpg</texture>
+					<aspectratio scalediffuse="false">stretch</aspectratio>
+					<visible>String.IsEmpty(Control.GetLabel(4002)) + String.IsEmpty(Control.GetLabel(4007))</visible>
+				</control>
+				<control type="textbox">
+					<top>10</top>
+					<left>10</left>
+					<width>404</width>
+					<height>219</height>
+					<font>Light24</font>
+					<align>center</align>
+					<aligny>center</aligny>
+					<label>$INFO[Control.GetLabel(4010)]</label>
+					<visible>String.IsEmpty(Control.GetLabel(4002)) + String.IsEmpty(Control.GetLabel(4007))</visible>
+				</control>
+				<control type="image">
+					<width>424</width>
+					<height>239</height>
+					<texture diffuse="items/mask_wide.png" background="true">$VAR[NextUpThumb]</texture>
+					<aspectratio scalediffuse="false">scale</aspectratio>
+				</control>
+				<include content="widget_labels">
+					<param name="top">251</param>
+					<param name="width">424</param>
+					<param name="mainlabel">$INFO[Control.GetLabel(4008),S,:]$INFO[Control.GetLabel(4009),E, - ]$INFO[Control.GetLabel(4000)]</param>
+					<param name="sublabel">$INFO[Control.GetLabel(4007)]</param>
+				</include>
+				<control type="grouplist">
+					<bottom>10</bottom>
+					<height>50</height>
+					<width>100%</width>
+					<orientation>horizontal</orientation>
+					<itemgap>5</itemgap>
+					<align>center</align>
+					<onright>10</onright>
+					<onleft>9999</onleft>
+					<control type="button" id="4012">
+						<label>$LOCALIZE[31080]</label>
+						<onback>SendClick(4013)</onback>
+					</control>
+				</control>
+			</control>
+		</control>
+	</controls>
+</window>
