@@ -2,6 +2,12 @@
 <window id="1118" type="dialog">
 	<zorder>99</zorder>	
 	<visible>String.IsEqual(Window(home).Property(script.service.caretaker.found.blacklisted),true)</visible>
-	<onload>UnloadSkin()</onload>
+	<onload condition="String.IsEmpty(Skin.String(caretakerCounter))">Skin.SetString(caretakerCounter,1)</onload>
+	<onload condition="String.IsEqual(Skin.String(caretakerCounter),1)">Skin.SetString(caretakerCounter,2)</onload>
+	<onload condition="String.IsEqual(Skin.String(caretakerCounter),2)">Skin.SetString(caretakerCounter,3)</onload>
+	<onload condition="String.IsEqual(Skin.String(caretakerCounter),3)">Skin.SetString(caretakerCounter,4)</onload>
+	<onload condition="String.IsEqual(Skin.String(caretakerCounter),4)">Skin.SetString(caretakerCounter,5)</onload>
+	<onload condition="String.IsEqual(Skin.String(caretakerCounter),5)">UnloadSkin()</onload>
+	<onload condition="!String.IsEqual(Skin.String(caretakerCounter),5)">RunScript(script.skin.helper.service,action=textviewer,header=[COLOR red]$LOCALIZE[31131][/COLOR],message=$LOCALIZE[31132])</onload>
 	<controls/>
 </window>
