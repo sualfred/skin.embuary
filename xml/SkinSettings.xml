@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<defaultcontrol always="true">100</defaultcontrol>
+	<menucontrol>6666</menucontrol>
 	<backgroundcolor>background</backgroundcolor>
 	<controls>
 		<include>Background</include>
@@ -57,6 +58,22 @@
 						<label>$LOCALIZE[31083]</label>
 						<onright>300</onright>
 					</control>
+					<control type="button" id="103">
+						<width>400</width>
+						<height>50</height>
+						<align>left</align>
+						<aligny>center</aligny>
+						<font>Reg22</font>
+						<textoffsetx>50</textoffsetx>
+						<textcolor>panel_text</textcolor>
+						<focusedcolor>panel_text</focusedcolor>
+						<selectedcolor>panel_text</selectedcolor>
+						<shadowcolor>text_shadow</shadowcolor>
+						<texturefocus colordiffuse="panel_hover">common/white.jpg</texturefocus>
+						<include>NoTextures</include>
+						<label>$LOCALIZE[31134]</label>
+						<onright>400</onright>
+					</control>
 				</control>
 			</control>
 		</control>
@@ -94,6 +111,16 @@
 						<textcolor>text_white</textcolor>
 						<label>$LOCALIZE[31103]</label>
 						<visible>ControlGroup(100).HasFocus(102)</visible>
+					</control>
+					<control type="label">
+						<width>800</width>
+						<height>48</height>
+						<font>Reg24</font>
+						<aligny>center</aligny>
+						<textoffsetx>5</textoffsetx>
+						<textcolor>text_white</textcolor>
+						<label>$LOCALIZE[31134]</label>
+						<visible>ControlGroup(100).HasFocus(103)</visible>
 					</control>
 					<control type="image">
 						<width>100%</width>
@@ -206,18 +233,6 @@
 							<onclick>Skin.ToggleSetting(KioskMode)</onclick>
 							<selected>Skin.HasSetting(KioskMode)</selected>
 							<label>$LOCALIZE[31112]</label>
-						</control>
-						<control type="radiobutton" id="222">
-							<include>SettingsButton</include>
-							<onclick>Skin.ToggleSetting(HideVideoUpdate)</onclick>
-							<selected>!Skin.HasSetting(HideVideoUpdate)</selected>
-							<label>$LOCALIZE[31113]</label>
-						</control>
-						<control type="radiobutton" id="223">
-							<include>SettingsButton</include>
-							<onclick>Skin.ToggleSetting(HideMusicUpdate)</onclick>
-							<selected>!Skin.HasSetting(HideMusicUpdate)</selected>
-							<label>$LOCALIZE[31114]</label>
 						</control>
 						<control type="radiobutton" id="224">
 							<include>SettingsButton</include>
@@ -341,6 +356,131 @@
 						<include content="CustomWidgetTemplate">
 							<param name="id" value="6"/>
 						</include>
+					</control>
+					<!-- side panel -->
+					<control type="grouplist" id="400">
+						<visible>ControlGroup(100).HasFocus(103)</visible>
+						<centerleft>50%</centerleft>
+						<top>10</top>
+						<height>700</height>
+						<onup>6666</onup>
+						<onleft>100</onleft>
+						<onright>noop</onright>
+						<ondown>noop</ondown>
+						<pagecontrol>70</pagecontrol>
+						<scrolltime>200</scrolltime>
+						<!-- local / embycon source -->
+						<control type="label">
+							<height>50</height>
+							<font>med22</font>
+							<textoffsetx>15</textoffsetx>
+							<textcolor>panel_text</textcolor>
+							<shadowcolor>text_shadow</shadowcolor>
+							<aligny>center</aligny>
+							<label>$LOCALIZE[14211]</label>
+						</control>
+						<control type="radiobutton" id="450">
+							<include>SettingsButton</include>
+							<onclick>Skin.ToggleSetting(HideSPMovies)</onclick>
+							<selected>!Skin.HasSetting(HideSPMovies)</selected>
+							<label>$LOCALIZE[31135]</label>
+						</control>
+						<control type="radiobutton" id="451">
+							<include>SettingsButton</include>
+							<onclick>Skin.ToggleSetting(HideSPTVshows)</onclick>
+							<selected>!Skin.HasSetting(HideSPTVshows)</selected>
+							<label>$LOCALIZE[31136]</label>
+						</control>
+						<control type="radiobutton" id="452">
+							<include>SettingsButton</include>
+							<onclick>Skin.ToggleSetting(HideSPVideos)</onclick>
+							<selected>!Skin.HasSetting(HideSPVideos)</selected>
+							<label>$LOCALIZE[31137]</label>
+						</control>
+						<control type="radiobutton" id="453">
+							<include>SettingsButton</include>
+							<onclick>Skin.ToggleSetting(HideSPPVR)</onclick>
+							<selected>!Skin.HasSetting(HideSPPVR)</selected>
+							<label>$LOCALIZE[31138]</label>
+						</control>
+						<control type="radiobutton" id="454">
+							<include>SettingsButton</include>
+							<onclick>Skin.ToggleSetting(HideSPMusic)</onclick>
+							<selected>!Skin.HasSetting(HideSPMusic)</selected>
+							<label>$LOCALIZE[31139]</label>
+						</control>
+						<control type="radiobutton" id="455">
+							<include>SettingsButton</include>
+							<onclick>Skin.ToggleSetting(HideSPPictures)</onclick>
+							<selected>!Skin.HasSetting(HideSPPictures)</selected>
+							<label>$LOCALIZE[31140]</label>
+						</control>
+						<control type="label" id="460">
+							<height>50</height>
+							<font>med22</font>
+							<textoffsetx>15</textoffsetx>
+							<textcolor>panel_text</textcolor>
+							<shadowcolor>text_shadow</shadowcolor>
+							<aligny>center</aligny>
+							<label>$LOCALIZE[31001]</label>
+						</control>
+						<control type="radiobutton" id="461">
+							<include>SettingsButton</include>
+							<onclick>Skin.ToggleSetting(HideSPAddons)</onclick>
+							<selected>!Skin.HasSetting(HideSPAddons)</selected>
+							<label>$LOCALIZE[31141]</label>
+						</control>
+						<control type="radiobutton" id="462">
+							<include>SettingsButton</include>
+							<onclick>Skin.ToggleSetting(HideSPFavourites)</onclick>
+							<selected>!Skin.HasSetting(HideSPFavourites)</selected>
+							<label>$LOCALIZE[31142]</label>
+						</control>
+						<control type="radiobutton" id="463">
+							<include>SettingsButton</include>
+							<onclick>Skin.ToggleSetting(HideSPWeather)</onclick>
+							<selected>!Skin.HasSetting(HideSPWeather)</selected>
+							<label>$LOCALIZE[31143]</label>
+						</control>
+						<control type="label" id="470">
+							<height>50</height>
+							<font>med22</font>
+							<textoffsetx>15</textoffsetx>
+							<textcolor>panel_text</textcolor>
+							<shadowcolor>text_shadow</shadowcolor>
+							<aligny>center</aligny>
+							<label>$LOCALIZE[13000]</label>
+						</control>
+						<control type="radiobutton" id="471">
+							<include>SettingsButton</include>
+							<onclick>Skin.ToggleSetting(HideSPVideoUpdate)</onclick>
+							<selected>!Skin.HasSetting(HideSPVideoUpdate)</selected>
+							<label>$LOCALIZE[31113]</label>
+						</control>
+						<control type="radiobutton" id="472">
+							<include>SettingsButton</include>
+							<onclick>Skin.ToggleSetting(HideSPMusicUpdate)</onclick>
+							<selected>!Skin.HasSetting(HideSPMusicUpdate)</selected>
+							<label>$LOCALIZE[31114]</label>
+						</control>
+						<control type="radiobutton" id="473">
+							<include>SettingsButton</include>
+							<onclick>Skin.ToggleSetting(HideSPAddonUpdate)</onclick>
+							<selected>!Skin.HasSetting(HideSPAddonUpdate)</selected>
+							<label>$LOCALIZE[31144]</label>
+						</control>
+						<control type="radiobutton" id="474">
+							<include>SettingsButton</include>
+							<onclick>Skin.ToggleSetting(HideSPDebug)</onclick>
+							<selected>!Skin.HasSetting(HideSPDebug)</selected>
+							<label>$LOCALIZE[31145]</label>
+						</control>
+						<control type="radiobutton" id="475">
+							<include>SettingsButton</include>
+							<onclick>Skin.ToggleSetting(HideSPReload)</onclick>
+							<selected>!Skin.HasSetting(HideSPReload)</selected>
+							<label>$LOCALIZE[31146]</label>
+						</control>
 					</control>
 					<control type="scrollbar" id="70">
 						<right>0</right>

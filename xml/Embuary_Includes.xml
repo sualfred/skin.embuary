@@ -197,8 +197,10 @@
 	<!-- Side Menu Headline -->
 	<include name="SideMenuHeadline">
 		<param name="width">400</param>
+		<param name="visible">true</param>
 		<definition>
 			<control type="group" id="99$PARAM[nr]">
+				<visible>$PARAM[visible]</visible>
 				<height>55</height>
 				<control type="image">
 					<top>9</top>
@@ -270,6 +272,7 @@
 					<include content="SideMenuHeadline">
 						<param name="nr">1</param>
 						<param name="label">14211</param>
+						<param name="visible">!Skin.HasSetting(HideSPMovies) | !Skin.HasSetting(HideSPTVshows) | !Skin.HasSetting(HideSPVideos) | !Skin.HasSetting(HideSPPVR) | !Skin.HasSetting(HideSPMusic) | !Skin.HasSetting(HideSPPictures)</param>
 					</include>
 					<!--media-->
 					<include content="SideMenuButton">
@@ -281,8 +284,9 @@
 						<param name="icon">&#xE04A;</param>
 						<param name="condition1">Library.HasContent(movies)</param>
 						<param name="condition2">!Library.HasContent(movies)</param>
-						<param name="action1">ActivateWindow(Videos,videodb://movies/titles/,return)</param>
+						<param name="action1">ActivateWindow(1120)</param>
 						<param name="action2">ActivateWindow(Videos,sources://video/,return)</param>
+						<param name="visible">!Skin.HasSetting(HideSPMovies)</param>
 					</include>
 					<include content="SideMenuButton">
 						<param name="id">902</param>
@@ -293,8 +297,9 @@
 						<param name="icon">&#xE04A;</param>
 						<param name="condition1">Library.HasContent(tvshows)</param>
 						<param name="condition2">!Library.HasContent(tvshows)</param>
-						<param name="action1">ActivateWindow(Videos,videodb://tvshows/titles/,return)</param>
+						<param name="action1">ActivateWindow(1121)</param>
 						<param name="action2">ActivateWindow(Videos,sources://video/,return)</param>
+						<param name="visible">!Skin.HasSetting(HideSPTVshows)</param>
 					</include>
 					<include content="SideMenuButton">
 						<param name="id">903</param>
@@ -304,6 +309,7 @@
 						<param name="label">3</param>
 						<param name="icon">&#xE04A;</param>
 						<param name="action1">ActivateWindow(Videos,root)</param>
+						<param name="visible">!Skin.HasSetting(HideSPVideos)</param>
 					</include>
 					<include content="SideMenuButton">
 						<param name="id">904</param>
@@ -312,7 +318,8 @@
 						<param name="onright">$PARAM[onright]</param>
 						<param name="label">14204</param>
 						<param name="icon">&#xE639;</param>
-						<param name="action1">ActivateWindow(TVChannels)</param>
+						<param name="action1">ActivateWindow(1124)</param>
+						<param name="visible">!Skin.HasSetting(HideSPPVR)</param>
 					</include>
 					<include content="SideMenuButton">
 						<param name="id">905</param>
@@ -321,7 +328,11 @@
 						<param name="onright">$PARAM[onright]</param>
 						<param name="label">2</param>
 						<param name="icon">&#xE030;</param>
-						<param name="action1">ActivateWindow(Music,root,return)</param>
+						<param name="condition1">Library.HasContent(music)</param>
+						<param name="condition2">!Library.HasContent(music)</param>
+						<param name="action1">ActivateWindow(1122)</param>
+						<param name="action2">ActivateWindow(Music,root,return)</param>
+						<param name="visible">!Skin.HasSetting(HideSPMusic)</param>
 					</include>
 					<include content="SideMenuButton">
 						<param name="id">906</param>
@@ -331,11 +342,13 @@
 						<param name="label">1</param>
 						<param name="icon">&#xE413;</param>
 						<param name="action1">ActivateWindow(Pictures)</param>
+						<param name="visible">!Skin.HasSetting(HideSPPictures)</param>
 					</include>
 					<!-- seperator -->
 					<include content="SideMenuHeadline">
 						<param name="nr">2</param>
 						<param name="label">31001</param>
+						<param name="visible">!Skin.HasSetting(HideSPAddons) | !Skin.HasSetting(HideSPFavourites) | !Skin.HasSetting(HideSPWeather) | System.HasMediaDVD</param>
 					</include>
 					<!-- misc -->
 					<include content="SideMenuButton">
@@ -356,6 +369,7 @@
 						<param name="label">24001</param>
 						<param name="icon">&#xE5C3;</param>
 						<param name="action1">ActivateWindow(addonbrowser)</param>
+						<param name="visible">!Skin.HasSetting(HideSPAddons)</param>
 					</include>
 					<include content="SideMenuButton">
 						<param name="id">909</param>
@@ -365,6 +379,7 @@
 						<param name="label">10134</param>
 						<param name="icon">&#xE838;</param>
 						<param name="action1">ActivateWindow(favourites)</param>
+						<param name="visible">!Skin.HasSetting(HideSPFavourites)</param>
 					</include>
 					<include content="SideMenuButton">
 						<param name="id">910</param>
@@ -377,6 +392,7 @@
 						<param name="action1">ActivateWindow(Weather)</param>
 						<param name="condition2">String.IsEmpty(Weather.Plugin)</param>
 						<param name="action2">ReplaceWindow(servicesettings,weather)</param>
+						<param name="visible">!Skin.HasSetting(HideSPWeather)</param>
 					</include>
 					<!-- seperator -->
 					<include content="SideMenuHeadline">
@@ -392,7 +408,7 @@
 						<param name="label">$LOCALIZE[184] ($LOCALIZE[3])</param>
 						<param name="icon"></param>
 						<param name="action1">UpdateLibrary(video)</param>
-						<param name="visible">!Skin.HasSetting(KioskMode) + !Skin.HasSetting(HideVideoUpdate)</param>
+						<param name="visible">!Skin.HasSetting(KioskMode) + !Skin.HasSetting(HideSPVideoUpdate)</param>
 					</include>
 					<include content="SideMenuButton">
 						<param name="id">912</param>
@@ -402,7 +418,7 @@
 						<param name="label">$LOCALIZE[184] ($LOCALIZE[2])</param>
 						<param name="icon"></param>
 						<param name="action1">UpdateLibrary(music)</param>
-						<param name="visible">!Skin.HasSetting(KioskMode) + !Skin.HasSetting(HideMusicUpdate)</param>
+						<param name="visible">!Skin.HasSetting(KioskMode) + !Skin.HasSetting(HideSPMusicUpdate)</param>
 					</include>
 					<include content="SideMenuButton">
 						<param name="id">913</param>
@@ -414,7 +430,7 @@
 						<param name="action1">UpdateAddonRepos</param>
 						<param name="condition2">true</param>
 						<param name="action2">UpdateLocalAddons</param>
-						<param name="visible">!Skin.HasSetting(KioskMode)</param>
+						<param name="visible">!Skin.HasSetting(KioskMode) + !Skin.HasSetting(HideSPAddonUpdate)</param>
 					</include>
 					<include content="SideMenuButton">
 						<param name="id">914</param>
@@ -434,7 +450,7 @@
 						<param name="label">14260</param>
 						<param name="icon">&#xE868;</param>
 						<param name="action1">Skin.ToggleSetting(DebugInfo)</param>
-						<param name="visible">!Skin.HasSetting(KioskMode)</param>
+						<param name="visible">!Skin.HasSetting(KioskMode) + !Skin.HasSetting(HideSPDebug)</param>
 					</include>
 					<include content="SideMenuButton">
 						<param name="id">916</param>
@@ -444,7 +460,7 @@
 						<param name="label">20183</param>
 						<param name="icon"></param>
 						<param name="action1">ReloadSkin()</param>
-						<param name="visible">!Skin.HasSetting(KioskMode)</param>
+						<param name="visible">!Skin.HasSetting(KioskMode) + !Skin.HasSetting(HideSPReload)</param>
 					</include>
 					<include content="SideMenuButton">
 						<param name="id">917</param>
