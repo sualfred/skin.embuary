@@ -78,7 +78,17 @@
 						<aligny>center</aligny>
 						<font>med20</font>
 						<textcolor>text_white</textcolor>
-						<label>$INFO[Weather.Temperature]</label>
+						<label>$INFO[Window(Weather).Property(Current.Temperature)]</label>
+						<visible>!Skin.HasSetting(HideHeaderWeather) + !String.IsEmpty(Weather.Temperature) + !String.Contains(Weather.Temperature,$LOCALIZE[503]) + Weather.IsFetched</visible>
+					</control>
+					<control type="label">
+						<animation effect="slide" end="-5,0" time="0" condition="true">Conditional</animation>
+						<height>58</height>
+						<width>auto</width>
+						<aligny>center</aligny>
+						<font>temp19</font>
+						<textcolor>text_white</textcolor>
+						<label>$INFO[System.TemperatureUnits]</label>
 						<visible>!Skin.HasSetting(HideHeaderWeather) + !String.IsEmpty(Weather.Temperature) + !String.Contains(Weather.Temperature,$LOCALIZE[503]) + Weather.IsFetched</visible>
 					</control>
 					<control type="image">
