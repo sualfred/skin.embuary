@@ -74,6 +74,22 @@
 						<label>$LOCALIZE[31134]</label>
 						<onright>400</onright>
 					</control>
+					<control type="button" id="104">
+						<width>400</width>
+						<height>50</height>
+						<align>left</align>
+						<aligny>center</aligny>
+						<font>Reg22</font>
+						<textoffsetx>50</textoffsetx>
+						<textcolor>panel_text</textcolor>
+						<focusedcolor>panel_text</focusedcolor>
+						<selectedcolor>panel_text</selectedcolor>
+						<shadowcolor>text_shadow</shadowcolor>
+						<texturefocus colordiffuse="panel_hover">common/white.jpg</texturefocus>
+						<include>NoTextures</include>
+						<label>$LOCALIZE[31152]</label>
+						<onright>500</onright>
+					</control>
 				</control>
 			</control>
 		</control>
@@ -99,28 +115,7 @@
 						<aligny>center</aligny>
 						<textoffsetx>5</textoffsetx>
 						<textcolor>text_white</textcolor>
-						<label>$LOCALIZE[31102]</label>
-						<visible>ControlGroup(100).HasFocus(101)</visible>
-					</control>
-					<control type="label">
-						<width>800</width>
-						<height>48</height>
-						<font>Reg24</font>
-						<aligny>center</aligny>
-						<textoffsetx>5</textoffsetx>
-						<textcolor>text_white</textcolor>
-						<label>$LOCALIZE[31103]</label>
-						<visible>ControlGroup(100).HasFocus(102)</visible>
-					</control>
-					<control type="label">
-						<width>800</width>
-						<height>48</height>
-						<font>Reg24</font>
-						<aligny>center</aligny>
-						<textoffsetx>5</textoffsetx>
-						<textcolor>text_white</textcolor>
-						<label>$LOCALIZE[31134]</label>
-						<visible>ControlGroup(100).HasFocus(103)</visible>
+						<label>$VAR[SkinSettingsHeadline]</label>
 					</control>
 					<control type="image">
 						<width>100%</width>
@@ -481,6 +476,73 @@
 							<selected>!Skin.HasSetting(HideSPReload)</selected>
 							<label>$LOCALIZE[31146]</label>
 						</control>
+					</control>
+					<!-- hubs -->
+					<control type="grouplist" id="500">
+						<visible>ControlGroup(100).HasFocus(104)</visible>
+						<centerleft>50%</centerleft>
+						<top>10</top>
+						<height>700</height>
+						<onup>6666</onup>
+						<onleft>100</onleft>
+						<onright>noop</onright>
+						<ondown>noop</ondown>
+						<pagecontrol>70</pagecontrol>
+						<scrolltime>200</scrolltime>
+						<control type="label">
+							<height>50</height>
+							<font>med22</font>
+							<textoffsetx>15</textoffsetx>
+							<textcolor>panel_text</textcolor>
+							<shadowcolor>text_shadow</shadowcolor>
+							<aligny>center</aligny>
+							<label>Movie hub</label>
+						</control>
+						<include content="CustomMovieHubTemplate">
+							<param name="id" value="1"/>
+						</include>
+						<include content="CustomMovieHubTemplate">
+							<param name="id" value="2"/>
+						</include>
+						<include content="CustomMovieHubTemplate">
+							<param name="id" value="3"/>
+						</include>
+						<include content="CustomMovieHubTemplate">
+							<param name="id" value="4"/>
+						</include>
+						<include content="CustomMovieHubTemplate">
+							<param name="id" value="5"/>
+						</include>
+						<include content="CustomMovieHubTemplate">
+							<param name="id" value="6"/>
+						</include>
+						<control type="label" id="510">
+							<height>50</height>
+							<font>med22</font>
+							<textoffsetx>15</textoffsetx>
+							<textcolor>panel_text</textcolor>
+							<shadowcolor>text_shadow</shadowcolor>
+							<aligny>center</aligny>
+							<label>TV show hub</label>
+						</control>
+						<include content="CustomTVShowHubTemplate">
+							<param name="id" value="1"/>
+						</include>
+						<include content="CustomTVShowHubTemplate">
+							<param name="id" value="2"/>
+						</include>
+						<include content="CustomTVShowHubTemplate">
+							<param name="id" value="3"/>
+						</include>
+						<include content="CustomTVShowHubTemplate">
+							<param name="id" value="4"/>
+						</include>
+						<include content="CustomTVShowHubTemplate">
+							<param name="id" value="5"/>
+						</include>
+						<include content="CustomTVShowHubTemplate">
+							<param name="id" value="6"/>
+						</include>
 					</control>
 					<control type="scrollbar" id="70">
 						<right>0</right>
