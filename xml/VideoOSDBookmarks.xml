@@ -93,6 +93,49 @@
 								<control type="label">
 									<width>auto</width>
 									<height>24</height>
+									<label>$INFO[VideoPlayer.Year]   </label>
+									<font>reg22</font>
+									<shadowcolor>text_shadow</shadowcolor>
+									<visible>!String.IsEmpty(VideoPlayer.Year) + VideoPlayer.Content(movies)</visible>
+								</control>
+								<control type="label">
+									<width>auto</width>
+									<height>24</height>
+									<label>$INFO[VideoPlayer.Mpaa]   </label>
+									<font>reg20</font>
+									<shadowcolor>text_shadow</shadowcolor>
+									<visible>!String.IsEmpty(VideoPlayer.Mpaa)</visible>
+								</control>
+								<control type="label">
+									<width>auto</width>
+									<height>24</height>
+									<label>$VAR[PlayerDurationMinutes]   </label>
+									<font>reg22</font>
+									<shadowcolor>text_shadow</shadowcolor>
+									<visible>!String.IsEmpty(Player.Duration)</visible>
+								</control>
+								<control type="button">
+									<width min="24">auto</width>
+									<height>28</height>
+									<font>med16</font>
+									<label>CC</label>
+									<textoffsetx>10</textoffsetx>
+									<align>center</align>
+									<enabledcolor>lightgrey</enabledcolor>
+									<texturefocus border="10" colordiffuse="greybutton">items/shadow_smallbutton.png</texturefocus>
+									<texturenofocus border="10" colordiffuse="greybutton">items/shadow_smallbutton.png</texturenofocus>
+									<enabled>false</enabled>
+									<visible>VideoPlayer.HasSubtitles</visible>
+								</control>
+								<control type="label">
+									<width>9</width>
+									<height>24</height>
+									<label/>
+									<visible>VideoPlayer.HasSubtitles</visible>
+								</control>
+								<control type="label">
+									<width>auto</width>
+									<height>24</height>
 									<label></label>
 									<font>Material24</font>
 									<textcolor>red</textcolor>
@@ -107,38 +150,9 @@
 									<shadowcolor>text_shadow</shadowcolor>
 									<visible>!String.IsEmpty(VideoPlayer.Rating)</visible>
 								</control>
-								<control type="label">
-									<width>auto</width>
-									<height>24</height>
-									<label>$INFO[VideoPlayer.Season,S,:]$INFO[VideoPlayer.Episode,E]   </label>
-									<font>reg22</font>
-									<shadowcolor>text_shadow</shadowcolor>
-									<visible>!String.IsEmpty(VideoPlayer.Episode)</visible>
-								</control>
-								<control type="label">
-									<width>auto</width>
-									<height>24</height>
-									<label>$LOCALIZE[180]: $VAR[PlayerDuration]   </label>
-									<font>reg22</font>
-									<shadowcolor>text_shadow</shadowcolor>
-									<visible>!String.IsEmpty(Player.Duration)</visible>
-								</control>
-								<control type="label">
-									<width>auto</width>
-									<height>24</height>
-									<label>$INFO[VideoPlayer.Mpaa]   </label>
-									<font>reg20</font>
-									<shadowcolor>text_shadow</shadowcolor>
-									<visible>!String.IsEmpty(VideoPlayer.Mpaa)</visible>
-								</control>
-								<control type="label">
-									<width>auto</width>
-									<height>24</height>
-									<label>$INFO[VideoPlayer.Year]   </label>
-									<font>reg22</font>
-									<shadowcolor>text_shadow</shadowcolor>
-									<visible>!String.IsEmpty(VideoPlayer.Year) + VideoPlayer.Content(movies)</visible>
-								</control>
+								<include content="SkinHelperRatings">
+									<param name="type" value="Player"/>
+								</include>
 							</control>
 							<control type="grouplist" id="100">
 								<height>75</height>
