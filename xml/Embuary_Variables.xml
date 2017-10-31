@@ -1059,13 +1059,14 @@
 	</variable>
 	<variable name="TinyInfoDialogHeadline">
 		<value condition="Window.IsVisible(DialogFullScreenInfo.xml) + !String.IsEmpty(VideoPlayer.TvShowTitle)">$INFO[VideoPlayer.TvShowTitle]</value>
+		<value condition="Window.IsVisible(DialogFullScreenInfo.xml)">$INFO[VideoPlayer.Title]</value>
 		<value condition="!String.IsEmpty(ListItem.TvShowTitle)">$INFO[ListItem.TvShowTitle]</value>
 		<value>$INFO[ListItem.Title]</value>
 	</variable>
 	<variable name="TinyInfoDialogPlot">
-		<value condition="Window.IsVisible(DialogFullScreenInfo.xml)">$INFO[VideoPlayer.Season,S,:]$INFO[VideoPlayer.Episode,E, ]$INFO[VideoPlayer.Title,,[CR][CR]]$INFO[VideoPlayer.Duration,$LOCALIZE[180]: ,[CR][CR]]$INFO[VideoPlayer.Plot]</value>
-		<value condition="String.IsEqual(ListItem.DBType,Episode)">$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title,,[CR][CR]]$INFO[ListItem.Duration,$LOCALIZE[180]: , $LOCALIZE[12391][CR][CR]]$INFO[ListItem.Plot]</value>
-		<value condition="String.IsEqual(ListItem.DBType,song)">$INFO[ListItem.Duration,$LOCALIZE[180]: ,[CR][CR]]$INFO[ListItem.Artist]$INFO[ListItem.Album, - ,[CR][CR]]$INFO[ListItem.Property(Album_Description)]</value>
+		<value condition="Window.IsVisible(DialogFullScreenInfo.xml)">$INFO[VideoPlayer.Season,S,:]$INFO[VideoPlayer.Episode,E, [CR][CR]]$VAR[PlayerDurationMinutes,$LOCALIZE[180]: ,[CR][CR]]$INFO[VideoPlayer.Plot]</value>
+		<value condition="String.IsEqual(ListItem.DBType,Episode)">$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title,,[CR][CR]]$VAR[DurationMinutes,$LOCALIZE[180]: , $LOCALIZE[12391][CR][CR]]$INFO[ListItem.Plot]</value>
+		<value condition="String.IsEqual(ListItem.DBType,song)">$VAR[DurationMinutes,$LOCALIZE[180]: ,[CR][CR]]$INFO[ListItem.Artist]$INFO[ListItem.Album, - ,[CR][CR]]$INFO[ListItem.Property(Album_Description)]</value>
 		<value>$INFO[ListItem.Plot]</value>
 	</variable>
 	<variable name="ListViewPlot">
