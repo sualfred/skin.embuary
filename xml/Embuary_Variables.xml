@@ -224,6 +224,7 @@
 		<value condition="String.IsEqual(ListItem.DBType,episode)">$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title]</value>
 		<value condition="String.IsEqual(ListItem.DBType,season) + !String.IsEmpty(ListItem.Season)">$INFO[ListItem.Season,$LOCALIZE[20373] ]</value>
 		<value condition="String.IsEqual(ListItem.DBType,song)">$INFO[ListItem.Tracknumber,,. ]$INFO[ListItem.Title]</value>
+		<value condition="Window.IsVisible(addonbrowser) + String.EndsWith(ListItem.Label2,&#x25;)">$INFO[ListItem.Label2]</value>
 		<value>$INFO[ListItem.Label]</value>
 	</variable>
 	<variable name="SubListLabel">
@@ -239,6 +240,7 @@
 		<value condition="String.IsEqual(ListItem.DBType,artist)">$LOCALIZE[557]</value>
 		<value condition="ListItem.IsParentFolder">$LOCALIZE[31044]</value>
 		<value condition="[Window.IsVisible(videos) | Window.IsVisible(music) | Window.IsVisible(programs) | Window.IsVisible(MyPVRRecordings.xml) | Window.IsVisible(addonbrowser)] + ListItem.IsFolder + !ListItem.IsParentFolder">$LOCALIZE[19076]</value>
+		<value condition="Window.IsVisible(addonbrowser) + String.EndsWith(ListItem.Label2,&#x25;)">$INFO[ListItem.Label2]</value>
 		<value condition="Window.IsVisible(addonbrowser)">$INFO[ListItem.AddonType]</value>
 		<value condition="Container.Content(images)">$INFO[ListItem.size]</value>
 		<value condition="Control.IsVisible(53) + ListItem.IsFolder">$LOCALIZE[19076]</value>
@@ -1353,6 +1355,10 @@
 		<value condition="!String.IsEmpty(ListItem.EpisodeName)">$INFO[ListItem.EpisodeName]</value>
 		<value condition="!String.IsEmpty(VideoPlayer.EpisodeName)">$INFO[VideoPlayer.EpisodeName]</value>
 		<value>$LOCALIZE[31156]</value>
+	</variable>
+	<variable name="BackgroundAlphaLabel">
+		<value condition="!String.IsEmpty(Skin.String(BackgroundAlpha.label))">$INFO[Skin.String(BackgroundAlpha.label)]</value>
+		<value>$LOCALIZE[31157]</value>
 	</variable>
 	<!-- workaroun for skin shortcuts bug -->
 	<variable name="UserWidget1_target">

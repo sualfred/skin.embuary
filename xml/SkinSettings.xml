@@ -174,7 +174,14 @@
 							<selected>!Skin.HasSetting(HideBackgroundPlayback)</selected>
 							<label>$LOCALIZE[31088]</label>
 						</control>
-						<control type="label" id="203">
+						<control type="button" id="203">
+							<include>SettingsButton</include>
+							<onclick>RunScript(script.skin.helper.service,action=setskinsetting,setting=BackgroundAlpha,header=$LOCALIZE[13324])</onclick>
+							<label>$LOCALIZE[13324]</label>
+							<label2>$VAR[BackgroundAlphaLabel]</label2>
+							<enable>!Skin.HasSetting(HideBackground) | !Skin.HasSetting(HideBackgroundPlayback)</enable>
+						</control>
+						<control type="label" id="210">
 							<height>50</height>
 							<font>med22</font>
 							<textoffsetx>15</textoffsetx>
@@ -183,13 +190,13 @@
 							<aligny>center</aligny>
 							<label>$LOCALIZE[33070]</label>
 						</control>
-						<control type="radiobutton" id="204">
+						<control type="radiobutton" id="211">
 							<include>SettingsButton</include>
 							<onclick>Skin.ToggleSetting(ShowStaticBackgroundImage)</onclick>
 							<selected>Skin.HasSetting(ShowStaticBackgroundImage)</selected>
 							<label>$LOCALIZE[31104]</label>
 						</control>
-						<control type="button" id="205">
+						<control type="button" id="212">
 							<textcolor>emby</textcolor>
 							<texturenofocus colordiffuse="33000000">common/white.jpg</texturenofocus>
 							<include>SettingsButton</include>
@@ -199,7 +206,7 @@
 							<enable>Skin.HasSetting(ShowStaticBackgroundImage)</enable>
 							<visible>Skin.HasSetting(ShowStaticBackgroundImage)</visible>
 						</control>
-						<control type="label" id="206">
+						<control type="label" id="220">
 							<height>50</height>
 							<font>med22</font>
 							<textoffsetx>15</textoffsetx>
@@ -208,13 +215,13 @@
 							<aligny>center</aligny>
 							<label>$LOCALIZE[31109]</label>
 						</control>
-						<control type="radiobutton" id="207">
+						<control type="radiobutton" id="221">
 							<include>SettingsButton</include>
 							<onclick>Skin.ToggleSetting(HideHeaderWeather)</onclick>
 							<selected>!Skin.HasSetting(HideHeaderWeather)</selected>
 							<label>$LOCALIZE[31110]</label>
 						</control>
-						<control type="label" id="220">
+						<control type="label" id="230">
 							<height>50</height>
 							<font>med22</font>
 							<textoffsetx>15</textoffsetx>
@@ -223,19 +230,19 @@
 							<aligny>center</aligny>
 							<label>$LOCALIZE[31001]</label>
 						</control>
-						<control type="radiobutton" id="221">
+						<control type="radiobutton" id="231">
 							<include>SettingsButton</include>
 							<onclick>Skin.ToggleSetting(KioskMode)</onclick>
 							<selected>Skin.HasSetting(KioskMode)</selected>
 							<label>$LOCALIZE[31112]</label>
 						</control>
-						<control type="radiobutton" id="224">
+						<control type="radiobutton" id="232">
 							<include>SettingsButton</include>
 							<onclick>Skin.ToggleSetting(HideEmbyConHubButtons)</onclick>
 							<selected>!Skin.HasSetting(HideEmbyConHubButtons)</selected>
 							<label>$LOCALIZE[31127]</label>
 						</control>
-						<control type="radiobutton" id="225">
+						<control type="radiobutton" id="233">
 							<include>SettingsButton</include>
 							<onclick>Skin.ToggleSetting(HideLibaryEditButtons)</onclick>
 							<selected>!Skin.HasSetting(HideLibaryEditButtons)</selected>

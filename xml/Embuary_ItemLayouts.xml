@@ -89,7 +89,7 @@
 			</control>
 			<control type="label">
 				<top>9</top>
-				<left>2</left>
+				<left>1</left>
 				<width>44</width>
 				<height>44</height>
 				<label></label>
@@ -98,6 +98,51 @@
 				<selectedcolor>white</selectedcolor>
 				<align>center</align>
 				<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png) | Integer.IsGreaterOrEqual(ListItem.PlayCount,1) | [String.IsEqual(ListItem.DBtype,tvshow) + !String.IsEmpty(ListItem.Property(UnWatchedEpisodes)) + Integer.IsLess(ListItem.Property(UnWatchedEpisodes),1)]</visible>
+			</control>
+		</control>
+		<control type="group">
+			<visible>Window.IsVisible(addonbrowser) + [String.IsEqual(ListItem.Label2,$LOCALIZE[24023]) | String.IsEqual(ListItem.Label2,$LOCALIZE[305])]</visible>
+			<right>8</right>
+			<top>9</top>
+			<width>44</width>
+			<height>44</height>
+			<control type="image">
+				<width>44</width>
+				<height>44</height>
+				<texture colordiffuse="red">items/bubble_small.png</texture>
+				<aspectratio>keep</aspectratio>
+				<visible>String.IsEqual(ListItem.Label2,$LOCALIZE[24023])</visible>
+			</control>
+			<control type="image">
+				<width>44</width>
+				<height>44</height>
+				<texture colordiffuse="emby_secondary">items/bubble_small.png</texture>
+				<aspectratio>keep</aspectratio>
+				<visible>String.IsEqual(ListItem.Label2,$LOCALIZE[305])</visible>
+			</control>
+			<control type="label">
+				<top>9</top>
+				<left>1</left>
+				<width>44</width>
+				<height>44</height>
+				<label></label>
+				<font>FontAwesome20Light</font>
+				<shadowcolor>text_shadow</shadowcolor>
+				<selectedcolor>white</selectedcolor>
+				<align>center</align>
+				<visible>String.IsEqual(ListItem.Label2,$LOCALIZE[24023])</visible>
+			</control>
+			<control type="label">
+				<top>9</top>
+				<left>1</left>
+				<width>44</width>
+				<height>44</height>
+				<label></label>
+				<font>FontAwesome20Light</font>
+				<shadowcolor>text_shadow</shadowcolor>
+				<selectedcolor>white</selectedcolor>
+				<align>center</align>
+				<visible>String.IsEqual(ListItem.Label2,$LOCALIZE[305])</visible>
 			</control>
 		</control>
 	</include>

@@ -23,12 +23,12 @@
 		<param name="content">special://skin/playlists/video/RandomMovies.xsp</param>
 		<definition>
 			<control type="group">
-				<visible>!Skin.HasSetting(HideBackground)</visible>
 				<control type="list" id="90000">
 					<include>HiddenObject</include>
 					<itemlayout/>
 					<focusedlayout/>
 					<content limit="1">$PARAM[content]</content>
+					<visible>!Skin.HasSetting(HideBackground)</visible>
 				</control>
 				<control type="videowindow">
 					<include>FullscreenDimensions</include>
@@ -38,11 +38,14 @@
 					<include>FullscreenDimensions</include>
 					<texture>$VAR[BackgroundSource]</texture>
 					<fadetime>400</fadetime>
-					<visible>!Player.HasVideo | Skin.HasSetting(HideBackgroundPlayback)</visible>
+					<visible>[!Player.HasVideo | Skin.HasSetting(HideBackgroundPlayback)] + !Skin.HasSetting(HideBackground)</visible>
 				</control>
 				<control type="image">
 					<include>FullscreenDimensions</include>
 					<texture>common/wp_overlay2.png</texture>
+					<animation effect="fade" start="100" end="96" condition="String.IsEqual(Skin.String(BackgroundAlpha),1)" time="0">Conditional</animation>
+					<animation effect="fade" start="100" end="92" condition="String.IsEqual(Skin.String(BackgroundAlpha),2)" time="0">Conditional</animation>
+					<animation effect="fade" start="100" end="88" condition="String.IsEqual(Skin.String(BackgroundAlpha),3)" time="0">Conditional</animation>
 				</control>
 			</control>
 		</definition>
