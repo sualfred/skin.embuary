@@ -959,6 +959,7 @@
 					<param name="headline">$VAR[PVRLabel]</param>
 				</include>
 				<control type="grouplist" id="$PARAM[id]01">
+					<enable>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</enable>
 					<top>90</top>
 					<left>69</left>
 					<height>50</height>
@@ -977,35 +978,30 @@
 						<onup>$PARAM[onup]</onup>
 						<ondown>$PARAM[id]</ondown>
 						<onclick>ActivateWindow(tvchannels)</onclick>
-						<enable>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</enable>
 					</control>
 					<control type="button" id="$PARAM[id]03">
 						<label>$LOCALIZE[19069]</label>
 						<onup>$PARAM[onup]</onup>
 						<ondown>$PARAM[id]</ondown>
 						<onclick>ActivateWindow(tvguide)</onclick>
-						<enable>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</enable>
 					</control>
 					<control type="button" id="$PARAM[id]04">
 						<label>$LOCALIZE[19017]</label>
 						<onup>$PARAM[onup]</onup>
 						<ondown>$PARAM[id]</ondown>
 						<onclick>ActivateWindow(tvrecordings)</onclick>
-						<enable>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</enable>
 					</control>
 					<control type="button" id="$PARAM[id]05">
 						<label>$LOCALIZE[19040]</label>
 						<onup>$PARAM[onup]</onup>
 						<ondown>$PARAM[id]</ondown>
 						<onclick>ActivateWindow(tvtimers)</onclick>
-						<enable>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</enable>
 					</control>
 					<control type="button" id="$PARAM[id]06">
 						<label>$LOCALIZE[19024]</label>
 						<onup>$PARAM[onup]</onup>
 						<ondown>$PARAM[id]</ondown>
 						<onclick>ActivateWindow(radiochannels)</onclick>
-						<enable>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</enable>
 					</control>
 				</control>
 				<include content="widget_headline">
