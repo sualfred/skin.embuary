@@ -12,13 +12,16 @@
 			<include>Dialog_PopupOpenClose</include>
 			<centerleft>50%</centerleft>
 			<centertop>50%</centertop>
-			<width>800</width>
+			<width>1100</width>
 			<height max="940">auto</height>
 			<orientation>vertical</orientation>
 			<itemgap>20</itemgap>
 			<align>center</align>
-			<!-- edit -->
+			<!-- headline -->
 			<control type="group">
+				<visible>Control.IsVisible(450)</visible>
+				<animation effect="slide" start="0,0" end="150,0" condition="true">Conditional</animation>
+				<width>800</width>
 				<height>50</height>
 				<control type="label">
 					<width>100%</width>
@@ -45,8 +48,40 @@
 					<include>WindowOpen_GreenBar</include>
 				</control>
 			</control>
+			<control type="group">
+				<visible>Control.IsVisible(451)</visible>
+				<width>1100</width>
+				<height>50</height>
+				<control type="label">
+					<width>100%</width>
+					<height>48</height>
+					<font>Reg24</font>
+					<aligny>center</aligny>
+					<textoffsetx>5</textoffsetx>
+					<textcolor>text_white</textcolor>
+					<label>$LOCALIZE[13511]</label>
+				</control>
+				<control type="image">
+					<width>100%</width>
+					<top>45</top>
+					<height>2</height>
+					<texture colordiffuse="lightgrey">common/white.jpg</texture>
+					<aspectratio>stretch</aspectratio>
+				</control>
+				<control type="image">
+					<width>100%</width>
+					<top>45</top>
+					<height>2</height>
+					<texture colordiffuse="emby">common/white.jpg</texture>
+					<aspectratio>stretch</aspectratio>
+					<include>WindowOpen_GreenBar</include>
+				</control>
+			</control>
 			<!-- list -->
 			<control type="group">
+				<animation effect="slide" start="0,0" end="150,0" condition="true">Conditional</animation>
+				<width>800</width>
+				<visible>Control.IsVisible(450)</visible>
 				<height>470</height>
 				<control type="image">
 					<height>470</height>
@@ -54,7 +89,6 @@
 					<aspectratio>stretch</aspectratio>
 				</control>
 				<control type="list" id="450">
-					<centerleft>50%</centerleft>
 					<top>10</top>
 					<height>450</height>
 					<onup>12</onup>
@@ -109,15 +143,53 @@
 						</control>
 					</focusedlayout>
 				</control>
+				<control type="scrollbar" id="60">
+					<right>0</right>
+					<top>0</top>
+					<bottom>0</bottom>
+					<width>4</width>
+					<orientation>vertical</orientation>
+					<showonepage>false</showonepage>
+					<texturesliderbackground colordiffuse="00ffffff">common/ProgressBack.png</texturesliderbackground>
+					<texturesliderbar colordiffuse="softgrey">common/ProgressBar.png</texturesliderbar>
+				</control>
+			</control>
+			<!-- list thumbs -->
+			<control type="group">
+				<visible>Control.IsVisible(451)</visible>
+				<height>470</height>
+				<control type="image">
+					<height>470</height>
+					<left>0</left>
+					<right>350</right>
+					<texture colordiffuse="thumb_background">common/white.jpg</texture>
+					<aspectratio>stretch</aspectratio>
+				</control>
+				<control type="image">
+					<height>470</height>
+					<right>0</right>
+					<left>760</left>
+					<texture colordiffuse="thumb_background">common/white.jpg</texture>
+					<aspectratio>stretch</aspectratio>
+				</control>
+				<control type="image">
+					<top>10</top>
+					<bottom>10</bottom>
+					<right>10</right>
+					<left>770</left>
+					<texture background="true">$INFO[Container(451).ListItem.Icon]</texture>
+					<aspectratio>keep</aspectratio>
+				</control>
 				<control type="list" id="451">
-					<centerleft>50%</centerleft>
+					<left>0</left>
+					<right>350</right>
 					<top>10</top>
 					<height>450</height>
 					<onup>12</onup>
-					<onleft>noop</onleft>
-					<onright>noop</onright>
+					<onleft>100</onleft>
+					<onright>100</onright>
 					<ondown>100</ondown>
-					<pagecontrol>60</pagecontrol>
+					<pagecontrol>70</pagecontrol>
 					<itemlayout height="50" width="800">
 						<control type="image">
 							<height>50</height>
@@ -165,13 +237,14 @@
 						</control>
 					</focusedlayout>
 				</control>
-				<control type="scrollbar" id="60">
-					<right>0</right>
+				<control type="scrollbar" id="70">
+					<right>350</right>
 					<top>0</top>
 					<bottom>0</bottom>
 					<width>4</width>
 					<orientation>vertical</orientation>
 					<showonepage>false</showonepage>
+					<texturesliderbackground colordiffuse="00ffffff">common/ProgressBack.png</texturesliderbackground>
 					<texturesliderbar colordiffuse="softgrey">common/ProgressBar.png</texturesliderbar>
 				</control>
 			</control>
