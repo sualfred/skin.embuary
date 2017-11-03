@@ -19,7 +19,7 @@
 				<include>Window_OpenClose</include>
 				<visible>Control.IsVisible(10)</visible>
 				<control type="epggrid" id="10">
-					<height>699</height>
+					<height>704</height>
 					<top>100</top>
 					<left>10</left>
 					<pagecontrol>60</pagecontrol>
@@ -32,8 +32,7 @@
 					<onup>10</onup>
 					<ondown>10</ondown>
 					<viewtype label="19032">list</viewtype>
-					<progresstexture border="0,60,18,14">views/epg_progress.png</progresstexture>
-					<rulerlayout height="35" width="100">
+					<rulerlayout height="40" width="100">
 						<control type="label">
 							<width>365</width>
 							<height>30</height>
@@ -41,9 +40,10 @@
 							<label>$INFO[ListItem.Label]</label>
 							<aligny>center</aligny>
 							<textoffsetx>10</textoffsetx>
-							<textcolor>softgrey</textcolor>
+							<textcolor>lightgrey</textcolor>
 						</control>
 					</rulerlayout>
+					<progresstexture border="0,70,18,14">views/epg_progress.png</progresstexture>
 					<channellayout height="83" width="400">
 						<control type="image">
 							<width>400</width>
@@ -117,6 +117,13 @@
 							<width>65</width>
 							<height>83</height>
 							<texture border="10" colordiffuse="grid_label">views/epg_mask_grid.png</texture>
+							<visible>Integer.IsLess(ListItem.Progress,1)</visible>
+						</control>
+						<control type="image" id="2">
+							<width>65</width>
+							<height>83</height>
+							<texture border="10" colordiffuse="grid_label_inprogress">views/epg_mask_grid.png</texture>
+							<visible>!Integer.IsLess(ListItem.Progress,1)</visible>
 						</control>
 						<control type="label" id="1">
 							<textoffsetx>15</textoffsetx>
@@ -174,14 +181,20 @@
 						<control type="image" id="2">
 							<width>65</width>
 							<height>83</height>
-							<texture border="10" colordiffuse="grid_hover">views/epg_mask_grid.png</texture>
-							<visible>Control.HasFocus(10)</visible>
+							<texture border="10" colordiffuse="grid_label">views/epg_mask_grid.png</texture>
+							<visible>Integer.IsLess(ListItem.Progress,1) + !Control.HasFocus(10)</visible>
 						</control>
 						<control type="image" id="2">
 							<width>65</width>
 							<height>83</height>
-							<texture border="10" colordiffuse="grid_label">views/epg_mask_grid.png</texture>
-							<visible>!Control.HasFocus(10)</visible>
+							<texture border="10" colordiffuse="grid_label_inprogress">views/epg_mask_grid.png</texture>
+							<visible>!Integer.IsLess(ListItem.Progress,1) + !Control.HasFocus(10)</visible>
+						</control>
+						<control type="image" id="2">
+							<width>65</width>
+							<height>83</height>
+							<texture border="10" colordiffuse="emby">views/epg_mask_grid.png</texture>
+							<visible>Control.HasFocus(10)</visible>
 						</control>
 						<control type="label" id="1">
 							<textoffsetx>15</textoffsetx>
@@ -212,7 +225,7 @@
 							<height>36</height>
 							<aligny>center</aligny>
 							<font>reg22</font>
-							<textcolor>softgrey</textcolor>
+							<textcolor>white</textcolor>
 							<shadowcolor>text_shadow</shadowcolor>
 							<label>$INFO[ListItem.Episodename]</label>
 						</control>
