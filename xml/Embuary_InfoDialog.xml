@@ -122,18 +122,18 @@
 							<control type="label">
 								<width>auto</width>
 								<height>24</height>
-								<label>$INFO[ListItem.Mpaa]   </label>
-								<font>reg22</font>
-								<shadowcolor>text_shadow</shadowcolor>
-								<visible>!String.IsEmpty(ListItem.Mpaa)</visible>
-							</control>
-							<control type="label">
-								<width>auto</width>
-								<height>24</height>
 								<label>$VAR[DurationMinutes]   </label>
 								<font>reg22</font>
 								<shadowcolor>text_shadow</shadowcolor>
 								<visible>!String.IsEmpty(ListItem.Duration)</visible>
+							</control>
+							<control type="label">
+								<width>auto</width>
+								<height>24</height>
+								<label>$INFO[ListItem.Mpaa]   </label>
+								<font>reg22</font>
+								<shadowcolor>text_shadow</shadowcolor>
+								<visible>!String.IsEmpty(ListItem.Mpaa)</visible>
 							</control>
 							<control type="button">
 								<width min="24">auto</width>
@@ -207,7 +207,7 @@
 								<width>70</width>
 								<height>50</height>
 								<font>material24</font>
-								<label></label>
+								<label></label>
 								<onup>SetFocus(6666)</onup>
 								<ondown>SetFocus(50)</ondown>
 								<onclick>SetFocus(4000)</onclick>
@@ -217,7 +217,7 @@
 						<control type="label">
 							<width>auto</width>
 							<height>40</height>
-							<label>$INFO[ListItem.Genre]</label>
+							<label>$INFO[ListItem.Genre,$LOCALIZE[515]: ,   ]$INFO[ListItem.Director,$LOCALIZE[20339]: ]</label>
 							<font>reg22</font>
 							<textcolor>emby</textcolor>
 							<shadowcolor>text_shadow</shadowcolor>
@@ -415,6 +415,14 @@
 							<control type="label">
 								<width>auto</width>
 								<height>24</height>
+								<label>$INFO[ListItem.Premiered]   </label>
+								<font>reg22</font>
+								<shadowcolor>text_shadow</shadowcolor>
+								<visible>!String.IsEmpty(ListItem.Premiered)</visible>
+							</control>
+							<control type="label">
+								<width>auto</width>
+								<height>24</height>
 								<label>$INFO[ListItem.Property(TotalSeasons),$LOCALIZE[33054]: ]   </label>
 								<font>reg22</font>
 								<shadowcolor>text_shadow</shadowcolor>
@@ -427,14 +435,6 @@
 								<font>reg22</font>
 								<shadowcolor>text_shadow</shadowcolor>
 								<visible>!String.IsEmpty(ListItem.Property(TotalEpisodes))</visible>
-							</control>
-							<control type="label">
-								<width>auto</width>
-								<height>24</height>
-								<label>$INFO[ListItem.Premiered,$LOCALIZE[20416]: ]   </label>
-								<font>reg22</font>
-								<shadowcolor>text_shadow</shadowcolor>
-								<visible>!String.IsEmpty(ListItem.Premiered)</visible>
 							</control>
 							<control type="label">
 								<width>auto</width>
@@ -491,7 +491,7 @@
 								<width>70</width>
 								<height>50</height>
 								<font>material24</font>
-								<label></label>
+								<label></label>
 								<onup>SetFocus(6666)</onup>
 								<ondown>SetFocus(50)</ondown>
 								<onclick>SetFocus(4000)</onclick>
@@ -501,7 +501,7 @@
 						<control type="label">
 							<width>auto</width>
 							<height>40</height>
-							<label>$INFO[ListItem.Genre]</label>
+							<label>$INFO[ListItem.Genre,$LOCALIZE[515]: ,   ]$INFO[ListItem.Director,$LOCALIZE[20339]: ]</label>
 							<font>reg22</font>
 							<textcolor>emby</textcolor>
 							<shadowcolor>text_shadow</shadowcolor>
@@ -677,18 +677,10 @@
 							<control type="label">
 								<width>auto</width>
 								<height>24</height>
-								<label>$INFO[ListItem.Premiered,$LOCALIZE[20416]: ]   </label>
+								<label>$INFO[ListItem.Premiered]   </label>
 								<font>reg22</font>
 								<shadowcolor>text_shadow</shadowcolor>
 								<visible>!String.IsEmpty(ListItem.Premiered)</visible>
-							</control>
-							<control type="label">
-								<width>auto</width>
-								<height>24</height>
-								<label>$INFO[ListItem.Mpaa]   </label>
-								<font>reg22</font>
-								<shadowcolor>text_shadow</shadowcolor>
-								<visible>!String.IsEmpty(ListItem.Mpaa)</visible>
 							</control>
 							<control type="label">
 								<width>auto</width>
@@ -697,6 +689,14 @@
 								<font>reg22</font>
 								<shadowcolor>text_shadow</shadowcolor>
 								<visible>!String.IsEmpty(ListItem.Duration)</visible>
+							</control>
+							<control type="label">
+								<width>auto</width>
+								<height>24</height>
+								<label>$INFO[ListItem.Mpaa]   </label>
+								<font>reg22</font>
+								<shadowcolor>text_shadow</shadowcolor>
+								<visible>!String.IsEmpty(ListItem.Mpaa)</visible>
 							</control>
 							<control type="label">
 								<width>auto</width>
@@ -763,7 +763,7 @@
 								<width>70</width>
 								<height>50</height>
 								<font>material24</font>
-								<label></label>
+								<label></label>
 								<onup>SetFocus(6666)</onup>
 								<ondown>SetFocus(50)</ondown>
 								<onclick>SetFocus(4000)</onclick>
@@ -1138,7 +1138,7 @@
 								<width>70</width>
 								<height>50</height>
 								<font>material24</font>
-								<label></label>
+								<label></label>
 								<onup>SetFocus(6666)</onup>
 								<ondown>SetFocus(50)</ondown>
 								<onclick>SetFocus(4000)</onclick>
@@ -1148,7 +1148,7 @@
 						<control type="label">
 							<width>100%</width>
 							<height>40</height>
-							<label>$INFO[ListItem.Genre]</label>
+							<label>$INFO[ListItem.Genre,$LOCALIZE[515]: ]</label>
 							<font>reg22</font>
 							<textcolor>emby</textcolor>
 							<shadowcolor>text_shadow</shadowcolor>
@@ -1342,7 +1342,7 @@
 								<width>70</width>
 								<height>50</height>
 								<font>material24</font>
-								<label></label>
+								<label></label>
 								<onup>SetFocus(6666)</onup>
 								<ondown>SetFocus(50)</ondown>
 								<onclick>SetFocus(4000)</onclick>
@@ -1352,7 +1352,7 @@
 						<control type="label">
 							<width>100%</width>
 							<height>40</height>
-							<label>$INFO[ListItem.Genre]</label>
+							<label>$INFO[ListItem.Genre,$LOCALIZE[515]: ]</label>
 							<font>reg22</font>
 							<textcolor>emby</textcolor>
 							<shadowcolor>text_shadow</shadowcolor>
