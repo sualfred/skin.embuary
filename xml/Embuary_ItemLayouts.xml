@@ -849,6 +849,68 @@
 			</control>
 		</definition>
 	</include>
+	<!-- Landscape Settings-->
+	<include name="LandscapeLayoutSettings">
+		<param name="mainlabel">$VAR[MainListLabel]</param>
+		<param name="sublabel">$VAR[SubListLabel]</param>
+		<param name="thumblabel">$VAR[MainListLabel]</param>
+		<param name="focused">false</param>
+		<param name="visible">true</param>
+		<definition>
+			<control type="group">
+				<visible>$PARAM[visible]</visible>
+				<control type="image">
+					<top>-2</top>
+					<left>-2</left>
+					<width>430</width>
+					<height>245</height>
+					<texture>items/shadow_wide.png</texture>
+				</control>
+				<control type="image">
+					<width>424</width>
+					<height>239</height>
+					<texture colordiffuse="green" diffuse="items/mask_wide.png">common/white.jpg</texture>
+					<aspectratio scalediffuse="false">stretch</aspectratio>
+				</control>
+				<control type="textbox">
+					<top>10</top>
+					<left>10</left>
+					<width>404</width>
+					<height>219</height>
+					<font>Material70</font>
+					<align>center</align>
+					<aligny>center</aligny>
+					<label>$PARAM[thumblabel]</label>
+					<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+				</control>
+				<control type="image">
+					<left>-12</left>
+					<top>-7</top>
+					<width>448</width>
+					<height>262</height>
+					<texture colordiffuse="focus_widget">items/focus_wide.png</texture>
+					<aspectratio>scale</aspectratio>
+					<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
+					<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
+				</control>
+				<control type="image">
+					<include>Widget_Diffuse</include>
+					<width>424</width>
+					<height>239</height>
+					<texture diffuse="items/mask_wide.png" colordiffuse="diffuse_widget">common/white.jpg</texture>
+				</control>
+				<include content="widget_labels">
+					<param name="top">251</param>
+					<param name="width">424</param>
+					<param name="id">$PARAM[id]</param>
+					<param name="mainlabel">$PARAM[mainlabel]</param>
+					<param name="sublabel">$PARAM[sublabel]</param>
+					<param name="focused">$PARAM[focused]</param>
+					<param name="visible_labels">$PARAM[visible_labels]</param>
+				</include>
+			</control>
+		</definition>
+	</include>
 
 	<!-- Square -->
 	<include name="SquareLayout">

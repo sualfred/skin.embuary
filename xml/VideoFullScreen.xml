@@ -341,24 +341,25 @@
 						<shadowcolor>text_shadow</shadowcolor>
 						<visible>!String.IsEmpty(VideoPlayer.Year)</visible>
 					</control>
-					<control type="label" id="99">
-						<width>auto</width>
-						<height>30</height>
-						<aligny>center</aligny>
-						<label>$INFO[VideoPlayer.Mpaa]   </label>
-						<font>reg24</font>
-						<shadowcolor>text_shadow</shadowcolor>
+					<control type="button" id="99">
+						<animation effect="slide" end="0,3" time="0" condition="true">Conditional</animation>
+						<width min="24">auto</width>
+						<height>28</height>
+						<font>med16</font>
+						<label>$INFO[VideoPlayer.Mpaa]</label>
+						<textoffsetx>10</textoffsetx>
+						<align>center</align>
+						<textcolor>white</textcolor>
+						<texturefocus border="10" colordiffuse="text_white">icons/rating/mpaa.png</texturefocus>
+						<texturenofocus border="10" colordiffuse="text_white">icons/rating/mpaa.png</texturenofocus>
+						<enabled>false</enabled>
 						<visible>!String.IsEmpty(VideoPlayer.Mpaa)</visible>
 					</control>
 					<control type="label" id="99">
-						<width>auto</width>
-						<height>30</height>
-						<aligny>center</aligny>
-						<label>$VAR[PlayerResolution]   </label>
-						<font>reg24</font>
-						<shadowcolor>text_shadow</shadowcolor>
-						<visible>!VideoPlayer.Content(livetv)</visible>
-						<visible>!String.IsEmpty(VideoPlayer.VideoResolution)</visible>
+						<width>19</width>
+						<height>24</height>
+						<label/>
+						<visible>!String.IsEmpty(VideoPlayer.Mpaa)</visible>
 					</control>
 					<control type="label" id="99">
 						<animation effect="slide" end="-2,2" time="0" condition="true">Conditional</animation>

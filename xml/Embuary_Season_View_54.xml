@@ -147,20 +147,42 @@
 								<shadowcolor>text_shadow</shadowcolor>
 								<visible>!String.IsEmpty(Window(home).Property(TVShowTotalEpisodes))</visible>
 							</control>
-							<control type="label">
-								<width>auto</width>
-								<height>24</height>
-								<label>$INFO[ListItem.Mpaa]   </label>
-								<font>reg22</font>
-								<shadowcolor>text_shadow</shadowcolor>
+							<control type="button">
+								<width min="24">auto</width>
+								<height>28</height>
+								<font>med16</font>
+								<label>$INFO[ListItem.Mpaa]</label>
+								<textoffsetx>10</textoffsetx>
+								<align>center</align>
+								<textcolor>white</textcolor>
+								<texturefocus border="10" colordiffuse="text_white">icons/rating/mpaa.png</texturefocus>
+								<texturenofocus border="10" colordiffuse="text_white">icons/rating/mpaa.png</texturenofocus>
+								<enabled>false</enabled>
 								<visible>!String.IsEmpty(ListItem.Mpaa)</visible>
 							</control>
 							<control type="label">
-								<width>auto</width>
+								<width>12</width>
 								<height>24</height>
-								<label>$INFO[Window(home).Property(EmbyMPAA)]   </label>
-								<font>reg22</font>
-								<shadowcolor>text_shadow</shadowcolor>
+								<label/>
+								<visible>!String.IsEmpty(ListItem.Mpaa)</visible>
+							</control>
+							<control type="button">
+								<width min="24">auto</width>
+								<height>28</height>
+								<font>med16</font>
+								<label>$INFO[Window(home).Property(EmbyMPAA)]</label>
+								<textoffsetx>10</textoffsetx>
+								<align>center</align>
+								<textcolor>white</textcolor>
+								<texturefocus border="10" colordiffuse="text_white">icons/rating/mpaa.png</texturefocus>
+								<texturenofocus border="10" colordiffuse="text_white">icons/rating/mpaa.png</texturenofocus>
+								<enabled>false</enabled>
+								<visible>String.IsEmpty(ListItem.Mpaa) + !String.IsEmpty(Window(home).Property(EmbyMPAA)) + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)</visible>
+							</control>
+							<control type="label">
+								<width>12</width>
+								<height>24</height>
+								<label/>
 								<visible>String.IsEmpty(ListItem.Mpaa) + !String.IsEmpty(Window(home).Property(EmbyMPAA)) + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)</visible>
 							</control>
 							<control type="label">
