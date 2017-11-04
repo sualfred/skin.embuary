@@ -267,17 +267,36 @@
 						<font>med24</font>
 						<textcolor>white</textcolor>
 						<shadowcolor>text_shadow</shadowcolor>
-						<label>$INFO[ListItem.Channelnumber,,. ]$INFO[ListItem.Channelname]</label>
+						<label fallback="19055">$INFO[ListItem.EpgEventTitle]$INFO[ListItem.Episodename,  -  ]</label>
 					</control>
-					<control type="label">
+					<control type="grouplist">
 						<top>33</top>
+						<height>30</height>
 						<left>415</left>
 						<right>70</right>
-						<height>30</height>
-						<font>reg22</font>
-						<textcolor>white</textcolor>
-						<shadowcolor>text_shadow</shadowcolor>
-						<label>$INFO[ListItem.StartTime,, - ]$INFO[ListItem.EndTime]$INFO[ListItem.EpgEventTitle,  [COLOR white],[/COLOR]]$INFO[ListItem.EpisodeName, [COLOR softgrey](,)[/COLOR]]$INFO[ListItem.Genre,   $LOCALIZE[515]: [COLOR softgrey],[/COLOR]]</label>
+						<itemgap>5</itemgap>
+						<orientation>horizontal</orientation>
+						<control type="label">
+							<width>auto</width>
+							<height>24</height>
+							<label>$INFO[ListItem.Date]$INFO[ListItem.Endtime, - ]   </label>
+							<font>reg22</font>
+							<shadowcolor>text_shadow</shadowcolor>
+						</control>
+						<control type="label">
+							<width>auto</width>
+							<height>24</height>
+							<label>$INFO[ListItem.Channelnumber,$LOCALIZE[19029] ]   </label>
+							<font>reg22</font>
+							<shadowcolor>text_shadow</shadowcolor>
+						</control>
+						<control type="label">
+							<width>auto</width>
+							<height>24</height>
+							<label>$INFO[ListItem.Channelname]   </label>
+							<font>reg22</font>
+							<shadowcolor>text_shadow</shadowcolor>
+						</control>
 					</control>
 					<control type="textbox">
 						<left>415</left>
