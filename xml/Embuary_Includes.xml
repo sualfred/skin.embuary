@@ -143,9 +143,11 @@
 		<param name="label_left">100</param>
 		<param name="focused">false</param>
 		<param name="condition1">true</param>
-		<param name="condition2">false</param>
+		<param name="condition2">true</param>
+		<param name="condition3">true</param>
 		<param name="action1">noop</param>
 		<param name="action2">noop</param>
+		<param name="action3">noop</param>
 		<param name="onright">10</param>
 		<param name="visible">true</param>
 		<param name="closepanel">true</param>
@@ -193,6 +195,7 @@
 					<onclick>Dialog.Close(all,force)</onclick>
 					<onclick condition="$PARAM[condition1]">$PARAM[action1]</onclick>
 					<onclick condition="$PARAM[condition2]">$PARAM[action2]</onclick>
+					<onclick condition="$PARAM[condition3]">$PARAM[action3]</onclick>
 				</control>
 			</control>
 		</definition>
@@ -430,9 +433,9 @@
 						<param name="onright">$PARAM[onright]</param>
 						<param name="label">$LOCALIZE[31129]</param>
 						<param name="icon"></param>
-						<param name="action1">UpdateAddonRepos</param>
-						<param name="condition2">true</param>
-						<param name="action2">UpdateLocalAddons</param>
+						<param name="action1">Notification($LOCALIZE[24001],$LOCALIZE[31162])</param>
+						<param name="action2">UpdateAddonRepos</param>
+						<param name="action3">UpdateLocalAddons</param>
 						<param name="visible">!Skin.HasSetting(KioskMode) + !Skin.HasSetting(HideSPAddonUpdate)</param>
 					</include>
 					<include content="SideMenuButton">
