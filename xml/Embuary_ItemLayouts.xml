@@ -14,6 +14,7 @@
 				<align>left</align>
 				<aligny>center</aligny>
 				<textcolor>white</textcolor>
+				<shadowcolor>text_shadow</shadowcolor>
 				<label>$PARAM[headline]</label>
 			</control>
 		</definition>
@@ -37,6 +38,17 @@
 					<scroll>$PARAM[focused] + Control.HasFocus($PARAM[id])</scroll>
 					<align>center</align>
 					<textoffsetx>$PARAM[textoffsetx]</textoffsetx>
+					<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
+				</control>
+				<control type="label">
+					<width>$PARAM[width]</width>
+					<label fallback="$PARAM[fallbacklabel]">$PARAM[mainlabel]</label>
+					<font>Reg23</font>
+					<shadowcolor>text_shadow</shadowcolor>
+					<scroll>false</scroll>
+					<align>center</align>
+					<textoffsetx>$PARAM[textoffsetx]</textoffsetx>
+					<visible>!$PARAM[focused] | !Control.HasFocus($PARAM[id])</visible>
 				</control>
 				<control type="label">
 					<top>30</top>
