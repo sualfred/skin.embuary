@@ -10,10 +10,26 @@
 		<!-- Dialog -->
 		<control type="group">
 			<visible>!VideoPlayer.IsFullscreen + !Window.IsVisible(visualisation)</visible>
-			<include>Dialog_OpenClose</include>
-			<width>350</width>
-			<height>92</height>
-			<right>0</right>
+			<bottom>58</bottom>
+			<animation type="WindowOpen" reversible="false">
+				<effect type="slide" start="0,200" end="0,0" delay="100" tween="circle" easin="out" time="400" />
+				<effect type="fade" delay="160" end="100" time="400" />
+			</animation>
+			<animation type="WindowClose" reversible="false">
+				<effect type="slide" start="0,0" end="0,200" easing="in" tween="circle" easin="out" time="400" />
+				<effect type="fade" start="100" end="0" time="400" />
+			</animation>
+			<animation type="Conditional" reversible="false" condition="!Player.Muted">
+				<effect type="slide" start="0,200" end="0,0" delay="100" tween="circle" easin="out" time="400" />
+				<effect type="fade" delay="160" end="100" time="400" />
+			</animation>
+			<animation type="Conditional" reversible="false" condition="Player.Muted">
+				<effect type="slide" start="0,0" end="0,200" easing="in" tween="circle" easin="out" time="400" />
+				<effect type="fade" start="100" end="0" time="400"/>
+			</animation>
+			<width>300</width>
+			<height>122</height>
+			<right>58</right>
 			<!-- Background image -->
 			<control type="image">
 				<texture colordiffuse="panel" border="10">common/dialog_back.png</texture>
@@ -44,40 +60,32 @@
 					<textcolor>text_white</textcolor>
 					<label>$VAR[VolumeIcon]</label>
 				</control>
-			</control>			
-			<!-- Heading -->
-			<control type="label">
-				<top>15</top>
-				<left>100</left>
-				<right>20</right>
-				<font>Med24</font>
-				<textcolor>white</textcolor>
-				<shadowcolor>text_shadow</shadowcolor>
-				<label>$LOCALIZE[13376]</label>
 			</control>
 			<!-- Details -->
-			<control type="label">
-				<top>50</top>
+			<control type="textbox">
+				<top>20</top>
 				<left>100</left>
 				<right>20</right>
-				<right>10</right>
+				<bottom>20</bottom>
 				<font>Reg22</font>
 				<scroll>true</scroll>
 				<textcolor>panel_text</textcolor>
 				<shadowcolor>text_shadow</shadowcolor>
-				<label>$VAR[VolumeDetails]</label>			
+				<aligny>center</aligny>
+				<label>[B][COLOR white]$LOCALIZE[13376][/COLOR][/B][CR]$VAR[VolumeDetails]</label>
 				<visible>!player.passthrough</visible>
 			</control>
-			<control type="label">
-				<top>50</top>
+			<control type="textbox">
+				<top>20</top>
 				<left>100</left>
 				<right>20</right>
-				<right>10</right>
+				<bottom>20</bottom>
 				<font>Reg22</font>
 				<scroll>true</scroll>
 				<textcolor>panel_text</textcolor>
 				<shadowcolor>text_shadow</shadowcolor>
-				<label>$LOCALIZE[29802]</label>
+				<aligny>center</aligny>
+				<label>[B][COLOR white]$LOCALIZE[13376][/COLOR][/B][CR]$LOCALIZE[29802]</label>
 				<visible>player.passthrough</visible>
 			</control>
 		</control>

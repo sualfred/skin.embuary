@@ -4,15 +4,28 @@
 	<controls>
 		<!-- Hidden Control-->
 		<control type="image" id="400">
-			<top>-100</top>
+			<include>HiddenObject</include>
+		</control>
+		<control type="label" id="401">
+			<include>HiddenObject</include>
+		</control>
+		<control type="label" id="402">
 			<include>HiddenObject</include>
 		</control>
 		<!-- Dialog -->
 		<control type="group">
-			<include>Dialog_OpenClose</include>
-			<width>500</width>
-			<height>92</height>
-			<right>0</right>
+			<bottom>58</bottom>
+			<animation type="WindowOpen" reversible="false">
+				<effect type="slide" start="0,200" end="0,0" delay="100" tween="circle" easin="out" time="400" />
+				<effect type="fade" delay="160" end="100" time="400" />
+			</animation>
+			<animation type="WindowClose" reversible="false">
+				<effect type="slide" start="0,0" end="0,200" easing="in" tween="circle" easin="out" time="400" />
+				<effect type="fade" start="100" end="0" time="400" />
+			</animation>
+			<width>450</width>
+			<height>122</height>
+			<right>58</right>
 			<!-- Background image -->
 			<control type="image">
 				<texture colordiffuse="panel" border="10">common/dialog_back.png</texture>
@@ -39,7 +52,7 @@
 					<aligny>center</aligny>
 					<font>Material24</font>
 					<textcolor>text_white</textcolor>
-					<label></label>
+					<label></label>
 					<visible>String.IsEmpty(Control.GetLabel(400)) | String.StartsWith(Control.GetLabel(400),Default)</visible>
 				</control>
 				<control type="image">
@@ -48,25 +61,18 @@
 					<visible>!String.StartsWith(Control.GetLabel(400),Default) + !String.IsEmpty(Control.GetLabel(400))</visible>
 				</control>
 			</control>
-			<!-- Heading -->
-			<control id="401" type="label">
-				<top>15</top>
-				<left>100</left>
-				<right>20</right>
-				<font>Med24</font>
-				<textcolor>white</textcolor>
-				<shadowcolor>text_shadow</shadowcolor>
-			</control>
 			<!-- Details -->
-			<control id="402" type="label">
-				<top>50</top>
+			<control type="textbox">
+				<top>20</top>
 				<left>100</left>
 				<right>20</right>
-				<right>10</right>
+				<bottom>20</bottom>
 				<font>Reg22</font>
 				<scroll>true</scroll>
 				<textcolor>panel_text</textcolor>
 				<shadowcolor>text_shadow</shadowcolor>
+				<aligny>center</aligny>
+				<label>$INFO[Control.GetLabel(401),[B][COLOR white],[/COLOR][/B][CR]]$INFO[Control.GetLabel(402)]</label>
 			</control>
 		</control>
 	</controls>
