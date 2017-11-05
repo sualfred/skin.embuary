@@ -86,6 +86,7 @@
 								<width>100%</width>
 								<height>50</height>
 								<texture colordiffuse="list_hover2">common/white.jpg</texture>
+								<visible>Control.HasFocus(20)</visible>
 							</control>
 							<control type="image">
 								<height>50</height>
@@ -104,6 +105,18 @@
 								<textcolor>text_white</textcolor>
 								<textshadow>text_shadow</textshadow>
 								<label>$INFO[ListItem.Channelnumber,,. ]$INFO[ListItem.Label]</label>
+								<visible>Control.HasFocus(20)</visible>
+							</control>
+							<control type="label">
+								<right>20</right>
+								<left>80</left>
+								<height>50</height>
+								<aligny>center</aligny>
+								<font>Reg24</font>
+								<textcolor>blue</textcolor>
+								<textshadow>text_shadow</textshadow>
+								<label>$INFO[ListItem.Channelnumber,,. ]$INFO[ListItem.Label]</label>
+								<visible>!Control.HasFocus(20)</visible>
 							</control>
 						</focusedlayout>
 					</control>
@@ -216,6 +229,7 @@
 								</include>
 								<onup>8</onup>
 								<ondown>12</ondown>
+								<onleft>20</onleft>
 								<label>$LOCALIZE[19202]</label>
 							</control>
 							<control type="image">
