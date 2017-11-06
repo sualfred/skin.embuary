@@ -29,8 +29,8 @@
 		</control>
 		<!-- Output -->
 		<control type="group">
-			<animation reversible="false" effect="slide" end="0,-108" start="0,0" time="400" condition="Player.ShowInfo | Window.IsVisible(musicosd) | Window.IsVisible(seekbar) | Player.Paused | Window.IsVisible(volumebar) | !String.IsEmpty(Window(home).Property(showvisinfo))">Conditional</animation>
-			<animation reversible="false" effect="slide" start="0,-108" end="0,0" time="400" delay="2000" condition="!Player.ShowInfo + !Window.IsVisible(musicosd) + !Window.IsVisible(seekbar) + !Player.Paused + !Window.IsVisible(volumebar) + String.IsEmpty(Window(home).Property(showvisinfo))">Conditional</animation>
+			<animation reversible="false" effect="slide" end="0,-108" start="0,0" time="400" condition="Player.ShowInfo | Window.IsVisible(musicosd) | Window.IsVisible(seekbar) | Player.Paused | [Window.IsVisible(volumebar) + !Player.Muted] | !String.IsEmpty(Window(home).Property(showvisinfo))">Conditional</animation>
+			<animation reversible="false" effect="slide" start="0,-108" end="0,0" time="400" delay="2000" condition="![Player.ShowInfo | Window.IsVisible(musicosd) | Window.IsVisible(seekbar) | Player.Paused | [Window.IsVisible(volumebar) + !Player.Muted] | !String.IsEmpty(Window(home).Property(showvisinfo))]">Conditional</animation>
 			<centertop>50%</centertop>
 			<height>600</height>
 			<visible>!String.IsEmpty(Container(110).ListItem.Label)</visible>
