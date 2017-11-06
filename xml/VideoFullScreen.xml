@@ -13,7 +13,7 @@
 		</control>
 		<!-- OSD -->
 		<control type="group" id="99">
-			<visible>[Window.IsVisible(videoosd) | Window.IsVisible(seekbar) | Player.Paused | Window.IsVisible(volumebar) | !String.IsEmpty(Window(home).Property(showvideoinfo))] + !Window.IsVisible(pvrosdchannels) + !Window.IsVisible(Teletext)</visible>
+			<visible>[Window.IsVisible(videoosd) | Window.IsVisible(seekbar) | Player.Paused | [Window.IsVisible(volumebar) + !Player.Muted] | !String.IsEmpty(Window(home).Property(showvideoinfo))] + !Window.IsVisible(pvrosdchannels) + !Window.IsVisible(Teletext)</visible>
 			<animation effect="fade" start="0" end="100" time="0">Visible</animation>
 			<animation effect="fade" start="100" end="0" time="400m" delay="2000" condition="!Window.IsVisible(pvrosdchannels) + !Window.IsVisible(Teletext)">Hidden</animation>			
 			<!--Top-->
