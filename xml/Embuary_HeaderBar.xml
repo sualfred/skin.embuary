@@ -91,19 +91,15 @@
 						<font>med20</font>
 						<textcolor>text_white</textcolor>
 						<label>$INFO[Weather.Temperature]</label>
-						<visible>!Skin.HasSetting(HideHeaderWeather) + !String.IsEmpty(Weather.Temperature) + !String.Contains(Weather.Temperature,$LOCALIZE[503]) + Weather.IsFetched</visible>
+						<visible>!Skin.HasSetting(HideHeaderWeather) + !String.IsEmpty(Weather.Temperature) + !String.Contains(Weather.Temperature,$LOCALIZE[503]) + !String.IsEqual(Weather.fanartcode,na) + Weather.IsFetched</visible>
 					</control>
 					<control type="image">
 						<animation effect="slide" end="0,10" time="0" condition="true">Conditional</animation>
 						<height>38</height>
-						<width>38</width>
+						<width>43</width>
 						<texture colordiffuse="text_white">$INFO[Weather.fanartcode,resource://resource.images.weathericons.outline-hd/,.png]</texture>
-						<aspectratio scalediffuse="false">stretch</aspectratio>
-						<visible>!Skin.HasSetting(HideHeaderWeather) + !String.IsEmpty(Weather.Temperature) + !String.Contains(Weather.Temperature,$LOCALIZE[503]) + Weather.IsFetched</visible>
-					</control>
-					<control type="label">						
-						<visible>!Skin.HasSetting(HideHeaderWeather) + !String.IsEmpty(Weather.Temperature) + !String.Contains(Weather.Temperature,$LOCALIZE[503]) + Weather.IsFetched</visible>
-						<width>5</width>
+						<aspectratio scalediffuse="false" align="left">stretch</aspectratio>
+						<visible>!Skin.HasSetting(HideHeaderWeather) + !String.IsEmpty(Weather.Temperature) + !String.Contains(Weather.Temperature,$LOCALIZE[503]) + !String.IsEqual(Weather.fanartcode,na) + Weather.IsFetched</visible>
 					</control>
 					<control type="label">
 						<height>58</height>

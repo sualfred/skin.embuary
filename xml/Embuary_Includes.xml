@@ -398,7 +398,7 @@
 						<param name="action1">ActivateWindow(Weather)</param>
 						<param name="condition2">String.IsEmpty(Weather.Plugin)</param>
 						<param name="action2">ReplaceWindow(servicesettings,weather)</param>
-						<param name="visible">!Skin.HasSetting(HideSPWeather)</param>
+						<param name="visible">!Skin.HasSetting(HideSPWeather) + !Skin.HasSetting(HideHeaderWeather) + !String.IsEmpty(Weather.Temperature) + !String.Contains(Weather.Temperature,$LOCALIZE[503]) + !String.IsEqual(Weather.fanartcode,na) + Weather.IsFetched</param>
 					</include>
 					<!-- seperator -->
 					<include content="SideMenuHeadline">
