@@ -245,45 +245,12 @@
 					<shadowcolor>text_shadow</shadowcolor>
 					<visible>!String.IsEmpty(Player.Duration)</visible>
 				</control>
-				<control type="button">
-					<width min="24">auto</width>
-					<height>28</height>
-					<font>med16</font>
-					<label>$INFO[VideoPlayer.Mpaa]</label>
-					<textoffsetx>10</textoffsetx>
-					<align>center</align>
-					<textcolor>white</textcolor>
-					<disabledcolor>white</disabledcolor>
-					<texturefocus border="10" colordiffuse="text_white">icons/rating/mpaa.png</texturefocus>
-					<texturenofocus border="10" colordiffuse="text_white">icons/rating/mpaa.png</texturenofocus>
-					<enable>false</enable>
-					<visible>!String.IsEmpty(VideoPlayer.Mpaa)</visible>
-				</control>
-				<control type="label">
-					<width>12</width>
-					<height>24</height>
-					<label/>
-					<visible>!String.IsEmpty(VideoPlayer.Mpaa)</visible>
-				</control>
-				<control type="button">
-					<width min="24">auto</width>
-					<height>28</height>
-					<font>med16</font>
-					<label>CC</label>
-					<textoffsetx>10</textoffsetx>
-					<align>center</align>
-					<disabledcolor>text_white</disabledcolor>
-					<texturefocus border="10" colordiffuse="greybutton">items/shadow_smallbutton.png</texturefocus>
-					<texturenofocus border="10" colordiffuse="greybutton">items/shadow_smallbutton.png</texturenofocus>
-					<enable>false</enable>
-					<visible>VideoPlayer.HasSubtitles</visible>
-				</control>
-				<control type="label">
-					<width>9</width>
-					<height>24</height>
-					<label/>
-					<visible>VideoPlayer.HasSubtitles</visible>
-				</control>
+				<include content="MpaaIcon">
+					<param name="type" value="VideoPlayer"/>
+				</include>
+				<include content="CCIcon">
+					<param name="visible" value="VideoPlayer.HasSubtitles"/>
+				</include>
 				<control type="label">
 					<width>auto</width>
 					<height>24</height>
@@ -564,7 +531,7 @@
 		</definition>
 	</include>
 	<include name="CCIcon">
-		<param name="type">ListItem</param>
+		<param name="visible">!String.IsEmpty(ListItem.SubtitleLanguage)</param>
 		<definition>
 			<control type="button">
 				<width min="24">auto</width>
@@ -577,13 +544,13 @@
 				<texturefocus border="10" colordiffuse="greybutton">items/shadow_smallbutton.png</texturefocus>
 				<texturenofocus border="10" colordiffuse="greybutton">items/shadow_smallbutton.png</texturenofocus>
 				<enable>false</enable>
-				<visible>!String.IsEmpty($PARAM[type].SubtitleLanguage)</visible>
+				<visible>$PARAM[visible]</visible>
 			</control>
 			<control type="label">
 				<width>9</width>
 				<height>24</height>
 				<label/>
-				<visible>!String.IsEmpty($PARAM[type].SubtitleLanguage)</visible>
+				<visible>$PARAM[visible]</visible>
 			</control>
 		</definition>
 	</include>
