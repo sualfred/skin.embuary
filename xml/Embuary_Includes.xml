@@ -1110,51 +1110,6 @@
 		<onclick condition="System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideEmbyConHubButtons)">SetProperty(Dialog.4.BuiltIn,ActivateWindow(videos,plugin://plugin.video.embycon/?item_type=Episode&amp;mode=NEW_SEARCH))</onclick>
 		<onclick condition="System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideEmbyConHubButtons)">RunScript(script.toolbox,info=selectdialog,header=$LOCALIZE[137])</onclick> 
 	</include>
-	<include name="SkinHelperRatings">
-		<param name="type">ListItem</param>
-		<definition>			
-			<control type="image">								
-				<animation effect="slide" end="0,3" time="0" condition="true">Conditional</animation>
-				<width>24</width>
-				<height>20</height>
-				<texture>icons/rating/metacritics_logo.png</texture>
-				<aspectratio>keep</aspectratio>
-				<visible>!String.IsEmpty(Window(Home).Property(SkinHelper.$PARAM[type].MetaCritic.Rating))</visible>
-			</control>
-			<control type="label">
-				<width>auto</width>
-				<height>24</height>
-				<label>$INFO[Window(Home).Property(SkinHelper.$PARAM[type].MetaCritic.Rating),,%]   </label>
-				<font>reg22</font>
-				<shadowcolor>text_shadow</shadowcolor>
-				<visible>!String.IsEmpty(Window(Home).Property(SkinHelper.$PARAM[type].MetaCritic.Rating))</visible>
-			</control>
-			<control type="image">								
-				<animation effect="slide" end="0,3" time="0" condition="true">Conditional</animation>
-				<width>24</width>
-				<height>20</height>
-				<texture>icons/rating/rotten_fresh.png</texture>
-				<aspectratio>keep</aspectratio>
-				<visible>!String.IsEmpty(Window(Home).Property(SkinHelper.$PARAM[type].RottenTomatoes.Rating)) + Integer.IsGreater(Window(Home).Property(SkinHelper.$PARAM[type].RottenTomatoes.Rating),59)</visible>
-			</control>
-			<control type="image">								
-				<animation effect="slide" end="0,3" time="0" condition="true">Conditional</animation>
-				<width>24</width>
-				<height>20</height>
-				<texture>icons/rating/rotten_rotten.png</texture>
-				<aspectratio>keep</aspectratio>
-				<visible>!String.IsEmpty(Window(Home).Property(SkinHelper.$PARAM[type].RottenTomatoes.Rating)) + !Integer.IsGreater(Window(Home).Property(SkinHelper.$PARAM[type].RottenTomatoes.Rating),59)</visible>
-			</control>
-			<control type="label">
-				<width>auto</width>
-				<height>24</height>
-				<label>$INFO[Window(Home).Property(SkinHelper.$PARAM[type].RottenTomatoes.Rating),,%]   </label>
-				<font>reg22</font>
-				<shadowcolor>text_shadow</shadowcolor>
-				<visible>!String.IsEmpty(Window(Home).Property(SkinHelper.$PARAM[type].RottenTomatoes.Rating))</visible>
-			</control>
-		</definition>
-	</include>
 	<include name="CustomWidgetTemplate">
 		<control type="radiobutton" id="31$PARAM[id]1">
 			<include>SettingsButton</include>

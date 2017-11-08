@@ -21,67 +21,7 @@
 					<height>435</height>
 					<width>1920</width>
 					<!-- poster -->
-					<control type="group">
-						<left>70</left>
-						<control type="image">
-							<top>-2</top>
-							<left>-2</left>
-							<width>282</width>
-							<height>420</height>
-							<texture>items/shadow_poster.png</texture>
-						</control>
-						<control type="image">
-							<width>276</width>
-							<height>414</height>
-							<texture colordiffuse="green" diffuse="items/mask_poster.png">common/white.jpg</texture>
-							<aspectratio scalediffuse="false">stretch</aspectratio>
-							<visible>String.IsEmpty(ListItem.Art(tvshow.poster))</visible>
-						</control>
-						<control type="textbox">
-							<top>10</top>
-							<left>10</left>
-							<width>256</width>
-							<height>394</height>
-							<font>Light24</font>
-							<align>center</align>
-							<aligny>center</aligny>
-							<label>$INFO[ListItem.TvShowTitle]</label>
-							<visible>String.IsEmpty(ListItem.Art(tvshow.poster))</visible>
-						</control>
-						<control type="image">
-							<width>276</width>
-							<height>414</height>
-							<texture diffuse="items/mask_poster.png" background="true">$INFO[ListItem.Art(tvshow.poster)]</texture>
-							<aspectratio scalediffuse="false">scale</aspectratio>
-						</control>
-						<control type="group">
-							<width>276</width>
-							<height>414</height>
-							<control type="group">
-								<visible>String.IsEqual(Window(home).Property(TVShowOverlay),OverlayWatched.png)</visible>
-								<right>8</right>
-								<top>9</top>
-								<width>44</width>
-								<height>44</height>
-								<control type="image">
-									<width>44</width>
-									<height>44</height>
-									<texture colordiffuse="emby">items/bubble_small.png</texture>
-									<aspectratio>keep</aspectratio>
-								</control>
-								<control type="label">
-									<top>9</top>
-									<left>2</left>
-									<width>44</width>
-									<height>44</height>
-									<label></label>
-									<font>FontAwesome20Light</font>
-									<shadowcolor>text_shadow</shadowcolor>
-									<align>center</align>
-								</control>
-							</control>
-						</control>
-					</control>
+					<include>MetaPoster</include>
 					<!-- meta -->
 					<control type="grouplist">
 						<left>370</left>
@@ -90,6 +30,7 @@
 						<align>top</align>
 						<itemgap>0</itemgap>
 						<width>1480</width>
+						<!-- Title -->
 						<control type="label">
 							<width>1040</width>
 							<height>60</height>
@@ -97,106 +38,16 @@
 							<font>Reg37</font>
 							<shadowcolor>text_shadow</shadowcolor>
 						</control>
-						<control type="grouplist">
-							<height>60</height>
-							<width>1166</width>
-							<itemgap>5</itemgap>
-							<orientation>horizontal</orientation>
-							<control type="label">
-								<width>auto</width>
-								<height>60</height>
-								<label>$INFO[ListItem.Title]</label>
-								<font>Reg37</font>
-								<shadowcolor>text_shadow</shadowcolor>
-							</control>
-						</control>
-						<control type="grouplist">
-							<height>40</height>
+						<control type="label">
 							<width>1040</width>
-							<itemgap>5</itemgap>
-							<orientation>horizontal</orientation>
-							<control type="label">
-								<width>auto</width>
-								<height>24</height>
-								<label>$INFO[Window(home).Property(TVShowPremiered)]   </label>
-								<font>reg22</font>
-								<shadowcolor>text_shadow</shadowcolor>
-								<visible>!String.IsEmpty(Window(home).Property(TVShowPremiered))</visible>
-							</control>
-							<control type="label">
-								<width>auto</width>
-								<height>24</height>
-								<label>$INFO[Window(home).Property(TVShowTotalSeasons),$LOCALIZE[33054]: ]   </label>
-								<font>reg22</font>
-								<shadowcolor>text_shadow</shadowcolor>
-								<visible>!String.IsEmpty(Window(home).Property(TVShowTotalSeasons))</visible>
-							</control>
-							<control type="label">
-								<width>auto</width>
-								<height>24</height>
-								<label>$INFO[Window(home).Property(TVShowTotalEpisodes),$LOCALIZE[20360]: ]   </label>
-								<font>reg22</font>
-								<shadowcolor>text_shadow</shadowcolor>
-								<visible>!String.IsEmpty(Window(home).Property(TVShowTotalEpisodes))</visible>
-							</control>
-							<control type="button">
-								<width min="24">auto</width>
-								<height>28</height>
-								<font>med16</font>
-								<label>$INFO[ListItem.Mpaa]</label>
-								<textoffsetx>10</textoffsetx>
-								<align>center</align>
-								<textcolor>white</textcolor>
-								<disabledcolor>white</disabledcolor>
-								<texturefocus border="10" colordiffuse="text_white">icons/rating/mpaa.png</texturefocus>
-								<texturenofocus border="10" colordiffuse="text_white">icons/rating/mpaa.png</texturenofocus>
-								<enable>false</enable>
-								<visible>!String.IsEmpty(ListItem.Mpaa)</visible>
-							</control>
-							<control type="label">
-								<width>12</width>
-								<height>24</height>
-								<label/>
-								<visible>!String.IsEmpty(ListItem.Mpaa)</visible>
-							</control>
-							<control type="button">
-								<width min="24">auto</width>
-								<height>28</height>
-								<font>med16</font>
-								<label>$INFO[Window(home).Property(EmbyMPAA)]</label>
-								<textoffsetx>10</textoffsetx>
-								<align>center</align>
-								<textcolor>white</textcolor>
-								<disabledcolor>white</disabledcolor>
-								<texturefocus border="10" colordiffuse="text_white">icons/rating/mpaa.png</texturefocus>
-								<texturenofocus border="10" colordiffuse="text_white">icons/rating/mpaa.png</texturenofocus>
-								<enable>false</enable>
-								<visible>String.IsEmpty(ListItem.Mpaa) + !String.IsEmpty(Window(home).Property(EmbyMPAA)) + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)</visible>
-							</control>
-							<control type="label">
-								<width>12</width>
-								<height>24</height>
-								<label/>
-								<visible>String.IsEmpty(ListItem.Mpaa) + !String.IsEmpty(Window(home).Property(EmbyMPAA)) + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)</visible>
-							</control>
-							<control type="label">
-								<width>auto</width>
-								<height>24</height>
-								<label></label>
-								<font>Material26</font>
-								<textcolor>red</textcolor>
-								<shadowcolor>text_shadow</shadowcolor>
-								<visible>!String.IsEmpty(Window(home).Property(TvShowRating))</visible>
-							</control>
-							<control type="label">
-								<width>auto</width>
-								<height>24</height>
-								<label>$INFO[Window(home).Property(TvShowRating)]   </label>
-								<font>reg22</font>
-								<shadowcolor>text_shadow</shadowcolor>
-								<visible>!String.IsEmpty(Window(home).Property(TvShowRating))</visible>
-							</control>
+							<height>60</height>
+							<label>$INFO[ListItem.Title]</label>
+							<font>Reg37</font>
+							<shadowcolor>text_shadow</shadowcolor>
 						</control>
+						<!-- meta -->
+						<include>MetaSeasonInfos</include>
+						<!-- buttons -->
 						<control type="grouplist" id="100">
 							<height>75</height>
 							<orientation>horizontal</orientation>
@@ -231,14 +82,8 @@
 								<selected>String.IsEqual(ListItem.Overlay,OverlayWatched.png) | Integer.IsGreaterOrEqual(ListItem.PlayCount,1) | [String.IsEqual(ListItem.DBtype,tvshow) + !String.IsEmpty(ListItem.Property(UnWatchedEpisodes)) + Integer.IsLess(ListItem.Property(UnWatchedEpisodes),1)]</selected>
 							</control>
 						</control>
-						<control type="label">
-							<width>auto</width>
-							<height>40</height>
-							<label>$INFO[ListItem.Genre,$LOCALIZE[515]: ,   ]$INFO[ListItem.Director,$LOCALIZE[20339]: ]</label>
-							<font>reg22</font> 
-							<textcolor>emby</textcolor>
-							<shadowcolor>text_shadow</shadowcolor>
-						</control>
+						<!-- genre -->
+						<include>MetaGenre</include>
 						<control type="label">
 							<width>auto</width>
 							<height>40</height>
@@ -261,13 +106,7 @@
 						</control>
 					</control>
 					<!-- logo -->
-					<control type="image">
-						<right>70</right>
-						<width>400</width>
-						<height>155</height>
-						<texture>$VAR[ListItemClearlogo]</texture>
-						<aspectratio>keep</aspectratio>
-					</control>
+					<include>MetaClearlogo</include>
 				</control>
 				<control type="group">
 					<top>524</top>

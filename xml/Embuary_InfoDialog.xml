@@ -23,74 +23,7 @@
 					<height>435</height>
 					<width>1920</width>
 					<!-- poster -->
-					<control type="group">
-						<left>70</left>
-						<control type="image">
-							<top>-2</top>
-							<left>-2</left>
-							<width>282</width>
-							<height>420</height>
-							<texture>items/shadow_poster.png</texture>
-						</control>
-						<control type="image">
-							<width>276</width>
-							<height>414</height>
-							<texture colordiffuse="green" diffuse="items/mask_poster.png">common/white.jpg</texture>
-							<aspectratio scalediffuse="false">stretch</aspectratio>
-							<visible>String.IsEmpty(ListItem.Art(poster))</visible>
-						</control>
-						<control type="image">
-							<width>276</width>
-							<height>414</height>
-							<texture colordiffuse="thumb_background" diffuse="items/mask_poster.png">common/white.jpg</texture>
-							<aspectratio scalediffuse="false">stretch</aspectratio>
-							<visible>!String.IsEmpty(ListItem.Art(poster))</visible>
-						</control>
-						<control type="textbox">
-							<top>10</top>
-							<left>10</left>
-							<width>256</width>
-							<height>394</height>
-							<font>Light24</font>
-							<align>center</align>
-							<aligny>center</aligny>
-							<label>$INFO[ListItem.Label]</label>
-							<visible>String.IsEmpty(ListItem.Art(poster))</visible>
-						</control>
-						<control type="image">
-							<width>276</width>
-							<height>414</height>
-							<texture diffuse="items/mask_poster.png" background="true">$INFO[ListItem.Art(poster)]</texture>
-							<aspectratio scalediffuse="false">scale</aspectratio>
-						</control>
-						<control type="group">
-							<width>276</width>
-							<height>414</height>
-							<control type="group">
-								<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
-								<right>8</right>
-								<top>9</top>
-								<width>44</width>
-								<height>44</height>
-								<control type="image">
-									<width>44</width>
-									<height>44</height>
-									<texture colordiffuse="emby">items/bubble_small.png</texture>
-									<aspectratio>keep</aspectratio>
-								</control>
-								<control type="label">
-									<top>9</top>
-									<left>2</left>
-									<width>44</width>
-									<height>44</height>
-									<label></label>
-									<font>FontAwesome20Light</font>
-									<shadowcolor>text_shadow</shadowcolor>
-									<align>center</align>
-								</control>
-							</control>
-						</control>
-					</control>
+					<include>MetaPoster</include>
 					<!-- meta -->
 					<control type="grouplist">
 						<left>370</left>
@@ -106,85 +39,9 @@
 							<font>Reg37</font>
 							<shadowcolor>text_shadow</shadowcolor>
 						</control>
-						<control type="grouplist">
-							<height>40</height>
-							<width>1040</width>
-							<itemgap>5</itemgap>
-							<orientation>horizontal</orientation>
-							<control type="label">
-								<width>auto</width>
-								<height>24</height>
-								<label>$INFO[ListItem.Year]   </label>
-								<font>reg22</font>
-								<shadowcolor>text_shadow</shadowcolor>
-								<visible>!String.IsEmpty(ListItem.Year)</visible>
-							</control>
-							<control type="label">
-								<width>auto</width>
-								<height>24</height>
-								<label>$VAR[DurationMinutes]   </label>
-								<font>reg22</font>
-								<shadowcolor>text_shadow</shadowcolor>
-								<visible>!String.IsEmpty(ListItem.Duration)</visible>
-							</control>
-							<control type="button">
-								<width min="24">auto</width>
-								<height>28</height>
-								<font>med16</font>
-								<label>$INFO[ListItem.Mpaa]</label>
-								<textoffsetx>10</textoffsetx>
-								<align>center</align>
-								<textcolor>white</textcolor>
-								<disabledcolor>white</disabledcolor>
-								<texturefocus border="10" colordiffuse="text_white">icons/rating/mpaa.png</texturefocus>
-								<texturenofocus border="10" colordiffuse="text_white">icons/rating/mpaa.png</texturenofocus>
-								<enable>false</enable>
-								<visible>!String.IsEmpty(ListItem.Mpaa)</visible>
-							</control>
-							<control type="label">
-								<width>12</width>
-								<height>24</height>
-								<label/>
-								<visible>!String.IsEmpty(ListItem.Mpaa)</visible>
-							</control>
-							<control type="button">
-								<width min="24">auto</width>
-								<height>28</height>
-								<font>med16</font>
-								<label>CC</label>
-								<textoffsetx>10</textoffsetx>
-								<align>center</align>
-								<disabledcolor>text_white</disabledcolor>
-								<texturefocus border="10" colordiffuse="greybutton">items/shadow_smallbutton.png</texturefocus>
-								<texturenofocus border="10" colordiffuse="greybutton">items/shadow_smallbutton.png</texturenofocus>
-								<enable>false</enable>
-								<visible>!String.IsEmpty(ListItem.SubtitleLanguage)</visible>
-							</control>
-							<control type="label">
-								<width>9</width>
-								<height>24</height>
-								<label/>
-								<visible>!String.IsEmpty(ListItem.SubtitleLanguage)</visible>
-							</control>
-							<control type="label">
-								<width>auto</width>
-								<height>24</height>
-								<label></label>
-								<font>Material26</font>
-								<textcolor>red</textcolor>
-								<shadowcolor>text_shadow</shadowcolor>
-								<visible>!String.IsEmpty(ListItem.Rating)</visible>
-							</control>
-							<control type="label">
-								<width>auto</width>
-								<height>24</height>
-								<label>$INFO[ListItem.Rating]   </label>
-								<font>reg22</font>
-								<shadowcolor>text_shadow</shadowcolor>
-								<visible>!String.IsEmpty(ListItem.Rating)</visible>
-							</control>
-							<include>SkinHelperRatings</include>
-						</control>
+						<!-- small meta -->
+						<include>MetaMovieInfos</include>
+						<!-- buttons -->
 						<control type="grouplist" id="100">
 							<height>75</height>
 							<orientation>horizontal</orientation>
@@ -231,14 +88,9 @@
 								<visible>!Skin.HasSetting(HideLibaryEditButtons) + !Skin.HasSetting(KioskMode) + !String.StartsWith(ListItem.Path,plugin://)</visible>
 							</control>
 						</control>
-						<control type="label">
-							<width>auto</width>
-							<height>40</height>
-							<label>$INFO[ListItem.Genre,$LOCALIZE[515]: ,   ]$INFO[ListItem.Director,$LOCALIZE[20339]: ]</label>
-							<font>reg22</font>
-							<textcolor>emby</textcolor>
-							<shadowcolor>text_shadow</shadowcolor>
-						</control>
+						<!-- genre -->
+						<include>MetaGenre</include>
+						<!-- plot -->
 						<control type="textbox">
 							<width>100%</width>
 							<height>130</height>
@@ -253,22 +105,11 @@
 						<control type="label">
 							<height>20</height>
 						</control>
-						<control type="grouplist">
-							<orientation>horizontal</orientation>
-							<height>65</height>
-							<itemgap>5</itemgap>
-							<width>1040</width>
-							<include>MediaFlags</include>
-						</control>
+						<!-- media flags -->
+						<include>MetaFlags</include>
 					</control>
 					<!-- logo -->
-					<control type="image">
-						<right>70</right>
-						<width>400</width>
-						<height>155</height>
-						<texture>$INFO[ListItem.Art(clearlogo)]</texture>
-						<aspectratio>keep</aspectratio>
-					</control>
+					<include>MetaClearlogo</include>
 				</control>
 			</control>
 			<!-- Cast -->
@@ -340,74 +181,7 @@
 					<height>435</height>
 					<width>1920</width>
 					<!-- poster -->
-					<control type="group">
-						<left>70</left>
-						<control type="image">
-							<top>-2</top>
-							<left>-2</left>
-							<width>282</width>
-							<height>420</height>
-							<texture>items/shadow_poster.png</texture>
-						</control>
-						<control type="image">
-							<width>276</width>
-							<height>414</height>
-							<texture colordiffuse="green" diffuse="items/mask_poster.png">common/white.jpg</texture>
-							<aspectratio scalediffuse="false">stretch</aspectratio>
-							<visible>String.IsEmpty(ListItem.Art(poster))</visible>
-						</control>
-						<control type="image">
-							<width>276</width>
-							<height>414</height>
-							<texture colordiffuse="thumb_background" diffuse="items/mask_poster.png">common/white.jpg</texture>
-							<aspectratio scalediffuse="false">stretch</aspectratio>
-							<visible>!String.IsEmpty(ListItem.Art(poster))</visible>
-						</control>
-						<control type="textbox">
-							<top>10</top>
-							<left>10</left>
-							<width>256</width>
-							<height>394</height>
-							<font>Light24</font>
-							<align>center</align>
-							<aligny>center</aligny>
-							<label>$INFO[ListItem.Label]</label>
-							<visible>String.IsEmpty(ListItem.Art(poster))</visible>
-						</control>
-						<control type="image">
-							<width>276</width>
-							<height>414</height>
-							<texture diffuse="items/mask_poster.png" background="true">$INFO[ListItem.Art(poster)]</texture>
-							<aspectratio scalediffuse="false">scale</aspectratio>
-						</control>
-						<control type="group">
-							<width>276</width>
-							<height>414</height>
-							<control type="group">
-								<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
-								<right>8</right>
-								<top>9</top>
-								<width>44</width>
-								<height>44</height>
-								<control type="image">
-									<width>44</width>
-									<height>44</height>
-									<texture colordiffuse="emby">items/bubble_small.png</texture>
-									<aspectratio>keep</aspectratio>
-								</control>
-								<control type="label">
-									<top>9</top>
-									<left>2</left>
-									<width>44</width>
-									<height>44</height>
-									<label></label>
-									<font>FontAwesome20Light</font>
-									<shadowcolor>text_shadow</shadowcolor>
-									<align>center</align>
-								</control>
-							</control>
-						</control>
-					</control>
+					<include>MetaPoster</include>
 					<!-- meta -->
 					<control type="grouplist">
 						<left>370</left>
@@ -423,73 +197,9 @@
 							<font>Reg37</font>
 							<shadowcolor>text_shadow</shadowcolor>
 						</control>
-						<control type="grouplist">
-							<height>40</height>
-							<width>1040</width>
-							<itemgap>5</itemgap>
-							<orientation>horizontal</orientation>
-							<control type="label">
-								<width>auto</width>
-								<height>24</height>
-								<label>$INFO[ListItem.Premiered]   </label>
-								<font>reg22</font>
-								<shadowcolor>text_shadow</shadowcolor>
-								<visible>!String.IsEmpty(ListItem.Premiered)</visible>
-							</control>
-							<control type="label">
-								<width>auto</width>
-								<height>24</height>
-								<label>$INFO[ListItem.Property(TotalSeasons),$LOCALIZE[33054]: ]   </label>
-								<font>reg22</font>
-								<shadowcolor>text_shadow</shadowcolor>
-								<visible>!String.IsEmpty(ListItem.Property(TotalSeasons))</visible>
-							</control>
-							<control type="label">
-								<width>auto</width>
-								<height>24</height>
-								<label>$INFO[ListItem.Property(TotalEpisodes),$LOCALIZE[20360]: ]   </label>
-								<font>reg22</font>
-								<shadowcolor>text_shadow</shadowcolor>
-								<visible>!String.IsEmpty(ListItem.Property(TotalEpisodes))</visible>
-							</control>
-							<control type="button">
-								<width min="24">auto</width>
-								<height>28</height>
-								<font>med16</font>
-								<label>$INFO[ListItem.Mpaa]</label>
-								<textoffsetx>10</textoffsetx>
-								<align>center</align>
-								<textcolor>white</textcolor>
-								<disabledcolor>white</disabledcolor>
-								<texturefocus border="10" colordiffuse="text_white">icons/rating/mpaa.png</texturefocus>
-								<texturenofocus border="10" colordiffuse="text_white">icons/rating/mpaa.png</texturenofocus>
-								<enable>false</enable>
-								<visible>!String.IsEmpty(ListItem.Mpaa)</visible>
-							</control>
-							<control type="label">
-								<width>12</width>
-								<height>24</height>
-								<label/>
-								<visible>!String.IsEmpty(ListItem.Mpaa)</visible>
-							</control>
-							<control type="label">
-								<width>auto</width>
-								<height>24</height>
-								<label></label>
-								<font>Material26</font>
-								<textcolor>red</textcolor>
-								<shadowcolor>text_shadow</shadowcolor>
-								<visible>!String.IsEmpty(ListItem.Rating)</visible>
-							</control>
-							<control type="label">
-								<width>auto</width>
-								<height>24</height>
-								<label>$INFO[ListItem.Rating]   </label>
-								<font>reg22</font>
-								<shadowcolor>text_shadow</shadowcolor>
-								<visible>!String.IsEmpty(ListItem.Rating)</visible>
-							</control>
-						</control>
+						<!-- meta -->
+						<include>MetaShowInfos</include>
+						<!-- buttons -->
 						<control type="grouplist" id="100">
 							<height>75</height>
 							<orientation>horizontal</orientation>
@@ -530,14 +240,9 @@
 								<visible>!Skin.HasSetting(HideLibaryEditButtons) + !Skin.HasSetting(KioskMode) + !String.StartsWith(ListItem.Path,plugin://)</visible>
 							</control>
 						</control>
-						<control type="label">
-							<width>auto</width>
-							<height>40</height>
-							<label>$INFO[ListItem.Genre,$LOCALIZE[515]: ,   ]$INFO[ListItem.Director,$LOCALIZE[20339]: ]</label>
-							<font>reg22</font>
-							<textcolor>emby</textcolor>
-							<shadowcolor>text_shadow</shadowcolor>
-						</control>
+						<!-- genre -->
+						<include>MetaGenre</include>
+						<!-- plot -->
 						<control type="textbox">
 							<width>100%</width>
 							<height>130</height>
@@ -552,22 +257,11 @@
 						<control type="label">
 							<height>20</height>
 						</control>
-						<control type="grouplist">
-							<orientation>horizontal</orientation>
-							<height>65</height>
-							<itemgap>5</itemgap>
-							<width>1040</width>
-							<include>MediaFlags</include>
-						</control>
+						<!-- flags -->
+						<include>MetaFlags</include>
 					</control>
 					<!-- logo -->
-					<control type="image">
-						<right>70</right>
-						<width>400</width>
-						<height>155</height>
-						<texture>$INFO[ListItem.Art(clearlogo)]</texture>
-						<aspectratio>keep</aspectratio>
-					</control>
+					<include>MetaClearlogo</include>
 				</control>
 			</control>
 			<!-- Next Up -->
@@ -637,47 +331,7 @@
 					<height>435</height>
 					<width>1920</width>
 					<!-- thumb -->
-					<control type="group">
-						<left>70</left>
-						<control type="image">
-							<width>430</width>
-							<height>242</height>
-							<texture colordiffuse="green" diffuse="items/mask_wide_db.png">common/white.jpg</texture>
-							<aspectratio scalediffuse="false">stretch</aspectratio>
-							<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
-						</control>
-						<control type="image">
-							<width>430</width>
-							<height>242</height>
-							<texture colordiffuse="thumb_background" diffuse="items/mask_wide_db.png">common/white.jpg</texture>
-							<aspectratio scalediffuse="false">stretch</aspectratio>
-							<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
-						</control>
-						<control type="textbox">
-							<top>10</top>
-							<left>10</left>
-							<width>410</width>
-							<height>222</height>
-							<font>Light24</font>
-							<align>center</align>
-							<aligny>center</aligny>
-							<label>$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title]</label>
-							<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
-						</control>
-						<control type="image">
-							<width>430</width>
-							<height>242</height>
-							<texture diffuse="items/mask_wide_db.png" background="true">$VAR[IconLandscape]</texture>
-							<aspectratio scalediffuse="false">scale</aspectratio>
-							<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
-						</control>
-						<control type="group">
-							<width>430</width>
-							<height>242</height>
-							<include>bubble_overlay</include>
-							<include>bubble_play</include>
-						</control>
-					</control>
+					<include>MetaThumbnail</include>
 					<!-- meta -->
 					<control type="grouplist">
 						<left>524</left>
@@ -700,91 +354,17 @@
 							<font>Reg37</font>
 							<shadowcolor>text_shadow</shadowcolor>
 						</control>
-						<control type="grouplist">
-							<height>40</height>
-							<width>886</width>
-							<itemgap>5</itemgap>
-							<orientation>horizontal</orientation>
-							<control type="label">
-								<width>auto</width>
-								<height>24</height>
-								<label>$INFO[ListItem.Premiered]   </label>
-								<font>reg22</font>
-								<shadowcolor>text_shadow</shadowcolor>
-								<visible>!String.IsEmpty(ListItem.Premiered)</visible>
-							</control>
-							<control type="label">
-								<width>auto</width>
-								<height>24</height>
-								<label>$VAR[DurationMinutes]   </label>
-								<font>reg22</font>
-								<shadowcolor>text_shadow</shadowcolor>
-								<visible>!String.IsEmpty(ListItem.Duration)</visible>
-							</control>
-							<control type="button">
-								<width min="24">auto</width>
-								<height>28</height>
-								<font>med16</font>
-								<label>$INFO[ListItem.Mpaa]</label>
-								<textoffsetx>10</textoffsetx>
-								<align>center</align>
-								<textcolor>white</textcolor>
-								<disabledcolor>white</disabledcolor>
-								<texturefocus border="10" colordiffuse="text_white">icons/rating/mpaa.png</texturefocus>
-								<texturenofocus border="10" colordiffuse="text_white">icons/rating/mpaa.png</texturenofocus>
-								<enable>false</enable>
-								<visible>!String.IsEmpty(ListItem.Mpaa)</visible>
-							</control>
-							<control type="label">
-								<width>12</width>
-								<height>24</height>
-								<label/>
-								<visible>!String.IsEmpty(ListItem.Mpaa)</visible>
-							</control>
-							<control type="label">
-								<width>auto</width>
-								<height>24</height>
-								<label></label>
-								<font>Material26</font>
-								<textcolor>red</textcolor>
-								<shadowcolor>text_shadow</shadowcolor>
-								<visible>!String.IsEmpty(ListItem.Rating)</visible>
-							</control>
-							<control type="label">
-								<width>auto</width>
-								<height>24</height>
-								<label>$INFO[ListItem.Rating]   </label>
-								<font>reg22</font>
-								<shadowcolor>text_shadow</shadowcolor>
-								<visible>!String.IsEmpty(ListItem.Rating)</visible>
-							</control>
-							<control type="button">
-								<width min="24">auto</width>
-								<height>28</height>
-								<font>med16</font>
-								<label>CC</label>
-								<textoffsetx>10</textoffsetx>
-								<align>center</align>
-								<disabledcolor>text_white</disabledcolor>
-								<texturefocus border="10" colordiffuse="greybutton">items/shadow_smallbutton.png</texturefocus>
-								<texturenofocus border="10" colordiffuse="greybutton">items/shadow_smallbutton.png</texturenofocus>
-								<enable>false</enable>
-								<visible>!String.IsEmpty(ListItem.SubtitleLanguage)</visible>
-							</control>
-						</control>
+						<!-- meta -->
+						<include content="MetaEpisodeInfos">
+							<param name="width" value="886"/>
+						</include>
+						<!-- buttons -->
 						<control type="grouplist" id="100">
 							<height>65</height>
 							<orientation>horizontal</orientation>
 							<itemgap>5</itemgap>
 							<onright>noop</onright>
 							<onleft>9999</onleft>
-							<control type="button" id="101">
-								<include>LightGreyButton</include>
-								<label>$LOCALIZE[15067]</label>
-								<onup>SetFocus(6666)</onup>
-								<ondown>SetFocus(50)</ondown>
-								<onclick>close</onclick>
-							</control>
 							<control type="button" id="8">
 								<include>LightGreyButton</include>
 								<label>$VAR[VideoInfoButton8]</label>
@@ -832,22 +412,11 @@
 						<control type="label">
 							<height>15</height>
 						</control>
-						<control type="grouplist">
-							<orientation>horizontal</orientation>
-							<height>65</height>
-							<itemgap>5</itemgap>
-							<width>1040</width>
-							<include>MediaFlags</include>
-						</control>
+						<!-- flags -->
+						<include>MetaFlags</include>
 					</control>
 					<!-- logo -->
-					<control type="image">
-						<right>70</right>
-						<width>400</width>
-						<height>155</height>
-						<texture>$INFO[ListItem.Art(tvshow.clearlogo)]</texture>
-						<aspectratio>keep</aspectratio>
-					</control>
+					<include>MetaClearlogo</include>
 				</control>
 			</control>
 			<!-- Cast -->
