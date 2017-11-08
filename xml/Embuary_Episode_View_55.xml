@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 	<include name="Episode_View_55">
-		<!-- Hidden scrollbar -->
-		<control id="96" type="scrollbar">
-			<left>-1200</left>
-			<width>100</width>
-			<height>1</height>
-			<showonepage>false</showonepage>
-			<orientation>vertical</orientation>
-		</control>
 		<!-- season 55 -->
 		<control type="grouplist" id="550">
 			<include>Visible_OpenClose</include>
@@ -119,9 +111,10 @@
 								<textoffsetx>10</textoffsetx>
 								<align>center</align>
 								<textcolor>white</textcolor>
+								<disabledcolor>white</disabledcolor>
 								<texturefocus border="10" colordiffuse="text_white">icons/rating/mpaa.png</texturefocus>
 								<texturenofocus border="10" colordiffuse="text_white">icons/rating/mpaa.png</texturenofocus>
-								<enabled>false</enabled>
+								<enable>false</enable>
 								<visible>!String.IsEmpty(ListItem.Mpaa)</visible>
 							</control>
 							<control type="label">
@@ -242,6 +235,15 @@
 				<param name="headline" value="$LOCALIZE[206]"/>
 				<param name="content" value="$VAR[View_Cast_Content]"/>
 			</include>
+		</control>
+		<!-- Hidden scrollbar -->
+		<control id="96" type="scrollbar">
+			<left>-1200</left>
+			<width>100</width>
+			<height>1</height>
+			<showonepage>false</showonepage>
+			<orientation>vertical</orientation>
+			<visible>Control.IsVisible(55)</visible>
 		</control>
 	</include>
 </includes>

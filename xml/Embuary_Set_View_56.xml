@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
-	<include name="Season_View_54">
-		<!-- season 54 -->
-		<control type="grouplist" id="540">
+	<include name="Set_View_56">
+		<!-- set 56 -->
+		<control type="grouplist" id="560">
 			<include>Visible_OpenClose</include>
-			<visible>Control.IsVisible(54)</visible>
+			<visible>Control.IsVisible(56)</visible>
 			<include>Bounce_Up_Down</include>
 			<width>2130</width>
 			<height>100%</height>
@@ -35,7 +35,7 @@
 							<height>414</height>
 							<texture colordiffuse="green" diffuse="items/mask_poster.png">common/white.jpg</texture>
 							<aspectratio scalediffuse="false">stretch</aspectratio>
-							<visible>String.IsEmpty(ListItem.Art(tvshow.poster))</visible>
+							<visible>String.IsEmpty(ListItem.Art(poster))</visible>
 						</control>
 						<control type="textbox">
 							<top>10</top>
@@ -46,19 +46,19 @@
 							<align>center</align>
 							<aligny>center</aligny>
 							<label>$INFO[ListItem.TvShowTitle]</label>
-							<visible>String.IsEmpty(ListItem.Art(tvshow.poster))</visible>
+							<visible>String.IsEmpty(ListItem.Art(poster))</visible>
 						</control>
 						<control type="image">
 							<width>276</width>
 							<height>414</height>
-							<texture diffuse="items/mask_poster.png" background="true">$INFO[ListItem.Art(tvshow.poster)]</texture>
+							<texture diffuse="items/mask_poster.png" background="true">$INFO[ListItem.Art(poster)]</texture>
 							<aspectratio scalediffuse="false">scale</aspectratio>
 						</control>
 						<control type="group">
 							<width>276</width>
 							<height>414</height>
 							<control type="group">
-								<visible>String.IsEqual(Window(home).Property(TVShowOverlay),OverlayWatched.png)</visible>
+								<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png)</visible>
 								<right>8</right>
 								<top>9</top>
 								<width>44</width>
@@ -93,22 +93,9 @@
 						<control type="label">
 							<width>1040</width>
 							<height>60</height>
-							<label>$INFO[ListItem.TVShowTitle]</label>
+							<label>$INFO[ListItem.Title]</label>
 							<font>Reg37</font>
 							<shadowcolor>text_shadow</shadowcolor>
-						</control>
-						<control type="grouplist">
-							<height>60</height>
-							<width>1166</width>
-							<itemgap>5</itemgap>
-							<orientation>horizontal</orientation>
-							<control type="label">
-								<width>auto</width>
-								<height>60</height>
-								<label>$INFO[ListItem.Title]</label>
-								<font>Reg37</font>
-								<shadowcolor>text_shadow</shadowcolor>
-							</control>
 						</control>
 						<control type="grouplist">
 							<height>40</height>
@@ -118,26 +105,18 @@
 							<control type="label">
 								<width>auto</width>
 								<height>24</height>
-								<label>$INFO[Window(home).Property(TVShowPremiered)]   </label>
+								<label>$INFO[ListItem.Year]   </label>
 								<font>reg22</font>
 								<shadowcolor>text_shadow</shadowcolor>
-								<visible>!String.IsEmpty(Window(home).Property(TVShowPremiered))</visible>
+								<visible>!String.IsEmpty(ListItem.Year)</visible>
 							</control>
 							<control type="label">
 								<width>auto</width>
 								<height>24</height>
-								<label>$INFO[Window(home).Property(TVShowTotalSeasons),$LOCALIZE[33054]: ]   </label>
+								<label>$VAR[DurationMinutes]   </label>
 								<font>reg22</font>
 								<shadowcolor>text_shadow</shadowcolor>
-								<visible>!String.IsEmpty(Window(home).Property(TVShowTotalSeasons))</visible>
-							</control>
-							<control type="label">
-								<width>auto</width>
-								<height>24</height>
-								<label>$INFO[Window(home).Property(TVShowTotalEpisodes),$LOCALIZE[20360]: ]   </label>
-								<font>reg22</font>
-								<shadowcolor>text_shadow</shadowcolor>
-								<visible>!String.IsEmpty(Window(home).Property(TVShowTotalEpisodes))</visible>
+								<visible>!String.IsEmpty(ListItem.Duration)</visible>
 							</control>
 							<control type="button">
 								<width min="24">auto</width>
@@ -163,21 +142,20 @@
 								<width min="24">auto</width>
 								<height>28</height>
 								<font>med16</font>
-								<label>$INFO[Window(home).Property(EmbyMPAA)]</label>
+								<label>CC</label>
 								<textoffsetx>10</textoffsetx>
 								<align>center</align>
-								<textcolor>white</textcolor>
-								<disabledcolor>white</disabledcolor>
-								<texturefocus border="10" colordiffuse="text_white">icons/rating/mpaa.png</texturefocus>
-								<texturenofocus border="10" colordiffuse="text_white">icons/rating/mpaa.png</texturenofocus>
+								<disabledcolor>text_white</disabledcolor>
+								<texturefocus border="10" colordiffuse="greybutton">items/shadow_smallbutton.png</texturefocus>
+								<texturenofocus border="10" colordiffuse="greybutton">items/shadow_smallbutton.png</texturenofocus>
 								<enable>false</enable>
-								<visible>String.IsEmpty(ListItem.Mpaa) + !String.IsEmpty(Window(home).Property(EmbyMPAA)) + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)</visible>
+								<visible>!String.IsEmpty(ListItem.SubtitleLanguage)</visible>
 							</control>
 							<control type="label">
-								<width>12</width>
+								<width>9</width>
 								<height>24</height>
 								<label/>
-								<visible>String.IsEmpty(ListItem.Mpaa) + !String.IsEmpty(Window(home).Property(EmbyMPAA)) + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)</visible>
+								<visible>!String.IsEmpty(ListItem.SubtitleLanguage)</visible>
 							</control>
 							<control type="label">
 								<width>auto</width>
@@ -186,16 +164,17 @@
 								<font>Material26</font>
 								<textcolor>red</textcolor>
 								<shadowcolor>text_shadow</shadowcolor>
-								<visible>!String.IsEmpty(Window(home).Property(TvShowRating))</visible>
+								<visible>!String.IsEmpty(ListItem.Rating)</visible>
 							</control>
 							<control type="label">
 								<width>auto</width>
 								<height>24</height>
-								<label>$INFO[Window(home).Property(TvShowRating)]   </label>
+								<label>$INFO[ListItem.Rating]   </label>
 								<font>reg22</font>
 								<shadowcolor>text_shadow</shadowcolor>
-								<visible>!String.IsEmpty(Window(home).Property(TvShowRating))</visible>
+								<visible>!String.IsEmpty(ListItem.Rating)</visible>
 							</control>
+							<include>SkinHelperRatings</include>
 						</control>
 						<control type="grouplist" id="100">
 							<height>75</height>
@@ -204,60 +183,59 @@
 							<onright>noop</onright>
 							<onleft>9999</onleft>
 							<control type="button" id="101">
+								<visible>!String.IsEmpty(ListItem.FileNameAndPath)</visible>
 								<include>LightGreyButton</include>
-								<label>$LOCALIZE[31069]</label>
+								<label>$VAR[VideoInfoButton8]</label>
 								<onup>SetFocus(6666)</onup>
-								<ondown>SetFocus(54)</ondown>
-								<onclick>back</onclick>
+								<onclick>SetFocus(50)</onclick>
+								<onclick>Select</onclick>
+								<ondown>SetFocus(50)</ondown>
 							</control>
-							<control type="button" id="110">
-								<visible>Control.IsVisible(96)</visible>
+							<control type="button" id="102">
+								<visible>Control.IsVisible(18)</visible>
 								<include>LightGreyButton</include>
 								<label>$LOCALIZE[31013]</label>
-								<onclick>RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.TVShowTitle]',message='$ESCINFO[ListItem.Plot]')</onclick>
+								<onclick>RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCINFO[ListItem.Plot]')</onclick>
 								<onup>SetFocus(6666)</onup>
-								<ondown>SetFocus(54)</ondown>
+								<ondown>SetFocus(50)</ondown>
 							</control>
-							<control type="togglebutton" id="102">
+							<control type="button" id="103">
+								<visible>!String.IsEmpty(ListItem.Trailer)</visible>
 								<include>LightGreyButton</include>
-								<width>70</width>
-								<height>50</height>
-								<font>material24</font>
-								<label>[B][/B]</label>
-								<altlabel>[B][COLOR red][/COLOR][/B]</altlabel>
-								<onclick>ToggleWatched</onclick>
+								<label>$LOCALIZE[20410]</label>
 								<onup>SetFocus(6666)</onup>
-								<ondown>SetFocus(54)</ondown>
-								<selected>String.IsEqual(ListItem.Overlay,OverlayWatched.png) | Integer.IsGreaterOrEqual(ListItem.PlayCount,1) | [String.IsEqual(ListItem.DBtype,tvshow) + !String.IsEmpty(ListItem.Property(UnWatchedEpisodes)) + Integer.IsLess(ListItem.Property(UnWatchedEpisodes),1)]</selected>
+								<onclick>PlayMedia($INFO[ListItem.Trailer])</onclick>
+								<ondown>SetFocus(50)</ondown>
 							</control>
 						</control>
 						<control type="label">
 							<width>auto</width>
 							<height>40</height>
 							<label>$INFO[ListItem.Genre,$LOCALIZE[515]: ,   ]$INFO[ListItem.Director,$LOCALIZE[20339]: ]</label>
-							<font>reg22</font> 
+							<font>reg22</font>
 							<textcolor>emby</textcolor>
 							<shadowcolor>text_shadow</shadowcolor>
-						</control>
-						<control type="label">
-							<width>auto</width>
-							<height>40</height>
-							<label>$INFO[Window(home).Property(EmbyGenre)]</label>
-							<font>reg22</font> 
-							<textcolor>emby</textcolor>
-							<shadowcolor>text_shadow</shadowcolor>
-							<visible>String.IsEmpty(ListItem.Genre) + !String.IsEmpty(Window(home).Property(EmbyGenre)) + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)</visible>
 						</control>
 						<control type="textbox">
 							<width>100%</width>
 							<height>130</height>
 							<align>justify</align>
 							<aligny>top</aligny>
-							<label>$VAR[SeasonViewPlot]</label>
+							<label>$INFO[ListItem.Tagline,[B],[/B][CR]]$INFO[ListItem.Plot]</label>
 							<font>Light24</font>
 							<shadowcolor>text_shadow</shadowcolor>
 							<autoscroll>false</autoscroll>
-							<pagecontrol>96</pagecontrol>
+							<pagecontrol>18</pagecontrol>
+						</control>
+						<control type="label">
+							<height>20</height>
+						</control>
+						<control type="grouplist">
+							<orientation>horizontal</orientation>
+							<height>65</height>
+							<itemgap>5</itemgap>
+							<width>1040</width>
+							<include>MediaFlags</include>
 						</control>
 					</control>
 					<!-- logo -->
@@ -265,7 +243,7 @@
 						<right>70</right>
 						<width>400</width>
 						<height>155</height>
-						<texture>$VAR[ListItemClearlogo]</texture>
+						<texture>$INFO[ListItem.Art(clearlogo)]</texture>
 						<aspectratio>keep</aspectratio>
 					</control>
 				</control>
@@ -273,54 +251,39 @@
 					<top>524</top>
 					<!-- Seasons -->
 					<include content="PosterWidget">
-						<param name="id" value="54"/>
+						<param name="id" value="56"/>
 						<param name="onup" value="100"/>
 						<param name="ondown" value="200"/>
 						<param name="headline" value="$LOCALIZE[33054]"/>
 						<param name="sublabel" value=""/>
 						<param name="use_custom_content" value="false"/>
 						<param name="height">553</param>
-						<param name="content_visibility">Container.Content(seasons)</param>
-						<param name="list_name">$LOCALIZE[20373]</param>
+						<param name="content_visibility">Container.Content(movies)</param>
+						<param name="list_name">$LOCALIZE[20434]</param>
 					</include>
 				</control>
 			</control>
-			<!-- Next Up -->
-			<include content="WideWidget">
-				<param name="id" value="200"/>
-				<param name="onup" value="54"/>
-				<param name="ondown" value="300"/>
-				<param name="onback" value="54"/>
-				<param name="height" value="438"/>
-				<param name="sublabel" value=""/>
-				<param name="sortby" value="playcount"/>
-				<param name="sortorder" value="ascending"/>
-				<param name="limit" value="1"/>
-				<param name="headline" value="$LOCALIZE[31012]"/>
-				<param name="content_visibility">Container.Content(seasons)</param>
-				<param name="content" value="$VAR[View54_NextUp_Content]"/>
-			</include>
 			<!-- Cast -->
 			<include content="CastWidget">
-				<param name="id" value="300"/>
-				<param name="onup" value="200"/>
+				<param name="id" value="200"/>
+				<param name="onup" value="56"/>
 				<param name="ondown" value="SetProperty(BounceDown,1,home)"/>
-				<param name="onback" value="54"/>
+				<param name="onback" value="56"/>
 				<param name="mainlabel" value="$INFO[ListItem.Label]"/>
 				<param name="sublabel" value="$INFO[ListItem.Label2]"/>
 				<param name="headline" value="$LOCALIZE[206]"/>
-				<param name="content_visibility">Container.Content(seasons)</param>
+				<param name="content_visibility">Container.Content(movies)</param>
 				<param name="content" value="$VAR[View_Cast_Content]"/>
 			</include>
 		</control>
 		<!-- Hidden scrollbar -->
-		<control id="96" type="scrollbar">
+		<control id="18" type="scrollbar">
 			<left>-1200</left>
 			<width>100</width>
 			<height>1</height>
 			<showonepage>false</showonepage>
 			<orientation>vertical</orientation>
-			<visible>Control.IsVisible(54)</visible>
+			<visible>Control.IsVisible(56)</visible>
 		</control>
 	</include>
 </includes>
