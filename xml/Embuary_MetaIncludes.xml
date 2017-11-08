@@ -220,7 +220,94 @@
 			</control>
 		</definition>
 	</include>
-	<!-- common includes -->
+	<!-- Video -->
+	<include name="PlayerVideoInfos">
+		<param name="width">1040</param>
+		<definition>
+			<control type="grouplist">
+				<height>40</height>
+				<width>$PARAP[width]</width>
+				<itemgap>5</itemgap>
+				<orientation>horizontal</orientation>
+				<control type="label">
+					<width>auto</width>
+					<height>24</height>
+					<label>$INFO[VideoPlayer.Year]   </label>
+					<font>reg22</font>
+					<shadowcolor>text_shadow</shadowcolor>
+					<visible>!String.IsEmpty(VideoPlayer.Year) + VideoPlayer.Content(movies)</visible>
+				</control>
+				<control type="label">
+					<width>auto</width>
+					<height>24</height>
+					<label>$VAR[PlayerDurationMinutes]   </label>
+					<font>reg22</font>
+					<shadowcolor>text_shadow</shadowcolor>
+					<visible>!String.IsEmpty(Player.Duration)</visible>
+				</control>
+				<control type="button">
+					<width min="24">auto</width>
+					<height>28</height>
+					<font>med16</font>
+					<label>$INFO[VideoPlayer.Mpaa]</label>
+					<textoffsetx>10</textoffsetx>
+					<align>center</align>
+					<textcolor>white</textcolor>
+					<disabledcolor>white</disabledcolor>
+					<texturefocus border="10" colordiffuse="text_white">icons/rating/mpaa.png</texturefocus>
+					<texturenofocus border="10" colordiffuse="text_white">icons/rating/mpaa.png</texturenofocus>
+					<enable>false</enable>
+					<visible>!String.IsEmpty(VideoPlayer.Mpaa)</visible>
+				</control>
+				<control type="label">
+					<width>12</width>
+					<height>24</height>
+					<label/>
+					<visible>!String.IsEmpty(VideoPlayer.Mpaa)</visible>
+				</control>
+				<control type="button">
+					<width min="24">auto</width>
+					<height>28</height>
+					<font>med16</font>
+					<label>CC</label>
+					<textoffsetx>10</textoffsetx>
+					<align>center</align>
+					<disabledcolor>text_white</disabledcolor>
+					<texturefocus border="10" colordiffuse="greybutton">items/shadow_smallbutton.png</texturefocus>
+					<texturenofocus border="10" colordiffuse="greybutton">items/shadow_smallbutton.png</texturenofocus>
+					<enable>false</enable>
+					<visible>VideoPlayer.HasSubtitles</visible>
+				</control>
+				<control type="label">
+					<width>9</width>
+					<height>24</height>
+					<label/>
+					<visible>VideoPlayer.HasSubtitles</visible>
+				</control>
+				<control type="label">
+					<width>auto</width>
+					<height>24</height>
+					<label></label>
+					<font>Material26</font>
+					<textcolor>red</textcolor>
+					<shadowcolor>text_shadow</shadowcolor>
+					<visible>!String.IsEmpty(VideoPlayer.Rating)</visible>
+				</control>
+				<control type="label">
+					<width>auto</width>
+					<height>24</height>
+					<label>$INFO[VideoPlayer.Rating]   </label>
+					<font>reg22</font>
+					<shadowcolor>text_shadow</shadowcolor>
+					<visible>!String.IsEmpty(VideoPlayer.Rating)</visible>
+				</control>
+				<include content="SkinHelperRatings">
+					<param name="type" value="Player"/>
+				</include>
+			</control>
+		</definition>
+	</include>
+	<!-- art includes -->
 	<include name="MetaPoster">
 		<control type="group">
 			<left>70</left>
@@ -253,7 +340,7 @@
 				<font>Light24</font>
 				<align>center</align>
 				<aligny>center</aligny>
-				<label>$INFO[ListItem.Label]</label>			
+				<label>$VAR[ListItemTitleLabel]</label>
 			</control>
 			<control type="image">
 				<width>276</width>
@@ -287,6 +374,42 @@
 						<align>center</align>
 					</control>
 				</control>
+			</control>
+		</control>
+	</include>
+	<include name="MetaVideoPoster">
+		<control type="group">
+			<left>70</left>
+			<control type="image">
+				<top>-2</top>
+				<left>-2</left>
+				<width>282</width>
+				<height>420</height>
+				<texture>items/shadow_poster.png</texture>
+			</control>
+			<control type="image">
+				<width>276</width>
+				<height>414</height>
+				<texture colordiffuse="green" diffuse="items/mask_poster.png">common/white.jpg</texture>
+				<aspectratio scalediffuse="false">stretch</aspectratio>
+				<visible>String.IsEmpty(Player.Art(poster)) + String.IsEmpty(Player.Art(tvshow.poster)) + String.StartsWith(VideoPlayer.Cover,Default)</visible>
+			</control>
+			<control type="textbox">
+				<top>10</top>
+				<left>10</left>
+				<width>256</width>
+				<height>394</height>
+				<font>Light24</font>
+				<align>center</align>
+				<aligny>center</aligny>
+				<label>$VAR[PlayerTitleLabel]</label>
+				<visible>String.IsEmpty(Player.Art(poster)) + String.IsEmpty(Player.Art(tvshow.poster)) + String.StartsWith(VideoPlayer.Cover,Default)</visible>
+			</control>
+			<control type="image">
+				<width>276</width>
+				<height>414</height>
+				<texture diffuse="items/mask_poster.png" background="true">$VAR[PlayerIcon]</texture>
+				<aspectratio scalediffuse="false">scale</aspectratio>
 			</control>
 		</control>
 	</include>
@@ -331,6 +454,25 @@
 			</control>
 		</control>
 	</include>
+	<include name="MetaClearlogo">
+		<control type="image">
+			<right>70</right>
+			<width>400</width>
+			<height>155</height>
+			<texture>$VAR[ListItemClearlogo]</texture>
+			<aspectratio>keep</aspectratio>
+		</control>
+	</include>
+	<include name="MetaPlayerClearlogo">
+		<control type="image">
+			<right>70</right>
+			<width>400</width>
+			<height>155</height>
+			<texture>$VAR[PlayerClearlogo]</texture>
+			<aspectratio>keep</aspectratio>
+		</control>
+	</include>
+	<!-- common includes -->
 	<include name="SkinHelperRatings">
 		<param name="type">ListItem</param>
 		<definition>			
@@ -446,24 +588,21 @@
 		</definition>
 	</include>
 	<include name="MetaGenre">
-		<control type="label">
-			<width>auto</width>
-			<height>40</height>
-			<label>$INFO[ListItem.Genre,$LOCALIZE[515]: ,   ]$INFO[ListItem.Director,$LOCALIZE[20339]: ]</label>
-			<font>reg22</font>
-			<textcolor>emby</textcolor>
-			<shadowcolor>text_shadow</shadowcolor>
-		</control>
+		<param name="type">ListItem</param>
+		<param name="visible">true</param>
+		<definition>
+			<control type="label">
+				<width>auto</width>
+				<height>40</height>
+				<label>$INFO[$PARAM[type].Genre,$LOCALIZE[515]: ,   ]$INFO[$PARAM[type].Director,$LOCALIZE[20339]: ]</label>
+				<font>reg22</font>
+				<textcolor>emby</textcolor>
+				<shadowcolor>text_shadow</shadowcolor>
+				<visible>$PARAM[visible]</visible>
+			</control>
+		</definition>
 	</include>
-	<include name="MetaClearlogo">
-		<control type="image">
-			<right>70</right>
-			<width>400</width>
-			<height>155</height>
-			<texture>$VAR[ListItemClearlogo]</texture>
-			<aspectratio>keep</aspectratio>
-		</control>
-	</include>
+	<!-- Flags -->
 	<include name="MetaFlags">
 		<param name="type">MediaFlags</param>
 		<definition>
@@ -475,5 +614,247 @@
 				<include>$PARAM[type]</include>
 			</control>
 		</definition>
+	</include>
+	<include name="MediaFlags">
+		<control type="button">
+			<width min="50">auto</width>
+			<height>48</height>
+			<font>reg18</font>
+			<label>[UPPERCASE]$VAR[ListItemResolution][/UPPERCASE]</label>
+			<textoffsetx>15</textoffsetx>
+			<align>center</align>
+			<disabledcolor>white</disabledcolor>
+			<texturefocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturefocus>
+			<texturenofocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturenofocus>
+			<enable>false</enable>
+			<visible>!String.IsEmpty(ListItem.VideoResolution)</visible>
+		</control>
+		<control type="button">
+			<width min="50">auto</width>
+			<height>48</height>
+			<font>reg18</font>
+			<label>[UPPERCASE]$INFO[ListItem.VideoCodec][/UPPERCASE]</label>
+			<textoffsetx>15</textoffsetx>
+			<align>center</align>
+			<disabledcolor>white</disabledcolor>
+			<texturefocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturefocus>
+			<texturenofocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturenofocus>
+			<enable>false</enable>
+			<visible>!String.IsEmpty(ListItem.VideoCodec)</visible>
+		</control>
+		<control type="button">
+			<width min="50">auto</width>
+			<height>48</height>
+			<font>reg18</font>
+			<label>$VAR[ListItemAudioChannels]</label>
+			<textoffsetx>15</textoffsetx>
+			<align>center</align>
+			<disabledcolor>white</disabledcolor>
+			<texturefocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturefocus>
+			<texturenofocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturenofocus>
+			<enable>false</enable>
+			<visible>!String.IsEmpty(ListItem.AudioChannels)</visible>
+		</control>
+		<control type="button">
+			<width min="50">auto</width>
+			<height>48</height>
+			<font>reg18</font>
+			<label>$VAR[ListItemAudio]</label>
+			<textoffsetx>15</textoffsetx>
+			<align>center</align>
+			<disabledcolor>white</disabledcolor>
+			<texturefocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturefocus>
+			<texturenofocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturenofocus>
+			<enable>false</enable>
+			<visible>!String.IsEmpty(ListItem.AudioChannels) + !String.IsEmpty(ListItem.AudioCodec)</visible>
+		</control>
+		<control type="button">
+			<width min="50">auto</width>
+			<height>48</height>
+			<font>reg18</font>
+			<label>$INFO[ListItem.DateAdded,$LOCALIZE[570]: ]</label>
+			<textoffsetx>15</textoffsetx>
+			<align>center</align>
+			<disabledcolor>white</disabledcolor>
+			<texturefocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturefocus>
+			<texturenofocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturenofocus>
+			<enable>false</enable>
+			<visible>!String.IsEmpty(ListItem.DateAdded)</visible>
+		</control>
+	</include>
+	<include name="PlayerFlags">
+		<control type="button">
+			<width min="50">auto</width>
+			<height>48</height>
+			<font>reg18</font>
+			<label>[UPPERCASE]$VAR[PlayerResolution][/UPPERCASE]</label>
+			<textoffsetx>15</textoffsetx>
+			<align>center</align>
+			<disabledcolor>white</disabledcolor>
+			<texturefocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturefocus>
+			<texturenofocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturenofocus>
+			<enable>false</enable>
+			<visible>!String.IsEmpty(VideoPlayer.VideoResolution)</visible>
+		</control>
+		<control type="button">
+			<width min="50">auto</width>
+			<height>48</height>
+			<font>reg18</font>
+			<label>[UPPERCASE]$INFO[VideoPlayer.VideoCodec][/UPPERCASE]</label>
+			<textoffsetx>15</textoffsetx>
+			<align>center</align>
+			<disabledcolor>white</disabledcolor>
+			<texturefocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturefocus>
+			<texturenofocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturenofocus>
+			<enable>false</enable>
+			<visible>!String.IsEmpty(VideoPlayer.VideoCodec)</visible>
+		</control>
+		<control type="button">
+			<width min="50">auto</width>
+			<height>48</height>
+			<font>reg18</font>
+			<label>$VAR[PlayerAudioChannels]</label>
+			<textoffsetx>15</textoffsetx>
+			<align>center</align>
+			<disabledcolor>white</disabledcolor>
+			<texturefocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturefocus>
+			<texturenofocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturenofocus>
+			<enable>false</enable>
+			<visible>!String.IsEmpty(VideoPlayer.AudioChannels)</visible>
+		</control>
+		<control type="button">
+			<width min="50">auto</width>
+			<height>48</height>
+			<font>reg18</font>
+			<label>$VAR[PlayerAudio]</label>
+			<textoffsetx>15</textoffsetx>
+			<align>center</align>
+			<disabledcolor>white</disabledcolor>
+			<texturefocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturefocus>
+			<texturenofocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturenofocus>
+			<enable>false</enable>
+			<visible>!String.IsEmpty(VideoPlayer.AudioChannels) + !String.IsEmpty(VideoPlayer.AudioCodec)</visible>
+		</control>
+	</include>
+	<include name="PVRFlags">
+		<control type="button">
+			<width min="50">auto</width>
+			<height>48</height>
+			<font>reg18</font>
+			<label>$LOCALIZE[31161]</label>
+			<textoffsetx>15</textoffsetx>
+			<align>center</align>
+			<disabledcolor>white</disabledcolor>
+			<enable>false</enable>
+			<visible>!ListItem.IsEncrypted</visible>
+			<texturefocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturefocus>
+			<texturenofocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturenofocus>
+		</control>
+		<control type="button">
+			<width min="50">auto</width>
+			<height>48</height>
+			<font>reg18</font>
+			<label>$LOCALIZE[31022]</label>
+			<textoffsetx>15</textoffsetx>
+			<align>center</align>
+			<disabledcolor>white</disabledcolor>
+			<enable>false</enable>
+			<visible>ListItem.IsEncrypted</visible>
+			<texturefocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturefocus>
+			<texturenofocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturenofocus>
+		</control>
+		<control type="button">
+			<width min="50">auto</width>
+			<height>48</height>
+			<font>reg18</font>
+			<label>$LOCALIZE[31023]</label>
+			<textoffsetx>15</textoffsetx>
+			<align>center</align>
+			<disabledcolor>white</disabledcolor>
+			<enable>false</enable>
+			<visible>ListItem.IsRecording</visible>
+			<texturefocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturefocus>
+			<texturenofocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturenofocus>
+		</control>
+		<control type="button">
+			<width min="50">auto</width>
+			<height>48</height>
+			<font>reg18</font>
+			<label>$LOCALIZE[31024]</label>
+			<textoffsetx>15</textoffsetx>
+			<align>center</align>
+			<disabledcolor>white</disabledcolor>
+			<enable>false</enable>
+			<visible>ListItem.HasTimer</visible>
+			<texturefocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturefocus>
+			<texturenofocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturenofocus>
+		</control>
+		<control type="button">
+			<width min="50">auto</width>
+			<height>48</height>
+			<font>reg18</font>
+			<label>$LOCALIZE[31025]</label>
+			<textoffsetx>15</textoffsetx>
+			<align>center</align>
+			<disabledcolor>white</disabledcolor>
+			<enable>false</enable>
+			<visible>ListItem.HasTimerSchedule</visible>
+			<texturefocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturefocus>
+			<texturenofocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturenofocus>
+		</control>
+	</include>
+	<include name="AddonFlags">
+		<control type="button">
+			<width min="50">auto</width>
+			<height>48</height>
+			<font>reg18</font>
+			<label>$LOCALIZE[31035]</label>
+			<textoffsetx>15</textoffsetx>
+			<align>center</align>
+			<disabledcolor>white</disabledcolor>
+			<enable>false</enable>
+			<texturefocus border="10" colordiffuse="red">items/shadow_smallbutton.png</texturefocus>
+			<texturenofocus border="10" colordiffuse="red">items/shadow_smallbutton.png</texturenofocus>
+			<visible>!String.IsEmpty(ListItem.AddonBroken)</visible>
+		</control>
+		<control type="button">
+			<width min="50">auto</width>
+			<height>48</height>
+			<font>reg18</font>
+			<label>$LOCALIZE[289] $INFO[ListItem.AddonSize]</label>
+			<textoffsetx>15</textoffsetx>
+			<align>center</align>
+			<disabledcolor>white</disabledcolor>
+			<enable>false</enable>
+			<texturefocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturefocus>
+			<texturenofocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturenofocus>
+			<visible>!String.IsEmpty(ListItem.AddonSize)</visible>
+		</control>
+		<control type="button">
+			<width min="50">auto</width>
+			<height>48</height>
+			<font>reg18</font>
+			<label>$LOCALIZE[12013]: $INFO[ListItem.AddonInstallDate]</label>
+			<textoffsetx>15</textoffsetx>
+			<align>center</align>
+			<disabledcolor>white</disabledcolor>
+			<enable>false</enable>
+			<texturefocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturefocus>
+			<texturenofocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturenofocus>
+			<visible>!String.IsEmpty(ListItem.AddonInstallDate)</visible>
+		</control>
+		<control type="button">
+			<width min="50">auto</width>
+			<height>48</height>
+			<font>reg18</font>
+			<label>$LOCALIZE[12014]: $INFO[ListItem.AddonLastUpdated]</label>
+			<textoffsetx>15</textoffsetx>
+			<align>center</align>
+			<disabledcolor>white</disabledcolor>
+			<enable>false</enable>
+			<texturefocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturefocus>
+			<texturenofocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturenofocus>
+			<visible>!String.IsEmpty(ListItem.AddonLastUpdated)</visible>
+		</control>
 	</include>
 </includes>
