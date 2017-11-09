@@ -228,7 +228,7 @@
 	<include name="VideoPVRInfoLayout">		
 		<!-- Background -->
 		<include>Background</include>
-		<!-- Thumb image -->
+		<!-- info -->
 		<control type="group">
 			<include>Window_OpenClose</include>
 			<include>FullscreenDimensions</include>
@@ -236,63 +236,8 @@
 				<top>128</top>
 				<height>435</height>
 				<width>1920</width>
-				<control type="group">
-					<left>70</left>
-					<width>590</width>
-					<control type="group">
-						<control type="image">
-							<top>-2</top>
-							<left>-2</left>
-							<width>596</width>
-							<height>338</height>
-							<texture>items/shadow_wide_big.png</texture>
-						</control>
-						<control type="image">
-							<width>590</width>
-							<height>332</height>
-							<texture colordiffuse="green" diffuse="items/mask_wide_big.png">common/white.jpg</texture>
-							<aspectratio scalediffuse="false">stretch</aspectratio>
-							<visible>String.IsEmpty(VideoPlayer.Cover) | String.StartsWith(VideoPlayer.Cover,Default)</visible>
-						</control>
-						<control type="image">
-							<width>590</width>
-							<height>332</height>
-							<texture colordiffuse="darkbutton" diffuse="items/mask_wide_big.png">common/white.jpg</texture>
-							<aspectratio scalediffuse="false">stretch</aspectratio>
-							<visible>!String.IsEmpty(VideoPlayer.Cover) + !String.StartsWith(VideoPlayer.Cover,Default)</visible>
-						</control>
-						<control type="textbox">
-							<top>10</top>
-							<left>10</left>
-							<width>570</width>
-							<height>312</height>
-							<font>Light24</font>
-							<align>center</align>#
-							<aligny>center</aligny>
-							<label>$INFO[VideoPlayer.Channelname]</label>
-							<visible>String.IsEmpty(VideoPlayer.Cover) | String.StartsWith(VideoPlayer.Cover,Default)</visible>
-						</control>
-						<control type="image">
-							<width>590</width>
-							<height>332</height>
-							<texture diffuse="items/mask_wide_db.png" background="true">$VAR[PlayerIcon]</texture>
-							<fadetime>200</fadetime>
-							<aspectratio scalediffuse="false">keep</aspectratio>
-							<bordersize>20</bordersize>							
-							<visible>!String.StartsWith(VideoPlayer.Cover,Default)</visible>
-						</control>
-						<control type="group">
-							<width>590</width>
-							<height>332</height>
-							<include>bubble_overlay</include>
-							<include>bubble_play</include>
-						</control>
-						<include content="PlayerProgress">
-							<param name="top" value="328"/>
-							<param name="width" value="590"/>
-						</include>
-					</control>
-				</control>
+				<!-- thumb -->
+				<include>MetaVideoBigThumb</include>
 				<!-- meta -->
 				<control type="grouplist">
 					<left>684</left>
@@ -321,41 +266,13 @@
 							<shadowcolor>text_shadow</shadowcolor>
 						</control>
 					</control>
-					<control type="grouplist">
-						<height>40</height>
-						<width>1166</width>
-						<itemgap>5</itemgap>
-						<orientation>horizontal</orientation>
-						<control type="label">
-							<width>auto</width>
-							<height>24</height>
-							<label>$INFO[VideoPlayer.Starttime]$INFO[VideoPlayer.Endtime, - ]   </label>
-							<font>reg22</font>
-							<shadowcolor>text_shadow</shadowcolor>
-							<visible>!String.StartsWith(Player.Filenameandpath,pvr://recordings)</visible>
-						</control>
-						<control type="label">
-							<width>auto</width>
-							<height>24</height>
-							<label>$INFO[VideoPlayer.Channelnumber,$LOCALIZE[19029] ]   </label>
-							<font>reg22</font>
-							<shadowcolor>text_shadow</shadowcolor>
-						</control>
-						<control type="label">
-							<width>auto</width>
-							<height>24</height>
-							<label>$INFO[VideoPlayer.Channelname]   </label>
-							<font>reg22</font>
-							<shadowcolor>text_shadow</shadowcolor>
-						</control>
-					</control>
-					<control type="grouplist">
-						<orientation>horizontal</orientation>
-						<height>65</height>
-						<itemgap>5</itemgap>
-						<width>1166</width>
-						<include>PlayerFlags</include>
-					</control>
+					<!-- meta -->
+					<include>PlayerVideoInfos</include>
+					<!-- flags -->
+					<include content="MetaFlags">
+						<param name="type" value="PlayerFlags"/>
+					</include>
+					<!-- buttons -->
 					<control type="grouplist" id="100">
 						<height>75</height>
 						<orientation>horizontal</orientation>
@@ -376,14 +293,11 @@
 							<onup>SetFocus(6666)</onup>
 						</control>
 					</control>
-					<control type="label">
-						<width>1166</width>
-						<height>40</height>
-						<label>$INFO[VideoPlayer.Genre,$LOCALIZE[515]: ,   ]$INFO[VideoPlayer.Director,$LOCALIZE[20339]: ]</label>
-						<font>reg22</font>
-						<textcolor>emby</textcolor>
-						<shadowcolor>text_shadow</shadowcolor>
-					</control>
+					<!-- Genre -->
+					<include content="MetaGenre">
+						<param name="type" value="VideoPlayer"/>
+					</include>
+					<!-- Plot -->
 					<control type="textbox">
 						<width>1166</width>
 						<height>565</height>

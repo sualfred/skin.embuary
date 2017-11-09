@@ -20,63 +20,8 @@
 			<control type="group">
 				<top>128</top>
 				<width>1920</width>
-				<control type="group">
-					<left>70</left>
-					<width>590</width>
-					<control type="group">
-						<control type="image">
-							<top>-2</top>
-							<left>-2</left>
-							<width>596</width>
-							<height>338</height>
-							<texture>items/shadow_wide_big.png</texture>
-						</control>
-						<control type="image">
-							<width>590</width>
-							<height>332</height>
-							<texture colordiffuse="green" diffuse="items/mask_wide_big.png">common/white.jpg</texture>
-							<aspectratio scalediffuse="false">stretch</aspectratio>
-							<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
-						</control>
-						<control type="image">
-							<width>590</width>
-							<height>332</height>
-							<texture colordiffuse="thumb_background" diffuse="items/mask_wide_big.png">common/white.jpg</texture>
-							<aspectratio scalediffuse="false">stretch</aspectratio>
-							<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
-						</control>
-						<control type="textbox">
-							<top>10</top>
-							<left>10</left>
-							<width>570</width>
-							<height>312</height>
-							<font>Light24</font>
-							<align>center</align>
-							<aligny>center</aligny>
-							<label>$VAR[MainListLabel]</label>
-							<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
-						</control>
-						<control type="image">
-							<width>590</width>
-							<height>332</height>
-							<texture diffuse="items/mask_wide_db.png" background="true">$INFO[ListItem.Icon]</texture>
-							<fadetime>200</fadetime>
-							<aspectratio scalediffuse="false">keep</aspectratio>
-							<bordersize>20</bordersize>
-							<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
-						</control>
-						<control type="group">
-							<width>590</width>
-							<height>332</height>
-							<include>bubble_overlay</include>
-							<include>bubble_play</include>
-						</control>
-						<include content="progress">
-							<param name="top" value="328"/>
-							<param name="width" value="590"/>
-						</include>
-					</control>
-				</control>
+				<!-- Thumb -->
+				<include>MetaBigThumb</include>
 				<!-- meta -->
 				<control type="grouplist">
 					<left>684</left>
@@ -105,40 +50,13 @@
 							<shadowcolor>text_shadow</shadowcolor>
 						</control>
 					</control>
-					<control type="grouplist">
-						<height>40</height>
-						<width>1166</width>
-						<itemgap>5</itemgap>
-						<orientation>horizontal</orientation>
-						<control type="label">
-							<width>auto</width>
-							<height>24</height>
-							<label>$INFO[ListItem.Date]$INFO[ListItem.Endtime, - ]   </label>
-							<font>reg22</font>
-							<shadowcolor>text_shadow</shadowcolor>
-						</control>
-						<control type="label">
-							<width>auto</width>
-							<height>24</height>
-							<label>$INFO[ListItem.Channelnumber,$LOCALIZE[19029] ]   </label>
-							<font>reg22</font>
-							<shadowcolor>text_shadow</shadowcolor>
-						</control>
-						<control type="label">
-							<width>auto</width>
-							<height>24</height>
-							<label>$INFO[ListItem.Channelname]   </label>
-							<font>reg22</font>
-							<shadowcolor>text_shadow</shadowcolor>
-						</control>
-					</control>
-					<control type="grouplist">
-						<orientation>horizontal</orientation>
-						<height>65</height>
-						<itemgap>5</itemgap>
-						<width>1166</width>
-						<include>PVRFlags</include>
-					</control>
+					<!-- meta -->
+					<include>MetaPVRInfos</include>
+					<!-- flags -->
+					<include content="MetaFlags">
+						<param name="type" value="PVRFlags"/>
+					</include>
+					<!-- buttons -->
 					<control type="grouplist" id="100">
 						<height>75</height>
 						<orientation>horizontal</orientation>

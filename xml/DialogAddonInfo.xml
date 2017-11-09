@@ -18,7 +18,7 @@
 		</control>
 		<!-- Background -->
 		<include>Background</include>
-		<!-- Fanart -->
+		<!-- Info -->
 		<control type="group">
 			<include>Window_OpenClose</include>
 			<include>FullscreenDimensions</include>
@@ -27,49 +27,7 @@
 				<height>435</height>
 				<width>1920</width>
 				<!-- Thumb image -->
-				<control type="group">
-					<left>70</left>
-					<width>590</width>
-					<control type="image">
-						<top>-2</top>
-						<left>-2</left>
-						<width>346</width>
-						<height>346</height>
-						<texture>items/shadow_square_db.png</texture>
-					</control>
-					<control type="image">
-						<width>340</width>
-						<height>340</height>
-						<texture colordiffuse="green" diffuse="items/mask_square_db.png">common/white.jpg</texture>
-						<aspectratio scalediffuse="false">stretch</aspectratio>
-						<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
-					</control>
-					<control type="image">
-						<width>340</width>
-						<height>340</height>
-						<texture colordiffuse="thumb_background" diffuse="items/mask_square_db.png">common/white.jpg</texture>
-						<aspectratio scalediffuse="false">stretch</aspectratio>
-						<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
-					</control>
-					<control type="textbox">
-						<top>10</top>
-						<left>10</left>
-						<width>320</width>
-						<height>320</height>
-						<font>Light24</font>
-						<align>center</align>
-						<aligny>center</aligny>
-						<label>$INFO[ListItem.Label]</label>
-						<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
-					</control>
-					<control type="image">
-						<width>340</width>
-						<height>340</height>
-						<texture diffuse="items/mask_square_db.png" background="true">$INFO[ListItem.Icon]</texture>
-						<aspectratio scalediffuse="false">stretch</aspectratio>
-						<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
-					</control>
-				</control>
+				<include>MetaSquareThumb</include>
 				<!-- meta -->
 				<control type="grouplist">
 					<left>434</left>
@@ -85,36 +43,11 @@
 						<font>Reg37</font>
 						<shadowcolor>text_shadow</shadowcolor>
 					</control>
-					<control type="grouplist">
-						<height>40</height>
-						<width>100%</width>
-						<itemgap>5</itemgap>
-						<orientation>horizontal</orientation>
-						<control type="label">
-							<width>auto</width>
-							<height>24</height>
-							<label>$LOCALIZE[19114]: $INFO[ListItem.AddonVersion]   </label>
-							<font>reg22</font>
-							<shadowcolor>text_shadow</shadowcolor>
-							<visible>!String.IsEmpty(ListItem.AddonVersion)</visible>
-						</control>
-						<control type="label">
-							<width>auto</width>
-							<height>24</height>
-							<label>$LOCALIZE[31033]: $INFO[ListItem.AddonCreator]   </label>
-							<font>reg22</font>
-							<shadowcolor>text_shadow</shadowcolor>
-							<visible>!String.IsEmpty(ListItem.AddonCreator)</visible>
-						</control>
-					</control>
-					<control type="label">
-						<width>100%</width>
-						<height>40</height>
-						<label>$INFO[ListItem.AddonType]</label>
-						<font>reg22</font>
-						<textcolor>emby</textcolor>
-						<shadowcolor>text_shadow</shadowcolor>
-					</control>
+					<!-- meta -->
+					<include>MetaAddonInfos</include>
+					<!-- type -->
+					<include>MetaGenre</include>
+					<!-- buttons -->
 					<control type="grouplist" id="100">
 						<height>75</height>
 						<orientation>horizontal</orientation>
@@ -171,13 +104,11 @@
 							<visible>!String.IsEmpty(ListItem.AddonNews)</visible>
 						</control>
 					</control>
-					<control type="grouplist">
-						<orientation>horizontal</orientation>
-						<height>65</height>
-						<itemgap>5</itemgap>
-						<width>1166</width>
-						<include>AddonFlags</include>
-					</control>
+					<!-- flags -->
+					<include content="MetaFlags">
+						<param name="type" value="AddonFlags"/>
+					</include>
+					<!-- Desc -->
 					<control type="textbox" id="97">
 						<width>100%</width>
 						<height>605</height>
@@ -192,7 +123,6 @@
 				</control>
 			</control>
 		</control>
-
 		<!-- header bar -->
 		<include content="HeaderBar">		
 			<param name="id">100</param>

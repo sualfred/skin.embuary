@@ -107,6 +107,108 @@
 			</control>
 		</definition>
 	</include>
+	<!-- Music -->
+	<include name="MetaArtistInfos">
+		<param name="width">940</param>
+		<definition>
+			<control type="grouplist">
+				<height>40</height>
+				<width>$PARAM[width]</width>
+				<itemgap>5</itemgap>
+				<orientation>horizontal</orientation>
+				<control type="label">
+					<include>MetaLabel</include>
+					<label>$INFO[ListItem.Property(Artist_Formed),$LOCALIZE[21894]: ]   </label>
+					<visible>!String.IsEmpty(ListItem.Property(Artist_Formed))</visible>
+				</control>
+				<control type="label">
+					<include>MetaLabel</include>
+					<label>$INFO[ListItem.Property(Artist_Disbanded),$LOCALIZE[21896]: ]   </label>
+					<visible>!String.IsEmpty(ListItem.Property(Artist_Disbanded))</visible>
+				</control>
+				<control type="label">
+					<include>MetaLabel</include>
+					<label>$INFO[ListItem.Property(Artist_Mood),$LOCALIZE[175]: ]   </label>
+					<visible>!String.IsEmpty(ListItem.Property(Artist_Mood))</visible>
+				</control>
+			</control>
+		</definition>
+	</include>
+	<include name="MetaAlbumInfos">
+		<param name="width">940</param>
+		<definition>
+			<control type="grouplist">
+				<height>40</height>
+				<width>$PARAM[width]</width>
+				<itemgap>5</itemgap>
+				<orientation>horizontal</orientation>
+				<control type="label">
+					<include>MetaLabel</include>
+					<label>$INFO[ListItem.Year]   </label>
+					<visible>!String.IsEmpty(ListItem.Year)</visible>
+				</control>
+				<control type="label">
+					<include>MetaLabel</include>
+					<label>$INFO[Container(200).NumItems,$LOCALIZE[182]: ]   </label>
+					<visible>!String.IsEmpty(Container(200).NumItems)</visible>
+				</control>
+			</control>
+		</definition>
+	</include>
+	<!-- PVR -->
+	<include name="MetaPVRInfos">
+		<param name="width">100%</param>
+		<definition>
+			<control type="grouplist">
+				<height>40</height>
+				<width>$PARAM[width]</width>
+				<itemgap>5</itemgap>
+				<orientation>horizontal</orientation>
+				<control type="label">
+					<include>MetaLabel</include>
+					<label>$INFO[ListItem.Date]$INFO[ListItem.Endtime, - ]   </label>
+					<shadowcolor>text_shadow</shadowcolor>
+				</control>
+				<control type="label">
+					<include>MetaLabel</include>
+					<label>$VAR[DurationMinutes]   </label>
+					<visible>!String.IsEmpty(ListItem.Duration)</visible>
+				</control>
+				<control type="label">
+					<include>MetaLabel</include>
+					<label>$INFO[ListItem.Channelnumber,$LOCALIZE[19029] ]   </label>
+					<shadowcolor>text_shadow</shadowcolor>
+				</control>
+				<control type="label">
+					<include>MetaLabel</include>
+					<label>$INFO[ListItem.Channelname]   </label>
+					<shadowcolor>text_shadow</shadowcolor>
+				</control>
+			</control>
+		</definition>
+	</include>
+	<!-- Addon -->
+	<include name="MetaAddonInfos">
+		<param name="width">100%</param>
+		<definition>
+			<control type="grouplist">
+				<height>40</height>
+				<width>$PARAM[width]</width>
+				<itemgap>5</itemgap>
+				<orientation>horizontal</orientation>
+				<control type="label">
+					<include>MetaLabel</include>
+					<label>$LOCALIZE[19114]: $INFO[ListItem.AddonVersion]   </label>
+					<visible>!String.IsEmpty(ListItem.AddonVersion)</visible>
+				</control>
+				<control type="label">
+					<include>MetaLabel</include>
+					<label>$LOCALIZE[31033]: $INFO[ListItem.AddonCreator]   </label>
+					<visible>!String.IsEmpty(ListItem.AddonCreator)</visible>
+				</control>
+			</control>
+		</definition>
+	</include>
 	<!-- Video -->
 	<include name="PlayerVideoInfos">
 		<param name="width">1040</param>
@@ -117,20 +219,35 @@
 				<itemgap>5</itemgap>
 				<orientation>horizontal</orientation>
 				<control type="label">
-					<label>$INFO[VideoPlayer.Year]   </label>
 					<include>MetaLabel</include>
-					<visible>!String.IsEmpty(VideoPlayer.Year) + VideoPlayer.Content(movies)</visible>
+					<label>$INFO[VideoPlayer.Starttime]$INFO[VideoPlayer.Endtime, - ]   </label>
+					<visible>!String.StartsWith(Player.Filenameandpath,pvr://recordings)</visible>
 				</control>
 				<control type="label">
-					<label>$VAR[PlayerDurationMinutes]   </label>
 					<include>MetaLabel</include>
+					<label>$VAR[PlayerDurationMinutes]   </label>
 					<visible>!String.IsEmpty(Player.Duration)</visible>
+				</control>
+				<control type="label">
+					<include>MetaLabel</include>
+					<label>$INFO[VideoPlayer.Channelnumber,$LOCALIZE[19029] ]   </label>
+					<visible>VideoPlayer.Content(livetv)</visible>
+				</control>
+				<control type="label">
+					<include>MetaLabel</include>
+					<label>$INFO[VideoPlayer.Channelname]   </label>
+					<visible>VideoPlayer.Content(livetv)</visible>
+				</control>
+				<control type="label">
+					<include>MetaLabel</include>
+					<label>$INFO[VideoPlayer.Year]   </label>
+					<visible>!String.IsEmpty(VideoPlayer.Year) + VideoPlayer.Content(movies)</visible>
 				</control>
 				<include content="MpaaIcon">
 					<param name="type" value="VideoPlayer"/>
 				</include>
 				<include content="CCIcon">
-					<param name="visible" value="VideoPlayer.HasSubtitles"/>
+					<param name="visible" value="VideoPlayer.HasSubtitles + !VideoPlayer.Content(livetv)"/>
 				</include>
 				<include content="MetaRating">
 					<param name="type" value="VideoPlayer"/>
@@ -141,7 +258,7 @@
 			</control>
 		</definition>
 	</include>
-	<!-- art includes -->
+	<!-- Art includes -->
 	<include name="MetaPoster">
 		<control type="group">
 			<left>70</left>
@@ -285,6 +402,169 @@
 				<width>430</width>
 				<height>242</height>
 				<include>bubble_play</include>
+			</control>
+		</control>
+	</include>
+	<include name="MetaSquareThumb">
+		<control type="group">
+			<left>70</left>
+			<width>590</width>
+			<control type="image">
+				<top>-2</top>
+				<left>-2</left>
+				<width>346</width>
+				<height>346</height>
+				<texture>items/shadow_square_db.png</texture>
+			</control>
+			<control type="image">
+				<width>340</width>
+				<height>340</height>
+				<texture colordiffuse="green" diffuse="items/mask_square_db.png">common/white.jpg</texture>
+				<aspectratio scalediffuse="false">stretch</aspectratio>
+				<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+			</control>
+			<control type="image">
+				<width>340</width>
+				<height>340</height>
+				<texture colordiffuse="thumb_background" diffuse="items/mask_square_db.png">common/white.jpg</texture>
+				<aspectratio scalediffuse="false">stretch</aspectratio>
+				<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
+			</control>
+			<control type="textbox">
+				<top>10</top>
+				<left>10</left>
+				<width>320</width>
+				<height>320</height>
+				<font>Light24</font>
+				<align>center</align>
+				<aligny>center</aligny>
+				<label>$INFO[ListItem.Label]</label>
+				<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+			</control>
+			<control type="image">
+				<width>340</width>
+				<height>340</height>
+				<texture diffuse="items/mask_square_db.png" background="true">$INFO[ListItem.Icon]</texture>
+				<aspectratio scalediffuse="false">stretch</aspectratio>
+				<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
+			</control>
+		</control>
+	</include>
+	<include name="MetaBigThumb">
+		<control type="group">
+			<left>70</left>
+			<width>590</width>
+			<control type="group">
+				<control type="image">
+					<top>-2</top>
+					<left>-2</left>
+					<width>596</width>
+					<height>338</height>
+					<texture>items/shadow_wide_big.png</texture>
+				</control>
+				<control type="image">
+					<width>590</width>
+					<height>332</height>
+					<texture colordiffuse="green" diffuse="items/mask_wide_big.png">common/white.jpg</texture>
+					<aspectratio scalediffuse="false">stretch</aspectratio>
+					<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+				</control>
+				<control type="image">
+					<width>590</width>
+					<height>332</height>
+					<texture colordiffuse="thumb_background" diffuse="items/mask_wide_big.png">common/white.jpg</texture>
+					<aspectratio scalediffuse="false">stretch</aspectratio>
+					<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
+				</control>
+				<control type="textbox">
+					<top>10</top>
+					<left>10</left>
+					<width>570</width>
+					<height>312</height>
+					<font>Light24</font>
+					<align>center</align>
+					<aligny>center</aligny>
+					<label>$VAR[MainListLabel]</label>
+					<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+				</control>
+				<control type="image">
+					<width>590</width>
+					<height>332</height>
+					<texture diffuse="items/mask_wide_db.png" background="true">$INFO[ListItem.Icon]</texture>
+					<fadetime>200</fadetime>
+					<aspectratio scalediffuse="false">keep</aspectratio>
+					<bordersize>20</bordersize>
+					<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
+				</control>
+				<control type="group">
+					<width>590</width>
+					<height>332</height>
+					<include>bubble_overlay</include>
+					<include>bubble_play</include>
+				</control>
+				<include content="progress">
+					<param name="top" value="328"/>
+					<param name="width" value="590"/>
+				</include>
+			</control>
+		</control>
+	</include>
+	<include name="MetaVideoBigThumb">
+		<control type="group">
+			<left>70</left>
+			<width>590</width>
+			<control type="group">
+				<control type="image">
+					<top>-2</top>
+					<left>-2</left>
+					<width>596</width>
+					<height>338</height>
+					<texture>items/shadow_wide_big.png</texture>
+				</control>
+				<control type="image">
+					<width>590</width>
+					<height>332</height>
+					<texture colordiffuse="green" diffuse="items/mask_wide_big.png">common/white.jpg</texture>
+					<aspectratio scalediffuse="false">stretch</aspectratio>
+					<visible>String.IsEmpty(VideoPlayer.Cover) | String.StartsWith(VideoPlayer.Cover,Default)</visible>
+				</control>
+				<control type="image">
+					<width>590</width>
+					<height>332</height>
+					<texture colordiffuse="darkbutton" diffuse="items/mask_wide_big.png">common/white.jpg</texture>
+					<aspectratio scalediffuse="false">stretch</aspectratio>
+					<visible>!String.IsEmpty(VideoPlayer.Cover) + !String.StartsWith(VideoPlayer.Cover,Default)</visible>
+				</control>
+				<control type="textbox">
+					<top>10</top>
+					<left>10</left>
+					<width>570</width>
+					<height>312</height>
+					<font>Light24</font>
+					<align>center</align>#
+					<aligny>center</aligny>
+					<label>$INFO[VideoPlayer.Channelname]</label>
+					<visible>String.IsEmpty(VideoPlayer.Cover) | String.StartsWith(VideoPlayer.Cover,Default)</visible>
+				</control>
+				<control type="image">
+					<width>590</width>
+					<height>332</height>
+					<texture diffuse="items/mask_wide_db.png" background="true">$VAR[PlayerIcon]</texture>
+					<fadetime>200</fadetime>
+					<aspectratio scalediffuse="false">keep</aspectratio>
+					<bordersize>20</bordersize>							
+					<visible>!String.StartsWith(VideoPlayer.Cover,Default)</visible>
+				</control>
+				<control type="group">
+					<width>590</width>
+					<height>332</height>
+					<include>bubble_overlay</include>
+					<include>bubble_play</include>
+				</control>
+				<include content="PlayerProgress">
+					<param name="top" value="328"/>
+					<param name="width" value="590"/>
+				</include>
 			</control>
 		</control>
 	</include>
@@ -451,7 +731,7 @@
 			<control type="label">
 				<width>auto</width>
 				<height>40</height>
-				<label>$INFO[$PARAM[type].Genre,$LOCALIZE[515]: ,   ]$INFO[$PARAM[type].Director,$LOCALIZE[20339]: ]</label>
+				<label>$INFO[ListItem.AddonType,, ]$INFO[$PARAM[type].Genre,$LOCALIZE[515]: ,   ]$INFO[$PARAM[type].Director,$LOCALIZE[20339]: ]</label>
 				<font>reg22</font>
 				<textcolor>emby</textcolor>
 				<shadowcolor>text_shadow</shadowcolor>
@@ -550,55 +830,23 @@
 	</include>
 	<include name="AddonFlags">
 		<control type="button">
-			<width min="50">auto</width>
-			<height>48</height>
-			<font>reg18</font>
+			<include>MetaFlagsButton</include>
 			<label>$LOCALIZE[31035]</label>
-			<textoffsetx>15</textoffsetx>
-			<align>center</align>
-			<disabledcolor>white</disabledcolor>
-			<enable>false</enable>
-			<texturefocus border="10" colordiffuse="red">items/shadow_smallbutton.png</texturefocus>
-			<texturenofocus border="10" colordiffuse="red">items/shadow_smallbutton.png</texturenofocus>
 			<visible>!String.IsEmpty(ListItem.AddonBroken)</visible>
 		</control>
 		<control type="button">
-			<width min="50">auto</width>
-			<height>48</height>
-			<font>reg18</font>
+			<include>MetaFlagsButton</include>
 			<label>$LOCALIZE[289] $INFO[ListItem.AddonSize]</label>
-			<textoffsetx>15</textoffsetx>
-			<align>center</align>
-			<disabledcolor>white</disabledcolor>
-			<enable>false</enable>
-			<texturefocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturefocus>
-			<texturenofocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturenofocus>
 			<visible>!String.IsEmpty(ListItem.AddonSize)</visible>
 		</control>
 		<control type="button">
-			<width min="50">auto</width>
-			<height>48</height>
-			<font>reg18</font>
+			<include>MetaFlagsButton</include>
 			<label>$LOCALIZE[12013]: $INFO[ListItem.AddonInstallDate]</label>
-			<textoffsetx>15</textoffsetx>
-			<align>center</align>
-			<disabledcolor>white</disabledcolor>
-			<enable>false</enable>
-			<texturefocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturefocus>
-			<texturenofocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturenofocus>
 			<visible>!String.IsEmpty(ListItem.AddonInstallDate)</visible>
 		</control>
 		<control type="button">
-			<width min="50">auto</width>
-			<height>48</height>
-			<font>reg18</font>
+			<include>MetaFlagsButton</include>
 			<label>$LOCALIZE[12014]: $INFO[ListItem.AddonLastUpdated]</label>
-			<textoffsetx>15</textoffsetx>
-			<align>center</align>
-			<disabledcolor>white</disabledcolor>
-			<enable>false</enable>
-			<texturefocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturefocus>
-			<texturenofocus border="10" colordiffuse="darkbutton">items/shadow_smallbutton.png</texturenofocus>
 			<visible>!String.IsEmpty(ListItem.AddonLastUpdated)</visible>
 		</control>
 	</include>

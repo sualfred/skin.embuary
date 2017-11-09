@@ -638,49 +638,7 @@
 				<control type="group">
 					<width>1920</width>
 					<!-- Thumb image -->
-					<control type="group">
-						<left>70</left>
-						<width>590</width>
-						<control type="image">
-							<top>-2</top>
-							<left>-2</left>
-							<width>346</width>
-							<height>346</height>
-							<texture>items/shadow_square_db.png</texture>
-						</control>
-						<control type="image">
-							<width>340</width>
-							<height>340</height>
-							<texture colordiffuse="green" diffuse="items/mask_square_db.png">common/white.jpg</texture>
-							<aspectratio scalediffuse="false">stretch</aspectratio>
-							<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
-						</control>
-						<control type="image">
-							<width>340</width>
-							<height>340</height>
-							<texture colordiffuse="thumb_background" diffuse="items/mask_square_db.png">common/white.jpg</texture>
-							<aspectratio scalediffuse="false">stretch</aspectratio>
-							<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
-						</control>
-						<control type="textbox">
-							<top>10</top>
-							<left>10</left>
-							<width>320</width>
-							<height>320</height>
-							<font>Light24</font>
-							<align>center</align>
-							<aligny>center</aligny>
-							<label>$INFO[ListItem.Label]</label>
-							<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
-						</control>
-						<control type="image">
-							<width>340</width>
-							<height>340</height>
-							<texture diffuse="items/mask_square_db.png" background="true">$INFO[ListItem.Icon]</texture>
-							<aspectratio scalediffuse="false">stretch</aspectratio>
-							<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
-						</control>
-					</control>
+					<include>MetaSquareThumb</include>
 					<!-- meta -->
 					<control type="grouplist">
 						<left>434</left>
@@ -696,44 +654,9 @@
 							<font>Reg37</font>
 							<shadowcolor>text_shadow</shadowcolor>
 						</control>
-						<control type="grouplist">
-							<height>40</height>
-							<width>100%</width>
-							<itemgap>5</itemgap>
-							<orientation>horizontal</orientation>
-							<control type="label">
-								<width>auto</width>
-								<height>24</height>
-								<label>$INFO[Container(200).NumItems,$LOCALIZE[132]: ]   </label>
-								<font>reg22</font>
-								<shadowcolor>text_shadow</shadowcolor>
-								<visible>!String.IsEmpty(Container(200).NumItems)</visible>
-							</control>
-							<control type="label">
-								<width>auto</width>
-								<height>24</height>
-								<label>$INFO[ListItem.Property(Artist_Formed),$LOCALIZE[21894]: ]   </label>
-								<font>reg22</font>
-								<shadowcolor>text_shadow</shadowcolor>
-								<visible>!String.IsEmpty(ListItem.Property(Artist_Formed))</visible>
-							</control>
-							<control type="label">
-								<width>auto</width>
-								<height>24</height>
-								<label>$INFO[ListItem.Property(Artist_Disbanded),$LOCALIZE[21896]: ]   </label>
-								<font>reg22</font>
-								<shadowcolor>text_shadow</shadowcolor>
-								<visible>!String.IsEmpty(ListItem.Property(Artist_Disbanded))</visible>
-							</control>
-							<control type="label">
-								<width>auto</width>
-								<height>24</height>
-								<label>$INFO[ListItem.Property(Artist_Mood),$LOCALIZE[175]: ]   </label>
-								<font>reg22</font>
-								<shadowcolor>text_shadow</shadowcolor>
-								<visible>!String.IsEmpty(ListItem.Property(Artist_Mood))</visible>
-							</control>
-						</control>
+						<!-- meta -->
+						<include>MetaArtistInfos</include>
+						<!-- buttons -->
 						<control type="grouplist" id="100">
 							<height>75</height>
 							<orientation>horizontal</orientation>
@@ -774,14 +697,8 @@
 								<visible>!Skin.HasSetting(HideLibaryEditButtons) + !Skin.HasSetting(KioskMode) + !String.StartsWith(ListItem.Path,plugin://)</visible>
 							</control>
 						</control>
-						<control type="label">
-							<width>100%</width>
-							<height>40</height>
-							<label>$INFO[ListItem.Genre,$LOCALIZE[515]: ]</label>
-							<font>reg22</font>
-							<textcolor>emby</textcolor>
-							<shadowcolor>text_shadow</shadowcolor>
-						</control>
+						<!-- genre -->
+						<include>MetaGenre</include>
 						<control type="textbox" id="97">
 							<width>100%</width>
 							<height>125</height>
@@ -796,13 +713,7 @@
 					</control>
 				</control>
 				<!-- logo -->
-				<control type="image">
-					<right>70</right>
-					<width>400</width>
-					<height>155</height>
-					<texture>$INFO[ListItem.Art(clearlogo)]</texture>
-					<aspectratio>keep</aspectratio>
-				</control>	
+				<include>MetaClearlogo</include>
 			</control>
 			<!-- Albums -->
 			<include content="SquareWidget">
@@ -861,49 +772,7 @@
 				<control type="group">
 					<width>1920</width>
 					<!-- Thumb image -->
-					<control type="group">
-						<left>70</left>
-						<width>590</width>
-						<control type="image">
-							<top>-2</top>
-							<left>-2</left>
-							<width>346</width>
-							<height>346</height>
-							<texture>items/shadow_square_db.png</texture>
-						</control>
-						<control type="image">
-							<width>340</width>
-							<height>340</height>
-							<texture colordiffuse="green" diffuse="items/mask_square_db.png">common/white.jpg</texture>
-							<aspectratio scalediffuse="false">stretch</aspectratio>
-							<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
-						</control>
-						<control type="image">
-							<width>340</width>
-							<height>340</height>
-							<texture colordiffuse="thumb_background" diffuse="items/mask_square_db.png">common/white.jpg</texture>
-							<aspectratio scalediffuse="false">stretch</aspectratio>
-							<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
-						</control>
-						<control type="textbox">
-							<top>10</top>
-							<left>10</left>
-							<width>320</width>
-							<height>320</height>
-							<font>Light24</font>
-							<align>center</align>
-							<aligny>center</aligny>
-							<label>$INFO[ListItem.Label]</label>
-							<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
-						</control>
-						<control type="image">
-							<width>340</width>
-							<height>340</height>
-							<texture diffuse="items/mask_square_db.png" background="true">$INFO[ListItem.Icon]</texture>
-							<aspectratio scalediffuse="false">stretch</aspectratio>
-							<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
-						</control>
-					</control>
+					<include>MetaSquareThumb</include>
 					<!-- meta -->
 					<control type="grouplist">
 						<left>434</left>
@@ -919,28 +788,9 @@
 							<font>Reg37</font>
 							<shadowcolor>text_shadow</shadowcolor>
 						</control>
-						<control type="grouplist">
-							<height>40</height>
-							<width>100%</width>
-							<itemgap>5</itemgap>
-							<orientation>horizontal</orientation>
-							<control type="label">
-								<width>auto</width>
-								<height>24</height>
-								<label>$INFO[ListItem.Year]   </label>
-								<font>reg22</font>
-								<shadowcolor>text_shadow</shadowcolor>
-								<visible>!String.IsEmpty(ListItem.Year)</visible>
-							</control>
-							<control type="label">
-								<width>auto</width>
-								<height>24</height>
-								<label>$INFO[Container(200).NumItems,$LOCALIZE[182]: ]   </label>
-								<font>reg22</font>
-								<shadowcolor>text_shadow</shadowcolor>
-								<visible>!String.IsEmpty(Container(200).NumItems)</visible>
-							</control>
-						</control>
+						<!-- meta -->
+						<include>MetaAlbumInfos</include>
+						<!-- buttons -->
 						<control type="grouplist" id="100">
 							<height>75</height>
 							<orientation>horizontal</orientation>
@@ -981,14 +831,8 @@
 								<visible>!Skin.HasSetting(HideLibaryEditButtons) + !Skin.HasSetting(KioskMode) + !String.StartsWith(ListItem.Path,plugin://)</visible>
 							</control>
 						</control>
-						<control type="label">
-							<width>100%</width>
-							<height>40</height>
-							<label>$INFO[ListItem.Genre,$LOCALIZE[515]: ]</label>
-							<font>reg22</font>
-							<textcolor>emby</textcolor>
-							<shadowcolor>text_shadow</shadowcolor>
-						</control>
+						<!-- genre -->
+						<include>MetaGenre</include>
 						<control type="textbox" id="97">
 							<width>100%</width>
 							<height>125</height>
@@ -1003,13 +847,7 @@
 					</control>
 				</control>
 				<!-- logo -->
-				<control type="image">
-					<right>70</right>
-					<width>400</width>
-					<height>155</height>
-					<texture>$INFO[ListItem.Art(clearlogo)]</texture>
-					<aspectratio>keep</aspectratio>
-				</control>
+				<include>MetaClearlogo</include>
 			</control>
 			<include content="SquareWidget">
 				<param name="visible" value="String.IsEqual(ListItem.DBtype,album)"/>
