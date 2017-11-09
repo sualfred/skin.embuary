@@ -152,55 +152,13 @@
 			<!-- Meta -->
 			<control type="group">
 				<width>1920</width>
-				<height>604</height>
+				<height>530</height>
 				<control type="group">
 					<top>128</top>
 					<height>435</height>
 					<width>1920</width>
 					<!-- Thumb image -->
-					<control type="group">
-						<left>70</left>
-						<width>590</width>
-						<control type="image">
-							<top>-2</top>
-							<left>-2</left>
-							<width>346</width>
-							<height>346</height>
-							<texture>items/shadow_square_db.png</texture>
-						</control>
-						<control type="image">
-							<width>340</width>
-							<height>340</height>
-							<texture colordiffuse="green" diffuse="items/mask_square_db.png">common/white.jpg</texture>
-							<aspectratio scalediffuse="false">stretch</aspectratio>
-							<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
-						</control>
-						<control type="image">
-							<width>340</width>
-							<height>340</height>
-							<texture colordiffuse="thumb_background" diffuse="items/mask_square_db.png">common/white.jpg</texture>
-							<aspectratio scalediffuse="false">stretch</aspectratio>
-							<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
-						</control>
-						<control type="textbox">
-							<top>10</top>
-							<left>10</left>
-							<width>320</width>
-							<height>320</height>
-							<font>Light24</font>
-							<align>center</align>
-							<aligny>center</aligny>
-							<label>$INFO[ListItem.Label]</label>
-							<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
-						</control>
-						<control type="image">
-							<width>340</width>
-							<height>340</height>
-							<texture diffuse="items/mask_square_db.png" background="true">$INFO[ListItem.Icon]</texture>
-							<aspectratio scalediffuse="false">stretch</aspectratio>
-							<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
-						</control>
-					</control>
+					<include>MetaSquareThumb</include>
 					<!-- Meta -->
 					<control type="group">
 						<width>1920</width>
@@ -226,89 +184,9 @@
 								<font>Reg37</font>
 								<shadowcolor>text_shadow</shadowcolor>
 							</control>
-							<control type="grouplist">
-								<height>40</height>
-								<width>1000</width>
-								<itemgap>5</itemgap>
-								<orientation>horizontal</orientation>
-								<control type="label">
-									<width>auto</width>
-									<height>24</height>
-									<label></label>
-									<font>Material26</font>
-									<textcolor>red</textcolor>
-									<shadowcolor>text_shadow</shadowcolor>
-									<visible>!String.IsEmpty(ListItem.Rating)</visible>
-								</control>
-								<control type="label">
-									<width>auto</width>
-									<height>24</height>
-									<label>$INFO[ListItem.Rating]   </label>
-									<font>reg22</font>
-									<shadowcolor>text_shadow</shadowcolor>
-									<visible>!String.IsEmpty(ListItem.Rating)</visible>
-								</control>
-								<control type="label">
-									<width>auto</width>
-									<height>24</height>
-									<label>$LOCALIZE[554]: $INFO[ListItem.Tracknumber]   </label>
-									<font>reg22</font>
-									<shadowcolor>text_shadow</shadowcolor>
-									<visible>!String.IsEmpty(ListItem.Tracknumber)</visible>
-								</control>
-								<control type="label">
-									<width>auto</width>
-									<height>24</height>
-									<label>$LOCALIZE[180]: $VAR[ListItemDuration]   </label>
-									<font>reg22</font>
-									<shadowcolor>text_shadow</shadowcolor>
-									<visible>!String.IsEmpty(ListItem.Duration)</visible>
-								</control>
-								<control type="button">
-									<width min="24">auto</width>
-									<height>28</height>
-									<font>med16</font>
-									<label>$INFO[ListItem.Mpaa]</label>
-									<textoffsetx>10</textoffsetx>
-									<align>center</align>
-									<textcolor>white</textcolor>
-									<disabledcolor>white</disabledcolor>
-									<texturefocus border="10" colordiffuse="text_white">icons/rating/mpaa.png</texturefocus>
-									<texturenofocus border="10" colordiffuse="text_white">icons/rating/mpaa.png</texturenofocus>
-									<enable>false</enable>
-									<visible>!String.IsEmpty(ListItem.Mpaa)</visible>
-								</control>
-								<control type="label">
-									<width>12</width>
-									<height>24</height>
-									<label/>
-									<visible>!String.IsEmpty(ListItem.Mpaa)</visible>
-								</control>
-								<control type="label">
-									<width>auto</width>
-									<height>24</height>
-									<label>$INFO[ListItem.Property(Artist_Formed),$LOCALIZE[21894]: ]   </label>
-									<font>reg22</font>
-									<shadowcolor>text_shadow</shadowcolor>
-									<visible>!String.IsEmpty(ListItem.Property(Artist_Formed))</visible>
-								</control>
-								<control type="label">
-									<width>auto</width>
-									<height>24</height>
-									<label>$INFO[ListItem.Property(Artist_Disbanded),$LOCALIZE[21896]: ]   </label>
-									<font>reg22</font>
-									<shadowcolor>text_shadow</shadowcolor>
-									<visible>!String.IsEmpty(ListItem.Property(Artist_Disbanded))</visible>
-								</control>
-								<control type="label">
-									<width>auto</width>
-									<height>24</height>
-									<label>$INFO[ListItem.Property(Artist_Mood),$LOCALIZE[175]: ]   </label>
-									<font>reg22</font>
-									<shadowcolor>text_shadow</shadowcolor>
-									<visible>!String.IsEmpty(ListItem.Property(Artist_Mood))</visible>
-								</control>
-							</control>
+							<!-- meta -->
+							<include>MetaSongInfos</include>
+							<!-- Buttons -->
 							<control type="grouplist" id="100">
 								<height>75</height>
 								<orientation>horizontal</orientation>
@@ -336,30 +214,17 @@
 									<ondown>SetFocus(50)</ondown>
 								</control>
 							</control>
-							<control type="label">
-								<width>auto</width>
-								<height>40</height>
-								<label>$INFO[ListItem.Genre,$LOCALIZE[515]: ]</label>
-								<font>reg22</font>
-								<textcolor>emby</textcolor>
-								<shadowcolor>text_shadow</shadowcolor>
-							</control>
-							<control type="grouplist">
-								<orientation>horizontal</orientation>
-								<height>65</height>
-								<itemgap>5</itemgap>
-								<width>1040</width>
-								<include>MediaFlags</include>
-							</control>
+							<!-- Genre -->
+							<include content="MetaGenre">
+								<param name="type" value="MusicPlayer"/>
+							</include>
+							<!-- flags -->
+							<include content="MetaFlags">
+								<param name="type" value="MediaFlags"/>
+							</include>
 						</control>
 						<!-- logo -->
-						<control type="image">
-							<right>70</right>
-							<width>400</width>
-							<height>155</height>
-							<texture>$VAR[ListItemClearlogo]</texture>
-							<aspectratio>keep</aspectratio>
-						</control>
+						<include>MetaClearlogo</include>
 					</control>
 				</control>
 			</control>
