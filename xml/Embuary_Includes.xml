@@ -659,6 +659,116 @@
 			</control>
 		</definition>
 	</include>
+	<!-- Player Top -->
+	<include name="PlayerTopBar">
+		<control type="group" id="99">
+			<control type="image" id="99">
+				<top>0</top>
+				<width>100%</width>
+				<height>224</height>
+				<texture colordiffuse="black">views/player/mask_top.png</texture>
+			</control>
+			<control type="image" id="99">
+				<top>29</top>
+				<left>29</left>
+				<height>60</height>
+				<width>400</width>
+				<texture>$VAR[PlayerClearlogo]</texture>
+				<aspectratio align="left" aligny="top">keep</aspectratio>
+			</control>
+			<control type="label" id="99">
+				<top>21</top>
+				<left>29</left>
+				<right>960</right>
+				<height>50</height>
+				<aligny>top</aligny>
+				<font>Med34</font>
+				<label>$VAR[PlayerTitleLabel]</label>
+				<visible>String.IsEmpty(Player.Art(tvshow.clearlogo)) + String.IsEmpty(Player.Art(clearlogo))</visible>
+			</control>
+			<control type="grouplist" id="99">
+				<top>21</top>
+				<left>960</left>
+				<right>29</right>
+				<height>50</height>
+				<align>right</align>
+				<orientation>horizontal</orientation>
+				<itemgap>10</itemgap>
+				<control type="label" id="99">
+					<animation effect="slide" end="0,2" time="0" condition="true">Conditional</animation>
+					<width>auto</width>
+					<align>right</align>
+					<font>Material40</font>
+					<label>$VAR[PlayerSeekStepIcon]</label>
+					<visible>!String.IsEmpty(Player.SeekStepSize) | !String.IsEmpty(Player.SeekOffset)</visible>
+				</control>
+				<control type="label" id="99">
+					<width>auto</width>
+					<align>right</align>
+					<aligny>top</aligny>
+					<font>Med34</font>
+					<label>$VAR[PlayerSeekStepLabel]     </label>
+					<visible>!String.IsEmpty(Player.SeekStepSize) | !String.IsEmpty(Player.SeekOffset)</visible>
+				</control>
+				<control type="label" id="99">
+					<animation effect="slide" end="0,2" time="0" condition="true">Conditional</animation>
+					<width>auto</width>
+					<align>right</align>
+					<font>Material40</font>
+					<label></label>
+					<visible>Player.Rewinding</visible>
+				</control>
+				<control type="label" id="99">
+					<width>auto</width>
+					<align>right</align>
+					<aligny>top</aligny>
+					<font>Med34</font>
+					<label>$LOCALIZE[31121]$VAR[PlayerForwardRewind, ]     </label>
+					<visible>Player.Rewinding</visible>
+				</control>
+				<control type="label" id="99">
+					<animation effect="slide" end="0,2" time="0" condition="true">Conditional</animation>
+					<width>auto</width>
+					<align>right</align>
+					<font>Material40</font>
+					<label></label>
+					<visible>Player.Forwarding</visible>
+				</control>
+				<control type="label" id="99">
+					<width>auto</width>
+					<align>right</align>
+					<aligny>top</aligny>
+					<font>Med34</font>
+					<label>$LOCALIZE[31122]$VAR[PlayerForwardRewind, ]     </label>
+					<visible>Player.Forwarding</visible>
+				</control>
+				<control type="label" id="99">
+					<animation effect="slide" end="0,2" time="0" condition="true">Conditional</animation>
+					<width>auto</width>
+					<align>right</align>
+					<aligny>top</aligny>
+					<font>Material40</font>
+					<label></label>
+					<visible>Player.Paused</visible>
+				</control>
+				<control type="label" id="99">
+					<width>auto</width>
+					<align>right</align>
+					<aligny>top</aligny>
+					<font>Med34</font>
+					<label>$LOCALIZE[112]     </label>
+					<visible>Player.Paused</visible>
+				</control>
+				<control type="label" id="99">
+					<align>right</align>
+					<width>auto</width>
+					<aligny>top</aligny>
+					<font>Med34</font>
+					<label>$INFO[System.Time]</label>
+				</control>
+			</control>
+		</control>
+	</include>
 	<!-- Player bottom labels -->
 	<include name="PlayerBottomLabels">
 		<control type="label" id="99">
@@ -713,6 +823,55 @@
 			<label>$LOCALIZE[31038]</label>
 			<visible>Pvr.IsTimeShift</visible>
 		</control>
+	</include>
+	<!-- Player OSD Volume -->
+	<include name="PlayerOSDVolume">		
+		<control type="label" id="99">
+			<bottom>23</bottom>
+			<right>231</right>
+			<height>50</height>
+			<width>auto</width>
+			<align>center</align>
+			<font>Material34</font>
+			<textcolor>text_white</textcolor>
+			<label>$VAR[VolumeIcon]</label>
+		</control>
+		<control type="progress" id="99">
+			<bottom>53</bottom>
+			<right>31</right>
+			<width>150</width>
+			<height>5</height>
+			<info>player.volume</info>
+			<texturebg colordiffuse="grey">common/ProgressBack.png</texturebg>
+			<lefttexture>-</lefttexture>
+			<midtexture colordiffuse="emby">common/ProgressBar.png</midtexture>
+			<righttexture>-</righttexture>
+			<overlaytexture>-</overlaytexture>
+			<visible>Integer.IsGreater(player.volume,1)</visible>
+		</control>
+		<control type="progress" id="99">
+			<bottom>53</bottom>
+			<right>31</right>
+			<width>150</width>
+			<height>5</height>
+			<texturebg colordiffuse="grey">common/ProgressBack.png</texturebg>
+			<lefttexture>-</lefttexture>
+			<midtexture colordiffuse="ff00000">common/ProgressBar.png</midtexture>
+			<righttexture>-</righttexture>
+			<overlaytexture>-</overlaytexture>
+			<visible>!Integer.IsGreater(player.volume,1)</visible>
+		</control>
+	</include>
+	<!-- Player progress bar dimensions -->
+	<include name="PlayerProgressDimension">
+		<bottom>95</bottom>
+		<left>309</left>
+		<right>31</right>
+		<height>5</height>
+		<reveal>true</reveal>
+		<righttexture>-</righttexture>
+		<overlaytexture>-</overlaytexture>
+		<lefttexture>-</lefttexture>
 	</include>
 	<include name="search_action">
 		<onclick condition="!System.HasAddon(plugin.video.embycon) | Skin.HasSetting(HideEmbyConHubButtons)">RunScript(script.globalsearch)</onclick>
