@@ -4,9 +4,14 @@
 	<menucontrol>6666</menucontrol>
 	<backgroundcolor>background</backgroundcolor>
 	<controls>
+		<control type="list" id="51">
+			<include>HiddenObject</include>
+			<itemlayout/>
+			<focusedlayout/>
+			<content limit="4" sortby="random">videodb://movies/sets/</content>
+		</control>
 		<!-- background -->
 		<include>Background</include>
-
 		<!-- hub -->
 		<control type="grouplist" id="10">
 			<include>Window_OpenClose</include>
@@ -17,13 +22,10 @@
 			<orientation>vertical</orientation>
 			<usecontrolcoords>true</usecontrolcoords>
 			<scrolltime tween="sine" easing="out">400</scrolltime>
-
 			<include>Bounce_Up_Down</include>
-
 			<include content="WidgetSpacer">
 				<param name="id" value="101"/>
 			</include>
-
 			<control type="group">
 				<width>1920</width>
 				<height>300</height>
@@ -46,6 +48,13 @@
 							<visible>Library.HasContent(movies)</visible>
 							<label>$LOCALIZE[31015]</label>
 							<onclick>ActivateWindow(videos,videodb://movies/titles,return)</onclick>
+							<onup>6666</onup>
+							<ondown>200</ondown>
+						</control>
+						<control type="button" id="109">
+							<visible>Library.HasContent(movies) + Integer.IsGreater(Container(51).NumItems,0)</visible>
+							<label>$LOCALIZE[31169]</label>
+							<onclick>ActivateWindow(videos,videodb://movies/sets,return)</onclick>
 							<onup>6666</onup>
 							<ondown>200</ondown>
 						</control>

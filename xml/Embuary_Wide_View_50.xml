@@ -8,7 +8,7 @@
 				<include>Visible_OpenClose</include>
 				<visible>Control.IsVisible(50)</visible>
 				<control id="50" type="panel">
-					<visible>[!Container.Content(seasons) + !Container.Content(episodes)] | [Container.Content(episodes) + String.StartsWith(Container.FolderPath,plugin://) + !String.StartsWith(Container.FolderPath,plugin://plugin.video.embycon)]</visible>
+					<visible>[!Container.Content(seasons) + !Container.Content(episodes) + !String.Contains(Container.Folderpath,setid)] | [Container.Content(episodes) + String.StartsWith(Container.FolderPath,plugin://) + !String.StartsWith(Container.FolderPath,plugin://plugin.video.embycon)]</visible>
 					<width>1920</width>
 					<height>1080</height>
 					<onright condition="Control.IsVisible(7000)">SetFocus(7000)</onright>
