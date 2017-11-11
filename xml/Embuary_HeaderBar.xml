@@ -244,13 +244,13 @@
 			<include>HeaderButton</include>
 			<label>$LOCALIZE[31015]</label>
 			<onclick>ActivateWindow(videos,videodb://movies/titles,return)</onclick>
-			<visible>Container.Content(sets) | String.StartsWith(Container.FolderPath,videodb://movies/sets)</visible>
+			<visible>[Container.Content(sets) | String.StartsWith(Container.FolderPath,videodb://movies/sets)] + Library.HasContent(MovieSets)</visible>
 		</control>
 		<control type="button" id="6603">
 			<include>HeaderButton</include>
 			<label>$LOCALIZE[31169]</label>
 			<onclick>ActivateWindow(videos,videodb://movies/sets,return)</onclick>
-			<visible>!Container.Content(sets) + [String.StartsWith(Container.FolderPath,videodb://movies/titles) | String.StartsWith(Container.FolderPath,videodb://movies/sets)]</visible>
+			<visible>Library.HasContent(MovieSets) + !Container.Content(sets) + [String.StartsWith(Container.FolderPath,videodb://movies/titles) | String.StartsWith(Container.FolderPath,videodb://movies/sets)]</visible>
 		</control>
 		<control type="button" id="6604">
 			<include>HeaderButton</include>
