@@ -38,7 +38,16 @@
 							<shadowcolor>text_shadow</shadowcolor>
 						</control>
 						<!-- small meta -->
-						<include>MetaMovieInfos</include>
+						<control type="group">
+							<height>40</height>
+							<include>MetaShowInfos</include>
+							<visible>Container.Content(tvshows)</visible>
+						</control>
+						<control type="group">
+							<height>40</height>
+							<include>MetaMovieInfos</include>
+							<visible>!Container.Content(tvshows)</visible>
+						</control>
 						<!-- buttons -->
 						<control type="grouplist" id="100">
 							<height>75</height>
@@ -56,6 +65,15 @@
 								<ondown>SetFocus(50)</ondown>
 							</control>
 							<control type="button" id="56102">
+								<visible>Container.Content(tvshows)</visible>
+								<include>LightGreyButton</include>
+								<label>$LOCALIZE[1024]</label>
+								<onup>SetFocus(6666)</onup>
+								<onclick>SetFocus(50)</onclick>
+								<onclick>Select</onclick>
+								<ondown>SetFocus(50)</ondown>
+							</control>
+							<control type="button" id="56103">
 								<visible>Control.IsVisible(18)</visible>
 								<include>LightGreyButton</include>
 								<label>$LOCALIZE[31013]</label>
@@ -63,7 +81,7 @@
 								<onup>SetFocus(6666)</onup>
 								<ondown>SetFocus(50)</ondown>
 							</control>
-							<control type="button" id="56103">
+							<control type="button" id="56104">
 								<visible>!String.IsEmpty(ListItem.Trailer)</visible>
 								<include>LightGreyButton</include>
 								<label>$LOCALIZE[20410]</label>
@@ -71,7 +89,7 @@
 								<onclick>PlayMedia($INFO[ListItem.Trailer])</onclick>
 								<ondown>SetFocus(50)</ondown>
 							</control>
-							<control type="togglebutton" id="56104">
+							<control type="togglebutton" id="56105">
 								<include>LightGreyButton</include>
 								<width>70</width>
 								<height>50</height>
@@ -114,11 +132,11 @@
 						<param name="id" value="56"/>
 						<param name="onup" value="100"/>
 						<param name="ondown" value="200"/>
-						<param name="headline" value="$LOCALIZE[33054]"/>
+						<param name="headline" value="$VAR[ContainerContent]"/>
 						<param name="sublabel" value=""/>
 						<param name="use_custom_content" value="false"/>
 						<param name="height">553</param>
-						<param name="content_visibility">Container.Content(movies)</param>
+						<param name="content_visibility">Container.Content(movies) | Container.Content(tvshows)</param>
 						<param name="list_name">$LOCALIZE[20434]</param>
 					</include>
 				</control>
@@ -132,7 +150,7 @@
 				<param name="mainlabel" value="$INFO[ListItem.Label]"/>
 				<param name="sublabel" value="$INFO[ListItem.Label2]"/>
 				<param name="headline" value="$LOCALIZE[206]"/>
-				<param name="content_visibility">Container.Content(movies)</param>
+				<param name="content_visibility">Container.Content(movies) | Container.Content(tvshows)</param>
 				<param name="content" value="$VAR[View_Cast_Content]"/>
 			</include>
 		</control>
