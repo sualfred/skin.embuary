@@ -52,14 +52,14 @@
 								<include>LightGreyButton</include>
 								<label>$LOCALIZE[15067]</label>
 								<onup>SetFocus(6666)</onup>
-								<ondown>SetFocus(50)</ondown>
+								<ondown>SetFocus(200)</ondown>
 								<onclick>close</onclick>
 							</control>
 							<control type="button" id="8">
 								<include>LightGreyButton</include>
 								<label>$VAR[VideoInfoButton8]</label>
 								<onup>SetFocus(6666)</onup>
-								<ondown>SetFocus(50)</ondown>
+								<ondown>SetFocus(200)</ondown>
 							</control>
 							<control type="button" id="97">
 								<visible>Control.IsVisible(96)</visible>
@@ -67,14 +67,14 @@
 								<label>$LOCALIZE[31013]</label>
 								<onclick>RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCINFO[ListItem.Plot]')</onclick>
 								<onup>SetFocus(6666)</onup>
-								<ondown>SetFocus(50)</ondown>
+								<ondown>SetFocus(200)</ondown>
 							</control>
 							<control type="button" id="11">
 								<visible>!String.IsEmpty(ListItem.Trailer)</visible>
 								<include>LightGreyButton</include>
 								<label>$LOCALIZE[20410]</label>
 								<onup>SetFocus(6666)</onup>
-								<ondown>SetFocus(50)</ondown>
+								<ondown>SetFocus(200)</ondown>
 							</control>
 							<control type="button" id="103">
 								<include>LightGreyButton</include>
@@ -83,7 +83,7 @@
 								<font>material24</font>
 								<label></label>
 								<onup>SetFocus(6666)</onup>
-								<ondown>SetFocus(50)</ondown>
+								<ondown>SetFocus(200)</ondown>
 								<onclick>SetFocus(4000)</onclick>
 								<visible>!Skin.HasSetting(HideLibaryEditButtons) + !Skin.HasSetting(KioskMode) + !String.StartsWith(ListItem.Path,plugin://)</visible>
 							</control>
@@ -113,29 +113,19 @@
 				</control>
 			</control>
 			<!-- Cast -->
-			<include condition="!String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)" content="CastWidget">
-				<param name="id" value="50"/>
+			<include content="CastWidget">
+				<param name="id" value="200"/>
 				<param name="mainlabel" value="$INFO[ListItem.Label]"/>
 				<param name="sublabel" value="$INFO[ListItem.Label2]"/>
 				<param name="headline" value="$LOCALIZE[206]"/>
 				<param name="onup" value="100"/>
 				<param name="ondown" value="300"/>
-				<param name="use_custom_content" value="false"/>
-			</include>
-			<!-- Cast EmbyCon -->
-			<include condition="String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)" content="CastWidget">
-				<param name="id" value="50"/>
-				<param name="mainlabel" value="$INFO[ListItem.Label]"/>
-				<param name="sublabel" value="$INFO[ListItem.Label2]"/>
-				<param name="headline" value="$LOCALIZE[206]"/>
-				<param name="onup" value="100"/>
-				<param name="ondown" value="300"/>
-				<param name="content" value="plugin://plugin.video.embycon?mode=WIDGET_CONTENT_CAST&amp;id=$INFO[ListItem.Property(id)]"/>
+				<param name="content" value="$VAR[View_Cast_Content]"/>
 			</include>
 			<!-- More like this -->
 			<include content="PosterWidget">
 				<param name="id" value="300"/>
-				<param name="onup" value="50"/>
+				<param name="onup" value="200"/>
 				<param name="ondown" value="400"/>
 				<param name="headline" value="$LOCALIZE[31002]"/>
 				<param name="content" value="$VAR[InfoDialog_MoreLikeThis_Content]"/>
@@ -268,7 +258,7 @@
 			<include content="WideWidget">
 				<param name="id" value="200"/>
 				<param name="onup" value="100"/>
-				<param name="ondown" value="50"/>
+				<param name="ondown" value="300"/>
 				<param name="sublabel" value="$VAR[DurationMinutes]"/>
 				<param name="sortby" value="playcount"/>
 				<param name="sortorder" value="ascending"/>
@@ -277,24 +267,14 @@
 				<param name="headline" value="$LOCALIZE[31012]"/>
 			</include>
 			<!-- Cast -->
-			<include condition="!String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)" content="CastWidget">
-				<param name="id" value="50"/>
-				<param name="onup" value="200"/>
-				<param name="ondown" value="300"/>
-				<param name="mainlabel" value="$INFO[ListItem.Label]"/>
-				<param name="sublabel" value="$INFO[ListItem.Label2]"/>
-				<param name="headline" value="$LOCALIZE[206]"/>
-				<param name="use_custom_content" value="false"/>
-			</include>
-			<!-- Cast EmbyCon -->
-			<include condition="String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)" content="CastWidget">
-				<param name="id" value="50"/>
+			<include content="CastWidget">
+				<param name="id" value="300"/>
 				<param name="onup" value="200"/>
 				<param name="ondown" value="SetProperty(BounceDown,1,home)"/>
 				<param name="mainlabel" value="$INFO[ListItem.Label]"/>
 				<param name="sublabel" value="$INFO[ListItem.Label2]"/>
 				<param name="headline" value="$LOCALIZE[206]"/>
-				<param name="content" value="plugin://plugin.video.embycon?mode=WIDGET_CONTENT_CAST&amp;id=$INFO[ListItem.Property(id)]"/>
+				<param name="content" value="$VAR[View_Cast_Content]"/>
 			</include>
 		</control>
 		<!-- header bar -->

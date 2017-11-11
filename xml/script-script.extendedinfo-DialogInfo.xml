@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<defaultcontrol always="true">100</defaultcontrol>
+	<backgroundcolor>background</backgroundcolor>
+	<menucontrol>6666</menucontrol>
+	<controls>
+		<!-- hidden -->
+		<control type="button" id="2">
+			<include>HiddenObject</include>
+		</control>
+		<!-- background -->
+		<include>Background</include>
+		<!-- views -->
+		<control type="group" id="70">
+			<include>Window_OpenClose</include>
+			<control type="grouplist" id="50">
+				<include>Visible_OpenClose</include>
+				<include>Bounce_Up_Down</include>
+				<width>2130</width>
+				<height>100%</height>
+				<orientation>vertical</orientation>
+				<usecontrolcoords>true</usecontrolcoords>
+				<scrolltime tween="sine" easing="out">400</scrolltime>
+				<itemgap>-80</itemgap>
+				<!-- Meta -->
+				<control type="group">
+					<width>1920</width>
+					<height>1105</height>
+					<control type="group">
+						<top>128</top>
+						<height>435</height>
+						<width>1920</width>
+						<!-- poster -->
+						<include>MetaExtendedInfoActor</include>
+						<!-- meta -->
+						<control type="grouplist">
+							<left>370</left>
+							<orientation>vertical</orientation>
+							<height>500</height>
+							<align>top</align>
+							<itemgap>0</itemgap>
+							<width>1480</width>
+							<control type="label">
+								<width>1040</width>
+								<height>60</height>
+								<label>$INFO[Window.Property(Label)]</label>
+								<font>Reg37</font>
+								<shadowcolor>text_shadow</shadowcolor>
+							</control>
+							<!-- born / died / etc -->
+							<control type="grouplist">
+								<height>40</height>
+								<width>$PARAM[width]</width>
+								<itemgap>5</itemgap>
+								<orientation>horizontal</orientation>
+								<control type="label">
+									<include>MetaLabel</include>
+									<label>$INFO[Window.Property(Birthday),$LOCALIZE[21893]: ]   </label>
+									<shadowcolor>text_shadow</shadowcolor>
+									<visible>!String.IsEmpty(Window.Property(Birthday))</visible>
+								</control>
+								<control type="label">
+									<include>MetaLabel</include>
+									<label>$INFO[Window.Property(Deathday),$LOCALIZE[21897]: ]   </label>
+									<visible>!String.IsEmpty(Window.Property(Deathday))</visible>
+								</control>
+								<control type="label">
+									<include>MetaLabel</include>
+									<label>$INFO[Window.Property(Age),Age: ]   </label>
+									<visible>!String.IsEmpty(Window.Property(Age))</visible>
+								</control>
+								<control type="label">
+									<include>MetaLabel</include>
+									<label>$INFO[Window.Property(PlaceOfBirth),Place of birth: ]   </label>
+									<visible>!String.IsEmpty(Window.Property(PlaceOfBirth))</visible>
+								</control>
+							</control>
+							<!-- buttons -->
+							<control type="grouplist" id="100">
+								<height>75</height>
+								<orientation>horizontal</orientation>
+								<itemgap>5</itemgap>
+								<onright>noop</onright>
+								<onleft>9999</onleft>
+								<control type="button" id="101">
+									<include>LightGreyButton</include>
+									<label>$LOCALIZE[15067]</label>
+									<onup>SetFocus(6666)</onup>									
+									<onclick>Close</onclick>
+									<ondown>150</ondown>
+								</control>
+								<control type="button" id="102">
+									<visible>Control.IsVisible(18)</visible>
+									<include>LightGreyButton</include>
+									<label>$LOCALIZE[31168]</label>
+									<onclick>RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[Window.Property(Label)]',message='$ESCINFO[Window.Property(Biography)]')</onclick>
+									<onup>SetFocus(6666)</onup>
+									<ondown>150</ondown>
+								</control>
+							</control>
+							<!-- plot -->
+							<control type="textbox">
+								<width>100%</width>
+								<height>240</height>
+								<align>justify</align>
+								<aligny>top</aligny>
+								<label>$INFO[Window.Property(Biography)]</label>
+								<font>Light24</font>
+								<shadowcolor>text_shadow</shadowcolor>
+								<autoscroll>false</autoscroll>
+								<pagecontrol>18</pagecontrol>
+							</control>
+						</control>
+					</control>
+					<control type="group">
+						<top>524</top>
+						<!-- movies -->
+						<include content="PosterWidget">
+							<param name="id" value="150"/>
+							<param name="onup" value="100"/>
+							<param name="ondown" value="250"/>
+							<param name="headline" value="$LOCALIZE[342]"/>
+							<param name="sublabel" value="$INFO[ListItem.Year]"/>
+							<param name="use_custom_content" value="false"/>
+						</include>
+					</control>
+				</control>
+				<!-- Cast -->
+				<include content="PosterWidget">
+					<param name="id" value="250"/>
+					<param name="onup" value="150"/>
+					<param name="ondown" value="SetProperty(BounceDown,1,home)"/>
+					<param name="onback" value="100"/>
+					<param name="mainlabel" value="$INFO[ListItem.Label]"/>
+					<param name="sublabel" value="$INFO[ListItem.Year]"/>
+					<param name="headline" value="$LOCALIZE[36903]"/>
+					<param name="use_custom_content" value="false"/>
+				</include>
+			</control>
+			<!-- Hidden scrollbar -->
+			<control id="18" type="scrollbar">
+				<left>-1200</left>
+				<width>100</width>
+				<height>1</height>
+				<showonepage>false</showonepage>
+				<orientation>vertical</orientation>
+			</control>
+		</control>
+		<!-- header bar -->
+		<include content="HeaderBar">
+			<param name="id">70</param>
+			<param name="header_label">$LOCALIZE[29934]</param>
+			<param name="enabled">false</param>
+			<param name="custom_animation">Container(50).HasPrevious</param>
+		</include>
+		<!-- side panel -->
+		<include content="SidePanel">
+			<param name="onright">70</param>
+		</include>
+	</controls>
+</window>
