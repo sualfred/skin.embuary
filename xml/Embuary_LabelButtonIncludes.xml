@@ -14,16 +14,53 @@
 			<textcolor>text_white</textcolor>
 			<textshadow>text_shadow</textshadow>
 			<disabledcolor>grey</disabledcolor>
+			<include>radio20_style</include>
 			<texturefocus border="10" colordiffuse="panel_hover">common/menu_back.png</texturefocus>
 			<texturenofocus border="10"  colordiffuse="panel">common/menu_back.png</texturenofocus>
 			<alttexturefocus border="10"  colordiffuse="panel_hover">common/menu_back.png</alttexturefocus>
 			<alttexturenofocus border="10"  colordiffuse="panel">common/menu_back.png</alttexturenofocus>
-			<textureradioonfocus>-</textureradioonfocus>
-			<textureradioonnofocus>-</textureradioonnofocus>
-			<textureradioofffocus>-</textureradioofffocus>
-			<textureradiooffnofocus>-</textureradiooffnofocus>
-			<radiowidth>-</radiowidth>
-			<radioheight>-</radioheight>
+		</definition>
+	</include>
+	<!-- Settings Button -->
+	<include name="radio35_style">
+		<radiowidth>55</radiowidth>
+		<radioheight>35</radioheight>
+		<textureradioonfocus colordiffuse="emby">icons/misc/radio_on_fo.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="emby">icons/misc/radio_on.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="softgrey">icons/misc/radio_off_fo.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="softgrey">icons/misc/radio_off.png</textureradiooffnofocus>
+		<textureradioondisabled colordiffuse="disabled">icons/misc/radio_off.png</textureradioondisabled>
+		<textureradiooffdisabled colordiffuse="disabled">icons/misc/radio_off.png</textureradiooffdisabled>
+	</include>
+	<include name="radio20_style">
+		<radiowidth>40</radiowidth>
+		<radioheight>35</radioheight>
+		<textureradioonfocus colordiffuse="emby">icons/misc/radio20_on_fo.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="emby">icons/misc/radio20_on.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="softgrey">icons/misc/radio20_off_fo.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="softgrey">icons/misc/radio20_off.png</textureradiooffnofocus>
+		<textureradioondisabled colordiffuse="disabled">icons/misc/radio20_off.png</textureradioondisabled>
+		<textureradiooffdisabled colordiffuse="disabled">icons/misc/radio20_off.png</textureradiooffdisabled>
+	</include>
+	<include name="SettingsButton">
+		<param name="height">50</param>
+		<param name="width">100%</param>
+		<param name="textoffsetx">35</param>
+		<definition>
+			<include>radio$PARAM[textoffsetx]_style</include>
+			<textoffsetx>$PARAM[textoffsetx]</textoffsetx>
+			<width>$PARAM[width]</width>
+			<height>$PARAM[height]</height>
+			<aligny>center</aligny>
+			<align>left</align>
+			<font>reg22</font>
+			<invalidcolor>invalid</invalidcolor>
+			<selectedcolor>selected</selectedcolor>
+			<textcolor>text_white</textcolor>
+			<focusedcolor>text_white</focusedcolor>
+			<disabledcolor>grey</disabledcolor>
+			<texturefocus colordiffuse="list_hover2">common/white.jpg</texturefocus>
+			<texturenofocus />
 		</definition>
 	</include>
 	<!-- Empty Keyboard Buttons -->
@@ -92,48 +129,6 @@
 		<font>med20</font>
 		<textcolor>panel_text</textcolor>
 		<focusedcolor>emby_secondary</focusedcolor>
-	</include>
-	<!-- Settings Button -->
-	<include name="radio35_style">
-		<radiowidth>55</radiowidth>
-		<radioheight>35</radioheight>
-		<textureradioonfocus colordiffuse="emby">icons/misc/radio_on_fo.png</textureradioonfocus>
-		<textureradioonnofocus colordiffuse="emby">icons/misc/radio_on.png</textureradioonnofocus>
-		<textureradioofffocus colordiffuse="softgrey">icons/misc/radio_off_fo.png</textureradioofffocus>
-		<textureradiooffnofocus colordiffuse="softgrey">icons/misc/radio_off.png</textureradiooffnofocus>
-		<textureradioondisabled colordiffuse="disabled">icons/misc/radio_off.png</textureradioondisabled>
-		<textureradiooffdisabled colordiffuse="disabled">icons/misc/radio_off.png</textureradiooffdisabled>
-	</include>
-	<include name="radio20_style">
-		<radiowidth>40</radiowidth>
-		<radioheight>35</radioheight>
-		<textureradioonfocus colordiffuse="emby">icons/misc/radio20_on_fo.png</textureradioonfocus>
-		<textureradioonnofocus colordiffuse="emby">icons/misc/radio20_on.png</textureradioonnofocus>
-		<textureradioofffocus colordiffuse="softgrey">icons/misc/radio20_off_fo.png</textureradioofffocus>
-		<textureradiooffnofocus colordiffuse="softgrey">icons/misc/radio20_off.png</textureradiooffnofocus>
-		<textureradioondisabled colordiffuse="disabled">icons/misc/radio20_off.png</textureradioondisabled>
-		<textureradiooffdisabled colordiffuse="disabled">icons/misc/radio20_off.png</textureradiooffdisabled>
-	</include>
-	<include name="SettingsButton">
-		<param name="height">50</param>
-		<param name="width">100%</param>
-		<param name="textoffsetx">35</param>
-		<definition>
-			<include>radio$PARAM[textoffsetx]_style</include>
-			<textoffsetx>$PARAM[textoffsetx]</textoffsetx>
-			<width>$PARAM[width]</width>
-			<height>$PARAM[height]</height>
-			<aligny>center</aligny>
-			<align>left</align>
-			<font>reg22</font>
-			<invalidcolor>invalid</invalidcolor>
-			<selectedcolor>selected</selectedcolor>
-			<textcolor>text_white</textcolor>
-			<focusedcolor>text_white</focusedcolor>
-			<disabledcolor>grey</disabledcolor>
-			<texturefocus colordiffuse="list_hover2">common/white.jpg</texturefocus>
-			<texturenofocus />
-		</definition>
 	</include>
 	<!-- lightgrey button -->
 	<include name="LightGreyButton">

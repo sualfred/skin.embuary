@@ -4,11 +4,6 @@
 	<defaultcontrol always="true">100</defaultcontrol>
 	<controls>
 		<!-- Hidden -->
-		<control type="radiobutton" id="13">
-			<include>HiddenObject</include>
-			<onfocus>select</onfocus>
-			<onfocus>SetFocus(101)</onfocus>
-		</control>
 		<control id="96" type="scrollbar">
 			<left>-1200</left>
 			<width>100</width>
@@ -66,29 +61,6 @@
 							<onup>SetFocus(6666)</onup>
 							<visible>Control.IsEnabled(9)</visible>
 						</control>
-						<control type="button" id="8">
-							<include>LightGreyButton</include>
-							<label>$LOCALIZE[24069]</label>
-							<onup>SetFocus(6666)</onup>
-							<visible>Control.IsEnabled(8)</visible>
-						</control>
-						<control type="button" id="101">
-							<include>LightGreyButton</include>
-							<label>$LOCALIZE[21340]: $VAR[FakeButtonAddonInfo13]</label>
-							<onclick>SetFocus(13)</onclick>
-							<onup>SetFocus(6666)</onup>
-							<visible>Control.IsEnabled(13)</visible>
-						</control>
-						<control type="button" id="7">
-							<include>LightGreyButton</include>
-							<onup>SetFocus(6666)</onup>
-							<visible>Control.IsEnabled(7)</visible>
-						</control>
-						<control type="button" id="6">
-							<include>LightGreyButton</include>
-							<onup>SetFocus(6666)</onup>
-							<visible>Control.IsEnabled(6)</visible>
-						</control>
 						<control type="button" id="110">
 							<include>LightGreyButton</include>
 							<onup>SetFocus(6666)</onup>
@@ -102,6 +74,16 @@
 							<label>$LOCALIZE[24036]</label>
 							<onclick>RunScript(script.skin.helper.service,action=textviewer,header=$LOCALIZE[24036],message='$ESCINFO[ListItem.AddonNews]')</onclick>
 							<visible>!String.IsEmpty(ListItem.AddonNews)</visible>
+						</control>
+						<control type="button" id="103">
+							<include>LightGreyButton</include>
+							<width>70</width>
+							<height>50</height>
+							<font>material24</font>
+							<label></label>
+							<onup>SetFocus(6666)</onup>
+							<ondown>SetFocus(200)</ondown>
+							<onclick>SetFocus(4000)</onclick>
 						</control>
 					</control>
 					<!-- flags -->
@@ -119,6 +101,58 @@
 						<shadowcolor>text_shadow</shadowcolor>
 						<autoscroll>false</autoscroll>
 						<pagecontrol>96</pagecontrol>
+					</control>
+				</control>
+			</control>
+		</control>
+		<!-- Menu control -->
+		<control type="group">
+			<include>FullscreenDimensions</include>
+			<include content="DiffuseMask">
+				<param name="visible">ControlGroup(4000).HasFocus + !Window.IsVisible(selectdialog) + !Window.IsVisible(filebrowser) + !Window.IsVisible(DialogConfirm.xml)</param>
+			</include>
+			<control type="group">
+				<visible>ControlGroup(4000).HasFocus + !Window.IsVisible(selectdialog) + !Window.IsVisible(filebrowser) + !Window.IsVisible(DialogConfirm.xml)</visible>
+				<include>Visible_PopupOpenClose</include>
+				<centerleft>50%</centerleft>
+				<width>384</width>
+				<centertop>50%</centertop>
+				<height>970</height>
+				<control type="grouplist" id="4000">
+					<orientation>vertical</orientation>
+					<height>auto</height>
+					<align>center</align>
+					<itemgap>0</itemgap>
+					<onright>50</onright>
+					<onleft>50</onleft>
+					<onback>103</onback>
+					<usecontrolcoords>true</usecontrolcoords>
+					<control type="image">
+						<width>100%</width>
+						<height>10</height>
+						<texture border="5" colordiffuse="panel">common/menu_top.png</texture>
+					</control>
+					<control type="button" id="8">
+						<include content="CommonButton"/>
+						<label>$LOCALIZE[24069]</label>
+						<visible>Control.IsEnabled(8)</visible>
+					</control>
+					<control type="radiobutton" id="13">
+						<include content="CommonButton"/>
+						<visible>Control.IsEnabled(13)</visible>
+					</control>
+					<control type="button" id="7">
+						<include content="CommonButton"/>
+						<visible>Control.IsEnabled(7)</visible>
+					</control>
+					<control type="button" id="6">
+						<include content="CommonButton"/>
+						<visible>Control.IsEnabled(6)</visible>
+					</control>
+					<control type="image">
+						<width>100%</width>
+						<height>10</height>
+						<texture border="5" colordiffuse="panel">common/menu_bottom.png</texture>
 					</control>
 				</control>
 			</control>
