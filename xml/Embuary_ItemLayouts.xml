@@ -24,7 +24,7 @@
 		<param name="visible_labels">true</param>
 		<param name="mainlabel">$VAR[MainListLabel]</param>
 		<param name="sublabel">$VAR[SubListLabel]</param>
-		<param name="textoffsetx" default="0">$PARAM[textoffsetx]</param>
+		<param name="textoffsetx">0</param>
 		<definition>
 			<control type="group">
 				<top>$PARAM[top]</top>
@@ -58,6 +58,53 @@
 					<textcolor>lightgrey</textcolor>
 					<shadowcolor>text_shadow</shadowcolor>
 					<scroll>$PARAM[focused] + Control.HasFocus($PARAM[id])</scroll>
+					<align>center</align>
+					<textoffsetx>$PARAM[textoffsetx]</textoffsetx>
+					<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
+				</control>
+				<control type="label">
+					<top>30</top>
+					<width>$PARAM[width]</width>
+					<label>$PARAM[sublabel]</label>
+					<font>Reg23</font>
+					<textcolor>lightgrey</textcolor>
+					<shadowcolor>text_shadow</shadowcolor>
+					<scroll>false</scroll>
+					<align>center</align>
+					<textoffsetx>$PARAM[textoffsetx]</textoffsetx>
+					<visible>!$PARAM[focused] | !Control.HasFocus($PARAM[id])</visible>
+				</control>
+			</control>
+		</definition>
+	</include>
+	<!-- Static labels -->
+	<include name="static_labels">
+		<param name="visible_labels">true</param>
+		<param name="mainlabel">$VAR[MainListLabel]</param>
+		<param name="sublabel">$VAR[SubListLabel]</param>
+		<param name="textoffsetx">0</param>
+		<definition>
+			<control type="group">
+				<top>$PARAM[top]</top>
+				<width>$PARAM[width]</width>
+				<visible>$PARAM[visible_labels]</visible>
+				<control type="label">
+					<width>$PARAM[width]</width>
+					<label fallback="$PARAM[fallbacklabel]">$PARAM[mainlabel]</label>
+					<font>Reg23</font>
+					<shadowcolor>text_shadow</shadowcolor>
+					<scroll>true</scroll>
+					<align>center</align>
+					<textoffsetx>$PARAM[textoffsetx]</textoffsetx>
+				</control>
+				<control type="label">
+					<top>30</top>
+					<width>$PARAM[width]</width>
+					<label>$PARAM[sublabel]</label>
+					<font>Reg23</font>
+					<textcolor>lightgrey</textcolor>
+					<shadowcolor>text_shadow</shadowcolor>
+					<scroll>true</scroll>
 					<align>center</align>
 					<textoffsetx>$PARAM[textoffsetx]</textoffsetx>
 				</control>
