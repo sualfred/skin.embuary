@@ -241,13 +241,23 @@
 				<orientation>horizontal</orientation>
 				<control type="label">
 					<include>MetaLabel</include>
+					<label>$INFO[VideoPlayer.Year]   </label>
+					<visible>!String.IsEmpty(VideoPlayer.Year) + VideoPlayer.Content(movies)</visible>
+				</control>
+				<control type="label">
+					<include>MetaLabel</include>
 					<label>$INFO[VideoPlayer.Starttime]$INFO[VideoPlayer.Endtime, - ]   </label>
-					<visible>!String.StartsWith(Player.Filenameandpath,pvr://recordings)</visible>
+					<visible>!String.StartsWith(Player.Filenameandpath,pvr://recordings) + String.StartsWith(Player.Filenameandpath,pvr://)</visible>
 				</control>
 				<control type="label">
 					<include>MetaLabel</include>
 					<label>$VAR[PlayerDurationMinutes]   </label>
 					<visible>!String.IsEmpty(Player.Duration)</visible>
+				</control>
+				<control type="label">
+					<include>MetaLabel</include>
+					<label>$INFO[VideoPlayer.FinishTime,$LOCALIZE[31037]: ]   </label>
+					<visible>!String.IsEmpty(VideoPlayer.FinishTime)</visible>
 				</control>
 				<control type="label">
 					<include>MetaLabel</include>
@@ -258,11 +268,6 @@
 					<include>MetaLabel</include>
 					<label>$INFO[VideoPlayer.Channelname]   </label>
 					<visible>VideoPlayer.Content(livetv)</visible>
-				</control>
-				<control type="label">
-					<include>MetaLabel</include>
-					<label>$INFO[VideoPlayer.Year]   </label>
-					<visible>!String.IsEmpty(VideoPlayer.Year) + VideoPlayer.Content(movies)</visible>
 				</control>
 				<include content="MpaaIcon">
 					<param name="type" value="VideoPlayer"/>

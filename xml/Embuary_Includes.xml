@@ -927,80 +927,42 @@
 			<visible>Skin.HasSetting(UserWidget$PARAM[id])</visible>
 		</control>
 	</include>
-	<include name="CustomMovieHubTemplate">
-		<control type="radiobutton" id="50$PARAM[id]1">
+	<include name="CustomHubShortcutSettingsTemplate">
+		<control type="radiobutton" id="$PARAM[section]$PARAM[id]1">
 			<include>SettingsButton</include>
-			<onclick>Skin.ToggleSetting(UserMovieHub$PARAM[id])</onclick>
-			<selected>Skin.HasSetting(UserMovieHub$PARAM[id])</selected>
+			<onclick>Skin.ToggleSetting(User$PARAM[type]Hub$PARAM[id])</onclick>
+			<selected>Skin.HasSetting(User$PARAM[type]Hub$PARAM[id])</selected>
 			<label>$LOCALIZE[31151] #$PARAM[id]</label>
 		</control>
-		<control type="button" id="50$PARAM[id]2">
+		<control type="button" id="$PARAM[section]$PARAM[id]2">
 			<textcolor>emby</textcolor>
 			<texturenofocus colordiffuse="33000000">common/white.jpg</texturenofocus>
 			<include>SettingsButton</include>
-			<onclick>RunScript(script.skinshortcuts,type=shortcuts&amp;showNone=True&amp;custom=True&amp;grouping=emby&amp;skinLabel=UserMovieHub$PARAM[id]_name&amp;skinAction=UserMovieHub$PARAM[id]_action&amp;skinList=UserMovieHub$PARAM[id]_path)</onclick>
+			<onclick>RunScript(script.skinshortcuts,type=shortcuts&amp;showNone=True&amp;custom=True&amp;grouping=emby&amp;skinLabel=User$PARAM[type]Hub$PARAM[id]_name&amp;skinAction=User$PARAM[type]Hub$PARAM[id]_action&amp;skinList=User$PARAM[type]Hub$PARAM[id]_path)</onclick>
 			<label>• $LOCALIZE[573]</label>
-			<label2>$INFO[Skin.String(UserMovieHub$PARAM[id]_path)]</label2>
-			<enable>Skin.HasSetting(UserMovieHub$PARAM[id])</enable>
-			<visible>Skin.HasSetting(UserMovieHub$PARAM[id])</visible>
+			<label2>$INFO[Skin.String(User$PARAM[type]Hub$PARAM[id]_path)]</label2>
+			<enable>Skin.HasSetting(User$PARAM[type]Hub$PARAM[id])</enable>
+			<visible>Skin.HasSetting(User$PARAM[type]Hub$PARAM[id])</visible>
 		</control>
-		<control type="button" id="50$PARAM[id]3">
+		<control type="button" id="$PARAM[section]$PARAM[id]3">
 			<textcolor>emby</textcolor>
 			<texturenofocus colordiffuse="33000000">common/white.jpg</texturenofocus>
 			<include>SettingsButton</include>
-			<onclick>Skin.SetString(UserMovieHub$PARAM[id]_name)</onclick>
+			<onclick>Skin.SetString(User$PARAM[type]Hub$PARAM[id]_name)</onclick>
 			<label>• $LOCALIZE[21899]</label>
-			<label2>$INFO[Skin.String(UserMovieHub$PARAM[id]_name)]</label2>
-			<enable>Skin.HasSetting(UserMovieHub$PARAM[id])</enable>
-			<visible>Skin.HasSetting(UserMovieHub$PARAM[id])</visible>
+			<label2>$INFO[Skin.String(User$PARAM[type]Hub$PARAM[id]_name)]</label2>
+			<enable>Skin.HasSetting(User$PARAM[type]Hub$PARAM[id])</enable>
+			<visible>Skin.HasSetting(User$PARAM[type]Hub$PARAM[id])</visible>
 		</control>
-		<control type="button" id="50$PARAM[id]4">
+		<control type="button" id="$PARAM[section]$PARAM[id]4">
 			<textcolor>emby</textcolor>
 			<texturenofocus colordiffuse="33000000">common/white.jpg</texturenofocus>
 			<include>SettingsButton</include>
-			<onclick>RunScript(script.skin.helper.service,action=setskinsetting,setting=UserMovieHub$PARAM[id]_target,header=$LOCALIZE[15021])</onclick>
+			<onclick>RunScript(script.skin.helper.service,action=setskinsetting,setting=User$PARAM[type]Hub$PARAM[id]_target,header=$LOCALIZE[15021])</onclick>
 			<label>• $LOCALIZE[15021]</label>
-			<label2 fallback="video">$INFO[Skin.String(UserMovieHub$PARAM[id]_target)]</label2>
-			<enable>Skin.HasSetting(UserMovieHub$PARAM[id]) + !String.Contains(Skin.String(UserMovieHub$PARAM[id]_action),RunAddon) + !String.Contains(Skin.String(UserMovieHub$PARAM[id]_action),RunScript)</enable>
-			<visible>Skin.HasSetting(UserMovieHub$PARAM[id])</visible>
-		</control>
-	</include>
-	<include name="CustomTVShowHubTemplate">
-		<control type="radiobutton" id="51$PARAM[id]1">
-			<include>SettingsButton</include>
-			<onclick>Skin.ToggleSetting(UserTVShowHub$PARAM[id])</onclick>
-			<selected>Skin.HasSetting(UserTVShowHub$PARAM[id])</selected>
-			<label>$LOCALIZE[31151] #$PARAM[id]</label>
-		</control>
-		<control type="button" id="51$PARAM[id]2">
-			<textcolor>emby</textcolor>
-			<texturenofocus colordiffuse="33000000">common/white.jpg</texturenofocus>
-			<include>SettingsButton</include>
-			<onclick>RunScript(script.skinshortcuts,type=shortcuts&amp;showNone=True&amp;custom=True&amp;grouping=emby&amp;skinLabel=UserTVShowHub$PARAM[id]_name&amp;skinAction=UserTVShowHub$PARAM[id]_action&amp;skinList=UserTVShowHub$PARAM[id]_path)</onclick>
-			<label>• $LOCALIZE[573]</label>
-			<label2>$INFO[Skin.String(UserTVShowHub$PARAM[id]_path)]</label2>
-			<enable>Skin.HasSetting(UserTVShowHub$PARAM[id])</enable>
-			<visible>Skin.HasSetting(UserTVShowHub$PARAM[id])</visible>
-		</control>
-		<control type="button" id="51$PARAM[id]3">
-			<textcolor>emby</textcolor>
-			<texturenofocus colordiffuse="33000000">common/white.jpg</texturenofocus>
-			<include>SettingsButton</include>
-			<onclick>Skin.SetString(UserTVShowHub$PARAM[id]_name)</onclick>
-			<label>• $LOCALIZE[21899]</label>
-			<label2>$INFO[Skin.String(UserTVShowHub$PARAM[id]_name)]</label2>
-			<enable>Skin.HasSetting(UserTVShowHub$PARAM[id])</enable>
-			<visible>Skin.HasSetting(UserTVShowHub$PARAM[id])</visible>
-		</control>
-		<control type="button" id="51$PARAM[id]4">
-			<textcolor>emby</textcolor>
-			<texturenofocus colordiffuse="33000000">common/white.jpg</texturenofocus>
-			<include>SettingsButton</include>
-			<onclick>RunScript(script.skin.helper.service,action=setskinsetting,setting=UserTVShowHub$PARAM[id]_target,header=$LOCALIZE[15021])</onclick>
-			<label>• $LOCALIZE[15021]</label>
-			<label2>$INFO[Skin.String(UserTVShowHub$PARAM[id]_target)]</label2>
-			<enable>Skin.HasSetting(UserTVShowHub$PARAM[id]) + !String.Contains(Skin.String(UserTVShowHub$PARAM[id]_action),RunAddon) + !String.Contains(Skin.String(UserTVShowHub$PARAM[id]_action),RunScript)</enable>
-			<visible>Skin.HasSetting(UserTVShowHub$PARAM[id])</visible>
+			<label2>$INFO[Skin.String(User$PARAM[type]Hub$PARAM[id]_target)]</label2>
+			<enable>Skin.HasSetting(User$PARAM[type]Hub$PARAM[id]) + String.StartsWith(Skin.String(User$PARAM[type]Hub$PARAM[id]_action),ActivateWindow)</enable>
+			<visible>Skin.HasSetting(User$PARAM[type]Hub$PARAM[id])</visible>
 		</control>
 	</include>
 	<include name="CustomHubShortcutTemplate">
@@ -1010,8 +972,8 @@
 			<control type="button" id="$PARAM[id]">
 				<visible>Skin.HasSetting(User$PARAM[type]Hub$PARAM[nr])</visible>
 				<label>$INFO[Skin.String(User$PARAM[type]Hub$PARAM[nr]_name)]</label>
-				<onclick condition="!String.Contains(Skin.String(User$PARAM[type]Hub$PARAM[nr]_action),RunAddon) + !String.Contains(Skin.String(User$PARAM[type]Hub$PARAM[nr]_action),RunScript)">ActivateWindow($INFO[Skin.String(User$PARAM[type]Hub$PARAM[nr]_target)],$INFO[Skin.String(User$PARAM[type]Hub$PARAM[nr]_path)],return)</onclick>
-				<onclick condition="String.Contains(Skin.String(User$PARAM[type]Hub$PARAM[nr]_action),RunAddon) | String.Contains(Skin.String(User$PARAM[type]Hub$PARAM[nr]_action),RunScript)">$INFO[Skin.String(User$PARAM[type]Hub$PARAM[nr]_path)]</onclick>
+				<onclick condition="String.StartsWith(Skin.String(User$PARAM[type]Hub$PARAM[nr]_action),ActivateWindow)">ActivateWindow($INFO[Skin.String(User$PARAM[type]Hub$PARAM[nr]_target)],$INFO[Skin.String(User$PARAM[type]Hub$PARAM[nr]_path)],return)</onclick>
+				<onclick condition="!String.StartsWith(Skin.String(User$PARAM[type]Hub$PARAM[nr]_action),ActivateWindow)">$INFO[Skin.String(User$PARAM[type]Hub$PARAM[nr]_action)]</onclick>
 				<onup>$PARAM[onup]</onup>
 				<ondown>$PARAM[ondown]</ondown>
 			</control>
