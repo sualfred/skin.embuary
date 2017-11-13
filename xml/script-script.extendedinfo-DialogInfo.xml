@@ -47,37 +47,9 @@
 								<font>Reg37</font>
 								<shadowcolor>text_shadow</shadowcolor>
 							</control>
-							<!-- born / died / etc -->
-							<control type="grouplist">
-								<height>40</height>
-								<width>$PARAM[width]</width>
-								<itemgap>5</itemgap>
-								<orientation>horizontal</orientation>
-								<control type="label">
-									<include>MetaLabel</include>
-									<label>$INFO[Window.Property(Birthday),$LOCALIZE[21893]: ]   </label>
-									<shadowcolor>text_shadow</shadowcolor>
-									<visible>!String.IsEmpty(Window.Property(Birthday))</visible>
-								</control>
-								<control type="label">
-									<include>MetaLabel</include>
-									<label>$INFO[Window.Property(Deathday),$LOCALIZE[21897]: ]   </label>
-									<visible>!String.IsEmpty(Window.Property(Deathday))</visible>
-								</control>
-								<control type="label">
-									<include>MetaLabel</include>
-									<label>$INFO[Window.Property(Age),$LOCALIZE[31171]: ]   </label>
-									<visible>!String.IsEmpty(Window.Property(Age))</visible>
-								</control>
-								<control type="label">
-									<include>MetaLabel</include>
-									<label>$INFO[Window.Property(PlaceOfBirth),$LOCALIZE[31170]: ]   </label>
-									<visible>!String.IsEmpty(Window.Property(PlaceOfBirth))</visible>
-								</control>
-							</control>
 							<!-- buttons -->
 							<control type="grouplist" id="100">
-								<height>75</height>
+								<height>70</height>
 								<orientation>horizontal</orientation>
 								<itemgap>5</itemgap>
 								<onright>noop</onright>
@@ -98,10 +70,54 @@
 									<ondown>150</ondown>
 								</control>
 							</control>
+							<!-- born / died / etc -->
+							<control type="grouplist">
+								<height>40</height>
+								<width>$PARAM[width]</width>
+								<itemgap>5</itemgap>
+								<orientation>horizontal</orientation>
+								<control type="label">
+									<font>Light24</font>
+									<shadowcolor>text_shadow</shadowcolor>
+									<label>$INFO[Window.Property(Birthday),$LOCALIZE[21893]: ]   </label>
+									<shadowcolor>text_shadow</shadowcolor>
+									<visible>!String.IsEmpty(Window.Property(Birthday))</visible>
+								</control>
+								<control type="label">
+									<font>Light24</font>
+									<shadowcolor>text_shadow</shadowcolor>
+									<label>$INFO[Window.Property(Deathday),$LOCALIZE[21897]: ]   </label>
+									<visible>!String.IsEmpty(Window.Property(Deathday))</visible>
+								</control>
+							</control>
+							<control type="grouplist">
+								<height>40</height>
+								<width>$PARAM[width]</width>
+								<itemgap>5</itemgap>
+								<orientation>horizontal</orientation>
+								<control type="label">
+									<font>Light24</font>
+									<shadowcolor>text_shadow</shadowcolor>
+									<label>$INFO[Window.Property(Age),$LOCALIZE[31171]: ]   </label>
+									<visible>!String.IsEmpty(Window.Property(Age))</visible>
+								</control>
+							</control>
+							<control type="grouplist">
+								<height>40</height>
+								<width>$PARAM[width]</width>
+								<itemgap>5</itemgap>
+								<orientation>horizontal</orientation>
+								<control type="label">
+									<font>Light24</font>
+									<shadowcolor>text_shadow</shadowcolor>
+									<label>$INFO[Window.Property(PlaceOfBirth),$LOCALIZE[31170]: ]   </label>
+									<visible>!String.IsEmpty(Window.Property(PlaceOfBirth))</visible>
+								</control>
+							</control>
 							<!-- plot -->
 							<control type="textbox">
 								<width>100%</width>
-								<height>240</height>
+								<height max="165">auto</height>
 								<align>justify</align>
 								<aligny>top</aligny>
 								<label>$INFO[Window.Property(Biography)]</label>
