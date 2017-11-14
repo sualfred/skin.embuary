@@ -91,27 +91,20 @@
 							<itemgap>5</itemgap>
 							<orientation>horizontal</orientation>
 							<control type="label">
-								<width>auto</width>
-								<height>24</height>
+								<include>MetaLabel</include>
 								<label>$INFO[Window.Property(next.duration),, $LOCALIZE[12391]]   </label>
-								<font>reg22</font>
-								<shadowcolor>text_shadow</shadowcolor>
 								<visible>!String.IsEmpty(Window.Property(next.duration))</visible>
 							</control>
 							<control type="label">
-								<width>auto</width>
-								<height>24</height>
-								<label></label>
 								<font>Material26</font>
 								<textcolor>red</textcolor>
-								<shadowcolor>text_shadow</shadowcolor>
+								<include>MetaLabel</include>
+								<label></label>
 								<visible>!String.IsEmpty(Window.Property(next.rating))</visible>
 							</control>
 							<control type="label">
-								<width>auto</width>
-								<height>24</height>
+								<include>MetaLabel</include>
 								<label>$INFO[Window.Property(next.rating)]   </label>
-								<font>reg22</font>
 								<shadowcolor>text_shadow</shadowcolor>
 								<visible>!String.IsEmpty(Window.Property(next.rating))</visible>
 							</control>
@@ -147,7 +140,7 @@
 						</control>
 						<control type="textbox">
 							<width>100%</width>
-							<height>125</height>
+							<height max="130">auto</height>
 							<align>justify</align>
 							<aligny>top</aligny>
 							<label>$INFO[Window.Property(next.plot)]</label>
