@@ -128,7 +128,7 @@
 				</control>
 			</control>
 			<control type="group">
-				<visible>[Window.IsVisible(home) | Window.IsVisible(1120) | Window.IsVisible(1121) | Window.IsVisible(1122) | Window.IsVisible(1123) | Window.IsVisible(1124) | System.Idletime(5)] + Player.HasMedia + !Window.IsVisible(extendedprogressdialog) + !$EXP[infodialog_active]</visible>
+				<visible>[Window.IsVisible(home) | Window.IsVisible(1120) | Window.IsVisible(1121) | Window.IsVisible(1122) | Window.IsVisible(1123) | Window.IsVisible(1124) | System.Idletime(5) | [Player.Paused + !System.Idletime(2)] | [!Player.Paused + !System.Idletime(2)]] + Player.HasMedia + !Window.IsVisible(extendedprogressdialog) + !$EXP[infodialog_active]</visible>
 				<animation effect="slide" start="0,0" end="0,58"  time="200" condition="!ControlGroup(6666).HasFocus + [[Container($PARAM[id]).HasPrevious + $PARAM[enabled]] | [$PARAM[custom_animation]]]" tween="linear" easing="inout">Conditional</animation>
 				<animation effect="slide" start="0,0" end="0,58"  time="200">Hidden</animation>
 				<animation effect="slide" start="0,58" end="0,0"  time="200">Visible</animation>
