@@ -74,7 +74,7 @@
 								<ondown>SetFocus(50)</ondown>
 							</control>
 							<control type="button" id="56103">
-								<visible>Control.IsVisible(18)</visible>
+								<visible>!String.IsEmpty(ListItem.Plot)</visible>
 								<include>LightGreyButton</include>
 								<label>$LOCALIZE[31013]</label>
 								<onclick>RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCINFO[ListItem.Plot]')</onclick>
@@ -114,7 +114,6 @@
 							<font>Light24</font>
 							<shadowcolor>text_shadow</shadowcolor>
 							<autoscroll>false</autoscroll>
-							<pagecontrol>18</pagecontrol>
 						</control>
 						<control type="label">
 							<height>20</height>
@@ -153,15 +152,6 @@
 				<param name="content_visibility">Container.Content(movies) | Container.Content(tvshows)</param>
 				<param name="content" value="$VAR[View_Cast_Content]"/>
 			</include>
-		</control>
-		<!-- Hidden scrollbar -->
-		<control id="18" type="scrollbar">
-			<left>-1200</left>
-			<width>100</width>
-			<height>1</height>
-			<showonepage>false</showonepage>
-			<orientation>vertical</orientation>
-			<visible>Control.IsVisible(56)</visible>
 		</control>
 	</include>
 </includes>

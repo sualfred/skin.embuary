@@ -66,7 +66,7 @@
 							<onup>SetFocus(6666)</onup>
 							<label>$LOCALIZE[31034]</label>
 							<onclick>RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.Label]',message='$ESCINFO[ListItem.AddonDescription]')</onclick>
-							<visible>Container(97).HasNext</visible>
+							<visible>!String.IsEmpty(ListItem.AddonDescription)</visible>
 						</control>
 						<control type="button" id="111">
 							<include>LightGreyButton</include>
@@ -91,7 +91,7 @@
 						<param name="type" value="AddonFlags"/>
 					</include>
 					<!-- Desc -->
-					<control type="textbox" id="97">
+					<control type="textbox">
 						<width>100%</width>
 						<height>605</height>
 						<align>justify</align>
@@ -100,7 +100,6 @@
 						<font>Light24</font>
 						<shadowcolor>text_shadow</shadowcolor>
 						<autoscroll>false</autoscroll>
-						<pagecontrol>96</pagecontrol>
 					</control>
 				</control>
 			</control>

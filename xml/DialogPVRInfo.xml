@@ -3,14 +3,6 @@
 	<!-- mediasource -->
 	<defaultcontrol always="true">100</defaultcontrol>
 	<controls>
-		<!-- Hidden scrollbar -->
-		<control id="96" type="scrollbar">
-			<left>-1200</left>
-			<width>100</width>
-			<height>1</height>
-			<showonepage>false</showonepage>
-			<orientation>vertical</orientation>
-		</control>
 		<!-- Background -->
 		<include>Background</include>
 		<!-- Thumb image -->
@@ -68,7 +60,7 @@
 							<onclick>back</onclick>
 						</control>
 						<control type="button" id="101">
-							<visible>Control.IsVisible(96)</visible>
+							<visible>!String.IsEmpty(ListItem.Plot)</visible>
 							<include>LightGreyButton</include>
 							<label>$LOCALIZE[31013]</label>
 							<onclick>RunScript(script.skin.helper.service,action=textviewer,info=textviewer,header='$ESCVAR[TinyInfoDialogHeadline]',message='$ESCVAR[TinyInfoDialogPlot]')</onclick>
@@ -104,7 +96,6 @@
 						<font>Light24</font>
 						<shadowcolor>text_shadow</shadowcolor>
 						<autoscroll>false</autoscroll>
-						<pagecontrol>96</pagecontrol>
 					</control>
 				</control>
 			</control>

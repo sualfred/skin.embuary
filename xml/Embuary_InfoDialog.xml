@@ -62,7 +62,7 @@
 								<ondown>SetFocus(200)</ondown>
 							</control>
 							<control type="button" id="97">
-								<visible>Control.IsVisible(96)</visible>
+								<visible>!String.IsEmpty(ListItem.Plot)</visible>
 								<include>LightGreyButton</include>
 								<label>$LOCALIZE[31013]</label>
 								<onclick>RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCINFO[ListItem.Plot]')</onclick>
@@ -100,7 +100,6 @@
 							<font>Light24</font>
 							<shadowcolor>text_shadow</shadowcolor>
 							<autoscroll>false</autoscroll>
-							<pagecontrol>96</pagecontrol>
 						</control>
 						<control type="label">
 							<height>20</height>
@@ -204,7 +203,7 @@
 								<onclick>close</onclick>
 							</control>
 							<control type="button" id="97">
-								<visible>Control.IsVisible(96)</visible>
+								<visible>!String.IsEmpty(ListItem.Plot)</visible>
 								<include>LightGreyButton</include>
 								<label>$LOCALIZE[31013]</label>
 								<onclick>RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.TVShowTitle]',message='$ESCVAR[TinyInfoDialogPlot]')</onclick>
@@ -242,7 +241,6 @@
 							<font>Light24</font>
 							<shadowcolor>text_shadow</shadowcolor>
 							<autoscroll>false</autoscroll>
-							<pagecontrol>96</pagecontrol>
 						</control>
 						<control type="label">
 							<height>20</height>
@@ -359,7 +357,7 @@
 								<ondown>SetFocus(50)</ondown>
 							</control>
 							<control type="button" id="97">
-								<visible>Control.IsVisible(96)</visible>
+								<visible>!String.IsEmpty(ListItem.Plot)</visible>
 								<include>LightGreyButton</include>
 								<label>$LOCALIZE[31013]</label>
 								<onclick>RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.TVShowTitle]',message='$ESCVAR[TinyInfoDialogPlot]')</onclick>
@@ -394,7 +392,6 @@
 							<font>Light24</font>
 							<shadowcolor>text_shadow</shadowcolor>
 							<autoscroll>false</autoscroll>
-							<pagecontrol>96</pagecontrol>
 						</control>
 						<control type="label">
 							<height>15</height>
@@ -663,7 +660,7 @@
 								<onup>SetFocus(6666)</onup>
 								<label>$LOCALIZE[31034]</label>
 								<onclick>RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.Label]',message='$ESCINFO[ListItem.Property(Artist_Description)]')</onclick>
-								<visible>Container(97).HasNext</visible>
+								<visible>!String.IsEmpty(ListItem.Property(Artist_Description))</visible>
 							</control>
 							<control type="button" id="104">
 								<include>LightGreyButton</include>
@@ -679,7 +676,7 @@
 						</control>
 						<!-- genre -->
 						<include>MetaGenre</include>
-						<control type="textbox" id="97">
+						<control type="textbox">
 							<width>100%</width>
 							<height max="130">auto</height>
 							<align>justify</align>
@@ -688,7 +685,6 @@
 							<font>Light24</font>
 							<shadowcolor>text_shadow</shadowcolor>
 							<autoscroll>false</autoscroll>
-							<pagecontrol>96</pagecontrol>
 						</control>
 					</control>
 				</control>
@@ -797,7 +793,7 @@
 								<onup>SetFocus(6666)</onup>
 								<label>$LOCALIZE[31034]</label>
 								<onclick>RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.Album]',message='$ESCINFO[ListItem.Property(Album_Description)]')</onclick>
-								<visible>Container(97).HasNext</visible>
+								<visible>!String.IsEmpty(ListItem.Property(Album_Description))</visible>
 							</control>
 							<control type="button" id="104">
 								<include>LightGreyButton</include>
@@ -813,7 +809,7 @@
 						</control>
 						<!-- genre -->
 						<include>MetaGenre</include>
-						<control type="textbox" id="97">
+						<control type="textbox">
 							<width>100%</width>
 							<height max="130">auto</height>
 							<align>justify</align>
@@ -822,7 +818,6 @@
 							<font>Light24</font>
 							<shadowcolor>text_shadow</shadowcolor>
 							<autoscroll>false</autoscroll>
-							<pagecontrol>96</pagecontrol>
 						</control>
 					</control>
 				</control>
