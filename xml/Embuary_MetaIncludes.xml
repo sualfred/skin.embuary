@@ -189,6 +189,7 @@
 					<include>MetaLabel</include>
 					<label>$INFO[ListItem.Date]$INFO[ListItem.Endtime, - ]   </label>
 					<shadowcolor>text_shadow</shadowcolor>
+					<visible>!String.IsEmpty(ListItem.Date)</visible>
 				</control>
 				<control type="label">
 					<include>MetaLabel</include>
@@ -199,11 +200,13 @@
 					<include>MetaLabel</include>
 					<label>$INFO[ListItem.Channelnumber,$LOCALIZE[19029] ]   </label>
 					<shadowcolor>text_shadow</shadowcolor>
+					<visible>!String.IsEmpty(ListItem.Channelnumber)</visible>
 				</control>
 				<control type="label">
 					<include>MetaLabel</include>
 					<label>$INFO[ListItem.Channelname]   </label>
 					<shadowcolor>text_shadow</shadowcolor>
+					<visible>!String.IsEmpty(ListItem.Channelname)</visible>
 				</control>
 			</control>
 		</definition>
@@ -440,14 +443,14 @@
 				<height>242</height>
 				<texture colordiffuse="green" diffuse="items/mask_wide_db.png">common/white.jpg</texture>
 				<aspectratio scalediffuse="false">stretch</aspectratio>
-				<visible>String.IsEmpty(ListItem.Art(tvshow.landscape)) + String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(fanart)) + ![!String.IsEmpty(ListItem.Art(thumb)) + Container.Content(episodes)]</visible>
+				<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
 			</control>
 			<control type="image">
 				<width>430</width>
 				<height>242</height>
 				<texture colordiffuse="thumb_background" diffuse="items/mask_wide_db.png">common/white.jpg</texture>
 				<aspectratio scalediffuse="false">stretch</aspectratio>
-				<visible>![String.IsEmpty(ListItem.Art(tvshow.landscape)) + String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(fanart)) + ![!String.IsEmpty(ListItem.Art(thumb)) + Container.Content(episodes)]]</visible>
+				<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
 			</control>
 			<control type="textbox">
 				<top>10</top>
@@ -458,13 +461,22 @@
 				<align>center</align>
 				<aligny>center</aligny>
 				<label>$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title]</label>
-				<visible>String.IsEmpty(ListItem.Art(tvshow.landscape)) + String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(fanart)) + ![!String.IsEmpty(ListItem.Art(thumb)) + Container.Content(episodes)]</visible>
+				<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
 			</control>
 			<control type="image">
 				<width>430</width>
 				<height>242</height>
 				<texture diffuse="items/mask_wide_db.png" background="true">$VAR[IconLandscape]</texture>
 				<aspectratio scalediffuse="false">scale</aspectratio>
+				<visible>!String.StartsWith(ListItem.Icon,Default) + !String.StartsWith(ListItem.Path,pvr://)</visible>
+			</control>
+			<control type="image">
+				<width>430</width>
+				<height>242</height>
+				<texture diffuse="items/mask_wide_db.png" background="true">$VAR[IconLandscape]</texture>
+				<aspectratio scalediffuse="false">scale</aspectratio>
+				<bordersize>20</bordersize>
+				<visible>!String.StartsWith(ListItem.Icon,Default) + String.StartsWith(ListItem.Path,pvr://)</visible>
 			</control>
 			<control type="group">
 				<width>430</width>
@@ -562,7 +574,15 @@
 					<fadetime>200</fadetime>
 					<aspectratio scalediffuse="false">keep</aspectratio>
 					<bordersize>20</bordersize>
-					<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
+					<visible>!String.StartsWith(ListItem.Icon,Default) + String.StartsWith(ListItem.Path,pvr://)</visible>
+				</control>
+				<control type="image">
+					<width>590</width>
+					<height>332</height>
+					<texture diffuse="items/mask_wide_db.png" background="true">$INFO[ListItem.Icon]</texture>
+					<fadetime>200</fadetime>
+					<aspectratio scalediffuse="false">keep</aspectratio>
+					<visible>!String.StartsWith(ListItem.Icon,Default) + !String.StartsWith(ListItem.Path,pvr://)</visible>
 				</control>
 				<control type="group">
 					<width>590</width>
