@@ -56,15 +56,19 @@
 							<onleft>9999</onleft>
 							<control type="button" id="101">
 								<include>LightGreyButton</include>
-								<label>$LOCALIZE[31069]</label>
+								<label>$VAR[VideoInfoButton8]</label>
 								<onup>SetFocus(6666)</onup>
-								<ondown>SetFocus(54)</ondown>
-								<onclick>back</onclick>
+								<onclick>SetFocus(50)</onclick>
+								<onclick>Select</onclick>
+								<ondown>SetFocus(50)</ondown>
 							</control>
 							<control type="button" id="110">
 								<visible>!String.IsEmpty(ListItem.Plot)</visible>
 								<include>LightGreyButton</include>
-								<label>$LOCALIZE[31013]</label>
+								<width>70</width>
+								<height>50</height>
+								<font>material24</font>
+								<label></label>
 								<onclick>RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.TVShowTitle]',message='$ESCINFO[ListItem.Plot]')</onclick>
 								<onup>SetFocus(6666)</onup>
 								<ondown>SetFocus(54)</ondown>

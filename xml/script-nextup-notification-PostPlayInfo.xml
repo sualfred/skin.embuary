@@ -110,7 +110,7 @@
 							</control>
 						</control>
 						<control type="grouplist" id="100">
-							<height>65</height>
+							<height>75</height>
 							<orientation>horizontal</orientation>
 							<itemgap>5</itemgap>
 							<onright>noop</onright>
@@ -122,14 +122,6 @@
 								<ondown>SetFocus(400)</ondown>
 								<onclick>close</onclick>
 							</control>
-							<control type="button" id="97">
-								<visible>!String.IsEmpty(Window.Property(next.plot))</visible>
-								<include>LightGreyButton</include>
-								<label>$LOCALIZE[31013]</label>
-								<onclick>RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[Window.Property(next.title)]',message='$ESCINFO[Window.Property(next.plot)]')</onclick>
-								<onup>SetFocus(6666)</onup>
-								<ondown>SetFocus(400)</ondown>
-							</control>
 							<control type="button" id="201">
 								<include>LightGreyButton</include>
 								<label>$LOCALIZE[31076]</label>
@@ -137,10 +129,21 @@
 								<ondown>SetFocus(400)</ondown>
 								<onclick>close</onclick>
 							</control>
+							<control type="button" id="97">
+								<visible>!String.IsEmpty(Window.Property(next.plot))</visible>
+								<include>LightGreyButton</include>
+								<width>70</width>
+								<height>50</height>
+								<font>material24</font>
+								<label></label>
+								<onclick>RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[Window.Property(next.title)]',message='$ESCINFO[Window.Property(next.plot)]')</onclick>
+								<onup>SetFocus(6666)</onup>
+								<ondown>SetFocus(400)</ondown>
+							</control>
 						</control>
 						<control type="textbox">
 							<width>100%</width>
-							<height max="130">auto</height>
+							<height max="100">auto</height>
 							<align>justify</align>
 							<aligny>top</aligny>
 							<label>$INFO[Window.Property(next.plot)]</label>
@@ -149,7 +152,7 @@
 							<autoscroll>false</autoscroll>
 						</control>
 						<control type="label">
-							<height>15</height>
+							<height>20</height>
 						</control>
 						<control type="button">
 							<visible>!String.IsEmpty(Window.Property(countdown)) + String.IsEmpty(Window.Property(stillwatching))</visible>

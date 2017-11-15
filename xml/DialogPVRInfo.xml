@@ -47,23 +47,15 @@
 						<itemgap>5</itemgap>
 						<onleft>9999</onleft>
 						<onright>noop</onright>
+						<control type="button" id="101">
+							<include>LightGreyButton</include>
+							<label>$LOCALIZE[15067]</label>
+							<onup>SetFocus(6666)</onup>
+							<onclick>close</onclick>
+						</control>
 						<control type="button" id="5">
 							<include>LightGreyButton</include>
-							<label>$VAR[TuneInLabel]</label>
-							<onup>SetFocus(6666)</onup>
-						</control>
-						<control type="button" id="102">
-							<include>LightGreyButton</include>
-							<label>$LOCALIZE[31069]</label>
-							<onup>SetFocus(6666)</onup>
-							<ondown>SetFocus(200)</ondown>
-							<onclick>back</onclick>
-						</control>
-						<control type="button" id="101">
-							<visible>!String.IsEmpty(ListItem.Plot)</visible>
-							<include>LightGreyButton</include>
-							<label>$LOCALIZE[31013]</label>
-							<onclick>RunScript(script.skin.helper.service,action=textviewer,info=textviewer,header='$ESCVAR[TinyInfoDialogHeadline]',message='$ESCVAR[TinyInfoDialogPlot]')</onclick>
+							<label>$VAR[VideoInfoButton8]</label>
 							<onup>SetFocus(6666)</onup>
 						</control>
 						<control type="button" id="6">
@@ -78,6 +70,16 @@
 						<control type="button" id="4">
 							<include>LightGreyButton</include>
 							<label>$LOCALIZE[31021]</label>
+							<onup>SetFocus(6666)</onup>
+						</control>
+						<control type="button" id="102">
+							<visible>!String.IsEmpty(ListItem.Plot)</visible>
+							<include>LightGreyButton</include>
+							<width>70</width>
+							<height>50</height>
+							<font>material24</font>
+							<label></label>
+							<onclick>RunScript(script.skin.helper.service,action=textviewer,info=textviewer,header='$ESCVAR[TinyInfoDialogHeadline]',message='$ESCVAR[TinyInfoDialogPlot]')</onclick>
 							<onup>SetFocus(6666)</onup>
 						</control>
 					</control>

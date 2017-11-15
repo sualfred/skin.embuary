@@ -30,10 +30,10 @@
 					<label>$LOCALIZE[31039]</label>
 					<onclick>ActivateWindow(osdaudiosettings)</onclick>
 				</control>
-				<control type="button" id="500">
+				<control type="radiobutton" id="500">
 					<include content="CommonButton"/>
 					<label>$LOCALIZE[250]</label>
-					<label2>[COLOR lightgrey]$VAR[PlayerVisualisationEnabledButton][/COLOR]</label2>
+					<selected>Visualisation.Enabled</selected>
 				</control>
 				<control type="button" id="702">
 					<include content="CommonButton"/>
@@ -47,23 +47,23 @@
 					<onclick>Addon.Default.OpenSettings(xbmc.player.musicviz)</onclick>
 					<visible>Visualisation.Enabled</visible>
 				</control>
-				<control type="button" id="704">
+				<control type="radiobutton" id="704">
 					<include content="CommonButton"/>
 					<label>$LOCALIZE[20445]</label>
-					<label2>[COLOR lightgrey]$VAR[PlayerFanartEnabledButton][/COLOR]</label2>
+					<selected>!Skin.HasSetting(VisFanartDisabled)</selected>
 					<onclick>Skin.ToggleSetting(VisFanartDisabled)</onclick>
 				</control>
-				<control type="button" id="705">
+				<control type="radiobutton" id="705">
 					<include content="CommonButton"/>
 					<label>$LOCALIZE[31056]</label>
-					<label2>[COLOR lightgrey]$VAR[PlayerRandomFanartEnabledButton][/COLOR]</label2>
+					<selected>Skin.HasSetting(VisRandomFanart)</selected>
 					<onclick>Skin.ToggleSetting(VisRandomFanart)</onclick>
 					<visible>!Skin.HasSetting(VisFanartDisabled)</visible>
 				</control>
-				<control type="button" id="706">
+				<control type="radiobutton" id="706">
 					<include content="CommonButton"/>
 					<label>$LOCALIZE[590]</label>
-					<label2>[COLOR lightgrey]$VAR[PlaylistShuffleButtonLabel][/COLOR]</label2>
+					<selected>Playlist.IsRandom</selected>
 					<onclick>PlayerControl(random)</onclick>
 					<visible>!String.IsEqual(Playlist.Length(music),0)</visible>
 				</control>

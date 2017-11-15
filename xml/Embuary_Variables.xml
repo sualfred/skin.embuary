@@ -289,6 +289,8 @@
 		<value>$LOCALIZE[31095]</value>
 	</variable>
 	<variable name="DurationMinutes">
+		<value condition="String.IsEmpty(ListItem.Duration)"/>
+		<value condition="String.IsEqual(ListItem.DBtype,song)">$INFO[ListItem.Duration]</value>
 		<value condition="!String.Contains(ListItem.Duration,:) + !String.IsEqual(ListItem.Duration,1)">$INFO[ListItem.Duration] $LOCALIZE[31089]</value>
 		<value condition="!String.Contains(ListItem.Duration,:)">$INFO[ListItem.Duration] $LOCALIZE[31090]</value>
 		<value condition="String.StartsWith(ListItem.Duration,01:00:)">60 $LOCALIZE[31089]</value>
@@ -653,8 +655,10 @@
 		<value condition="String.StartsWith(ListItem.Duration,59:)">59 $LOCALIZE[31089]</value>
 	</variable>
 	<variable name="PlayerDurationMinutes">
-		<value condition="!String.Contains(Player.Duration,:) + !String.IsEqual(ListItem.Duration,1)">$INFO[ListItem.Duration] $LOCALIZE[31089]</value>
-		<value condition="!String.Contains(Player.Duration,:)">$INFO[ListItem.Duration] $LOCALIZE[31090]</value>
+		<value condition="String.IsEmpty(Player.Duration)"/>
+		<value condition="Player.HasAudio">$INFO[ListItem.Duration]</value>
+		<value condition="!String.Contains(Player.Duration,:) + !String.IsEqual(Player.Duration,1)">$INFO[Player.Duration] $LOCALIZE[31089]</value>
+		<value condition="!String.Contains(Player.Duration,:)">$INFO[Player.Duration] $LOCALIZE[31090]</value>
 		<value condition="String.StartsWith(Player.Duration,01:00:)">60 $LOCALIZE[31089]</value>
 		<value condition="String.StartsWith(Player.Duration,01:01:)">61 $LOCALIZE[31089]</value>
 		<value condition="String.StartsWith(Player.Duration,01:02:)">62 $LOCALIZE[31089]</value>
@@ -1070,6 +1074,7 @@
 		<value condition="!String.IsEqual(ListItem.DBType,tvshow) + !String.IsEqual(ListItem.DBType,season) + ListItem.IsResumable">$LOCALIZE[13404]</value>
 		<value condition="!String.IsEqual(ListItem.DBType,tvshow) + !String.IsEqual(ListItem.DBType,season) + Integer.IsGreater(ListItem.PlayCount,0)">$LOCALIZE[31009]</value>
 		<value condition="!String.IsEqual(ListItem.DBType,tvshow) + !String.IsEqual(ListItem.DBType,season)">$LOCALIZE[31010]</value>
+		<value condition="String.IsEqual(ListItem.DBType,season)">$LOCALIZE[31013]</value>
 		<value>$LOCALIZE[31011]</value>
 	</variable>
 	<variable name="TinyInfoDialogHeadline">
@@ -1102,10 +1107,6 @@
 	<variable name="PVRTimerStatus">
 		<value condition="!ListItem.TimerIsActive">deaktiviert</value>
 		<value>aktiv</value>
-	</variable>
-	<variable name="TuneInLabel">
-		<value condition="VideoPlayer.Content(livetv)">$LOCALIZE[19165]</value>
-		<value>$LOCALIZE[31020]</value>
 	</variable>
 	<variable name="VolumeIconCircle">
 		<value condition="Player.Muted">0</value>
@@ -1241,10 +1242,11 @@
 		<value condition="String.EndsWith(Control.GetLabel(32),3)">3</value>
 		<value condition="String.EndsWith(Control.GetLabel(32),2)">2</value>
 		<value condition="String.EndsWith(Control.GetLabel(32),1)">1</value>
+		<value condition="String.EndsWith(Control.GetLabel(32),1)">1</value>
 	</variable>
 	<variable name="ListItemDuration">
 		<value condition="String.Contains(ListItem.Duration,:)">$INFO[ListItem.Duration]</value>
-		<value>$INFO[ListItem.Duration,, $LOCALIZE[12391]]</value>
+		<value>$INFO[ListItem.Duration,, $LOCALIZE[31089]]</value>
 	</variable>
 	<variable name="ListItemTitleLabel">
 		<value condition="!String.IsEmpty(ListItem.TVShowTitle)">$INFO[ListItem.TVShowTitle]</value>
@@ -1304,17 +1306,9 @@
 		<value condition="!String.IsEmpty(Player.SeekStepSize)">$INFO[Player.SeekStepSize]</value>
 		<value condition="!String.IsEmpty(Player.SeekOffset)">$INFO[Player.SeekOffset]</value>
 	</variable>
-	<variable name="PlaylistShuffleButtonLabel">
-		<value condition="Playlist.IsRandom">$LOCALIZE[16041]</value>
-		<value>$LOCALIZE[351]</value>
-	</variable>
 	<variable name="PlaylistRepeatButtonLabel">
 		<value condition="Playlist.IsRepeatOne">$LOCALIZE[31053]</value>
-		<value condition="Playlist.IsRepeat">$LOCALIZE[16041]</value>
-		<value>$LOCALIZE[351]</value>
-	</variable>
-	<variable name="PlayerVisualisationEnabledButton">
-		<value condition="Visualisation.Enabled">$LOCALIZE[16041]</value>
+		<value condition="Playlist.IsRepeat">$LOCALIZE[593]</value>
 		<value>$LOCALIZE[351]</value>
 	</variable>
 	<variable name="PlayerFanartEnabledButton">

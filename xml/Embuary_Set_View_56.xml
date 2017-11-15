@@ -73,20 +73,23 @@
 								<onclick>Select</onclick>
 								<ondown>SetFocus(50)</ondown>
 							</control>
-							<control type="button" id="56103">
-								<visible>!String.IsEmpty(ListItem.Plot)</visible>
-								<include>LightGreyButton</include>
-								<label>$LOCALIZE[31013]</label>
-								<onclick>RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCINFO[ListItem.Plot]')</onclick>
-								<onup>SetFocus(6666)</onup>
-								<ondown>SetFocus(50)</ondown>
-							</control>
 							<control type="button" id="56104">
 								<visible>!String.IsEmpty(ListItem.Trailer)</visible>
 								<include>LightGreyButton</include>
 								<label>$LOCALIZE[20410]</label>
 								<onup>SetFocus(6666)</onup>
 								<onclick>PlayMedia($INFO[ListItem.Trailer])</onclick>
+								<ondown>SetFocus(50)</ondown>
+							</control>
+							<control type="button" id="56103">
+								<visible>!String.IsEmpty(ListItem.Plot)</visible>
+								<include>LightGreyButton</include>
+								<width>70</width>
+								<height>50</height>
+								<font>material24</font>
+								<label></label>
+								<onclick>RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCINFO[ListItem.Plot]')</onclick>
+								<onup>SetFocus(6666)</onup>
 								<ondown>SetFocus(50)</ondown>
 							</control>
 							<control type="togglebutton" id="56105">
