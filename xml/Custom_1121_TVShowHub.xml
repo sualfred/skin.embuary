@@ -51,6 +51,19 @@
 							<onup>6666</onup>
 							<ondown>200</ondown>
 						</control>
+						<control type="button" id="110">
+							<label>$LOCALIZE[135]</label>
+							<onclick>ActivateWindow(videos,plugin://script.skin.helper.widgets/?action=browsegenres&amp;mediatype=tvshows,return)</onclick>
+							<onup>6666</onup>
+							<ondown>200</ondown>
+						</control>
+						<control type="button" id="109">
+							<visible>Library.HasContent(tvshows) + System.HasAddon(script.tv.show.next.aired)</visible>
+							<label>$LOCALIZE[31154]</label>
+							<onclick>RunScript(script.tv.show.next.aired)</onclick>
+							<onup>6666</onup>
+							<ondown>200</ondown>
+						</control>
 						<control type="button" id="102">
 							<visible>System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideEmbyConHubButtons)</visible>
 							<label>$LOCALIZE[31118]</label>
@@ -88,13 +101,6 @@
 							<param name="type" value="TVShow"/>
 							<param name="nr" value="6"/>
 						</include>
-						<control type="button" id="19">
-							<visible>Library.HasContent(tvshows) + System.HasAddon(script.tv.show.next.aired)</visible>
-							<label>$LOCALIZE[31154]</label>
-							<onclick>RunScript(script.tv.show.next.aired)</onclick>
-							<onup>6666</onup>
-							<ondown>200</ondown>
-						</control>
 						<control type="button" id="199">
 							<visible>Library.HasContent(tvshows)</visible>
 							<label>$LOCALIZE[137]</label>

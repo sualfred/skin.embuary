@@ -234,23 +234,44 @@
 			<onclick>Dialog.Close(all,true)</onclick>
 			<onclick>ActivateWindow(home)</onclick>
 		</control>
-		<control type="button" id="6601">
-			<include>HeaderButton</include>
-			<label>$LOCALIZE[1036]</label>
-			<onclick>ActivateWindow(favourites)</onclick>
-			<visible>!Window.IsVisible(favourites)</visible>
-		</control>
 		<control type="button" id="6602">
 			<include>HeaderButton</include>
 			<label>$LOCALIZE[31015]</label>
 			<onclick>ActivateWindow(videos,videodb://movies/titles,return)</onclick>
-			<visible>[Container.Content(sets) | String.StartsWith(Container.FolderPath,videodb://movies/sets)] + Library.HasContent(MovieSets)</visible>
+			<visible>[Container.Content(sets) | String.StartsWith(Container.FolderPath,videodb://movies/sets) | String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres&amp;mediatype=movies)] + Library.HasContent(MovieSets)</visible>
+		</control>
+		<control type="button" id="6614">
+			<include>HeaderButton</include>
+			<label>$LOCALIZE[31016]</label>
+			<onclick>ActivateWindow(videos,videodb://tvshows/titles,return)</onclick>
+			<visible>String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres&amp;mediatype=tvshows) | Window.IsVisible(script-NextAired-TVGuide.xml)</visible>
 		</control>
 		<control type="button" id="6603">
 			<include>HeaderButton</include>
 			<label>$LOCALIZE[31169]</label>
 			<onclick>ActivateWindow(videos,videodb://movies/sets,return)</onclick>
-			<visible>Library.HasContent(MovieSets) + !Container.Content(sets) + [String.StartsWith(Container.FolderPath,videodb://movies/titles) | String.StartsWith(Container.FolderPath,videodb://movies/sets)]</visible>
+			<visible>Library.HasContent(MovieSets) + !Container.Content(sets) + [String.StartsWith(Container.FolderPath,videodb://movies/titles) | String.StartsWith(Container.FolderPath,videodb://movies/sets) | String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres&amp;mediatype=movies)]</visible>
+		</control>
+		<control type="button" id="6613">
+			<include>HeaderButton</include>
+			<label>$LOCALIZE[135]</label>
+			<onclick condition="Container.Content(movies) | Container.Content(sets)">ActivateWindow(videos,videodb://movies/titles,return)</onclick>
+			<onclick condition="Container.Content(movies) | Container.Content(sets)">ActivateWindow(videos,plugin://script.skin.helper.widgets/?action=browsegenres&amp;mediatype=movies,return)</onclick>
+			<onclick condition="Container.Content(tvshows) | Window.IsVisible(script-NextAired-TVGuide.xml)">ActivateWindow(videos,videodb://tvshows/titles,return)</onclick>
+			<onclick condition="Container.Content(tvshows) | Window.IsVisible(script-NextAired-TVGuide.xml)">ActivateWindow(videos,plugin://script.skin.helper.widgets/?action=browsegenres&amp;mediatype=tvshows,return)</onclick>
+			<visible>[Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets) | Window.IsVisible(script-NextAired-TVGuide.xml)] + !String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres)</visible>
+		</control>
+		<control type="button" id="6615">
+			<include>HeaderButton</include>
+			<label>$LOCALIZE[31154]</label>
+			<onclick>RunScript(script.tv.show.next.aired)</onclick>
+			<visible>System.HasAddon(script.tv.show.next.aired) + [Container.Content(tvshows) | String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres&amp;mediatype=tvshows)]</visible>
+		</control>
+		<control type="button" id="6601">
+			<include>HeaderButton</include>
+			<label>$LOCALIZE[1036]</label>
+			<onclick>ActivateWindow(favourites)</onclick>
+			<visible>!Window.IsVisible(favourites)</visible>
 		</control>
 		<control type="button" id="6604">
 			<include>HeaderButton</include>
@@ -292,14 +313,14 @@
 			<include>HeaderButton</include>
 			<label></label>
 			<onclick>SetFocus(4000)</onclick>
-			<visible>[Window.IsVisible(videos) | Window.IsVisible(music) | Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRrecordings.xml) | Window.IsVisible(MyPVRTimers.xml) | Window.IsVisible(MyPVRSearch.xml) | Window.IsVisible(programs) | Window.IsVisible(pictures) | Window.IsVisible(addonbrowser)] + !$EXP[ExpInfoDialogActive] + !Skin.HasSetting(KioskMode)</visible>
+			<visible>[Window.IsVisible(videos) | Window.IsVisible(music) | Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRrecordings.xml) | Window.IsVisible(MyPVRTimers.xml) | Window.IsVisible(MyPVRSearch.xml) | Window.IsVisible(programs) | Window.IsVisible(pictures) | Window.IsVisible(addonbrowser)] + !$EXP[ExpInfoDialogActive] + !String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres) + !Skin.HasSetting(KioskMode)</visible>
 		</control>
 		<control type="button" id="6610">
 			<font>Material24</font>
 			<label></label>
 			<include>HeaderButton</include>
 			<onclick>Container.NextViewMode</onclick>
-			<visible>[[Container.Content(episodes) + String.StartsWith(Container.FolderPath,plugin://) + !String.StartsWith(Container.FolderPath,plugin://plugin.video.embycon)] | [[Window.IsVisible(videos) | Window.IsVisible(music) | Window.IsVisible(programs) | Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRrecordings.xml) | Window.IsVisible(addonbrowser) | Window.IsVisible(pictures)] + !$EXP[ExpInfoDialogActive] + !Container.Content(seasons) + !Container.Content(episodes)] + !String.Contains(Container.FolderPath,setid)] + !Skin.HasSetting(KioskMode)</visible>
+			<visible>[[Container.Content(episodes) + String.StartsWith(Container.FolderPath,plugin://) + !String.StartsWith(Container.FolderPath,plugin://plugin.video.embycon)] | [[Window.IsVisible(videos) | Window.IsVisible(music) | Window.IsVisible(programs) | Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRrecordings.xml) | Window.IsVisible(addonbrowser) | Window.IsVisible(pictures)] + !$EXP[ExpInfoDialogActive] + !Container.Content(seasons) + !Container.Content(episodes)] + !String.Contains(Container.FolderPath,setid) + !String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres)] + !Skin.HasSetting(KioskMode)</visible>
 		</control>
 		<control type="button" id="6611">
 			<font>Material24</font>
