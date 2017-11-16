@@ -242,7 +242,6 @@
 		<value condition="Window.IsVisible(script-NextAired-TVGuide.xml)">$INFO[ListItem.Property(NextSeasonNumber),S,]$INFO[ListItem.Property(NextEpisodeNumber),:E]$INFO[ListItem.Property(NextTitle), - ]</value>
 		<value condition="Window.IsVisible(script-NextAired-TVGuide2.xml)">$INFO[ListItem.Property(NextSeasonNumber),S,]$INFO[ListItem.Property(NextEpisodeNumber),:E]$INFO[ListItem.Property(NextTitle), - ]</value>
 		<value condition="String.StartsWith(ListItem.Path,pvr://)">$INFO[ListItem.Label]</value>
-		<value condition="String.IsEqual(ListItem.DBType,musicvideo)">$INFO[ListItem.Year]</value>
 		<value condition="String.IsEqual(ListItem.DBType,episode)">$INFO[ListItem.TvShowTitle]</value>
 		<value condition="String.IsEqual(ListItem.DBType,season)">$INFO[ListItem.TvShowTitle]</value>
 		<value condition="String.IsEqual(ListItem.DBType,movie)">$INFO[ListItem.Year]</value>
@@ -257,7 +256,12 @@
 		<value condition="Container.Content(images)">$INFO[ListItem.size]</value>
 		<value condition="Control.IsVisible(53) + ListItem.IsFolder">$LOCALIZE[19076]</value>
 	</variable>
-	<variable name="VisibleContainer">
+	<variable name="RightListLabel">
+		<value condition="!String.IsEmpty(ListItem.Duration)">$VAR[DurationMinutes]</value>
+	</variable>
+	<variable name="RightListLabel2">
+	</variable>
+		<variable name="VisibleContainer">
 		<value condition="Control.IsVisible(50)">50</value>
 		<value condition="Control.IsVisible(51)">51</value>
 		<value condition="Control.IsVisible(52)">52</value>
