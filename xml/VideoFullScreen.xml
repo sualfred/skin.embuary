@@ -37,7 +37,7 @@
 				</control>
 				<!-- Poster -->
 				<control type="group" id="99">
-					<visible>[!String.IsEmpty(Player.Art(poster)) | !String.IsEmpty(Player.Art(tvshow.poster))] + ![VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)]</visible>
+					<visible>!VideoPlayer.Content(musicvideos) + [!String.IsEmpty(Player.Art(poster)) | !String.IsEmpty(Player.Art(tvshow.poster))] + ![VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)]</visible>
 					<control type="image" id="99">
 						<bottom>20</bottom>
 						<left>20</left>
@@ -115,7 +115,7 @@
 				</control>				
 				<!-- Wide -->
 				<control type="group" id="99">
-					<visible>String.IsEmpty(Player.Art(poster)) + String.IsEmpty(Player.Art(tvshow.poster)) + !VideoPlayer.Content(livetv) + !String.StartsWith(Player.Filenameandpath,pvr://)</visible>
+					<visible>VideoPlayer.Content(musicvideos) | [String.IsEmpty(Player.Art(poster)) + String.IsEmpty(Player.Art(tvshow.poster)) + !VideoPlayer.Content(livetv) + !String.StartsWith(Player.Filenameandpath,pvr://)]</visible>
 					<control type="image" id="99">
 						<bottom>20</bottom>
 						<left>20</left>
