@@ -237,13 +237,13 @@
 		</control>
 		<control type="button" id="6602">
 			<include>HeaderButton</include>
-			<label>$LOCALIZE[31015]</label>
+			<label>$LOCALIZE[342]</label>
 			<onclick>ActivateWindow(videos,videodb://movies/titles,return)</onclick>
 			<visible>[Container.Content(sets) | String.StartsWith(Container.FolderPath,videodb://movies/sets) | String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres&amp;mediatype=movies)] + Library.HasContent(MovieSets)</visible>
 		</control>
 		<control type="button" id="6614">
 			<include>HeaderButton</include>
-			<label>$LOCALIZE[31016]</label>
+			<label>$LOCALIZE[20343]</label>
 			<onclick>ActivateWindow(videos,videodb://tvshows/titles,return)</onclick>
 			<visible>String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres&amp;mediatype=tvshows) | Window.IsVisible(script-NextAired-TVGuide.xml)</visible>
 		</control>
@@ -267,6 +267,30 @@
 			<label>$LOCALIZE[31154]</label>
 			<onclick>RunScript(script.tv.show.next.aired)</onclick>
 			<visible>System.HasAddon(script.tv.show.next.aired) + [Container.Content(tvshows) | String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres&amp;mediatype=tvshows)]</visible>
+		</control>
+		<control type="button" id="6616">
+			<include>HeaderButton</include>
+			<label>$LOCALIZE[133]</label>
+			<onclick>ActivateWindow(music,musicdb://artists/,return)</onclick>
+			<visible>!String.IsEqual(Container.FolderPath,musicdb://artists) + Window.IsVisible(mymusicnav.xml) + Library.HasContent(music)</visible>
+		</control>
+		<control type="button" id="6617">
+			<include>HeaderButton</include>
+			<label>$LOCALIZE[132]</label>
+			<onclick>ActivateWindow(music,musicdb://albums/,return)</onclick>
+			<visible>!String.IsEqual(Container.FolderPath,musicdb://albums/) + Window.IsVisible(mymusicnav.xml) + Library.HasContent(music)</visible>
+		</control>
+		<control type="button" id="6618">
+			<include>HeaderButton</include>
+			<label>$LOCALIZE[134]</label>
+			<onclick>ActivateWindow(music,musicdb://songs/,return)</onclick>
+			<visible>!String.IsEqual(Container.FolderPath,musicdb://songs/) + Window.IsVisible(mymusicnav.xml) + Library.HasContent(music)</visible>
+		</control>
+		<control type="button" id="6619">
+			<include>HeaderButton</include>
+			<label>$LOCALIZE[136]</label>
+			<onclick>ActivateWindow(music,special://musicplaylists/,return)</onclick>
+			<visible>!String.IsEqual(Container.FolderPath,special://musicplaylists/) + Window.IsVisible(mymusicnav.xml) + Library.HasContent(music)</visible>
 		</control>
 		<control type="button" id="6601">
 			<include>HeaderButton</include>
