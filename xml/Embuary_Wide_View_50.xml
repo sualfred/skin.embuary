@@ -23,20 +23,38 @@
 					<viewtype label="$LOCALIZE[31004]">panel</viewtype>
 					<pagecontrol>17</pagecontrol>
 					<scrolltime tween="sine" easing="out">400</scrolltime>
-					<itemlayout width="444" height="305">
+					<itemlayout condition="!String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres)" width="444" height="305">
 						<control type="group">
 							<left>82</left>
 							<top>116</top>
 							<include content="LandscapeLayout">
-								<param name="visible">!String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres)</param>
 								<param name="mainlabel" value="$PARAM[mainlabel]" />
 								<param name="sublabel" value="" />
 								<param name="thumblabel" value="$PARAM[thumblabel]" />
 								<param name="focused" value="false" />
 								<param name="id" value="50" />
 							</include>
+						</control>
+					</itemlayout>
+					<focusedlayout condition="!String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres)" width="444" height="305">
+						<include>SetPropertyOnFocus</include>
+						<control type="group">						
+							<left>82</left>
+							<top>116</top>
+							<include content="LandscapeLayout">
+								<param name="mainlabel" value="$PARAM[mainlabel]" />
+								<param name="sublabel" value="" />
+								<param name="thumblabel" value="$PARAM[thumblabel]" />
+								<param name="focused" value="true" />
+								<param name="id" value="50" />
+							</include>
+						</control>
+					</focusedlayout>
+					<itemlayout condition="String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres)" width="444" height="305">
+						<control type="group">
+							<left>82</left>
+							<top>116</top>
 							<include content="GenreLayout">
-								<param name="visible">String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres)</param>
 								<param name="mainlabel" value="$PARAM[mainlabel]" />
 								<param name="sublabel" value="" />
 								<param name="thumblabel" value="$PARAM[mainlabel]" />
@@ -45,21 +63,12 @@
 							</include>
 						</control>
 					</itemlayout>
-					<focusedlayout width="444" height="305">
+					<focusedlayout condition="String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres)" width="444" height="305">
 						<include>SetPropertyOnFocus</include>
 						<control type="group">						
 							<left>82</left>
 							<top>116</top>
-							<include content="LandscapeLayout">
-								<param name="visible">!String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres)</param>
-								<param name="mainlabel" value="$PARAM[mainlabel]" />
-								<param name="sublabel" value="" />
-								<param name="thumblabel" value="$PARAM[thumblabel]" />
-								<param name="focused" value="true" />
-								<param name="id" value="50" />
-							</include>
 							<include content="GenreLayout">
-								<param name="visible">String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres)</param>
 								<param name="mainlabel" value="$PARAM[mainlabel]" />
 								<param name="sublabel" value="" />
 								<param name="thumblabel" value="$PARAM[mainlabel]" />
