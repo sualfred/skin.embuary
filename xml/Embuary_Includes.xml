@@ -27,30 +27,30 @@
 				<texture colordiffuse="background">common/white.jpg</texture>				
 			</control>
 			<control type="group">
-				<visible>!Window.IsVisible(eventlog) + !Window.IsVisible(settingscategory.xml) + !Window.IsVisible(systeminfo) + !Window.IsVisible(skinsettings) + !Window.IsVisible(addonsettings) + !Window.IsVisible(filemanager) + !Window.IsVisible(profiles)</visible>
 				<control type="list" id="90000">
 					<include>HiddenObject</include>
 					<itemlayout/>
 					<focusedlayout/>
 					<content limit="1">$PARAM[content]</content>
-					<visible>!Skin.HasSetting(HideBackground)</visible>
+					<visible>!Skin.HasSetting(HideBackground) | $EXP[HideBackground]</visible>
 				</control>
 				<control type="videowindow">
 					<include>FullscreenDimensions</include>
-					<visible>Player.HasVideo + !Skin.HasSetting(HideBackgroundPlayback)</visible>
+					<visible>Player.HasVideo + !Skin.HasSetting(HideBackgroundPlayback) + $EXP[HideBackground]</visible>
 				</control>
 				<control type="image">
 					<include>FullscreenDimensions</include>
 					<texture>$VAR[BackgroundSource]</texture>
 					<fadetime>400</fadetime>
-					<visible>[!Player.HasVideo | Skin.HasSetting(HideBackgroundPlayback)] + !Skin.HasSetting(HideBackground) + !Window.IsVisible(MyPVRguide.xml)</visible>
+					<visible>[!Player.HasVideo | Skin.HasSetting(HideBackgroundPlayback)] + !Skin.HasSetting(HideBackground) + !Window.IsVisible(MyPVRguide.xml) + $EXP[HideBackground]</visible>
 				</control>
 				<control type="image">
 					<include>FullscreenDimensions</include>
-					<texture>common/wp_overlay2.png</texture>
+					<texture>common/diffuse.png</texture>
+					<animation effect="fade" start="100" end="99" condition="String.IsEqual(Skin.String(BackgroundAlpha),0) | String.IsEmpty(Skin.String(BackgroundAlpha))" time="0">Conditional</animation>
 					<animation effect="fade" start="100" end="96" condition="String.IsEqual(Skin.String(BackgroundAlpha),1)" time="0">Conditional</animation>
-					<animation effect="fade" start="100" end="92" condition="String.IsEqual(Skin.String(BackgroundAlpha),2)" time="0">Conditional</animation>
-					<animation effect="fade" start="100" end="88" condition="String.IsEqual(Skin.String(BackgroundAlpha),3)" time="0">Conditional</animation>
+					<animation effect="fade" start="100" end="93" condition="String.IsEqual(Skin.String(BackgroundAlpha),2)" time="0">Conditional</animation>
+					<animation effect="fade" start="100" end="90" condition="String.IsEqual(Skin.String(BackgroundAlpha),3)" time="0">Conditional</animation>
 				</control>
 				<control type="image">
 					<include>FullscreenDimensions</include>
