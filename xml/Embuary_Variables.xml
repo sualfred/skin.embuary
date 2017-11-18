@@ -186,7 +186,10 @@
 		<value condition="Skin.HasSetting(ShowStaticBackgroundImage) + !String.IsEmpty(Skin.String(StaticBackgroundImage))">$INFO[Skin.String(StaticBackgroundImage)]</value>
 		<value condition="!String.IsEmpty(Window.Property(background))">$INFO[Window.Property(background)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
-		<value>$INFO[Container(90000).ListItem.Art(fanart)]</value>
+		<value condition="[Window.IsVisible(1122) | Container.Content(musicvideos) | Window.IsVisible(mymusicnav.xml)] + !String.IsEmpty(Window(home).Property(SkinHelper.AllMusicBackground))">$INFO[Window(home).Property(SkinHelper.AllMusicBackground)]</value>
+		<value condition="[Window.IsVisible(1121) | String.StartsWith(Container.FolderPath,videodb://tvshows)] + !String.IsEmpty(Window(home).Property(SkinHelper.AllTvShowsBackground))">$INFO[Window(home).Property(SkinHelper.AllTvShowsBackground)]</value>
+		<value condition="[Window.IsVisible(1120) | String.StartsWith(Container.FolderPath,videodb://movies)]  + !String.IsEmpty(Window(home).Property(SkinHelper.AllMoviesBackground))">$INFO[Window(home).Property(SkinHelper.AllMoviesBackground)]</value>
+		<value condition="!String.IsEmpty(Window(home).Property(SkinHelper.GlobalFanartBackground))">$INFO[Window(home).Property(SkinHelper.GlobalFanartBackground)]</value>
 	</variable>
 	<variable name="FakeButtonAddonInfo13">
 		<value condition="String.EndsWith(Control.GetLabel(13),(*))">$LOCALIZE[19074]</value>
@@ -261,8 +264,10 @@
 	</variable>
 	<variable name="RightListLabel">
 		<value condition="!String.IsEmpty(ListItem.Duration)">$VAR[DurationMinutes]</value>
+		<value condition="Container.Content(tvshows) + !String.IsEmpty(ListItem.Property(TotalEpisodes))">$INFO[ListItem.Property(TotalEpisodes),, $LOCALIZE[20453]]</value>
 	</variable>
 	<variable name="RightListLabel2">
+		<value condition="Container.Content(tvshows) + !String.IsEmpty(ListItem.Property(TotalSeasons))">$INFO[ListItem.Property(TotalSeasons),, $LOCALIZE[36905]]</value>
 	</variable>
 		<variable name="VisibleContainer">
 		<value condition="Control.IsVisible(50)">50</value>
