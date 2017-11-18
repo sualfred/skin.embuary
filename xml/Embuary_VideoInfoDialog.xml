@@ -93,7 +93,7 @@
 								<font>Light24</font>
 								<shadowcolor>text_shadow</shadowcolor>
 								<autoscroll>false</autoscroll>
-								<visible>!VideoPlayer.Content(episodes)</visible>
+								<visible>!VideoPlayer.Content(episodes) + !String.IsEmpty(VideoPlayer.Plot)</visible>
 							</control>
 							<control type="textbox">
 								<width>100%</width>
@@ -104,10 +104,11 @@
 								<font>Light24</font>
 								<shadowcolor>text_shadow</shadowcolor>
 								<autoscroll>false</autoscroll>
-								<visible>VideoPlayer.Content(episodes)</visible>
+								<visible>VideoPlayer.Content(episodes) + !String.IsEmpty(VideoPlayer.Plot)</visible>
 							</control>
 							<control type="label">
 								<height>20</height>
+								<visible>!String.IsEmpty(VideoPlayer.Plot)</visible>
 							</control>
 							<!-- flags -->
 							<include content="MetaFlags">
