@@ -166,6 +166,8 @@
 		<value condition="!String.IsEmpty(Window(home).Property(ArtistDBID)) + Window.IsVisible(music)">musicdb://songs/?artistid=$INFO[Window(home).Property(ArtistDBID)]</value>
 	</variable>
 	<variable name="BackgroundSource">
+		<value condition="Window.IsVisible(weather) + !String.IsEmpty(Weather.Temperature)">weather/background/$INFO[Weather.fanartcode].jpg</value>
+		<value condition="Skin.HasSetting(ShowStaticBackgroundImage) + !String.IsEmpty(Skin.String(StaticBackgroundImage))">$INFO[Skin.String(StaticBackgroundImage)]</value>
 		<value condition="[Window.IsVisible(script-NextAired-TVGuide2.xml) | Window.IsVisible(script-NextAired-TVGuide.xml)] + !String.IsEmpty(Window(home).Property(TVGuide.BackgroundFanart)) + Control.HasFocus(200)">$INFO[Container(200).ListItem.Property(Fanart)]</value>
 		<value condition="[Window.IsVisible(script-NextAired-TVGuide2.xml) | Window.IsVisible(script-NextAired-TVGuide.xml)] + !String.IsEmpty(Window(home).Property(TVGuide.BackgroundFanart)) + Control.HasFocus(201)">$INFO[Container(201).ListItem.Property(Fanart)]</value>
 		<value condition="[Window.IsVisible(script-NextAired-TVGuide2.xml) | Window.IsVisible(script-NextAired-TVGuide.xml)] + !String.IsEmpty(Window(home).Property(TVGuide.BackgroundFanart)) + Control.HasFocus(202)">$INFO[Container(202).ListItem.Property(Fanart)]</value>
@@ -182,8 +184,6 @@
 		<value condition="[Window.IsVisible(script-NextAired-TVGuide2.xml) | Window.IsVisible(script-NextAired-TVGuide.xml)] + !String.IsEmpty(Window(home).Property(TVGuide.BackgroundFanart)) + Control.HasFocus(213)">$INFO[Container(213).ListItem.Property(Fanart)]</value>
 		<value condition="[Window.IsVisible(script-NextAired-TVGuide2.xml) | Window.IsVisible(script-NextAired-TVGuide.xml)] + !String.IsEmpty(Window(home).Property(TVGuide.BackgroundFanart)) + Control.HasFocus(214)">$INFO[Container(214).ListItem.Property(Fanart)]</value>
 		<value condition="[Window.IsVisible(script-NextAired-TVGuide2.xml) | Window.IsVisible(script-NextAired-TVGuide.xml)] + !String.IsEmpty(Window(home).Property(TVGuide.BackgroundFanart)) + Control.HasFocus(215)">$INFO[Container(215).ListItem.Property(Fanart)]</value>
-		<value condition="Window.IsVisible(weather) + !String.IsEmpty(Weather.Temperature)">weather/background/$INFO[Weather.fanartcode].jpg</value>
-		<value condition="Skin.HasSetting(ShowStaticBackgroundImage) + !String.IsEmpty(Skin.String(StaticBackgroundImage))">$INFO[Skin.String(StaticBackgroundImage)]</value>
 		<value condition="!String.IsEmpty(Window.Property(background))">$INFO[Window.Property(background)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
 		<value condition="[Window.IsVisible(1122) | Container.Content(musicvideos) | Window.IsVisible(mymusicnav.xml)] + !String.IsEmpty(Window(home).Property(SkinHelper.AllMusicBackground))">$INFO[Window(home).Property(SkinHelper.AllMusicBackground)]</value>
