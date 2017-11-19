@@ -10,34 +10,34 @@
 		<!-- Dialog -->
 		<control type="group">
 			<visible>!VideoPlayer.IsFullscreen + !Window.IsVisible(visualisation)</visible>
-			<bottom>58</bottom>
+			<top>70</top>
 			<animation type="WindowOpen" reversible="false">
-				<effect type="slide" start="0,200" end="0,0" delay="100" tween="circle" easin="out" time="400" />
+				<effect type="slide" start="0,-200" end="0,0" delay="100" tween="circle" easin="out" time="400" />
 				<effect type="fade" delay="160" end="100" time="400" />
 			</animation>
 			<animation type="WindowClose" reversible="false">
-				<effect type="slide" start="0,0" end="0,200" easing="in" tween="circle" easin="out" time="400" />
+				<effect type="slide" start="0,0" end="0,-200" easing="in" tween="circle" easin="out" time="400" />
 				<effect type="fade" start="100" end="0" time="400" />
 			</animation>
 			<animation type="Conditional" reversible="false" condition="!Player.Muted">
-				<effect type="slide" start="0,200" end="0,0" delay="100" tween="circle" easin="out" time="400" />
+				<effect type="slide" start="0,-200" end="0,0" delay="100" tween="circle" easin="out" time="400" />
 				<effect type="fade" delay="160" end="100" time="400" />
 			</animation>
 			<animation type="Conditional" reversible="false" condition="Player.Muted">
-				<effect type="slide" start="0,0" end="0,200" easing="in" tween="circle" easin="out" time="400" />
+				<effect type="slide" start="0,0" end="0,-200" easing="in" tween="circle" easin="out" time="400" />
 				<effect type="fade" start="100" end="0" time="400"/>
 			</animation>
-			<width>300</width>
-			<height>122</height>
-			<right>58</right>
+			<width>280</width>
+			<height>182</height>
+			<right>70</right>
 			<!-- Background image -->
 			<control type="image">
 				<texture colordiffuse="panel" border="10">common/dialog_back.png</texture>
 			</control>
 			<!-- icon -->
 			<control type="group">
-				<centertop>50%</centertop>
-				<left>10</left>
+				<top>30</top>
+				<centerleft>50%</centerleft>
 				<width>80</width>
 				<height>80</height>
 				<!-- Icon back -->
@@ -46,7 +46,7 @@
 				</control>
 				<control type="image">
 					<texture>dialogs/progress/100.png</texture>
-					<colordiffuse>thumb_background</colordiffuse>
+					<colordiffuse>grey</colordiffuse>
 				</control>
 				<control type="image">
 					<texture>dialogs/progress/$VAR[VolumeIconCircle].png</texture>	
@@ -61,26 +61,26 @@
 				</control>
 			</control>
 			<!-- Details -->
-			<control type="textbox">
-				<top>20</top>
-				<left>100</left>
+			<control type="label">
+				<top>120</top>
+				<left>20</left>
 				<right>20</right>
 				<bottom>20</bottom>
 				<font>Reg22</font>
 				<scroll>true</scroll>
-				<aligny>center</aligny>
-				<label>[B][COLOR white]$LOCALIZE[13376][/COLOR][/B][CR]$VAR[VolumeDetails]</label>
+				<align>center</align>
+				<label>$LOCALIZE[13376] $VAR[VolumeDetails]</label>
 				<visible>!player.passthrough</visible>
 			</control>
-			<control type="textbox">
-				<top>20</top>
-				<left>100</left>
+			<control type="label">
+				<top>120</top>
+				<left>20</left>
 				<right>20</right>
 				<bottom>20</bottom>
 				<font>Reg22</font>
 				<scroll>true</scroll>
-				<aligny>center</aligny>
-				<label>[B][COLOR white]$LOCALIZE[13376][/COLOR][/B][CR]$LOCALIZE[29802]</label>
+				<align>center</align>
+				<label>$LOCALIZE[14252]</label>
 				<visible>player.passthrough</visible>
 			</control>
 		</control>
