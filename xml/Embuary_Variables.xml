@@ -243,7 +243,8 @@
 		<value condition="[Window.IsVisible(1122) | Container.Content(musicvideos) | Window.IsVisible(mymusicnav.xml)] + !String.IsEmpty(Window(home).Property(SkinHelper.AllMusicBackground))">$INFO[Window(home).Property(SkinHelper.AllMusicBackground)]</value>
 		<value condition="[Window.IsVisible(1121) | String.StartsWith(Container.FolderPath,videodb://tvshows)] + !String.IsEmpty(Window(home).Property(SkinHelper.AllTvShowsBackground))">$INFO[Window(home).Property(SkinHelper.AllTvShowsBackground)]</value>
 		<value condition="[Window.IsVisible(1120) | String.StartsWith(Container.FolderPath,videodb://movies)]  + !String.IsEmpty(Window(home).Property(SkinHelper.AllMoviesBackground))">$INFO[Window(home).Property(SkinHelper.AllMoviesBackground)]</value>
-		<value condition="!String.IsEmpty(Window(home).Property(SkinHelper.GlobalFanartBackground))">$INFO[Window(home).Property(SkinHelper.GlobalFanartBackground)]</value>
+		<value condition="!String.IsEmpty(Window(home).Property(SkinHelper.AllVideosBackground))">$INFO[Window(home).Property(SkinHelper.AllVideosBackground)]</value>
+		<value condition="String.IsEmpty(Window(home).Property(SkinHelper.AllVideosBackground))">$INFO[Window(home).Property(SkinHelper.AllMoviesBackground)]</value>
 	</variable>
 	<variable name="FakeButtonAddonInfo13">
 		<value condition="String.EndsWith(Control.GetLabel(13),(*))">$LOCALIZE[19074]</value>
