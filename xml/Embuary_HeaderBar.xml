@@ -35,9 +35,18 @@
 						<visible>!Window.IsVisible(loginscreen)</visible>
 					</control>
 					<control type="image">
-						<height>58</height>
-						<width>98</width>
-						<texture>common/embuary_small.png</texture>
+						<animation effect="slide" end="0,19" time="0" condition="true">Conditional</animation>
+						<height>20</height>
+						<width>20</width>
+						<texture colordiffuse="emby_secondary">common/embuary_sign.png</texture>
+						<aspectratio aligny="center">keep</aspectratio>
+						<visible>[Window.IsVisible(home) | Window.IsVisible(loginscreen)] + !Window.IsVisible(script-globalsearch-main.xml) + !Window.IsVisible(favourites) + !$EXP[ExpInfoDialogActive]</visible>
+					</control>
+					<control type="image">
+						<animation effect="slide" end="-5,19" time="0" condition="true">Conditional</animation>
+						<height>20</height>
+						<width>69</width>
+						<texture colordiffuse="text_white">common/embuary_font.png</texture>
 						<aspectratio>keep</aspectratio>
 						<visible>[Window.IsVisible(home) | Window.IsVisible(loginscreen)] + !Window.IsVisible(script-globalsearch-main.xml) + !Window.IsVisible(favourites) + !$EXP[ExpInfoDialogActive]</visible>
 					</control>
