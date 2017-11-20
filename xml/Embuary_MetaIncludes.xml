@@ -543,73 +543,76 @@
 		</control>
 	</include>
 	<include name="MetaBigThumb">
-		<control type="group">
-			<left>70</left>
-			<width>590</width>
+		<param name="progress">true</param>
+		<definition>
 			<control type="group">
-				<control type="image">
-					<top>-2</top>
-					<left>-2</left>
-					<width>596</width>
-					<height>338</height>
-					<texture>items/shadow_wide_big.png</texture>
-				</control>
-				<control type="image">
-					<width>590</width>
-					<height>332</height>
-					<texture colordiffuse="thumb_background_fallback" diffuse="items/mask_wide_big.png">common/white.jpg</texture>
-					<aspectratio scalediffuse="false">stretch</aspectratio>
-					<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
-				</control>
-				<control type="image">
-					<width>590</width>
-					<height>332</height>
-					<texture colordiffuse="thumb_background" diffuse="items/mask_wide_big.png">common/white.jpg</texture>
-					<aspectratio scalediffuse="false">stretch</aspectratio>
-					<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
-				</control>
-				<control type="textbox">
-					<top>10</top>
-					<left>10</left>
-					<width>570</width>
-					<height>312</height>
-					<font>Light24</font>
-					<textcolor>white</textcolor>
-					<shadowcolor>00ffffff</shadowcolor>
-					<align>center</align>
-					<aligny>center</aligny>
-					<label>$VAR[MainListLabel]</label>
-					<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
-				</control>
-				<control type="image">
-					<width>590</width>
-					<height>332</height>
-					<texture diffuse="items/mask_wide_db.png" background="true">$INFO[ListItem.Icon]</texture>
-					<fadetime>200</fadetime>
-					<aspectratio scalediffuse="false">keep</aspectratio>
-					<bordersize>20</bordersize>
-					<visible>!String.StartsWith(ListItem.Icon,Default) + String.StartsWith(ListItem.Path,pvr://)</visible>
-				</control>
-				<control type="image">
-					<width>590</width>
-					<height>332</height>
-					<texture diffuse="items/mask_wide_db.png" background="true">$INFO[ListItem.Icon]</texture>
-					<fadetime>200</fadetime>
-					<aspectratio scalediffuse="false">keep</aspectratio>
-					<visible>!String.StartsWith(ListItem.Icon,Default) + !String.StartsWith(ListItem.Path,pvr://)</visible>
-				</control>
+				<left>70</left>
+				<width>590</width>
 				<control type="group">
-					<width>590</width>
-					<height>332</height>
-					<include>bubble_overlay</include>
-					<include>bubble_play</include>
+					<control type="image">
+						<top>-2</top>
+						<left>-2</left>
+						<width>596</width>
+						<height>338</height>
+						<texture>items/shadow_wide_big.png</texture>
+					</control>
+					<control type="image">
+						<width>590</width>
+						<height>332</height>
+						<texture colordiffuse="thumb_background_fallback" diffuse="items/mask_wide_big.png">common/white.jpg</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="image">
+						<width>590</width>
+						<height>332</height>
+						<texture colordiffuse="thumb_background" diffuse="items/mask_wide_big.png">common/white.jpg</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="textbox">
+						<top>10</top>
+						<left>10</left>
+						<width>570</width>
+						<height>312</height>
+						<font>Light24</font>
+						<textcolor>white</textcolor>
+						<shadowcolor>00ffffff</shadowcolor>
+						<align>center</align>
+						<aligny>center</aligny>
+						<label>$VAR[MainListLabel]</label>
+						<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="image">
+						<width>590</width>
+						<height>332</height>
+						<texture diffuse="items/mask_wide_db.png" background="true">$INFO[ListItem.Icon]</texture>
+						<fadetime>200</fadetime>
+						<aspectratio scalediffuse="false">keep</aspectratio>
+						<bordersize>20</bordersize>
+						<visible>!String.StartsWith(ListItem.Icon,Default) + String.StartsWith(ListItem.Path,pvr://)</visible>
+					</control>
+					<control type="image">
+						<width>590</width>
+						<height>332</height>
+						<texture diffuse="items/mask_wide_db.png" background="true">$INFO[ListItem.Icon]</texture>
+						<fadetime>200</fadetime>
+						<aspectratio scalediffuse="false">keep</aspectratio>
+						<visible>!String.StartsWith(ListItem.Icon,Default) + !String.StartsWith(ListItem.Path,pvr://)</visible>
+					</control>
+					<control type="group">
+						<width>590</width>
+						<height>332</height>
+						<include>bubble_overlay</include>
+						<include>bubble_play</include>
+					</control>
+					<include condition="$PARAM[progress]" content="progress">
+						<param name="top" value="328"/>
+						<param name="width" value="590"/>
+					</include>
 				</control>
-				<include content="progress">
-					<param name="top" value="328"/>
-					<param name="width" value="590"/>
-				</include>
 			</control>
-		</control>
+		</definition>
 	</include>
 	<include name="MetaVideoBigThumb">
 		<control type="group">
