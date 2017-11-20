@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+	<variable name="HeaderCustomDeviceName">
+		<value condition="Skin.HasSetting(CustomDeviceName) + !String.IsEmpty(Skin.String(CustomDeviceName_label))">$INFO[Skin.String(CustomDeviceName_label)]</value>
+		<value>embuary</value>
+	</variable>
 	<variable name="ContainerContent">
 		<value condition="String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres)">$LOCALIZE[135]</value>
 		<value condition="Window.IsVisible(script-NextAired-TVGuide2.xml)">$LOCALIZE[31154]</value>

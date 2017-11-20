@@ -264,24 +264,39 @@
 							</control>
 							<control type="radiobutton" id="231">
 								<include>SettingsButton</include>
+								<onclick>Skin.ToggleSetting(CustomDeviceName)</onclick>
+								<selected>Skin.HasSetting(CustomDeviceName)</selected>
+								<label>$LOCALIZE[31117]</label>
+							</control>
+							<control type="button" id="232">
+								<textcolor>emby</textcolor>
+								<texturenofocus colordiffuse="33000000">common/white.jpg</texturenofocus>
+								<include>SettingsButton</include>
+								<onclick>Skin.SetString(CustomDeviceName_label)</onclick>
+								<label>• $LOCALIZE[21899]</label>
+								<label2>$VAR[HeaderCustomDeviceName]</label2>
+								<visible>Skin.HasSetting(CustomDeviceName)</visible>
+							</control>
+							<control type="radiobutton" id="233">
+								<include>SettingsButton</include>
 								<onclick>Skin.ToggleSetting(KioskMode)</onclick>
 								<selected>Skin.HasSetting(KioskMode)</selected>
 								<label>$LOCALIZE[31112]</label>
 							</control>
-							<control type="radiobutton" id="232">
+							<control type="radiobutton" id="234">
 								<include>SettingsButton</include>
 								<onclick>Skin.ToggleSetting(HideEmbyConHubButtons)</onclick>
 								<selected>!Skin.HasSetting(HideEmbyConHubButtons)</selected>
 								<label>$LOCALIZE[31127]</label>
 								<enable>System.HasAddon(plugin.video.embycon)</enable>
 							</control>
-							<control type="radiobutton" id="233">
+							<control type="radiobutton" id="235">
 								<include>SettingsButton</include>
 								<onclick>Skin.ToggleSetting(HideLibaryEditButtons)</onclick>
 								<selected>!Skin.HasSetting(HideLibaryEditButtons)</selected>
 								<label>$LOCALIZE[31155]</label>
 							</control>
-							<control type="radiobutton" id="234">
+							<control type="radiobutton" id="236">
 								<include>SettingsButton</include>
 								<onclick>Skin.ToggleSetting(HideHolidayTheme)</onclick>
 								<selected>!Skin.HasSetting(HideHolidayTheme)</selected>
