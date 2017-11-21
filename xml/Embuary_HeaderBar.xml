@@ -365,7 +365,7 @@
 			<label></label>
 			<include>HeaderButton</include>
 			<onclick>ActivateWindow(playercontrols)</onclick>
-			<visible>Player.HasMedia</visible>
+			<visible>Player.HasMedia + !String.StartsWith(Player.Filenameandpath,special://skin/extras) + String.IsEmpty(Window(home).Property(SkinExtraSound))</visible>
 		</control>
 		<control type="button" id="6612">
 			<font>Material24</font>
@@ -373,7 +373,7 @@
 			<include>HeaderButton</include>
 			<onclick condition="Player.HasVideo">ActivateWindow(fullscreenvideo)</onclick>
 			<onclick condition="Player.HasAudio">ActivateWindow(visualisation)</onclick>
-			<visible>Player.HasMedia</visible>
+			<visible>Player.HasMedia + !String.StartsWith(Player.Filenameandpath,special://skin/extras) + String.IsEmpty(Window(home).Property(SkinExtraSound))</visible>
 		</control>
 	</include>
 </includes>
