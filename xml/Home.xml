@@ -4,9 +4,10 @@
 	<backgroundcolor>background</backgroundcolor>
 	<menucontrol>6666</menucontrol>
 	<!-- winter theme -->
-	<onload condition="Window.Previous(startup) + !Player.HasMedia + $EXP[HolidayTheme]">SetProperty(SkinExtraSound,1,home)</onload>
-	<onload condition="Window.Previous(startup) + !Player.HasMedia + $EXP[HolidayTheme]">AlarmClock(ClearSkinExtraSound,ClearProperty(SkinExtraSound,home),00:05,silent)</onload>
-	<onload condition="Window.Previous(startup) + !Player.HasMedia + $EXP[HolidayTheme]">PlayMedia(special://skin/extras/holidaybells.mp3,1)</onload>
+	<onload condition="!Player.HasMedia + $EXP[HolidayTheme]">SetProperty(SkinExtraSound,1,home)</onload>
+	<onload condition="!Player.HasMedia + $EXP[HolidayTheme]">AlarmClock(ClearSkinExtraSound,ClearProperty(SkinExtraSound,home),00:05,silent)</onload>
+	<onload condition="Window.Previous(startup) + !Player.HasMedia + $EXP[HolidayTheme]">PlayMedia(special://skin/extras/winterintro.mp3,1)</onload>
+	<onload condition="!Window.Previous(startup) + !Player.HasMedia + $EXP[HolidayTheme]">PlayMedia(special://skin/extras/winterbells.mp3,1)</onload>
 	<!-- halloween theme -->
 	<onload condition="!Player.HasMedia + $EXP[HolidayTheme2]">SetProperty(SkinExtraSound,1,home)</onload>
 	<onload condition="!Player.HasMedia + $EXP[HolidayTheme2]">AlarmClock(ClearSkinExtraSound,ClearProperty(SkinExtraSound,home),00:05,silent)</onload>
