@@ -3,6 +3,9 @@
 	<defaultcontrol always="true">100</defaultcontrol>
 	<backgroundcolor>background</backgroundcolor>
 	<menucontrol>6666</menucontrol>
+	<onload condition="Window.Previous(startup) + !PlayerHasMedia + $EXP[HolidayTheme]">SetProperty(SkinExtraSound,1,home)</onload>
+	<onload condition="Window.Previous(startup) + !PlayerHasMedia + $EXP[HolidayTheme]">AlarmClock(ClearSkinExtraSound,ClearProperty(SkinExtraSound,home),00:05,silent)</onload>
+	<onload condition="Window.Previous(startup) + !PlayerHasMedia + $EXP[HolidayTheme]">PlayMedia(special://skin/extras/holidaybells.mp3,1)</onload>
 	<onload condition="!Skin.HasSetting(EmbuaryFirstRun)">ReplaceWindow(1119)</onload>
 	<controls>
 		<!-- Hidden -->
