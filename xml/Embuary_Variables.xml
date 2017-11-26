@@ -264,6 +264,10 @@
 		<value condition="!String.IsEmpty(Window(home).Property(EmbyTVShowPlot)) + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">$INFO[Window(home).Property(EmbyTVShowPlot)]</value>
 		<value condition="!String.IsEmpty(ListItem.Plot)">$INFO[ListItem.Plot]</value>
 	</variable>
+	<variable name="GlobalSearchIconTVShows">
+		<value condition="!String.IsEmpty(ListItem.Property(art(clearart)))">$INFO[ListItem.Property(art(landscape))]</value>
+		<value>ListItem.Art(fanart)</value>
+	</variable>
 	<variable name="IconLandscape">
 		<value condition="!String.IsEmpty(ListItem.Property(banner))">$INFO[ListItem.Property(banner)]</value>
 		<value condition="Window.IsVisible(videobookmarks) + !String.StartsWith(ListItem.Icon,Default)">$INFO[ListItem.Icon]</value>
@@ -1175,6 +1179,12 @@
 		<value condition="String.IsEqual(ListItem.DBType,song)">$VAR[DurationMinutes,$LOCALIZE[180]: ,[CR][CR]]$INFO[ListItem.Artist]$INFO[ListItem.Album, - ,[CR][CR]]$INFO[ListItem.Property(Album_Description)]</value>
 		<value condition="String.IsEqual(ListItem.DBType,musicvideo)">$VAR[DurationMinutes,$LOCALIZE[180]: ]</value>
 		<value>$INFO[ListItem.Plot]</value>
+	</variable>
+	<variable name="TinyGlobalSearchPlot">
+		<value condition="!String.IsEmpty(Container(100).ListItem.Property(Plot))">$INFO[Container(100).ListItem.Property(Plot)]</value>
+		<value condition="!String.IsEmpty(Container(100).ListItem.Property(Artist_Description))">$INFO[Container(100).ListItem.Property(Artist_Description)]</value>
+		<value condition="!String.IsEmpty(Container(100).ListItem.Property(Album_Description))">$INFO[Container(100).ListItem.Property(Album_Description)]</value>
+		<value condition="!String.IsEmpty(Container(100).ListItem.Property(Comment))">$INFO[Container(100).ListItem.Property(Comment)]</value>
 	</variable>
 	<variable name="ListViewPlot">
 		<value condition="Window.IsVisible(tvrecordings)">$INFO[ListItem.Plot]</value>
