@@ -312,6 +312,7 @@
 		<value condition="String.IsEqual(ListItem.DBType,season)">$INFO[ListItem.TvShowTitle]</value>
 		<value condition="String.IsEqual(ListItem.DBType,movie)">$INFO[ListItem.Year]</value>
 		<value condition="String.IsEqual(ListItem.DBType,tvshow)">$INFO[ListItem.Year]</value>
+		<value condition="String.IsEqual(ListItem.DBType,album) + !String.IsEmpty(ListItem.AlbumArtist)">$INFO[ListItem.AlbumArtist]</value>
 		<value condition="String.IsEqual(ListItem.DBType,album)">$INFO[ListItem.Artist]</value>
 		<value condition="String.IsEqual(ListItem.DBType,song)">$INFO[ListItem.Artist]</value>
 		<value condition="String.IsEqual(ListItem.DBType,artist)">$LOCALIZE[557]</value>
@@ -320,6 +321,14 @@
 		<value condition="Window.IsVisible(addonbrowser) + String.EndsWith(ListItem.Label2,&#x25;)">$INFO[ListItem.Label2]</value>
 		<value condition="Window.IsVisible(addonbrowser)">$INFO[ListItem.AddonType]</value>
 		<value condition="Container.Content(images)">$INFO[ListItem.size]</value>
+		<value condition="Container.Content(songs)">$INFO[ListItem.Artist]</value>
+		<value condition="Container.Content(albums) + !String.IsEmpty(ListItem.AlbumArtist)">$INFO[ListItem.AlbumArtist]</value>
+		<value condition="Container.Content(albums)">$INFO[ListItem.Artist]</value>
+		<value condition="Container.Content(tvshow)">$INFO[ListItem.Year]</value>
+		<value condition="Container.Content(movie)">$INFO[ListItem.Year]</value>
+		<value condition="Container.Content(season)">$INFO[ListItem.TvShowTitle]</value>
+		<value condition="Container.Content(episode)">$INFO[ListItem.TvShowTitle]</value>
+		<value condition="String.StartsWith(ListItem.Path,plugin://plugin.audio.prime_music) + String.Contains(ListItem.Filenameandpath,playTrack)">$INFO[ListItem.Artist]</value>
 		<value condition="Control.IsVisible(53) + ListItem.IsFolder">$LOCALIZE[19076]</value>
 	</variable>
 	<variable name="RightListLabel">
