@@ -311,7 +311,8 @@
 	<variable name="SubListLabel">
 		<value condition="Window.IsVisible(script-NextAired-TVGuide.xml)">$INFO[ListItem.Property(NextSeasonNumber),S,]$INFO[ListItem.Property(NextEpisodeNumber),:E]$INFO[ListItem.Property(NextTitle), - ]</value>
 		<value condition="Window.IsVisible(script-NextAired-TVGuide2.xml)">$INFO[ListItem.Property(NextSeasonNumber),S,]$INFO[ListItem.Property(NextEpisodeNumber),:E]$INFO[ListItem.Property(NextTitle), - ]</value>
-		<value condition="[Window.IsVisible(videos) | Window.IsVisible(music) | Window.IsVisible(programs) | Window.IsVisible(MyPVRRecordings.xml) | Window.IsVisible(addonbrowser)] + String.IsEmpty(ListItem.TvShowTitle) + String.IsEmpty(ListItem.artist) + String.IsEmpty(ListItem.year) + String.IsEmpty(ListItem.albumartist) + String.IsEmpty(ListItem.addontype) + ListItem.IsFolder + !ListItem.IsParentFolder">$LOCALIZE[19076]</value>
+		<value condition="String.IsEmpty(ListItem.TvShowTitle) + String.IsEmpty(ListItem.year) + String.IsEmpty(ListItem.artist) + String.IsEmpty(ListItem.albumartist) + String.IsEmpty(ListItem.addontype) + ListItem.IsFolder + !ListItem.IsParentFolder">$LOCALIZE[19076]</value>
+		<value condition="ListItem.IsParentFolder">$LOCALIZE[31044]</value>
 		<value condition="String.StartsWith(ListItem.Path,pvr://)">$INFO[ListItem.Label]</value>
 		<value condition="String.IsEqual(ListItem.DBType,episode)">$INFO[ListItem.TvShowTitle]</value>
 		<value condition="String.IsEqual(ListItem.DBType,season)">$INFO[ListItem.TvShowTitle]</value>
@@ -332,8 +333,6 @@
 		<value condition="Container.Content(season)">$INFO[ListItem.TvShowTitle]</value>
 		<value condition="Container.Content(episode)">$INFO[ListItem.TvShowTitle]</value>
 		<value condition="String.StartsWith(ListItem.Path,plugin://plugin.audio.prime_music) + String.Contains(ListItem.Filenameandpath,playTrack)">$INFO[ListItem.Artist]</value>
-		<value condition="Control.IsVisible(53) + ListItem.IsFolder">$LOCALIZE[19076]</value>
-		<value condition="ListItem.IsParentFolder">$LOCALIZE[31044]</value>
 	</variable>
 	<variable name="RightListLabel">
 		<value condition="!String.IsEmpty(ListItem.Duration)">$VAR[DurationMinutes]</value>
