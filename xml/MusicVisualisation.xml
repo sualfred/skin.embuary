@@ -6,31 +6,7 @@
 	<backgroundcolor>background</backgroundcolor>
 	<controls>		
 		<!-- Visualisation -->
-		<control id="2" type="visualisation">
-			<include>FullscreenDimensions</include>
-			<visible>Visualisation.Enabled</visible>
-		</control>
-		<!-- Fanart -->
-		<control type="group">
-			<animation effect="fade" end="33" start="100" time="0" condition="Visualisation.Enabled | [!String.IsEmpty(Window(Home).Property(culrc.lyrics)) + Window.IsVisible(script-cu-lrclyrics-main.xml)]">Conditional</animation>
-			<control type="image">
-				<include>FullscreenDimensions</include>
-				<fadetime>400</fadetime>
-				<texture background="true">$VAR[MusicPlayerFanart]</texture>
-				<include>VisAnimation</include>
-				<visible>!Skin.HasSetting(VisFanartDisabled) + [!Skin.HasSetting(VisRandomFanart) | String.IsEmpty(Window(Home).Property(SkinHelper.Player.Art.ExtraFanArt))]</visible>
-			</control>
-			<control type="multiimage">
-				<include>FullscreenDimensions</include>
-				<fadetime>400</fadetime>
-				<randomize>true</randomize>
-				<aspectratio>scale</aspectratio>
-				<timeperimage>10000</timeperimage>
-				<imagepath background="true">$INFO[Window(Home).Property(SkinHelper.Player.Art.ExtraFanArt)]</imagepath>
-				<include>VisAnimation</include>
-				<visible>Skin.HasSetting(VisRandomFanart) + !Skin.HasSetting(VisFanartDisabled)</visible>
-			</control>
-		</control>
+		<include>MusicBackground</include>
 		<!-- Busy spinner -->
 		<control type="group" id="99">
 			<visible>Player.Caching</visible>

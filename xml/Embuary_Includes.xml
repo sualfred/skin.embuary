@@ -18,6 +18,35 @@
 		<label></label>
 		<font></font>
 	</include>
+	<!-- Music Background -->
+	<include name="MusicBackground">
+		<!-- Visualisation -->
+		<control type="visualisation">
+			<include>FullscreenDimensions</include>
+			<visible>Visualisation.Enabled</visible>
+		</control>
+		<!-- Fanart -->
+		<control type="group">
+			<animation effect="fade" end="33" start="100" time="0" condition="Visualisation.Enabled | [Window.IsVisible(visualisation) + !String.IsEmpty(Window(Home).Property(culrc.lyrics)) + Window.IsVisible(script-cu-lrclyrics-main.xml)]">Conditional</animation>
+			<control type="image">
+				<include>FullscreenDimensions</include>
+				<fadetime>400</fadetime>
+				<texture background="true">$VAR[MusicPlayerFanart]</texture>
+				<include>VisAnimation</include>
+				<visible>!Skin.HasSetting(VisFanartDisabled) + [!Skin.HasSetting(VisRandomFanart) | String.IsEmpty(Window(Home).Property(SkinHelper.Player.Art.ExtraFanArt))]</visible>
+			</control>
+			<control type="multiimage">
+				<include>FullscreenDimensions</include>
+				<fadetime>400</fadetime>
+				<randomize>true</randomize>
+				<aspectratio>scale</aspectratio>
+				<timeperimage>10000</timeperimage>
+				<imagepath background="true">$INFO[Window(Home).Property(SkinHelper.Player.Art.ExtraFanArt)]</imagepath>
+				<include>VisAnimation</include>
+				<visible>Skin.HasSetting(VisRandomFanart) + !Skin.HasSetting(VisFanartDisabled)</visible>
+			</control>
+		</control>
+	</include>
 	<!-- Background -->
 	<include name="Background">
 		<control type="image">
@@ -29,11 +58,15 @@
 				<include>FullscreenDimensions</include>
 				<visible>Player.HasVideo + !Skin.HasSetting(HideBackgroundPlayback) + $EXP[HideBackground]</visible>
 			</control>
+			<control type="group">
+				<visible>Player.HasAudio + !Skin.HasSetting(HideBackgroundPlayback) + $EXP[HideBackground]</visible>
+				<include>MusicBackground</include>
+			</control>
 			<control type="image">
 				<include>FullscreenDimensions</include>
 				<texture>$VAR[BackgroundSource]</texture>
 				<fadetime>1000</fadetime>
-				<visible>[!Player.HasVideo | Skin.HasSetting(HideBackgroundPlayback)] + !Skin.HasSetting(HideBackground) + !Window.IsVisible(MyPVRguide.xml) + $EXP[HideBackground]</visible>
+				<visible>[!Player.HasMedia | Skin.HasSetting(HideBackgroundPlayback)] + !Skin.HasSetting(HideBackground) + !Window.IsVisible(MyPVRguide.xml) + $EXP[HideBackground]</visible>
 			</control>
 			<control type="image">
 				<include>FullscreenDimensions</include>
