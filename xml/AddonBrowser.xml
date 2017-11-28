@@ -15,9 +15,7 @@
 			<include>Window_OpenClose</include>
 			<include>Wide_View_50</include>
 			<include>Square_View_52</include>
-			<include content="List_View_53">
-				<param name="rightlabel">$INFO[ListItem.Label2]</param>
-			</include>
+			<include>List_View_53</include>
 		</control>
 
 		<!-- Menu control -->
@@ -89,6 +87,60 @@
 						<texture border="5" colordiffuse="panel">common/menu_bottom.png</texture>
 					</control>
 				</control>
+			</control>
+		</control>
+
+		<!-- Download -->
+		<control type="group">
+			<visible>String.EndsWith(ListItem.Label2,&#x25;)</visible>
+			<bottom>70</bottom>
+			<animation type="Visible" reversible="false">
+				<effect type="slide" start="0,200" end="0,0" delay="100" tween="circle" easin="out" time="400" />
+				<effect type="fade" delay="160" end="100" time="400" />
+			</animation>
+			<animation type="Hidden" reversible="false">
+				<effect type="slide" start="0,0" end="0,200" easing="in" tween="circle" easin="out" time="400" />
+				<effect type="fade" start="100" end="0" time="400" />
+			</animation>
+			<width>350</width>
+			<height>122</height>
+			<left>70</left>
+			<!-- Background image -->
+			<control type="image">
+				<texture colordiffuse="panel" border="10">common/dialog_back.png</texture>
+			</control>
+			<!-- icon -->
+			<control type="group">
+				<centertop>50%</centertop>
+				<left>10</left>
+				<width>80</width>
+				<height>80</height>
+				<!-- Icon back -->
+				<control type="image">
+					<texture>dialogs/progress/bg.png</texture>
+				</control>
+				<control type="image">
+					<texture>dialogs/progress/100.png</texture>
+					<colordiffuse>thumb_background</colordiffuse>
+				</control>
+				<!-- Icon -->
+				<control type="textbox">
+					<align>center</align>
+					<aligny>center</aligny>
+					<font>Material24</font>
+					<label></label>
+				</control>
+			</control>
+			<!-- Details -->
+			<control type="textbox">
+				<top>20</top>
+				<left>100</left>
+				<right>20</right>
+				<bottom>20</bottom>
+				<font>Reg22</font>
+				<scroll>true</scroll>
+				<aligny>center</aligny>
+				<label>$INFO[ListItem.Label2]</label>
 			</control>
 		</control>
 
