@@ -1439,9 +1439,9 @@
 		<value>defaultuser.png</value>
 	</variable>
 	<variable name="PVRLabel">
-		<value condition="Pvr.HasRadioChannels + Pvr.HasTVChannels">$LOCALIZE[31042] &amp; $LOCALIZE[19021]</value>
-		<value condition="Pvr.HasTVChannels">$LOCALIZE[31042]</value>
-		<value condition="Pvr.HasRadioChannels">$LOCALIZE[19021]</value>
+		<value condition="!Pvr.HasRadioChannels + Pvr.HasTVChannels">$LOCALIZE[31042]</value>
+		<value condition="Pvr.HasRadioChannels + !Pvr.HasTVChannels">$LOCALIZE[19021]</value>
+		<value>$LOCALIZE[31042] &amp; $LOCALIZE[19021]</value>
 	</variable>
 	<variable name="SettingHelpText">
 		<value condition="ControlGroup(100).HasFocus(101)">$LOCALIZE[31105]</value>

@@ -56,7 +56,7 @@
 							<shadowcolor>text_shadow</shadowcolor>
 							<texturefocus colordiffuse="panel_hover">common/white.jpg</texturefocus>
 							<include>NoTextures</include>
-							<label>$LOCALIZE[31083]</label>
+							<label>$LOCALIZE[10000]</label>
 							<onright>300</onright>
 						</control>
 						<control type="button" id="103">
@@ -185,6 +185,7 @@
 							<ondown>noop</ondown>
 							<pagecontrol>70</pagecontrol>
 							<scrolltime>200</scrolltime>
+							<!-- background -->
 							<control type="label" id="299">
 								<height>50</height>
 								<font>med22</font>
@@ -253,6 +254,36 @@
 								<selected>!Skin.HasSetting(HideHeaderWeather)</selected>
 								<label>$LOCALIZE[31110]</label>
 							</control>
+							<!-- global widget settings -->
+							<control type="label" id="240">
+								<height>50</height>
+								<font>med22</font>
+								<textoffsetx>15</textoffsetx>
+								<textcolor>panel_text</textcolor>
+								<shadowcolor>text_shadow</shadowcolor>
+								<aligny>center</aligny>
+								<label>$LOCALIZE[31083]</label>
+							</control>
+							<control type="radiobutton" id="241">
+								<include>SettingsButton</include>
+								<onclick>Skin.ToggleSetting(WidgetDiffuse)</onclick>
+								<selected>Skin.HasSetting(WidgetDiffuse)</selected>
+								<label>$LOCALIZE[31016]</label>
+							</control>
+							<control type="radiobutton" id="242">
+								<include>SettingsButton</include>
+								<onclick>Skin.ToggleSetting(HideLibraryWidgets)</onclick>
+								<selected>!Skin.HasSetting(HideLibraryWidgets)</selected>
+								<label>$LOCALIZE[31084]</label>
+							</control>
+							<control type="radiobutton" id="243">
+								<include>SettingsButton</include>
+								<onclick>Skin.ToggleSetting(EnableEmbyConWidgets)</onclick>
+								<selected>Skin.HasSetting(EnableEmbyConWidgets)</selected>
+								<label>$LOCALIZE[31085]</label>
+								<enable>System.HasAddon(plugin.video.embycon)</enable>
+							</control>
+							<!-- misc -->
 							<control type="label" id="230">
 								<height>50</height>
 								<font>med22</font>
@@ -292,8 +323,8 @@
 							</control>
 							<control type="radiobutton" id="235">
 								<include>SettingsButton</include>
-								<onclick>Skin.ToggleSetting(HideLibaryEditButtons)</onclick>
-								<selected>!Skin.HasSetting(HideLibaryEditButtons)</selected>
+								<onclick>Skin.ToggleSetting(HideLibraryEditButtons)</onclick>
+								<selected>!Skin.HasSetting(HideLibraryEditButtons)</selected>
 								<label>$LOCALIZE[31155]</label>
 							</control>
 							<control type="radiobutton" id="236">
@@ -315,44 +346,68 @@
 							<ondown>noop</ondown>
 							<pagecontrol>70</pagecontrol>
 							<scrolltime>200</scrolltime>
-							<!-- local / embycon source -->
-							<control type="label" id="399">
+							<!-- media menu -->
+							<control type="label" id="310">
 								<height>50</height>
 								<font>med22</font>
 								<textoffsetx>15</textoffsetx>
 								<textcolor>panel_text</textcolor>
 								<shadowcolor>text_shadow</shadowcolor>
 								<aligny>center</aligny>
-								<label>$LOCALIZE[31083]</label>
+								<label>$LOCALIZE[33061]</label>
 							</control>
-							<control type="radiobutton" id="350">
+							<!-- movies tvshows music music videos addons -->
+							<control type="radiobutton" id="311">
 								<include>SettingsButton</include>
-								<onclick>Skin.ToggleSetting(WidgetDiffuse)</onclick>
-								<selected>Skin.HasSetting(WidgetDiffuse)</selected>
-								<label>$LOCALIZE[31016]</label>
+								<onclick>Skin.ToggleSetting(HideMovieLibrary)</onclick>
+								<selected>!Skin.HasSetting(HideMovieLibrary)</selected>
+								<label>$LOCALIZE[342]</label>
 							</control>
-							<control type="radiobutton" id="351">
+							<control type="radiobutton" id="312">
 								<include>SettingsButton</include>
-								<onclick>Skin.ToggleSetting(HideLibaryWidgets)</onclick>
-								<selected>!Skin.HasSetting(HideLibaryWidgets)</selected>
-								<label>$LOCALIZE[31084]</label>
+								<onclick>Skin.ToggleSetting(HideTVShowLibrary)</onclick>
+								<selected>!Skin.HasSetting(HideTVShowLibrary)</selected>
+								<label>$LOCALIZE[20343]</label>
 							</control>
-							<control type="radiobutton" id="352">
+							<!-- placeholder for leia netflix and amazon video
+							<control type="radiobutton" id="313">
 								<include>SettingsButton</include>
-								<onclick>Skin.ToggleSetting(EnableEmbyConWidgets)</onclick>
-								<selected>Skin.HasSetting(EnableEmbyConWidgets)</selected>
-								<label>$LOCALIZE[31085]</label>
-								<enable>System.HasAddon(plugin.video.embycon)</enable>
+								<onclick>Skin.ToggleSetting(HideTVShowLibrary)</onclick>
+								<selected>!Skin.HasSetting(HideTVShowLibrary)</selected>
+								<label>$LOCALIZE[20343]</label>
 							</control>
-							<control type="radiobutton" id="353">
+							<control type="radiobutton" id="314">
 								<include>SettingsButton</include>
-								<onclick>Skin.ToggleSetting(PreferLastTunedPVRChannels)</onclick>
-								<selected>Skin.HasSetting(PreferLastTunedPVRChannels)</selected>
-								<visible>!Skin.HasSetting(HidePVRWidgets)</visible>
-								<label>$LOCALIZE[31107]</label>
+								<onclick>Skin.ToggleSetting(HideTVShowLibrary)</onclick>
+								<selected>!Skin.HasSetting(HideTVShowLibrary)</selected>
+								<label>$LOCALIZE[20343]</label>
+							</control>-->
+							<control type="radiobutton" id="315">
+								<include>SettingsButton</include>
+								<onclick>Skin.ToggleSetting(HidePVRLibrary)</onclick>
+								<selected>!Skin.HasSetting(HidePVRLibrary)</selected>
+								<label>$VAR[PVRLabel]</label>
+							</control>
+							<control type="radiobutton" id="316">
+								<include>SettingsButton</include>
+								<onclick>Skin.ToggleSetting(HideMusicLibrary)</onclick>
+								<selected>!Skin.HasSetting(HideMusicLibrary)</selected>
+								<label>$LOCALIZE[2]</label>
+							</control>
+							<control type="radiobutton" id="317">
+								<include>SettingsButton</include>
+								<onclick>Skin.ToggleSetting(HideMusicVideosLibrary)</onclick>
+								<selected>!Skin.HasSetting(HideMusicVideosLibrary)</selected>
+								<label>$LOCALIZE[20389]</label>
+							</control>
+							<control type="radiobutton" id="318">
+								<include>SettingsButton</include>
+								<onclick>Skin.ToggleSetting(HideAddonLibrary)</onclick>
+								<selected>!Skin.HasSetting(HideAddonLibrary)</selected>
+								<label>$LOCALIZE[24001]</label>
 							</control>
 							<!-- default widgets -->
-							<control type="label" id="303">
+							<control type="label" id="330">
 								<height>50</height>
 								<font>med22</font>
 								<textoffsetx>15</textoffsetx>
@@ -361,44 +416,53 @@
 								<aligny>center</aligny>
 								<label>$LOCALIZE[31086]</label>
 							</control>
-							<control type="radiobutton" id="304">
+							<control type="radiobutton" id="331">
 								<include>SettingsButton</include>
 								<onclick>Skin.ToggleSetting(HideWidgetContinue)</onclick>
 								<selected>!Skin.HasSetting(HideWidgetContinue)</selected>
 								<label>$LOCALIZE[31080]</label>
 							</control>
-							<control type="radiobutton" id="305">
+							<control type="radiobutton" id="332">
 								<include>SettingsButton</include>
 								<onclick>Skin.ToggleSetting(HideWidgetPVR)</onclick>
 								<selected>!Skin.HasSetting(HideWidgetPVR)</selected>
 								<label>$LOCALIZE[14204]</label>
 							</control>
-							<control type="radiobutton" id="306">
+							<control type="radiobutton" id="3321">
+								<textcolor>emby</textcolor>
+								<texturenofocus colordiffuse="33000000">common/white.jpg</texturenofocus>
+								<include>SettingsButton</include>
+								<onclick>Skin.ToggleSetting(PreferLastTunedPVRChannels)</onclick>
+								<selected>Skin.HasSetting(PreferLastTunedPVRChannels)</selected>
+								<visible>!Skin.HasSetting(HideWidgetPVR)</visible>
+								<label>• $LOCALIZE[31107]</label>
+							</control>
+							<control type="radiobutton" id="333">
 								<include>SettingsButton</include>
 								<onclick>Skin.ToggleSetting(HideWidgetNextup)</onclick>
 								<selected>!Skin.HasSetting(HideWidgetNextup)</selected>
 								<label>$LOCALIZE[31012]</label>
 							</control>
-							<control type="radiobutton" id="307">
+							<control type="radiobutton" id="334">
 								<include>SettingsButton</include>
 								<onclick>Skin.ToggleSetting(HideWidgetNewMovies)</onclick>
 								<selected>!Skin.HasSetting(HideWidgetNewMovies)</selected>
 								<label>$LOCALIZE[20386]</label>
 							</control>
-							<control type="radiobutton" id="308">
+							<control type="radiobutton" id="335">
 								<include>SettingsButton</include>
 								<onclick>Skin.ToggleSetting(HideWidgetNewEpisodes)</onclick>
 								<selected>!Skin.HasSetting(HideWidgetNewEpisodes)</selected>
 								<label>$LOCALIZE[31081]</label>
 							</control>
-							<control type="radiobutton" id="309">
+							<control type="radiobutton" id="336">
 								<include>SettingsButton</include>
 								<onclick>Skin.ToggleSetting(HideWidgetNewAlbums)</onclick>
 								<selected>!Skin.HasSetting(HideWidgetNewAlbums)</selected>
 								<label>$LOCALIZE[359]</label>
 							</control>
 							<!-- custom widgets -->
-							<control type="label" id="310">
+							<control type="label" id="340">
 								<height>50</height>
 								<font>med22</font>
 								<textoffsetx>15</textoffsetx>
@@ -409,27 +473,27 @@
 							</control>
 							<include content="CustomWidgetTemplate">
 								<param name="id" value="1"/>
-								<param name="section" value="31"/>
+								<param name="section" value="34"/>
 							</include>
 							<include content="CustomWidgetTemplate">
 								<param name="id" value="2"/>
-								<param name="section" value="31"/>
+								<param name="section" value="34"/>
 							</include>
 							<include content="CustomWidgetTemplate">
 								<param name="id" value="3"/>
-								<param name="section" value="31"/>
+								<param name="section" value="34"/>
 							</include>
 							<include content="CustomWidgetTemplate">
 								<param name="id" value="4"/>
-								<param name="section" value="31"/>
+								<param name="section" value="34"/>
 							</include>
 							<include content="CustomWidgetTemplate">
 								<param name="id" value="5"/>
-								<param name="section" value="31"/>
+								<param name="section" value="34"/>
 							</include>
 							<include content="CustomWidgetTemplate">
 								<param name="id" value="6"/>
-								<param name="section" value="31"/>
+								<param name="section" value="34"/>
 							</include>
 						</control>
 						<!-- side panel -->
@@ -993,8 +1057,8 @@
 							</control>
 							<control type="radiobutton" id="715">
 								<include>SettingsButton</include>
-								<onclick>Skin.ToggleSetting(HideMusicHubLibaryButton)</onclick>
-								<selected>!Skin.HasSetting(HideMusicHubLibaryButton)</selected>
+								<onclick>Skin.ToggleSetting(HideMusicHubLibraryButton)</onclick>
+								<selected>!Skin.HasSetting(HideMusicHubLibraryButton)</selected>
 								<label>$LOCALIZE[14022]</label>
 							</control>
 							<control type="radiobutton" id="716">

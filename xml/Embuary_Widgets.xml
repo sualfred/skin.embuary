@@ -585,9 +585,9 @@
 					</focusedlayout>					
 					<content>
 						<item>
-							<label>$LOCALIZE[3]</label>
-							<onclick>ActivateWindow(videos,root)</onclick>
-							<visible>!Library.HasContent(movies) + !Library.HasContent(tvshows) + !System.HasAddon(plugin.video.embycon)</visible>
+							<label>$LOCALIZE[10507]</label>
+							<onclick>ActivateWindow(settings)</onclick>
+							<visible>![!Skin.HasSetting(HideMovieLibrary) + [Library.HasContent(movies) | System.HasAddon(plugin.video.embycon)]] + ![!Skin.HasSetting(HideTVShowLibrary) + [Library.HasContent(tvshows) | System.HasAddon(plugin.video.embycon)]] + ![!Skin.HasSetting(HidePVRLibrary) + Pvr.HasTVChannels] + ![!Skin.HasSetting(HideMusicLibrary) + Library.HasContent(music)] + ![!Skin.HasSetting(HideMusicVideosLibrary) + Library.HasContent(musicvideos)] + ![!Skin.HasSetting(HideAddonLibrary)]</visible>
 						</item>
 						<item>
 							<label>$LOCALIZE[342]</label>
@@ -596,7 +596,7 @@
 							<property name="art2">$INFO[Container(51).ListItem(1).Art(poster)]</property>
 							<property name="art3">$INFO[Container(51).ListItem(2).Art(poster)]</property>
 							<property name="art4">$INFO[Container(51).ListItem(3).Art(poster)]</property>
-							<visible>Library.HasContent(movies) | System.HasAddon(plugin.video.embycon)</visible>
+							<visible>!Skin.HasSetting(HideMovieLibrary) + [Library.HasContent(movies) | System.HasAddon(plugin.video.embycon)]</visible>
 						</item>
 						<item>
 							<label>$LOCALIZE[20343]</label>
@@ -605,7 +605,7 @@
 							<property name="art2">$INFO[Container(52).ListItem(1).Art(poster)]</property>
 							<property name="art3">$INFO[Container(52).ListItem(2).Art(poster)]</property>
 							<property name="art4">$INFO[Container(52).ListItem(3).Art(poster)]</property>
-							<visible>Library.HasContent(tvshows) | System.HasAddon(plugin.video.embycon)</visible>
+							<visible>!Skin.HasSetting(HideTVShowLibrary) + [Library.HasContent(tvshows) | System.HasAddon(plugin.video.embycon)]</visible>
 						</item>
 						<item>
 							<label>$VAR[PVRLabel]</label>
@@ -614,7 +614,7 @@
 							<property name="art2">$INFO[Container(53).ListItem(1).Art(thumb)]</property>
 							<property name="art3">$INFO[Container(53).ListItem(2).Art(thumb)]</property>
 							<property name="art4">$INFO[Container(53).ListItem(3).Art(thumb)]</property>
-							<visible>Pvr.HasTVChannels</visible>
+							<visible>!Skin.HasSetting(HidePVRLibrary) + Pvr.HasTVChannels</visible>
 						</item>
 						<item>
 							<label>$LOCALIZE[2]</label>
@@ -623,7 +623,7 @@
 							<property name="art2">$INFO[Container(54).ListItem(1).Art(thumb)]</property>
 							<property name="art3">$INFO[Container(54).ListItem(2).Art(thumb)]</property>
 							<property name="art4">$INFO[Container(54).ListItem(3).Art(thumb)]</property>
-							<visible>Library.HasContent(music)</visible>
+							<visible>!Skin.HasSetting(HideMusicLibrary) + Library.HasContent(music)</visible>
 						</item>
 						<item>
 							<label>$LOCALIZE[20389]</label>
@@ -632,7 +632,7 @@
 							<property name="art2">$INFO[Container(57).ListItem(1).Art(thumb)]</property>
 							<property name="art3">$INFO[Container(57).ListItem(2).Art(thumb)]</property>
 							<property name="art4">$INFO[Container(57).ListItem(3).Art(thumb)]</property>
-							<visible>Library.HasContent(musicvideos)</visible>
+							<visible>!Skin.HasSetting(HideMusicVideosLibrary) + Library.HasContent(musicvideos)</visible>
 						</item>
 						<item>
 							<label>$LOCALIZE[24001]</label>
@@ -641,6 +641,7 @@
 							<property name="art2">$INFO[Container(55).ListItem(1).Art(thumb)]</property>
 							<property name="art3">$INFO[Container(55).ListItem(2).Art(thumb)]</property>
 							<property name="art4">$INFO[Container(55).ListItem(3).Art(thumb)]</property>
+							<visible>!Skin.HasSetting(HideAddonLibrary)</visible>
 						</item>
 						<item>
 							<label>$LOCALIZE[341]</label>
