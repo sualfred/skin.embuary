@@ -38,10 +38,14 @@
 				</control>
 				<control type="button" id="103">
 					<include content="CommonButton"/>
-					<label>$LOCALIZE[31123]</label>
-					<onclick>Dialog.Close(all,force)</onclick>
-					<onclick condition="Player.HasVideo">ActivateWindow(videoplaylist)</onclick>
-					<onclick condition="Player.HasAudio">ActivateWindow(musicplaylist)</onclick>
+					<label>$LOCALIZE[209]</label>
+					<onclick>PlayerControl(Next)</onclick>
+					<visible>[!VideoPlayer.Content(livetv) + !String.IsEqual(Playlist.Length(video),0)] | !String.IsEqual(Playlist.Length(music),0)</visible>
+				</control>
+				<control type="button" id="104">
+					<include content="CommonButton"/>
+					<label>$LOCALIZE[210]</label>
+					<onclick>PlayerControl(Previous)</onclick>
 					<visible>[!VideoPlayer.Content(livetv) + !String.IsEqual(Playlist.Length(video),0)] | !String.IsEqual(Playlist.Length(music),0)</visible>
 				</control>
 				<control type="image">
