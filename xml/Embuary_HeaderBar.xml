@@ -373,11 +373,12 @@
 			<font>Material24</font>
 			<label></label>
 			<include>HeaderButton</include>
-			<onclick condition="!String.IsEqual(Playlist.Length(video),0)">ActivateWindow(videoplaylist)</onclick>
-			<onclick condition="!String.IsEqual(Playlist.Length(music),0)">ActivateWindow(musicplaylist)</onclick>
+			<onclick condition="!String.IsEqual(Playlist.Length(video),0) + !String.IsEqual(Playlist.Length(music),0)">ActivateWindow(1145)</onclick>
+			<onclick condition="!String.IsEqual(Playlist.Length(video),0) + String.IsEqual(Playlist.Length(music),0)">ActivateWindow(videoplaylist)</onclick>
+			<onclick condition="String.IsEqual(Playlist.Length(video),0) + !String.IsEqual(Playlist.Length(music),0)">ActivateWindow(musicplaylist)</onclick>
 			<visible>[[!VideoPlayer.Content(livetv) + !String.IsEqual(Playlist.Length(video),0)] | !String.IsEqual(Playlist.Length(music),0)] + !String.StartsWith(Player.Filenameandpath,special://skin/extras) + String.IsEmpty(Window(home).Property(SkinExtraSound))</visible>
 		</control>
-		<control type="button" id="6613">
+		<control type="button" id="6620">
 			<font>Material24</font>
 			<label></label>
 			<include>HeaderButton</include>
