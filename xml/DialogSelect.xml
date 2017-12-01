@@ -2,6 +2,12 @@
 <window>
 	<defaultcontrol always="true">3</defaultcontrol>
 	<controls>
+		<control type="button" id="5">
+			<include>HiddenObject</include>
+		</control>
+		<control type="button" id="7">
+			<include>HiddenObject</include>
+		</control>
 		<!-- Small select dialog -->
 		<control type="group">
 			<visible>Control.IsVisible(3)</visible>
@@ -26,9 +32,9 @@
 					<height>500</height>
 					<pagecontrol>17</pagecontrol>
 					<onup>noop</onup>
-					<onleft>5</onleft>
-					<onright>5</onright>
-					<ondown>7</ondown>
+					<onleft>100</onleft>
+					<onright>100</onright>
+					<ondown>100</ondown>
 					<itemlayout width="423" height="50">
 						<control type="label">
 							<width>100%</width>
@@ -66,7 +72,7 @@
 					<bottom>12</bottom>
 					<width>100%</width>
 					<height>50</height>
-					<control type="grouplist">
+					<control type="grouplist" id="100">
 						<width>100%</width>
 						<height>50</height>
 						<align>center</align>
@@ -75,13 +81,15 @@
 						<ondown>noop</ondown>
 						<orientation>horizontal</orientation>
 						<itemgap>4</itemgap>
-						<control type="button" id="5">
-							<label>$LOCALIZE[21452]</label>
+						<control type="button" id="101">
 							<onup>SetFocus(3)</onup>
-							<visible>Control.IsEnabled(5)</visible>
+							<label>$INFO[Control.GetLabel(5)]</label>
+							<onclick>SendClick(5)</onclick>
+							<visible>Control.IsVisible(5)</visible>
 						</control>
-						<control type="button" id="7">
+						<control type="button" id="102">
 							<label>$LOCALIZE[222]</label>
+							<onclick>SendClick(7)</onclick>
 							<onup>SetFocus(3)</onup>
 						</control>
 					</control>
@@ -145,9 +153,9 @@
 						<top>10</top>
 						<height>450</height>
 						<onup>12</onup>
-						<onleft>5</onleft>
-						<onright>5</onright>
-						<ondown>100</ondown>
+						<onleft>200</onleft>
+						<onright>200</onright>
+						<ondown>200</ondown>
 						<pagecontrol>60</pagecontrol>
 						<scrolltime>200</scrolltime>
 						<itemlayout height="75" width="800">
@@ -205,7 +213,7 @@
 					</control>
 				</control>
 				<!-- Button -->
-				<control type="grouplist" id="100">
+				<control type="grouplist" id="200">
 					<height>50</height>
 					<width>100%</width>
 					<orientation>horizontal</orientation>
@@ -213,13 +221,15 @@
 					<align>center</align>
 					<onright>noop</onright>
 					<onleft>noop</onleft>
-					<control type="button" id="5">						
-						<label>$LOCALIZE[21452]</label>
+					<control type="button" id="201">
 						<onup>SetFocus(6)</onup>
-						<visible>Control.IsEnabled(5) + !String.IsEqual(Control.GetLabel(1),$LOCALIZE[31099])</visible>
+						<onclick>SendClick(5)</onclick>
+						<label>$INFO[Control.GetLabel(5)]</label>
+						<visible>Control.IsVisible(5)</visible>
 					</control>
-					<control type="button" id="7">
+					<control type="button" id="202">
 						<label>$LOCALIZE[222]</label>
+						<onclick>SendClick(7)</onclick>
 						<onup>SetFocus(6)</onup>
 					</control>
 				</control>
