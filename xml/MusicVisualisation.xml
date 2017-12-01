@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <window>
 	<defaultcontrol></defaultcontrol>
-	<onload>SetProperty(showvisinfo,1,home)</onload>
-	<onload>AlarmClock(PreloadTimeout,ClearProperty(showvisinfo,home),00:04,silent)</onload>
+	<onload condition="![String.StartsWith(Player.Filenameandpath,special://skin/extras) | !String.IsEmpty(Window(home).Property(SkinExtraSound))]">SetProperty(showvisinfo,1,home)</onload>
+	<onload condition="![String.StartsWith(Player.Filenameandpath,special://skin/extras) | !String.IsEmpty(Window(home).Property(SkinExtraSound))]">AlarmClock(PreloadTimeout,ClearProperty(showvisinfo,home),00:04,silent)</onload>
+	<onload condition="String.StartsWith(Player.Filenameandpath,special://skin/extras) | !String.IsEmpty(Window(home).Property(SkinExtraSound))">back</onload>
 	<backgroundcolor>background</backgroundcolor>
 	<controls>		
 		<!-- Visualisation -->
