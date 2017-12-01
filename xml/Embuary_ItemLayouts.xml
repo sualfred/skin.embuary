@@ -230,7 +230,7 @@
 	<!-- Play icon -->
 	<include name="bubble_play">
 		<control type="group">
-			<visible>[!String.IsEmpty(ListItem.DBtype) | String.StartsWith(ListItem.Path,pvr://)]</visible>
+			<visible>[!String.IsEmpty(ListItem.DBtype) + !String.IsEmpty(ListItem.DBID)] | [!String.IsEmpty(ListItem.FileNameAndPath) + [String.StartsWith(ListItem.Path,plugin://plugin.video) | String.StartsWith(ListItem.Path,plugin://plugin.music)]] | String.StartsWith(ListItem.Path,pvr://)</visible>
 			<right>10</right>
 			<bottom>10</bottom>
 			<width>38</width>
