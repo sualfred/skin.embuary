@@ -40,174 +40,136 @@
 					<label>$LOCALIZE[184]</label>
 				</control>
 			</control>
-			<control type="fixedlist">
+			<!-- grid -->
+			<control type="grouplist">
+				<width>1820</width>
 				<top>169</top>
-				<left>72</left>
-				<width>1775</width>
+				<right>50</right>
+				<align>center</align>
 				<height>853</height>
-				<viewtype label="">list</viewtype>
 				<orientation>horizontal</orientation>
-				<itemlayout height="853" width="355">
-					<control type="group">
-						<left>5</left>
-						<width>345</width>
-						<control type="image">
-							<height>100%</height>
-							<texture background="true">$INFO[ListItem.Property(Fanart)]</texture>
-							<aspectratio>scale</aspectratio>
+				<itemgap>1</itemgap>
+				<control type="group">
+					<left>5</left>
+					<width>550</width>
+					<control type="image">
+						<height>100%</height>
+						<texture background="true">$INFO[Weather.Fanartcode,weather/home/,.jpg]</texture>
+						<aspectratio>scale</aspectratio>
+					</control>
+					<control type="image">
+						<centertop>50%</centertop>
+						<height>272</height>
+						<texture colordiffuse="66222326">common/white.jpg</texture>
+					</control>
+					<control type="group">						
+						<centertop>50%</centertop>
+						<height>243</height>
+						<control type="label">
+							<textoffsetx>23</textoffsetx>
+							<width>50%</width>
+							<height>38</height>
+							<font>Light28</font>
+							<label>$LOCALIZE[33006]</label>
+							<textcolor>white</textcolor>
+						</control>
+						<control type="label">
+							<right>0</right>
+							<textoffsetx>23</textoffsetx>
+							<width>50%</width>
+							<right>23</right>
+							<height>38</height>
+							<font>Light28</font>
+							<align>right</align>
+							<label>$LOCALIZE[19030]</label>
+							<textcolor>white</textcolor>
+						</control>
+						<control type="textbox">
+							<left>23</left>
+							<width>50%</width>
+							<top>49</top>
+							<height>auto</height>
+							<wrapmultiline>true</wrapmultiline>
+							<font>med20</font>
+							<label>$INFO[Window(Weather).Property(Day0.Outlook)]</label>
+							<autoscroll>False</autoscroll>
+							<textcolor>text_white</textcolor>
+						</control>
+						<control type="textbox">
+							<right>23</right>
+							<width>50%</width>
+							<top>49</top>
+							<height>auto</height>
+							<wrapmultiline>true</wrapmultiline>
+							<font>med20</font>
+							<align>right</align>
+							<label>$INFO[Window(Weather).Property(Current.Condition)]$INFO[Window(Weather).Property(Current.WindSpeed),[CR]$LOCALIZE[383] ]$INFO[Window(Weather).Property(Current.WindDirection), - ][CR]$INFO[Window(Weather).Property(Current.DewPoint),[CR]$LOCALIZE[405] ,°]$INFO[Window(Weather).Property(Current.Humidity),[CR]$LOCALIZE[406] ]</label>
+							<autoscroll>False</autoscroll>
+							<textcolor>text_white</textcolor>
 						</control>
 						<control type="image">
-							<centertop>50%</centertop>
-							<height>272</height>
-							<texture colordiffuse="aa121314">common/white.jpg</texture>
+							<left>23</left>
+							<right>23</right>
+							<top>77</top>
+							<width>140</width>
+							<height>140</height>
+							<texture background="true">$INFO[Window(Weather).Property(Day0.FanartCode),weather/icons/,.png]</texture>
+							<aspectratio>keep</aspectratio>
 						</control>
-						<control type="group">						
-							<centertop>50%</centertop>
-							<height>243</height>
-							<control type="label">
-								<left>23</left>
-								<right>23</right>
-								<height>38</height>
-								<font>Light28</font>
-								<label>$INFO[ListItem.Label]</label>
-								<textcolor>white</textcolor>
-							</control>
-							<control type="textbox">
-								<left>23</left>
-								<right>23</right>
-								<top>49</top>
-								<height>auto</height>
-								<wrapmultiline>true</wrapmultiline>
-								<font>med20</font>
-								<label>$INFO[ListItem.Property(Outlook)]</label>
-								<autoscroll>False</autoscroll>
-								<textcolor>text_white</textcolor>
-							</control>
-							<control type="image">
-								<left>23</left>
-								<right>23</right>
-								<top>77</top>
-								<width>140</width>
-								<height>140</height>
-								<texture background="true">$INFO[ListItem.Icon]</texture>
-								<aspectratio>keep</aspectratio>
-							</control>
-							<control type="label">
-								<left>23</left>
-								<right>23</right>
-								<top>214</top>
-								<height>30</height>
-								<font>med20</font>
-								<textcolor>white</textcolor>
-								<label>$INFO[ListItem.Label2]</label>
-							</control>
+						<control type="label">
+							<textoffsetx>23</textoffsetx>
+							<width>50%</width>
+							<top>214</top>
+							<height>30</height>
+							<font>med20</font>
+							<textcolor>white</textcolor>
+							<label>$INFO[Window(Weather).Property(Day0.LowTemp),$LOCALIZE[391] ,°]    $INFO[Window(Weather).Property(Day0.HighTemp),$LOCALIZE[393] ,°]</label>
+						</control>
+						<control type="label">
+							<right>0</right>
+							<textoffsetx>23</textoffsetx>
+							<width>50%</width>
+							<top>214</top>
+							<height>30</height>
+							<font>med20</font>
+							<align>right</align>
+							<textcolor>white</textcolor>
+							<label>$INFO[Window(weather).Property(Current.Temperature),,°] $INFO[Window(weather).Property(Current.FeelsLike),($LOCALIZE[402] ,°)]</label>
 						</control>
 					</control>
-				</itemlayout>
-				<focusedlayout height="853" width="355">
-					<control type="group">
-						<left>5</left>
-						<width>345</width>
-						<control type="image">
-							<height>100%</height>
-							<texture background="true">$INFO[ListItem.Property(Fanart)]</texture>
-							<aspectratio>scale</aspectratio>
-						</control>
-						<control type="image">
-							<centertop>50%</centertop>
-							<height>272</height>
-							<texture colordiffuse="aa121314">common/white.jpg</texture>
-						</control>
-						<control type="group">						
-							<centertop>50%</centertop>
-							<height>243</height>
-							<control type="label">
-								<left>23</left>
-								<right>23</right>
-								<height>38</height>
-								<font>Light28</font>
-								<label>$INFO[ListItem.Label]</label>
-								<textcolor>white</textcolor>
-							</control>
-							<control type="textbox">
-								<left>23</left>
-								<right>23</right>
-								<top>49</top>
-								<height>auto</height>
-								<wrapmultiline>true</wrapmultiline>
-								<font>med20</font>
-								<label>$INFO[ListItem.Property(Outlook)]</label>
-								<autoscroll>False</autoscroll>
-								<textcolor>text_white</textcolor>
-							</control>
-							<control type="image">
-								<left>23</left>
-								<right>23</right>
-								<top>77</top>
-								<width>140</width>
-								<height>140</height>
-								<texture background="true">$INFO[ListItem.Icon]</texture>
-								<aspectratio>keep</aspectratio>
-							</control>
-							<control type="label">
-								<left>23</left>
-								<right>23</right>
-								<top>214</top>
-								<height>30</height>
-								<font>med20</font>
-								<textcolor>white</textcolor>
-								<label>$INFO[ListItem.Label2]</label>
-							</control>
-						</control>
-					</control>
-				</focusedlayout>
-				<content>
-					<item>
-						<onclick>noop</onclick>
-						<label>$INFO[Window(Weather).Property(Day0.Title)]</label>
-						<label2>$INFO[Window(Weather).Property(Day0.LowTemp),$LOCALIZE[391] ,°]    $INFO[Window(Weather).Property(Day0.HighTemp),$LOCALIZE[393] ,°]</label2>
-						<icon>$INFO[Window(Weather).Property(Day0.FanartCode),weather/icons/,.png]</icon>
-						<property name="Fanart">$INFO[Window(Weather).Property(Day0.FanartCode),weather/home/,.jpg]</property>
-						<property name="Outlook">$INFO[Window(Weather).Property(Day0.Outlook)]</property>
-						<visible>!String.IsEmpty(Window(Weather).Property(Day0.Outlook))</visible>
-					</item>
-					<item>
-						<onclick>noop</onclick>
-						<label>$INFO[Window(Weather).Property(Day1.Title)]</label>
-						<label2>$INFO[Window(Weather).Property(Day1.LowTemp),$LOCALIZE[391] ,°]    $INFO[Window(Weather).Property(Day1.HighTemp),$LOCALIZE[393] ,°]</label2>
-						<icon>$INFO[Window(Weather).Property(Day1.FanartCode),weather/icons/,.png]</icon>
-						<property name="Fanart">$INFO[Window(Weather).Property(Day1.FanartCode),weather/home/,.jpg]</property>
-						<property name="Outlook">$INFO[Window(Weather).Property(Day1.Outlook)]</property>
-						<visible>!String.IsEmpty(Window(Weather).Property(Day1.Outlook))</visible>
-					</item>
-					<item>
-						<onclick>noop</onclick>
-						<label>$INFO[Window(Weather).Property(Day2.Title)]</label>
-						<label2>$INFO[Window(Weather).Property(Day2.LowTemp),$LOCALIZE[391] ,°]    $INFO[Window(Weather).Property(Day2.HighTemp),$LOCALIZE[393] ,°]</label2>
-						<icon>$INFO[Window(Weather).Property(Day2.FanartCode),weather/icons/,.png]</icon>
-						<property name="Fanart">$INFO[Window(Weather).Property(Day2.FanartCode),weather/home/,.jpg]</property>
-						<property name="Outlook">$INFO[Window(Weather).Property(Day2.Outlook)]</property>
-						<visible>!String.IsEmpty(Window(Weather).Property(Day2.Outlook))</visible>
-					</item>
-					<item>
-						<onclick>noop</onclick>
-						<label>$INFO[Window(Weather).Property(Day3.Title)]</label>
-						<label2>$INFO[Window(Weather).Property(Day3.LowTemp),$LOCALIZE[391] ,°]    $INFO[Window(Weather).Property(Day3.HighTemp),$LOCALIZE[393] ,°]</label2>
-						<icon>$INFO[Window(Weather).Property(Day3.FanartCode),weather/icons/,.png]</icon>
-						<property name="Fanart">$INFO[Window(Weather).Property(Day3.FanartCode),weather/home/,.jpg]</property>
-						<property name="Outlook">$INFO[Window(Weather).Property(Day3.Outlook)]</property>
-						<visible>!String.IsEmpty(Window(Weather).Property(Day3.Outlook))</visible>
-					</item>
-					<item>
-						<onclick>noop</onclick>
-						<label>$INFO[Window(Weather).Property(Day4.Title)]</label>
-						<label2>$INFO[Window(Weather).Property(Day4.LowTemp),$LOCALIZE[391] ,°]    $INFO[Window(Weather).Property(Day4.HighTemp),$LOCALIZE[393] ,°]</label2>
-						<icon>$INFO[Window(Weather).Property(Day4.FanartCode),weather/icons/,.png]</icon>
-						<property name="Fanart">$INFO[Window(Weather).Property(Day4.FanartCode),weather/home/,.jpg]</property>
-						<property name="Outlook">$INFO[Window(Weather).Property(Day4.Outlook)]</property>
-						<visible>!String.IsEmpty(Window(Weather).Property(Day4.Outlook))</visible>
-					</item>
-				</content>
+				</control>
+				<include content="weather_small_template">
+					<param name="visible" value="!String.IsEmpty(Window(Weather).Property(Day1.Outlook))"/>
+					<param name="art" value="$INFO[Window(Weather).Property(Day1.FanartCode),weather/home/,.jpg]"/>
+					<param name="icon" value="$INFO[Window(Weather).Property(Day1.FanartCode),weather/icons/,.png]"/>
+					<param name="day" value="$INFO[Window(Weather).Property(Day1.Title)]"/>
+					<param name="outlook" value="$INFO[Window(Weather).Property(Day1.Outlook)]"/>
+					<param name="temp" value="$INFO[Window(Weather).Property(Day1.LowTemp),$LOCALIZE[391] ,°]    $INFO[Window(Weather).Property(Day1.HighTemp),$LOCALIZE[393] ,°]"/>
+				</include>
+				<include content="weather_small_template">
+					<param name="visible" value="!String.IsEmpty(Window(Weather).Property(Day2.Outlook))"/>
+					<param name="art" value="$INFO[Window(Weather).Property(Day2.FanartCode),weather/home/,.jpg]"/>
+					<param name="icon" value="$INFO[Window(Weather).Property(Day2.FanartCode),weather/icons/,.png]"/>
+					<param name="day" value="$INFO[Window(Weather).Property(Day2.Title)]"/>
+					<param name="outlook" value="$INFO[Window(Weather).Property(Day2.Outlook)]"/>
+					<param name="temp" value="$INFO[Window(Weather).Property(Day2.LowTemp),$LOCALIZE[391] ,°]    $INFO[Window(Weather).Property(Day2.HighTemp),$LOCALIZE[393] ,°]"/>
+				</include>
+				<include content="weather_small_template">
+					<param name="visible" value="!String.IsEmpty(Window(Weather).Property(Day3.Outlook))"/>
+					<param name="art" value="$INFO[Window(Weather).Property(Day3.FanartCode),weather/home/,.jpg]"/>
+					<param name="icon" value="$INFO[Window(Weather).Property(Day3.FanartCode),weather/icons/,.png]"/>
+					<param name="day" value="$INFO[Window(Weather).Property(Day3.Title)]"/>
+					<param name="outlook" value="$INFO[Window(Weather).Property(Day3.Outlook)]"/>
+					<param name="temp" value="$INFO[Window(Weather).Property(Day3.LowTemp),$LOCALIZE[391] ,°]    $INFO[Window(Weather).Property(Day3.HighTemp),$LOCALIZE[393] ,°]"/>
+				</include>
+				<include content="weather_small_template">
+					<param name="visible" value="!String.IsEmpty(Window(Weather).Property(Day4.Outlook))"/>
+					<param name="art" value="$INFO[Window(Weather).Property(Day4.FanartCode),weather/home/,.jpg]"/>
+					<param name="icon" value="$INFO[Window(Weather).Property(Day4.FanartCode),weather/icons/,.png]"/>
+					<param name="day" value="$INFO[Window(Weather).Property(Day4.Title)]"/>
+					<param name="outlook" value="$INFO[Window(Weather).Property(Day4.Outlook)]"/>
+					<param name="temp" value="$INFO[Window(Weather).Property(Day4.LowTemp),$LOCALIZE[391] ,°]    $INFO[Window(Weather).Property(Day4.HighTemp),$LOCALIZE[393] ,°]"/>
+				</include>
 			</control>
 		</control>
 		<!-- Menu control -->
