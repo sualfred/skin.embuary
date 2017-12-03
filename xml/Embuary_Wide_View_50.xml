@@ -3,6 +3,8 @@
 	<include name="Wide_View_50">
 		<param name="mainlabel">$VAR[MainListLabel]</param>
 		<param name="sublabel">$VAR[SubListLabel]</param>
+		<param name="layout">LandscapeLayout</param>
+		<param name="use_custom_content">false</param>
 		<definition>
 			<control type="group">
 				<include>Visible_OpenClose</include>
@@ -23,11 +25,11 @@
 					<viewtype label="$LOCALIZE[31004]">panel</viewtype>
 					<pagecontrol>17</pagecontrol>
 					<scrolltime tween="sine" easing="out">400</scrolltime>
-					<itemlayout condition="!String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres)" width="444" height="305">
+					<itemlayout width="444" height="305">
 						<control type="group">
 							<left>82</left>
 							<top>116</top>
-							<include content="LandscapeLayout">
+							<include content="$PARAM[layout]">
 								<param name="mainlabel" value="$PARAM[mainlabel]" />
 								<param name="sublabel" value="" />
 								<param name="thumblabel" value="$PARAM[thumblabel]" />
@@ -36,12 +38,12 @@
 							</include>
 						</control>
 					</itemlayout>
-					<focusedlayout condition="!String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres)" width="444" height="305">
+					<focusedlayout width="444" height="305">
 						<include>SetPropertyOnFocus</include>
 						<control type="group">						
 							<left>82</left>
 							<top>116</top>
-							<include content="LandscapeLayout">
+							<include content="$PARAM[layout]">
 								<param name="mainlabel" value="$PARAM[mainlabel]" />
 								<param name="sublabel" value="" />
 								<param name="thumblabel" value="$PARAM[thumblabel]" />
@@ -50,33 +52,13 @@
 							</include>
 						</control>
 					</focusedlayout>
-					<itemlayout condition="String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres)" width="444" height="305">
-						<control type="group">
-							<left>82</left>
-							<top>116</top>
-							<include content="GenreLayout">
-								<param name="mainlabel" value="$PARAM[mainlabel]" />
-								<param name="sublabel" value="" />
-								<param name="thumblabel" value="$PARAM[mainlabel]" />
-								<param name="focused" value="false" />
-								<param name="id" value="50" />
-							</include>
-						</control>
-					</itemlayout>
-					<focusedlayout condition="String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres)" width="444" height="305">
-						<include>SetPropertyOnFocus</include>
-						<control type="group">						
-							<left>82</left>
-							<top>116</top>
-							<include content="GenreLayout">
-								<param name="mainlabel" value="$PARAM[mainlabel]" />
-								<param name="sublabel" value="" />
-								<param name="thumblabel" value="$PARAM[mainlabel]" />
-								<param name="focused" value="true" />
-								<param name="id" value="50" />
-							</include>
-						</control>
-					</focusedlayout>
+					<include condition="$PARAM[use_custom_content]" content="ContainerContentPath">
+						<param name="widget_target">$PARAM[widget_target]</param>
+						<param name="sortby">$PARAM[sortby]</param>
+						<param name="sortorder">$PARAM[sortorder]</param>
+						<param name="limit">$PARAM[limit]</param>
+						<param name="content">$PARAM[content]</param>
+					</include>
 				</control>
 				<include content="list_mask_vertical_top">
 					<param name="height" value="70"/>

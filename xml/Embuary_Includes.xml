@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
-	<!-- Expressions -->
-	<expression name="ExpInfoDialogActive">[Window.IsVisible(musicinformation) | Window.IsVisible(movieinformation) | Window.IsVisible(addoninformation) | Window.IsVisible(pvrguideinfo) | Window.IsVisible(pvrrecordinginfo) | Window.IsVisible(pictureinfo) | Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(script-script.extendedinfo-VideoList.xml)]</expression>
+	<include name="ContainerContentPath">
+		<content target="$PARAM[widget_target]" sortby="$PARAM[sortby]" sortorder="$PARAM[sortorder]" limit="$PARAM[limit]">$PARAM[content]</content>
+	</include>
+	<include name="ContainerOnClick">
+		<onclick>$PARAM[onclick]</onclick>
+		<onclick>$PARAM[onclick2]</onclick>
+	</include>
+	<include name="CustomBusySpinner">
+		<param name="visible">Container.IsUpdating</param>
+		<definition>
+			<control type="group">
+				<visible>$PARAM[visible]</visible>
+				<include content="DiffuseMask"/>
+				<include>FullscreenBusySpinner</include>
+			</control>
+		</definition>
+	</include>
 	<!-- FullScreenDimensions -->
 	<include name="FullscreenDimensions">
 		<width>1920</width>
