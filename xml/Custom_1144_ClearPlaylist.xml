@@ -2,7 +2,7 @@
 <window id="1144" type="dialog">
 	<zorder>999999</zorder>
 	<visible>Player.HasMedia</visible>
-	<onunload condition="!Player.HasMedia">Playlist.Clear</onunload>
+	<onunload condition="!Player.HasMedia + [String.IsEqual(Playlist.Length(video),1) | String.IsEqual(Playlist.Length(music),1)]">Playlist.Clear</onunload>
 	<animation effect="fade" start="0" end="0" time="3000">WindowClose</animation>
 	<controls/>
 </window>
