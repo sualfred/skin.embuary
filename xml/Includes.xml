@@ -27,6 +27,7 @@
 	<include file="Constants_2560.xml" condition="String.IsEqual(Skin.AspectRatio,21:9)"/>-->
 	
 	<expression name="EmbyCon_active">[System.HasAddon(plugin.video.embycon) + Skin.HasSetting(EnableEmbyConWidgets)]</expression>
+	<expression name="HolidayThemeSound">!String.StartsWith(Player.Filenameandpath,special://skin/extras) + String.IsEmpty(Window(home).Property(SkinExtraSound)) + [[!Window.Previous(Startup) + Integer.IsGreater(Player.Duration,10)] | [Window.Previous(Startup) + Integer.IsGreater(Player.Duration,30)] | String.IsEmpty(Player.Duration)]</expression>
 	<expression name="HolidayTheme">System.Date(12-01,01-06) + !Skin.HasSetting(HideHolidayTheme) + [[!Window.IsVisible(visualisation) + !VideoPlayer.IsFullscreen] | Window.IsActive(fullscreeninfo) |Window.IsActive(script-script.extendedinfo-DialogInfo.xml) | Window.IsActive(script-script.extendedinfo-DialogVideoInfo.xml)]</expression>
 	<expression name="HolidayTheme2">System.Date(10-31,10-31) + !Skin.HasSetting(HideHolidayTheme) + [[!Window.IsVisible(visualisation) + !VideoPlayer.IsFullscreen] | Window.IsActive(fullscreeninfo) |Window.IsActive(script-script.extendedinfo-DialogInfo.xml) | Window.IsActive(script-script.extendedinfo-DialogVideoInfo.xml)]</expression>
 	<expression name="HideBackground">[!Window.IsVisible(eventlog) + !Window.IsVisible(settingscategory.xml) + !Window.IsVisible(systeminfo) + !Window.IsVisible(skinsettings) + !Window.IsVisible(addonsettings) + !Window.IsVisible(filemanager) + !Window.IsVisible(profiles)]</expression>

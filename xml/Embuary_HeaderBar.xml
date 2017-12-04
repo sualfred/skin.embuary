@@ -86,7 +86,7 @@
 						<include content="HeaderButton">
 							<param name="align" value="false"/>
 						</include>
-						<visible>Player.HasMedia + !Player.Paused + !String.StartsWith(Player.Filenameandpath,special://skin/extras) + String.IsEmpty(Window(home).Property(SkinExtraSound))</visible>
+						<visible>Player.HasMedia + !Player.Paused + $EXP[HolidayThemeSound]</visible>
 					</control>
 					<control type="label">
 						<font>Material24</font>
@@ -94,10 +94,10 @@
 						<include content="HeaderButton">
 							<param name="align" value="false"/>
 						</include>
-						<visible>Player.HasMedia + Player.Paused + !String.StartsWith(Player.Filenameandpath,special://skin/extras) + String.IsEmpty(Window(home).Property(SkinExtraSound))</visible>
+						<visible>Player.HasMedia + Player.Paused + $EXP[HolidayThemeSound]</visible>
 					</control>
 					<control type="label">		
-						<visible>Player.HasMedia + !String.StartsWith(Player.Filenameandpath,special://skin/extras) + String.IsEmpty(Window(home).Property(SkinExtraSound))</visible>
+						<visible>Player.HasMedia + $EXP[HolidayThemeSound]</visible>
 						<width>0</width>
 					</control>
 					<control type="label">
@@ -149,7 +149,7 @@
 			</control>
 			<!-- Currently playing -->
 			<control type="group">
-				<visible>[Window.IsVisible(home) | Window.IsVisible(1120) | Window.IsVisible(1121) | Window.IsVisible(1122) | Window.IsVisible(1123) | Window.IsVisible(1124) | Window.IsVisible(MyPVRGuide.xml)] + Player.HasMedia + !Window.IsVisible(extendedprogressdialog) + !Window.IsVisible(fullscreeninfo) + !Window.IsVisible(fullscreenvideo) + !Window.IsVisible(visualisation) + !$EXP[infodialog_active] + !String.StartsWith(Player.Filenameandpath,special://skin/extras) + String.IsEmpty(Window(home).Property(SkinExtraSound))</visible>
+				<visible>[Window.IsVisible(home) | Window.IsVisible(1120) | Window.IsVisible(1121) | Window.IsVisible(1122) | Window.IsVisible(1123) | Window.IsVisible(1124) | Window.IsVisible(MyPVRGuide.xml)] + Player.HasMedia + !Window.IsVisible(extendedprogressdialog) + !Window.IsVisible(fullscreeninfo) + !Window.IsVisible(fullscreenvideo) + !Window.IsVisible(visualisation) + !$EXP[infodialog_active] + $EXP[HolidayThemeSound]</visible>
 				<animation effect="slide" start="0,0" end="0,58"  time="200" condition="!ControlGroup(6666).HasFocus + [[Container($PARAM[id]).HasPrevious + $PARAM[enabled]] | [$PARAM[custom_animation]]]" tween="linear" easing="inout">Conditional</animation>
 				<animation effect="slide" start="0,0" end="0,58"  time="200">Hidden</animation>
 				<animation effect="slide" start="0,58" end="0,0"  time="200">Visible</animation>
