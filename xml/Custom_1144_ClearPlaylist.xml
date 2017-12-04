@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window id="1144" type="dialog">
 	<zorder>999999</zorder>
-	<visible>!Player.HasMedia</visible>
-	<onload>Playlist.Clear</onload>
+	<visible>Player.HasMedia</visible>
+	<onunload condition="!Player.HasMedia">Playlist.Clear</onunload>
+	<animation effect="fade" start="0" end="0" time="3000">WindowClose</animation>
 	<controls/>
 </window>
