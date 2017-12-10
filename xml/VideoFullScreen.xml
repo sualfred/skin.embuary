@@ -13,9 +13,9 @@
 		</control>
 		<!-- OSD -->
 		<control type="group" id="99">
-			<visible>[Window.IsVisible(videoosd) | Window.IsVisible(seekbar) | Player.Paused | [Window.IsVisible(volumebar) + !Player.Muted] | !String.IsEmpty(Window(home).Property(showvideoinfo))] + !Window.IsVisible(pvrosdchannels) + !Window.IsVisible(Teletext)</visible>
+			<visible>[Window.IsVisible(videoosd) | Window.IsVisible(seekbar) | Player.Paused | [Window.IsVisible(volumebar) + !Player.Muted] | !String.IsEmpty(Window(home).Property(showvideoinfo))] + !Window.IsVisible(pvrosdchannels) + !Window.IsVisible(Teletext) + !Window.IsVisible(script-nextup-notification-NextUpInfo.xml) + !Window.Window.IsVisible(script-nextup-notification-StillWatchingInfo.xml)</visible>
 			<animation effect="fade" start="0" end="100" time="0">Visible</animation>
-			<animation effect="fade" start="100" end="0" time="400m" delay="2000" condition="!Window.IsVisible(pvrosdchannels) + !Window.IsVisible(Teletext)">Hidden</animation>			
+			<animation effect="fade" start="100" end="0" time="400m" delay="2000" condition="!Window.IsVisible(pvrosdchannels) + !Window.IsVisible(Teletext) + !Window.IsVisible(script-nextup-notification-NextUpInfo.xml) + !Window.Window.IsVisible(script-nextup-notification-StillWatchingInfo.xml)">Hidden</animation>		
 			<!--Top-->
 			<include>PlayerTopBar</include>
 			<!--Bottom-->
@@ -210,7 +210,7 @@
 						<height>30</height>
 						<aligny>center</aligny>
 						<font>med24</font>
-						<shadowcolor>text_shadow</shadowcolor>
+						<textcolor>white</textcolor>
 						<label>$VAR[PlayerFullLabel]   </label>
 					</control>
 					<control type="label" id="99">
@@ -219,7 +219,7 @@
 						<aligny>center</aligny>
 						<label>$INFO[VideoPlayer.Year]   </label>
 						<font>reg24</font>
-						<shadowcolor>text_shadow</shadowcolor>
+						<textcolor>white</textcolor>
 						<visible>!String.IsEmpty(VideoPlayer.Year)</visible>
 					</control>
 					<control type="button" id="99">
@@ -230,10 +230,10 @@
 						<label>$INFO[VideoPlayer.Mpaa]</label>
 						<textoffsetx>10</textoffsetx>
 						<align>center</align>
-						<textcolor>text_white</textcolor>
-						<disabledcolor>text_white</disabledcolor>
-						<texturefocus border="10" colordiffuse="text_white">icons/rating/mpaa.png</texturefocus>
-						<texturenofocus border="10" colordiffuse="text_white">icons/rating/mpaa.png</texturenofocus>
+						<textcolor>white</textcolor>
+						<disabledcolor>white</disabledcolor>
+						<texturefocus border="10" colordiffuse="white">icons/rating/mpaa.png</texturefocus>
+						<texturenofocus border="10" colordiffuse="white">icons/rating/mpaa.png</texturenofocus>
 						<enable>false</enable>
 						<visible>!String.IsEmpty(VideoPlayer.Mpaa)</visible>
 					</control>
@@ -251,7 +251,6 @@
 						<label></label>
 						<font>Material26</font>
 						<textcolor>red</textcolor>
-						<shadowcolor>text_shadow</shadowcolor>
 						<visible>!String.IsEmpty(VideoPlayer.Rating)</visible>
 					</control>
 					<control type="label" id="99">
@@ -260,8 +259,7 @@
 						<aligny>center</aligny>
 						<label>$INFO[VideoPlayer.Rating]   </label>
 						<font>reg24</font>
-						<shadowcolor>text_shadow</shadowcolor>
-						<shadowcolor>text_shadow</shadowcolor>
+						<textcolor>white</textcolor>
 						<visible>!String.IsEmpty(VideoPlayer.Rating)</visible>
 					</control>			
 					<control type="image" id="99">								
@@ -278,7 +276,7 @@
 						<label>$INFO[Window(Home).Property(SkinHelper.Player.MetaCritic.Rating),,%]   </label>
 						<font>reg24</font>
 						<aligny>center</aligny>
-						<shadowcolor>text_shadow</shadowcolor>
+						<textcolor>white</textcolor>
 						<visible>!String.IsEmpty(Window(Home).Property(SkinHelper.Player.MetaCritic.Rating))</visible>
 					</control>
 					<control type="image" id="99">
@@ -303,7 +301,7 @@
 						<label>$INFO[Window(Home).Property(SkinHelper.Player.RottenTomatoes.Rating),,%]   </label>
 						<font>reg24</font>
 						<aligny>center</aligny>
-						<shadowcolor>text_shadow</shadowcolor>
+						<textcolor>white</textcolor>
 						<visible>!String.IsEmpty(Window(Home).Property(SkinHelper.Player.RottenTomatoes.Rating))</visible>
 					</control>
 				</control>

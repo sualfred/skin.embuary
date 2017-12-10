@@ -2,8 +2,8 @@
 <window>
 	<defaultcontrol always="true">3012</defaultcontrol>
 	<onload>Dialog.Close(fullscreeninfo,true)</onload>
-	<onload>Dialog.Close(videoosd,true)</onload>	
-	<controls>		
+	<onload>Dialog.Close(videoosd,true)</onload>
+	<controls>
 		<!--3000 - Title
 		3001 - Plot
 		3002 - Season/Episode
@@ -30,9 +30,6 @@
 		<control type="label" id="3002">
 			<include>HiddenObject</include>
 		</control>
-		<control type="label" id="3003">
-			<include>HiddenObject</include>
-		</control>
 		<control type="label" id="3004">
 			<include>HiddenObject</include>
 		</control>
@@ -57,9 +54,6 @@
 		<control type="label" id="3011">
 			<include>HiddenObject</include>
 		</control>
-		<control type="button" id="3013">
-			<include>HiddenObject</include>
-		</control>
 		<control type="label" id="3015">
 			<include>HiddenObject</include>
 		</control>
@@ -69,98 +63,146 @@
 		<control type="label" id="3018">
 			<include>HiddenObject</include>
 		</control>
-		<control type="grouplist">
-			<width>430</width>
-			<right>90</right>
-			<bottom>90</bottom>
-			<height>455</height>
-			<orientation>vertical</orientation>
-			<itemgap>20</itemgap>
+		<!-- OSD -->
+		<control type="group">
+			<animation effect="fade" start="0" end="100" time="0">Visible</animation>
+			<animation effect="fade" start="100" end="0" time="400m">Hidden</animation>
+			<!--Bottom-->
 			<control type="group">
-				<height>50</height>
-				<control type="label">
+				<!-- mask -->
+				<control type="image">
+					<bottom>0</bottom>
 					<width>100%</width>
-					<height>48</height>
-					<font>Reg24</font>
-					<aligny>center</aligny>
-					<textoffsetx>5</textoffsetx>
-					<label>$LOCALIZE[31012]</label>
+					<height>180</height>
+					<texture colordiffuse="black">views/player/mask_bottom.png</texture>
+				</control>			
+				<!-- Wide -->
+				<control type="group">
+					<visible>true</visible>
+					<control type="image">
+						<bottom>20</bottom>
+						<left>20</left>
+						<width>268</width>
+						<height>159</height>
+						<texture>views/player/shadow_wide.png</texture>
+					</control>
+					<control type="image">
+						<bottom>29</bottom>
+						<left>29</left>
+						<width>250</width>
+						<height>141</height>
+						<texture colordiffuse="thumb_background_fallback" diffuse="views/player/mask_wide.png">common/white.jpg</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<visible>String.IsEmpty(Control.GetLabel(3005)) + String.IsEmpty(Control.GetLabel(3008))</visible>
+					</control>
+					<control type="textbox">
+						<bottom>39</bottom>
+						<left>39</left>
+						<width>230</width>
+						<height>121</height>
+						<font>Light24</font>
+						<textcolor>white</textcolor>
+						<align>center</align>
+						<aligny>center</aligny>
+						<label>$INFO[Control.GetLabel(3007)]</label>
+						<visible>String.IsEmpty(Control.GetLabel(3005)) + String.IsEmpty(Control.GetLabel(3008))</visible>
+					</control>
+					<control type="image">
+						<bottom>29</bottom>
+						<left>29</left>
+						<width>250</width>
+						<height>141</height>
+						<texture colordiffuse="thumb_background" diffuse="views/player/mask_wide.png">common/white.jpg</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<visible>!String.IsEmpty(Control.GetLabel(3005)) | !String.IsEmpty(Control.GetLabel(3008))</visible>
+					</control>
+					<control type="image">
+						<bottom>29</bottom>
+						<left>29</left>
+						<width>250</width>
+						<height>141</height>
+						<texture diffuse="views/player/mask_square.png">$VAR[NextUpThumb]</texture>
+						<aspectratio scalediffuse="false">scale</aspectratio>
+						<visible>!String.IsEmpty(Control.GetLabel(3005)) | !String.IsEmpty(Control.GetLabel(3008))</visible>
+					</control>
 				</control>
-				<control type="image">
-					<width>100%</width>
-					<top>45</top>
-					<height>2</height>
-					<texture colordiffuse="lightgrey">common/white.jpg</texture>
-					<aspectratio>stretch</aspectratio>
-				</control>
-				<control type="image">
-					<width>100%</width>
-					<top>45</top>
-					<height>2</height>
-					<texture colordiffuse="emby">common/white.jpg</texture>
-					<aspectratio>stretch</aspectratio>
-					<include>WindowOpen_GreenBar</include>
-				</control>
-			</control>			
-			<control type="group">
-				<height>385</height>
-				<control type="image">
-					<top>5</top>
-					<width>424</width>
-					<height>380</height>
-					<texture colordiffuse="thumb_background">common/white.jpg</texture>
-					<aspectratio scalediffuse="false">stretch</aspectratio>
-				</control>
-				<control type="image">
-					<top>-2</top>
-					<left>-2</left>
-					<width>430</width>
-					<height>245</height>
-					<texture>items/shadow_wide.png</texture>
-				</control>
-				<control type="image">
-					<width>424</width>
-					<height>239</height>
-					<texture colordiffuse="thumb_background_fallback" diffuse="items/mask_wide.png">common/white.jpg</texture>
-					<aspectratio scalediffuse="false">stretch</aspectratio>
-					<visible>String.IsEmpty(Control.GetLabel(3005)) + String.IsEmpty(Control.GetLabel(3008))</visible>
-				</control>
-				<control type="textbox">
-					<top>10</top>
-					<left>10</left>
-					<width>404</width>
-					<height>219</height>
-					<font>Light24</font>
-					<align>center</align>
-					<aligny>center</aligny>
-					<label>$INFO[Control.GetLabel(3007)]</label>
-					<visible>String.IsEmpty(Control.GetLabel(3005)) + String.IsEmpty(Control.GetLabel(3008))</visible>
-				</control>
-				<control type="image">
-					<width>424</width>
-					<height>239</height>
-					<texture diffuse="items/mask_wide.png" background="true">$VAR[NextUpThumb]</texture>
-					<aspectratio scalediffuse="false">scale</aspectratio>
-				</control>
-				<include content="static_labels">
-					<param name="top">251</param>
-					<param name="width">424</param>
-					<param name="textoffsetx">10</param>
-					<param name="mainlabel">$INFO[Control.GetLabel(3015),S,:]$INFO[Control.GetLabel(3016),E, - ]$INFO[Control.GetLabel(3000)]</param>
-					<param name="sublabel">$INFO[Control.GetLabel(3007)]</param>
-				</include>
+				<!-- Label section -->
 				<control type="grouplist">
-					<bottom>10</bottom>
-					<height>50</height>
-					<width>100%</width>
 					<orientation>horizontal</orientation>
+					<height>31</height>
+					<bottom>135</bottom>
+					<left>309</left>
+					<right>30</right>
+					<itemgap>0</itemgap>
+					<control type="label">
+						<width>auto</width>
+						<height>30</height>
+						<aligny>center</aligny>
+						<font>med28</font>
+						<textcolor>white</textcolor>
+						<label>[LIGHT]$LOCALIZE[31012]   [COLOR emby]$VAR[PlayerTimeRemaining][/COLOR][/LIGHT]</label>
+					</control>
+				</control>
+				<!-- Details -->
+				<control type="grouplist">
+					<orientation>horizontal</orientation>
+					<height>31</height>
+					<bottom>98</bottom>
+					<left>309</left>
+					<right>30</right>
+					<itemgap>0</itemgap>
+					<control type="label">
+						<width>auto</width>
+						<height>30</height>
+						<aligny>center</aligny>
+						<font>reg24</font>
+						<textcolor>white</textcolor>
+						<label>$INFO[Control.GetLabel(3007),, - ]$INFO[Control.GetLabel(3015),S,:]$INFO[Control.GetLabel(3016),E, - ]$INFO[Control.GetLabel(3000)]   </label>
+						<visible>!String.IsEmpty(Control.GetLabel(3000))</visible>
+					</control>
+					<control type="label">
+						<width>auto</width>
+						<height>30</height>
+						<aligny>center</aligny>
+						<font>reg24</font>
+						<textcolor>white</textcolor>
+						<label>$INFO[Control.GetLabel(3004),,   ]</label>
+						<visible>!String.IsEmpty(Control.GetLabel(3004))</visible>
+					</control>
+					<control type="label">
+						<animation effect="slide" end="-2,2" time="0" condition="true">Conditional</animation>
+						<width>auto</width>
+						<height>30</height>
+						<aligny>center</aligny>
+						<label></label>
+						<font>Material26</font>
+						<textcolor>red</textcolor>
+						<visible>!String.IsEmpty(Control.GetLabel(3003))</visible>
+					</control>
+					<control type="label" id="3003">
+						<width>auto</width>
+						<height>30</height>
+						<aligny>center</aligny>
+						<label>$INFO[VideoPlayer.Rating]   </label>
+						<font>reg24</font>
+						<textcolor>white</textcolor>
+					</control>
+				</control>
+				<!-- Bottom label section -->
+				<control type="grouplist">
+					<orientation>horizontal</orientation>
+					<height>56</height>
+					<bottom>27</bottom>
+					<left>309</left>
+					<right>20</right>
 					<itemgap>5</itemgap>
-					<align>center</align>
-					<onright>10</onright>
-					<onleft>9999</onleft>
 					<control type="button" id="3012">
+						<include>LightGreyButton</include>
 						<label>$LOCALIZE[31010]</label>
-						<onback>SendClick(3013)</onback>
+					</control>
+					<control type="button" id="3013">
+						<include>LightGreyButton</include>
+						<label>$LOCALIZE[15067]</label>
 					</control>
 				</control>
 			</control>

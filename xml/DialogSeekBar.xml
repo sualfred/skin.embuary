@@ -2,6 +2,7 @@
 <window>
 	<visible>Player.Seeking | Player.DisplayAfterSeek | [Player.Paused + !Player.Caching] | Player.Forwarding | Player.Rewinding | Player.ShowInfo | Window.IsActive(fullscreeninfo) | Window.IsActive(videoosd) | Window.IsActive(musicosd) | Window.IsActive(playerprocessinfo) | !String.IsEmpty(Player.SeekNumeric)</visible>
 	<visible>!Window.IsActive(sliderdialog)</visible>
+	<visible>!Window.IsVisible(script-nextup-notification-NextUpInfo.xml) + !Window.Window.IsVisible(script-nextup-notification-StillWatchingInfo.xml)</visible>
 	<visible>Window.IsActive(visualisation) | Window.IsActive(fullscreenvideo)</visible>
 	<zorder>0</zorder>
 	<controls>
@@ -9,7 +10,7 @@
 			<!-- Seekbar nib -->
 			<control type="slider" id="401">
 				<visible>Player.Forwarding | Player.Rewinding | Player.Seeking | !String.IsEmpty(Player.SeekOffset)</visible>
-				<bottom>102</bottom>
+				<bottom>98</bottom>
 				<left>309</left>
 				<right>31</right>
 				<height>8</height>
