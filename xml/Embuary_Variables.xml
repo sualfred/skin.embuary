@@ -198,8 +198,8 @@
 	<variable name="View_Cast_Content">
 		<value condition="String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) + !String.IsEmpty(ListItem.Property(id))">plugin://plugin.video.embycon?mode=WIDGET_CONTENT_CAST&amp;id=$INFO[ListItem.Property(id)]</value>
 		<value condition="String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">plugin://plugin.video.embycon?mode=WIDGET_CONTENT_CAST&amp;id=$INFO[Window(home).Property(EmbyID)]</value>
-		<value condition="String.IsEqual(ListItem.DBType,movie)">plugin://script.skin.helper.service/?action=getcast&amp;movie=$INFO[ListItem.Title]&amp;downloadthumbs=false&amp;castaction=extendedinfo</value>
-		<value>plugin://script.skin.helper.service/?action=getcast&amp;tvshow=$INFO[ListItem.TvShowTitle]&amp;downloadthumbs=false&amp;castaction=extendedinfo</value>
+		<value condition="String.IsEqual(ListItem.DBType,movie)">plugin://script.skin.helper.service/?action=getcast&amp;movie=$INFO[ListItem.Title]&amp;downloadthumbs=true&amp;castaction=extendedinfo</value>
+		<value>plugin://script.skin.helper.service/?action=getcast&amp;tvshow=$INFO[ListItem.TvShowTitle]&amp;downloadthumbs=true&amp;castaction=extendedinfo</value>
 	</variable>
 	<variable name="View54_NextUp_Content">
 		<value condition="String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">plugin://plugin.video.embycon?mode=WIDGET_CONTENT_NEXTUP&amp;id=$INFO[Window(home).Property(EmbyID)]</value>
@@ -1392,8 +1392,8 @@
 		<value condition="!String.IsEmpty(MusicPlayer.Cover) + !String.StartsWith(MusicPlayer.Cover,default)">$INFO[MusicPlayer.Cover]</value>
 	</variable>
 	<variable name="PlayerCastContent">
-		<value condition="VideoPlayer.Content(episodes)">plugin://script.skin.helper.service/?action=getcast&amp;tvshow=$INFO[VideoPlayer.TvShowTitle]&amp;downloadthumbs=false&amp;castaction=extendedinfo</value>
-		<value>plugin://script.skin.helper.service/?action=getcast&amp;movie=$INFO[VideoPlayer.DBID]&amp;downloadthumbs=false&amp;castaction=extendedinfo</value>
+		<value condition="VideoPlayer.Content(episodes)">plugin://script.skin.helper.service/?action=getcast&amp;tvshow=$INFO[VideoPlayer.TvShowTitle]&amp;downloadthumbs=true&amp;castaction=extendedinfo</value>
+		<value>plugin://script.skin.helper.service/?action=getcast&amp;movie=$INFO[VideoPlayer.DBID]&amp;downloadthumbs=true&amp;castaction=extendedinfo</value>
 	</variable>
 	<variable name="PlayerSimilarContent">
 		<value condition="VideoPlayer.Content(episodes)">plugin://script.skin.helper.widgets/?action=similarshows&amp;imdbid=$INFO[VideoPlayer.IMDBNumber]</value>
