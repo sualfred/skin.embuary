@@ -8,9 +8,24 @@
 		</control>
 		<!-- Dialog -->
 		<control type="group">
-			<centertop>50%</centertop>
-			<centerleft>50%</centerleft>
-			<include>Dialog_PopupOpenClose</include>
+			<top>70</top>
+			<right>70</right>
+			<animation type="WindowOpen" reversible="false">
+				<effect type="slide" start="0,-200" end="0,0" delay="100" tween="circle" easin="out" time="400" />
+				<effect type="fade" delay="160" end="100" time="400" />
+			</animation>
+			<animation type="WindowClose" reversible="false">
+				<effect type="slide" start="0,0" end="0,-200" easing="in" tween="circle" easin="out" time="400" />
+				<effect type="fade" start="100" end="0" time="400" />
+			</animation>
+			<animation type="Conditional" reversible="false" condition="!Player.Muted">
+				<effect type="slide" start="0,-200" end="0,0" delay="100" tween="circle" easin="out" time="400" />
+				<effect type="fade" delay="160" end="100" time="400" />
+			</animation>
+			<animation type="Conditional" reversible="false" condition="Player.Muted">
+				<effect type="slide" start="0,0" end="0,-200" easing="in" tween="circle" easin="out" time="400" />
+				<effect type="fade" start="100" end="0" time="400"/>
+			</animation>
 			<width>500</width>
 			<height>145</height>
 			<!-- Background image -->
@@ -49,6 +64,7 @@
 					<texture colordiffuse="background_diffuse">common/white.jpg</texture>
 				</control>
 				<control type="slider" id="11">
+					<top>5</top>
 					<width>100%</width>
 					<height>8</height>
 					<onup>11</onup>
