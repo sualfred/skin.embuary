@@ -983,42 +983,45 @@
 		</control>
 	</include>
 	<include name="CustomHubShortcutSettingsTemplate">
-		<control type="radiobutton" id="$PARAM[section]$PARAM[id]1">
-			<include>SettingsButton</include>
-			<onclick>Skin.ToggleSetting(User$PARAM[type]Hub$PARAM[id])</onclick>
-			<selected>Skin.HasSetting(User$PARAM[type]Hub$PARAM[id])</selected>
-			<label>$LOCALIZE[31151] #$PARAM[id]</label>
-		</control>
-		<control type="button" id="$PARAM[section]$PARAM[id]2">
-			<textcolor>emby</textcolor>
-			<texturenofocus colordiffuse="33000000">common/white.jpg</texturenofocus>
-			<include>SettingsButton</include>
-			<onclick>RunScript(script.skinshortcuts,type=shortcuts&amp;showNone=True&amp;custom=True&amp;grouping=emby&amp;skinLabel=User$PARAM[type]Hub$PARAM[id]_name&amp;skinAction=User$PARAM[type]Hub$PARAM[id]_action&amp;skinList=User$PARAM[type]Hub$PARAM[id]_path)</onclick>
-			<label>• $LOCALIZE[573]</label>
-			<label2>$INFO[Skin.String(User$PARAM[type]Hub$PARAM[id]_path)]</label2>
-			<enable>Skin.HasSetting(User$PARAM[type]Hub$PARAM[id])</enable>
-			<visible>Skin.HasSetting(User$PARAM[type]Hub$PARAM[id])</visible>
-		</control>
-		<control type="button" id="$PARAM[section]$PARAM[id]3">
-			<textcolor>emby</textcolor>
-			<texturenofocus colordiffuse="33000000">common/white.jpg</texturenofocus>
-			<include>SettingsButton</include>
-			<onclick>Skin.SetString(User$PARAM[type]Hub$PARAM[id]_name)</onclick>
-			<label>• $LOCALIZE[21899]</label>
-			<label2>$INFO[Skin.String(User$PARAM[type]Hub$PARAM[id]_name)]</label2>
-			<enable>Skin.HasSetting(User$PARAM[type]Hub$PARAM[id])</enable>
-			<visible>Skin.HasSetting(User$PARAM[type]Hub$PARAM[id])</visible>
-		</control>
-		<control type="button" id="$PARAM[section]$PARAM[id]4">
-			<textcolor>emby</textcolor>
-			<texturenofocus colordiffuse="33000000">common/white.jpg</texturenofocus>
-			<include>SettingsButton</include>
-			<onclick>RunScript(script.skin.helper.service,action=setskinsetting,setting=User$PARAM[type]Hub$PARAM[id]_target,header=$LOCALIZE[15021])</onclick>
-			<label>• $LOCALIZE[15021]</label>
-			<label2>$INFO[Skin.String(User$PARAM[type]Hub$PARAM[id]_target)]</label2>
-			<enable>Skin.HasSetting(User$PARAM[type]Hub$PARAM[id]) + String.StartsWith(Skin.String(User$PARAM[type]Hub$PARAM[id]_action),ActivateWindow)</enable>
-			<visible>Skin.HasSetting(User$PARAM[type]Hub$PARAM[id])</visible>
-		</control>
+		<param name="group">emby</param>
+		<definition>
+			<control type="radiobutton" id="$PARAM[section]$PARAM[id]1">
+				<include>SettingsButton</include>
+				<onclick>Skin.ToggleSetting(User$PARAM[type]Hub$PARAM[id])</onclick>
+				<selected>Skin.HasSetting(User$PARAM[type]Hub$PARAM[id])</selected>
+				<label>$LOCALIZE[31151] #$PARAM[id]</label>
+			</control>
+			<control type="button" id="$PARAM[section]$PARAM[id]2">
+				<textcolor>emby</textcolor>
+				<texturenofocus colordiffuse="33000000">common/white.jpg</texturenofocus>
+				<include>SettingsButton</include>
+				<onclick>RunScript(script.skinshortcuts,type=shortcuts&amp;showNone=True&amp;custom=True&amp;grouping=$PARAM[group]&amp;skinLabel=User$PARAM[type]Hub$PARAM[id]_name&amp;skinAction=User$PARAM[type]Hub$PARAM[id]_action&amp;skinList=User$PARAM[type]Hub$PARAM[id]_path)</onclick>
+				<label>• $LOCALIZE[573]</label>
+				<label2>$INFO[Skin.String(User$PARAM[type]Hub$PARAM[id]_path)]</label2>
+				<enable>Skin.HasSetting(User$PARAM[type]Hub$PARAM[id])</enable>
+				<visible>Skin.HasSetting(User$PARAM[type]Hub$PARAM[id])</visible>
+			</control>
+			<control type="button" id="$PARAM[section]$PARAM[id]3">
+				<textcolor>emby</textcolor>
+				<texturenofocus colordiffuse="33000000">common/white.jpg</texturenofocus>
+				<include>SettingsButton</include>
+				<onclick>Skin.SetString(User$PARAM[type]Hub$PARAM[id]_name)</onclick>
+				<label>• $LOCALIZE[21899]</label>
+				<label2>$INFO[Skin.String(User$PARAM[type]Hub$PARAM[id]_name)]</label2>
+				<enable>Skin.HasSetting(User$PARAM[type]Hub$PARAM[id])</enable>
+				<visible>Skin.HasSetting(User$PARAM[type]Hub$PARAM[id])</visible>
+			</control>
+			<control type="button" id="$PARAM[section]$PARAM[id]4">
+				<textcolor>emby</textcolor>
+				<texturenofocus colordiffuse="33000000">common/white.jpg</texturenofocus>
+				<include>SettingsButton</include>
+				<onclick>RunScript(script.skin.helper.service,action=setskinsetting,setting=User$PARAM[type]Hub$PARAM[id]_target,header=$LOCALIZE[15021])</onclick>
+				<label>• $LOCALIZE[15021]</label>
+				<label2>$INFO[Skin.String(User$PARAM[type]Hub$PARAM[id]_target)]</label2>
+				<enable>Skin.HasSetting(User$PARAM[type]Hub$PARAM[id]) + String.StartsWith(Skin.String(User$PARAM[type]Hub$PARAM[id]_action),ActivateWindow)</enable>
+				<visible>Skin.HasSetting(User$PARAM[type]Hub$PARAM[id])</visible>
+			</control>
+		</definition>
 	</include>
 	<include name="CustomHubShortcutTemplate">
 		<param name="onup">6666</param>
@@ -1033,6 +1036,17 @@
 				<ondown>$PARAM[ondown]</ondown>
 			</control>
 		</definition>
+	</include>
+	<include name="CustomHomeShortcutTemplate">
+		<item>
+			<label>$INFO[Skin.String(UserHomeHub$PARAM[nr]_name)]</label>
+			<onclick>ActivateWindow($INFO[Skin.String(UserHomeHub$PARAM[nr]_target)],$INFO[Skin.String(UserHomeHub$PARAM[nr]_path)],return)</onclick>
+			<property name="art1">$INFO[Container(4$PARAM[nr]).ListItem(0).Art(poster)]</property>
+			<property name="art2">$INFO[Container(4$PARAM[nr]).ListItem(1).Art(poster)]</property>
+			<property name="art3">$INFO[Container(4$PARAM[nr]).ListItem(2).Art(poster)]</property>
+			<property name="art4">$INFO[Container(4$PARAM[nr]).ListItem(3).Art(poster)]</property>
+			<visible>Skin.HasSetting(UserHomeHub$PARAM[nr]) + Integer.IsGreater(Container(4$PARAM[nr]).NumItems,0)</visible>
+		</item>
 	</include>
 	<include name="weather_small_template">
 		<control type="group">
