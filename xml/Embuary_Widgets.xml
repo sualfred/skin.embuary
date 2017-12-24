@@ -557,11 +557,6 @@
 					</focusedlayout>					
 					<content>
 						<item>
-							<label>$LOCALIZE[10507]</label>
-							<onclick>ActivateWindow(settings)</onclick>
-							<visible>![!Skin.HasSetting(HideMovieLibrary) + [Library.HasContent(movies) | System.HasAddon(plugin.video.embycon)]] + ![!Skin.HasSetting(HideTVShowLibrary) + [Library.HasContent(tvshows) | System.HasAddon(plugin.video.embycon)]] + ![!Skin.HasSetting(HidePVRLibrary) + Pvr.HasTVChannels] + ![!Skin.HasSetting(HideMusicLibrary) + Library.HasContent(music)] + ![!Skin.HasSetting(HideMusicVideosLibrary) + Library.HasContent(musicvideos)] + ![!Skin.HasSetting(HideAddonLibrary)]</visible>
-						</item>
-						<item>
 							<label>$LOCALIZE[342]</label>
 							<onclick>ActivateWindow(1120,return)</onclick>
 							<property name="art1">$INFO[Container(51).ListItem(0).Art(poster)]</property>
@@ -633,6 +628,11 @@
 						<include content="CustomHomeShortcutTemplate">
 							<param name="nr" value="6"/>
 						</include>
+						<item>
+							<label>$LOCALIZE[10507]</label>
+							<onclick>ActivateWindow(settings)</onclick>
+							<visible>![!Skin.HasSetting(HideMovieLibrary) + [Library.HasContent(movies) | System.HasAddon(plugin.video.embycon)]] + ![!Skin.HasSetting(HideTVShowLibrary) + [Library.HasContent(tvshows) | System.HasAddon(plugin.video.embycon)]] + ![!Skin.HasSetting(HidePVRLibrary) + Pvr.HasTVChannels] + ![!Skin.HasSetting(HideMusicLibrary) + Library.HasContent(music)] + ![!Skin.HasSetting(HideMusicVideosLibrary) + Library.HasContent(musicvideos)] + ![!Skin.HasSetting(HideAddonLibrary)] + ![Skin.HasSetting(UserHomeHub1) + Integer.IsGreater(Container(41).NumItems,0)] + ![Skin.HasSetting(UserHomeHub2) + Integer.IsGreater(Container(42).NumItems,0)] + ![Skin.HasSetting(UserHomeHub3) + Integer.IsGreater(Container(43).NumItems,0)] + ![Skin.HasSetting(UserHomeHub4) + Integer.IsGreater(Container(44).NumItems,0)] + ![Skin.HasSetting(UserHomeHub5) + Integer.IsGreater(Container(45).NumItems,0)] +![Skin.HasSetting(UserHomeHub6) + Integer.IsGreater(Container(46).NumItems,0)]</visible>
+						</item>
 						<item>
 							<label>$LOCALIZE[341]</label>
 							<onclick>PlayDisc</onclick>
