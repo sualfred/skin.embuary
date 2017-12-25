@@ -11,11 +11,11 @@
 				<include>Visible_OpenClose</include>
 				<visible>Control.IsVisible(53)</visible>
 				<!-- List -->
-				<control id="53" type="list">
+				<control id="53" type="panel">
 					<visible>[!Container.Content(seasons) + !Container.Content(episodes) + !String.Contains(Container.FolderPath,setid) + !String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres)] | [Container.Content(episodes) + String.StartsWith(Container.FolderPath,plugin://) + !String.StartsWith(Container.FolderPath,plugin://plugin.video.embycon)]</visible>
-					<top>90</top>
+					<top>35</top>
 					<width>1230</width>
-					<height>950</height>
+					<height>1060</height>
 					<onup>SetFocus(6666)</onup>
 					<onright condition="Control.IsVisible(7000)">SetFocus(7000)</onright>
 					<ondown>noop</ondown>
@@ -70,7 +70,7 @@
 				<control type="group">
 					<visible>String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,season) | String.StartsWith(ListItem.Path,pvr://)</visible>
 					<right>90</right>
-					<top>145</top>
+					<top>90</top>
 					<width>590</width>
 					<control type="group">
 						<control type="image">
@@ -143,13 +143,13 @@
 					<control type="grouplist">
 						<orientation>vertical</orientation>
 						<top>425</top>
-						<height>500</height>
+						<height>550</height>
 						<align>top</align>
 						<itemgap>00</itemgap>
 						<width>590</width>			
 						<control type="textbox" id="97">
 							<width>590</width>
-							<height>400</height>
+							<height>500</height>
 							<align>justify</align>
 							<aligny>top</aligny>
 							<label>$VAR[ListViewPlot]</label>
@@ -170,7 +170,7 @@
 				<control type="group">
 					<visible>![String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,season) | String.StartsWith(ListItem.Path,pvr://)]</visible>
 					<right>90</right>
-					<top>145</top>
+					<top>90</top>
 					<width>590</width>
 					<control type="group">
 						<control type="group">
@@ -238,13 +238,13 @@
 					<control type="grouplist">
 						<orientation>vertical</orientation>
 						<top>425</top>
-						<height>500</height>
+						<height>550</height>
 						<align>top</align>
 						<itemgap>00</itemgap>
 						<width>590</width>			
 						<control type="textbox" id="97">
 							<width>590</width>
-							<height>400</height>
+							<height>500</height>
 							<align>justify</align>
 							<aligny>top</aligny>
 							<label>$VAR[ListViewPlot]</label>
@@ -262,39 +262,6 @@
 						</control>				
 					</control>
 				</control>
-				<control type="image">
-					<height>90</height>
-					<width>1920</width>
-					<top>58</top>
-					<texture flipy="true" colordiffuse="background">items/listview_mask.png</texture>
-					<visible>Container.HasPrevious</visible>
-					<animation effect="fade" start="0" end="100" time="200" tween="sine">Visible</animation>
-					<animation effect="fade" start="100" end="0" time="0">Hidden</animation>
-				</control>
-				<control type="image">
-					<height>90</height>
-					<width>1920</width>
-					<bottom>10</bottom>
-					<texture colordiffuse="background">items/listview_mask.png</texture>
-					<visible>Container.HasNext</visible>
-					<animation effect="fade" start="0" end="100" time="200" tween="sine">Visible</animation>
-					<animation effect="fade" start="100" end="0" time="0">Hidden</animation>
-				</control>
-				<include content="list_mask_vertical_top">
-					<param name="height" value="70"/>
-					<param name="left" value="0"/>
-					<param name="right" value="0"/>
-					<param name="top" value="58"/>
-					<param name="id" value="53"/>
-					<param name="visible_forced" value="true"/>
-				</include>
-				<include content="list_mask_vertical">
-					<param name="height" value="70"/>
-					<param name="left" value="0"/>
-					<param name="right" value="0"/>
-					<param name="id" value="53"/>
-					<param name="visible_forced" value="true"/>
-				</include>
 				<include content="JumpToLetter_vertical">
 					<param name="top" value="58"/>
 				</include>

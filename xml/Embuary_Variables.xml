@@ -358,6 +358,16 @@
 		<value condition="String.IsEqual(ListItem.VideoResolution,720)">720p</value>
 		<value>SD</value>
 	</variable>
+	<variable name="ListItemEpisodeName">
+		<value condition="!String.IsEmpty(ListItem.EpisodeName)">$INFO[ListItem.EpisodeName]</value>
+		<value condition="!String.IsEmpty(ListItem.Genre) + !Window.IsVisible(pvrguideinfo) + !Control.IsVisible(57)">$LOCALIZE[515]: $INFO[ListItem.Genre]</value>
+		<value>[COLOR softgrey]$LOCALIZE[31156][/COLOR]</value>
+	</variable>
+	<variable name="PlayerEpisodeName">
+		<value condition="!String.IsEmpty(VideoPlayer.EpisodeName)">$INFO[VideoPlayer.EpisodeName]</value>
+		<value condition="!String.IsEmpty(VideoPlayer.Genre)">$LOCALIZE[515]: $INFO[VideoPlayer.Genre]</value>
+		<value>[COLOR softgrey]$LOCALIZE[31156][/COLOR]</value>
+	</variable>
 	<variable name="PlayerDiscArt">
 		<value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.Player.Art.DiscArt))">$INFO[Window(Home).Property(SkinHelper.Player.Art.DiscArt)]</value>
 		<value>common/white.jpg</value>
@@ -1477,11 +1487,6 @@
 		<value condition="!String.IsEmpty(Control.GetLabel(4007))">$INFO[Control.GetLabel(4007)]</value>
 		<value condition="!String.IsEmpty(Control.GetLabel(3008))">$INFO[Control.GetLabel(3008)]</value>
 		<value condition="!String.IsEmpty(Control.GetLabel(3005))">$INFO[Control.GetLabel(3005)]</value>
-	</variable>
-	<variable name="PVREpisodeName">
-		<value condition="!String.IsEmpty(ListItem.EpisodeName)">$INFO[ListItem.EpisodeName]</value>
-		<value condition="!String.IsEmpty(VideoPlayer.EpisodeName)">$INFO[VideoPlayer.EpisodeName]</value>
-		<value>[COLOR softgrey]$LOCALIZE[31156][/COLOR]</value>
 	</variable>
 	<variable name="BackgroundAlphaLabel">
 		<value condition="!String.IsEmpty(Skin.String(BackgroundAlpha.label))">$INFO[Skin.String(BackgroundAlpha.label)]</value>
