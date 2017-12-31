@@ -982,6 +982,15 @@
 			<visible>Skin.HasSetting(User$PARAM[type]Widget$PARAM[id])</visible>
 		</control>
 	</include>
+	<include name="EmbyHomeMenuSettingsTemplate">
+		<control type="radiobutton" id="$PARAM[id]">
+			<include>SettingsButton</include>
+			<onclick>Skin.ToggleSetting(HideEmby$PARAM[nr])</onclick>
+			<selected>!Skin.HasSetting(HideEmby$PARAM[nr])</selected>
+			<label>$INFO[Window(home).Property(emby.nodes.$PARAM[nr].title),,   ][COLOR lightgrey]($LOCALIZE[31181])[/COLOR]</label>
+			<visible>!String.IsEmpty(Window(home).Property(emby.nodes.$PARAM[nr].title)) + !String.Contains(Window(home).Property(emby.nodes.$PARAM[nr].content),emby_Favorite) + !String.Contains(Window(home).Property(emby.nodes.$PARAM[nr].content),emby_channels)</visible>
+		</control>
+	</include>
 	<include name="CustomHubShortcutSettingsTemplate">
 		<param name="group">emby</param>
 		<definition>
@@ -1036,17 +1045,6 @@
 				<ondown>$PARAM[ondown]</ondown>
 			</control>
 		</definition>
-	</include>
-	<include name="CustomHomeShortcutTemplate">
-		<item>
-			<label>$INFO[Skin.String(UserHomeHub$PARAM[nr]_name)]</label>
-			<onclick>ActivateWindow($INFO[Skin.String(UserHomeHub$PARAM[nr]_target)],$INFO[Skin.String(UserHomeHub$PARAM[nr]_path)],return)</onclick>
-			<property name="art1">$INFO[Container(4$PARAM[nr]).ListItem(0).Art(thumb)]</property>
-			<property name="art2">$INFO[Container(4$PARAM[nr]).ListItem(1).Art(thumb)]</property>
-			<property name="art3">$INFO[Container(4$PARAM[nr]).ListItem(2).Art(thumb)]</property>
-			<property name="art4">$INFO[Container(4$PARAM[nr]).ListItem(3).Art(thumb)]</property>
-			<visible>Skin.HasSetting(UserHomeHub$PARAM[nr]) + Integer.IsGreater(Container(4$PARAM[nr]).NumItems,0)</visible>
-		</item>
 	</include>
 	<include name="weather_small_template">
 		<control type="group">
