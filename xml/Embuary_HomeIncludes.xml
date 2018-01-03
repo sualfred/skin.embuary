@@ -29,7 +29,8 @@
 	<include name="EmbyNodeMainMenuItemTemplate">
 		<item>
 			<label>$INFO[Window(home).Property(emby.nodes.$PARAM[nr].title)]</label>
-			<onclick>ActivateWindow(113$PARAM[nr])</onclick>
+			<onclick condition="!String.IsEqual(Window(home).Property(emby.nodes.$PARAM[nr].type),homevideos)">ActivateWindow(113$PARAM[nr])</onclick>
+			<onclick condition="String.IsEqual(Window(home).Property(emby.nodes.$PARAM[nr].type),homevideos)">ActivateWindow(pictures,$INFO[Window(home).Property(emby.nodes.$PARAM[nr].content)],return)</onclick>
 			<property name="art1">$INFO[Container(3$PARAM[nr]).ListItem(0).Art(thumb)]</property>
 			<property name="art2">$INFO[Container(3$PARAM[nr]).ListItem(1).Art(thumb)]</property>
 			<property name="art3">$INFO[Container(3$PARAM[nr]).ListItem(2).Art(thumb)]</property>

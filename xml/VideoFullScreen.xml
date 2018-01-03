@@ -38,7 +38,7 @@
 				</control>
 				<!-- Poster -->
 				<control type="group" id="99">
-					<visible>!VideoPlayer.Content(musicvideos) + [!String.IsEmpty(Player.Art(poster)) | !String.IsEmpty(Player.Art(tvshow.poster))] + ![VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)]</visible>
+					<visible>[VideoPlayer.Content(movies) | VideoPlayer.Content(episodes)] + !VideoPlayer.Content(musicvideos) + [!String.IsEmpty(Player.Art(poster)) | !String.IsEmpty(Player.Art(tvshow.poster))] + ![VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)]</visible>
 					<control type="image" id="99">
 						<bottom>20</bottom>
 						<left>20</left>
@@ -116,7 +116,7 @@
 				</control>				
 				<!-- Wide -->
 				<control type="group" id="99">
-					<visible>VideoPlayer.Content(musicvideos) | [String.IsEmpty(Player.Art(poster)) + String.IsEmpty(Player.Art(tvshow.poster)) + !VideoPlayer.Content(livetv) + !String.StartsWith(Player.Filenameandpath,pvr://)]</visible>
+					<visible>![VideoPlayer.Content(movies) | VideoPlayer.Content(episodes) | VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)] | VideoPlayer.Content(musicvideos) | [String.IsEmpty(Player.Art(poster)) + String.IsEmpty(Player.Art(tvshow.poster)) + !VideoPlayer.Content(livetv) + !String.StartsWith(Player.Filenameandpath,pvr://)]</visible>
 					<control type="image" id="99">
 						<bottom>20</bottom>
 						<left>20</left>
@@ -131,7 +131,7 @@
 						<height>141</height>
 						<texture colordiffuse="thumb_background_fallback" diffuse="views/player/mask_wide.png">common/white.jpg</texture>
 						<aspectratio scalediffuse="false">stretch</aspectratio>
-						<visible>String.IsEmpty(VideoPlayer.Cover) | String.StartsWith(VideoPlayer.Cover,Default)</visible>
+						<visible>String.IsEmpty(Player.Art(thumb)) | String.StartsWith(Player.Art(thumb),Default)</visible>
 					</control>
 					<control type="textbox" id="99">
 						<bottom>39</bottom>
@@ -143,7 +143,7 @@
 						<align>center</align>
 						<aligny>center</aligny>
 						<label></label>
-						<visible>String.IsEmpty(VideoPlayer.Cover) | String.StartsWith(VideoPlayer.Cover,Default)</visible>
+						<visible>String.IsEmpty(Player.Art(thumb)) | String.StartsWith(Player.Art(thumb),Default)</visible>
 					</control>
 					<control type="image" id="99">
 						<bottom>29</bottom>
@@ -152,16 +152,16 @@
 						<height>141</height>
 						<texture colordiffuse="thumb_background" diffuse="views/player/mask_wide.png">common/white.jpg</texture>
 						<aspectratio scalediffuse="false">stretch</aspectratio>
-						<visible>!String.IsEmpty(VideoPlayer.Cover) + !String.StartsWith(VideoPlayer.Cover,Default)</visible>
+						<visible>!String.IsEmpty(Player.Art(thumb)) + !String.StartsWith(Player.Art(thumb),Default)</visible>
 					</control>
 					<control type="image" id="99">
 						<bottom>29</bottom>
 						<left>29</left>
 						<width>250</width>
 						<height>141</height>
-						<texture diffuse="views/player/mask_square.png">$VAR[PlayerIcon]</texture>
+						<texture diffuse="views/player/mask_square.png">$INFO[Player.Art(thumb)]</texture>
 						<aspectratio scalediffuse="false">scale</aspectratio>
-						<visible>!String.IsEmpty(VideoPlayer.Cover) + !String.StartsWith(VideoPlayer.Cover,Default)</visible>
+						<visible>!String.IsEmpty(Player.Art(thumb)) + !String.StartsWith(Player.Art(thumb),Default)</visible>
 					</control>
 				</control>
 				<!-- Progress bars -->
