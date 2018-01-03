@@ -1384,6 +1384,7 @@
 		<value>$INFO[ListItem.Label]</value>
 	</variable>
 	<variable name="PlayerFullLabel">
+		<value condition="String.IsEqual(VideoPlayer.Title,stream) + String.Contains(Player.Filenameandpath,/emby/videos/)">$LOCALIZE[31186]</value>
 		<value condition="!String.IsEmpty(MusicPlayer.Title) + !String.Contains(MusicPlayer.Title,pvr.hts_)">$INFO[MusicPlayer.Artist,, - ]$INFO[MusicPlayer.Tracknumber,,. ]$INFO[MusicPlayer.Title]</value>
 		<value condition="!String.IsEmpty(MusicPlayer.Title)">$INFO[MusicPlayer.Artist]</value>
 		<value condition="VideoPlayer.Content(livetv)">$INFO[VideoPlayer.Title]</value>
