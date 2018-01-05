@@ -41,6 +41,15 @@
 								<label>$INFO[ListItem.TVShowTitle,, - ]$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title]</label>
 								<font>Reg37</font>
 								<shadowcolor>text_shadow</shadowcolor>
+								<visible>!String.IsEmpty(ListItem.Title)</visible>
+							</control>
+							<control type="label">
+								<width>1040</width>
+								<height>60</height>
+								<label>$LOCALIZE[31186]</label>
+								<font>Reg37</font>
+								<shadowcolor>text_shadow</shadowcolor>
+								<visible>String.IsEmpty(ListItem.Title) + String.IsEqual(ListItem.Filename,stream) + String.Contains(ListItem.Filenameandpath,/emby/videos/)</visible>
 							</control>
 							<!-- meta -->
 							<control type="group">
