@@ -35,7 +35,7 @@
 			<property name="art2">$INFO[Container(3$PARAM[nr]).ListItem(1).Art(thumb)]</property>
 			<property name="art3">$INFO[Container(3$PARAM[nr]).ListItem(2).Art(thumb)]</property>
 			<property name="art4">$INFO[Container(3$PARAM[nr]).ListItem(3).Art(thumb)]</property>
-			<visible>!Skin.HasSetting(HideEmby$PARAM[nr]) + !String.IsEmpty(Window(home).Property(emby.nodes.$PARAM[nr].title)) + !String.Contains(Window(home).Property(emby.nodes.$PARAM[nr].content),emby_Favorite) + !String.Contains(Window(home).Property(emby.nodes.$PARAM[nr].content),emby_channels)</visible>
+			<visible>!Skin.HasSetting(HideEmby$PARAM[nr]) + !String.IsEmpty(Window(home).Property(emby.nodes.$PARAM[nr].title)) + !String.Contains(Window(home).Property(emby.nodes.$PARAM[nr].content),emby_Favorite) + !String.Contains(Window(home).Property(emby.nodes.$PARAM[nr].content),emby_channels) + !String.IsEmpty(WIndow(home).Property(emby_currUser))</visible>
 		</item>
 	</include>
 	<include name="MainMenuContent">
@@ -158,13 +158,14 @@
 			<content limit="4" sortby="random">$INFO[Skin.String(UserHomeHub$PARAM[nr]_path)]</content>
 			<visible>Skin.HasSetting(UserHomeHub$PARAM[nr])</visible>
 		</control>
-	</include>	<include name="EmbyHiddenHomeListTemplate">
+	</include>	
+	<include name="EmbyHiddenHomeListTemplate">
 		<control type="list" id="3$PARAM[nr]">
 			<include>HiddenObject</include>
 			<itemlayout/>
 			<focusedlayout/>
 			<content limit="4" sortby="random">$INFO[Window(home).Property(emby.nodes.$PARAM[nr].content)]</content>
-			<visible>!Skin.HasSetting(HideEmby$PARAM[nr])</visible>
+			<visible>!Skin.HasSetting(HideEmby$PARAM[nr]) + !String.IsEmpty(WIndow(home).Property(emby_currUser))</visible>
 		</control>
 	</include>
 	<include name="HiddenHomeLists">
