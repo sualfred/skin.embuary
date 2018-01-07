@@ -168,6 +168,14 @@
 			<visible>!Skin.HasSetting(HideEmby$PARAM[nr]) + !String.IsEmpty(Window(home).Property(emby_currUser))</visible>
 		</control>
 	</include>
+	<include name="LibraryHomeListTemplate">		
+		<control type="list" id="$PARAM[id]">
+			<include>HiddenObject</include>
+			<itemlayout/>
+			<focusedlayout/>
+			<content limit="4" sortby="random">$PARAM[content]</content>
+		</control>
+	</include>
 	<include name="HiddenHomeLists">
 		<!-- Emby Home Menu Paths -->
 		<include content="EmbyHiddenHomeListTemplate">
@@ -220,47 +228,41 @@
 			<param name="nr" value="6"/>
 		</include>
 		<!-- Library -->
-		<control type="list" id="51">
-			<include>HiddenObject</include>
-			<itemlayout/>
-			<focusedlayout/>
-			<content limit="4" sortby="random">videodb://movies/titles/</content>
-		</control>
-		<control type="list" id="52">
-			<include>HiddenObject</include>
-			<itemlayout/>
-			<focusedlayout/>
-			<content limit="4" sortby="random">videodb://tvshows/titles/</content>
-		</control>
-		<control type="list" id="53">
-			<include>HiddenObject</include>
-			<itemlayout/>
-			<focusedlayout/>
-			<content limit="4" sortby="random">pvr://channels/tv/*</content>
-		</control>
-		<control type="list" id="54">
-			<include>HiddenObject</include>
-			<itemlayout/>
-			<focusedlayout/>
-			<content limit="4" sortby="random">musicdb://albums/</content>
-		</control>
-		<control type="list" id="55">
-			<include>HiddenObject</include>
-			<itemlayout/>
-			<focusedlayout/>
-			<content limit="4" sortby="random">addons://user/all</content>
-		</control>
-		<control type="list" id="56">
-			<include>HiddenObject</include>
-			<itemlayout/>
-			<focusedlayout/>
-			<content limit="1" sortby="random">pvr://channels/tv/*?view=lastplayed</content>
-		</control>
-		<control type="list" id="57">
-			<include>HiddenObject</include>
-			<itemlayout/>
-			<focusedlayout/>
-			<content limit="4" sortby="random">videodb://musicvideos/titles/</content>
-		</control>
+		<include condition="Library.HasContent(movies)" content="LibraryHomeListTemplate">
+			<param name="id" value="51"/>
+			<param name="content" value="videodb://movies/titles/"/>
+		</include>
+		<include condition="!Library.HasContent(movies) + System.HasAddon(plugin.video.embycon)" content="LibraryHomeListTemplate">
+			<param name="id" value="51"/>
+			<param name="content" value="plugin://plugin.video.embycon/?item_type=Movie&amp;media_type=Movies&amp;mode=SHOW_CONTENT"/>
+		</include>
+		<include condition="Library.HasContent(tvshows)" content="LibraryHomeListTemplate">
+			<param name="id" value="52"/>
+			<param name="content" value="videodb://tvshows/titles/"/>
+		</include>
+		<include condition="!Library.HasContent(tvshows) + System.HasAddon(plugin.video.embycon)" content="LibraryHomeListTemplate">
+			<param name="id" value="52"/>
+			<param name="content" value="plugin://plugin.video.embycon/?item_type=Series&amp;media_type=tvshows&amp;mode=SHOW_CONTENT"/>
+		</include>
+		<include content="LibraryHomeListTemplate">
+			<param name="id" value="53"/>
+			<param name="content" value="pvr://channels/tv/*"/>
+		</include>
+		<include content="LibraryHomeListTemplate">
+			<param name="id" value="54"/>
+			<param name="content" value="musicdb://albums/"/>
+		</include>
+		<include content="LibraryHomeListTemplate">
+			<param name="id" value="55"/>
+			<param name="content" value="addons://user/all"/>
+		</include>
+		<include content="LibraryHomeListTemplate">
+			<param name="id" value="56"/>
+			<param name="content" value="pvr://channels/tv/*?view=lastplayed"/>
+		</include>
+		<include content="LibraryHomeListTemplate">
+			<param name="id" value="57"/>
+			<param name="content" value="videodb://musicvideos/titles/"/>
+		</include>
 	</include>
 </includes>
