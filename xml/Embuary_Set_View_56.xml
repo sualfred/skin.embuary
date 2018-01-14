@@ -42,13 +42,18 @@
 						<!-- small meta -->
 						<control type="group">
 							<height>40</height>
+							<include>MetaSetInfos</include>
+							<visible>Container.Content(sets)</visible>
+						</control>
+						<control type="group">
+							<height>40</height>
 							<include>MetaShowInfos</include>
 							<visible>Container.Content(tvshows)</visible>
 						</control>
 						<control type="group">
 							<height>40</height>
 							<include>MetaMovieInfos</include>
-							<visible>!Container.Content(tvshows)</visible>
+							<visible>!Container.Content(tvshows) + !Container.Content(sets)</visible>
 						</control>
 						<!-- buttons -->
 						<control type="grouplist" id="100">
@@ -84,13 +89,14 @@
 								<ondown>SetFocus(50)</ondown>
 							</control>
 							<control type="button" id="56103">
-								<visible>!String.IsEmpty(ListItem.Plot)</visible>
+								<visible>!String.IsEmpty(ListItem.Plot) | !String.IsEmtpy(Window(home).Property(SkinHelper.ListItem.Plot))</visible>
 								<include>LightGreyButton</include>
 								<width>70</width>
 								<height>50</height>
 								<font>material24</font>
 								<label></label>
-								<onclick>RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCINFO[ListItem.Plot]')</onclick>
+								<onclick condition="!String.IsEqual(ListItem.DBType,set)">RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCINFO[ListItem.Plot]')</onclick>
+								<onclick condition="String.IsEqual(ListItem.DBType,set)">RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCINFO[Window(home).Property(SkinHelper.ListItem.ExtendedPlot)]')</onclick>
 								<onup>SetFocus(6666)</onup>
 								<ondown>SetFocus(50)</ondown>
 							</control>
@@ -115,7 +121,7 @@
 							<height max="130">auto</height>
 							<align>justify</align>
 							<aligny>top</aligny>
-							<label>$INFO[ListItem.Tagline,[B],[/B][CR]]$INFO[ListItem.Plot]</label>
+							<label>$VAR[SetViewPlot]</label>
 							<font>Light24</font>
 							<shadowcolor>text_shadow</shadowcolor>
 							<autoscroll>false</autoscroll>
@@ -131,7 +137,7 @@
 				</control>
 				<control type="group">
 					<top>524</top>
-					<!-- movies -->
+					<!-- movies / sets -->
 					<include content="PosterWidget">
 						<param name="id" value="56"/>
 						<param name="onup" value="100"/>
@@ -140,24 +146,37 @@
 						<param name="sublabel" value=""/>
 						<param name="use_custom_content" value="false"/>
 						<param name="height">553</param>
-						<param name="content_visibility">[Container.Content(movies) | Container.Content(tvshows)] + !String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres)</param>
+						<param name="content_visibility">[Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets)] + !String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres)</param>
 						<param name="list_name">$LOCALIZE[20434]</param>
 					</include>
 				</control>
 			</control>
 			<!-- Cast -->
 			<include content="CastWidget">
+				<param name="visible" value="Container.Content(movies) | Container.Content(tvshows)"/>
 				<param name="id" value="200"/>
 				<param name="onup" value="56"/>
-				<param name="ondown" value="SetProperty(BounceDown,1,home)"/>
+				<param name="ondown" value="201"/>
 				<param name="onback" value="56"/>
 				<param name="mainlabel" value="$INFO[ListItem.Label]"/>
 				<param name="sublabel" value="$INFO[ListItem.Label2]"/>
 				<param name="headline" value="$LOCALIZE[206]"/>
-				<param name="content_visibility">Container.Content(movies) | Container.Content(tvshows)</param>
 				<param name="content" value="$VAR[View_Cast_Content]"/>
 				<param name="use_custom_onclick" value="true"/>
 				<param name="onclick">RunScript(script.extendedinfo,info=extendedactorinfo,name=$INFO[ListItem.Label])</param>
+			</include>
+			<!-- Set movies -->
+			<include content="PosterWidget">
+				<param name="visible" value="Container.Content(sets)"/>
+				<param name="force_visible" value="true"/>
+				<param name="id" value="201"/>
+				<param name="onup" value="200"/>
+				<param name="ondown" value="SetProperty(BounceDown,1,home)"/>
+				<param name="onback" value="56"/>
+				<param name="mainlabel" value="$INFO[ListItem.Label]"/>
+				<param name="sublabel" value="$INFO[ListItem.Year]"/>
+				<param name="headline" value="$LOCALIZE[31192]"/>
+				<param name="content" value="$INFO[ListItem.FolderPath]"/>
 			</include>
 		</control>
 	</include>

@@ -3,7 +3,7 @@
 	<!-- Landscape -->
 	<include name="WideWidget">
 		<param name="visible">true</param>
-		<param name="content_visibility">true</param>
+		<param name="content_visible">true</param>
 		<param name="headline">$LOCALIZE[416]</param>
 		<param name="mainlabel">$VAR[MainListLabel]</param>
 		<param name="sublabel">$VAR[SubListLabel]</param>
@@ -43,7 +43,7 @@
 						<include content="WidgetLoadingSpinner"/>
 					</control>
 					<control type="fixedlist" id="$PARAM[id]">
-						<visible>$PARAM[content_visibility]</visible>
+						<visible>$PARAM[content_visible]</visible>
 						<movement>3</movement>
 						<top>30</top>
 						<width>1920</width>
@@ -109,7 +109,8 @@
 	<!-- Poster -->	
 	<include name="PosterWidget">
 		<param name="visible">true</param>
-		<param name="content_visibility">true</param>
+		<param name="force_visible">false</param>
+		<param name="content_visible">true</param>
 		<param name="headline">$LOCALIZE[416]</param>
 		<param name="mainlabel">$VAR[MainListLabel]</param>
 		<param name="sublabel">$VAR[SubListLabel]</param>
@@ -119,7 +120,7 @@
 		<definition>
 			<control type="group">
 				<visible>$PARAM[visible]</visible>
-				<visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</visible>
+				<visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating | $PARAM[force_visible]</visible>
 				<width>1920</width>
 				<height>$PARAM[height]</height>
 				<control type="group">
@@ -149,7 +150,7 @@
 						<include content="WidgetLoadingSpinner"/>
 					</control>
 					<control type="fixedlist" id="$PARAM[id]">
-						<visible>$PARAM[content_visibility]</visible>
+						<visible>$PARAM[content_visible]</visible>
 						<movement>6</movement>
 						<top>30</top>
 						<width>1920</width>
@@ -164,6 +165,7 @@
 						<onright>SetProperty(BounceRight,1,home)</onright>
 						<onright>noop</onright>
 						<onleft>900</onleft>
+						<oninfo condition="String.IsEqual(ListItem.DBType,set)">RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCINFO[Window(home).Property(SkinHelper.ListItem.ExtendedPlot)]')</oninfo>
 						<include condition="$PARAM[use_custom_onclick]" content="ContainerOnClick">
 							<param name="onclick" value="$PARAM[onclick]"/>
 						</include>
@@ -216,7 +218,7 @@
 	<!-- Cast -->	
 	<include name="CastWidget">
 		<param name="visible">true</param>
-		<param name="content_visibility">true</param>
+		<param name="content_visible">true</param>
 		<param name="visible_scrollbar">false</param>
 		<param name="headline">$LOCALIZE[416]</param>
 		<param name="mainlabel">$VAR[MainListLabel]</param>
@@ -270,7 +272,7 @@
 						</control>
 					</control>
 					<control type="fixedlist" id="$PARAM[id]">
-						<visible>$PARAM[content_visibility]</visible>
+						<visible>$PARAM[content_visible]</visible>
 						<movement>6</movement>
 						<top>30</top>						
 						<width>1920</width>
@@ -394,7 +396,7 @@
 	<!-- Square -->
 	<include name="SquareWidget">
 		<param name="visible">true</param>
-		<param name="content_visibility">true</param>
+		<param name="content_visible">true</param>
 		<param name="headline">$LOCALIZE[416]</param>
 		<param name="mainlabel">$VAR[MainListLabel]</param>
 		<param name="sublabel">$VAR[SubListLabel]</param>
@@ -434,7 +436,7 @@
 						<include content="WidgetLoadingSpinner"/>
 					</control>
 					<control type="fixedlist" id="$PARAM[id]">
-						<visible>$PARAM[content_visibility]</visible>
+						<visible>$PARAM[content_visible]</visible>
 						<movement>5</movement>
 						<top>30</top>
 						<width>1920</width>

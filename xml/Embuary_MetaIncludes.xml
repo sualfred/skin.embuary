@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+	<!-- Set -->
+	<include name="MetaSetInfos">
+		<param name="width">1040</param>
+		<definition>
+			<control type="grouplist">
+				<height>40</height>
+				<width>$PARAM[width]</width>
+				<itemgap>5</itemgap>
+				<orientation>horizontal</orientation>
+				<control type="label">
+					<label>$INFO[Window(home).Property(SkinHelper.ListItem.Year)]   </label>
+					<include>MetaLabel</include>
+					<visible>!String.IsEmpty(Window(home).Property(SkinHelper.ListItem.Year))</visible>
+				</control>
+				<control type="label">
+					<label>$INFO[Container(201).NumItems,, $LOCALIZE[36901]]   </label>
+					<include>MetaLabel</include>
+					<visible>!String.IsEmpty(Container(201).NumItems) + !String.IsEqual(Container(201).NumItems,0)</visible>
+				</control>
+				<control type="label">
+					<label>$INFO[Window(home).Property(SkinHelper.ListItem.Runtime),, $LOCALIZE[31089]]   </label>
+					<include>MetaLabel</include>
+					<visible>!String.IsEmpty(Window(home).Property(SkinHelper.ListItem.Runtime))</visible>
+				</control>
+			</control>
+		</definition>
+	</include>
 	<!-- Movie -->
 	<include name="MetaMovieInfos">
 		<param name="width">1040</param>
@@ -847,11 +874,22 @@
 				<visible>$PARAM[visible]</visible>
 				<visible>!String.IsEmpty($PARAM[type].Genre) | !String.IsEmpty($PARAM[type].Director)</visible>
 			</control>
+			<control type="label">
+				<width>auto</width>
+				<height>40</height>
+				<label>[CAPITALIZE]$LOCALIZE[31189][/CAPITALIZE]</label>
+				<font>reg22</font>
+				<textcolor>emby</textcolor>
+				<shadowcolor>text_shadow</shadowcolor>
+				<visible>$PARAM[visible]</visible>
+				<visible>String.IsEqual(ListItem.DBType,set)</visible>
+			</control>
 		</definition>
 	</include>
 	<!-- Flags -->
 	<include name="MetaFlags">
 		<param name="type">MediaFlags</param>
+		<param name="visible">true</param>
 		<definition>
 			<control type="grouplist">
 				<animation effect="slide" time="0" end="-2,0" condition="true">Conditional</animation>
@@ -860,6 +898,7 @@
 				<itemgap>5</itemgap>
 				<width>1040</width>
 				<include>$PARAM[type]</include>
+				<visible>$PARAM[visible]</visible>
 			</control>
 		</definition>
 	</include>
