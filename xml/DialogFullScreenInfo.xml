@@ -2,6 +2,7 @@
 <window>
 	<defaultcontrol always="true">100</defaultcontrol>
 	<onload condition="VideoPlayer.Content(musicvideos)">close</onload>
+	<onload condition="String.IsEqual(VideoPlayer.Title,stream) + String.Contains(Player.Filenameandpath,/emby/videos/)">close</onload>
 	<controls>
 		<!-- Content -->
 		<include condition="[VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)]">VideoPVRInfoLayout</include>
