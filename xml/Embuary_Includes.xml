@@ -969,7 +969,7 @@
 			<label>• $LOCALIZE[15021]</label>
 			<label2>$INFO[Skin.String(User$PARAM[type]Widget$PARAM[id]_target)]</label2>
 			<enable>Skin.HasSetting(User$PARAM[type]Widget$PARAM[id])</enable>
-			<visible>Skin.HasSetting(User$PARAM[type]Widget$PARAM[id])</visible>
+			<visible>Skin.HasSetting(User$PARAM[type]Widget$PARAM[id]) + !String.IsEmpty(Skin.String(User$PARAM[type]Widget$PARAM[id]_path))</visible>
 		</control>
 		<control type="button" id="$PARAM[section]$PARAM[id]4">
 			<textcolor>emby</textcolor>
@@ -979,7 +979,7 @@
 			<label>• $LOCALIZE[21864]</label>
 			<label2>$INFO[Skin.String(User$PARAM[type]Widget$PARAM[id]_name)]</label2>
 			<enable>Skin.HasSetting(User$PARAM[type]Widget$PARAM[id])</enable>
-			<visible>Skin.HasSetting(User$PARAM[type]Widget$PARAM[id])</visible>
+			<visible>Skin.HasSetting(User$PARAM[type]Widget$PARAM[id]) + !String.IsEmpty(Skin.String(User$PARAM[type]Widget$PARAM[id]_path))</visible>
 		</control>
 		<control type="button" id="$PARAM[section]$PARAM[id]5">
 			<textcolor>emby</textcolor>
@@ -989,7 +989,7 @@
 			<label>• $LOCALIZE[31101]</label>
 			<label2>$INFO[Skin.String(User$PARAM[type]Widget$PARAM[id]_layout.label)]</label2>
 			<enable>Skin.HasSetting(User$PARAM[type]Widget$PARAM[id])</enable>
-			<visible>Skin.HasSetting(User$PARAM[type]Widget$PARAM[id])</visible>
+			<visible>Skin.HasSetting(User$PARAM[type]Widget$PARAM[id]) + !String.IsEmpty(Skin.String(User$PARAM[type]Widget$PARAM[id]_path))</visible>
 		</control>
 	</include>
 	<include name="EmbyHomeMenuSettingsTemplate">
@@ -1028,7 +1028,7 @@
 				<label>• $LOCALIZE[21899]</label>
 				<label2>$INFO[Skin.String(User$PARAM[type]Hub$PARAM[id]_name)]</label2>
 				<enable>Skin.HasSetting(User$PARAM[type]Hub$PARAM[id])</enable>
-				<visible>Skin.HasSetting(User$PARAM[type]Hub$PARAM[id])</visible>
+				<visible>Skin.HasSetting(User$PARAM[type]Hub$PARAM[id]) + !String.IsEmpty(Skin.String(User$PARAM[type]Hub$PARAM[id]_path))</visible>
 			</control>
 			<control type="button" id="$PARAM[section]$PARAM[id]4">
 				<textcolor>emby</textcolor>
@@ -1038,7 +1038,7 @@
 				<label>• $LOCALIZE[15021]</label>
 				<label2>$INFO[Skin.String(User$PARAM[type]Hub$PARAM[id]_target)]</label2>
 				<enable>Skin.HasSetting(User$PARAM[type]Hub$PARAM[id]) + String.StartsWith(Skin.String(User$PARAM[type]Hub$PARAM[id]_action),ActivateWindow)</enable>
-				<visible>Skin.HasSetting(User$PARAM[type]Hub$PARAM[id])</visible>
+				<visible>Skin.HasSetting(User$PARAM[type]Hub$PARAM[id]) + !String.IsEmpty(Skin.String(User$PARAM[type]Hub$PARAM[id]_path))</visible>
 			</control>
 		</definition>
 	</include>
