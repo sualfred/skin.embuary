@@ -944,7 +944,7 @@
 		<onclick condition="System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideEmbyConHubButtons)">SetProperty(Dialog.4.BuiltIn,ActivateWindow(videos,plugin://plugin.video.embycon/?item_type=Episode&amp;mode=NEW_SEARCH))</onclick>
 		<onclick condition="System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideEmbyConHubButtons)">RunScript(script.toolbox,info=selectdialog,header=$LOCALIZE[137])</onclick> 
 	</include>
-	<include name="CustomWidgetTemplate">
+	<include name="CustomWidgetTemplate2">
 		<control type="radiobutton" id="$PARAM[section]$PARAM[id]1">
 			<include>SettingsButton</include>
 			<onclick>Skin.ToggleSetting(User$PARAM[type]Widget$PARAM[id])</onclick>
@@ -972,6 +972,54 @@
 			<visible>Skin.HasSetting(User$PARAM[type]Widget$PARAM[id])</visible>
 		</control>
 		<control type="button" id="$PARAM[section]$PARAM[id]4">
+			<textcolor>emby</textcolor>
+			<texturenofocus colordiffuse="33000000">common/white.jpg</texturenofocus>
+			<include>SettingsButton</include>
+			<onclick>RunScript(script.skin.helper.service,action=setskinsetting,setting=User$PARAM[type]Widget$PARAM[id]_layout,header=$LOCALIZE[31099])</onclick>
+			<label>• $LOCALIZE[31101]</label>
+			<label2>$INFO[Skin.String(User$PARAM[type]Widget$PARAM[id]_layout.label)]</label2>
+			<enable>Skin.HasSetting(User$PARAM[type]Widget$PARAM[id])</enable>
+			<visible>Skin.HasSetting(User$PARAM[type]Widget$PARAM[id])</visible>
+		</control>
+	</include>
+	<include name="CustomWidgetTemplate">
+		<control type="radiobutton" id="$PARAM[section]$PARAM[id]1">
+			<include>SettingsButton</include>
+			<onclick>Skin.ToggleSetting(User$PARAM[type]Widget$PARAM[id])</onclick>
+			<selected>Skin.HasSetting(User$PARAM[type]Widget$PARAM[id])</selected>
+			<label>$LOCALIZE[31100] #$PARAM[id]</label>
+		</control>
+		<control type="button" id="$PARAM[section]$PARAM[id]2">
+			<textcolor>emby</textcolor>
+			<texturenofocus colordiffuse="33000000">common/white.jpg</texturenofocus>
+			<include>SettingsButton</include>
+			<onclick>RunScript(script.skinshortcuts,type=shortcuts&amp;showNone=True&amp;custom=True&amp;grouping=embuary&amp;skinLabel=User$PARAM[type]Widget$PARAM[id]_name&amp;skinAction=UserUser$PARAM[type]Widget$PARAM[id]_action&amp;skinList=User$PARAM[type]Widget$PARAM[id]_path)</onclick>
+			<label>• $LOCALIZE[573]</label>
+			<label2>$INFO[Skin.String(User$PARAM[type]Widget$PARAM[id]_path)]</label2>
+			<enable>Skin.HasSetting(User$PARAM[type]Widget$PARAM[id])</enable>
+			<visible>Skin.HasSetting(User$PARAM[type]Widget$PARAM[id])</visible>
+		</control>
+		<control type="button" id="$PARAM[section]$PARAM[id]3">
+			<textcolor>emby</textcolor>
+			<texturenofocus colordiffuse="33000000">common/white.jpg</texturenofocus>
+			<include>SettingsButton</include>
+			<onclick>RunScript(script.skin.helper.service,action=setskinsetting,setting=User$PARAM[type]Widget$PARAM[id]_target,header=$LOCALIZE[15021])</onclick>
+			<label>• $LOCALIZE[15021]</label>
+			<label2>$INFO[Skin.String(User$PARAM[type]Widget$PARAM[id]_target)]</label2>
+			<enable>Skin.HasSetting(User$PARAM[type]Widget$PARAM[id])</enable>
+			<visible>Skin.HasSetting(User$PARAM[type]Widget$PARAM[id])</visible>
+		</control>
+		<control type="button" id="$PARAM[section]$PARAM[id]4">
+			<textcolor>emby</textcolor>
+			<texturenofocus colordiffuse="33000000">common/white.jpg</texturenofocus>
+			<include>SettingsButton</include>
+			<onclick>Skin.SetString(User$PARAM[type]Widget$PARAM[id]_name)</onclick>
+			<label>• $LOCALIZE[21864]</label>
+			<label2>$INFO[Skin.String(User$PARAM[type]Widget$PARAM[id]_name)]</label2>
+			<enable>Skin.HasSetting(User$PARAM[type]Widget$PARAM[id])</enable>
+			<visible>Skin.HasSetting(User$PARAM[type]Widget$PARAM[id])</visible>
+		</control>
+		<control type="button" id="$PARAM[section]$PARAM[id]5">
 			<textcolor>emby</textcolor>
 			<texturenofocus colordiffuse="33000000">common/white.jpg</texturenofocus>
 			<include>SettingsButton</include>
