@@ -43,7 +43,7 @@
 						<control type="group">
 							<height>40</height>
 							<include>MetaSetInfos</include>
-							<visible>Container.Content(sets)</visible>
+							<visible>Container.Content(sets) | String.IsEqual(ListItem.DBType,set)</visible>
 						</control>
 						<control type="group">
 							<height>40</height>
@@ -53,7 +53,7 @@
 						<control type="group">
 							<height>40</height>
 							<include>MetaMovieInfos</include>
-							<visible>!Container.Content(tvshows) + !Container.Content(sets)</visible>
+							<visible>!Container.Content(tvshows) + !Container.Content(sets) + !String.IsEqual(ListItem.DBType,set)</visible>
 						</control>
 						<!-- buttons -->
 						<control type="grouplist" id="100">
@@ -153,7 +153,7 @@
 			</control>
 			<!-- Cast -->
 			<include content="CastWidget">
-				<param name="visible" value="Container.Content(movies) | Container.Content(tvshows)"/>
+				<param name="visible" value="[Container.Content(movies) | Container.Content(tvshows)] + !String.IsEqual(ListItem.DBType,set)"/>
 				<param name="id" value="200"/>
 				<param name="onup" value="56"/>
 				<param name="ondown" value="201"/>
@@ -167,7 +167,7 @@
 			</include>
 			<!-- Set movies -->
 			<include content="PosterWidget">
-				<param name="visible" value="Container.Content(sets)"/>
+				<param name="visible" value="Container.Content(sets) | String.IsEqual(ListItem.DBType,set)"/>
 				<param name="force_visible" value="true"/>
 				<param name="id" value="201"/>
 				<param name="onup" value="200"/>
