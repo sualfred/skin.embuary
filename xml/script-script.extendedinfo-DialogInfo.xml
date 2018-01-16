@@ -26,7 +26,7 @@
 				<!-- Meta -->
 				<control type="group">
 					<top>128</top>
-					<height>475</height>
+					<height>476</height>
 					<width>1920</width>
 					<!-- poster -->
 					<include>MetaExtendedInfoActor</include>
@@ -112,12 +112,35 @@
 				<include content="PosterWidget">
 					<param name="id" value="250"/>
 					<param name="onup" value="150"/>
-					<param name="ondown" value="SetProperty(BounceDown,1,home)"/>
+					<param name="ondown" value="450"/>
 					<param name="onback" value="100"/>
 					<param name="headline" value="$LOCALIZE[36903]"/>
 					<param name="mainlabel" value="$INFO[ListItem.Label]"/>
 					<param name="sublabel" value="$INFO[ListItem.Year]"/>
 					<param name="use_custom_content" value="false"/>
+				</include>
+				<!-- images -->
+				<include content="PosterWidget">
+					<param name="id" value="450"/>
+					<param name="onup" value="250"/>
+					<param name="ondown" value="750"/>
+					<param name="onback" value="100"/>
+					<param name="headline" value="$LOCALIZE[1]"/>
+					<param name="mainlabel" value="$INFO[ListItem.ID]"/>
+					<param name="sublabel" value="$INFO[ListItem.Year]"/>
+					<param name="use_custom_content" value="false"/>
+					<param name="height" value="516"/>
+				</include>
+				<!-- fanart -->
+				<include content="WideWidget">
+					<param name="id" value="750"/>
+					<param name="onup" value="450"/>
+					<param name="ondown" value="SetProperty(BounceDown,1,home)"/>
+					<param name="onback" value="100"/>
+					<param name="headline" value="$LOCALIZE[20445]"/>
+					<param name="mainlabel" value="$INFO[ListItem.Label]"/>
+					<param name="use_custom_content" value="false"/>
+					<param name="height" value="448"/>
 				</include>
 			</control>
 		</control>

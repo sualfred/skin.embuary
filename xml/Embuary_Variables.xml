@@ -244,6 +244,7 @@
 		<value condition="!String.IsEmpty(Window(home).Property(ArtistDBID)) + Window.IsVisible(music)">musicdb://songs/?artistid=$INFO[Window(home).Property(ArtistDBID)]</value>
 	</variable>
 	<variable name="BackgroundSource">
+		<value condition="Window.IsVisible(script-script.extendedinfo-DialogInfo.xml)">$INFO[Container(750).ListItemAbsolute(0).Icon]</value>
 		<value condition="Window.IsVisible(weather) + !String.IsEmpty(Weather.Temperature)">weather/background/$INFO[Weather.fanartcode].jpg</value>
 		<value condition="Skin.HasSetting(ShowStaticBackgroundImage) + !String.IsEmpty(Skin.String(StaticBackgroundImage))">$INFO[Skin.String(StaticBackgroundImage)]</value>
 		<value condition="[Window.IsVisible(script-NextAired-TVGuide2.xml) | Window.IsVisible(script-NextAired-TVGuide.xml)] + !String.IsEmpty(Window(home).Property(TVGuide.BackgroundFanart)) + Control.HasFocus(200)">$INFO[Container(200).ListItem.Property(Fanart)]</value>
