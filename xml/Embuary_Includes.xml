@@ -1115,4 +1115,50 @@
 			</control>
 		</control>
 	</include>
+	<include name="SmallSelectDialogItem">
+		<param name="container">3</param>
+		<definition>
+			<control type="group">
+				<visible>!String.IsEmpty(Container($PARAM[container]).ListItemPosition($PARAM[id]).Label)</visible>
+				<width>100%</width>
+				<height>50</height>
+				<control type="image">
+					<width>100%</width>
+					<height>50</height>
+					<texture border="10" colordiffuse="panel_hover">common/menu_back.png</texture>
+					<visible>Container($PARAM[container]).Position($PARAM[id]) + Control.HasFocus($PARAM[container])</visible>
+				</control>
+				<control type="image">
+					<width>100%</width>
+					<height>50</height>
+					<texture border="10" colordiffuse="panel">common/menu_back.png</texture>
+					<visible>!Container($PARAM[container]).Position($PARAM[id]) | !Control.HasFocus($PARAM[container])</visible>
+				</control>
+				<control type="label">
+					<width>100%</width>
+					<height>50</height>
+					<align>left</align>
+					<aligny>center</aligny>
+					<textoffsetx>20</textoffsetx>
+					<font>med22</font>
+					<textcolor>text_white</textcolor>
+					<textshadow>text_shadow</textshadow>
+					<label>$INFO[Container($PARAM[container]).ListItemPosition($PARAM[id]).Label]</label>
+					<visible>!Container($PARAM[container]).ListItemPosition($PARAM[id]).IsSelected</visible>
+				</control>
+				<control type="label">
+					<width>100%</width>
+					<height>50</height>
+					<align>left</align>
+					<aligny>center</aligny>
+					<textoffsetx>20</textoffsetx>
+					<font>med22</font>
+					<textcolor>selected</textcolor>
+					<textshadow>text_shadow</textshadow>
+					<label>$INFO[Container($PARAM[container]).ListItemPosition($PARAM[id]).Label]</label>
+					<visible>Container($PARAM[container]).ListItemPosition($PARAM[id]).IsSelected</visible>
+				</control>
+			</control>
+		</definition>
+	</include>
 </includes>
