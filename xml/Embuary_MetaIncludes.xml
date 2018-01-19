@@ -611,14 +611,25 @@
 						<label>$VAR[MainListLabel]</label>
 						<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
 					</control>
-					<control type="image">
-						<width>590</width>
-						<height>332</height>
-						<texture diffuse="items/mask_wide_db.png" background="true">$INFO[ListItem.Icon]</texture>
-						<fadetime>200</fadetime>
-						<aspectratio scalediffuse="false">keep</aspectratio>
-						<bordersize>20</bordersize>
+					<control type="group">
 						<visible>!String.StartsWith(ListItem.Icon,Default) + String.StartsWith(ListItem.Path,pvr://)</visible>
+						<control type="image">
+							<width>590</width>
+							<height>332</height>
+							<texture diffuse="items/mask_wide_db.png" background="true">$INFO[ListItem.Icon]</texture>
+							<fadetime>200</fadetime>
+							<aspectratio scalediffuse="false">keep</aspectratio>
+							<bordersize>20</bordersize>
+							<visible>String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)</visible>
+						</control>
+						<control type="image">
+							<width>590</width>
+							<height>332</height>
+							<texture diffuse="items/mask_wide_db.png" background="true">$INFO[ListItem.Icon]</texture>
+							<fadetime>200</fadetime>
+							<aspectratio scalediffuse="false">keep</aspectratio>							
+							<visible>![String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)]</visible>
+						</control>
 					</control>
 					<control type="image">
 						<width>590</width>
