@@ -357,10 +357,14 @@
 	<variable name="RightListLabel">
 		<value condition="Window.IsVisible(addonbrowser)">$INFO[ListItem.Label2]</value>
 		<value condition="!String.IsEmpty(ListItem.Duration)">$VAR[DurationMinutes]</value>
+		<value condition="String.IsEqual(ListItem.DBType,album)">$INFO[ListItem.Year]</value>
+		<value condition="Container.Content(albums)">$INFO[ListItem.Year]</value>
 		<value condition="Container.Content(tvshows) + !String.IsEmpty(ListItem.Property(TotalEpisodes))">$INFO[ListItem.Property(TotalEpisodes),, $LOCALIZE[20453]]</value>
 	</variable>
 	<variable name="RightListLabel2">
 		<value condition="Container.Content(tvshows) + !String.IsEmpty(ListItem.Property(TotalSeasons))">$INFO[ListItem.Property(TotalSeasons),, $LOCALIZE[36905]]</value>
+		<value condition="String.IsEqual(ListItem.DBType,album)">$INFO[ListItem.Genre]</value>
+		<value condition="Container.Content(albums)">$INFO[ListItem.Genre]</value>
 	</variable>
 	<variable name="VisibleContainer">
 		<value condition="Control.IsVisible(50)">50</value>
