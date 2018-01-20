@@ -105,7 +105,7 @@
 							<param name="nr" value="6"/>
 						</include>
 						<control type="button" id="198">
-							<visible>Library.HasContent(movies) + !Skin.HasSetting(HideMovieHubSearchButton)</visible>
+							<visible>[Library.HasContent(movies) | [!Skin.HasSetting(HideEmbyConHubButtons) + System.HasAddon(plugin.video.embycon)]] + !Skin.HasSetting(HideMovieHubSearchButton)</visible>
 							<label>$LOCALIZE[137]</label>
 							<include>search_action</include>
 							<onup>6666</onup>
