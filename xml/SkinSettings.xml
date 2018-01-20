@@ -267,6 +267,21 @@
 							</control>
 							<control type="radiobutton" id="221">
 								<include>SettingsButton</include>
+								<onclick>Skin.ToggleSetting(CustomDeviceName)</onclick>
+								<selected>Skin.HasSetting(CustomDeviceName)</selected>
+								<label>$LOCALIZE[31117]</label>
+							</control>
+							<control type="button" id="222">
+								<textcolor>emby</textcolor>
+								<texturenofocus colordiffuse="33000000">common/white.jpg</texturenofocus>
+								<include>SettingsButton</include>
+								<onclick>Skin.SetString(CustomDeviceName_label)</onclick>
+								<label>• $LOCALIZE[21899]</label>
+								<label2>$VAR[HeaderCustomDeviceName]</label2>
+								<visible>Skin.HasSetting(CustomDeviceName)</visible>
+							</control>
+							<control type="radiobutton" id="223">
+								<include>SettingsButton</include>
 								<onclick>Skin.ToggleSetting(HideHeaderWeather)</onclick>
 								<selected>!Skin.HasSetting(HideHeaderWeather)</selected>
 								<label>$LOCALIZE[31110]</label>
@@ -309,21 +324,6 @@
 								<shadowcolor>text_shadow</shadowcolor>
 								<aligny>center</aligny>
 								<label>$LOCALIZE[31001]</label>
-							</control>
-							<control type="radiobutton" id="231">
-								<include>SettingsButton</include>
-								<onclick>Skin.ToggleSetting(CustomDeviceName)</onclick>
-								<selected>Skin.HasSetting(CustomDeviceName)</selected>
-								<label>$LOCALIZE[31117]</label>
-							</control>
-							<control type="button" id="232">
-								<textcolor>emby</textcolor>
-								<texturenofocus colordiffuse="33000000">common/white.jpg</texturenofocus>
-								<include>SettingsButton</include>
-								<onclick>Skin.SetString(CustomDeviceName_label)</onclick>
-								<label>• $LOCALIZE[21899]</label>
-								<label2>$VAR[HeaderCustomDeviceName]</label2>
-								<visible>Skin.HasSetting(CustomDeviceName)</visible>
 							</control>
 							<control type="radiobutton" id="233">
 								<include>SettingsButton</include>
