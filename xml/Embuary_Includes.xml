@@ -77,12 +77,25 @@
 				<visible>Player.HasAudio + !Skin.HasSetting(HideBackgroundPlayback) + $EXP[HideBackground]</visible>
 				<include>MusicBackground</include>
 			</control>
-			<control type="image">
-				<include>FullscreenDimensions</include>
-				<texture>$VAR[BackgroundSource]</texture>
-				<fadetime>1000</fadetime>
-				<aspectratio>scale</aspectratio>
+			<control type="group">				
 				<visible>[!Player.HasMedia | Skin.HasSetting(HideBackgroundPlayback)] + !Skin.HasSetting(HideBackground) + !Window.IsVisible(MyPVRguide.xml) + $EXP[HideBackground]</visible>
+				<control type="image">
+					<include>FullscreenDimensions</include>
+					<texture>$VAR[BackgroundSource]</texture>
+					<fadetime>1000</fadetime>
+					<aspectratio>scale</aspectratio>
+					<visible>!Skin.HasSetting(ShowRandomBackgroundImage)</visible>
+				</control>
+				<control type="multiimage">
+					<include>FullscreenDimensions</include>
+					<imagepath>$INFO[Skin.String(RandomBackgroundImage)]</imagepath>
+					<timeperimage>15000</timeperimage>
+					<fadetime>1000</fadetime>
+					<pauseatend>10000</pauseatend>
+					<randomize>true</randomize>
+					<aspectratio>scale</aspectratio>
+					<visible>Skin.HasSetting(ShowRandomBackgroundImage)</visible>
+				</control>
 			</control>
 			<control type="image">
 				<include>FullscreenDimensions</include>

@@ -244,6 +244,7 @@
 								<include>SettingsButton</include>
 								<onclick>Skin.ToggleSetting(ShowStaticBackgroundImage)</onclick>
 								<selected>Skin.HasSetting(ShowStaticBackgroundImage)</selected>
+								<onclick condition="Skin.HasSetting(ShowRandomBackgroundImage)">Skin.ToggleSetting(ShowRandomBackgroundImage)</onclick>
 								<label>$LOCALIZE[31104]</label>
 							</control>
 							<control type="button" id="212">
@@ -255,6 +256,23 @@
 								<label2>$INFO[Skin.String(StaticBackgroundImage)]</label2>
 								<enable>Skin.HasSetting(ShowStaticBackgroundImage)</enable>
 								<visible>Skin.HasSetting(ShowStaticBackgroundImage)</visible>
+							</control>
+							<control type="radiobutton" id="213">
+								<include>SettingsButton</include>
+								<onclick>Skin.ToggleSetting(ShowRandomBackgroundImage)</onclick>
+								<onclick condition="Skin.HasSetting(ShowStaticBackgroundImage)">Skin.ToggleSetting(ShowStaticBackgroundImage)</onclick>
+								<selected>Skin.HasSetting(ShowRandomBackgroundImage)</selected>
+								<label>$LOCALIZE[31195]</label>
+							</control>
+							<control type="button" id="214">
+								<textcolor>emby</textcolor>
+								<texturenofocus colordiffuse="33000000">common/white.jpg</texturenofocus>
+								<include>SettingsButton</include>
+								<onclick>Skin.SetPath(RandomBackgroundImage)</onclick>
+								<label>• $LOCALIZE[573]</label>
+								<label2>$INFO[Skin.String(RandomBackgroundImage)]</label2>
+								<enable>Skin.HasSetting(ShowRandomBackgroundImage)</enable>
+								<visible>Skin.HasSetting(ShowRandomBackgroundImage)</visible>
 							</control>
 							<control type="label" id="220">
 								<height>50</height>
