@@ -165,7 +165,7 @@
 						<onright>SetProperty(BounceRight,1,home)</onright>
 						<onright>noop</onright>
 						<onleft>900</onleft>
-						<oninfo condition="String.IsEqual(ListItem.DBType,set)">RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCINFO[Window(home).Property(SkinHelper.ListItem.ExtendedPlot)]')</oninfo>
+						<oninfo condition="String.IsEqual(ListItem.DBType,set) + !String.StartsWith(ListItem.Path,plugin://plugin.video)">RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCINFO[Window(home).Property(SkinHelper.ListItem.ExtendedPlot)]')</oninfo>
 						<include condition="$PARAM[use_custom_onclick]" content="ContainerOnClick">
 							<param name="onclick" value="$PARAM[onclick]"/>
 						</include>

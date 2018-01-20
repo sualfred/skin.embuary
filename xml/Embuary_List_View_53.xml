@@ -28,7 +28,7 @@
 					<pagecontrol>17</pagecontrol>
 					<scrolltime tween="sine" easing="out">400</scrolltime>
 					<preloaditems>4</preloaditems>
-					<oninfo condition="String.IsEqual(ListItem.DBType,set)">RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCINFO[Window(home).Property(SkinHelper.ListItem.ExtendedPlot)]')</oninfo>
+					<oninfo condition="String.IsEqual(ListItem.DBType,set) + !String.StartsWith(ListItem.Path,plugin://plugin.video)">RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCINFO[Window(home).Property(SkinHelper.ListItem.ExtendedPlot)]')</oninfo>
 					<itemlayout height="120" width="1160">
 						<control type="group">
 							<top>60</top>

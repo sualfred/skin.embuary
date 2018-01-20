@@ -70,7 +70,14 @@
 						<control type="button" id="105">
 							<visible>System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideEmbyConHubButtons) + !Skin.HasSetting(HideMovieHubEmbyConButton)</visible>
 							<label>$LOCALIZE[342] [COLOR FF505050](EmbyCon)[/COLOR]</label>
-							<onclick>ActivateWindow(videos,plugin://plugin.video.embycon/?item_type=Movie&amp;media_type=Movies&amp;mode=SHOW_CONTENT,return)</onclick>
+							<onclick>ActivateWindow(10025,&quot;plugin://plugin.video.embycon/?media_type=Movies&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fFields%3dDateCreated%2cEpisodeCount%2cSeasonCount%2cPath%2cGenres%2cStudios%2cEtag%2cMediaStreams%2cOverview%26Recursive%3dtrue%26IncludeItemTypes%3dMovie%26ImageTypeLimit%3d1%26format%3djson&quot;,return)</onclick>
+							<onup>6666</onup>
+							<ondown>200</ondown>
+						</control>
+						<control type="button" id="106">
+							<visible>System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideEmbyConHubButtons) + !Skin.HasSetting(HideMovieHubEmbyConButton)</visible>
+							<label>$LOCALIZE[31169] [COLOR FF505050](EmbyCon)[/COLOR]</label>
+							<onclick>ActivateWindow(10025,&quot;plugin://plugin.video.embycon/?media_type=BoxSets&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fRecursive%3dtrue%26Fields%3dDateCreated%2cEpisodeCount%2cSeasonCount%2cPath%2cGenres%2cStudios%2cEtag%2cMediaStreams%2cOverview%26IncludeItemTypes%3dBoxSet%26ImageTypeLimit%3d1%26format%3djson&quot;,return)</onclick>
 							<onup>6666</onup>
 							<ondown>200</ondown>
 						</control>

@@ -1229,7 +1229,7 @@
 		<value condition="!String.IsEmpty(Container(100).ListItem.Property(Comment))">$INFO[Container(100).ListItem.Property(Comment)]</value>
 	</variable>
 	<variable name="ListViewPlot">
-		<value condition="String.IsEqual(ListItem.DBtype,set)">$INFO[Window(home).Property(SkinHelper.ListItem.Count),[B]$LOCALIZE[342]: ,[/B][CR]]$INFO[Window(home).Property(SkinHelper.ListItem.ExtendedPlot)]</value>
+		<value condition="String.IsEqual(ListItem.DBType,set) + !String.StartsWith(ListItem.Path,plugin://plugin.video)">$INFO[Window(home).Property(SkinHelper.ListItem.Count),[B]$LOCALIZE[342]: ,[/B][CR]]$INFO[Window(home).Property(SkinHelper.ListItem.ExtendedPlot)]</value>
 		<value condition="Window.IsVisible(tvrecordings)">$INFO[ListItem.Plot]</value>
 		<value condition="!String.IsEmpty(ListItem.Property(Album_Description))">$INFO[ListItem.Property(Album_Description)]</value>
 		<value condition="!String.IsEmpty(ListItem.Property(Artist_Description))">$INFO[ListItem.Property(Artist_Description)]</value>
