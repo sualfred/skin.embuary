@@ -961,6 +961,10 @@
 	<include name="CustomWidgetTemplate">
 		<control type="radiobutton" id="$PARAM[section]$PARAM[id]1">
 			<include>SettingsButton</include>
+			<onclick condition="Skin.HasSetting(User$PARAM[type]Widget$PARAM[id])">Skin.Reset(User$PARAM[type]Widget$PARAM[id]_path)</onclick>
+			<onclick condition="Skin.HasSetting(User$PARAM[type]Widget$PARAM[id])">Skin.Reset(User$PARAM[type]Widget$PARAM[id]_target)</onclick>
+			<onclick condition="Skin.HasSetting(User$PARAM[type]Widget$PARAM[id])">Skin.Reset(User$PARAM[type]Widget$PARAM[id]_name)</onclick>
+			<onclick condition="Skin.HasSetting(User$PARAM[type]Widget$PARAM[id])">Skin.Reset(User$PARAM[type]Widget$PARAM[id]_action)</onclick>
 			<onclick>Skin.ToggleSetting(User$PARAM[type]Widget$PARAM[id])</onclick>
 			<selected>Skin.HasSetting(User$PARAM[type]Widget$PARAM[id])</selected>
 			<label>$LOCALIZE[31100] #$PARAM[id]</label>
@@ -1020,6 +1024,10 @@
 		<definition>
 			<control type="radiobutton" id="$PARAM[section]$PARAM[id]1">
 				<include>SettingsButton</include>
+				<onclick condition="Skin.HasSetting(User$PARAM[type]Hub$PARAM[id])">Skin.Reset(User$PARAM[type]Hub$PARAM[id]_path)</onclick>
+				<onclick condition="Skin.HasSetting(User$PARAM[type]Hub$PARAM[id])">Skin.Reset(User$PARAM[type]Hub$PARAM[id]_action)</onclick>
+				<onclick condition="Skin.HasSetting(User$PARAM[type]Hub$PARAM[id])">Skin.Reset(User$PARAM[type]Hub$PARAM[id]_name)</onclick>
+				<onclick condition="Skin.HasSetting(User$PARAM[type]Hub$PARAM[id])">Skin.Reset(User$PARAM[type]Hub$PARAM[id]_target)</onclick>
 				<onclick>Skin.ToggleSetting(User$PARAM[type]Hub$PARAM[id])</onclick>
 				<selected>Skin.HasSetting(User$PARAM[type]Hub$PARAM[id])</selected>
 				<label>$LOCALIZE[31151] #$PARAM[id]</label>
