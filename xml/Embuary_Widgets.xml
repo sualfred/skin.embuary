@@ -10,10 +10,11 @@
 		<param name="use_custom_content">true</param>
 		<param name="use_custom_onclick">false</param>
 		<param name="height">468</param>
+		<param name="force_visible">false</param>
 		<definition>
 			<control type="group">
 				<visible>$PARAM[visible]</visible>
-				<visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</visible>
+				<visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating | $PARAM[force_visible]</visible>
 				<width>1920</width>
 				<height>$PARAM[height]</height>
 				<control type="group">

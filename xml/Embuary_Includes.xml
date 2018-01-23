@@ -637,6 +637,7 @@
 			<onfocus condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)] + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">SetProperty(EmbyTVShowPlot,$ESCINFO[ListItem.Plot],home)</onfocus>
 			<onfocus condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)] + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">SetProperty(EmbyMPAA,$INFO[ListItem.MPAA],home)</onfocus>
 			<onfocus condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)] + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">SetProperty(EmbyGenre,$INFO[ListItem.Genre],home)</onfocus>
+			<onfocus condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)] + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">SetProperty(EmbyUnwatched,$INFO[ListItem.Property(unwatchedepisodes)],home)</onfocus>
 		</control>
 	</include>
 	<include name="WidgetSetPropertyOnFocus">
@@ -651,12 +652,12 @@
 			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow)">SetProperty(TVShowOverlay,$INFO[Container($PARAM[id]).ListItem.Overlay],home)</onfocus>
 			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow)">SetProperty(TVShowTotalSeasons,$INFO[Container($PARAM[id]).ListItem.Property(TotalSeasons)],home)</onfocus>
 			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow)">SetProperty(TVShowTotalEpisodes,$INFO[Container($PARAM[id]).ListItem.Property(TotalEpisodes)],home)</onfocus>
-
 			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow) + String.StartsWith(Container($PARAM[id]).ListItem.Path,plugin://plugin.video.embycon)">SetProperty(EmbyID,$INFO[Container($PARAM[id]).ListItem.Property(id)],home)</onfocus>
 			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow) + String.StartsWith(Container($PARAM[id]).ListItem.Path,plugin://plugin.video.embycon)">SetProperty(EmbyTVShowClearlogo,$INFO[Container($PARAM[id]).ListItem.Art(clearlogo)],home)</onfocus>
 			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow) + String.StartsWith(Container($PARAM[id]).ListItem.Path,plugin://plugin.video.embycon)">SetProperty(EmbyTVShowPlot,$ESCINFO[Container($PARAM[id]).ListItem.Plot],home)</onfocus>
 			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow) + String.StartsWith(Container($PARAM[id]).ListItem.Path,plugin://plugin.video.embycon)">SetProperty(EmbyMPAA,$INFO[Container($PARAM[id]).ListItem.MPAA],home)</onfocus>
 			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow) + String.StartsWith(Container($PARAM[id]).ListItem.Path,plugin://plugin.video.embycon)">SetProperty(EmbyGenre,$INFO[Container($PARAM[id]).ListItem.Genre],home)</onfocus>
+			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow) + String.StartsWith(Container($PARAM[id]).ListItem.Path,plugin://plugin.video.embycon)">SetProperty(EmbyUnwatched,$INFO[Container($PARAM[id]).ListItem.Property(unwatchedepisodes)],home)</onfocus>
 		</control>
 	</include>
 	<include name="UnloadSetProperties">
@@ -673,6 +674,7 @@
 		<onunload condition="Window.Next(home)">ClearProperty(EmbyTVShowPlot,home)</onunload>
 		<onunload condition="Window.Next(home)">ClearProperty(EmbyMPAA,home)</onunload>
 		<onunload condition="Window.Next(home)">ClearProperty(EmbyGenre,home)</onunload>
+		<onunload condition="Window.Next(home)">ClearProperty(EmbyUnwatched,home)</onunload>
 	</include>
 	<!-- Scrollbars -->
 	<include name="ScrollbarHorizontal">
