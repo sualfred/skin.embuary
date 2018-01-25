@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 	<include name="Season_View_54">
-		<control type="list" id="5499">
-			<include>HiddenObject</include>
-			<visible>Control.IsVisible(54)</visible>
-		</control>
 		<!-- season 54 -->
 		<control type="grouplist" id="540">
 			<include>Visible_OpenClose</include>
@@ -136,8 +132,6 @@
 			</control>
 			<!-- Next Up -->
 			<include content="WideWidget">
-				<param name="visible" value="Container.Content(seasons)"/>
-				<param name="content_visible" value="Container.Content(seasons)"/>
 				<param name="force_visible" value="Integer.IsGreater(Window(home).Property(UnwatchedEpisodes),0)"/>
 				<param name="id" value="200"/>
 				<param name="onup" value="54"/>
@@ -153,8 +147,6 @@
 			</include>
 			<!-- Cast -->
 			<include content="CastWidget">
-				<param name="visible" value="Container.Content(seasons)"/>
-				<param name="content_visible" value="Container.Content(seasons)"/>
 				<param name="id" value="300"/>
 				<param name="onup" value="200"/>
 				<param name="ondown" value="SetProperty(BounceDown,1,home)"/>
