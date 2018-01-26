@@ -141,7 +141,7 @@
 					<include content="PosterWidget">
 						<param name="id" value="56"/>
 						<param name="onup" value="100"/>
-						<param name="ondown" value="200"/>
+						<param name="ondown" value="5600"/>
 						<param name="headline" value="$VAR[ContainerContent]"/>
 						<param name="sublabel" value=""/>
 						<param name="use_custom_content" value="false"/>
@@ -154,9 +154,10 @@
 			<!-- Cast -->
 			<include content="CastWidget">
 				<param name="visible" value="[Container.Content(movies) | Container.Content(tvshows)] + !String.IsEqual(ListItem.DBType,set)"/>
-				<param name="id" value="200"/>
+				<param name="content_visible" value="[Container.Content(movies) | Container.Content(tvshows)] + !String.IsEqual(ListItem.DBType,set)"/>
+				<param name="id" value="5600"/>
 				<param name="onup" value="56"/>
-				<param name="ondown" value="201"/>
+				<param name="ondown" value="5601"/>
 				<param name="onback" value="56"/>
 				<param name="mainlabel" value="$INFO[ListItem.Label]"/>
 				<param name="sublabel" value="$INFO[ListItem.Label2]"/>
@@ -169,8 +170,8 @@
 			<include content="PosterWidget">
 				<param name="visible" value="Container.Content(sets) | String.IsEqual(ListItem.DBType,set)"/>
 				<param name="force_visible" value="true"/>
-				<param name="id" value="201"/>
-				<param name="onup" value="200"/>
+				<param name="id" value="5601"/>
+				<param name="onup" value="5600"/>
 				<param name="ondown" value="SetProperty(BounceDown,1,home)"/>
 				<param name="onback" value="56"/>
 				<param name="mainlabel" value="$INFO[ListItem.Label]"/>
