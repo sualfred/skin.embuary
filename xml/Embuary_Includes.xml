@@ -79,6 +79,7 @@
 			</control>
 			<control type="group">				
 				<visible>[!Player.HasMedia | Skin.HasSetting(HideBackgroundPlayback)] + !Skin.HasSetting(HideBackground) + !Window.IsVisible(MyPVRguide.xml) + $EXP[HideBackground]</visible>
+				<include>Visible_Fade</include>
 				<control type="image">
 					<include>FullscreenDimensions</include>
 					<texture>$VAR[BackgroundSource]</texture>
@@ -522,12 +523,14 @@
 	<include name="JumpToLetter_vertical">
 		<param name="id">7000</param>
 		<param name="top">0</param>
-		<param name="visible">[Container.HasNext | Container.HasPrevious] + [[Container.Content(movies) | Container.Content(sets) | Container.Content(episodes) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(artists) | Container.Content(albums) | Container.Content(addons)] + [String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[561]) | String.IsEqual(Container.SortMethod,$LOCALIZE[558]) | String.IsEqual(Container.SortMethod,$LOCALIZE[557]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556])]]</param>
+		<param name="visible">[Control.IsVisible(50) | Control.IsVisible(51) | Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(58)] + [[Container.HasNext | Container.HasPrevious] + [[Container.Content(movies) | Container.Content(sets) | Container.Content(episodes) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(artists) | Container.Content(albums) | Container.Content(addons)] + [String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[561]) | String.IsEqual(Container.SortMethod,$LOCALIZE[558]) | String.IsEqual(Container.SortMethod,$LOCALIZE[557]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556])]]]</param>
 		<definition>
 			<control type="group">
 				<top>$PARAM[top]</top>
+				<animation effect="slide" time="0" end="0,58" condition="Control.IsVisible(53)">Conditional</animation>
 				<control type="panel" id="$PARAM[id]">
 					<visible>$PARAM[visible]</visible>
+					<include>Visible_OpenClose</include>
 					<right>12</right>
 					<width>45</width>
 					<centertop>50%</centertop>	
