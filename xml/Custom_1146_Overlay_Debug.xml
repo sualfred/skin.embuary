@@ -5,7 +5,6 @@
 	<controls>
 		<control type="group">
 			<visible>Skin.HasSetting(DebugInfo)</visible>
-			<animation effect="fade" start="0" end="100" condition="System.IdleTime(1)">Conditional</animation>
 			<!-- artworks -->
 			<control type="grouplist">
 				<left>15</left>
@@ -13,6 +12,7 @@
 				<width>49%</width>
 				<height>50%</height>
 				<itemgap>12</itemgap>
+				<visible>false</visible>
 				<!-- List Items -->
 				<control type="label">
 					<height>20</height>
@@ -1106,6 +1106,26 @@
 					<align>right</align>
 					<label>script-cu-lrclyrics-main.xml</label>
 					<visible>Window.IsVisible(script-cu-lrclyrics-main.xml)</visible>
+				</control>
+			</control>
+
+			<!-- Temp debug -->
+			<control type="grouplist">
+				<right>15</right>
+				<bottom>70</bottom>
+				<width>49%</width>
+				<height>50%</height>
+				<itemgap>12</itemgap>
+				<align>bottom</align>
+				<!-- Control label -->
+				<control type="label">
+					<top>15</top>
+					<height>20</height>
+					<textcolor>yellow</textcolor>
+					<shadowcolor>FF000000</shadowcolor>
+					<font>font_flag</font>
+					<align>right</align>
+					<label>Temp value $INFO[Playlist.Length(video),[COLOR FF5BE5EE]','[/COLOR]] $INFO[Playlist.Position(video)]</label>
 				</control>
 			</control>
 		</control>
