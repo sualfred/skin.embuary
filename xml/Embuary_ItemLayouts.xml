@@ -582,6 +582,96 @@
 		</definition>
 	</include>
 
+	<!-- Banner -->	
+	<include name="BannerLayout">
+		<param name="mainlabel">$VAR[MainListLabel]</param>
+		<param name="sublabel">$VAR[SubListLabel]</param>
+		<param name="thumblabel">$VAR[MainListLabel]</param>
+		<param name="focused">false</param>
+		<param name="visible">true</param>
+		<definition>
+			<control type="group">
+				<visible>$PARAM[visible]</visible>
+				<control type="image">
+					<top>-2</top>
+					<left>-2</left>
+					<width>243</width>
+					<height>361</height>
+					<texture>items/shadow_banner.png</texture>
+				</control>
+				<control type="image">
+					<width>880</width>
+					<height>163</height>
+					<texture colordiffuse="thumb_background_fallback" diffuse="items/mask_banner.png">common/white.jpg</texture>
+					<aspectratio scalediffuse="false">stretch</aspectratio>
+					<visible>String.IsEmpty(ListItem.Art(banner))</visible>
+				</control>
+				<control type="image">
+					<width>880</width>
+					<height>163</height>
+					<texture colordiffuse="thumb_background" diffuse="items/mask_banner.png">common/white.jpg</texture>
+					<aspectratio scalediffuse="false">stretch</aspectratio>
+					<visible>!String.IsEmpty(ListItem.Art(banner))</visible>
+				</control>
+				<control type="textbox">
+					<top>10</top>
+					<left>10</left>
+					<width>860</width>
+					<height>143</height>
+					<font>Light24</font>
+					<textcolor>white</textcolor>
+					<shadowcolor>00ffffff</shadowcolor>
+					<align>center</align>
+					<aligny>center</aligny>
+					<label>$PARAM[thumblabel]</label>
+					<visible>String.IsEmpty(ListItem.Art(banner))</visible>
+				</control>
+				<control type="image">
+					<width>880</width>
+					<height>163</height>
+					<texture diffuse="items/mask_banner.png" background="true">$INFO[ListItem.Art(banner)]</texture>
+					<aspectratio scalediffuse="false">stretch</aspectratio>
+					<visible>!String.IsEmpty(ListItem.Art(banner))</visible>
+				</control>
+				<control type="group">
+					<width>880</width>
+					<height>163</height>
+					<include>bubble_overlay</include>
+					<include>bubble_play</include>
+				</control>
+				<include content="progress">
+					<param name="top" value="159"/>
+					<param name="width" value="880"/>
+				</include>
+				<control type="image">
+					<left>-12</left>
+					<top>-7</top>
+					<width>904</width>
+					<height>187</height>
+					<texture colordiffuse="focus_widget">items/focus_banner.png</texture>
+					<aspectratio>scale</aspectratio>
+					<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
+					<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
+				</control>
+				<control type="image">
+					<include>Widget_Diffuse</include>
+					<width>880</width>
+					<height>163</height>
+					<texture diffuse="items/mask_banner.png" colordiffuse="diffuse_widget">common/white.jpg</texture>
+				</control>
+				<include content="widget_labels">						
+					<param name="top">175</param>
+					<param name="width">880</param>
+					<param name="id">$PARAM[id]</param>
+					<param name="mainlabel">$PARAM[mainlabel]</param>
+					<param name="sublabel">$PARAM[sublabel]</param>
+					<param name="focused">$PARAM[focused]</param>
+					<param name="visible_labels">$PARAM[visible_labels]</param>
+				</include>
+			</control>
+		</definition>
+	</include>
+
 	<!-- Cast -->
 	<include name="CastLayout">
 		<param name="mainlabel">$INFO[ListItem.Label]</param>
