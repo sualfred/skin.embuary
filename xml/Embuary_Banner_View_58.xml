@@ -20,10 +20,12 @@
 				<defaultcontrol always="true">0</defaultcontrol>
 				<viewtype label="$LOCALIZE[20020]">panel</viewtype>
 				<pagecontrol>17</pagecontrol>
-				<itemlayout width="900" height="229">
+				<animation effect="slide" condition="Skin.HasSetting(HideBannerLabels) + ![Control.IsVisible(58) + [Integer.IsGreaterOrEqual(Container(58).CurrentItem,11) | Container(58).HasPrevious]]" time="200" end="0,30">Conditional</animation>
+				<animation effect="slide" condition="!Skin.HasSetting(HideBannerLabels) + ![Control.IsVisible(58) + [Integer.IsGreaterOrEqual(Container(58).CurrentItem,9) | Container(58).HasPrevious]]" time="200" end="0,7">Conditional</animation>
+				<itemlayout condition="!Skin.HasSetting(HideBannerLabels)" width="900" height="229">
 					<control type="group">
 						<left>70</left>
-						<top>122</top>
+						<top>115</top>
 						<include content="BannerLayout">
 							<param name="mainlabel" value="$VAR[MainListLabel]$INFO[ListItem.Year, - ]" />
 							<param name="sublabel" value="" />
@@ -32,13 +34,39 @@
 						</include>
 					</control>
 				</itemlayout>
-				<focusedlayout width="900" height="229">
+				<focusedlayout condition="!Skin.HasSetting(HideBannerLabels)" width="900" height="229">
 					<include>SetPropertyOnFocus</include>
 					<control type="group">							
 						<left>70</left>
-						<top>122</top>
+						<top>115</top>
 						<include content="BannerLayout">
 							<param name="mainlabel" value="$VAR[MainListLabel]$INFO[ListItem.Year, - ]" />
+							<param name="sublabel" value="" />
+							<param name="focused" value="true" />
+							<param name="id" value="58" />
+							<param name="visible_forced" value="true"/>
+						</include>
+					</control>
+				</focusedlayout>
+				<itemlayout condition="Skin.HasSetting(HideBannerLabels)" width="900" height="183">
+					<control type="group">
+						<left>70</left>
+						<top>92</top>
+						<include content="BannerLayout">
+							<param name="mainlabel" value="" />
+							<param name="sublabel" value="" />
+							<param name="focused" value="false" />
+							<param name="id" value="58" />
+						</include>
+					</control>
+				</itemlayout>
+				<focusedlayout condition="Skin.HasSetting(HideBannerLabels)" width="900" height="183">
+					<include>SetPropertyOnFocus</include>
+					<control type="group">							
+						<left>70</left>
+						<top>92</top>
+						<include content="BannerLayout">
+							<param name="mainlabel" value="" />
 							<param name="sublabel" value="" />
 							<param name="focused" value="true" />
 							<param name="id" value="58" />

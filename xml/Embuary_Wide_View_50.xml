@@ -26,7 +26,8 @@
 					<pagecontrol>17</pagecontrol>
 					<scrolltime tween="sine" easing="out">400</scrolltime>
 					<oninfo condition="String.IsEqual(ListItem.DBType,set) + !String.StartsWith(ListItem.Path,plugin://plugin.video)">RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCINFO[Window(home).Property(SkinHelper.ListItem.ExtendedPlot)]')</oninfo>
-					<itemlayout width="444" height="305">
+					<animation effect="slide" condition="Skin.HasSetting(HideWideLabels) + ![Control.IsVisible(50) + [Integer.IsGreaterOrEqual(Container(50).CurrentItem,13) | Container(50).HasPrevious]] + !Window.IsVisible(1126) + !Window.IsVisible(1125)" time="200" end="0,84">Conditional</animation>
+					<itemlayout condition="!Skin.HasSetting(HideWideLabels) | Window.IsVisible(1126) | Window.IsVisible(1125)" width="444" height="305">
 						<control type="group">
 							<left>82</left>
 							<top>116</top>
@@ -39,13 +40,40 @@
 							</include>
 						</control>
 					</itemlayout>
-					<focusedlayout width="444" height="305">
+					<focusedlayout condition="!Skin.HasSetting(HideWideLabels) | Window.IsVisible(1126) | Window.IsVisible(1125)" width="444" height="305">
 						<include>SetPropertyOnFocus</include>
 						<control type="group">						
 							<left>82</left>
 							<top>116</top>
 							<include content="$PARAM[layout]">
 								<param name="mainlabel" value="$PARAM[mainlabel]" />
+								<param name="sublabel" value="" />
+								<param name="thumblabel" value="$PARAM[thumblabel]" />
+								<param name="focused" value="true" />
+								<param name="id" value="50" />
+							</include>
+						</control>
+					</focusedlayout>
+					<itemlayout condition="Skin.HasSetting(HideWideLabels) + !Window.IsVisible(1126) + !Window.IsVisible(1125)" width="444" height="259">
+						<control type="group">
+							<left>82</left>
+							<top>32</top>
+							<include content="$PARAM[layout]">
+								<param name="mainlabel" value="" />
+								<param name="sublabel" value="" />
+								<param name="thumblabel" value="$PARAM[thumblabel]" />
+								<param name="focused" value="false" />
+								<param name="id" value="50" />
+							</include>
+						</control>
+					</itemlayout>
+					<focusedlayout condition="Skin.HasSetting(HideWideLabels) + !Window.IsVisible(1126) + !Window.IsVisible(1125)" width="444" height="259">
+						<include>SetPropertyOnFocus</include>
+						<control type="group">						
+							<left>82</left>
+							<top>32</top>
+							<include content="$PARAM[layout]">
+								<param name="mainlabel" value="" />
 								<param name="sublabel" value="" />
 								<param name="thumblabel" value="$PARAM[thumblabel]" />
 								<param name="focused" value="true" />

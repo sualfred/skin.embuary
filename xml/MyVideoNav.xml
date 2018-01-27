@@ -46,7 +46,7 @@
 					<onleft>50</onleft>
 					<onback>50</onback>
 					<usecontrolcoords>true</usecontrolcoords>
-					<control type="image">
+					<control type="image" id="4001">
 						<width>100%</width>
 						<height>10</height>
 						<texture border="5" colordiffuse="panel">common/menu_top.png</texture>
@@ -67,7 +67,28 @@
 						<include content="CommonButton"/>
 						<label>$LOCALIZE[31008]</label>
 					</control>
-					<control type="image">
+					<control type="radiobutton" id="4002">
+						<include content="CommonButton"/>
+						<label>$LOCALIZE[31198]</label>
+						<onclick>Skin.ToggleSetting(HideBannerLabels)</onclick>
+						<selected>Skin.HasSetting(HideBannerLabels)</selected>
+						<visible>Control.IsVisible(58)</visible>
+					</control>
+					<control type="radiobutton" id="4003">
+						<include content="CommonButton"/>
+						<label>$LOCALIZE[31198]</label>
+						<onclick>Skin.ToggleSetting(HidePosterLabels)</onclick>
+						<selected>Skin.HasSetting(HidePosterLabels)</selected>
+						<visible>Control.IsVisible(51)</visible>
+					</control>
+					<control type="radiobutton" id="4004">
+						<include content="CommonButton"/>
+						<label>$LOCALIZE[31198]</label>
+						<onclick>Skin.ToggleSetting(HideWideLabels)</onclick>
+						<selected>Skin.HasSetting(HideWideLabels)</selected>
+						<visible>Control.IsVisible(50)</visible>
+					</control>
+					<control type="image" id="4005">
 						<width>100%</width>
 						<height>10</height>
 						<texture border="5" colordiffuse="panel">common/menu_bottom.png</texture>
@@ -83,7 +104,7 @@
 		<include content="HeaderBar">
 			<param name="id">70</param>
 			<param name="enabled">false</param>
-			<param name="custom_animation">[Control.IsVisible(56) + Container(560).HasPrevious] | [Control.IsVisible(54) + Container(540).HasPrevious] | [Control.IsVisible(55) + Container(550).HasPrevious] | [Control.IsVisible(51) + [Integer.IsGreaterOrEqual(Container(51).CurrentItem,15) | Container(51).HasPrevious]] | [Control.IsVisible(50) + [Integer.IsGreaterOrEqual(Container(50).CurrentItem,13) | Container(50).HasPrevious]] | [Control.IsVisible(52) + [Integer.IsGreaterOrEqual(Container(52).CurrentItem,11) | Container(52).HasPrevious]] | [Control.IsVisible(58) + [Integer.IsGreaterOrEqual(Container(58).CurrentItem,9) | Container(58).HasPrevious]]</param>
+			<param name="custom_animation">[Control.IsVisible(56) + Container(560).HasPrevious] | [Control.IsVisible(54) + Container(540).HasPrevious] | [Control.IsVisible(55) + Container(550).HasPrevious] | [Control.IsVisible(51) + [Integer.IsGreaterOrEqual(Container(51).CurrentItem,15) | Container(51).HasPrevious]] | [Control.IsVisible(50) + [Integer.IsGreaterOrEqual(Container(50).CurrentItem,13) | Container(50).HasPrevious]] | [Control.IsVisible(52) + [Integer.IsGreaterOrEqual(Container(52).CurrentItem,11) | Container(52).HasPrevious]] | [!Skin.HasSetting(HideBannerLabels) + Control.IsVisible(58) + [Integer.IsGreaterOrEqual(Container(58).CurrentItem,9) | Container(58).HasPrevious]] | [Skin.HasSetting(HideBannerLabels) + Control.IsVisible(58) + [Integer.IsGreaterOrEqual(Container(58).CurrentItem,11) | Container(58).HasPrevious]]</param>
 		</include>
 		<!-- side panel -->
 		<include content="SidePanel">

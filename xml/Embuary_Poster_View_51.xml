@@ -21,10 +21,12 @@
 				<viewtype label="$LOCALIZE[20021]">panel</viewtype>
 				<pagecontrol>17</pagecontrol>
 				<oninfo condition="String.IsEqual(ListItem.DBType,set) + !String.StartsWith(ListItem.Path,plugin://plugin.video)">RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCINFO[Window(home).Property(SkinHelper.ListItem.ExtendedPlot)]')</oninfo>
-				<itemlayout width="257" height="445">
+				<animation effect="slide" condition="Skin.HasSetting(HidePosterLabels) + ![Control.IsVisible(51) + [Integer.IsGreaterOrEqual(Container(51).CurrentItem,15) | Container(51).HasPrevious]]" time="200" end="0,-53">Conditional</animation>
+				<animation effect="slide" condition="!Skin.HasSetting(HidePosterLabels) + ![Control.IsVisible(51) + [Integer.IsGreaterOrEqual(Container(51).CurrentItem,15) | Container(51).HasPrevious]]" time="200" end="0,-18">Conditional</animation>
+				<itemlayout condition="!Skin.HasSetting(HidePosterLabels)" width="257" height="445">
 					<control type="group">
 						<left>70.5</left>
-						<top>122</top>
+						<top>140</top>
 						<include content="PosterLayout_Size2">
 							<param name="mainlabel" value="$VAR[MainListLabel]" />
 							<param name="sublabel" value="$VAR[SubListLabel]" />
@@ -33,14 +35,40 @@
 						</include>
 					</control>
 				</itemlayout>
-				<focusedlayout width="257" height="445">
+				<focusedlayout condition="!Skin.HasSetting(HidePosterLabels)" width="257" height="445">
 					<include>SetPropertyOnFocus</include>
 					<control type="group">							
 						<left>70.5</left>
-						<top>122</top>
+						<top>140</top>
 						<include content="PosterLayout_Size2">
 							<param name="mainlabel" value="$VAR[MainListLabel]" />
 							<param name="sublabel" value="$VAR[SubListLabel]" />
+							<param name="focused" value="true" />
+							<param name="id" value="51" />
+							<param name="visible_forced" value="true"/>
+						</include>
+					</control>
+				</focusedlayout>
+				<itemlayout condition="Skin.HasSetting(HidePosterLabels)" width="257" height="375">
+					<control type="group">
+						<left>70.5</left>
+						<top>175</top>
+						<include content="PosterLayout_Size2">
+							<param name="mainlabel" value="" />
+							<param name="sublabel" value="" />
+							<param name="focused" value="false" />
+							<param name="id" value="51" />
+						</include>
+					</control>
+				</itemlayout>
+				<focusedlayout condition="Skin.HasSetting(HidePosterLabels)" width="257" height="375">
+					<include>SetPropertyOnFocus</include>
+					<control type="group">							
+						<left>70.5</left>
+						<top>175</top>
+						<include content="PosterLayout_Size2">
+							<param name="mainlabel" value="" />
+							<param name="sublabel" value="" />
 							<param name="focused" value="true" />
 							<param name="id" value="51" />
 							<param name="visible_forced" value="true"/>
