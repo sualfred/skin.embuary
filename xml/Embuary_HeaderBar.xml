@@ -233,27 +233,26 @@
 		<control type="button" id="6602">
 			<include>HeaderButton</include>
 			<label>$LOCALIZE[31180]</label>
-			<onclick>ActivateWindow(videos,videodb://movies/titles,return)</onclick>
+			<onclick>ActivateWindow(videos,library://video/movies/titles.xml/,return)</onclick>
 			<visible>[String.IsEqual(Container.FolderPath,library://video/movies/) | Container.Content(sets) | String.StartsWith(Container.FolderPath,videodb://movies/sets) | Window.IsVisible(1125)] + Library.HasContent(MovieSets)</visible>
 		</control>
 		<control type="button" id="6614">
 			<include>HeaderButton</include>
 			<label>$LOCALIZE[31179]</label>
-			<onclick>ActivateWindow(videos,videodb://tvshows/titles,return)</onclick>
+			<onclick>ActivateWindow(videos,library://video/tvshows/titles.xml/,return)</onclick>
 			<visible>String.IsEqual(Container.FolderPath,library://video/tvshows/) | Window.IsVisible(1126) | Window.IsVisible(script-NextAired-TVGuide.xml)</visible>
 		</control>
 		<control type="button" id="6603">
 			<include>HeaderButton</include>
 			<label>$LOCALIZE[31169]</label>
-			<onclick>ActivateWindow(videos,videodb://movies/sets,return)</onclick>
+			<onclick condition="!Window.IsActive(videos)">ActivateWindow(videos,videodb://movies/sets,return)</onclick>
+			<onclick condition="Window.IsActive(videos)">Container.Update(videodb://movies/sets)</onclick>
 			<visible>Library.HasContent(MovieSets) + !Container.Content(sets) + [String.IsEqual(Container.FolderPath,library://video/movies/) | String.StartsWith(Container.FolderPath,videodb://movies/titles) | String.StartsWith(Container.FolderPath,videodb://movies/sets) | Window.IsVisible(1125)]</visible>
 		</control>
 		<control type="button" id="6613">
 			<include>HeaderButton</include>
 			<label>$LOCALIZE[135]</label>
-			<onclick condition="String.IsEqual(Container.FolderPath,library://video/movies/) | Container.Content(movies) | Container.Content(sets)">ActivateWindow(videos,videodb://movies/titles,return)</onclick>
 			<onclick condition="String.IsEqual(Container.FolderPath,library://video/movies/) | Container.Content(movies) | Container.Content(sets)">ActivateWindow(1125)</onclick>
-			<onclick condition="String.IsEqual(Container.FolderPath,library://video/tvshows/) | Container.Content(tvshows) | Window.IsVisible(script-NextAired-TVGuide.xml)">ActivateWindow(videos,videodb://tvshows/titles,return)</onclick>
 			<onclick condition="String.IsEqual(Container.FolderPath,library://video/tvshows/) | Container.Content(tvshows) | Window.IsVisible(script-NextAired-TVGuide.xml)">ActivateWindow(1126)</onclick>
 			<visible>[String.IsEqual(Container.FolderPath,library://video/movies/) | String.IsEqual(Container.FolderPath,library://video/tvshows/) | Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets) | Window.IsVisible(script-NextAired-TVGuide.xml)] + !Window.IsVisible(1125) + !Window.IsVisible(1126)</visible>
 		</control>
