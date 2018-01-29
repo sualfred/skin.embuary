@@ -3,8 +3,6 @@
 	<include name="Poster_View_51">
 		<control type="group">
 			<include>Visible_OpenClose</include>
-			<animation effect="slide" condition="Skin.HasSetting(HidePosterLabels) + ![Control.IsVisible(51) + [Integer.IsGreaterOrEqual(Container(51).CurrentItem,15) | Container(51).HasPrevious]]" time="200" end="0,-53">Conditional</animation>
-			<animation effect="slide" condition="!Skin.HasSetting(HidePosterLabels) + ![Control.IsVisible(51) + [Integer.IsGreaterOrEqual(Container(51).CurrentItem,15) | Container(51).HasPrevious]]" time="200" end="0,-18">Conditional</animation>
 			<visible>Control.IsVisible(51)</visible>
 			<control id="51" type="panel">
 				<visible>[!Container.Content(musicvideos) + !Container.Content(seasons) + !Container.Content(episodes) + !String.Contains(Container.Folderpath,setid) + !String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres)] | [Container.Content(episodes) + String.StartsWith(Container.FolderPath,plugin://) + !String.StartsWith(Container.FolderPath,plugin://plugin.video.embycon)]</visible>
@@ -26,7 +24,7 @@
 				<itemlayout condition="!Skin.HasSetting(HidePosterLabels)" width="257" height="445">
 					<control type="group">
 						<left>70.5</left>
-						<top>140</top>
+						<top>122</top>
 						<include content="PosterLayout_Size2">
 							<param name="mainlabel" value="$VAR[MainListLabel]" />
 							<param name="sublabel" value="$VAR[SubListLabel]" />
@@ -39,7 +37,7 @@
 					<include>SetPropertyOnFocus</include>
 					<control type="group">							
 						<left>70.5</left>
-						<top>140</top>
+						<top>122</top>
 						<include content="PosterLayout_Size2">
 							<param name="mainlabel" value="$VAR[MainListLabel]" />
 							<param name="sublabel" value="$VAR[SubListLabel]" />
@@ -52,7 +50,7 @@
 				<itemlayout condition="Skin.HasSetting(HidePosterLabels)" width="257" height="375">
 					<control type="group">
 						<left>70.5</left>
-						<top>175</top>
+						<top>122</top>
 						<include content="PosterLayout_Size2">
 							<param name="mainlabel" value="" />
 							<param name="sublabel" value="" />
@@ -65,7 +63,7 @@
 					<include>SetPropertyOnFocus</include>
 					<control type="group">							
 						<left>70.5</left>
-						<top>175</top>
+						<top>122</top>
 						<include content="PosterLayout_Size2">
 							<param name="mainlabel" value="" />
 							<param name="sublabel" value="" />

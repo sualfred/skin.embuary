@@ -3,8 +3,8 @@
 	<include name="Banner_View_58">
 		<control type="group">
 			<include>Visible_OpenClose</include>
-			<animation effect="slide" condition="Skin.HasSetting(HideBannerLabels) + ![Control.IsVisible(58) + [Integer.IsGreaterOrEqual(Container(58).CurrentItem,11) | Container(58).HasPrevious]]" time="200" end="0,30">Conditional</animation>
-			<animation effect="slide" condition="!Skin.HasSetting(HideBannerLabels) + ![Control.IsVisible(58) + [Integer.IsGreaterOrEqual(Container(58).CurrentItem,9) | Container(58).HasPrevious]]" time="200" end="0,7">Conditional</animation>
+			<animation effect="slide" condition="Skin.HasSetting(HideBannerLabels) + ![Integer.IsGreaterOrEqual(Container(58).CurrentItem,11) | Container(58).HasPrevious]" time="200" end="0,30">Conditional</animation>
+			<animation effect="slide" condition="!Skin.HasSetting(HideBannerLabels) + ![Integer.IsGreaterOrEqual(Container(58).CurrentItem,9) | Container(58).HasPrevious]" time="200" end="0,7">Conditional</animation>
 			<visible>Control.IsVisible(58)</visible>
 			<control id="58" type="panel">
 				<visible>[Container.Content(movies) | Container.Content(tvshows)] + !String.Contains(Container.FolderPath,setid)</visible>
