@@ -4,10 +4,11 @@
 		<control type="group">
 			<include>Visible_OpenClose</include>
 			<visible>Control.IsVisible(51)</visible>
+			<animation effect="slide" condition="Skin.HasSetting(HidePosterLabels) + ![Integer.IsGreaterOrEqual(Container(51).CurrentItem,13) | Container(51).HasPrevious]" time="200" end="0,-53">Conditional</animation>
 			<control id="51" type="panel">
 				<visible>[!Container.Content(musicvideos) + !Container.Content(seasons) + !Container.Content(episodes) + !String.Contains(Container.Folderpath,setid) + !String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres)] | [Container.Content(episodes) + String.StartsWith(Container.FolderPath,plugin://) + !String.StartsWith(Container.FolderPath,plugin://plugin.video.embycon)]</visible>
 				<width>auto</width>
-				<height>1080</height>
+				<height>1133</height>
 				<onright condition="Control.IsVisible(7000)">SetFocus(7000)</onright>
 				<onright>noop</onright>
 				<onup>SetFocus(6666)</onup>
@@ -47,10 +48,10 @@
 						</include>
 					</control>
 				</focusedlayout>
-				<itemlayout condition="Skin.HasSetting(HidePosterLabels)" width="257" height="375">
+				<itemlayout condition="Skin.HasSetting(HidePosterLabels)" width="257" height="378">
 					<control type="group">
 						<left>70.5</left>
-						<top>122</top>
+						<top>175</top>
 						<include content="PosterLayout_Size2">
 							<param name="mainlabel" value="" />
 							<param name="sublabel" value="" />
@@ -59,11 +60,11 @@
 						</include>
 					</control>
 				</itemlayout>
-				<focusedlayout condition="Skin.HasSetting(HidePosterLabels)" width="257" height="375">
+				<focusedlayout condition="Skin.HasSetting(HidePosterLabels)" width="257" height="378">
 					<include>SetPropertyOnFocus</include>
 					<control type="group">							
 						<left>70.5</left>
-						<top>122</top>
+						<top>175</top>
 						<include content="PosterLayout_Size2">
 							<param name="mainlabel" value="" />
 							<param name="sublabel" value="" />
