@@ -262,6 +262,19 @@
 				<selectedcolor>white</selectedcolor>
 				<align>center</align>
 				<aligny>top</aligny>
+				<visible>!String.IsEqual(ListItem.DBType,set)</visible>
+			</control>
+			<control type="label">
+				<top>9</top>
+				<width>38</width>
+				<height>38</height>
+				<label></label>
+				<font>Material18</font>
+				<textcolor>white</textcolor>
+				<selectedcolor>white</selectedcolor>
+				<align>center</align>
+				<aligny>top</aligny>
+				<visible>String.IsEqual(ListItem.DBType,set)</visible>
 			</control>
 		</control>
 	</include>
@@ -816,7 +829,7 @@
 					<height>50</height>
 					<texture background="true">$VAR[ListItemClearlogo]</texture>
 					<aspectratio align="left" aligny="bottom">keep</aspectratio>
-					<visible>[!String.IsEmpty(ListItem.Art(fanart)) | !String.IsEmpty(ListItem.Art(tvshow.fanart)) | [!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)]] + String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape)) + [Container.Content(movies) | Container.Content(tvshows) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow)]</visible>
+					<visible>[!String.IsEmpty(ListItem.Art(fanart)) | !String.IsEmpty(ListItem.Art(tvshow.fanart)) | [!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)]] + String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape)) + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,set)]</visible>
 				</control>
 				<control type="group">
 					<width>424</width>
