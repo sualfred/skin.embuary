@@ -240,7 +240,7 @@
 	<!-- Play icon -->
 	<include name="bubble_play">
 		<control type="group">
-			<visible>[!String.IsEmpty(ListItem.DBtype) + !String.IsEmpty(ListItem.DBID)] | [!String.IsEmpty(ListItem.FileNameAndPath) + [String.StartsWith(ListItem.Path,plugin://plugin.video) | String.StartsWith(ListItem.Path,plugin://plugin.audio) | String.Contains(ListItem.AddonType,$LOCALIZE[20094])]] | String.StartsWith(ListItem.Path,pvr://)</visible>
+			<visible>[!String.IsEmpty(ListItem.DBtype) + !String.IsEmpty(ListItem.DBID)] | [!String.IsEmpty(ListItem.FileNameAndPath) + [String.StartsWith(ListItem.Path,plugin://plugin.video) | String.StartsWith(ListItem.Path,plugin://plugin.audio) | String.Contains(ListItem.AddonType,$LOCALIZE[20094])]] | String.StartsWith(ListItem.Path,pvr://) | ListItem.IsFolder</visible>
 			<right>10</right>
 			<bottom>10</bottom>
 			<width>38</width>
@@ -262,19 +262,18 @@
 				<selectedcolor>white</selectedcolor>
 				<align>center</align>
 				<aligny>top</aligny>
-				<visible>!String.IsEqual(ListItem.DBType,set)</visible>
+				<visible>![[String.IsEqual(ListItem.DBType,set) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | String.IsEqual(ListItem.DBType,artist) | ListItem.IsFolder] + !String.IsEqual(ListItem.DBType,album)]</visible>
 			</control>
 			<control type="label">
-				<top>9</top>
 				<width>38</width>
 				<height>38</height>
-				<label></label>
-				<font>Material18</font>
+				<label></label>
+				<font>Material30</font>
 				<textcolor>white</textcolor>
 				<selectedcolor>white</selectedcolor>
 				<align>center</align>
-				<aligny>top</aligny>
-				<visible>String.IsEqual(ListItem.DBType,set)</visible>
+				<aligny>center</aligny>
+				<visible>[String.IsEqual(ListItem.DBType,set) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | String.IsEqual(ListItem.DBType,artist) | ListItem.IsFolder] + !String.IsEqual(ListItem.DBType,album)</visible>
 			</control>
 		</control>
 	</include>
