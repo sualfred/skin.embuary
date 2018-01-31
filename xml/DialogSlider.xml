@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<defaultcontrol>11</defaultcontrol>
-	<zorder>2</zorder>
+	<zorder>999</zorder>
 	<controls>
 		<control type="progress" id="32">
 			<include>HiddenObject</include>
@@ -18,14 +18,6 @@
 				<effect type="slide" start="0,0" end="0,-200" easing="in" tween="circle" easin="out" time="400" />
 				<effect type="fade" start="100" end="0" time="400" />
 			</animation>
-			<animation type="Conditional" reversible="false" condition="!Player.Muted">
-				<effect type="slide" start="0,-200" end="0,0" delay="100" tween="circle" easin="out" time="400" />
-				<effect type="fade" delay="160" end="100" time="400" />
-			</animation>
-			<animation type="Conditional" reversible="false" condition="Player.Muted">
-				<effect type="slide" start="0,0" end="0,-200" easing="in" tween="circle" easin="out" time="400" />
-				<effect type="fade" start="100" end="0" time="400"/>
-			</animation>
 			<width>500</width>
 			<height>145</height>
 			<!-- Background image -->
@@ -39,6 +31,7 @@
 				<right>20</right>
 				<font>Med24</font>
 				<align>center</align>
+				<aligny>top</aligny>
 			</control>
 			<!-- Details -->
 			<control id="12" type="label">
@@ -48,6 +41,7 @@
 				<right>20</right>				
 				<font>Reg22</font>
 				<align>center</align>
+				<aligny>top</aligny>
 				<scroll>true</scroll>
 			</control>
 			<!-- Slider -->
