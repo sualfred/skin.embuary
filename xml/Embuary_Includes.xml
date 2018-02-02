@@ -1171,8 +1171,9 @@
 					<font>med22</font>
 					<textcolor>text_white</textcolor>
 					<textshadow>text_shadow</textshadow>
+					<scroll>true</scroll>
 					<label>$INFO[Container($PARAM[container]).ListItemPosition($PARAM[id]).Label]</label>
-					<visible>!Container($PARAM[container]).ListItemPosition($PARAM[id]).IsSelected</visible>
+					<visible>!Container($PARAM[container]).ListItemPosition($PARAM[id]).IsSelected + Container($PARAM[container]).Position($PARAM[id]) + Control.HasFocus($PARAM[container])</visible>
 				</control>
 				<control type="label">
 					<width>100%</width>
@@ -1182,9 +1183,36 @@
 					<textoffsetx>20</textoffsetx>
 					<font>med22</font>
 					<textcolor>selected</textcolor>
-					<textshadow>text_shadow</textshadow>
+					<textshadow>text_shadow</textshadow>					
+					<scroll>true</scroll>
 					<label>$INFO[Container($PARAM[container]).ListItemPosition($PARAM[id]).Label]</label>
-					<visible>Container($PARAM[container]).ListItemPosition($PARAM[id]).IsSelected</visible>
+					<visible>Container($PARAM[container]).ListItemPosition($PARAM[id]).IsSelected + Container($PARAM[container]).Position($PARAM[id]) + Control.HasFocus($PARAM[container])</visible>
+				</control>
+				<control type="label">
+					<width>100%</width>
+					<height>50</height>
+					<align>left</align>
+					<aligny>center</aligny>
+					<textoffsetx>20</textoffsetx>
+					<font>med22</font>
+					<textcolor>text_white</textcolor>
+					<textshadow>text_shadow</textshadow>
+					<scroll>false</scroll>
+					<label>$INFO[Container($PARAM[container]).ListItemPosition($PARAM[id]).Label]</label>
+					<visible>!Container($PARAM[container]).ListItemPosition($PARAM[id]).IsSelected + ![Container($PARAM[container]).Position($PARAM[id]) + Control.HasFocus($PARAM[container])]</visible>
+				</control>
+				<control type="label">
+					<width>100%</width>
+					<height>50</height>
+					<align>left</align>
+					<aligny>center</aligny>
+					<textoffsetx>20</textoffsetx>
+					<font>med22</font>
+					<textcolor>selected</textcolor>
+					<textshadow>text_shadow</textshadow>					
+					<scroll>false</scroll>
+					<label>$INFO[Container($PARAM[container]).ListItemPosition($PARAM[id]).Label]</label>
+					<visible>Container($PARAM[container]).ListItemPosition($PARAM[id]).IsSelected + ![Container($PARAM[container]).Position($PARAM[id]) + Control.HasFocus($PARAM[container])]</visible>
 				</control>
 			</control>
 		</definition>
