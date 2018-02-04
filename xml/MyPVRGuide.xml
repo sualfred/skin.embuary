@@ -18,20 +18,6 @@
 			<control type="group">				
 				<include>Window_OpenClose</include>
 				<visible>Control.IsVisible(10)</visible>
-				<control type="image">
-					<texture colordiffuse="ff2a2a2a">common/white.jpg</texture>
-					<top>139</top>
-					<right>11</right>
-					<left>0</left>
-					<height>1</height>
-				</control>
-				<control type="image">
-					<texture colordiffuse="ff2a2a2a">common/white.jpg</texture>
-					<top>803</top>
-					<right>11</right>
-					<left>0</left>
-					<height>1</height>
-				</control>
 				<control type="epggrid" id="10">
 					<height>704</height>
 					<top>100</top>
@@ -39,7 +25,7 @@
 					<left>0</left>
 					<pagecontrol>60</pagecontrol>
 					<scrolltime tween="quadratic" easing="out">300</scrolltime>
-					<timeblocks>20</timeblocks>
+					<timeblocks>23</timeblocks>
 					<rulerunit>6</rulerunit>
 					<onback>6666</onback>
 					<onleft>900</onleft>
@@ -62,12 +48,12 @@
 						<control type="image">
 							<width>395</width>
 							<height>83</height>
-							<texture border="2,2,2,2" colordiffuse="ff2a2a2a">views/guide/epg_tile.png</texture>
+							<texture border="3,3,3,3" colordiffuse="ff2a2a2a">views/guide/epg_tile.png</texture>
 						</control>
 						<control type="label">
 							<left>15</left>
 							<width>50</width>
-							<height>83</height>
+							<height>81</height>
 							<aligny>center</aligny>
 							<font>reg22</font>
 							<label>$INFO[ListItem.ChannelNumberLabel]</label>
@@ -75,7 +61,7 @@
 						<control type="label">
 							<left>68</left>
 							<right>110</right>
-							<height>83</height>
+							<height>81</height>
 							<aligny>center</aligny>
 							<font>reg22</font>
 							<label>$INFO[ListItem.ChannelName]</label>
@@ -83,6 +69,7 @@
 						<control type="image">
 							<right>10</right>
 							<width>100</width>
+							<height>81</height>
 							<texture background="true">$INFO[ListItem.Icon]</texture>
 							<aspectratio align="right">keep</aspectratio>	
 							<bordersize>10</bordersize>							
@@ -92,12 +79,12 @@
 						<control type="image">
 							<width>395</width>
 							<height>83</height>
-							<texture border="2,2,2,2" colordiffuse="ff2a2a2a">views/guide/epg_tile.png</texture>
+							<texture border="3,3,3,3" colordiffuse="ff2a2a2a">views/guide/epg_tile.png</texture>
 						</control>
 						<control type="label">
 							<left>15</left>
 							<width>50</width>
-							<height>83</height>
+							<height>81</height>
 							<aligny>center</aligny>
 							<font>reg22</font>
 							<label>$INFO[ListItem.ChannelNumberLabel]</label>
@@ -105,7 +92,7 @@
 						<control type="label">
 							<left>68</left>
 							<right>110</right>
-							<height>83</height>
+							<height>81</height>
 							<aligny>center</aligny>
 							<font>reg22</font>
 							<label>$INFO[ListItem.ChannelName]</label>
@@ -113,6 +100,7 @@
 						<control type="image">
 							<right>10</right>
 							<width>100</width>
+							<height>81</height>
 							<texture background="true">$INFO[ListItem.Icon]</texture>
 							<aspectratio align="right">keep</aspectratio>	
 							<bordersize>10</bordersize>							
@@ -122,16 +110,16 @@
 						<control type="image" id="2">
 							<height>83</height>
 							<texture colordiffuse="grid_label_inprogress">common/white.jpg</texture>							
-							<visible>!Integer.IsLess(ListItem.Progress,1) + Integer.IsLess(ListItem.Progress,100)</visible>
+							<visible>Integer.IsGreater(ListItem.Progress,0) + Integer.IsLess(ListItem.Progress,100)</visible>
 						</control>
 						<control type="image" id="2">
 							<height>83</height>
-							<texture border="2,2,2,2" colordiffuse="ff2a2a2a">views/guide/epg_tile.png</texture>
+							<texture border="3,3,3,3" colordiffuse="ff2a2a2a">views/guide/epg_tile.png</texture>
 						</control>
 						<control type="label" id="1">
 							<textoffsetx>15</textoffsetx>
 							<width>50</width>
-							<height>83</height>
+							<height>81</height>
 							<aligny>center</aligny>
 							<font>reg22</font>
 							<label>$INFO[ListItem.Label]</label>
@@ -159,18 +147,21 @@
 						<control type="image" id="2">
 							<height>83</height>
 							<texture colordiffuse="grid_label_inprogress">common/white.jpg</texture>
-							<visible>!Integer.IsLess(ListItem.Progress,1) + Integer.IsLess(ListItem.Progress,100) + !Control.HasFocus(10)</visible>
+							<visible>Integer.IsGreater(ListItem.Progress,0) + Integer.IsLess(ListItem.Progress,100) + !Control.HasFocus(10)</visible>
 						</control>
 						<control type="image" id="2">
-							<left>-1</left>
 							<height>83</height>
 							<texture colordiffuse="grid_hover">common/white.jpg</texture>
 							<visible>Control.HasFocus(10)</visible>
 						</control>
+						<control type="image" id="2">
+							<height>83</height>
+							<texture border="3,3,3,3" colordiffuse="ff2a2a2a">views/guide/epg_tile.png</texture>
+						</control>
 						<control type="label" id="1">
 							<textoffsetx>15</textoffsetx>
 							<width>50</width>
-							<height>83</height>
+							<height>81</height>
 							<aligny>center</aligny>
 							<font>reg22</font>
 							<textcolor>white</textcolor>
@@ -195,6 +186,20 @@
 							<visible>ListItem.TimerIsActive</visible>
 						</control>
 					</focusedlayout>
+				</control>
+				<control type="image">
+					<texture colordiffuse="ff2a2a2a">common/white.jpg</texture>
+					<top>138</top>
+					<right>11</right>
+					<left>0</left>
+					<height>2</height>
+				</control>
+				<control type="image">
+					<texture colordiffuse="ff2a2a2a">common/white.jpg</texture>
+					<top>802</top>
+					<right>11</right>
+					<left>0</left>
+					<height>2</height>
 				</control>
 				<control type="group">
 					<bottom>0</bottom>
