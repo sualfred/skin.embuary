@@ -18,11 +18,25 @@
 			<control type="group">				
 				<include>Window_OpenClose</include>
 				<visible>Control.IsVisible(10)</visible>
+				<control type="image">
+					<texture colordiffuse="ff2a2a2a">common/white.jpg</texture>
+					<top>139</top>
+					<right>11</right>
+					<left>0</left>
+					<height>1</height>
+				</control>
+				<control type="image">
+					<texture colordiffuse="ff2a2a2a">common/white.jpg</texture>
+					<top>803</top>
+					<right>11</right>
+					<left>0</left>
+					<height>1</height>
+				</control>
 				<control type="epggrid" id="10">
 					<height>704</height>
 					<top>100</top>
-					<left>2</left>
-					<right>14</right>
+					<right>11</right>
+					<left>0</left>
 					<pagecontrol>60</pagecontrol>
 					<scrolltime tween="quadratic" easing="out">300</scrolltime>
 					<timeblocks>20</timeblocks>
@@ -43,32 +57,30 @@
 							<textoffsetx>10</textoffsetx>
 						</control>
 					</rulerlayout>
-					<progresstexture colordiffuse="emby_secondary" border="0,70,18,14">views/epg_progress.png</progresstexture>
+					<progresstexture colordiffuse="emby_secondary" border="0,70,18,14">views/guide/epg_progress.png</progresstexture>
 					<channellayout height="83" width="395">
 						<control type="image">
-							<width>400</width>
+							<width>395</width>
 							<height>83</height>
 							<align>center</align>
 							<aligny>center</aligny>
-							<texture border="10" colordiffuse="grid_title">views/epg_mask_grid.png</texture>
+							<texture border="2,2,2,2" colordiffuse="ff2a2a2a">views/guide/epg_tile.png</texture>
 						</control>
 						<control type="label">
 							<left>15</left>
-							<width>60</width>
+							<width>50</width>
 							<height>83</height>
+							<aligny>center</aligny>
 							<font>reg22</font>
 							<label>$INFO[ListItem.ChannelNumberLabel]</label>
-							<align>left</align>
-							<aligny>center</aligny>
 						</control>
 						<control type="label">
 							<left>68</left>
-							<width>225</width>
+							<right>110</right>
 							<height>83</height>
+							<aligny>center</aligny>
 							<font>reg22</font>
 							<label>$INFO[ListItem.ChannelName]</label>
-							<aligny>center</aligny>
-							<textoffsetx>10</textoffsetx>
 						</control>
 						<control type="image">
 							<right>10</right>
@@ -80,31 +92,27 @@
 					</channellayout>
 					<focusedchannellayout height="83" width="395">
 						<control type="image">
-							<width>400</width>
+							<width>395</width>
 							<height>83</height>
 							<align>center</align>
 							<aligny>center</aligny>
-							<texture border="10" colordiffuse="grid_hover">views/epg_mask_grid.png</texture>
+							<texture border="2,2,2,2" colordiffuse="ff2a2a2a">views/guide/epg_tile.png</texture>
 						</control>
 						<control type="label">
 							<left>15</left>
-							<width>60</width>
+							<width>50</width>
 							<height>83</height>
+							<aligny>center</aligny>
 							<font>reg22</font>
 							<label>$INFO[ListItem.ChannelNumberLabel]</label>
-							<align>left</align>
-							<aligny>center</aligny>
-							<textcolor>white</textcolor>
 						</control>
 						<control type="label">
 							<left>68</left>
-							<width>225</width>
+							<right>110</right>
 							<height>83</height>
+							<aligny>center</aligny>
 							<font>reg22</font>
 							<label>$INFO[ListItem.ChannelName]</label>
-							<aligny>center</aligny>
-							<textoffsetx>10</textoffsetx>
-							<textcolor>white</textcolor>
 						</control>
 						<control type="image">
 							<right>10</right>
@@ -116,46 +124,21 @@
 					</focusedchannellayout>
 					<itemlayout height="83" width="60">
 						<control type="image" id="2">
-							<width>65</width>
 							<height>83</height>
-							<texture border="10" colordiffuse="grid_label">views/epg_mask_grid.png</texture>
-							<visible>Integer.IsLess(ListItem.Progress,1)</visible>
+							<texture colordiffuse="grid_label_inprogress">common/white.jpg</texture>							
+							<visible>!Integer.IsLess(ListItem.Progress,1) + Integer.IsLess(ListItem.Progress,100)</visible>
 						</control>
 						<control type="image" id="2">
-							<width>65</width>
 							<height>83</height>
-							<texture border="10" colordiffuse="grid_label_inprogress">views/epg_mask_grid.png</texture>
-							<visible>!Integer.IsLess(ListItem.Progress,1)</visible>
+							<texture border="2,2,2,2" colordiffuse="ff2a2a2a">views/guide/epg_tile.png</texture>
 						</control>
 						<control type="label" id="1">
 							<textoffsetx>15</textoffsetx>
-							<top>5</top>
 							<width>50</width>
-							<height>73</height>
+							<height>83</height>
 							<aligny>center</aligny>
 							<font>reg22</font>
 							<label>$INFO[ListItem.Label]</label>
-							<visible>String.IsEmpty(ListItem.Episodename)</visible>
-						</control>
-						<control type="label" id="1">
-							<textoffsetx>15</textoffsetx>
-							<top>10</top>
-							<width>50</width>
-							<height>36</height>
-							<aligny>center</aligny>
-							<font>reg22</font>
-							<label>$INFO[ListItem.Label]</label>
-							<visible>!String.IsEmpty(ListItem.Episodename)</visible>
-						</control>
-						<control type="label" id="1">
-							<textoffsetx>15</textoffsetx>
-							<bottom>10</bottom>
-							<width>50</width>
-							<height>36</height>
-							<aligny>center</aligny>
-							<font>reg22</font>
-							<textcolor>softgrey</textcolor>
-							<label>$INFO[ListItem.Episodename]</label>
 						</control>
 						<control type="image" id="2">
 							<right>-15</right>
@@ -178,54 +161,23 @@
 					</itemlayout>
 					<focusedlayout height="83" width="60">
 						<control type="image" id="2">
-							<width>65</width>
 							<height>83</height>
-							<texture border="10" colordiffuse="grid_label">views/epg_mask_grid.png</texture>
-							<visible>Integer.IsLess(ListItem.Progress,1) + !Control.HasFocus(10)</visible>
+							<texture colordiffuse="grid_label_inprogress">common/white.jpg</texture>
+							<visible>!Integer.IsLess(ListItem.Progress,1) + Integer.IsLess(ListItem.Progress,100) + !Control.HasFocus(10)</visible>
 						</control>
 						<control type="image" id="2">
-							<width>65</width>
 							<height>83</height>
-							<texture border="10" colordiffuse="grid_label_inprogress">views/epg_mask_grid.png</texture>
-							<visible>!Integer.IsLess(ListItem.Progress,1) + !Control.HasFocus(10)</visible>
-						</control>
-						<control type="image" id="2">
-							<width>65</width>
-							<height>83</height>
-							<texture border="10" colordiffuse="grid_hover">views/epg_mask_grid.png</texture>
+							<texture colordiffuse="grid_hover">common/white.jpg</texture>
 							<visible>Control.HasFocus(10)</visible>
 						</control>
 						<control type="label" id="1">
 							<textoffsetx>15</textoffsetx>
-							<top>5</top>
 							<width>50</width>
-							<height>73</height>
+							<height>83</height>
 							<aligny>center</aligny>
 							<font>reg22</font>
 							<textcolor>white</textcolor>
 							<label>$INFO[ListItem.Label]</label>
-							<visible>String.IsEmpty(ListItem.Episodename)</visible>
-						</control>
-						<control type="label" id="1">
-							<textoffsetx>15</textoffsetx>
-							<top>10</top>
-							<width>50</width>
-							<height>36</height>
-							<aligny>center</aligny>
-							<font>reg22</font>
-							<textcolor>white</textcolor>
-							<label>$INFO[ListItem.Label]</label>
-							<visible>!String.IsEmpty(ListItem.Episodename)</visible>
-						</control>
-						<control type="label" id="1">
-							<textoffsetx>15</textoffsetx>
-							<bottom>10</bottom>
-							<width>50</width>
-							<height>36</height>
-							<aligny>center</aligny>
-							<font>reg22</font>
-							<textcolor>white</textcolor>
-							<label>$INFO[ListItem.Episodename]</label>
 						</control>
 						<control type="image" id="2">
 							<right>-15</right>
@@ -328,9 +280,9 @@
 			<!-- scrollbar -->
 			<control type="scrollbar" id="60">
 				<right>0</right>
-				<top>142</top>
+				<top>138</top>
 				<width>10</width>
-				<height>660</height>
+				<height>667</height>
 				<orientation>vertical</orientation>
 				<showonepage>true</showonepage>
 				<texturesliderbackground colordiffuse="ff3b3b3b">common/white.jpg</texturesliderbackground>
