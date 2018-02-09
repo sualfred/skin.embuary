@@ -160,7 +160,7 @@
 		<value condition="!Skin.HasSetting(HideLibraryWidgets) | [!Libary.HasContent(movies) + !Library.HasContent(tvshows)]"> [COLOR FF505050](EmbyCon)[/COLOR]</value>
 	</variable>
 	<variable name="EmbyCon_InProgressMedia">
-		<value condition="[System.HasAddon(plugin.video.embycon) + Skin.HasSetting(EnableEmbyConWidgets)]">plugin://plugin.video.embycon?mode=WIDGET_CONTENT_URL&amp;url=Users%2F%7Buserid%7D%2FItems%3FSortBy%3DDatePlayed%26SortOrder%3DDescending%26Filters%3DIsResumable%26Limit%3D12%26Recursive%3Dtrue%26Fields%3DPrimaryImageAspectRatio%252CBasicSyncInfo%26CollapseBoxSetItems%3Dfalse%26ExcludeLocationTypes%3DVirtual%26ImageTypeLimit%3D1%26EnableImageTypes%3DPrimary%252CBackdrop%252CThumb%26EnableTotalRecordCount%3Dfalse%26MediaTypes%3DVideo</value>
+		<value condition="[System.HasAddon(plugin.video.embycon) + Skin.HasSetting(EnableEmbyConWidgets)]">plugin://plugin.video.embycon/?mode=GET_CONTENT&amp;media_type=Video&amp;url=%7Bserver%7D%2Femby%2FUsers%2F%7Buserid%7D%2FItems%2FResume%3FLimit%3D12%26Recursive%3Dtrue%26Fields%3DPrimaryImageAspectRatio%2CBasicSyncInfo%26ImageTypeLimit%3D1%26EnableImageTypes%3DPrimary%2CBackdrop%2CThumb%26EnableTotalRecordCount%3Dfalse%26MediaTypes%3DVideo</value>
 	</variable>
 	<variable name="EmbyCon_InProgressMovies">
 		<value condition="[System.HasAddon(plugin.video.embycon) + Skin.HasSetting(EnableEmbyConWidgets)]">plugin://plugin.video.embycon/?media_type=Movies&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fLimit%3d%7bItemLimit%7d%26Recursive%3dtrue%26Fields%3d%7bfield_filters%7d%26Filters%3dIsResumable%26IncludeItemTypes%3dMovie%26ImageTypeLimit%3d1%26format%3djson</value>
@@ -205,15 +205,15 @@
 	</variable>
 	<!-- Favourits vars -->
 	<variable name="FavMovies_Content">
-		<value condition="System.HasAddon(plugin.video.embycon) + Skin.HasSetting(EnableEmbyConWidgets)]">plugin://plugin.video.embycon?mode=WIDGET_CONTENT_URL&amp;url=Users%2F%7Buserid%7D%2FItems%3FSortBy%3DSortName%26SortOrder%3DAscending%26Filters%3DIsFavorite%26Recursive%3Dtrue%26Fields%3DPrimaryImageAspectRatio%252CBasicSyncInfo%26CollapseBoxSetItems%3Dfalse%26ExcludeLocationTypes%3DVirtual%26EnableTotalRecordCount%3Dfalse%26Limit%3D30%26IncludeItemTypes%3DMovie</value>
+		<value condition="System.HasAddon(plugin.video.embycon) + Skin.HasSetting(EnableEmbyConWidgets)">plugin://plugin.video.embycon/?media_type=Movies&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fFields%3d%7bfield_filters%7d%26Recursive%3dtrue%26Filters%3dIsFavorite%26IncludeItemTypes%3dMovie%26ImageTypeLimit%3d1%26format%3djson</value>
 		<value condition="System.HasAddon(plugin.video.emby)">library://video/emby_Favorite movies.xml</value>
 	</variable>
 	<variable name="FavShows_Content">
-		<value condition="System.HasAddon(plugin.video.embycon) + Skin.HasSetting(EnableEmbyConWidgets)]">plugin://plugin.video.embycon/?media_type=tvshows&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fFields%3dEpisodeCount%2cSeasonCount%2cPath%2cGenres%2cStudios%2cCumulativeRunTimeTicks%2cEtag%2cMediaStreams%2cOverview%26Recursive%3dtrue%26Filters%3dIsFavorite%26IncludeItemTypes%3dSeries%26ImageTypeLimit%3d1%26format%3djson</value>
+		<value condition="System.HasAddon(plugin.video.embycon) + Skin.HasSetting(EnableEmbyConWidgets)">plugin://plugin.video.embycon/?media_type=tvshows&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fFields%3d%7bfield_filters%7d%26Recursive%3dtrue%26Filters%3dIsFavorite%26IncludeItemTypes%3dSeries%26ImageTypeLimit%3d1%26format%3djson</value>
 		<value condition="System.HasAddon(plugin.video.emby)">library://video/emby_Favorite tvshows.xml</value>
 	</variable>
 	<variable name="FavEpisodes_Content">
-		<value condition="System.HasAddon(plugin.video.embycon) + Skin.HasSetting(EnableEmbyConWidgets)]">plugin://plugin.video.embycon?mode=WIDGET_CONTENT_URL&amp;url=Users%2F%7Buserid%7D%2FItems%3FSortBy%3DSortName%26SortOrder%3DAscending%26Filters%3DIsFavorite%26Recursive%3Dtrue%26Fields%3DPrimaryImageAspectRatio%252CBasicSyncInfo%26CollapseBoxSetItems%3Dfalse%26ExcludeLocationTypes%3DVirtual%26EnableTotalRecordCount%3Dfalse%26Limit%3D10%26IncludeItemTypes%3DEpisode</value>
+		<value condition="System.HasAddon(plugin.video.embycon) + Skin.HasSetting(EnableEmbyConWidgets)">plugin://plugin.video.embycon/?media_type=Episodes&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FUsers%2F%7Buserid%7D%2FItems%3FSortBy%3DSortName%26amp%3BSortOrder%3DAscending%26amp%3BFilters%3DIsFavorite%26amp%3BRecursive%3Dtrue%26amp%3BFields%3DPrimaryImageAspectRatio%2CBasicSyncInfo%26amp%3BCollapseBoxSetItems%3Dfalse%26amp%3BExcludeLocationTypes%3DVirtual%26amp%3BEnableTotalRecordCount%3Dfalse%26amp%3BLimit%3D100%26amp%3BIncludeItemTypes%3DEpisode</value>
 		<value condition="System.HasAddon(plugin.video.emby)">library://video/emby_Favorite episodes.xml</value>
 	</variable>
 	<!-- Embcon/Native DB vars -->
@@ -229,16 +229,8 @@
 		<value condition="Container.Content(seasons) + Integer.IsGreater(Window(home).Property(UnwatchedEpisodes),0)">videodb://inprogresstvshows/$INFO[Window(home).Property(TVShowDBID)]/-2/?tvshowid=$INFO[Window(home).Property(TVShowDBID)]</value>
 	</variable>
 	<variable name="InfoDialog_NextUp_Content">
-		<value condition="Integer.IsGreater(Window(home).Property(UnwatchedEpisodes),0) + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">plugin://plugin.video.embycon?mode=WIDGET_CONTENT_NEXTUP&amp;id=$INFO[ListItem.Property(id)]</value>
+		<value condition="Integer.IsGreater(Window(home).Property(UnwatchedEpisodes),0) + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">plugin://plugin.video.embycon/?mode=GET_CONTENT&amp;media_type=Episodes&amp;url=%7Bserver%7D%2Femby%2FShows%2FNextUp%3FuserId%3D%7Buserid%7D%26Limit%3D%7BItemLimit%7D%26Filters%3D%7Bfield_filters%7D%26format%3Djson%26ImageTypeLimit%3D1%26IsMissing%3DFalse%26SeriesId%3D$INFO[ListItem.Property(id)]</value>
 		<value condition="Integer.IsGreater(Window(home).Property(UnwatchedEpisodes),0)">videodb://inprogresstvshows/$INFO[ListItem.DBID]/-2/?tvshowid=$INFO[ListItem.DBID]</value>
-	</variable>
-	<variable name="View55_MoreLikeThis_Content">
-		<value condition="String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">plugin://plugin.video.embycon?mode=WIDGET_CONTENT_SIMILAR&amp;id=$INFO[Window(home).Property(EmbyID)]</value>
-		<value>plugin://script.skin.helper.widgets/?action=similarshows&amp;imdbid=$INFO[Window(home).Property(TVShowIMDB)]</value>
-	</variable>
-	<variable name="View54_MoreLikeThis_Content">
-		<value condition="String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">plugin://plugin.video.embycon?mode=WIDGET_CONTENT_SIMILAR&amp;id=$INFO[Window(home).Property(EmbyID)]</value>
-		<value>plugin://script.skin.helper.widgets/?action=similarshows&amp;imdbid=$INFO[Window(home).Property(TVShowIMDB)]</value>
 	</variable>
 	<variable name="InfoDialog_MoreLikeThis_Content">
 		<value condition="String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">plugin://plugin.video.embycon/?mode=GET_CONTENT&amp;media_type=Movies&amp;url=%7Bserver%7D%2Femby%2FItems%2F$INFO[ListItem.Property(id)]%2FSimilar%3FuserId%3D%7Buserid%7D%26Limit%3D%7BItemLimit%7D%26format%3Djson%26ImageTypeLimit%3D1%26IsMissing%3DFalse%26Filters%3D%7Bfield_filters%7D</value>
@@ -305,7 +297,7 @@
 	<variable name="IconLandscape">
 		<value condition="Window.IsVisible(videobookmarks) + !String.StartsWith(ListItem.Icon,Default)">$INFO[ListItem.Icon]</value>
 		<value condition="String.StartsWith(ListItem.Path,pvr://) + !String.StartsWith(ListItem.Icon,Default)">$INFO[ListItem.Icon]</value>
-		<value condition="[Window.IsVisible(videoplaylist) | Window.IsVisible(movieinformation)] + String.IsEqual(ListItem.DBType,episode) + !String.IsEmpty(ListItem.Art(thumb)) + !String.StartsWith(ListItem.Art(thumb),Default)">$INFO[ListItem.Art(thumb)]</value>
+		<value condition="[Window.IsVisible(videoplaylist) | Window.IsVisible(movieinformation) | Window.IsVisible(favourites)] + [String.IsEqual(ListItem.DBType,episode) | !String.IsEmpty(ListItem.Episode)] + !String.IsEmpty(ListItem.Art(thumb)) + !String.StartsWith(ListItem.Art(thumb),Default)">$INFO[ListItem.Art(thumb)]</value>
 		<value condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)] + !String.IsEmpty(ListItem.Art(tvshow.landscape))">$INFO[ListItem.Art(tvshow.landscape)]</value>
 		<value condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)] + !String.IsEmpty(ListItem.Art(landscape))">$INFO[ListItem.Art(landscape)]</value>
 		<value condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)] + !String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>

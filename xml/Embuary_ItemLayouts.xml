@@ -157,7 +157,7 @@
 				<selectedcolor>white</selectedcolor>
 				<align>center</align>
 				<aligny>top</aligny>
-				<visible>String.IsEqual(ListItem.Overlay,OverlayWatched.png) | Integer.IsGreaterOrEqual(ListItem.PlayCount,1) | [String.IsEqual(ListItem.DBtype,tvshow) + !String.IsEmpty(ListItem.Property(UnWatchedEpisodes)) + Integer.IsLess(ListItem.Property(UnWatchedEpisodes),1)]</visible>
+				<visible>Integer.IsLess(ListItem.Property(UnWatchedEpisodes),1) + !String.IsEqual(ListItem.Overlay,OverlayUnwatched.png) + [String.IsEqual(ListItem.Overlay,OverlayWatched.png) | Integer.IsGreaterOrEqual(ListItem.PlayCount,1) | [String.IsEqual(ListItem.DBtype,tvshow) + !String.IsEmpty(ListItem.Property(UnWatchedEpisodes))]]</visible>
 			</control>
 		</control>
 		<control type="group">
