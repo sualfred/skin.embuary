@@ -1027,15 +1027,6 @@
 			<visible>Skin.HasSetting(User$PARAM[type]Widget$PARAM[id]) + !String.IsEmpty(Skin.String(User$PARAM[type]Widget$PARAM[id]_path))</visible>
 		</control>
 	</include>
-	<include name="EmbyHomeMenuSettingsTemplate">
-		<control type="radiobutton" id="$PARAM[id]">
-			<include>SettingsButton</include>
-			<onclick>Skin.ToggleSetting(HideEmby$PARAM[nr])</onclick>
-			<selected>!Skin.HasSetting(HideEmby$PARAM[nr])</selected>
-			<label>$INFO[Window(home).Property(emby.nodes.$PARAM[nr].title),,   ][COLOR lightgrey]($LOCALIZE[31181])[/COLOR]</label>
-			<visible>$EXP[MenuEmby$PARAM[nr]Visiblity] + !String.IsEmpty(Window(home).Property(emby.nodes.$PARAM[nr].title))</visible>
-		</control>
-	</include>
 	<include name="CustomHubShortcutSettingsTemplate">
 		<param name="group">shortcut</param>
 		<definition>
@@ -1416,5 +1407,18 @@
 				<visible>$PARAM[visible]</visible>
 			</item>
 		</definition>
+	</include>
+	<include name="MainMenuItemArtSelector">
+		<item>
+			<icon>DefaultFolder.png</icon>
+			<property name="custom_art">$INFO[Skin.String($PARAM[item].icon)]</property>
+			<label>$PARAM[label]</label>
+			<onclick>SetProperty(Dialog.1.Label,Default artwork)</onclick>
+			<onclick>SetProperty(Dialog.1.BuiltIn,Skin.Reset($PARAM[item].icon))</onclick>
+			<onclick>SetProperty(Dialog.2.Label,Own artwork)</onclick>
+			<onclick>SetProperty(Dialog.2.BuiltIn,Skin.SetImage($PARAM[item].icon))</onclick>
+			<onclick>RunScript(script.toolbox,info=selectdialog,header=$LOCALIZE[137])</onclick> 
+			<visible>$PARAM[visible]</visible>
+		</item>
 	</include>
 </includes>
