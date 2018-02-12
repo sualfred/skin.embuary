@@ -1033,7 +1033,7 @@
 			<onclick>Skin.ToggleSetting(HideEmby$PARAM[nr])</onclick>
 			<selected>!Skin.HasSetting(HideEmby$PARAM[nr])</selected>
 			<label>$INFO[Window(home).Property(emby.nodes.$PARAM[nr].title),,   ][COLOR lightgrey]($LOCALIZE[31181])[/COLOR]</label>
-			<visible>!String.IsEmpty(Window(home).Property(emby.nodes.$PARAM[nr].title)) + !String.Contains(Window(home).Property(emby.nodes.$PARAM[nr].content),emby_Favorite) + !String.Contains(Window(home).Property(emby.nodes.$PARAM[nr].content),emby_channels)</visible>
+			<visible>$EXP[MenuEmby$PARAM[nr]Visiblity] + !String.IsEmpty(Window(home).Property(emby.nodes.$PARAM[nr].title))</visible>
 		</control>
 	</include>
 	<include name="CustomHubShortcutSettingsTemplate">

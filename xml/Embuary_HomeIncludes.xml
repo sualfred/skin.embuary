@@ -35,7 +35,7 @@
 			<property name="art2">$INFO[Container(3$PARAM[nr]).ListItem(1).Art(thumb)]</property>
 			<property name="art3">$INFO[Container(3$PARAM[nr]).ListItem(2).Art(thumb)]</property>
 			<property name="art4">$INFO[Container(3$PARAM[nr]).ListItem(3).Art(thumb)]</property>
-			<visible>$PARAM[visible]</visible>
+			<visible>$PARAM[visible] + [Integer.IsGreater(Container(3$PARAM[nr]).NumItems,0) | Container(3$PARAM[nr]).IsUpdating]</visible>
 		</item>
 	</include>
 
@@ -260,10 +260,6 @@
 	</include>
 	<include name="HiddenHomeLists">		
 		<!-- Emby Home Menu Paths -->
-		<control type="list" id="20">
-			<include>HiddenObject</include>
-			<content>library://video/emby/</content>
-		</control>
 		<include content="EmbyHiddenHomeListTemplate">
 			<param name="nr" value="0"/>
 		</include>
