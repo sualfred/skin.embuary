@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window id="1111" type="dialog">
+	<defaultcontrol always="true">100</defaultcontrol>
+	<onunload>ClearProperty(menu_position,home)</onunload>
+	<controls>		
+		<control type="group">
+			<include>FullscreenDimensions</include>
+			<control type="image">
+				<include>Visible_Fade</include>
+				<include>FullscreenDimensions</include>
+				<texture colordiffuse="background">common/white.jpg</texture>
+			</control>
+			<control type="grouplist">
+				<visible>!Window.IsVisible(DialogSelect.xml)</visible>
+				<include>Dialog_PopupOpenClose</include>
+				<include>Visible_PopupOpenClose</include>
+				<centerleft>50%</centerleft>
+				<centertop>50%</centertop>
+				<width>800</width>
+				<height max="940">auto</height>
+				<orientation>vertical</orientation>
+				<itemgap>20</itemgap>
+				<align>center</align>
+				<!-- edit -->
+				<control type="group">
+					<height>50</height>
+					<control type="label">
+						<width>100%</width>
+						<height>48</height>
+						<font>Reg24</font>
+						<aligny>center</aligny>
+						<textoffsetx>5</textoffsetx>
+						<textcolor>text_white</textcolor>
+						<label>$LOCALIZE[31201]</label>
+					</control>
+					<control type="image">
+						<width>100%</width>
+						<top>45</top>
+						<height>2</height>
+						<texture colordiffuse="lightgrey">common/white.jpg</texture>
+						<aspectratio>stretch</aspectratio>
+					</control>
+					<control type="image">
+						<width>100%</width>
+						<top>45</top>
+						<height>2</height>
+						<texture colordiffuse="emby">common/white.jpg</texture>
+						<aspectratio>stretch</aspectratio>
+						<include>WindowOpen_GreenBar</include>
+					</control>
+				</control>
+				<!-- list -->
+				<control type="group">
+					<height>470</height>
+					<control type="image">
+						<height>470</height>
+						<texture colordiffuse="thumb_background">common/white.jpg</texture>
+						<aspectratio>stretch</aspectratio>
+					</control>
+					<control type="list" id="100">
+						<centerleft>50%</centerleft>
+						<top>10</top>
+						<height>450</height>
+						<onup>noop</onup>
+						<onleft>101</onleft>
+						<onright>101</onright>
+						<ondown>101</ondown>
+						<pagecontrol>60</pagecontrol>
+						<scrolltime>200</scrolltime>
+						<itemlayout height="75" width="800">
+							<control type="image">
+								<height>75</height>
+								<width>75</width>
+								<left>10</left>
+								<bordersize>5</bordersize>
+								<texture background="true">$INFO[ListItem.Icon]</texture>
+								<aspectratio>keep</aspectratio>
+							</control>
+							<control type="label">
+								<right>20</right>
+								<left>100</left>
+								<height>75</height>
+								<aligny>center</aligny>
+								<font>Reg24</font>
+								<label>$INFO[ListItem.Label]$INFO[ListItem.Label2, [,]]</label>
+							</control>
+						</itemlayout>
+						<focusedlayout height="75" width="800">
+							<control type="image">
+								<width>100%</width>
+								<height>75</height>
+								<texture colordiffuse="list_hover2">common/white.jpg</texture>
+								<visible>Control.HasFocus(100)</visible>
+							</control>
+							<control type="image">
+								<height>75</height>
+								<width>75</width>
+								<left>10</left>
+								<bordersize>5</bordersize>
+								<texture background="true">$INFO[ListItem.Icon]</texture>
+								<aspectratio>keep</aspectratio>
+							</control>
+							<control type="label">
+								<right>20</right>
+								<left>100</left>
+								<height>75</height>
+								<aligny>center</aligny>
+								<font>Reg24</font>
+								<label>$INFO[ListItem.Label]$INFO[ListItem.Label2, [,]]</label>
+							</control>
+						</focusedlayout>
+						<content>
+							<include content="MainMenuItemPositionSelector">
+								<param name="label" value="$LOCALIZE[192]"/>
+								<param name="setitem" value="false"/>
+								<param name="clearitem" value="true"/>
+								<param name="icon" value="DefaultAddonNone"/>
+								<param name="nr" value="$INFO[Window(home).Property(menu_position)]"/>
+							</include>
+							<include content="MainMenuItemPositionSelector">
+								<param name="label" value="$LOCALIZE[31180]"/>
+								<param name="item" value="movies"/>
+								<param name="setlabel" value="true"/>
+								<param name="nr" value="$INFO[Window(home).Property(menu_position)]"/>
+								<param name="visible" value="$EXP[MenuMoviesVisiblity]"/>
+							</include>
+							<include content="MainMenuItemPositionSelector">
+								<param name="label" value="$LOCALIZE[31179]"/>
+								<param name="item" value="shows"/>
+								<param name="setlabel" value="true"/>
+								<param name="nr" value="$INFO[Window(home).Property(menu_position)]"/>
+								<param name="visible" value="$EXP[MenuTVShowsVisiblity]"/>
+							</include>
+							<include content="MainMenuItemPositionSelector">
+								<param name="label" value="$INFO[Window(home).Property(emby.nodes.0.title),,   ][COLOR lightgrey]($LOCALIZE[31181])[/COLOR]"/>
+								<param name="item" value="emby0"/>
+								<param name="nr" value="$INFO[Window(home).Property(menu_position)]"/>
+								<param name="visible" value="$EXP[MenuEmby0Visiblity]"/>
+							</include>
+							<include content="MainMenuItemPositionSelector">
+								<param name="label" value="$INFO[Window(home).Property(emby.nodes.1.title),,   ][COLOR lightgrey]($LOCALIZE[31181])[/COLOR]"/>
+								<param name="item" value="emby1"/>
+								<param name="nr" value="$INFO[Window(home).Property(menu_position)]"/>
+								<param name="visible" value="$EXP[MenuEmby1Visiblity]"/>
+							</include>
+							<include content="MainMenuItemPositionSelector">
+								<param name="label" value="$INFO[Window(home).Property(emby.nodes.2.title),,   ][COLOR lightgrey]($LOCALIZE[31181])[/COLOR]"/>
+								<param name="item" value="emby2"/>
+								<param name="nr" value="$INFO[Window(home).Property(menu_position)]"/>
+								<param name="visible" value="$EXP[MenuEmby2Visiblity]"/>
+							</include>
+							<include content="MainMenuItemPositionSelector">
+								<param name="label" value="$INFO[Window(home).Property(emby.nodes.3.title),,   ][COLOR lightgrey]($LOCALIZE[31181])[/COLOR]"/>
+								<param name="item" value="emby3"/>
+								<param name="nr" value="$INFO[Window(home).Property(menu_position)]"/>
+								<param name="visible" value="$EXP[MenuEmby3Visiblity]"/>
+							</include>
+							<include content="MainMenuItemPositionSelector">
+								<param name="label" value="$INFO[Window(home).Property(emby.nodes.4.title),,   ][COLOR lightgrey]($LOCALIZE[31181])[/COLOR]"/>
+								<param name="item" value="emby4"/>
+								<param name="nr" value="$INFO[Window(home).Property(menu_position)]"/>
+								<param name="visible" value="$EXP[MenuEmby4Visiblity]"/>
+							</include>
+							<include content="MainMenuItemPositionSelector">
+								<param name="label" value="$INFO[Window(home).Property(emby.nodes.5.title),,   ][COLOR lightgrey]($LOCALIZE[31181])[/COLOR]"/>
+								<param name="item" value="emby5"/>
+								<param name="nr" value="$INFO[Window(home).Property(menu_position)]"/>
+								<param name="visible" value="$EXP[MenuEmby5Visiblity]"/>
+							</include>
+							<include content="MainMenuItemPositionSelector">
+								<param name="label" value="$INFO[Window(home).Property(emby.nodes.6.title),,   ][COLOR lightgrey]($LOCALIZE[31181])[/COLOR]"/>
+								<param name="item" value="emby6"/>
+								<param name="nr" value="$INFO[Window(home).Property(menu_position)]"/>
+								<param name="visible" value="$EXP[MenuEmby6Visiblity]"/>
+							</include>
+							<include content="MainMenuItemPositionSelector">
+								<param name="label" value="$INFO[Window(home).Property(emby.nodes.7.title),,   ][COLOR lightgrey]($LOCALIZE[31181])[/COLOR]"/>
+								<param name="item" value="emby7"/>
+								<param name="nr" value="$INFO[Window(home).Property(menu_position)]"/>
+								<param name="visible" value="$EXP[MenuEmby7Visiblity]"/>
+							</include>
+							<include content="MainMenuItemPositionSelector">
+								<param name="label" value="$INFO[Window(home).Property(emby.nodes.8.title),,   ][COLOR lightgrey]($LOCALIZE[31181])[/COLOR]"/>
+								<param name="item" value="emby8"/>
+								<param name="nr" value="$INFO[Window(home).Property(menu_position)]"/>
+								<param name="visible" value="$EXP[MenuEmby8Visiblity]"/>
+							</include>
+							<include content="MainMenuItemPositionSelector">
+								<param name="label" value="$INFO[Window(home).Property(emby.nodes.9.title),,   ][COLOR lightgrey]($LOCALIZE[31181])[/COLOR]"/>
+								<param name="item" value="emby9"/>
+								<param name="nr" value="$INFO[Window(home).Property(menu_position)]"/>
+								<param name="visible" value="$EXP[MenuEmby9Visiblity]"/>
+							</include>
+							<include content="MainMenuItemPositionSelector">
+								<param name="label" value="$VAR[PVRLabel]"/>
+								<param name="item" value="pvr"/>
+								<param name="nr" value="$INFO[Window(home).Property(menu_position)]"/>
+								<param name="visible" value="$EXP[MenuPVRVisiblity]"/>
+							</include>
+							<include content="MainMenuItemPositionSelector">
+								<param name="label" value="$LOCALIZE[2]"/>
+								<param name="item" value="music"/>
+								<param name="setlabel" value="true"/>
+								<param name="nr" value="$INFO[Window(home).Property(menu_position)]"/>
+								<param name="visible" value="$EXP[MenuMusicVisiblity]"/>
+							</include>
+							<include content="MainMenuItemPositionSelector">
+								<param name="label" value="$LOCALIZE[20389]"/>
+								<param name="item" value="music"/>
+								<param name="setlabel" value="true"/>
+								<param name="nr" value="$INFO[Window(home).Property(menu_position)]"/>
+								<param name="visible" value="$EXP[MenuMusicvideosVisiblity]"/>
+							</include>
+							<include content="MainMenuItemPositionSelector">
+								<param name="label" value="$LOCALIZE[24001]"/>
+								<param name="item" value="addons"/>
+								<param name="setlabel" value="true"/>
+								<param name="nr" value="$INFO[Window(home).Property(menu_position)]"/>
+								<param name="visible" value="$EXP[MenuAddonsVisiblity]"/>
+							</include>
+							<include content="MainMenuItemPositionSelector">
+								<param name="label" value="$INFO[Skin.String(UserHomeHub1_name),,   ][COLOR lightgrey]($LOCALIZE[31200] 1)[/COLOR]"/>
+								<param name="item" value="custom1"/>
+								<param name="nr" value="$INFO[Window(home).Property(menu_position)]"/>
+								<param name="visible" value="Skin.HasSetting(UserHomeHub1)"/>
+							</include>
+							<include content="MainMenuItemPositionSelector">
+								<param name="label" value="$INFO[Skin.String(UserHomeHub2_name),,   ][COLOR lightgrey]($LOCALIZE[31200] 2)[/COLOR]"/>
+								<param name="item" value="custom2"/>
+								<param name="nr" value="$INFO[Window(home).Property(menu_position)]"/>
+								<param name="visible" value="Skin.HasSetting(UserHomeHub2)"/>
+							</include>
+							<include content="MainMenuItemPositionSelector">
+								<param name="label" value="$INFO[Skin.String(UserHomeHub3_name),,   ][COLOR lightgrey]($LOCALIZE[31200] 3)[/COLOR]"/>
+								<param name="item" value="custom3"/>
+								<param name="nr" value="$INFO[Window(home).Property(menu_position)]"/>
+								<param name="visible" value="Skin.HasSetting(UserHomeHub3)"/>
+							</include>
+							<include content="MainMenuItemPositionSelector">
+								<param name="label" value="$INFO[Skin.String(UserHomeHub4_name),,   ][COLOR lightgrey]($LOCALIZE[31200] 4)[/COLOR]"/>
+								<param name="item" value="custom4"/>
+								<param name="nr" value="$INFO[Window(home).Property(menu_position)]"/>
+								<param name="visible" value="Skin.HasSetting(UserHomeHub4)"/>
+							</include>
+							<include content="MainMenuItemPositionSelector">
+								<param name="label" value="$INFO[Skin.String(UserHomeHub4_name),,   ][COLOR lightgrey]($LOCALIZE[31200] 5)[/COLOR]"/>
+								<param name="item" value="custom5"/>
+								<param name="nr" value="$INFO[Window(home).Property(menu_position)]"/>
+								<param name="visible" value="Skin.HasSetting(UserHomeHub5)"/>
+							</include>
+							<include content="MainMenuItemPositionSelector">
+								<param name="label" value="$INFO[Skin.String(UserHomeHub6_name),,   ][COLOR lightgrey]($LOCALIZE[31200] 6)[/COLOR]"/>
+								<param name="item" value="custom6"/>
+								<param name="nr" value="$INFO[Window(home).Property(menu_position)]"/>
+								<param name="visible" value="Skin.HasSetting(UserHomeHub6)"/>
+							</include>
+						</content>
+					</control>
+					<control type="scrollbar" id="60">
+						<right>0</right>
+						<top>0</top>
+						<bottom>0</bottom>
+						<width>4</width>
+						<orientation>vertical</orientation>
+						<showonepage>false</showonepage>
+						<texturesliderbackground colordiffuse="00ffffff">common/white.jpg</texturesliderbackground>
+						<texturesliderbar colordiffuse="softgrey">common/white.jpg</texturesliderbar>
+					</control>
+				</control>
+				<!-- Button -->
+				<control type="grouplist">
+					<height>50</height>
+					<width>100%</width>
+					<orientation>horizontal</orientation>
+					<itemgap>5</itemgap>
+					<align>center</align>
+					<onright>noop</onright>
+					<onleft>noop</onleft>
+					<control type="button" id="101">
+						<label>$LOCALIZE[15067]</label>
+						<onclick>close</onclick>
+						<onup>SetFocus(100)</onup>
+					</control>
+				</control>
+			</control>
+		</control>
+	</controls>
+</window>

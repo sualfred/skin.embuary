@@ -2,73 +2,78 @@
 <window id="1119">
 	<zorder>999</zorder>
 	<onload>Skin.SetBool(EmbuaryFirstRun)</onload>
+
+
 	<defaultcontrol>101</defaultcontrol>
 	<controls>
-		<control type="image">
-			<include>Visible_Fade</include>
-			<include>FullscreenDimensions</include>
-			<texture colordiffuse="background">common/white.jpg</texture>
-		</control>
-		<control type="scrollbar" id="3000">
-			<include>HiddenObject</include>
-		</control>
-		<control type="grouplist">
-			<include>Dialog_PopupOpenClose</include>
-			<centerleft>50%</centerleft>
-			<centertop>50%</centertop>
-			<width>800</width>
-			<height max="940">auto</height>
-			<orientation>vertical</orientation>
-			<itemgap>20</itemgap>
-			<align>center</align>
-			<!-- headline -->	
-			<control type="label">
-				<centerleft>50%</centerleft>
-				<width>100%</width>
-				<height>26</height>
-				<font>Med28</font>
-				<textcolor>emby</textcolor>
-				<shadowcolor>text_shadow</shadowcolor>
-				<autoscroll>false</autoscroll>
-				<align>center</align>
-				<aligny>top</aligny>
-				<label>$LOCALIZE[31091]</label>
+		<control type="group">
+			<visible>Window.Previous(startup)</visible>
+			<control type="image">
+				<include>Visible_Fade</include>
+				<include>FullscreenDimensions</include>
+				<texture colordiffuse="background">common/white.jpg</texture>
 			</control>
-			<!-- message -->	
-			<control id="5" type="textbox">
-				<centerleft>50%</centerleft>
-				<width>100%</width>
-				<height max="745">auto</height>
-				<font>PopUpText</font>
-				<autoscroll>false</autoscroll>
-				<align>center</align>
-				<aligny>top</aligny>
-				<pagecontrol>3000</pagecontrol>
-				<label>$LOCALIZE[31092]</label>
+			<control type="scrollbar" id="3000">
+				<include>HiddenObject</include>
 			</control>
-			<!-- Button -->
-			<control type="grouplist" id="100">
-				<height>50</height>
-				<width>100%</width>
-				<orientation>horizontal</orientation>
-				<itemgap>5</itemgap>
+			<control type="grouplist">
+				<include>Dialog_PopupOpenClose</include>
+				<centerleft>50%</centerleft>
+				<centertop>50%</centertop>
+				<width>800</width>
+				<height max="940">auto</height>
+				<orientation>vertical</orientation>
+				<itemgap>20</itemgap>
 				<align>center</align>
-				<onright>noop</onright>
-				<onleft>noop</onleft>
-				<control type="button" id="101">
-					<label>$LOCALIZE[31093]</label>
-					<onclick condition="System.GetBool(filelists.showparentdiritems)">RunScript(script.skin.helper.service,action=togglekodisetting,setting=filelists.showparentdiritems)</onclick>
-					<onclick>RunScript(script.skin.helper.service,action=setkodisetting,setting=videolibrary.tvshowsselectfirstunwatcheditem,value=2)</onclick>
-					<onclick condition="System.GetBool(input.enablemouse)">RunScript(script.skin.helper.service,action=togglekodisetting,setting=input.enablemouse)</onclick>
-					<onclick>ReplaceWindow($INFO[System.StartupWindow])</onclick>
-					<onup>PageUp(3000)</onup>
-					<ondown>PageDown(3000)</ondown>
+				<!-- headline -->	
+				<control type="label">
+					<centerleft>50%</centerleft>
+					<width>100%</width>
+					<height>26</height>
+					<font>Med28</font>
+					<textcolor>emby</textcolor>
+					<shadowcolor>text_shadow</shadowcolor>
+					<autoscroll>false</autoscroll>
+					<align>center</align>
+					<aligny>top</aligny>
+					<label>$LOCALIZE[31091]</label>
 				</control>
-				<control type="button" id="102">
-					<label>$LOCALIZE[31094]</label>
-					<onclick>ReplaceWindow($INFO[System.StartupWindow])</onclick>
-					<onup>PageUp(3000)</onup>
-					<ondown>PageDown(3000)</ondown>
+				<!-- message -->	
+				<control id="5" type="textbox">
+					<centerleft>50%</centerleft>
+					<width>100%</width>
+					<height max="745">auto</height>
+					<font>PopUpText</font>
+					<autoscroll>false</autoscroll>
+					<align>center</align>
+					<aligny>top</aligny>
+					<pagecontrol>3000</pagecontrol>
+					<label>$LOCALIZE[31092]</label>
+				</control>
+				<!-- Button -->
+				<control type="grouplist" id="100">
+					<height>50</height>
+					<width>100%</width>
+					<orientation>horizontal</orientation>
+					<itemgap>5</itemgap>
+					<align>center</align>
+					<onright>noop</onright>
+					<onleft>noop</onleft>
+					<control type="button" id="101">
+						<label>$LOCALIZE[31093]</label>
+						<onclick condition="System.GetBool(filelists.showparentdiritems)">RunScript(script.skin.helper.service,action=togglekodisetting,setting=filelists.showparentdiritems)</onclick>
+						<onclick>RunScript(script.skin.helper.service,action=setkodisetting,setting=videolibrary.tvshowsselectfirstunwatcheditem,value=2)</onclick>
+						<onclick condition="System.GetBool(input.enablemouse)">RunScript(script.skin.helper.service,action=togglekodisetting,setting=input.enablemouse)</onclick>
+						<onclick>ReplaceWindow($INFO[System.StartupWindow])</onclick>
+						<onup>PageUp(3000)</onup>
+						<ondown>PageDown(3000)</ondown>
+					</control>
+					<control type="button" id="102">
+						<label>$LOCALIZE[31094]</label>
+						<onclick>ReplaceWindow($INFO[System.StartupWindow])</onclick>
+						<onup>PageUp(3000)</onup>
+						<ondown>PageDown(3000)</ondown>
+					</control>
 				</control>
 			</control>
 		</control>

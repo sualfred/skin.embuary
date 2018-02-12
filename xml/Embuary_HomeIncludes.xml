@@ -23,7 +23,7 @@
 			<property name="art2">$INFO[Container(4$PARAM[nr]).ListItem(1).Art(thumb)]</property>
 			<property name="art3">$INFO[Container(4$PARAM[nr]).ListItem(2).Art(thumb)]</property>
 			<property name="art4">$INFO[Container(4$PARAM[nr]).ListItem(3).Art(thumb)]</property>
-			<visible>Skin.HasSetting(UserHomeHub$PARAM[nr]) + Integer.IsGreater(Container(4$PARAM[nr]).NumItems,0)</visible>
+			<visible>String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),custom$PARAM[nr]) + Skin.HasSetting(UserHomeHub$PARAM[nr])</visible>
 		</item>
 	</include>
 	<include name="EmbyNodeMainMenuItemTemplate">
@@ -35,121 +35,203 @@
 			<property name="art2">$INFO[Container(3$PARAM[nr]).ListItem(1).Art(thumb)]</property>
 			<property name="art3">$INFO[Container(3$PARAM[nr]).ListItem(2).Art(thumb)]</property>
 			<property name="art4">$INFO[Container(3$PARAM[nr]).ListItem(3).Art(thumb)]</property>
-			<visible>!Skin.HasSetting(HideEmby$PARAM[nr]) + !String.IsEmpty(Window(home).Property(emby.nodes.$PARAM[nr].title)) + !String.Contains(Window(home).Property(emby.nodes.$PARAM[nr].content),emby_Favorite) + !String.Contains(Window(home).Property(emby.nodes.$PARAM[nr].content),emby_channels) + !String.IsEmpty(Window(home).Property(emby_currUser))</visible>
+			<visible>$PARAM[visible]</visible>
 		</item>
 	</include>
+
+	<include name="MainMenuPosition">
+		<!-- all movies -->
+		<include content="MainMenuItemTemplate">
+			<param name="id" value="51"/>
+			<param name="label" value="$LOCALIZE[31180]"/>
+			<param name="onclick" value="ActivateWindow(1120,return)"/>
+			<param name="artwork" value="poster"/>
+			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),movies) + $EXP[MenuMoviesVisiblity]"/>
+		</include>
+		<!-- all shows -->
+		<include content="MainMenuItemTemplate">
+			<param name="id" value="52"/>
+			<param name="label" value="$LOCALIZE[31179]"/>
+			<param name="onclick" value="ActivateWindow(1121,return)"/>
+			<param name="artwork" value="poster"/>
+			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),shows) + $EXP[MenuTVShowsVisiblity]"/>
+		</include>
+		<!-- Emby nodes -->
+		<include content="EmbyNodeMainMenuItemTemplate">
+			<param name="nr" value="0"/>
+			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),emby0) + $EXP[MenuEmby0Visiblity]"/>
+		</include>
+		<include content="EmbyNodeMainMenuItemTemplate">
+			<param name="nr" value="1"/>
+			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),emby1) + $EXP[MenuEmby1Visiblity]"/>
+		</include>
+		<include content="EmbyNodeMainMenuItemTemplate">
+			<param name="nr" value="2"/>
+			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),emby2) + $EXP[MenuEmby2Visiblity]"/>
+		</include>
+		<include content="EmbyNodeMainMenuItemTemplate">
+			<param name="nr" value="3"/>
+			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),emby3) + $EXP[MenuEmby3Visiblity]"/>
+		</include>
+		<include content="EmbyNodeMainMenuItemTemplate">
+			<param name="nr" value="4"/>
+			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),emby4) + $EXP[MenuEmby4Visiblity]"/>
+		</include>
+		<include content="EmbyNodeMainMenuItemTemplate">
+			<param name="nr" value="5"/>
+			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),emby5) + $EXP[MenuEmby5Visiblity]"/>
+		</include>
+		<include content="EmbyNodeMainMenuItemTemplate">
+			<param name="nr" value="6"/>
+			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),emby6) + $EXP[MenuEmby6Visiblity]"/>
+		</include>
+		<include content="EmbyNodeMainMenuItemTemplate">
+			<param name="nr" value="7"/>
+			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),emby7) + $EXP[MenuEmby7Visiblity]"/>
+		</include>
+		<include content="EmbyNodeMainMenuItemTemplate">
+			<param name="nr" value="8"/>
+			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),emby8) + $EXP[MenuEmby8Visiblity]"/>
+		</include>
+		<include content="EmbyNodeMainMenuItemTemplate">
+			<param name="nr" value="9"/>
+			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),emby9) + $EXP[MenuEmby9Visiblity]"/>
+		</include>
+		<!-- pvr -->
+		<include content="MainMenuItemTemplate">
+			<param name="id" value="53"/>
+			<param name="label" value="$VAR[PVRLabel]"/>
+			<param name="onclick" value="ActivateWindow(1124,return)"/>
+			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),pvr) + $EXP[MenuPVRVisiblity]"/>
+		</include>
+		<!-- music -->
+		<include content="MainMenuItemTemplate">
+			<param name="id" value="54"/>
+			<param name="label" value="$LOCALIZE[2]"/>
+			<param name="onclick" value="ActivateWindow(1122,return)"/>
+			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),music) + $EXP[MenuMusicVisiblity]"/>
+		</include>
+		<!-- music videos -->
+		<include content="MainMenuItemTemplate">
+			<param name="id" value="57"/>
+			<param name="label" value="$LOCALIZE[20389]"/>
+			<param name="onclick" value="ActivateWindow(videos,videodb://musicvideos/titles/,return)"/>
+			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),musicvideos) + $EXP[MenuMusicvideosVisiblity]"/>
+		</include>
+		<!-- addons -->
+		<include content="MainMenuItemTemplate">
+			<param name="id" value="55"/>
+			<param name="label" value="$LOCALIZE[24001]"/>
+			<param name="onclick" value="ActivateWindow(1123,return)"/>
+			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),addons) + $EXP[MenuAddonsVisiblity]"/>
+		</include>
+		<!-- custom entries -->
+		<include content="CustomMainMenuItemTemplate">
+			<param name="nr" value="1"/>
+		</include>
+		<include content="CustomMainMenuItemTemplate">
+			<param name="nr" value="2"/>
+		</include>
+		<include content="CustomMainMenuItemTemplate">
+			<param name="nr" value="3"/>
+		</include>
+		<include content="CustomMainMenuItemTemplate">
+			<param name="nr" value="4"/>
+		</include>
+		<include content="CustomMainMenuItemTemplate">
+			<param name="nr" value="5"/>
+		</include>
+		<include content="CustomMainMenuItemTemplate">
+			<param name="nr" value="6"/>
+		</include>
+	</include>
+
 	<include name="MainMenuContent">
 		<content>
-			<!-- all movies -->
-			<include content="MainMenuItemTemplate">
-				<param name="id" value="51"/>
-				<param name="label" value="$LOCALIZE[31180]"/>
-				<param name="onclick" value="ActivateWindow(1120,return)"/>
-				<param name="artwork" value="poster"/>
-				<param name="visible" value="!Skin.HasSetting(HideMovieLibrary) + [Library.HasContent(movies) | System.HasAddon(plugin.video.embycon)]"/>
-			</include>
-			<!-- all shows -->
-			<include content="MainMenuItemTemplate">
-				<param name="id" value="52"/>
-				<param name="label" value="$LOCALIZE[31179]"/>
-				<param name="onclick" value="ActivateWindow(1121,return)"/>
-				<param name="artwork" value="poster"/>
-				<param name="visible" value="!Skin.HasSetting(HideTVShowLibrary) + [Library.HasContent(tvshows) | System.HasAddon(plugin.video.embycon)]"/>
-			</include>
-			<!-- Emby nodes -->
-			<include content="EmbyNodeMainMenuItemTemplate">
-				<param name="nr" value="0"/>
-			</include>
-			<include content="EmbyNodeMainMenuItemTemplate">
+			<!-- divider -->
+			<include content="MainMenuPosition">
 				<param name="nr" value="1"/>
 			</include>
-			<include content="EmbyNodeMainMenuItemTemplate">
+			<include content="MainMenuPosition">
 				<param name="nr" value="2"/>
 			</include>
-			<include content="EmbyNodeMainMenuItemTemplate">
+			<include content="MainMenuPosition">
 				<param name="nr" value="3"/>
 			</include>
-			<include content="EmbyNodeMainMenuItemTemplate">
+			<include content="MainMenuPosition">
 				<param name="nr" value="4"/>
 			</include>
-			<include content="EmbyNodeMainMenuItemTemplate">
+			<include content="MainMenuPosition">
 				<param name="nr" value="5"/>
 			</include>
-			<include content="EmbyNodeMainMenuItemTemplate">
+			<include content="MainMenuPosition">
 				<param name="nr" value="6"/>
 			</include>
-			<include content="EmbyNodeMainMenuItemTemplate">
+			<include content="MainMenuPosition">
 				<param name="nr" value="7"/>
 			</include>
-			<include content="EmbyNodeMainMenuItemTemplate">
+			<include content="MainMenuPosition">
 				<param name="nr" value="8"/>
 			</include>
-			<include content="EmbyNodeMainMenuItemTemplate">
+			<include content="MainMenuPosition">
 				<param name="nr" value="9"/>
 			</include>
-			<!-- pvr -->
-			<include content="MainMenuItemTemplate">
-				<param name="id" value="53"/>
-				<param name="label" value="$VAR[PVRLabel]"/>
-				<param name="onclick" value="ActivateWindow(1124,return)"/>
-				<param name="visible" value="!Skin.HasSetting(HidePVRLibrary) + Pvr.HasTVChannels"/>
+			<include content="MainMenuPosition">
+				<param name="nr" value="10"/>
 			</include>
-			<!-- music -->
-			<include content="MainMenuItemTemplate">
-				<param name="id" value="54"/>
-				<param name="label" value="$LOCALIZE[2]"/>
-				<param name="onclick" value="ActivateWindow(1122,return)"/>
-				<param name="visible" value="!Skin.HasSetting(HideMusicLibrary) + [Library.HasContent(music) | System.HasAddon(plugin.video.embycon)]"/>
+			<include content="MainMenuPosition">
+				<param name="nr" value="11"/>
 			</include>
-			<!-- music videos -->
-			<include content="MainMenuItemTemplate">
-				<param name="id" value="57"/>
-				<param name="label" value="$LOCALIZE[20389]"/>
-				<param name="onclick" value="ActivateWindow(videos,videodb://musicvideos/titles/,return)"/>
-				<param name="visible" value="!Skin.HasSetting(HideMusicVideosLibrary) + Library.HasContent(musicvideos)"/>
+			<include content="MainMenuPosition">
+				<param name="nr" value="12"/>
 			</include>
-			<!-- addons -->
-			<include content="MainMenuItemTemplate">
-				<param name="id" value="55"/>
-				<param name="label" value="$LOCALIZE[24001]"/>
-				<param name="onclick" value="ActivateWindow(1123,return)"/>
-				<param name="visible" value="!Skin.HasSetting(HideAddonLibrary)"/>
+			<include content="MainMenuPosition">
+				<param name="nr" value="13"/>
 			</include>
-			<!-- custom entries -->
-			<include content="CustomMainMenuItemTemplate">
-				<param name="nr" value="1"/>
+			<include content="MainMenuPosition">
+				<param name="nr" value="14"/>
 			</include>
-			<include content="CustomMainMenuItemTemplate">
-				<param name="nr" value="2"/>
+			<include content="MainMenuPosition">
+				<param name="nr" value="15"/>
 			</include>
-			<include content="CustomMainMenuItemTemplate">
-				<param name="nr" value="3"/>
+			<include content="MainMenuPosition">
+				<param name="nr" value="16"/>
 			</include>
-			<include content="CustomMainMenuItemTemplate">
-				<param name="nr" value="4"/>
+			<include content="MainMenuPosition">
+				<param name="nr" value="17"/>
 			</include>
-			<include content="CustomMainMenuItemTemplate">
-				<param name="nr" value="5"/>
+			<include content="MainMenuPosition">
+				<param name="nr" value="18"/>
 			</include>
-			<include content="CustomMainMenuItemTemplate">
-				<param name="nr" value="6"/>
+			<include content="MainMenuPosition">
+				<param name="nr" value="19"/>
 			</include>
-			<!-- fallback -->
-			<item>
-				<label>$LOCALIZE[10507]</label>
-				<onclick>ActivateWindow(settings)</onclick>
-				<visible>![!Skin.HasSetting(HideMovieLibrary) + [Library.HasContent(movies) | System.HasAddon(plugin.video.embycon)]] + ![!Skin.HasSetting(HideTVShowLibrary) + [Library.HasContent(tvshows) | System.HasAddon(plugin.video.embycon)]] + ![!Skin.HasSetting(HidePVRLibrary) + Pvr.HasTVChannels] + ![!Skin.HasSetting(HideMusicLibrary) + Library.HasContent(music)] + ![!Skin.HasSetting(HideMusicVideosLibrary) + Library.HasContent(musicvideos)] + ![!Skin.HasSetting(HideAddonLibrary)] + ![Skin.HasSetting(UserHomeHub1) + Integer.IsGreater(Container(41).NumItems,0)] + ![Skin.HasSetting(UserHomeHub2) + Integer.IsGreater(Container(42).NumItems,0)] + ![Skin.HasSetting(UserHomeHub3) + Integer.IsGreater(Container(43).NumItems,0)] + ![Skin.HasSetting(UserHomeHub4) + Integer.IsGreater(Container(44).NumItems,0)] + ![Skin.HasSetting(UserHomeHub5) + Integer.IsGreater(Container(45).NumItems,0)] + ![Skin.HasSetting(UserHomeHub6) + Integer.IsGreater(Container(46).NumItems,0)] + ![!Skin.HasSetting(HideEmby0) + !String.IsEmpty(Window(home).Property(emby.nodes.0.title)) + !String.Contains(Window(home).Property(emby.nodes.0.content),emby_Favorite) + !String.Contains(Window(home).Property(emby.nodes.0.content),emby_channels)] + ![!Skin.HasSetting(HideEmby1) + !String.IsEmpty(Window(home).Property(emby.nodes.1.title)) + !String.Contains(Window(home).Property(emby.nodes.1.content),emby_Favorite) + !String.Contains(Window(home).Property(emby.nodes.1.content),emby_channels)] + ![!Skin.HasSetting(HideEmby2) + !String.IsEmpty(Window(home).Property(emby.nodes.2.title)) + !String.Contains(Window(home).Property(emby.nodes.2.content),emby_Favorite) + !String.Contains(Window(home).Property(emby.nodes.2.content),emby_channels)] + ![!Skin.HasSetting(HideEmby3) + !String.IsEmpty(Window(home).Property(emby.nodes.3.title)) + !String.Contains(Window(home).Property(emby.nodes.3.content),emby_Favorite) + !String.Contains(Window(home).Property(emby.nodes.3.content),emby_channels)] + ![!Skin.HasSetting(HideEmby4) + !String.IsEmpty(Window(home).Property(emby.nodes.4.title)) + !String.Contains(Window(home).Property(emby.nodes.4.content),emby_Favorite) + !String.Contains(Window(home).Property(emby.nodes.4.content),emby_channels)] + ![!Skin.HasSetting(HideEmby5) + !String.IsEmpty(Window(home).Property(emby.nodes.5.title)) + !String.Contains(Window(home).Property(emby.nodes.5.content),emby_Favorite) + !String.Contains(Window(home).Property(emby.nodes.5.content),emby_channels)] + ![!Skin.HasSetting(HideEmby6) + !String.IsEmpty(Window(home).Property(emby.nodes.6.title)) + !String.Contains(Window(home).Property(emby.nodes.6.content),emby_Favorite) + !String.Contains(Window(home).Property(emby.nodes.6.content),emby_channels)] + ![!Skin.HasSetting(HideEmby7) + !String.IsEmpty(Window(home).Property(emby.nodes.7.title)) + !String.Contains(Window(home).Property(emby.nodes.7.content),emby_Favorite) + !String.Contains(Window(home).Property(emby.nodes.7.content),emby_channels)] + ![!Skin.HasSetting(HideEmby8) + !String.IsEmpty(Window(home).Property(emby.nodes.8.title)) + !String.Contains(Window(home).Property(emby.nodes.8.content),emby_Favorite) + !String.Contains(Window(home).Property(emby.nodes.8.content),emby_channels)] + ![!Skin.HasSetting(HideEmby9) + !String.IsEmpty(Window(home).Property(emby.nodes.9.title)) + !String.Contains(Window(home).Property(emby.nodes.9.content),emby_Favorite) + !String.Contains(Window(home).Property(emby.nodes.9.content),emby_channels)]</visible>
-			</item>
+			<include content="MainMenuPosition">
+				<param name="nr" value="20"/>
+			</include>
+			<include content="MainMenuPosition">
+				<param name="nr" value="21"/>
+			</include>
+			<include content="MainMenuPosition">
+				<param name="nr" value="22"/>
+			</include>
 			<!-- disc -->
 			<item>
 				<label>$LOCALIZE[341]</label>
 				<onclick>PlayDisc</onclick>
 				<visible>System.HasMediaDVD</visible>
 			</item>
+			<!-- fallback -->
+			<item>
+				<label>$LOCALIZE[10507]</label>
+				<onclick>ActivateWindow(1110)</onclick>
+				<visible>$EXP[MenuCheck]</visible>
+			</item>
+
 		</content>
 	</include>
 
-    <!-- Required hidden lists -->
+	<!-- Required hidden lists -->
 	<include name="CustomHiddenHomeListTemplate">
 		<control type="list" id="4$PARAM[nr]">
 			<include>HiddenObject</include>
@@ -176,8 +258,12 @@
 			<content limit="4" sortby="random">$PARAM[content]</content>
 		</control>
 	</include>
-	<include name="HiddenHomeLists">
+	<include name="HiddenHomeLists">		
 		<!-- Emby Home Menu Paths -->
+		<control type="list" id="20">
+			<include>HiddenObject</include>
+			<content>library://video/emby/</content>
+		</control>
 		<include content="EmbyHiddenHomeListTemplate">
 			<param name="nr" value="0"/>
 		</include>

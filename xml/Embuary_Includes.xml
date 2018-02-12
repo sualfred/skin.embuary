@@ -6,6 +6,16 @@
 	<include name="ContainerOnClick">
 		<onclick>$PARAM[onclick]</onclick>
 		<onclick>$PARAM[onclick2]</onclick>
+		<onclick>$PARAM[onclick3]</onclick>
+		<onclick>$PARAM[onclick4]</onclick>
+		<onclick>$PARAM[onclick5]</onclick>
+		<onclick>$PARAM[onclick6]</onclick>
+		<onclick>$PARAM[onclick7]</onclick>
+		<onclick>$PARAM[onclick8]</onclick>
+		<onclick>$PARAM[onclick9]</onclick>
+		<onclick>$PARAM[onclick10]</onclick>
+		<onclick>$PARAM[onclick11]</onclick>
+		<onclick>$PARAM[onclick12]</onclick>
 	</include>
 	<include name="CustomBusySpinner">
 		<param name="visible">Container.IsUpdating</param>
@@ -627,15 +637,15 @@
 		<control type="button">
 			<texturefocus>-</texturefocus>
 			<texturenofocus>-</texturenofocus>
-			<onfocus condition="String.IsEqual(ListItem.DBType,artist) | Container.Content(artists)">SetProperty(ArtistDBID,$INFO[ListItem.DBID],home)</onfocus>
-			<onfocus condition="String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)">SetProperty(TVShowRating,$INFO[ListItem.Rating],home)</onfocus>
-			<onfocus condition="String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)">SetProperty(TVShowDBID,$INFO[ListItem.DBID],home)</onfocus>
-			<onfocus condition="String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)">SetProperty(TVShowIMDB,$INFO[ListItem.IMDBnumber],home)</onfocus>
-			<onfocus condition="String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)">SetProperty(TVShowPremiered,$INFO[ListItem.Premiered],home)</onfocus>
-			<onfocus condition="String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)">SetProperty(TVShowOverlay,$INFO[ListItem.Overlay],home)</onfocus>
-			<onfocus condition="String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)">SetProperty(TVShowTotalSeasons,$INFO[ListItem.Property(TotalSeasons)],home)</onfocus>
-			<onfocus condition="String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)">SetProperty(TVShowTotalEpisodes,$INFO[ListItem.Property(TotalEpisodes)],home)</onfocus>
-			<onfocus condition="String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)">SetProperty(UnwatchedEpisodes,$INFO[ListItem.Property(unwatchedepisodes)],home)</onfocus>
+			<onfocus condition="[String.IsEqual(ListItem.DBType,artist) | Container.Content(artists)] + String.IsEmpty(Window(home).Property(DontSetProps))">SetProperty(ArtistDBID,$INFO[ListItem.DBID],home)</onfocus>
+			<onfocus condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)] + String.IsEmpty(Window(home).Property(DontSetProps))">SetProperty(TVShowRating,$INFO[ListItem.Rating],home)</onfocus>
+			<onfocus condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)] + String.IsEmpty(Window(home).Property(DontSetProps))">SetProperty(TVShowDBID,$INFO[ListItem.DBID],home)</onfocus>
+			<onfocus condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)] + String.IsEmpty(Window(home).Property(DontSetProps))">SetProperty(TVShowIMDB,$INFO[ListItem.IMDBnumber],home)</onfocus>
+			<onfocus condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)] + String.IsEmpty(Window(home).Property(DontSetProps))">SetProperty(TVShowPremiered,$INFO[ListItem.Premiered],home)</onfocus>
+			<onfocus condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)] + String.IsEmpty(Window(home).Property(DontSetProps))">SetProperty(TVShowOverlay,$INFO[ListItem.Overlay],home)</onfocus>
+			<onfocus condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)] + String.IsEmpty(Window(home).Property(DontSetProps))">SetProperty(TVShowTotalSeasons,$INFO[ListItem.Property(TotalSeasons)],home)</onfocus>
+			<onfocus condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)] + String.IsEmpty(Window(home).Property(DontSetProps))">SetProperty(TVShowTotalEpisodes,$INFO[ListItem.Property(TotalEpisodes)],home)</onfocus>
+			<onfocus condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)] + String.IsEmpty(Window(home).Property(DontSetProps))">SetProperty(UnwatchedEpisodes,$INFO[ListItem.Property(unwatchedepisodes)],home)</onfocus>
 			<onfocus condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)] + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">SetProperty(EmbyID,$INFO[ListItem.Property(id)],home)</onfocus>
 			<onfocus condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)] + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">SetProperty(EmbyTVShowClearlogo,$INFO[ListItem.Art(clearlogo)],home)</onfocus>
 			<onfocus condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)] + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">SetProperty(EmbyTVShowPlot,$ESCINFO[ListItem.Plot],home)</onfocus>
@@ -648,15 +658,15 @@
 		<control type="button">
 			<texturefocus>-</texturefocus>
 			<texturenofocus>-</texturenofocus>
-			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,artist)">SetProperty(ArtistDBID,$INFO[Container($PARAM[id]).ListItem.DBID],home)</onfocus>
-			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow)">SetProperty(TVShowRating,$INFO[Container($PARAM[id]).ListItem.Rating],home)</onfocus>
-			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow)">SetProperty(TVShowDBID,$INFO[Container($PARAM[id]).ListItem.DBID],home)</onfocus>
-			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow)">SetProperty(TVShowIMDB,$INFO[Container($PARAM[id]).ListItem.IMDBnumber],home)</onfocus>
-			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow)">SetProperty(TVShowPremiered,$INFO[Container($PARAM[id]).ListItem.Premiered],home)</onfocus>
-			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow)">SetProperty(TVShowOverlay,$INFO[Container($PARAM[id]).ListItem.Overlay],home)</onfocus>
-			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow)">SetProperty(TVShowTotalSeasons,$INFO[Container($PARAM[id]).ListItem.Property(TotalSeasons)],home)</onfocus>
-			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow)">SetProperty(TVShowTotalEpisodes,$INFO[Container($PARAM[id]).ListItem.Property(TotalEpisodes)],home)</onfocus>
-			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow)">SetProperty(UnwatchedEpisodes,$INFO[Container($PARAM[id]).ListItem.Property(unwatchedepisodes)],home)</onfocus>
+			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,artist) + String.IsEmpty(Window(home).Property(DontSetProps))">SetProperty(ArtistDBID,$INFO[Container($PARAM[id]).ListItem.DBID],home)</onfocus>
+			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow) + String.IsEmpty(Window(home).Property(DontSetProps))">SetProperty(TVShowRating,$INFO[Container($PARAM[id]).ListItem.Rating],home)</onfocus>
+			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow) + String.IsEmpty(Window(home).Property(DontSetProps))">SetProperty(TVShowDBID,$INFO[Container($PARAM[id]).ListItem.DBID],home)</onfocus>
+			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow) + String.IsEmpty(Window(home).Property(DontSetProps))">SetProperty(TVShowIMDB,$INFO[Container($PARAM[id]).ListItem.IMDBnumber],home)</onfocus>
+			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow) + String.IsEmpty(Window(home).Property(DontSetProps))">SetProperty(TVShowPremiered,$INFO[Container($PARAM[id]).ListItem.Premiered],home)</onfocus>
+			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow) + String.IsEmpty(Window(home).Property(DontSetProps))">SetProperty(TVShowOverlay,$INFO[Container($PARAM[id]).ListItem.Overlay],home)</onfocus>
+			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow) + String.IsEmpty(Window(home).Property(DontSetProps))">SetProperty(TVShowTotalSeasons,$INFO[Container($PARAM[id]).ListItem.Property(TotalSeasons)],home)</onfocus>
+			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow) + String.IsEmpty(Window(home).Property(DontSetProps))">SetProperty(TVShowTotalEpisodes,$INFO[Container($PARAM[id]).ListItem.Property(TotalEpisodes)],home)</onfocus>
+			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow) + String.IsEmpty(Window(home).Property(DontSetProps))">SetProperty(UnwatchedEpisodes,$INFO[Container($PARAM[id]).ListItem.Property(unwatchedepisodes)],home)</onfocus>
 			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow) + String.StartsWith(Container($PARAM[id]).ListItem.Path,plugin://plugin.video.embycon)">SetProperty(EmbyID,$INFO[Container($PARAM[id]).ListItem.Property(id)],home)</onfocus>
 			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow) + String.StartsWith(Container($PARAM[id]).ListItem.Path,plugin://plugin.video.embycon)">SetProperty(EmbyTVShowClearlogo,$INFO[Container($PARAM[id]).ListItem.Art(clearlogo)],home)</onfocus>
 			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow) + String.StartsWith(Container($PARAM[id]).ListItem.Path,plugin://plugin.video.embycon)">SetProperty(EmbyTVShowPlot,$ESCINFO[Container($PARAM[id]).ListItem.Plot],home)</onfocus>
@@ -1336,4 +1346,32 @@
 			</control>
 		</control>
 	</include>
+	<include name="MainMenuPositionSelector">		
+		<item>
+			<icon>DefaultFolder.png</icon>
+			<label>$LOCALIZE[31100] $PARAM[nr] $INFO[Skin.String(home_menu_pos_$PARAM[nr].label),   [COLOR lightgrey],[/COLOR]]</label>
+			<onclick>SetProperty(menu_position,$PARAM[nr],home)</onclick>
+			<onclick>ActivateWindow(1111)</onclick>
+		</item>
+	</include>
+	<include name="MainMenuItemPositionSelector">
+		<param name="icon">DefaultFolder</param>
+		<param name="setitem">true</param>
+		<param name="clearitem">false</param>
+		<param name="setlabel">false</param>
+		<definition>
+			<item>
+				<icon>$PARAM[icon].png</icon>
+				<label>$PARAM[label]</label>
+				<onclick>Skin.SetString(home_menu_pos_$PARAM[nr].label,$PARAM[label])</onclick>
+				<onclick condition="$PARAM[setitem]">Skin.SetString(home_menu_pos_$PARAM[nr],$PARAM[item])</onclick>
+				<onclick condition="$PARAM[clearitem]">Skin.Reset(home_menu_pos_$PARAM[nr])</onclick>
+				<onclick condition="$PARAM[clearitem]">Skin.Reset(home_menu_pos_$PARAM[nr].label)</onclick>
+				<onclick condition="$PARAM[setlabel]">Skin.SetString(home_menu_pos_$PARAM[nr].label)</onclick>
+				<onclick>close</onclick>
+				<visible>$PARAM[visible]</visible>
+			</item>
+		</definition>
+	</include>
+
 </includes>
