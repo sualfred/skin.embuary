@@ -7,6 +7,7 @@
 			<item>
 				<label>$PARAM[label]</label>
 				<onclick>$PARAM[onclick]</onclick>
+				<icon>$PARAM[icon]</icon>
 				<property name="art1">$INFO[Container($PARAM[id]).ListItem(0).Art($PARAM[artwork])]</property>
 				<property name="art2">$INFO[Container($PARAM[id]).ListItem(1).Art($PARAM[artwork])]</property>
 				<property name="art3">$INFO[Container($PARAM[id]).ListItem(2).Art($PARAM[artwork])]</property>
@@ -19,6 +20,7 @@
 		<item>
 			<label>$INFO[Skin.String(UserHomeHub$PARAM[nr]_name)]</label>
 			<onclick>ActivateWindow($INFO[Skin.String(UserHomeHub$PARAM[nr]_target)],$INFO[Skin.String(UserHomeHub$PARAM[nr]_path)],return)</onclick>
+			<icon>$PARAM[icon]</icon>
 			<property name="art1">$INFO[Container(4$PARAM[nr]).ListItem(0).Art(thumb)]</property>
 			<property name="art2">$INFO[Container(4$PARAM[nr]).ListItem(1).Art(thumb)]</property>
 			<property name="art3">$INFO[Container(4$PARAM[nr]).ListItem(2).Art(thumb)]</property>
@@ -31,6 +33,7 @@
 			<label>$INFO[Window(home).Property(emby.nodes.$PARAM[nr].title)]</label>
 			<onclick condition="!String.IsEqual(Window(home).Property(emby.nodes.$PARAM[nr].type),homevideos)">ActivateWindow(113$PARAM[nr])</onclick>
 			<onclick condition="String.IsEqual(Window(home).Property(emby.nodes.$PARAM[nr].type),homevideos)">ActivateWindow(pictures,$INFO[Window(home).Property(emby.nodes.$PARAM[nr].content)],return)</onclick>
+			<icon>$PARAM[icon]</icon>
 			<property name="art1">$INFO[Container(3$PARAM[nr]).ListItem(0).Art(thumb)]</property>
 			<property name="art2">$INFO[Container(3$PARAM[nr]).ListItem(1).Art(thumb)]</property>
 			<property name="art3">$INFO[Container(3$PARAM[nr]).ListItem(2).Art(thumb)]</property>
@@ -44,6 +47,7 @@
 		<include content="MainMenuItemTemplate">
 			<param name="id" value="51"/>
 			<param name="label" value="$INFO[Skin.String(home_menu_pos_$PARAM[nr].label)]"/>
+			<param name="icon" value="$INFO[Skin.String(movies_icon)]"/>
 			<param name="onclick" value="ActivateWindow(1120,return)"/>
 			<param name="artwork" value="poster"/>
 			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),movies) + $EXP[MenuMoviesVisiblity]"/>
@@ -52,6 +56,7 @@
 		<include content="MainMenuItemTemplate">
 			<param name="id" value="52"/>
 			<param name="label" value="$INFO[Skin.String(home_menu_pos_$PARAM[nr].label)]"/>
+			<param name="icon" value="$INFO[Skin.String(tvshows_icon)]"/>
 			<param name="onclick" value="ActivateWindow(1121,return)"/>
 			<param name="artwork" value="poster"/>
 			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),shows) + $EXP[MenuTVShowsVisiblity]"/>
