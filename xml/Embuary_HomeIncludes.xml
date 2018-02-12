@@ -25,7 +25,7 @@
 			<property name="art2">$INFO[Container(4$PARAM[nr]).ListItem(1).Art(thumb)]</property>
 			<property name="art3">$INFO[Container(4$PARAM[nr]).ListItem(2).Art(thumb)]</property>
 			<property name="art4">$INFO[Container(4$PARAM[nr]).ListItem(3).Art(thumb)]</property>
-			<visible>String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),custom$PARAM[nr]) + Skin.HasSetting(UserHomeHub$PARAM[nr])</visible>
+			<visible>$PARAM[visible] + Skin.HasSetting(UserHomeHub$PARAM[nr])</visible>
 		</item>
 	</include>
 	<include name="EmbyNodeMainMenuItemTemplate">
@@ -133,21 +133,27 @@
 		<!-- custom entries -->
 		<include content="CustomMainMenuItemTemplate">
 			<param name="nr" value="1"/>
+			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),custom1)"/>
 		</include>
 		<include content="CustomMainMenuItemTemplate">
 			<param name="nr" value="2"/>
+			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),custom2)"/>
 		</include>
 		<include content="CustomMainMenuItemTemplate">
 			<param name="nr" value="3"/>
+			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),custom3)"/>
 		</include>
 		<include content="CustomMainMenuItemTemplate">
 			<param name="nr" value="4"/>
+			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),custom4)"/>
 		</include>
 		<include content="CustomMainMenuItemTemplate">
 			<param name="nr" value="5"/>
+			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),custom5)"/>
 		</include>
 		<include content="CustomMainMenuItemTemplate">
 			<param name="nr" value="6"/>
+			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),custom6)"/>
 		</include>
 	</include>
 
