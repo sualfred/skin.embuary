@@ -1409,16 +1409,22 @@
 		</definition>
 	</include>
 	<include name="MainMenuItemArtSelector">
-		<item>
-			<icon>DefaultFolder.png</icon>
-			<property name="custom_art">$INFO[Skin.String($PARAM[item].icon)]</property>
-			<label>$PARAM[label]</label>
-			<onclick>SetProperty(Dialog.1.Label,Default artwork)</onclick>
-			<onclick>SetProperty(Dialog.1.BuiltIn,Skin.Reset($PARAM[item].icon))</onclick>
-			<onclick>SetProperty(Dialog.2.Label,Own artwork)</onclick>
-			<onclick>SetProperty(Dialog.2.BuiltIn,Skin.SetImage($PARAM[item].icon))</onclick>
-			<onclick>RunScript(script.toolbox,info=selectdialog,header=$LOCALIZE[137])</onclick> 
-			<visible>$PARAM[visible]</visible>
-		</item>
+		<param name="emby_art">false</param>
+		<definition>
+			<item>
+				<icon>DefaultFolder.png</icon>
+				<property name="custom_art">$INFO[Skin.String($PARAM[item].icon)]</property>
+				<property name="emby_art">$PARAM[emby_icon]</property>
+				<label>$PARAM[label]</label>
+				<onclick>SetProperty(Dialog.1.Label,$LOCALIZE[571])</onclick>
+				<onclick>SetProperty(Dialog.1.BuiltIn,Skin.Reset($PARAM[item].icon))</onclick>
+				<onclick>SetProperty(Dialog.2.Label,$LOCALIZE[1030])</onclick>
+				<onclick>SetProperty(Dialog.2.BuiltIn,Skin.SetImage($PARAM[item].icon))</onclick>
+				<onclick condition="$PARAM[emby_art]">SetProperty(Dialog.3.Label,$LOCALIZE[31206])</onclick>
+				<onclick condition="$PARAM[emby_art]">SetProperty(Dialog.3.BuiltIn,Skin.SetString($PARAM[item].icon,embyart))</onclick>
+				<onclick>RunScript(script.toolbox,info=selectdialog,header=$LOCALIZE[21858])</onclick> 
+				<visible>$PARAM[visible]</visible>
+			</item>
+		</definition>
 	</include>
 </includes>
