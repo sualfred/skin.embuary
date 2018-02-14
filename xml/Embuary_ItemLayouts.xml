@@ -1457,7 +1457,7 @@
 	</include>
 
 	<!-- Button -->
-	<include name="ButtonLayout">
+	<include name="MainMenuLayout">
 		<param name="focused">false</param>
 		<definition>
 			<control type="image">
@@ -1468,7 +1468,7 @@
 				<texture>items/shadow_button.png</texture>
 			</control>
 			<control type="group">
-				<visible>!String.IsEmpty(ListItem.Icon) | String.IsEqual(ListItem.Icon,embyart)</visible>
+				<visible>!String.IsEmpty(ListItem.Icon) | [String.IsEqual(ListItem.Icon,embyart) + !String.IsEmpty(ListItem.Property(embyart))]</visible>
 				<control type="image">
 					<width>277</width>
 					<height>156</height>
@@ -1485,7 +1485,7 @@
 				</control>
 			</control>
 			<control type="group">
-				<visible>[String.IsEmpty(ListItem.Icon) + !String.IsEqual(ListItem.Icon,embyart)] + [String.IsEmpty(ListItem.Property(Art1)) | String.IsEmpty(ListItem.Property(Art2)) | String.IsEmpty(ListItem.Property(Art3)) | String.IsEmpty(ListItem.Property(Art4))]</visible>
+				<visible>![!String.IsEmpty(ListItem.Icon) | [String.IsEqual(ListItem.Icon,embyart) + !String.IsEmpty(ListItem.Property(embyart))]] + [String.IsEmpty(ListItem.Property(Art1)) | String.IsEmpty(ListItem.Property(Art2)) | String.IsEmpty(ListItem.Property(Art3)) | String.IsEmpty(ListItem.Property(Art4))]</visible>
 				<control type="image">
 					<width>277</width>
 					<height>156</height>
@@ -1505,133 +1505,138 @@
 				</control>
 			</control>
 			<control type="group">
-				<visible>[String.IsEmpty(ListItem.Icon) + !String.IsEqual(ListItem.Icon,embyart)] + !String.IsEmpty(ListItem.Property(Art1)) + !String.IsEmpty(ListItem.Property(Art2)) + !String.IsEmpty(ListItem.Property(Art3)) + !String.IsEmpty(ListItem.Property(Art4))</visible>
+				<visible>![!String.IsEmpty(ListItem.Icon) | [String.IsEqual(ListItem.Icon,embyart) + !String.IsEmpty(ListItem.Property(embyart))]] + !String.IsEmpty(ListItem.Property(Art1)) + !String.IsEmpty(ListItem.Property(Art2)) + !String.IsEmpty(ListItem.Property(Art3)) + !String.IsEmpty(ListItem.Property(Art4))</visible>
+				<top>2</top>
+				<width>277</width>
 				<control type="image">
+					<top>-2</top>
 					<width>277</width>
 					<height>156</height>
 					<texture colordiffuse="ff010202">items/mask_button.png</texture>
 				</control>
-			</control>
-			<control type="group">
-				<visible>[String.IsEmpty(ListItem.Icon) + !String.IsEqual(ListItem.Icon,embyart)] + !String.IsEmpty(ListItem.Property(Art1)) + !String.IsEmpty(ListItem.Property(Art2)) + !String.IsEmpty(ListItem.Property(Art3)) + !String.IsEmpty(ListItem.Property(Art4))</visible>
-				<top>3</top>
-				<width>277</width>
-				<control type="image">
+				<!-- art 1 -->
+				<control type="group">
+					<width>65</width>
 					<left>4</left>
-					<width>65</width>
-					<height>108</height>
-					<texture colordiffuse="thumb_background">common/white.jpg</texture>
-					<aspectratio>scale</aspectratio>
+					<control type="image">
+						<width>65</width>
+						<height>108</height>
+						<texture colordiffuse="thumb_background">common/white.jpg</texture>
+						<aspectratio>scale</aspectratio>
+					</control>
+					<control type="image">
+						<width>65</width>
+						<height>108</height>
+						<texture background="true">$INFO[ListItem.Property(Art1)]</texture>
+						<aspectratio>scale</aspectratio>
+					</control>
+					<control type="image">
+						<top>113</top>
+						<width>65</width>
+						<height>108</height>
+						<texture flipy="true" diffuse="items/mirror_mask.png" colordiffuse="thumb_background">common/white.jpg</texture>
+						<aspectratio scalediffuse="false">scale</aspectratio>
+					</control>
+					<control type="image">
+						<top>113</top>
+						<width>65</width>
+						<height>108</height>
+						<texture flipy="true" diffuse="items/mirror_mask.png" background="true">$INFO[ListItem.Property(Art1)]</texture>
+						<aspectratio scalediffuse="false">scale</aspectratio>
+					</control>
 				</control>
-				<control type="image">
+				<!-- art 2 -->
+				<control type="group">
+					<width>65</width>
 					<left>72</left>
-					<width>66</width>
-					<height>108</height>
-					<texture colordiffuse="thumb_background">common/white.jpg</texture>
-					<aspectratio>scale</aspectratio>
+					<control type="image">
+						<width>65</width>
+						<height>108</height>
+						<texture colordiffuse="thumb_background">common/white.jpg</texture>
+						<aspectratio>scale</aspectratio>
+					</control>
+					<control type="image">
+						<width>65</width>
+						<height>108</height>
+						<texture background="true">$INFO[ListItem.Property(Art2)]</texture>
+						<aspectratio>scale</aspectratio>
+					</control>
+					<control type="image">
+						<top>111</top>
+						<width>65</width>
+						<height>108</height>
+						<texture flipy="true" diffuse="items/mirror_mask.png" colordiffuse="thumb_background">common/white.jpg</texture>
+						<aspectratio scalediffuse="false">scale</aspectratio>
+					</control>
+					<control type="image">
+						<top>111</top>
+						<width>65</width>
+						<height>108</height>
+						<texture flipy="true" diffuse="items/mirror_mask.png" background="true">$INFO[ListItem.Property(Art2)]</texture>
+						<aspectratio scalediffuse="false">scale</aspectratio>
+					</control>
 				</control>
-				<control type="image">
+				<!-- art 3 -->
+				<control type="group">
+					<width>65</width>
 					<left>140</left>
-					<width>65</width>
-					<height>108</height>
-					<texture colordiffuse="thumb_background">common/white.jpg</texture>
-					<aspectratio>scale</aspectratio>
+					<control type="image">
+						<width>65</width>
+						<height>108</height>
+						<texture colordiffuse="thumb_background">common/white.jpg</texture>
+						<aspectratio>scale</aspectratio>
+					</control>
+					<control type="image">
+						<width>65</width>
+						<height>108</height>
+						<texture background="true">$INFO[ListItem.Property(Art3)]</texture>
+						<aspectratio>scale</aspectratio>
+					</control>
+					<control type="image">
+						<top>111</top>
+						<width>65</width>
+						<height>108</height>
+						<texture flipy="true" diffuse="items/mirror_mask.png" colordiffuse="thumb_background">common/white.jpg</texture>
+						<aspectratio scalediffuse="false">scale</aspectratio>
+					</control>
+					<control type="image">
+						<top>111</top>
+						<width>65</width>
+						<height>108</height>
+						<texture flipy="true" diffuse="items/mirror_mask.png" background="true">$INFO[ListItem.Property(Art3)]</texture>
+						<aspectratio scalediffuse="false">scale</aspectratio>
+					</control>
 				</control>
-				<control type="image">
+				<!-- art 4 -->
+				<control type="group">
+					<width>65</width>
 					<left>208</left>
-					<width>65</width>
-					<height>108</height>
-					<texture colordiffuse="thumb_background">common/white.jpg</texture>
-					<aspectratio>scale</aspectratio>
-				</control>
-				<control type="image">
-					<left>4</left>
-					<width>65</width>
-					<height>108</height>
-					<texture fallback="$PARAM[fallback]" background="true">$INFO[ListItem.Property(Art1)]</texture>
-					<aspectratio>scale</aspectratio>
-				</control>
-				<control type="image">
-					<left>72</left>
-					<width>65</width>
-					<height>108</height>
-					<texture background="true">$INFO[ListItem.Property(Art2)]</texture>
-					<aspectratio>scale</aspectratio>
-				</control>
-				<control type="image">
-					<left>140</left>
-					<width>65</width>
-					<height>108</height>
-					<texture background="true">$INFO[ListItem.Property(Art3)]</texture>
-					<aspectratio>scale</aspectratio>
-				</control>
-				<control type="image">
-					<left>208</left>
-					<width>65</width>
-					<height>108</height>
-					<texture background="true">$INFO[ListItem.Property(Art4)]</texture>
-					<aspectratio>scale</aspectratio>
-				</control>
-			</control>
-			<control type="group">
-				<visible>[String.IsEmpty(ListItem.Icon) + !String.IsEqual(ListItem.Icon,embyart)] + !String.IsEmpty(ListItem.Property(Art1)) + !String.IsEmpty(ListItem.Property(Art2)) + !String.IsEmpty(ListItem.Property(Art3)) + !String.IsEmpty(ListItem.Property(Art4))</visible>
-				<top>113</top>
-				<width>277</width>
-				<control type="image">
-					<left>4</left>
-					<width>65</width>
-					<height>108</height>
-					<texture flipy="true" diffuse="items/mirror_mask.png" colordiffuse="thumb_background">common/white.jpg</texture>
-					<aspectratio scalediffuse="false">scale</aspectratio>
-				</control>
-				<control type="image">
-					<left>72</left>
-					<width>65</width>
-					<height>108</height>
-					<texture flipy="true" diffuse="items/mirror_mask.png" colordiffuse="thumb_background">common/white.jpg</texture>
-					<aspectratio scalediffuse="false">scale</aspectratio>
-				</control>
-				<control type="image">
-					<left>140</left>
-					<width>65</width>
-					<height>108</height>
-					<texture flipy="true" diffuse="items/mirror_mask.png" colordiffuse="thumb_background">common/white.jpg</texture>
-					<aspectratio scalediffuse="false">scale</aspectratio>
-				</control>
-				<control type="image">
-					<left>208</left>
-					<width>65</width>
-					<height>108</height>
-					<texture flipy="true" diffuse="items/mirror_mask.png" colordiffuse="thumb_background">common/white.jpg</texture>
-					<aspectratio scalediffuse="false">scale</aspectratio>
-				</control>
-				<control type="image">
-					<left>4</left>
-					<width>65</width>
-					<height>108</height>
-					<texture flipy="true" diffuse="items/mirror_mask.png" background="true">$INFO[ListItem.Property(Art1)]</texture>
-					<aspectratio scalediffuse="false">scale</aspectratio>
-				</control>
-				<control type="image">
-					<left>72</left>
-					<width>65</width>
-					<height>108</height>
-					<texture flipy="true" diffuse="items/mirror_mask.png" background="true">$INFO[ListItem.Property(Art2)]</texture>
-					<aspectratio scalediffuse="false">scale</aspectratio>
-				</control>
-				<control type="image">
-					<left>140</left>
-					<width>65</width>
-					<height>108</height>
-					<texture flipy="true" diffuse="items/mirror_mask.png" background="true">$INFO[ListItem.Property(Art3)]</texture>
-					<aspectratio scalediffuse="false">scale</aspectratio>
-				</control>
-				<control type="image">
-					<left>208</left>
-					<width>65</width>
-					<height>108</height>
-					<texture flipy="true" diffuse="items/mirror_mask.png" background="true">$INFO[ListItem.Property(Art4)]</texture>
-					<aspectratio scalediffuse="false">scale</aspectratio>
+					<control type="image">
+						<width>65</width>
+						<height>108</height>
+						<texture colordiffuse="thumb_background">common/white.jpg</texture>
+						<aspectratio>scale</aspectratio>
+					</control>
+					<control type="image">
+						<width>65</width>
+						<height>108</height>
+						<texture background="true">$INFO[ListItem.Property(Art4)]</texture>
+						<aspectratio>scale</aspectratio>
+					</control>
+					<control type="image">
+						<top>111</top>
+						<width>65</width>
+						<height>108</height>
+						<texture flipy="true" diffuse="items/mirror_mask.png" colordiffuse="thumb_background">common/white.jpg</texture>
+						<aspectratio scalediffuse="false">scale</aspectratio>
+					</control>
+					<control type="image">
+						<top>111</top>
+						<width>65</width>
+						<height>108</height>
+						<texture flipy="true" diffuse="items/mirror_mask.png" background="true">$INFO[ListItem.Property(Art4)]</texture>
+						<aspectratio scalediffuse="false">scale</aspectratio>
+					</control>
 				</control>
 			</control>
 			<control type="image">
