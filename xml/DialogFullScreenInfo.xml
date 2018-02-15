@@ -4,6 +4,11 @@
 	<onload condition="VideoPlayer.Content(musicvideos)">close</onload>
 	<onload condition="String.IsEqual(VideoPlayer.Title,stream) + String.Contains(Player.Filenameandpath,/emby/videos/)">close</onload>
 	<controls>
+		<!-- Hidden -->
+		<control type="list" id="2000">
+			<include>HiddenObject</include>
+			<content>$VAR[PlayerCastContent]</content>
+		</control>
 		<!-- Content -->
 		<include condition="[VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)]">VideoPVRInfoLayout</include>
 		<include condition="VideoPlayer.Content(movies) | VideoPlayer.Content(episodes)">VideoInfoLayout</include>
