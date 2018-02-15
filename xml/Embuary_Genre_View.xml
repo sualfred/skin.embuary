@@ -15,7 +15,7 @@
 				<scrolltime>0</scrolltime>
 				<itemlayout height="50"/>
 				<focusedlayout height="50"/>
-				<content>$PARAM[content]</content>
+				<content sortby="label" sortorder="ascending">$PARAM[content]</content>
 			</control>
 			<control type="grouplist" id="10">
 				<include>Window_OpenClose</include>
@@ -31,6 +31,10 @@
 				<include content="WidgetSpacer">
 					<param name="id" value="101"/>
 				</include>
+				<control type="button" id="102">
+					<include>HiddenObject</include>
+					<visible>!Integer.IsGreater(Container(2000).NumItems,0)</visible>
+				</control>
 				<include content="HomePosterWidget">
 					<param name="force_visible" value="Integer.IsGreater(Container(2000).NumItems,0)"/>
 					<param name="id" value="102"/>
@@ -449,11 +453,6 @@
 					<param name="widget_target" value="videos"/>
 					<param name="content" value="$INFO[Container(2000).ListItemAbsolute(40).Folderpath]"/>
 				</include>
-				<control type="button" id="1011">
-					<height>200</height>
-					<include>HiddenObject</include>
-					<visible>!Integer.IsGreater(Container(102).NumItems,0)</visible>
-				</control>
 			</control>
 		</control>
 	</include>
