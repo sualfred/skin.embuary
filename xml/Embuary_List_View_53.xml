@@ -10,6 +10,18 @@
 			<control type="group">
 				<include>Visible_OpenClose</include>
 				<visible>Control.IsVisible(53)</visible>
+				<control type="image">
+					<right>0</right>
+					<height>100%</height>
+					<width>1200</width>
+					<texture colordiffuse="background">items/list_view_mask.png</texture>
+				</control>
+				<control type="image">
+					<left>1170</left>
+					<width>1</width>
+					<height>100%</height>
+					<texture colordiffuse="ff2a2a2a">common/white.jpg</texture>
+				</control>
 				<!-- List -->
 				<control id="53" type="panel">
 					<visible>$EXP[ListViewVisible]</visible>
@@ -29,7 +41,7 @@
 					<scrolltime tween="sine" easing="out">400</scrolltime>
 					<preloaditems>4</preloaditems>
 					<oninfo condition="String.IsEqual(ListItem.DBType,set) + !String.StartsWith(ListItem.Path,plugin://plugin.video)">RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCINFO[Window(home).Property(SkinHelper.ListItem.ExtendedPlot)]')</oninfo>
-					<itemlayout height="120" width="1160">
+					<itemlayout height="120" width="1102">
 						<control type="group">
 							<top>60</top>
 							<left>70</left>
@@ -43,7 +55,7 @@
 							</include>
 						</control>
 					</itemlayout>
-					<focusedlayout height="120" width="1160">
+					<focusedlayout height="120" width="1102">
 						<include>SetPropertyOnFocus</include>
 						<control type="group">
 							<top>60</top>
@@ -72,7 +84,7 @@
 				<control type="group">
 					<visible>String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,set) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,season) | String.StartsWith(ListItem.Path,pvr://) | [String.StartsWith(Container.FolderPath,plugin://plugin.video.emby/) + String.Contains(Container.FolderPath,type=homevideos)] | [String.StartsWith(Container.FolderPath,plugin://plugin.video.embycon) + !String.EndsWith(ListItem.Icon,icon.png)]</visible>
 					<right>90</right>
-					<top>90</top>
+					<top>125</top>
 					<width>590</width>
 					<control type="group">
 						<control type="image">
@@ -151,7 +163,7 @@
 						<width>590</width>			
 						<control type="textbox" id="97">
 							<width>590</width>
-							<height>500</height>
+							<height>470</height>
 							<align>justify</align>
 							<aligny>top</aligny>
 							<label>$VAR[ListViewPlot]</label>
@@ -163,7 +175,7 @@
 							<width>auto</width>
 							<align>center</align>
 							<aligny>top</aligny>
-							<font>Material44</font>
+							<font>Material38</font>
 							<textcolor>panel_text</textcolor>
 							<label></label>
 							<visible>Container(97).HasNext</visible>
@@ -173,7 +185,7 @@
 				<control type="group">
 					<visible>![String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,set) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,season) | String.StartsWith(ListItem.Path,pvr://) | [String.StartsWith(Container.FolderPath,plugin://plugin.video.emby/) + String.Contains(Container.FolderPath,type=homevideos)] | [String.StartsWith(Container.FolderPath,plugin://plugin.video.embycon) + !String.EndsWith(ListItem.Icon,icon.png)]]</visible>
 					<right>90</right>
-					<top>90</top>
+					<top>125</top>
 					<width>590</width>
 					<control type="group">
 						<control type="group">
@@ -247,7 +259,7 @@
 						<width>590</width>			
 						<control type="textbox" id="97">
 							<width>590</width>
-							<height>500</height>
+							<height>470</height>
 							<align>justify</align>
 							<aligny>top</aligny>
 							<label>$VAR[ListViewPlot]</label>
@@ -258,7 +270,7 @@
 						<control type="label">
 							<width>auto</width>
 							<align>center</align>
-							<font>Material44</font>
+							<font>Material38</font>
 							<textcolor>panel_text</textcolor>
 							<label></label>
 							<visible>Container(97).HasNext</visible>
