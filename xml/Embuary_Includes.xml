@@ -76,7 +76,7 @@
 	<include name="Background">
 		<control type="image">
 			<include>FullscreenDimensions</include>
-			<texture colordiffuse="background">common/white.jpg</texture>				
+			<texture colordiffuse="background">common/white.jpg</texture>
 		</control>
 		<control type="group">
 			<control type="videowindow">
@@ -87,7 +87,7 @@
 				<visible>Player.HasAudio + !Skin.HasSetting(HideBackgroundPlayback) + $EXP[HideBackground]</visible>
 				<include>MusicBackground</include>
 			</control>
-			<control type="group">				
+			<control type="group">
 				<visible>[!Player.HasMedia | Skin.HasSetting(HideBackgroundPlayback)] + !Skin.HasSetting(HideBackground) + !Window.IsVisible(MyPVRguide.xml) + $EXP[HideBackground]</visible>
 				<include>Visible_Fade</include>
 				<control type="image">
@@ -157,7 +157,7 @@
 			</control>
 		</definition>
 	</include>
-	<!-- Panel -->	
+	<!-- Panel -->
 	<include name="ContentPanel">
 		<param name="width">400</param>
 		<param name="left">0</param>
@@ -544,7 +544,7 @@
 					<include>Visible_OpenClose</include>
 					<right>12</right>
 					<width>45</width>
-					<centertop>50%</centertop>	
+					<centertop>50%</centertop>
 					<height>950</height>
 					<onleft>SetFocus(50)</onleft>
 					<scrolltime>0</scrolltime>
@@ -916,7 +916,7 @@
 		</control>
 	</include>
 	<!-- Player OSD Volume -->
-	<include name="PlayerOSDVolume">		
+	<include name="PlayerOSDVolume">
 		<control type="label" id="99">
 			<bottom>23</bottom>
 			<right>231</right>
@@ -974,7 +974,7 @@
 		<onclick condition="System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideEmbyConHubButtons)">SetProperty(Dialog.3.BuiltIn,ActivateWindow(videos,plugin://plugin.video.embycon/?item_type=Series&amp;mode=NEW_SEARCH))</onclick>
 		<onclick condition="System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideEmbyConHubButtons)">SetProperty(Dialog.4.Label,$LOCALIZE[31075])</onclick>
 		<onclick condition="System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideEmbyConHubButtons)">SetProperty(Dialog.4.BuiltIn,ActivateWindow(videos,plugin://plugin.video.embycon/?item_type=Episode&amp;mode=NEW_SEARCH))</onclick>
-		<onclick condition="System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideEmbyConHubButtons)">RunScript(script.toolbox,info=selectdialog,header=$LOCALIZE[137])</onclick> 
+		<onclick condition="System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideEmbyConHubButtons)">RunScript(script.toolbox,info=selectdialog,header=$LOCALIZE[137])</onclick>
 	</include>
 	<include name="CustomWidgetTemplate">
 		<control type="radiobutton" id="$PARAM[section]$PARAM[id]1">
@@ -1102,7 +1102,7 @@
 				<height>272</height>
 				<texture colordiffuse="66222326">common/white.jpg</texture>
 			</control>
-			<control type="group">						
+			<control type="group">
 				<centertop>50%</centertop>
 				<height>243</height>
 				<control type="label">
@@ -1185,7 +1185,7 @@
 					<textoffsetx>20</textoffsetx>
 					<font>med22</font>
 					<textcolor>selected</textcolor>
-					<textshadow>text_shadow</textshadow>					
+					<textshadow>text_shadow</textshadow>
 					<scroll>true</scroll>
 					<label>$INFO[Container($PARAM[container]).ListItemPosition($PARAM[id]).Label]</label>
 					<visible>Container($PARAM[container]).ListItemPosition($PARAM[id]).IsSelected + Container($PARAM[container]).Position($PARAM[id]) + Control.HasFocus($PARAM[container])</visible>
@@ -1211,7 +1211,7 @@
 					<textoffsetx>20</textoffsetx>
 					<font>med22</font>
 					<textcolor>selected</textcolor>
-					<textshadow>text_shadow</textshadow>					
+					<textshadow>text_shadow</textshadow>
 					<scroll>false</scroll>
 					<label>$INFO[Container($PARAM[container]).ListItemPosition($PARAM[id]).Label]</label>
 					<visible>Container($PARAM[container]).ListItemPosition($PARAM[id]).IsSelected + ![Container($PARAM[container]).Position($PARAM[id]) + Control.HasFocus($PARAM[container])]</visible>
@@ -1338,7 +1338,7 @@
 			</control>
 		</control>
 	</include>
-	<include name="MainMenuPositionSelector">		
+	<include name="MainMenuPositionSelector">
 		<item>
 			<icon>DefaultFolder.png</icon>
 			<label>$LOCALIZE[31100] $PARAM[nr] $INFO[Skin.String(home_menu_pos_$PARAM[nr].label),   [COLOR lightgrey],[/COLOR]]</label>
@@ -1423,7 +1423,7 @@
 				<onclick>SetProperty(Dialog.2.BuiltIn,Skin.SetImage($PARAM[item].icon))</onclick>
 				<onclick condition="$PARAM[emby_art]">SetProperty(Dialog.3.Label,$LOCALIZE[31206])</onclick>
 				<onclick condition="$PARAM[emby_art]">SetProperty(Dialog.3.BuiltIn,Skin.SetString($PARAM[item].icon,embyart))</onclick>
-				<onclick>RunScript(script.toolbox,info=selectdialog,header=$LOCALIZE[21858])</onclick> 
+				<onclick>RunScript(script.toolbox,info=selectdialog,header=$LOCALIZE[21858])</onclick>
 				<visible>$PARAM[visible]</visible>
 			</item>
 		</definition>

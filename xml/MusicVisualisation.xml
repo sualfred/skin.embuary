@@ -5,7 +5,7 @@
 	<onload condition="![String.StartsWith(Player.Filenameandpath,special://skin/extras) | !String.IsEmpty(Window(home).Property(SkinExtraSound))]">AlarmClock(PreloadTimeout,ClearProperty(showvisinfo,home),00:04,silent)</onload>
 	<onload condition="String.StartsWith(Player.Filenameandpath,special://skin/extras) | !String.IsEmpty(Window(home).Property(SkinExtraSound))">back</onload>
 	<backgroundcolor>background</backgroundcolor>
-	<controls>		
+	<controls>
 		<!-- Visualisation -->
 		<include>MusicBackground</include>
 		<!-- Busy spinner -->
@@ -19,7 +19,7 @@
 		<control type="group" id="99">
 			<visible>Window.IsVisible(musicosd) | Window.IsVisible(seekbar) | Player.Paused | [Window.IsVisible(volumebar) + !Player.Muted] | !String.IsEmpty(Window(home).Property(showvisinfo))</visible>
 			<animation effect="fade" start="0" end="100" time="0">Visible</animation>
-			<animation effect="fade" start="100" end="0" time="400" delay="2000">Hidden</animation>			
+			<animation effect="fade" start="100" end="0" time="400" delay="2000">Hidden</animation>
 			<!--Top-->
 			<include>PlayerTopBar</include>
 			<!--Bottom-->
@@ -30,7 +30,7 @@
 					<width>100%</width>
 					<height>216</height>
 					<texture colordiffuse="black">views/player/mask_bottom.png</texture>
-				</control>		
+				</control>
 				<!-- Square -->
 				<control type="group" id="99">
 					<control type="image" id="99">
