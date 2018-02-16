@@ -224,19 +224,19 @@
 		<value condition="String.IsEqual(ListItem.DBType,movie) + String.IsEqual(ListItem.DBID,0)">plugin://plugin.get.cast?mode=title&amp;dbtype=movie&amp;dbinfo=$INFO[ListItem.Title]</value>
 		<value condition="String.IsEqual(ListItem.DBType,tvshow) + !String.IsEmpty(ListItem.DBID) + !String.IsEqual(ListItem.DBID,0)">plugin://plugin.get.cast?mode=dbid&amp;dbtype=tvshow&amp;dbinfo=$INFO[ListItem.DBID]</value>
 		<value condition="String.IsEqual(ListItem.DBType,tvshow) + String.IsEqual(ListItem.DBID,0)">plugin://plugin.get.cast?mode=title&amp;dbtype=tvshow&amp;dbinfo=$INFO[ListItem.TVShowTitle]</value>
-		<value condition="String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,season)">plugin://plugin.get.cast?mode=title&amp;dbtype=tvshow&amp;dbinfo=$INFO[ListItem.TVShowTitle]</value>
+		<value condition="[String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,season)] + !String.IsEmpty(ListItem.DBID)">plugin://plugin.get.cast?mode=title&amp;dbtype=tvshow&amp;dbinfo=$INFO[ListItem.TVShowTitle]</value>
 	</variable>
 	<variable name="View54_NextUp_Content">
 		<value condition="Container.Content(seasons) + Integer.IsGreater(Window(home).Property(UnwatchedEpisodes),0) + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">plugin://plugin.video.embycon/?mode=GET_CONTENT&amp;media_type=Episodes&amp;url=%7Bserver%7D%2Femby%2FShows%2FNextUp%3FuserId%3D%7Buserid%7D%26Limit%3D%7BItemLimit%7D%26Filters%3D%7Bfield_filters%7D%26format%3Djson%26ImageTypeLimit%3D1%26IsMissing%3DFalse%26SeriesId%3D$INFO[Window(home).Property(EmbyID)]</value>
-		<value condition="Container.Content(seasons) + Integer.IsGreater(Window(home).Property(UnwatchedEpisodes),0)">videodb://inprogresstvshows/$INFO[Window(home).Property(TVShowDBID)]/-2/?tvshowid=$INFO[Window(home).Property(TVShowDBID)]</value>
+		<value condition="Container.Content(seasons) + Integer.IsGreater(Window(home).Property(UnwatchedEpisodes),0) + !String.IsEmpty(ListItem.DBID)">videodb://inprogresstvshows/$INFO[Window(home).Property(TVShowDBID)]/-2/?tvshowid=$INFO[Window(home).Property(TVShowDBID)]</value>
 	</variable>
 	<variable name="InfoDialog_NextUp_Content">
 		<value condition="Integer.IsGreater(Window(home).Property(UnwatchedEpisodes),0) + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">plugin://plugin.video.embycon/?mode=GET_CONTENT&amp;media_type=Episodes&amp;url=%7Bserver%7D%2Femby%2FShows%2FNextUp%3FuserId%3D%7Buserid%7D%26Limit%3D%7BItemLimit%7D%26Filters%3D%7Bfield_filters%7D%26format%3Djson%26ImageTypeLimit%3D1%26IsMissing%3DFalse%26SeriesId%3D$INFO[ListItem.Property(id)]</value>
-		<value condition="Integer.IsGreater(Window(home).Property(UnwatchedEpisodes),0)">videodb://inprogresstvshows/$INFO[ListItem.DBID]/-2/?tvshowid=$INFO[ListItem.DBID]</value>
+		<value condition="Integer.IsGreater(Window(home).Property(UnwatchedEpisodes),0) + !String.IsEmpty(ListItem.DBID)">videodb://inprogresstvshows/$INFO[ListItem.DBID]/-2/?tvshowid=$INFO[ListItem.DBID]</value>
 	</variable>
 	<variable name="InfoDialog_MoreLikeThis_Content">
 		<value condition="String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">plugin://plugin.video.embycon/?mode=GET_CONTENT&amp;media_type=Movies&amp;url=%7Bserver%7D%2Femby%2FItems%2F$INFO[ListItem.Property(id)]%2FSimilar%3FuserId%3D%7Buserid%7D%26Limit%3D%7BItemLimit%7D%26format%3Djson%26ImageTypeLimit%3D1%26IsMissing%3DFalse%26Filters%3D%7Bfield_filters%7D</value>
-		<value condition="String.IsEqual(ListItem.DBType,movie)">plugin://script.skin.helper.widgets/?action=similar&amp;mediatype=movies&amp;imdbid=$INFO[ListItem.IMDBNumber]</value>
+		<value condition="String.IsEqual(ListItem.DBType,movie) + !String.IsEmpty(ListItem.IMDBNumber)">plugin://script.skin.helper.widgets/?action=similar&amp;mediatype=movies&amp;imdbid=$INFO[ListItem.IMDBNumber]</value>
 		<value>plugin://script.skin.helper.widgets/?action=similarshows&amp;imdbid=$INFO[ListItem.IMDBNumber]</value>
 	</variable>
 	<variable name="InfoDialog_ArtistAlbums">
