@@ -234,20 +234,20 @@
 			<include>HeaderButton</include>
 			<label>$LOCALIZE[31180]</label>
 			<onclick>ActivateWindow(videos,library://video/movies/titles.xml/,return)</onclick>
-			<visible>[String.IsEqual(Container.FolderPath,library://video/movies/) | Container.Content(sets) | String.StartsWith(Container.FolderPath,videodb://movies/sets) | [String.IsEqual(Container(102).ListItem.DBType,movie) + Window.IsVisible(1114)]] + Library.HasContent(Movies) + !Window.IsVisible(favourites)</visible>
+			<visible>[String.IsEqual(Container.FolderPath,library://video/movies/) | Container.Content(sets) | String.StartsWith(Container.FolderPath,videodb://movies/sets) | [String.IsEqual(Container(102).ListItem.DBType,movie) + Window.IsVisible(1114)]] + Library.HasContent(Movies) + !Window.IsVisible(favourites) + !$EXP[infodialog_active]</visible>
 		</control>
 		<control type="button" id="6614">
 			<include>HeaderButton</include>
 			<label>$LOCALIZE[31179]</label>
 			<onclick>ActivateWindow(videos,library://video/tvshows/titles.xml/,return)</onclick>
-			<visible>[String.IsEqual(Container.FolderPath,library://video/tvshows/) | [String.IsEqual(Container(102).LIstItem.DBType,tvshow) + Window.IsVisible(1114)] | Window.IsVisible(script-NextAired-TVGuide.xml)] + Library.HasContent(tvshows) + !Window.IsVisible(favourites)</visible>
+			<visible>[String.IsEqual(Container.FolderPath,library://video/tvshows/) | [String.IsEqual(Container(102).LIstItem.DBType,tvshow) + Window.IsVisible(1114)] | Window.IsVisible(script-NextAired-TVGuide.xml)] + Library.HasContent(tvshows) + !Window.IsVisible(favourites) + !$EXP[infodialog_active]</visible>
 		</control>
 		<control type="button" id="6603">
 			<include>HeaderButton</include>
 			<label>$LOCALIZE[31169]</label>
 			<onclick condition="!Window.IsActive(videos)">ActivateWindow(videos,videodb://movies/sets,return)</onclick>
 			<onclick condition="Window.IsActive(videos)">Container.Update(videodb://movies/sets)</onclick>
-			<visible>Library.HasContent(MovieSets) + !Container.Content(sets) + !Window.IsVisible(favourites) + [String.IsEqual(Container.FolderPath,library://video/movies/) | String.StartsWith(Container.FolderPath,videodb://movies/titles) | String.StartsWith(Container.FolderPath,videodb://movies/sets) | [String.IsEqual(Container(102).LIstItem.DBType,movie) + Window.IsVisible(1114)]]</visible>
+			<visible>Library.HasContent(MovieSets) + !Container.Content(sets) + !Window.IsVisible(favourites) + !$EXP[infodialog_active] + [String.IsEqual(Container.FolderPath,library://video/movies/) | String.StartsWith(Container.FolderPath,videodb://movies/titles) | String.StartsWith(Container.FolderPath,videodb://movies/sets) | [String.IsEqual(Container(102).LIstItem.DBType,movie) + Window.IsVisible(1114)]]</visible>
 		</control>
 		<control type="button" id="6613">
 			<include>HeaderButton</include>
@@ -255,37 +255,37 @@
 			<onclick condition="String.IsEqual(Container.FolderPath,library://video/movies/) | Container.Content(movies) | Container.Content(sets)">SetProperty(ListGenres,videodb://movies/genres,home)</onclick>
 			<onclick condition="String.IsEqual(Container.FolderPath,library://video/tvshows/) | Container.Content(tvshows) | Window.IsVisible(script-NextAired-TVGuide.xml)">SetProperty(ListGenres,videodb://tvshows/genres,home)</onclick>
 			<onclick>ActivateWindow(1114)</onclick>
-			<visible>[String.IsEqual(Container.FolderPath,library://video/movies/) | String.IsEqual(Container.FolderPath,library://video/tvshows/) | Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets) | Window.IsVisible(script-NextAired-TVGuide.xml)] + !Window.IsVisible(1114) + !Window.IsVisible(favourites)</visible>
+			<visible>[String.IsEqual(Container.FolderPath,library://video/movies/) | String.IsEqual(Container.FolderPath,library://video/tvshows/) | Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets) | Window.IsVisible(script-NextAired-TVGuide.xml)] + !Window.IsVisible(1114) + !Window.IsVisible(favourites) + !$EXP[infodialog_active]</visible>
 		</control>
 		<control type="button" id="6615">
 			<include>HeaderButton</include>
 			<label>$LOCALIZE[31154]</label>
 			<onclick>RunScript(script.tv.show.next.aired)</onclick>
-			<visible>System.HasAddon(script.tv.show.next.aired) + [String.IsEqual(Container.FolderPath,library://video/tvshows/) | Container.Content(tvshows) | [String.IsEqual(Container(102).LIstItem.DBType,tvshow) + Window.IsVisible(1114)]]</visible>
+			<visible>System.HasAddon(script.tv.show.next.aired) + !$EXP[infodialog_active] + [String.IsEqual(Container.FolderPath,library://video/tvshows/) | Container.Content(tvshows) | [String.IsEqual(Container(102).LIstItem.DBType,tvshow) + Window.IsVisible(1114)]]</visible>
 		</control>
 		<control type="button" id="6616">
 			<include>HeaderButton</include>
 			<label>$LOCALIZE[133]</label>
 			<onclick>ActivateWindow(music,musicdb://artists/,return)</onclick>
-			<visible>!String.IsEqual(Container.FolderPath,musicdb://artists) + Window.IsVisible(mymusicnav.xml) + Library.HasContent(music) + String.IsEmpty(Container.PluginName)</visible>
+			<visible>!String.IsEqual(Container.FolderPath,musicdb://artists) + Window.IsVisible(mymusicnav.xml) + Library.HasContent(music) + String.IsEmpty(Container.PluginName) + !$EXP[infodialog_active]</visible>
 		</control>
 		<control type="button" id="6617">
 			<include>HeaderButton</include>
 			<label>$LOCALIZE[132]</label>
 			<onclick>ActivateWindow(music,musicdb://albums/,return)</onclick>
-			<visible>!String.IsEqual(Container.FolderPath,musicdb://albums/) + Window.IsVisible(mymusicnav.xml) + Library.HasContent(music) + String.IsEmpty(Container.PluginName)</visible>
+			<visible>!String.IsEqual(Container.FolderPath,musicdb://albums/) + Window.IsVisible(mymusicnav.xml) + Library.HasContent(music) + String.IsEmpty(Container.PluginName) + !$EXP[infodialog_active]</visible>
 		</control>
 		<control type="button" id="6618">
 			<include>HeaderButton</include>
 			<label>$LOCALIZE[134]</label>
 			<onclick>ActivateWindow(music,musicdb://songs/,return)</onclick>
-			<visible>!String.IsEqual(Container.FolderPath,musicdb://songs/) + Window.IsVisible(mymusicnav.xml) + Library.HasContent(music) + String.IsEmpty(Container.PluginName)</visible>
+			<visible>!String.IsEqual(Container.FolderPath,musicdb://songs/) + Window.IsVisible(mymusicnav.xml) + Library.HasContent(music) + String.IsEmpty(Container.PluginName) + !$EXP[infodialog_active]</visible>
 		</control>
 		<control type="button" id="6619">
 			<include>HeaderButton</include>
 			<label>$LOCALIZE[136]</label>
 			<onclick>ActivateWindow(music,special://musicplaylists/,return)</onclick>
-			<visible>!String.IsEqual(Container.FolderPath,special://musicplaylists/) + Window.IsVisible(mymusicnav.xml) + Library.HasContent(music) + String.IsEmpty(Container.PluginName)</visible>
+			<visible>!String.IsEqual(Container.FolderPath,special://musicplaylists/) + Window.IsVisible(mymusicnav.xml) + Library.HasContent(music) + String.IsEmpty(Container.PluginName) + !$EXP[infodialog_active]</visible>
 		</control>
 		<control type="button" id="6601">
 			<include>HeaderButton</include>
