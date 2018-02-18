@@ -3,8 +3,8 @@
 	<include name="Banner_View_58">
 		<control type="group">
 			<include>Visible_OpenClose</include>
-			<animation effect="slide" condition="Skin.HasSetting(HideBannerLabels) + ![Integer.IsGreaterOrEqual(Container(58).CurrentItem,11) | Container(58).HasPrevious]" time="200" end="0,30">Conditional</animation>
-			<animation effect="slide" condition="!Skin.HasSetting(HideBannerLabels) + ![Integer.IsGreaterOrEqual(Container(58).CurrentItem,9) | Container(58).HasPrevious]" time="200" end="0,7">Conditional</animation>
+			<animation effect="slide" condition="Skin.HasSetting(HideBannerLabels) + Window.IsVisible(myvideonav.xml) + ![Integer.IsGreaterOrEqual(Container(58).CurrentItem,11) | Container(58).HasPrevious]" time="200" end="0,30">Conditional</animation>
+			<animation effect="slide" condition="[!Skin.HasSetting(HideBannerLabels) | !Window.IsVisible(myvideonav.xml)] + ![Integer.IsGreaterOrEqual(Container(58).CurrentItem,9) | Container(58).HasPrevious]" time="200" end="0,7">Conditional</animation>
 			<visible>Control.IsVisible(58)</visible>
 			<control id="58" type="panel">
 				<visible>$EXP[BannerViewVisible]</visible>
@@ -22,7 +22,7 @@
 				<defaultcontrol always="true">0</defaultcontrol>
 				<viewtype label="$LOCALIZE[20020]">panel</viewtype>
 				<pagecontrol>17</pagecontrol>
-				<itemlayout condition="!Skin.HasSetting(HideBannerLabels)" width="900" height="229">
+				<itemlayout condition="!Skin.HasSetting(HideBannerLabels) | !Window.IsVisible(myvideonav.xml)" width="900" height="229">
 					<control type="group">
 						<left>70</left>
 						<top>115</top>
@@ -34,7 +34,7 @@
 						</include>
 					</control>
 				</itemlayout>
-				<focusedlayout condition="!Skin.HasSetting(HideBannerLabels)" width="900" height="229">
+				<focusedlayout condition="!Skin.HasSetting(HideBannerLabels) | !Window.IsVisible(myvideonav.xml)" width="900" height="229">
 					<include>SetPropertyOnFocus</include>
 					<control type="group">
 						<left>70</left>
@@ -48,7 +48,7 @@
 						</include>
 					</control>
 				</focusedlayout>
-				<itemlayout condition="Skin.HasSetting(HideBannerLabels)" width="900" height="183">
+				<itemlayout condition="Skin.HasSetting(HideBannerLabels) + Window.IsVisible(myvideonav.xml)" width="900" height="183">
 					<control type="group">
 						<left>70</left>
 						<top>92</top>
@@ -60,7 +60,7 @@
 						</include>
 					</control>
 				</itemlayout>
-				<focusedlayout condition="Skin.HasSetting(HideBannerLabels)" width="900" height="183">
+				<focusedlayout condition="Skin.HasSetting(HideBannerLabels) + Window.IsVisible(myvideonav.xml)" width="900" height="183">
 					<include>SetPropertyOnFocus</include>
 					<control type="group">
 						<left>70</left>
