@@ -538,7 +538,7 @@
 		<definition>
 			<control type="group">
 				<top>$PARAM[top]</top>
-				<animation effect="slide" time="0" end="0,58" condition="Control.IsVisible(53)">Conditional</animation>
+				<animation effect="slide" time="0" end="0,29" condition="Control.IsVisible(53)">Conditional</animation>
 				<control type="panel" id="$PARAM[id]">
 					<visible>$PARAM[visible]</visible>
 					<include>Visible_OpenClose</include>
@@ -552,13 +552,15 @@
 					<orientation>vertical</orientation>
 					<defaultcontrol>0</defaultcontrol>
 					<itemlayout height="35" width="45">
-						<control type="image">
-							<top>6</top>
-							<left>6</left>
-							<width>29</width>
-							<height>29</height>
-							<texture colordiffuse="emby_secondary">items/mask_mini.png</texture>
-							<visible>StringCompare(ListItem.Label,Container.ListItem.SortLetter)</visible>
+						<control type="textbox">
+							<width>40</width>
+							<height>40</height>
+							<font>JumpToLetter</font>
+							<align>center</align>
+							<aligny>center</aligny>
+							<textcolor>ff888585</textcolor>
+							<label>$INFO[ListItem.Label]</label>
+							<visible>String.IsEmpty(ListItem.Property(NotAvailable)) + !String.IsEqual(ListItem.Label,Container.ListItem.SortLetter)</visible>
 						</control>
 						<control type="textbox">
 							<width>40</width>
@@ -566,9 +568,9 @@
 							<font>JumpToLetter</font>
 							<align>center</align>
 							<aligny>center</aligny>
-							<textcolor>softgrey</textcolor>
+							<textcolor>ff444444</textcolor>
 							<label>$INFO[ListItem.Label]</label>
-							<visible>String.IsEmpty(ListItem.Property(NotAvailable))</visible>
+							<visible>!String.IsEmpty(ListItem.Property(NotAvailable)) + !String.IsEqual(ListItem.Label,Container.ListItem.SortLetter)</visible>
 						</control>
 						<control type="textbox">
 							<width>40</width>
@@ -576,57 +578,48 @@
 							<font>JumpToLetter</font>
 							<align>center</align>
 							<aligny>center</aligny>
-							<textcolor>grey</textcolor>
+							<textcolor>white</textcolor>
 							<label>$INFO[ListItem.Label]</label>
-							<visible>!String.IsEmpty(ListItem.Property(NotAvailable))</visible>
-						</control>
-						<control type="textbox">
-							<width>40</width>
-							<height>40</height>
-							<font>JumpToLetter</font>
-							<align>center</align>
-							<aligny>center</aligny>
-							<label>$INFO[ListItem.Label]</label>
-							<visible>StringCompare(ListItem.Label,Container.ListItem.SortLetter)</visible>
+							<visible>String.IsEqual(ListItem.Label,Container.ListItem.SortLetter)</visible>
 						</control>
 					</itemlayout>
 					<focusedlayout height="35" width="45">
+						<control type="textbox">
+							<width>40</width>
+							<height>40</height>
+							<font>JumpToLetter</font>
+							<align>center</align>
+							<aligny>center</aligny>
+							<textcolor>white</textcolor>
+							<label>$INFO[ListItem.Label]</label>
+							<visible>String.IsEmpty(ListItem.Property(NotAvailable)) + !String.IsEqual(ListItem.Label,Container.ListItem.SortLetter)</visible>
+						</control>
+						<control type="textbox">
+							<width>40</width>
+							<height>40</height>
+							<font>JumpToLetter</font>
+							<align>center</align>
+							<aligny>center</aligny>
+							<textcolor>ff444444</textcolor>
+							<label>$INFO[ListItem.Label]</label>
+							<visible>!String.IsEmpty(ListItem.Property(NotAvailable)) + !String.IsEqual(ListItem.Label,Container.ListItem.SortLetter)</visible>
+						</control>
+						<control type="textbox">
+							<width>40</width>
+							<height>40</height>
+							<font>JumpToLetter</font>
+							<align>center</align>
+							<aligny>center</aligny>
+							<textcolor>white</textcolor>
+							<label>$INFO[ListItem.Label]</label>
+							<visible>String.IsEqual(ListItem.Label,Container.ListItem.SortLetter)</visible>
+						</control>
 						<control type="image">
-							<top>6</top>
-							<left>6</left>
-							<width>29</width>
-							<height>29</height>
-							<texture colordiffuse="emby_secondary">items/mask_mini.png</texture>
-							<visible>StringCompare(ListItem.Label,Container.ListItem.SortLetter)</visible>
-						</control>
-						<control type="group">
-							<visible>!Control.HasFocus($PARAM[id])</visible>
-							<control type="textbox">
-								<width>40</width>
-								<height>40</height>
-								<font>JumpToLetter</font>
-								<align>center</align>
-								<aligny>center</aligny>
-								<textcolor>softgrey</textcolor>
-								<label>$INFO[ListItem.Label]</label>
-							</control>
-						</control>
-						<control type="group">
+							<left>-5</left>
+							<width>51</width>
+							<height>51</height>
+							<texture colordiffuse="emby_secondary">items/focus_mini.png</texture>
 							<visible>Control.HasFocus($PARAM[id])</visible>
-							<control type="image">
-								<left>-5</left>
-								<width>51</width>
-								<height>51</height>
-								<texture colordiffuse="emby_secondary">items/focus_mini.png</texture>
-							</control>
-							<control type="textbox">
-								<width>40</width>
-								<height>40</height>
-								<font>JumpToLetter</font>
-								<align>center</align>
-								<aligny>center</aligny>
-								<label>$INFO[ListItem.Label]</label>
-							</control>
 						</control>
 					</focusedlayout>
 					<content>plugin://script.skin.helper.service/?action=alphabet&amp;reload=$INFO[Container.NumItems]</content>
