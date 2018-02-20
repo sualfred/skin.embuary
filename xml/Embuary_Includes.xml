@@ -547,6 +547,7 @@
 					<centertop>50%</centertop>
 					<height>950</height>
 					<onleft>SetFocus(50)</onleft>
+					<onright condition="!Control.IsVisible(53) + Control.IsVisible(17)">17</onright>
 					<scrolltime>0</scrolltime>
 					<orientation>vertical</orientation>
 					<defaultcontrol>0</defaultcontrol>
@@ -693,39 +694,26 @@
 		<onunload condition="Window.Next(home)">ClearProperty(UnwatchedEpisodes,home)</onunload>
 	</include>
 	<!-- Scrollbars -->
-	<include name="ScrollbarHorizontal">
-		<param name="id">17</param>
-		<param name="width">1920</param>
-		<param name="bottom">0</param>
-		<param name="height">5</param>
-		<param name="visible">true</param>
-		<definition>
-			<control type="scrollbar" id="$PARAM[id]">
-				<left>0</left>
-				<bottom>$PARAM[bottom]</bottom>
-				<width>$PARAM[width]</width>
-				<height>$PARAM[height]</height>
-				<orientation>horizontal</orientation>
-				<showonepage>false</showonepage>
-				<visible>$PARAM[visible]</visible>
-			</control>
-		</definition>
-	</include>
-	<include name="ScrollbarVertical">
+	<include name="ViewScrollbar">
 		<param name="id">17</param>
 		<param name="width">8</param>
 		<param name="top">0</param>
-		<param name="height">100%</param>
-		<param name="visible">true</param>
+		<param name="bottom">0</param>
+		<param name="visible">!Control.IsVisible(53)</param>
 		<definition>
 			<control type="scrollbar" id="$PARAM[id]">
-				<right>0</right>
+				<visible>$PARAM[visible]</visible>
 				<top>$PARAM[top]</top>
+				<bottom>$PARAM[bottom]</bottom>
+				<right>0</right>
 				<width>$PARAM[width]</width>
-				<height>$PARAM[height]</height>
+				<onup>SetFocus(6666)</onup>
+				<onleft>50</onleft>
 				<orientation>vertical</orientation>
 				<showonepage>false</showonepage>
-				<visible>$PARAM[visible]</visible>
+				<texturesliderbackground colordiffuse="ff3b3b3b">common/white.jpg</texturesliderbackground>
+				<texturesliderbar colordiffuse="lightgrey">common/white.jpg</texturesliderbar>
+				<texturesliderbarfocus colordiffuse="emby">common/white.jpg</texturesliderbarfocus>
 			</control>
 		</definition>
 	</include>

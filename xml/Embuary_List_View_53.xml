@@ -11,10 +11,10 @@
 				<include>Visible_OpenClose</include>
 				<visible>Control.IsVisible(53)</visible>
 				<control type="image">
+					<left>1170</left>
 					<right>0</right>
 					<height>100%</height>
-					<width>1200</width>
-					<texture colordiffuse="background">items/list_view_mask.png</texture>
+					<texture colordiffuse="background_diffuse">common/white.jpg</texture>
 				</control>
 				<control type="image">
 					<left>1170</left>
@@ -29,8 +29,9 @@
 					<width>1230</width>
 					<height>1060</height>
 					<onup>SetFocus(6666)</onup>
-					<onright condition="Control.IsVisible(7000)">SetFocus(7000)</onright>
-					<onright condition="!Control.IsVisible(7000)">SetFocus(6666)</onright>
+					<onright condition="Control.IsVisible(17)">SetFocus(17)</onright>
+					<onright condition="!Control.IsVisible(17) + Control.IsVisible(7000)">SetFocus(7000)</onright>
+					<onright condition="!Control.IsVisible(17) + !Control.IsVisible(7000)">SetFocus(6666)</onright>
 					<ondown>noop</ondown>
 					<onleft>900</onleft>
 					<defaultcontrol always="true">0</defaultcontrol>
@@ -71,6 +72,21 @@
 							</include>
 						</control>
 					</focusedlayout>
+				</control>
+				<!-- scrollbar -->
+				<control type="scrollbar" id="17">
+					<left>1170</left>
+					<top>58</top>
+					<bottom>0</bottom>
+					<width>10</width>
+					<onup>SetFocus(6666)</onup>
+					<onleft>53</onleft>
+					<onright condition="Control.IsVisible(7000)">SetFocus(7000)</onright>
+					<orientation>vertical</orientation>
+					<showonepage>false</showonepage>
+					<texturesliderbackground colordiffuse="ff3b3b3b">common/white.jpg</texturesliderbackground>
+					<texturesliderbar colordiffuse="lightgrey">common/white.jpg</texturesliderbar>
+					<texturesliderbarfocus colordiffuse="emby">common/white.jpg</texturesliderbarfocus>
 				</control>
 				<!-- Hidden scrollbar -->
 				<control id="96" type="scrollbar">
