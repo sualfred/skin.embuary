@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+	<variable name="BackgroundColordiffuse">
+		<value condition="String.IsEqual(Skin.String(BackgroundAlpha),0) | String.IsEmpty(Skin.String(BackgroundAlpha))">ff141414</value>
+		<value condition="String.IsEqual(Skin.String(BackgroundAlpha),1)">f8141414</value>
+		<value condition="String.IsEqual(Skin.String(BackgroundAlpha),2)">f0141414</value>
+		<value condition="String.IsEqual(Skin.String(BackgroundAlpha),3)">e8141414</value>
+	</variable>
 	<variable name="HeaderCustomDeviceName">
 		<value condition="Skin.HasSetting(CustomDeviceName) + !String.IsEmpty(Skin.String(CustomDeviceName_label))">$INFO[Skin.String(CustomDeviceName_label)]</value>
 		<value>embuary</value>

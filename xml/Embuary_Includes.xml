@@ -110,12 +110,9 @@
 			</control>
 			<control type="image">
 				<include>FullscreenDimensions</include>
-				<texture colordiffuse="background">common/diffuse_white.png</texture>
-				<animation effect="fade" start="100" end="100" condition="String.IsEqual(Skin.String(BackgroundAlpha),0) | String.IsEmpty(Skin.String(BackgroundAlpha))" time="0">Conditional</animation>
-				<animation effect="fade" start="100" end="97" condition="String.IsEqual(Skin.String(BackgroundAlpha),1)" time="0">Conditional</animation>
-				<animation effect="fade" start="100" end="94" condition="String.IsEqual(Skin.String(BackgroundAlpha),2)" time="0">Conditional</animation>
-				<animation effect="fade" start="100" end="91" condition="String.IsEqual(Skin.String(BackgroundAlpha),3)" time="0">Conditional</animation>
-				<visible>[Player.HasMedia + !Skin.HasSetting(HideBackgroundPlayback)] | $EXP[HideBackground]</visible>
+				<texture>common/diffuse_white.png</texture>
+				<colordiffuse>$VAR[BackgroundColordiffuse]</colordiffuse>
+				<visible>[Player.HasMedia + !Skin.HasSetting(HideBackgroundPlayback)] | [!Skin.HasSetting(HideBackground) + !Window.IsVisible(MyPVRguide.xml) + $EXP[HideBackground]]</visible>
 			</control>
 			<control type="image">
 				<include>FullscreenDimensions</include>
