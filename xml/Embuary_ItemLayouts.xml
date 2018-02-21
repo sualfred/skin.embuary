@@ -480,7 +480,7 @@
 					<left>-12</left>
 					<top>-7</top>
 					<width>300</width>
-					<height>437</height>
+					<height>438</height>
 					<texture colordiffuse="focus_widget">items/focus_poster.png</texture>
 					<aspectratio>stretch</aspectratio>
 					<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
@@ -692,84 +692,6 @@
 		</definition>
 	</include>
 
-	<!-- Cast -->
-	<include name="CastLayout">
-		<param name="mainlabel">$INFO[ListItem.Label]</param>
-		<param name="sublabel">$INFO[ListItem.Label2]</param>
-		<param name="focused">false</param>
-		<param name="visible">true</param>
-		<definition>
-			<control type="group">
-				<visible>$PARAM[visible]</visible>
-				<control type="image">
-					<top>-2</top>
-					<left>-2</left>
-					<width>243</width>
-					<height>361</height>
-					<texture>items/shadow_poster_db.png</texture>
-				</control>
-				<control type="image">
-					<width>237</width>
-					<height>435</height>
-					<texture colordiffuse="thumb_background">common/white.jpg</texture>
-					<aspectratio scalediffuse="false">stretch</aspectratio>
-				</control>
-				<control type="image">
-					<width>237</width>
-					<height>355</height>
-					<texture colordiffuse="thumb_background_fallback" diffuse="items/mask_poster_db.png">common/white.jpg</texture>
-					<aspectratio scalediffuse="false">stretch</aspectratio>
-					<visible>String.IsEmpty(ListItem.Art(thumb))</visible>
-				</control>
-				<control type="textbox">
-					<top>10</top>
-					<left>10</left>
-					<width>217</width>
-					<height>335</height>
-					<font>Light24</font>
-					<textcolor>white</textcolor>
-					<shadowcolor>00ffffff</shadowcolor>
-					<align>center</align>
-					<aligny>center</aligny>
-					<label>$PARAM[mainlabel]</label>
-					<visible>String.IsEmpty(ListItem.Art(thumb))</visible>
-				</control>
-				<control type="image">
-					<width>237</width>
-					<height>355</height>
-					<texture diffuse="items/mask_poster_db.png" background="true">$INFO[ListItem.Art(thumb)]</texture>
-					<aspectratio scalediffuse="false">scale</aspectratio>
-				</control>
-				<control type="image">
-					<left>-12</left>
-					<top>-7</top>
-					<width>261</width>
-					<height>379</height>
-					<texture colordiffuse="focus_widget">items/focus_poster_db.png</texture>
-					<aspectratio>stretch</aspectratio>
-					<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
-					<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
-				</control>
-				<control type="image">
-					<include>Widget_Diffuse</include>
-					<width>237</width>
-					<height>355</height>
-					<texture diffuse="items/mask_wide.png" colordiffuse="diffuse_widget">common/white.jpg</texture>
-				</control>
-				<include content="widget_labels">
-					<param name="top">367</param>
-					<param name="width">237</param>
-					<param name="id">$PARAM[id]</param>
-					<param name="mainlabel">$PARAM[mainlabel]</param>
-					<param name="sublabel">$PARAM[sublabel]</param>
-					<param name="focused">$PARAM[focused]</param>
-					<param name="visible_labels">$PARAM[visible_labels]</param>
-					<param name="textoffsetx">5</param>
-				</include>
-			</control>
-		</definition>
-	</include>
-
 	<!-- Landscape -->
 	<include name="LandscapeLayout">
 		<param name="mainlabel">$VAR[MainListLabel]</param>
@@ -853,7 +775,7 @@
 					<left>-12</left>
 					<top>-7</top>
 					<width>448</width>
-					<height>262</height>
+					<height>263</height>
 					<texture colordiffuse="focus_widget">items/focus_wide.png</texture>
 					<aspectratio>stretch</aspectratio>
 					<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
@@ -994,7 +916,7 @@
 				<control type="image">
 					<width>424</width>
 					<height>239</height>
-					<texture colordiffuse="thumb_background_fallback" diffuse="items/mask_wide.png">common/white.jpg</texture>
+					<texture colordiffuse="thumb_background_fallback_secondary" diffuse="items/mask_wide.png">common/white.jpg</texture>
 					<aspectratio scalediffuse="false">stretch</aspectratio>
 				</control>
 				<control type="textbox">
@@ -1003,7 +925,7 @@
 					<width>404</width>
 					<height>219</height>
 					<font>Material70</font>
-					<textcolor>white</textcolor>
+					<textcolor>EEFFFFFF</textcolor>
 					<shadowcolor>00ffffff</shadowcolor>
 					<align>center</align>
 					<aligny>center</aligny>
@@ -1014,7 +936,7 @@
 					<left>-12</left>
 					<top>-7</top>
 					<width>448</width>
-					<height>262</height>
+					<height>263</height>
 					<texture colordiffuse="focus_widget">items/focus_wide.png</texture>
 					<aspectratio>stretch</aspectratio>
 					<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>

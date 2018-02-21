@@ -242,18 +242,16 @@
 	<include name="CastWidget">
 		<param name="visible">true</param>
 		<param name="content_visible">true</param>
-		<param name="visible_scrollbar">false</param>
-		<param name="headline">$LOCALIZE[416]</param>
-		<param name="mainlabel">$VAR[MainListLabel]</param>
-		<param name="sublabel">$VAR[SubListLabel]</param>
+		<param name="headline">$LOCALIZE[206]</param>
+		<param name="mainlabel">$INFO[ListItem.Label]</param>
+		<param name="sublabel">$LOCALIZE[20347] $INFO[ListItem.Label2]</param>
 		<param name="use_custom_content">true</param>
-		<param name="use_custom_onclick">false</param>
 		<param name="onback">noop</param>
 		<definition>
 			<control type="group">
 				<visible>$PARAM[visible]</visible>
 				<width>100%</width>
-				<height>601</height>
+				<height>581</height>
 				<control type="group">
 					<include content="widget_headline">
 						<param name="headline">$PARAM[headline]</param>
@@ -311,19 +309,8 @@
 						<onright>SetProperty(BounceRight,1,home)</onright>
 						<onright>noop</onright>
 						<onleft>900</onleft>
-						<include condition="$PARAM[use_custom_onclick]" content="ContainerOnClick">
-							<param name="onclick" value="$PARAM[onclick]"/>
-							<param name="onclick2" value="$PARAM[onclick2]"/>
-							<param name="onclick3" value="$PARAM[onclick3]"/>
-							<param name="onclick4" value="$PARAM[onclick4]"/>
-							<param name="onclick5" value="$PARAM[onclick5]"/>
-							<param name="onclick6" value="$PARAM[onclick6]"/>
-							<param name="onclick7" value="$PARAM[onclick7]"/>
-							<param name="onclick8" value="$PARAM[onclick8]"/>
-							<param name="onclick9" value="$PARAM[onclick9]"/>
-							<param name="onclick10" value="$PARAM[onclick10]"/>
-							<param name="onclick11" value="$PARAM[onclick11]"/>
-							<param name="onclick12" value="$PARAM[onclick12]"/>
+						<include content="ContainerOnClick">
+							<param name="onclick" value="RunScript(script.extendedinfo,info=extendedactorinfo,name=$INFO[ListItem.Label])"/>
 						</include>
 						<pagecontrol>$PARAM[id]1</pagecontrol>
 						<viewtype label="$LOCALIZE[31006]">list</viewtype>
@@ -331,7 +318,7 @@
 							<control type="group">
 								<left>70</left>
 								<top>64</top>
-								<include content="CastLayout">
+								<include content="PosterLayout_Size2">
 									<param name="mainlabel" value="$PARAM[mainlabel]" />
 									<param name="sublabel" value="$PARAM[sublabel]" />
 									<param name="focused" value="false" />
@@ -343,7 +330,7 @@
 							<control type="group">
 								<left>70</left>
 								<top>64</top>
-								<include content="CastLayout">
+								<include content="PosterLayout_Size2">
 									<param name="mainlabel" value="$PARAM[mainlabel]" />
 									<param name="sublabel" value="$PARAM[sublabel]" />
 									<param name="focused" value="true" />
