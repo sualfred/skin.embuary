@@ -4,7 +4,10 @@
 	<backgroundcolor>background</backgroundcolor>
 	<menucontrol>6666</menucontrol>
 	<controls>
-		<control type="label" id="2">
+		<control type="label" id="52">
+			<include>HiddenObject</include>
+		</control>
+		<control type="label" id="53">
 			<include>HiddenObject</include>
 		</control>
 		<include>Background</include>
@@ -150,257 +153,193 @@
 		<!-- right -->
 		<control type="group">
 			<include>Window_OpenClose</include>
+			<top>122</top>
+			<bottom>126</bottom>
+			<control type="group">
+				<visible>!ControlGroup(100).HasFocus(107)</visible>
+				<left>400</left>
+				<right>0</right>
+				<bottom>0</bottom>
+				<control type="image">
+					<top>-1</top>
+					<height>1</height>
+					<texture colordiffuse="panel_hover">common/white.jpg</texture>
+					<aspectratio>stretch</aspectratio>
+				</control>
+				<control type="image">
+					<bottom>-1</bottom>
+					<height>1</height>
+					<texture colordiffuse="panel_hover">common/white.jpg</texture>
+					<aspectratio>stretch</aspectratio>
+				</control>
+			</control>
+			<control type="textbox">
+				<bottom>-96</bottom>
+				<left>500</left>
+				<right>100</right>
+				<height>76</height>
+				<font>reg22</font>
+				<label>$VAR[SettingHelpText]</label>
+			</control>
 			<control type="grouplist">
 				<left>500</left>
 				<right>100</right>
-				<centertop>50%</centertop>
-				<height max="940">auto</height>
-				<orientation>vertical</orientation>
-				<itemgap>20</itemgap>
-				<align>center</align>
-				<!-- heading -->
+				<height>100%</height>
+				<onup>noop</onup>
+				<onleft>noop</onleft>
+				<onright>noop</onright>
+				<ondown>noop</ondown>
+				<scrolltime>200</scrolltime>
+				<itemgap>0</itemgap>
+				<include content="SkinSettingsHeadlineLabel">
+					<param name="id" value="40"/>
+					<param name="label" value="$LOCALIZE[565]"/>
+				</include>
+				<control type="button" id="2">
+					<include>SettingsButton</include>
+					<visible>!String.IsEmpty(Control.GetLabel(2))</visible>
+				</control>
+				<control type="button" id="3">
+					<include>SettingsButton</include>
+					<visible>!String.IsEmpty(Control.GetLabel(3))</visible>
+				</control>
+				<control type="button" id="4">
+					<include>SettingsButton</include>
+					<visible>!String.IsEmpty(Control.GetLabel(4))</visible>
+				</control>
+				<control type="button" id="5">
+					<include>SettingsButton</include>
+					<visible>!String.IsEmpty(Control.GetLabel(5))</visible>
+				</control>
+				<control type="button" id="6">
+					<include>SettingsButton</include>
+					<visible>!String.IsEmpty(Control.GetLabel(6))</visible>
+				</control>
+				<control type="button" id="7">
+					<include>SettingsButton</include>
+					<visible>!String.IsEmpty(Control.GetLabel(7))</visible>
+				</control>
+				<control type="button" id="8">
+					<include>SettingsButton</include>
+					<visible>!String.IsEmpty(Control.GetLabel(8))</visible>
+				</control>
+				<control type="button" id="9">
+					<include>SettingsButton</include>
+					<visible>!String.IsEmpty(Control.GetLabel(9))</visible>
+				</control>
+				<control type="button" id="10">
+					<include>SettingsButton</include>
+					<visible>!String.IsEmpty(Control.GetLabel(10))</visible>
+				</control>
+				<control type="button" id="11">
+					<include>SettingsButton</include>
+					<visible>!String.IsEmpty(Control.GetLabel(11))</visible>
+				</control>
+				<control type="button" id="12">
+					<include>SettingsButton</include>
+					<visible>!String.IsEmpty(Control.GetLabel(12))</visible>
+				</control>
+				<!-- versions -->
+				<include content="SkinSettingsHeadlineLabel">
+					<param name="label" value="$LOCALIZE[19114]"/>
+					<param name="visible" value="ControlGroup(1000).HasFocus(95)"/>
+				</include>
+				<control type="button">
+					<label>$INFO[Control.GetLabel(52)]$INFO[Control.GetLabel(53), / ]</label>
+					<include>SettingsButton</include>
+					<visible>ControlGroup(1000).HasFocus(95) + !String.IsEmpty(Control.GetLabel(52))</visible>
+				</control>
+				<control type="button">
+					<label>Embuary Skin $INFO[System.AddonVersion(skin.embuary)]</label>
+					<include>SettingsButton</include>
+					<visible>ControlGroup(1000).HasFocus(95)</visible>
+				</control>
+				<control type="button">
+					<label>Emby For Kodi $INFO[System.AddonVersion(plugin.video.emby)]</label>
+					<include>SettingsButton</include>
+					<visible>ControlGroup(1000).HasFocus(95) + System.HasAddon(plugin.video.emby)</visible>
+				</control>
+				<control type="button">
+					<label>EmbyCon $INFO[System.AddonVersion(plugin.video.embycon)]</label>
+					<include>SettingsButton</include>
+					<visible>ControlGroup(1000).HasFocus(95) + System.HasAddon(plugin.video.embycon)</visible>
+				</control>
+				<!-- CPU and memory bar -->
+				<include content="SkinSettingsHeadlineLabel">
+					<param name="label" value="$LOCALIZE[565]"/>
+					<param name="visible" value="ControlGroup(1000).HasFocus(98)"/>
+				</include>
 				<control type="group">
-					<height>50</height>
-					<control type="label" id="40">
+					<visible>ControlGroup(1000).HasFocus(98)</visible>
+					<control type="image">
+						<texture colordiffuse="thumb_background">common/white.jpg</texture>
 						<width>100%</width>
-						<height>48</height>
-						<font>Reg24</font>
+						<height>160</height>
+					</control>
+					<control type="label">
+						<height>50</height>
+						<font>med22</font>
+						<textoffsetx>20</textoffsetx>
+						<shadowcolor>text_shadow</shadowcolor>
 						<aligny>center</aligny>
-						<textoffsetx>5</textoffsetx>
-						<label>$LOCALIZE[33063]</label>
+						<label>$LOCALIZE[13271] $INFO[System.CPUUsage]</label>
 					</control>
-					<control type="image">
-						<width>100%</width>
-						<top>45</top>
-						<height>2</height>
-						<texture colordiffuse="lightgrey">common/white.jpg</texture>
-						<aspectratio>stretch</aspectratio>
+					<control type="progress">
+						<top>50</top>
+						<left>20</left>
+						<right>20</right>
+						<height>16</height>
+						<texturebg colordiffuse="black" border="2">common/white.jpg</texturebg>
+						<lefttexture>-</lefttexture>
+						<midtexture colordiffuse="emby"  border="2">common/white.jpg</midtexture>
+						<info>System.CPUUsage</info>
 					</control>
-					<control type="image">
-						<width>100%</width>
-						<top>45</top>
-						<height>2</height>
-						<texture colordiffuse="emby">common/white.jpg</texture>
-						<aspectratio>stretch</aspectratio>
-						<include>WindowOpen_GreenBar</include>
+					<control type="label">
+						<top>75</top>
+						<height>50</height>
+						<font>med22</font>
+						<textoffsetx>20</textoffsetx>
+						<shadowcolor>text_shadow</shadowcolor>
+						<aligny>center</aligny>
+						<label>$LOCALIZE[31045]: $INFO[system.memory(used)] / $INFO[system.memory(total)] - $INFO[system.memory(used.percent)]</label>
+					</control>
+					<control type="progress">
+						<top>125</top>
+						<left>20</left>
+						<right>20</right>
+						<height>16</height>
+						<texturebg colordiffuse="black" border="2">common/white.jpg</texturebg>
+						<lefttexture>-</lefttexture>
+						<midtexture colordiffuse="emby"  border="2">common/white.jpg</midtexture>
+						<info>system.memory(used)</info>
 					</control>
 				</control>
-				<!-- list -->
+				<!-- privacy policy -->
+				<control type="label">
+					<top>10</top>
+				</control>
 				<control type="group">
-					<height>770</height>
-					<control type="image">
-						<height>770</height>
-						<texture colordiffuse="thumb_background">common/white.jpg</texture>
-						<aspectratio>stretch</aspectratio>
-					</control>
-					<control type="grouplist">
-						<centerleft>50%</centerleft>
-						<top>10</top>
-						<height>750</height>
-						<onup>6666</onup>
-						<onleft>100</onleft>
-						<onright>noop</onright>
-						<ondown>noop</ondown>
-						<pagecontrol>70</pagecontrol>
-						<scrolltime>200</scrolltime>
-					</control>
-					<control type="grouplist">
-						<centerleft>50%</centerleft>
-						<top>10</top>
-						<height>750</height>
-						<onup>6666</onup>
-						<onleft>100</onleft>
-						<onright>noop</onright>
-						<ondown>noop</ondown>
-						<scrolltime>200</scrolltime>
-						<usecontrolcoords>true</usecontrolcoords>
-						<control type="label" id="3">
-							<height>50</height>
-							<font>med22</font>
-							<textoffsetx>35</textoffsetx>
-							<shadowcolor>text_shadow</shadowcolor>
-							<aligny>center</aligny>
-							<visible>!String.IsEmpty(Control.GetLabel(3))</visible>
-						</control>
-						<control type="label" id="4">
-							<height>50</height>
-							<font>med22</font>
-							<textoffsetx>35</textoffsetx>
-							<shadowcolor>text_shadow</shadowcolor>
-							<aligny>center</aligny>
-							<visible>!String.IsEmpty(Control.GetLabel(4))</visible>
-						</control>
-						<control type="label" id="5">
-							<height>50</height>
-							<font>med22</font>
-							<textoffsetx>35</textoffsetx>
-							<shadowcolor>text_shadow</shadowcolor>
-							<aligny>center</aligny>
-							<visible>!String.IsEmpty(Control.GetLabel(5))</visible>
-						</control>
-						<control type="label" id="6">
-							<height>50</height>
-							<font>med22</font>
-							<textoffsetx>35</textoffsetx>
-							<shadowcolor>text_shadow</shadowcolor>
-							<aligny>center</aligny>
-							<visible>!String.IsEmpty(Control.GetLabel(6))</visible>
-						</control>
-						<control type="label" id="7">
-							<height>50</height>
-							<font>med22</font>
-							<textoffsetx>35</textoffsetx>
-							<shadowcolor>text_shadow</shadowcolor>
-							<aligny>center</aligny>
-							<visible>!String.IsEmpty(Control.GetLabel(7))</visible>
-						</control>
-						<control type="label" id="8">
-							<height>50</height>
-							<font>med22</font>
-							<textoffsetx>35</textoffsetx>
-							<shadowcolor>text_shadow</shadowcolor>
-							<aligny>center</aligny>
-							<visible>!String.IsEmpty(Control.GetLabel(8))</visible>
-						</control>
-						<control type="label" id="9">
-							<height>50</height>
-							<font>med22</font>
-							<textoffsetx>35</textoffsetx>
-							<shadowcolor>text_shadow</shadowcolor>
-							<aligny>center</aligny>
-							<visible>!String.IsEmpty(Control.GetLabel(9))</visible>
-						</control>
-						<control type="label" id="10">
-							<height>50</height>
-							<font>med22</font>
-							<textoffsetx>35</textoffsetx>
-							<shadowcolor>text_shadow</shadowcolor>
-							<aligny>center</aligny>
-							<visible>!String.IsEmpty(Control.GetLabel(10))</visible>
-						</control>
-						<control type="label" id="11">
-							<height>50</height>
-							<font>med22</font>
-							<textoffsetx>35</textoffsetx>
-							<shadowcolor>text_shadow</shadowcolor>
-							<aligny>center</aligny>
-							<visible>!String.IsEmpty(Control.GetLabel(11))</visible>
-						</control>
-						<control type="label" id="12">
-							<height>50</height>
-							<font>med22</font>
-							<textoffsetx>35</textoffsetx>
-							<shadowcolor>text_shadow</shadowcolor>
-							<aligny>center</aligny>
-							<visible>!String.IsEmpty(Control.GetLabel(12))</visible>
-						</control>
-						<control type="label">
-							<height>50</height>
-							<font>med22</font>
-							<textoffsetx>20</textoffsetx>
-							<textcolor>panel_text</textcolor>
-							<shadowcolor>text_shadow</shadowcolor>
-							<aligny>center</aligny>
-							<label>$LOCALIZE[19114]</label>
-							<visible>ControlGroup(1000).HasFocus(95)</visible>
-						</control>
-						<control type="label" id="52">
-							<height>50</height>
-							<font>med22</font>
-							<textoffsetx>35</textoffsetx>
-							<shadowcolor>text_shadow</shadowcolor>
-							<aligny>center</aligny>
-							<visible>ControlGroup(1000).HasFocus(95)</visible>
-						</control>
-						<control type="label" id="53">
-							<height>50</height>
-							<font>med22</font>
-							<textoffsetx>35</textoffsetx>
-							<shadowcolor>text_shadow</shadowcolor>
-							<aligny>center</aligny>
-							<visible>ControlGroup(1000).HasFocus(95)</visible>
-						</control>
-						<!-- CPU and memory bar -->
-						<control type="label">
-							<height>50</height>
-							<font>med22</font>
-							<textoffsetx>20</textoffsetx>
-							<textcolor>panel_text</textcolor>
-							<shadowcolor>text_shadow</shadowcolor>
-							<aligny>center</aligny>
-							<label>$LOCALIZE[565]</label>
-							<visible>ControlGroup(1000).HasFocus(98)</visible>
-						</control>
-						<control type="label">
-							<height>50</height>
-							<font>med22</font>
-							<textoffsetx>35</textoffsetx>
-							<shadowcolor>text_shadow</shadowcolor>
-							<aligny>center</aligny>
-							<label>$LOCALIZE[13271] $INFO[System.CPUUsage]</label>
-							<visible>ControlGroup(1000).HasFocus(98)</visible>
-						</control>
-						<control type="progress">
-							<top>10</top>
-							<left>35</left>
-							<right>35</right>
-							<height>16</height>
-							<texturebg colordiffuse="black" border="2">common/white.jpg</texturebg>
-							<lefttexture>-</lefttexture>
-							<midtexture colordiffuse="emby"  border="2">common/white.jpg</midtexture>
-							<info>System.CPUUsage</info>
-							<visible>ControlGroup(1000).HasFocus(98)</visible>
-						</control>
-						<control type="label">
-							<top>10</top>
-							<height>50</height>
-							<font>med22</font>
-							<textoffsetx>35</textoffsetx>
-							<shadowcolor>text_shadow</shadowcolor>
-							<aligny>center</aligny>
-							<label>$LOCALIZE[31045]: $INFO[system.memory(used)] / $INFO[system.memory(total)] - $INFO[system.memory(used.percent)]</label>
-							<visible>ControlGroup(1000).HasFocus(98)</visible>
-						</control>
-						<control type="progress">
-							<top>10</top>
-							<left>35</left>
-							<right>35</right>
-							<height>16</height>
-							<texturebg colordiffuse="black" border="2">common/white.jpg</texturebg>
-							<lefttexture>-</lefttexture>
-							<midtexture colordiffuse="emby"  border="2">common/white.jpg</midtexture>
-							<info>system.memory(used)</info>
-							<visible>ControlGroup(1000).HasFocus(98)</visible>
-						</control>
-						<!-- privacy policy -->
-						<control type="label">
-							<top>10</top>
-						</control>
-						<control type="group">
-							<left>35</left>
-							<right>35</right>
-							<control type="textbox" id="30">
-								<height>750</height>
-								<width>auto</width>
-								<font>med22</font>
-								<shadowcolor>text_shadow</shadowcolor>
-								<aligny>center</aligny>
-								<pagecontrol>70</pagecontrol>
-								<scroll>true</scroll>
-							</control>
-						</control>
-						<!-- dont know what this label does -->
-						<control type="label" id="2">
-							<height>50</height>
-							<font>med22</font>
-							<textoffsetx>35</textoffsetx>
-							<shadowcolor>text_shadow</shadowcolor>
-							<aligny>center</aligny>
-						</control>
+					<left>35</left>
+					<right>35</right>
+					<control type="textbox" id="30">
+						<height>762</height>
+						<width>auto</width>
+						<font>med22</font>
+						<shadowcolor>text_shadow</shadowcolor>
+						<aligny>center</aligny>
+						<pagecontrol>17</pagecontrol>
+						<scroll>true</scroll>
 					</control>
 				</control>
 			</control>
 		</control>
+		<!-- scrollbar -->
+		<include content="ViewScrollbar">
+			<param name="visible" value="ControlGroup(1000).HasFocus(100)"/>
+			<param name="top" value="122"/>
+			<param name="bottom" value="126"/>
+			<param name="width" value="10"/>
+		</include>
 		<!-- header bar -->
 		<include content="HeaderBar">
 			<param name="id">1000</param>

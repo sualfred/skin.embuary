@@ -86,15 +86,19 @@
 	</include>
 	<!-- Skin settings headline -->
 	<include name="SkinSettingsHeadlineLabel">
-		<control type="label" id="$PARAM[id]">
-			<height>70</height>
-			<font>med22</font>
-			<textcolor>panel_text</textcolor>
-			<shadowcolor>text_shadow</shadowcolor>
-			<aligny>center</aligny>
-			<label>$PARAM[label]</label>
-			<animation effect="slide" end="0,10" time="0" condition="true">Conditional</animation>
-		</control>
+		<param name="visible">true</param>
+		<definition>
+			<control type="label" id="$PARAM[id]">
+				<height>70</height>
+				<font>med22</font>
+				<textcolor>panel_text</textcolor>
+				<shadowcolor>text_shadow</shadowcolor>
+				<aligny>center</aligny>
+				<label>$PARAM[label]</label>
+				<animation effect="slide" end="0,10" time="0" condition="true">Conditional</animation>
+				<visible>$PARAM[visible]</visible>
+			</control>
+		</definition>
 	</include>
 	<!-- Empty Keyboard Buttons -->
 	<include name="EmptyKeyboardButtons">
