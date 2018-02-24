@@ -945,16 +945,16 @@
 		<lefttexture>-</lefttexture>
 	</include>
 	<include name="search_action">
-		<onclick condition="!System.HasAddon(plugin.video.embycon) | Skin.HasSetting(HideEmbyConHubButtons)">RunScript(script.globalsearch)</onclick>
-		<onclick condition="System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideEmbyConHubButtons)">SetProperty(Dialog.1.Label,$LOCALIZE[31072])</onclick>
-		<onclick condition="System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideEmbyConHubButtons)">SetProperty(Dialog.1.BuiltIn,RunScript(script.globalsearch))</onclick>
-		<onclick condition="System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideEmbyConHubButtons)">SetProperty(Dialog.2.Label,$LOCALIZE[31073])</onclick>
-		<onclick condition="System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideEmbyConHubButtons)">SetProperty(Dialog.2.BuiltIn,ActivateWindow(videos,plugin://plugin.video.embycon/?item_type=Movie&amp;mode=NEW_SEARCH))</onclick>
-		<onclick condition="System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideEmbyConHubButtons)">SetProperty(Dialog.3.Label,$LOCALIZE[31074])</onclick>
-		<onclick condition="System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideEmbyConHubButtons)">SetProperty(Dialog.3.BuiltIn,ActivateWindow(videos,plugin://plugin.video.embycon/?item_type=Series&amp;mode=NEW_SEARCH))</onclick>
-		<onclick condition="System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideEmbyConHubButtons)">SetProperty(Dialog.4.Label,$LOCALIZE[31075])</onclick>
-		<onclick condition="System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideEmbyConHubButtons)">SetProperty(Dialog.4.BuiltIn,ActivateWindow(videos,plugin://plugin.video.embycon/?item_type=Episode&amp;mode=NEW_SEARCH))</onclick>
-		<onclick condition="System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideEmbyConHubButtons)">RunScript(script.toolbox,info=selectdialog,header=$LOCALIZE[137])</onclick>
+		<onclick condition="!System.HasAddon(plugin.video.embycon)">RunScript(script.globalsearch)</onclick>
+		<onclick condition="System.HasAddon(plugin.video.embycon)">SetProperty(Dialog.1.Label,$LOCALIZE[31072])</onclick>
+		<onclick condition="System.HasAddon(plugin.video.embycon)">SetProperty(Dialog.1.BuiltIn,RunScript(script.globalsearch))</onclick>
+		<onclick condition="System.HasAddon(plugin.video.embycon)">SetProperty(Dialog.2.Label,$LOCALIZE[31073])</onclick>
+		<onclick condition="System.HasAddon(plugin.video.embycon)">SetProperty(Dialog.2.BuiltIn,ActivateWindow(videos,plugin://plugin.video.embycon/?item_type=Movie&amp;mode=NEW_SEARCH))</onclick>
+		<onclick condition="System.HasAddon(plugin.video.embycon)">SetProperty(Dialog.3.Label,$LOCALIZE[31074])</onclick>
+		<onclick condition="System.HasAddon(plugin.video.embycon)">SetProperty(Dialog.3.BuiltIn,ActivateWindow(videos,plugin://plugin.video.embycon/?item_type=Series&amp;mode=NEW_SEARCH))</onclick>
+		<onclick condition="System.HasAddon(plugin.video.embycon)">SetProperty(Dialog.4.Label,$LOCALIZE[31075])</onclick>
+		<onclick condition="System.HasAddon(plugin.video.embycon)">SetProperty(Dialog.4.BuiltIn,ActivateWindow(videos,plugin://plugin.video.embycon/?item_type=Episode&amp;mode=NEW_SEARCH))</onclick>
+		<onclick condition="System.HasAddon(plugin.video.embycon)">RunScript(script.toolbox,info=selectdialog,header=$LOCALIZE[137])</onclick>
 	</include>
 	<include name="CustomWidgetTemplate">
 		<control type="radiobutton" id="$PARAM[section]$PARAM[id]1">
@@ -1379,6 +1379,26 @@
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_21.label),$PARAM[label])">Skin.Reset(home_menu_pos_21.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_22),$PARAM[item])">Skin.Reset(home_menu_pos_22)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_22.label),$PARAM[label])">Skin.Reset(home_menu_pos_22.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_23),$PARAM[item])">Skin.Reset(home_menu_pos_23)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_23.label),$PARAM[label])">Skin.Reset(home_menu_pos_23.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_24),$PARAM[item])">Skin.Reset(home_menu_pos_24)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_24.label),$PARAM[label])">Skin.Reset(home_menu_pos_24.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_25),$PARAM[item])">Skin.Reset(home_menu_pos_25)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_25.label),$PARAM[label])">Skin.Reset(home_menu_pos_25.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_26),$PARAM[item])">Skin.Reset(home_menu_pos_26)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_26.label),$PARAM[label])">Skin.Reset(home_menu_pos_26.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_27),$PARAM[item])">Skin.Reset(home_menu_pos_27)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_27.label),$PARAM[label])">Skin.Reset(home_menu_pos_27.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_28),$PARAM[item])">Skin.Reset(home_menu_pos_28)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_28.label),$PARAM[label])">Skin.Reset(home_menu_pos_28.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_29),$PARAM[item])">Skin.Reset(home_menu_pos_29)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_29.label),$PARAM[label])">Skin.Reset(home_menu_pos_29.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_30),$PARAM[item])">Skin.Reset(home_menu_pos_30)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_30.label),$PARAM[label])">Skin.Reset(home_menu_pos_30.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_31),$PARAM[item])">Skin.Reset(home_menu_pos_31)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_31.label),$PARAM[label])">Skin.Reset(home_menu_pos_31.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_32),$PARAM[item])">Skin.Reset(home_menu_pos_32)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_32.label),$PARAM[label])">Skin.Reset(home_menu_pos_32.label)</onclick>
 				<onclick>Skin.SetString(home_menu_pos_$PARAM[nr].label,$PARAM[label])</onclick>
 				<onclick condition="$PARAM[setitem]">Skin.SetString(home_menu_pos_$PARAM[nr],$PARAM[item])</onclick>
 				<onclick condition="$PARAM[clearitem]">Skin.Reset(home_menu_pos_$PARAM[nr])</onclick>
@@ -1390,19 +1410,16 @@
 		</definition>
 	</include>
 	<include name="MainMenuItemArtSelector">
-		<param name="emby_art">false</param>
+		<param name="icon">DefaultFolder.png</param>
 		<definition>
 			<item>
-				<icon>DefaultFolder.png</icon>
+				<icon>$PARAM[icon]</icon>
 				<property name="custom_art">$INFO[Skin.String($PARAM[item].icon)]</property>
-				<property name="emby_art">$PARAM[emby_icon]</property>
 				<label>$PARAM[label]</label>
 				<onclick>SetProperty(Dialog.1.Label,$LOCALIZE[571])</onclick>
 				<onclick>SetProperty(Dialog.1.BuiltIn,Skin.Reset($PARAM[item].icon))</onclick>
 				<onclick>SetProperty(Dialog.2.Label,$LOCALIZE[1030])</onclick>
 				<onclick>SetProperty(Dialog.2.BuiltIn,Skin.SetImage($PARAM[item].icon))</onclick>
-				<onclick condition="$PARAM[emby_art]">SetProperty(Dialog.3.Label,$LOCALIZE[31206])</onclick>
-				<onclick condition="$PARAM[emby_art]">SetProperty(Dialog.3.BuiltIn,Skin.SetString($PARAM[item].icon,embyart))</onclick>
 				<onclick>RunScript(script.toolbox,info=selectdialog,header=$LOCALIZE[21858])</onclick>
 				<visible>$PARAM[visible]</visible>
 			</item>

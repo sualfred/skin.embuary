@@ -28,6 +28,15 @@
 			<visible>$PARAM[visible] + Skin.HasSetting(UserHomeHub$PARAM[nr])</visible>
 		</item>
 	</include>
+	<include name="EmbyConNodeMainMenuItemTemplate">
+		<item>
+			<label>$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].name)] [COLOR FF505050](EmbyCon)[/COLOR]</label>
+			<onclick>ActivateWindow(116$PARAM[nr])</onclick>
+			<icon>$PARAM[icon]</icon>
+			<property name="embyart">$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].thumb)]</property>
+			<visible>$PARAM[visible]</visible>
+		</item>
+	</include>
 	<include name="EmbyNodeMainMenuItemTemplate">
 		<item>
 			<label>$INFO[Window(home).Property(emby.nodes.$PARAM[nr].title)]</label>
@@ -35,11 +44,7 @@
 			<onclick condition="String.IsEqual(Window(home).Property(emby.nodes.$PARAM[nr].type),homevideos)">ActivateWindow(pictures,$INFO[Window(home).Property(emby.nodes.$PARAM[nr].content)],return)</onclick>
 			<icon>$PARAM[icon]</icon>
 			<property name="embyart">$INFO[Window(home).Property(emby.nodes.$PARAM[nr].artwork)]</property>
-			<property name="art1">$INFO[Container(3$PARAM[nr]).ListItem(0).Art(thumb)]</property>
-			<property name="art2">$INFO[Container(3$PARAM[nr]).ListItem(1).Art(thumb)]</property>
-			<property name="art3">$INFO[Container(3$PARAM[nr]).ListItem(2).Art(thumb)]</property>
-			<property name="art4">$INFO[Container(3$PARAM[nr]).ListItem(3).Art(thumb)]</property>
-			<visible>$PARAM[visible] + [Integer.IsGreater(Container(3$PARAM[nr]).NumItems,0) | Container(3$PARAM[nr]).IsUpdating]</visible>
+			<visible>$PARAM[visible]</visible>
 		</item>
 	</include>
 
@@ -112,6 +117,47 @@
 			<param name="nr" value="9"/>
 			<param name="icon" value="$INFO[Skin.String(emby9.icon)]"/>
 			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),emby9) + $EXP[MenuEmby9Visiblity]"/>
+		</include>
+		<!-- EmbyCon nodes -->
+		<include content="EmbyConNodeMainMenuItemTemplate">
+			<param name="nr" value="0"/>
+			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),embycon0) + $EXP[MenuEmbyCon0Visiblity]"/>
+		</include>
+		<include content="EmbyConNodeMainMenuItemTemplate">
+			<param name="nr" value="1"/>
+			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),embycon1) + $EXP[MenuEmbyCon1Visiblity]"/>
+		</include>
+		<include content="EmbyConNodeMainMenuItemTemplate">
+			<param name="nr" value="2"/>
+			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),embycon2) + $EXP[MenuEmbyCon2Visiblity]"/>
+		</include>
+		<include content="EmbyConNodeMainMenuItemTemplate">
+			<param name="nr" value="3"/>
+			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),embycon3) + $EXP[MenuEmbyCon3Visiblity]"/>
+		</include>
+		<include content="EmbyConNodeMainMenuItemTemplate">
+			<param name="nr" value="4"/>
+			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),embycon4) + $EXP[MenuEmbyCon4Visiblity]"/>
+		</include>
+		<include content="EmbyConNodeMainMenuItemTemplate">
+			<param name="nr" value="5"/>
+			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),embycon5) + $EXP[MenuEmbyCon5Visiblity]"/>
+		</include>
+		<include content="EmbyConNodeMainMenuItemTemplate">
+			<param name="nr" value="6"/>
+			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),embycon6) + $EXP[MenuEmbyCon6Visiblity]"/>
+		</include>
+		<include content="EmbyConNodeMainMenuItemTemplate">
+			<param name="nr" value="7"/>
+			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),embycon7) + $EXP[MenuEmbyCon7Visiblity]"/>
+		</include>
+		<include content="EmbyConNodeMainMenuItemTemplate">
+			<param name="nr" value="8"/>
+			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),embycon0) + $EXP[MenuEmbyCon8Visiblity]"/>
+		</include>
+		<include content="EmbyConNodeMainMenuItemTemplate">
+			<param name="nr" value="9"/>
+			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),embycon0) + $EXP[MenuEmbyCon9Visiblity]"/>
 		</include>
 		<!-- pvr -->
 		<include content="MainMenuItemTemplate">
@@ -247,6 +293,36 @@
 			<include content="MainMenuPosition">
 				<param name="nr" value="22"/>
 			</include>
+			<include content="MainMenuPosition">
+				<param name="nr" value="23"/>
+			</include>
+			<include content="MainMenuPosition">
+				<param name="nr" value="24"/>
+			</include>
+			<include content="MainMenuPosition">
+				<param name="nr" value="25"/>
+			</include>
+			<include content="MainMenuPosition">
+				<param name="nr" value="26"/>
+			</include>
+			<include content="MainMenuPosition">
+				<param name="nr" value="27"/>
+			</include>
+			<include content="MainMenuPosition">
+				<param name="nr" value="28"/>
+			</include>
+			<include content="MainMenuPosition">
+				<param name="nr" value="29"/>
+			</include>
+			<include content="MainMenuPosition">
+				<param name="nr" value="30"/>
+			</include>
+			<include content="MainMenuPosition">
+				<param name="nr" value="31"/>
+			</include>
+			<include content="MainMenuPosition">
+				<param name="nr" value="32"/>
+			</include>
 			<!-- disc -->
 			<item>
 				<label>$LOCALIZE[341]</label>
@@ -290,37 +366,6 @@
 		</control>
 	</include>
 	<include name="HiddenHomeLists">
-		<!-- Emby Home Menu Paths -->
-		<include content="EmbyHiddenHomeListTemplate">
-			<param name="nr" value="0"/>
-		</include>
-		<include content="EmbyHiddenHomeListTemplate">
-			<param name="nr" value="1"/>
-		</include>
-		<include content="EmbyHiddenHomeListTemplate">
-			<param name="nr" value="2"/>
-		</include>
-		<include content="EmbyHiddenHomeListTemplate">
-			<param name="nr" value="3"/>
-		</include>
-		<include content="EmbyHiddenHomeListTemplate">
-			<param name="nr" value="4"/>
-		</include>
-		<include content="EmbyHiddenHomeListTemplate">
-			<param name="nr" value="5"/>
-		</include>
-		<include content="EmbyHiddenHomeListTemplate">
-			<param name="nr" value="6"/>
-		</include>
-		<include content="EmbyHiddenHomeListTemplate">
-			<param name="nr" value="7"/>
-		</include>
-		<include content="EmbyHiddenHomeListTemplate">
-			<param name="nr" value="8"/>
-		</include>
-		<include content="EmbyHiddenHomeListTemplate">
-			<param name="nr" value="9"/>
-		</include>
 		<!-- Custom Home Menu Paths -->
 		<include content="CustomHiddenHomeListTemplate">
 			<param name="nr" value="1"/>
