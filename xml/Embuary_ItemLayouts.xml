@@ -113,98 +113,102 @@
 	</include>
 	<!-- Upper overlay -->
 	<include name="bubble_overlay">
-		<control type="image" id="2">
-			<right>10</right>
-			<top>10</top>
-			<width>32</width>
-			<height>28</height>
-			<texture colordiffuse="red">$VAR[PVRTimerIcon]</texture>
-			<aspectratio align="right">keep</aspectratio>
-		</control>
 		<control type="group">
-			<visible>[String.IsEqual(ListItem.DBtype,tvshow) + !String.IsEmpty(ListItem.Property(UnWatchedEpisodes)) + Integer.IsLess(ListItem.Property(UnWatchedEpisodes),1)] | String.IsEqual(ListItem.Overlay,OverlayWatched.png) | Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0) | Integer.IsGreaterOrEqual(ListItem.PlayCount,1)</visible>
-			<right>8</right>
-			<top>9</top>
-			<width>44</width>
-			<height>44</height>
-			<control type="image">
-				<width>44</width>
-				<height>44</height>
-				<texture colordiffuse="emby_secondary">items/bubble_small.png</texture>
-				<aspectratio>keep</aspectratio>
+			<visible>!Window.IsVisible(1114)</visible>
+			<control type="image" id="2">
+				<right>10</right>
+				<top>10</top>
+				<width>32</width>
+				<height>28</height>
+				<texture colordiffuse="red">$VAR[PVRTimerIcon]</texture>
+				<aspectratio align="right">keep</aspectratio>
+				<visible>String.StartsWith(ListItem.Path,pvr://)</visible>
 			</control>
-			<control type="label">
-				<top>-2</top>
-				<left>1</left>
-				<width>44</width>
-				<height>44</height>
-				<label>$INFO[ListItem.Property(UnWatchedEpisodes)]</label>
-				<font>BubbleFont</font>
-				<textcolor>white</textcolor>
-				<selectedcolor>white</selectedcolor>
-				<align>center</align>
-				<aligny>center</aligny>
-				<visible>Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0)</visible>
-			</control>
-			<control type="label">
+			<control type="group">
+				<visible>[String.IsEqual(ListItem.DBtype,tvshow) + !String.IsEmpty(ListItem.Property(UnWatchedEpisodes)) + Integer.IsLess(ListItem.Property(UnWatchedEpisodes),1)] | String.IsEqual(ListItem.Overlay,OverlayWatched.png) | Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0) | Integer.IsGreaterOrEqual(ListItem.PlayCount,1)</visible>
+				<right>8</right>
 				<top>9</top>
-				<left>1</left>
 				<width>44</width>
 				<height>44</height>
-				<label></label>
-				<font>FontAwesome20Light</font>
-				<textcolor>white</textcolor>
-				<selectedcolor>white</selectedcolor>
-				<align>center</align>
-				<aligny>top</aligny>
-				<visible>Integer.IsLess(ListItem.Property(UnWatchedEpisodes),1) + !String.IsEqual(ListItem.Overlay,OverlayUnwatched.png) + [String.IsEqual(ListItem.Overlay,OverlayWatched.png) | Integer.IsGreaterOrEqual(ListItem.PlayCount,1) | [String.IsEqual(ListItem.DBtype,tvshow) + !String.IsEmpty(ListItem.Property(UnWatchedEpisodes))]]</visible>
+				<control type="image">
+					<width>44</width>
+					<height>44</height>
+					<texture colordiffuse="emby_secondary">items/bubble_small.png</texture>
+					<aspectratio>keep</aspectratio>
+				</control>
+				<control type="label">
+					<top>-2</top>
+					<left>1</left>
+					<width>44</width>
+					<height>44</height>
+					<label>$INFO[ListItem.Property(UnWatchedEpisodes)]</label>
+					<font>BubbleFont</font>
+					<textcolor>white</textcolor>
+					<selectedcolor>white</selectedcolor>
+					<align>center</align>
+					<aligny>center</aligny>
+					<visible>Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0)</visible>
+				</control>
+				<control type="label">
+					<top>9</top>
+					<left>1</left>
+					<width>44</width>
+					<height>44</height>
+					<label></label>
+					<font>FontAwesome20Light</font>
+					<textcolor>white</textcolor>
+					<selectedcolor>white</selectedcolor>
+					<align>center</align>
+					<aligny>top</aligny>
+					<visible>Integer.IsLess(ListItem.Property(UnWatchedEpisodes),1) + !String.IsEqual(ListItem.Overlay,OverlayUnwatched.png) + [String.IsEqual(ListItem.Overlay,OverlayWatched.png) | Integer.IsGreaterOrEqual(ListItem.PlayCount,1) | [String.IsEqual(ListItem.DBtype,tvshow) + !String.IsEmpty(ListItem.Property(UnWatchedEpisodes))]]</visible>
+				</control>
 			</control>
-		</control>
-		<control type="group">
-			<visible>Window.IsVisible(addonbrowser) + [String.IsEqual(ListItem.Label2,$LOCALIZE[24023]) | String.IsEqual(ListItem.Label2,$LOCALIZE[305])]</visible>
-			<right>8</right>
-			<top>9</top>
-			<width>44</width>
-			<height>44</height>
-			<control type="image">
-				<width>44</width>
-				<height>44</height>
-				<texture colordiffuse="red">items/bubble_small.png</texture>
-				<aspectratio>keep</aspectratio>
-				<visible>String.IsEqual(ListItem.Label2,$LOCALIZE[24023])</visible>
-			</control>
-			<control type="image">
-				<width>44</width>
-				<height>44</height>
-				<texture colordiffuse="emby_secondary">items/bubble_small.png</texture>
-				<aspectratio>keep</aspectratio>
-				<visible>String.IsEqual(ListItem.Label2,$LOCALIZE[305])</visible>
-			</control>
-			<control type="label">
+			<control type="group">
+				<visible>Window.IsVisible(addonbrowser) + [String.IsEqual(ListItem.Label2,$LOCALIZE[24023]) | String.IsEqual(ListItem.Label2,$LOCALIZE[305])]</visible>
+				<right>8</right>
 				<top>9</top>
-				<left>1</left>
 				<width>44</width>
 				<height>44</height>
-				<label></label>
-				<font>FontAwesome20Light</font>
-				<textcolor>white</textcolor>
-				<selectedcolor>white</selectedcolor>
-				<align>center</align>
-				<aligny>top</aligny>
-				<visible>String.IsEqual(ListItem.Label2,$LOCALIZE[24023])</visible>
-			</control>
-			<control type="label">
-				<top>9</top>
-				<left>1</left>
-				<width>44</width>
-				<height>44</height>
-				<label></label>
-				<font>FontAwesome20Light</font>
-				<textcolor>white</textcolor>
-				<selectedcolor>white</selectedcolor>
-				<align>center</align>
-				<aligny>top</aligny>
-				<visible>String.IsEqual(ListItem.Label2,$LOCALIZE[305])</visible>
+				<control type="image">
+					<width>44</width>
+					<height>44</height>
+					<texture colordiffuse="red">items/bubble_small.png</texture>
+					<aspectratio>keep</aspectratio>
+					<visible>String.IsEqual(ListItem.Label2,$LOCALIZE[24023])</visible>
+				</control>
+				<control type="image">
+					<width>44</width>
+					<height>44</height>
+					<texture colordiffuse="emby_secondary">items/bubble_small.png</texture>
+					<aspectratio>keep</aspectratio>
+					<visible>String.IsEqual(ListItem.Label2,$LOCALIZE[305])</visible>
+				</control>
+				<control type="label">
+					<top>9</top>
+					<left>1</left>
+					<width>44</width>
+					<height>44</height>
+					<label></label>
+					<font>FontAwesome20Light</font>
+					<textcolor>white</textcolor>
+					<selectedcolor>white</selectedcolor>
+					<align>center</align>
+					<aligny>top</aligny>
+					<visible>String.IsEqual(ListItem.Label2,$LOCALIZE[24023])</visible>
+				</control>
+				<control type="label">
+					<top>9</top>
+					<left>1</left>
+					<width>44</width>
+					<height>44</height>
+					<label></label>
+					<font>FontAwesome20Light</font>
+					<textcolor>white</textcolor>
+					<selectedcolor>white</selectedcolor>
+					<align>center</align>
+					<aligny>top</aligny>
+					<visible>String.IsEqual(ListItem.Label2,$LOCALIZE[305])</visible>
+				</control>
 			</control>
 		</control>
 	</include>
@@ -240,6 +244,7 @@
 	<!-- Play icon -->
 	<include name="bubble_play">
 		<control type="group">
+			<visible>!Window.IsVisible(1114)</visible>
 			<visible>[!String.IsEmpty(ListItem.DBtype) + !String.IsEmpty(ListItem.DBID)] | [!String.IsEmpty(ListItem.FileNameAndPath) + [String.StartsWith(ListItem.Path,plugin://plugin.video) | String.StartsWith(ListItem.Path,plugin://plugin.audio) | String.Contains(ListItem.AddonType,$LOCALIZE[20094])]] | String.StartsWith(ListItem.Path,pvr://channels) | String.StartsWith(ListItem.Path,pvr://recordings) | [ListItem.IsFolder + !String.StartsWith(ListItem.Path,pvr://)]</visible>
 			<right>10</right>
 			<bottom>10</bottom>
