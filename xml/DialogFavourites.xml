@@ -68,7 +68,7 @@
 			<include content="HomeWideWidget">
 				<param name="id" value="203"/>
 				<param name="onup" value="202"/>
-				<param name="ondown" value="SetProperty(BounceDown,1,home)"/>
+				<param name="ondown" value="204"/>
 				<param name="headline" value="$LOCALIZE[31065]"/>
 				<param name="sublabel" value="$INFO[ListItem.TvShowTitle]"/>
 				<param name="mainlabel" value="$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title]"/>
@@ -76,6 +76,48 @@
 				<param name="onclick" value="SetProperty(PlayItem,$INFO[ListItem.FileNameAndPath],home)"/>
 				<param name="onclick2" value="close"/>
 				<param name="content" value="$VAR[FavEpisodes_Content]"/>
+			</include>
+			<!-- Fav artist -->
+			<include content="HomeSquareWidget">
+				<param name="id" value="204"/>
+				<param name="onup" value="203"/>
+				<param name="ondown" value="205"/>
+				<param name="headline" value="$LOCALIZE[31212]"/>
+				<param name="mainlabel" value="$INFO[ListItem.Title]"/>
+				<param name="sublabel" value="$INFO[ListItem.Year]"/>
+				<param name="use_custom_onclick" value="true"/>
+				<param name="onclick" value="SetProperty(NextWindow,$INFO[ListItem.FolderPath],home)"/>
+				<param name="onclick2" value="close"/>
+				<param name="widget_target" value="music"/>
+				<param name="content" value="$VAR[FavArtists_Content]"/>
+			</include>
+			<!-- fav album -->
+			<include content="HomeSquareWidget">
+				<param name="id" value="205"/>
+				<param name="onup" value="204"/>
+				<param name="ondown" value="206"/>
+				<param name="headline" value="$LOCALIZE[31213]"/>
+				<param name="mainlabel" value="$INFO[ListItem.Title]"/>
+				<param name="sublabel" value="$INFO[ListItem.artist]"/>
+				<param name="use_custom_onclick" value="true"/>
+				<param name="onclick" value="SetProperty(NextWindow,$INFO[ListItem.FolderPath],home)"/>
+				<param name="onclick2" value="close"/>
+				<param name="widget_target" value="music"/>
+				<param name="content" value="$VAR[FavAlbums_Content]"/>
+			</include>
+			<!-- fav song -->
+			<include content="HomeSquareWidget">
+				<param name="id" value="206"/>
+				<param name="onup" value="205"/>
+				<param name="ondown" value="SetProperty(BounceDown,1,home)"/>
+				<param name="headline" value="$LOCALIZE[31214]"/>
+				<param name="mainlabel" value="$INFO[ListItem.Title]"/>
+				<param name="sublabel" value="$INFO[ListItem.artist]"/>
+				<param name="use_custom_onclick" value="true"/>
+				<param name="onclick" value="SetProperty(PlayItem,$INFO[ListItem.FileNameAndPath],home)"/>
+				<param name="onclick2" value="close"/>
+				<param name="widget_target" value="music"/>
+				<param name="content" value="$VAR[FavSongs_Content]"/>
 			</include>
 
 		</control>

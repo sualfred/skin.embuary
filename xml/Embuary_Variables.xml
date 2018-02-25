@@ -180,22 +180,22 @@
 		<value condition="!Skin.HasSetting(HideLibraryWidgets) | [!Libary.HasContent(movies) + !Library.HasContent(tvshows)]"> [COLOR FF505050](EmbyCon)[/COLOR]</value>
 	</variable>
 	<variable name="EmbyCon_InProgressMedia">
-		<value condition="[System.HasAddon(plugin.video.embycon) + Skin.HasSetting(EnableEmbyConWidgets)]">plugin://plugin.video.embycon/?mode=GET_CONTENT&amp;media_type=Video&amp;url=%7Bserver%7D%2Femby%2FUsers%2F%7Buserid%7D%2FItems%2FResume%3FLimit%3D12%26Recursive%3Dtrue%26Fields%3DPrimaryImageAspectRatio%2CBasicSyncInfo%26ImageTypeLimit%3D1%26EnableImageTypes%3DPrimary%2CBackdrop%2CThumb%26EnableTotalRecordCount%3Dfalse%26MediaTypes%3DVideo</value>
+		<value condition="[System.HasAddon(plugin.video.embycon) + Skin.HasSetting(EnableEmbyConWidgets)]">plugin://plugin.video.embycon/?mode=GET_CONTENT&amp;media_type=Video&amp;url=%7Bserver%7D%2Femby%2FUsers%2F%7Buserid%7D%2FItems%2FResume%3FLimit%3D12%26Recursive%3Dtrue%26Fields%3DPrimaryImageAspectRatio%2CBasicSyncInfo%26ImageTypeLimit%3D1%26EnableImageTypes%3DPrimary%2CBackdrop%2CThumb%26EnableTotalRecordCount%3Dfalse%26MediaTypes%3DVideo&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]</value>
 	</variable>
 	<variable name="EmbyCon_InProgressMovies">
-		<value condition="[System.HasAddon(plugin.video.embycon) + Skin.HasSetting(EnableEmbyConWidgets)]">plugin://plugin.video.embycon/?media_type=Movies&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fLimit%3d%7bItemLimit%7d%26Recursive%3dtrue%26Fields%3d%7bfield_filters%7d%26Filters%3dIsResumable%26IncludeItemTypes%3dMovie%26ImageTypeLimit%3d1%26format%3djson</value>
+		<value condition="[System.HasAddon(plugin.video.embycon) + Skin.HasSetting(EnableEmbyConWidgets)]">plugin://plugin.video.embycon/?media_type=Movies&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fLimit%3d%7bItemLimit%7d%26Recursive%3dtrue%26Fields%3d%7bfield_filters%7d%26Filters%3dIsResumable%26IncludeItemTypes%3dMovie%26ImageTypeLimit%3d1%26format%3djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]</value>
 	</variable>
 	<variable name="EmbyCon_InProgressShows">
-		<value condition="[System.HasAddon(plugin.video.embycon) + Skin.HasSetting(EnableEmbyConWidgets)]">plugin://plugin.video.embycon/?media_type=Episodes&amp;mode=GET_CONTENT&amp;name_format=Episode%7cepisode_name_format&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fLimit%3d%7bItemLimit%7d%26Recursive%3dtrue%26Fields%3d%7bfield_filters%7d%26Filters%3dIsResumable%26IncludeItemTypes%3dEpisode%26ImageTypeLimit%3d1%26format%3djson</value>
+		<value condition="[System.HasAddon(plugin.video.embycon) + Skin.HasSetting(EnableEmbyConWidgets)]">plugin://plugin.video.embycon/?media_type=Episodes&amp;mode=GET_CONTENT&amp;name_format=Episode%7cepisode_name_format&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fLimit%3d%7bItemLimit%7d%26Recursive%3dtrue%26Fields%3d%7bfield_filters%7d%26Filters%3dIsResumable%26IncludeItemTypes%3dEpisode%26ImageTypeLimit%3d1%26format%3djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]</value>
 	</variable>
 	<variable name="EmbyCon_NextUpEpisodes">
-		<value condition="[System.HasAddon(plugin.video.embycon) + Skin.HasSetting(EnableEmbyConWidgets)]">plugin://plugin.video.embycon/?media_type=Episodes&amp;mode=GET_CONTENT&amp;name_format=Episode%7cepisode_name_format&amp;url=%7bserver%7d%2femby%2fShows%2fNextUp%2f%3fUserid%3d%7buserid%7d%26Limit%3d%7bItemLimit%7d%26Recursive%3dtrue%26Fields%3d%7bfield_filters%7d%26Filters%3dIsUnplayed%2cIsNotFolder%26IsVirtualUnaired%3dfalse%26IsMissing%3dFalse%26IncludeItemTypes%3dEpisode%26ImageTypeLimit%3d1%26format%3djson</value>
+		<value condition="[System.HasAddon(plugin.video.embycon) + Skin.HasSetting(EnableEmbyConWidgets)]">plugin://plugin.video.embycon/?media_type=Episodes&amp;mode=GET_CONTENT&amp;name_format=Episode%7cepisode_name_format&amp;url=%7bserver%7d%2femby%2fShows%2fNextUp%2f%3fUserid%3d%7buserid%7d%26Limit%3d%7bItemLimit%7d%26Recursive%3dtrue%26Fields%3d%7bfield_filters%7d%26Filters%3dIsUnplayed%2cIsNotFolder%26IsVirtualUnaired%3dfalse%26IsMissing%3dFalse%26IncludeItemTypes%3dEpisode%26ImageTypeLimit%3d1%26format%3djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]</value>
 	</variable>
 	<variable name="EmbyCon_RecentMovies">
-		<value condition="[System.HasAddon(plugin.video.embycon) + Skin.HasSetting(EnableEmbyConWidgets)]">plugin://plugin.video.embycon/?media_type=Movies&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fLimit%3d%7bItemLimit%7d%26Recursive%3dtrue%26SortBy%3dDateCreated%26Fields%3d%7bfield_filters%7d%26SortOrder%3dDescending%26Filters%3d%7bIsUnplayed%2c%7dIsNotFolder%26IncludeItemTypes%3dMovie%26ImageTypeLimit%3d1%26format%3djson</value>
+		<value condition="[System.HasAddon(plugin.video.embycon) + Skin.HasSetting(EnableEmbyConWidgets)]">plugin://plugin.video.embycon/?media_type=Movies&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fLimit%3d%7bItemLimit%7d%26Recursive%3dtrue%26SortBy%3dDateCreated%26Fields%3d%7bfield_filters%7d%26SortOrder%3dDescending%26Filters%3d%7bIsUnplayed%2c%7dIsNotFolder%26IncludeItemTypes%3dMovie%26ImageTypeLimit%3d1%26format%3djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]</value>
 	</variable>
 	<variable name="EmbyCon_RecentEpisodes">
-		<value condition="[System.HasAddon(plugin.video.embycon) + Skin.HasSetting(EnableEmbyConWidgets)]">plugin://plugin.video.embycon/?media_type=Episodes&amp;mode=GET_CONTENT&amp;name_format=Episode%7cepisode_name_format&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%2fLatest%3fLimit%3d%7bItemLimit%7d%26Recursive%3dtrue%26GroupItems%3dtrue%26SortBy%3dDateCreated%26Fields%3d%7bfield_filters%7d%26SortOrder%3dDescending%26Filters%3d%7bIsUnplayed%7d%26IsVirtualUnaired%3dfalse%26IsMissing%3dFalse%26IncludeItemTypes%3dEpisode%26ImageTypeLimit%3d1%26format%3djson</value>
+		<value condition="[System.HasAddon(plugin.video.embycon) + Skin.HasSetting(EnableEmbyConWidgets)]">plugin://plugin.video.embycon/?media_type=Episodes&amp;mode=GET_CONTENT&amp;name_format=Episode%7cepisode_name_format&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%2fLatest%3fLimit%3d%7bItemLimit%7d%26Recursive%3dtrue%26GroupItems%3dtrue%26SortBy%3dDateCreated%26Fields%3d%7bfield_filters%7d%26SortOrder%3dDescending%26Filters%3d%7bIsUnplayed%7d%26IsVirtualUnaired%3dfalse%26IsMissing%3dFalse%26IncludeItemTypes%3dEpisode%26ImageTypeLimit%3d1%26format%3djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]</value>
 	</variable>
 	<variable name="EmbyCon_RecentEpisodes_Mainlabel">
 		<value condition="!String.IsEmpty(ListItem.Episode)">$INFO[ListItem.TVShowTitle]</value>
@@ -206,35 +206,44 @@
 		<value>$INFO[ListItem.Year]</value>
 	</variable>
 	<variable name="EmbyCon_MovieGenres">
-		<value condition="[System.HasAddon(plugin.video.embycon) + Skin.HasSetting(EnableEmbyConWidgets)]">plugin://plugin.video.embycon/?mode=MOVIE_GENRE</value>
+		<value condition="[System.HasAddon(plugin.video.embycon) + Skin.HasSetting(EnableEmbyConWidgets)]">plugin://plugin.video.embycon/?mode=GENRES&amp;item_type=movie&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]</value>
 	</variable>
 	<variable name="EmbyCon_TVShowGenres">
-		<value condition="[System.HasAddon(plugin.video.embycon) + Skin.HasSetting(EnableEmbyConWidgets)]">plugin://plugin.video.embycon/?mode=SERIES_GENRE</value>
+		<value condition="[System.HasAddon(plugin.video.embycon) + Skin.HasSetting(EnableEmbyConWidgets)]">plugin://plugin.video.embycon/?mode=GENRES&amp;item_type=tvshow&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]</value>
 	</variable>
 	<variable name="EmbyCon_Movies">
-		<value condition="[System.HasAddon(plugin.video.embycon) + Skin.HasSetting(EnableEmbyConWidgets)]">plugin://plugin.video.embycon/?item_type=Movie&amp;media_type=Movies&amp;mode=SHOW_CONTENT</value>
+		<value condition="[System.HasAddon(plugin.video.embycon) + Skin.HasSetting(EnableEmbyConWidgets)]">plugin://plugin.video.embycon/?item_type=Movie&amp;media_type=Movies&amp;mode=SHOW_CONTENT&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]</value>
 	</variable>
 	<variable name="EmbyCon_TVShows">
-		<value condition="[System.HasAddon(plugin.video.embycon) + Skin.HasSetting(EnableEmbyConWidgets)]">plugin://plugin.video.embycon/?item_type=Series&amp;media_type=tvshows&amp;mode=SHOW_CONTENT</value>
+		<value condition="[System.HasAddon(plugin.video.embycon) + Skin.HasSetting(EnableEmbyConWidgets)]">plugin://plugin.video.embycon/?item_type=Series&amp;media_type=tvshows&amp;mode=SHOW_CONTENT&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]</value>
 	</variable>
 	<variable name="EmbyCon_SimilarMovies">
-		<value condition="[System.HasAddon(plugin.video.embycon) + Skin.HasSetting(EnableEmbyConWidgets)]">plugin://plugin.video.embycon/?media_type=Movies&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FMovies%2FRecommendations%3FuserId%3D%7Buserid%7D%26categoryLimit%3D1%26ItemLimit%3D8%26format%3Djson%26ImageTypeLimit%3D1%26IsMissing%3DFalse</value>
+		<value condition="[System.HasAddon(plugin.video.embycon) + Skin.HasSetting(EnableEmbyConWidgets)]">plugin://plugin.video.embycon/?media_type=Movies&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FMovies%2FRecommendations%3FuserId%3D%7Buserid%7D%26categoryLimit%3D1%26ItemLimit%3D8%26format%3Djson%26ImageTypeLimit%3D1%26IsMissing%3DFalse&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]</value>
 	</variable>
 	<variable name="EmbyCon_SimilarTVShows">
-		<value condition="[System.HasAddon(plugin.video.embycon) + Skin.HasSetting(EnableEmbyConWidgets)]">plugin://plugin.video.embycon?mode=WIDGET_CONTENT_SUGGESTIONS</value>
+		<value condition="[System.HasAddon(plugin.video.embycon) + Skin.HasSetting(EnableEmbyConWidgets)]">plugin://plugin.video.embycon?mode=WIDGET_CONTENT_SUGGESTIONS&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]</value>
 	</variable>
 	<!-- Favourits vars -->
 	<variable name="FavMovies_Content">
-		<value condition="System.HasAddon(plugin.video.embycon) + Skin.HasSetting(EnableEmbyConWidgets)">plugin://plugin.video.embycon/?media_type=Movies&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fFields%3d%7bfield_filters%7d%26Recursive%3dtrue%26Filters%3dIsFavorite%26IncludeItemTypes%3dMovie%26ImageTypeLimit%3d1%26format%3djson</value>
+		<value condition="System.HasAddon(plugin.video.embycon) + Skin.HasSetting(EnableEmbyConWidgets)">plugin://plugin.video.embycon/?media_type=Movies&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fFields%3d%7bfield_filters%7d%26Recursive%3dtrue%26Filters%3dIsFavorite%26IncludeItemTypes%3dMovie%26ImageTypeLimit%3d1%26format%3djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]</value>
 		<value condition="System.HasAddon(plugin.video.emby)">library://video/emby_Favorite movies.xml</value>
 	</variable>
 	<variable name="FavShows_Content">
-		<value condition="System.HasAddon(plugin.video.embycon) + Skin.HasSetting(EnableEmbyConWidgets)">plugin://plugin.video.embycon/?media_type=tvshows&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fFields%3d%7bfield_filters%7d%26Recursive%3dtrue%26Filters%3dIsFavorite%26IncludeItemTypes%3dSeries%26ImageTypeLimit%3d1%26format%3djson</value>
+		<value condition="System.HasAddon(plugin.video.embycon) + Skin.HasSetting(EnableEmbyConWidgets)">plugin://plugin.video.embycon/?media_type=tvshows&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fFields%3d%7bfield_filters%7d%26Recursive%3dtrue%26Filters%3dIsFavorite%26IncludeItemTypes%3dSeries%26ImageTypeLimit%3d1%26format%3djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]</value>
 		<value condition="System.HasAddon(plugin.video.emby)">library://video/emby_Favorite tvshows.xml</value>
 	</variable>
 	<variable name="FavEpisodes_Content">
-		<value condition="System.HasAddon(plugin.video.embycon) + Skin.HasSetting(EnableEmbyConWidgets)">plugin://plugin.video.embycon/?media_type=Episodes&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FUsers%2F%7Buserid%7D%2FItems%3FSortBy%3DSortName%26amp%3BSortOrder%3DAscending%26amp%3BFilters%3DIsFavorite%26amp%3BRecursive%3Dtrue%26amp%3BFields%3DPrimaryImageAspectRatio%2CBasicSyncInfo%26amp%3BCollapseBoxSetItems%3Dfalse%26amp%3BExcludeLocationTypes%3DVirtual%26amp%3BEnableTotalRecordCount%3Dfalse%26amp%3BLimit%3D100%26amp%3BIncludeItemTypes%3DEpisode</value>
+		<value condition="System.HasAddon(plugin.video.embycon) + Skin.HasSetting(EnableEmbyConWidgets)">plugin://plugin.video.embycon/?media_type=Episodes&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FUsers%2F%7Buserid%7D%2FItems%3FSortBy%3DSortName%26amp%3BSortOrder%3DAscending%26amp%3BFilters%3DIsFavorite%26amp%3BRecursive%3Dtrue%26amp%3BFields%3DPrimaryImageAspectRatio%2CBasicSyncInfo%26amp%3BCollapseBoxSetItems%3Dfalse%26amp%3BExcludeLocationTypes%3DVirtual%26amp%3BEnableTotalRecordCount%3Dfalse%26amp%3BLimit%3D100%26amp%3BIncludeItemTypes%3DEpisode&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]</value>
 		<value condition="System.HasAddon(plugin.video.emby)">library://video/emby_Favorite episodes.xml</value>
+	</variable>
+	<variable name="FavArtists_Content">
+		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?media_type=songs&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FArtists%3FSortBy%3DSortName%26SortOrder%3DAscending%26Filters%3DIsFavorite%26Recursive%3Dtrue%26Fields%3DPrimaryImageAspectRatio%252CBasicSyncInfo%26CollapseBoxSetItems%3Dfalse%26ExcludeLocationTypes%3DVirtual%26EnableTotalRecordCount%3Dfalse%26Limit%3D20%26userId%3D%7Buserid%7D&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]</value>
+	</variable>
+	<variable name="FavAlbums_Content">
+		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?media_type=songs&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FUsers%2F%7Buserid%7D%2FItems%3FSortBy%3DSortName%26SortOrder%3DAscending%26Filters%3DIsFavorite%26Recursive%3Dtrue%26Fields%3DPrimaryImageAspectRatio%252CBasicSyncInfo%26CollapseBoxSetItems%3Dfalse%26ExcludeLocationTypes%3DVirtual%26EnableTotalRecordCount%3Dfalse%26Limit%3D20%26IncludeItemTypes%3DMusicAlbum&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]</value>
+	</variable>
+	<variable name="FavSongs_Content">
+		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?media_type=songs&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FUsers%2F%7Buserid%7D%2FItems%3FSortBy%3DSortName%26SortOrder%3DAscending%26Filters%3DIsFavorite%26Recursive%3Dtrue%26Fields%3DPrimaryImageAspectRatio%252CBasicSyncInfo%26CollapseBoxSetItems%3Dfalse%26ExcludeLocationTypes%3DVirtual%26EnableTotalRecordCount%3Dfalse%26Limit%3D20%26IncludeItemTypes%3DAudio&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]</value>
 	</variable>
 	<!-- Embcon/Native DB vars -->
 	<variable name="View_Cast_Content">
@@ -288,11 +297,13 @@
 		<value condition="[Window.IsVisible(script-NextAired-TVGuide2.xml) | Window.IsVisible(script-NextAired-TVGuide.xml)] + !String.IsEmpty(Window(home).Property(TVGuide.BackgroundFanart)) + Control.HasFocus(215)">$INFO[Container(215).ListItem.Property(Fanart)]</value>
 		<value condition="!String.IsEmpty(Window.Property(background))">$INFO[Window.Property(background)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
+		<value condition="[String.StartsWith(Container.Folderpath,plugin://plugin.video.embycon) | Window.IsVisible(1160) | Window.IsVisible(1161) | Window.IsVisible(1162) | Window.IsVisible(1163) | Window.IsVisible(1164) | Window.IsVisible(1165) | Window.IsVisible(1166) | Window.IsVisible(1167) | Window.IsVisible(1168) | Window.IsVisible(1169)] + !String.IsEmpty(Window(home).Property(plugin.video.embycon-random-gb))">$INFO[Window(home).Property(plugin.video.embycon-random-gb)]</value>
 		<value condition="[Window.IsVisible(1122) | Container.Content(musicvideos) | Window.IsVisible(mymusicnav.xml)] + !String.IsEmpty(Window(home).Property(SkinHelper.AllMusicBackground))">$INFO[Window(home).Property(SkinHelper.AllMusicBackground)]</value>
 		<value condition="[Window.IsVisible(1121) | String.StartsWith(Container.FolderPath,videodb://tvshows)] + !String.IsEmpty(Window(home).Property(SkinHelper.AllTvShowsBackground))">$INFO[Window(home).Property(SkinHelper.AllTvShowsBackground)]</value>
 		<value condition="[Window.IsVisible(1120) | String.StartsWith(Container.FolderPath,videodb://movies)]  + !String.IsEmpty(Window(home).Property(SkinHelper.AllMoviesBackground))">$INFO[Window(home).Property(SkinHelper.AllMoviesBackground)]</value>
 		<value condition="!String.IsEmpty(Window(home).Property(SkinHelper.AllVideosBackground))">$INFO[Window(home).Property(SkinHelper.AllVideosBackground)]</value>
-		<value condition="String.IsEmpty(Window(home).Property(SkinHelper.AllVideosBackground))">$INFO[Window(home).Property(SkinHelper.AllMoviesBackground)]</value>
+		<value condition="!String.IsEmpty(Window(home).Property(SkinHelper.AllMoviesBackground))">$INFO[Window(home).Property(SkinHelper.AllMoviesBackground)]</value>
+		<value>$INFO[Window(home).Property(plugin.video.embycon-random-gb)]</value>
 	</variable>
 	<variable name="FakeButtonAddonInfo13">
 		<value condition="String.EndsWith(Control.GetLabel(13),(*))">$LOCALIZE[19074]</value>
