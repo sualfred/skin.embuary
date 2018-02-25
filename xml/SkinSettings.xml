@@ -285,18 +285,20 @@
 						<selected>Skin.HasSetting(WidgetDiffuse)</selected>
 						<label>$LOCALIZE[31016]</label>
 					</control>
-					<control type="radiobutton" id="242">
+					<control type="button" id="242">
 						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideLibraryWidgets)</onclick>
-						<selected>!Skin.HasSetting(HideLibraryWidgets)</selected>
+						<onclick condition="!Skin.HasSetting(HideLibraryWidgets) + !Skin.HasSetting(EnableEmbyConWidgets)">Skin.ToggleSetting(EnableEmbyConWidgets)</onclick>
+						<onclick condition="!Skin.HasSetting(HideLibraryWidgets) + Skin.HasSetting(EnableEmbyConWidgets)">Skin.ToggleSetting(HideLibraryWidgets)</onclick>
+						<onclick condition="Skin.HasSetting(HideLibraryWidgets) + Skin.HasSetting(EnableEmbyConWidgets)">Skin.ToggleSetting(HideLibraryWidgets)</onclick>
+						<onclick condition="Skin.HasSetting(HideLibraryWidgets) + Skin.HasSetting(EnableEmbyConWidgets)">Skin.ToggleSetting(EnableEmbyConWidgets)</onclick>
 						<label>$LOCALIZE[31084]</label>
+						<label2>$VAR[VisibleWidgetTypes]</label2>
 					</control>
 					<control type="radiobutton" id="243">
 						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(EnableEmbyConWidgets)</onclick>
-						<selected>Skin.HasSetting(EnableEmbyConWidgets)</selected>
+						<onclick>Skin.ToggleSetting(HideEmbyConLabel)</onclick>
+						<selected>Skin.HasSetting(HideEmbyConLabel)</selected>
 						<label>$LOCALIZE[31085]</label>
-						<enable>System.HasAddon(plugin.video.embycon)</enable>
 					</control>
 					<!-- misc -->
 					<include content="SkinSettingsHeadlineLabel">
@@ -1004,12 +1006,18 @@
 					</control>
 					<control type="radiobutton" id="717">
 						<include>SettingsButton</include>
+						<onclick>Skin.ToggleSetting(HideMusicHubPartymodeButton)</onclick>
+						<selected>!Skin.HasSetting(HideMusicHubPartymodeButton)</selected>
+						<label>$LOCALIZE[589]</label>
+					</control>
+					<control type="radiobutton" id="718">
+						<include>SettingsButton</include>
 						<onclick>Skin.ToggleSetting(HideMusicHubEmbyConButton)</onclick>
 						<selected>!Skin.HasSetting(HideMusicHubEmbyConButton)</selected>
 						<label>$LOCALIZE[31118]</label>
 						<enable>System.HasAddon(plugin.video.embycon)</enable>
 					</control>
-					<control type="radiobutton" id="718">
+					<control type="radiobutton" id="719">
 						<include>SettingsButton</include>
 						<onclick>Skin.ToggleSetting(HideMusicHubSearchButton)</onclick>
 						<selected>!Skin.HasSetting(HideMusicHubSearchButton)</selected>
