@@ -83,6 +83,7 @@
 								<include content="LandscapeLayout_Size2">
 									<param name="mainlabel" value="$PARAM[mainlabel]" />
 									<param name="sublabel" value="$PARAM[sublabel]" />
+									<param name="labels_visible" value="$PARAM[labels_visible]" />
 									<param name="focused" value="false" />
 									<param name="id" value="$PARAM[id]" />
 								</include>
@@ -96,6 +97,7 @@
 								<include content="LandscapeLayout_Size2">
 									<param name="mainlabel" value="$PARAM[mainlabel]" />
 									<param name="sublabel" value="$PARAM[sublabel]" />
+									<param name="labels_visible" value="$PARAM[labels_visible]" />
 									<param name="focused" value="true" />
 									<param name="id" value="$PARAM[id]" />
 								</include>
@@ -202,6 +204,7 @@
 									<param name="mainlabel" value="$PARAM[mainlabel]" />
 									<param name="sublabel" value="$PARAM[sublabel]" />
 									<param name="thumblabel" value="$PARAM[thumblabel]" />
+									<param name="labels_visible" value="$PARAM[labels_visible]" />
 									<param name="focused" value="false" />
 									<param name="id" value="$PARAM[id]" />
 								</include>
@@ -216,6 +219,7 @@
 									<param name="mainlabel" value="$PARAM[mainlabel]" />
 									<param name="sublabel" value="$PARAM[sublabel]" />
 									<param name="thumblabel" value="$PARAM[thumblabel]" />
+									<param name="labels_visible" value="$PARAM[labels_visible]" />
 									<param name="focused" value="true" />
 									<param name="id" value="$PARAM[id]" />
 								</include>
@@ -321,6 +325,7 @@
 								<include content="PosterLayout_Size2">
 									<param name="mainlabel" value="$PARAM[mainlabel]" />
 									<param name="sublabel" value="$PARAM[sublabel]" />
+									<param name="labels_visible" value="$PARAM[labels_visible]" />
 									<param name="focused" value="false" />
 									<param name="id" value="$PARAM[id]" />
 								</include>
@@ -333,6 +338,7 @@
 								<include content="PosterLayout_Size2">
 									<param name="mainlabel" value="$PARAM[mainlabel]" />
 									<param name="sublabel" value="$PARAM[sublabel]" />
+									<param name="labels_visible" value="$PARAM[labels_visible]" />
 									<param name="focused" value="true" />
 									<param name="id" value="$PARAM[id]" />
 								</include>
@@ -399,6 +405,7 @@
 							<include content="ProfileLayout">
 								<param name="mainlabel" value="$PARAM[mainlabel]" />
 								<param name="sublabel" value="$PARAM[sublabel]" />
+								<param name="labels_visible" value="$PARAM[labels_visible]" />
 								<param name="focused" value="false" />
 								<param name="id" value="$PARAM[id]" />
 							</include>
@@ -412,6 +419,7 @@
 							<include content="ProfileLayout">
 								<param name="mainlabel" value="$PARAM[mainlabel]" />
 								<param name="sublabel" value="$PARAM[sublabel]" />
+								<param name="labels_visible" value="$PARAM[labels_visible]" />
 								<param name="focused" value="true" />
 								<param name="id" value="$PARAM[id]" />
 							</include>
@@ -506,6 +514,7 @@
 								<include content="SquareLayout">
 									<param name="mainlabel" value="$PARAM[mainlabel]" />
 									<param name="sublabel" value="$PARAM[sublabel]" />
+									<param name="labels_visible" value="$PARAM[labels_visible]" />
 									<param name="focused" value="false" />
 									<param name="id" value="$PARAM[id]" />
 								</include>
@@ -519,6 +528,7 @@
 								<include content="SquareLayout">
 									<param name="mainlabel" value="$PARAM[mainlabel]" />
 									<param name="sublabel" value="$PARAM[sublabel]" />
+									<param name="labels_visible" value="$PARAM[labels_visible]" />
 									<param name="focused" value="true" />
 									<param name="id" value="$PARAM[id]" />
 								</include>
@@ -674,6 +684,7 @@
 							<include content="$PARAM[layout]">
 								<param name="mainlabel" value="$PARAM[mainlabel]" />
 								<param name="sublabel" value="$PARAM[sublabel]" />
+								<param name="labels_visible" value="$PARAM[labels_visible]" />
 								<param name="thumb" value="$PARAM[thumb]"/>
 								<param name="focused" value="false" />
 								<param name="id" value="$PARAM[id]" />
@@ -690,6 +701,7 @@
 							<include content="$PARAM[layout]">
 								<param name="mainlabel" value="$PARAM[mainlabel]" />
 								<param name="sublabel" value="$PARAM[sublabel]" />
+								<param name="labels_visible" value="$PARAM[labels_visible]" />
 								<param name="thumb" value="$PARAM[thumb]"/>
 								<param name="focused" value="true" />
 								<param name="id" value="$PARAM[id]" />
@@ -715,6 +727,7 @@
 	<include name="HomePosterWidget">
 		<param name="visible">true</param>
 		<param name="force_visible">false</param>
+		<param name="height">723</param>
 		<param name="headline">$LOCALIZE[416]</param>
 		<param name="mainlabel">$VAR[MainListLabel]</param>
 		<param name="sublabel">$VAR[SubListLabel]</param>
@@ -725,7 +738,7 @@
 				<visible>$PARAM[visible]</visible>
 				<visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating | $PARAM[force_visible]</visible>
 				<width>100%</width>
-				<height>723</height>
+				<height>$PARAM[height]</height>
 				<include content="widget_headline">
 					<param name="headline">$PARAM[headline]</param>
 				</include>
@@ -785,6 +798,7 @@
 							<include content="PosterLayout">
 								<param name="mainlabel" value="$PARAM[mainlabel]" />
 								<param name="sublabel" value="$PARAM[sublabel]" />
+								<param name="labels_visible" value="$PARAM[labels_visible]" />
 								<param name="focused" value="false" />
 								<param name="id" value="$PARAM[id]" />
 							</include>
@@ -800,6 +814,7 @@
 							<include content="PosterLayout">
 								<param name="mainlabel" value="$PARAM[mainlabel]" />
 								<param name="sublabel" value="$PARAM[sublabel]" />
+								<param name="labels_visible" value="$PARAM[labels_visible]" />
 								<param name="focused" value="true" />
 								<param name="id" value="$PARAM[id]" />
 							</include>
@@ -895,6 +910,7 @@
 							<include content="$PARAM[layout]">
 								<param name="mainlabel" value="$PARAM[mainlabel]" />
 								<param name="sublabel" value="$PARAM[sublabel]" />
+								<param name="labels_visible" value="$PARAM[labels_visible]" />
 								<param name="focused" value="false" />
 								<param name="id" value="$PARAM[id]" />
 							</include>
@@ -910,6 +926,7 @@
 							<include content="$PARAM[layout]">
 								<param name="mainlabel" value="$PARAM[mainlabel]" />
 								<param name="sublabel" value="$PARAM[sublabel]" />
+								<param name="labels_visible" value="$PARAM[labels_visible]" />
 								<param name="focused" value="true" />
 								<param name="id" value="$PARAM[id]" />
 							</include>
@@ -1056,6 +1073,7 @@
 							<include content="SquareLayout">
 								<param name="mainlabel" value="$PARAM[mainlabel]" />
 								<param name="sublabel" value="$PARAM[sublabel]" />
+								<param name="labels_visible" value="$PARAM[labels_visible]" />
 								<param name="focused" value="false" />
 								<param name="id" value="$PARAM[id]" />
 							</include>
@@ -1068,6 +1086,7 @@
 							<include content="SquareLayout">
 								<param name="mainlabel" value="$PARAM[mainlabel]" />
 								<param name="sublabel" value="$PARAM[sublabel]" />
+								<param name="labels_visible" value="$PARAM[labels_visible]" />
 								<param name="focused" value="true" />
 								<param name="id" value="$PARAM[id]" />
 							</include>
