@@ -40,6 +40,7 @@
 						<onup>6666</onup>
 						<ondown>200</ondown>
 						<control type="button" id="101">
+							<include>DarkGreyButton</include>
 							<visible>Library.HasContent(tvshows) + !Skin.HasSetting(HideTVShowHubShowButton)</visible>
 							<label>$LOCALIZE[20343]</label>
 							<onclick>ActivateWindow(videos,library://video/tvshows/titles.xml/,return)</onclick>
@@ -47,6 +48,7 @@
 							<ondown>200</ondown>
 						</control>
 						<control type="button" id="102">
+							<include>DarkGreyButton</include>
 							<visible>System.HasAddon(plugin.video.embycon)</visible>
 							<label>$LOCALIZE[20343] [COLOR FFCCCCCC](EmbyCon)[/COLOR]</label>
 							<onclick>ActivateWindow(10025,&quot;plugin://plugin.video.embycon/?media_type=tvshows&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fFields%3dDateCreated%2cEpisodeCount%2cSeasonCount%2cPath%2cGenres%2cStudios%2cEtag%2cMediaStreams%2cOverview%26Recursive%3dtrue%26IncludeItemTypes%3dSeries%26ImageTypeLimit%3d1%26format%3djson&quot;,return)</onclick>
@@ -54,6 +56,7 @@
 							<ondown>200</ondown>
 						</control>
 						<control type="button" id="103">
+							<include>DarkGreyButton</include>
 							<visible>Library.HasContent(tvshows) + !Skin.HasSetting(HideTVShowHubGenreButton)</visible>
 							<label>$LOCALIZE[135]</label>
 							<onclick>SetProperty(ListGenres,videodb://tvshows/genres,home)</onclick>
@@ -62,6 +65,7 @@
 							<ondown>200</ondown>
 						</control>
 						<control type="button" id="104">
+							<include>DarkGreyButton</include>
 							<visible>Library.HasContent(tvshows) + System.HasAddon(script.tv.show.next.aired) + !Skin.HasSetting(HideTVShowHubNextAiredButton)</visible>
 							<label>$LOCALIZE[31154]</label>
 							<onclick>RunScript(script.tv.show.next.aired)</onclick>
@@ -69,6 +73,7 @@
 							<ondown>200</ondown>
 						</control>
 						<control type="button" id="105">
+							<include>DarkGreyButton</include>
 							<visible>Library.HasContent(tvshows) + !Skin.HasSetting(HideTVShowHubLibrary)</visible>
 							<label>$LOCALIZE[14022]</label>
 							<onclick>ActivateWindow(videos,library://video/tvshows/,return)</onclick>
@@ -106,6 +111,7 @@
 							<param name="nr" value="6"/>
 						</include>
 						<control type="button" id="198">
+							<include>DarkGreyButton</include>
 							<visible>[Library.HasContent(tvshows) | System.HasAddon(plugin.video.embycon)] + !Skin.HasSetting(HideTVShowHubSearchButton)</visible>
 							<label>$LOCALIZE[137]</label>
 							<include>search_action</include>
@@ -113,6 +119,7 @@
 							<ondown>200</ondown>
 						</control>
 						<control type="button" id="199">
+							<include>DarkGreyButton</include>
 							<visible>!Control.IsVisible(101) + !Control.IsVisible(102) + !Control.IsVisible(103) + !Control.IsVisible(104) + !Control.IsVisible(105) + !Control.IsVisible(110) + !Control.IsVisible(111) + !Control.IsVisible(112) + !Control.IsVisible(113) + !Control.IsVisible(114) + !Control.IsVisible(115) + !Control.IsVisible(198)</visible>
 							<label>$LOCALIZE[31028]</label>
 							<onclick>ActivateWindow(skinsettings)</onclick>

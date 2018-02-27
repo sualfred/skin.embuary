@@ -41,6 +41,7 @@
 						<ondown>200</ondown>
 						<control type="button" id="101">
 							<visible>Library.HasContent(music) + !Skin.HasSetting(HideMusicHubArtistButton)</visible>
+							<include>DarkGreyButton</include>
 							<label>$LOCALIZE[133]</label>
 							<onclick>ActivateWindow(music,library://music/artists.xml/,return)</onclick>
 							<onup>6666</onup>
@@ -48,6 +49,7 @@
 						</control>
 						<control type="button" id="102">
 							<visible>Library.HasContent(music) + !Skin.HasSetting(HideMusicHubAlbumButton)</visible>
+							<include>DarkGreyButton</include>
 							<label>$LOCALIZE[132]</label>
 							<onclick>ActivateWindow(music,library://music/albums.xml/,return)</onclick>
 							<onup>6666</onup>
@@ -55,6 +57,7 @@
 						</control>
 						<control type="button" id="103">
 							<visible>Library.HasContent(music) + !Skin.HasSetting(HideMusicHubSongButton)</visible>
+							<include>DarkGreyButton</include>
 							<label>$LOCALIZE[134]</label>
 							<onclick>ActivateWindow(music,library://music/songs.xml/,return)</onclick>
 							<onup>6666</onup>
@@ -62,6 +65,7 @@
 						</control>
 						<control type="button" id="104">
 							<visible>Library.HasContent(music) + !Skin.HasSetting(HideMusicHubPlaylistButton)</visible>
+							<include>DarkGreyButton</include>
 							<label>$LOCALIZE[136]</label>
 							<onclick>ActivateWindow(music,special://musicplaylists/,return)</onclick>
 							<onup>6666</onup>
@@ -76,6 +80,7 @@
 						</control>
 						<control type="button" id="106">
 							<visible>Library.HasContent(MusicVideos) + !Skin.HasSetting(HideMusicHubMusicvideoButton)</visible>
+							<include>DarkGreyButton</include>
 							<label>$LOCALIZE[20389]</label>
 							<onclick>ActivateWindow(videos,library://video/musicvideos/titles.xml/,return)</onclick>
 							<onup>6666</onup>
@@ -83,6 +88,7 @@
 						</control>
 						<control type="button" id="107">
 							<visible>Library.HasContent(music) + !Skin.HasSetting(HideMusicHubPartymodeButton)</visible>
+							<include>DarkGreyButton</include>
 							<label>$VAR[PartyModeButton]</label>
 							<onclick condition="MusicPartyMode.Enabled">Playercontrol(stop)</onclick>
 							<onclick condition="!MusicPartyMode.Enabled">Playercontrol(partymode(music))</onclick>
@@ -91,6 +97,7 @@
 						</control>
 						<control type="button" id="108">
 							<visible>System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideMusicHubEmbyConButton)</visible>
+							<include>DarkGreyButton</include>
 							<label>$LOCALIZE[133] [COLOR FF505050](EmbyCon)[/COLOR]</label>
 							<onclick>ActivateWindow(music,plugin://plugin.video.embycon/?media_type=MusicArtists&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fArtists%2fAlbumArtists%3fRecursive%3dtrue%26ImageTypeLimit%3d1%26EnableImageTypes%3dPrimary%2cBackdrop%2cBanner%2cThumb%26format%3djson,return)</onclick>
 							<onup>6666</onup>
@@ -98,6 +105,7 @@
 						</control>
 						<control type="button" id="109">
 							<visible>System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideMusicHubEmbyConButton)</visible>
+							<include>DarkGreyButton</include>
 							<label>$LOCALIZE[132] [COLOR FF505050](EmbyCon)[/COLOR]</label>
 							<onclick>ActivateWindow(music,plugin://plugin.video.embycon/?media_type=MusicAlbums&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fRecursive%3dtrue%26IncludeItemTypes%3dMusicAlbum%26ImageTypeLimit%3d1%26EnableImageTypes%3dPrimary%2cBackdrop%2cBanner%2cThumb%26format%3djson,return)</onclick>
 							<onup>6666</onup>
@@ -135,6 +143,7 @@
 						</include>
 						<control type="button" id="198">
 							<visible>Library.HasContent(music) + !Skin.HasSetting(HideMusicHubSearchButton)</visible>
+							<include>DarkGreyButton</include>
 							<label>$LOCALIZE[137]</label>
 							<include>search_action</include>
 							<onup>6666</onup>
@@ -142,6 +151,7 @@
 						</control>
 						<control type="button" id="199">
 							<visible>!Control.IsVisible(101) + !Control.IsVisible(102) + !Control.IsVisible(103) + !Control.IsVisible(104) + !Control.IsVisible(105) + !Control.IsVisible(106) + !Control.IsVisible(107) + !Control.IsVisible(108) + !Control.IsVisible(109) + !Control.IsVisible(110) + !Control.IsVisible(111) + !Control.IsVisible(112) + !Control.IsVisible(113) + !Control.IsVisible(114) + !Control.IsVisible(115) + !Control.IsVisible(198)</visible>
+							<include>DarkGreyButton</include>
 							<label>$LOCALIZE[31028]</label>
 							<onclick>ActivateWindow(skinsettings)</onclick>
 							<onup>6666</onup>

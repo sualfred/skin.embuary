@@ -207,7 +207,6 @@
 					<align>left</align>
 					<font>Material20</font>
 					<textcolor>panel_text</textcolor>
-					<shadowcolor>text_shadow</shadowcolor>
 					<label>$PARAM[icon]</label>
 				</control>
 				<control type="button" id="$PARAM[id]">
@@ -225,7 +224,6 @@
 					<textcolor>panel_text</textcolor>
 					<focusedcolor>panel_text</focusedcolor>
 					<selectedcolor>panel_text</selectedcolor>
-					<shadowcolor>text_shadow</shadowcolor>
 					<label>$PARAM[label]</label>
 					<onclick condition="$PARAM[closepanel]">right</onclick>
 					<onclick>Dialog.Close(all,force)</onclick>
@@ -1059,6 +1057,7 @@
 		<definition>
 			<control type="button" id="$PARAM[id]">
 				<visible>Skin.HasSetting(User$PARAM[type]Hub$PARAM[nr])</visible>
+				<include>DarkGreyButton</include>
 				<label>$INFO[Skin.String(User$PARAM[type]Hub$PARAM[nr]_name)]</label>
 				<onclick condition="String.StartsWith(Skin.String(User$PARAM[type]Hub$PARAM[nr]_action),ActivateWindow)">ActivateWindow($INFO[Skin.String(User$PARAM[type]Hub$PARAM[nr]_target)],$INFO[Skin.String(User$PARAM[type]Hub$PARAM[nr]_path)],return)</onclick>
 				<onclick condition="!String.StartsWith(Skin.String(User$PARAM[type]Hub$PARAM[nr]_action),ActivateWindow)">$INFO[Skin.String(User$PARAM[type]Hub$PARAM[nr]_action)]</onclick>
