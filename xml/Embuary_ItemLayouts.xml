@@ -1379,7 +1379,24 @@
 				<texture>items/shadow_button.png</texture>
 			</control>
 			<control type="group">
-				<visible>![!String.IsEmpty(ListItem.Icon) | !String.IsEmpty(ListItem.Property(embyart))] + [String.IsEmpty(ListItem.Property(Art1)) | String.IsEmpty(ListItem.Property(Art2)) | String.IsEmpty(ListItem.Property(Art3)) | String.IsEmpty(ListItem.Property(Art4))]</visible>
+				<visible>!String.IsEmpty(ListItem.Icon) | !String.IsEmpty(ListItem.Property(embyart))</visible>
+				<control type="image">
+					<width>277</width>
+					<height>156</height>
+					<texture diffuse="items/mask_button.png" background="true">$INFO[ListItem.Icon]</texture>
+					<aspectratio scalediffuse="false">scale</aspectratio>
+					<visible>!String.IsEmpty(ListItem.Icon)</visible>
+				</control>
+				<control type="image">
+					<width>277</width>
+					<height>156</height>
+					<texture diffuse="items/mask_button.png" background="true">$INFO[ListItem.Property(embyart)]</texture>
+					<aspectratio scalediffuse="false">scale</aspectratio>
+					<visible>String.IsEmpty(ListItem.Icon)</visible>
+				</control>
+			</control>
+			<control type="group">
+				<visible>String.IsEmpty(ListItem.Icon) + String.IsEmpty(ListItem.Property(embyart)) + [String.IsEmpty(ListItem.Property(Art1)) | String.IsEmpty(ListItem.Property(Art2)) | String.IsEmpty(ListItem.Property(Art3)) | String.IsEmpty(ListItem.Property(Art4))]</visible>
 				<control type="image">
 					<width>277</width>
 					<height>156</height>
@@ -1398,24 +1415,7 @@
 				</control>
 			</control>
 			<control type="group">
-				<visible>!String.IsEmpty(ListItem.Icon) | !String.IsEmpty(ListItem.Property(embyart))</visible>
-				<control type="image">
-					<width>277</width>
-					<height>156</height>
-					<texture diffuse="items/mask_button.png" background="true">$INFO[ListItem.Icon]</texture>
-					<aspectratio scalediffuse="false">scale</aspectratio>
-					<visible>!String.IsEmpty(ListItem.Icon)</visible>
-				</control>
-				<control type="image">
-					<width>277</width>
-					<height>156</height>
-					<texture diffuse="items/mask_button.png" background="true">$INFO[ListItem.Property(embyart)]</texture>
-					<aspectratio scalediffuse="false">scale</aspectratio>
-					<visible>String.IsEmpty(ListItem.Icon)</visible>
-				</control>
-			</control>
-			<control type="group">
-				<visible>![!String.IsEmpty(ListItem.Icon) | !String.IsEmpty(ListItem.Property(embyart))] + !String.IsEmpty(ListItem.Property(Art1)) + !String.IsEmpty(ListItem.Property(Art2)) + !String.IsEmpty(ListItem.Property(Art3)) + !String.IsEmpty(ListItem.Property(Art4))</visible>
+				<visible>String.IsEmpty(ListItem.Icon) + String.IsEmpty(ListItem.Property(embyart)) + !String.IsEmpty(ListItem.Property(Art1)) + !String.IsEmpty(ListItem.Property(Art2)) + !String.IsEmpty(ListItem.Property(Art3)) + !String.IsEmpty(ListItem.Property(Art4))</visible>
 				<top>2</top>
 				<width>277</width>
 				<control type="image">
