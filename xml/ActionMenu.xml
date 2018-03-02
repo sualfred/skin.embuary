@@ -5,65 +5,119 @@
     <controls>
         <!-- EmbyCon dialog -->
         <control type="group">
+            <!-- hidden container -->
+            <control type="list" id="3000">
+                <top>-10</top>
+                <left>-10</left>
+                <width>1</width>
+                <height>850</height>
+                <pagecontrol>17</pagecontrol>
+                <onup>3000</onup>
+                <onleft>close</onleft>
+                <onright>close</onright>
+                <ondown>3000</ondown>
+                <scrolltime>0</scrolltime>
+                <itemlayout height="50"/>
+                <focusedlayout height="50"/>
+            </control>
             <include content="DiffuseMask">
                 <param name="visible">!VideoPlayer.IsFullscreen</param>
             </include>
+            <!-- fake list with auto adjusted height -->
             <control type="group">
                 <include>Dialog_PopupOpenClose</include>
                 <centerleft>50%</centerleft>
+                <width>284</width>
                 <centertop>50%</centertop>
-                <width>380</width>
-                <height>270</height>
-                <control type="image">
-                    <width>380</width>
-                    <height>270</height>
-                    <texture colordiffuse="panel" border="10">common/dialog_back.png</texture>
-                </control>
-                <control type="list" id="3000">
-                    <centerleft>50%</centerleft>
-                    <top>10</top>
-                    <width>370</width>
-                    <height>250</height>
-                    <pagecontrol>17</pagecontrol>
-                    <onup>noop</onup>
-                    <onleft>5</onleft>
-                    <onright>5</onright>
-                    <ondown>7</ondown>
-                    <itemlayout width="370" height="50">
-                        <control type="label">
-                            <width>100%</width>
-                            <height>50</height>
-                            <aligny>center</aligny>
-                            <textoffsetx>20</textoffsetx>
-                            <font>med20</font>
-                            <label>$INFO[ListItem.Label]</label>
-                        </control>
-                    </itemlayout>
-                    <focusedlayout width="370" height="50">
-                        <control type="image">
-                            <width>100%</width>
-                            <height>50</height>
-                            <texture colordiffuse="panel">common/white.jpg</texture>
-                            <visible>!Control.HasFocus(3000)</visible>
-                        </control>
-                        <control type="image">
-                            <width>100%</width>
-                            <height>50</height>
-                            <texture colordiffuse="panel_hover">common/white.jpg</texture>
-                            <visible>Control.HasFocus(3000)</visible>
-                        </control>
-                        <control type="label">
-                            <width>100%</width>
-                            <height>50</height>
-                            <aligny>center</aligny>
-                            <textoffsetx>20</textoffsetx>
-                            <font>med20</font>
-                            <label>$INFO[ListItem.Label]</label>
-                        </control>
-                    </focusedlayout>
+                <height>970</height>
+                <control type="grouplist">
+                    <orientation>vertical</orientation>
+                    <height>auto</height>
+                    <align>center</align>
+                    <itemgap>0</itemgap>
+                    <onright>close</onright>
+                    <onleft>close</onleft>
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <control type="image">
+                        <width>100%</width>
+                        <height>10</height>
+                        <texture border="5" colordiffuse="panel">common/menu_top.png</texture>
+                    </control>
+                    <include content="SmallSelectDialogItem">
+                        <param name="container" value="3000"/>
+                        <param name="id" value="0"/>
+                    </include>
+                    <include content="SmallSelectDialogItem">
+                        <param name="container" value="3000"/>
+                        <param name="id" value="1"/>
+                    </include>
+                    <include content="SmallSelectDialogItem">
+                        <param name="container" value="3000"/>
+                        <param name="id" value="2"/>
+                    </include>
+                    <include content="SmallSelectDialogItem">
+                        <param name="container" value="3000"/>
+                        <param name="id" value="3"/>
+                    </include>
+                    <include content="SmallSelectDialogItem">
+                        <param name="container" value="3000"/>
+                        <param name="id" value="4"/>
+                    </include>
+                    <include content="SmallSelectDialogItem">
+                        <param name="container" value="3000"/>
+                        <param name="id" value="5"/>
+                    </include>
+                    <include content="SmallSelectDialogItem">
+                        <param name="container" value="3000"/>
+                        <param name="id" value="6"/>
+                    </include>
+                    <include content="SmallSelectDialogItem">
+                        <param name="container" value="3000"/>
+                        <param name="id" value="7"/>
+                    </include>
+                    <include content="SmallSelectDialogItem">
+                        <param name="container" value="3000"/>
+                        <param name="id" value="8"/>
+                    </include>
+                    <include content="SmallSelectDialogItem">
+                        <param name="container" value="3000"/>
+                        <param name="id" value="9"/>
+                    </include>
+                    <include content="SmallSelectDialogItem">
+                        <param name="container" value="3000"/>
+                        <param name="id" value="10"/>
+                    </include>
+                    <include content="SmallSelectDialogItem">
+                        <param name="container" value="3000"/>
+                        <param name="id" value="11"/>
+                    </include>
+                    <include content="SmallSelectDialogItem">
+                        <param name="container" value="3000"/>
+                        <param name="id" value="12"/>
+                    </include>
+                    <include content="SmallSelectDialogItem">
+                        <param name="container" value="3000"/>
+                        <param name="id" value="13"/>
+                    </include>
+                    <include content="SmallSelectDialogItem">
+                        <param name="container" value="3000"/>
+                        <param name="id" value="14"/>
+                    </include>
+                    <include content="SmallSelectDialogItem">
+                        <param name="container" value="3000"/>
+                        <param name="id" value="15"/>
+                    </include>
+                    <include content="SmallSelectDialogItem">
+                        <param name="container" value="3000"/>
+                        <param name="id" value="16"/>
+                    </include>
+                    <control type="image">
+                        <width>100%</width>
+                        <height>10</height>
+                        <texture border="5" colordiffuse="panel">common/menu_bottom.png</texture>
+                    </control>
                 </control>
             </control>
         </control>
-
-	</controls>
+    </controls>
 </window>
