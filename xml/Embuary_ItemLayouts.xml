@@ -526,14 +526,14 @@
 					<height>355</height>
 					<texture colordiffuse="thumb_background_fallback" diffuse="items/mask_poster_db.png">common/white.jpg</texture>
 					<aspectratio scalediffuse="false">stretch</aspectratio>
-					<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+					<visible>[String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)] + String.IsEmpty(ListItem.Art(tvshow.poster))</visible>
 				</control>
 				<control type="image">
 					<width>237</width>
 					<height>355</height>
 					<texture colordiffuse="thumb_background" diffuse="items/mask_poster_db.png">common/white.jpg</texture>
 					<aspectratio scalediffuse="false">stretch</aspectratio>
-					<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
+					<visible>[!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)] | !String.IsEmpty(ListItem.Art(tvshow.poster))</visible>
 				</control>
 				<control type="textbox">
 					<top>10</top>
@@ -545,14 +545,13 @@
 					<align>center</align>
 					<aligny>center</aligny>
 					<label>$PARAM[thumblabel]</label>
-					<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+					<visible>[String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)] + String.IsEmpty(ListItem.Art(tvshow.poster))</visible>
 				</control>
 				<control type="image">
 					<width>237</width>
 					<height>355</height>
 					<texture diffuse="items/mask_poster_db.png" background="true">$VAR[IconPoster]</texture>
 					<aspectratio scalediffuse="false">stretch</aspectratio>
-					<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
 				</control>
 				<control type="group">
 					<width>237</width>
