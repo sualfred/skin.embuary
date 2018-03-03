@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window id="1112" type="dialog">
-	<visible>Window.IsVisible(home) | !String.IsEmpty(Window(home).Property(MainMenuReset))</visible>
+	<visible>Window.IsVisible(home) | !String.IsEmpty(Window(home).Property(MainMenuReset)) | !String.IsEmpty(Window(home).Property(HomeWidgetReset))</visible>
+
+	<!-- Main Menu -->
 	<onload condition="$EXP[MenuCheck] | !String.IsEmpty(Window(home).Property(MainMenuReset))">Skin.SetString(home_menu_pos_1,movies)</onload>
 	<onload condition="$EXP[MenuCheck] | !String.IsEmpty(Window(home).Property(MainMenuReset))">Skin.SetString(home_menu_pos_2,shows)</onload>
 	<onload condition="$EXP[MenuCheck] | !String.IsEmpty(Window(home).Property(MainMenuReset))">Skin.SetString(home_menu_pos_3,emby0)</onload>
@@ -100,6 +102,48 @@
 	<onload condition="!String.IsEmpty(Window(home).Property(MainMenuReset))">Skin.Reset(embycon9.icon)</onload>
 
 	<onload condition="$EXP[MenuCheck] | !String.IsEmpty(Window(home).Property(MainMenuReset))">Notification(Embuary,$LOCALIZE[31207])</onload>
+
+	<!-- home widget reset -->
+	<onload condition="!String.IsEmpty(Window(home).Property(HomeWidgetReset))">Skin.SetString(home_widget_pos_1,W_InProgressMedia)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(HomeWidgetReset))">Skin.SetString(home_widget_pos_2,W_EmbyCon_InProgressMedia)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(HomeWidgetReset))">Skin.SetString(home_widget_pos_3,W_PVR)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(HomeWidgetReset))">Skin.SetString(home_widget_pos_4,W_NextUp)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(HomeWidgetReset))">Skin.SetString(home_widget_pos_5,W_EmbyCon_NextUp)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(HomeWidgetReset))">Skin.SetString(home_widget_pos_6,W_NewMovies)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(HomeWidgetReset))">Skin.SetString(home_widget_pos_7,W_EmbyCon_NewMovies)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(HomeWidgetReset))">Skin.SetString(home_widget_pos_8,W_NewEpisodes)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(HomeWidgetReset))">Skin.SetString(home_widget_pos_9,W_EmbyCon_NewEpisodes)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(HomeWidgetReset))">Skin.SetString(home_widget_pos_10,W_NewAlbums)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(HomeWidgetReset))">Skin.SetString(home_widget_pos_11,W_EmbyCon_NewAlbums)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(HomeWidgetReset))">Skin.SetString(home_widget_pos_12,W_HomeCustom1)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(HomeWidgetReset))">Skin.SetString(home_widget_pos_13,W_HomeCustom2)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(HomeWidgetReset))">Skin.SetString(home_widget_pos_14,W_HomeCustom3)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(HomeWidgetReset))">Skin.SetString(home_widget_pos_15,W_HomeCustom4)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(HomeWidgetReset))">Skin.SetString(home_widget_pos_16,W_HomeCustom5)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(HomeWidgetReset))">Skin.SetString(home_widget_pos_17,W_HomeCustom6)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(HomeWidgetReset))">Skin.Reset(home_widget_pos_18)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(HomeWidgetReset))">Skin.SetString(home_widget_pos_1.label,$LOCALIZE[31080])</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(HomeWidgetReset))">Skin.SetString(home_widget_pos_2.label,$LOCALIZE[31080]   [COLOR lightgrey]($LOCALIZE[31208])[/COLOR])</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(HomeWidgetReset))">Skin.SetString(home_widget_pos_3.label,$LOCALIZE[19023])</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(HomeWidgetReset))">Skin.SetString(home_widget_pos_4.label,$LOCALIZE[31012])</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(HomeWidgetReset))">Skin.SetString(home_widget_pos_5.label,$LOCALIZE[31012]   [COLOR lightgrey]($LOCALIZE[31208])[/COLOR])</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(HomeWidgetReset))">Skin.SetString(home_widget_pos_6.label,$LOCALIZE[20386])</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(HomeWidgetReset))">Skin.SetString(home_widget_pos_7.label,$LOCALIZE[20386]   [COLOR lightgrey]($LOCALIZE[31208])[/COLOR])</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(HomeWidgetReset))">Skin.SetString(home_widget_pos_8.label,$LOCALIZE[31081])</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(HomeWidgetReset))">Skin.SetString(home_widget_pos_9.label,$LOCALIZE[31081]   [COLOR lightgrey]($LOCALIZE[31208])[/COLOR])</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(HomeWidgetReset))">Skin.SetString(home_widget_pos_10.label,$LOCALIZE[359])</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(HomeWidgetReset))">Skin.SetString(home_widget_pos_11.label,$LOCALIZE[359]   [COLOR lightgrey]($LOCALIZE[31208])[/COLOR])</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(HomeWidgetReset))">Skin.SetString(home_widget_pos_12.label,$LOCALIZE[31125] #1)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(HomeWidgetReset))">Skin.SetString(home_widget_pos_13.label,$LOCALIZE[31125] #2)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(HomeWidgetReset))">Skin.SetString(home_widget_pos_14.label,$LOCALIZE[31125] #3)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(HomeWidgetReset))">Skin.SetString(home_widget_pos_15.label,$LOCALIZE[31125] #4)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(HomeWidgetReset))">Skin.SetString(home_widget_pos_16.label,$LOCALIZE[31125] #5)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(HomeWidgetReset))">Skin.SetString(home_widget_pos_17.label,$LOCALIZE[31125] #6)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(HomeWidgetReset))">Skin.Reset(home_widget_pos_18.label)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(HomeWidgetReset))">Notification(Embuary,$LOCALIZE[31127])</onload>
+	<!-- unload -->
 	<onload>ClearProperty(MainMenuReset,home)</onload>
+	<onload>ClearProperty(HomeWidgetReset,home)</onload>
+
 	<controls/>
 </window>

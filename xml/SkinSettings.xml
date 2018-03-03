@@ -139,7 +139,7 @@
 			<control type="group">
 				<include>Window_OpenClose</include>
 				<top>122</top>
-				<bottom>126</bottom>
+				<bottom>122</bottom>
 				<control type="group">
 					<visible>!ControlGroup(100).HasFocus(107)</visible>
 					<left>400</left>
@@ -337,6 +337,7 @@
 					</include>
 					<control type="button" id="311">
 						<include>SettingsButton</include>
+						<onclick>SetProperty(PositionCount,32,home)</onclick>
 						<onclick>ActivateWindow(1110)</onclick>
 						<label>$LOCALIZE[31201]</label>
 					</control>
@@ -349,6 +350,24 @@
 						<include>SettingsButton</include>
 						<onclick>SetProperty(MainMenuReset,1,home)</onclick>
 						<label>$LOCALIZE[31204]</label>
+					</control>
+					<!-- widgets -->
+					<include content="SkinSettingsHeadlineLabel">
+						<param name="id" value="320"/>
+						<param name="label" value="$LOCALIZE[31103]"/>
+					</include>
+					<control type="button" id="321">
+						<include>SettingsButton</include>
+						<onclick>SetProperty(PositionCount,18,home)</onclick>
+						<onclick>SetProperty(SelectorContent,HomeWidgets,home)</onclick>
+						<onclick>ActivateWindow(1110)</onclick>
+						<label>$LOCALIZE[31201]</label>
+					</control>
+					<control type="button" id="322">
+						<include>SettingsButton</include>
+						<onclick>SetProperty(HomeWidgetReset,1,home)</onclick>
+						<onclick>ActivateWindow(1112)</onclick>
+						<label>$LOCALIZE[31216]</label>
 					</control>
 					<!-- custom media menu -->
 					<include content="SkinSettingsHeadlineLabel">
@@ -391,56 +410,6 @@
 						<param name="type" value="Home"/>
 						<param name="group" value="homemediamenu"/>
 					</include>
-					<!-- default widgets -->
-					<include content="SkinSettingsHeadlineLabel">
-						<param name="id" value="340"/>
-						<param name="label" value="$LOCALIZE[31086]"/>
-					</include>
-					<control type="radiobutton" id="341">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideWidgetContinue)</onclick>
-						<selected>!Skin.HasSetting(HideWidgetContinue)</selected>
-						<label>$LOCALIZE[31080]</label>
-					</control>
-					<control type="radiobutton" id="342">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideWidgetPVR)</onclick>
-						<selected>!Skin.HasSetting(HideWidgetPVR)</selected>
-						<label>$LOCALIZE[14204]</label>
-					</control>
-					<control type="radiobutton" id="3421">
-						<textcolor>emby</textcolor>
-						<texturenofocus colordiffuse="subsetting_nofocus">common/white.jpg</texturenofocus>
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(PreferLastTunedPVRChannels)</onclick>
-						<selected>Skin.HasSetting(PreferLastTunedPVRChannels)</selected>
-						<visible>!Skin.HasSetting(HideWidgetPVR)</visible>
-						<label>• $LOCALIZE[31107]</label>
-					</control>
-					<control type="radiobutton" id="343">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideWidgetNextup)</onclick>
-						<selected>!Skin.HasSetting(HideWidgetNextup)</selected>
-						<label>$LOCALIZE[31012]</label>
-					</control>
-					<control type="radiobutton" id="344">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideWidgetNewMovies)</onclick>
-						<selected>!Skin.HasSetting(HideWidgetNewMovies)</selected>
-						<label>$LOCALIZE[20386]</label>
-					</control>
-					<control type="radiobutton" id="345">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideWidgetNewEpisodes)</onclick>
-						<selected>!Skin.HasSetting(HideWidgetNewEpisodes)</selected>
-						<label>$LOCALIZE[31081]</label>
-					</control>
-					<control type="radiobutton" id="346">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideWidgetNewAlbums)</onclick>
-						<selected>!Skin.HasSetting(HideWidgetNewAlbums)</selected>
-						<label>$LOCALIZE[359]</label>
-					</control>
 					<!-- custom widgets -->
 					<include content="SkinSettingsHeadlineLabel">
 						<param name="id" value="350"/>
@@ -1122,7 +1091,7 @@
 		<include content="ViewScrollbar">
 			<param name="visible" value="true"/>
 			<param name="top" value="122"/>
-			<param name="bottom" value="126"/>
+			<param name="bottom" value="122"/>
 			<param name="width" value="10"/>
 		</include>
 		<!-- header bar -->

@@ -27,6 +27,8 @@
 	<include file="Embuary_HomeIncludes.xml" />
 	<include file="Embuary_EmbyHubIncludes.xml" />
 	<include file="Embuary_EmbyConHubIncludes.xml" />
+	<include file="Embuary_HomeWidgets.xml" />
+	<include file="Embuary_PositionSelectorIncludes.xml" />
 
 	<expression name="HolidayThemeSound">!String.StartsWith(Player.Filenameandpath,special://skin/extras) + String.IsEmpty(Window(home).Property(SkinExtraSound)) + [[!Window.Previous(Startup) + Integer.IsGreater(Player.Duration,10)] | [Window.Previous(Startup) + Integer.IsGreater(Player.Duration,31)] | String.IsEmpty(Player.Duration)]</expression>
 	<expression name="HolidayTheme">System.Date(12-01,01-06) + !Skin.HasSetting(HideHolidayTheme) + [[!Window.IsVisible(visualisation) + !VideoPlayer.IsFullscreen] | Window.IsActive(fullscreeninfo) |Window.IsActive(script-script.extendedinfo-DialogInfo.xml) | Window.IsActive(script-script.extendedinfo-DialogVideoInfo.xml)]</expression>

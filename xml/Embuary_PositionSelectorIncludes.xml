@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+	<!-- List available positions -->
+	<include name="PositionSelectorItems">
+		<param name="content">MainMenuPositionSelector</param>
+		<definition>
+			<content>
+				<include content="$PARAM[content]">
+					<param name="nr" value="1"/>
+				</include>
+				<include condition="Integer.IsGreaterOrEqual(Window(home).Property(PositionCount),2)" content="$PARAM[content]">
+					<param name="nr" value="2"/>
+				</include>
+				<include condition="Integer.IsGreaterOrEqual(Window(home).Property(PositionCount),3)" content="$PARAM[content]">
+					<param name="nr" value="3"/>
+				</include>
+				<include condition="Integer.IsGreaterOrEqual(Window(home).Property(PositionCount),4)" content="$PARAM[content]">
+					<param name="nr" value="4"/>
+				</include>
+				<include condition="Integer.IsGreaterOrEqual(Window(home).Property(PositionCount),5)" content="$PARAM[content]">
+					<param name="nr" value="5"/>
+				</include>
+				<include condition="Integer.IsGreaterOrEqual(Window(home).Property(PositionCount),6)" content="$PARAM[content]">
+					<param name="nr" value="6"/>
+				</include>
+				<include condition="Integer.IsGreaterOrEqual(Window(home).Property(PositionCount),7)" content="$PARAM[content]">
+					<param name="nr" value="7"/>
+				</include>
+				<include condition="Integer.IsGreaterOrEqual(Window(home).Property(PositionCount),8)" content="$PARAM[content]">
+					<param name="nr" value="8"/>
+				</include>
+				<include condition="Integer.IsGreaterOrEqual(Window(home).Property(PositionCount),9)" content="$PARAM[content]">
+					<param name="nr" value="9"/>
+				</include>
+				<include condition="Integer.IsGreaterOrEqual(Window(home).Property(PositionCount),10)" content="$PARAM[content]">
+					<param name="nr" value="10"/>
+				</include>
+				<include condition="Integer.IsGreaterOrEqual(Window(home).Property(PositionCount),11)" content="$PARAM[content]">
+					<param name="nr" value="11"/>
+				</include>
+				<include condition="Integer.IsGreaterOrEqual(Window(home).Property(PositionCount),12)" content="$PARAM[content]">
+					<param name="nr" value="12"/>
+				</include>
+				<include condition="Integer.IsGreaterOrEqual(Window(home).Property(PositionCount),13)" content="$PARAM[content]">
+					<param name="nr" value="13"/>
+				</include>
+				<include condition="Integer.IsGreaterOrEqual(Window(home).Property(PositionCount),14)" content="$PARAM[content]">
+					<param name="nr" value="14"/>
+				</include>
+				<include condition="Integer.IsGreaterOrEqual(Window(home).Property(PositionCount),15)" content="$PARAM[content]">
+					<param name="nr" value="15"/>
+				</include>
+				<include condition="Integer.IsGreaterOrEqual(Window(home).Property(PositionCount),16)" content="$PARAM[content]">
+					<param name="nr" value="16"/>
+				</include>
+				<include condition="Integer.IsGreaterOrEqual(Window(home).Property(PositionCount),17)" content="$PARAM[content]">
+					<param name="nr" value="17"/>
+				</include>
+				<include condition="Integer.IsGreaterOrEqual(Window(home).Property(PositionCount),18)" content="$PARAM[content]">
+					<param name="nr" value="18"/>
+				</include>
+				<include condition="Integer.IsGreaterOrEqual(Window(home).Property(PositionCount),19)" content="$PARAM[content]">
+					<param name="nr" value="19"/>
+				</include>
+				<include condition="Integer.IsGreaterOrEqual(Window(home).Property(PositionCount),20)" content="$PARAM[content]">
+					<param name="nr" value="20"/>
+				</include>
+				<include condition="Integer.IsGreaterOrEqual(Window(home).Property(PositionCount),21)" content="$PARAM[content]">
+					<param name="nr" value="21"/>
+				</include>
+				<include condition="Integer.IsGreaterOrEqual(Window(home).Property(PositionCount),22)" content="$PARAM[content]">
+					<param name="nr" value="22"/>
+				</include>
+				<include condition="Integer.IsGreaterOrEqual(Window(home).Property(PositionCount),23)" content="$PARAM[content]">
+					<param name="nr" value="23"/>
+				</include>
+				<include condition="Integer.IsGreaterOrEqual(Window(home).Property(PositionCount),24)" content="$PARAM[content]">
+					<param name="nr" value="24"/>
+				</include>
+				<include condition="Integer.IsGreaterOrEqual(Window(home).Property(PositionCount),25)" content="$PARAM[content]">
+					<param name="nr" value="25"/>
+				</include>
+				<include condition="Integer.IsGreaterOrEqual(Window(home).Property(PositionCount),26)" content="$PARAM[content]">
+					<param name="nr" value="26"/>
+				</include>
+				<include condition="Integer.IsGreaterOrEqual(Window(home).Property(PositionCount),27)" content="$PARAM[content]">
+					<param name="nr" value="27"/>
+				</include>
+				<include condition="Integer.IsGreaterOrEqual(Window(home).Property(PositionCount),28)" content="$PARAM[content]">
+					<param name="nr" value="28"/>
+				</include>
+				<include condition="Integer.IsGreaterOrEqual(Window(home).Property(PositionCount),29)" content="$PARAM[content]">
+					<param name="nr" value="29"/>
+				</include>
+				<include condition="Integer.IsGreaterOrEqual(Window(home).Property(PositionCount),30)" content="$PARAM[content]">
+					<param name="nr" value="30"/>
+				</include>
+				<include condition="Integer.IsGreaterOrEqual(Window(home).Property(PositionCount),31)" content="$PARAM[content]">
+					<param name="nr" value="31"/>
+				</include>
+				<include condition="Integer.IsGreaterOrEqual(Window(home).Property(PositionCount),32)" content="$PARAM[content]">
+					<param name="nr" value="32"/>
+				</include>
+			</content>
+		</definition>
+	</include>
+	<!-- Home Widgets -->
+	<include name="HomeWidgetsPositionSelector">
+		<item>
+			<icon>DefaultFolder.png</icon>
+			<label>$LOCALIZE[31100] $PARAM[nr] $INFO[Skin.String(home_widget_pos_$PARAM[nr].label),   [COLOR lightgrey],[/COLOR]]</label>
+			<onclick>SetProperty(home_widget_position,$PARAM[nr],home)</onclick>
+			<onclick>ActivateWindow(1111)</onclick>
+		</item>
+	</include>
+	<include name="HomeAvailableWidgets">
+		<include content="HomeSelectAvailableWidget">
+			<param name="label" value="$LOCALIZE[192]"/>
+			<param name="setitem" value="false"/>
+			<param name="clearitem" value="true"/>
+			<param name="icon" value="DefaultAddonNone"/>
+		</include>
+		<include content="HomeSelectAvailableWidget">
+			<param name="label" value="$LOCALIZE[31080]"/>
+			<param name="item" value="W_InProgressMedia"/>
+		</include>
+		<include content="HomeSelectAvailableWidget">
+			<param name="label" value="$LOCALIZE[31080]   [COLOR lightgrey]($LOCALIZE[31208])[/COLOR]"/>
+			<param name="item" value="W_EmbyCon_InProgressMedia"/>
+			<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
+		</include>
+		<include content="HomeSelectAvailableWidget">
+			<param name="label" value="$LOCALIZE[19023]"/>
+			<param name="item" value="W_PVR"/>
+		</include>
+		<include content="HomeSelectAvailableWidget">
+			<param name="label" value="$LOCALIZE[31030]"/>
+			<param name="item" value="W_RecentPVR"/>
+		</include>
+		<include content="HomeSelectAvailableWidget">
+			<param name="label" value="$LOCALIZE[31012]"/>
+			<param name="item" value="W_NextUp"/>
+		</include>
+		<include content="HomeSelectAvailableWidget">
+			<param name="label" value="$LOCALIZE[31012]   [COLOR lightgrey]($LOCALIZE[31208])[/COLOR]"/>
+			<param name="item" value="W_EmbyCon_NextUp"/>
+		</include>
+		<include content="HomeSelectAvailableWidget">
+			<param name="label" value="$LOCALIZE[20386]"/>
+			<param name="item" value="W_NewMovies"/>
+		</include>
+		<include content="HomeSelectAvailableWidget">
+			<param name="label" value="$LOCALIZE[20386]   [COLOR lightgrey]($LOCALIZE[31208])[/COLOR]"/>
+			<param name="item" value="W_EmbyCon_NewMovies"/>
+			<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
+		</include>
+		<include content="HomeSelectAvailableWidget">
+			<param name="label" value="$LOCALIZE[31081]"/>
+			<param name="item" value="W_NewEpisodes"/>
+		</include>
+		<include content="HomeSelectAvailableWidget">
+			<param name="label" value="$LOCALIZE[31081]   [COLOR lightgrey]($LOCALIZE[31208])[/COLOR]"/>
+			<param name="item" value="W_NewEpisodes"/>
+			<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
+		</include>
+		<include content="HomeSelectAvailableWidget">
+			<param name="label" value="$LOCALIZE[359]"/>
+			<param name="item" value="W_NewAlbums"/>
+		</include>
+		<include content="HomeSelectAvailableWidget">
+			<param name="label" value="$LOCALIZE[359]   [COLOR lightgrey]($LOCALIZE[31208])[/COLOR]"/>
+			<param name="item" value="W_EmbyCon_NewAlbums"/>
+		</include>
+		<include content="HomeSelectAvailableWidget">
+			<param name="label" value="$LOCALIZE[31125] #1"/>
+			<param name="item" value="W_HomeCustom1"/>
+		</include>
+		<include content="HomeSelectAvailableWidget">
+			<param name="label" value="$LOCALIZE[31125] #2"/>
+			<param name="item" value="W_HomeCustom2"/>
+		</include>
+		<include content="HomeSelectAvailableWidget">
+			<param name="label" value="$LOCALIZE[31125] #3"/>
+			<param name="item" value="W_HomeCustom3"/>
+		</include>
+		<include content="HomeSelectAvailableWidget">
+			<param name="label" value="$LOCALIZE[31125] #4"/>
+			<param name="item" value="W_HomeCustom4"/>
+		</include>
+		<include content="HomeSelectAvailableWidget">
+			<param name="label" value="$LOCALIZE[31125] #5"/>
+			<param name="item" value="W_HomeCustom5"/>
+		</include>
+		<include content="HomeSelectAvailableWidget">
+			<param name="label" value="$LOCALIZE[31125] #6"/>
+			<param name="item" value="W_HomeCustom6"/>
+		</include>
+	</include>
+	<include name="HomeSelectAvailableWidget">
+		<param name="icon">DefaultFolder</param>
+		<param name="setitem">true</param>
+		<param name="clearitem">false</param>
+		<param name="visible">true</param>
+		<param name="nr">$INFO[Window(home).Property(home_widget_position)]</param>
+		<definition>
+			<item>
+				<icon>$PARAM[icon].png</icon>
+				<label>$PARAM[label]</label>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_widget_pos_1),$PARAM[item])">Skin.Reset(home_widget_pos_1)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_widget_pos_1),$PARAM[item])">Skin.Reset(home_widget_pos_1.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_widget_pos_2),$PARAM[item])">Skin.Reset(home_widget_pos_2)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_widget_pos_2),$PARAM[item])">Skin.Reset(home_widget_pos_2.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_widget_pos_3),$PARAM[item])">Skin.Reset(home_widget_pos_3)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_widget_pos_3),$PARAM[item])">Skin.Reset(home_widget_pos_3.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_widget_pos_4),$PARAM[item])">Skin.Reset(home_widget_pos_4)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_widget_pos_4),$PARAM[item])">Skin.Reset(home_widget_pos_4.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_widget_pos_5),$PARAM[item])">Skin.Reset(home_widget_pos_5)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_widget_pos_5),$PARAM[item])">Skin.Reset(home_widget_pos_5.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_widget_pos_6),$PARAM[item])">Skin.Reset(home_widget_pos_6)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_widget_pos_6),$PARAM[item])">Skin.Reset(home_widget_pos_6.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_widget_pos_7),$PARAM[item])">Skin.Reset(home_widget_pos_7)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_widget_pos_7),$PARAM[item])">Skin.Reset(home_widget_pos_7.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_widget_pos_8),$PARAM[item])">Skin.Reset(home_widget_pos_8)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_widget_pos_8),$PARAM[item])">Skin.Reset(home_widget_pos_8.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_widget_pos_9),$PARAM[item])">Skin.Reset(home_widget_pos_9)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_widget_pos_9,)$PARAM[item])">Skin.Reset(home_widget_pos_9.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_widget_pos_10),$PARAM[item])">Skin.Reset(home_widget_pos_10)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_widget_pos_10),$PARAM[item])">Skin.Reset(home_widget_pos_10.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_widget_pos_11),$PARAM[item])">Skin.Reset(home_widget_pos_11)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_widget_pos_11),$PARAM[item])">Skin.Reset(home_widget_pos_11.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_widget_pos_12),$PARAM[item])">Skin.Reset(home_widget_pos_12)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_widget_pos_12),$PARAM[item])">Skin.Reset(home_widget_pos_12.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_widget_pos_13),$PARAM[item])">Skin.Reset(home_widget_pos_13)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_widget_pos_13),$PARAM[item])">Skin.Reset(home_widget_pos_13.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_widget_pos_14),$PARAM[item])">Skin.Reset(home_widget_pos_14)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_widget_pos_14),$PARAM[item])">Skin.Reset(home_widget_pos_14.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_widget_pos_15),$PARAM[item])">Skin.Reset(home_widget_pos_15)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_widget_pos_15),$PARAM[item])">Skin.Reset(home_widget_pos_15.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_widget_pos_16),$PARAM[item])">Skin.Reset(home_widget_pos_16)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_widget_pos_16),$PARAM[item])">Skin.Reset(home_widget_pos_16.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_widget_pos_17),$PARAM[item])">Skin.Reset(home_widget_pos_17)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_widget_pos_17),$PARAM[item])">Skin.Reset(home_widget_pos_17.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_widget_pos_18),$PARAM[item])">Skin.Reset(home_widget_pos_18)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_widget_pos_18),$PARAM[item])">Skin.Reset(home_widget_pos_18.label)</onclick>
+				<onclick condition="$PARAM[setitem]">Skin.SetString(home_widget_pos_$PARAM[nr].label,$PARAM[label])</onclick>
+				<onclick condition="$PARAM[setitem]">Skin.SetString(home_widget_pos_$PARAM[nr],$PARAM[item])</onclick>
+				<onclick condition="$PARAM[clearitem]">Skin.Reset(home_widget_pos_$PARAM[nr])</onclick>
+				<onclick condition="$PARAM[clearitem]">Skin.Reset(home_widget_pos_$PARAM[nr].label)</onclick>
+				<onclick>close</onclick>
+				<visible>$PARAM[visible]</visible>
+			</item>
+		</definition>
+	</include>
+
+	<!-- Main menu -->
+	<include name="MainMenuPositionSelector">
+		<item>
+			<icon>DefaultFolder.png</icon>
+			<label>$LOCALIZE[31100] $PARAM[nr] $INFO[Skin.String(home_menu_pos_$PARAM[nr].label),   [COLOR lightgrey],[/COLOR]]</label>
+			<onclick>SetProperty(menu_position,$PARAM[nr],home)</onclick>
+			<onclick>ActivateWindow(1111)</onclick>
+		</item>
+	</include>
+	<include name="MainMenuAvailableItems">
+		<include content="MainMenuSelectAvailableItems">
+			<param name="label" value="$LOCALIZE[192]"/>
+			<param name="setitem" value="false"/>
+			<param name="clearitem" value="true"/>
+			<param name="icon" value="DefaultAddonNone"/>
+		</include>
+		<include content="MainMenuSelectAvailableItems">
+			<param name="label" value="$LOCALIZE[31180]"/>
+			<param name="item" value="movies"/>
+			<param name="setlabel" value="true"/>
+			<param name="visible" value="$EXP[MenuMoviesVisiblity]"/>
+		</include>
+		<include content="MainMenuSelectAvailableItems">
+			<param name="label" value="$LOCALIZE[31179]"/>
+			<param name="item" value="shows"/>
+			<param name="setlabel" value="true"/>
+			<param name="visible" value="$EXP[MenuTVShowsVisiblity]"/>
+		</include>
+		<include content="MainMenuSelectAvailableItems">
+			<param name="label" value="$INFO[Window(home).Property(emby.nodes.0.title),,   ][COLOR lightgrey]($LOCALIZE[31181])[/COLOR]"/>
+			<param name="item" value="emby0"/>
+			<param name="visible" value="$EXP[MenuEmby0Visiblity] + !String.IsEmpty(Window(home).Property(emby.nodes.0.title))"/>
+		</include>
+		<include content="MainMenuSelectAvailableItems">
+			<param name="label" value="$INFO[Window(home).Property(emby.nodes.1.title),,   ][COLOR lightgrey]($LOCALIZE[31181])[/COLOR]"/>
+			<param name="item" value="emby1"/>
+			<param name="visible" value="$EXP[MenuEmby1Visiblity] + !String.IsEmpty(Window(home).Property(emby.nodes.1.title))"/>
+		</include>
+		<include content="MainMenuSelectAvailableItems">
+			<param name="label" value="$INFO[Window(home).Property(emby.nodes.2.title),,   ][COLOR lightgrey]($LOCALIZE[31181])[/COLOR]"/>
+			<param name="item" value="emby2"/>
+			<param name="visible" value="$EXP[MenuEmby2Visiblity] + !String.IsEmpty(Window(home).Property(emby.nodes.2.title))"/>
+		</include>
+		<include content="MainMenuSelectAvailableItems">
+			<param name="label" value="$INFO[Window(home).Property(emby.nodes.3.title),,   ][COLOR lightgrey]($LOCALIZE[31181])[/COLOR]"/>
+			<param name="item" value="emby3"/>
+			<param name="visible" value="$EXP[MenuEmby3Visiblity] + !String.IsEmpty(Window(home).Property(emby.nodes.3.title))"/>
+		</include>
+		<include content="MainMenuSelectAvailableItems">
+			<param name="label" value="$INFO[Window(home).Property(emby.nodes.4.title),,   ][COLOR lightgrey]($LOCALIZE[31181])[/COLOR]"/>
+			<param name="item" value="emby4"/>
+			<param name="visible" value="$EXP[MenuEmby4Visiblity] + !String.IsEmpty(Window(home).Property(emby.nodes.4.title))"/>
+		</include>
+		<include content="MainMenuSelectAvailableItems">
+			<param name="label" value="$INFO[Window(home).Property(emby.nodes.5.title),,   ][COLOR lightgrey]($LOCALIZE[31181])[/COLOR]"/>
+			<param name="item" value="emby5"/>
+			<param name="visible" value="$EXP[MenuEmby5Visiblity] + !String.IsEmpty(Window(home).Property(emby.nodes.5.title))"/>
+		</include>
+		<include content="MainMenuSelectAvailableItems">
+			<param name="label" value="$INFO[Window(home).Property(emby.nodes.6.title),,   ][COLOR lightgrey]($LOCALIZE[31181])[/COLOR]"/>
+			<param name="item" value="emby6"/>
+			<param name="visible" value="$EXP[MenuEmby6Visiblity] + !String.IsEmpty(Window(home).Property(emby.nodes.6.title))"/>
+		</include>
+		<include content="MainMenuSelectAvailableItems">
+			<param name="label" value="$INFO[Window(home).Property(emby.nodes.7.title),,   ][COLOR lightgrey]($LOCALIZE[31181])[/COLOR]"/>
+			<param name="item" value="emby7"/>
+			<param name="visible" value="$EXP[MenuEmby7Visiblity] + !String.IsEmpty(Window(home).Property(emby.nodes.7.title))"/>
+		</include>
+		<include content="MainMenuSelectAvailableItems">
+			<param name="label" value="$INFO[Window(home).Property(emby.nodes.8.title),,   ][COLOR lightgrey]($LOCALIZE[31181])[/COLOR]"/>
+			<param name="item" value="emby8"/>
+			<param name="visible" value="$EXP[MenuEmby8Visiblity] + !String.IsEmpty(Window(home).Property(emby.nodes.8.title))"/>
+		</include>
+		<include content="MainMenuSelectAvailableItems">
+			<param name="label" value="$INFO[Window(home).Property(emby.nodes.9.title),,   ][COLOR lightgrey]($LOCALIZE[31181])[/COLOR]"/>
+			<param name="item" value="emby9"/>
+			<param name="visible" value="$EXP[MenuEmby9Visiblity] + !String.IsEmpty(Window(home).Property(emby.nodes.9.title))"/>
+		</include>
+		<include content="MainMenuSelectAvailableItems">
+			<param name="label" value="$INFO[Window(home).Property(plugin.video.embycon-view_item.0.name),,   ][COLOR lightgrey]($LOCALIZE[31208])[/COLOR]"/>
+			<param name="item" value="embycon0"/>
+			<param name="visible" value="$EXP[MenuEmbyCon0Visiblity] + !String.IsEmpty(Window(home).Property(plugin.video.embycon-view_item.0.name))"/>
+		</include>
+		<include content="MainMenuSelectAvailableItems">
+			<param name="label" value="$INFO[Window(home).Property(plugin.video.embycon-view_item.1.name),,   ][COLOR lightgrey]($LOCALIZE[31208])[/COLOR]"/>
+			<param name="item" value="embycon1"/>
+			<param name="visible" value="$EXP[MenuEmbyCon1Visiblity] + !String.IsEmpty(Window(home).Property(plugin.video.embycon-view_item.1.name))"/>
+		</include>
+		<include content="MainMenuSelectAvailableItems">
+			<param name="label" value="$INFO[Window(home).Property(plugin.video.embycon-view_item.2.name),,   ][COLOR lightgrey]($LOCALIZE[31208])[/COLOR]"/>
+			<param name="item" value="embycon2"/>
+			<param name="visible" value="$EXP[MenuEmbyCon2Visiblity] + !String.IsEmpty(Window(home).Property(plugin.video.embycon-view_item.2.name))"/>
+		</include>
+		<include content="MainMenuSelectAvailableItems">
+			<param name="label" value="$INFO[Window(home).Property(plugin.video.embycon-view_item.3.name),,   ][COLOR lightgrey]($LOCALIZE[31208])[/COLOR]"/>
+			<param name="item" value="embycon3"/>
+			<param name="visible" value="$EXP[MenuEmbyCon3Visiblity] + !String.IsEmpty(Window(home).Property(plugin.video.embycon-view_item.3.name))"/>
+		</include>
+		<include content="MainMenuSelectAvailableItems">
+			<param name="label" value="$INFO[Window(home).Property(plugin.video.embycon-view_item.4.name),,   ][COLOR lightgrey]($LOCALIZE[31208])[/COLOR]"/>
+			<param name="item" value="embycon4"/>
+			<param name="visible" value="$EXP[MenuEmbyCon2Visiblity] + !String.IsEmpty(Window(home).Property(plugin.video.embycon-view_item.4.name))"/>
+		</include>
+		<include content="MainMenuSelectAvailableItems">
+			<param name="label" value="$INFO[Window(home).Property(plugin.video.embycon-view_item.5.name),,   ][COLOR lightgrey]($LOCALIZE[31208])[/COLOR]"/>
+			<param name="item" value="embycon5"/>
+			<param name="visible" value="$EXP[MenuEmbyCon2Visiblity] + !String.IsEmpty(Window(home).Property(plugin.video.embycon-view_item.5.name))"/>
+		</include>
+		<include content="MainMenuSelectAvailableItems">
+			<param name="label" value="$INFO[Window(home).Property(plugin.video.embycon-view_item.6.name),,   ][COLOR lightgrey]($LOCALIZE[31208])[/COLOR]"/>
+			<param name="item" value="embycon6"/>
+			<param name="visible" value="$EXP[MenuEmbyCon2Visiblity] + !String.IsEmpty(Window(home).Property(plugin.video.embycon-view_item.6.name))"/>
+		</include>
+		<include content="MainMenuSelectAvailableItems">
+			<param name="label" value="$INFO[Window(home).Property(plugin.video.embycon-view_item.7.name),,   ][COLOR lightgrey]($LOCALIZE[31208])[/COLOR]"/>
+			<param name="item" value="embycon7"/>
+			<param name="visible" value="$EXP[MenuEmbyCon2Visiblity] + !String.IsEmpty(Window(home).Property(plugin.video.embycon-view_item.7.name))"/>
+		</include>
+		<include content="MainMenuSelectAvailableItems">
+			<param name="label" value="$INFO[Window(home).Property(plugin.video.embycon-view_item.8.name),,   ][COLOR lightgrey]($LOCALIZE[31208])[/COLOR]"/>
+			<param name="item" value="embycon8"/>
+			<param name="visible" value="$EXP[MenuEmbyCon2Visiblity] + !String.IsEmpty(Window(home).Property(plugin.video.embycon-view_item.8.name))"/>
+		</include>
+		<include content="MainMenuSelectAvailableItems">
+			<param name="label" value="$INFO[Window(home).Property(plugin.video.embycon-view_item.9.name),,   ][COLOR lightgrey]($LOCALIZE[31208])[/COLOR]"/>
+			<param name="item" value="embycon9"/>
+			<param name="visible" value="$EXP[MenuEmbyCon2Visiblity] + !String.IsEmpty(Window(home).Property(plugin.video.embycon-view_item.9.name))"/>
+		</include>
+		<include content="MainMenuSelectAvailableItems">
+			<param name="label" value="$VAR[PVRLabel]"/>
+			<param name="item" value="pvr"/>
+			<param name="visible" value="$EXP[MenuPVRVisiblity]"/>
+		</include>
+		<include content="MainMenuSelectAvailableItems">
+			<param name="label" value="$LOCALIZE[2]"/>
+			<param name="item" value="music"/>
+			<param name="setlabel" value="true"/>
+			<param name="visible" value="$EXP[MenuMusicVisiblity]"/>
+		</include>
+		<include content="MainMenuSelectAvailableItems">
+			<param name="label" value="$LOCALIZE[20389]"/>
+			<param name="item" value="music"/>
+			<param name="setlabel" value="true"/>
+			<param name="visible" value="$EXP[MenuMusicvideosVisiblity]"/>
+		</include>
+		<include content="MainMenuSelectAvailableItems">
+			<param name="label" value="$LOCALIZE[24001]"/>
+			<param name="item" value="addons"/>
+			<param name="setlabel" value="true"/>
+			<param name="visible" value="true"/>
+		</include>
+		<include content="MainMenuSelectAvailableItems">
+			<param name="label" value="$INFO[Skin.String(UserHomeHub1_name),,   ][COLOR lightgrey]($LOCALIZE[31200] 1)[/COLOR]"/>
+			<param name="item" value="custom1"/>
+			<param name="visible" value="Skin.HasSetting(UserHomeHub1)"/>
+		</include>
+		<include content="MainMenuSelectAvailableItems">
+			<param name="label" value="$INFO[Skin.String(UserHomeHub2_name),,   ][COLOR lightgrey]($LOCALIZE[31200] 2)[/COLOR]"/>
+			<param name="item" value="custom2"/>
+			<param name="visible" value="Skin.HasSetting(UserHomeHub2)"/>
+		</include>
+		<include content="MainMenuSelectAvailableItems">
+			<param name="label" value="$INFO[Skin.String(UserHomeHub3_name),,   ][COLOR lightgrey]($LOCALIZE[31200] 3)[/COLOR]"/>
+			<param name="item" value="custom3"/>
+			<param name="visible" value="Skin.HasSetting(UserHomeHub3)"/>
+		</include>
+		<include content="MainMenuSelectAvailableItems">
+			<param name="label" value="$INFO[Skin.String(UserHomeHub4_name),,   ][COLOR lightgrey]($LOCALIZE[31200] 4)[/COLOR]"/>
+			<param name="item" value="custom4"/>
+			<param name="visible" value="Skin.HasSetting(UserHomeHub4)"/>
+		</include>
+		<include content="MainMenuSelectAvailableItems">
+			<param name="label" value="$INFO[Skin.String(UserHomeHub4_name),,   ][COLOR lightgrey]($LOCALIZE[31200] 5)[/COLOR]"/>
+			<param name="item" value="custom5"/>
+			<param name="visible" value="Skin.HasSetting(UserHomeHub5)"/>
+		</include>
+		<include content="MainMenuSelectAvailableItems">
+			<param name="label" value="$INFO[Skin.String(UserHomeHub6_name),,   ][COLOR lightgrey]($LOCALIZE[31200] 6)[/COLOR]"/>
+			<param name="item" value="custom6"/>
+			<param name="visible" value="Skin.HasSetting(UserHomeHub6)"/>
+		</include>
+	</include>
+	<include name="MainMenuSelectAvailableItems">
+		<param name="icon">DefaultFolder</param>
+		<param name="setitem">true</param>
+		<param name="clearitem">false</param>
+		<param name="setlabel">false</param>
+		<param name="nr">$INFO[Window(home).Property(menu_position)]</param>
+		<definition>
+			<item>
+				<icon>$PARAM[icon].png</icon>
+				<label>$PARAM[label]</label>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_1),$PARAM[item])">Skin.Reset(home_menu_pos_1)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_1.label),$PARAM[label])">Skin.Reset(home_menu_pos_1.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_2),$PARAM[item])">Skin.Reset(home_menu_pos_2)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_2.label),$PARAM[label])">Skin.Reset(home_menu_pos_2.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_3),$PARAM[item])">Skin.Reset(home_menu_pos_3)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_3.label),$PARAM[label])">Skin.Reset(home_menu_pos_3.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_4),$PARAM[item])">Skin.Reset(home_menu_pos_4)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_4.label),$PARAM[label])">Skin.Reset(home_menu_pos_4.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_5),$PARAM[item])">Skin.Reset(home_menu_pos_5)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_5.label),$PARAM[label])">Skin.Reset(home_menu_pos_5.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_6),$PARAM[item])">Skin.Reset(home_menu_pos_6)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_6.label),$PARAM[label])">Skin.Reset(home_menu_pos_6.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_7),$PARAM[item])">Skin.Reset(home_menu_pos_7)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_7.label),$PARAM[label])">Skin.Reset(home_menu_pos_7.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_8),$PARAM[item])">Skin.Reset(home_menu_pos_8)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_8.label),$PARAM[label])">Skin.Reset(home_menu_pos_8.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_9),$PARAM[item])">Skin.Reset(home_menu_pos_9)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_9.label,)$PARAM[label])">Skin.Reset(home_menu_pos_9.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_10),$PARAM[item])">Skin.Reset(home_menu_pos_10)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_10.label),$PARAM[label])">Skin.Reset(home_menu_pos_10.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_11),$PARAM[item])">Skin.Reset(home_menu_pos_11)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_11.label),$PARAM[label])">Skin.Reset(home_menu_pos_11.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_12),$PARAM[item])">Skin.Reset(home_menu_pos_12)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_12.label),$PARAM[label])">Skin.Reset(home_menu_pos_12.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_13),$PARAM[item])">Skin.Reset(home_menu_pos_13)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_13.label),$PARAM[label])">Skin.Reset(home_menu_pos_13.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_14),$PARAM[item])">Skin.Reset(home_menu_pos_14)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_14.label),$PARAM[label])">Skin.Reset(home_menu_pos_14.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_15),$PARAM[item])">Skin.Reset(home_menu_pos_15)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_15.label),$PARAM[label])">Skin.Reset(home_menu_pos_15.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_16),$PARAM[item])">Skin.Reset(home_menu_pos_16)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_16.label),$PARAM[label])">Skin.Reset(home_menu_pos_16.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_17),$PARAM[item])">Skin.Reset(home_menu_pos_17)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_17.label),$PARAM[label])">Skin.Reset(home_menu_pos_17.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_18),$PARAM[item])">Skin.Reset(home_menu_pos_18)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_18.label),$PARAM[label])">Skin.Reset(home_menu_pos_18.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_19),$PARAM[item])">Skin.Reset(home_menu_pos_19)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_19.label),$PARAM[label])">Skin.Reset(home_menu_pos_19.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_20),$PARAM[item])">Skin.Reset(home_menu_pos_20)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_20.label),$PARAM[label])">Skin.Reset(home_menu_pos_20.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_21),$PARAM[item])">Skin.Reset(home_menu_pos_21)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_21.label),$PARAM[label])">Skin.Reset(home_menu_pos_21.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_22),$PARAM[item])">Skin.Reset(home_menu_pos_22)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_22.label),$PARAM[label])">Skin.Reset(home_menu_pos_22.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_23),$PARAM[item])">Skin.Reset(home_menu_pos_23)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_23.label),$PARAM[label])">Skin.Reset(home_menu_pos_23.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_24),$PARAM[item])">Skin.Reset(home_menu_pos_24)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_24.label),$PARAM[label])">Skin.Reset(home_menu_pos_24.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_25),$PARAM[item])">Skin.Reset(home_menu_pos_25)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_25.label),$PARAM[label])">Skin.Reset(home_menu_pos_25.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_26),$PARAM[item])">Skin.Reset(home_menu_pos_26)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_26.label),$PARAM[label])">Skin.Reset(home_menu_pos_26.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_27),$PARAM[item])">Skin.Reset(home_menu_pos_27)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_27.label),$PARAM[label])">Skin.Reset(home_menu_pos_27.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_28),$PARAM[item])">Skin.Reset(home_menu_pos_28)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_28.label),$PARAM[label])">Skin.Reset(home_menu_pos_28.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_29),$PARAM[item])">Skin.Reset(home_menu_pos_29)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_29.label),$PARAM[label])">Skin.Reset(home_menu_pos_29.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_30),$PARAM[item])">Skin.Reset(home_menu_pos_30)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_30.label),$PARAM[label])">Skin.Reset(home_menu_pos_30.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_31),$PARAM[item])">Skin.Reset(home_menu_pos_31)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_31.label),$PARAM[label])">Skin.Reset(home_menu_pos_31.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_32),$PARAM[item])">Skin.Reset(home_menu_pos_32)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_32.label),$PARAM[label])">Skin.Reset(home_menu_pos_32.label)</onclick>
+				<onclick>Skin.SetString(home_menu_pos_$PARAM[nr].label,$PARAM[label])</onclick>
+				<onclick condition="$PARAM[setitem]">Skin.SetString(home_menu_pos_$PARAM[nr],$PARAM[item])</onclick>
+				<onclick condition="$PARAM[clearitem]">Skin.Reset(home_menu_pos_$PARAM[nr])</onclick>
+				<onclick condition="$PARAM[clearitem]">Skin.Reset(home_menu_pos_$PARAM[nr].label)</onclick>
+				<onclick condition="$PARAM[setlabel]">Skin.SetString(home_menu_pos_$PARAM[nr].label)</onclick>
+				<onclick>close</onclick>
+				<visible>$PARAM[visible]</visible>
+			</item>
+		</definition>
+	</include>
+	<!-- Art selector -->
+	<include name="MainMenuItemArtSelector">
+		<param name="icon">DefaultFolder.png</param>
+		<definition>
+			<item>
+				<icon>$PARAM[icon]</icon>
+				<property name="custom_art">$INFO[Skin.String($PARAM[item].icon)]</property>
+				<label>$PARAM[label]</label>
+				<onclick>SetProperty(Dialog.1.Label,$LOCALIZE[571])</onclick>
+				<onclick>SetProperty(Dialog.1.BuiltIn,Skin.Reset($PARAM[item].icon))</onclick>
+				<onclick>SetProperty(Dialog.2.Label,$LOCALIZE[1030])</onclick>
+				<onclick>SetProperty(Dialog.2.BuiltIn,Skin.SetImage($PARAM[item].icon))</onclick>
+				<onclick>RunScript(script.toolbox,info=selectdialog,header=$LOCALIZE[21858])</onclick>
+				<visible>$PARAM[visible]</visible>
+			</item>
+		</definition>
+	</include>
+</includes>
