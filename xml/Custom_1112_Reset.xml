@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window id="1112" type="dialog">
-	<visible>Window.IsVisible(home) | !String.IsEmpty(Window(home).Property(MainMenuReset)) | !String.IsEmpty(Window(home).Property(HomeWidgetReset)) | !String.IsEmpty(Window(home).Property(MovieHubWidgetReset))</visible>
+	<visible>Window.IsVisible(home) | !String.IsEmpty(Window(home).Property(MainMenuReset)) | !String.IsEmpty(Window(home).Property(HomeWidgetReset)) | !String.IsEmpty(Window(home).Property(MovieHubWidgetReset)) | !String.IsEmpty(Window(home).Property(MusicHubWidgetReset))</visible>
 
 	<!-- Main Menu -->
 	<onload condition="$EXP[MenuCheck] | !String.IsEmpty(Window(home).Property(MainMenuReset))">Skin.SetString(home_menu_pos_1,movies)</onload>
@@ -228,11 +228,47 @@
 
 	<onload condition="!String.IsEmpty(Window(home).Property(TVShowHubWidgetReset))">Notification(Embuary,$LOCALIZE[31127])</onload>
 
+	<!-- music widget reset -->
+	<onload condition="!String.IsEmpty(Window(home).Property(MusicHubWidgetReset))">Skin.SetString(musichub_widget_pos_1,W_NewAlbums)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(MusicHubWidgetReset))">Skin.SetString(musichub_widget_pos_2,W_EmbyCon_NewAlbums)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(MusicHubWidgetReset))">Skin.SetString(musichub_widget_pos_3,W_PlayedAlbums)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(MusicHubWidgetReset))">Skin.SetString(musichub_widget_pos_4,W_OftenPlayedSongs)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(MusicHubWidgetReset))">Skin.SetString(musichub_widget_pos_5,W_EmbyCon_OftenPlayedSongs)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(MusicHubWidgetReset))">Skin.SetString(musichub_widget_pos_6,W_EmbyCon_FavArtists)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(MusicHubWidgetReset))">Skin.SetString(musichub_widget_pos_7,W_EmbyCon_FavAlbums)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(MusicHubWidgetReset))">Skin.SetString(musichub_widget_pos_8,W_EmbyCon_FavSongs)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(MusicHubWidgetReset))">Skin.SetString(musichub_widget_pos_9,W_MusicHubCustom1)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(MusicHubWidgetReset))">Skin.SetString(musichub_widget_pos_10,W_MusicHubCustom2)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(MusicHubWidgetReset))">Skin.SetString(musichub_widget_pos_11,W_MusicHubCustom3)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(MusicHubWidgetReset))">Skin.SetString(musichub_widget_pos_12,W_MusicHubCustom4)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(MusicHubWidgetReset))">Skin.SetString(musichub_widget_pos_13,W_MusicHubCustom5)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(MusicHubWidgetReset))">Skin.SetString(musichub_widget_pos_14,W_MusicHubCustom6)</onload>
+
+	<onload condition="!String.IsEmpty(Window(home).Property(MusicHubWidgetReset))">Skin.SetString(musichub_widget_pos_1.label,$LOCALIZE[359])</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(MusicHubWidgetReset))">Skin.SetString(musichub_widget_pos_2.label,$LOCALIZE[359]   [COLOR lightgrey]($LOCALIZE[31208])[/COLOR])</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(MusicHubWidgetReset))">Skin.SetString(musichub_widget_pos_3.label,$LOCALIZE[517])</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(MusicHubWidgetReset))">Skin.SetString(musichub_widget_pos_4.label,$LOCALIZE[31215])</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(MusicHubWidgetReset))">Skin.SetString(musichub_widget_pos_5.label,$LOCALIZE[31215]   [COLOR lightgrey]($LOCALIZE[31208])[/COLOR])</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(MusicHubWidgetReset))">Skin.SetString(musichub_widget_pos_6.label,$LOCALIZE[31212]   [COLOR lightgrey]($LOCALIZE[31208])[/COLOR])</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(MusicHubWidgetReset))">Skin.SetString(musichub_widget_pos_7.label,$LOCALIZE[31213]   [COLOR lightgrey]($LOCALIZE[31208])[/COLOR])</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(MusicHubWidgetReset))">Skin.SetString(musichub_widget_pos_8.label,$LOCALIZE[31214]   [COLOR lightgrey]($LOCALIZE[31208])[/COLOR])</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(MusicHubWidgetReset))">Skin.SetString(musichub_widget_pos_9.label,$LOCALIZE[31125] #1)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(MusicHubWidgetReset))">Skin.SetString(musichub_widget_pos_10.label,$LOCALIZE[31125] #2)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(MusicHubWidgetReset))">Skin.SetString(musichub_widget_pos_11.label,$LOCALIZE[31125] #3)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(MusicHubWidgetReset))">Skin.SetString(musichub_widget_pos_12.label,$LOCALIZE[31125] #4)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(MusicHubWidgetReset))">Skin.SetString(musichub_widget_pos_13.label,$LOCALIZE[31125] #5)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(MusicHubWidgetReset))">Skin.SetString(musichub_widget_pos_14.label,$LOCALIZE[31125] #6)</onload>
+
+	<onload condition="!String.IsEmpty(Window(home).Property(MusicHubWidgetReset))">Notification(Embuary,$LOCALIZE[31127])</onload>
+
 
 	<!-- unload -->
 	<onload>ClearProperty(MainMenuReset,home)</onload>
 	<onload>ClearProperty(HomeWidgetReset,home)</onload>
 	<onload>ClearProperty(MovieHubWidgetReset,home)</onload>
+	<onload>ClearProperty(TVShowHubWidgetReset,home)</onload>
+	<onload>ClearProperty(MusicHubWidgetReset,home)</onload>
+	<onunload condition="Window.IsVisible(home)">ReloadSkin()</onunload>
 
 	<controls/>
 </window>

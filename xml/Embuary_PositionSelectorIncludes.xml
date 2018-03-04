@@ -568,6 +568,132 @@
 		</definition>
 	</include>
 
+	<!-- Music HUB Widgets -->
+	<include name="MusicHubWidgetsPositionSelector">
+		<item>
+			<icon>DefaultFolder.png</icon>
+			<label>$LOCALIZE[31100] $PARAM[nr] $INFO[Skin.String(musichub_widget_pos_$PARAM[nr].label),   [COLOR lightgrey],[/COLOR]]</label>
+			<onclick>SetProperty(musichub_widget_position,$PARAM[nr],home)</onclick>
+			<onclick>ActivateWindow(1111)</onclick>
+		</item>
+	</include>
+	<include name="MusicHubAvailableWidgets">
+		<include content="MusicHubSelectAvailableWidget">
+			<param name="label" value="$LOCALIZE[192]"/>
+			<param name="setitem" value="false"/>
+			<param name="clearitem" value="true"/>
+			<param name="icon" value="DefaultAddonNone"/>
+		</include>
+		<include content="MusicHubSelectAvailableWidget">
+			<param name="label" value="$LOCALIZE[359]"/>
+			<param name="item" value="W_NewAlbums"/>
+		</include>
+		<include content="MusicHubSelectAvailableWidget">
+			<param name="label" value="$LOCALIZE[359]   [COLOR lightgrey]($LOCALIZE[31208])[/COLOR]"/>
+			<param name="item" value="W_EmbyCon_NewAlbums"/>
+			<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
+		</include>
+		<include content="MusicHubSelectAvailableWidget">
+			<param name="label" value="$LOCALIZE[517]"/>
+			<param name="item" value="W_PlayedAlbums"/>
+		</include>
+		<include content="MusicHubSelectAvailableWidget">
+			<param name="label" value="$LOCALIZE[31215]"/>
+			<param name="item" value="W_OftenPlayedSongs"/>
+		</include>
+		<include content="MusicHubSelectAvailableWidget">
+			<param name="label" value="$LOCALIZE[31215]   [COLOR lightgrey]($LOCALIZE[31208])[/COLOR]"/>
+			<param name="item" value="W_EmbyCon_OftenPlayedSongs"/>
+			<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
+		</include>
+		<include content="MusicHubSelectAvailableWidget">
+			<param name="label" value="$LOCALIZE[31212]   [COLOR lightgrey]($LOCALIZE[31208])[/COLOR]"/>
+			<param name="item" value="W_EmbyCon_FavArtists"/>
+			<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
+		</include>
+		<include content="MusicHubSelectAvailableWidget">
+			<param name="label" value="$LOCALIZE[31213]   [COLOR lightgrey]($LOCALIZE[31208])[/COLOR]"/>
+			<param name="item" value="W_EmbyCon_FavAlbums"/>
+			<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
+		</include>
+		<include content="MusicHubSelectAvailableWidget">
+			<param name="label" value="$LOCALIZE[31214]   [COLOR lightgrey]($LOCALIZE[31208])[/COLOR]"/>
+			<param name="item" value="W_EmbyCon_FavSongs"/>
+			<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
+		</include>
+		<include content="MusicHubSelectAvailableWidget">
+			<param name="label" value="$LOCALIZE[31125] #1"/>
+			<param name="item" value="W_MusicHubCustom1"/>
+		</include>
+		<include content="MusicHubSelectAvailableWidget">
+			<param name="label" value="$LOCALIZE[31125] #2"/>
+			<param name="item" value="W_MusicHubCustom2"/>
+		</include>
+		<include content="MusicHubSelectAvailableWidget">
+			<param name="label" value="$LOCALIZE[31125] #3"/>
+			<param name="item" value="W_MusicHubCustom3"/>
+		</include>
+		<include content="MusicHubSelectAvailableWidget">
+			<param name="label" value="$LOCALIZE[31125] #4"/>
+			<param name="item" value="W_MusicHubCustom4"/>
+		</include>
+		<include content="MusicHubSelectAvailableWidget">
+			<param name="label" value="$LOCALIZE[31125] #5"/>
+			<param name="item" value="W_MusicHubCustom5"/>
+		</include>
+		<include content="MusicHubSelectAvailableWidget">
+			<param name="label" value="$LOCALIZE[31125] #6"/>
+			<param name="item" value="W_MusicHubCustom6"/>
+		</include>
+	</include>
+	<include name="MusicHubSelectAvailableWidget">
+		<param name="icon">DefaultFolder</param>
+		<param name="setitem">true</param>
+		<param name="clearitem">false</param>
+		<param name="visible">true</param>
+		<param name="nr">$INFO[Window(home).Property(musichub_widget_position)]</param>
+		<definition>
+			<item>
+				<icon>$PARAM[icon].png</icon>
+				<label>$PARAM[label]</label>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(musichub_widget_pos_1),$PARAM[item])">Skin.Reset(musichub_widget_pos_1)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(musichub_widget_pos_1),$PARAM[item])">Skin.Reset(musichub_widget_pos_1.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(musichub_widget_pos_2),$PARAM[item])">Skin.Reset(musichub_widget_pos_2)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(musichub_widget_pos_2),$PARAM[item])">Skin.Reset(musichub_widget_pos_2.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(musichub_widget_pos_3),$PARAM[item])">Skin.Reset(musichub_widget_pos_3)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(musichub_widget_pos_3),$PARAM[item])">Skin.Reset(musichub_widget_pos_3.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(musichub_widget_pos_4),$PARAM[item])">Skin.Reset(musichub_widget_pos_4)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(musichub_widget_pos_4),$PARAM[item])">Skin.Reset(musichub_widget_pos_4.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(musichub_widget_pos_5),$PARAM[item])">Skin.Reset(musichub_widget_pos_5)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(musichub_widget_pos_5),$PARAM[item])">Skin.Reset(musichub_widget_pos_5.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(musichub_widget_pos_6),$PARAM[item])">Skin.Reset(musichub_widget_pos_6)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(musichub_widget_pos_6),$PARAM[item])">Skin.Reset(musichub_widget_pos_6.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(musichub_widget_pos_7),$PARAM[item])">Skin.Reset(musichub_widget_pos_7)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(musichub_widget_pos_7),$PARAM[item])">Skin.Reset(musichub_widget_pos_7.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(musichub_widget_pos_8),$PARAM[item])">Skin.Reset(musichub_widget_pos_8)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(musichub_widget_pos_8),$PARAM[item])">Skin.Reset(musichub_widget_pos_8.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(musichub_widget_pos_9),$PARAM[item])">Skin.Reset(musichub_widget_pos_9)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(musichub_widget_pos_9,)$PARAM[item])">Skin.Reset(musichub_widget_pos_9.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(musichub_widget_pos_10),$PARAM[item])">Skin.Reset(musichub_widget_pos_10)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(musichub_widget_pos_10),$PARAM[item])">Skin.Reset(musichub_widget_pos_10.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(musichub_widget_pos_11),$PARAM[item])">Skin.Reset(musichub_widget_pos_11)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(musichub_widget_pos_11),$PARAM[item])">Skin.Reset(musichub_widget_pos_11.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(musichub_widget_pos_12),$PARAM[item])">Skin.Reset(musichub_widget_pos_12)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(musichub_widget_pos_12),$PARAM[item])">Skin.Reset(musichub_widget_pos_12.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(musichub_widget_pos_13),$PARAM[item])">Skin.Reset(musichub_widget_pos_13)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(musichub_widget_pos_13),$PARAM[item])">Skin.Reset(musichub_widget_pos_13.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(musichub_widget_pos_14),$PARAM[item])">Skin.Reset(musichub_widget_pos_14)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(musichub_widget_pos_14),$PARAM[item])">Skin.Reset(musichub_widget_pos_14.label)</onclick>
+				<onclick condition="$PARAM[setitem]">Skin.SetString(musichub_widget_pos_$PARAM[nr].label,$PARAM[label])</onclick>
+				<onclick condition="$PARAM[setitem]">Skin.SetString(musichub_widget_pos_$PARAM[nr],$PARAM[item])</onclick>
+				<onclick condition="$PARAM[clearitem]">Skin.Reset(musichub_widget_pos_$PARAM[nr])</onclick>
+				<onclick condition="$PARAM[clearitem]">Skin.Reset(musichub_widget_pos_$PARAM[nr].label)</onclick>
+				<onclick>close</onclick>
+				<visible>$PARAM[visible]</visible>
+			</item>
+		</definition>
+	</include>
+
 	<!-- Main menu -->
 	<include name="MainMenuPositionSelector">
 		<item>

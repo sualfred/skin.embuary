@@ -160,215 +160,77 @@
 					</control>
 				</control>
 			</control>
-
-			<include content="HomeSquareWidget">
-				<param name="visible" value="!Skin.HasSetting(HideMusicWidgetNewAlbums)"/>
+			<include content="WidgetCallMusic">
+				<param name="pos" value="1"/>
 				<param name="id" value="200"/>
 				<param name="onup" value="100"/>
 				<param name="ondown" value="201"/>
-				<param name="headline" value="$LOCALIZE[359]"/>
-				<param name="widget_target" value="music"/>
-				<param name="content" value="musicdb://recentlyaddedalbums/"/>
 			</include>
-
-			<include content="HomeSquareWidget">
-				<param name="visible" value="!Skin.HasSetting(HideMusicWidgetPlayedAlbums)"/>
+			<include content="WidgetCallMusic">
+				<param name="pos" value="2"/>
 				<param name="id" value="201"/>
 				<param name="onup" value="200"/>
 				<param name="ondown" value="202"/>
-				<param name="headline" value="$LOCALIZE[517]"/>
-				<param name="widget_target" value="music"/>
-				<param name="sortby" value="lastplayed"/>
-				<param name="sortorder" value="descending"/>
-				<param name="content" value="musicdb://recentlyplayedalbums/"/>
 			</include>
-
-			<include content="HomeSquareWidget">
-				<param name="visible" value="!Skin.HasSetting(HideMusicWidgetRecommended)"/>
+			<include content="WidgetCallMusic">
+				<param name="pos" value="3"/>
 				<param name="id" value="202"/>
 				<param name="onup" value="201"/>
 				<param name="ondown" value="203"/>
-				<param name="headline" value="$LOCALIZE[31017]"/>
-				<param name="widget_target" value="music"/>
-				<param name="content" value="plugin://script.skin.helper.widgets/?action=recommended&amp;mediatype=albums&amp;reload=$INFO[Window(Home).Property(widgetreload-music)]"/>
 			</include>
-
-			<include content="HomeWideWidget">
-				<param name="visible" value="!Skin.HasSetting(HideMusicWidgetMusicVideos)"/>
+			<include content="WidgetCallMusic">
+				<param name="pos" value="4"/>
 				<param name="id" value="203"/>
-				<param name="onup" value="201"/>
-				<param name="ondown" value="214"/>
-				<param name="headline" value="$LOCALIZE[20390]"/>
-				<param name="widget_target" value="videos"/>
-				<param name="content" value="videodb://recentlyaddedmusicvideos"/>
+				<param name="onup" value="202"/>
+				<param name="ondown" value="204"/>
 			</include>
-			<!-- User Widget 1 -->
-			<include condition="String.IsEqual(Skin.String(UserMusicWidget1_layout),HomePosterWidget) | String.IsEmpty(Skin.String(UserMusicWidget1_layout))" content="HomePosterWidget">
-				<param name="visible" value="Skin.HasSetting(UserMusicWidget1)"/>
-				<param name="id" value="214"/>
+			<include content="WidgetCallMusic">
+				<param name="pos" value="5"/>
+				<param name="id" value="204"/>
 				<param name="onup" value="203"/>
-				<param name="ondown" value="215"/>
-				<param name="headline" value="$INFO[Skin.String(UserMusicWidget1_name)]"/>
-				<param name="widget_target" value="$INFO[Skin.String(UserMusicWidget1_target)]"/>
-				<param name="content" value="$VAR[UserMusicWidget1_content]"/>
+				<param name="ondown" value="205"/>
 			</include>
-			<include condition="String.IsEqual(Skin.String(UserMusicWidget1_layout),HomeWideWidget)" content="HomeWideWidget">
-				<param name="visible" value="Skin.HasSetting(UserMusicWidget1)"/>
-				<param name="id" value="214"/>
-				<param name="onup" value="203"/>
-				<param name="ondown" value="215"/>
-				<param name="headline" value="$INFO[Skin.String(UserMusicWidget1_name)]"/>
-				<param name="widget_target" value="$INFO[Skin.String(UserMusicWidget1_target)]"/>
-				<param name="content" value="$VAR[UserMusicWidget1_content]"/>
+			<include content="WidgetCallMusic">
+				<param name="pos" value="6"/>
+				<param name="id" value="205"/>
+				<param name="onup" value="204"/>
+				<param name="ondown" value="206"/>
 			</include>
-			<include condition="String.IsEqual(Skin.String(UserMusicWidget1_layout),HomeSquareWidget)" content="HomeSquareWidget">
-				<param name="visible" value="Skin.HasSetting(UserMusicWidget1)"/>
-				<param name="id" value="214"/>
-				<param name="onup" value="203"/>
-				<param name="ondown" value="215"/>
-				<param name="headline" value="$INFO[Skin.String(UserMusicWidget1_name)]"/>
-				<param name="widget_target" value="$INFO[Skin.String(UserMusicWidget1_target)]"/>
-				<param name="content" value="$VAR[UserMusicWidget1_content]"/>
+			<include content="WidgetCallMusic">
+				<param name="pos" value="7"/>
+				<param name="id" value="206"/>
+				<param name="onup" value="205"/>
+				<param name="ondown" value="207"/>
 			</include>
-			<!-- User Widget 2 -->
-			<include condition="String.IsEqual(Skin.String(UserMusicWidget2_layout),HomePosterWidget) | String.IsEmpty(Skin.String(UserMusicWidget2_layout))" content="HomePosterWidget">
-				<param name="visible" value="Skin.HasSetting(UserMusicWidget2)"/>
-				<param name="id" value="215"/>
-				<param name="onup" value="214"/>
-				<param name="ondown" value="216"/>
-				<param name="headline" value="$INFO[Skin.String(UserMusicWidget2_name)]"/>
-				<param name="widget_target" value="$INFO[Skin.String(UserMusicWidget2_target)]"/>
-				<param name="content" value="$VAR[UserMusicWidget2_content]"/>
+			<include content="WidgetCallMusic">
+				<param name="pos" value="8"/>
+				<param name="id" value="207"/>
+				<param name="onup" value="206"/>
+				<param name="ondown" value="208"/>
 			</include>
-			<include condition="String.IsEqual(Skin.String(UserMusicWidget2_layout),HomeWideWidget)" content="HomeWideWidget">
-				<param name="visible" value="Skin.HasSetting(UserMusicWidget2)"/>
-				<param name="id" value="215"/>
-				<param name="onup" value="214"/>
-				<param name="ondown" value="216"/>
-				<param name="headline" value="$INFO[Skin.String(UserMusicWidget2_name)]"/>
-				<param name="widget_target" value="$INFO[Skin.String(UserMusicWidget2_target)]"/>
-				<param name="content" value="$VAR[UserMusicWidget2_content]"/>
+			<include content="WidgetCallMusic">
+				<param name="pos" value="9"/>
+				<param name="id" value="208"/>
+				<param name="onup" value="207"/>
+				<param name="ondown" value="209"/>
 			</include>
-			<include condition="String.IsEqual(Skin.String(UserMusicWidget2_layout),HomeSquareWidget)" content="HomeSquareWidget">
-				<param name="visible" value="Skin.HasSetting(UserMusicWidget2)"/>
-				<param name="id" value="215"/>
-				<param name="onup" value="214"/>
-				<param name="ondown" value="216"/>
-				<param name="headline" value="$INFO[Skin.String(UserMusicWidget2_name)]"/>
-				<param name="widget_target" value="$INFO[Skin.String(UserMusicWidget2_target)]"/>
-				<param name="content" value="$VAR[UserMusicWidget2_content]"/>
+			<include content="WidgetCallMusic">
+				<param name="pos" value="10"/>
+				<param name="id" value="209"/>
+				<param name="onup" value="208"/>
+				<param name="ondown" value="210"/>
 			</include>
-			<!-- User Widget 3 -->
-			<include condition="String.IsEqual(Skin.String(UserMusicWidget3_layout),HomePosterWidget) | String.IsEmpty(Skin.String(UserMusicWidget3_layout))" content="HomePosterWidget">
-				<param name="visible" value="Skin.HasSetting(UserMusicWidget3)"/>
-				<param name="id" value="216"/>
-				<param name="onup" value="215"/>
-				<param name="ondown" value="217"/>
-				<param name="headline" value="$INFO[Skin.String(UserMusicWidget3_name)]"/>
-				<param name="widget_target" value="$INFO[Skin.String(UserMusicWidget3_target)]"/>
-				<param name="content" value="$VAR[UserMusicWidget3_content]"/>
+			<include content="WidgetCallMusic">
+				<param name="pos" value="11"/>
+				<param name="id" value="210"/>
+				<param name="onup" value="209"/>
+				<param name="ondown" value="211"/>
 			</include>
-			<include condition="String.IsEqual(Skin.String(UserMusicWidget3_layout),HomeWideWidget)" content="HomeWideWidget">
-				<param name="visible" value="Skin.HasSetting(UserMusicWidget3)"/>
-				<param name="id" value="216"/>
-				<param name="onup" value="215"/>
-				<param name="ondown" value="217"/>
-				<param name="headline" value="$INFO[Skin.String(UserMusicWidget3_name)]"/>
-				<param name="widget_target" value="$INFO[Skin.String(UserMusicWidget3_target)]"/>
-				<param name="content" value="$VAR[UserMusicWidget3_content]"/>
-			</include>
-			<include condition="String.IsEqual(Skin.String(UserMusicWidget3_layout),HomeSquareWidget)" content="HomeSquareWidget">
-				<param name="visible" value="Skin.HasSetting(UserMusicWidget3)"/>
-				<param name="id" value="216"/>
-				<param name="onup" value="215"/>
-				<param name="ondown" value="217"/>
-				<param name="headline" value="$INFO[Skin.String(UserMusicWidget3_name)]"/>
-				<param name="widget_target" value="$INFO[Skin.String(UserMusicWidget3_target)]"/>
-				<param name="content" value="$VAR[UserMusicWidget3_content]"/>
-			</include>
-			<!-- User Widget 4 -->
-			<include condition="String.IsEqual(Skin.String(UserMusicWidget4_layout),HomePosterWidget) | String.IsEmpty(Skin.String(UserMusicWidget4_layout))" content="HomePosterWidget">
-				<param name="visible" value="Skin.HasSetting(UserMusicWidget4)"/>
-				<param name="id" value="217"/>
-				<param name="onup" value="216"/>
-				<param name="ondown" value="218"/>
-				<param name="headline" value="$INFO[Skin.String(UserMusicWidget4_name)]"/>
-				<param name="widget_target" value="$INFO[Skin.String(UserMusicWidget4_target)]"/>
-				<param name="content" value="$VAR[UserMusicWidget4_content]"/>
-			</include>
-			<include condition="String.IsEqual(Skin.String(UserMusicWidget4_layout),HomeWideWidget)" content="HomeWideWidget">
-				<param name="visible" value="Skin.HasSetting(UserMusicWidget4)"/>
-				<param name="id" value="217"/>
-				<param name="onup" value="216"/>
-				<param name="ondown" value="218"/>
-				<param name="headline" value="$INFO[Skin.String(UserMusicWidget4_name)]"/>
-				<param name="widget_target" value="$INFO[Skin.String(UserMusicWidget4_target)]"/>
-				<param name="content" value="$VAR[UserMusicWidget4_content]"/>
-			</include>
-			<include condition="String.IsEqual(Skin.String(UserMusicWidget4_layout),HomeSquareWidget)" content="HomeSquareWidget">
-				<param name="visible" value="Skin.HasSetting(UserMusicWidget4)"/>
-				<param name="id" value="217"/>
-				<param name="onup" value="216"/>
-				<param name="ondown" value="218"/>
-				<param name="headline" value="$INFO[Skin.String(UserMusicWidget4_name)]"/>
-				<param name="widget_target" value="$INFO[Skin.String(UserMusicWidget4_target)]"/>
-				<param name="content" value="$VAR[UserMusicWidget4_content]"/>
-			</include>
-			<!-- User Widget 5 -->
-			<include condition="String.IsEqual(Skin.String(UserMusicWidget5_layout),HomePosterWidget) | String.IsEmpty(Skin.String(UserMusicWidget5_layout))" content="HomePosterWidget">
-				<param name="visible" value="Skin.HasSetting(UserMusicWidget5)"/>
-				<param name="id" value="218"/>
-				<param name="onup" value="217"/>
-				<param name="ondown" value="219"/>
-				<param name="headline" value="$INFO[Skin.String(UserMusicWidget5_name)]"/>
-				<param name="widget_target" value="$INFO[Skin.String(UserMusicWidget5_target)]"/>
-				<param name="content" value="$VAR[UserMusicWidget5_content]"/>
-			</include>
-			<include condition="String.IsEqual(Skin.String(UserMusicWidget5_layout),HomeWideWidget)" content="HomeWideWidget">
-				<param name="visible" value="Skin.HasSetting(UserMusicWidget5)"/>
-				<param name="id" value="218"/>
-				<param name="onup" value="217"/>
-				<param name="ondown" value="219"/>
-				<param name="headline" value="$INFO[Skin.String(UserMusicWidget5_name)]"/>
-				<param name="widget_target" value="$INFO[Skin.String(UserMusicWidget5_target)]"/>
-				<param name="content" value="$VAR[UserMusicWidget5_content]"/>
-			</include>
-			<include condition="String.IsEqual(Skin.String(UserMusicWidget5_layout),HomeSquareWidget)" content="HomeSquareWidget">
-				<param name="visible" value="Skin.HasSetting(UserMusicWidget5)"/>
-				<param name="id" value="218"/>
-				<param name="onup" value="217"/>
-				<param name="ondown" value="219"/>
-				<param name="headline" value="$INFO[Skin.String(UserMusicWidget5_name)]"/>
-				<param name="widget_target" value="$INFO[Skin.String(UserMusicWidget5_target)]"/>
-				<param name="content" value="$VAR[UserMusicWidget5_content]"/>
-			</include>
-			<!-- User Widget 6 -->
-			<include condition="String.IsEqual(Skin.String(UserMusicWidget6_layout),HomePosterWidget) | String.IsEmpty(Skin.String(UserMusicWidget6_layout))" content="HomePosterWidget">
-				<param name="visible" value="Skin.HasSetting(UserMusicWidget6)"/>
-				<param name="id" value="219"/>
-				<param name="onup" value="218"/>
-				<param name="ondown" value="SetProperty(BounceDown,1,home)"/>
-				<param name="headline" value="$INFO[Skin.String(UserMusicWidget6_name)]"/>
-				<param name="widget_target" value="$INFO[Skin.String(UserMusicWidget6_target)]"/>
-				<param name="content" value="$VAR[UserMusicWidget6_content]"/>
-			</include>
-			<include condition="String.IsEqual(Skin.String(UserMusicWidget6_layout),HomeWideWidget)" content="HomeWideWidget">
-				<param name="visible" value="Skin.HasSetting(UserMusicWidget6)"/>
-				<param name="id" value="219"/>
-				<param name="onup" value="218"/>
-				<param name="ondown" value="SetProperty(BounceDown,1,home)"/>
-				<param name="headline" value="$INFO[Skin.String(UserMusicWidget6_name)]"/>
-				<param name="widget_target" value="$INFO[Skin.String(UserMusicWidget6_target)]"/>
-				<param name="content" value="$VAR[UserMusicWidget6_content]"/>
-			</include>
-			<include condition="String.IsEqual(Skin.String(UserMusicWidget6_layout),HomeSquareWidget)" content="HomeSquareWidget">
-				<param name="visible" value="Skin.HasSetting(UserMusicWidget6)"/>
-				<param name="id" value="219"/>
-				<param name="onup" value="218"/>
-				<param name="ondown" value="SetProperty(BounceDown,1,home)"/>
-				<param name="headline" value="$INFO[Skin.String(UserMusicWidget6_name)]"/>
-				<param name="widget_target" value="$INFO[Skin.String(UserMusicWidget6_target)]"/>
-				<param name="content" value="$VAR[UserMusicWidget6_content]"/>
+			<include content="WidgetCallMusic">
+				<param name="pos" value="12"/>
+				<param name="id" value="211"/>
+				<param name="onup" value="210"/>
+				<param name="ondown" value="212"/>
 			</include>
 		</control>
 		<!-- header bar -->

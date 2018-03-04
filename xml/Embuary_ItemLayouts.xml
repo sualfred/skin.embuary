@@ -112,7 +112,7 @@
 	<!-- Upper overlay -->
 	<include name="bubble_overlay">
 		<control type="group">
-			<visible>!Window.IsVisible(1114)</visible>
+			<visible>!Window.IsVisible(1114) + [String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | String.IsEqual(ListItem.DBType,set) | String.IsEqual(ListItem.DBType,episode) | String.StartsWith(ListItem.FolderPath,pvr://recordings)]</visible>
 			<control type="image" id="2">
 				<right>10</right>
 				<top>10</top>

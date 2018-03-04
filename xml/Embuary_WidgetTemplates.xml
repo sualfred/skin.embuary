@@ -13,12 +13,13 @@
 	</include>
 	<include name="W_EmbyCon_InProgressMedia">
 		<include content="HomeWideWidget">
+			<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
 			<param name="id" value="$PARAM[id]"/>
 			<param name="onup" value="$PARAM[onup]"/>
 			<param name="ondown" value="$PARAM[ondown]"/>
 			<param name="headline" value="$LOCALIZE[31080]$VAR[EmbyConLabel]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="content" value="$VAR[EmbyCon_InProgressMedia]"/>
+			<param name="content" value="plugin://plugin.video.embycon/?mode=GET_CONTENT&amp;media_type=Video&amp;url=%7Bserver%7D%2Femby%2FUsers%2F%7Buserid%7D%2FItems%2FResume%3FLimit%3D12%26Recursive%3Dtrue%26Fields%3DPrimaryImageAspectRatio%2CBasicSyncInfo%26ImageTypeLimit%3D1%26EnableImageTypes%3DPrimary%2CBackdrop%2CThumb%26EnableTotalRecordCount%3Dfalse%26MediaTypes%3DVideo&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]"/>
 		</include>
 	</include>
 	<!-- PVR -->
@@ -64,6 +65,7 @@
 	</include>
 	<include name="W_EmbyCon_NextUp">
 		<include content="HomeWideWidget">
+			<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
 			<param name="id" value="$PARAM[id]"/>
 			<param name="onup" value="$PARAM[onup]"/>
 			<param name="ondown" value="$PARAM[ondown]"/>
@@ -71,7 +73,7 @@
 			<param name="mainlabel" value="$INFO[ListItem.TvShowTitle]"/>
 			<param name="sublabel" value="$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="content" value="$VAR[EmbyCon_NextUpEpisodes]"/>
+			<param name="content" value="plugin://plugin.video.embycon/?media_type=Episodes&amp;mode=GET_CONTENT&amp;name_format=Episode%7cepisode_name_format&amp;url=%7bserver%7d%2femby%2fShows%2fNextUp%2f%3fUserid%3d%7buserid%7d%26Limit%3d%7bItemLimit%7d%26Recursive%3dtrue%26Fields%3d%7bfield_filters%7d%26Filters%3dIsUnplayed%2cIsNotFolder%26IsVirtualUnaired%3dfalse%26IsMissing%3dFalse%26IncludeItemTypes%3dEpisode%26ImageTypeLimit%3d1%26format%3djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]"/>
 		</include>
 	</include>
 	<!-- Recently added movies -->
@@ -89,6 +91,7 @@
 	</include>
 	<include name="W_EmbyCon_NewMovies">
 		<include content="HomePosterWidget">
+			<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
 			<param name="id" value="$PARAM[id]"/>
 			<param name="onup" value="$PARAM[onup]"/>
 			<param name="ondown" value="$PARAM[ondown]"/>
@@ -96,7 +99,7 @@
 			<param name="mainlabel" value="$INFO[ListItem.Label]"/>
 			<param name="sublabel" value="$INFO[ListItem.Year]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="content" value="$VAR[EmbyCon_RecentMovies]"/>
+			<param name="content" value="plugin://plugin.video.embycon/?media_type=Movies&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fLimit%3d%7bItemLimit%7d%26Recursive%3dtrue%26SortBy%3dDateCreated%26Fields%3d%7bfield_filters%7d%26SortOrder%3dDescending%26Filters%3d%7bIsUnplayed%2c%7dIsNotFolder%26IncludeItemTypes%3dMovie%26ImageTypeLimit%3d1%26format%3djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]"/>
 		</include>
 	</include>
 	<!-- Recently added episodes -->
@@ -114,6 +117,7 @@
 	</include>
 	<include name="W_EmbyCon_NewEpisodes">
 		<include content="HomeWideWidget">
+			<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
 			<param name="id" value="$PARAM[id]"/>
 			<param name="onup" value="$PARAM[onup]"/>
 			<param name="ondown" value="$PARAM[ondown]"/>
@@ -121,7 +125,7 @@
 			<param name="mainlabel" value="$VAR[EmbyCon_RecentEpisodes_Mainlabel]"/>
 			<param name="sublabel" value="$VAR[EmbyCon_RecentEpisodes_Sublabel]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="content" value="$VAR[EmbyCon_RecentEpisodes]"/>
+			<param name="content" value="plugin://plugin.video.embycon/?media_type=Episodes&amp;mode=GET_CONTENT&amp;name_format=Episode%7cepisode_name_format&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%2fLatest%3fLimit%3d%7bItemLimit%7d%26Recursive%3dtrue%26GroupItems%3dtrue%26SortBy%3dDateCreated%26Fields%3d%7bfield_filters%7d%26SortOrder%3dDescending%26Filters%3d%7bIsUnplayed%7d%26IsVirtualUnaired%3dfalse%26IsMissing%3dFalse%26IncludeItemTypes%3dEpisode%26ImageTypeLimit%3d1%26format%3djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]"/>
 		</include>
 	</include>
 	<!-- Recently added albums -->
@@ -139,6 +143,7 @@
 	</include>
 	<include name="W_EmbyCon_NewAlbums">
 		<include content="HomeSquareWidget">
+			<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
 			<param name="id" value="$PARAM[id]"/>
 			<param name="onup" value="$PARAM[onup]"/>
 			<param name="ondown" value="$PARAM[ondown]"/>
@@ -148,13 +153,9 @@
 			<param name="sortby" value="dateadded"/>
 			<param name="sortorder" value="ascending"/>
 			<param name="widget_target" value="music"/>
-			<param name="content" value="$VAR[EmbyCon_RecentAlbums]"/>
+			<param name="content" value="plugin://plugin.video.embycon/?media_type=albums&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FUsers%2F%7Buserid%7D%2FItems%2FLatest%3FIncludeItemTypes%3DAudio%26Limit%3D24%26Fields%3DPrimaryImageAspectRatio%252CBasicSyncInfo%26ImageTypeLimit%3D1%26EnableImageTypes%3DPrimary%252CBackdrop%252CBanner%252CThumb%26EnableTotalRecordCount%3Dfalse&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]"/>
 		</include>
 	</include>
-
-
-
-
 	<!-- In progress movies -->
 	<include name="W_InProgressMovies">
 		<include content="HomeWideWidget">
@@ -171,6 +172,7 @@
 	</include>
 	<include name="W_EmbyCon_InProgressMovies">
 		<include content="HomeWideWidget">
+			<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
 			<param name="id" value="$PARAM[id]"/>
 			<param name="onup" value="$PARAM[onup]"/>
 			<param name="ondown" value="$PARAM[ondown]"/>
@@ -178,7 +180,7 @@
 			<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 			<param name="sublabel" value="$INFO[ListItem.Year]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="content" value="$VAR[EmbyCon_InProgressMovies]"/>
+			<param name="content" value="plugin://plugin.video.embycon/?media_type=Movies&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fLimit%3d%7bItemLimit%7d%26Recursive%3dtrue%26Fields%3d%7bfield_filters%7d%26Filters%3dIsResumable%26IncludeItemTypes%3dMovie%26ImageTypeLimit%3d1%26format%3djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]"/>
 		</include>
 	</include>
 	<!-- Movie genres -->
@@ -196,6 +198,7 @@
 	</include>
 	<include name="W_EmbyCon_MovieGenres">
 		<include content="HomePosterWidget">
+			<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
 			<param name="id" value="$PARAM[id]"/>
 			<param name="onup" value="$PARAM[onup]"/>
 			<param name="ondown" value="$PARAM[ondown]"/>
@@ -203,7 +206,7 @@
 			<param name="widget_target" value="videos"/>
 			<param name="sortby" value="sorttitle"/>
 			<param name="layout" value="GenreLayout"/>
-			<param name="content" value="$VAR[EmbyCon_MovieGenres]"/>
+			<param name="content" value="plugin://plugin.video.embycon/?mode=GENRES&amp;item_type=movie&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]"/>
 		</include>
 	</include>
 	<!-- Recommended movies-->
@@ -224,6 +227,7 @@
 	</include>
 	<include name="W_EmbyCon_RecommendedMovies">
 		<include content="HomePosterWidget">
+			<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
 			<param name="id" value="$PARAM[id]"/>
 			<param name="onup" value="$PARAM[onup]"/>
 			<param name="ondown" value="$PARAM[ondown]"/>
@@ -234,7 +238,7 @@
 			<param name="sortby" value="rating"/>
 			<param name="sortorder" value="descending"/>
 			<param name="limit" value="20"/>
-			<param name="content" value="$VAR[EmbyCon_Movies]"/>
+			<param name="content" value="plugin://plugin.video.embycon/?item_type=Movie&amp;media_type=Movies&amp;mode=SHOW_CONTENT&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]"/>
 		</include>
 	</include>
 	<!-- Similar movies -->
@@ -253,6 +257,7 @@
 	</include>
 	<include name="W_EmbyCon_SimilarMovies">
 		<include content="HomePosterWidget">
+			<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
 			<param name="id" value="$PARAM[id]"/>
 			<param name="onup" value="$PARAM[onup]"/>
 			<param name="ondown" value="$PARAM[ondown]"/>
@@ -260,7 +265,7 @@
 			<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 			<param name="sublabel" value="$INFO[ListItem.Year]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="content" value="$VAR[EmbyCon_SimilarMovies]"/>
+			<param name="content" value="plugin://plugin.video.embycon/?media_type=Movies&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FMovies%2FRecommendations%3FuserId%3D%7Buserid%7D%26categoryLimit%3D1%26ItemLimit%3D8%26format%3Djson%26ImageTypeLimit%3D1%26IsMissing%3DFalse&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]"/>
 		</include>
 	</include>
 	<!-- Top 250 movies -->
@@ -290,18 +295,17 @@
 	</include>
 	<include name="W_EmbyCon_FavMovies">
 		<include content="HomePosterWidget">
+			<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
 			<param name="id" value="$PARAM[id]"/>
 			<param name="onup" value="$PARAM[onup]"/>
 			<param name="ondown" value="$PARAM[ondown]"/>
-			<param name="headline" value="$LOCALIZE[31062] $INFO[Container(209).ListItem.Property(suggested_from_watching)]$VAR[EmbyConLabel]"/>
+			<param name="headline" value="$LOCALIZE[31062]$VAR[EmbyConLabel]"/>
 			<param name="sublabel" value="$INFO[ListItem.Year]"/>
 			<param name="widget_target" value="videos"/>
 			<param name="sortby" value="label"/>
 			<param name="content" value="plugin://plugin.video.embycon/?media_type=Movies&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fFields%3d%7bfield_filters%7d%26Recursive%3dtrue%26Filters%3dIsFavorite%26IncludeItemTypes%3dMovie%26ImageTypeLimit%3d1%26format%3djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]"/>
 		</include>
 	</include>
-
-
 	<!-- In progress episodes -->
 	<include name="W_InProgressShows">
 		<include content="HomeWideWidget">
@@ -315,12 +319,13 @@
 	</include>
 	<include name="W_EmbyCon_InProgressShows">
 		<include content="HomeWideWidget">
+			<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
 			<param name="id" value="$PARAM[id]"/>
 			<param name="onup" value="$PARAM[onup]"/>
 			<param name="ondown" value="$PARAM[ondown]"/>
 			<param name="headline" value="$LOCALIZE[31080]$VAR[EmbyConLabel]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="content" value="$VAR[EmbyCon_InProgressShows]"/>
+			<param name="content" value="plugin://plugin.video.embycon/?media_type=Episodes&amp;mode=GET_CONTENT&amp;name_format=Episode%7cepisode_name_format&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fLimit%3d%7bItemLimit%7d%26Recursive%3dtrue%26Fields%3d%7bfield_filters%7d%26Filters%3dIsResumable%26IncludeItemTypes%3dEpisode%26ImageTypeLimit%3d1%26format%3djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]"/>
 		</include>
 	</include>
 	<!-- Gernres -->
@@ -338,6 +343,7 @@
 	</include>
 	<include name="W_EmbyCon_TVShowGenres">
 		<include content="HomePosterWidget">
+			<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
 			<param name="id" value="$PARAM[id]"/>
 			<param name="onup" value="$PARAM[onup]"/>
 			<param name="ondown" value="$PARAM[ondown]"/>
@@ -345,7 +351,7 @@
 			<param name="layout" value="GenreLayout"/>
 			<param name="sortby" value="sorttitle"/>
 			<param name="widget_target" value="videos"/>
-			<param name="content" value="$VAR[EmbyCon_TVShowGenres]"/>
+			<param name="content" value="plugin://plugin.video.embycon/?mode=GENRES&amp;item_type=tvshow&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]"/>
 		</include>
 	</include>
 	<!-- Recommended -->
@@ -362,13 +368,14 @@
 	</include>
 	<include name="W_EmbyCon_RecommendedShows">
 		<include content="HomeWideWidget">
+			<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
 			<param name="id" value="$PARAM[id]"/>
 			<param name="onup" value="$PARAM[onup]"/>
 			<param name="ondown" value="$PARAM[ondown]"/>
 			<param name="headline" value="$LOCALIZE[31017]$VAR[EmbyConLabel]"/>
 			<param name="sublabel" value="$INFO[ListItem.Year]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="content" value="$VAR[EmbyCon_TVShows]"/>
+			<param name="content" value="plugin://plugin.video.embycon/?item_type=Series&amp;media_type=tvshows&amp;mode=SHOW_CONTENT&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]"/>
 		</include>
 	</include>
 	<!-- top 250 -->
@@ -398,73 +405,88 @@
 	</include>
 	<include name="W_EmbyCon_FavShows">
 		<include content="HomeWideWidget">
+			<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
 			<param name="id" value="$PARAM[id]"/>
 			<param name="onup" value="$PARAM[onup]"/>
 			<param name="ondown" value="$PARAM[ondown]"/>
-			<param name="headline" value="$LOCALIZE[31064]"/>
+			<param name="headline" value="$LOCALIZE[31064]$VAR[EmbyConLabel]"/>
 			<param name="sublabel" value="$INFO[ListItem.Year]"/>
 			<param name="widget_target" value="videos"/>
 			<param name="content" value="plugin://plugin.video.embycon/?media_type=tvshows&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fFields%3d%7bfield_filters%7d%26Recursive%3dtrue%26Filters%3dIsFavorite%26IncludeItemTypes%3dSeries%26ImageTypeLimit%3d1%26format%3djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]"/>
 		</include>
 	</include>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	<!-- Last played albums -->
+	<include name="W_PlayedAlbums">
+		<include content="HomeSquareWidget">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$LOCALIZE[517]"/>
+			<param name="widget_target" value="music"/>
+			<param name="sortby" value="lastplayed"/>
+			<param name="sortorder" value="descending"/>
+			<param name="content" value="musicdb://recentlyplayedalbums/"/>
+		</include>
+	</include>
+	<!-- Often played songs -->
+	<include name="W_OftenPlayedSongs">
+		<include content="HomeSquareWidget">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$LOCALIZE[31215]"/>
+			<param name="widget_target" value="music"/>
+			<param name="sortby" value="playcount"/>
+			<param name="sortorder" value="descending"/>
+			<param name="content" value="musicdb://songs/"/>
+		</include>
+	</include>
+	<include name="W_EmbyCon_OftenPlayedSongs">
+		<include content="HomeSquareWidget">
+			<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$LOCALIZE[31215]$VAR[EmbyConLabel]"/>
+			<param name="widget_target" value="music"/>
+			<param name="content" value="plugin://plugin.video.embycon/?media_type=songs&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FUsers%2F%7Buserid%7D%2FItems%3FSortBy%3DPlayCount%26SortOrder%3DDescending%26IncludeItemTypes%3DAudio%26Limit%3D12%26Recursive%3Dtrue%26Fields%3DPrimaryImageAspectRatio%252CAudioInfo%26Filters%3DIsPlayed%26ImageTypeLimit%3D1%26EnableImageTypes%3DPrimary%252CBackdrop%252CBanner%252CThumb%26EnableTotalRecordCount%3Dfalse&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]"/>
+		</include>
+	</include>
+	<!-- Fav artist -->
+	<include name="W_EmbyCon_FavArtists">
+		<include content="HomeSquareWidget">
+			<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$LOCALIZE[31212]$VAR[EmbyConLabel]"/>
+			<param name="widget_target" value="music"/>
+			<param name="content" value="plugin://plugin.video.embycon/?media_type=songs&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FArtists%3FSortBy%3DSortName%26SortOrder%3DAscending%26Filters%3DIsFavorite%26Recursive%3Dtrue%26Fields%3DPrimaryImageAspectRatio%252CBasicSyncInfo%26CollapseBoxSetItems%3Dfalse%26ExcludeLocationTypes%3DVirtual%26EnableTotalRecordCount%3Dfalse%26Limit%3D20%26userId%3D%7Buserid%7D&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]"/>
+		</include>
+	</include>
+	<!-- Fav albumss -->
+	<include name="W_EmbyCon_FavAlbums">
+		<include content="HomeSquareWidget">
+			<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$LOCALIZE[31213]$VAR[EmbyConLabel]"/>
+			<param name="widget_target" value="music"/>
+			<param name="content" value="plugin://plugin.video.embycon/?media_type=songs&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FUsers%2F%7Buserid%7D%2FItems%3FSortBy%3DSortName%26SortOrder%3DAscending%26Filters%3DIsFavorite%26Recursive%3Dtrue%26Fields%3DPrimaryImageAspectRatio%252CBasicSyncInfo%26CollapseBoxSetItems%3Dfalse%26ExcludeLocationTypes%3DVirtual%26EnableTotalRecordCount%3Dfalse%26Limit%3D20%26IncludeItemTypes%3DMusicAlbum&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]"/>
+		</include>
+	</include>
+	<!-- Fav songs -->
+	<include name="W_EmbyCon_FavSongs">
+		<include content="HomeSquareWidget">
+			<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$LOCALIZE[31214]$VAR[EmbyConLabel]"/>
+			<param name="content" value="plugin://plugin.video.embycon/?media_type=songs&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FUsers%2F%7Buserid%7D%2FItems%3FSortBy%3DSortName%26SortOrder%3DAscending%26Filters%3DIsFavorite%26Recursive%3Dtrue%26Fields%3DPrimaryImageAspectRatio%252CBasicSyncInfo%26CollapseBoxSetItems%3Dfalse%26ExcludeLocationTypes%3DVirtual%26EnableTotalRecordCount%3Dfalse%26Limit%3D20%26IncludeItemTypes%3DAudio&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]"/>
+		</include>
+	</include>
 
 
 
@@ -1006,6 +1028,185 @@
 			<param name="headline" value="$INFO[Skin.String(UserTVShowWidget6_name)]"/>
 			<param name="widget_target" value="$INFO[Skin.String(UserTVShowWidget6_target)]"/>
 			<param name="content" value="$VAR[UserTVShowWidget6_content]"/>
+		</include>
+	</include><!-- User Widget Music 1 -->
+	<include name="W_MusicHubCustom1">
+		<include condition="String.IsEqual(Skin.String(UserMusicWidget1_layout),HomePosterWidget) | String.IsEmpty(Skin.String(UserMusicWidget1_layout))" content="HomePosterWidget">
+			<param name="visible" value="Skin.HasSetting(UserMusicWidget1)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserMusicWidget1_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserMusicWidget1_target)]"/>
+			<param name="content" value="$VAR[UserMusicWidget1_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserMusicWidget1_layout),HomeWideWidget)" content="HomeWideWidget">
+			<param name="visible" value="Skin.HasSetting(UserMusicWidget1)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserMusicWidget1_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserMusicWidget1_target)]"/>
+			<param name="content" value="$VAR[UserMusicWidget1_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserMusicWidget1_layout),HomeSquareWidget)" content="HomeSquareWidget">
+			<param name="visible" value="Skin.HasSetting(UserMusicWidget1)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserMusicWidget1_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserMusicWidget1_target)]"/>
+			<param name="content" value="$VAR[UserMusicWidget1_content]"/>
+		</include>
+	</include>
+	<!-- User Widget Music 2 -->
+	<include name="W_MusicHubCustom2">
+		<include condition="String.IsEqual(Skin.String(UserMusicWidget2_layout),HomePosterWidget) | String.IsEmpty(Skin.String(UserMusicWidget2_layout))" content="HomePosterWidget">
+			<param name="visible" value="Skin.HasSetting(UserMusicWidget2)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserMusicWidget2_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserMusicWidget2_target)]"/>
+			<param name="content" value="$VAR[UserMusicWidget2_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserMusicWidget2_layout),HomeWideWidget)" content="HomeWideWidget">
+			<param name="visible" value="Skin.HasSetting(UserMusicWidget2)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserMusicWidget2_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserMusicWidget2_target)]"/>
+			<param name="content" value="$VAR[UserMusicWidget2_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserMusicWidget2_layout),HomeSquareWidget)" content="HomeSquareWidget">
+			<param name="visible" value="Skin.HasSetting(UserMusicWidget2)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserMusicWidget2_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserMusicWidget2_target)]"/>
+			<param name="content" value="$VAR[UserMusicWidget2_content]"/>
+		</include>
+	</include>
+	<!-- User Widget Music 3 -->
+	<include name="W_MusicHubCustom3">
+		<include condition="String.IsEqual(Skin.String(UserMusicWidget3_layout),HomePosterWidget) | String.IsEmpty(Skin.String(UserMusicWidget3_layout))" content="HomePosterWidget">
+			<param name="visible" value="Skin.HasSetting(UserMusicWidget3)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserMusicWidget3_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserMusicWidget3_target)]"/>
+			<param name="content" value="$VAR[UserMusicWidget3_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserMusicWidget3_layout),HomeWideWidget)" content="HomeWideWidget">
+			<param name="visible" value="Skin.HasSetting(UserMusicWidget3)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserMusicWidget3_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserMusicWidget3_target)]"/>
+			<param name="content" value="$VAR[UserMusicWidget3_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserMusicWidget3_layout),HomeSquareWidget)" content="HomeSquareWidget">
+			<param name="visible" value="Skin.HasSetting(UserMusicWidget3)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserMusicWidget3_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserMusicWidget3_target)]"/>
+			<param name="content" value="$VAR[UserMusicWidget3_content]"/>
+		</include>
+	</include>
+	<!-- User Widget Music 4 -->
+	<include name="W_MusicHubCustom4">
+		<include condition="String.IsEqual(Skin.String(UserMusicWidget4_layout),HomePosterWidget) | String.IsEmpty(Skin.String(UserMusicWidget4_layout))" content="HomePosterWidget">
+			<param name="visible" value="Skin.HasSetting(UserMusicWidget4)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserMusicWidget4_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserMusicWidget4_target)]"/>
+			<param name="content" value="$VAR[UserMusicWidget4_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserMusicWidget4_layout),HomeWideWidget)" content="HomeWideWidget">
+			<param name="visible" value="Skin.HasSetting(UserMusicWidget4)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserMusicWidget4_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserMusicWidget4_target)]"/>
+			<param name="content" value="$VAR[UserMusicWidget4_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserMusicWidget4_layout),HomeSquareWidget)" content="HomeSquareWidget">
+			<param name="visible" value="Skin.HasSetting(UserMusicWidget4)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserMusicWidget4_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserMusicWidget4_target)]"/>
+			<param name="content" value="$VAR[UserMusicWidget4_content]"/>
+		</include>
+	</include>
+	<!-- User Widget Music 5 -->
+	<include name="W_MusicHubCustom5">
+		<include condition="String.IsEqual(Skin.String(UserMusicWidget5_layout),HomePosterWidget) | String.IsEmpty(Skin.String(UserMusicWidget5_layout))" content="HomePosterWidget">
+			<param name="visible" value="Skin.HasSetting(UserMusicWidget5)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserMusicWidget5_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserMusicWidget5_target)]"/>
+			<param name="content" value="$VAR[UserMusicWidget5_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserMusicWidget5_layout),HomeWideWidget)" content="HomeWideWidget">
+			<param name="visible" value="Skin.HasSetting(UserMusicWidget5)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserMusicWidget5_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserMusicWidget5_target)]"/>
+			<param name="content" value="$VAR[UserMusicWidget5_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserMusicWidget5_layout),HomeSquareWidget)" content="HomeSquareWidget">
+			<param name="visible" value="Skin.HasSetting(UserMusicWidget5)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserMusicWidget5_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserMusicWidget5_target)]"/>
+			<param name="content" value="$VAR[UserMusicWidget5_content]"/>
+		</include>
+	</include>
+	<!-- User Widget Music 6 -->
+	<include name="W_MusicHubCustom6">
+		<include condition="String.IsEqual(Skin.String(UserMusicWidget6_layout),HomePosterWidget) | String.IsEmpty(Skin.String(UserMusicWidget6_layout))" content="HomePosterWidget">
+			<param name="visible" value="Skin.HasSetting(UserMusicWidget6)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserMusicWidget6_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserMusicWidget6_target)]"/>
+			<param name="content" value="$VAR[UserMusicWidget6_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserMusicWidget6_layout),HomeWideWidget)" content="HomeWideWidget">
+			<param name="visible" value="Skin.HasSetting(UserMusicWidget6)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserMusicWidget6_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserMusicWidget6_target)]"/>
+			<param name="content" value="$VAR[UserMusicWidget6_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserMusicWidget6_layout),HomeSquareWidget)" content="HomeSquareWidget">
+			<param name="visible" value="Skin.HasSetting(UserMusicWidget6)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserMusicWidget6_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserMusicWidget6_target)]"/>
+			<param name="content" value="$VAR[UserMusicWidget6_content]"/>
 		</include>
 	</include>
 </includes>
