@@ -38,6 +38,7 @@
 			</include>
 			<!-- emby movies -->
 			<include content="HomePosterWidget">
+				<param name="visible" value="System.HasAddon(plugin.video.emby)"/>
 				<param name="id" value="201"/>
 				<param name="onup" value="450"/>
 				<param name="ondown" value="202"/>
@@ -47,75 +48,125 @@
 				<param name="use_custom_onclick" value="true"/>
 				<param name="onclick" value="SetProperty(PlayItem,$INFO[ListItem.FileNameAndPath],home)"/>
 				<param name="onclick2" value="close"/>
-				<param name="content" value="$VAR[FavMovies_Content]"/>
+				<param name="content" value="library://video/emby_Favorite movies.xml"/>
 			</include>
-			<!-- emby shows -->
 			<include content="HomePosterWidget">
+				<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
 				<param name="id" value="202"/>
 				<param name="onup" value="201"/>
 				<param name="ondown" value="203"/>
+				<param name="headline" value="$LOCALIZE[31062]$VAR[EmbyConLabel]"/>
+				<param name="mainlabel" value="$INFO[ListItem.Title]"/>
+				<param name="sublabel" value="$INFO[ListItem.Year]"/>
+				<param name="sortby" value="label"/>
+				<param name="use_custom_onclick" value="true"/>
+				<param name="onclick" value="SetProperty(PlayItem,$INFO[ListItem.FileNameAndPath],home)"/>
+				<param name="onclick2" value="close"/>
+				<param name="content" value="$VAR[EmbyCon.FavMovies]"/>
+			</include>
+			<!-- emby shows -->
+			<include content="HomePosterWidget">
+				<param name="visible" value="System.HasAddon(plugin.video.emby)"/>
+				<param name="id" value="203"/>
+				<param name="onup" value="202"/>
+				<param name="ondown" value="204"/>
 				<param name="headline" value="$LOCALIZE[31064]"/>
 				<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 				<param name="sublabel" value="$INFO[ListItem.Year]"/>
 				<param name="use_custom_onclick" value="true"/>
 				<param name="onclick" value="SetProperty(NextWindow,$INFO[ListItem.FolderPath],home)"/>
 				<param name="onclick2" value="close"/>
-				<param name="content" value="$VAR[FavShows_Content]"/>
+				<param name="content" value="library://video/emby_Favorite tvshows.xml"/>
+			</include>
+			<include content="HomePosterWidget">
+				<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
+				<param name="id" value="204"/>
+				<param name="onup" value="203"/>
+				<param name="ondown" value="205"/>
+				<param name="headline" value="$LOCALIZE[31064]$VAR[EmbyConLabel]"/>
+				<param name="mainlabel" value="$INFO[ListItem.Title]"/>
+				<param name="sublabel" value="$INFO[ListItem.Year]"/>
+				<param name="sortby" value="label"/>
+				<param name="use_custom_onclick" value="true"/>
+				<param name="onclick" value="SetProperty(NextWindow,$INFO[ListItem.FolderPath],home)"/>
+				<param name="onclick2" value="close"/>
+				<param name="content" value="$VAR[EmbyCon.FavTVShows]"/>
 			</include>
 			<!-- emby episodes -->
 			<include content="HomeWideWidget">
-				<param name="id" value="203"/>
-				<param name="onup" value="202"/>
-				<param name="ondown" value="204"/>
+				<param name="visible" value="System.HasAddon(plugin.video.emby)"/>
+				<param name="id" value="205"/>
+				<param name="onup" value="204"/>
+				<param name="ondown" value="206"/>
 				<param name="headline" value="$LOCALIZE[31065]"/>
 				<param name="sublabel" value="$INFO[ListItem.TvShowTitle]"/>
 				<param name="mainlabel" value="$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title]"/>
 				<param name="use_custom_onclick" value="true"/>
 				<param name="onclick" value="SetProperty(PlayItem,$INFO[ListItem.FileNameAndPath],home)"/>
 				<param name="onclick2" value="close"/>
-				<param name="content" value="$VAR[FavEpisodes_Content]"/>
+				<param name="content" value="library://video/emby_Favorite episodes.xml"/>
+			</include>
+			<include content="HomeWideWidget">
+				<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
+				<param name="id" value="206"/>
+				<param name="onup" value="205"/>
+				<param name="ondown" value="207"/>
+				<param name="headline" value="$LOCALIZE[31065]$VAR[EmbyConLabel]"/>
+				<param name="sublabel" value="$INFO[ListItem.TvShowTitle]"/>
+				<param name="mainlabel" value="$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title]"/>
+				<param name="sortby" value="label"/>
+				<param name="use_custom_onclick" value="true"/>
+				<param name="onclick" value="SetProperty(PlayItem,$INFO[ListItem.FileNameAndPath],home)"/>
+				<param name="onclick2" value="close"/>
+				<param name="content" value="$VAR[EmbyCon.FavEpisodes]"/>
 			</include>
 			<!-- Fav artist -->
 			<include content="HomeSquareWidget">
-				<param name="id" value="204"/>
-				<param name="onup" value="203"/>
-				<param name="ondown" value="205"/>
-				<param name="headline" value="$LOCALIZE[31212]"/>
+				<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
+				<param name="id" value="207"/>
+				<param name="onup" value="206"/>
+				<param name="ondown" value="208"/>
+				<param name="headline" value="$LOCALIZE[31212]$VAR[EmbyConLabel]"/>
 				<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 				<param name="sublabel" value="$INFO[ListItem.Year]"/>
+				<param name="sortby" value="label"/>
 				<param name="use_custom_onclick" value="true"/>
 				<param name="onclick" value="SetProperty(NextWindow,$INFO[ListItem.FolderPath],home)"/>
 				<param name="onclick2" value="close"/>
 				<param name="widget_target" value="music"/>
-				<param name="content" value="$VAR[FavArtists_Content]"/>
+				<param name="content" value="$VAR[EmbyCon.FavArtists]"/>
 			</include>
 			<!-- fav album -->
 			<include content="HomeSquareWidget">
-				<param name="id" value="205"/>
-				<param name="onup" value="204"/>
-				<param name="ondown" value="206"/>
-				<param name="headline" value="$LOCALIZE[31213]"/>
+				<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
+				<param name="id" value="208"/>
+				<param name="onup" value="207"/>
+				<param name="ondown" value="209"/>
+				<param name="headline" value="$LOCALIZE[31213]$VAR[EmbyConLabel]"/>
 				<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 				<param name="sublabel" value="$INFO[ListItem.artist]"/>
+				<param name="sortby" value="label"/>
 				<param name="use_custom_onclick" value="true"/>
 				<param name="onclick" value="SetProperty(NextWindow,$INFO[ListItem.FolderPath],home)"/>
 				<param name="onclick2" value="close"/>
 				<param name="widget_target" value="music"/>
-				<param name="content" value="$VAR[FavAlbums_Content]"/>
+				<param name="content" value="$VAR[EmbyCon.FavAlbums]"/>
 			</include>
 			<!-- fav song -->
 			<include content="HomeSquareWidget">
-				<param name="id" value="206"/>
-				<param name="onup" value="205"/>
+				<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
+				<param name="id" value="209"/>
+				<param name="onup" value="208"/>
 				<param name="ondown" value="noop"/>
-				<param name="headline" value="$LOCALIZE[31214]"/>
+				<param name="headline" value="$LOCALIZE[31214]$VAR[EmbyConLabel]"/>
 				<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 				<param name="sublabel" value="$INFO[ListItem.artist]"/>
+				<param name="sortby" value="label"/>
 				<param name="use_custom_onclick" value="true"/>
 				<param name="onclick" value="SetProperty(PlayItem,$INFO[ListItem.FileNameAndPath],home)"/>
 				<param name="onclick2" value="close"/>
 				<param name="widget_target" value="music"/>
-				<param name="content" value="$VAR[FavSongs_Content]"/>
+				<param name="content" value="$VAR[EmbyCon.FavSongs]"/>
 			</include>
 
 		</control>

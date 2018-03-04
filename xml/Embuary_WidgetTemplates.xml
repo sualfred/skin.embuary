@@ -19,7 +19,7 @@
 			<param name="ondown" value="$PARAM[ondown]"/>
 			<param name="headline" value="$LOCALIZE[31080]$VAR[EmbyConLabel]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="content" value="plugin://plugin.video.embycon/?mode=GET_CONTENT&amp;media_type=Video&amp;url=%7Bserver%7D%2Femby%2FUsers%2F%7Buserid%7D%2FItems%2FResume%3FLimit%3D12%26Recursive%3Dtrue%26Fields%3DPrimaryImageAspectRatio%2CBasicSyncInfo%26ImageTypeLimit%3D1%26EnableImageTypes%3DPrimary%2CBackdrop%2CThumb%26EnableTotalRecordCount%3Dfalse%26MediaTypes%3DVideo&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]"/>
+			<param name="content" value="$VAR[EmbyCon.InProgressMedia]"/>
 		</include>
 	</include>
 	<!-- PVR -->
@@ -75,7 +75,7 @@
 			<param name="sublabel" value="$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title]"/>
 			<param name="widget_target" value="videos"/>
 			<param name="limit" value="30"/>
-			<param name="content" value="plugin://plugin.video.embycon/?media_type=Episodes&amp;mode=GET_CONTENT&amp;name_format=Episode%7cepisode_name_format&amp;url=%7bserver%7d%2femby%2fShows%2fNextUp%2f%3fUserid%3d%7buserid%7d%26Limit%3d%7bItemLimit%7d%26Recursive%3dtrue%26Fields%3d%7bfield_filters%7d%26Filters%3dIsUnplayed%2cIsNotFolder%26IsVirtualUnaired%3dfalse%26IsMissing%3dFalse%26IncludeItemTypes%3dEpisode%26ImageTypeLimit%3d1%26format%3djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]"/>
+			<param name="content" value="$VAR[EmbyCon.NextUp]"/>
 		</include>
 	</include>
 	<!-- Recently added movies -->
@@ -103,7 +103,7 @@
 			<param name="sublabel" value="$INFO[ListItem.Year]"/>
 			<param name="widget_target" value="videos"/>
 			<param name="limit" value="30"/>
-			<param name="content" value="plugin://plugin.video.embycon/?media_type=Movies&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fLimit%3d%7bItemLimit%7d%26Recursive%3dtrue%26SortBy%3dDateCreated%26Fields%3d%7bfield_filters%7d%26SortOrder%3dDescending%26Filters%3d%7bIsUnplayed%2c%7dIsNotFolder%26IncludeItemTypes%3dMovie%26ImageTypeLimit%3d1%26format%3djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]"/>
+			<param name="content" value="$VAR[EmbyCon.NewMovies]"/>
 		</include>
 	</include>
 	<!-- Recently added episodes -->
@@ -131,7 +131,7 @@
 			<param name="sublabel" value="$VAR[EmbyCon_RecentEpisodes_Sublabel]"/>
 			<param name="widget_target" value="videos"/>
 			<param name="limit" value="30"/>
-			<param name="content" value="plugin://plugin.video.embycon/?media_type=Episodes&amp;mode=GET_CONTENT&amp;name_format=Episode%7cepisode_name_format&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%2fLatest%3fLimit%3d%7bItemLimit%7d%26Recursive%3dtrue%26GroupItems%3dtrue%26SortBy%3dDateCreated%26Fields%3d%7bfield_filters%7d%26SortOrder%3dDescending%26Filters%3d%7bIsUnplayed%7d%26IsVirtualUnaired%3dfalse%26IsMissing%3dFalse%26IncludeItemTypes%3dEpisode%26ImageTypeLimit%3d1%26format%3djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]"/>
+			<param name="content" value="$VAR[EmbyCon.NewEpisodes]"/>
 		</include>
 	</include>
 	<!-- Recently added albums -->
@@ -154,14 +154,14 @@
 			<param name="id" value="$PARAM[id]"/>
 			<param name="onup" value="$PARAM[onup]"/>
 			<param name="ondown" value="$PARAM[ondown]"/>
-			<param name="headline" value="$LOCALIZE[359]"/>
+			<param name="headline" value="$LOCALIZE[359]$VAR[EmbyConLabel]"/>
 			<param name="mainlabel" value="$INFO[ListItem.Album]"/>
 			<param name="sublabel" value="$INFO[ListItem.Artist]"/>
 			<param name="sortby" value="dateadded"/>
 			<param name="sortorder" value="ascending"/>
 			<param name="widget_target" value="music"/>
 			<param name="limit" value="30"/>
-			<param name="content" value="plugin://plugin.video.embycon/?media_type=albums&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FUsers%2F%7Buserid%7D%2FItems%2FLatest%3FIncludeItemTypes%3DAudio%26Limit%3D24%26Fields%3DPrimaryImageAspectRatio%252CBasicSyncInfo%26ImageTypeLimit%3D1%26EnableImageTypes%3DPrimary%252CBackdrop%252CBanner%252CThumb%26EnableTotalRecordCount%3Dfalse&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]"/>
+			<param name="content" value="$VAR[EmbyCon.NewAlbums]"/>
 		</include>
 	</include>
 	<!-- In progress movies -->
@@ -188,7 +188,7 @@
 			<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 			<param name="sublabel" value="$INFO[ListItem.Year]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="content" value="plugin://plugin.video.embycon/?media_type=Movies&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fLimit%3d%7bItemLimit%7d%26Recursive%3dtrue%26Fields%3d%7bfield_filters%7d%26Filters%3dIsResumable%26IncludeItemTypes%3dMovie%26ImageTypeLimit%3d1%26format%3djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]"/>
+			<param name="content" value="$VAR[EmbyCon.InProgressMovies]"/>
 		</include>
 	</include>
 	<!-- Movie genres -->
@@ -214,7 +214,7 @@
 			<param name="widget_target" value="videos"/>
 			<param name="sortby" value="sorttitle"/>
 			<param name="layout" value="GenreLayout"/>
-			<param name="content" value="plugin://plugin.video.embycon/?mode=GENRES&amp;item_type=movie&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]"/>
+			<param name="content" value="$VAR[EmbyCon.MovieGenres]"/>
 		</include>
 	</include>
 	<!-- Recommended movies-->
@@ -246,7 +246,7 @@
 			<param name="sortby" value="rating"/>
 			<param name="sortorder" value="descending"/>
 			<param name="limit" value="30"/>
-			<param name="content" value="plugin://plugin.video.embycon/?item_type=Movie&amp;media_type=Movies&amp;mode=SHOW_CONTENT&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]"/>
+			<param name="content" value="$VAR[EmbyCon.RecommendedMovies]"/>
 		</include>
 	</include>
 	<!-- Similar movies -->
@@ -274,7 +274,7 @@
 			<param name="sublabel" value="$INFO[ListItem.Year]"/>
 			<param name="widget_target" value="videos"/>
 			<param name="limit" value="30"/>
-			<param name="content" value="plugin://plugin.video.embycon/?media_type=Movies&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FMovies%2FRecommendations%3FuserId%3D%7Buserid%7D%26categoryLimit%3D1%26ItemLimit%3D8%26format%3Djson%26ImageTypeLimit%3D1%26IsMissing%3DFalse&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]"/>
+			<param name="content" value="$VAR[EmbyCon.SimilarMovies]"/>
 		</include>
 	</include>
 	<!-- Top 250 movies -->
@@ -312,7 +312,7 @@
 			<param name="sublabel" value="$INFO[ListItem.Year]"/>
 			<param name="widget_target" value="videos"/>
 			<param name="sortby" value="label"/>
-			<param name="content" value="plugin://plugin.video.embycon/?media_type=Movies&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fFields%3d%7bfield_filters%7d%26Recursive%3dtrue%26Filters%3dIsFavorite%26IncludeItemTypes%3dMovie%26ImageTypeLimit%3d1%26format%3djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]"/>
+			<param name="content" value="$VAR[EmbyCon.FavMovies]"/>
 		</include>
 	</include>
 	<!-- In progress episodes -->
@@ -334,7 +334,7 @@
 			<param name="ondown" value="$PARAM[ondown]"/>
 			<param name="headline" value="$LOCALIZE[31080]$VAR[EmbyConLabel]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="content" value="plugin://plugin.video.embycon/?media_type=Episodes&amp;mode=GET_CONTENT&amp;name_format=Episode%7cepisode_name_format&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fLimit%3d%7bItemLimit%7d%26Recursive%3dtrue%26Fields%3d%7bfield_filters%7d%26Filters%3dIsResumable%26IncludeItemTypes%3dEpisode%26ImageTypeLimit%3d1%26format%3djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]"/>
+			<param name="content" value="$VAR[EmbyCon.InProgressShows]"/>
 		</include>
 	</include>
 	<!-- Gernres -->
@@ -360,7 +360,7 @@
 			<param name="layout" value="GenreLayout"/>
 			<param name="sortby" value="sorttitle"/>
 			<param name="widget_target" value="videos"/>
-			<param name="content" value="plugin://plugin.video.embycon/?mode=GENRES&amp;item_type=tvshow&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]"/>
+			<param name="content" value="$VAR[EmbyCon.TVShowGenres]"/>
 		</include>
 	</include>
 	<!-- Recommended -->
@@ -386,7 +386,7 @@
 			<param name="sublabel" value="$INFO[ListItem.Year]"/>
 			<param name="widget_target" value="videos"/>
 			<param name="limit" value="30"/>
-			<param name="content" value="plugin://plugin.video.embycon/?item_type=Series&amp;media_type=tvshows&amp;mode=SHOW_CONTENT&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]"/>
+			<param name="content" value="$VAR[EmbyCon.RecommendedShows]"/>
 		</include>
 	</include>
 	<!-- top 250 -->
@@ -423,7 +423,7 @@
 			<param name="headline" value="$LOCALIZE[31064]$VAR[EmbyConLabel]"/>
 			<param name="sublabel" value="$INFO[ListItem.Year]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="content" value="plugin://plugin.video.embycon/?media_type=tvshows&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fFields%3d%7bfield_filters%7d%26Recursive%3dtrue%26Filters%3dIsFavorite%26IncludeItemTypes%3dSeries%26ImageTypeLimit%3d1%26format%3djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]"/>
+			<param name="content" value="$VAR[EmbyCon.FavTVShows]"/>
 		</include>
 	</include>
 	<!-- Last played albums -->
@@ -463,7 +463,7 @@
 			<param name="headline" value="$LOCALIZE[31215]$VAR[EmbyConLabel]"/>
 			<param name="widget_target" value="music"/>
 			<param name="limit" value="30"/>
-			<param name="content" value="plugin://plugin.video.embycon/?media_type=songs&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FUsers%2F%7Buserid%7D%2FItems%3FSortBy%3DPlayCount%26SortOrder%3DDescending%26IncludeItemTypes%3DAudio%26Limit%3D12%26Recursive%3Dtrue%26Fields%3DPrimaryImageAspectRatio%252CAudioInfo%26Filters%3DIsPlayed%26ImageTypeLimit%3D1%26EnableImageTypes%3DPrimary%252CBackdrop%252CBanner%252CThumb%26EnableTotalRecordCount%3Dfalse&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]"/>
+			<param name="content" value="$VAR[EmbyCon.OftenPlayedSongs]"/>
 		</include>
 	</include>
 	<!-- Fav artist -->
@@ -475,7 +475,7 @@
 			<param name="ondown" value="$PARAM[ondown]"/>
 			<param name="headline" value="$LOCALIZE[31212]$VAR[EmbyConLabel]"/>
 			<param name="widget_target" value="music"/>
-			<param name="content" value="plugin://plugin.video.embycon/?media_type=songs&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FArtists%3FSortBy%3DSortName%26SortOrder%3DAscending%26Filters%3DIsFavorite%26Recursive%3Dtrue%26Fields%3DPrimaryImageAspectRatio%252CBasicSyncInfo%26CollapseBoxSetItems%3Dfalse%26ExcludeLocationTypes%3DVirtual%26EnableTotalRecordCount%3Dfalse%26Limit%3D20%26userId%3D%7Buserid%7D&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]"/>
+			<param name="content" value="$VAR[EmbyCon.FavArtists]"/>
 		</include>
 	</include>
 	<!-- Fav albumss -->
@@ -487,7 +487,7 @@
 			<param name="ondown" value="$PARAM[ondown]"/>
 			<param name="headline" value="$LOCALIZE[31213]$VAR[EmbyConLabel]"/>
 			<param name="widget_target" value="music"/>
-			<param name="content" value="plugin://plugin.video.embycon/?media_type=songs&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FUsers%2F%7Buserid%7D%2FItems%3FSortBy%3DSortName%26SortOrder%3DAscending%26Filters%3DIsFavorite%26Recursive%3Dtrue%26Fields%3DPrimaryImageAspectRatio%252CBasicSyncInfo%26CollapseBoxSetItems%3Dfalse%26ExcludeLocationTypes%3DVirtual%26EnableTotalRecordCount%3Dfalse%26Limit%3D20%26IncludeItemTypes%3DMusicAlbum&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]"/>
+			<param name="content" value="$VAR[EmbyCon.FavAlbums]"/>
 		</include>
 	</include>
 	<!-- Fav songs -->
@@ -498,7 +498,7 @@
 			<param name="onup" value="$PARAM[onup]"/>
 			<param name="ondown" value="$PARAM[ondown]"/>
 			<param name="headline" value="$LOCALIZE[31214]$VAR[EmbyConLabel]"/>
-			<param name="content" value="plugin://plugin.video.embycon/?media_type=songs&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FUsers%2F%7Buserid%7D%2FItems%3FSortBy%3DSortName%26SortOrder%3DAscending%26Filters%3DIsFavorite%26Recursive%3Dtrue%26Fields%3DPrimaryImageAspectRatio%252CBasicSyncInfo%26CollapseBoxSetItems%3Dfalse%26ExcludeLocationTypes%3DVirtual%26EnableTotalRecordCount%3Dfalse%26Limit%3D20%26IncludeItemTypes%3DAudio&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]"/>
+			<param name="content" value="$VAR[EmbyCon.FavSongs]"/>
 		</include>
 	</include>
 
