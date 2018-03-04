@@ -1,0 +1,1011 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+	<!-- in progerss media -->
+	<include name="W_InProgressMedia">
+		<include content="HomeWideWidget">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$LOCALIZE[31080]"/>
+			<param name="widget_target" value="videos"/>
+			<param name="content" value="plugin://script.skin.helper.widgets/?action=inprogressshowsandmovies&amp;mediatype=media&amp;reload=$INFO[Window(Home).Property(widgetreload)]"/>
+		</include>
+	</include>
+	<include name="W_EmbyCon_InProgressMedia">
+		<include content="HomeWideWidget">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$LOCALIZE[31080]$VAR[EmbyConLabel]"/>
+			<param name="widget_target" value="videos"/>
+			<param name="content" value="$VAR[EmbyCon_InProgressMedia]"/>
+		</include>
+	</include>
+	<!-- PVR -->
+	<include name="W_PVR">
+		<include content="PVRHomeSquareWidget">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$LOCALIZE[575]"/>
+			<param name="mainlabel" value="$INFO[ListItem.Title]"/>
+			<param name="thumblabel" value="$INFO[ListItem.Channelname]"/>
+			<param name="sublabel" value="$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, - ]"/>
+			<param name="content" value="pvr://channels/tv/*"/>
+		</include>
+	</include>
+	<include name="W_RecentPVR">
+		<include content="PVRHomeSquareWidget">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$LOCALIZE[31030]"/>
+			<param name="mainlabel" value="$VAR[PVRWidgetMainListLabel]"/>
+			<param name="thumblabel" value="$INFO[ListItem.Channelname]"/>
+			<param name="sublabel" value="$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, - ]"/>
+			<param name="sortby" value="lastplayed"/>
+			<param name="sortorder" value="descending"/>
+			<param name="limit" value="15"/>
+			<param name="content" value="pvr://channels/tv/*?view=lastplayed"/>
+		</include>
+	</include>
+	<!-- NextUp -->
+	<include name="W_NextUp">
+		<include content="HomeWideWidget">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$LOCALIZE[31012]"/>
+			<param name="mainlabel" value="$INFO[ListItem.TvShowTitle]"/>
+			<param name="sublabel" value="$INFO[ListItem.Year]"/>
+			<param name="widget_target" value="videos"/>
+			<param name="content" value="special://skin/playlists/video/InProgressTVShows.xsp"/>
+		</include>
+	</include>
+	<include name="W_EmbyCon_NextUp">
+		<include content="HomeWideWidget">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$LOCALIZE[31012]$VAR[EmbyConLabel]"/>
+			<param name="mainlabel" value="$INFO[ListItem.TvShowTitle]"/>
+			<param name="sublabel" value="$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title]"/>
+			<param name="widget_target" value="videos"/>
+			<param name="content" value="$VAR[EmbyCon_NextUpEpisodes]"/>
+		</include>
+	</include>
+	<!-- Recently added movies -->
+	<include name="W_NewMovies">
+		<include content="HomePosterWidget">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$LOCALIZE[20386]"/>
+			<param name="mainlabel" value="$INFO[ListItem.Label]"/>
+			<param name="sublabel" value="$INFO[ListItem.Year]"/>
+			<param name="widget_target" value="videos"/>
+			<param name="content" value="special://skin/playlists/video/RecentlyAddedMovies.xsp"/>
+		</include>
+	</include>
+	<include name="W_EmbyCon_NewMovies">
+		<include content="HomePosterWidget">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$LOCALIZE[20386]$VAR[EmbyConLabel]"/>
+			<param name="mainlabel" value="$INFO[ListItem.Label]"/>
+			<param name="sublabel" value="$INFO[ListItem.Year]"/>
+			<param name="widget_target" value="videos"/>
+			<param name="content" value="$VAR[EmbyCon_RecentMovies]"/>
+		</include>
+	</include>
+	<!-- Recently added episodes -->
+	<include name="W_NewEpisodes">
+		<include content="HomeWideWidget">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$LOCALIZE[31081]"/>
+			<param name="mainlabel" value="$INFO[ListItem.Label]"/>
+			<param name="sublabel" value="$INFO[ListItem.Year]"/>
+			<param name="widget_target" value="videos"/>
+			<param name="content" value="special://skin/playlists/video/RecentlyUpdatedTVShows.xsp"/>
+		</include>
+	</include>
+	<include name="W_EmbyCon_NewEpisodes">
+		<include content="HomeWideWidget">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$LOCALIZE[31081]$VAR[EmbyConLabel]"/>
+			<param name="mainlabel" value="$VAR[EmbyCon_RecentEpisodes_Mainlabel]"/>
+			<param name="sublabel" value="$VAR[EmbyCon_RecentEpisodes_Sublabel]"/>
+			<param name="widget_target" value="videos"/>
+			<param name="content" value="$VAR[EmbyCon_RecentEpisodes]"/>
+		</include>
+	</include>
+	<!-- Recently added albums -->
+	<include name="W_NewAlbums">
+		<include content="HomeSquareWidget">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$LOCALIZE[359]"/>
+			<param name="mainlabel" value="$INFO[ListItem.Album]"/>
+			<param name="sublabel" value="$INFO[ListItem.Artist]"/>
+			<param name="widget_target" value="music"/>
+			<param name="content" value="musicdb://recentlyaddedalbums/"/>
+		</include>
+	</include>
+	<include name="W_EmbyCon_NewAlbums">
+		<include content="HomeSquareWidget">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$LOCALIZE[359]"/>
+			<param name="mainlabel" value="$INFO[ListItem.Album]"/>
+			<param name="sublabel" value="$INFO[ListItem.Artist]"/>
+			<param name="sortby" value="dateadded"/>
+			<param name="sortorder" value="ascending"/>
+			<param name="widget_target" value="music"/>
+			<param name="content" value="$VAR[EmbyCon_RecentAlbums]"/>
+		</include>
+	</include>
+
+
+
+
+	<!-- In progress movies -->
+	<include name="W_InProgressMovies">
+		<include content="HomeWideWidget">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$LOCALIZE[31080]"/>
+			<param name="mainlabel" value="$INFO[ListItem.Title]"/>
+			<param name="sublabel" value="$INFO[ListItem.Year]"/>
+			<param name="widget_target" value="videos"/>
+			<param name="limit" value="30"/>
+			<param name="content" value="special://skin/playlists/video/InProgressMovies.xsp"/>
+		</include>
+	</include>
+	<include name="W_EmbyCon_InProgressMovies">
+		<include content="HomeWideWidget">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$LOCALIZE[31080]$VAR[EmbyConLabel]"/>
+			<param name="mainlabel" value="$INFO[ListItem.Title]"/>
+			<param name="sublabel" value="$INFO[ListItem.Year]"/>
+			<param name="widget_target" value="videos"/>
+			<param name="content" value="$VAR[EmbyCon_InProgressMovies]"/>
+		</include>
+	</include>
+	<!-- Movie genres -->
+	<include name="W_MovieGenres">
+		<include content="HomeWideWidget">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$LOCALIZE[135]"/>
+			<param name="widget_target" value="videos"/>
+			<param name="sortby" value="sorttitle"/>
+			<param name="layout" value="GenreLayout"/>
+			<param name="content" value="plugin://script.skin.helper.widgets/?action=browsegenres&amp;mediatype=movies&amp;limit=1000&amp;reload=$INFO[Window(Home).Property(widgetreload)]"/>
+		</include>
+	</include>
+	<include name="W_EmbyCon_MovieGenres">
+		<include content="HomePosterWidget">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$LOCALIZE[135]$VAR[EmbyConLabel]"/>
+			<param name="widget_target" value="videos"/>
+			<param name="sortby" value="sorttitle"/>
+			<param name="layout" value="GenreLayout"/>
+			<param name="content" value="$VAR[EmbyCon_MovieGenres]"/>
+		</include>
+	</include>
+	<!-- Recommended movies-->
+	<include name="W_RecommendedMovies">
+		<include content="HomePosterWidget">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$LOCALIZE[31017]"/>
+			<param name="mainlabel" value="$INFO[ListItem.Title]"/>
+			<param name="sublabel" value="$INFO[ListItem.Year]"/>
+			<param name="widget_target" value="videos"/>
+			<param name="sortby" value="rating"/>
+			<param name="sortorder" value="descending"/>
+			<param name="limit" value="20"/>
+			<param name="content" value="videodb://movies/titles/"/>
+		</include>
+	</include>
+	<include name="W_EmbyCon_RecommendedMovies">
+		<include content="HomePosterWidget">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$LOCALIZE[31017]$VAR[EmbyConLabel]"/>
+			<param name="mainlabel" value="$INFO[ListItem.Title]"/>
+			<param name="sublabel" value="$INFO[ListItem.Year]"/>
+			<param name="widget_target" value="videos"/>
+			<param name="sortby" value="rating"/>
+			<param name="sortorder" value="descending"/>
+			<param name="limit" value="20"/>
+			<param name="content" value="$VAR[EmbyCon_Movies]"/>
+		</include>
+	</include>
+	<!-- Similar movies -->
+	<include name="W_SimilarMovies">
+		<include content="HomePosterWidget">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$LOCALIZE[31018] $INFO[Container(208).ListItem.Property(similartitle)]"/>
+			<param name="mainlabel" value="$INFO[ListItem.Title]"/>
+			<param name="sublabel" value="$INFO[ListItem.Year]"/>
+			<param name="widget_target" value="videos"/>
+			<param name="limit" value="30"/>
+			<param name="content" value="plugin://script.skin.helper.widgets/?action=similar&amp;mediatype=movies&amp;reload=$INFO[Window(Home).Property(widgetreload2)]"/>
+		</include>
+	</include>
+	<include name="W_EmbyCon_SimilarMovies">
+		<include content="HomePosterWidget">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$LOCALIZE[31018] $INFO[Container(209).ListItem.Property(suggested_from_watching)]$VAR[EmbyConLabel]"/>
+			<param name="mainlabel" value="$INFO[ListItem.Title]"/>
+			<param name="sublabel" value="$INFO[ListItem.Year]"/>
+			<param name="widget_target" value="videos"/>
+			<param name="content" value="$VAR[EmbyCon_SimilarMovies]"/>
+		</include>
+	</include>
+	<!-- Top 250 movies -->
+	<include name="W_Top250Movies">
+		<include content="HomePosterWidget">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$LOCALIZE[31097]"/>
+			<param name="mainlabel" value="$INFO[ListItem.Label]"/>
+			<param name="sublabel" value="$INFO[ListItem.Year]"/>
+			<param name="widget_target" value="videos"/>
+			<param name="content" value="plugin://script.skin.helper.widgets/?action=top250&amp;mediatype=movies&amp;reload=$INFO[Window(Home).Property(widgetreload2)]"/>
+		</include>
+	</include>
+	<!-- Fav movies -->
+	<include name="W_FavMovies">
+		<include content="HomePosterWidget">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$LOCALIZE[31062]"/>
+			<param name="sublabel" value="$INFO[ListItem.Year]"/>
+			<param name="widget_target" value="videos"/>
+			<param name="content" value="library://video/emby_Favorite movies.xml"/>
+		</include>
+	</include>
+	<include name="W_EmbyCon_FavMovies">
+		<include content="HomePosterWidget">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$LOCALIZE[31062] $INFO[Container(209).ListItem.Property(suggested_from_watching)]$VAR[EmbyConLabel]"/>
+			<param name="sublabel" value="$INFO[ListItem.Year]"/>
+			<param name="widget_target" value="videos"/>
+			<param name="sortby" value="label"/>
+			<param name="content" value="plugin://plugin.video.embycon/?media_type=Movies&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fFields%3d%7bfield_filters%7d%26Recursive%3dtrue%26Filters%3dIsFavorite%26IncludeItemTypes%3dMovie%26ImageTypeLimit%3d1%26format%3djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]"/>
+		</include>
+	</include>
+
+
+	<!-- In progress episodes -->
+	<include name="W_InProgressShows">
+		<include content="HomeWideWidget">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$LOCALIZE[31080]"/>
+			<param name="widget_target" value="videos"/>
+			<param name="content" value="special://skin/playlists/video/InProgressEpisodes.xsp"/>
+		</include>
+	</include>
+	<include name="W_EmbyCon_InProgressShows">
+		<include content="HomeWideWidget">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$LOCALIZE[31080]$VAR[EmbyConLabel]"/>
+			<param name="widget_target" value="videos"/>
+			<param name="content" value="$VAR[EmbyCon_InProgressShows]"/>
+		</include>
+	</include>
+	<!-- Gernres -->
+	<include name="W_TVShowGenres">
+		<include content="HomeWideWidget">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$LOCALIZE[135]"/>
+			<param name="layout" value="GenreLayout"/>
+			<param name="sortby" value="sorttitle"/>
+			<param name="widget_target" value="videos"/>
+			<param name="content" value="plugin://script.skin.helper.widgets/?action=browsegenres&amp;mediatype=tvshows&amp;limit=1000&amp;reload=$INFO[Window(Home).Property(widgetreload2)]"/>
+		</include>
+	</include>
+	<include name="W_EmbyCon_TVShowGenres">
+		<include content="HomePosterWidget">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$LOCALIZE[135]$VAR[EmbyConLabel]"/>
+			<param name="layout" value="GenreLayout"/>
+			<param name="sortby" value="sorttitle"/>
+			<param name="widget_target" value="videos"/>
+			<param name="content" value="$VAR[EmbyCon_TVShowGenres]"/>
+		</include>
+	</include>
+	<!-- Recommended -->
+	<include name="W_RecommendedShows">
+		<include content="HomeWideWidget">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$LOCALIZE[31017]"/>
+			<param name="sublabel" value="$INFO[ListItem.Year]"/>
+			<param name="widget_target" value="videos"/>
+			<param name="content" value="plugin://script.skin.helper.widgets/?action=recommended&amp;mediatype=tvshows&amp;reload=$INFO[Window(Home).Property(widgetreload-movies)]"/>
+		</include>
+	</include>
+	<include name="W_EmbyCon_RecommendedShows">
+		<include content="HomeWideWidget">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$LOCALIZE[31017]$VAR[EmbyConLabel]"/>
+			<param name="sublabel" value="$INFO[ListItem.Year]"/>
+			<param name="widget_target" value="videos"/>
+			<param name="content" value="$VAR[EmbyCon_TVShows]"/>
+		</include>
+	</include>
+	<!-- top 250 -->
+	<include name="W_Top250Shows">
+		<include content="HomeWideWidget">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$LOCALIZE[31098]"/>
+			<param name="mainlabel" value="$INFO[ListItem.Label]"/>
+			<param name="sublabel" value="$INFO[ListItem.Year]"/>
+			<param name="widget_target" value="videos"/>
+			<param name="content" value="plugin://script.skin.helper.widgets/?action=top250&amp;mediatype=tvshows&amp;reload=$INFO[Window(Home).Property(widgetreload2)]"/>
+		</include>
+	</include>
+	<!-- Fav shows -->
+	<include name="W_FavShows">
+		<include content="HomeWideWidget">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$LOCALIZE[31064]"/>
+			<param name="sublabel" value="$INFO[ListItem.Year]"/>
+			<param name="widget_target" value="videos"/>
+			<param name="content" value="library://video/emby_Favorite tvshows.xml"/>
+		</include>
+	</include>
+	<include name="W_EmbyCon_FavShows">
+		<include content="HomeWideWidget">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$LOCALIZE[31064]"/>
+			<param name="sublabel" value="$INFO[ListItem.Year]"/>
+			<param name="widget_target" value="videos"/>
+			<param name="content" value="plugin://plugin.video.embycon/?media_type=tvshows&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fFields%3d%7bfield_filters%7d%26Recursive%3dtrue%26Filters%3dIsFavorite%26IncludeItemTypes%3dSeries%26ImageTypeLimit%3d1%26format%3djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]"/>
+		</include>
+	</include>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- User Widget 1 -->
+	<include name="W_HomeCustom1">
+		<include condition="String.IsEqual(Skin.String(UserWidget1_layout),HomePosterWidget) | String.IsEmpty(Skin.String(UserWidget1_layout))" content="HomePosterWidget">
+			<param name="visible" value="Skin.HasSetting(UserWidget1)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserWidget1_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserWidget1_target)]"/>
+			<param name="content" value="$VAR[UserWidget1_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserWidget1_layout),HomeWideWidget)" content="HomeWideWidget">
+			<param name="visible" value="Skin.HasSetting(UserWidget1)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserWidget1_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserWidget1_target)]"/>
+			<param name="content" value="$VAR[UserWidget1_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserWidget1_layout),HomeSquareWidget)" content="HomeSquareWidget">
+			<param name="visible" value="Skin.HasSetting(UserWidget1)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserWidget1_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserWidget1_target)]"/>
+			<param name="content" value="$VAR[UserWidget1_content]"/>
+		</include>
+	</include>
+	<!-- User Widget 2 -->
+	<include name="W_HomeCustom2">
+		<include condition="String.IsEqual(Skin.String(UserWidget2_layout),HomePosterWidget) | String.IsEmpty(Skin.String(UserWidget2_layout))" content="HomePosterWidget">
+			<param name="visible" value="Skin.HasSetting(UserWidget2)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserWidget2_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserWidget2_target)]"/>
+			<param name="content" value="$VAR[UserWidget2_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserWidget2_layout),HomeWideWidget)" content="HomeWideWidget">
+			<param name="visible" value="Skin.HasSetting(UserWidget2)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserWidget2_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserWidget2_target)]"/>
+			<param name="content" value="$VAR[UserWidget2_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserWidget2_layout),HomeSquareWidget)" content="HomeSquareWidget">
+			<param name="visible" value="Skin.HasSetting(UserWidget2)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserWidget2_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserWidget2_target)]"/>
+			<param name="content" value="$VAR[UserWidget2_content]"/>
+		</include>
+	</include>
+	<!-- User Widget 3 -->
+	<include name="W_HomeCustom3">
+		<include condition="String.IsEqual(Skin.String(UserWidget3_layout),HomePosterWidget) | String.IsEmpty(Skin.String(UserWidget3_layout))" content="HomePosterWidget">
+			<param name="visible" value="Skin.HasSetting(UserWidget3)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserWidget3_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserWidget3_target)]"/>
+			<param name="content" value="$VAR[UserWidget3_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserWidget3_layout),HomeWideWidget)" content="HomeWideWidget">
+			<param name="visible" value="Skin.HasSetting(UserWidget3)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserWidget3_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserWidget3_target)]"/>
+			<param name="content" value="$VAR[UserWidget3_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserWidget3_layout),HomeSquareWidget)" content="HomeSquareWidget">
+			<param name="visible" value="Skin.HasSetting(UserWidget3)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserWidget3_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserWidget3_target)]"/>
+			<param name="content" value="$VAR[UserWidget3_content]"/>
+		</include>
+	</include>
+	<!-- User Widget 4 -->
+	<include name="W_HomeCustom4">
+		<include condition="String.IsEqual(Skin.String(UserWidget4_layout),HomePosterWidget) | String.IsEmpty(Skin.String(UserWidget4_layout))" content="HomePosterWidget">
+			<param name="visible" value="Skin.HasSetting(UserWidget4)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserWidget4_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserWidget4_target)]"/>
+			<param name="content" value="$VAR[UserWidget4_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserWidget4_layout),HomeWideWidget)" content="HomeWideWidget">
+			<param name="visible" value="Skin.HasSetting(UserWidget4)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserWidget4_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserWidget4_target)]"/>
+			<param name="content" value="$VAR[UserWidget4_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserWidget4_layout),HomeSquareWidget)" content="HomeSquareWidget">
+			<param name="visible" value="Skin.HasSetting(UserWidget4)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserWidget4_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserWidget4_target)]"/>
+			<param name="content" value="$VAR[UserWidget4_content]"/>
+		</include>
+	</include>
+	<!-- User Widget 5 -->
+	<include name="W_HomeCustom5">
+		<include condition="String.IsEqual(Skin.String(UserWidget5_layout),HomePosterWidget) | String.IsEmpty(Skin.String(UserWidget5_layout))" content="HomePosterWidget">
+			<param name="visible" value="Skin.HasSetting(UserWidget5)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserWidget5_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserWidget5_target)]"/>
+			<param name="content" value="$VAR[UserWidget5_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserWidget5_layout),HomeWideWidget)" content="HomeWideWidget">
+			<param name="visible" value="Skin.HasSetting(UserWidget5)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserWidget5_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserWidget5_target)]"/>
+			<param name="content" value="$VAR[UserWidget5_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserWidget5_layout),HomeSquareWidget)" content="HomeSquareWidget">
+			<param name="visible" value="Skin.HasSetting(UserWidget5)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserWidget5_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserWidget5_target)]"/>
+			<param name="content" value="$VAR[UserWidget5_content]"/>
+		</include>
+	</include>
+	<!-- User Widget 6 -->
+	<include name="W_HomeCustom6">
+		<include condition="String.IsEqual(Skin.String(UserWidget6_layout),HomePosterWidget) | String.IsEmpty(Skin.String(UserWidget6_layout))" content="HomePosterWidget">
+			<param name="visible" value="Skin.HasSetting(UserWidget6)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserWidget6_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserWidget6_target)]"/>
+			<param name="content" value="$VAR[UserWidget6_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserWidget6_layout),HomeWideWidget)" content="HomeWideWidget">
+			<param name="visible" value="Skin.HasSetting(UserWidget6)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserWidget6_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserWidget6_target)]"/>
+			<param name="content" value="$VAR[UserWidget6_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserWidget6_layout),HomeSquareWidget)" content="HomeSquareWidget">
+			<param name="visible" value="Skin.HasSetting(UserWidget6)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserWidget6_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserWidget6_target)]"/>
+			<param name="content" value="$VAR[UserWidget6_content]"/>
+		</include>
+	</include>
+	<!-- User Widget Movies 1 -->
+	<include name="W_MovieHubCustom1">
+		<include condition="String.IsEqual(Skin.String(UserMovieWidget1_layout),HomePosterWidget) | String.IsEmpty(Skin.String(UserMovieWidget1_layout))" content="HomePosterWidget">
+			<param name="visible" value="Skin.HasSetting(UserMovieWidget1)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserMovieWidget1_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserMovieWidget1_target)]"/>
+			<param name="content" value="$VAR[UserMovieWidget1_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserMovieWidget1_layout),HomeWideWidget)" content="HomeWideWidget">
+			<param name="visible" value="Skin.HasSetting(UserMovieWidget1)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserMovieWidget1_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserMovieWidget1_target)]"/>
+			<param name="content" value="$VAR[UserMovieWidget1_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserMovieWidget1_layout),HomeSquareWidget)" content="HomeSquareWidget">
+			<param name="visible" value="Skin.HasSetting(UserMovieWidget1)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserMovieWidget1_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserMovieWidget1_target)]"/>
+			<param name="content" value="$VAR[UserMovieWidget1_content]"/>
+		</include>
+	</include>
+	<!-- User Widget Movies 2 -->
+	<include name="W_MovieHubCustom2">
+		<include condition="String.IsEqual(Skin.String(UserMovieWidget2_layout),HomePosterWidget) | String.IsEmpty(Skin.String(UserMovieWidget2_layout))" content="HomePosterWidget">
+			<param name="visible" value="Skin.HasSetting(UserMovieWidget2)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserMovieWidget2_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserMovieWidget2_target)]"/>
+			<param name="content" value="$VAR[UserMovieWidget2_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserMovieWidget2_layout),HomeWideWidget)" content="HomeWideWidget">
+			<param name="visible" value="Skin.HasSetting(UserMovieWidget2)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserMovieWidget2_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserMovieWidget2_target)]"/>
+			<param name="content" value="$VAR[UserMovieWidget2_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserMovieWidget2_layout),HomeSquareWidget)" content="HomeSquareWidget">
+			<param name="visible" value="Skin.HasSetting(UserMovieWidget2)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserMovieWidget2_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserMovieWidget2_target)]"/>
+			<param name="content" value="$VAR[UserMovieWidget2_content]"/>
+		</include>
+	</include>
+	<!-- User Widget Movies 3 -->
+	<include name="W_MovieHubCustom3">
+		<include condition="String.IsEqual(Skin.String(UserMovieWidget3_layout),HomePosterWidget) | String.IsEmpty(Skin.String(UserMovieWidget3_layout))" content="HomePosterWidget">
+			<param name="visible" value="Skin.HasSetting(UserMovieWidget3)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserMovieWidget3_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserMovieWidget3_target)]"/>
+			<param name="content" value="$VAR[UserMovieWidget3_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserMovieWidget3_layout),HomeWideWidget)" content="HomeWideWidget">
+			<param name="visible" value="Skin.HasSetting(UserMovieWidget3)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserMovieWidget3_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserMovieWidget3_target)]"/>
+			<param name="content" value="$VAR[UserMovieWidget3_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserMovieWidget3_layout),HomeSquareWidget)" content="HomeSquareWidget">
+			<param name="visible" value="Skin.HasSetting(UserMovieWidget3)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserMovieWidget3_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserMovieWidget3_target)]"/>
+			<param name="content" value="$VAR[UserMovieWidget3_content]"/>
+		</include>
+	</include>
+	<!-- User Widget Movies 4 -->
+	<include name="W_MovieHubCustom4">
+		<include condition="String.IsEqual(Skin.String(UserMovieWidget4_layout),HomePosterWidget) | String.IsEmpty(Skin.String(UserMovieWidget4_layout))" content="HomePosterWidget">
+			<param name="visible" value="Skin.HasSetting(UserMovieWidget4)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserMovieWidget4_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserMovieWidget4_target)]"/>
+			<param name="content" value="$VAR[UserMovieWidget4_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserMovieWidget4_layout),HomeWideWidget)" content="HomeWideWidget">
+			<param name="visible" value="Skin.HasSetting(UserMovieWidget4)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserMovieWidget4_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserMovieWidget4_target)]"/>
+			<param name="content" value="$VAR[UserMovieWidget4_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserMovieWidget4_layout),HomeSquareWidget)" content="HomeSquareWidget">
+			<param name="visible" value="Skin.HasSetting(UserMovieWidget4)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserMovieWidget4_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserMovieWidget4_target)]"/>
+			<param name="content" value="$VAR[UserMovieWidget4_content]"/>
+		</include>
+	</include>
+	<!-- User Widget Movies 5 -->
+	<include name="W_MovieHubCustom5">
+		<include condition="String.IsEqual(Skin.String(UserMovieWidget5_layout),HomePosterWidget) | String.IsEmpty(Skin.String(UserMovieWidget5_layout))" content="HomePosterWidget">
+			<param name="visible" value="Skin.HasSetting(UserMovieWidget5)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserMovieWidget5_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserMovieWidget5_target)]"/>
+			<param name="content" value="$VAR[UserMovieWidget5_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserMovieWidget5_layout),HomeWideWidget)" content="HomeWideWidget">
+			<param name="visible" value="Skin.HasSetting(UserMovieWidget5)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserMovieWidget5_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserMovieWidget5_target)]"/>
+			<param name="content" value="$VAR[UserMovieWidget5_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserMovieWidget5_layout),HomeSquareWidget)" content="HomeSquareWidget">
+			<param name="visible" value="Skin.HasSetting(UserMovieWidget5)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserMovieWidget5_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserMovieWidget5_target)]"/>
+			<param name="content" value="$VAR[UserMovieWidget5_content]"/>
+		</include>
+	</include>
+	<!-- User Widget Movies 6 -->
+	<include name="W_MovieHubCustom6">
+		<include condition="String.IsEqual(Skin.String(UserMovieWidget6_layout),HomePosterWidget) | String.IsEmpty(Skin.String(UserMovieWidget6_layout))" content="HomePosterWidget">
+			<param name="visible" value="Skin.HasSetting(UserMovieWidget6)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserMovieWidget6_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserMovieWidget6_target)]"/>
+			<param name="content" value="$VAR[UserMovieWidget6_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserMovieWidget6_layout),HomeWideWidget)" content="HomeWideWidget">
+			<param name="visible" value="Skin.HasSetting(UserMovieWidget6)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserMovieWidget6_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserMovieWidget6_target)]"/>
+			<param name="content" value="$VAR[UserMovieWidget6_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserMovieWidget6_layout),HomeSquareWidget)" content="HomeSquareWidget">
+			<param name="visible" value="Skin.HasSetting(UserMovieWidget6)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserMovieWidget6_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserMovieWidget6_target)]"/>
+			<param name="content" value="$VAR[UserMovieWidget6_content]"/>
+		</include>
+	</include>
+	<!-- User Widget TV Shows 1 -->
+	<include name="W_TVShowHubCustom1">
+		<include condition="String.IsEqual(Skin.String(UserTVShowWidget1_layout),HomePosterWidget) | String.IsEmpty(Skin.String(UserTVShowWidget1_layout))" content="HomePosterWidget">
+			<param name="visible" value="Skin.HasSetting(UserTVShowWidget1)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserTVShowWidget1_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserTVShowWidget1_target)]"/>
+			<param name="content" value="$VAR[UserTVShowWidget1_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserTVShowWidget1_layout),HomeWideWidget)" content="HomeWideWidget">
+			<param name="visible" value="Skin.HasSetting(UserTVShowWidget1)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserTVShowWidget1_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserTVShowWidget1_target)]"/>
+			<param name="content" value="$VAR[UserTVShowWidget1_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserTVShowWidget1_layout),HomeSquareWidget)" content="HomeSquareWidget">
+			<param name="visible" value="Skin.HasSetting(UserTVShowWidget1)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserTVShowWidget1_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserTVShowWidget1_target)]"/>
+			<param name="content" value="$VAR[UserTVShowWidget1_content]"/>
+		</include>
+	</include>
+	<!-- User Widget TV Shows 2 -->
+	<include name="W_TVShowHubCustom2">
+		<include condition="String.IsEqual(Skin.String(UserTVShowWidget2_layout),HomePosterWidget) | String.IsEmpty(Skin.String(UserTVShowWidget2_layout))" content="HomePosterWidget">
+			<param name="visible" value="Skin.HasSetting(UserTVShowWidget2)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserTVShowWidget2_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserTVShowWidget2_target)]"/>
+			<param name="content" value="$VAR[UserTVShowWidget2_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserTVShowWidget2_layout),HomeWideWidget)" content="HomeWideWidget">
+			<param name="visible" value="Skin.HasSetting(UserTVShowWidget2)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserTVShowWidget2_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserTVShowWidget2_target)]"/>
+			<param name="content" value="$VAR[UserTVShowWidget2_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserTVShowWidget2_layout),HomeSquareWidget)" content="HomeSquareWidget">
+			<param name="visible" value="Skin.HasSetting(UserTVShowWidget2)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserTVShowWidget2_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserTVShowWidget2_target)]"/>
+			<param name="content" value="$VAR[UserTVShowWidget2_content]"/>
+		</include>
+	</include>
+	<!-- User Widget TV Shows 3 -->
+	<include name="W_TVShowHubCustom3">
+		<include condition="String.IsEqual(Skin.String(UserTVShowWidget3_layout),HomePosterWidget) | String.IsEmpty(Skin.String(UserTVShowWidget3_layout))" content="HomePosterWidget">
+			<param name="visible" value="Skin.HasSetting(UserTVShowWidget3)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserTVShowWidget3_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserTVShowWidget3_target)]"/>
+			<param name="content" value="$VAR[UserTVShowWidget3_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserTVShowWidget3_layout),HomeWideWidget)" content="HomeWideWidget">
+			<param name="visible" value="Skin.HasSetting(UserTVShowWidget3)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserTVShowWidget3_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserTVShowWidget3_target)]"/>
+			<param name="content" value="$VAR[UserTVShowWidget3_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserTVShowWidget3_layout),HomeSquareWidget)" content="HomeSquareWidget">
+			<param name="visible" value="Skin.HasSetting(UserTVShowWidget3)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserTVShowWidget3_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserTVShowWidget3_target)]"/>
+			<param name="content" value="$VAR[UserTVShowWidget3_content]"/>
+		</include>
+	</include>
+	<!-- User Widget TV Shows 4 -->
+	<include name="W_TVShowHubCustom4">
+		<include condition="String.IsEqual(Skin.String(UserTVShowWidget4_layout),HomePosterWidget) | String.IsEmpty(Skin.String(UserTVShowWidget4_layout))" content="HomePosterWidget">
+			<param name="visible" value="Skin.HasSetting(UserTVShowWidget4)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserTVShowWidget4_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserTVShowWidget4_target)]"/>
+			<param name="content" value="$VAR[UserTVShowWidget4_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserTVShowWidget4_layout),HomeWideWidget)" content="HomeWideWidget">
+			<param name="visible" value="Skin.HasSetting(UserTVShowWidget4)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserTVShowWidget4_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserTVShowWidget4_target)]"/>
+			<param name="content" value="$VAR[UserTVShowWidget4_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserTVShowWidget4_layout),HomeSquareWidget)" content="HomeSquareWidget">
+			<param name="visible" value="Skin.HasSetting(UserTVShowWidget4)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserTVShowWidget4_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserTVShowWidget4_target)]"/>
+			<param name="content" value="$VAR[UserTVShowWidget4_content]"/>
+		</include>
+	</include>
+	<!-- User Widget TV Shows 5 -->
+	<include name="W_TVShowHubCustom5">
+		<include condition="String.IsEqual(Skin.String(UserTVShowWidget5_layout),HomePosterWidget) | String.IsEmpty(Skin.String(UserTVShowWidget5_layout))" content="HomePosterWidget">
+			<param name="visible" value="Skin.HasSetting(UserTVShowWidget5)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserTVShowWidget5_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserTVShowWidget5_target)]"/>
+			<param name="content" value="$VAR[UserTVShowWidget5_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserTVShowWidget5_layout),HomeWideWidget)" content="HomeWideWidget">
+			<param name="visible" value="Skin.HasSetting(UserTVShowWidget5)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserTVShowWidget5_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserTVShowWidget5_target)]"/>
+			<param name="content" value="$VAR[UserTVShowWidget5_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserTVShowWidget5_layout),HomeSquareWidget)" content="HomeSquareWidget">
+			<param name="visible" value="Skin.HasSetting(UserTVShowWidget5)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserTVShowWidget5_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserTVShowWidget5_target)]"/>
+			<param name="content" value="$VAR[UserTVShowWidget5_content]"/>
+		</include>
+	</include>
+	<!-- User Widget TV Shows 6 -->
+	<include name="W_TVShowHubCustom6">
+		<include condition="String.IsEqual(Skin.String(UserTVShowWidget6_layout),HomePosterWidget) | String.IsEmpty(Skin.String(UserTVShowWidget6_layout))" content="HomePosterWidget">
+			<param name="visible" value="Skin.HasSetting(UserTVShowWidget6)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserTVShowWidget6_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserTVShowWidget6_target)]"/>
+			<param name="content" value="$VAR[UserTVShowWidget6_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserTVShowWidget6_layout),HomeWideWidget)" content="HomeWideWidget">
+			<param name="visible" value="Skin.HasSetting(UserTVShowWidget6)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserTVShowWidget6_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserTVShowWidget6_target)]"/>
+			<param name="content" value="$VAR[UserTVShowWidget6_content]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(UserTVShowWidget6_layout),HomeSquareWidget)" content="HomeSquareWidget">
+			<param name="visible" value="Skin.HasSetting(UserTVShowWidget6)"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$INFO[Skin.String(UserTVShowWidget6_name)]"/>
+			<param name="widget_target" value="$INFO[Skin.String(UserTVShowWidget6_target)]"/>
+			<param name="content" value="$VAR[UserTVShowWidget6_content]"/>
+		</include>
+	</include>
+</includes>

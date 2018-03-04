@@ -3,6 +3,8 @@
 	<defaultcontrol always="true">100</defaultcontrol>
 	<onunload>ClearProperty(menu_position,home)</onunload>
 	<onunload>ClearProperty(home_widget_position,home)</onunload>
+	<onunload>ClearProperty(moviehub_widget_position,home)</onunload>
+	<onunload>ClearProperty(tvshowhub_widget_position,home)</onunload>
 	<controls>
 		<control type="group">
 			<include>FullscreenDimensions</include>
@@ -112,6 +114,8 @@
 						<content>
 							<include condition="!String.IsEmpty(Window(home).Property(menu_position))">MainMenuAvailableItems</include>
 							<include condition="!String.IsEmpty(Window(home).Property(home_widget_position))">HomeAvailableWidgets</include>
+							<include condition="!String.IsEmpty(Window(home).Property(moviehub_widget_position))">MovieHubAvailableWidgets</include>
+							<include condition="!String.IsEmpty(Window(home).Property(tvshowhub_widget_position))">TVShowHubAvailableWidgets</include>
 						</content>
 					</control>
 					<control type="scrollbar" id="60">
