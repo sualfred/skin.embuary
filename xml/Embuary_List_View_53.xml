@@ -96,7 +96,7 @@
 					<showonepage>false</showonepage>
 					<orientation>vertical</orientation>
 				</control>
-				<!-- Thumb image -->
+				<!-- wide thumb -->
 				<control type="group">
 					<visible>String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,set) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,season) | String.StartsWith(ListItem.Path,pvr://) | [String.StartsWith(Container.FolderPath,plugin://plugin.video.emby/) + String.Contains(Container.FolderPath,type=homevideos)] | [String.StartsWith(Container.FolderPath,plugin://plugin.video.embycon) + !String.EndsWith(ListItem.Icon,icon.png)]</visible>
 					<right>90</right>
@@ -131,7 +131,7 @@
 							<height>312</height>
 							<font>Light24</font>
 							<textcolor>white</textcolor>
-														<align>center</align>
+							<align>center</align>
 							<aligny>center</aligny>
 							<label>$PARAM[thumblabel]</label>
 							<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
@@ -183,7 +183,7 @@
 							<aligny>top</aligny>
 							<label>$VAR[ListViewPlot]</label>
 							<font>Light24</font>
-														<autoscroll>false</autoscroll>
+							<autoscroll>false</autoscroll>
 						</control>
 						<control type="label">
 							<width>auto</width>
@@ -196,6 +196,102 @@
 						</control>
 					</control>
 				</control>
+				<!-- poster thumb -->
+				<control type="group">
+					<visible>false</visible>
+					<visible>!String.IsEmpty(ListItem.Art(poster)) | !String.IsEmpty(ListItem.Art(tvshow.poster))</visible>
+					<right>90</right>
+					<top>125</top>
+					<width>590</width>
+					<control type="group">
+						<control type="group">
+							<centerleft>50%</centerleft>
+							<width>228</width>
+							<control type="image">
+								<top>-2</top>
+								<left>-2</left>
+								<width>228</width>
+								<height>338</height>
+								<texture>items/shadow_poster_list.png</texture>
+							</control>
+							<control type="image">
+								<width>222</width>
+								<height>332</height>
+								<texture colordiffuse="thumb_background_fallback" diffuse="items/mask_poster_list.png">common/white.jpg</texture>
+								<aspectratio scalediffuse="false">stretch</aspectratio>
+								<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+							</control>
+							<control type="image">
+								<width>222</width>
+								<height>332</height>
+								<texture colordiffuse="dark_button" diffuse="items/mask_poster_list.png">common/white.jpg</texture>
+								<aspectratio scalediffuse="false">stretch</aspectratio>
+								<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
+							</control>
+							<control type="textbox">
+								<top>10</top>
+								<left>10</left>
+								<width>202</width>
+								<height>312</height>
+								<font>Light24</font>
+								<textcolor>white</textcolor>
+								<align>center</align>
+								<aligny>center</aligny>
+								<label>$PARAM[thumblabel]</label>
+								<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+							</control>
+							<control type="image">
+								<width>222</width>
+								<height>332</height>
+								<texture diffuse="items/mask_poster_list.png" background="true">$VAR[IconPoster]</texture>
+								<aspectratio scalediffuse="false">stretch</aspectratio>
+							</control>
+							<control type="group">
+								<width>222</width>
+								<height>332</height>
+								<include>bubble_overlay</include>
+								<include>bubble_play</include>
+							</control>
+							<include content="progress">
+								<param name="top" value="328"/>
+								<param name="width" value="222"/>
+							</include>
+						</control>
+						<include content="static_labels">
+							<param name="top">348</param>
+							<param name="width">590</param>
+							<param name="mainlabel">$PARAM[mainlabel]</param>
+							<param name="sublabel">$PARAM[sublabel]</param>
+							<param name="fallbacklabel">$PARAM[fallbacklabel]</param>
+						</include>
+					</control>
+					<control type="grouplist">
+						<orientation>vertical</orientation>
+						<top>425</top>
+						<height>550</height>
+						<align>top</align>
+						<itemgap>00</itemgap>
+						<width>590</width>
+						<control type="textbox" id="97">
+							<width>590</width>
+							<height>470</height>
+							<align>justify</align>
+							<aligny>top</aligny>
+							<label>$VAR[ListViewPlot]</label>
+							<font>Light24</font>
+							<autoscroll>false</autoscroll>
+						</control>
+						<control type="label">
+							<width>auto</width>
+							<align>center</align>
+							<font>Material38</font>
+							<textcolor>panel_text</textcolor>
+							<label></label>
+							<visible>Container(97).HasNext</visible>
+						</control>
+					</control>
+				</control>
+				<!-- square thumb -->
 				<control type="group">
 					<visible>![String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,set) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,season) | String.StartsWith(ListItem.Path,pvr://) | [String.StartsWith(Container.FolderPath,plugin://plugin.video.emby/) + String.Contains(Container.FolderPath,type=homevideos)] | [String.StartsWith(Container.FolderPath,plugin://plugin.video.embycon) + !String.EndsWith(ListItem.Icon,icon.png)]]</visible>
 					<right>90</right>
@@ -233,7 +329,7 @@
 								<height>312</height>
 								<font>Light24</font>
 								<textcolor>white</textcolor>
-																<align>center</align>
+								<align>center</align>
 								<aligny>center</aligny>
 								<label>$PARAM[thumblabel]</label>
 								<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
@@ -277,7 +373,7 @@
 							<aligny>top</aligny>
 							<label>$VAR[ListViewPlot]</label>
 							<font>Light24</font>
-														<autoscroll>false</autoscroll>
+							<autoscroll>false</autoscroll>
 						</control>
 						<control type="label">
 							<width>auto</width>
