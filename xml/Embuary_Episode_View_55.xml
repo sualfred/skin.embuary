@@ -4,7 +4,6 @@
 		<!-- season 55 -->
 		<control type="grouplist" id="550">
 			<include>Visible_OpenClose</include>
-			<include>Bounce_Up_Down</include>
 			<visible>Control.IsVisible(55)</visible>
 			<width>100%</width>
 			<height>100%</height>
@@ -37,14 +36,14 @@
 							<label>$INFO[ListItem.TvShowTitle]</label>
 							<font>Reg37</font>
 							<aligny>top</aligny>
-													</control>
+						</control>
 						<control type="label">
 							<width>886</width>
 							<height>60</height>
 							<label>$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title]</label>
 							<font>Reg37</font>
 							<aligny>top</aligny>
-													</control>
+						</control>
 						<!-- meta -->
 						<include content="MetaEpisodeInfos">
 							<param name="width" value="886"/>
@@ -96,7 +95,7 @@
 							<aligny>top</aligny>
 							<label>$INFO[ListItem.Plot]</label>
 							<font>Light24</font>
-														<autoscroll>false</autoscroll>
+							<autoscroll>false</autoscroll>
 						</control>
 						<control type="label">
 							<height>15</height>
@@ -130,7 +129,7 @@
 				<param name="visible" value="Integer.IsGreater(Container(2000).NumItems,0)"/>
 				<param name="id" value="1000"/>
 				<param name="onup" value="55"/>
-				<param name="ondown" value="SetProperty(BounceDown,1,home)"/>
+				<param name="ondown" value="noop"/>
 				<param name="onback" value="55"/>
 				<param name="content" value="$VAR[View_Cast_Content]"/>
 			</include>

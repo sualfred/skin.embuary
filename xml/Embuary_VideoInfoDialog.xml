@@ -13,7 +13,6 @@
 			<usecontrolcoords>true</usecontrolcoords>
 			<scrolltime tween="sine" easing="out">400</scrolltime>
 			<itemgap>-80</itemgap>
-			<include>Bounce_Up_Down</include>
 			<pagecontrol>17</pagecontrol>
 			<!-- Meta -->
 			<control type="group">
@@ -42,7 +41,7 @@
 								<label>$INFO[VideoPlayer.TvShowTitle]</label>
 								<font>Reg37</font>
 								<aligny>top</aligny>
-																<visible>VideoPlayer.Content(episodes)</visible>
+								<visible>VideoPlayer.Content(episodes)</visible>
 							</control>
 							<control type="label">
 								<width>1040</width>
@@ -50,7 +49,7 @@
 								<label>$INFO[VideoPlayer.Season,S,:]$INFO[VideoPlayer.Episode,E, - ]$INFO[VideoPlayer.Title]</label>
 								<font>Reg37</font>
 								<aligny>top</aligny>
-															</control>
+							</control>
 							<!-- meta -->
 							<include>PlayerVideoInfos</include>
 							<!-- buttons -->
@@ -92,7 +91,7 @@
 								<aligny>top</aligny>
 								<label>$INFO[VideoPlayer.Tagline,[B],[/B][CR]]$INFO[VideoPlayer.Plot]</label>
 								<font>Light24</font>
-																<autoscroll>false</autoscroll>
+								<autoscroll>false</autoscroll>
 								<visible>!VideoPlayer.Content(episodes) + !String.IsEmpty(VideoPlayer.Plot)</visible>
 							</control>
 							<control type="textbox">
@@ -102,7 +101,7 @@
 								<aligny>top</aligny>
 								<label>$INFO[VideoPlayer.Tagline,[B],[/B][CR]]$INFO[VideoPlayer.Plot]</label>
 								<font>Light24</font>
-																<autoscroll>false</autoscroll>
+								<autoscroll>false</autoscroll>
 								<visible>VideoPlayer.Content(episodes) + !String.IsEmpty(VideoPlayer.Plot)</visible>
 							</control>
 							<control type="label">
@@ -131,7 +130,7 @@
 			<include content="VideoMediaInfo">
 				<param name="id" value="300"/>
 				<param name="onup" value="200"/>
-				<param name="ondown" value="SetProperty(BounceDown,1,home)"/>
+				<param name="ondown" value="noop"/>
 			</include>
 		</control>
 		<!-- header bar -->
@@ -175,7 +174,7 @@
 					<wrapmultiline>false</wrapmultiline>
 					<font>Reg20</font>
 					<aligny>bottom</aligny>
-										<label>[COLOR softgrey]$LOCALIZE[21800]:[/COLOR]  $INFO[Player.FileName]</label>
+					<label>[COLOR softgrey]$LOCALIZE[21800]:[/COLOR]  $INFO[Player.FileName]</label>
 					<visible>!String.IsEmpty(Player.FileName)</visible>
 				</control>
 				<control type="label">
@@ -183,7 +182,7 @@
 					<wrapmultiline>false</wrapmultiline>
 					<font>Reg20</font>
 					<aligny>bottom</aligny>
-										<label>[COLOR softgrey]$LOCALIZE[573]:[/COLOR]  $INFO[Player.Folderpath]</label>
+					<label>[COLOR softgrey]$LOCALIZE[573]:[/COLOR]  $INFO[Player.Folderpath]</label>
 					<visible>!String.IsEmpty(Player.Folderpath)</visible>
 				</control>
 				<control type="label">
@@ -191,7 +190,7 @@
 					<wrapmultiline>false</wrapmultiline>
 					<font>Reg20</font>
 					<aligny>bottom</aligny>
-										<label>[COLOR softgrey]$LOCALIZE[291]:[/COLOR]  $INFO[VideoPlayer.VideoResolution]$INFO[VideoPlayer.VideoCodec, ,]$INFO[VideoPlayer.VideoAspect, ,AR]$INFO[VideoPlayer.StereoscopicMode, ]</label>
+					<label>[COLOR softgrey]$LOCALIZE[291]:[/COLOR]  $INFO[VideoPlayer.VideoResolution]$INFO[VideoPlayer.VideoCodec, ,]$INFO[VideoPlayer.VideoAspect, ,AR]$INFO[VideoPlayer.StereoscopicMode, ]</label>
 					<visible>!String.IsEmpty(VideoPlayer.VideoResolution)</visible>
 				</control>
 				<control type="label">
@@ -199,7 +198,7 @@
 					<wrapmultiline>false</wrapmultiline>
 					<font>Reg20</font>
 					<aligny>bottom</aligny>
-										<label>[COLOR softgrey]$LOCALIZE[292]:[/COLOR]  $INFO[VideoPlayer.AudioLanguage,, ]$INFO[VideoPlayer.AudioChannels,,ch ]$INFO[VideoPlayer.AudioCodec]</label>
+					<label>[COLOR softgrey]$LOCALIZE[292]:[/COLOR]  $INFO[VideoPlayer.AudioLanguage,, ]$INFO[VideoPlayer.AudioChannels,,ch ]$INFO[VideoPlayer.AudioCodec]</label>
 					<visible>!String.IsEmpty(VideoPlayer.AudioLanguage)</visible>
 				</control>
 				<control type="label">
@@ -207,7 +206,7 @@
 					<wrapmultiline>false</wrapmultiline>
 					<font>Reg20</font>
 					<aligny>bottom</aligny>
-										<label>[COLOR softgrey]$LOCALIZE[459]:[/COLOR]  $INFO[VideoPlayer.SubtitlesLanguage]</label>
+					<label>[COLOR softgrey]$LOCALIZE[459]:[/COLOR]  $INFO[VideoPlayer.SubtitlesLanguage]</label>
 					<visible>!String.IsEmpty(VideoPlayer.SubtitlesLanguage)</visible>
 				</control>
 			</control>
@@ -241,7 +240,7 @@
 						<label>$INFO[VideoPlayer.Title]</label>
 						<font>Reg37</font>
 						<aligny>top</aligny>
-											</control>
+					</control>
 					<control type="grouplist">
 						<height>60</height>
 						<width>1166</width>
@@ -253,7 +252,7 @@
 							<label>$VAR[PlayerEpisodeName]</label>
 							<font>Reg37</font>
 							<aligny>top</aligny>
-													</control>
+						</control>
 					</control>
 					<!-- meta -->
 					<include>PlayerVideoInfos</include>
@@ -304,7 +303,7 @@
 						<aligny>top</aligny>
 						<label>$INFO[VideoPlayer.Plot]</label>
 						<font>Light24</font>
-												<autoscroll>false</autoscroll>
+						<autoscroll>false</autoscroll>
 					</control>
 				</control>
 			</control>
