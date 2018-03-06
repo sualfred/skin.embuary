@@ -252,11 +252,11 @@
 		<value condition="Container.Content(sets) | String.IsEqual(ListItem.DBType,set)"></value>
 		<value condition="String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) + !String.IsEmpty(ListItem.Property(id)) + !String.IsEqual(ListItem.DBType,episode) + !String.IsEqual(ListItem.DBType,season)">plugin://plugin.video.embycon?mode=WIDGET_CONTENT_CAST&amp;id=$INFO[ListItem.Property(id)]</value>
 		<value condition="String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">plugin://plugin.video.embycon?mode=WIDGET_CONTENT_CAST&amp;id=$INFO[Window(home).Property(EmbyID)]</value>
-		<value condition="String.IsEqual(ListItem.DBType,movie) + !String.IsEmpty(ListItem.DBID) + !String.IsEqual(ListItem.DBID,0)">plugin://plugin.get.cast?mode=dbid&amp;dbtype=movie&amp;dbinfo=$INFO[ListItem.DBID]</value>
-		<value condition="String.IsEqual(ListItem.DBType,movie) + String.IsEqual(ListItem.DBID,0)">plugin://plugin.get.cast?mode=title&amp;dbtype=movie&amp;dbinfo=$INFO[ListItem.Title]</value>
-		<value condition="String.IsEqual(ListItem.DBType,tvshow) + !String.IsEmpty(ListItem.DBID) + !String.IsEqual(ListItem.DBID,0)">plugin://plugin.get.cast?mode=dbid&amp;dbtype=tvshow&amp;dbinfo=$INFO[ListItem.DBID]</value>
-		<value condition="String.IsEqual(ListItem.DBType,tvshow) + String.IsEqual(ListItem.DBID,0)">plugin://plugin.get.cast?mode=title&amp;dbtype=tvshow&amp;dbinfo=$INFO[ListItem.TVShowTitle]</value>
-		<value condition="[String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,season)] + !String.IsEmpty(ListItem.DBID)">plugin://plugin.get.cast?mode=title&amp;dbtype=tvshow&amp;dbinfo=$INFO[ListItem.TVShowTitle]</value>
+		<value condition="String.IsEqual(ListItem.DBType,movie) + !String.IsEmpty(ListItem.DBID) + !String.IsEqual(ListItem.DBID,0)">plugin://plugin.get.cast?mode=dbid&amp;&amp;dbtype=movie&amp;&amp;dbinfo=$INFO[ListItem.DBID]</value>
+		<value condition="String.IsEqual(ListItem.DBType,movie) + String.IsEqual(ListItem.DBID,0)">plugin://plugin.get.cast?mode=title&amp;&amp;dbtype=movie&amp;&amp;dbinfo=$INFO[ListItem.Title]</value>
+		<value condition="String.IsEqual(ListItem.DBType,tvshow) + !String.IsEmpty(ListItem.DBID) + !String.IsEqual(ListItem.DBID,0)">plugin://plugin.get.cast?mode=dbid&amp;&amp;dbtype=tvshow&amp;&amp;dbinfo=$INFO[ListItem.DBID]</value>
+		<value condition="String.IsEqual(ListItem.DBType,tvshow) + String.IsEqual(ListItem.DBID,0)">plugin://plugin.get.cast?mode=title&amp;&amp;dbtype=tvshow&amp;&amp;dbinfo=$INFO[ListItem.TVShowTitle]</value>
+		<value condition="[String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,season)] + !String.IsEmpty(ListItem.DBID)">plugin://plugin.get.cast?mode=title&amp;&amp;dbtype=tvshow&amp;&amp;dbinfo=$INFO[ListItem.TVShowTitle]</value>
 	</variable>
 	<variable name="View54_NextUp_Content">
 		<value condition="Container.Content(seasons) + Integer.IsGreater(Window(home).Property(UnwatchedEpisodes),0) + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">plugin://plugin.video.embycon/?mode=GET_CONTENT&amp;media_type=Episodes&amp;url=%7Bserver%7D%2Femby%2FShows%2FNextUp%3FuserId%3D%7Buserid%7D%26Limit%3D%7BItemLimit%7D%26Filters%3D%7Bfield_filters%7D%26format%3Djson%26ImageTypeLimit%3D1%26IsMissing%3DFalse%26SeriesId%3D$INFO[Window(home).Property(EmbyID)]</value>
@@ -1479,9 +1479,9 @@
 		<value condition="!String.IsEmpty(MusicPlayer.Cover) + !String.StartsWith(MusicPlayer.Cover,default)">$INFO[MusicPlayer.Cover]</value>
 	</variable>
 	<variable name="PlayerCastContent">
-		<value condition="!String.IsEmpty(VideoPlayer.DBID) + VideoPlayer.Content(episodes)">plugin://plugin.get.cast?mode=title&amp;dbtype=tvshow&amp;dbinfo=$INFO[VideoPlayer.TVShowTitle]</value>
-		<value condition="!String.IsEmpty(VideoPlayer.DBID) + !String.IsEqual(VideoPlayer.DBID,0) + !VideoPlayer.Content(episodes)">plugin://plugin.get.cast?mode=dbid&amp;dbtype=movie&amp;dbinfo=$INFO[VideoPlayer.DBID]</value>
-		<value condition="!String.IsEmpty(VideoPlayer.DBID) + String.IsEqual(VideoPlayer.DBID,0) + !VideoPlayer.Content(episodes)">plugin://plugin.get.cast?mode=title&amp;dbtype=movie&amp;dbinfo=$INFO[VideoPlayer.Title]</value>
+		<value condition="!String.IsEmpty(VideoPlayer.DBID) + VideoPlayer.Content(episodes)">plugin://plugin.get.cast?mode=title&amp;&amp;dbtype=tvshow&amp;&amp;dbinfo=$INFO[VideoPlayer.TVShowTitle]</value>
+		<value condition="!String.IsEmpty(VideoPlayer.DBID) + !String.IsEqual(VideoPlayer.DBID,0) + !VideoPlayer.Content(episodes)">plugin://plugin.get.cast?mode=dbid&amp;&amp;dbtype=movie&amp;&amp;dbinfo=$INFO[VideoPlayer.DBID]</value>
+		<value condition="!String.IsEmpty(VideoPlayer.DBID) + String.IsEqual(VideoPlayer.DBID,0) + !VideoPlayer.Content(episodes)">plugin://plugin.get.cast?mode=title&amp;&amp;dbtype=movie&amp;&amp;dbinfo=$INFO[VideoPlayer.Title]</value>
 	</variable>
 	<variable name="PlayerSimilarContent">
 		<value condition="VideoPlayer.Content(episodes)">plugin://script.skin.helper.widgets/?action=similarshows&amp;imdbid=$INFO[VideoPlayer.IMDBNumber]</value>
