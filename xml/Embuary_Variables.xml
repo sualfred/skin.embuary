@@ -317,7 +317,7 @@
 	<variable name="ListItemClearlogo">
 		<value condition="!String.IsEmpty(ListItem.Art(tvshow.clearlogo))">$INFO[ListItem.Art(tvshow.clearlogo)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(clearlogo))">$INFO[ListItem.Art(clearlogo)]</value>
-		<value condition="!String.IsEmpty(Window(home).Property(EmbyTVShowClearlogo))">$INFO[Window(home).Property(EmbyTVShowClearlogo)]</value>
+		<value condition="[String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,season)] + !String.IsEmpty(Window(home).Property(EmbyTVShowClearlogo))">$INFO[Window(home).Property(EmbyTVShowClearlogo)]</value>
 	</variable>
 	<variable name="SeasonViewPlot">
 		<value condition="!String.IsEmpty(Window(home).Property(EmbyTVShowPlot)) + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">$INFO[Window(home).Property(EmbyTVShowPlot)]</value>
