@@ -266,13 +266,17 @@
 	</include>
 	<!-- diffuse -->
 	<include name="DiffuseMask">
-		<control type="image">
-			<include>Visible_Fade</include>
-			<include>FullscreenDimensions</include>
-			<texture colordiffuse="CC000000">common/white.jpg</texture>
-			<aspectratio>stretch</aspectratio>
-			<visible>$PARAM[visible]</visible>
-		</control>
+		<param name="colordiffuse">CC000000</param>
+		<param name="visible">true</param>
+		<definition>
+			<control type="image" id="$PARAM[id]">
+				<include>Visible_Fade</include>
+				<include>FullscreenDimensions</include>
+				<texture colordiffuse="$PARAM[colordiffuse]">common/white.jpg</texture>
+				<aspectratio>stretch</aspectratio>
+				<visible>$PARAM[visible]</visible>
+			</control>
+		</definition>
 	</include>
 	<!-- Side Menu -->
 	<include name="SidePanel">
@@ -890,7 +894,7 @@
 			<aligny>center</aligny>
 			<font>reg24</font>
 			<textcolor>emby</textcolor>
-			<label>$LOCALIZE[31038]</label>
+			<label>$LOCALIZE[31038]$INFO[PVR.TimeShiftCur, (,)]</label>
 			<visible>Pvr.IsTimeShift</visible>
 		</control>
 	</include>

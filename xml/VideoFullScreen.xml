@@ -4,12 +4,29 @@
 	<onload>SetProperty(showvideoinfo,1,home)</onload>
 	<onload>AlarmClock(PreloadTimeout,ClearProperty(showvideoinfo,home),00:04,silent)</onload>
 	<controls>
+		<include content="DiffuseMask">
+			<param name="visible">Player.Caching | !String.IsEmpty(PVR.ChannelNumberInput)</param>
+			<param name="colordiffuse" value="AA000000"/>
+			<param name="id" value="99"/>
+		</include>1
 		<!-- Busy spinner -->
 		<control type="group" id="99">
 			<visible>Player.Caching</visible>
 			<include content="FullscreenBusySpinner">
 				<param name="colordiffuse" value="white"/>
 			</include>
+		</control>
+		<!-- Numeric Input -->
+		<control type="label" id="99">
+			<top>0</top>
+			<bottom>0</bottom>
+			<left>0</left>
+			<right>0</right>
+			<font>Bold70</font>
+			<textshadow>text_shadow</textshadow>
+			<label>$INFO[PVR.ChannelNumberInput,$LOCALIZE[19000][CR] ]</label>
+			<align>center</align>
+			<aligny>center</aligny>
 		</control>
 		<!-- OSD -->
 		<control type="group" id="99">
