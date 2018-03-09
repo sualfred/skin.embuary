@@ -835,7 +835,7 @@
 	</variable>
 	<variable name="PlayerDurationMinutes">
 		<value condition="String.IsEmpty(Player.Duration)"/>
-		<value condition="Player.HasAudio">$INFO[ListItem.Duration]</value>
+		<value condition="Player.HasAudio">$INFO[Player.Duration]</value>
 		<value condition="!String.Contains(Player.Duration,:) + !String.IsEqual(Player.Duration,1)">$INFO[Player.Duration] $LOCALIZE[31089]</value>
 		<value condition="!String.Contains(Player.Duration,:)">$INFO[Player.Duration] $LOCALIZE[31090]</value>
 		<value condition="String.StartsWith(Player.Duration,01:00:)">60 $LOCALIZE[31089]</value>
