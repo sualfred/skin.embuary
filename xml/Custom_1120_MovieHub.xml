@@ -48,7 +48,7 @@
 							<ondown>200</ondown>
 						</control>
 						<control type="button" id="102">
-							<visible>System.HasAddon(plugin.video.embycon)</visible>
+							<visible>System.HasAddon(plugin.video.embycon) + !Skin.HasSetting(HideMovieHubEmbyConButton)</visible>
 							<include>DarkGreyButton</include>
 							<label>$LOCALIZE[342] [COLOR FFCCCCCC](EmbyCon)[/COLOR]</label>
 							<onclick>ActivateWindow(10025,&quot;plugin://plugin.video.embycon/?media_type=Movies&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fFields%3dDateCreated%2cEpisodeCount%2cSeasonCount%2cPath%2cGenres%2cStudios%2cEtag%2cMediaStreams%2cOverview%26Recursive%3dtrue%26IncludeItemTypes%3dMovie%26ImageTypeLimit%3d1%26format%3djson&quot;,return)</onclick>
