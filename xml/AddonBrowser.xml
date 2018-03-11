@@ -5,7 +5,8 @@
 	<views>50,52,53,</views>
 	<menucontrol>6666</menucontrol>
 	<include>UnloadSetProperties</include>
-	<onload condition="!Window.Previous(fullscreenvideo) + !Window.Previous(visualisation) + !Skin.HasSetting(NoJumpToFirstPage)">action(firstpage)</onload>
+	<onload condition="!Window.Previous(fullscreenvideo) + !Window.Previous(visualisation) + !Skin.HasSetting(NoJumpToFirstPage) + String.IsEmpty(Window(home).Property(NoJumpToFirstPage))">action(firstpage)</onload>
+	<onload>ClearProperty(NoJumpToFirstPage,home)</onload>
 	<controls>
 		<control type="button" id="2">
 			<include>HiddenObject</include>
