@@ -74,6 +74,7 @@
 		<value condition="String.StartsWith(Container.Folderpath,plugin://plugin.video.embycon) | Window.IsVisible(1160) | Window.IsVisible(1161) | Window.IsVisible(1162) | Window.IsVisible(1163) | Window.IsVisible(1164) | Window.IsVisible(1165) | Window.IsVisible(1166) | Window.IsVisible(1167) | Window.IsVisible(1168) | Window.IsVisible(1169)">EmbyCon - </value>
 	</variable>
 	<variable name="ContainerContent">
+		<value condition="Window.IsVisible(script-globalsearch.xml) | Window.IsVisible(script-globalsearch-main.xml)">$LOCALIZE[283]</value>
 		<value condition="String.StartsWith(Container.FolderPath,plugin://plugin.video.emby/) + String.Contains(Container.FolderPath,type=homevideos)">$LOCALIZE[31187]</value>
 		<value condition="Window.IsVisible(1114)">$LOCALIZE[135]</value>
 		<value condition="Window.IsVisible(1130)">$INFO[Window(home).Property(emby.nodes.0.title)]</value>
@@ -120,7 +121,6 @@
 		<value condition="Window.IsVisible(videobookmarks)">$LOCALIZE[298]</value>
 		<value condition="Window.IsVisible(systeminfo)">$LOCALIZE[138]</value>
 		<value condition="Window.IsVisible(profiles)">$LOCALIZE[10130]</value>
-		<value condition="Window.IsVisible(script-globalsearch-main.xml)">$LOCALIZE[283]</value>
 		<value condition="Window.IsVisible(DialogFullScreenInfo.xml) + VideoPlayer.Content(livetv)">$LOCALIZE[19166]</value>
 		<value condition="Window.IsVisible(DialogFullScreenInfo.xml) + VideoPlayer.Content(movies)">$LOCALIZE[10524]</value>
 		<value condition="Window.IsVisible(DialogFullScreenInfo.xml) + VideoPlayer.Content(episodes)">$LOCALIZE[20352]</value>
@@ -155,6 +155,7 @@
 		<value>$INFO[Container.Foldername]</value>
 	</variable>
 	<variable name="ContainerCountLabel">
+		<value condition="Window.IsVisible(script-globalsearch.xml)">$INFO[Container.NumItems]</value>
 		<value condition="Container.Content(sets) + !Window.IsVisible(movieinformation)">$INFO[Container.NumItems]</value>
 		<value condition="Container.Content(movies) + !Window.IsVisible(movieinformation)">$INFO[Container.NumItems]</value>
 		<value condition="Container.Content(tvshows) + !Window.IsVisible(movieinformation)">$INFO[Container.NumItems]</value>
@@ -398,6 +399,8 @@
 		<value condition="Container.Content(movie)">$INFO[ListItem.Year]</value>
 		<value condition="Container.Content(season)">$INFO[ListItem.TvShowTitle]</value>
 		<value condition="Container.Content(episode)">$INFO[ListItem.TvShowTitle]</value>
+		<value condition="Container.Content(actors)">$LOCALIZE[20337]</value>
+		<value condition="Container.Content(directors)">$LOCALIZE[20339]</value>
 		<value condition="String.StartsWith(ListItem.Path,plugin://plugin.audio.prime_music) + String.Contains(ListItem.Filenameandpath,playTrack)">$INFO[ListItem.Artist]</value>
 	</variable>
 	<variable name="RightListLabel">

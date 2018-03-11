@@ -56,7 +56,7 @@
 						<label>$VAR[HeaderCustomDeviceName]</label>
 						<font>med17</font>
 						<textcolor>text_white</textcolor>
-												<aligny>center</aligny>
+						<aligny>center</aligny>
 						<aspectratio>keep</aspectratio>
 						<visible>[Window.IsVisible(home) | Window.IsVisible(loginscreen)] + !Window.IsVisible(script-globalsearch-main.xml) + !Window.IsVisible(favourites) + !$EXP[InfoDialogActive]</visible>
 					</control>
@@ -383,5 +383,62 @@
 			<onclick condition="Player.HasAudio">ActivateWindow(visualisation)</onclick>
 			<visible>Player.HasMedia + !String.StartsWith(Player.Filenameandpath,special://skin/extras) + String.IsEmpty(Window(home).Property(SkinExtraSound))</visible>
 		</control>
+	</include>
+	<!-- Globalsearch -->
+	<include name="HeaderGlobalsearch">
+		<include content="HeaderGlobalsearchItem">
+			<param name="id" value="0"/>
+		</include>
+		<include content="HeaderGlobalsearchItem">
+			<param name="id" value="1"/>
+		</include>
+		<include content="HeaderGlobalsearchItem">
+			<param name="id" value="2"/>
+		</include>
+		<include content="HeaderGlobalsearchItem">
+			<param name="id" value="3"/>
+		</include>
+		<include content="HeaderGlobalsearchItem">
+			<param name="id" value="4"/>
+		</include>
+		<include content="HeaderGlobalsearchItem">
+			<param name="id" value="5"/>
+		</include>
+		<include content="HeaderGlobalsearchItem">
+			<param name="id" value="6"/>
+		</include>
+		<include content="HeaderGlobalsearchItem">
+			<param name="id" value="7"/>
+		</include>
+		<include content="HeaderGlobalsearchItem">
+			<param name="id" value="8"/>
+		</include>
+		<include content="HeaderGlobalsearchItem">
+			<param name="id" value="9"/>
+		</include>
+	</include>
+	<include name="HeaderGlobalsearchItem">
+		<definition>
+			<control type="label">
+				<scroll>true</scroll>
+				<label>$INFO[Container(9000).ListItemPosition($PARAM[id]).Label]</label>
+				<textcolor>emby_secondary</textcolor>
+				<include>HeaderButton</include>
+				<visible>Control.HasFocus(9000) + Container(9000).Position($PARAM[id]) + !String.IsEmpty(Container(9000).ListItemPosition($PARAM[id]).Label)</visible>
+			</control>
+			<control type="label">
+				<scroll>true</scroll>
+				<label>$INFO[Container(9000).ListItemPosition($PARAM[id]).Label]</label>
+				<textcolor>selected</textcolor>
+				<include>HeaderButton</include>
+				<visible>!Control.HasFocus(9000) + Container(9000).Position($PARAM[id]) + !String.IsEmpty(Container(9000).ListItemPosition($PARAM[id]).Label)</visible>
+			</control>
+			<control type="label">
+				<scroll>false</scroll>
+				<include>HeaderButton</include>
+				<label>$INFO[Container(9000).ListItemPosition($PARAM[id]).Label]</label>
+				<visible>!Container(9000).Position($PARAM[id]) + !String.IsEmpty(Container(9000).ListItemPosition($PARAM[id]).Label)</visible>
+			</control>
+		</definition>
 	</include>
 </includes>
