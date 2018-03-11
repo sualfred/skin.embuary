@@ -24,6 +24,15 @@
 				<visible>$PARAM[visible]</visible>
 				<include content="DiffuseMask"/>
 				<include>FullscreenBusySpinner</include>
+				<control type="label">
+					<bottom>35%</bottom>
+					<width>100%</width>
+					<height>50</height>
+					<font>Med28</font>
+					<label>$PARAM[label]</label>
+					<align>center</align>
+					<aligny>top</aligny>
+				</control>
 			</control>
 		</definition>
 	</include>
@@ -689,6 +698,7 @@
 		<param name="width">8</param>
 		<param name="top">0</param>
 		<param name="bottom">0</param>
+		<param name="onup">SetFocus(6666)</param>
 		<param name="visible">Control.IsVisible(50) | Control.IsVisible(51) | Control.IsVisible(52)</param>
 		<definition>
 			<control type="scrollbar" id="$PARAM[id]">
@@ -697,7 +707,7 @@
 				<bottom>$PARAM[bottom]</bottom>
 				<right>0</right>
 				<width>$PARAM[width]</width>
-				<onup>SetFocus(6666)</onup>
+				<onup>$PARAM[onup]</onup>
 				<onleft>50</onleft>
 				<orientation>vertical</orientation>
 				<showonepage>false</showonepage>
