@@ -34,15 +34,14 @@
 		<include>Background</include>
 		<!-- hub -->
 		<control id="50" type="panel">
-			<visible>!Container(50).IsUpdating</visible>
-			<include>Visible_OpenClose</include>
 			<include>Window_OpenClose</include>
 			<width>auto</width>
-			<height>1133</height>
+			<height>1080</height>
 			<onup>9000</onup>
 			<ondown>noop</ondown>
 			<onleft>900</onleft>
 			<onright condition="Control.IsVisible(17)">17</onright>
+			<onright>noop</onright>
 			<scrolltime tween="sine" easing="out">400</scrolltime>
 			<orientation>vertical</orientation>
 			<preloaditems>4</preloaditems>
@@ -103,25 +102,52 @@
 				</control>
 			</focusedlayout>
 			<!-- wide -->
-			<itemlayout condition="Container.Content(episodes) | Container.Content(musicvideos)" width="444" height="305">
+			<itemlayout condition="Container.Content(episodes)" width="444" height="365">
 				<control type="group">
 					<left>82</left>
 					<top>122</top>
 					<include content="LandscapeLayout">
-						<param name="mainlabel" value="$INFO[ListItem.TVShowTitle,, - ]$VAR[MainListLabel]" />
+						<param name="mainlabel" value="$VAR[MainListLabel]" />
+						<param name="sublabel" value="$VAR[SubListLabel]" />
+						<param name="sublabel2" value="$VAR[DurationMinutes]" />
+						<param name="focused" value="false" />
+						<param name="id" value="50" />
+					</include>
+				</control>
+			</itemlayout>
+			<focusedlayout condition="Container.Content(episodes)" width="444" height="365">
+				<include>SetPropertyOnFocus</include>
+				<control type="group">
+					<left>82</left>
+					<top>122</top>
+					<include content="LandscapeLayout">
+						<param name="mainlabel" value="$VAR[MainListLabel]" />
+						<param name="sublabel" value="$VAR[SubListLabel]" />
+						<param name="sublabel2" value="$VAR[DurationMinutes]" />
+						<param name="focused" value="true" />
+						<param name="id" value="50" />
+					</include>
+				</control>
+			</focusedlayout>
+			<itemlayout condition="Container.Content(musicvideos)" width="444" height="305">
+				<control type="group">
+					<left>82</left>
+					<top>122</top>
+					<include content="LandscapeLayout">
+						<param name="mainlabel" value="$VAR[MainListLabel]" />
 						<param name="sublabel" value="" />
 						<param name="focused" value="false" />
 						<param name="id" value="50" />
 					</include>
 				</control>
 			</itemlayout>
-			<focusedlayout condition="Container.Content(episodes) | Container.Content(musicvideos)" width="444" height="305">
+			<focusedlayout condition="Container.Content(musicvideos)" width="444" height="305">
 				<include>SetPropertyOnFocus</include>
 				<control type="group">
 					<left>82</left>
 					<top>122</top>
 					<include content="LandscapeLayout">
-						<param name="mainlabel" value="$INFO[ListItem.TVShowTitle,, - ]$VAR[MainListLabel]" />
+						<param name="mainlabel" value="$VAR[MainListLabel]" />
 						<param name="sublabel" value="" />
 						<param name="focused" value="true" />
 						<param name="id" value="50" />

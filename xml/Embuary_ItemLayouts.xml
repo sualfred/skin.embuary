@@ -72,6 +72,30 @@
 					<textoffsetx>$PARAM[textoffsetx]</textoffsetx>
 					<visible>!$PARAM[focused] | !Control.HasFocus($PARAM[id])</visible>
 				</control>
+				<control type="label">
+					<top>60</top>
+					<width>$PARAM[width]</width>
+					<height>30</height>
+					<label>$PARAM[sublabel2]</label>
+					<font>Reg23</font>
+					<textcolor>lightgrey</textcolor>
+					<scroll>$PARAM[focused] + Control.HasFocus($PARAM[id])</scroll>
+					<align>center</align>
+					<textoffsetx>$PARAM[textoffsetx]</textoffsetx>
+					<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
+				</control>
+				<control type="label">
+					<top>60</top>
+					<width>$PARAM[width]</width>
+					<height>30</height>
+					<label>$PARAM[sublabel2]</label>
+					<font>Reg23</font>
+					<textcolor>lightgrey</textcolor>
+					<scroll>false</scroll>
+					<align>center</align>
+					<textoffsetx>$PARAM[textoffsetx]</textoffsetx>
+					<visible>!$PARAM[focused] | !Control.HasFocus($PARAM[id])</visible>
+				</control>
 			</control>
 		</definition>
 	</include>
@@ -879,6 +903,7 @@
 					<param name="id">$PARAM[id]</param>
 					<param name="mainlabel">$PARAM[mainlabel]</param>
 					<param name="sublabel">$PARAM[sublabel]</param>
+					<param name="sublabel2">$PARAM[sublabel2]</param>
 					<param name="focused">$PARAM[focused]</param>
 					<param name="labels_visible">$PARAM[labels_visible]</param>
 				</include>
