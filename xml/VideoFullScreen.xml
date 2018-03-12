@@ -197,13 +197,20 @@
 						<info>Player.Progress</info>
 						<texturebg colordiffuse="00ffffff">common/white.jpg</texturebg>
 						<midtexture colordiffuse="emby_secondary">common/white.jpg</midtexture>
-						<visible>!VideoPlayer.Content(livetv)</visible>
+						<visible>!VideoPlayer.HasEpg</visible>
 					</control>
 					<!-- LiveTV + timeshift progress bar -->
 					<control type="progress" id="99">
 						<include>PlayerProgressDimension</include>
-						<info>PVR.EpgEventProgress</info>
+						<info>Player.Progress</info>
 						<texturebg colordiffuse="grey">common/white.jpg</texturebg>
+						<midtexture colordiffuse="blue">common/white.jpg</midtexture>
+						<visible>VideoPlayer.HasEpg</visible>
+					</control>
+					<control type="progress" id="99">
+						<include>PlayerProgressDimension</include>
+						<info>PVR.EpgEventProgress</info>
+						<texturebg colordiffuse="00ffffff">common/white.jpg</texturebg>
 						<midtexture colordiffuse="emby_secondary">common/white.jpg</midtexture>
 						<visible>VideoPlayer.HasEpg</visible>
 					</control>

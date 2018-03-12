@@ -10,6 +10,7 @@
 			<!-- Seekbar nib -->
 			<control type="slider" id="401">
 				<visible>Player.Forwarding | Player.Rewinding | Player.Seeking | !String.IsEmpty(Player.SeekOffset)</visible>
+				<visible>!VideoPlayer.HasEpg</visible>
 				<bottom>98</bottom>
 				<left>309</left>
 				<right>31</right>
@@ -18,11 +19,25 @@
 				<texturesliderbar colordiffuse="00ffffff">common/white.jpg</texturesliderbar>
 				<textureslidernib colordiffuse="emby">views/player/nib_bubble.png</textureslidernib>
 				<textureslidernibfocus colordiffuse="emby">views/player/nib_bubble.png</textureslidernibfocus>
-				<visible>!VideoPlayer.HasEpg</visible>
+			</control>
+			<control type="slider" id="402">
+				<visible>Player.Forwarding | Player.Rewinding | Player.Seeking | !String.IsEmpty(Player.SeekOffset)</visible>
+				<visible>VideoPlayer.HasEpg</visible>
+				<bottom>98</bottom>
+				<left>309</left>
+				<right>31</right>
+				<height>8</height>
+				<orientation>horizontal</orientation>
+				<texturesliderbar colordiffuse="00ffffff">common/white.jpg</texturesliderbar>
+				<textureslidernib colordiffuse="emby">views/player/nib_bubble.png</textureslidernib>
+				<textureslidernibfocus colordiffuse="emby">views/player/nib_bubble.png</textureslidernibfocus>
 			</control>
 			<control type="group">
 				<visible>Player.Forwarding | Player.Rewinding | Player.Seeking | !String.IsEmpty(Player.SeekOffset) | !String.IsEmpty(Player.SeekNumeric)</visible>
 				<include condition="!VideoPlayer.HasEpg">OSD_Seek_Position</include>
+				<include condition="VideoPlayer.HasEpg" content="OSD_Seek_Position">
+					<param name="id" value="402"/>
+				</include>
 				<left>309</left>
 				<bottom>125</bottom>
 				<width>158</width>
@@ -41,29 +56,7 @@
 					<aligny>center</aligny>
 					<font>med26</font>
 					<textcolor>ffffffff</textcolor>
-					<label>$INFO[Player.SeekTime]</label>
-					<visible>!VideoPlayer.Content(livetv) + String.IsEmpty(Player.SeekNumeric)</visible>
-				</control>
-				<control type="label">
-					<width>158</width>
-					<height>70</height>
-					<align>center</align>
-					<aligny>center</aligny>
-					<font>med26</font>
-					<textcolor>ffffffff</textcolor>
-					<label>$INFO[Player.SeekNumeric]</label>
-					<visible>!VideoPlayer.Content(livetv) + !String.IsEmpty(Player.SeekNumeric)</visible>
-				</control>
-				<control type="label">
-					<width>158</width>
-					<height>70</height>
-					<align>center</align>
-					<aligny>center</aligny>
-					<font>med26</font>
-					<textcolor>ffffffff</textcolor>
 					<label>$VAR[PlayerSeekStepLabel]</label>
-					<visible>false</visible>
-					<visible>VideoPlayer.Content(livetv)</visible>
 				</control>
 			</control>
 		</control>
