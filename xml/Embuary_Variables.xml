@@ -1823,6 +1823,10 @@
 		<value condition="!String.IsEmpty(ListItem.Label)">$INFO[ListItem.Label]</value>
 		<value>n/a</value>
 	</variable>
+	<variable name="PlayerRecordIconColor">
+		<value condition="!Control.HasFocus(607) + PVR.IsRecordingPlayingChannel">red</value>
+		<value condition="!Control.HasFocus(607)">white</value>
+	</variable>
 	<variable name="PlayerFullLabel">
 		<value condition="String.IsEqual(VideoPlayer.Title,stream) + String.Contains(Player.Filenameandpath,/emby/videos/)">$LOCALIZE[31186]</value>
 		<value condition="!String.IsEmpty(MusicPlayer.Title) + !String.Contains(MusicPlayer.Title,pvr.hts_)">$INFO[MusicPlayer.Artist,, - ]$INFO[MusicPlayer.Tracknumber,,. ]$INFO[MusicPlayer.Title]</value>
@@ -1878,7 +1882,7 @@
 		<value condition="[!String.IsEmpty(Player.SeekOffset) + String.Contains(Player.SeekOffset,-)] | [!String.IsEmpty(Player.SeekStepSize) + String.Contains(Player.SeekStepSize,-)]"></value>
 	</variable>
 	<variable name="PlayerSeekStepLabel">
-		<value condition="!String.IsEmpty(PVR.EpgEventSeekTime) + VideoPlayer.HasEpg">$INFO[PVR.EpgEventSeekTime]</value>
+		<value condition="!String.IsEmpty(PVR.EpgEventSeekTime)">$INFO[PVR.EpgEventSeekTime]</value>
 		<value condition="!String.IsEmpty(Player.SeekNumeric)">$INFO[Player.SeekNumeric]</value>
 		<value condition="!String.IsEmpty(Player.SeekTime)">$INFO[Player.SeekTime]</value>
 		<value condition="!String.IsEmpty(Player.SeekStepSize)">$INFO[Player.SeekStepSize]</value>
