@@ -1878,7 +1878,7 @@
 		<value condition="[!String.IsEmpty(Player.SeekOffset) + String.Contains(Player.SeekOffset,-)] | [!String.IsEmpty(Player.SeekStepSize) + String.Contains(Player.SeekStepSize,-)]"></value>
 	</variable>
 	<variable name="PlayerSeekStepLabel">
-		<value condition="!String.IsEmpty(PVR.EpgEventSeekTime)">$INFO[PVR.EpgEventSeekTime]</value>
+		<value condition="!String.IsEmpty(PVR.EpgEventSeekTime) + VideoPlayer.HasEpg">$INFO[PVR.EpgEventSeekTime]</value>
 		<value condition="!String.IsEmpty(Player.SeekNumeric)">$INFO[Player.SeekNumeric]</value>
 		<value condition="!String.IsEmpty(Player.SeekTime)">$INFO[Player.SeekTime]</value>
 		<value condition="!String.IsEmpty(Player.SeekStepSize)">$INFO[Player.SeekStepSize]</value>
