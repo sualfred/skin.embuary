@@ -1453,6 +1453,10 @@
 		<value condition="!String.IsEmpty(ListItem.Label)">$INFO[ListItem.Label]</value>
 		<value>n/a</value>
 	</variable>
+	<variable name="PlayerRecordIconColor">
+		<value condition="!Control.HasFocus(607) + Player.Recording">red</value>
+		<value condition="!Control.HasFocus(607)">white</value>
+	</variable>
 	<variable name="PlayerFullLabel">
 		<value condition="String.IsEqual(VideoPlayer.Title,stream) + String.Contains(Player.Filenameandpath,/emby/videos/)">$LOCALIZE[31186]</value>
 		<value condition="!String.IsEmpty(MusicPlayer.Title) + !String.Contains(MusicPlayer.Title,pvr.hts_)">$INFO[MusicPlayer.Artist,, - ]$INFO[MusicPlayer.Tracknumber,,. ]$INFO[MusicPlayer.Title]</value>
