@@ -114,60 +114,6 @@
 				</control>
 			</control>
 		</control>
-		<control type="group">
-			<visible>ControlGroup(900).HasFocus + !Window.IsVisible(DialogSettings.xml) + !Window.IsVisible(playerprocessinfo) + !Window.IsVisible(sliderdialog) + !Window.IsVisible(subtitlesearch)</visible>
-			<include>Visible_PopupOpenClose</include>
-			<centerleft>50%</centerleft>
-			<width>384</width>
-			<centertop>50%</centertop>
-			<height>970</height>
-			<control type="grouplist" id="900">
-				<orientation>vertical</orientation>
-				<height>auto</height>
-				<align>center</align>
-				<itemgap>0</itemgap>
-				<onright>close</onright>
-				<onleft>close</onleft>
-				<onback>613</onback>
-				<usecontrolcoords>true</usecontrolcoords>
-				<control type="image">
-					<width>100%</width>
-					<height>10</height>
-					<texture border="5" colordiffuse="panel">common/menu_top.png</texture>
-				</control>
-				<control type="radiobutton" id="901">
-					<include content="CommonButton"/>
-					<label>$LOCALIZE[13397]</label>
-					<onclick>ShowSubtitles</onclick>
-					<selected>VideoPlayer.SubtitlesEnabled</selected>
-				</control>
-				<control type="button" id="902">
-					<include content="CommonButton"/>
-					<label>$LOCALIZE[21448]</label>
-					<label2>$INFO[VideoPlayer.SubtitlesLanguage,[COLOR softgrey],[/COLOR]]</label2>
-					<onclick>CycleSubtitle</onclick>
-					<enable>VideoPlayer.SubtitlesEnabled</enable>
-				</control>
-				<control type="button" id="903">
-					<include content="CommonButton"/>
-					<label>$LOCALIZE[22006]</label>
-					<onclick>SubtitleDelay</onclick>
-					<label2>$INFO[Player.SubtitleDelay,[COLOR softgrey],[/COLOR]]</label2>
-					<enable>VideoPlayer.SubtitlesEnabled</enable>
-				</control>
-				<control type="button" id="904">
-					<include content="CommonButton"/>
-					<label>$LOCALIZE[33003]</label>
-					<onclick>ActivateWindow(subtitlesearch)</onclick>
-					<enable>!VideoPlayer.Content(LiveTV)</enable>
-				</control>
-				<control type="image">
-					<width>100%</width>
-					<height>10</height>
-					<texture border="5" colordiffuse="panel">common/menu_bottom.png</texture>
-				</control>
-			</control>
-		</control>
 		<!--Player Controls-->
 		<control type="group" id="1">
 			<visible>!Window.IsVisible(sliderdialog)</visible>
@@ -237,7 +183,7 @@
 					<include content="PlayerButtons">
 						<param name="type" value="cc"/>
 					</include>
-					<onclick>SetFocus(900)</onclick>
+					<onclick>ActivateWindow(osdsubtitlesettings)</onclick>
 					<visible>!VideoPlayer.Content(livetv) + !VideoPlayer.Content(musicvideos)</visible>
 				</control>
 				<control type="button" id="608">
