@@ -19,12 +19,14 @@
 	<include name="CustomMainMenuItemTemplate">
 		<item>
 			<label>$INFO[Skin.String(UserHomeHub$PARAM[nr]_name)]</label>
-			<onclick>ActivateWindow($INFO[Skin.String(UserHomeHub$PARAM[nr]_target)],$INFO[Skin.String(UserHomeHub$PARAM[nr]_path)],return)</onclick>
+			<onclick condition="String.StartsWith(Skin.String(UserHomeHub$PARAM[nr]_action),ActivateWindow)">ActivateWindow($INFO[Skin.String(User$PARAM[type]Hub$PARAM[nr]_target)],$INFO[Skin.String(UserHomeHub$PARAM[nr]_path)],return)</onclick>
+			<onclick condition="!String.StartsWith(Skin.String(UserHomeHubb$PARAM[nr]_action),ActivateWindow)">$INFO[Skin.String(UserHomeHub$PARAM[nr]_action)]</onclick>
 			<icon>$PARAM[icon]</icon>
 			<property name="art1">$INFO[Container(4$PARAM[nr]).ListItem(0).Art(thumb)]</property>
 			<property name="art2">$INFO[Container(4$PARAM[nr]).ListItem(1).Art(thumb)]</property>
 			<property name="art3">$INFO[Container(4$PARAM[nr]).ListItem(2).Art(thumb)]</property>
 			<property name="art4">$INFO[Container(4$PARAM[nr]).ListItem(3).Art(thumb)]</property>
+			<property name="action">$INFO[Skin.String(UserHomeHub$PARAM[nr]_action)]</property>
 			<visible>$PARAM[visible] + Skin.HasSetting(UserHomeHub$PARAM[nr])</visible>
 		</item>
 	</include>
@@ -355,7 +357,7 @@
 			<itemlayout/>
 			<focusedlayout/>
 			<content limit="4" sortby="random">$INFO[Skin.String(UserHomeHub$PARAM[nr]_path)]</content>
-			<visible>Skin.HasSetting(UserHomeHub$PARAM[nr])</visible>
+			<visible>Skin.HasSetting(UserHomeHub$PARAM[nr]) + String.StartsWith(Skin.String(UserHomeHub$PARAM[nr]_action),ActivateWindow)</visible>
 		</control>
 	</include>
 	<include name="EmbyHiddenHomeListTemplate">
