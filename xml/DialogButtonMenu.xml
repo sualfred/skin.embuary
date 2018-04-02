@@ -75,13 +75,20 @@
 				</control>
 				<control type="button" id="9">
 					<include content="CommonButton"/>
+					<label>$LOCALIZE[13013] (NAND)</label>
+					<onclick>Dialog.Close(all,true)</onclick>
+					<onclick>System.ExecWait(&quot;/usr/sbin/rebootfromnand&quot;)</onclick>
+					<visible>System.CanReboot + System.HasAddon(service.libreelec.settings)</visible>
+				</control>
+				<control type="button" id="10">
+					<include content="CommonButton"/>
 					<label>$LOCALIZE[20126] $INFO[system.profilename]</label>
 					<onclick>dialog.close(all,true)</onclick>
 					<onclick>System.LogOff</onclick>
 					<visible>System.HasLoginScreen | Integer.IsGreater(System.ProfileCount,1)</visible>
 					<visible>System.Loggedon</visible>
 				</control>
-				<control type="button" id="10">
+				<control type="button" id="11">
 					<include content="CommonButton"/>
 					<label>$LOCALIZE[20046]</label>
 					<altlabel>$LOCALIZE[20045]</altlabel>
@@ -89,13 +96,13 @@
 					<onclick>mastermode</onclick>
 					<visible>System.HasLocks</visible>
 				</control>
-				<control type="button" id="11">
+				<control type="button" id="12">
 					<include content="CommonButton"/>
 					<label>$LOCALIZE[13017]</label>
 					<onclick>InhibitIdleShutdown(true)</onclick>
 					<visible>System.HasShutdown +!System.IsInhibit</visible>
 				</control>
-				<control type="button" id="12">
+				<control type="button" id="13">
 					<include content="CommonButton"/>
 					<label>$LOCALIZE[13018]</label>
 					<onclick>InhibitIdleShutdown(false)</onclick>
