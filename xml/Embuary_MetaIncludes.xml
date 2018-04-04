@@ -50,6 +50,11 @@
 				<include>CCIcon</include>
 				<include>MetaRating</include>
 				<include>SkinHelperRatings</include>
+				<control type="label">
+					<include>MetaLabel</include>
+					<label>$INFO[ListItem.Endtime,$LOCALIZE[31037] ]</label>
+					<visible>!String.IsEmpty(ListItem.Endtime)</visible>
+				</control>
 			</control>
 		</definition>
 	</include>
@@ -136,6 +141,11 @@
 				<include>MpaaIcon</include>
 				<include>CCIcon</include>
 				<include>MetaRating</include>
+				<control type="label">
+					<include>MetaLabel</include>
+					<label>$INFO[ListItem.Endtime,$LOCALIZE[31037] ]</label>
+					<visible>!String.IsEmpty(ListItem.Endtime)</visible>
+				</control>
 			</control>
 		</definition>
 	</include>
@@ -220,7 +230,7 @@
 				<control type="label">
 					<include>MetaLabel</include>
 					<label>$INFO[ListItem.Date]$INFO[ListItem.Endtime, - ]   </label>
-										<visible>!String.IsEmpty(ListItem.Date)</visible>
+					<visible>!String.IsEmpty(ListItem.Date)</visible>
 				</control>
 				<control type="label">
 					<include>MetaLabel</include>
@@ -230,12 +240,12 @@
 				<control type="label">
 					<include>MetaLabel</include>
 					<label>$INFO[ListItem.Channelnumber,$LOCALIZE[19029] ]   </label>
-										<visible>!String.IsEmpty(ListItem.Channelnumber)</visible>
+					<visible>!String.IsEmpty(ListItem.Channelnumber)</visible>
 				</control>
 				<control type="label">
 					<include>MetaLabel</include>
 					<label>$INFO[ListItem.Channelname]   </label>
-										<visible>!String.IsEmpty(ListItem.Channelname)</visible>
+					<visible>!String.IsEmpty(ListItem.Channelname)</visible>
 				</control>
 			</control>
 		</definition>
@@ -288,7 +298,7 @@
 				</control>
 				<control type="label">
 					<include>MetaLabel</include>
-					<label>$INFO[VideoPlayer.FinishTime,$LOCALIZE[31037]: ]   </label>
+					<label>$INFO[VideoPlayer.FinishTime,$LOCALIZE[31037] ]   </label>
 					<visible>!String.IsEmpty(VideoPlayer.FinishTime)</visible>
 				</control>
 				<control type="label">
@@ -325,7 +335,7 @@
 				<left>-2</left>
 				<width>282</width>
 				<height>420</height>
-					<texture border="20,20,20,20">items/shadow.png</texture>
+				<texture border="20,20,20,20">items/shadow.png</texture>
 			</control>
 			<control type="image">
 				<width>276</width>
@@ -348,7 +358,7 @@
 				<height>394</height>
 				<font>Light24</font>
 				<textcolor>white</textcolor>
-								<align>center</align>
+				<align>center</align>
 				<aligny>center</aligny>
 				<label>$VAR[ListItemTitleLabel]</label>
 				<visible>String.IsEmpty(ListItem.Art(poster)) + String.IsEmpty(ListItem.Art(tvshow.poster)) + String.StartsWith(ListItem.Icon,default)</visible>
@@ -397,7 +407,7 @@
 				<left>-2</left>
 				<width>282</width>
 				<height>420</height>
-					<texture border="20,20,20,20">items/shadow.png</texture>
+				<texture border="20,20,20,20">items/shadow.png</texture>
 			</control>
 			<control type="image">
 				<width>276</width>
@@ -420,7 +430,7 @@
 				<height>394</height>
 				<font>Light24</font>
 				<textcolor>white</textcolor>
-								<align>center</align>
+				<align>center</align>
 				<aligny>center</aligny>
 				<label>$INFO[Window.Property(label)]</label>
 				<visible>String.IsEmptyWindow.Property(thumb)</visible>
@@ -441,7 +451,7 @@
 				<left>-2</left>
 				<width>282</width>
 				<height>420</height>
-					<texture border="20,20,20,20">items/shadow.png</texture>
+				<texture border="20,20,20,20">items/shadow.png</texture>
 			</control>
 			<control type="image">
 				<width>276</width>
@@ -457,7 +467,7 @@
 				<height>394</height>
 				<font>Light24</font>
 				<textcolor>white</textcolor>
-								<align>center</align>
+				<align>center</align>
 				<aligny>center</aligny>
 				<label>$VAR[PlayerTitleLabel]</label>
 				<visible>String.IsEmpty(Player.Art(poster)) + String.IsEmpty(Player.Art(tvshow.poster)) + String.StartsWith(VideoPlayer.Cover,Default)</visible>
@@ -494,7 +504,7 @@
 				<height>222</height>
 				<font>Light24</font>
 				<textcolor>white</textcolor>
-								<align>center</align>
+				<align>center</align>
 				<aligny>center</aligny>
 				<label>$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title]</label>
 				<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
@@ -530,7 +540,7 @@
 				<left>-2</left>
 				<width>346</width>
 				<height>346</height>
-					<texture border="20,20,20,20">items/shadow.png</texture>
+				<texture border="20,20,20,20">items/shadow.png</texture>
 			</control>
 			<control type="image">
 				<width>340</width>
@@ -553,7 +563,7 @@
 				<height>320</height>
 				<font>Light24</font>
 				<textcolor>white</textcolor>
-								<align>center</align>
+				<align>center</align>
 				<aligny>center</aligny>
 				<label>$INFO[ListItem.Label]</label>
 				<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
@@ -579,7 +589,7 @@
 						<left>-2</left>
 						<width>596</width>
 						<height>338</height>
-					<texture border="20,20,20,20">items/shadow.png</texture>
+						<texture border="20,20,20,20">items/shadow.png</texture>
 					</control>
 					<control type="image">
 						<width>590</width>
@@ -602,7 +612,7 @@
 						<height>312</height>
 						<font>Light24</font>
 						<textcolor>white</textcolor>
-												<align>center</align>
+						<align>center</align>
 						<aligny>center</aligny>
 						<label>$VAR[MainListLabel]</label>
 						<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
@@ -682,7 +692,7 @@
 					<height>312</height>
 					<font>Light24</font>
 					<textcolor>white</textcolor>
-										<align>center</align>#
+					<align>center</align>#
 					<aligny>center</aligny>
 					<label>$INFO[VideoPlayer.Channelname]</label>
 					<visible>String.IsEmpty(VideoPlayer.Cover) | String.StartsWith(VideoPlayer.Cover,Default)</visible>
@@ -877,7 +887,7 @@
 				<font>reg22</font>
 				<aligny>top</aligny>
 				<textcolor>emby</textcolor>
-								<visible>$PARAM[visible]</visible>
+				<visible>$PARAM[visible]</visible>
 				<visible>!String.IsEmpty($PARAM[type].Genre) | !String.IsEmpty($PARAM[type].Director)</visible>
 			</control>
 			<control type="label">
@@ -887,7 +897,7 @@
 				<font>reg22</font>
 				<aligny>top</aligny>
 				<textcolor>emby</textcolor>
-								<visible>$PARAM[visible]</visible>
+				<visible>$PARAM[visible]</visible>
 				<visible>String.IsEqual(ListItem.DBType,set)</visible>
 			</control>
 		</definition>
