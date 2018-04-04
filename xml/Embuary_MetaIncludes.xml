@@ -50,6 +50,11 @@
 				<include>CCIcon</include>
 				<include>MetaRating</include>
 				<include>SkinHelperRatings</include>
+				<control type="label">
+					<include>MetaLabel</include>
+					<label>$INFO[ListItem.Endtime,$LOCALIZE[31037] ]</label>
+					<visible>!String.IsEmpty(ListItem.Endtime)</visible>
+				</control>
 			</control>
 		</definition>
 	</include>
@@ -136,6 +141,11 @@
 				<include>MpaaIcon</include>
 				<include>CCIcon</include>
 				<include>MetaRating</include>
+				<control type="label">
+					<include>MetaLabel</include>
+					<label>$INFO[ListItem.Endtime,$LOCALIZE[31037] ]</label>
+					<visible>!String.IsEmpty(ListItem.Endtime)</visible>
+				</control>
 			</control>
 		</definition>
 	</include>
@@ -288,12 +298,7 @@
 				</control>
 				<control type="label">
 					<include>MetaLabel</include>
-					<label>$VAR[PVRPlayerDuration]   </label>
-					<visible>VideoPlayer.Content(livetv) + !String.IsEmpty(Player.Duration)</visible>
-				</control>
-				<control type="label">
-					<include>MetaLabel</include>
-					<label>$INFO[PVR.EpgEventFinishTime,$LOCALIZE[31037]: ]   </label>
+					<label>$INFO[VideoPlayer.FinishTime,$LOCALIZE[31037]: ]   </label>
 					<visible>!String.IsEmpty(VideoPlayer.FinishTime)</visible>
 				</control>
 				<control type="label">
@@ -330,7 +335,7 @@
 				<left>-2</left>
 				<width>282</width>
 				<height>420</height>
-					<texture border="20,20,20,20">items/shadow.png</texture>
+				<texture border="20,20,20,20">items/shadow.png</texture>
 			</control>
 			<control type="image">
 				<width>276</width>
@@ -402,7 +407,7 @@
 				<left>-2</left>
 				<width>282</width>
 				<height>420</height>
-					<texture border="20,20,20,20">items/shadow.png</texture>
+				<texture border="20,20,20,20">items/shadow.png</texture>
 			</control>
 			<control type="image">
 				<width>276</width>
@@ -446,7 +451,7 @@
 				<left>-2</left>
 				<width>282</width>
 				<height>420</height>
-					<texture border="20,20,20,20">items/shadow.png</texture>
+				<texture border="20,20,20,20">items/shadow.png</texture>
 			</control>
 			<control type="image">
 				<width>276</width>
@@ -535,7 +540,7 @@
 				<left>-2</left>
 				<width>346</width>
 				<height>346</height>
-					<texture border="20,20,20,20">items/shadow.png</texture>
+				<texture border="20,20,20,20">items/shadow.png</texture>
 			</control>
 			<control type="image">
 				<width>340</width>
@@ -584,7 +589,7 @@
 						<left>-2</left>
 						<width>596</width>
 						<height>338</height>
-					<texture border="20,20,20,20">items/shadow.png</texture>
+						<texture border="20,20,20,20">items/shadow.png</texture>
 					</control>
 					<control type="image">
 						<width>590</width>
