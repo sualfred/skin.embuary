@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<defaultcontrol always="true">155</defaultcontrol>
+	<controls>
+		<include content="DiffuseMask">
+			<param name="visible">true</param>
+		</include>
+		<control type="group">
+			<include>Dialog_PopupOpenClose</include>
+			<centerleft>50%</centerleft>
+			<centertop>50%</centertop>
+			<width>400</width>
+			<height>220</height>
+			<control type="group">
+				<top>-30</top>
+				<control type="image">
+					<left>20</left>
+					<width>100%</width>
+					<height>25</height>
+					<texture>dialogs/emby/logo-white.png</texture>
+					<aspectratio align="left">keep</aspectratio>
+				</control>
+				<control type="image" id="150">
+					<visible>false</visible>
+				</control>
+			</control>
+			<control type="image">
+				<width>100%</width>
+				<height>220</height>
+				<texture colordiffuse="panel" border="10">common/dialog_back.png</texture>
+			</control>
+			<control type="list" id="155">
+				<centerleft>50%</centerleft>
+				<top>10</top>
+				<width>390</width>
+				<height>200</height>
+				<onup>noop</onup>
+				<onleft>close</onleft>
+				<onright>close</onright>
+				<ondown>noop</ondown>
+				<itemlayout width="390" height="50">
+					<control type="label">
+						<width>100%</width>
+						<height>50</height>
+						<aligny>center</aligny>
+						<textoffsetx>20</textoffsetx>
+						<font>med22</font>
+						<textcolor>text_white</textcolor>
+						<shadowcolor>text_shadow</shadowcolor>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+				</itemlayout>
+				<focusedlayout width="390" height="50">
+					<control type="image">
+						<width>100%</width>
+						<height>50</height>
+						<texture colordiffuse="panel_hover">common/white.jpg</texture>
+						<visible>Control.HasFocus(155)</visible>
+					</control>
+					<control type="label">
+						<width>100%</width>
+						<height>50</height>
+						<aligny>center</aligny>
+						<textoffsetx>20</textoffsetx>
+						<font>med22</font>
+						<textcolor>text_white</textcolor>
+						<shadowcolor>text_shadow</shadowcolor>
+						<scroll>true</scroll>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+				</focusedlayout>
+			</control>
+		</control>
+	</controls>
+</window>
