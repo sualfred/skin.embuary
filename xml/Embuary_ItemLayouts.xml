@@ -310,7 +310,7 @@
 		<param name="width" default="100"/>
 		<param name="visible_forced" default="false"/>
 		<definition>
-			<control type="group">				
+			<control type="group">
 				<visible>[Container($PARAM[id]).HasNext + Control.HasFocus($PARAM[id])] | [Container($PARAM[id]).HasNext + $PARAM[visible_forced]]</visible>
 				<animation effect="fade" start="0" end="100" time="200" tween="sine">Visible</animation>
 				<animation effect="fade" start="100" end="0" time="0">Hidden</animation>
@@ -452,72 +452,6 @@
 		<definition>
 			<control type="group">
 				<visible>$PARAM[visible]</visible>
-				<control type="image">
-					<top>-2</top>
-					<left>-2</left>
-					<width>282</width>
-					<height>420</height>
-					<texture border="20,20,20,20">items/shadow.png</texture>
-				</control>
-				<control type="image">
-					<width>276</width>
-					<height>414</height>
-					<texture colordiffuse="thumb_background_fallback" diffuse="items/mask_poster.png">common/white.jpg</texture>
-					<aspectratio scalediffuse="false">stretch</aspectratio>
-					<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
-				</control>
-				<control type="image">
-					<width>276</width>
-					<height>414</height>
-					<texture colordiffuse="thumb_background" diffuse="items/mask_poster.png">common/white.jpg</texture>
-					<aspectratio scalediffuse="false">stretch</aspectratio>
-					<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
-				</control>
-				<control type="textbox">
-					<top>10</top>
-					<left>10</left>
-					<width>246</width>
-					<height>394</height>
-					<font>Light24</font>
-					<textcolor>white</textcolor>
-					<align>center</align>
-					<aligny>center</aligny>
-					<label>$PARAM[thumblabel]</label>
-					<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
-				</control>
-				<control type="image">
-					<width>276</width>
-					<height>414</height>
-					<texture diffuse="items/mask_poster.png" background="true">$VAR[IconPoster]</texture>
-					<aspectratio scalediffuse="false">stretch</aspectratio>
-					<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
-				</control>
-				<control type="group">
-					<width>276</width>
-					<height>414</height>
-					<include>bubble_overlay</include>
-					<include>bubble_play</include>
-				</control>
-				<include content="progress">
-					<param name="top" value="410"/>
-					<param name="width" value="276"/>
-				</include>
-				<control type="image">
-					<left>-12</left>
-					<top>-7</top>
-					<width>300</width>
-					<height>438</height>
-					<texture border="20,20,20,20" colordiffuse="focus_widget">items/focus.png</texture>
-					<aspectratio>stretch</aspectratio>
-					<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
-					<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
-				</control>
-				<control type="image">
-					<include>Widget_Diffuse</include>
-					<width>276</width>
-					<height>414</height>
-					<texture diffuse="items/mask_wide.png" colordiffuse="diffuse_widget">common/white.jpg</texture>
-				</control>
 				<include content="widget_labels">
 					<param name="top">426</param>
 					<param name="width">276</param>
@@ -527,6 +461,75 @@
 					<param name="focused">$PARAM[focused]</param>
 					<param name="labels_visible">$PARAM[labels_visible]</param>
 				</include>
+				<control type="group">
+					<include>Animation_FocusBounce</include>
+					<control type="image">
+						<top>-2</top>
+						<left>-2</left>
+						<width>282</width>
+						<height>420</height>
+						<texture border="20,20,20,20">items/shadow.png</texture>
+					</control>
+					<control type="image">
+						<width>276</width>
+						<height>414</height>
+						<texture colordiffuse="thumb_background_fallback" diffuse="items/mask_poster.png">common/white.jpg</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="image">
+						<width>276</width>
+						<height>414</height>
+						<texture colordiffuse="thumb_background" diffuse="items/mask_poster.png">common/white.jpg</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="textbox">
+						<top>10</top>
+						<left>10</left>
+						<width>246</width>
+						<height>394</height>
+						<font>Light24</font>
+						<textcolor>white</textcolor>
+						<align>center</align>
+						<aligny>center</aligny>
+						<label>$PARAM[thumblabel]</label>
+						<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="image">
+						<width>276</width>
+						<height>414</height>
+						<texture diffuse="items/mask_poster.png" background="true">$VAR[IconPoster]</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="group">
+						<width>276</width>
+						<height>414</height>
+						<include>bubble_overlay</include>
+						<include>bubble_play</include>
+					</control>
+					<include content="progress">
+						<param name="top" value="410"/>
+						<param name="width" value="276"/>
+					</include>
+					<control type="image">
+						<left>-12</left>
+						<top>-7</top>
+						<width>300</width>
+						<height>438</height>
+						<texture border="20,20,20,20" colordiffuse="focus_widget">items/focus.png</texture>
+						<aspectratio>stretch</aspectratio>
+						<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
+						<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
+					</control>
+					<control type="image">
+						<include>Widget_Diffuse</include>
+						<width>276</width>
+						<height>414</height>
+						<texture diffuse="items/mask_wide.png" colordiffuse="diffuse_widget">common/white.jpg</texture>
+					</control>
+				</control>
 			</control>
 		</definition>
 	</include>
@@ -540,71 +543,6 @@
 		<definition>
 			<control type="group">
 				<visible>$PARAM[visible]</visible>
-				<control type="image">
-					<top>-2</top>
-					<left>-2</left>
-					<width>243</width>
-					<height>361</height>
-					<texture border="20,20,20,20">items/shadow.png</texture>
-				</control>
-				<control type="image">
-					<width>237</width>
-					<height>355</height>
-					<texture colordiffuse="thumb_background_fallback" diffuse="items/mask_poster_db.png">common/white.jpg</texture>
-					<aspectratio scalediffuse="false">stretch</aspectratio>
-					<visible>[String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)] + String.IsEmpty(ListItem.Art(tvshow.poster))</visible>
-				</control>
-				<control type="image">
-					<width>237</width>
-					<height>355</height>
-					<texture colordiffuse="thumb_background" diffuse="items/mask_poster_db.png">common/white.jpg</texture>
-					<aspectratio scalediffuse="false">stretch</aspectratio>
-					<visible>[!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)] | !String.IsEmpty(ListItem.Art(tvshow.poster))</visible>
-				</control>
-				<control type="textbox">
-					<top>10</top>
-					<left>10</left>
-					<width>217</width>
-					<height>335</height>
-					<font>Light24</font>
-					<textcolor>white</textcolor>
-					<align>center</align>
-					<aligny>center</aligny>
-					<label>$PARAM[thumblabel]</label>
-					<visible>[String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)] + String.IsEmpty(ListItem.Art(tvshow.poster))</visible>
-				</control>
-				<control type="image">
-					<width>237</width>
-					<height>355</height>
-					<texture diffuse="items/mask_poster_db.png" background="true">$VAR[IconPoster]</texture>
-					<aspectratio scalediffuse="false">stretch</aspectratio>
-				</control>
-				<control type="group">
-					<width>237</width>
-					<height>355</height>
-					<include>bubble_overlay</include>
-					<include>bubble_play</include>
-				</control>
-				<include content="progress">
-					<param name="top" value="351"/>
-					<param name="width" value="237"/>
-				</include>
-				<control type="image">
-					<left>-12</left>
-					<top>-7</top>
-					<width>261</width>
-					<height>379</height>
-					<texture border="20,20,20,20" colordiffuse="focus_widget">items/focus.png</texture>
-					<aspectratio>stretch</aspectratio>
-					<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
-					<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
-				</control>
-				<control type="image">
-					<include>Widget_Diffuse</include>
-					<width>237</width>
-					<height>355</height>
-					<texture diffuse="items/mask_wide.png" colordiffuse="diffuse_widget">common/white.jpg</texture>
-				</control>
 				<include content="widget_labels">
 					<param name="top">367</param>
 					<param name="width">237</param>
@@ -614,6 +552,74 @@
 					<param name="focused">$PARAM[focused]</param>
 					<param name="labels_visible">$PARAM[labels_visible]</param>
 				</include>
+				<control type="group">
+					<include>Animation_FocusBounce</include>
+					<control type="image">
+						<top>-2</top>
+						<left>-2</left>
+						<width>243</width>
+						<height>361</height>
+						<texture border="20,20,20,20">items/shadow.png</texture>
+					</control>
+					<control type="image">
+						<width>237</width>
+						<height>355</height>
+						<texture colordiffuse="thumb_background_fallback" diffuse="items/mask_poster_db.png">common/white.jpg</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<visible>[String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)] + String.IsEmpty(ListItem.Art(tvshow.poster))</visible>
+					</control>
+					<control type="image">
+						<width>237</width>
+						<height>355</height>
+						<texture colordiffuse="thumb_background" diffuse="items/mask_poster_db.png">common/white.jpg</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<visible>[!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)] | !String.IsEmpty(ListItem.Art(tvshow.poster))</visible>
+					</control>
+					<control type="textbox">
+						<top>10</top>
+						<left>10</left>
+						<width>217</width>
+						<height>335</height>
+						<font>Light24</font>
+						<textcolor>white</textcolor>
+						<align>center</align>
+						<aligny>center</aligny>
+						<label>$PARAM[thumblabel]</label>
+						<visible>[String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)] + String.IsEmpty(ListItem.Art(tvshow.poster))</visible>
+					</control>
+					<control type="image">
+						<width>237</width>
+						<height>355</height>
+						<texture diffuse="items/mask_poster_db.png" background="true">$VAR[IconPoster]</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+					</control>
+					<control type="group">
+						<width>237</width>
+						<height>355</height>
+						<include>bubble_overlay</include>
+						<include>bubble_play</include>
+					</control>
+					<include content="progress">
+						<param name="top" value="351"/>
+						<param name="width" value="237"/>
+					</include>
+					<control type="image">
+						<left>-12</left>
+						<top>-7</top>
+						<width>261</width>
+						<height>379</height>
+						<texture border="20,20,20,20" colordiffuse="focus_widget">items/focus.png</texture>
+						<aspectratio>stretch</aspectratio>
+						<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
+						<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
+					</control>
+					<control type="image">
+						<include>Widget_Diffuse</include>
+						<width>237</width>
+						<height>355</height>
+						<texture diffuse="items/mask_wide.png" colordiffuse="diffuse_widget">common/white.jpg</texture>
+					</control>
+				</control>
 			</control>
 		</definition>
 	</include>
@@ -627,61 +633,6 @@
 		<definition>
 			<control type="group">
 				<visible>$PARAM[visible]</visible>
-				<control type="image">
-					<top>-2</top>
-					<left>-2</left>
-					<width>243</width>
-					<height>361</height>
-					<texture border="20,20,20,20">items/shadow.png</texture>
-				</control>
-				<control type="group">
-					<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
-					<control type="image">
-						<width>237</width>
-						<height>355</height>
-						<texture colordiffuse="red" diffuse="items/mask_poster_db.png">common/white.jpg</texture>
-						<aspectratio scalediffuse="false">stretch</aspectratio>
-					</control>
-					<control type="image">
-						<width>237</width>
-						<height>355</height>
-						<texture>DefaultActor.png</texture>
-						<bordersize>20</bordersize>
-						<aspectratio scalediffuse="false">keep</aspectratio>
-					</control>
-				</control>
-				<control type="group">
-					<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
-					<control type="image">
-						<width>237</width>
-						<height>355</height>
-						<texture colordiffuse="thumb_background" diffuse="items/mask_poster_db.png">common/white.jpg</texture>
-						<aspectratio scalediffuse="false">stretch</aspectratio>
-					</control>
-					<control type="image">
-						<width>237</width>
-						<height>355</height>
-						<texture diffuse="items/mask_poster_db.png" background="true">$VAR[IconPoster]</texture>
-						<aspectratio scalediffuse="false">stretch</aspectratio>
-						<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
-					</control>
-				</control>
-				<control type="image">
-					<left>-12</left>
-					<top>-7</top>
-					<width>261</width>
-					<height>379</height>
-					<texture border="20,20,20,20" colordiffuse="focus_widget">items/focus.png</texture>
-					<aspectratio>stretch</aspectratio>
-					<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
-					<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
-				</control>
-				<control type="image">
-					<include>Widget_Diffuse</include>
-					<width>237</width>
-					<height>355</height>
-					<texture diffuse="items/mask_wide.png" colordiffuse="diffuse_widget">common/white.jpg</texture>
-				</control>
 				<include content="widget_labels">
 					<param name="top">367</param>
 					<param name="width">237</param>
@@ -691,6 +642,64 @@
 					<param name="focused">$PARAM[focused]</param>
 					<param name="labels_visible">$PARAM[labels_visible]</param>
 				</include>
+				<control type="group">
+					<include>Animation_FocusBounce</include>
+					<control type="image">
+						<top>-2</top>
+						<left>-2</left>
+						<width>243</width>
+						<height>361</height>
+						<texture border="20,20,20,20">items/shadow.png</texture>
+					</control>
+					<control type="group">
+						<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+						<control type="image">
+							<width>237</width>
+							<height>355</height>
+							<texture colordiffuse="red" diffuse="items/mask_poster_db.png">common/white.jpg</texture>
+							<aspectratio scalediffuse="false">stretch</aspectratio>
+						</control>
+						<control type="image">
+							<width>237</width>
+							<height>355</height>
+							<texture>DefaultActor.png</texture>
+							<bordersize>20</bordersize>
+							<aspectratio scalediffuse="false">keep</aspectratio>
+						</control>
+					</control>
+					<control type="group">
+						<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
+						<control type="image">
+							<width>237</width>
+							<height>355</height>
+							<texture colordiffuse="thumb_background" diffuse="items/mask_poster_db.png">common/white.jpg</texture>
+							<aspectratio scalediffuse="false">stretch</aspectratio>
+						</control>
+						<control type="image">
+							<width>237</width>
+							<height>355</height>
+							<texture diffuse="items/mask_poster_db.png" background="true">$VAR[IconPoster]</texture>
+							<aspectratio scalediffuse="false">stretch</aspectratio>
+							<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
+						</control>
+					</control>
+					<control type="image">
+						<left>-12</left>
+						<top>-7</top>
+						<width>261</width>
+						<height>379</height>
+						<texture border="20,20,20,20" colordiffuse="focus_widget">items/focus.png</texture>
+						<aspectratio>stretch</aspectratio>
+						<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
+						<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
+					</control>
+					<control type="image">
+						<include>Widget_Diffuse</include>
+						<width>237</width>
+						<height>355</height>
+						<texture diffuse="items/mask_wide.png" colordiffuse="diffuse_widget">common/white.jpg</texture>
+					</control>
+				</control>
 			</control>
 		</definition>
 	</include>
@@ -705,80 +714,6 @@
 		<definition>
 			<control type="group">
 				<visible>$PARAM[visible]</visible>
-				<control type="image">
-					<top>-2</top>
-					<left>-2</left>
-					<width>886</width>
-					<height>169</height>
-					<texture border="20,20,20,20">items/shadow.png</texture>
-				</control>
-				<control type="image">
-					<width>880</width>
-					<height>163</height>
-					<texture colordiffuse="thumb_background_fallback" diffuse="items/mask_banner.png">common/white.jpg</texture>
-					<aspectratio scalediffuse="false">stretch</aspectratio>
-					<visible>![!String.IsEmpty(ListItem.Art(banner)) | !String.IsEmpty(ListItem.Art(tvshow.banner)) | !String.IsEmpty(ListItem.Art(fanart)) | !String.IsEmpty(ListItem.Art(tvshow.fanart))]</visible>
-				</control>
-				<control type="image">
-					<width>880</width>
-					<height>163</height>
-					<texture colordiffuse="thumb_background" diffuse="items/mask_banner.png">common/white.jpg</texture>
-					<aspectratio scalediffuse="false">stretch</aspectratio>
-					<visible>!String.IsEmpty(ListItem.Art(banner)) | !String.IsEmpty(ListItem.Art(tvshow.banner)) | !String.IsEmpty(ListItem.Art(fanart)) | !String.IsEmpty(ListItem.Art(tvshow.fanart))</visible>
-				</control>
-				<control type="textbox">
-					<top>10</top>
-					<left>10</left>
-					<width>860</width>
-					<height>143</height>
-					<font>Light24</font>
-					<textcolor>white</textcolor>
-					<align>center</align>
-					<aligny>center</aligny>
-					<label>$PARAM[thumblabel]</label>
-					<visible>![!String.IsEmpty(ListItem.Art(banner)) | !String.IsEmpty(ListItem.Art(tvshow.banner)) | !String.IsEmpty(ListItem.Art(fanart)) | !String.IsEmpty(ListItem.Art(tvshow.fanart))]</visible>
-				</control>
-				<control type="image">
-					<width>880</width>
-					<height>163</height>
-					<texture diffuse="items/mask_banner.png" background="true">$VAR[IconBanner]</texture>
-					<aspectratio scalediffuse="false" aligny="top">scale</aspectratio>
-					<visible>!String.IsEmpty(ListItem.Art(banner)) | !String.IsEmpty(ListItem.Art(tvshow.banner)) | !String.IsEmpty(ListItem.Art(fanart)) | !String.IsEmpty(ListItem.Art(tvshow.fanart))</visible>
-				</control>
-				<control type="image">
-					<width>880</width>
-					<height>163</height>
-					<texture diffuse="items/mask_banner.png" background="true">$VAR[ListItemClearlogo]</texture>
-					<aspectratio scalediffuse="false">keep</aspectratio>
-					<bordersize>20</bordersize>
-					<visible>String.IsEmpty(ListItem.Art(banner)) + String.IsEmpty(ListItem.Art(tvshow.banner)) + [!String.IsEmpty(ListItem.Art(fanart)) | !String.IsEmpty(ListItem.Art(tvshow.fanart))]</visible>
-				</control>
-				<control type="group">
-					<width>880</width>
-					<height>163</height>
-					<include>bubble_overlay</include>
-					<include>bubble_play</include>
-				</control>
-				<include content="progress">
-					<param name="top" value="159"/>
-					<param name="width" value="880"/>
-				</include>
-				<control type="image">
-					<left>-12</left>
-					<top>-7</top>
-					<width>904</width>
-					<height>187</height>
-					<texture border="20,20,20,20" colordiffuse="focus_widget">items/focus.png</texture>
-					<aspectratio>stretch</aspectratio>
-					<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
-					<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
-				</control>
-				<control type="image">
-					<include>Widget_Diffuse</include>
-					<width>880</width>
-					<height>163</height>
-					<texture diffuse="items/mask_banner.png" colordiffuse="diffuse_widget">common/white.jpg</texture>
-				</control>
 				<include content="widget_labels">
 					<param name="top">175</param>
 					<param name="width">880</param>
@@ -788,6 +723,83 @@
 					<param name="focused">$PARAM[focused]</param>
 					<param name="labels_visible">$PARAM[labels_visible]</param>
 				</include>
+				<control type="group">
+					<include>Animation_FocusBounce</include>
+					<control type="image">
+						<top>-2</top>
+						<left>-2</left>
+						<width>886</width>
+						<height>169</height>
+						<texture border="20,20,20,20">items/shadow.png</texture>
+					</control>
+					<control type="image">
+						<width>880</width>
+						<height>163</height>
+						<texture colordiffuse="thumb_background_fallback" diffuse="items/mask_banner.png">common/white.jpg</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<visible>![!String.IsEmpty(ListItem.Art(banner)) | !String.IsEmpty(ListItem.Art(tvshow.banner)) | !String.IsEmpty(ListItem.Art(fanart)) | !String.IsEmpty(ListItem.Art(tvshow.fanart))]</visible>
+					</control>
+					<control type="image">
+						<width>880</width>
+						<height>163</height>
+						<texture colordiffuse="thumb_background" diffuse="items/mask_banner.png">common/white.jpg</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<visible>!String.IsEmpty(ListItem.Art(banner)) | !String.IsEmpty(ListItem.Art(tvshow.banner)) | !String.IsEmpty(ListItem.Art(fanart)) | !String.IsEmpty(ListItem.Art(tvshow.fanart))</visible>
+					</control>
+					<control type="textbox">
+						<top>10</top>
+						<left>10</left>
+						<width>860</width>
+						<height>143</height>
+						<font>Light24</font>
+						<textcolor>white</textcolor>
+						<align>center</align>
+						<aligny>center</aligny>
+						<label>$PARAM[thumblabel]</label>
+						<visible>![!String.IsEmpty(ListItem.Art(banner)) | !String.IsEmpty(ListItem.Art(tvshow.banner)) | !String.IsEmpty(ListItem.Art(fanart)) | !String.IsEmpty(ListItem.Art(tvshow.fanart))]</visible>
+					</control>
+					<control type="image">
+						<width>880</width>
+						<height>163</height>
+						<texture diffuse="items/mask_banner.png" background="true">$VAR[IconBanner]</texture>
+						<aspectratio scalediffuse="false" aligny="top">scale</aspectratio>
+						<visible>!String.IsEmpty(ListItem.Art(banner)) | !String.IsEmpty(ListItem.Art(tvshow.banner)) | !String.IsEmpty(ListItem.Art(fanart)) | !String.IsEmpty(ListItem.Art(tvshow.fanart))</visible>
+					</control>
+					<control type="image">
+						<width>880</width>
+						<height>163</height>
+						<texture diffuse="items/mask_banner.png" background="true">$VAR[ListItemClearlogo]</texture>
+						<aspectratio scalediffuse="false">keep</aspectratio>
+						<bordersize>20</bordersize>
+						<visible>String.IsEmpty(ListItem.Art(banner)) + String.IsEmpty(ListItem.Art(tvshow.banner)) + [!String.IsEmpty(ListItem.Art(fanart)) | !String.IsEmpty(ListItem.Art(tvshow.fanart))]</visible>
+					</control>
+					<control type="group">
+						<width>880</width>
+						<height>163</height>
+						<include>bubble_overlay</include>
+						<include>bubble_play</include>
+					</control>
+					<include content="progress">
+						<param name="top" value="159"/>
+						<param name="width" value="880"/>
+					</include>
+					<control type="image">
+						<left>-12</left>
+						<top>-7</top>
+						<width>904</width>
+						<height>187</height>
+						<texture border="20,20,20,20" colordiffuse="focus_widget">items/focus.png</texture>
+						<aspectratio>stretch</aspectratio>
+						<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
+						<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
+					</control>
+					<control type="image">
+						<include>Widget_Diffuse</include>
+						<width>880</width>
+						<height>163</height>
+						<texture diffuse="items/mask_banner.png" colordiffuse="diffuse_widget">common/white.jpg</texture>
+					</control>
+				</control>
 			</control>
 		</definition>
 	</include>
@@ -803,89 +815,6 @@
 		<definition>
 			<control type="group">
 				<visible>$PARAM[visible]</visible>
-				<control type="image">
-					<top>-2</top>
-					<left>-2</left>
-					<width>430</width>
-					<height>245</height>
-					<texture border="20,20,20,20">items/shadow.png</texture>
-				</control>
-				<control type="image">
-					<width>424</width>
-					<height>239</height>
-					<texture colordiffuse="thumb_background_fallback" diffuse="items/mask_wide.png">common/white.jpg</texture>
-					<aspectratio scalediffuse="false">stretch</aspectratio>
-					<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
-				</control>
-				<control type="image">
-					<width>424</width>
-					<height>239</height>
-					<texture colordiffuse="thumb_background" diffuse="items/mask_wide.png">common/white.jpg</texture>
-					<aspectratio scalediffuse="false">stretch</aspectratio>
-					<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
-				</control>
-				<control type="textbox">
-					<top>10</top>
-					<left>10</left>
-					<width>404</width>
-					<height>219</height>
-					<font>Light24</font>
-					<textcolor>white</textcolor>
-					<align>center</align>
-					<aligny>center</aligny>
-					<label>$PARAM[thumblabel]</label>
-					<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
-				</control>
-				<control type="image">
-					<width>424</width>
-					<height>239</height>
-					<texture diffuse="items/mask_wide.png" background="true">$INFO[ListItem.Icon]</texture>
-					<aspectratio scalediffuse="false">keep</aspectratio>
-					<bordersize>20</bordersize>
-					<visible>String.StartsWith(ListItem.Path,pvr://) + !String.StartsWith(ListItem.Icon,Default)</visible>
-				</control>
-				<control type="image">
-					<width>424</width>
-					<height>239</height>
-					<texture diffuse="items/mask_wide.png" background="true">$PARAM[thumb]</texture>
-					<aspectratio scalediffuse="false">scale</aspectratio>
-					<visible>!String.StartsWith(ListItem.Path,pvr://) + !String.StartsWith(ListItem.Icon,Default)</visible>
-				</control>
-				<control type="group">
-					<width>424</width>
-					<height>239</height>
-					<control type="image">
-						<left>10</left>
-						<right>100</right>
-						<bottom>10</bottom>
-						<height>60</height>
-						<texture background="true">$VAR[ListItemClearlogo]</texture>
-						<aspectratio align="left" aligny="bottom">keep</aspectratio>
-						<visible>[!String.IsEmpty(ListItem.Art(fanart)) | !String.IsEmpty(ListItem.Art(tvshow.fanart)) | [!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)]] + String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape)) + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,set)]</visible>
-					</control>
-					<include>bubble_overlay</include>
-					<include>bubble_play</include>
-				</control>
-				<include content="progress">
-					<param name="top" value="235"/>
-					<param name="width" value="424"/>
-				</include>
-				<control type="image">
-					<left>-12</left>
-					<top>-7</top>
-					<width>448</width>
-					<height>263</height>
-					<texture border="20,20,20,20" colordiffuse="focus_widget">items/focus.png</texture>
-					<aspectratio>stretch</aspectratio>
-					<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
-					<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
-				</control>
-				<control type="image">
-					<include>Widget_Diffuse</include>
-					<width>424</width>
-					<height>239</height>
-					<texture diffuse="items/mask_wide.png" colordiffuse="diffuse_widget">common/white.jpg</texture>
-				</control>
 				<include content="widget_labels">
 					<param name="top">251</param>
 					<param name="width">424</param>
@@ -896,6 +825,92 @@
 					<param name="focused">$PARAM[focused]</param>
 					<param name="labels_visible">$PARAM[labels_visible]</param>
 				</include>
+				<control type="group">
+					<include>Animation_FocusBounce</include>
+					<control type="image">
+						<top>-2</top>
+						<left>-2</left>
+						<width>430</width>
+						<height>245</height>
+						<texture border="20,20,20,20">items/shadow.png</texture>
+					</control>
+					<control type="image">
+						<width>424</width>
+						<height>239</height>
+						<texture colordiffuse="thumb_background_fallback" diffuse="items/mask_wide.png">common/white.jpg</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="image">
+						<width>424</width>
+						<height>239</height>
+						<texture colordiffuse="thumb_background" diffuse="items/mask_wide.png">common/white.jpg</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="textbox">
+						<top>10</top>
+						<left>10</left>
+						<width>404</width>
+						<height>219</height>
+						<font>Light24</font>
+						<textcolor>white</textcolor>
+						<align>center</align>
+						<aligny>center</aligny>
+						<label>$PARAM[thumblabel]</label>
+						<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="image">
+						<width>424</width>
+						<height>239</height>
+						<texture diffuse="items/mask_wide.png" background="true">$INFO[ListItem.Icon]</texture>
+						<aspectratio scalediffuse="false">keep</aspectratio>
+						<bordersize>20</bordersize>
+						<visible>String.StartsWith(ListItem.Path,pvr://) + !String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="image">
+						<width>424</width>
+						<height>239</height>
+						<texture diffuse="items/mask_wide.png" background="true">$PARAM[thumb]</texture>
+						<aspectratio scalediffuse="false">scale</aspectratio>
+						<visible>!String.StartsWith(ListItem.Path,pvr://) + !String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="group">
+						<width>424</width>
+						<height>239</height>
+						<control type="image">
+							<left>10</left>
+							<right>100</right>
+							<bottom>10</bottom>
+							<height>60</height>
+							<texture background="true">$VAR[ListItemClearlogo]</texture>
+							<aspectratio align="left" aligny="bottom">keep</aspectratio>
+							<visible>[!String.IsEmpty(ListItem.Art(fanart)) | !String.IsEmpty(ListItem.Art(tvshow.fanart)) | [!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)]] + String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape)) + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,set)]</visible>
+						</control>
+						<include>bubble_overlay</include>
+						<include>bubble_play</include>
+					</control>
+					<include content="progress">
+						<param name="top" value="235"/>
+						<param name="width" value="424"/>
+					</include>
+					<control type="image">
+						<left>-12</left>
+						<top>-7</top>
+						<width>448</width>
+						<height>263</height>
+						<texture border="20,20,20,20" colordiffuse="focus_widget">items/focus.png</texture>
+						<aspectratio>stretch</aspectratio>
+						<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
+						<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
+					</control>
+					<control type="image">
+						<include>Widget_Diffuse</include>
+						<width>424</width>
+						<height>239</height>
+						<texture diffuse="items/mask_wide.png" colordiffuse="diffuse_widget">common/white.jpg</texture>
+					</control>
+				</control>
 			</control>
 		</definition>
 	</include>
@@ -909,80 +924,6 @@
 		<definition>
 			<control type="group">
 				<visible>$PARAM[visible]</visible>
-				<control type="image">
-					<top>-2</top>
-					<left>-2</left>
-					<width>436</width>
-					<height>248</height>
-					<texture border="20,20,20,20">items/shadow.png</texture>
-				</control>
-				<control type="image">
-					<width>430</width>
-					<height>242</height>
-					<texture colordiffuse="thumb_background_fallback" diffuse="items/mask_wide_db.png">common/white.jpg</texture>
-					<aspectratio scalediffuse="false">stretch</aspectratio>
-					<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
-				</control>
-				<control type="image">
-					<width>430</width>
-					<height>242</height>
-					<texture colordiffuse="thumb_background" diffuse="items/mask_wide_db.png">common/white.jpg</texture>
-					<aspectratio scalediffuse="false">stretch</aspectratio>
-					<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
-				</control>
-				<control type="textbox">
-					<top>10</top>
-					<left>10</left>
-					<width>410</width>
-					<height>222</height>
-					<font>Light24</font>
-					<textcolor>white</textcolor>
-					<align>center</align>
-					<aligny>center</aligny>
-					<label>$PARAM[thumblabel]</label>
-					<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
-				</control>
-				<control type="image">
-					<width>430</width>
-					<height>242</height>
-					<texture diffuse="items/mask_wide_db.png" background="true">$INFO[ListItem.Icon]</texture>
-					<aspectratio scalediffuse="false">keep</aspectratio>
-					<bordersize>20</bordersize>
-					<visible>String.StartsWith(ListItem.Path,pvr://) + !String.StartsWith(ListItem.Icon,Default)</visible>
-				</control>
-				<control type="image">
-					<width>430</width>
-					<height>242</height>
-					<texture diffuse="items/mask_wide_db.png" background="true">$VAR[IconLandscape]</texture>
-					<aspectratio scalediffuse="false">scale</aspectratio>
-					<visible>!String.StartsWith(ListItem.Path,pvr://) + !String.StartsWith(ListItem.Icon,Default)</visible>
-				</control>
-				<control type="group">
-					<width>430</width>
-					<height>242</height>
-					<include>bubble_overlay</include>
-					<include>bubble_play</include>
-				</control>
-				<include content="progress">
-					<param name="top" value="238"/>
-					<param name="width" value="430"/>
-				</include>
-				<control type="image">
-					<left>-12</left>
-					<top>-7</top>
-					<width>454</width>
-					<height>266</height>
-					<texture border="20,20,20,20" colordiffuse="focus_widget">items/focus.png</texture>
-					<aspectratio>stretch</aspectratio>
-					<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
-					<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
-				</control>
-				<control type="image">
-					<include>Widget_Diffuse</include>
-					<width>430</width>
-					<height>242</height>
-					<texture diffuse="items/mask_wide.png" colordiffuse="diffuse_widget">common/white.jpg</texture>
-				</control>
 				<include content="widget_labels">
 					<param name="top">254</param>
 					<param name="width">430</param>
@@ -992,6 +933,83 @@
 					<param name="focused">$PARAM[focused]</param>
 					<param name="labels_visible">$PARAM[labels_visible]</param>
 				</include>
+				<control type="group">
+					<include>Animation_FocusBounce</include>
+					<control type="image">
+						<top>-2</top>
+						<left>-2</left>
+						<width>436</width>
+						<height>248</height>
+						<texture border="20,20,20,20">items/shadow.png</texture>
+					</control>
+					<control type="image">
+						<width>430</width>
+						<height>242</height>
+						<texture colordiffuse="thumb_background_fallback" diffuse="items/mask_wide_db.png">common/white.jpg</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="image">
+						<width>430</width>
+						<height>242</height>
+						<texture colordiffuse="thumb_background" diffuse="items/mask_wide_db.png">common/white.jpg</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="textbox">
+						<top>10</top>
+						<left>10</left>
+						<width>410</width>
+						<height>222</height>
+						<font>Light24</font>
+						<textcolor>white</textcolor>
+						<align>center</align>
+						<aligny>center</aligny>
+						<label>$PARAM[thumblabel]</label>
+						<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="image">
+						<width>430</width>
+						<height>242</height>
+						<texture diffuse="items/mask_wide_db.png" background="true">$INFO[ListItem.Icon]</texture>
+						<aspectratio scalediffuse="false">keep</aspectratio>
+						<bordersize>20</bordersize>
+						<visible>String.StartsWith(ListItem.Path,pvr://) + !String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="image">
+						<width>430</width>
+						<height>242</height>
+						<texture diffuse="items/mask_wide_db.png" background="true">$VAR[IconLandscape]</texture>
+						<aspectratio scalediffuse="false">scale</aspectratio>
+						<visible>!String.StartsWith(ListItem.Path,pvr://) + !String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="group">
+						<width>430</width>
+						<height>242</height>
+						<include>bubble_overlay</include>
+						<include>bubble_play</include>
+					</control>
+					<include content="progress">
+						<param name="top" value="238"/>
+						<param name="width" value="430"/>
+					</include>
+					<control type="image">
+						<left>-12</left>
+						<top>-7</top>
+						<width>454</width>
+						<height>266</height>
+						<texture border="20,20,20,20" colordiffuse="focus_widget">items/focus.png</texture>
+						<aspectratio>stretch</aspectratio>
+						<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
+						<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
+					</control>
+					<control type="image">
+						<include>Widget_Diffuse</include>
+						<width>430</width>
+						<height>242</height>
+						<texture diffuse="items/mask_wide.png" colordiffuse="diffuse_widget">common/white.jpg</texture>
+					</control>
+				</control>
 			</control>
 		</definition>
 	</include>
@@ -1005,47 +1023,6 @@
 		<definition>
 			<control type="group">
 				<visible>$PARAM[visible]</visible>
-				<control type="image">
-					<top>-2</top>
-					<left>-2</left>
-					<width>430</width>
-					<height>245</height>
-					<texture border="20,20,20,20">items/shadow.png</texture>
-				</control>
-				<control type="image">
-					<width>424</width>
-					<height>239</height>
-					<texture colordiffuse="thumb_background_fallback_secondary" diffuse="items/mask_wide.png">common/white.jpg</texture>
-					<aspectratio scalediffuse="false">stretch</aspectratio>
-				</control>
-				<control type="textbox">
-					<top>10</top>
-					<left>10</left>
-					<width>404</width>
-					<height>219</height>
-					<font>Material70</font>
-					<textcolor>EEFFFFFF</textcolor>
-					<align>center</align>
-					<aligny>center</aligny>
-					<label>$PARAM[thumblabel]</label>
-					<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
-				</control>
-				<control type="image">
-					<left>-12</left>
-					<top>-7</top>
-					<width>448</width>
-					<height>263</height>
-					<texture border="20,20,20,20" colordiffuse="focus_widget">items/focus.png</texture>
-					<aspectratio>stretch</aspectratio>
-					<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
-					<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
-				</control>
-				<control type="image">
-					<include>Widget_Diffuse</include>
-					<width>424</width>
-					<height>239</height>
-					<texture diffuse="items/mask_wide.png" colordiffuse="diffuse_widget">common/white.jpg</texture>
-				</control>
 				<include content="widget_labels">
 					<param name="top">251</param>
 					<param name="width">424</param>
@@ -1055,6 +1032,50 @@
 					<param name="focused">$PARAM[focused]</param>
 					<param name="labels_visible">$PARAM[labels_visible]</param>
 				</include>
+				<control type="group">
+					<include>Animation_FocusBounce</include>
+					<control type="image">
+						<top>-2</top>
+						<left>-2</left>
+						<width>430</width>
+						<height>245</height>
+						<texture border="20,20,20,20">items/shadow.png</texture>
+					</control>
+					<control type="image">
+						<width>424</width>
+						<height>239</height>
+						<texture colordiffuse="thumb_background_fallback_secondary" diffuse="items/mask_wide.png">common/white.jpg</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+					</control>
+					<control type="textbox">
+						<top>10</top>
+						<left>10</left>
+						<width>404</width>
+						<height>219</height>
+						<font>Material70</font>
+						<textcolor>EEFFFFFF</textcolor>
+						<align>center</align>
+						<aligny>center</aligny>
+						<label>$PARAM[thumblabel]</label>
+						<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="image">
+						<left>-12</left>
+						<top>-7</top>
+						<width>448</width>
+						<height>263</height>
+						<texture border="20,20,20,20" colordiffuse="focus_widget">items/focus.png</texture>
+						<aspectratio>stretch</aspectratio>
+						<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
+						<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
+					</control>
+					<control type="image">
+						<include>Widget_Diffuse</include>
+						<width>424</width>
+						<height>239</height>
+						<texture diffuse="items/mask_wide.png" colordiffuse="diffuse_widget">common/white.jpg</texture>
+					</control>
+				</control>
 			</control>
 		</definition>
 	</include>
@@ -1069,80 +1090,6 @@
 		<definition>
 			<control type="group">
 				<visible>$PARAM[visible]</visible>
-				<control type="image">
-					<top>-2</top>
-					<left>-2</left>
-					<width>282</width>
-					<height>282</height>
-					<texture border="20,20,20,20">items/shadow.png</texture>
-				</control>
-				<control type="image">
-					<width>276</width>
-					<height>276</height>
-					<texture colordiffuse="thumb_background_fallback" diffuse="items/mask_square.png">common/white.jpg</texture>
-					<aspectratio>stretch</aspectratio>
-					<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
-				</control>
-				<control type="image">
-					<width>276</width>
-					<height>276</height>
-					<texture colordiffuse="thumb_background" diffuse="items/mask_square.png">common/white.jpg</texture>
-					<aspectratio scalediffuse="false">stretch</aspectratio>
-					<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
-				</control>
-				<control type="textbox">
-					<top>10</top>
-					<left>10</left>
-					<width>256</width>
-					<height>256</height>
-					<font>Light24</font>
-					<textcolor>white</textcolor>
-					<align>center</align>
-					<aligny>center</aligny>
-					<label>$PARAM[thumblabel]</label>
-					<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
-				</control>
-				<control type="image">
-					<width>276</width>
-					<height>276</height>
-					<texture diffuse="items/mask_square.png" background="true">$INFO[ListItem.Icon]</texture>
-					<aspectratio scalediffuse="false">stretch</aspectratio>
-					<visible>!String.StartsWith(ListItem.Path,pvr://) + !String.StartsWith(ListItem.Icon,Default)</visible>
-				</control>
-				<control type="image">
-					<width>276</width>
-					<height>276</height>
-					<texture diffuse="items/mask_square.png" background="true">$INFO[ListItem.Icon]</texture>
-					<aspectratio scalediffuse="false">keep</aspectratio>
-					<bordersize>20</bordersize>
-					<visible>String.StartsWith(ListItem.Path,pvr://) + !String.StartsWith(ListItem.Icon,Default)</visible>
-				</control>
-				<control type="group">
-					<width>276</width>
-					<height>276</height>
-					<include>bubble_overlay</include>
-					<include>bubble_play</include>
-				</control>
-				<include content="progress">
-					<param name="top" value="273"/>
-					<param name="width" value="276"/>
-				</include>
-				<control type="image">
-					<left>-12</left>
-					<top>-7</top>
-					<width>300</width>
-					<height>300</height>
-					<texture border="20,20,20,20" colordiffuse="focus_widget">items/focus.png</texture>
-					<aspectratio>stretch</aspectratio>
-					<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
-					<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
-				</control>
-				<control type="image">
-					<include>Widget_Diffuse</include>
-					<width>276</width>
-					<height>276</height>
-					<texture diffuse="items/mask_wide.png" colordiffuse="diffuse_widget">common/white.jpg</texture>
-				</control>
 				<include content="widget_labels">
 					<param name="top">288</param>
 					<param name="width">276</param>
@@ -1152,6 +1099,83 @@
 					<param name="focused">$PARAM[focused]</param>
 					<param name="labels_visible">$PARAM[labels_visible]</param>
 				</include>
+				<control type="group">
+					<include>Animation_FocusBounce</include>
+					<control type="image">
+						<top>-2</top>
+						<left>-2</left>
+						<width>282</width>
+						<height>282</height>
+						<texture border="20,20,20,20">items/shadow.png</texture>
+					</control>
+					<control type="image">
+						<width>276</width>
+						<height>276</height>
+						<texture colordiffuse="thumb_background_fallback" diffuse="items/mask_square.png">common/white.jpg</texture>
+						<aspectratio>stretch</aspectratio>
+						<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="image">
+						<width>276</width>
+						<height>276</height>
+						<texture colordiffuse="thumb_background" diffuse="items/mask_square.png">common/white.jpg</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="textbox">
+						<top>10</top>
+						<left>10</left>
+						<width>256</width>
+						<height>256</height>
+						<font>Light24</font>
+						<textcolor>white</textcolor>
+						<align>center</align>
+						<aligny>center</aligny>
+						<label>$PARAM[thumblabel]</label>
+						<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="image">
+						<width>276</width>
+						<height>276</height>
+						<texture diffuse="items/mask_square.png" background="true">$INFO[ListItem.Icon]</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<visible>!String.StartsWith(ListItem.Path,pvr://) + !String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="image">
+						<width>276</width>
+						<height>276</height>
+						<texture diffuse="items/mask_square.png" background="true">$INFO[ListItem.Icon]</texture>
+						<aspectratio scalediffuse="false">keep</aspectratio>
+						<bordersize>20</bordersize>
+						<visible>String.StartsWith(ListItem.Path,pvr://) + !String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="group">
+						<width>276</width>
+						<height>276</height>
+						<include>bubble_overlay</include>
+						<include>bubble_play</include>
+					</control>
+					<include content="progress">
+						<param name="top" value="273"/>
+						<param name="width" value="276"/>
+					</include>
+					<control type="image">
+						<left>-12</left>
+						<top>-7</top>
+						<width>300</width>
+						<height>300</height>
+						<texture border="20,20,20,20" colordiffuse="focus_widget">items/focus.png</texture>
+						<aspectratio>stretch</aspectratio>
+						<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
+						<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
+					</control>
+					<control type="image">
+						<include>Widget_Diffuse</include>
+						<width>276</width>
+						<height>276</height>
+						<texture diffuse="items/mask_wide.png" colordiffuse="diffuse_widget">common/white.jpg</texture>
+					</control>
+				</control>
 			</control>
 		</definition>
 	</include>
@@ -1165,80 +1189,6 @@
 		<definition>
 			<control type="group">
 				<visible>$PARAM[visible]</visible>
-				<control type="image">
-					<top>-2</top>
-					<left>-2</left>
-					<width>346</width>
-					<height>346</height>
-					<texture border="20,20,20,20">items/shadow.png</texture>
-				</control>
-				<control type="image">
-					<width>340</width>
-					<height>340</height>
-					<texture colordiffuse="thumb_background_fallback" diffuse="items/mask_square_db.png">common/white.jpg</texture>
-					<aspectratio scalediffuse="false">stretch</aspectratio>
-					<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
-				</control>
-				<control type="image">
-					<width>340</width>
-					<height>340</height>
-					<texture colordiffuse="thumb_background" diffuse="items/mask_square_db.png">common/white.jpg</texture>
-					<aspectratio scalediffuse="false">stretch</aspectratio>
-					<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
-				</control>
-				<control type="textbox">
-					<top>10</top>
-					<left>10</left>
-					<width>320</width>
-					<height>320</height>
-					<font>Light24</font>
-					<textcolor>white</textcolor>
-					<align>center</align>
-					<aligny>center</aligny>
-					<label>$PARAM[thumblabel]</label>
-					<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
-				</control>
-				<control type="image">
-					<width>340</width>
-					<height>340</height>
-					<texture diffuse="items/mask_square_db.png" background="true">$INFO[ListItem.Icon]</texture>
-					<visible>![String.StartsWith(ListItem.Path,pvr://) | [Window.IsVisible(script-globalsearch.xml) + Container.Content(livetv)]] + !String.StartsWith(ListItem.Icon,Default)</visible>
-					<aspectratio scalediffuse="false">scale</aspectratio>
-				</control>
-				<control type="image">
-					<width>340</width>
-					<height>340</height>
-					<texture diffuse="items/mask_square_db.png" background="true">$INFO[ListItem.Icon]</texture>
-					<aspectratio scalediffuse="false">keep</aspectratio>
-					<bordersize>20</bordersize>
-					<visible>[String.StartsWith(ListItem.Path,pvr://) | [Window.IsVisible(script-globalsearch.xml) + Container.Content(livetv)]] + !String.StartsWith(ListItem.Icon,Default)</visible>
-				</control>
-				<control type="group">
-					<width>340</width>
-					<height>340</height>
-					<include>bubble_overlay</include>
-					<include>bubble_play</include>
-				</control>
-				<include content="progress">
-					<param name="top" value="336"/>
-					<param name="width" value="340"/>
-				</include>
-				<control type="image">
-					<left>-12</left>
-					<top>-7</top>
-					<width>364</width>
-					<height>364</height>
-					<texture border="20,20,20,20" colordiffuse="focus_widget">items/focus.png</texture>
-					<aspectratio>stretch</aspectratio>
-					<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
-					<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
-				</control>
-				<control type="image">
-					<include>Widget_Diffuse</include>
-					<width>340</width>
-					<height>340</height>
-					<texture diffuse="items/mask_wide.png" colordiffuse="diffuse_widget">common/white.jpg</texture>
-				</control>
 				<include content="widget_labels">
 					<param name="top">352</param>
 					<param name="width">340</param>
@@ -1248,6 +1198,83 @@
 					<param name="focused">$PARAM[focused]</param>
 					<param name="labels_visible">$PARAM[labels_visible]</param>
 				</include>
+				<control type="group">
+					<include>Animation_FocusBounce</include>
+					<control type="image">
+						<top>-2</top>
+						<left>-2</left>
+						<width>346</width>
+						<height>346</height>
+						<texture border="20,20,20,20">items/shadow.png</texture>
+					</control>
+					<control type="image">
+						<width>340</width>
+						<height>340</height>
+						<texture colordiffuse="thumb_background_fallback" diffuse="items/mask_square_db.png">common/white.jpg</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="image">
+						<width>340</width>
+						<height>340</height>
+						<texture colordiffuse="thumb_background" diffuse="items/mask_square_db.png">common/white.jpg</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="textbox">
+						<top>10</top>
+						<left>10</left>
+						<width>320</width>
+						<height>320</height>
+						<font>Light24</font>
+						<textcolor>white</textcolor>
+						<align>center</align>
+						<aligny>center</aligny>
+						<label>$PARAM[thumblabel]</label>
+						<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="image">
+						<width>340</width>
+						<height>340</height>
+						<texture diffuse="items/mask_square_db.png" background="true">$INFO[ListItem.Icon]</texture>
+						<aspectratio scalediffuse="false">scale</aspectratio>
+						<visible>!String.StartsWith(ListItem.Path,pvr://) + !String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="image">
+						<width>340</width>
+						<height>340</height>
+						<texture diffuse="items/mask_square_db.png" background="true">$INFO[ListItem.Icon]</texture>
+						<aspectratio scalediffuse="false">keep</aspectratio>
+						<bordersize>20</bordersize>
+						<visible>String.StartsWith(ListItem.Path,pvr://) + !String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="group">
+						<width>340</width>
+						<height>340</height>
+						<include>bubble_overlay</include>
+						<include>bubble_play</include>
+					</control>
+					<include content="progress">
+						<param name="top" value="336"/>
+						<param name="width" value="340"/>
+					</include>
+					<control type="image">
+						<left>-12</left>
+						<top>-7</top>
+						<width>364</width>
+						<height>364</height>
+						<texture border="20,20,20,20" colordiffuse="focus_widget">items/focus.png</texture>
+						<aspectratio>stretch</aspectratio>
+						<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
+						<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
+					</control>
+					<control type="image">
+						<include>Widget_Diffuse</include>
+						<width>340</width>
+						<height>340</height>
+						<texture diffuse="items/mask_wide.png" colordiffuse="diffuse_widget">common/white.jpg</texture>
+					</control>
+				</control>
 			</control>
 		</definition>
 	</include>
@@ -1262,56 +1289,6 @@
 		<definition>
 			<control type="group">
 				<visible>$PARAM[visible]</visible>
-				<control type="image">
-					<top>-2</top>
-					<left>-2</left>
-					<width>282</width>
-					<height>282</height>
-					<texture border="20,20,20,20">items/shadow.png</texture>
-				</control>
-				<control type="image">
-					<width>276</width>
-					<height>322</height>
-					<texture colordiffuse="panel">common/white.jpg</texture>
-					<aspectratio scalediffuse="false">stretch</aspectratio>
-				</control>
-				<control type="image">
-					<width>276</width>
-					<height>276</height>
-					<texture colordiffuse="thumb_background_fallback_secondary" diffuse="items/mask_square.png">common/white.jpg</texture>
-					<aspectratio>stretch</aspectratio>
-					<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
-				</control>
-				<control type="image">
-					<width>276</width>
-					<height>276</height>
-					<texture diffuse="items/mask_square.png" background="true">views/profile/logindefault.png</texture>
-					<aspectratio scalediffuse="false">stretch</aspectratio>
-					<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
-				</control>
-				<control type="image">
-					<width>276</width>
-					<height>276</height>
-					<texture diffuse="items/mask_square.png" background="true">$INFO[ListItem.Icon]</texture>
-					<aspectratio scalediffuse="false">stretch</aspectratio>
-					<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
-				</control>
-				<control type="image">
-					<left>-12</left>
-					<top>-7</top>
-					<width>300</width>
-					<height>300</height>
-					<texture border="20,20,20,20" colordiffuse="focus_widget">items/focus.png</texture>
-					<aspectratio>stretch</aspectratio>
-					<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
-					<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
-				</control>
-				<control type="image">
-					<include>Widget_Diffuse</include>
-					<width>276</width>
-					<height>276</height>
-					<texture diffuse="items/mask_square.png" colordiffuse="diffuse_widget">common/white.jpg</texture>
-				</control>
 				<include content="widget_labels">
 					<param name="top">288</param>
 					<param name="width">276</param>
@@ -1321,6 +1298,59 @@
 					<param name="focused">$PARAM[focused]</param>
 					<param name="labels_visible">$PARAM[labels_visible]</param>
 				</include>
+				<control type="group">
+					<include>Animation_FocusBounce</include>
+					<control type="image">
+						<top>-2</top>
+						<left>-2</left>
+						<width>282</width>
+						<height>282</height>
+						<texture border="20,20,20,20">items/shadow.png</texture>
+					</control>
+					<control type="image">
+						<width>276</width>
+						<height>322</height>
+						<texture colordiffuse="panel">common/white.jpg</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+					</control>
+					<control type="image">
+						<width>276</width>
+						<height>276</height>
+						<texture colordiffuse="thumb_background_fallback_secondary" diffuse="items/mask_square.png">common/white.jpg</texture>
+						<aspectratio>stretch</aspectratio>
+						<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="image">
+						<width>276</width>
+						<height>276</height>
+						<texture diffuse="items/mask_square.png" background="true">views/profile/logindefault.png</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="image">
+						<width>276</width>
+						<height>276</height>
+						<texture diffuse="items/mask_square.png" background="true">$INFO[ListItem.Icon]</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="image">
+						<left>-12</left>
+						<top>-7</top>
+						<width>300</width>
+						<height>300</height>
+						<texture border="20,20,20,20" colordiffuse="focus_widget">items/focus.png</texture>
+						<aspectratio>stretch</aspectratio>
+						<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
+						<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
+					</control>
+					<control type="image">
+						<include>Widget_Diffuse</include>
+						<width>276</width>
+						<height>276</height>
+						<texture diffuse="items/mask_square.png" colordiffuse="diffuse_widget">common/white.jpg</texture>
+					</control>
+				</control>
 			</control>
 		</definition>
 	</include>
@@ -1335,128 +1365,6 @@
 		<definition>
 			<control type="group">
 				<visible>$PARAM[visible]</visible>
-				<control type="image">
-					<top>-2</top>
-					<left>-2</left>
-					<width>430</width>
-					<height>245</height>
-					<texture border="20,20,20,20">items/shadow.png</texture>
-				</control>
-				<control type="image">
-					<width>424</width>
-					<height>239</height>
-					<texture colordiffuse="ff010202" diffuse="items/mask_wide.png">common/white.jpg</texture>
-					<aspectratio  scalediffuse="false">stretch</aspectratio>
-					<visible>!String.IsEmpty(ListItem.Art(poster.0))</visible>
-				</control>
-				<control type="image">
-					<width>424</width>
-					<height>239</height>
-					<texture colordiffuse="thumb_background_fallback" diffuse="items/mask_wide.png">common/white.jpg</texture>
-					<aspectratio  scalediffuse="false">stretch</aspectratio>
-					<visible>String.IsEmpty(ListItem.Art(poster.0))</visible>
-				</control>
-				<control type="textbox">
-					<top>10</top>
-					<left>10</left>
-					<width>404</width>
-					<height>219</height>
-					<font>Light24</font>
-					<textcolor>white</textcolor>
-					<align>center</align>
-					<aligny>center</aligny>
-					<label>$PARAM[thumblabel]</label>
-					<visible>String.IsEmpty(ListItem.Art(poster.0))</visible>
-				</control>
-				<control type="group">
-					<left>5</left>
-					<top>5</top>
-					<control type="image">
-						<width>99</width>
-						<height>169</height>
-						<texture background="true">$INFO[ListItem.Art(poster.0)]</texture>
-						<aspectratio>scale</aspectratio>
-					</control>
-					<control type="image">
-						<left>105</left>
-						<width>99</width>
-						<height>169</height>
-						<texture background="true">$INFO[ListItem.Art(poster.1)]</texture>
-						<aspectratio>scale</aspectratio>
-					</control>
-					<control type="image">
-						<left>210</left>
-						<width>99</width>
-						<height>169</height>
-						<texture background="true">$INFO[ListItem.Art(poster.2)]</texture>
-						<aspectratio>scale</aspectratio>
-					</control>
-					<control type="image">
-						<left>315</left>
-						<width>99</width>
-						<height>169</height>
-						<texture background="true">$INFO[ListItem.Art(poster.3)]</texture>
-						<aspectratio>scale</aspectratio>
-					</control>
-				</control>
-				<control type="group">
-					<left>5</left>
-					<top>177</top>
-					<control type="image">
-						<width>99</width>
-						<height>169</height>
-						<texture flipy="true" diffuse="items/mirror_mask.png" background="true">$INFO[ListItem.Art(poster.0)]</texture>
-						<aspectratio scalediffuse="false">scale</aspectratio>
-					</control>
-					<control type="image">
-						<left>105</left>
-						<left>67</left>
-						<width>99</width>
-						<height>169</height>
-						<texture flipy="true" diffuse="items/mirror_mask.png" background="true">$INFO[ListItem.Art(poster.1)]</texture>
-						<aspectratio scalediffuse="false">scale</aspectratio>
-					</control>
-					<control type="image">
-						<left>210</left>
-						<width>99</width>
-						<height>169</height>
-						<texture flipy="true" diffuse="items/mirror_mask.png" background="true">$INFO[ListItem.Art(poster.2)]</texture>
-						<aspectratio scalediffuse="false">scale</aspectratio>
-					</control>
-					<control type="image">
-						<left>315</left>
-						<width>99</width>
-						<height>169</height>
-						<texture flipy="true" diffuse="items/mirror_mask.png" background="true">$INFO[ListItem.Art(poster.3)]</texture>
-						<aspectratio scalediffuse="false">scale</aspectratio>
-					</control>
-				</control>
-				<control type="group">
-					<width>424</width>
-					<height>239</height>
-					<include>bubble_overlay</include>
-					<include>bubble_play</include>
-				</control>
-				<include content="progress">
-					<param name="top" value="235"/>
-					<param name="width" value="424"/>
-				</include>
-				<control type="image">
-					<left>-12</left>
-					<top>-7</top>
-					<width>448</width>
-					<height>262</height>
-					<texture border="20,20,20,20" colordiffuse="focus_widget">items/focus.png</texture>
-					<aspectratio>stretch</aspectratio>
-					<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
-					<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
-				</control>
-				<control type="image">
-					<include>Widget_Diffuse</include>
-					<width>424</width>
-					<height>239</height>
-					<texture diffuse="items/mask_wide.png" colordiffuse="diffuse_widget">common/white.jpg</texture>
-				</control>
 				<include content="widget_labels">
 					<param name="top">251</param>
 					<param name="width">424</param>
@@ -1466,200 +1374,139 @@
 					<param name="focused">$PARAM[focused]</param>
 					<param name="labels_visible">$PARAM[labels_visible]</param>
 				</include>
+				<control type="group">
+					<include>Animation_FocusBounce</include>
+					<control type="image">
+						<top>-2</top>
+						<left>-2</left>
+						<width>430</width>
+						<height>245</height>
+						<texture border="20,20,20,20">items/shadow.png</texture>
+					</control>
+					<control type="image">
+						<width>424</width>
+						<height>239</height>
+						<texture colordiffuse="ff010202" diffuse="items/mask_wide.png">common/white.jpg</texture>
+						<aspectratio  scalediffuse="false">stretch</aspectratio>
+						<visible>!String.IsEmpty(ListItem.Art(poster.0))</visible>
+					</control>
+					<control type="image">
+						<width>424</width>
+						<height>239</height>
+						<texture colordiffuse="thumb_background_fallback" diffuse="items/mask_wide.png">common/white.jpg</texture>
+						<aspectratio  scalediffuse="false">stretch</aspectratio>
+						<visible>String.IsEmpty(ListItem.Art(poster.0))</visible>
+					</control>
+					<control type="textbox">
+						<top>10</top>
+						<left>10</left>
+						<width>404</width>
+						<height>219</height>
+						<font>Light24</font>
+						<textcolor>white</textcolor>
+						<align>center</align>
+						<aligny>center</aligny>
+						<label>$PARAM[thumblabel]</label>
+						<visible>String.IsEmpty(ListItem.Art(poster.0))</visible>
+					</control>
+					<control type="group">
+						<left>5</left>
+						<top>5</top>
+						<control type="image">
+							<width>99</width>
+							<height>169</height>
+							<texture background="true">$INFO[ListItem.Art(poster.0)]</texture>
+							<aspectratio>scale</aspectratio>
+						</control>
+						<control type="image">
+							<left>105</left>
+							<width>99</width>
+							<height>169</height>
+							<texture background="true">$INFO[ListItem.Art(poster.1)]</texture>
+							<aspectratio>scale</aspectratio>
+						</control>
+						<control type="image">
+							<left>210</left>
+							<width>99</width>
+							<height>169</height>
+							<texture background="true">$INFO[ListItem.Art(poster.2)]</texture>
+							<aspectratio>scale</aspectratio>
+						</control>
+						<control type="image">
+							<left>315</left>
+							<width>99</width>
+							<height>169</height>
+							<texture background="true">$INFO[ListItem.Art(poster.3)]</texture>
+							<aspectratio>scale</aspectratio>
+						</control>
+					</control>
+					<control type="group">
+						<left>5</left>
+						<top>177</top>
+						<control type="image">
+							<width>99</width>
+							<height>169</height>
+							<texture flipy="true" diffuse="items/mirror_mask.png" background="true">$INFO[ListItem.Art(poster.0)]</texture>
+							<aspectratio scalediffuse="false">scale</aspectratio>
+						</control>
+						<control type="image">
+							<left>105</left>
+							<left>67</left>
+							<width>99</width>
+							<height>169</height>
+							<texture flipy="true" diffuse="items/mirror_mask.png" background="true">$INFO[ListItem.Art(poster.1)]</texture>
+							<aspectratio scalediffuse="false">scale</aspectratio>
+						</control>
+						<control type="image">
+							<left>210</left>
+							<width>99</width>
+							<height>169</height>
+							<texture flipy="true" diffuse="items/mirror_mask.png" background="true">$INFO[ListItem.Art(poster.2)]</texture>
+							<aspectratio scalediffuse="false">scale</aspectratio>
+						</control>
+						<control type="image">
+							<left>315</left>
+							<width>99</width>
+							<height>169</height>
+							<texture flipy="true" diffuse="items/mirror_mask.png" background="true">$INFO[ListItem.Art(poster.3)]</texture>
+							<aspectratio scalediffuse="false">scale</aspectratio>
+						</control>
+					</control>
+					<control type="group">
+						<width>424</width>
+						<height>239</height>
+						<include>bubble_overlay</include>
+						<include>bubble_play</include>
+					</control>
+					<include content="progress">
+						<param name="top" value="235"/>
+						<param name="width" value="424"/>
+					</include>
+					<control type="image">
+						<left>-12</left>
+						<top>-7</top>
+						<width>448</width>
+						<height>262</height>
+						<texture border="20,20,20,20" colordiffuse="focus_widget">items/focus.png</texture>
+						<aspectratio>stretch</aspectratio>
+						<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
+						<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
+					</control>
+					<control type="image">
+						<include>Widget_Diffuse</include>
+						<width>424</width>
+						<height>239</height>
+						<texture diffuse="items/mask_wide.png" colordiffuse="diffuse_widget">common/white.jpg</texture>
+					</control>
+				</control>
 			</control>
 		</definition>
 	</include>
 
-	<!-- Button -->
+	<!-- Main Menu -->
 	<include name="MainMenuLayout">
 		<param name="focused">false</param>
 		<definition>
-			<control type="image">
-				<top>-2</top>
-				<left>-2</left>
-				<width>283</width>
-				<height>162</height>
-				<texture border="20,20,20,20">items/shadow.png</texture>
-			</control>
-			<control type="group">
-				<visible>!String.IsEmpty(ListItem.Icon) | !String.IsEmpty(ListItem.Property(embyart))</visible>
-				<control type="image">
-					<width>277</width>
-					<height>156</height>
-					<texture diffuse="items/mask_button.png" background="true">$INFO[ListItem.Icon]</texture>
-					<aspectratio scalediffuse="false">scale</aspectratio>
-					<visible>!String.IsEmpty(ListItem.Icon)</visible>
-				</control>
-				<control type="image">
-					<width>277</width>
-					<height>156</height>
-					<texture diffuse="items/mask_button.png" background="true">$INFO[ListItem.Property(embyart)]</texture>
-					<aspectratio scalediffuse="false">scale</aspectratio>
-					<visible>String.IsEmpty(ListItem.Icon)</visible>
-				</control>
-			</control>
-			<control type="group">
-				<visible>String.IsEmpty(ListItem.Icon) + String.IsEmpty(ListItem.Property(embyart)) + [String.IsEmpty(ListItem.Property(Art1)) | String.IsEmpty(ListItem.Property(Art2)) | String.IsEmpty(ListItem.Property(Art3)) | String.IsEmpty(ListItem.Property(Art4))]</visible>
-				<control type="image">
-					<width>277</width>
-					<height>156</height>
-					<texture colordiffuse="thumb_background_fallback_secondary">items/mask_button.png</texture>
-					<aspectratio>stretch</aspectratio>
-					<visible>String.StartsWith(ListItem.Property(action),ActivateWindow) | String.IsEmpty(ListItem.Property(action))</visible>
-				</control>
-				<control type="image">
-					<width>277</width>
-					<height>156</height>
-					<texture colordiffuse="lila">items/mask_button.png</texture>
-					<visible>!String.StartsWith(ListItem.Property(action),ActivateWindow) + !String.IsEmpty(ListItem.Property(action))</visible>
-				</control>
-				<control type="label">
-					<width>277</width>
-					<height>156</height>
-					<font>Light24</font>
-					<textcolor>white</textcolor>
-					<textoffsetx>10</textoffsetx>
-					<align>center</align>
-					<aligny>center</aligny>
-					<label>$INFO[ListItem.Label]</label>
-				</control>
-			</control>
-			<control type="group">
-				<visible>String.IsEmpty(ListItem.Icon) + String.IsEmpty(ListItem.Property(embyart)) + !String.IsEmpty(ListItem.Property(Art1)) + !String.IsEmpty(ListItem.Property(Art2)) + !String.IsEmpty(ListItem.Property(Art3)) + !String.IsEmpty(ListItem.Property(Art4))</visible>
-				<top>2</top>
-				<width>277</width>
-				<control type="image">
-					<top>-2</top>
-					<width>277</width>
-					<height>156</height>
-					<texture colordiffuse="ff010202">items/mask_button.png</texture>
-				</control>
-				<!-- art 1 -->
-				<control type="group">
-					<width>66</width>
-					<left>3</left>
-					<control type="image">
-						<height>108</height>
-						<texture colordiffuse="thumb_background">common/white.jpg</texture>
-						<aspectratio>scale</aspectratio>
-					</control>
-					<control type="image">
-						<height>108</height>
-						<texture background="true">$INFO[ListItem.Property(Art1)]</texture>
-						<aspectratio>scale</aspectratio>
-					</control>
-					<control type="image">
-						<top>113</top>
-						<height>108</height>
-						<texture flipy="true" diffuse="items/mirror_mask.png" colordiffuse="thumb_background">common/white.jpg</texture>
-						<aspectratio scalediffuse="false">scale</aspectratio>
-					</control>
-					<control type="image">
-						<top>113</top>
-						<height>108</height>
-						<texture flipy="true" diffuse="items/mirror_mask.png" background="true">$INFO[ListItem.Property(Art1)]</texture>
-						<aspectratio scalediffuse="false">scale</aspectratio>
-					</control>
-				</control>
-				<!-- art 2 -->
-				<control type="group">
-					<width>65</width>
-					<left>72</left>
-					<control type="image">
-						<width>65</width>
-						<height>108</height>
-						<texture colordiffuse="thumb_background">common/white.jpg</texture>
-						<aspectratio>scale</aspectratio>
-					</control>
-					<control type="image">
-						<height>108</height>
-						<texture background="true">$INFO[ListItem.Property(Art2)]</texture>
-						<aspectratio>scale</aspectratio>
-					</control>
-					<control type="image">
-						<top>111</top>
-						<height>108</height>
-						<texture flipy="true" diffuse="items/mirror_mask.png" colordiffuse="thumb_background">common/white.jpg</texture>
-						<aspectratio scalediffuse="false">scale</aspectratio>
-					</control>
-					<control type="image">
-						<top>111</top>
-						<height>108</height>
-						<texture flipy="true" diffuse="items/mirror_mask.png" background="true">$INFO[ListItem.Property(Art2)]</texture>
-						<aspectratio scalediffuse="false">scale</aspectratio>
-					</control>
-				</control>
-				<!-- art 3 -->
-				<control type="group">
-					<width>65</width>
-					<left>140</left>
-					<control type="image">
-						<height>108</height>
-						<texture colordiffuse="thumb_background">common/white.jpg</texture>
-						<aspectratio>scale</aspectratio>
-					</control>
-					<control type="image">
-						<height>108</height>
-						<texture background="true">$INFO[ListItem.Property(Art3)]</texture>
-						<aspectratio>scale</aspectratio>
-					</control>
-					<control type="image">
-						<top>111</top>
-						<height>108</height>
-						<texture flipy="true" diffuse="items/mirror_mask.png" colordiffuse="thumb_background">common/white.jpg</texture>
-						<aspectratio scalediffuse="false">scale</aspectratio>
-					</control>
-					<control type="image">
-						<top>111</top>
-						<height>108</height>
-						<texture flipy="true" diffuse="items/mirror_mask.png" background="true">$INFO[ListItem.Property(Art3)]</texture>
-						<aspectratio scalediffuse="false">scale</aspectratio>
-					</control>
-				</control>
-				<!-- art 4 -->
-				<control type="group">
-					<width>66</width>
-					<left>208</left>
-					<control type="image">
-						<height>108</height>
-						<texture colordiffuse="thumb_background">common/white.jpg</texture>
-						<aspectratio>scale</aspectratio>
-					</control>
-					<control type="image">
-						<height>108</height>
-						<texture background="true">$INFO[ListItem.Property(Art4)]</texture>
-						<aspectratio>scale</aspectratio>
-					</control>
-					<control type="image">
-						<top>111</top>
-						<height>108</height>
-						<texture flipy="true" diffuse="items/mirror_mask.png" colordiffuse="thumb_background">common/white.jpg</texture>
-						<aspectratio scalediffuse="false">scale</aspectratio>
-					</control>
-					<control type="image">
-						<top>111</top>
-						<height>108</height>
-						<texture flipy="true" diffuse="items/mirror_mask.png" background="true">$INFO[ListItem.Property(Art4)]</texture>
-						<aspectratio scalediffuse="false">scale</aspectratio>
-					</control>
-				</control>
-			</control>
-			<control type="image">
-				<left>-12</left>
-				<top>-7</top>
-				<width>301</width>
-				<height>180</height>
-				<texture border="20,20,20,20" colordiffuse="focus_widget">items/focus.png</texture>
-				<aspectratio>stretch</aspectratio>
-				<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
-				<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
-			</control>
-			<control type="image">
-				<include>Widget_Diffuse</include>
-				<width>278</width>
-				<height>156</height>
-				<texture diffuse="items/mask_wide.png" colordiffuse="diffuse_widget">common/white.jpg</texture>
-			</control>
 			<include content="widget_labels">
 				<param name="top">166</param>
 				<param name="width">278</param>
@@ -1669,6 +1516,195 @@
 				<param name="focused">$PARAM[focused]</param>
 				<param name="labels_visible">$PARAM[labels_visible]</param>
 			</include>
+			<control type="group">
+				<include>Animation_FocusBounce</include>
+				<control type="image">
+					<top>-2</top>
+					<left>-2</left>
+					<width>283</width>
+					<height>162</height>
+					<texture border="20,20,20,20">items/shadow.png</texture>
+				</control>
+				<control type="group">
+					<visible>!String.IsEmpty(ListItem.Icon) | !String.IsEmpty(ListItem.Property(embyart))</visible>
+					<control type="image">
+						<width>277</width>
+						<height>156</height>
+						<texture diffuse="items/mask_button.png" background="true">$INFO[ListItem.Icon]</texture>
+						<aspectratio scalediffuse="false">scale</aspectratio>
+						<visible>!String.IsEmpty(ListItem.Icon)</visible>
+					</control>
+					<control type="image">
+						<width>277</width>
+						<height>156</height>
+						<texture diffuse="items/mask_button.png" background="true">$INFO[ListItem.Property(embyart)]</texture>
+						<aspectratio scalediffuse="false">scale</aspectratio>
+						<visible>String.IsEmpty(ListItem.Icon)</visible>
+					</control>
+				</control>
+				<control type="group">
+					<visible>String.IsEmpty(ListItem.Icon) + String.IsEmpty(ListItem.Property(embyart)) + [String.IsEmpty(ListItem.Property(Art1)) | String.IsEmpty(ListItem.Property(Art2)) | String.IsEmpty(ListItem.Property(Art3)) | String.IsEmpty(ListItem.Property(Art4))]</visible>
+					<control type="image">
+						<width>277</width>
+						<height>156</height>
+						<texture colordiffuse="thumb_background_fallback_secondary">items/mask_button.png</texture>
+						<aspectratio>stretch</aspectratio>
+						<visible>String.StartsWith(ListItem.Property(action),ActivateWindow) | String.IsEmpty(ListItem.Property(action))</visible>
+					</control>
+					<control type="image">
+						<width>277</width>
+						<height>156</height>
+						<texture colordiffuse="lila">items/mask_button.png</texture>
+						<visible>!String.StartsWith(ListItem.Property(action),ActivateWindow) + !String.IsEmpty(ListItem.Property(action))</visible>
+					</control>
+					<control type="label">
+						<width>277</width>
+						<height>156</height>
+						<font>Light24</font>
+						<textcolor>white</textcolor>
+						<textoffsetx>10</textoffsetx>
+						<align>center</align>
+						<aligny>center</aligny>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+				</control>
+				<control type="group">
+					<visible>String.IsEmpty(ListItem.Icon) + String.IsEmpty(ListItem.Property(embyart)) + !String.IsEmpty(ListItem.Property(Art1)) + !String.IsEmpty(ListItem.Property(Art2)) + !String.IsEmpty(ListItem.Property(Art3)) + !String.IsEmpty(ListItem.Property(Art4))</visible>
+					<top>2</top>
+					<width>277</width>
+					<control type="image">
+						<top>-2</top>
+						<width>277</width>
+						<height>156</height>
+						<texture colordiffuse="ff010202">items/mask_button.png</texture>
+					</control>
+					<!-- art 1 -->
+					<control type="group">
+						<width>66</width>
+						<left>3</left>
+						<control type="image">
+							<height>108</height>
+							<texture colordiffuse="thumb_background">common/white.jpg</texture>
+							<aspectratio>scale</aspectratio>
+						</control>
+						<control type="image">
+							<height>108</height>
+							<texture background="true">$INFO[ListItem.Property(Art1)]</texture>
+							<aspectratio>scale</aspectratio>
+						</control>
+						<control type="image">
+							<top>113</top>
+							<height>108</height>
+							<texture flipy="true" diffuse="items/mirror_mask.png" colordiffuse="thumb_background">common/white.jpg</texture>
+							<aspectratio scalediffuse="false">scale</aspectratio>
+						</control>
+						<control type="image">
+							<top>113</top>
+							<height>108</height>
+							<texture flipy="true" diffuse="items/mirror_mask.png" background="true">$INFO[ListItem.Property(Art1)]</texture>
+							<aspectratio scalediffuse="false">scale</aspectratio>
+						</control>
+					</control>
+					<!-- art 2 -->
+					<control type="group">
+						<width>65</width>
+						<left>72</left>
+						<control type="image">
+							<width>65</width>
+							<height>108</height>
+							<texture colordiffuse="thumb_background">common/white.jpg</texture>
+							<aspectratio>scale</aspectratio>
+						</control>
+						<control type="image">
+							<height>108</height>
+							<texture background="true">$INFO[ListItem.Property(Art2)]</texture>
+							<aspectratio>scale</aspectratio>
+						</control>
+						<control type="image">
+							<top>111</top>
+							<height>108</height>
+							<texture flipy="true" diffuse="items/mirror_mask.png" colordiffuse="thumb_background">common/white.jpg</texture>
+							<aspectratio scalediffuse="false">scale</aspectratio>
+						</control>
+						<control type="image">
+							<top>111</top>
+							<height>108</height>
+							<texture flipy="true" diffuse="items/mirror_mask.png" background="true">$INFO[ListItem.Property(Art2)]</texture>
+							<aspectratio scalediffuse="false">scale</aspectratio>
+						</control>
+					</control>
+					<!-- art 3 -->
+					<control type="group">
+						<width>65</width>
+						<left>140</left>
+						<control type="image">
+							<height>108</height>
+							<texture colordiffuse="thumb_background">common/white.jpg</texture>
+							<aspectratio>scale</aspectratio>
+						</control>
+						<control type="image">
+							<height>108</height>
+							<texture background="true">$INFO[ListItem.Property(Art3)]</texture>
+							<aspectratio>scale</aspectratio>
+						</control>
+						<control type="image">
+							<top>111</top>
+							<height>108</height>
+							<texture flipy="true" diffuse="items/mirror_mask.png" colordiffuse="thumb_background">common/white.jpg</texture>
+							<aspectratio scalediffuse="false">scale</aspectratio>
+						</control>
+						<control type="image">
+							<top>111</top>
+							<height>108</height>
+							<texture flipy="true" diffuse="items/mirror_mask.png" background="true">$INFO[ListItem.Property(Art3)]</texture>
+							<aspectratio scalediffuse="false">scale</aspectratio>
+						</control>
+					</control>
+					<!-- art 4 -->
+					<control type="group">
+						<width>66</width>
+						<left>208</left>
+						<control type="image">
+							<height>108</height>
+							<texture colordiffuse="thumb_background">common/white.jpg</texture>
+							<aspectratio>scale</aspectratio>
+						</control>
+						<control type="image">
+							<height>108</height>
+							<texture background="true">$INFO[ListItem.Property(Art4)]</texture>
+							<aspectratio>scale</aspectratio>
+						</control>
+						<control type="image">
+							<top>111</top>
+							<height>108</height>
+							<texture flipy="true" diffuse="items/mirror_mask.png" colordiffuse="thumb_background">common/white.jpg</texture>
+							<aspectratio scalediffuse="false">scale</aspectratio>
+						</control>
+						<control type="image">
+							<top>111</top>
+							<height>108</height>
+							<texture flipy="true" diffuse="items/mirror_mask.png" background="true">$INFO[ListItem.Property(Art4)]</texture>
+							<aspectratio scalediffuse="false">scale</aspectratio>
+						</control>
+					</control>
+				</control>
+				<control type="image">
+					<left>-12</left>
+					<top>-7</top>
+					<width>301</width>
+					<height>180</height>
+					<texture border="20,20,20,20" colordiffuse="focus_widget">items/focus.png</texture>
+					<aspectratio>stretch</aspectratio>
+					<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
+					<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
+				</control>
+				<control type="image">
+					<include>Widget_Diffuse</include>
+					<width>278</width>
+					<height>156</height>
+					<texture diffuse="items/mask_wide.png" colordiffuse="diffuse_widget">common/white.jpg</texture>
+				</control>
+			</control>
 		</definition>
 	</include>
 
@@ -1807,6 +1843,17 @@
 		<definition>
 			<control type="group">
 				<visible>$PARAM[visible]</visible>
+				<include content="widget_labels">
+					<param name="top">288</param>
+					<param name="width">276</param>
+					<param name="id">$PARAM[id]</param>
+					<param name="mainlabel">$PARAM[mainlabel]</param>
+					<param name="sublabel">$PARAM[sublabel]</param>
+					<param name="focused">$PARAM[focused]</param>
+					<param name="labels_visible">$PARAM[labels_visible]</param>
+				</include>
+				<control type="group">
+					<include>Animation_FocusBounce</include>
 				<control type="image">
 					<top>-2</top>
 					<left>-2</left>
@@ -1864,15 +1911,7 @@
 					<height>276</height>
 					<texture diffuse="items/mask_wide.png" colordiffuse="diffuse_widget">common/white.jpg</texture>
 				</control>
-				<include content="widget_labels">
-					<param name="top">288</param>
-					<param name="width">276</param>
-					<param name="id">$PARAM[id]</param>
-					<param name="mainlabel">$PARAM[mainlabel]</param>
-					<param name="sublabel">$PARAM[sublabel]</param>
-					<param name="focused">$PARAM[focused]</param>
-					<param name="labels_visible">$PARAM[labels_visible]</param>
-				</include>
+			</control>
 			</control>
 		</definition>
 	</include>
