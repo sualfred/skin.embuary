@@ -16,104 +16,100 @@
 			<pagecontrol>17</pagecontrol>
 			<!-- Meta -->
 			<control type="group">
+				<top>90</top>
 				<width>100%</width>
-				<height>566</height>
+				<height>476</height>
+				<!-- poster -->
+				<include>MetaVideoPoster</include>
+				<!-- Meta -->
 				<control type="group">
-					<top>90</top>
-					<height>100%</height>
 					<width>100%</width>
-					<!-- poster -->
-					<include>MetaVideoPoster</include>
-					<!-- Meta -->
-					<control type="group">
-						<width>100%</width>
-						<height>100%</height>
-						<control type="grouplist">
-							<left>370</left>
-							<orientation>vertical</orientation>
-							<height>500</height>
-							<align>top</align>
-							<itemgap>0</itemgap>
-							<width>1480</width>
-							<control type="label">
-								<width>1040</width>
-								<height>60</height>
-								<label>$INFO[VideoPlayer.TvShowTitle]</label>
-								<font>Reg37</font>
-								<aligny>top</aligny>
-								<visible>VideoPlayer.Content(episodes)</visible>
-							</control>
-							<control type="label">
-								<width>1040</width>
-								<height>60</height>
-								<label>$INFO[VideoPlayer.Season,S,:]$INFO[VideoPlayer.Episode,E, - ]$INFO[VideoPlayer.Title]</label>
-								<font>Reg37</font>
-								<aligny>top</aligny>
-							</control>
-							<!-- meta -->
-							<include>PlayerVideoInfos</include>
-							<!-- buttons -->
-							<control type="grouplist" id="100">
-								<height>75</height>
-								<orientation>horizontal</orientation>
-								<itemgap>5</itemgap>
-								<onright>noop</onright>
-								<onleft>900</onleft>
-								<control type="button" id="8">
-									<include>LightGreyButton</include>
-									<label>$LOCALIZE[15067]</label>
-									<onclick>close</onclick>
-									<ondown>200</ondown>
-								</control>
-								<control type="button" id="97">
-									<visible>!String.IsEmpty(VideoPlayer.Plot)</visible>
-									<include>LightGreyButton</include>
-									<width>70</width>
-									<height>50</height>
-									<font>material24</font>
-									<label></label>
-									<onclick>RunScript(script.skin.helper.service,action=textviewer,header='$ESCVAR[TinyInfoDialogHeadline]',message='$ESCVAR[TinyInfoDialogPlot]')</onclick>
-									<ondown>200</ondown>
-								</control>
-							</control>
-							<!-- genre -->
-							<include content="MetaGenre">
-								<param name="visible" value="!VideoPlayer.Content(episodes)"/>
-								<param name="type" value="VideoPlayer"/>
-							</include>
-							<!-- plot -->
-							<control type="textbox">
-								<width>100%</width>
-								<height max="130">auto</height>
-								<align>justify</align>
-								<aligny>top</aligny>
-								<label>$INFO[VideoPlayer.Tagline,[B],[/B][CR]]$INFO[VideoPlayer.Plot]</label>
-								<font>Light24</font>
-								<autoscroll>false</autoscroll>
-								<visible>!VideoPlayer.Content(episodes) + !String.IsEmpty(VideoPlayer.Plot)</visible>
-							</control>
-							<control type="textbox">
-								<width>100%</width>
-								<height max="100">auto</height>
-								<align>justify</align>
-								<aligny>top</aligny>
-								<label>$INFO[VideoPlayer.Tagline,[B],[/B][CR]]$INFO[VideoPlayer.Plot]</label>
-								<font>Light24</font>
-								<autoscroll>false</autoscroll>
-								<visible>VideoPlayer.Content(episodes) + !String.IsEmpty(VideoPlayer.Plot)</visible>
-							</control>
-							<control type="label">
-								<height>20</height>
-								<visible>!String.IsEmpty(VideoPlayer.Plot)</visible>
-							</control>
-							<!-- flags -->
-							<include content="MetaFlags">
-								<param name="type" value="PlayerFlags"/>
-							</include>
+					<height>100%</height>
+					<control type="grouplist">
+						<left>370</left>
+						<orientation>vertical</orientation>
+						<height>500</height>
+						<align>top</align>
+						<itemgap>0</itemgap>
+						<width>1480</width>
+						<control type="label">
+							<width>1040</width>
+							<height>60</height>
+							<label>$INFO[VideoPlayer.TvShowTitle]</label>
+							<font>Reg37</font>
+							<aligny>top</aligny>
+							<visible>VideoPlayer.Content(episodes)</visible>
 						</control>
-						<!-- logo -->
-						<include>MetaPlayerClearlogo</include>
+						<control type="label">
+							<width>1040</width>
+							<height>60</height>
+							<label>$INFO[VideoPlayer.Season,S,:]$INFO[VideoPlayer.Episode,E, - ]$INFO[VideoPlayer.Title]</label>
+							<font>Reg37</font>
+							<aligny>top</aligny>
+						</control>
+						<!-- meta -->
+						<include>PlayerVideoInfos</include>
+						<!-- buttons -->
+						<control type="grouplist" id="100">
+							<height>75</height>
+							<orientation>horizontal</orientation>
+							<itemgap>5</itemgap>
+							<onright>noop</onright>
+							<onleft>900</onleft>
+							<control type="button" id="8">
+								<include>LightGreyButton</include>
+								<label>$LOCALIZE[15067]</label>
+								<onclick>close</onclick>
+								<ondown>200</ondown>
+							</control>
+							<control type="button" id="97">
+								<visible>!String.IsEmpty(VideoPlayer.Plot)</visible>
+								<include>LightGreyButton</include>
+								<width>70</width>
+								<height>50</height>
+								<font>material24</font>
+								<label></label>
+								<onclick>RunScript(script.skin.helper.service,action=textviewer,header='$ESCVAR[TinyInfoDialogHeadline]',message='$ESCVAR[TinyInfoDialogPlot]')</onclick>
+								<ondown>200</ondown>
+							</control>
+						</control>
+						<!-- genre -->
+						<include content="MetaGenre">
+							<param name="visible" value="!VideoPlayer.Content(episodes)"/>
+							<param name="type" value="VideoPlayer"/>
+						</include>
+						<!-- plot -->
+						<control type="textbox">
+							<width>100%</width>
+							<height max="130">auto</height>
+							<align>justify</align>
+							<aligny>top</aligny>
+							<label>$INFO[VideoPlayer.Tagline,[B],[/B][CR]]$INFO[VideoPlayer.Plot]</label>
+							<font>Light24</font>
+							<autoscroll>false</autoscroll>
+							<visible>!VideoPlayer.Content(episodes) + !String.IsEmpty(VideoPlayer.Plot)</visible>
+						</control>
+						<control type="textbox">
+							<width>100%</width>
+							<height max="100">auto</height>
+							<align>justify</align>
+							<aligny>top</aligny>
+							<label>$INFO[VideoPlayer.Tagline,[B],[/B][CR]]$INFO[VideoPlayer.Plot]</label>
+							<font>Light24</font>
+							<autoscroll>false</autoscroll>
+							<visible>VideoPlayer.Content(episodes) + !String.IsEmpty(VideoPlayer.Plot)</visible>
+						</control>
+						<control type="label">
+							<height>20</height>
+							<visible>!String.IsEmpty(VideoPlayer.Plot)</visible>
+						</control>
+						<!-- flags -->
+						<include content="MetaFlags">
+							<param name="type" value="PlayerFlags"/>
+						</include>
 					</control>
+					<!-- logo -->
+					<include>MetaPlayerClearlogo</include>
 				</control>
 			</control>
 			<!-- Cast -->
@@ -220,15 +216,13 @@
 			<include>FullscreenDimensions</include>
 			<control type="group">
 				<top>90</top>
-				<height>910</height>
-				<width>100%</width>
+				<height>950</height>
 				<!-- thumb -->
 				<include>MetaVideoBigThumb</include>
 				<!-- meta -->
 				<control type="grouplist" id="500">
 					<left>684</left>
 					<orientation>vertical</orientation>
-					<height>910</height>
 					<width>1166</width>
 					<align>top</align>
 					<itemgap>0</itemgap>

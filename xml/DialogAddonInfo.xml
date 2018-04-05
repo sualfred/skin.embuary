@@ -18,9 +18,7 @@
 			<include>Window_OpenClose</include>
 			<include>FullscreenDimensions</include>
 			<control type="group">
-				<top>128</top>
-				<height>435</height>
-				<width>1920</width>
+				<top>90</top>
 				<!-- Thumb image -->
 				<include>MetaSquareThumb</include>
 				<!-- meta -->
@@ -51,24 +49,20 @@
 						<onright>noop</onright>
 						<control type="button" id="6">
 							<include>LightGreyButton</include>
-							<onup>SetFocus(6666)</onup>
 							<visible>Control.IsEnabled(6)</visible>
 						</control>
 						<control type="button" id="12">
 							<include>LightGreyButton</include>
 							<label>$LOCALIZE[518]</label>
-							<onup>SetFocus(6666)</onup>
 							<visible>Control.IsEnabled(12)</visible>
 						</control>
 						<control type="button" id="9">
 							<include>LightGreyButton</include>
 							<label>$LOCALIZE[24020]</label>
-							<onup>SetFocus(6666)</onup>
 							<visible>Control.IsEnabled(9)</visible>
 						</control>
 						<control type="button" id="111">
 							<include>LightGreyButton</include>
-							<onup>SetFocus(6666)</onup>
 							<label>$LOCALIZE[24036]</label>
 							<onclick>RunScript(script.skin.helper.service,action=textviewer,header=$LOCALIZE[24036],message='$ESCINFO[ListItem.AddonNews]')</onclick>
 							<visible>!String.IsEmpty(ListItem.AddonNews)</visible>
@@ -79,7 +73,6 @@
 							<height>50</height>
 							<font>material24</font>
 							<label></label>
-							<onup>SetFocus(6666)</onup>
 							<onclick>RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.Label]',message='$ESCINFO[ListItem.AddonDescription]')</onclick>
 							<visible>!String.IsEmpty(ListItem.AddonDescription)</visible>
 						</control>
@@ -89,7 +82,6 @@
 							<height>50</height>
 							<font>material24</font>
 							<label></label>
-							<onup>SetFocus(6666)</onup>
 							<ondown>SetFocus(200)</ondown>
 							<onclick>SetFocus(4000)</onclick>
 							<visible>Control.IsEnabled(7) | Control.IsEnabled(8) | Control.IsEnabled(13)</visible>
@@ -102,7 +94,7 @@
 					<!-- Desc -->
 					<control type="textbox">
 						<width>100%</width>
-						<height>605</height>
+						<height>705</height>
 						<align>justify</align>
 						<aligny>top</aligny>
 						<label>$INFO[ListItem.AddonSummary,[B],[/B][CR][CR]]$INFO[ListItem.AddonDisclaimer,,[CR][CR]]$INFO[ListItem.AddonDescription]</label>
