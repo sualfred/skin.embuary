@@ -775,6 +775,7 @@
 		<value condition="!String.IsEmpty(MusicPlayer.Cover) + !String.StartsWith(MusicPlayer.Cover,default)">$INFO[MusicPlayer.Cover]</value>
 	</variable>
 	<variable name="PlayerCastContent">
+		<value condition="!String.IsEmpty(Window(home).Property(plugin.video.embycon-currently_playing_id))">plugin://plugin.video.embycon?mode=WIDGET_CONTENT_CAST&amp;id=$INFO[Window(home).Property(plugin.video.embycon-currently_playing_id)]</value>
 		<value condition="!String.IsEmpty(VideoPlayer.DBID) + VideoPlayer.Content(episodes)">plugin://plugin.get.cast?mode=title&amp;&amp;dbtype=tvshow&amp;&amp;dbinfo=$INFO[VideoPlayer.TVShowTitle]</value>
 		<value condition="!String.IsEmpty(VideoPlayer.DBID) + !String.IsEqual(VideoPlayer.DBID,0) + !VideoPlayer.Content(episodes)">plugin://plugin.get.cast?mode=dbid&amp;&amp;dbtype=movie&amp;&amp;dbinfo=$INFO[VideoPlayer.DBID]</value>
 		<value condition="!String.IsEmpty(VideoPlayer.DBID) + String.IsEqual(VideoPlayer.DBID,0) + !VideoPlayer.Content(episodes)">plugin://plugin.get.cast?mode=title&amp;&amp;dbtype=movie&amp;&amp;dbinfo=$INFO[VideoPlayer.Title]</value>
