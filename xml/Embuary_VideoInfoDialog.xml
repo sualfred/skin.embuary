@@ -11,23 +11,23 @@
 			<height>100%</height>
 			<orientation>vertical</orientation>
 			<usecontrolcoords>true</usecontrolcoords>
-			<scrolltime tween="sine" easing="out">400</scrolltime>
+			<include>ScrollTime</include>
 			<itemgap>-80</itemgap>
 			<pagecontrol>17</pagecontrol>
 			<!-- Meta -->
 			<control type="group">
 				<width>100%</width>
-				<height>604</height>
+				<height>566</height>
 				<control type="group">
-					<top>128</top>
-					<height>435</height>
+					<top>90</top>
+					<height>100%</height>
 					<width>100%</width>
 					<!-- poster -->
 					<include>MetaVideoPoster</include>
 					<!-- Meta -->
 					<control type="group">
 						<width>100%</width>
-						<height>604</height>
+						<height>100%</height>
 						<control type="grouplist">
 							<left>370</left>
 							<orientation>vertical</orientation>
@@ -63,7 +63,6 @@
 									<include>LightGreyButton</include>
 									<label>$LOCALIZE[15067]</label>
 									<onclick>close</onclick>
-									<onup>SetFocus(6666)</onup>
 									<ondown>200</ondown>
 								</control>
 								<control type="button" id="97">
@@ -74,7 +73,6 @@
 									<font>material24</font>
 									<label></label>
 									<onclick>RunScript(script.skin.helper.service,action=textviewer,header='$ESCVAR[TinyInfoDialogHeadline]',message='$ESCVAR[TinyInfoDialogPlot]')</onclick>
-									<onup>SetFocus(6666)</onup>
 									<ondown>200</ondown>
 								</control>
 							</control>
@@ -221,8 +219,8 @@
 			<include>Window_OpenClose</include>
 			<include>FullscreenDimensions</include>
 			<control type="group">
-				<top>128</top>
-				<height>435</height>
+				<top>90</top>
+				<height>910</height>
 				<width>100%</width>
 				<!-- thumb -->
 				<include>MetaVideoBigThumb</include>
@@ -271,13 +269,11 @@
 							<include>LightGreyButton</include>
 							<label>$LOCALIZE[15067]</label>
 							<onclick>close</onclick>
-							<onup>SetFocus(6666)</onup>
 						</control>
 						<control type="button" id="102">
 							<include>LightGreyButton</include>
 							<label>$VAR[PlayerRecordingLabel]</label>
 							<onclick>PlayerControl(record)</onclick>
-							<onup>SetFocus(6666)</onup>
 							<visible>PVR.CanRecordPlayingChannel</visible>
 						</control>
 						<control type="button" id="103">
@@ -288,7 +284,6 @@
 							<font>material24</font>
 							<label></label>
 							<onclick>RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[VideoPlayer.Channelname]',message='$ESCVAR[TinyInfoDialogPlot]')</onclick>
-							<onup>SetFocus(6666)</onup>
 						</control>
 					</control>
 					<!-- Genre -->
