@@ -16,97 +16,93 @@
 			<pagecontrol>17</pagecontrol>
 			<!-- Meta -->
 			<control type="group">
+				<top>90</top>
 				<width>100%</width>
-				<height>566</height>
-				<control type="group">
-					<top>90</top>
-					<height>100%</height>
-					<width>100%</width>
-					<!-- poster -->
-					<include>MetaPoster</include>
-					<!-- meta -->
-					<control type="grouplist">
-						<left>370</left>
-						<orientation>vertical</orientation>
-						<height>500</height>
-						<align>top</align>
-						<itemgap>0</itemgap>
-						<width>1480</width>
-						<control type="label">
-							<width>1040</width>
-							<height>60</height>
-							<label>$INFO[ListItem.Title]</label>
-							<aligny>top</aligny>
-							<font>Reg37</font>
-						</control>
-						<!-- small meta -->
-						<include>MetaMovieInfos</include>
-						<!-- buttons -->
-						<control type="grouplist" id="100">
-							<height>75</height>
-							<orientation>horizontal</orientation>
-							<itemgap>5</itemgap>
-							<onright>noop</onright>
-							<onleft>900</onleft>
-							<control type="button" id="101">
-								<include>LightGreyButton</include>
-								<label>$LOCALIZE[15067]</label>
-								<ondown>200</ondown>
-								<onclick>close</onclick>
-							</control>
-							<control type="button" id="8">
-								<include>LightGreyButton</include>
-								<label>$VAR[VideoInfoButton8]</label>
-								<ondown>200</ondown>
-							</control>
-							<control type="button" id="11">
-								<visible>!String.IsEmpty(ListItem.Trailer)</visible>
-								<include>LightGreyButton</include>
-								<label>$LOCALIZE[20410]</label>
-								<ondown>200</ondown>
-							</control>
-							<control type="button" id="97">
-								<visible>!String.IsEmpty(ListItem.Plot)</visible>
-								<include>LightGreyButton</include>
-								<width>70</width>
-								<height>50</height>
-								<font>material24</font>
-								<label></label>
-								<onclick>RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCINFO[ListItem.Plot]')</onclick>
-								<ondown>200</ondown>
-							</control>
-							<control type="button" id="103">
-								<include>LightGreyButton</include>
-								<width>70</width>
-								<height>50</height>
-								<font>material24</font>
-								<label></label>
-								<ondown>200</ondown>
-								<onclick>SetFocus(4000)</onclick>
-								<visible>!Skin.HasSetting(HideLibraryEditButtons) + !Skin.HasSetting(KioskMode) + !String.StartsWith(ListItem.Path,plugin://)</visible>
-							</control>
-						</control>
-						<!-- genre -->
-						<include>MetaGenre</include>
-						<!-- plot -->
-						<control type="textbox">
-							<width>100%</width>
-							<height max="130">auto</height>
-							<align>justify</align>
-							<aligny>top</aligny>
-							<label>$INFO[ListItem.Tagline,[B],[/B][CR]]$INFO[ListItem.Plot]</label>
-							<font>Light24</font>
-							<autoscroll>false</autoscroll>
-						</control>
-						<control type="label">
-							<height>20</height>
-						</control>
-						<!-- media flags -->
-						<include>MetaFlags</include>
+				<height>476</height>
+				<!-- poster -->
+				<include>MetaPoster</include>
+				<!-- meta -->
+				<control type="grouplist">
+					<left>370</left>
+					<orientation>vertical</orientation>
+					<height>500</height>
+					<align>top</align>
+					<itemgap>0</itemgap>
+					<width>1480</width>
+					<control type="label">
+						<width>1040</width>
+						<height>60</height>
+						<label>$INFO[ListItem.Title]</label>
+						<aligny>top</aligny>
+						<font>Reg37</font>
 					</control>
-					<!-- logo -->
-					<include>MetaClearlogo</include>
+					<!-- small meta -->
+					<include>MetaMovieInfos</include>
+					<!-- buttons -->
+					<control type="grouplist" id="100">
+						<height>75</height>
+						<orientation>horizontal</orientation>
+						<itemgap>5</itemgap>
+						<onright>noop</onright>
+						<onleft>900</onleft>
+						<control type="button" id="101">
+							<include>LightGreyButton</include>
+							<label>$LOCALIZE[15067]</label>
+							<ondown>200</ondown>
+							<onclick>close</onclick>
+						</control>
+						<control type="button" id="8">
+							<include>LightGreyButton</include>
+							<label>$VAR[VideoInfoButton8]</label>
+							<ondown>200</ondown>
+						</control>
+						<control type="button" id="11">
+							<visible>!String.IsEmpty(ListItem.Trailer)</visible>
+							<include>LightGreyButton</include>
+							<label>$LOCALIZE[20410]</label>
+							<ondown>200</ondown>
+						</control>
+						<control type="button" id="97">
+							<visible>!String.IsEmpty(ListItem.Plot)</visible>
+							<include>LightGreyButton</include>
+							<width>70</width>
+							<height>50</height>
+							<font>material24</font>
+							<label></label>
+							<onclick>RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCINFO[ListItem.Plot]')</onclick>
+							<ondown>200</ondown>
+						</control>
+						<control type="button" id="103">
+							<include>LightGreyButton</include>
+							<width>70</width>
+							<height>50</height>
+							<font>material24</font>
+							<label></label>
+							<ondown>200</ondown>
+							<onclick>SetFocus(4000)</onclick>
+							<visible>!Skin.HasSetting(HideLibraryEditButtons) + !Skin.HasSetting(KioskMode) + !String.StartsWith(ListItem.Path,plugin://)</visible>
+						</control>
+					</control>
+					<!-- genre -->
+					<include>MetaGenre</include>
+					<!-- plot -->
+					<control type="textbox">
+						<width>100%</width>
+						<height max="130">auto</height>
+						<align>justify</align>
+						<aligny>top</aligny>
+						<label>$INFO[ListItem.Tagline,[B],[/B][CR]]$INFO[ListItem.Plot]</label>
+						<font>Light24</font>
+						<autoscroll>false</autoscroll>
+					</control>
+					<control type="label">
+						<height>20</height>
+					</control>
+					<!-- media flags -->
+					<include>MetaFlags</include>
 				</control>
+				<!-- logo -->
+				<include>MetaClearlogo</include>
 			</control>
 			<!-- Cast -->
 			<include content="CastWidget">
@@ -158,92 +154,88 @@
 			<pagecontrol>17</pagecontrol>
 			<!-- Meta -->
 			<control type="group">
+				<top>90</top>
 				<width>100%</width>
-				<height>566</height>
-				<control type="group">
-					<top>90</top>
-					<height>100%</height>
-					<width>100%</width>
-					<!-- poster -->
-					<include>MetaPoster</include>
-					<!-- meta -->
-					<control type="grouplist">
-						<left>370</left>
-						<orientation>vertical</orientation>
-						<height>500</height>
-						<align>top</align>
-						<itemgap>0</itemgap>
-						<width>1480</width>
-						<control type="label">
-							<width>1040</width>
-							<height>60</height>
-							<label>$INFO[ListItem.Title]</label>
-							<aligny>top</aligny>
-							<font>Reg37</font>
-						</control>
-						<!-- meta -->
-						<include>MetaShowInfos</include>
-						<!-- buttons -->
-						<control type="grouplist" id="100">
-							<height>75</height>
-							<orientation>horizontal</orientation>
-							<itemgap>5</itemgap>
-							<onright>noop</onright>
-							<onleft>900</onleft>
-							<control type="button" id="101">
-								<include>LightGreyButton</include>
-								<label>$LOCALIZE[15067]</label>
-								<ondown>200</ondown>
-								<onclick>close</onclick>
-							</control>
-							<control type="button" id="11">
-								<visible>!String.IsEmpty(ListItem.Trailer)</visible>
-								<include>LightGreyButton</include>
-								<label>$LOCALIZE[20410]</label>
-								<ondown>200</ondown>
-							</control>
-							<control type="button" id="97">
-								<visible>!String.IsEmpty(ListItem.Plot)</visible>
-								<include>LightGreyButton</include>
-								<width>70</width>
-								<height>50</height>
-								<font>material24</font>
-								<label></label>
-								<onclick>RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.TVShowTitle]',message='$ESCVAR[TinyInfoDialogPlot]')</onclick>
-								<ondown>200</ondown>
-							</control>
-							<control type="button" id="103">
-								<include>LightGreyButton</include>
-								<width>70</width>
-								<height>50</height>
-								<font>material24</font>
-								<label></label>
-								<ondown>200</ondown>
-								<onclick>SetFocus(4000)</onclick>
-								<visible>!Skin.HasSetting(HideLibraryEditButtons) + !Skin.HasSetting(KioskMode) + !String.StartsWith(ListItem.Path,plugin://)</visible>
-							</control>
-						</control>
-						<!-- genre -->
-						<include>MetaGenre</include>
-						<!-- plot -->
-						<control type="textbox">
-							<width>100%</width>
-							<height max="130">auto</height>
-							<align>justify</align>
-							<aligny>top</aligny>
-							<label>$INFO[ListItem.Plot]</label>
-							<font>Light24</font>
-							<autoscroll>false</autoscroll>
-						</control>
-						<control type="label">
-							<height>20</height>
-						</control>
-						<!-- flags -->
-						<include>MetaFlags</include>
+				<height>476</height>
+				<!-- poster -->
+				<include>MetaPoster</include>
+				<!-- meta -->
+				<control type="grouplist">
+					<left>370</left>
+					<orientation>vertical</orientation>
+					<height>500</height>
+					<align>top</align>
+					<itemgap>0</itemgap>
+					<width>1480</width>
+					<control type="label">
+						<width>1040</width>
+						<height>60</height>
+						<label>$INFO[ListItem.Title]</label>
+						<aligny>top</aligny>
+						<font>Reg37</font>
 					</control>
-					<!-- logo -->
-					<include>MetaClearlogo</include>
+					<!-- meta -->
+					<include>MetaShowInfos</include>
+					<!-- buttons -->
+					<control type="grouplist" id="100">
+						<height>75</height>
+						<orientation>horizontal</orientation>
+						<itemgap>5</itemgap>
+						<onright>noop</onright>
+						<onleft>900</onleft>
+						<control type="button" id="101">
+							<include>LightGreyButton</include>
+							<label>$LOCALIZE[15067]</label>
+							<ondown>200</ondown>
+							<onclick>close</onclick>
+						</control>
+						<control type="button" id="11">
+							<visible>!String.IsEmpty(ListItem.Trailer)</visible>
+							<include>LightGreyButton</include>
+							<label>$LOCALIZE[20410]</label>
+							<ondown>200</ondown>
+						</control>
+						<control type="button" id="97">
+							<visible>!String.IsEmpty(ListItem.Plot)</visible>
+							<include>LightGreyButton</include>
+							<width>70</width>
+							<height>50</height>
+							<font>material24</font>
+							<label></label>
+							<onclick>RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.TVShowTitle]',message='$ESCVAR[TinyInfoDialogPlot]')</onclick>
+							<ondown>200</ondown>
+						</control>
+						<control type="button" id="103">
+							<include>LightGreyButton</include>
+							<width>70</width>
+							<height>50</height>
+							<font>material24</font>
+							<label></label>
+							<ondown>200</ondown>
+							<onclick>SetFocus(4000)</onclick>
+							<visible>!Skin.HasSetting(HideLibraryEditButtons) + !Skin.HasSetting(KioskMode) + !String.StartsWith(ListItem.Path,plugin://)</visible>
+						</control>
+					</control>
+					<!-- genre -->
+					<include>MetaGenre</include>
+					<!-- plot -->
+					<control type="textbox">
+						<width>100%</width>
+						<height max="130">auto</height>
+						<align>justify</align>
+						<aligny>top</aligny>
+						<label>$INFO[ListItem.Plot]</label>
+						<font>Light24</font>
+						<autoscroll>false</autoscroll>
+					</control>
+					<control type="label">
+						<height>20</height>
+					</control>
+					<!-- flags -->
+					<include>MetaFlags</include>
 				</control>
+				<!-- logo -->
+				<include>MetaClearlogo</include>
 			</control>
 			<!-- Next Up -->
 			<include content="WideWidget">
@@ -293,103 +285,99 @@
 			<pagecontrol>17</pagecontrol>
 			<!-- Meta -->
 			<control type="group">
+				<top>90</top>
 				<width>100%</width>
-				<height>576</height>
-				<control type="group">
-					<top>90</top>
-					<height>100%</height>
-					<width>100%</width>
-					<!-- thumb -->
-					<include>MetaThumbnail</include>
-					<!-- meta -->
-					<control type="grouplist">
-						<left>524</left>
-						<orientation>vertical</orientation>
-						<height>500</height>
-						<align>top</align>
-						<itemgap>0</itemgap>
-						<right>70</right>
-						<control type="label">
-							<width>886</width>
-							<height>60</height>
-							<label>$INFO[ListItem.TvShowTitle]</label>
-							<font>Reg37</font>
-							<aligny>top</aligny>
-						</control>
-						<control type="label">
-							<width>886</width>
-							<height>60</height>
-							<label>$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title]</label>
-							<font>Reg37</font>
-							<aligny>top</aligny>
-						</control>
-						<!-- meta -->
-						<include content="MetaEpisodeInfos">
-							<param name="width" value="886"/>
-						</include>
-						<!-- buttons -->
-						<control type="grouplist" id="100">
-							<height>75</height>
-							<orientation>horizontal</orientation>
-							<itemgap>5</itemgap>
-							<onright>noop</onright>
-							<onleft>900</onleft>
-							<control type="button" id="101">
-								<include>LightGreyButton</include>
-								<label>$LOCALIZE[15067]</label>
-								<ondown>200</ondown>
-								<onclick>close</onclick>
-							</control>
-							<control type="button" id="8">
-								<include>LightGreyButton</include>
-								<label>$VAR[VideoInfoButton8]</label>
-								<ondown>200</ondown>
-							</control>
-							<control type="button" id="11">
-								<visible>!String.IsEmpty(ListItem.Trailer)</visible>
-								<include>LightGreyButton</include>
-								<label>$LOCALIZE[20410]</label>
-								<ondown>200</ondown>
-							</control>
-							<control type="button" id="97">
-								<visible>!String.IsEmpty(ListItem.Plot)</visible>
-								<include>LightGreyButton</include>
-								<width>70</width>
-								<height>50</height>
-								<font>material24</font>
-								<label></label>
-								<onclick>RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.TVShowTitle]',message='$ESCVAR[TinyInfoDialogPlot]')</onclick>
-								<ondown>200</ondown>
-							</control>
-							<control type="button" id="103">
-								<include>LightGreyButton</include>
-								<width>70</width>
-								<height>50</height>
-								<font>material24</font>
-								<label></label>
-								<ondown>200</ondown>
-								<onclick>SetFocus(4000)</onclick>
-								<visible>!Skin.HasSetting(HideLibraryEditButtons) + !Skin.HasSetting(KioskMode) + !String.StartsWith(ListItem.Path,plugin://)</visible>
-							</control>
-						</control>
-						<control type="textbox">
-							<width>100%</width>
-							<height max="130">auto</height>
-							<align>justify</align>
-							<aligny>top</aligny>
-							<label>$INFO[ListItem.Plot]</label>
-							<font>Light24</font>
-							<autoscroll>false</autoscroll>
-						</control>
-						<control type="label">
-							<height>15</height>
-						</control>
-						<!-- flags -->
-						<include>MetaFlags</include>
+				<height>486</height>
+				<!-- thumb -->
+				<include>MetaThumbnail</include>
+				<!-- meta -->
+				<control type="grouplist">
+					<left>524</left>
+					<orientation>vertical</orientation>
+					<height>500</height>
+					<align>top</align>
+					<itemgap>0</itemgap>
+					<right>70</right>
+					<control type="label">
+						<width>886</width>
+						<height>60</height>
+						<label>$INFO[ListItem.TvShowTitle]</label>
+						<font>Reg37</font>
+						<aligny>top</aligny>
 					</control>
-					<!-- logo -->
-					<include>MetaClearlogo</include>
+					<control type="label">
+						<width>886</width>
+						<height>60</height>
+						<label>$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title]</label>
+						<font>Reg37</font>
+						<aligny>top</aligny>
+					</control>
+					<!-- meta -->
+					<include content="MetaEpisodeInfos">
+						<param name="width" value="886"/>
+					</include>
+					<!-- buttons -->
+					<control type="grouplist" id="100">
+						<height>75</height>
+						<orientation>horizontal</orientation>
+						<itemgap>5</itemgap>
+						<onright>noop</onright>
+						<onleft>900</onleft>
+						<control type="button" id="101">
+							<include>LightGreyButton</include>
+							<label>$LOCALIZE[15067]</label>
+							<ondown>200</ondown>
+							<onclick>close</onclick>
+						</control>
+						<control type="button" id="8">
+							<include>LightGreyButton</include>
+							<label>$VAR[VideoInfoButton8]</label>
+							<ondown>200</ondown>
+						</control>
+						<control type="button" id="11">
+							<visible>!String.IsEmpty(ListItem.Trailer)</visible>
+							<include>LightGreyButton</include>
+							<label>$LOCALIZE[20410]</label>
+							<ondown>200</ondown>
+						</control>
+						<control type="button" id="97">
+							<visible>!String.IsEmpty(ListItem.Plot)</visible>
+							<include>LightGreyButton</include>
+							<width>70</width>
+							<height>50</height>
+							<font>material24</font>
+							<label></label>
+							<onclick>RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.TVShowTitle]',message='$ESCVAR[TinyInfoDialogPlot]')</onclick>
+							<ondown>200</ondown>
+						</control>
+						<control type="button" id="103">
+							<include>LightGreyButton</include>
+							<width>70</width>
+							<height>50</height>
+							<font>material24</font>
+							<label></label>
+							<ondown>200</ondown>
+							<onclick>SetFocus(4000)</onclick>
+							<visible>!Skin.HasSetting(HideLibraryEditButtons) + !Skin.HasSetting(KioskMode) + !String.StartsWith(ListItem.Path,plugin://)</visible>
+						</control>
+					</control>
+					<control type="textbox">
+						<width>100%</width>
+						<height max="130">auto</height>
+						<align>justify</align>
+						<aligny>top</aligny>
+						<label>$INFO[ListItem.Plot]</label>
+						<font>Light24</font>
+						<autoscroll>false</autoscroll>
+					</control>
+					<control type="label">
+						<height>15</height>
+					</control>
+					<!-- flags -->
+					<include>MetaFlags</include>
 				</control>
+				<!-- logo -->
+				<include>MetaClearlogo</include>
 			</control>
 			<!-- Cast -->
 			<include content="CastWidget">
