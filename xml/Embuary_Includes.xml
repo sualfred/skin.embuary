@@ -559,6 +559,7 @@
 					<height>950</height>
 					<onleft>SetFocus(50)</onleft>
 					<onright condition="!Control.IsVisible(53) + Control.IsVisible(17)">17</onright>
+					<onfocus condition="!Skin.HasSetting(MinimalFocusAnimation)">SetProperty(FocusBounce,1,home)</onfocus>
 					<scrolltime>0</scrolltime>
 					<orientation>vertical</orientation>
 					<defaultcontrol>0</defaultcontrol>
@@ -631,6 +632,7 @@
 							<height>51</height>
 							<texture border="20,20,20,20" colordiffuse="emby_secondary">items/focus.png</texture>
 							<visible>Control.HasFocus($PARAM[id])</visible>
+							<include>Animation_FocusBounce</include>
 						</control>
 					</focusedlayout>
 					<content>plugin://script.skin.helper.service/?action=alphabet&amp;reload=$INFO[Container.NumItems]</content>
@@ -643,6 +645,7 @@
 		<control type="button">
 			<texturefocus>-</texturefocus>
 			<texturenofocus>-</texturenofocus>
+			<onfocus>ClearProperty(FocusBounce,home)</onfocus>
 			<onfocus condition="[String.IsEqual(ListItem.DBType,artist) | Container.Content(artists)] + String.IsEmpty(Window(home).Property(DontSetProps))">SetProperty(ArtistDBID,$INFO[ListItem.DBID],home)</onfocus>
 			<onfocus condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)] + String.IsEmpty(Window(home).Property(DontSetProps))">SetProperty(TVShowRating,$INFO[ListItem.Rating],home)</onfocus>
 			<onfocus condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)] + String.IsEmpty(Window(home).Property(DontSetProps))">SetProperty(TVShowDBID,$INFO[ListItem.DBID],home)</onfocus>
@@ -664,6 +667,7 @@
 		<control type="button">
 			<texturefocus>-</texturefocus>
 			<texturenofocus>-</texturenofocus>
+			<onfocus>ClearProperty(FocusBounce,home)</onfocus>
 			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,artist) + String.IsEmpty(Window(home).Property(DontSetProps))">SetProperty(ArtistDBID,$INFO[Container($PARAM[id]).ListItem.DBID],home)</onfocus>
 			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow) + String.IsEmpty(Window(home).Property(DontSetProps))">SetProperty(TVShowRating,$INFO[Container($PARAM[id]).ListItem.Rating],home)</onfocus>
 			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow) + String.IsEmpty(Window(home).Property(DontSetProps))">SetProperty(TVShowDBID,$INFO[Container($PARAM[id]).ListItem.DBID],home)</onfocus>
@@ -1357,6 +1361,11 @@
 	</include>
 	<include name="ScrollTime">
 		<scrolltime tween="cubic" easing="out">600</scrolltime>
+	</include>
+	<include name="FocusBounce">
+		<onup condition="!Skin.HasSetting(MinimalFocusAnimation)">SetProperty(FocusBounce,1,home)</onup>
+		<ondown condition="!Skin.HasSetting(MinimalFocusAnimation)">SetProperty(FocusBounce,1,home)</ondown>
+		<onright condition="!Skin.HasSetting(MinimalFocusAnimation)">SetProperty(FocusBounce,1,home)</onright>
 	</include>
 	<!-- widget placeholder -->
 	<include name="WidgetDummy">
