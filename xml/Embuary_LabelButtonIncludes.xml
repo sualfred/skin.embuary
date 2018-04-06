@@ -161,6 +161,7 @@
 		<param name="align">true</param>
 		<definition>
 			<animation effect="slide" time="0" end="0,-1" condition="$PARAM[align]">Conditional</animation>
+			<onfocus condition="!Skin.HasSetting(MinimalFocusAnimation)">SetProperty(FocusBounce,1,home)</onfocus>
 			<include>NoTextures</include>
 			<height>58</height>
 			<width>auto</width>
@@ -176,6 +177,7 @@
 		<param name="align-left">true</param>
 		<definition>
 			<animation effect="slide" time="0" end="-2,0" condition="$PARAM[align-left]">Conditional</animation>
+			<include>FocusBounce</include>
 			<height>56</height>
 			<textcolor>text_white</textcolor>
 			<focusedcolor>white</focusedcolor>
@@ -194,6 +196,7 @@
 	<include name="DarkGreyButton">
 		<param name="align-left">true</param>
 		<definition>
+			<include>FocusBounce</include>
 			<height>50</height>
 			<font>med22</font>
 			<textcolor>white</textcolor>
