@@ -23,9 +23,9 @@
 					<texture colordiffuse="ff2a2a2a">common/white.jpg</texture>
 				</control>
 				<!-- List -->
-				<control id="53" type="panel">
+				<control id="53" type="fixedlist">
 					<visible>$EXP[ListViewVisible]</visible>
-					<top>35</top>
+					<top>32</top>
 					<width>1230</width>
 					<height>1060</height>
 					<onup>SetFocus(6666)</onup>
@@ -35,7 +35,8 @@
 					<ondown>noop</ondown>
 					<onleft>900</onleft>
 					<defaultcontrol always="true">0</defaultcontrol>
-					<focusposition>1</focusposition>
+					<focusposition>3</focusposition>
+					<movement>4</movement>
 					<orientation>vertical</orientation>
 					<viewtype label="535">list</viewtype>
 					<pagecontrol>17</pagecontrol>
@@ -100,7 +101,7 @@
 				<control type="group">
 					<visible>String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,set) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,season) | String.StartsWith(ListItem.Path,pvr://) | [String.StartsWith(Container.FolderPath,plugin://plugin.video.emby/) + String.Contains(Container.FolderPath,type=homevideos)] | [String.StartsWith(Container.FolderPath,plugin://plugin.video.embycon) + !String.EndsWith(ListItem.Icon,icon.png)]</visible>
 					<right>90</right>
-					<top>125</top>
+					<top>115</top>
 					<width>590</width>
 					<control type="group">
 						<control type="image">
