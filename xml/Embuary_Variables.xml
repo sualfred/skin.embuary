@@ -62,7 +62,6 @@
 	<!-- Embcon/Native DB vars -->
 	<variable name="View_Cast_Content">
 		<value condition="Container.Content(sets) | String.IsEqual(ListItem.DBType,set)"></value>
-		<value condition="String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) + !String.IsEmpty(ListItem.Property(id)) + !String.IsEqual(ListItem.DBType,season)">plugin://plugin.video.embycon?mode=WIDGET_CONTENT_CAST&amp;id=$INFO[ListItem.Property(id)]</value>
 		<value condition="String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">plugin://plugin.video.embycon?mode=WIDGET_CONTENT_CAST&amp;id=$INFO[Window(home).Property(EmbyID)]</value>
 		<value condition="String.IsEqual(ListItem.DBType,movie) + !String.IsEmpty(ListItem.DBID) + !String.IsEqual(ListItem.DBID,0)">plugin://plugin.get.cast?mode=dbid&amp;&amp;dbtype=movie&amp;&amp;dbinfo=$INFO[ListItem.DBID]</value>
 		<value condition="String.IsEqual(ListItem.DBType,movie) + String.IsEqual(ListItem.DBID,0)">plugin://plugin.get.cast?mode=title&amp;&amp;dbtype=movie&amp;&amp;dbinfo=$INFO[ListItem.Title]</value>
@@ -1462,7 +1461,7 @@
 		<value condition="!String.IsEmpty(MusicPlayer.Title) + !String.Contains(MusicPlayer.Title,pvr.hts_)">$INFO[MusicPlayer.Artist,, - ]$INFO[MusicPlayer.Tracknumber,,. ]$INFO[MusicPlayer.Title]</value>
 		<value condition="!String.IsEmpty(MusicPlayer.Title)">$INFO[MusicPlayer.Artist]</value>
 		<value condition="VideoPlayer.Content(livetv)">$INFO[VideoPlayer.Title]</value>
-		<value condition="!String.IsEmpty(VideoPlayer.TVShowTitle) + !VideoPlayer.IsFullscreen">$INFO[VideoPlayer.TVShowTitle,, - ]$INFO[VideoPlayer.Season,S,:]$INFO[VideoPlayer.Episode,E, - ]$INFO[VideoPlayer.Title]</value>
+		<value condition="!String.IsEmpty(VideoPlayer.TVShowTitle) + [!VideoPlayer.IsFullscreen | Window.IsVisible(shutdownmenu)]">$INFO[VideoPlayer.TVShowTitle,, - ]$INFO[VideoPlayer.Season,S,:]$INFO[VideoPlayer.Episode,E, - ]$INFO[VideoPlayer.Title]</value>
 		<value condition="!String.IsEmpty(VideoPlayer.TVShowTitle)">$INFO[VideoPlayer.Season,S,:]$INFO[VideoPlayer.Episode,E, - ]$INFO[VideoPlayer.Title]</value>
 		<value>$INFO[VideoPlayer.Title]</value>
 	</variable>
