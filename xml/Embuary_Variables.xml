@@ -108,6 +108,11 @@
 		<value condition="String.StartsWith(Container.Folderpath,plugin://plugin.video.embycon) | Window.IsVisible(1160) | Window.IsVisible(1161) | Window.IsVisible(1162) | Window.IsVisible(1163) | Window.IsVisible(1164) | Window.IsVisible(1165) | Window.IsVisible(1166) | Window.IsVisible(1167) | Window.IsVisible(1168) | Window.IsVisible(1169)">EmbyCon - </value>
 	</variable>
 	<variable name="ContainerContent">
+		<value condition="Window.IsVisible(musicinformation) + String.IsEqual(ListItem.DBType,album)">$LOCALIZE[10523]</value>
+		<value condition="Window.IsVisible(musicinformation) + String.IsEqual(ListItem.DBType,artist)">$LOCALIZE[21891]</value>
+		<value condition="Window.IsVisible(movieinformation) + String.IsEqual(ListItem.DBType,tvshow)">$LOCALIZE[20351]</value>
+		<value condition="Window.IsVisible(movieinformation) + String.IsEqual(ListItem.DBType,movie)">$LOCALIZE[10524]</value>
+		<value condition="Window.IsVisible(movieinformation) + String.IsEqual(ListItem.DBType,episode)">$LOCALIZE[20352]</value>
 		<value condition="String.StartsWith(Container.FolderPath,plugin://plugin.video.emby/) + String.Contains(Container.FolderPath,type=homevideos)">$LOCALIZE[31187]</value>
 		<value condition="Window.IsVisible(1114)">$LOCALIZE[135]</value>
 		<value condition="Window.IsVisible(1130)">$INFO[Window(home).Property(emby.nodes.0.title)]</value>
@@ -166,11 +171,6 @@
 		<value condition="Window.IsVisible(1122)">$LOCALIZE[2]</value>
 		<value condition="Window.IsVisible(1123)">$LOCALIZE[24001]</value>
 		<value condition="Window.IsVisible(1124)">$VAR[PVRLabel]</value>
-		<value condition="Window.IsVisible(musicinformation) + String.IsEqual(ListItem.DBType,album)">$LOCALIZE[10523]</value>
-		<value condition="Window.IsVisible(musicinformation) + String.IsEqual(ListItem.DBType,artist)">$LOCALIZE[21891]</value>
-		<value condition="Window.IsVisible(movieinformation) + String.IsEqual(ListItem.DBType,tvshow)">$LOCALIZE[20351]</value>
-		<value condition="Window.IsVisible(movieinformation) + String.IsEqual(ListItem.DBType,movie)">$LOCALIZE[10524]</value>
-		<value condition="Window.IsVisible(movieinformation) + String.IsEqual(ListItem.DBType,episode)">$LOCALIZE[20352]</value>
 		<value condition="!String.IsEmpty(Container.ShowTitle)">$INFO[Container.ShowTitle]</value>
 		<value condition="Window.IsVisible(MyPVRGuide.xml)">$LOCALIZE[19069]</value>
 		<value condition="Window.IsVisible(MyPVRRecordings.xml)">$LOCALIZE[19017]</value>
