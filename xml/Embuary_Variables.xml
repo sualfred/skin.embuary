@@ -108,6 +108,8 @@
 		<value condition="String.StartsWith(Container.Folderpath,plugin://plugin.video.embycon) | Window.IsVisible(1160) | Window.IsVisible(1161) | Window.IsVisible(1162) | Window.IsVisible(1163) | Window.IsVisible(1164) | Window.IsVisible(1165) | Window.IsVisible(1166) | Window.IsVisible(1167) | Window.IsVisible(1168) | Window.IsVisible(1169)">EmbyCon - </value>
 	</variable>
 	<variable name="ContainerContent">
+		<value condition="Window.IsVisible(dialogpvrinfo.xml)">$LOCALIZE[19047]</value>
+		<value condition="Window.IsVisible(addoninformation)">$LOCALIZE[24003]</value>
 		<value condition="Window.IsVisible(musicinformation) + String.IsEqual(ListItem.DBType,album)">$LOCALIZE[10523]</value>
 		<value condition="Window.IsVisible(musicinformation) + String.IsEqual(ListItem.DBType,artist)">$LOCALIZE[21891]</value>
 		<value condition="Window.IsVisible(movieinformation) + String.IsEqual(ListItem.DBType,tvshow)">$LOCALIZE[20351]</value>
@@ -418,7 +420,6 @@
 		<value condition="Container.Content(albums)">$INFO[ListItem.Genre]</value>
 		<value condition="!String.IsEmpty(ListItem.Duration) + !String.IsEmpty(ListItem.EndTimeResume)">$INFO[ListItem.EndTimeResume,$LOCALIZE[31037] ]</value>
 		<value condition="!String.IsEmpty(ListItem.Duration) + !String.IsEmpty(ListItem.EndTime)">$INFO[ListItem.EndTime,$LOCALIZE[31037] ]</value>
-		<value condition="!String.IsEmpty(ListItem.Property(Addon.ID))">$INFO[ListItem.Property(Addon.ID)]</value>
 	</variable>
 	<variable name="VisibleContainer">
 		<value condition="Control.IsVisible(50)">50</value>
