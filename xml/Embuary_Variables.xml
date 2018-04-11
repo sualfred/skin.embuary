@@ -419,6 +419,9 @@
 		<value condition="Container.Content(tvshows) + !String.IsEmpty(ListItem.Property(TotalSeasons))">$INFO[ListItem.Property(TotalSeasons),, $LOCALIZE[36905]]</value>
 		<value condition="String.IsEqual(ListItem.DBType,album)">$INFO[ListItem.Genre]</value>
 		<value condition="Container.Content(albums)">$INFO[ListItem.Genre]</value>
+		<value condition="!String.IsEmpty(ListItem.Duration) + !String.IsEmpty(ListItem.EndTimeResume)">$INFO[ListItem.EndTimeResume,$LOCALIZE[31037] ]</value>
+		<value condition="!String.IsEmpty(ListItem.Duration) + !String.IsEmpty(ListItem.EndTime)">$INFO[ListItem.EndTime,$LOCALIZE[31037] ]</value>
+		<value condition="!String.IsEmpty(ListItem.Property(Addon.ID))">$INFO[ListItem.Property(Addon.ID)]</value>
 	</variable>
 	<variable name="VisibleContainer">
 		<value condition="Control.IsVisible(50)">50</value>

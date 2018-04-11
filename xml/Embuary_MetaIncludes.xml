@@ -52,8 +52,13 @@
 				<include>SkinHelperRatings</include>
 				<control type="label">
 					<include>MetaLabel</include>
+					<label>$INFO[ListItem.EndTimeResume,$LOCALIZE[31037] ]</label>
+					<visible>!String.IsEmpty(ListItem.EndTimeResume)</visible>
+				</control>
+				<control type="label">
+					<include>MetaLabel</include>
 					<label>$INFO[ListItem.Endtime,$LOCALIZE[31037] ]</label>
-					<visible>!String.IsEmpty(ListItem.Endtime)</visible>
+					<visible>String.IsEmpty(ListItem.EndTimeResume) + !String.IsEmpty(ListItem.Endtime)</visible>
 				</control>
 			</control>
 		</definition>
@@ -143,8 +148,13 @@
 				<include>MetaRating</include>
 				<control type="label">
 					<include>MetaLabel</include>
+					<label>$INFO[ListItem.EndTimeResume,$LOCALIZE[31037] ]</label>
+					<visible>!String.IsEmpty(ListItem.EndTimeResume)</visible>
+				</control>
+				<control type="label">
+					<include>MetaLabel</include>
 					<label>$INFO[ListItem.Endtime,$LOCALIZE[31037] ]</label>
-					<visible>!String.IsEmpty(ListItem.Endtime)</visible>
+					<visible>String.IsEmpty(ListItem.EndTimeResume) + !String.IsEmpty(ListItem.Endtime)</visible>
 				</control>
 			</control>
 		</definition>
@@ -921,6 +931,11 @@
 	<include name="MediaFlags">
 		<control type="button">
 			<include>MetaFlagsButton</include>
+			<label>3D</label>
+			<visible>ListItem.IsStereoscopic</visible>
+		</control>
+		<control type="button">
+			<include>MetaFlagsButton</include>
 			<label>[UPPERCASE]$VAR[ListItemResolution][/UPPERCASE]</label>
 			<visible>!String.IsEmpty(ListItem.VideoResolution)</visible>
 		</control>
@@ -941,11 +956,26 @@
 		</control>
 		<control type="button">
 			<include>MetaFlagsButton</include>
+			<label>$LOCALIZE[292] [UPPERCASE]$INFO[ListItem.AudioLanguage][/UPPERCASE]</label>
+			<visible>!String.IsEmpty(ListItem.AudioLanguage)</visible>
+		</control>
+		<control type="button">
+			<include>MetaFlagsButton</include>
+			<label>$LOCALIZE[287] [UPPERCASE]$INFO[ListItem.SubtitleLanguage][/UPPERCASE]</label>
+			<visible>!String.IsEmpty(ListItem.SubtitleLanguage)</visible>
+		</control>
+		<control type="button">
+			<include>MetaFlagsButton</include>
 			<label>$INFO[ListItem.DateAdded,$LOCALIZE[570]: ]</label>
 			<visible>!String.IsEmpty(ListItem.DateAdded)</visible>
 		</control>
 	</include>
 	<include name="PlayerFlags">
+		<control type="button">
+			<include>MetaFlagsButton</include>
+			<label>3D</label>
+			<visible>VideoPlayer.IsStereoscopic</visible>
+		</control>
 		<control type="button">
 			<include>MetaFlagsButton</include>
 			<label>[UPPERCASE]$VAR[PlayerResolution][/UPPERCASE]</label>
@@ -965,6 +995,16 @@
 			<include>MetaFlagsButton</include>
 			<label>$VAR[PlayerAudio]</label>
 			<visible>!String.IsEmpty(VideoPlayer.AudioChannels) + !String.IsEmpty(VideoPlayer.AudioCodec)</visible>
+		</control>
+		<control type="button">
+			<include>MetaFlagsButton</include>
+			<label>$LOCALIZE[292] [UPPERCASE]$INFO[VideoPlayer.AudioLanguage][/UPPERCASE]</label>
+			<visible>!String.IsEmpty(VideoPlayer.AudioLanguage)</visible>
+		</control>
+		<control type="button">
+			<include>MetaFlagsButton</include>
+			<label>$LOCALIZE[287] [UPPERCASE]$INFO[VideoPlayer.SubtitleLanguage][/UPPERCASE]</label>
+			<visible>!String.IsEmpty(VideoPlayer.SubtitleLanguage)</visible>
 		</control>
 	</include>
 	<include name="PVRFlags">
