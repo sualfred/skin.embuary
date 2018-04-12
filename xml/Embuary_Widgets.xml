@@ -962,6 +962,75 @@
 			</control>
 		</definition>
 	</include>
+	<!-- Square settings -->
+	<include name="HomeSettingsWidget">
+		<param name="visible">true</param>
+		<param name="headline">$LOCALIZE[416]</param>
+		<param name="mainlabel">$INFO[ListItem.Label]</param>
+		<param name="color">blue</param>
+		<param name="height">564</param>
+		<definition>
+			<control type="group" id="$PARAM[id]1">
+				<visible>$PARAM[visible]</visible>
+				<visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</visible>
+				<width>100%</width>
+				<height>$PARAM[height]</height>
+				<include content="widget_headline">
+					<param name="headline">$PARAM[headline]</param>
+				</include>
+				<control type="fixedlist" id="$PARAM[id]">
+					<include>FocusBounce</include>
+					<top>30</top>
+					<width>100%</width>
+					<movement>5</movement>
+					<orientation>horizontal</orientation>
+					<preloaditems>4</preloaditems>
+					<ondown>$PARAM[ondown]</ondown>
+					<include content="Bounce_Right">
+						<param name="id">$PARAM[id]</param>
+					</include>
+					<onright>SetProperty(BounceRight,1,home)</onright>
+					<onright>noop</onright>
+					<onleft>900</onleft>
+					<onup>$PARAM[onup]</onup>
+					<itemlayout width="296">
+						<control type="group">
+							<left>72</left>
+							<top>64</top>
+							<include content="SettingsLayout">
+								<param name="mainlabel" value="$PARAM[mainlabel]" />
+								<param name="sublabel" value="" />
+								<param name="color" value="$PARAM[color]" />
+								<param name="focused" value="false" />
+								<param name="id" value="$PARAM[id]" />
+							</include>
+						</control>
+					</itemlayout>
+					<focusedlayout width="296">
+						<include content="WidgetSetPropertyOnFocus">
+							<param name="id" value="$PARAM[id]"/>
+						</include>
+						<control type="group">
+							<left>72</left>
+							<top>64</top>
+							<include content="SettingsLayout">
+								<param name="mainlabel" value="$PARAM[mainlabel]" />
+								<param name="sublabel" value="" />
+								<param name="color" value="$PARAM[color]" />
+								<param name="focused" value="true" />
+								<param name="id" value="$PARAM[id]" />
+							</include>
+						</control>
+					</focusedlayout>
+					<include>$PARAM[content]</include>
+				</control>
+				<include content="list_mask">
+					<param name="height" value="277"/>
+					<param name="id" value="$PARAM[id]"/>
+				</include>
+			</control>
+		</definition>
+	</include>
 	<!-- PVR -->
 	<include name="PVRHomeSquareWidget">
 		<param name="visible">true</param>

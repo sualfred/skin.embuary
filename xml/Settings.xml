@@ -1,140 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
-	<defaultcontrol>9000</defaultcontrol>
+	<defaultcontrol>102</defaultcontrol>
 	<backgroundcolor>background</backgroundcolor>
-	<onload condition="!Window.Previous(settingscategory.xml) + !Window.Previous(systeminfo) + !Window.Previous(eventlog) + !Window.Previous(filemanager) + !Window.Previous(SkinSettings) + !Window.Previous(profilesettings)">SetFocus(9000,0)</onload>
 	<menucontrol>6666</menucontrol>
 	<controls>
-		<!-- Background -->
+		<!-- background -->
 		<include>Background</include>
-		<!-- Settings -->
-		<control type="group">
+		<!-- lists -->
+		<control type="grouplist" id="10">
 			<include>Window_OpenClose</include>
-			<!-- wide -->
-			<control id="9000" type="panel">
-				<width>1920</width>
-				<height>1080</height>
-				<onup condition="Control.IsVisible(7000)">SetFocus(7000)</onup>
-				<onup condition="!Control.IsVisible(7000)">SetFocus(6666)</onup>
-				<ondown>noop</ondown>
-				<onleft>900</onleft>
-				<onright>noop</onright>
-				<scrolltime>200</scrolltime>
-				<movement>2</movement>
-				<orientation>vertical</orientation>
-				<preloaditems>4</preloaditems>
-				<defaultcontrol>0</defaultcontrol>
-				<viewtype label="$LOCALIZE[31004]">panel</viewtype>
-				<pagecontrol>17</pagecontrol>
-				<itemlayout width="444" height="305">
-					<control type="group">
-						<left>82</left>
-						<top>116</top>
-						<include content="LandscapeLayoutSettings">
-							<param name="focused" value="false" />
-							<param name="id" value="9000" />
-							<param name="thumblabel" value="$INFO[ListItem.Label2]"/>
-						</include>
-					</control>
-				</itemlayout>
-				<focusedlayout width="444" height="305">
-					<include>SetPropertyOnFocus</include>
-					<control type="group">
-						<left>82</left>
-						<top>116</top>
-						<include content="LandscapeLayoutSettings">
-							<param name="focused" value="true" />
-							<param name="id" value="9000" />
-							<param name="thumblabel" value="$INFO[ListItem.Label2]"/>
-						</include>
-					</control>
-				</focusedlayout>
-				<content>
-					<item>
-						<label>$LOCALIZE[14201]</label>
-						<label2></label2>
-						<onclick>ActivateWindow(PlayerSettings)</onclick>
-					</item>
-					<item>
-						<label>$LOCALIZE[14212]</label>
-						<label2></label2>
-						<onclick>ActivateWindow(MediaSettings)</onclick>
-					</item>
-					<item>
-						<label>$LOCALIZE[14205]</label>
-						<label2></label2>
-						<onclick>ActivateWindow(PVRSettings)</onclick>
-					</item>
-					<item>
-						<label>$LOCALIZE[14208]</label>
-						<label2></label2>
-						<onclick>ActivateWindow(ServiceSettings)</onclick>
-					</item>
-					<item>
-						<label>$LOCALIZE[14207]</label>
-						<label2></label2>
-						<onclick>ActivateWindow(InterfaceSettings)</onclick>
-					</item>
-					<item>
-						<label>$LOCALIZE[20077]</label>
-						<label2></label2>
-						<onclick>ActivateWindow(SkinSettings)</onclick>
-					</item>
-					<item>
-						<label>$LOCALIZE[14210]</label>
-						<label2></label2>
-						<onclick>ActivateWindow(Profiles)</onclick>
-					</item>
-					<item>
-						<label>$LOCALIZE[14209]</label>
-						<label2></label2>
-						<onclick>ActivateWindow(SystemSettings)</onclick>
-					</item>
-					<item>
-						<label>$LOCALIZE[31124]</label>
-						<label2></label2>
-						<onclick>RunAddon(service.libreelec.settings)</onclick>
-						<visible>System.HasAddon(service.libreelec.settings)</visible>
-					</item>
-					<item>
-						<label>My OSMC</label>
-						<label2></label2>
-						<onclick>RunAddon(service.osmc.settings)</onclick>
-						<visible>System.HasAddon(service.osmc.settings)</visible>
-					</item>
-					<item>
-						<label>$LOCALIZE[138]</label>
-						<label2></label2>
-						<onclick>ActivateWindow(systeminfo)</onclick>
-					</item>
-					<item>
-						<label>$LOCALIZE[31108]</label>
-						<label2></label2>
-						<onclick>ActivateWindow(eventlog)</onclick>
-					</item>
-					<item>
-						<label>$LOCALIZE[10003]</label>
-						<label2></label2>
-						<onclick>ActivateWindow(filemanager)</onclick>
-					</item>
-				</content>
-			</control>
-			<include content="list_mask">
-				<param name="height" value="1022"/>
-				<param name="width" value="75"/>
-				<param name="top" value="58"/>
-				<param name="id" value="9000"/>
-				<param name="visible_forced" value="true"/>
+			<defaultcontrol>102</defaultcontrol>
+			<width>100%</width>
+			<height>100%</height>
+			<itemgap>-160</itemgap>
+			<orientation>vertical</orientation>
+			<usecontrolcoords>true</usecontrolcoords>
+			<include>ScrollTime</include>
+			<pagecontrol>17</pagecontrol>
+			<include content="WidgetSpacer">
+				<param name="id" value="101"/>
+			</include>
+			<!-- sys -->
+			<include content="HomeSettingsWidget">
+				<param name="id" value="102"/>
+				<param name="onup" value="6666"/>
+				<param name="ondown" value="103"/>
+				<param name="color" value="blue"/>
+				<param name="mainlabel" value="$INFO[ListItem.Label]"/>
+				<param name="headline" value="$LOCALIZE[13000]"/>
+				<param name="content" value="SettingsSys"/>
+			</include>
+			<!-- ui -->
+			<include content="HomeSettingsWidget">
+				<param name="id" value="103"/>
+				<param name="onup" value="102"/>
+				<param name="ondown" value="104"/>
+				<param name="color" value="orange"/>
+				<param name="mainlabel" value="$INFO[ListItem.Label]"/>
+				<param name="headline" value="$LOCALIZE[480]"/>
+				<param name="content" value="SettingsUI"/>
+			</include>
+			<!-- media -->
+			<include content="HomeSettingsWidget">
+				<param name="id" value="104"/>
+				<param name="onup" value="103"/>
+				<param name="ondown" value="105"/>
+				<param name="color" value="turquoise"/>
+				<param name="mainlabel" value="$INFO[ListItem.Label]"/>
+				<param name="headline" value="$LOCALIZE[14211]"/>
+				<param name="content" value="SettingsMedia"/>
+			</include>
+			<!-- server -->
+			<include content="HomeSettingsWidget">
+				<param name="id" value="105"/>
+				<param name="onup" value="104"/>
+				<param name="ondown" value="106"/>
+				<param name="color" value="emby"/>
+				<param name="mainlabel" value="$INFO[ListItem.Label]"/>
+				<param name="headline" value="$LOCALIZE[14224]"/>
+				<param name="content" value="SettingServer"/>
 			</include>
 		</control>
 		<!-- header bar -->
 		<include content="HeaderBar">
-			<param name="id">9000</param>
-			<param name="auto_hide">false</param>
+			<param name="id">10</param>
 		</include>
 		<!-- side panel -->
 		<include content="SidePanel">
-			<param name="onright">9000</param>
+			<param name="onright">10</param>
 		</include>
 	</controls>
 </window>

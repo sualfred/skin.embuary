@@ -968,19 +968,19 @@
 			</control>
 		</definition>
 	</include>
-	<!-- Landscape Settings-->
-	<include name="LandscapeLayoutSettings">
+
+	<!-- Square Settings-->
+	<include name="SettingsLayout">
 		<param name="mainlabel">$VAR[MainListLabel]</param>
 		<param name="sublabel">$VAR[SubListLabel]</param>
-		<param name="thumblabel">$VAR[MainListLabel]</param>
 		<param name="focused">false</param>
 		<param name="visible">true</param>
 		<definition>
 			<control type="group">
 				<visible>$PARAM[visible]</visible>
 				<include content="widget_labels">
-					<param name="top">251</param>
-					<param name="width">424</param>
+					<param name="top">288</param>
+					<param name="width">276</param>
 					<param name="id">$PARAM[id]</param>
 					<param name="mainlabel">$PARAM[mainlabel]</param>
 					<param name="sublabel">$PARAM[sublabel]</param>
@@ -991,37 +991,36 @@
 					<include content="Animation_FocusBounce">
 						<param name="id" value="$PARAM[id]"/>
 					</include>
-					<height>239</height>
+					<height>276</height>
 					<control type="image">
 						<top>-2</top>
 						<left>-2</left>
-						<width>430</width>
-						<height>245</height>
+						<width>282</width>
+						<height>282</height>
 						<texture border="20,20,20,20">items/shadow.png</texture>
 					</control>
 					<control type="image">
-						<width>424</width>
-						<height>239</height>
-						<texture colordiffuse="thumb_background_fallback_secondary" diffuse="items/mask_wide.png">common/white.jpg</texture>
-						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<width>276</width>
+						<height>276</height>
+						<texture colordiffuse="$PARAM[color]" diffuse="items/mask_square.png">common/white.jpg</texture>
+						<aspectratio>stretch</aspectratio>
 					</control>
 					<control type="textbox">
 						<top>10</top>
 						<left>10</left>
-						<width>404</width>
-						<height>219</height>
+						<width>256</width>
+						<height>256</height>
 						<font>Material70</font>
 						<textcolor>EEFFFFFF</textcolor>
 						<align>center</align>
 						<aligny>center</aligny>
-						<label>$PARAM[thumblabel]</label>
-						<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+						<label>$INFO[ListItem.Label2]</label>
 					</control>
 					<control type="image">
 						<left>-12</left>
 						<top>-7</top>
-						<width>448</width>
-						<height>263</height>
+						<width>300</width>
+						<height>300</height>
 						<texture border="20,20,20,20" colordiffuse="focus_widget">items/focus.png</texture>
 						<aspectratio>stretch</aspectratio>
 						<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
