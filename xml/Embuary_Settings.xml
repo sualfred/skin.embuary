@@ -1,24 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
-	<include name="SettingServer">
+	<include name="SettingAddons">
 		<content>
 			<item>
-				<label>Emby for Kodi</label>
+				<label>$INFO[System.AddonTitle(plugin.video.emby)]</label>
 				<label2></label2>
 				<onclick>Addon.OpenSettings(plugin.video.emby)</onclick>
 				<visible>System.HasAddon(plugin.video.emby)</visible>
 			</item>
 			<item>
-				<label>EmbyCon</label>
+				<label>$INFO[System.AddonTitle(plugin.video.embycon)]</label>
 				<label2></label2>
 				<onclick>Addon.OpenSettings(plugin.video.embycon)</onclick>
 				<visible>System.HasAddon(plugin.video.embycon)</visible>
 			</item>
 			<item>
-				<label>PlexBMC</label>
+				<label>$INFO[System.AddonTitle(plugin.video.plexbmc)]</label>
 				<label2></label2>
 				<onclick>Addon.OpenSettings(plugin.video.plexbmc)</onclick>
 				<visible>System.HasAddon(plugin.video.plexbmc)</visible>
+			</item>
+			<item>
+				<label>$INFO[System.AddonTitle(plugin.video.plexkodiconnect)]</label>
+				<label2></label2>
+				<onclick>Addon.OpenSettings(plugin.video.plexkodiconnect)</onclick>
+				<visible>System.HasAddon(plugin.video.plexkodiconnect)</visible>
 			</item>
 			<item>
 				<label>$INFO[System.AddonTitle(script.module.metadatautils)]</label>
@@ -37,6 +43,12 @@
 				<label2></label2>
 				<onclick>Addon.OpenSettings(script.extendedinfo)</onclick>
 				<visible>System.HasAddon(script.extendedinfo)</visible>
+			</item>
+			<item>
+				<label>$INFO[System.AddonTitle(service.nextup.notification)]</label>
+				<label2></label2>
+				<onclick>Addon.OpenSettings(service.nextup.notification)</onclick>
+				<visible>System.HasAddon(service.nextup.notification)</visible>
 			</item>
 		</content>
 	</include>
@@ -128,13 +140,9 @@
 				<onclick>ActivateWindow(PVRSettings)</onclick>
 			</item>
 			<item>
-				<label>$LOCALIZE[184] ($LOCALIZE[3])</label>
+				<label>$LOCALIZE[20345]</label>
 				<label2></label2>
 				<onclick>UpdateLibrary(video)</onclick>
-			</item>
-			<item>
-				<label>$LOCALIZE[184] ($LOCALIZE[2])</label>
-				<label2></label2>
 				<onclick>UpdateLibrary(music)</onclick>
 			</item>
 			<item>
