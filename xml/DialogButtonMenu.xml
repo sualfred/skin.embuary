@@ -15,60 +15,64 @@
 				<centerleft>50%</centerleft>
 				<centertop>50%</centertop>
 				<width>1920</width>
-				<height>260</height>
+				<height>300</height>
 				<movement>2</movement>
 				<orientation>horizontal</orientation>
 				<focusposition>3</focusposition>
 				<defaultcontrol>0</defaultcontrol>
 				<ondown>6103</ondown>
 				<include>ScrollTime</include>
-				<animation effect="slide" time="0" end="0,-4" condition="true">Conditional</animation>
 				<animation effect="slide" time="0" end="-135,0" condition="String.IsEqual(Container(6000).NumItems,2) | String.IsEqual(Container(6000).NumItems,4) | String.IsEqual(Container(6000).NumItems,6)">Conditional</animation>
-				<itemlayout height="260" width="270">
+				<itemlayout height="300" width="270">
 					<control type="group">
-						<left>50</left>
+						<left>30</left>
 						<top>14</top>
 						<control type="image">
-							<width>200</width>
-							<height>200</height>
+							<top>-2</top>
+							<left>-2</left>
+							<width>246</width>
+							<height>246</height>
 							<texture diffuse="items/big_circle.png">$INFO[ListItem.Property(color),common/colors/,.jpg]</texture>
 						</control>
 						<control type="textbox">
-							<width>200</width>
-							<height>200</height>
+							<width>240</width>
+							<height>240</height>
 							<font>Material70</font>
 							<textcolor>EEFFFFFF</textcolor>
 							<align>center</align>
 							<aligny>center</aligny>
 							<label>$INFO[ListItem.Label2]</label>
 						</control>
-						<control type="label">
-							<bottom>0</bottom>
-							<width>200</width>
-							<height>25</height>
-							<align>center</align>
-							<aligny>center</aligny>
-							<font>med22</font>
-							<label>$INFO[ListItem.Label]</label>
-						</control>
+					</control>
+					<control type="label">
+						<bottom>0</bottom>
+						<left>20</left>
+						<width>260</width>
+						<height>25</height>
+						<align>center</align>
+						<aligny>center</aligny>
+						<font>med22</font>
+						<label>$INFO[ListItem.Label]</label>
 					</control>
 				</itemlayout>
-				<focusedlayout height="260" width="270">
+				<focusedlayout height="300" width="270">
 					<control type="group">
-						<left>50</left>
+						<left>30</left>
 						<top>14</top>
 						<control type="group">
 							<include content="Animation_FocusBounce">
 								<param name="id" value="6000"/>
 							</include>
 							<control type="image">
-								<width>200</width>
-								<height>200</height>
+								<top>-2</top>
+								<left>-2</left>
+								<width>246</width>
+								<height>246</height>
 								<texture diffuse="items/big_circle.png">$INFO[ListItem.Property(color),common/colors/,.jpg]</texture>
 							</control>
 							<control type="textbox">
-								<width>200</width>
-								<height>200</height>
+								<width>240</width>
+								<height>240</height>
 								<font>Material70</font>
 								<textcolor>EEFFFFFF</textcolor>
 								<align>center</align>
@@ -78,24 +82,24 @@
 							<control type="image">
 								<top>-7</top>
 								<left>-12</left>
-								<width>224</width>
-								<height>224</height>
+								<width>264</width>
+								<height>264</height>
 								<texture>items/big_circle_focus.png</texture>
 								<colordiffuse>emby</colordiffuse>
 								<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
 								<visible>Control.HasFocus(6000)</visible>
 							</control>
 						</control>
-						<control type="label">
-							<bottom>0</bottom>
-							<width>200</width>
-							<height>25</height>
-							<align>center</align>
-							<aligny>center</aligny>
-							<font>med22</font>
-							<label>$INFO[ListItem.Label]</label>
-							<scroll>true</scroll>
-						</control>
+					</control>
+					<control type="label">
+						<bottom>0</bottom>
+						<left>20</left>
+						<width>260</width>
+						<height>25</height>
+						<align>center</align>
+						<aligny>center</aligny>
+						<font>med22</font>
+						<label>$INFO[ListItem.Label]</label>
 					</control>
 				</focusedlayout>
 				<content>
@@ -234,11 +238,14 @@
 					<align>center</align>
 					<include>FocusBounce</include>
 					<onup>6000</onup>
+					<onright>noop</onright>
+					<onleft>noop</onleft>
 					<control type="button" id="6101">
 						<include content="PlayerButtons">
 							<param name="type" value="previous"/>
 						</include>
 						<onclick>PlayerControl(Previous)</onclick>
+						<visible>!VideoPlayer.Content(livetv) + !String.StartsWith(Player.Filenameandpath,pvr://)</visible>
 					</control>
 					<control type="togglebutton" id="6103">
 						<include content="PlayerButtons">
@@ -259,6 +266,7 @@
 							<param name="type" value="next"/>
 						</include>
 						<onclick>PlayerControl(Next)</onclick>
+						<visible>!VideoPlayer.Content(livetv) + !String.StartsWith(Player.Filenameandpath,pvr://)</visible>
 					</control>
 					<control type="button" id="6107">
 						<colordiffuse>$VAR[PlayerRecordIconColor]</colordiffuse>
