@@ -123,21 +123,21 @@
 						<label>$LOCALIZE[13012]</label>
 						<label2></label2>
 						<onclick>Quit()</onclick>
-						<visible>System.ShowExitButton</visible>
+						<visible>System.ShowExitButton + !Skin.HasSetting(HidePowerExit)</visible>
 						<property name="color">green</property>
 					</item>
 					<item>
 						<label>$LOCALIZE[13016]</label>
 						<label2></label2>
 						<onclick>Powerdown()</onclick>
-						<visible>System.CanPowerDown</visible>
+						<visible>System.CanPowerDown + !Skin.HasSetting(HidePowerOff)</visible>
 						<property name="color">red</property>
 					</item>
 					<item>
 						<label>$LOCALIZE[20150]</label>
 						<label2></label2>
 						<onclick>AlarmClock(shutdowntimer,Shutdown())</onclick>
-						<visible>!System.HasAlarm(shutdowntimer)</visible>
+						<visible>!System.HasAlarm(shutdowntimer) + !Skin.HasSetting(HidePowerTimer)</visible>
 						<visible>System.CanPowerDown | System.CanSuspend | System.CanHibernate</visible>
 						<property name="color">red</property>
 					</item>
@@ -145,28 +145,28 @@
 						<label>$LOCALIZE[20151] $INFO[System.AlarmPos,(,)]</label>
 						<label2></label2>
 						<onclick>CancelAlarm(shutdowntimer)</onclick>
-						<visible>System.HasAlarm(shutdowntimer)</visible>
+						<visible>System.HasAlarm(shutdowntimer) + !Skin.HasSetting(HidePowerTimer)</visible>
 						<property name="color">grey</property>
 					</item>
 					<item>
 						<label>$LOCALIZE[13011]</label>
 						<label2></label2>
 						<onclick>Suspend()</onclick>
-						<visible>System.CanSuspend</visible>
+						<visible>System.CanSuspend + !Skin.HasSetting(HidePowerSuspend)</visible>
 						<property name="color">lila</property>
 					</item>
 					<item>
 						<label>$LOCALIZE[13010]</label>
 						<label2></label2>
 						<onclick>Hibernate()</onclick>
-						<visible>System.CanHibernate</visible>
+						<visible>System.CanHibernate + !Skin.HasSetting(HidePowerHibernate)</visible>
 						<property name="color">lila</property>
 					</item>
 					<item>
 						<label>$LOCALIZE[13013]</label>
 						<label2></label2>
 						<onclick>Reset()</onclick>
-						<visible>System.CanReboot</visible>
+						<visible>System.CanReboot + !Skin.HasSetting(HidePowerReboot)</visible>
 						<property name="color">turquoise</property>
 					</item>
 					<item>
@@ -174,8 +174,22 @@
 						<label2></label2>
 						<onclick>Dialog.Close(all,true)</onclick>
 						<onclick>System.ExecWait(&quot;/usr/sbin/rebootfromnand&quot;)</onclick>
-						<visible>System.CanReboot + System.HasAddon(service.libreelec.settings)</visible>
+						<visible>System.CanReboot + System.HasAddon(service.libreelec.settings) + !Skin.HasSetting(HidePowerRebootNAND)</visible>
 						<property name="color">turquoise</property>
+					</item>
+					<item>
+						<label>$LOCALIZE[13017]</label>
+						<label2></label2>
+						<onclick>InhibitIdleShutdown(true)</onclick>
+						<visible>System.HasShutdown + !System.IsInhibit + !Skin.HasSetting(HidePowerIdleShutdown)</visible>
+						<property name="color">lightgrey</property>
+					</item>
+					<item>
+						<label>$LOCALIZE[13018]</label>
+						<label2></label2>
+						<onclick>InhibitIdleShutdown(false)</onclick>
+						<visible>System.HasShutdown + System.IsInhibit + !Skin.HasSetting(HidePowerIdleShutdown)</visible>
+						<property name="color">lightgrey</property>
 					</item>
 					<item>
 						<label>$LOCALIZE[20126] $INFO[system.profilename]</label>
@@ -199,20 +213,6 @@
 						<onclick>mastermode</onclick>
 						<visible>System.HasLocks + !System.IsMaster</visible>
 						<property name="color">emby</property>
-					</item>
-					<item>
-						<label>$LOCALIZE[13017]</label>
-						<label2></label2>
-						<onclick>InhibitIdleShutdown(true)</onclick>
-						<visible>System.HasShutdown + !System.IsInhibit</visible>
-						<property name="color">lightgrey</property>
-					</item>
-					<item>
-						<label>$LOCALIZE[13018]</label>
-						<label2></label2>
-						<onclick>InhibitIdleShutdown(false)</onclick>
-						<visible>System.HasShutdown + System.IsInhibit</visible>
-						<property name="color">lightgrey</property>
 					</item>
 				</content>
 			</control>

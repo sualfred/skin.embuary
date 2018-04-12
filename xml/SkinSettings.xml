@@ -117,7 +117,6 @@
 							<onright>700</onright>
 						</control>
 						<control type="button" id="107">
-							<visible>false</visible>
 							<width>400</width>
 							<height>50</height>
 							<align>left</align>
@@ -129,7 +128,7 @@
 							<selectedcolor>panel_text</selectedcolor>
 							<texturefocus colordiffuse="panel_hover">common/white.jpg</texturefocus>
 							<include>NoTextures</include>
-							<label>Emby &amp; EmbyCon hubs</label>
+							<label>$LOCALIZE[31224]</label>
 							<onright>800</onright>
 						</control>
 						<control type="button" id="108">
@@ -157,7 +156,7 @@
 				<top>122</top>
 				<bottom>122</bottom>
 				<control type="group">
-					<visible>!ControlGroup(100).HasFocus(107)</visible>
+					<visible>!ControlGroup(100).HasFocus(108)</visible>
 					<left>400</left>
 					<right>0</right>
 					<bottom>0</bottom>
@@ -1037,6 +1036,81 @@
 						<param name="section" value="74"/>
 						<param name="type" value="Music"/>
 					</include>
+				</control>
+				<!-- Power menu -->
+				<control type="grouplist" id="800">
+					<visible>ControlGroup(100).HasFocus(107)</visible>
+					<left>500</left>
+					<right>100</right>
+					<height>100%</height>
+					<onup>6666</onup>
+					<onleft>100</onleft>
+					<onright>noop</onright>
+					<ondown>noop</ondown>
+					<pagecontrol>17</pagecontrol>
+					<scrolltime>200</scrolltime>
+					<itemgap>0</itemgap>
+					<!-- shortcuts -->
+					<include content="SkinSettingsHeadlineLabel">
+						<param name="id" value="810"/>
+						<param name="label" value="$LOCALIZE[111]"/>
+					</include>
+					<control type="radiobutton" id="811">
+						<include>SettingsButton</include>
+						<onclick>Skin.ToggleSetting(HidePowerExit)</onclick>
+						<selected>!Skin.HasSetting(HidePowerExit)</selected>
+						<label>$LOCALIZE[13012]</label>
+						<visible>System.ShowExitButton</visible>
+					</control>
+					<control type="radiobutton" id="812">
+						<include>SettingsButton</include>
+						<onclick>Skin.ToggleSetting(HidePowerOff)</onclick>
+						<selected>!Skin.HasSetting(HidePowerOff)</selected>
+						<label>$LOCALIZE[13016]</label>
+						<visible>System.CanPowerDown</visible>
+					</control>
+					<control type="radiobutton" id="813">
+						<include>SettingsButton</include>
+						<onclick>Skin.ToggleSetting(HidePowerTimer)</onclick>
+						<selected>!Skin.HasSetting(HidePowerTimer)</selected>
+						<label>$LOCALIZE[20150] / $LOCALIZE[20151]</label>
+						<visible>System.CanPowerDown | System.CanSuspend | System.CanHibernate</visible>
+					</control>
+					<control type="radiobutton" id="814">
+						<include>SettingsButton</include>
+						<onclick>Skin.ToggleSetting(HidePowerSuspend)</onclick>
+						<selected>!Skin.HasSetting(HidePowerSuspend)</selected>
+						<label>$LOCALIZE[13011]</label>
+						<visible>System.CanSuspend</visible>
+					</control>
+					<control type="radiobutton" id="815">
+						<include>SettingsButton</include>
+						<onclick>Skin.ToggleSetting(HidePowerHibernate)</onclick>
+						<selected>!Skin.HasSetting(HidePowerHibernate)</selected>
+						<label>$LOCALIZE[13010]</label>
+						<visible>System.CanHibernate</visible>
+					</control>
+					<control type="radiobutton" id="816">
+						<include>SettingsButton</include>
+						<onclick>Skin.ToggleSetting(HidePowerReboot)</onclick>
+						<selected>!Skin.HasSetting(HidePowerReboot)</selected>
+						<label>$LOCALIZE[13013]</label>
+						<visible>System.CanReboot</visible>
+					</control>
+					<control type="radiobutton" id="817">
+						<include>SettingsButton</include>
+						<onclick>Skin.ToggleSetting(HidePowerRebootNAND)</onclick>
+						<selected>!Skin.HasSetting(HidePowerRebootNAND)</selected>
+						<label>$LOCALIZE[13013] (NAND)</label>
+						<visible>System.CanReboot + System.HasAddon(service.libreelec.settings)</visible>
+					</control>
+					<control type="radiobutton" id="818">
+						<include>SettingsButton</include>
+						<onclick>Skin.ToggleSetting(HidePowerIdleShutdown)</onclick>
+						<selected>!Skin.HasSetting(HidePowerIdleShutdown)</selected>
+						<label>$LOCALIZE[13017] / $LOCALIZE[13018]</label>
+						<visible>System.HasShutdown</visible>
+					</control>
 				</control>
 			</control>
 		</control>
