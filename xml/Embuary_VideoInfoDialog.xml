@@ -65,7 +65,7 @@
 								<width>70</width>
 								<height>50</height>
 								<font>material24</font>
-								<label></label>
+								<label></label>
 								<onclick>RunScript(script.skin.helper.service,action=textviewer,header='$ESCVAR[TinyInfoDialogHeadline]',message='$ESCVAR[TinyInfoDialogPlot]')</onclick>
 								<ondown>200</ondown>
 							</control>
@@ -181,15 +181,23 @@
 					<wrapmultiline>false</wrapmultiline>
 					<font>Reg20</font>
 					<aligny>bottom</aligny>
-					<label>[COLOR softgrey]$LOCALIZE[291]:[/COLOR]  $INFO[VideoPlayer.VideoResolution]$INFO[VideoPlayer.VideoCodec, ,]$INFO[VideoPlayer.VideoAspect, ,AR]$INFO[VideoPlayer.StereoscopicMode, $LOCALIZE[36501]: ]</label>
-					<visible>!String.IsEmpty(VideoPlayer.VideoResolution)</visible>
+					<label>[COLOR softgrey]$LOCALIZE[291]:[/COLOR][UPPERCASE]  $VAR[PlayerResolution]$INFO[VideoPlayer.VideoCodec, ,]$INFO[VideoPlayer.VideoAspect, ,AR][/UPPERCASE]</label>
+					<visible>!String.IsEmpty(VideoPlayer.VideoResolution) + [String.IsEqual(VideoPlayer.StereoscopicMode,mono) | String.IsEmpty(VideoPlayer.StereoscopicMode)]</visible>
 				</control>
 				<control type="label">
 					<height>30</height>
 					<wrapmultiline>false</wrapmultiline>
 					<font>Reg20</font>
 					<aligny>bottom</aligny>
-					<label>[COLOR softgrey]$LOCALIZE[292]:[/COLOR]  $INFO[VideoPlayer.AudioLanguage,, ]$INFO[VideoPlayer.AudioChannels,,ch ]$INFO[VideoPlayer.AudioCodec]</label>
+					<label>[COLOR softgrey]$LOCALIZE[291]:[/COLOR][UPPERCASE]  $VAR[PlayerResolution]$INFO[VideoPlayer.VideoCodec, ,]$INFO[VideoPlayer.VideoAspect, ,AR][/UPPERCASE]$INFO[VideoPlayer.StereoscopicMode,  [UPPERCASE][COLOR softgrey]$LOCALIZE[36501]:[/COLOR][/UPPERCASE]  ]</label>
+					<visible>!String.IsEmpty(VideoPlayer.VideoResolution) + String.IsEqual(VideoPlayer.StereoscopicMode,mono)</visible>
+				</control>
+				<control type="label">
+					<height>30</height>
+					<wrapmultiline>false</wrapmultiline>
+					<font>Reg20</font>
+					<aligny>bottom</aligny>
+					<label>[COLOR softgrey]$LOCALIZE[292]:[/COLOR][UPPERCASE]  $INFO[VideoPlayer.AudioLanguage,, ]$INFO[VideoPlayer.AudioChannels,,ch ]$INFO[VideoPlayer.AudioCodec][/UPPERCASE]</label>
 					<visible>!String.IsEmpty(VideoPlayer.AudioLanguage)</visible>
 				</control>
 				<control type="label">
@@ -197,7 +205,7 @@
 					<wrapmultiline>false</wrapmultiline>
 					<font>Reg20</font>
 					<aligny>bottom</aligny>
-					<label>[COLOR softgrey]$LOCALIZE[459]:[/COLOR]  $INFO[VideoPlayer.SubtitlesLanguage]</label>
+					<label>[COLOR softgrey]$LOCALIZE[459]:[/COLOR][UPPERCASE]  $INFO[VideoPlayer.SubtitlesLanguage][/UPPERCASE]</label>
 					<visible>!String.IsEmpty(VideoPlayer.SubtitlesLanguage)</visible>
 				</control>
 			</control>
@@ -273,7 +281,7 @@
 							<width>70</width>
 							<height>50</height>
 							<font>material24</font>
-							<label></label>
+							<label></label>
 							<onclick>RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[VideoPlayer.Channelname]',message='$ESCVAR[TinyInfoDialogPlot]')</onclick>
 						</control>
 					</control>

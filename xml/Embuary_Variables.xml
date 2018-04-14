@@ -191,6 +191,10 @@
 		<value>$INFO[Container.Foldername]</value>
 	</variable>
 	<variable name="ContainerCountLabel">
+		<value condition="Window.IsVisible(mypvrguide.xml) + !Window.IsVisible(dialogpvrinfo.xml)">$INFO[Container.NumItems]</value>
+		<value condition="String.StartsWith(Container.FolderPath,pvr://) + !Window.IsVisible(dialogpvrinfo.xml)">$INFO[Container.NumItems]</value>
+		<value condition="Container.Content(episodes) + !Window.IsVisible(movieinformation)">$INFO[Container.NumItems]</value>
+		<value condition="Container.Content(seasons) + !Window.IsVisible(movieinformation)">$INFO[Container.NumItems]</value>
 		<value condition="Container.Content(sets) + !Window.IsVisible(movieinformation)">$INFO[Container.NumItems]</value>
 		<value condition="Container.Content(movies) + !Window.IsVisible(movieinformation)">$INFO[Container.NumItems]</value>
 		<value condition="Container.Content(tvshows) + !Window.IsVisible(movieinformation)">$INFO[Container.NumItems]</value>
@@ -433,7 +437,8 @@
 		<value condition="String.IsEqual(ListItem.VideoResolution,4K)">4K</value>
 		<value condition="String.IsEqual(ListItem.VideoResolution,1080)">1080p</value>
 		<value condition="String.IsEqual(ListItem.VideoResolution,720)">720p</value>
-		<value>SD</value>
+		<value condition="String.IsEqual(ListItem.VideoResolution,480)">480p</value>
+		<value>$INFO[ListItem.VideoResolution]</value>
 	</variable>
 	<variable name="ListItemEpisodeName">
 		<value condition="!String.IsEmpty(ListItem.EpisodeName)">$INFO[ListItem.EpisodeName]</value>
@@ -453,7 +458,8 @@
 		<value condition="String.IsEqual(VideoPlayer.VideoResolution,4K)">4K</value>
 		<value condition="String.IsEqual(VideoPlayer.VideoResolution,1080)">1080p</value>
 		<value condition="String.IsEqual(VideoPlayer.VideoResolution,720)">720p</value>
-		<value>SD</value>
+		<value condition="String.IsEqual(VideoPlayer.VideoResolution,480)">480p</value>
+		<value>$INFO[VideoPlayer.VideoResolution]</value>
 	</variable>
 	<variable name="PlayerTimeRemaining">
 		<value condition="Integer.IsGreater(Player.TimeRemaining,60)">$INFO[Player.TimeRemaining]</value>
