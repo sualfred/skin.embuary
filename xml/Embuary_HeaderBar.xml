@@ -178,9 +178,9 @@
 			<!-- Currently playing -->
 			<control type="group">
 				<visible>[Window.IsVisible(home) | Window.IsVisible(1120) | Window.IsVisible(1121) | Window.IsVisible(1122) | Window.IsVisible(1123) | Window.IsVisible(1124) | Window.IsVisible(MyPVRGuide.xml)] + Player.HasMedia + !Window.IsVisible(extendedprogressdialog) + !Window.IsVisible(fullscreeninfo) + !Window.IsVisible(fullscreenvideo) + !Window.IsVisible(visualisation) + !$EXP[InfoDialogActive] + $EXP[HolidayThemeSound]</visible>
-				<animation effect="slide" start="0,0" end="0,58"  time="200" condition="!ControlGroup(6666).HasFocus + [[Container($PARAM[id]).HasPrevious + $PARAM[enabled]] | [$PARAM[custom_animation]]]" tween="linear" easing="inout">Conditional</animation>
-				<animation effect="slide" start="0,0" end="0,58"  time="200" tween="linear" easing="inout">Hidden</animation>
-				<animation effect="slide" start="0,58" end="0,0"  time="200" tween="linear" easing="inout">Visible</animation>
+				<animation effect="slide" start="0,0" end="0,58"  time="500" tween="sine" easing="inout">Hidden</animation>
+				<animation effect="slide" start="0,58" end="0,0"  time="500" tween="sine" easing="inout">Visible</animation>
+				<animation effect="slide" start="0,0" end="0,80"  time="500" delay="100" condition="!ControlGroup(6666).HasFocus + [[Container($PARAM[id]).HasPrevious + !Integer.IsEqual(Container($PARAM[id]).CurrentItem,1) + $PARAM[auto_hide]] | [$PARAM[hide_header]]]" tween="sine" easing="inout">Conditional</animation>
 				<control type="image">
 					<height>58</height>
 					<bottom>0</bottom>
