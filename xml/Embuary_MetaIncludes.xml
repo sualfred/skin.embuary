@@ -318,8 +318,13 @@
 				</control>
 				<control type="label">
 					<include>MetaLabel</include>
+					<label>$INFO[PVR.EpgEventFinishTime,$LOCALIZE[31037] ]   </label>
+					<visible>VideoPlayer.HasEpg + !String.IsEmpty(PVR.EpgEventFinishTime)</visible>
+				</control>
+				<control type="label">
+					<include>MetaLabel</include>
 					<label>$INFO[VideoPlayer.FinishTime,$LOCALIZE[31037] ]   </label>
-					<visible>!String.IsEmpty(VideoPlayer.FinishTime)</visible>
+					<visible>!VideoPlayer.HasEpg + !String.IsEmpty(VideoPlayer.FinishTime)</visible>
 				</control>
 				<control type="label">
 					<include>MetaLabel</include>
