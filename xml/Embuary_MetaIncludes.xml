@@ -313,6 +313,10 @@
 				</control>
 				<control type="label">
 					<include>MetaLabel</include>
+					<label>$VAR[PlayerTimeLabels]   </label>
+				</control>
+				<control type="label">
+					<include>MetaLabel</include>
 					<label>$INFO[VideoPlayer.FinishTime,$LOCALIZE[31037] ]   </label>
 					<visible>!String.IsEmpty(VideoPlayer.FinishTime)</visible>
 				</control>
@@ -493,6 +497,10 @@
 				<texture diffuse="items/mask_poster.png" background="true">$VAR[PlayerIcon]</texture>
 				<aspectratio scalediffuse="false">scale</aspectratio>
 			</control>
+			<include content="PlayerProgress">
+				<param name="top" value="410"/>
+				<param name="width" value="276"/>
+			</include>
 		</control>
 	</include>
 	<include name="MetaThumbnail">

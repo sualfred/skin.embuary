@@ -402,6 +402,19 @@
 				<midtexture colordiffuse="emby_secondary"  border="2">common/white.jpg</midtexture>
 				<righttexture>-</righttexture>
 				<info>Player.Progress</info>
+				<visible>!String.StartsWith(VideoPlayer.Path,pvr://channels) + Integer.IsGreater(Player.Progress,0)</visible>
+			</control>
+			<control type="progress">
+				<top>$PARAM[top]</top>
+				<left>$PARAM[left]</left>
+				<width>$PARAM[width]</width>
+				<height>$PARAM[height]</height>
+				<texturebg colordiffuse="cc515151" border="2">common/white.jpg</texturebg>
+				<lefttexture>-</lefttexture>
+				<midtexture colordiffuse="emby_secondary"  border="2">common/white.jpg</midtexture>
+				<righttexture>-</righttexture>
+				<info>PVR.Progress</info>
+				<visible>String.StartsWith(VideoPlayer.Path,pvr://channels) + Integer.IsGreater(PVR.Progress,0)</visible>
 			</control>
 		</definition>
 	</include>

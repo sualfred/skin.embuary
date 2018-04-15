@@ -1487,7 +1487,7 @@
 		<value condition="!String.IsEmpty(Player.Art(clearlogo))">$INFO[Player.Art(clearlogo)]</value>
 	</variable>
 	<variable name="PlayerTimeLabels">
-		<value condition="!Pvr.IsTimeShift + Player.HasVideo">$VAR[PlayerTime]$VAR[PlayerDuration, / ]$INFO[Player.FinishTime,  -  $LOCALIZE[31037] ]</value>
+		<value condition="!Pvr.IsTimeShift + Player.HasVideo + !Window.IsVisible(fullscreenvideo)">$VAR[PlayerTime]$VAR[PlayerDuration, / ]$INFO[Player.FinishTime,  -  $LOCALIZE[31037] ]</value>
 		<value>$VAR[PlayerTime]$VAR[PlayerDuration, / ]</value>
 	</variable>
 	<variable name="PlayerIcon">
