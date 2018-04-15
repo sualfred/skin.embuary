@@ -117,11 +117,17 @@
 					<visible>Skin.HasSetting(ShowRandomBackgroundImage)</visible>
 				</control>
 			</control>
-			<control type="image">
-				<include>FullscreenDimensions</include>
-				<texture>common/diffuse_white.png</texture>
-				<colordiffuse>$VAR[BackgroundColordiffuse]</colordiffuse>
+			<control type="group">
 				<visible>[Player.HasMedia + !Skin.HasSetting(HideBackgroundPlayback)] | [!Skin.HasSetting(HideBackground) + !Window.IsVisible(MyPVRguide.xml) + $EXP[HideBackground]]</visible>
+				<control type="image">
+					<include>FullscreenDimensions</include>
+					<texture>common/background_vignette.png</texture>
+					<colordiffuse>$VAR[BackgroundColordiffuse]</colordiffuse>
+				</control>
+				<control type="image">
+					<include>FullscreenDimensions</include>
+					<texture>common/vignette.png</texture>
+				</control>
 			</control>
 			<control type="image">
 				<include>FullscreenDimensions</include>
@@ -591,6 +597,13 @@
 						</control>
 					</itemlayout>
 					<focusedlayout height="35" width="45">
+						<control type="image">
+							<left>-5</left>
+							<width>51</width>
+							<height>51</height>
+							<texture border="20,20,20,20" colordiffuse="emby_secondary">items/focus.png</texture>
+							<visible>Control.HasFocus($PARAM[id])</visible>
+						</control>
 						<control type="textbox">
 							<width>40</width>
 							<height>40</height>
@@ -620,13 +633,6 @@
 							<textcolor>white</textcolor>
 							<label>$INFO[ListItem.Label]</label>
 							<visible>String.IsEqual(ListItem.Label,Container.ListItem.SortLetter)</visible>
-						</control>
-						<control type="image">
-							<left>-5</left>
-							<width>51</width>
-							<height>51</height>
-							<texture border="20,20,20,20" colordiffuse="emby_secondary">items/focus.png</texture>
-							<visible>Control.HasFocus($PARAM[id])</visible>
 						</control>
 					</focusedlayout>
 					<content>plugin://script.skin.helper.service/?action=alphabet&amp;reload=$INFO[Container.NumItems]</content>
