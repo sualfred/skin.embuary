@@ -309,22 +309,16 @@
 				<control type="label">
 					<include>MetaLabel</include>
 					<label>$VAR[PlayerDurationMinutes]   </label>
-					<visible>!VideoPlayer.Content(livetv) + !String.IsEmpty(Player.Duration)</visible>
+					<visible>!String.IsEmpty(Player.Duration)</visible>
 				</control>
 				<control type="label">
 					<include>MetaLabel</include>
-					<label>$INFO[VideoPlayer.FinishTime,$LOCALIZE[31037]: ]   </label>
 					<label>$VAR[PlayerTimeLabels]   </label>
 				</control>
 				<control type="label">
 					<include>MetaLabel</include>
-					<label>$INFO[PVR.EpgEventFinishTime,$LOCALIZE[31037] ]   </label>
-					<visible>VideoPlayer.HasEpg + !String.IsEmpty(PVR.EpgEventFinishTime)</visible>
-				</control>
-				<control type="label">
-					<include>MetaLabel</include>
-					<label>$INFO[VideoPlayer.FinishTime,$LOCALIZE[31037] ]   </label>
-					<visible>!VideoPlayer.HasEpg + !String.IsEmpty(VideoPlayer.FinishTime)</visible>
+					<label>$VAR[PlayerFinishTime,$LOCALIZE[31037] ]   </label>
+					<visible>!String.IsEmpty(PVR.EpgEventFinishTime) | !String.IsEmpty(VideoPlayer.FinishTime)</visible>
 				</control>
 				<control type="label">
 					<include>MetaLabel</include>

@@ -478,6 +478,10 @@
 		<value condition="Integer.IsGreater(Player.Duration(h),0)">$INFO[Player.Duration(h:mm:ss)]</value>
 		<value>$INFO[Player.Duration(mm:ss)]</value>
 	</variable>
+	<variable name="PlayerFinishTime">
+		<value condition="VideoPlayer.HasEpg + !String.IsEmpty(PVR.EpgEventFinishTime)">$INFO[PVR.EpgEventFinishTime]</value>
+		<value condition="!VideoPlayer.HasEpg + !String.IsEmpty(VideoPlayer.FinishTime)">$INFO[VideoPlayer.FinishTime]</value>
+	</variable>
 	<variable name="PlayerPlayPauseLabel">
 		<value condition="Player.Paused">$LOCALIZE[31096]</value>
 		<value>$LOCALIZE[31095]</value>
@@ -499,6 +503,8 @@
 	</variable>
 	<variable name="PlayerDurationMinutes">
 		<value condition="Player.HasAudio">$INFO[Player.Duration]</value>
+		<value condition="VideoPlayer.HasEpg + Integer.IsGreater(PVR.EpgEventDuration(mins),1)">$INFO[PVR.EpgEventDuration(mins)] $LOCALIZE[31089]</value>
+		<value condition="VideoPlayer.HasEpg + Integer.IsEqual(PVR.EpgEventDuration(mins),1)">$INFO[PVR.EpgEventDuration(mins)] $LOCALIZE[31090]</value>
 		<value condition="Integer.IsGreater(Player.Duration(mins),1)">$INFO[Player.Duration(mins)] $LOCALIZE[31089]</value>
 		<value condition="Integer.IsEqual(Player.Duration(mins),1)">$INFO[Player.Duration(mins)] $LOCALIZE[31090]</value>
 		<value>$INFO[Player.Duration(secs),, $LOCALIZE[31077]]</value>
@@ -772,11 +778,9 @@
 		<value condition="!String.IsEmpty(Player.Art(tvshow.clearlogo))">$INFO[Player.Art(tvshow.clearlogo)]</value>
 		<value condition="!String.IsEmpty(Player.Art(clearlogo))">$INFO[Player.Art(clearlogo)]</value>
 	</variable>
-	<variable name="PlayerTimeLabels">
-		<value condition="VideoPlayer.HasEpg + Window.IsVisible(fullscreenvideo)">$VAR[PlayerTime]$VAR[PlayerDuration, / ]</value>
-		<value condition="VideoPlayer.HasEpg">$VAR[PlayerTime]$VAR[PlayerDuration, / ]$INFO[PVR.EpgEventFinishTime,  -  $LOCALIZE[31037] ]</value>
-		<value condition="Window.IsVisible(fullscreenvideo)">$VAR[PlayerTime]$VAR[PlayerDuration, / ]</value>
-		<value>$VAR[PlayerTime]$VAR[PlayerDuration, / ]$INFO[Player.FinishTime,  -  $LOCALIZE[31037] ]</value>
+	<variable name="PlayerTimeLabels">>
+		<value condition="Window.IsVisible(fullscreeninfo)">$VAR[PlayerTime]$VAR[PlayerDuration, / ]</value>
+		<value>$VAR[PlayerTime]$VAR[PlayerDuration, / ]$VAR[PlayerFinishTime,  -  $LOCALIZE[31037] ]</value>
 	</variable>
 	<variable name="PlayerIcon">
 		<value condition="!String.IsEmpty(Player.Art(tvshow.poster))">$INFO[Player.Art(tvshow.poster)]</value>
