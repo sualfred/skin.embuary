@@ -773,8 +773,9 @@
 		<value condition="!String.IsEmpty(Player.Art(clearlogo))">$INFO[Player.Art(clearlogo)]</value>
 	</variable>
 	<variable name="PlayerTimeLabels">
-		<value condition="VideoPlayer.HasEpg + Pvr.IsTimeShift">$VAR[PlayerTime]$VAR[PlayerDuration, / ]$INFO[PVR.EpgEventFinishTime,  -  $LOCALIZE[31037] ]</value>
+		<value condition="VideoPlayer.HasEpg + Window.IsVisible(fullscreenvideo)">$VAR[PlayerTime]$VAR[PlayerDuration, / ]</value>
 		<value condition="VideoPlayer.HasEpg">$VAR[PlayerTime]$VAR[PlayerDuration, / ]$INFO[PVR.EpgEventFinishTime,  -  $LOCALIZE[31037] ]</value>
+		<value condition="Window.IsVisible(fullscreenvideo)">$VAR[PlayerTime]$VAR[PlayerDuration, / ]</value>
 		<value>$VAR[PlayerTime]$VAR[PlayerDuration, / ]$INFO[Player.FinishTime,  -  $LOCALIZE[31037] ]</value>
 	</variable>
 	<variable name="PlayerIcon">
