@@ -13,9 +13,12 @@
 				<!-- List -->
 				<control id="53" type="fixedlist">
 					<visible>$EXP[ListViewVisible]</visible>
-					<animation effect="slide" time="0" end="0,-120" condition="Integer.IsEqual(Container(53).NumItems,6) | Integer.IsEqual(Container(53).NumItems,5)">Conditional</animation>
-					<animation effect="slide" time="0" end="0,-240" condition="Integer.IsEqual(Container(53).NumItems,4) | Integer.IsEqual(Container(53).NumItems,3)">Conditional</animation>
-					<animation effect="slide" time="0" end="0,-360" condition="Integer.IsEqual(Container(53).NumItems,2) | Integer.IsEqual(Container(53).NumItems,1)">Conditional</animation>
+					<animation effect="slide" time="0" end="0,-120" condition="!Container.HasParent + [Integer.IsEqual(Container(53).NumItems,6) | Integer.IsEqual(Container(53).NumItems,5)]">Conditional</animation>
+					<animation effect="slide" time="0" end="0,-240" condition="!Container.HasParent + [Integer.IsEqual(Container(53).NumItems,4) | Integer.IsEqual(Container(53).NumItems,3)]">Conditional</animation>
+					<animation effect="slide" time="0" end="0,-360" condition="!Container.HasParent + [Integer.IsEqual(Container(53).NumItems,2) | Integer.IsEqual(Container(53).NumItems,1)]">Conditional</animation>
+					<animation effect="slide" time="0" end="0,-120" condition="Container.HasParent + [Integer.IsEqual(Container(53).NumItems,5) | Integer.IsEqual(Container(53).NumItems,4)]">Conditional</animation>
+					<animation effect="slide" time="0" end="0,-240" condition="Container.HasParent + [Integer.IsEqual(Container(53).NumItems,3) | Integer.IsEqual(Container(53).NumItems,2)]">Conditional</animation>
+					<animation effect="slide" time="0" end="0,-360" condition="Container.HasParent + Integer.IsEqual(Container(53).NumItems,1)">Conditional</animation>
 					<left>690</left>
 					<height>100%</height>
 					<onup>SetFocus(6666)</onup>
