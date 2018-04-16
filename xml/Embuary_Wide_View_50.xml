@@ -8,7 +8,7 @@
 		<definition>
 			<control type="group">
 				<include>Visible_OpenClose</include>
-				<animation effect="slide" condition="Skin.HasSetting(HideWideLabels) + ![Integer.IsGreaterOrEqual(Container(50).CurrentItem,13) | Container(50).HasPrevious] + !$EXP[IsGenre] + Window.IsVisible(myvideonav.xml)" time="200" end="0,90">Conditional</animation>
+				<animation effect="slide" condition="Skin.HasSetting(HideWideLabels) + ![[Integer.IsGreaterOrEqual(Container(50).CurrentItem,12) + Container.HasParent] | Integer.IsGreaterOrEqual(Container(50).CurrentItem,13) | Container(50).HasPrevious] + !$EXP[IsGenre] + Window.IsVisible(myvideonav.xml)" time="200" end="0,90">Conditional</animation>
 				<visible>Control.IsVisible(50)</visible>
 				<control id="50" type="panel">
 					<visible>$EXP[WideViewVisible]</visible>
