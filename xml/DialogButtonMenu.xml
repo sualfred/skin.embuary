@@ -192,6 +192,22 @@
 						<property name="color">lightgrey</property>
 					</item>
 					<item>
+						<label>$LOCALIZE[31226]</label>
+						<label2></label2>
+						<onclick>dialog.close(all,true)</onclick>
+						<onclick>RunScript(plugin.video.embycon,0,?mode=CHANGE_USER)</onclick>
+						<visible>System.HasAddon(plugin.video.embycon) + !String.IsEmpty(Window(Home).Property(plugin.video.embycon-userid))</visible>
+						<property name="color">emby</property>
+					</item>
+					<item>
+						<label>$LOCALIZE[31225]</label>
+						<label2></label2>
+						<onclick>dialog.close(all,true)</onclick>
+						<onclick>RunScript(plugin.video.embycon,0,?mode=CHANGE_USER)</onclick>
+						<visible>System.HasAddon(plugin.video.embycon) + String.IsEmpty(Window(Home).Property(plugin.video.embycon-userid))</visible>
+						<property name="color">emby</property>
+					</item>
+					<item>
 						<label>$LOCALIZE[20126] $INFO[system.profilename]</label>
 						<label2></label2>
 						<onclick>dialog.close(all,true)</onclick>
@@ -202,7 +218,7 @@
 					</item>
 					<item>
 						<label>$LOCALIZE[20046]</label>
-						<label2>ss</label2>
+						<label2></label2>
 						<onclick>mastermode</onclick>
 						<visible>System.HasLocks + System.IsMaster</visible>
 						<property name="color">emby</property>
