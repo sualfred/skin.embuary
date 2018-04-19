@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 	<include name="PVRSet_View_57">
-		<!-- set 56 -->
+		<!-- pvr set 57 -->
 		<control type="grouplist" id="570">
 			<include>Visible_OpenClose</include>
 			<visible>Control.IsVisible(57)</visible>
@@ -17,8 +17,6 @@
 				<height>1077</height>
 				<control type="group">
 					<top>128</top>
-					<height>435</height>
-					<width>1920</width>
 					<!-- Thumb -->
 					<include>MetaThumbnail</include>
 					<!-- meta -->
@@ -33,11 +31,13 @@
 							<height>60</height>
 							<label>$INFO[ListItem.Title]</label>
 							<font>Reg37</font>
+							<aligny>top</aligny>
 						</control>
 						<control type="label">
 							<height>60</height>
 							<label>$VAR[ListItemEpisodeName]</label>
 							<font>Reg37</font>
+							<aligny>top</aligny>
 						</control>
 						<!-- meta -->
 						<include>MetaPVRInfos</include>
@@ -73,12 +73,9 @@
 								<ondown>50</ondown>
 							</control>
 						</control>
-						<control type="label">
-							<height>40</height>
-							<label>$INFO[ListItem.Genre,$LOCALIZE[515]: ,   ]$INFO[ListItem.Director,$LOCALIZE[20339]: ]</label>
-							<font>reg22</font>
-							<textcolor>emby</textcolor>
-						</control>
+						<!-- genre -->
+						<include>MetaGenre</include>
+						<!-- plot -->
 						<control type="textbox" id="19">
 							<height>130</height>
 							<align>justify</align>
@@ -101,7 +98,7 @@
 						<param name="sublabel" value="$PARAM[sublabel]"/>
 						<param name="thumblabel" value="$PARAM[thumblabel]"/>
 						<param name="use_custom_content" value="false"/>
-						<param name="list_name">$LOCALIZE[20434]</param>
+						<param name="list_name">$LOCALIZE[31199]</param>
 					</include>
 				</control>
 			</control>

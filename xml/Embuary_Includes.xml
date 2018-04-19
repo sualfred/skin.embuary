@@ -1297,12 +1297,19 @@
 					</control>
 					<control type="radiobutton" id="4107">
 						<include content="CommonButton"/>
+						<label>$LOCALIZE[31199]</label>
+						<onclick>Container.SetViewMode(57)</onclick>
+						<selected>Control.IsVisible(57)</selected>
+						<visible>Window.IsVisible(tvchannels) | Window.IsVisible(tvrecordings)</visible>
+					</control>
+					<control type="radiobutton" id="4108">
+						<include content="CommonButton"/>
 						<label>$LOCALIZE[20020]</label>
 						<onclick>Container.SetViewMode(58)</onclick>
 						<selected>Control.IsVisible(58)</selected>
 						<visible>$EXP[BannerViewVisible]</visible>
 					</control>
-					<control type="radiobutton" id="4108">
+					<control type="radiobutton" id="4109">
 						<textcolor>emby</textcolor>
 						<texturenofocus border="10" colordiffuse="subsetting_nofocus">common/menu_back.png</texturenofocus>
 						<include content="CommonButton"/>
@@ -1311,28 +1318,28 @@
 						<selected>Skin.HasSetting(HideBannerLabels)</selected>
 						<visible>Control.IsVisible(58) + Window.IsVisible(myvideonav.xml)</visible>
 					</control>
-					<control type="radiobutton" id="4109">
+					<control type="radiobutton" id="4110">
 						<include content="CommonButton"/>
 						<label>$LOCALIZE[31005]</label>
 						<onclick>Container.SetViewMode(52)</onclick>
 						<selected>Control.IsVisible(52)</selected>
 						<visible>$EXP[SquareViewVisible]</visible>
 					</control>
-					<control type="radiobutton" id="4110">
+					<control type="radiobutton" id="4111">
 						<include content="CommonButton"/>
 						<label>$LOCALIZE[20373]</label>
 						<onclick>Container.SetViewMode(54)</onclick>
 						<selected>Control.IsVisible(54)</selected>
 						<visible>$EXP[SeasonViewVisible]</visible>
 					</control>
-					<control type="radiobutton" id="4111">
+					<control type="radiobutton" id="4112">
 						<include content="CommonButton"/>
 						<label>$LOCALIZE[20359]</label>
 						<onclick>Container.SetViewMode(55)</onclick>
 						<selected>Control.IsVisible(55)</selected>
 						<visible>$EXP[EpisodeViewVisible]</visible>
 					</control>
-					<control type="radiobutton" id="4112">
+					<control type="radiobutton" id="4113">
 						<include content="CommonButton"/>
 						<label>$LOCALIZE[535]</label>
 						<onclick>Container.SetViewMode(53)</onclick>
@@ -1365,6 +1372,28 @@
 				<onup>$PARAM[onup]</onup>
 				<itemlayout/>
 				<focusedlayout/>
+			</control>
+		</control>
+	</include>
+	<!-- sort letter -->
+	<include name="ScrollSortLetter">
+		<control type="group">
+			<control type="image">
+				<top>-2</top>
+				<left>-2</left>
+				<width>86</width>
+				<height>86</height>
+				<texture diffuse="items/big_circle.png" colordiffuse="turquoise">common/white.jpg</texture>
+			</control>
+			<control type="textbox">
+				<top>-1</top>
+				<width>80</width>
+				<height>80</height>
+				<font>SortLetter</font>
+				<textcolor>EEFFFFFF</textcolor>
+				<align>center</align>
+				<aligny>center</aligny>
+				<label>$VAR[SortLetterLabel]</label>
 			</control>
 		</control>
 	</include>
