@@ -1535,13 +1535,19 @@
 						<height>156</height>
 						<texture colordiffuse="thumb_background_fallback_secondary">items/mask_button.png</texture>
 						<aspectratio>stretch</aspectratio>
-						<visible>String.StartsWith(ListItem.Property(action),ActivateWindow) | String.IsEmpty(ListItem.Property(action))</visible>
+						<visible>[String.StartsWith(ListItem.Property(action),ActivateWindow) | String.IsEmpty(ListItem.Property(action))] + String.IsEmpty(ListItem.Property(fallback))</visible>
 					</control>
 					<control type="image">
 						<width>277</width>
 						<height>156</height>
 						<texture colordiffuse="lila">items/mask_button.png</texture>
-						<visible>!String.StartsWith(ListItem.Property(action),ActivateWindow) + !String.IsEmpty(ListItem.Property(action))</visible>
+						<visible>!String.StartsWith(ListItem.Property(action),ActivateWindow) + !String.IsEmpty(ListItem.Property(action)) + String.IsEmpty(ListItem.Property(fallback))</visible>
+					</control>
+					<control type="image">
+						<width>277</width>
+						<height>156</height>
+						<texture colordiffuse="turquoise">items/mask_button.png</texture>
+						<visible>!String.IsEmpty(ListItem.Property(fallback))</visible>
 					</control>
 					<control type="label">
 						<width>277</width>
@@ -1552,6 +1558,18 @@
 						<align>center</align>
 						<aligny>center</aligny>
 						<label>$INFO[ListItem.Label]</label>
+						<visible>String.IsEmpty(ListItem.Property(fallback))</visible>
+					</control>
+					<control type="label">
+						<width>277</width>
+						<height>156</height>
+						<font>Material70</font>
+						<textcolor>EEFFFFFF</textcolor>
+						<textoffsetx>10</textoffsetx>
+						<align>center</align>
+						<aligny>center</aligny>
+						<label>$INFO[ListItem.Label2]</label>
+						<visible>!String.IsEmpty(ListItem.Property(fallback))</visible>
 					</control>
 				</control>
 				<control type="group">

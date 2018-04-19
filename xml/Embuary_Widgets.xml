@@ -569,13 +569,9 @@
 	<!-- ##### HOME ##### -->
 	<!-- Menu Buttons -->
 	<include name="HomeWidgetMenu">
-		<param name="visible">true</param>
 		<param name="headline">$LOCALIZE[416]</param>
-		<param name="onup">100</param>
 		<definition>
 			<control type="group" id="$PARAM[id]1">
-				<visible>$PARAM[visible]</visible>
-				<visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</visible>
 				<width>100%</width>
 				<height>465</height>
 				<include content="widget_headline">
@@ -621,7 +617,9 @@
 							</include>
 						</control>
 					</focusedlayout>
-					<include>MainMenuContent</include>
+					<include content="MainMenuContent">
+						<param name="id" value="$PARAM[id]" />
+					</include>
 				</control>
 			</control>
 		</definition>

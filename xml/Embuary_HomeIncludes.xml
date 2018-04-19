@@ -238,7 +238,6 @@
 
 	<include name="MainMenuContent">
 		<content>
-			<!-- divider -->
 			<include content="MainMenuPosition">
 				<param name="nr" value="1"/>
 			</include>
@@ -335,17 +334,18 @@
 			<include content="MainMenuPosition">
 				<param name="nr" value="32"/>
 			</include>
-			<!-- disc -->
 			<item>
 				<label>$LOCALIZE[341]</label>
 				<onclick>PlayDisc</onclick>
 				<visible>System.HasMediaDVD</visible>
 			</item>
-			<!-- fallback -->
 			<item>
-				<label>$LOCALIZE[10507]</label>
+				<property name="fallback">true</property>
+				<label>$LOCALIZE[31028]</label>
+				<label2></label2>
+				<onclick>SetProperty(PositionCount,32,home)</onclick>
 				<onclick>ActivateWindow(1110)</onclick>
-				<visible>$EXP[MenuCheck]</visible>
+				<visible>$EXP[MenuCheck] | !Integer.IsGreaterOrEqual(Container($PARAM[id]).NumItems,1) | !String.IsEmpty(Container($PARAM[id]).ListItemAbsolute(0).Property(fallback))</visible>
 			</item>
 		</content>
 	</include>
