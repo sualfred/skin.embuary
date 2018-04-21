@@ -442,6 +442,50 @@
 			<aspectratio align="center" aligny="center">keep</aspectratio>
 		</control>
 	</include>
+	<!-- Sort letter -->
+	<include name="ScrollSortLetterLayout">
+		<control type="group">
+			<control type="image">
+				<top>-2</top>
+				<left>-2</left>
+				<width>86</width>
+				<height>86</height>
+				<texture diffuse="items/big_circle.png" colordiffuse="turquoise">common/white.jpg</texture>
+			</control>
+			<control type="textbox">
+				<top>-1</top>
+				<width>80</width>
+				<height>80</height>
+				<font>SortLetter</font>
+				<textcolor>EEFFFFFF</textcolor>
+				<align>center</align>
+				<aligny>center</aligny>
+				<label>$VAR[SortLetterLabel]</label>
+			</control>
+		</control>
+	</include>
+	<include name="ScrollSortLetter">
+		<control type="group">
+			<visible>Container.Scrolling + [String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[561]) | String.IsEqual(Container.SortMethod,$LOCALIZE[558]) | String.IsEqual(Container.SortMethod,$LOCALIZE[557]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556]) | String.IsEqual(Container.SortMethod,$LOCALIZE[563]) | String.IsEqual(Container.SortMethod,$LOCALIZE[549]) | String.IsEqual(Container.SortMethod,$LOCALIZE[20359])]</visible>
+			<animation effect="fade" start="0" end="100" time="120" reversible="true" delay="300">VisibleChange</animation>
+			<control type="group">
+				<visible>String.IsEqual(Container.Viewmode,$LOCALIZE[31199])</visible>
+				<right>23</right>
+				<bottom>23</bottom>
+				<width>80</width>
+				<height>80</height>
+				<include>ScrollSortLetterLayout</include>
+			</control>
+			<control type="group">
+				<visible>!String.IsEqual(Container.Viewmode,$LOCALIZE[31199])</visible>
+				<left>21</left>
+				<bottom>23</bottom>
+				<width>80</width>
+				<height>80</height>
+				<include>ScrollSortLetterLayout</include>
+			</control>
+		</control>
+	</include>
 	<!-- Poster -->
 	<include name="PosterLayout">
 		<param name="mainlabel">$VAR[MainListLabel]</param>
