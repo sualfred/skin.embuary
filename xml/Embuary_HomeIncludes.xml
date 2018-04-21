@@ -238,6 +238,21 @@
 
 	<include name="MainMenuContent">
 		<content>
+			<item>
+				<property name="fallback">true</property>
+				<label>$LOCALIZE[20186]</label>
+				<label2></label2>
+				<onclick>noop</onclick>
+				<visible>!String.IsEmpty(Window(home).Property(startup)) + [$EXP[MenuCheck] | String.IsEmpty(Container($PARAM[id]).ListItemAbsolute(1).Label)]</visible>
+			</item>
+			<item>
+				<property name="fallback">true</property>
+				<label>$LOCALIZE[31028]</label>
+				<label2></label2>
+				<onclick>SetProperty(PositionCount,32,home)</onclick>
+				<onclick>ActivateWindow(1110)</onclick>
+				<visible>String.IsEmpty(Window(home).Property(startup)) + [$EXP[MenuCheck] | String.IsEmpty(Container($PARAM[id]).ListItemAbsolute(1).Label)]</visible>
+			</item>
 			<include content="MainMenuPosition">
 				<param name="nr" value="1"/>
 			</include>
@@ -338,14 +353,6 @@
 				<label>$LOCALIZE[341]</label>
 				<onclick>PlayDisc</onclick>
 				<visible>System.HasMediaDVD</visible>
-			</item>
-			<item>
-				<property name="fallback">true</property>
-				<label>$LOCALIZE[31028]</label>
-				<label2></label2>
-				<onclick>SetProperty(PositionCount,32,home)</onclick>
-				<onclick>ActivateWindow(1110)</onclick>
-				<visible>$EXP[MenuCheck] | !Integer.IsGreaterOrEqual(Container($PARAM[id]).NumItems,1) | !String.IsEmpty(Container($PARAM[id]).ListItemAbsolute(0).Property(fallback))</visible>
 			</item>
 		</content>
 	</include>
