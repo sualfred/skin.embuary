@@ -12,6 +12,7 @@
 				<property name="art2">$INFO[Container($PARAM[id]).ListItem(1).Art($PARAM[artwork])]</property>
 				<property name="art3">$INFO[Container($PARAM[id]).ListItem(2).Art($PARAM[artwork])]</property>
 				<property name="art4">$INFO[Container($PARAM[id]).ListItem(3).Art($PARAM[artwork])]</property>
+				<property name="item">true</property>
 				<visible>$PARAM[visible]</visible>
 			</item>
 		</definition>
@@ -27,6 +28,7 @@
 			<property name="art3">$INFO[Container(4$PARAM[nr]).ListItem(2).Art(thumb)]</property>
 			<property name="art4">$INFO[Container(4$PARAM[nr]).ListItem(3).Art(thumb)]</property>
 			<property name="action">$INFO[Skin.String(UserHomeHub$PARAM[nr]_action)]</property>
+			<property name="item">true</property>
 			<visible>$PARAM[visible] + Skin.HasSetting(UserHomeHub$PARAM[nr])</visible>
 		</item>
 	</include>
@@ -36,6 +38,7 @@
 			<onclick>ActivateWindow(116$PARAM[nr])</onclick>
 			<icon>$PARAM[icon]</icon>
 			<property name="embyart">$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].thumb)]</property>
+			<property name="item">true</property>
 			<visible>$PARAM[visible]</visible>
 		</item>
 	</include>
@@ -46,6 +49,7 @@
 			<onclick condition="String.IsEqual(Window(home).Property(emby.nodes.$PARAM[nr].type),homevideos)">ActivateWindow(pictures,$INFO[Window(home).Property(emby.nodes.$PARAM[nr].content)],return)</onclick>
 			<icon>$PARAM[icon]</icon>
 			<property name="embyart">$INFO[Window(home).Property(emby.nodes.$PARAM[nr].artwork)]</property>
+			<property name="item">true</property>
 			<visible>$PARAM[visible]</visible>
 		</item>
 	</include>
@@ -243,7 +247,7 @@
 				<label>$LOCALIZE[20186]</label>
 				<label2></label2>
 				<onclick>noop</onclick>
-				<visible>!String.IsEmpty(Window(home).Property(startup)) + [$EXP[MenuCheck] | String.IsEmpty(Container($PARAM[id]).ListItemAbsolute(1).Label)]</visible>
+				<visible>!String.IsEmpty(Window(home).Property(startup)) + [$EXP[MenuCheck] | String.IsEmpty(Container($PARAM[id]).ListItemAbsolute(1).Property(item))]</visible>
 			</item>
 			<item>
 				<property name="fallback">true</property>
@@ -251,7 +255,7 @@
 				<label2></label2>
 				<onclick>SetProperty(PositionCount,32,home)</onclick>
 				<onclick>ActivateWindow(1110)</onclick>
-				<visible>String.IsEmpty(Window(home).Property(startup)) + [$EXP[MenuCheck] | String.IsEmpty(Container($PARAM[id]).ListItemAbsolute(1).Label)]</visible>
+				<visible>String.IsEmpty(Window(home).Property(startup)) + [$EXP[MenuCheck] | String.IsEmpty(Container($PARAM[id]).ListItemAbsolute(1).Property(item))]</visible>
 			</item>
 			<include content="MainMenuPosition">
 				<param name="nr" value="1"/>
