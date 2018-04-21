@@ -183,6 +183,16 @@
 					<label>$INFO[ListItem.Property(Artist_Mood),$LOCALIZE[175]: ]   </label>
 					<visible>!String.IsEmpty(ListItem.Property(Artist_Mood))</visible>
 				</control>
+				<control type="label">
+					<include>MetaLabel</include>
+					<label>$INFO[Container(200).NumItems,$LOCALIZE[132]: ]   </label>
+					<visible>!Integer.IsEqual(Container(200).NumItems,0)</visible>
+				</control>
+				<control type="label">
+					<include>MetaLabel</include>
+					<label>$INFO[Container(300).NumItems,$LOCALIZE[132]: ]   </label>
+					<visible>Integer.IsEqual(Container(200).NumItems,0) + !Integer.IsEqual(Container(300).NumItems,0)</visible>
+				</control>
 			</control>
 		</definition>
 	</include>

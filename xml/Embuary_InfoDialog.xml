@@ -559,9 +559,8 @@
 			<control type="group">
 				<top>90</top>
 				<width>100%</width>
-				<height>420</height>
+				<height>580</height>
 				<control type="group">
-					<width>100%</width>
 					<!-- Thumb image -->
 					<include>MetaSquareThumb</include>
 					<!-- meta -->
@@ -625,10 +624,10 @@
 						<include>MetaGenre</include>
 						<control type="textbox">
 							<width>100%</width>
-							<height max="130">auto</height>
+							<height max="300">auto</height>
 							<align>justify</align>
 							<aligny>top</aligny>
-							<label>$INFO[ListItem.Property(Artist_Description)]</label>
+							<label>$VAR[ArtistInfoPlot]</label>
 							<font>Light24</font>
 							<autoscroll>false</autoscroll>
 						</control>
@@ -639,29 +638,34 @@
 			</control>
 			<!-- Albums -->
 			<include content="SquareWidget">
+				<param name="visible" value="Window.IsVisible(music)"/>
 				<param name="id" value="200"/>
 				<param name="onup" value="100"/>
 				<param name="ondown" value="300"/>
-				<param name="mainlabel" value="$INFO[ListItem.Album]"/>
-				<param name="sublabel" value="$INFO[ListItem.Artist]"/>
-				<param name="headline" value="$LOCALIZE[132]"/>
+				<param name="height" value="480"/>
+				<param name="mainlabel" value="$INFO[ListItem.Label]"/>
+				<param name="sublabel" value="$INFO[ListItem.Label2]"/>
+				<param name="headline" value="$LOCALIZE[20396]"/>
 				<param name="use_custom_onclick" value="true"/>
-				<param name="onclick" value="PlayMedia($INFO[ListItem.FolderPath],isdir)"/>
+				<param name="onclick" value="close"/>
+				<param name="onclick2" value="Container.Update($INFO[ListItem.FolderPath])"/>
 				<param name="widget_target" value="music"/>
-				<param name="sortby" value="sorttitle"/>
-				<param name="sortorder" value="descending"/>
 				<param name="content" value="musicdb://artists/$INFO[ListItem.DBID]/"/>
 			</include>
-			<!-- All songs -->
 			<include content="SquareWidget">
+				<param name="visible" value="!Window.IsVisible(music)"/>
 				<param name="id" value="300"/>
 				<param name="onup" value="200"/>
-				<param name="ondown" value="noop"/>
-				<param name="mainlabel" value="$INFO[ListItem.Tracknumber,,. ]$INFO[ListItem.Title]"/>
-				<param name="sublabel" value="$INFO[ListItem.Album]"/>
-				<param name="headline" value="$LOCALIZE[182]"/>
-				<param name="sortby" value="track"/>
-				<param name="content" value="musicdb://songs/?artistid=$INFO[ListItem.DBID]"/>
+				<param name="height" value="480"/>
+				<param name="mainlabel" value="$INFO[ListItem.Label]"/>
+				<param name="sublabel" value="$INFO[ListItem.Label2]"/>
+				<param name="headline" value="$LOCALIZE[31227]"/>
+				<param name="use_custom_onclick" value="true"/>
+				<param name="onclick" value="PlayMedia($INFO[ListItem.FolderPath],isdir)"/>
+				<param name="onclick2" value="close"/>
+				<param name="onclick3" value="ActivateWindow(visualisation)"/>
+				<param name="widget_target" value="music"/>
+				<param name="content" value="musicdb://artists/$INFO[ListItem.DBID]/"/>
 			</include>
 		</control>
 		<!-- header bar -->
@@ -769,41 +773,20 @@
 				<!-- logo -->
 				<include>MetaClearlogo</include>
 			</control>
-			<include content="SquareWidget">
-				<param name="visible" value="String.IsEqual(ListItem.DBtype,album)"/>
-				<param name="id" value="200"/>
-				<param name="onup" value="100"/>
-				<param name="ondown" value="300"/>
-				<param name="mainlabel" value="$INFO[ListItem.Tracknumber,,. ]$INFO[ListItem.Label]"/>
-				<param name="sublabel" value="$VAR[DurationMinutes]"/>
-				<param name="headline" value="$LOCALIZE[182]"/>
-				<param name="widget_target" value="music"/>
-				<param name="sortby" value="track"/>
-				<param name="content" value="musicdb://albums/$INFO[ListItem.DBID]/"/>
-			</include>
 			<!-- Albums -->
 			<include content="SquareWidget">
-				<param name="id" value="300"/>
-				<param name="onup" value="200"/>
-				<param name="ondown" value="400"/>
+				<param name="id" value="200"/>
+				<param name="onup" value="100"/>
 				<param name="mainlabel" value="$INFO[ListItem.Label]"/>
 				<param name="sublabel" value="$INFO[ListItem.Label2]"/>
-				<param name="headline" value="$LOCALIZE[132]"/>
+				<param name="headline" value="$LOCALIZE[20396]"/>
 				<param name="use_custom_onclick" value="true"/>
-				<param name="onclick" value="PlayMedia($INFO[ListItem.FolderPath],isdir)"/>
+				<param name="onclick123123213" value="PlayMedia($INFO[ListItem.FolderPath],isdir)"/>
+				<param name="onclick2" value="close"/>
+				<param name="onclick3" value="Container.Update($INFO[ListItem.FolderPath])"/>
+				<param name="onclick3123123123123" value="ActivateWindow(visualisation)"/>
 				<param name="widget_target" value="music"/>
 				<param name="content" value="$VAR[InfoDialog_ArtistAlbums]"/>
-			</include>
-			<!-- All tracks -->
-			<include content="SquareWidget">
-				<param name="id" value="400"/>
-				<param name="onup" value="300"/>
-				<param name="ondown" value="noop"/>
-				<param name="mainlabel" value="$INFO[ListItem.Tracknumber,,. ]$INFO[ListItem.Title]"/>
-				<param name="sublabel" value="$INFO[ListItem.Album]"/>
-				<param name="headline" value="$LOCALIZE[182]"/>
-				<param name="sortby" value="track"/>
-				<param name="content" value="$VAR[InfoDialog_ArtistTracks]"/>
 			</include>
 		</control>
 		<!-- header bar -->
