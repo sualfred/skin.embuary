@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<defaultcontrol always="true">100</defaultcontrol>
+	<onload condition="String.IsEqual(ListItem.DBType,season) + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) + String.IsEqual(ListItem.Label,All)">close</onload>
 	<include>UnloadSetProperties</include>
 	<onunload condition="!String.IsEmpty(Window(home).Property(InfoDialogCloseFocus))">SetFocus(7070)</onunload>
 	<controls>
@@ -16,7 +17,7 @@
 		<include condition="String.IsEqual(ListItem.DBType,movie)">MovieInfoLayout</include>
 		<include condition="String.IsEqual(ListItem.DBType,tvshow)">TVShowInfoLayout</include>
 		<include condition="String.IsEqual(ListItem.DBType,episode)">EpisodeInfoLayout</include>
-		<include condition="!String.IsEqual(ListItem.DBType,movie) + !String.IsEqual(ListItem.DBType,tvshow) + !String.IsEqual(ListItem.DBType,episode)">TinyInfoLayout</include>
+		<include condition="!String.IsEqual(ListItem.DBType,movie) + !String.IsEqual(ListItem.DBType,tvshow) + !String.IsEqual(ListItem.DBType,episode) + [String.IsEqual(ListItem.DBType,season) + !String.IsEmpty(ListItem.Plot)]">TinyInfoLayout</include>
 		<!-- Menu control -->
 		<control type="group">
 			<include>FullscreenDimensions</include>
