@@ -21,11 +21,23 @@
 					<param name="onup" value="PreviousChannelGroup"/>
 					<param name="ondown" value="NextChannelGroup"/>
 					<param name="headline" value="[COLOR white]$LOCALIZE[31070] - $INFO[VideoPlayer.ChannelGroup][/COLOR]"/>
-					<param name="mainlabel" value="$INFO[ListItem.Channelnumber,,. ]$INFO[ListItem.Channelname]"/>
+					<param name="mainlabel" value="$INFO[ListItem.ChannelNumberLabel,,. ]$INFO[ListItem.Channelname]"/>
 					<param name="thumblabel" value="$INFO[ListItem.Channelname]"/>
 					<param name="sublabel" value="$INFO[ListItem.Title]"/>
 					<param name="use_custom_content" value="false"/>
 				</include>
+			</control>
+			<!--Scrollletter-->
+			<control type="group">
+				<visible>Container(11).Scrolling</visible>
+				<animation effect="fade" start="0" end="100" time="120" reversible="true" delay="300">VisibleChange</animation>
+				<control type="group">
+					<right>23</right>
+					<bottom>23</bottom>
+					<width>80</width>
+					<height>80</height>
+					<include>ScrollSortLetterLayout</include>
+				</control>
 			</control>
 		</control>
 	</controls>
