@@ -1256,13 +1256,13 @@
 		<value condition="String.Contains(VideoPlayer.AudioCodec,cook)">Cook</value>
 	</variable>
 	<variable name="VideoInfoButton8">
+		<value condition="String.IsEqual(ListItem.DBType,season) + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) + String.IsEqual(ListItem.Label,All)">$LOCALIZE[31011]</value>
 		<value condition="String.IsEqual(ListItem.Label,$LOCALIZE[20366])">$LOCALIZE[31011]</value>
-		<value condition="String.IsEqual(ListItem.DBType,season) + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) + String.IsEqual(ListItem.Label,All)">$LOCALIZE[20366]</value>
-		<value condition="!String.IsEqual(ListItem.DBType,tvshow) + !String.IsEqual(ListItem.DBType,season) + ListItem.IsResumable">$LOCALIZE[13404]</value>
-		<value condition="!String.IsEqual(ListItem.DBType,tvshow) + !String.IsEqual(ListItem.DBType,season) + Integer.IsGreater(ListItem.PlayCount,0)">$LOCALIZE[31009]</value>
-		<value condition="!String.IsEqual(ListItem.DBType,tvshow) + !String.IsEqual(ListItem.DBType,season)">$LOCALIZE[31010]</value>
 		<value condition="String.IsEqual(ListItem.DBType,season)">$LOCALIZE[31013]</value>
-		<value>$LOCALIZE[31011]</value>
+		<value condition="String.IsEqual(ListItem.DBType,tvshow)">$LOCALIZE[31011]</value>
+		<value condition="ListItem.IsResumable">$LOCALIZE[13404]</value>
+		<value condition="Integer.IsGreater(ListItem.PlayCount,0)">$LOCALIZE[31009]</value>
+		<value>$LOCALIZE[31010]</value>
 	</variable>
 	<variable name="TinyInfoDialogHeadline">
 		<value condition="Window.IsVisible(DialogFullScreenInfo.xml) + !String.IsEmpty(VideoPlayer.TvShowTitle)">$INFO[VideoPlayer.TvShowTitle]</value>
