@@ -4,17 +4,9 @@
 	<defaultcontrol always="true">100</defaultcontrol>
 	<include>UnloadSetProperties</include>
 	<controls>
-		<control id="96" type="scrollbar">
-			<left>-1200</left>
-			<width>100</width>
-			<height>1</height>
-			<showonepage>false</showonepage>
-			<orientation>vertical</orientation>
-		</control>
 		<!-- Content -->
 		<include condition="String.IsEqual(ListItem.DBType,artist)">ArtistInfoLayout</include>
-		<include condition="String.IsEqual(ListItem.DBType,album)">AlbumInfoLayout</include>
-		<include condition="!String.IsEqual(ListItem.DBType,artist) + !String.IsEqual(ListItem.DBType,album)">TinyInfoLayout</include>
+		<include condition="!String.IsEqual(ListItem.DBType,artist)">TinyInfoLayout</include>
 		<!-- Menu control -->
 		<control type="group">
 			<include>FullscreenDimensions</include>

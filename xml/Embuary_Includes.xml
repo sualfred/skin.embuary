@@ -651,7 +651,6 @@
 			<texturefocus>-</texturefocus>
 			<texturenofocus>-</texturenofocus>
 			<onfocus>ClearProperty(FocusBounce,home)</onfocus>
-			<onfocus condition="[String.IsEqual(ListItem.DBType,artist) | Container.Content(artists)]">SetProperty(ArtistDBID,$INFO[ListItem.DBID],home)</onfocus>
 			<onfocus condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)]">SetProperty(TVShowRating,$INFO[ListItem.Rating],home)</onfocus>
 			<onfocus condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)]">SetProperty(TVShowDBID,$INFO[ListItem.DBID],home)</onfocus>
 			<onfocus condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)]">SetProperty(TVShowIMDB,$INFO[ListItem.IMDBnumber],home)</onfocus>
@@ -671,7 +670,6 @@
 			<texturefocus>-</texturefocus>
 			<texturenofocus>-</texturenofocus>
 			<onfocus>ClearProperty(FocusBounce,home)</onfocus>
-			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,artist)">SetProperty(ArtistDBID,$INFO[Container($PARAM[id]).ListItem.DBID],home)</onfocus>
 			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow)">SetProperty(TVShowRating,$INFO[Container($PARAM[id]).ListItem.Rating],home)</onfocus>
 			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow)">SetProperty(TVShowDBID,$INFO[Container($PARAM[id]).ListItem.DBID],home)</onfocus>
 			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow)">SetProperty(TVShowIMDB,$INFO[Container($PARAM[id]).ListItem.IMDBnumber],home)</onfocus>
@@ -687,7 +685,6 @@
 		</control>
 	</include>
 	<include name="UnloadSetProperties">
-		<onunload condition="Window.Next(home)">ClearProperty(ArtistDBID,home)</onunload>
 		<onunload condition="Window.Next(home)">ClearProperty(TVShowRating,home)</onunload>
 		<onunload condition="Window.Next(home)">ClearProperty(TVShowDBID,home)</onunload>
 		<onunload condition="Window.Next(home)">ClearProperty(TVShowIMDB,home)</onunload>
