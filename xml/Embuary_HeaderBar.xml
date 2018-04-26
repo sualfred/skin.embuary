@@ -402,7 +402,7 @@
 			<onclick condition="Integer.IsGreater(Playlist.Length(video),1) + Integer.IsGreater(Playlist.Length(music),1)">ActivateWindow(1145)</onclick>
 			<onclick condition="Integer.IsGreater(Playlist.Length(video),1) + !Integer.IsGreater(Playlist.Length(music),1)">ActivateWindow(videoplaylist)</onclick>
 			<onclick condition="!Integer.IsGreater(Playlist.Length(video),1) + Integer.IsGreater(Playlist.Length(music),1)">ActivateWindow(musicplaylist)</onclick>
-			<visible>[[!VideoPlayer.Content(livetv) + Integer.IsGreater(Playlist.Length(video),1)] | Integer.IsGreater(Playlist.Length(music),1)] + !String.StartsWith(Player.Filenameandpath,special://skin/extras) + String.IsEmpty(Window(home).Property(SkinExtraSound))</visible>
+			<visible>[[!VideoPlayer.Content(livetv) + Integer.IsGreater(Playlist.Length(video),1)] | Integer.IsGreater(Playlist.Length(music),1)] + !Window.IsVisible(MyPlaylist.xml) + !String.StartsWith(Player.Filenameandpath,special://skin/extras) + String.IsEmpty(Window(home).Property(SkinExtraSound))</visible>
 		</control>
 		<control type="button" id="6620">
 			<font>Material24</font>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 	<include name="List_View_53">
+		<param name="id">53</param>
 		<param name="mainlabel">$VAR[MainListLabel]</param>
 		<param name="sublabel">$VAR[SubListLabel]</param>
 		<param name="thumblabel">$VAR[MainListLabel]</param>
@@ -9,16 +10,16 @@
 		<definition>
 			<control type="group">
 				<include>Visible_OpenClose</include>
-				<visible>Control.IsVisible(53)</visible>
+				<visible>Control.IsVisible($PARAM[id])</visible>
 				<!-- List -->
-				<control id="53" type="fixedlist">
+				<control id="$PARAM[id]" type="fixedlist">
 					<visible>$EXP[ListViewVisible]</visible>
-					<animation effect="slide" time="0" end="0,-120" condition="!Container.HasParent + [Integer.IsEqual(Container(53).NumItems,6) | Integer.IsEqual(Container(53).NumItems,5)]">Conditional</animation>
-					<animation effect="slide" time="0" end="0,-240" condition="!Container.HasParent + [Integer.IsEqual(Container(53).NumItems,4) | Integer.IsEqual(Container(53).NumItems,3)]">Conditional</animation>
-					<animation effect="slide" time="0" end="0,-360" condition="!Container.HasParent + [Integer.IsEqual(Container(53).NumItems,2) | Integer.IsEqual(Container(53).NumItems,1)]">Conditional</animation>
-					<animation effect="slide" time="0" end="0,-120" condition="Container.HasParent + [Integer.IsEqual(Container(53).NumItems,5) | Integer.IsEqual(Container(53).NumItems,4)]">Conditional</animation>
-					<animation effect="slide" time="0" end="0,-240" condition="Container.HasParent + [Integer.IsEqual(Container(53).NumItems,3) | Integer.IsEqual(Container(53).NumItems,2)]">Conditional</animation>
-					<animation effect="slide" time="0" end="0,-360" condition="Container.HasParent + Integer.IsEqual(Container(53).NumItems,1)">Conditional</animation>
+					<animation effect="slide" time="0" end="0,-120" condition="!Container.HasParent + [Integer.IsEqual(Container($PARAM[id]).NumItems,6) | Integer.IsEqual(Container($PARAM[id]).NumItems,5)]">Conditional</animation>
+					<animation effect="slide" time="0" end="0,-240" condition="!Container.HasParent + [Integer.IsEqual(Container($PARAM[id]).NumItems,4) | Integer.IsEqual(Container($PARAM[id]).NumItems,3)]">Conditional</animation>
+					<animation effect="slide" time="0" end="0,-360" condition="!Container.HasParent + [Integer.IsEqual(Container($PARAM[id]).NumItems,2) | Integer.IsEqual(Container($PARAM[id]).NumItems,1)]">Conditional</animation>
+					<animation effect="slide" time="0" end="0,-120" condition="Container.HasParent + [Integer.IsEqual(Container($PARAM[id]).NumItems,5) | Integer.IsEqual(Container($PARAM[id]).NumItems,4)]">Conditional</animation>
+					<animation effect="slide" time="0" end="0,-240" condition="Container.HasParent + [Integer.IsEqual(Container($PARAM[id]).NumItems,3) | Integer.IsEqual(Container($PARAM[id]).NumItems,2)]">Conditional</animation>
+					<animation effect="slide" time="0" end="0,-360" condition="Container.HasParent + Integer.IsEqual(Container($PARAM[id]).NumItems,1)">Conditional</animation>
 					<left>690</left>
 					<height>100%</height>
 					<onup>SetFocus(6666)</onup>
@@ -26,7 +27,8 @@
 					<onright condition="!Control.IsVisible(17) + Control.IsVisible(7000)">SetFocus(7000)</onright>
 					<onright condition="!Control.IsVisible(17) + !Control.IsVisible(7000)">SetFocus(6666)</onright>
 					<ondown>noop</ondown>
-					<onleft>900</onleft>
+					<onleft condition="Window.IsVisible(musicplaylist)">100</onleft>
+					<onleft condition="!Window.IsVisible(musicplaylist)">900</onleft>
 					<defaultcontrol always="true">0</defaultcontrol>
 					<focusposition>4</focusposition>
 					<movement>3</movement>
@@ -41,7 +43,7 @@
 							<left>70</left>
 							<right>70</right>
 							<include content="ListLayout">
-								<param name="id">53</param>
+								<param name="id">$PARAM[id]</param>
 								<param name="mainlabel">$PARAM[mainlabel]</param>
 								<param name="sublabel">$PARAM[sublabel]</param>
 								<param name="rightlabel">$PARAM[rightlabel]</param>
@@ -57,7 +59,7 @@
 							<right>70</right>
 							<include content="ListLayout">
 								<param name="focused" value="true"/>
-								<param name="id">53</param>
+								<param name="id">$PARAM[id]</param>
 								<param name="mainlabel">$PARAM[mainlabel]</param>
 								<param name="sublabel">$PARAM[sublabel]</param>
 								<param name="rightlabel">$PARAM[rightlabel]</param>
@@ -286,6 +288,42 @@
 							<label>$VAR[ListViewPlot]</label>
 							<font>Light24</font>
 							<autoscroll>false</autoscroll>
+							<visible>!Window.IsVisible(musicplaylist)</visible>
+						</control>
+						<!-- Buttons -->
+						<control type="grouplist" id="100">
+							<visible>Window.IsVisible(musicplaylist)</visible>
+							<top>435</top>
+							<height>75</height>
+							<orientation>horizontal</orientation>
+							<itemgap>5</itemgap>
+							<onright>50</onright>
+							<onleft>900</onleft>
+							<align>center</align>
+							<control type="button" id="8">
+								<include>LightGreyButton</include>
+								<label>$LOCALIZE[15067]</label>
+								<onclick>close</onclick>
+								<visible>false</visible>
+							</control>
+							<control type="button" id="101">
+								<include>LightGreyButton</include>
+								<label>$VAR[PartyModeButton]</label>
+								<onclick condition="MusicPartyMode.Enabled">Playercontrol(stop)</onclick>
+								<onclick condition="!MusicPartyMode.Enabled">Playercontrol(partymode(music))</onclick>
+								<onclick>close</onclick>
+							</control>
+							<control type="button" id="21">
+								<include>LightGreyButton</include>
+								<label>$LOCALIZE[190]</label>
+								<visible>!MusicPartyMode.Enabled</visible>
+							</control>
+							<control type="button" id="22">
+								<include>LightGreyButton</include>
+								<label>$LOCALIZE[192]</label>
+								<onclick>close</onclick>
+								<visible>!MusicPartyMode.Enabled</visible>
+							</control>
 						</control>
 					</control>
 				</control>

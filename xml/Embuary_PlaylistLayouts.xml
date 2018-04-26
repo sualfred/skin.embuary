@@ -145,104 +145,27 @@
 	</include>
 	<!-- music playlist -->
 	<include name="MusicPlaylistLayout">
-		<!-- Background -->
+		<!-- background -->
 		<include>Background</include>
-		<!-- Dialog -->
-		<control type="grouplist" id="500">
+		<!-- list -->
+		<control type="group">
 			<include>Window_OpenClose</include>
-			<width>100%</width>
-			<height>100%</height>
-			<orientation>vertical</orientation>
-			<usecontrolcoords>true</usecontrolcoords>
-			<include>ScrollTime</include>
-			<itemgap>-80</itemgap>
-			<!-- Meta -->
-			<control type="group">
-				<top>128</top>
-				<height>420</height>
-				<!-- Thumb image -->
-				<include>MetaSquareThumb</include>
-				<!-- Meta -->
-				<control type="group">
-					<control type="grouplist">
-						<left>434</left>
-						<orientation>vertical</orientation>
-						<align>top</align>
-						<itemgap>0</itemgap>
-						<width>1480</width>
-						<control type="label">
-							<width>1000</width>
-							<height>60</height>
-							<label>$INFO[ListItem.Title]</label>
-							<font>Reg37</font>
-							<aligny>top</aligny>
-						</control>
-						<control type="label">
-							<width>1000</width>
-							<height>60</height>
-							<label>$INFO[ListItem.Artist]$INFO[ListItem.Album, - ]</label>
-							<font>Reg37</font>
-							<aligny>top</aligny>
-						</control>
-						<!-- meta -->
-						<include>MetaSongInfos</include>
-						<!-- Buttons -->
-						<control type="grouplist" id="100">
-							<height>75</height>
-							<orientation>horizontal</orientation>
-							<itemgap>5</itemgap>
-							<onright>noop</onright>
-							<onleft>900</onleft>
-							<control type="button" id="8">
-								<include>LightGreyButton</include>
-								<label>$LOCALIZE[15067]</label>
-								<onclick>close</onclick>
-								<onup>SetFocus(6666)</onup>
-								<ondown>SetFocus(50)</ondown>
-							</control>
-							<control type="button" id="21">
-								<include>LightGreyButton</include>
-								<label>$LOCALIZE[190]</label>
-								<onup>SetFocus(6666)</onup>
-								<ondown>SetFocus(50)</ondown>
-								<visible>!MusicPartyMode.Enabled</visible>
-							</control>
-							<control type="button" id="22">
-								<include>LightGreyButton</include>
-								<label>$LOCALIZE[192]</label>
-								<onclick>close</onclick>
-								<onup>SetFocus(6666)</onup>
-								<ondown>SetFocus(50)</ondown>
-								<visible>!MusicPartyMode.Enabled</visible>
-							</control>
-						</control>
-						<!-- Genre -->
-						<include>MetaGenre</include>
-						<!-- flags -->
-						<include content="MetaFlags">
-							<param name="type" value="MediaFlags"/>
-						</include>
-					</control>
-					<!-- logo -->
-					<include>MetaClearlogo</include>
-				</control>
-			</control>
-			<!-- Items -->
-			<include content="SquareWidget">
+			<include content="List_View_53">
 				<param name="id" value="50"/>
-				<param name="headline" value="$LOCALIZE[10500]"/>
-				<param name="onup" value="100"/>
-				<param name="ondown" value="noop"/>
-				<param name="use_custom_content" value="false"/>
+				<param name="mainlabel" value="$INFO[ListItem.Title]"/>
+				<param name="sublabel" value="$INFO[ListItem.AlbumArtist]$INFO[ListItem.Album, - ]"/>
+				<param name="thumblabel" value="$INFO[ListItem.AlbumArtist]"/>
 			</include>
 		</control>
-		<!-- side panel -->
-		<include content="SidePanel">
-			<param name="onright">500</param>
-		</include>
 		<!-- header bar -->
 		<include content="HeaderBar">
-			<param name="id">500</param>
+			<param name="id">50</param>
+			<param name="auto_hide">false</param>
+			<param name="hide_header">Integer.IsGreaterOrEqual(Container(50).NumItems,9) + [Integer.IsGreaterOrEqual(Container(50).CurrentItem,5) | Container(50).HasPrevious]</param>
+		</include>
+		<!-- side panel -->
+		<include content="SidePanel">
+			<param name="onright">50</param>
 		</include>
 	</include>
 </includes>
