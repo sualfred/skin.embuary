@@ -6,8 +6,8 @@
 	<include>PropertyIncludes</include>
 	<controls>
 		<!-- Content -->
-		<include condition="String.IsEqual(ListItem.DBType,artist)">ArtistInfoLayout</include>
-		<include condition="!String.IsEqual(ListItem.DBType,artist)">TinyInfoLayout</include>
+		<include condition="String.IsEqual(ListItem.DBType,artist) + !String.IsEmpty(ListItem.DBID)">ArtistInfoLayout</include>
+		<include condition="!String.IsEqual(ListItem.DBType,artist) | String.IsEmpty(ListItem.DBID)">TinyInfoLayout</include>
 		<!-- Menu control -->
 		<control type="group">
 			<include>FullscreenDimensions</include>
