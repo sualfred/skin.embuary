@@ -1,132 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
-	<defaultcontrol always="true">100</defaultcontrol>
+	<defaultcontrol always="true">2</defaultcontrol>
 	<include>PropertyIncludes</include>
 	<controls>
-		<!-- Background -->
-		<include>Background</include>
-		<!-- Dialog -->
-		<control type="grouplist" id="500">
-			<include>Window_OpenClose</include>
-			<width>100%</width>
-			<height>100%</height>
-			<orientation>vertical</orientation>
-			<usecontrolcoords>true</usecontrolcoords>
-			<include>ScrollTime</include>
-			<itemgap>-80</itemgap>
-			<!-- Meta -->
+		<control type="group">
+			<!--Top-->
+			<include>PlayerTopBar</include>
+			<!--Bottom-->
 			<control type="group">
-				<width>1920</width>
-				<height>604</height>
-				<control type="group">
-					<top>128</top>
-					<height>435</height>
-					<width>1920</width>
-					<!-- poster -->
-					<include>MetaVideoPoster</include>
-					<!-- Meta -->
-					<control type="group">
-						<width>1920</width>
-						<height>604</height>
-						<control type="grouplist">
-							<left>370</left>
-							<orientation>vertical</orientation>
-							<height>500</height>
-							<align>top</align>
-							<itemgap>0</itemgap>
-							<width>1480</width>
-							<control type="label">
-								<width>1040</width>
-								<height>60</height>
-								<label>$INFO[VideoPlayer.Title]</label>
-								<font>Reg37</font>
-								<aligny>top</aligny>
-							</control>
-							<!-- meta -->
-							<include>PlayerVideoInfos</include>
-							<!-- buttons -->
-							<control type="grouplist" id="100">
-								<height>75</height>
-								<orientation>horizontal</orientation>
-								<itemgap>5</itemgap>
-								<onright>noop</onright>
-								<onleft>900</onleft>
-								<control type="button" id="2">
-									<include>LightGreyButton</include>
-									<label>$LOCALIZE[294]</label>
-									<onup>SetFocus(6666)</onup>
-									<ondown>SetFocus(11)</ondown>
-								</control>
-								<control type="button" id="3">
-									<include>LightGreyButton</include>
-									<label>$LOCALIZE[296]</label>
-									<onup>SetFocus(6666)</onup>
-									<ondown>SetFocus(11)</ondown>
-								</control>
-								<control type="button" id="97">
-									<visible>!String.IsEmpty(VideoPlayer.Plot)</visible>
-									<include>LightGreyButton</include>
-									<width>70</width>
-									<height>50</height>
-									<font>material24</font>
-									<label></label>
-									<onclick>RunScript(script.skin.helper.service,action=textviewer,header='$ESCVAR[TinyInfoDialogHeadline]',message='$ESCVAR[TinyInfoDialogPlot]')</onclick>
-									<onup>SetFocus(6666)</onup>
-									<ondown>SetFocus(11)</ondown>
-								</control>
-							</control>
-							<!-- genre -->
-							<include content="MetaGenre">
-								<param name="type" value="VideoPlayer"/>
-							</include>
-							<!-- plot -->
-							<control type="textbox">
-								<width>100%</width>
-								<height max="130">auto</height>
-								<align>justify</align>
-								<aligny>top</aligny>
-								<label>$INFO[VideoPlayer.Tagline,[B],[/B][CR]]$INFO[VideoPlayer.Plot]</label>
-								<font>Light24</font>
-								<autoscroll>false</autoscroll>
-								<visible>!String.IsEmpty(VideoPlayer.Plot)</visible>
-							</control>
-							<control type="label">
-								<height>20</height>
-							</control>
-							<!-- flags -->
-							<include content="MetaFlags">
-								<param name="type" value="PlayerFlags"/>
-							</include>
-						</control>
-						<!-- logo -->
-						<control type="image">
-							<right>70</right>
-							<width>400</width>
-							<height>155</height>
-							<texture>$VAR[PlayerClearlogo]</texture>
-							<aspectratio>keep</aspectratio>
-						</control>
+				<bottom>0</bottom>
+				<height>510</height>
+				<control type="image">
+					<bottom>0</bottom>
+					<width>100%</width>
+					<height>465</height>
+					<texture colordiffuse="black">views/player/mask_bottom.png</texture>
+				</control>
+				<!-- buttons -->
+				<control type="grouplist" id="100">
+					<top>60</top>
+					<left>70</left>
+					<height>56</height>
+					<orientation>horizontal</orientation>
+					<itemgap>5</itemgap>
+					<onright>noop</onright>
+					<onleft>noop</onleft>
+					<control type="button" id="2">
+						<include>LightGreyButton</include>
+						<label>$LOCALIZE[294]</label>
+						<onup>SetFocus(6666)</onup>
+						<ondown>SetFocus(11)</ondown>
+					</control>
+					<control type="button" id="3">
+						<include>LightGreyButton</include>
+						<label>$LOCALIZE[296]</label>
+						<onup>SetFocus(6666)</onup>
+						<ondown>SetFocus(11)</ondown>
 					</control>
 				</control>
+				<!-- bookmarks -->
+				<control type="group">
+					<bottom>0</bottom>
+					<height>436</height>
+					<include content="WideWidget">
+						<param name="id" value="11"/>
+						<param name="onup" value="100"/>
+						<param name="ondown" value="noop"/>
+						<param name="mainlabel" value="$INFO[ListItem.Label]"/>
+						<param name="sublabel" value="$INFO[ListItem.Label2]"/>
+						<param name="headline" value="$LOCALIZE[298]"/>
+						<param name="use_custom_content" value="false"/>
+					</include>
+				</control>
 			</control>
-			<!-- bookmarks -->
-			<include content="WideWidget">
-				<param name="id" value="11"/>
-				<param name="mainlabel" value="$INFO[ListItem.Label]"/>
-				<param name="sublabel" value="$INFO[ListItem.Label2]"/>
-				<param name="headline" value="$LOCALIZE[298]"/>
-				<param name="onup" value="100"/>
-				<param name="ondown" value="noop"/>
-				<param name="use_custom_content" value="false"/>
-			</include>
 		</control>
-		<!-- header bar -->
-		<include content="HeaderBar">
-			<param name="id">100</param>
-		</include>
-		<!-- side panel -->
-		<include content="SidePanel">
-			<param name="onright">100</param>
-		</include>
 	</controls>
 </window>
