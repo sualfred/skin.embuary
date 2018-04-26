@@ -295,7 +295,6 @@
 	</include>
 	<!-- HasNext arrow -->
 	<include name="list_mask">
-		<param name="top" default="94"/>
 		<param name="width" default="100"/>
 		<param name="visible_forced" default="false"/>
 		<definition>
@@ -303,22 +302,24 @@
 				<visible>[Container($PARAM[id]).HasNext + Control.HasFocus($PARAM[id])] | [Container($PARAM[id]).HasNext + $PARAM[visible_forced]]</visible>
 				<animation effect="fade" start="0" end="100" time="200" tween="sine">Visible</animation>
 				<animation effect="fade" start="100" end="0" time="0">Hidden</animation>
+				<height>$PARAM[height]</height>
 				<control type="image">
-					<top>$PARAM[top]</top>
+					<top>40</top>
+					<bottom>-170</bottom>
 					<right>0</right>
 					<width>$PARAM[width]</width>
-					<height>$PARAM[height]</height>
-					<texture colordiffuse="background">items/list_mask.png</texture>
+					<texture colordiffuse="background">items/widget_mask.png</texture>
 					<aspectratio>stretch</aspectratio>
 				</control>
 				<control type="label">
-					<top>$PARAM[top]</top>
+					<top>94</top>
 					<right>8</right>
 					<width>60</width>
 					<height>$PARAM[height]</height>
 					<label></label>
 					<font>Material60</font>
 					<textcolor>white</textcolor>
+					<shadowcolor>text_shadow</shadowcolor>
 					<align>center</align>
 					<aligny>center</aligny>
 				</control>
@@ -327,22 +328,24 @@
 				<visible>[Container($PARAM[id]).HasPrevious + Control.HasFocus($PARAM[id])] | [Container($PARAM[id]).HasPrevious + $PARAM[visible_forced]]</visible>
 				<animation effect="fade" start="0" end="100" time="200" tween="sine">Visible</animation>
 				<animation effect="fade" start="100" end="0" time="0">Hidden</animation>
+				<height>$PARAM[height]</height>
 				<control type="image">
-					<top>$PARAM[top]</top>
+					<top>40</top>
+					<bottom>-170</bottom>
 					<left>0</left>
 					<width>$PARAM[width]</width>
-					<height>$PARAM[height]</height>
-					<texture flipx="true" colordiffuse="background">items/list_mask.png</texture>
+					<texture flipx="true"  colordiffuse="background">items/widget_mask.png</texture>
 					<aspectratio>stretch</aspectratio>
 				</control>
 				<control type="label">
-					<top>$PARAM[top]</top>
+					<top>94</top>
 					<left>8</left>
 					<width>60</width>
 					<height>$PARAM[height]</height>
 					<label></label>
 					<font>Material60</font>
 					<textcolor>white</textcolor>
+					<shadowcolor>text_shadow</shadowcolor>
 					<align>center</align>
 					<aligny>center</aligny>
 				</control>
@@ -1797,20 +1800,41 @@
 					<param name="top" value="5"/>
 				</include>
 			</control>
-			<control type="label">
-				<left>100</left>
-				<right>250</right>
-				<height>120</height>
-				<font>Reg24</font>
-				<label>$PARAM[mainlabel][CR][COLOR lightgrey]$PARAM[sublabel][/COLOR]</label>
+			<control type="group">
+				<visible>!String.IsEqual(ListItem.Title,Player.Title) + !ListItem.IsSelected</visible>
+				<control type="label">
+					<left>100</left>
+					<right>250</right>
+					<height>120</height>
+					<font>Reg24</font>
+					<label>$PARAM[mainlabel][CR][COLOR lightgrey]$PARAM[sublabel][/COLOR]</label>
+				</control>
+				<control type="label">
+					<right>0</right>
+					<width>300</width>
+					<height>120</height>
+					<align>right</align>
+					<font>reg24</font>
+					<label>$PARAM[rightlabel][CR][COLOR lightgrey]$PARAM[rightlabel2][/COLOR]</label>
+				</control>
 			</control>
-			<control type="label">
-				<right>0</right>
-				<width>300</width>
-				<height>120</height>
-				<align>right</align>
-				<font>reg24</font>
-				<label>$PARAM[rightlabel][CR][COLOR lightgrey]$PARAM[rightlabel2][/COLOR]</label>
+			<control type="group">
+				<visible>String.IsEqual(ListItem.Title,Player.Title) | ListItem.IsSelected</visible>
+				<control type="label">
+					<left>100</left>
+					<right>250</right>
+					<height>120</height>
+					<font>Reg24</font>
+					<label>$PARAM[mainlabel][CR]$PARAM[sublabel]</label>
+				</control>
+				<control type="label">
+					<right>0</right>
+					<width>300</width>
+					<height>120</height>
+					<align>right</align>
+					<font>reg24</font>
+					<label>$PARAM[rightlabel][CR]$PARAM[rightlabel2]</label>
+				</control>
 			</control>
 		</definition>
 	</include>
