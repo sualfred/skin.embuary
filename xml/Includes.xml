@@ -66,12 +66,12 @@
 		]
 	</expression>
 
-	<expression name="SeasonViewVisible">[Container.Content(seasons) + [!String.StartsWith(ListItem.Path,plugin://) | String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)]]</expression>
+	<expression name="SeasonViewVisible">[Container.Content(seasons) + [!String.StartsWith(ListItem.Path,plugin://) | String.StartsWith(ListItem.Path,plugin://plugin.video.emby)]]</expression>
 
 	<expression name="ListViewVisible">[
 		[!Container.Content(seasons) + !Container.Content(episodes) + !String.Contains(Container.FolderPath,setid) + ![String.Contains(Container.FolderPath,BoxSet) + Container.Content(movies)] + !String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres)]
 		| [Container.Content(episodes) + String.StartsWith(Container.FolderPath,plugin://) + !String.StartsWith(Container.FolderPath,plugin://plugin.video.emby) + !String.StartsWith(Container.FolderPath,plugin://plugin.video.plexbmc)]
-		| [Container.Content(seasons) + String.StartsWith(ListItem.Path,plugin://) + !String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)]
+		| [Container.Content(seasons) + String.StartsWith(ListItem.Path,plugin://) + !String.StartsWith(ListItem.Path,plugin://plugin.video.emby)]
 		| Window.IsVisible(MyPics.xml)
 		]
 	</expression>
