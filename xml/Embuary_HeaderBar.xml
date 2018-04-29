@@ -8,6 +8,7 @@
 		<param name="header_label">$VAR[ContainerContentPrefix]$VAR[ContainerContent]$VAR[ContainerCountLabel,[COLOR text_header2]  |  ,[/COLOR]]</param>
 		<param name="content">HeaderDefault</param>
 		<definition>
+			<include>AvailableViewsCheck</include>
 			<!-- Top bar -->
 			<control type="group">
 				<animation effect="slide" start="0,0" end="0,-80"  time="500" delay="100" condition="!ControlGroup(6666).HasFocus + [[Container($PARAM[id]).HasPrevious + !Integer.IsEqual(Container($PARAM[id]).CurrentItem,1) + $PARAM[auto_hide]] | [$PARAM[hide_header]]]" tween="sine" easing="inout">Conditional</animation>
@@ -382,7 +383,7 @@
 				<param name="align" value="false"/>
 			</include>
 			<onclick>SetFocus(4100)</onclick>
-			<visible>[Window.IsVisible(pictures) | [Container.Content(episodes) + String.StartsWith(Container.FolderPath,plugin://) + !String.StartsWith(Container.FolderPath,plugin://plugin.video.emby) + !String.StartsWith(Container.FolderPath,plugin://plugin.video.plexbmc) + !String.StartsWith(Container.FolderPath,plugin.video.plexkodiconnect)] | [[Window.IsVisible(videos) | Window.IsVisible(music) | Window.IsVisible(programs) | Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRrecordings.xml) | Window.IsVisible(addonbrowser)] + !Container.Content(seasons) + !Container.Content(episodes)] + !String.Contains(Container.FolderPath,setid) + ![String.Contains(Container.FolderPath,BoxSet) + Container.Content(movies)] + !Window.IsVisible(1114)] + !Skin.HasSetting(KioskMode) + !Window.IsVisible(favourites)</visible>
+			<visible>Integer.IsGreater(Container(4200).NumItems,1)</visible>
 		</control>
 		<control type="button" id="6611">
 			<font>Material22</font>
