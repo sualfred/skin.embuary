@@ -1231,6 +1231,125 @@
 			</control>
 		</definition>
 	</include>
+	<!-- Available views check -->
+	<include name="AvailableViewsCheck">
+		<control type="grouplist" id="4200">
+			<include>HiddenObject</include>
+			<include content="AvailableViews">
+				<param name="id" value="4200"/>
+			</include>
+		</control>
+	</include>
+	<include name="AvailableViews">
+		<param name="id">41</param>
+		<definition>
+			<control type="radiobutton" id="$PARAM[id]02">
+				<include content="CommonButton"/>
+				<label>$LOCALIZE[20021]</label>
+				<onclick>Container.SetViewMode(51)</onclick>
+				<selected>Control.IsVisible(51)</selected>
+				<visible>$EXP[PosterViewVisible]</visible>
+			</control>
+			<control type="radiobutton" id="$PARAM[id]03">
+				<textcolor>emby</textcolor>
+				<texturenofocus border="10" colordiffuse="subsetting_nofocus">common/menu_back.png</texturenofocus>
+				<include content="CommonButton"/>
+				<label>• $LOCALIZE[31198]</label>
+				<onclick>Skin.ToggleSetting(HidePosterLabels)</onclick>
+				<selected>Skin.HasSetting(HidePosterLabels)</selected>
+				<visible>Control.IsVisible(51) + Window.IsVisible(myvideonav.xml)</visible>
+			</control>
+			<control type="radiobutton" id="$PARAM[id]04">
+				<include content="CommonButton"/>
+				<label>$LOCALIZE[31004]</label>
+				<onclick>Container.SetViewMode(50)</onclick>
+				<selected>Control.IsVisible(50)</selected>
+				<visible>$EXP[WideViewVisible]</visible>
+			</control>
+			<control type="radiobutton" id="$PARAM[id]05">
+				<textcolor>emby</textcolor>
+				<texturenofocus border="10" colordiffuse="subsetting_nofocus">common/menu_back.png</texturenofocus>
+				<include content="CommonButton"/>
+				<label>• $LOCALIZE[31198]</label>
+				<onclick>Skin.ToggleSetting(HideWideLabels)</onclick>
+				<selected>Skin.HasSetting(HideWideLabels)</selected>
+				<visible>Control.IsVisible(50) + Window.IsVisible(myvideonav.xml)</visible>
+			</control>
+			<control type="radiobutton" id="$PARAM[id]06">
+				<include content="CommonButton"/>
+				<label>$LOCALIZE[31199]</label>
+				<onclick>Container.SetViewMode(56)</onclick>
+				<selected>Control.IsVisible(56)</selected>
+				<visible>$EXP[SetViewVisible]</visible>
+			</control>
+			<control type="radiobutton" id="$PARAM[id]07">
+				<include content="CommonButton"/>
+				<label>$LOCALIZE[31199]</label>
+				<onclick>Container.SetViewMode(57)</onclick>
+				<selected>Control.IsVisible(57)</selected>
+				<visible>Window.IsVisible(tvchannels) | Window.IsVisible(tvrecordings)</visible>
+			</control>
+			<control type="radiobutton" id="$PARAM[id]08">
+				<include content="CommonButton"/>
+				<label>$LOCALIZE[20020]</label>
+				<onclick>Container.SetViewMode(58)</onclick>
+				<selected>Control.IsVisible(58)</selected>
+				<visible>$EXP[BannerViewVisible]</visible>
+			</control>
+			<control type="radiobutton" id="$PARAM[id]09">
+				<textcolor>emby</textcolor>
+				<texturenofocus border="10" colordiffuse="subsetting_nofocus">common/menu_back.png</texturenofocus>
+				<include content="CommonButton"/>
+				<label>• $LOCALIZE[31198]</label>
+				<onclick>Skin.ToggleSetting(HideBannerLabels)</onclick>
+				<selected>Skin.HasSetting(HideBannerLabels)</selected>
+				<visible>Control.IsVisible(58) + Window.IsVisible(myvideonav.xml)</visible>
+			</control>
+			<control type="radiobutton" id="$PARAM[id]10">
+				<include content="CommonButton"/>
+				<label>$LOCALIZE[31005]</label>
+				<onclick>Container.SetViewMode(52)</onclick>
+				<selected>Control.IsVisible(52)</selected>
+				<visible>$EXP[SquareViewVisible]</visible>
+			</control>
+			<control type="radiobutton" id="$PARAM[id]11">
+				<include content="CommonButton"/>
+				<label>$LOCALIZE[20373]</label>
+				<onclick>Container.SetViewMode(54)</onclick>
+				<selected>Control.IsVisible(54)</selected>
+				<visible>$EXP[SeasonViewVisible]</visible>
+			</control>
+			<control type="radiobutton" id="$PARAM[id]12">
+				<include content="CommonButton"/>
+				<label>$LOCALIZE[20359]</label>
+				<onclick>Container.SetViewMode(55)</onclick>
+				<selected>Control.IsVisible(55)</selected>
+				<visible>$EXP[EpisodeViewVisible]</visible>
+			</control>
+			<control type="radiobutton" id="$PARAM[id]13">
+				<include content="CommonButton"/>
+				<label>$LOCALIZE[535]</label>
+				<onclick>Container.SetViewMode(53)</onclick>
+				<selected>Control.IsVisible(53)</selected>
+				<visible>$EXP[ListViewVisible]</visible>
+			</control>
+			<control type="radiobutton" id="$PARAM[id]14">
+				<include content="CommonButton"/>
+				<label>$LOCALIZE[31220]</label>
+				<onclick>Container.SetViewMode(10)</onclick>
+				<selected>Control.IsVisible(10)</selected>
+				<visible>Window.IsVisible(MyPVRguide.xml)</visible>
+			</control>
+			<control type="radiobutton" id="$PARAM[id]15">
+				<include content="CommonButton"/>
+				<label>$LOCALIZE[31219]</label>
+				<onclick>Container.SetViewMode(20)</onclick>
+				<selected>Control.IsVisible(20)</selected>
+				<visible>Window.IsVisible(MyPVRguide.xml)</visible>
+			</control>
+		</definition>
+	</include>
+	<!-- View selector -->
 	<include name="ViewSelector">
 		<param name="onback">50</param>
 		<definition>
@@ -1260,110 +1379,7 @@
 							<height>10</height>
 							<texture border="5" colordiffuse="panel">common/menu_top.png</texture>
 						</control>
-						<control type="radiobutton" id="4102">
-							<include content="CommonButton"/>
-							<label>$LOCALIZE[20021]</label>
-							<onclick>Container.SetViewMode(51)</onclick>
-							<selected>Control.IsVisible(51)</selected>
-							<visible>$EXP[PosterViewVisible]</visible>
-						</control>
-						<control type="radiobutton" id="4103">
-							<textcolor>emby</textcolor>
-							<texturenofocus border="10" colordiffuse="subsetting_nofocus">common/menu_back.png</texturenofocus>
-							<include content="CommonButton"/>
-							<label>• $LOCALIZE[31198]</label>
-							<onclick>Skin.ToggleSetting(HidePosterLabels)</onclick>
-							<selected>Skin.HasSetting(HidePosterLabels)</selected>
-							<visible>Control.IsVisible(51) + Window.IsVisible(myvideonav.xml)</visible>
-						</control>
-						<control type="radiobutton" id="4104">
-							<include content="CommonButton"/>
-							<label>$LOCALIZE[31004]</label>
-							<onclick>Container.SetViewMode(50)</onclick>
-							<selected>Control.IsVisible(50)</selected>
-							<visible>$EXP[WideViewVisible] + !Window.IsVisible(MyPVRguide.xml)</visible>
-						</control>
-						<control type="radiobutton" id="4105">
-							<textcolor>emby</textcolor>
-							<texturenofocus border="10" colordiffuse="subsetting_nofocus">common/menu_back.png</texturenofocus>
-							<include content="CommonButton"/>
-							<label>• $LOCALIZE[31198]</label>
-							<onclick>Skin.ToggleSetting(HideWideLabels)</onclick>
-							<selected>Skin.HasSetting(HideWideLabels)</selected>
-							<visible>Control.IsVisible(50) + Window.IsVisible(myvideonav.xml)</visible>
-						</control>
-						<control type="radiobutton" id="4106">
-							<include content="CommonButton"/>
-							<label>$LOCALIZE[31199]</label>
-							<onclick>Container.SetViewMode(56)</onclick>
-							<selected>Control.IsVisible(56)</selected>
-							<visible>$EXP[SetViewVisible]</visible>
-						</control>
-						<control type="radiobutton" id="4107">
-							<include content="CommonButton"/>
-							<label>$LOCALIZE[31199]</label>
-							<onclick>Container.SetViewMode(57)</onclick>
-							<selected>Control.IsVisible(57)</selected>
-							<visible>Window.IsVisible(tvchannels) | Window.IsVisible(tvrecordings)</visible>
-						</control>
-						<control type="radiobutton" id="4108">
-							<include content="CommonButton"/>
-							<label>$LOCALIZE[20020]</label>
-							<onclick>Container.SetViewMode(58)</onclick>
-							<selected>Control.IsVisible(58)</selected>
-							<visible>$EXP[BannerViewVisible]</visible>
-						</control>
-						<control type="radiobutton" id="4109">
-							<textcolor>emby</textcolor>
-							<texturenofocus border="10" colordiffuse="subsetting_nofocus">common/menu_back.png</texturenofocus>
-							<include content="CommonButton"/>
-							<label>• $LOCALIZE[31198]</label>
-							<onclick>Skin.ToggleSetting(HideBannerLabels)</onclick>
-							<selected>Skin.HasSetting(HideBannerLabels)</selected>
-							<visible>Control.IsVisible(58) + Window.IsVisible(myvideonav.xml)</visible>
-						</control>
-						<control type="radiobutton" id="4110">
-							<include content="CommonButton"/>
-							<label>$LOCALIZE[31005]</label>
-							<onclick>Container.SetViewMode(52)</onclick>
-							<selected>Control.IsVisible(52)</selected>
-							<visible>$EXP[SquareViewVisible] + !Window.IsVisible(MyPVRguide.xml)</visible>
-						</control>
-						<control type="radiobutton" id="4111">
-							<include content="CommonButton"/>
-							<label>$LOCALIZE[20373]</label>
-							<onclick>Container.SetViewMode(54)</onclick>
-							<selected>Control.IsVisible(54)</selected>
-							<visible>$EXP[SeasonViewVisible]</visible>
-						</control>
-						<control type="radiobutton" id="4112">
-							<include content="CommonButton"/>
-							<label>$LOCALIZE[20359]</label>
-							<onclick>Container.SetViewMode(55)</onclick>
-							<selected>Control.IsVisible(55)</selected>
-							<visible>$EXP[EpisodeViewVisible]</visible>
-						</control>
-						<control type="radiobutton" id="4113">
-							<include content="CommonButton"/>
-							<label>$LOCALIZE[535]</label>
-							<onclick>Container.SetViewMode(53)</onclick>
-							<selected>Control.IsVisible(53)</selected>
-							<visible>$EXP[ListViewVisible] + !Window.IsVisible(MyPVRguide.xml)</visible>
-						</control>
-						<control type="radiobutton" id="4114">
-							<include content="CommonButton"/>
-							<label>$LOCALIZE[31220]</label>
-							<onclick>Container.SetViewMode(10)</onclick>
-							<selected>Control.IsVisible(10)</selected>
-							<visible>Window.IsVisible(MyPVRguide.xml)</visible>
-						</control>
-						<control type="radiobutton" id="4115">
-							<include content="CommonButton"/>
-							<label>$LOCALIZE[31219]</label>
-							<onclick>Container.SetViewMode(20)</onclick>
-							<selected>Control.IsVisible(20)</selected>
-							<visible>Window.IsVisible(MyPVRguide.xml)</visible>
-						</control>
+						<include>AvailableViews</include>
 						<control type="image" id="4120">
 							<width>100%</width>
 							<height>10</height>
