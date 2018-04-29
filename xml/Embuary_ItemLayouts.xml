@@ -1791,7 +1791,7 @@
 				</include>
 			</control>
 			<control type="group">
-				<visible>!String.IsEqual(ListItem.Title,Player.Title) + !ListItem.IsSelected</visible>
+				<visible>![Player.HasMedia + String.IsEqual(ListItem.Title,Player.Title)] + !ListItem.IsSelected</visible>
 				<control type="label">
 					<left>100</left>
 					<right>250</right>
@@ -1809,7 +1809,7 @@
 				</control>
 			</control>
 			<control type="group">
-				<visible>String.IsEqual(ListItem.Title,Player.Title) | ListItem.IsSelected</visible>
+				<visible>[Player.HasMedia + String.IsEqual(ListItem.Title,Player.Title)] | ListItem.IsSelected</visible>
 				<control type="label">
 					<left>100</left>
 					<right>250</right>
