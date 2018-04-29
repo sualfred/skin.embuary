@@ -53,7 +53,7 @@
 
 	<!-- Views -->
 	<expression name="WideViewVisible">[
-		[!Container.Content(seasons) + !Container.Content(episodes) + !String.Contains(Container.Folderpath,setid) + ![String.Contains(Container.FolderPath,BoxSet) + Container.Content(movies)] + !Container.Content(albums) + !Container.Content(songs) + !Window.IsVisible(MyPVRguide.xml)]
+		[!Container.Content(seasons) + !Container.Content(episodes) + !String.Contains(Container.Folderpath,setid) + ![String.Contains(Container.FolderPath,BoxSet) + Container.Content(movies)] + !Container.Content(albums) + !Container.Content(songs)]
 		| Window.IsVisible(MyPics.xml)
 		]
 	</expression>
@@ -67,7 +67,7 @@
 	</expression>
 
 	<expression name="SquareViewVisible">[
-		[!Container.Content(seasons) + !Container.Content(episodes) + !Container.Content(movies) + !Container.Content(sets) + !Container.Content(tvshows) + !String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres) + !Window.IsVisible(MyPVRguide.xml)]
+		[!Container.Content(seasons) + !Container.Content(episodes) + !Container.Content(movies) + !Container.Content(sets) + !Container.Content(tvshows) + !String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres)]
 		| Window.IsVisible(MyPics.xml)
 		]
 	</expression>
@@ -75,7 +75,7 @@
 	<expression name="SeasonViewVisible">[Container.Content(seasons) + [!String.StartsWith(Container.FolderPath,plugin://) | String.StartsWith(Container.FolderPath,plugin://plugin.video.emby)]]</expression>
 
 	<expression name="ListViewVisible">[
-		[!Container.Content(seasons) + !Container.Content(episodes) + !String.Contains(Container.FolderPath,setid) + ![String.Contains(Container.FolderPath,BoxSet) + Container.Content(movies)] + !String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres) + !Window.IsVisible(MyPVRguide.xml)]
+		[!Container.Content(seasons) + !Container.Content(episodes) + !String.Contains(Container.FolderPath,setid) + ![String.Contains(Container.FolderPath,BoxSet) + Container.Content(movies)] + !String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres)]
 		| [Container.Content(episodes) + String.StartsWith(Container.FolderPath,plugin://) + !String.StartsWith(Container.FolderPath,plugin://plugin.video.emby) + !String.StartsWith(Container.FolderPath,plugin://plugin.video.plexbmc)]
 		| [Container.Content(seasons) + String.StartsWith(Container.FolderPath,plugin://) + !String.StartsWith(Container.FolderPath,plugin://plugin.video.emby)]
 		| Window.IsVisible(MyPics.xml)
