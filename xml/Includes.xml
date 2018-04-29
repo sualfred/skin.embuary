@@ -59,7 +59,7 @@
 	</expression>
 
 	<expression name="PosterViewVisible">[
-		[Container.Content(movies) | Container.Content(tvshows)]
+		[Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets)]
 		+ !String.Contains(Container.Folderpath,setid)
 		+ ![String.Contains(Container.FolderPath,BoxSet) + Container.Content(movies)]
 		+ !String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres)
