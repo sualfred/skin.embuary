@@ -1756,44 +1756,20 @@
 				</control>
 			</control>
 			<control type="group">
-				<visible>![[Container.Content(tvshows) | Container.Content(movies) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow)] + [!String.IsEmpty(ListItem.Art(poster)) | !String.IsEmpty(ListItem.Art(tvshow.poster))]]</visible>
-				<top>26</top>
+				<top>10</top>
 				<control type="image">
 					<width>68</width>
-					<height>68</height>
-					<texture diffuse="items/mask_square_mini.png" background="true">$INFO[ListItem.Icon]</texture>
-					<aspectratio scalediffuse="false">keep</aspectratio>
-					<bordersize>0</bordersize>
+					<height>100</height>
+					<texture background="true">$INFO[ListItem.Icon]</texture>
+					<aspectratio aligny="center" align="center">keep</aspectratio>
 					<visible>!String.IsEmpty(ListItem.Icon)</visible>
 				</control>
 				<control type="image">
 					<width>68</width>
-					<height>68</height>
-					<texture diffuse="items/mask_square_mini.png" background="true">DefaultIconError.png</texture>
-					<aspectratio scalediffuse="false">keep</aspectratio>
-					<bordersize>0</bordersize>
-					<visible>String.IsEmpty(ListItem.Icon)</visible>
-				</control>
-				<include content="bubble_mini_overlay">
-					<param name="left" value="45"/>
-					<param name="top" value="5"/>
-				</include>
-			</control>
-			<control type="group">
-				<visible>[Container.Content(tvshows) | Container.Content(movies) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow)] + [!String.IsEmpty(ListItem.Art(poster)) | !String.IsEmpty(ListItem.Art(tvshow.poster))]</visible>
-				<top>10</top>
-				<control type="image">
-					<top>-2</top>
-					<left>-2</left>
-					<width>73</width>
-					<height>106</height>
-					<texture border="20,20,20,20">items/shadow.png</texture>
-				</control>
-				<control type="image">
-					<width>67</width>
 					<height>100</height>
-					<texture diffuse="items/mask_poster_mini.png" background="true">$VAR[IconPoster]</texture>
-					<aspectratio scalediffuse="false">stretch</aspectratio>
+					<texture>DefaultIconError.png</texture>
+					<aspectratio aligny="center" align="center">keep</aspectratio>
+					<visible>String.IsEmpty(ListItem.Icon)</visible>
 				</control>
 				<include content="bubble_mini_overlay">
 					<param name="left" value="45"/>
