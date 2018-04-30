@@ -247,7 +247,7 @@
 				<label>$LOCALIZE[20186]</label>
 				<label2></label2>
 				<onclick>noop</onclick>
-				<visible>!String.IsEmpty(Window(home).Property(startup)) + [$EXP[MenuCheck] | String.IsEmpty(Container($PARAM[id]).ListItemAbsolute(1).Property(item))]</visible>
+				<visible>!String.IsEmpty(Window(home).Property(startup)) + [$EXP[MenuCheck] | [String.IsEmpty(Container($PARAM[id]).ListItemAbsolute(0).Property(item)) + String.IsEmpty(Container($PARAM[id]).ListItemAbsolute(1).Property(item))]]</visible>
 			</item>
 			<item>
 				<property name="fallback">true</property>
@@ -255,7 +255,7 @@
 				<label2></label2>
 				<onclick>SetProperty(PositionCount,32,home)</onclick>
 				<onclick>ActivateWindow(1110)</onclick>
-				<visible>String.IsEmpty(Window(home).Property(startup)) + [$EXP[MenuCheck] | String.IsEmpty(Container($PARAM[id]).ListItemAbsolute(1).Property(item))]</visible>
+				<visible>String.IsEmpty(Window(home).Property(startup)) + [$EXP[MenuCheck] | [String.IsEmpty(Container($PARAM[id]).ListItemAbsolute(0).Property(item)) + String.IsEmpty(Container($PARAM[id]).ListItemAbsolute(1).Property(item))]]</visible>
 			</item>
 			<include content="MainMenuPosition">
 				<param name="nr" value="1"/>
