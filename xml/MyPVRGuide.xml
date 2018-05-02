@@ -17,23 +17,26 @@
 		</control>
 		<include>Background</include>
 		<control type="group" id="50">
+			<include>Window_OpenClose</include>
+			<!-- horizontal -->
 			<control type="group">
-				<include>Window_OpenClose</include>
+				<include>Visible_OpenClose</include>
 				<visible>Control.IsVisible(10)</visible>
+				<top>168</top>
+				<height>621</height>
 				<control type="epggrid" id="10">
-					<height>704</height>
-					<top>100</top>
+					<height>621</height>
 					<right>11</right>
 					<left>0</left>
-					<pagecontrol>60</pagecontrol>
-					<scrolltime tween="quadratic" easing="out">300</scrolltime>
-					<timeblocks>23</timeblocks>
-					<rulerunit>6</rulerunit>
-					<onback>6666</onback>
+					<onback>11</onback>
 					<onleft>900</onleft>
 					<onright>10</onright>
 					<onup>10</onup>
 					<ondown>10</ondown>
+					<pagecontrol>60</pagecontrol>
+					<scrolltime tween="quadratic" easing="out">300</scrolltime>
+					<timeblocks>23</timeblocks>
+					<rulerunit>6</rulerunit>
 					<orientation>vertical</orientation>
 					<viewtype label="19032">list</viewtype>
 					<rulerlayout height="40" width="100">
@@ -214,24 +217,24 @@
 				</control>
 				<control type="image">
 					<texture colordiffuse="ff383838">common/white.jpg</texture>
-					<top>138</top>
+					<top>38</top>
 					<right>11</right>
 					<left>0</left>
 					<height>2</height>
 				</control>
 				<control type="image">
 					<texture colordiffuse="ff383838">common/white.jpg</texture>
-					<top>802</top>
+					<bottom>0</bottom>
 					<right>11</right>
 					<left>0</left>
 					<height>2</height>
 				</control>
 				<!-- scrollbar -->
 				<control type="scrollbar" id="60">
+					<top>38</top>
 					<right>0</right>
-					<top>138</top>
+					<bottom>0</bottom>
 					<width>10</width>
-					<height>667</height>
 					<orientation>vertical</orientation>
 					<showonepage>true</showonepage>
 					<texturesliderbackground colordiffuse="ff3b3b3b">common/white.jpg</texturesliderbackground>
@@ -239,19 +242,42 @@
 					<texturesliderbarfocus colordiffuse="lightgrey">common/white.jpg</texturesliderbarfocus>
 				</control>
 			</control>
+			<!-- vertical -->
 			<control type="group">
-				<include>Window_OpenClose</include>
+				<include>Visible_OpenClose</include>
 				<visible>Control.IsVisible(20)</visible>
+				<top>168</top>
+				<height>619</height>
+				<control type="image">
+					<texture colordiffuse="ff383838">common/white.jpg</texture>
+					<top>40</top>
+					<bottom>0</bottom>
+					<left>98</left>
+					<width>2</width>
+				</control>
+				<control type="image">
+					<texture colordiffuse="ff383838">common/white.jpg</texture>
+					<top>40</top>
+					<right>11</right>
+					<left>0</left>
+					<height>2</height>
+				</control>
+				<control type="image">
+					<texture colordiffuse="ff383838">common/white.jpg</texture>
+					<bottom>-2</bottom>
+					<right>11</right>
+					<left>0</left>
+					<height>2</height>
+				</control>
 				<control type="epggrid" id="20">
-					<height>704</height>
-					<top>100</top>
+					<height>619</height>
 					<right>11</right>
 					<left>0</left>
 					<pagecontrol>70</pagecontrol>
 					<scrolltime tween="quadratic" easing="out">300</scrolltime>
 					<timeblocks>23</timeblocks>
 					<rulerunit>6</rulerunit>
-					<onback>6666</onback>
+					<onback>11</onback>
 					<onleft>900</onleft>
 					<onright>10</onright>
 					<onup>10</onup>
@@ -354,7 +380,7 @@
 							<bordersize>10</bordersize>
 						</control>
 					</focusedchannellayout>
-					<itemlayout height="83" width="60">
+					<itemlayout height="83" width="395">
 						<control type="image" id="2">
 							<height>83</height>
 							<texture colordiffuse="background_diffuse2">common/white.jpg</texture>
@@ -371,32 +397,45 @@
 						</control>
 						<control type="label" id="1">
 							<textoffsetx>15</textoffsetx>
-							<width>50</width>
 							<height>50</height>
 							<aligny>center</aligny>
 							<font>reg22</font>
+							<textcolor>white</textcolor>
 							<label>$INFO[ListItem.Label]</label>
+							<visible>![ListItem.TimerIsActive | ListItem.HasTimer | ListItem.HasTimerSchedule | ListItem.HasRecording | ListItem.IsRecording | ListItem.HasTimerSchedule]</visible>
 						</control>
-						<control type="image" id="2">
-							<right>-15</right>
+						<control type="label" id="1">
+							<width>355</width>
+							<textoffsetx>15</textoffsetx>
+							<height>50</height>
+							<aligny>center</aligny>
+							<font>reg22</font>
+							<textcolor>white</textcolor>
+							<label>$INFO[ListItem.Label]</label>
+							<visible>[ListItem.TimerIsActive | ListItem.HasTimer | ListItem.HasTimerSchedule | ListItem.HasRecording | ListItem.IsRecording | ListItem.HasTimerSchedule]</visible>
+						</control>
+						<control type="image">
+							<top>-15</top>
+							<right>-5</right>
 							<height>83</height>
 							<width>64</width>
 							<texture colordiffuse="softgrey">$VAR[PVRTimerIcon]</texture>
-							<bordersize>30</bordersize>
+							<bordersize>20</bordersize>
 							<aspectratio align="right">keep</aspectratio>
 							<visible>!ListItem.TimerIsActive</visible>
 						</control>
-						<control type="image" id="2">
-							<right>-15</right>
+						<control type="image">
+							<top>-15</top>
+							<right>-5</right>
 							<height>83</height>
 							<width>64</width>
 							<texture colordiffuse="red">$VAR[PVRTimerIcon]</texture>
-							<bordersize>30</bordersize>
+							<bordersize>20</bordersize>
 							<aspectratio align="right">keep</aspectratio>
 							<visible>ListItem.TimerIsActive</visible>
 						</control>
 					</itemlayout>
-					<focusedlayout height="83" width="60">
+					<focusedlayout height="83" width="395">
 						<control type="image" id="2">
 							<height>83</height>
 							<texture colordiffuse="background_diffuse2">common/white.jpg</texture>
@@ -418,28 +457,40 @@
 						</control>
 						<control type="label" id="1">
 							<textoffsetx>15</textoffsetx>
-							<width>50</width>
 							<height>50</height>
 							<aligny>center</aligny>
 							<font>reg22</font>
 							<textcolor>white</textcolor>
 							<label>$INFO[ListItem.Label]</label>
+							<visible>![ListItem.TimerIsActive | ListItem.HasTimer | ListItem.HasTimerSchedule | ListItem.HasRecording | ListItem.IsRecording | ListItem.HasTimerSchedule]</visible>
 						</control>
-						<control type="image" id="2">
-							<right>-15</right>
+						<control type="label" id="1">
+							<width>355</width>
+							<textoffsetx>15</textoffsetx>
+							<height>50</height>
+							<aligny>center</aligny>
+							<font>reg22</font>
+							<textcolor>white</textcolor>
+							<label>$INFO[ListItem.Label]</label>
+							<visible>[ListItem.TimerIsActive | ListItem.HasTimer | ListItem.HasTimerSchedule | ListItem.HasRecording | ListItem.IsRecording | ListItem.HasTimerSchedule]</visible>
+						</control>
+						<control type="image">
+							<top>-15</top>
+							<right>-5</right>
 							<height>83</height>
 							<width>64</width>
 							<texture colordiffuse="softgrey">$VAR[PVRTimerIcon]</texture>
-							<bordersize>30</bordersize>
+							<bordersize>20</bordersize>
 							<aspectratio align="right">keep</aspectratio>
 							<visible>!ListItem.TimerIsActive</visible>
 						</control>
-						<control type="image" id="2">
-							<right>-15</right>
+						<control type="image">
+							<top>-15</top>
+							<right>-5</right>
 							<height>83</height>
 							<width>64</width>
 							<texture colordiffuse="red">$VAR[PVRTimerIcon]</texture>
-							<bordersize>30</bordersize>
+							<bordersize>20</bordersize>
 							<aspectratio align="right">keep</aspectratio>
 							<visible>ListItem.TimerIsActive</visible>
 						</control>
@@ -447,44 +498,69 @@
 				</control>
 				<control type="image">
 					<texture colordiffuse="ff383838">common/white.jpg</texture>
-					<top>140</top>
+					<bottom>-2</bottom>
 					<right>11</right>
 					<left>0</left>
 					<height>2</height>
-				</control>
-				<control type="image">
-					<texture colordiffuse="ff383838">common/white.jpg</texture>
-					<top>221</top>
-					<right>11</right>
-					<left>0</left>
-					<height>2</height>
-				</control>
-				<control type="image">
-					<texture colordiffuse="ff383838">common/white.jpg</texture>
-					<top>802</top>
-					<right>11</right>
-					<left>0</left>
-					<height>2</height>
-				</control>
-				<control type="image">
-					<texture colordiffuse="ff383838">common/white.jpg</texture>
-					<top>140</top>
-					<bottom>278</bottom>
-					<left>100</left>
-					<width>2</width>
 				</control>
 				<!-- scrollbar -->
 				<control type="scrollbar" id="70">
 					<right>0</right>
-					<top>140</top>
+					<top>40</top>
 					<width>10</width>
-					<height>664</height>
+					<bottom>-2</bottom>
 					<orientation>vertical</orientation>
 					<showonepage>true</showonepage>
 					<texturesliderbackground colordiffuse="ff3b3b3b">common/white.jpg</texturesliderbackground>
 					<texturesliderbar colordiffuse="lightgrey">common/white.jpg</texturesliderbar>
 					<texturesliderbarfocus colordiffuse="lightgrey">common/white.jpg</texturesliderbarfocus>
 				</control>
+			</control>
+			<!-- Channel groups -->
+			<control type="fixedlist" id="11">
+				<top>100</top>
+				<left>20</left>
+				<right>20</right>
+				<onleft>noop</onleft>
+				<onright>noop</onright>
+				<onup>6666</onup>
+				<ondown>10</ondown>
+				<orientation>horizontal</orientation>
+				<scrolltime>300</scrolltime>
+				<focusposition>0</focusposition>
+				<movement>7</movement>
+				<itemlayout height="44" width="240">
+					<control type="label">
+						<textoffsetx>50</textoffsetx>
+						<height>42</height>
+						<align>left</align>
+						<font>Reg24</font>
+						<label>$INFO[ListItem.Label]</label>
+						<textcolor>grey</textcolor>
+					</control>
+				</itemlayout>
+				<focusedlayout height="44" width="240">
+					<control type="label">
+						<textoffsetx>50</textoffsetx>
+						<height>42</height>
+						<align>left</align>
+						<scroll>true</scroll>
+						<font>Reg24</font>
+						<textcolor>text_white</textcolor>
+						<label>$INFO[ListItem.Label]</label>
+						<visible>!Control.HasFocus(11)</visible>
+					</control>
+					<control type="label">
+						<textoffsetx>50</textoffsetx>
+						<height>42</height>
+						<align>left</align>
+						<scroll>true</scroll>
+						<font>Reg24</font>
+						<label>$INFO[ListItem.Label]</label>
+						<textcolor>emby</textcolor>
+						<visible>Control.HasFocus(11)</visible>
+					</control>
+				</focusedlayout>
 			</control>
 			<!-- Info -->
 			<control type="group">

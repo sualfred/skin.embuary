@@ -255,7 +255,21 @@
 					<midtexture colordiffuse="emby_secondary">common/white.jpg</midtexture>
 					<righttexture>-</righttexture>
 					<overlaytexture>-</overlaytexture>
-					<visible>Player.HasMedia</visible>
+					<visible>Player.HasMedia + !Player.HasEpg</visible>
+				</control>
+				<control type="progress">
+					<bottom>56</bottom>
+					<left>0</left>
+					<right>0</right>
+					<height>2</height>
+					<reveal>true</reveal>
+					<info>PVR.EpgEventProgress</info>
+					<texturebg colordiffuse="grey">common/white.jpg</texturebg>
+					<lefttexture>-</lefttexture>
+					<midtexture colordiffuse="emby_secondary">common/white.jpg</midtexture>
+					<righttexture>-</righttexture>
+					<overlaytexture>-</overlaytexture>
+					<visible>Player.HasMedia + Player.HasEpg</visible>
 				</control>
 			</control>
 			<!-- ScrollLetter -->
@@ -357,6 +371,7 @@
 			<focusedcolor>emby</focusedcolor>
 			<label>$LOCALIZE[19141]: $INFO[Control.GetLabel(30)]</label>
 			<onclick>SendClick(28)</onclick>
+			<visible>false</visible>
 			<visible>[Window.IsVisible(MyPVRGuide.xml)]</visible>
 		</control>
 		<control type="button" id="6608">
