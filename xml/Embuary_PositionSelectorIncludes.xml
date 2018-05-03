@@ -101,6 +101,9 @@
 				<include condition="Integer.IsGreaterOrEqual(Window(home).Property(PositionCount),32)" content="$PARAM[content]">
 					<param name="nr" value="32"/>
 				</include>
+				<include condition="Integer.IsGreaterOrEqual(Window(home).Property(PositionCount),33)" content="$PARAM[content]">
+					<param name="nr" value="33"/>
+				</include>
 			</content>
 		</definition>
 	</include>
@@ -713,6 +716,12 @@
 			<param name="item" value="movies"/>
 			<param name="setlabel" value="true"/>
 			<param name="visible" value="$EXP[MenuMoviesVisiblity]"/>
+		</include>
+		<include content="MainMenuSelectAvailableItems">
+			<param name="label" value="$LOCALIZE[31169]"/>
+			<param name="item" value="sets"/>
+			<param name="setlabel" value="true"/>
+			<param name="visible" value="Library.HasContent(MovieSets)"/>
 		</include>
 		<include content="MainMenuSelectAvailableItems">
 			<param name="label" value="$LOCALIZE[31179]"/>
