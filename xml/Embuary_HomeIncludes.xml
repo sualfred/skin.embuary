@@ -64,6 +64,15 @@
 			<param name="artwork" value="poster"/>
 			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),movies) + $EXP[MenuMoviesVisiblity]"/>
 		</include>
+		<!-- collections -->
+		<include content="MainMenuItemTemplate">
+			<param name="id" value="56"/>
+			<param name="label" value="$INFO[Skin.String(home_menu_pos_$PARAM[nr].label)]"/>
+			<param name="icon" value="$INFO[Skin.String(sets.icon)]"/>
+			<param name="onclick" value="ActivateWindow(videos,videodb://movies/sets,return)"/>
+			<param name="artwork" value="poster"/>
+			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),sets) + Library.HasContent(MovieSets)"/>
+		</include>
 		<!-- all shows -->
 		<include content="MainMenuItemTemplate">
 			<param name="id" value="52"/>
@@ -253,7 +262,7 @@
 				<property name="fallback">true</property>
 				<label>$LOCALIZE[31028]</label>
 				<label2></label2>
-				<onclick>SetProperty(PositionCount,32,home)</onclick>
+				<onclick>SetProperty(PositionCount,33,home)</onclick>
 				<onclick>ActivateWindow(1110)</onclick>
 				<visible>String.IsEmpty(Window(home).Property(startup)) + [$EXP[MenuCheck] | [String.IsEmpty(Container($PARAM[id]).ListItemAbsolute(0).Property(item)) + String.IsEmpty(Container($PARAM[id]).ListItemAbsolute(1).Property(item))]]</visible>
 			</item>
@@ -353,6 +362,9 @@
 			<include content="MainMenuPosition">
 				<param name="nr" value="32"/>
 			</include>
+			<include content="MainMenuPosition">
+				<param name="nr" value="33"/>
+			</include>
 			<item>
 				<label>$LOCALIZE[341]</label>
 				<onclick>PlayDisc</onclick>
@@ -428,6 +440,10 @@
 		<include content="LibraryHomeListTemplate">
 			<param name="id" value="55"/>
 			<param name="content" value="addons://user/all"/>
+		</include>
+		<include content="LibraryHomeListTemplate">
+			<param name="id" value="56"/>
+			<param name="content" value="videodb://movies/sets/"/>
 		</include>
 		<include content="LibraryHomeListTemplate">
 			<param name="id" value="57"/>
