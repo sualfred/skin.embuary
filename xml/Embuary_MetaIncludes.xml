@@ -17,7 +17,12 @@
 				<control type="label">
 					<label>$INFO[Container(5601).NumItems,, $LOCALIZE[36901]]   </label>
 					<include>MetaLabel</include>
-					<visible>!String.IsEmpty(Container(5601).NumItems) + !String.IsEqual(Container(5601).NumItems,0)</visible>
+					<visible>!String.IsEmpty(Container(5601).NumItems) + !String.IsEqual(Container(5601).NumItems,0) + [!Container(5601).IsUpdating | !String.StartsWith(Container.Folderpath,plugin://)]</visible>
+				</control>
+				<control type="label">
+					<label>$LOCALIZE[1040]   </label>
+					<include>MetaLabel</include>
+					<visible>![!String.IsEmpty(Container(5601).NumItems) + !String.IsEqual(Container(5601).NumItems,0) + [!Container(5601).IsUpdating | !String.StartsWith(Container.Folderpath,plugin://)]]</visible>
 				</control>
 				<control type="label">
 					<label>$INFO[Window(home).Property(SkinHelper.ListItem.Runtime),, $LOCALIZE[31089]]   </label>
