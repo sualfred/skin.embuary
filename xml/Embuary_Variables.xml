@@ -1262,6 +1262,7 @@
 		<value condition="String.IsEqual(ListItem.Label,$LOCALIZE[20366])">$LOCALIZE[31011]</value>
 		<value condition="String.IsEqual(ListItem.DBType,season)">$LOCALIZE[31013]</value>
 		<value condition="String.IsEqual(ListItem.DBType,tvshow)">$LOCALIZE[31011]</value>
+		<value condition="String.IsEqual(ListItem.DBType,set)">$LOCALIZE[1024]</value>
 		<value condition="ListItem.IsResumable">$LOCALIZE[13404]</value>
 		<value condition="Integer.IsGreater(ListItem.PlayCount,0)">$LOCALIZE[31009]</value>
 		<value>$LOCALIZE[31010]</value>
@@ -1297,7 +1298,7 @@
 		<value>$INFO[ListItem.Tagline,[B],[/B][CR][CR]]$INFO[ListItem.Plot]</value>
 	</variable>
 	<variable name="SetViewPlot">
-		<value condition="String.IsEqual(ListItem.DBtype,set)">$INFO[Window(home).Property(SkinHelper.ListItem.Plot)]</value>
+		<value condition="String.IsEmpty(ListItem.Plot)">$INFO[Window(home).Property(SkinHelper.ListItem.Plot)]</value>
 		<value>$INFO[ListItem.Tagline,[B],[/B][CR]]$INFO[ListItem.Plot]</value>
 	</variable>
 	<variable name="ArtistInfoPlot">
