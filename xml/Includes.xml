@@ -57,13 +57,13 @@
 
 	<!-- Views -->
 	<expression name="WideViewVisible">[
-		[!Container.Content(seasons) + !Container.Content(episodes) + !String.Contains(Container.Folderpath,setid) + ![String.Contains(Container.FolderPath,BoxSet) + Container.Content(movies)] + !Container.Content(albums) + !Container.Content(songs)]
+		[!Container.Content(seasons) + !Container.Content(episodes) + !String.Contains(Container.Folderpath,setid) + ![String.Contains(Container.FolderPath,BoxSet) + Container.Content(movies)] + !Container.Content(albums) + !Container.Content(songs) + !Container.Content(actors) + !Container.Content(directors)]
 		| Window.IsVisible(MyPics.xml)
 		]
 	</expression>
 
 	<expression name="PosterViewVisible">[
-		[Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets)]
+		[Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets) | Container.Content(actors) | Container.Content(directors)]
 		+ !String.Contains(Container.Folderpath,setid)
 		+ ![String.Contains(Container.FolderPath,BoxSet) + Container.Content(movies)]
 		+ !String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres)
