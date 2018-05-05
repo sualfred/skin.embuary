@@ -14,6 +14,7 @@
 			<control type="group">
 				<animation effect="slide" start="0,0" end="0,-80"  time="500" delay="100" condition="!ControlGroup(6666).HasFocus + [[Container($PARAM[id]).HasPrevious + !Integer.IsEqual(Container($PARAM[id]).CurrentItem,1) + $PARAM[auto_hide]] | [$PARAM[hide_header]]]" tween="sine" easing="inout">Conditional</animation>
 				<control type="group">
+					<include>Animation_ScrollbarIsVisible</include>
 					<visible>!$EXP[InfoDialogActive]</visible>
 					<control type="image">
 						<top>0</top>
@@ -40,6 +41,7 @@
 					<texture colordiffuse="headerbar" border="2">common/gradient.png</texture>
 					<aspectratio>stretch</aspectratio>
 					<visible>$EXP[InfoDialogActive]</visible>
+					<animation effect="slide" start="0,0" end="-8,0"  time="0" condition="Control.IsVisible(17)">Conditional</animation>
 				</control>
 				<control type="grouplist">
 					<left>10</left>
@@ -103,6 +105,7 @@
 					<include>$PARAM[content]</include>
 				</control>
 				<control type="grouplist">
+					<include>Animation_ScrollbarIsVisible</include>
 					<top>0</top>
 					<height>58</height>
 					<width>400</width>
@@ -273,6 +276,7 @@
 					</control>
 				</control>
 				<control type="grouplist">
+					<include>Animation_ScrollbarIsVisible</include>
 					<bottom>0</bottom>
 					<height>58</height>
 					<width>400</width>
