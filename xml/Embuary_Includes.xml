@@ -703,13 +703,14 @@
 		<onunload>ClearProperty(FocusBounce,home)</onunload>
 	</include>
 	<!-- Scrollbars -->
-	<include name="ViewScrollbar">
+	<include name="Scrollbar">
 		<param name="id">17</param>
 		<param name="width">8</param>
 		<param name="top">0</param>
 		<param name="bottom">0</param>
-		<param name="onup">SetFocus(6666)</param>
-		<param name="visible">Control.IsVisible(50) | Control.IsVisible(51) | Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(58)</param>
+		<param name="onup">noop</param>
+		<param name="ondown">noop</param>
+		<param name="visible">$EXP[ScrollbarContainers]</param>
 		<definition>
 			<control type="scrollbar" id="$PARAM[id]">
 				<visible>$PARAM[visible]</visible>
@@ -718,14 +719,12 @@
 				<right>0</right>
 				<width>$PARAM[width]</width>
 				<onup>$PARAM[onup]</onup>
+				<ondown>$PARAM[ondown]</ondown>
 				<onleft condition="Control.IsVisible(50)">50</onleft>
 				<onleft condition="Control.IsVisible(51)">51</onleft>
 				<onleft condition="Control.IsVisible(52)">52</onleft>
 				<onleft condition="Control.IsVisible(53)">53</onleft>
-				<onleft condition="Control.IsVisible(54)">54</onleft>
-				<onleft condition="Control.IsVisible(55)">55</onleft>
-				<onleft condition="Control.IsVisible(56)">56</onleft>
-				<onleft condition="Control.IsVisible(57)">57</onleft>
+				<onleft condition="Control.IsVisible(58)">58</onleft>
 				<orientation>vertical</orientation>
 				<showonepage>false</showonepage>
 				<texturesliderbackground colordiffuse="ff3b3b3b">common/white.jpg</texturesliderbackground>
