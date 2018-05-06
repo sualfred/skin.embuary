@@ -97,7 +97,7 @@
 								| String.IsEqual(ListItem.DBType,episode)
 								| String.IsEqual(ListItem.DBType,set)
 								| Container.Content(episodes)
-								| String.StartsWith(ListItem.Path,pvr://)
+								| [String.StartsWith(ListItem.Path,pvr://) + !String.IsEmpty(ListItem.Title)]
 								| [String.StartsWith(Container.FolderPath,plugin://plugin.video.embycon) + !String.EndsWith(ListItem.Icon,icon.png)]
 								| [String.StartsWith(Container.FolderPath,plugin://plugin.video.emby/) + String.Contains(Container.FolderPath,type=homevideos)]
 								]
@@ -144,14 +144,14 @@
 										<texture diffuse="items/mask_wide_db.png" background="true">$VAR[IconLandscape]</texture>
 										<aspectratio scalediffuse="false">keep</aspectratio>
 										<bordersize>20</bordersize>
-										<visible>String.StartsWith(ListItem.Path,pvr://)</visible>
+										<visible>String.StartsWith(ListItem.Path,pvr://) + !String.Contains(ListItem.Icon,.jpg)</visible>
 									</control>
 									<control type="image">
 										<width>590</width>
 										<height>332</height>
 										<texture diffuse="items/mask_wide_db.png" background="true">$VAR[IconLandscape]</texture>
 										<aspectratio scalediffuse="false">keep</aspectratio>
-										<visible>!String.StartsWith(ListItem.Path,pvr://)</visible>
+										<visible>!String.StartsWith(ListItem.Path,pvr://) | [String.StartsWith(ListItem.Path,pvr://) + String.Contains(ListItem.Icon,.jpg)]</visible>
 									</control>
 								</control>
 								<control type="group">
@@ -236,7 +236,7 @@
 								| String.IsEqual(ListItem.DBType,episode)
 								| String.IsEqual(ListItem.DBType,set)
 								| Container.Content(episodes)
-								| String.StartsWith(ListItem.Path,pvr://)
+								| [String.StartsWith(ListItem.Path,pvr://) + !String.IsEmpty(ListItem.Title)]
 								| [String.StartsWith(Container.FolderPath,plugin://plugin.video.embycon) + !String.EndsWith(ListItem.Icon,icon.png)]
 								| [String.StartsWith(Container.FolderPath,plugin://plugin.video.emby/) + String.Contains(Container.FolderPath,type=homevideos)]
 								]
