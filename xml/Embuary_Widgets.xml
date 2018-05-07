@@ -606,6 +606,7 @@
 	<!-- Wide -->
 	<include name="HomeWideWidget">
 		<param name="visible">true</param>
+		<param name="force_visible">false</param>
 		<param name="content_visible">true</param>
 		<param name="headline">$LOCALIZE[416]</param>
 		<param name="mainlabel">$VAR[MainListLabel]</param>
@@ -616,7 +617,7 @@
 		<definition>
 			<control type="group" id="$PARAM[id]1">
 				<visible>$PARAM[visible]</visible>
-				<visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</visible>
+				<visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating | $PARAM[force_visible]</visible>
 				<width>100%</width>
 				<height>556</height>
 				<include content="widget_headline">
@@ -839,6 +840,7 @@
 	<!-- Square -->
 	<include name="HomeSquareWidget">
 		<param name="visible">true</param>
+		<param name="force_visible">false</param>
 		<param name="content_visible">true</param>
 		<param name="headline">$LOCALIZE[416]</param>
 		<param name="mainlabel">$VAR[MainListLabel]</param>
@@ -850,7 +852,7 @@
 		<definition>
 			<control type="group" id="$PARAM[id]1">
 				<visible>$PARAM[visible]</visible>
-				<visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</visible>
+				<visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating | $PARAM[force_visible]</visible>
 				<width>100%</width>
 				<height>$PARAM[height]</height>
 				<include content="widget_headline">

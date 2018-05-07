@@ -5,6 +5,7 @@
 	<onunload>ClearProperty(DisableSuggestions,home)</onunload>
 	<zorder>99</zorder>
 	<include>PropertyIncludes</include>
+	<onunload condition="!String.IsEmpty(Window(home).Property(CustomSearch))">AlarmClock(CustomSearch,ClearProperty(CustomSearch,home),00:01,silent)</onunload>
 	<controls>
 		<control type="image">
 			<include>Visible_Fade</include>
@@ -32,7 +33,7 @@
 					<ondown condition="!Integer.IsLess(Container(9091).NumItems,1)">9091</ondown>
 					<font>Reg24</font>
 					<focusedcolor>emby</focusedcolor>
-					<hinttext>[COLOR text_white]$INFO[Control.GetLabel(311)][/COLOR]</hinttext>
+					<hinttext>[COLOR text_white]$VAR[KeyboardHinttext][/COLOR]</hinttext>
 				</control>
 				<!-- Edit Text line -->
 				<control type="image">
