@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window id="1115">
+	<defaultcontrol always="true">200</defaultcontrol>
+	<backgroundcolor>background</backgroundcolor>
+	<include>PropertyIncludes</include>
+	<controls>
+		<!-- background -->
+		<include>Background</include>
+		<!-- results -->
+		<control type="grouplist" id="10">
+			<visible>!Window.IsVisible(virtualkeyboard)</visible>
+			<include>Window_OpenClose</include>
+			<defaultcontrol>12</defaultcontrol>
+			<width>100%</width>
+			<height>100%</height>
+			<itemgap>-160</itemgap>
+			<orientation>vertical</orientation>
+			<usecontrolcoords>true</usecontrolcoords>
+			<include>ScrollTime</include>
+			<pagecontrol>17</pagecontrol>
+			<include content="WidgetSpacer">
+				<param name="id" value="11"/>
+			</include>
+			<control type="group">
+				<width>1920</width>
+				<height>300</height>
+				<control type="group">
+					<include content="widget_headline">
+						<param name="headline">$LOCALIZE[19133] '$VAR[SearchString]'</param>
+						<param name="left">65</param>
+					</include>
+					<control type="grouplist" id="200">
+						<top>90</top>
+						<left>70</left>
+						<height>50</height>
+						<orientation>horizontal</orientation>
+						<itemgap>5</itemgap>
+						<onright>noop</onright>
+						<onleft>900</onleft>
+						<onup>6666</onup>
+						<ondown>200</ondown>
+						<control type="button" id="201">
+							<texturefocus border="10" colordiffuse="grey_button">items/button.png</texturefocus>
+							<textcolor>text_white</textcolor>
+							<focusedcolor>text_white</focusedcolor>
+							<onup>noop</onup>
+							<ondown>noop</ondown>
+							<onleft>noop</onleft>
+							<onright>noop</onright>
+							<label>$LOCALIZE[31052]</label>
+							<visible>[Container.IsUpdating(101) | Container.IsUpdating(102) | Container.IsUpdating(103) | Container.IsUpdating(104) | Container.IsUpdating(105) | Container.IsUpdating(106) | Container.IsUpdating(107) | Container.IsUpdating(108) | Container.IsUpdating(109) | Container.IsUpdating(110) | !String.IsEmpty(Window(home).Property(CustomSearch))]</visible>
+						</control>
+						<control type="button" id="202">
+							<label>$LOCALIZE[31052]</label>
+							<onup>6666</onup>
+							<ondown>101</ondown>
+							<onclick>SetProperty(CustomSearch,1,home)</onclick>
+							<onclick>Skin.Reset(CustomSearchTerm)</onclick>
+							<onclick>Skin.SetString(CustomSearchTerm)</onclick>
+							<visible>![Container.IsUpdating(101) | Container.IsUpdating(102) | Container.IsUpdating(103) | Container.IsUpdating(104) | Container.IsUpdating(105) | Container.IsUpdating(106) | Container.IsUpdating(107) | Container.IsUpdating(108) | Container.IsUpdating(109) | Container.IsUpdating(110) | !String.IsEmpty(Window(home).Property(CustomSearch))]</visible>
+						</control>
+					</control>
+				</control>
+			</control>
+			<!-- movies -->
+			<include content="HomePosterWidget">
+				<param name="id" value="101"/>
+				<param name="onup" value="200"/>
+				<param name="ondown" value="102"/>
+				<param name="headline" value="$LOCALIZE[342]"/>
+				<param name="force_visible" value="!String.IsEmpty(Window(home).Property(CustomSearch))"/>
+				<param name="use_custom_content" value="true"/>
+				<param name="widget_target" value="videos"/>
+				<param name="content" value="$VAR[Local.SearchMovies]"/>
+			</include>
+			<include content="HomePosterWidget">
+				<param name="id" value="102"/>
+				<param name="onup" value="101"/>
+				<param name="ondown" value="103"/>
+				<param name="headline" value="$LOCALIZE[342]$VAR[EmbyConLabel]"/>
+				<param name="force_visible" value="!String.IsEmpty(Window(home).Property(CustomSearch))"/>
+				<param name="use_custom_content" value="true"/>
+				<param name="widget_target" value="videos"/>
+				<param name="content" value="$VAR[EmbyCon.SearchMovies]"/>
+			</include>
+			<!-- tvshows -->
+			<include content="HomeWideWidget">
+				<param name="id" value="103"/>
+				<param name="onup" value="102"/>
+				<param name="ondown" value="104"/>
+				<param name="headline" value="$LOCALIZE[20343]"/>
+				<param name="force_visible" value="!String.IsEmpty(Window(home).Property(CustomSearch))"/>
+				<param name="use_custom_content" value="true"/>
+				<param name="widget_target" value="videos"/>
+				<param name="content" value="$VAR[Local.SearchShows]"/>
+			</include>
+			<include content="HomeWideWidget">
+				<param name="id" value="104"/>
+				<param name="onup" value="103"/>
+				<param name="ondown" value="105"/>
+				<param name="headline" value="$LOCALIZE[20343]$VAR[EmbyConLabel]"/>
+				<param name="force_visible" value="!String.IsEmpty(Window(home).Property(CustomSearch))"/>
+				<param name="use_custom_content" value="true"/>
+				<param name="widget_target" value="videos"/>
+				<param name="content" value="$VAR[EmbyCon.SearchShows]"/>
+			</include>
+			<!-- episodes -->
+			<include content="HomeWideWidget">
+				<param name="id" value="105"/>
+				<param name="onup" value="104"/>
+				<param name="ondown" value="106"/>
+				<param name="headline" value="$LOCALIZE[20360]"/>
+				<param name="force_visible" value="!String.IsEmpty(Window(home).Property(CustomSearch))"/>
+				<param name="use_custom_content" value="true"/>
+				<param name="widget_target" value="videos"/>
+				<param name="content" value="$VAR[Local.SearchEpisodes]"/>
+			</include>
+			<include content="HomeWideWidget">
+				<param name="id" value="106"/>
+				<param name="onup" value="105"/>
+				<param name="ondown" value="107"/>
+				<param name="headline" value="$LOCALIZE[20360]$VAR[EmbyConLabel]"/>
+				<param name="force_visible" value="!String.IsEmpty(Window(home).Property(CustomSearch))"/>
+				<param name="use_custom_content" value="true"/>
+				<param name="widget_target" value="videos"/>
+				<param name="content" value="$VAR[EmbyCon.SearchEpisodes]"/>
+			</include>
+			<!-- musicvid -->
+			<include content="HomeWideWidget">
+				<param name="id" value="107"/>
+				<param name="onup" value="106"/>
+				<param name="ondown" value="108"/>
+				<param name="headline" value="$LOCALIZE[20389]"/>
+				<param name="force_visible" value="!String.IsEmpty(Window(home).Property(CustomSearch))"/>
+				<param name="use_custom_content" value="true"/>
+				<param name="widget_target" value="videos"/>
+				<param name="content" value="$VAR[Local.SearchMusicVideos]"/>
+			</include>
+			<!-- artists -->
+			<include content="HomeSquareWidget">
+				<param name="id" value="108"/>
+				<param name="onup" value="107"/>
+				<param name="ondown" value="109"/>
+				<param name="headline" value="$LOCALIZE[133]"/>
+				<param name="force_visible" value="!String.IsEmpty(Window(home).Property(CustomSearch))"/>
+				<param name="use_custom_content" value="true"/>
+				<param name="widget_target" value="music"/>
+				<param name="content" value="$VAR[Local.SearchArtists]"/>
+			</include>
+			<!-- albums -->
+			<include content="HomeSquareWidget">
+				<param name="id" value="109"/>
+				<param name="onup" value="108"/>
+				<param name="ondown" value="110"/>
+				<param name="headline" value="$LOCALIZE[132]"/>
+				<param name="force_visible" value="!String.IsEmpty(Window(home).Property(CustomSearch))"/>
+				<param name="use_custom_content" value="true"/>
+				<param name="widget_target" value="music"/>
+				<param name="content" value="$VAR[Local.SearchAlbums]"/>
+			</include>
+			<!-- songs -->
+			<include content="HomeSquareWidget">
+				<param name="id" value="110"/>
+				<param name="onup" value="109"/>
+				<param name="ondown" value="111"/>
+				<param name="headline" value="$LOCALIZE[134]"/>
+				<param name="force_visible" value="!String.IsEmpty(Window(home).Property(CustomSearch))"/>
+				<param name="use_custom_content" value="true"/>
+				<param name="widget_target" value="music"/>
+				<param name="content" value="$VAR[Local.SearchSongs]"/>
+			</include>
+		</control>
+		<!-- header bar -->
+		<include content="HeaderBar">
+			<param name="id">10</param>
+		</include>
+		<!-- side panel -->
+		<include content="SidePanel"/>
+		<!-- busy spinner -->
+		<include content="CustomBusySpinner">
+			<param name="visible" value="[Container.IsUpdating(101) | Container.IsUpdating(102) | Container.IsUpdating(103) | Container.IsUpdating(104) | Container.IsUpdating(105) | Container.IsUpdating(106) | Container.IsUpdating(107) | Container.IsUpdating(108) | Container.IsUpdating(109) | Container.IsUpdating(110) | !String.IsEmpty(Window(home).Property(CustomSearch))] + !Window.IsVisible(virtualkeyboard)"/>
+		</include>
+	</controls>
+</window>

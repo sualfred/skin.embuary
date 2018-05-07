@@ -1,5 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+	<!-- Searcg sources -->
+	<variable name="EmbyCon.SearchMovies">
+		<value condition="!String.IsEmpty(Skin.String(CustomSearchTerm)) + System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?item_type=Movie&amp;mode=NEW_SEARCH&amp;query=$INFO[Skin.String(CustomSearchTerm)]</value>
+	</variable>
+	<variable name="Local.SearchMovies">
+		<value condition="!String.IsEmpty(Skin.String(CustomSearchTerm)) + Library.HasContent(movies)">videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[Skin.String(CustomSearchTerm)]%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D</value>
+	</variable>
+	<variable name="EmbyCon.SearchShows">
+		<value condition="!String.IsEmpty(Skin.String(CustomSearchTerm)) + System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?item_type=Series&amp;mode=NEW_SEARCH&amp;query=$INFO[Skin.String(CustomSearchTerm)]</value>
+	</variable>
+	<variable name="Local.SearchShows">
+		<value condition="!String.IsEmpty(Skin.String(CustomSearchTerm)) + Library.HasContent(tvshows)">videodb://tvshows/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[Skin.String(CustomSearchTerm)]%22%5D%7D%5D%7D%2C%22type%22%3A%22tvshows%22%7D</value>
+	</variable>
+	<variable name="EmbyCon.SearchEpisodes">
+		<value condition="!String.IsEmpty(Skin.String(CustomSearchTerm)) + System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?item_type=Episode&amp;mode=NEW_SEARCH&amp;query=$INFO[Skin.String(CustomSearchTerm)]</value>
+	</variable>
+	<variable name="Local.SearchEpisodes">
+		<value condition="!String.IsEmpty(Skin.String(CustomSearchTerm)) + Library.HasContent(tvshows)">videodb://tvshows/titles/-1/-1/-1/-1/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[Skin.String(CustomSearchTerm)]%22%5D%7D%5D%7D%2C%22type%22%3A%22episodes%22%7D</value>
+	</variable>
+	<variable name="Local.SearchMusicVideos">
+		<value condition="!String.IsEmpty(Skin.String(CustomSearchTerm)) + Library.HasContent(musicvideos)">videodb://musicvideos/titles/?xsp=%7b%22order%22%3a%7b%22direction%22%3a%22ascending%22%2c%22ignorefolders%22%3a0%2c%22method%22%3a%22sorttitle%22%7d%2c%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22title%22%2c%22operator%22%3a%22contains%22%2c%22value%22%3a%5b%22$INFO[Skin.String(CustomSearchTerm)]%22%5d%7d%5d%7d%2c%22type%22%3a%22musicvideos%22%7d</value>
+	</variable>
+	<variable name="Local.SearchArtists">
+		<value condition="!String.IsEmpty(Skin.String(CustomSearchTerm)) + Library.HasContent(music)">musicdb://artists/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22artist%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22artist%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[Skin.String(CustomSearchTerm)]%22%5D%7D%5D%7D%2C%22type%22%3A%22artists%22%7D</value>
+	</variable>
+	<variable name="Local.SearchAlbums">
+		<value condition="!String.IsEmpty(Skin.String(CustomSearchTerm)) + Library.HasContent(music)">musicdb://albums/?xsp=%7b%22order%22%3a%7b%22direction%22%3a%22ascending%22%2c%22ignorefolders%22%3a0%2c%22method%22%3a%22album%22%7d%2c%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22album%22%2c%22operator%22%3a%22contains%22%2c%22value%22%3a%5b%22$INFO[Skin.String(CustomSearchTerm)]%22%5d%7d%5d%7d%2c%22type%22%3a%22albums%22%7d</value>
+	</variable>
+	<variable name="Local.SearchSongs">
+		<value condition="!String.IsEmpty(Skin.String(CustomSearchTerm)) + Library.HasContent(music)">musicdb://songs/?xsp=%7b%22order%22%3a%7b%22direction%22%3a%22ascending%22%2c%22ignorefolders%22%3a0%2c%22method%22%3a%22artist%22%7d%2c%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22title%22%2c%22operator%22%3a%22contains%22%2c%22value%22%3a%5b%22$INFO[Skin.String(CustomSearchTerm)]%22%5d%7d%5d%7d%2c%22type%22%3a%22songs%22%7d</value>
+	</variable>
+
 	<!-- EmbyCon sources -->
 	<variable name="EmbyCon.FavMovies">
 		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?media_type=Movies&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fFields%3d%7bfield_filters%7d%26Recursive%3dtrue%26Filters%3dIsFavorite%26IncludeItemTypes%3dMovie%26ImageTypeLimit%3d1%26format%3djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]</value>
@@ -101,6 +133,7 @@
 		<value>embuary</value>
 	</variable>
 	<variable name="ContainerContentPrefix">
+		<value condition="Window.IsVisible(script-globalsearch.xml) | Window.IsVisible(script-globalsearch-main.xml)">Globalsearch - </value>
 		<value condition="String.StartsWith(Container.Folderpath,plugin://plugin.video.embycon) | Window.IsVisible(1160) | Window.IsVisible(1161) | Window.IsVisible(1162) | Window.IsVisible(1163) | Window.IsVisible(1164) | Window.IsVisible(1165) | Window.IsVisible(1166) | Window.IsVisible(1167) | Window.IsVisible(1168) | Window.IsVisible(1169)">EmbyCon - </value>
 	</variable>
 	<variable name="ContainerContent">
@@ -114,6 +147,7 @@
 		<value condition="Window.IsVisible(script-globalsearch.xml) | Window.IsVisible(script-globalsearch-main.xml)">$LOCALIZE[283]</value>
 		<value condition="String.StartsWith(Container.FolderPath,plugin://plugin.video.emby/) + String.Contains(Container.FolderPath,type=homevideos)">$LOCALIZE[31187]</value>
 		<value condition="Window.IsVisible(1114)">$LOCALIZE[135]</value>
+		<value condition="Window.IsVisible(1115)">$LOCALIZE[283]</value>
 		<value condition="Window.IsVisible(1130)">$INFO[Window(home).Property(emby.nodes.0.title)]</value>
 		<value condition="Window.IsVisible(1131)">$INFO[Window(home).Property(emby.nodes.1.title)]</value>
 		<value condition="Window.IsVisible(1132)">$INFO[Window(home).Property(emby.nodes.2.title)]</value>
@@ -339,6 +373,7 @@
 	<variable name="IconLandscape">
 		<value condition="Window.IsVisible(videobookmarks) + !String.StartsWith(ListItem.Icon,Default)">$INFO[ListItem.Icon]</value>
 		<value condition="String.StartsWith(ListItem.Path,pvr://) + !String.StartsWith(ListItem.Icon,Default)">$INFO[ListItem.Icon]</value>
+		<value condition="Window.IsVisible(1115) + String.IsEqual(ListItem.DBType,episode) + !String.IsEmpty(ListItem.Art(thumb)) + !String.StartsWith(ListItem.Art(thumb),Default)">$INFO[ListItem.Art(thumb)]</value>
 		<value condition="[Window.IsVisible(videoplaylist) | Window.IsVisible(movieinformation) | Window.IsVisible(favourites)] + [String.IsEqual(ListItem.DBType,episode) | !String.IsEmpty(ListItem.Episode)] + !String.IsEmpty(ListItem.Art(thumb)) + !String.StartsWith(ListItem.Art(thumb),Default)">$INFO[ListItem.Art(thumb)]</value>
 		<value condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)] + !String.IsEmpty(ListItem.Art(tvshow.landscape))">$INFO[ListItem.Art(tvshow.landscape)]</value>
 		<value condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)] + !String.IsEmpty(ListItem.Art(landscape))">$INFO[ListItem.Art(landscape)]</value>
@@ -921,5 +956,17 @@
 		<value condition="Container.Content(seasons)">$INFO[ListItem.Season]</value>
 		<value condition="Window.IsVisible(MyPVRChannels.xml)">$INFO[ListItem.ChannelNumberLabel]</value>
 		<value>$INFO[ListItem.SortLetter]</value>
+	</variable>
+	<variable name="KeyboardHinttext">
+		<value condition="!String.IsEmpty(Window(home).Property(CustomSearch),home)">$LOCALIZE[19133]</value>
+		<value>$INFO[Control.GetLabel(311)]</value>
+	</variable>
+	<variable name="SearchString">
+		<value condition="!String.IsEmpty(Skin.String(CustomSearchTerm))">$INFO[Skin.String(CustomSearchTerm)]</value>
+		<value>n/a</value>
+	</variable>
+	<variable name="SearchProvider">
+		<value condition="Skin.HasSetting(UseGlobalsearch)">Globalsearch</value>
+		<value>Embuary</value>
 	</variable>
 </includes>
