@@ -158,16 +158,36 @@
 				<param name="widget_target" value="music"/>
 				<param name="content" value="$VAR[Local.SearchAlbums]"/>
 			</include>
-			<!-- songs -->
 			<include content="HomeSquareWidget">
 				<param name="id" value="110"/>
 				<param name="onup" value="109"/>
 				<param name="ondown" value="111"/>
+				<param name="headline" value="$LOCALIZE[132]$VAR[EmbyConLabel]"/>
+				<param name="force_visible" value="!String.IsEmpty(Window(home).Property(CustomSearch))"/>
+				<param name="use_custom_content" value="true"/>
+				<param name="widget_target" value="music"/>
+				<param name="content" value="$VAR[EmbyCon.SearchAlbums]"/>
+			</include>
+			<!-- songs -->
+			<include content="HomeSquareWidget">
+				<param name="id" value="111"/>
+				<param name="onup" value="110"/>
+				<param name="ondown" value="112"/>
 				<param name="headline" value="$LOCALIZE[134]"/>
 				<param name="force_visible" value="!String.IsEmpty(Window(home).Property(CustomSearch))"/>
 				<param name="use_custom_content" value="true"/>
 				<param name="widget_target" value="music"/>
 				<param name="content" value="$VAR[Local.SearchSongs]"/>
+			</include>
+			<include content="HomeSquareWidget">
+				<param name="id" value="112"/>
+				<param name="onup" value="111"/>
+				<param name="ondown" value="113"/>
+				<param name="headline" value="$LOCALIZE[134]$VAR[EmbyConLabel]"/>
+				<param name="force_visible" value="!String.IsEmpty(Window(home).Property(CustomSearch))"/>
+				<param name="use_custom_content" value="true"/>
+				<param name="widget_target" value="music"/>
+				<param name="content" value="$VAR[EmbyCon.SearchMusic]"/>
 			</include>
 		</control>
 		<!-- header bar -->
