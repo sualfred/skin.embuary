@@ -89,20 +89,7 @@
 						<width>590</width>
 						<!-- wide thumb -->
 						<control type="group">
-							<visible>!ListItem.IsParentDir + !String.IsEqual(ListItem.Label,..) + [
-								!String.IsEmpty(ListItem.Art(landscape))
-								| !String.IsEmpty(ListItem.Art(tvshow.landscape))
-								| !String.IsEmpty(ListItem.Art(fanart))
-								| !String.IsEmpty(ListItem.Art(tvshow.fanart))
-								| String.IsEqual(ListItem.DBType,episode)
-								| String.IsEqual(ListItem.DBType,set)
-								| String.IsEqual(ListItem.DBType,musicvideo)
-								| Container.Content(episodes)
-								| [String.StartsWith(ListItem.Path,pvr://) + !String.IsEmpty(ListItem.Title)]
-								| [String.StartsWith(Container.FolderPath,plugin://plugin.video.embycon) + !String.EndsWith(ListItem.Icon,icon.png)]
-								| [String.StartsWith(Container.FolderPath,plugin://plugin.video.emby/) + String.Contains(Container.FolderPath,type=homevideos)]
-								]
-							</visible>
+							<visible>$EXP[ListHasWideThumb]</visible>
 							<control type="group">
 								<control type="image">
 									<top>-2</top>
@@ -169,8 +156,7 @@
 						</control>
 						<!-- poster thumb -->
 						<control type="group">
-							<visible>false</visible>
-							<visible>!String.IsEmpty(ListItem.Art(poster)) | !String.IsEmpty(ListItem.Art(tvshow.poster))</visible>
+							<visible>[!String.IsEmpty(ListItem.Art(poster)) | !String.IsEmpty(ListItem.Art(tvshow.poster))]	+ !$EXP[ListHasWideThumb] + !String.EndsWith(ListItem.Art(poster),\icon.png) + !String.EndsWith(ListItem.Art(poster),/icon.png)</visible>
 							<control type="group">
 								<control type="group">
 									<centerleft>50%</centerleft>
@@ -229,20 +215,7 @@
 						</control>
 						<!-- square thumb -->
 						<control type="group">
-							<visible>ListItem.IsParentDir | String.IsEqual(ListItem.Label,..) | ![
-								!String.IsEmpty(ListItem.Art(landscape))
-								| !String.IsEmpty(ListItem.Art(tvshow.landscape))
-								| !String.IsEmpty(ListItem.Art(fanart))
-								| !String.IsEmpty(ListItem.Art(tvshow.fanart))
-								| String.IsEqual(ListItem.DBType,episode)
-								| String.IsEqual(ListItem.DBType,set)
-								| String.IsEqual(ListItem.DBType,musicvideo)
-								| Container.Content(episodes)
-								| [String.StartsWith(ListItem.Path,pvr://) + !String.IsEmpty(ListItem.Title)]
-								| [String.StartsWith(Container.FolderPath,plugin://plugin.video.embycon) + !String.EndsWith(ListItem.Icon,icon.png)]
-								| [String.StartsWith(Container.FolderPath,plugin://plugin.video.emby/) + String.Contains(Container.FolderPath,type=homevideos)]
-								]
-							</visible>
+							<visible>[String.EndsWith(ListItem.Art(poster),\icon.png) | String.EndsWith(ListItem.Art(poster),/icon.png) | [String.IsEmpty(ListItem.Art(poster)) + String.IsEmpty(ListItem.Art(tvshow.poster))]] + !$EXP[ListHasWideThumb]</visible>
 							<centerleft>50%</centerleft>
 							<width>590</width>
 							<control type="group">
