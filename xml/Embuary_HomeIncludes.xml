@@ -29,7 +29,7 @@
 			<property name="art4">$INFO[Container(4$PARAM[nr]).ListItem(3).Art(thumb)]</property>
 			<property name="action">$INFO[Skin.String(UserHomeHub$PARAM[nr]_action)]</property>
 			<property name="item">true</property>
-			<visible>$PARAM[visible] + Skin.HasSetting(UserHomeHub$PARAM[nr])</visible>
+			<visible>$PARAM[visible] + Skin.HasSetting(UserHomeHub$PARAM[nr]) + !String.IsEmpty(Skin.String(UserHomeHub$PARAM[nr]_action))</visible>
 		</item>
 	</include>
 	<include name="EmbyConNodeMainMenuItemTemplate">
