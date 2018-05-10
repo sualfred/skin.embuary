@@ -1760,16 +1760,23 @@
 				<control type="image">
 					<width>68</width>
 					<height>100</height>
-					<texture background="true">$INFO[ListItem.Icon]</texture>
+					<texture>DefaultIconError.png</texture>
 					<aspectratio aligny="center" align="center">keep</aspectratio>
-					<visible>!String.IsEmpty(ListItem.Icon)</visible>
+					<visible>String.IsEmpty(ListItem.Icon) + String.IsEmpty(ListItem.Art(poster))</visible>
 				</control>
 				<control type="image">
 					<width>68</width>
 					<height>100</height>
-					<texture>DefaultIconError.png</texture>
+					<texture background="true">$INFO[ListItem.Icon]</texture>
 					<aspectratio aligny="center" align="center">keep</aspectratio>
-					<visible>String.IsEmpty(ListItem.Icon)</visible>
+					<visible>!String.IsEmpty(ListItem.Icon) + String.IsEmpty(ListItem.Art(poster))</visible>
+				</control>
+				<control type="image">
+					<width>68</width>
+					<height>100</height>
+					<texture background="true">$INFO[ListItem.Art(poster)]</texture>
+					<aspectratio>stretch</aspectratio>
+					<visible>!String.IsEmpty(ListItem.Art(poster))</visible>
 				</control>
 				<include content="bubble_mini_overlay">
 					<param name="left" value="45"/>
