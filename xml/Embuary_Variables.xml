@@ -958,8 +958,8 @@
 	<variable name="SortLetterLabel">
 		<value condition="Window.IsVisible(MyPlaylist.xml)">$INFO[Container(50).CurrentItem]</value>
 		<value condition="Window.IsVisible(DialogPVRChannelsOSD.xml)">$INFO[Container(11).ListItem.ChannelNumberLabel]</value>
-		<value condition="Container.Content(episodes) + !Window.IsVisible(pictures)">$INFO[ListItem.Episode]</value>
-		<value condition="Container.Content(seasons)">$INFO[ListItem.Season]</value>
+		<value condition="Container.Content(episodes) + !String.IsEmpty(ListItem.Episode)">$INFO[ListItem.Episode]</value>
+		<value condition="Container.Content(seasons) + !String.IsEmpty(ListItem.Season)">$INFO[ListItem.Season]</value>
 		<value condition="Window.IsVisible(MyPVRChannels.xml)">$INFO[ListItem.ChannelNumberLabel]</value>
 		<value>$INFO[ListItem.SortLetter]</value>
 	</variable>
