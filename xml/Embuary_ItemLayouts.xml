@@ -14,7 +14,7 @@
 				<align>left</align>
 				<aligny>center</aligny>
 				<label>$PARAM[headline]</label>
-				<visible>!Control.HasFocus($PARAM[id]) | [Control.HasFocus($PARAM[id]) + ![Container($PARAM[id]).IsUpdating | !Integer.IsGreater(Container($PARAM[id]).NumItems,0)]]</visible>
+				<visible>!Control.HasFocus($PARAM[id]) | [Control.HasFocus($PARAM[id]) + ![Container($PARAM[id]).IsUpdating + !Integer.IsGreater(Container($PARAM[id]).NumItems,0)]]</visible>
 			</control>
 			<control type="label">
 				<top>$PARAM[top]</top>
@@ -26,7 +26,7 @@
 				<aligny>center</aligny>
 				<label>$PARAM[headline]</label>
 				<textcolor>emby</textcolor>
-				<visible>Control.HasFocus($PARAM[id]) + [Container($PARAM[id]).IsUpdating | !Integer.IsGreater(Container($PARAM[id]).NumItems,0)]</visible>
+				<visible>Control.HasFocus($PARAM[id]) + [Container($PARAM[id]).IsUpdating + !Integer.IsGreater(Container($PARAM[id]).NumItems,0)]</visible>
 			</control>
 		</definition>
 	</include>
