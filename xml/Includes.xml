@@ -67,6 +67,7 @@
 		+ !Container.Content(directors)
 		+ !Window.IsVisible(MyPVRSearch.xml)
 		+ !Window.IsVisible(MyPVRTimers.xml)
+		+ !Window.IsVisible(MyPVRguide.xml)
 		]
 		| Window.IsVisible(MyPics.xml)
 		]
@@ -103,7 +104,14 @@
 	</expression>
 
 	<expression name="ListViewVisible">[
-		[!Container.Content(seasons) + !Container.Content(episodes) + !String.Contains(Container.FolderPath,setid) + ![String.Contains(Container.FolderPath,BoxSet) + !String.Contains(Container.FolderPath,CollapseBoxSet) + Container.Content(movies)] + !String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres)]
+		[
+		!Container.Content(seasons)
+		+ !Container.Content(episodes)
+		+ !String.Contains(Container.FolderPath,setid)
+		+ ![String.Contains(Container.FolderPath,BoxSet) + !String.Contains(Container.FolderPath,CollapseBoxSet) + Container.Content(movies)]
+		+ !String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres)
+		+ !Window.IsVisible(MyPVRguide.xml)
+		]
 		| [Container.Content(episodes) + String.StartsWith(Container.FolderPath,plugin://) + !String.StartsWith(Container.FolderPath,plugin://plugin.video.emby) + !String.StartsWith(Container.FolderPath,plugin://plugin.video.plexbmc)]
 		| [Container.Content(seasons) + String.StartsWith(Container.FolderPath,plugin://) + !String.StartsWith(Container.FolderPath,plugin://plugin.video.emby)]
 		| Window.IsVisible(MyPics.xml)
