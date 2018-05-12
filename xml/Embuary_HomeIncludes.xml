@@ -12,6 +12,7 @@
 				<property name="art2">$INFO[Container($PARAM[id]).ListItem(1).Art($PARAM[artwork])]</property>
 				<property name="art3">$INFO[Container($PARAM[id]).ListItem(2).Art($PARAM[artwork])]</property>
 				<property name="art4">$INFO[Container($PARAM[id]).ListItem(3).Art($PARAM[artwork])]</property>
+				<property name="defaultart">$PARAM[defaultart]</property>
 				<property name="item">true</property>
 				<visible>$PARAM[visible]</visible>
 			</item>
@@ -38,7 +39,7 @@
 			<onclick condition="!String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].type),boxsets)">ActivateWindow(116$PARAM[nr])</onclick>
 			<onclick condition="String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].type),boxsets)">ActivateWindow(videos,plugin://plugin.video.embycon/?media_type=boxsets&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems?ParentId=$PARAM[parentID]&amp;IsVirtualUnaired%3dfalse%26CollapseBoxSetItems%3dtrue%26Recursive%3dtrue%26IsMissing%3dFalse%26Fields%3d%7bfield_filters%7d%26ImageTypeLimit%3d1%26format%3djson,return)</onclick>
 			<icon>$PARAM[icon]</icon>
-			<property name="embyart">$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].thumb)]</property>
+			<property name="defaultart">$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].thumb)]</property>
 			<property name="item">true</property>
 			<visible>$PARAM[visible]</visible>
 		</item>
@@ -49,7 +50,7 @@
 			<onclick condition="!String.IsEqual(Window(home).Property(emby.nodes.$PARAM[nr].type),homevideos)">ActivateWindow(113$PARAM[nr])</onclick>
 			<onclick condition="String.IsEqual(Window(home).Property(emby.nodes.$PARAM[nr].type),homevideos)">ActivateWindow(pictures,$INFO[Window(home).Property(emby.nodes.$PARAM[nr].content)],return)</onclick>
 			<icon>$PARAM[icon]</icon>
-			<property name="embyart">$INFO[Window(home).Property(emby.nodes.$PARAM[nr].artwork)]</property>
+			<property name="defaultart">$INFO[Window(home).Property(emby.nodes.$PARAM[nr].artwork)]</property>
 			<property name="item">true</property>
 			<visible>$PARAM[visible]</visible>
 		</item>
@@ -203,6 +204,14 @@
 			<param name="onclick" value="ActivateWindow(1124,return)"/>
 			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),pvr) + $EXP[MenuPVRVisiblity]"/>
 		</include>
+		<include content="MainMenuItemTemplate">
+			<param name="id" value="58"/>
+			<param name="label" value="$LOCALIZE[19017]"/>
+			<param name="icon" value="$INFO[Skin.String(recordings.icon)]"/>
+			<param name="defaultart" value="special://skin/extras/thumb_recordings.jpg"/>
+			<param name="onclick" value="ActivateWindow(tvrecordings)"/>
+			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),recordings) + $EXP[MenuPVRVisiblity] + Integer.IsGreater(Container(58).NumItems,0)"/>
+		</include>
 		<!-- music -->
 		<include content="MainMenuItemTemplate">
 			<param name="id" value="54"/>
@@ -273,7 +282,7 @@
 				<property name="fallback">true</property>
 				<label>$LOCALIZE[31028]</label>
 				<label2></label2>
-				<onclick>SetProperty(PositionCount,33,home)</onclick>
+				<onclick>SetProperty(PositionCount,34,home)</onclick>
 				<onclick>ActivateWindow(1110)</onclick>
 				<visible>String.IsEmpty(Window(home).Property(startup)) + [$EXP[MenuCheck] | [String.IsEmpty(Container($PARAM[id]).ListItemAbsolute(0).Property(item)) + String.IsEmpty(Container($PARAM[id]).ListItemAbsolute(1).Property(item))]]</visible>
 			</item>
@@ -376,6 +385,9 @@
 			<include content="MainMenuPosition">
 				<param name="nr" value="33"/>
 			</include>
+			<include content="MainMenuPosition">
+				<param name="nr" value="34"/>
+			</include>
 			<item>
 				<label>$LOCALIZE[341]</label>
 				<onclick>PlayDisc</onclick>
@@ -459,6 +471,10 @@
 		<include content="LibraryHomeListTemplate">
 			<param name="id" value="57"/>
 			<param name="content" value="videodb://musicvideos/titles/"/>
+		</include>
+		<include content="LibraryHomeListTemplate">
+			<param name="id" value="58"/>
+			<param name="content" value="pvr://recordings/tv/active/"/>
 		</include>
 	</include>
 </includes>
