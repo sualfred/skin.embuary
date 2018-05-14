@@ -53,16 +53,16 @@
 				</control>
 				<!-- list -->
 				<control type="group">
-					<height>470</height>
+					<height>770</height>
 					<control type="image">
-						<height>470</height>
+						<height>770</height>
 						<texture colordiffuse="thumb_background">common/white.jpg</texture>
 						<aspectratio>stretch</aspectratio>
 					</control>
 					<control type="list" id="100">
 						<centerleft>50%</centerleft>
 						<top>10</top>
-						<height>450</height>
+						<height>750</height>
 						<onup>noop</onup>
 						<onleft>101</onleft>
 						<onright>101</onright>
@@ -77,30 +77,16 @@
 								<bordersize>5</bordersize>
 								<texture background="true">$INFO[ListItem.Icon]</texture>
 								<aspectratio>keep</aspectratio>
-							</control>
-							<control type="label">
-								<right>20</right>
-								<left>100</left>
-								<height>75</height>
-								<aligny>center</aligny>
-								<font>Reg24</font>
-								<label>$INFO[ListItem.Label]$INFO[ListItem.Label2, [,]]</label>
-							</control>
-						</itemlayout>
-						<focusedlayout height="75" width="800">
-							<control type="image">
-								<width>100%</width>
-								<height>75</height>
-								<texture colordiffuse="list_hover">common/white.jpg</texture>
-								<visible>Control.HasFocus(100)</visible>
+								<visible>!String.IsEmpty(ListItem.Label)</visible>
 							</control>
 							<control type="image">
 								<height>75</height>
 								<width>75</width>
 								<left>10</left>
 								<bordersize>5</bordersize>
-								<texture background="true">$INFO[ListItem.Icon]</texture>
+								<texture colordiffuse="grey">DefaultAddSource.png</texture>
 								<aspectratio>keep</aspectratio>
+								<visible>String.IsEmpty(ListItem.Label)</visible>
 							</control>
 							<control type="label">
 								<right>20</right>
@@ -108,8 +94,108 @@
 								<height>75</height>
 								<aligny>center</aligny>
 								<font>Reg24</font>
-								<label>$INFO[ListItem.Label]$INFO[ListItem.Label2, [,]]</label>
-								<scroll>true</scroll>
+								<label>$INFO[ListItem.Property(pos)]    [COLOR lightgrey]$INFO[ListItem.Label]$INFO[ListItem.Label2, (,)][/COLOR]</label>
+								<scroll>false</scroll>
+								<visible>!String.IsEmpty(ListItem.Label)</visible>
+							</control>
+							<control type="label">
+								<right>20</right>
+								<left>100</left>
+								<height>75</height>
+								<aligny>center</aligny>
+								<font>Reg24</font>
+								<label>[COLOR grey]$INFO[ListItem.Property(pos)]    $LOCALIZE[504][/COLOR]</label>
+								<scroll>false</scroll>
+								<visible>String.IsEmpty(ListItem.Label)</visible>
+							</control>
+						</itemlayout>
+						<focusedlayout height="75" width="800">
+							<control type="group">
+								<visible>Control.HasFocus(100)</visible>
+								<control type="image">
+									<width>100%</width>
+									<height>75</height>
+									<texture colordiffuse="list_hover">common/white.jpg</texture>
+								</control>
+								<control type="image">
+									<height>75</height>
+									<width>75</width>
+									<left>10</left>
+									<bordersize>5</bordersize>
+									<texture background="true">$INFO[ListItem.Icon]</texture>
+									<aspectratio>keep</aspectratio>
+									<visible>!String.IsEmpty(ListItem.Label)</visible>
+								</control>
+								<control type="image">
+									<height>75</height>
+									<width>75</width>
+									<left>10</left>
+									<bordersize>5</bordersize>
+									<texture colordiffuse="lightgrey">DefaultAddSource.png</texture>
+									<aspectratio>keep</aspectratio>
+									<visible>String.IsEmpty(ListItem.Label)</visible>
+								</control>
+								<control type="label">
+									<right>20</right>
+									<left>100</left>
+									<height>75</height>
+									<aligny>center</aligny>
+									<font>Reg24</font>
+									<label>$INFO[ListItem.Property(pos)]    [COLOR lightgrey]$INFO[ListItem.Label]$INFO[ListItem.Label2, (,)][/COLOR]</label>
+									<scroll>true</scroll>
+									<visible>!String.IsEmpty(ListItem.Label)</visible>
+								</control>
+								<control type="label">
+									<right>20</right>
+									<left>100</left>
+									<height>75</height>
+									<aligny>center</aligny>
+									<font>Reg24</font>
+									<label>[COLOR lightgrey]$INFO[ListItem.Property(pos)]    $LOCALIZE[504][/COLOR]</label>
+									<scroll>true</scroll>
+									<visible>String.IsEmpty(ListItem.Label)</visible>
+								</control>
+							</control>
+							<control type="group">
+								<visible>!Control.HasFocus(100)</visible>
+								<control type="image">
+									<height>75</height>
+									<width>75</width>
+									<left>10</left>
+									<bordersize>5</bordersize>
+									<texture background="true">$INFO[ListItem.Icon]</texture>
+									<aspectratio>keep</aspectratio>
+									<visible>!String.IsEmpty(ListItem.Label)</visible>
+								</control>
+								<control type="image">
+									<height>75</height>
+									<width>75</width>
+									<left>10</left>
+									<bordersize>5</bordersize>
+									<texture colordiffuse="grey">DefaultAddSource.png</texture>
+									<aspectratio>keep</aspectratio>
+									<visible>String.IsEmpty(ListItem.Label)</visible>
+								</control>
+								<control type="label">
+									<right>20</right>
+									<left>100</left>
+									<height>75</height>
+									<aligny>center</aligny>
+									<font>Reg24</font>
+									<label>$INFO[ListItem.Property(pos)]    [COLOR lightgrey]$INFO[ListItem.Label]$INFO[ListItem.Label2, (,)][/COLOR]</label>
+									<scroll>false</scroll>
+									<visible>!String.IsEmpty(ListItem.Label)</visible>
+								</control>
+								<control type="label">
+									<right>20</right>
+									<left>100</left>
+									<height>75</height>
+									<aligny>center</aligny>
+									<font>Reg24</font>
+									<label>[COLOR grey]$INFO[ListItem.Property(pos)]    $LOCALIZE[504][/COLOR]</label>
+									<scroll>false</scroll>
+									<visible>String.IsEmpty(ListItem.Label)</visible>
+								</control>
 							</control>
 						</focusedlayout>
 						<include condition="String.IsEmpty(Window(home).Property(SelectorContent))" content="PositionSelectorItems">
