@@ -64,7 +64,7 @@
 			<param name="icon" value="$INFO[Skin.String(movies.icon)]"/>
 			<param name="onclick" value="ActivateWindow(1120,return)"/>
 			<param name="artwork" value="poster"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),movies) + $EXP[MenuMoviesVisiblity]"/>
+			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),movies) + !String.IsEmpty(Skin.String(home_menu_pos_$PARAM[nr].label)) + $EXP[MenuMoviesVisiblity]"/>
 		</include>
 		<!-- collections -->
 		<include content="MainMenuItemTemplate">
@@ -73,7 +73,7 @@
 			<param name="icon" value="$INFO[Skin.String(sets.icon)]"/>
 			<param name="onclick" value="ActivateWindow(videos,videodb://movies/sets,return)"/>
 			<param name="artwork" value="poster"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),sets) + Library.HasContent(MovieSets)"/>
+			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),sets) + !String.IsEmpty(Skin.String(home_menu_pos_$PARAM[nr].label)) + Library.HasContent(MovieSets)"/>
 		</include>
 		<!-- all shows -->
 		<include content="MainMenuItemTemplate">
@@ -82,7 +82,7 @@
 			<param name="icon" value="$INFO[Skin.String(shows.icon)]"/>
 			<param name="onclick" value="ActivateWindow(1121,return)"/>
 			<param name="artwork" value="poster"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),shows) + $EXP[MenuTVShowsVisiblity]"/>
+			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),shows) + !String.IsEmpty(Skin.String(home_menu_pos_$PARAM[nr].label)) + $EXP[MenuTVShowsVisiblity]"/>
 		</include>
 		<!-- Emby nodes -->
 		<include content="EmbyNodeMainMenuItemTemplate">
@@ -219,7 +219,7 @@
 			<param name="label" value="$INFO[Skin.String(home_menu_pos_$PARAM[nr].label)]"/>
 			<param name="icon" value="$INFO[Skin.String(music.icon)]"/>
 			<param name="onclick" value="ActivateWindow(1122,return)"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),music) + $EXP[MenuMusicVisiblity]"/>
+			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),music) + !String.IsEmpty(Skin.String(home_menu_pos_$PARAM[nr].label)) + $EXP[MenuMusicVisiblity]"/>
 		</include>
 		<!-- music videos -->
 		<include content="MainMenuItemTemplate">
@@ -227,7 +227,7 @@
 			<param name="label" value="$INFO[Skin.String(home_menu_pos_$PARAM[nr].label)]"/>
 			<param name="icon" value="$INFO[Skin.String(musicvideos.icon)]"/>
 			<param name="onclick" value="ActivateWindow(videos,videodb://musicvideos/titles/,return)"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),musicvideos) + $EXP[MenuMusicvideosVisiblity]"/>
+			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),musicvideos) + !String.IsEmpty(Skin.String(home_menu_pos_$PARAM[nr].label)) + $EXP[MenuMusicvideosVisiblity]"/>
 		</include>
 		<!-- addons -->
 		<include content="MainMenuItemTemplate">
@@ -236,38 +236,38 @@
 			<param name="icon" value="$INFO[Skin.String(addons.icon)]"/>
 			<param name="defaultart" value="special://skin/extras/thumb_addons.jpg"/>
 			<param name="onclick" value="ActivateWindow(1123,return)"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),addons)"/>
+			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),addons) + !String.IsEmpty(Skin.String(home_menu_pos_$PARAM[nr].label))"/>
 		</include>
 		<!-- custom entries -->
 		<include content="CustomMainMenuItemTemplate">
 			<param name="nr" value="1"/>
 			<param name="icon" value="$INFO[Skin.String(custom1.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),custom1)"/>
+			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),custom1) + !String.IsEmpty(Skin.String(UserHomeHub1_name))"/>
 		</include>
 		<include content="CustomMainMenuItemTemplate">
 			<param name="nr" value="2"/>
 			<param name="icon" value="$INFO[Skin.String(custom2.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),custom2)"/>
+			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),custom2) + !String.IsEmpty(Skin.String(UserHomeHub2_name))"/>
 		</include>
 		<include content="CustomMainMenuItemTemplate">
 			<param name="nr" value="3"/>
 			<param name="icon" value="$INFO[Skin.String(custom3.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),custom3)"/>
+			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),custom3) + !String.IsEmpty(Skin.String(UserHomeHub3_name))"/>
 		</include>
 		<include content="CustomMainMenuItemTemplate">
 			<param name="nr" value="4"/>
 			<param name="icon" value="$INFO[Skin.String(custom4.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),custom4)"/>
+			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),custom4) + !String.IsEmpty(Skin.String(UserHomeHub4_name))"/>
 		</include>
 		<include content="CustomMainMenuItemTemplate">
 			<param name="nr" value="5"/>
 			<param name="icon" value="$INFO[Skin.String(custom5.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),custom5)"/>
+			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),custom5) + !String.IsEmpty(Skin.String(UserHomeHub5_name))"/>
 		</include>
 		<include content="CustomMainMenuItemTemplate">
 			<param name="nr" value="6"/>
 			<param name="icon" value="$INFO[Skin.String(custom6.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),custom6)"/>
+			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),custom6) + !String.IsEmpty(Skin.String(UserHomeHub6_name))"/>
 		</include>
 	</include>
 

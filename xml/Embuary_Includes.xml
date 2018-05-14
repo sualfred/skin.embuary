@@ -976,55 +976,42 @@
 		<onclick condition="Skin.HasSetting(UseGlobalsearch)">RunScript(script.globalsearch)</onclick>
 	</include>
 	<include name="CustomWidgetTemplate">
-		<control type="radiobutton" id="$PARAM[section]$PARAM[id]1">
+		<include content="SkinSettingsHeadlineLabel">
+			<param name="id" value="$PARAM[id]1"/>
+			<param name="label" value="$LOCALIZE[31200] $PARAM[nr]$INFO[Skin.String(UserWidget$PARAM[nr]_name), - ]"/>
+		</include>
+		<control type="button" id="$PARAM[id]2">
 			<include>SettingsButton</include>
-			<onclick condition="Skin.HasSetting(User$PARAM[type]Widget$PARAM[id])">Skin.Reset(User$PARAM[type]Widget$PARAM[id]_path)</onclick>
-			<onclick condition="Skin.HasSetting(User$PARAM[type]Widget$PARAM[id])">Skin.Reset(User$PARAM[type]Widget$PARAM[id]_target)</onclick>
-			<onclick condition="Skin.HasSetting(User$PARAM[type]Widget$PARAM[id])">Skin.Reset(User$PARAM[type]Widget$PARAM[id]_name)</onclick>
-			<onclick condition="Skin.HasSetting(User$PARAM[type]Widget$PARAM[id])">Skin.Reset(User$PARAM[type]Widget$PARAM[id]_action)</onclick>
-			<onclick>Skin.ToggleSetting(User$PARAM[type]Widget$PARAM[id])</onclick>
-			<selected>Skin.HasSetting(User$PARAM[type]Widget$PARAM[id])</selected>
-			<label>$LOCALIZE[31100] #$PARAM[id]</label>
+			<onclick>RunScript(script.skinshortcuts,type=shortcuts&amp;showNone=True&amp;custom=True&amp;grouping=widget&amp;skinLabel=UserWidget$PARAM[nr]_name&amp;skinAction=UserWidget$PARAM[nr]_action&amp;skinList=UserWidget$PARAM[nr]_path)</onclick>
+			<label>$LOCALIZE[748]</label>
+			<label2>$INFO[Skin.String(UserWidget$PARAM[nr]_path)]</label2>
 		</control>
-		<control type="button" id="$PARAM[section]$PARAM[id]2">
+		<control type="button" id="$PARAM[id]3">
 			<textcolor>emby</textcolor>
 			<texturenofocus colordiffuse="subsetting_nofocus">common/white.jpg</texturenofocus>
 			<include>SettingsButton</include>
-			<onclick>RunScript(script.skinshortcuts,type=shortcuts&amp;showNone=True&amp;custom=True&amp;grouping=widget&amp;skinLabel=User$PARAM[type]Widget$PARAM[id]_name&amp;skinAction=UserUser$PARAM[type]Widget$PARAM[id]_action&amp;skinList=User$PARAM[type]Widget$PARAM[id]_path)</onclick>
-			<label>• $LOCALIZE[573]</label>
-			<label2>$INFO[Skin.String(User$PARAM[type]Widget$PARAM[id]_path)]</label2>
-			<enable>Skin.HasSetting(User$PARAM[type]Widget$PARAM[id])</enable>
-			<visible>Skin.HasSetting(User$PARAM[type]Widget$PARAM[id])</visible>
-		</control>
-		<control type="button" id="$PARAM[section]$PARAM[id]3">
-			<textcolor>emby</textcolor>
-			<texturenofocus colordiffuse="subsetting_nofocus">common/white.jpg</texturenofocus>
-			<include>SettingsButton</include>
-			<onclick>RunScript(script.skin.helper.service,action=setskinsetting,setting=User$PARAM[type]Widget$PARAM[id]_target,header=$LOCALIZE[15021])</onclick>
+			<onclick>RunScript(script.skin.helper.service,action=setskinsetting,setting=UserWidget$PARAM[nr]_target,header=$LOCALIZE[15021])</onclick>
 			<label>• $LOCALIZE[15021]</label>
-			<label2>$INFO[Skin.String(User$PARAM[type]Widget$PARAM[id]_target)]</label2>
-			<enable>Skin.HasSetting(User$PARAM[type]Widget$PARAM[id])</enable>
-			<visible>Skin.HasSetting(User$PARAM[type]Widget$PARAM[id]) + !String.IsEmpty(Skin.String(User$PARAM[type]Widget$PARAM[id]_path))</visible>
+			<label2>$INFO[Skin.String(UserWidget$PARAM[nr]_target)]</label2>
+			<visible>!String.IsEmpty(Skin.String(UserWidget$PARAM[nr]_path))</visible>
 		</control>
-		<control type="button" id="$PARAM[section]$PARAM[id]4">
+		<control type="button" id="$PARAM[id]4">
 			<textcolor>emby</textcolor>
 			<texturenofocus colordiffuse="subsetting_nofocus">common/white.jpg</texturenofocus>
 			<include>SettingsButton</include>
-			<onclick>Skin.SetString(User$PARAM[type]Widget$PARAM[id]_name)</onclick>
+			<onclick>Skin.SetString(UserWidget$PARAM[nr]_name)</onclick>
 			<label>• $LOCALIZE[21864]</label>
-			<label2>$INFO[Skin.String(User$PARAM[type]Widget$PARAM[id]_name)]</label2>
-			<enable>Skin.HasSetting(User$PARAM[type]Widget$PARAM[id])</enable>
-			<visible>Skin.HasSetting(User$PARAM[type]Widget$PARAM[id]) + !String.IsEmpty(Skin.String(User$PARAM[type]Widget$PARAM[id]_path))</visible>
+			<label2>$INFO[Skin.String(UserWidget$PARAM[nr]_name)]</label2>
+			<visible>!String.IsEmpty(Skin.String(UserWidget$PARAM[nr]_path))</visible>
 		</control>
-		<control type="button" id="$PARAM[section]$PARAM[id]5">
+		<control type="button" id="$PARAM[id]5">
 			<textcolor>emby</textcolor>
 			<texturenofocus colordiffuse="subsetting_nofocus">common/white.jpg</texturenofocus>
 			<include>SettingsButton</include>
-			<onclick>RunScript(script.skin.helper.service,action=setskinsetting,setting=User$PARAM[type]Widget$PARAM[id]_layout,header=$LOCALIZE[31099])</onclick>
+			<onclick>RunScript(script.skin.helper.service,action=setskinsetting,setting=UserWidget$PARAM[nr]_layout,header=$LOCALIZE[31099])</onclick>
 			<label>• $LOCALIZE[31101]</label>
-			<label2>$INFO[Skin.String(User$PARAM[type]Widget$PARAM[id]_layout.label)]</label2>
-			<enable>Skin.HasSetting(User$PARAM[type]Widget$PARAM[id])</enable>
-			<visible>Skin.HasSetting(User$PARAM[type]Widget$PARAM[id]) + !String.IsEmpty(Skin.String(User$PARAM[type]Widget$PARAM[id]_path))</visible>
+			<label2>$INFO[Skin.String(UserWidget$PARAM[nr]_layout.label)]</label2>
+			<visible>!String.IsEmpty(Skin.String(UserWidget$PARAM[nr]_path))</visible>
 		</control>
 	</include>
 	<include name="CustomHubShortcutSettingsTemplate">
