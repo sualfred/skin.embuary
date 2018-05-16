@@ -61,6 +61,15 @@
 							<label>$LOCALIZE[20410]</label>
 							<ondown>200</ondown>
 						</control>
+						<control type="button" id="102">
+							<visible>!String.IsEmpty(ListItem.SetId) + !String.IsEmpty(ListItem.DBID)</visible>
+							<include>LightGreyButton</include>
+							<label>[CAPITALIZE]$LOCALIZE[31189][/CAPITALIZE]</label>
+							<onclick>close</onclick>
+							<onclick condition="!Window.IsMedia">ActivateWindow(videos,videodb://movies/sets/$INFO[ListItem.SetId]/?setid=$INFO[ListItem.SetId],return)</onclick>
+							<onclick condition="Window.IsMedia">Container.Update(videodb://movies/sets/$INFO[ListItem.SetId]/?setid=$INFO[ListItem.SetId])</onclick>
+							<ondown>200</ondown>
+						</control>
 						<control type="button" id="97">
 							<visible>!String.IsEmpty(ListItem.Plot)</visible>
 							<include>LightGreyButton</include>
