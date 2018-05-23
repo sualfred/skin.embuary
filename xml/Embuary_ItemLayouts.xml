@@ -486,7 +486,7 @@
 			<animation effect="fade" start="0" end="100" time="120" reversible="true" delay="300">VisibleChange</animation>
 			<animation effect="slide" start="0,0" end="0,-58" time="0" reversible="true" condition="Window.IsVisible(extendedprogressdialog)">Conditional</animation>
 			<control type="group">
-				<visible>String.IsEqual(Container.Viewmode,$LOCALIZE[31199]) | Window.IsVisible(videoplaylist)</visible>
+				<visible>String.IsEqual(Container.Viewmode,$LOCALIZE[31199]) | String.IsEqual(Container.Viewmode,$LOCALIZE[31232]) | Window.IsVisible(videoplaylist)</visible>
 				<right>23</right>
 				<bottom>23</bottom>
 				<width>80</width>
@@ -494,7 +494,7 @@
 				<include>ScrollSortLetterLayout</include>
 			</control>
 			<control type="group">
-				<visible>!String.IsEqual(Container.Viewmode,$LOCALIZE[31199]) | Window.IsVisible(musicplaylist)</visible>
+				<visible>[!String.IsEqual(Container.Viewmode,$LOCALIZE[31199]) + !String.IsEqual(Container.Viewmode,$LOCALIZE[31232])] | Window.IsVisible(musicplaylist)</visible>
 				<left>21</left>
 				<bottom>23</bottom>
 				<width>80</width>
@@ -1826,6 +1826,189 @@
 					<font>reg24</font>
 					<label>$PARAM[rightlabel][CR]$PARAM[rightlabel2]</label>
 				</control>
+			</control>
+		</definition>
+	</include>
+
+	<!-- List -->
+	<include name="EpisodeListLayout">
+		<param name="mainlabel">$VAR[MainListLabel]</param>
+		<param name="sublabel">$VAR[SubListLabel]</param>
+		<param name="thumblabel">$VAR[MainListLabel]</param>
+		<param name="thumb">$VAR[IconLandscape]</param>
+		<param name="focused">false</param>
+		<param name="visible">true</param>
+		<definition>
+			<control type="group">
+				<visible>$PARAM[visible]</visible>
+				<!-- bg -->
+				<control type="group">
+					<visible>false</visible>
+					<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
+					<control type="image">
+						<top>-37</top>
+						<left>-70</left>
+						<right>-70</right>
+						<height>313</height>
+						<texture border="0,10,0,10">items/list_shadow.png</texture>
+						<aspectratio>stretch</aspectratio>
+					</control>
+					<control type="image">
+						<top>-35</top>
+						<left>-70</left>
+						<right>-70</right>
+						<height>309</height>
+						<texture colordiffuse="list_hover">common/white.jpg</texture>
+						<aspectratio>stretch</aspectratio>
+					</control>
+				</control>
+				<!-- art -->
+				<control type="group">
+					<control type="group">
+						<width>448</width>
+						<height>263</height>
+						<include content="Animation_FocusBounce">
+							<param name="id" value="$PARAM[id]"/>
+						</include>
+						<control type="image">
+							<top>-2</top>
+							<left>-2</left>
+							<width>430</width>
+							<height>245</height>
+							<texture border="20,20,20,20">items/shadow.png</texture>
+						</control>
+						<control type="image">
+							<left>-12</left>
+							<top>-7</top>
+							<width>448</width>
+							<height>263</height>
+							<texture border="20,20,20,20" colordiffuse="focus_widget">items/focus.png</texture>
+							<aspectratio>stretch</aspectratio>
+							<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
+							<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
+						</control>
+						<control type="image">
+							<width>424</width>
+							<height>239</height>
+							<texture colordiffuse="thumb_background_fallback" diffuse="items/mask_wide.png">common/white.jpg</texture>
+							<aspectratio scalediffuse="false">stretch</aspectratio>
+							<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+						</control>
+						<control type="image">
+							<width>424</width>
+							<height>239</height>
+							<texture colordiffuse="thumb_background" diffuse="items/mask_wide.png">common/white.jpg</texture>
+							<aspectratio scalediffuse="false">stretch</aspectratio>
+							<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
+						</control>
+						<control type="textbox">
+							<top>10</top>
+							<left>10</left>
+							<width>404</width>
+							<height>219</height>
+							<font>Light24</font>
+							<textcolor>white</textcolor>
+							<align>center</align>
+							<aligny>center</aligny>
+							<label>$PARAM[thumblabel]</label>
+							<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+						</control>
+						<control type="image">
+							<width>424</width>
+							<height>239</height>
+							<texture diffuse="items/mask_wide.png" background="true">$INFO[ListItem.Icon]</texture>
+							<aspectratio scalediffuse="false">keep</aspectratio>
+							<bordersize>20</bordersize>
+							<visible>String.StartsWith(ListItem.Path,pvr://) + !String.StartsWith(ListItem.Icon,Default)</visible>
+						</control>
+						<control type="image">
+							<width>424</width>
+							<height>239</height>
+							<texture diffuse="items/mask_wide.png" background="true">$PARAM[thumb]</texture>
+							<aspectratio scalediffuse="false">scale</aspectratio>
+							<visible>!String.StartsWith(ListItem.Path,pvr://) + !String.StartsWith(ListItem.Icon,Default)</visible>
+						</control>
+						<control type="group">
+							<width>424</width>
+							<height>239</height>
+							<control type="image">
+								<left>10</left>
+								<right>100</right>
+								<bottom>10</bottom>
+								<height>60</height>
+								<texture background="true">$VAR[ListItemClearlogo]</texture>
+								<aspectratio align="left" aligny="bottom">keep</aspectratio>
+								<visible>[!String.IsEmpty(ListItem.Art(fanart)) | !String.IsEmpty(ListItem.Art(tvshow.fanart)) | [!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)]] + String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape)) + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,set)]</visible>
+							</control>
+							<include>bubble_overlay</include>
+							<include>bubble_play</include>
+						</control>
+					</control>
+					<include content="progress">
+						<param name="top" value="235"/>
+						<param name="width" value="424"/>
+					</include>
+				</control>
+				<!-- meta -->
+				<control type="group">
+					<visible>!ListItem.IsParentFolder</visible>
+					<left>450</left>
+					<control type="label">
+						<height>50</height>
+						<label>$INFO[ListItem.Episode,,. ]$INFO[ListItem.Title]</label>
+						<font>Reg26</font>
+						<aligny>top</aligny>
+						<visible>!String.IsEmpty(Container.ShowTitle)</visible>
+					</control>
+					<control type="label">
+						<height>50</height>
+						<label>$INFO[ListItem.TvShowTitle,, - ]$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title]</label>
+						<font>Reg26</font>
+						<aligny>top</aligny>
+						<visible>String.IsEmpty(Container.ShowTitle)</visible>
+					</control>
+					<control type="label">
+						<animation effect="slide" end="0,1" time="0" condition="true">Conditional</animation>
+						<label></label>
+						<font>Material28</font>
+						<textcolor>red</textcolor>
+						<top>50</top>
+						<right>55</right>
+						<height>50</height>
+						<font>Reg24</font>
+						<aligny>top</aligny>
+						<visible>!String.IsEmpty(ListItem.Rating)</visible>
+					</control>
+					<control type="label">
+						<left>30</left>
+						<top>50</top>
+						<height>50</height>
+						<label>$INFO[ListItem.Rating]</label>
+						<font>Reg24</font>
+						<aligny>top</aligny>
+						<visible>!String.IsEmpty(ListItem.Rating)</visible>
+					</control>
+					<control type="label">
+						<animation effect="slide" end="80,0" time="0" condition="!String.IsEmpty(ListItem.Rating) + !String.IsEqual(ListItem.Rating,10.0)">Conditional</animation>
+						<animation effect="slide" end="95,0" time="0" condition="!String.IsEmpty(ListItem.Rating) + String.IsEqual(ListItem.Rating,10.0)">Conditional</animation>
+						<top>50</top>
+						<height>50</height>
+						<label>$VAR[DurationMinutes,,   ]$INFO[ListItem.EndTime,$LOCALIZE[31037] ]</label>
+						<font>Reg24</font>
+						<aligny>top</aligny>
+					</control>
+					<control type="textbox">
+						<top>100</top>
+						<width>100%</width>
+						<height max="130">auto</height>
+						<align>justify</align>
+						<aligny>top</aligny>
+						<label>$INFO[ListItem.Plot]</label>
+						<font>Light24</font>
+						<autoscroll>false</autoscroll>
+					</control>
+				</control>
+
 			</control>
 		</definition>
 	</include>
