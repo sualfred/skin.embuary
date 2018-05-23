@@ -21,6 +21,7 @@
 	<include file="Embuary_Set_View_56.xml" />
 	<include file="Embuary_PVRSet_View_57.xml" />
 	<include file="Embuary_Banner_View_58.xml" />
+	<include file="Embuary_EpisodeList_View_59.xml" />
 	<include file="Embuary_Favourites_View_450.xml" />
 	<include file="Embuary_Genre_View.xml" />
 	<include file="Embuary_VideoLyrics.xml" />
@@ -49,7 +50,7 @@
 
 	<expression name="InfoDialogActive">[Window.IsVisible(musicinformation) | Window.IsVisible(movieinformation) | Window.IsVisible(addoninformation) | Window.IsVisible(pvrguideinfo) | Window.IsVisible(pvrrecordinginfo) | Window.IsVisible(fullscreeninfo) | Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(script-script.extendedinfo-VideoList.xml) | Window.IsVisible(1115)]</expression>
 
-	<expression name="ScrollbarContainers">[Control.IsVisible(50) | Control.IsVisible(51) | Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(58)]</expression>
+	<expression name="ScrollbarContainers">[Control.IsVisible(50) | Control.IsVisible(51) | Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(58) | Control.IsVisible(59)]</expression>
 
 	<expression name="IsGenre">String.StartsWith(Container.Folderpath,plugin://script.skin.helper.widgets/?action=browsegenres)</expression>
 	<expression name="IsPlugin">[String.StartsWith(Container.Folderpath,plugin://) + !String.StartsWith(Container.FolderPath,plugin://plugin.video.emby/)]</expression>
@@ -141,6 +142,8 @@
 	<expression name="HideHeaderBasedOnContainer">[Control.IsVisible(56) + [Container(560).HasPrevious + !Integer.IsEqual(Container(560).CurrentItem,1)]]
 		| [Control.IsVisible(54) + [Container(540).HasPrevious + !Integer.IsEqual(Container(540).CurrentItem,1)]]
 		| [Control.IsVisible(55) + [Container(550).HasPrevious + !Integer.IsEqual(Container(550).CurrentItem,1)]]
+		| [Control.IsVisible(59) + String.IsEmpty(Container.ShowTitle) + [Container(59).HasPrevious]]
+		| [Control.IsVisible(59) + !String.IsEmpty(Container.ShowTitle) + [Container(59).HasPrevious | Integer.IsGreaterOrEqual(Container(59).CurrentItem,3) | [Integer.IsGreaterOrEqual(Container(59).CurrentItem,2) + Container.HasParent]]]
 		| [Control.IsVisible(50) + [[Integer.IsGreaterOrEqual(Container(50).CurrentItem,12) + Container.HasParent] | Integer.IsGreaterOrEqual(Container(50).CurrentItem,13) | Container(50).HasPrevious]]
 		| [Control.IsVisible(51) + [[Integer.IsGreaterOrEqual(Container(51).CurrentItem,14) + Container.HasParent] | Integer.IsGreaterOrEqual(Container(51).CurrentItem,15) | Container(51).HasPrevious]]
 		| [Control.IsVisible(52) + [[Integer.IsGreaterOrEqual(Container(52).CurrentItem,10) + Container.HasParent] | Integer.IsGreaterOrEqual(Container(52).CurrentItem,11) | Container(52).HasPrevious]]
