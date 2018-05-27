@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window id="1110" type="dialog">
 	<defaultcontrol always="true">100</defaultcontrol>
-	<onunload>ClearProperty(PositionCount,home)</onunload>
-	<onunload>ClearProperty(SelectorContent,home)</onunload>
+	<onunload condition="String.IsEmpty(Window(home).Property(DoNotKillProperties))">ClearProperty(PositionCount,home)</onunload>
+	<onunload condition="String.IsEmpty(Window(home).Property(DoNotKillProperties))">ClearProperty(SelectorContent,home)</onunload>
+	<onload>ClearProperty(DoNotKillProperties,home)</onload>
+	<onload>ClearProperty(ShowBusy,home)</onload>
 	<include>PropertyIncludes</include>
 	<controls>
 		<control type="group">
