@@ -536,7 +536,7 @@
 				<height>242</height>
 				<texture diffuse="items/mask_wide_db.png" background="true">$VAR[IconLandscape]</texture>
 				<aspectratio scalediffuse="false">scale</aspectratio>
-				<visible>!String.StartsWith(ListItem.Icon,Default) + !String.StartsWith(ListItem.Path,pvr://)</visible>
+				<visible>[!String.StartsWith(ListItem.Path,pvr://) | [String.StartsWith(ListItem.Path,pvr://) + ![String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)]]] + !String.StartsWith(ListItem.Icon,Default)</visible>
 			</control>
 			<control type="image">
 				<width>430</width>
@@ -544,7 +544,7 @@
 				<texture diffuse="items/mask_wide_db.png" background="true">$VAR[IconLandscape]</texture>
 				<aspectratio scalediffuse="false">keep</aspectratio>
 				<bordersize>20</bordersize>
-				<visible>!String.StartsWith(ListItem.Icon,Default) + String.StartsWith(ListItem.Path,pvr://)</visible>
+				<visible>String.StartsWith(ListItem.Path,pvr://) + [String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)] + !String.StartsWith(ListItem.Icon,Default)</visible>
 			</control>
 		</control>
 	</include>

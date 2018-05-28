@@ -51,7 +51,7 @@
 				</control>
 				<!-- List -->
 				<control id="$PARAM[id]" type="fixedlist">
-					<visible>$EXP[EpisodeViewVisible] + Skin.HasSetting(ViewEpisodeList)</visible>
+					<visible>[$EXP[EpisodeViewVisible] + Skin.HasSetting(ViewEpisodeList)] | Window.IsVisible(MyPVRRecordings.xml)</visible>
 					<animation effect="slide" time="0" end="0,-305" condition="!Container.HasParent + [Integer.IsEqual(Container($PARAM[id]).NumItems,2) | Integer.IsEqual(Container($PARAM[id]).NumItems,1)]">Conditional</animation>
 					<animation effect="slide" time="0" end="0,-305" condition="Container.HasParent + [Integer.IsEqual(Container($PARAM[id]).NumItems,1)]">Conditional</animation>
 					<height>100%</height>
