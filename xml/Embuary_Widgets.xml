@@ -307,8 +307,10 @@
 						<onleft>900</onleft>
 						<onclick condition="!Skin.HasSetting(DoNotUseExtendedInfo)">RunScript(script.extendedinfo,info=extendedactorinfo,name=$INFO[ListItem.Label])</onclick>
 						<onclick condition="Skin.HasSetting(DoNotUseExtendedInfo) + Window.IsVisible(movieinformation) + !String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">close</onclick>
+						<onclick condition="Skin.HasSetting(DoNotUseExtendedInfo) + !String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">SetProperty(CustomSearch,1,home)</onclick>
 						<onclick condition="Skin.HasSetting(DoNotUseExtendedInfo) + !String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">Skin.SetString(CustomSearchTerm,$INFO[ListItem.Label])</onclick>
 						<onclick condition="Skin.HasSetting(DoNotUseExtendedInfo) + !String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">ActivateWindow(1115)</onclick>
+						<onclick condition="Skin.HasSetting(DoNotUseExtendedInfo) + !String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">AlarmClock(Wait,ClearProperty(CustomSearch,home),00:01,silent)</onclick>
 						<pagecontrol>$PARAM[id]1</pagecontrol>
 						<viewtype label="$LOCALIZE[31006]">list</viewtype>
 						<itemlayout width="257">
