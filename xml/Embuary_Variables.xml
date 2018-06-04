@@ -28,6 +28,9 @@
 	<variable name="Local.SearchEpisodes">
 		<value condition="!String.IsEmpty(Skin.String(CustomSearchTerm)) + Library.HasContent(tvshows)">videodb://tvshows/titles/-1/-1/-1/-1/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[Skin.String(CustomSearchTerm)]%22%5D%7D%5D%7D%2C%22type%22%3A%22episodes%22%7D</value>
 	</variable>
+	<variable name="Local.SearchActorEpisodes">
+		<value condition="!String.IsEmpty(Skin.String(CustomSearchTerm)) + Library.HasContent(tvshows)">videodb://tvshows/titles/-1/-1/-1/-1/?xsp=%7b%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22actor%22%2c%22operator%22%3a%22is%22%2c%22value%22%3a%5b%22$INFO[Skin.String(CustomSearchTerm)]%22%5d%7d%5d%7d%2c%22type%22%3a%22episodes%22%7d</value>
+	</variable>
 	<variable name="Local.SearchMusicVideos">
 		<value condition="!String.IsEmpty(Skin.String(CustomSearchTerm)) + Library.HasContent(musicvideos)">videodb://musicvideos/titles/?xsp=%7b%22order%22%3a%7b%22direction%22%3a%22ascending%22%2c%22ignorefolders%22%3a0%2c%22method%22%3a%22sorttitle%22%7d%2c%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22title%22%2c%22operator%22%3a%22contains%22%2c%22value%22%3a%5b%22$INFO[Skin.String(CustomSearchTerm)]%22%5d%7d%5d%7d%2c%22type%22%3a%22musicvideos%22%7d</value>
 	</variable>
@@ -908,6 +911,10 @@
 	<variable name="SearchProvider">
 		<value condition="Skin.HasSetting(UseGlobalsearch)">Globalsearch</value>
 		<value>Embuary</value>
+	</variable>
+	<variable name="CastSearchProvider">
+		<value condition="Skin.HasSetting(DoNotUseExtendedInfo)">$LOCALIZE[31237]</value>
+		<value>ExtendedInfo</value>
 	</variable>
 	<variable name="EpisodeListLabel">
 		<value condition="String.IsEqual(Container.Foldername,$LOCALIZE[20366])">$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title]</value>
