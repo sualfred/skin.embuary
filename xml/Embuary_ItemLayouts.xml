@@ -1850,85 +1850,83 @@
 				</control>
 				<!-- art -->
 				<control type="group">
-					<control type="group">
+					<width>448</width>
+					<height>263</height>
+					<include content="Animation_FocusBounce">
+						<param name="id" value="$PARAM[id]"/>
+					</include>
+					<control type="image">
+						<top>-2</top>
+						<left>-2</left>
+						<width>430</width>
+						<height>245</height>
+						<texture border="20,20,20,20">items/shadow.png</texture>
+					</control>
+					<control type="image">
+						<left>-12</left>
+						<top>-7</top>
 						<width>448</width>
 						<height>263</height>
-						<include content="Animation_FocusBounce">
-							<param name="id" value="$PARAM[id]"/>
-						</include>
+						<texture border="20,20,20,20" colordiffuse="focus_widget">items/focus.png</texture>
+						<aspectratio>stretch</aspectratio>
+						<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
+						<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
+					</control>
+					<control type="image">
+						<width>424</width>
+						<height>239</height>
+						<texture colordiffuse="thumb_background_fallback" diffuse="items/mask_wide.png">common/white.jpg</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="image">
+						<width>424</width>
+						<height>239</height>
+						<texture colordiffuse="thumb_background" diffuse="items/mask_wide.png">common/white.jpg</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="textbox">
+						<top>10</top>
+						<left>10</left>
+						<width>404</width>
+						<height>219</height>
+						<font>Light24</font>
+						<textcolor>white</textcolor>
+						<align>center</align>
+						<aligny>center</aligny>
+						<label>$PARAM[thumblabel]</label>
+						<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="image">
+						<width>424</width>
+						<height>239</height>
+						<texture diffuse="items/mask_wide.png" background="true">$INFO[ListItem.Icon]</texture>
+						<aspectratio scalediffuse="false">keep</aspectratio>
+						<bordersize>20</bordersize>
+						<visible>String.StartsWith(ListItem.Path,pvr://) + [String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)] + !String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="image">
+						<width>424</width>
+						<height>239</height>
+						<texture diffuse="items/mask_wide.png" background="true">$PARAM[thumb]</texture>
+						<aspectratio scalediffuse="false">scale</aspectratio>
+						<visible>[!String.StartsWith(ListItem.Path,pvr://) | [String.StartsWith(ListItem.Path,pvr://) + ![String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)]]] + !String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="group">
+						<width>424</width>
+						<height>239</height>
 						<control type="image">
-							<top>-2</top>
-							<left>-2</left>
-							<width>430</width>
-							<height>245</height>
-							<texture border="20,20,20,20">items/shadow.png</texture>
-						</control>
-						<control type="image">
-							<left>-12</left>
-							<top>-7</top>
-							<width>448</width>
-							<height>263</height>
-							<texture border="20,20,20,20" colordiffuse="focus_widget">items/focus.png</texture>
-							<aspectratio>stretch</aspectratio>
-							<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
-							<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
-						</control>
-						<control type="image">
-							<width>424</width>
-							<height>239</height>
-							<texture colordiffuse="thumb_background_fallback" diffuse="items/mask_wide.png">common/white.jpg</texture>
-							<aspectratio scalediffuse="false">stretch</aspectratio>
-							<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
-						</control>
-						<control type="image">
-							<width>424</width>
-							<height>239</height>
-							<texture colordiffuse="thumb_background" diffuse="items/mask_wide.png">common/white.jpg</texture>
-							<aspectratio scalediffuse="false">stretch</aspectratio>
-							<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
-						</control>
-						<control type="textbox">
-							<top>10</top>
 							<left>10</left>
-							<width>404</width>
-							<height>219</height>
-							<font>Light24</font>
-							<textcolor>white</textcolor>
-							<align>center</align>
-							<aligny>center</aligny>
-							<label>$PARAM[thumblabel]</label>
-							<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+							<right>100</right>
+							<bottom>10</bottom>
+							<height>60</height>
+							<texture background="true">$VAR[ListItemClearlogo]</texture>
+							<aspectratio align="left" aligny="bottom">keep</aspectratio>
+							<visible>[!String.IsEmpty(ListItem.Art(fanart)) | !String.IsEmpty(ListItem.Art(tvshow.fanart)) | [!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)]] + String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape)) + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,set)]</visible>
 						</control>
-						<control type="image">
-							<width>424</width>
-							<height>239</height>
-							<texture diffuse="items/mask_wide.png" background="true">$INFO[ListItem.Icon]</texture>
-							<aspectratio scalediffuse="false">keep</aspectratio>
-							<bordersize>20</bordersize>
-							<visible>String.StartsWith(ListItem.Path,pvr://) + [String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)] + !String.StartsWith(ListItem.Icon,Default)</visible>
-						</control>
-						<control type="image">
-							<width>424</width>
-							<height>239</height>
-							<texture diffuse="items/mask_wide.png" background="true">$PARAM[thumb]</texture>
-							<aspectratio scalediffuse="false">scale</aspectratio>
-							<visible>[!String.StartsWith(ListItem.Path,pvr://) | [String.StartsWith(ListItem.Path,pvr://) + ![String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)]]] + !String.StartsWith(ListItem.Icon,Default)</visible>
-						</control>
-						<control type="group">
-							<width>424</width>
-							<height>239</height>
-							<control type="image">
-								<left>10</left>
-								<right>100</right>
-								<bottom>10</bottom>
-								<height>60</height>
-								<texture background="true">$VAR[ListItemClearlogo]</texture>
-								<aspectratio align="left" aligny="bottom">keep</aspectratio>
-								<visible>[!String.IsEmpty(ListItem.Art(fanart)) | !String.IsEmpty(ListItem.Art(tvshow.fanart)) | [!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)]] + String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape)) + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,set)]</visible>
-							</control>
-							<include>bubble_overlay</include>
-							<include>bubble_play</include>
-						</control>
+						<include>bubble_overlay</include>
+						<include>bubble_play</include>
 					</control>
 					<include content="progress">
 						<param name="top" value="235"/>
@@ -1955,6 +1953,7 @@
 						<height>50</height>
 						<font>Reg24</font>
 						<aligny>top</aligny>
+						<selectedcolor>red</selectedcolor>
 						<visible>!String.IsEmpty(ListItem.Rating)</visible>
 					</control>
 					<control type="label">
@@ -1964,6 +1963,7 @@
 						<label>$INFO[ListItem.Rating]</label>
 						<font>Reg24</font>
 						<aligny>top</aligny>
+						<selectedcolor>text_white</selectedcolor>
 						<visible>!String.IsEmpty(ListItem.Rating)</visible>
 					</control>
 					<control type="label">
@@ -1973,6 +1973,7 @@
 						<height>50</height>
 						<label>$VAR[DurationMinutes,,   ]$INFO[ListItem.EndTime,$LOCALIZE[31037] ]</label>
 						<font>Reg24</font>
+						<selectedcolor>text_white</selectedcolor>
 						<aligny>top</aligny>
 					</control>
 					<control type="textbox">
