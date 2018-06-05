@@ -231,15 +231,16 @@
 				<param name="content" value="$VAR[EmbyCon.SearchMusic]"/>
 			</include>
 		</control>
+		<!-- busy spinner -->
+		<include content="CustomBusySpinner">
+			<param name="diffuse" value="false"/>
+			<param name="visible" value="[Container(101).IsUpdating | Container(102).IsUpdating | Container(103).IsUpdating | Container(104).IsUpdating | Container(105).IsUpdating | Container(106).IsUpdating | Container(107).IsUpdating | Container(108).IsUpdating | Container(109).IsUpdating | Container(110).IsUpdating | Container(111).IsUpdating | Container(112).IsUpdating | Container(113).IsUpdating | Container(114).IsUpdating | Container(115).IsUpdating | Container(116).IsUpdating] + !Window.IsVisible(virtualkeyboard)"/>
+		</include>
 		<!-- header bar -->
 		<include content="HeaderBar">
 			<param name="id">10</param>
 		</include>
 		<!-- side panel -->
 		<include content="SidePanel"/>
-		<!-- busy spinner -->
-		<include content="CustomBusySpinner">
-			<param name="visible" value="[Container.IsUpdating(101) | Container.IsUpdating(102) | Container.IsUpdating(103) | Container.IsUpdating(104) | Container.IsUpdating(105) | Container.IsUpdating(106) | Container.IsUpdating(107) | Container.IsUpdating(108) | Container.IsUpdating(109) | Container.IsUpdating(110) | Container.IsUpdating(111) | Container.IsUpdating(112) | Container.IsUpdating(113) | Container.IsUpdating(114) | Container.IsUpdating(115) | Container.IsUpdating(116) | !String.IsEmpty(Window(home).Property(CustomSearch))] + !Window.IsVisible(virtualkeyboard)"/>
-		</include>
 	</controls>
 </window>
