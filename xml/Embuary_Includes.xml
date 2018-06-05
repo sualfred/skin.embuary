@@ -20,10 +20,12 @@
 	</include>
 	<include name="CustomBusySpinner">
 		<param name="visible">Container.IsUpdating</param>
+		<param name="diffuse">true</param>
 		<definition>
 			<control type="group">
 				<visible>$PARAM[visible]</visible>
-				<include content="DiffuseMask"/>
+				<include condition="$PARAM[diffuse]" content="DiffuseMask"/>
+				<include condition="!$PARAM[diffuse]" content="PlainBackground"/>
 				<include>BusySpinner</include>
 				<control type="label">
 					<bottom>35%</bottom>
@@ -292,6 +294,13 @@
 				<visible>$PARAM[visible]</visible>
 			</control>
 		</definition>
+	</include>
+	<include name="PlainBackground">
+		<control type="image">
+			<include>FullscreenDimensions</include>
+			<texture colordiffuse="background">common/white.jpg</texture>
+			<visible>$PARAM[visible]</visible>
+		</control>
 	</include>
 	<!-- Side Menu -->
 	<include name="SidePanel">
