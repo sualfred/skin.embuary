@@ -922,18 +922,9 @@
 			<item>
 				<icon>DefaultFolder.png</icon>
 				<label>$PARAM[label]</label>
-				<property name="pos">$LOCALIZE[31100] $PARAM[nr]</property>
 				<onclick>SetProperty(menu_position,$PARAM[nr],home)</onclick>
 				<onclick>ActivateWindow(1111)</onclick>
 				<visible>$PARAM[visible]</visible>
-			</item>
-			<item>
-				<icon>DefaultFolder.png</icon>
-				<label/>
-				<property name="pos">$LOCALIZE[31100] $PARAM[nr]</property>
-				<onclick>SetProperty(menu_position,$PARAM[nr],home)</onclick>
-				<onclick>ActivateWindow(1111)</onclick>
-				<visible>!$PARAM[visible]</visible>
 			</item>
 		</definition>
 	</include>
@@ -947,26 +938,32 @@
 		<include condition="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),custom1)" content="MainMenuPositionSelectorTemplate">
 			<param name="nr" value="$PARAM[nr]"/>
 			<param name="label" value="$INFO[Skin.String(UserHomeHub1_name),,   ($LOCALIZE[31200] 1)]"/>
+			<param name="visible" value="!String.IsEmpty(Skin.String(UserHomeHub1_name))"/>
 		</include>
 		<include condition="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),custom2)" content="MainMenuPositionSelectorTemplate">
 			<param name="nr" value="$PARAM[nr]"/>
 			<param name="label" value="$INFO[Skin.String(UserHomeHub2_name),,   ($LOCALIZE[31200] 2)]"/>
+			<param name="visible" value="!String.IsEmpty(Skin.String(UserHomeHub2_name))"/>
 		</include>
 		<include condition="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),custom3)" content="MainMenuPositionSelectorTemplate">
 			<param name="nr" value="$PARAM[nr]"/>
 			<param name="label" value="$INFO[Skin.String(UserHomeHub3_name),,   ($LOCALIZE[31200] 3)]"/>
+			<param name="visible" value="!String.IsEmpty(Skin.String(UserHomeHub3_name))"/>
 		</include>
 		<include condition="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),custom4)" content="MainMenuPositionSelectorTemplate">
 			<param name="nr" value="$PARAM[nr]"/>
 			<param name="label" value="$INFO[Skin.String(UserHomeHub4_name),,   ($LOCALIZE[31200] 4)]"/>
+			<param name="visible" value="!String.IsEmpty(Skin.String(UserHomeHub4_name))"/>
 		</include>
 		<include condition="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),custom5)" content="MainMenuPositionSelectorTemplate">
 			<param name="nr" value="$PARAM[nr]"/>
 			<param name="label" value="$INFO[Skin.String(UserHomeHub5_name),,   ($LOCALIZE[31200] 5)]"/>
+			<param name="visible" value="!String.IsEmpty(Skin.String(UserHomeHub5_name))"/>
 		</include>
 		<include condition="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),custom6)" content="MainMenuPositionSelectorTemplate">
 			<param name="nr" value="$PARAM[nr]"/>
 			<param name="label" value="$INFO[Skin.String(UserHomeHub6_name),,   ($LOCALIZE[31200] 6)]"/>
+			<param name="visible" value="!String.IsEmpty(Skin.String(UserHomeHub6_name))"/>
 		</include>
 		<!-- emby -->
 		<include condition="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),emby0)" content="MainMenuPositionSelectorTemplate">
@@ -1506,113 +1503,113 @@
 				<icon>$PARAM[icon]</icon>
 				<label>$PARAM[label]</label>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_1),$PARAM[item])">Skin.Reset(home_menu_pos_1)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_1.label),$PARAM[label])">Skin.Reset(home_menu_pos_1.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_1),$PARAM[item])">Skin.Reset(home_menu_pos_1.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_2),$PARAM[item])">Skin.Reset(home_menu_pos_2)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_2.label),$PARAM[label])">Skin.Reset(home_menu_pos_2.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_2),$PARAM[item])">Skin.Reset(home_menu_pos_2.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_3),$PARAM[item])">Skin.Reset(home_menu_pos_3)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_3.label),$PARAM[label])">Skin.Reset(home_menu_pos_3.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_3),$PARAM[item])">Skin.Reset(home_menu_pos_3.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_4),$PARAM[item])">Skin.Reset(home_menu_pos_4)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_4.label),$PARAM[label])">Skin.Reset(home_menu_pos_4.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_4),$PARAM[item])">Skin.Reset(home_menu_pos_4.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_5),$PARAM[item])">Skin.Reset(home_menu_pos_5)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_5.label),$PARAM[label])">Skin.Reset(home_menu_pos_5.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_5),$PARAM[item])">Skin.Reset(home_menu_pos_5.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_6),$PARAM[item])">Skin.Reset(home_menu_pos_6)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_6.label),$PARAM[label])">Skin.Reset(home_menu_pos_6.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_6),$PARAM[item])">Skin.Reset(home_menu_pos_6.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_7),$PARAM[item])">Skin.Reset(home_menu_pos_7)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_7.label),$PARAM[label])">Skin.Reset(home_menu_pos_7.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_7),$PARAM[item])">Skin.Reset(home_menu_pos_7.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_8),$PARAM[item])">Skin.Reset(home_menu_pos_8)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_8.label),$PARAM[label])">Skin.Reset(home_menu_pos_8.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_8),$PARAM[item])">Skin.Reset(home_menu_pos_8.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_9),$PARAM[item])">Skin.Reset(home_menu_pos_9)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_9.label,)$PARAM[label])">Skin.Reset(home_menu_pos_9.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_9),$PARAM[item])">Skin.Reset(home_menu_pos_9.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_10),$PARAM[item])">Skin.Reset(home_menu_pos_10)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_10.label),$PARAM[label])">Skin.Reset(home_menu_pos_10.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_10),$PARAM[item])">Skin.Reset(home_menu_pos_10.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_11),$PARAM[item])">Skin.Reset(home_menu_pos_11)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_11.label),$PARAM[label])">Skin.Reset(home_menu_pos_11.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_11),$PARAM[item])">Skin.Reset(home_menu_pos_11.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_12),$PARAM[item])">Skin.Reset(home_menu_pos_12)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_12.label),$PARAM[label])">Skin.Reset(home_menu_pos_12.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_12),$PARAM[item])">Skin.Reset(home_menu_pos_12.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_13),$PARAM[item])">Skin.Reset(home_menu_pos_13)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_13.label),$PARAM[label])">Skin.Reset(home_menu_pos_13.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_13),$PARAM[item])">Skin.Reset(home_menu_pos_13.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_14),$PARAM[item])">Skin.Reset(home_menu_pos_14)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_14.label),$PARAM[label])">Skin.Reset(home_menu_pos_14.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_14),$PARAM[item])">Skin.Reset(home_menu_pos_14.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_15),$PARAM[item])">Skin.Reset(home_menu_pos_15)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_15.label),$PARAM[label])">Skin.Reset(home_menu_pos_15.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_15),$PARAM[item])">Skin.Reset(home_menu_pos_15.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_16),$PARAM[item])">Skin.Reset(home_menu_pos_16)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_16.label),$PARAM[label])">Skin.Reset(home_menu_pos_16.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_16),$PARAM[item])">Skin.Reset(home_menu_pos_16.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_17),$PARAM[item])">Skin.Reset(home_menu_pos_17)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_17.label),$PARAM[label])">Skin.Reset(home_menu_pos_17.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_17),$PARAM[item])">Skin.Reset(home_menu_pos_17.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_18),$PARAM[item])">Skin.Reset(home_menu_pos_18)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_18.label),$PARAM[label])">Skin.Reset(home_menu_pos_18.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_18),$PARAM[item])">Skin.Reset(home_menu_pos_18.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_19),$PARAM[item])">Skin.Reset(home_menu_pos_19)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_19.label),$PARAM[label])">Skin.Reset(home_menu_pos_19.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_19),$PARAM[item])">Skin.Reset(home_menu_pos_19.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_20),$PARAM[item])">Skin.Reset(home_menu_pos_20)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_20.label),$PARAM[label])">Skin.Reset(home_menu_pos_20.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_20),$PARAM[item])">Skin.Reset(home_menu_pos_20.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_21),$PARAM[item])">Skin.Reset(home_menu_pos_21)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_21.label),$PARAM[label])">Skin.Reset(home_menu_pos_21.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_21),$PARAM[item])">Skin.Reset(home_menu_pos_21.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_22),$PARAM[item])">Skin.Reset(home_menu_pos_22)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_22.label),$PARAM[label])">Skin.Reset(home_menu_pos_22.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_22),$PARAM[item])">Skin.Reset(home_menu_pos_22.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_23),$PARAM[item])">Skin.Reset(home_menu_pos_23)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_23.label),$PARAM[label])">Skin.Reset(home_menu_pos_23.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_23),$PARAM[item])">Skin.Reset(home_menu_pos_23.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_24),$PARAM[item])">Skin.Reset(home_menu_pos_24)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_24.label),$PARAM[label])">Skin.Reset(home_menu_pos_24.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_24),$PARAM[item])">Skin.Reset(home_menu_pos_24.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_25),$PARAM[item])">Skin.Reset(home_menu_pos_25)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_25.label),$PARAM[label])">Skin.Reset(home_menu_pos_25.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_25),$PARAM[item])">Skin.Reset(home_menu_pos_25.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_26),$PARAM[item])">Skin.Reset(home_menu_pos_26)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_26.label),$PARAM[label])">Skin.Reset(home_menu_pos_26.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_26),$PARAM[item])">Skin.Reset(home_menu_pos_26.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_27),$PARAM[item])">Skin.Reset(home_menu_pos_27)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_27.label),$PARAM[label])">Skin.Reset(home_menu_pos_27.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_27),$PARAM[item])">Skin.Reset(home_menu_pos_27.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_28),$PARAM[item])">Skin.Reset(home_menu_pos_28)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_28.label),$PARAM[label])">Skin.Reset(home_menu_pos_28.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_28),$PARAM[item])">Skin.Reset(home_menu_pos_28.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_29),$PARAM[item])">Skin.Reset(home_menu_pos_29)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_29.label),$PARAM[label])">Skin.Reset(home_menu_pos_29.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_29),$PARAM[item])">Skin.Reset(home_menu_pos_29.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_30),$PARAM[item])">Skin.Reset(home_menu_pos_30)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_30.label),$PARAM[label])">Skin.Reset(home_menu_pos_30.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_30),$PARAM[item])">Skin.Reset(home_menu_pos_30.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_31),$PARAM[item])">Skin.Reset(home_menu_pos_31)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_31.label),$PARAM[label])">Skin.Reset(home_menu_pos_31.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_31),$PARAM[item])">Skin.Reset(home_menu_pos_31.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_32),$PARAM[item])">Skin.Reset(home_menu_pos_32)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_32.label),$PARAM[label])">Skin.Reset(home_menu_pos_32.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_32),$PARAM[item])">Skin.Reset(home_menu_pos_32.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_33),$PARAM[item])">Skin.Reset(home_menu_pos_33)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_33.label),$PARAM[label])">Skin.Reset(home_menu_pos_33.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_33),$PARAM[item])">Skin.Reset(home_menu_pos_33.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_34),$PARAM[item])">Skin.Reset(home_menu_pos_34)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_34.label),$PARAM[label])">Skin.Reset(home_menu_pos_34.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_34),$PARAM[item])">Skin.Reset(home_menu_pos_34.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_35),$PARAM[item])">Skin.Reset(home_menu_pos_35)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_35.label),$PARAM[label])">Skin.Reset(home_menu_pos_35.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_35),$PARAM[item])">Skin.Reset(home_menu_pos_35.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_36),$PARAM[item])">Skin.Reset(home_menu_pos_36)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_36.label),$PARAM[label])">Skin.Reset(home_menu_pos_36.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_36),$PARAM[item])">Skin.Reset(home_menu_pos_36.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_37),$PARAM[item])">Skin.Reset(home_menu_pos_37)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_37.label),$PARAM[label])">Skin.Reset(home_menu_pos_37.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_37),$PARAM[item])">Skin.Reset(home_menu_pos_37.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_38),$PARAM[item])">Skin.Reset(home_menu_pos_38)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_38.label),$PARAM[label])">Skin.Reset(home_menu_pos_38.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_38),$PARAM[item])">Skin.Reset(home_menu_pos_38.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_39),$PARAM[item])">Skin.Reset(home_menu_pos_39)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_39.label),$PARAM[label])">Skin.Reset(home_menu_pos_39.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_39),$PARAM[item])">Skin.Reset(home_menu_pos_39.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_40),$PARAM[item])">Skin.Reset(home_menu_pos_40)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_40.label),$PARAM[label])">Skin.Reset(home_menu_pos_40.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_40),$PARAM[item])">Skin.Reset(home_menu_pos_40.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_41),$PARAM[item])">Skin.Reset(home_menu_pos_41)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_41.label),$PARAM[label])">Skin.Reset(home_menu_pos_41.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_41),$PARAM[item])">Skin.Reset(home_menu_pos_41.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_42),$PARAM[item])">Skin.Reset(home_menu_pos_42)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_42.label),$PARAM[label])">Skin.Reset(home_menu_pos_42.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_42),$PARAM[item])">Skin.Reset(home_menu_pos_42.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_43),$PARAM[item])">Skin.Reset(home_menu_pos_43)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_43.label),$PARAM[label])">Skin.Reset(home_menu_pos_43.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_43),$PARAM[item])">Skin.Reset(home_menu_pos_43.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_44),$PARAM[item])">Skin.Reset(home_menu_pos_44)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_44.label),$PARAM[label])">Skin.Reset(home_menu_pos_44.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_44),$PARAM[item])">Skin.Reset(home_menu_pos_44.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_45),$PARAM[item])">Skin.Reset(home_menu_pos_45)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_45.label),$PARAM[label])">Skin.Reset(home_menu_pos_45.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_45),$PARAM[item])">Skin.Reset(home_menu_pos_45.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_46),$PARAM[item])">Skin.Reset(home_menu_pos_46)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_46.label),$PARAM[label])">Skin.Reset(home_menu_pos_46.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_46),$PARAM[item])">Skin.Reset(home_menu_pos_46.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_47),$PARAM[item])">Skin.Reset(home_menu_pos_47)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_47.label),$PARAM[label])">Skin.Reset(home_menu_pos_47.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_47),$PARAM[item])">Skin.Reset(home_menu_pos_47.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_48),$PARAM[item])">Skin.Reset(home_menu_pos_48)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_48.label),$PARAM[label])">Skin.Reset(home_menu_pos_48.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_48),$PARAM[item])">Skin.Reset(home_menu_pos_48.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_49),$PARAM[item])">Skin.Reset(home_menu_pos_49)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_49.label),$PARAM[label])">Skin.Reset(home_menu_pos_49.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_49),$PARAM[item])">Skin.Reset(home_menu_pos_49.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_50),$PARAM[item])">Skin.Reset(home_menu_pos_50)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_50.label),$PARAM[label])">Skin.Reset(home_menu_pos_50.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_50),$PARAM[item])">Skin.Reset(home_menu_pos_50.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_51),$PARAM[item])">Skin.Reset(home_menu_pos_51)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_51.label),$PARAM[label])">Skin.Reset(home_menu_pos_51.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_51),$PARAM[item])">Skin.Reset(home_menu_pos_51.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_52),$PARAM[item])">Skin.Reset(home_menu_pos_52)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_52.label),$PARAM[label])">Skin.Reset(home_menu_pos_52.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_52),$PARAM[item])">Skin.Reset(home_menu_pos_52.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_53),$PARAM[item])">Skin.Reset(home_menu_pos_53)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_53.label),$PARAM[label])">Skin.Reset(home_menu_pos_53.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_53),$PARAM[item])">Skin.Reset(home_menu_pos_53.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_54),$PARAM[item])">Skin.Reset(home_menu_pos_54)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_54.label),$PARAM[label])">Skin.Reset(home_menu_pos_54.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_menu_pos_54),$PARAM[item])">Skin.Reset(home_menu_pos_54.label)</onclick>
 				<onclick>Skin.SetString(home_menu_pos_$PARAM[nr].label,$PARAM[label])</onclick>
 				<onclick condition="$PARAM[setitem]">Skin.SetString(home_menu_pos_$PARAM[nr],$PARAM[item])</onclick>
 				<onclick condition="$PARAM[clearitem]">Skin.Reset(home_menu_pos_$PARAM[nr])</onclick>
