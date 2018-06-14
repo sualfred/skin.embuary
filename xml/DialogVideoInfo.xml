@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<defaultcontrol always="true">100</defaultcontrol>
-	<onload condition="!String.IsEmpty(ListItem.Genre)">RunScript(script.skin.helper.service,action=stripstring,splitchar=[SPACE],string=$INFO[ListItem.Genre],output=SplitGenre1,index=0)</onload>
-	<onload condition="!String.IsEmpty(ListItem.Genre)">RunScript(script.skin.helper.service,action=stripstring,splitchar=[SPACE],string=$INFO[ListItem.Genre],output=SplitGenre2,index=2)</onload>
-	<onload condition="!String.IsEmpty(ListItem.Genre)">RunScript(script.skin.helper.service,action=stripstring,splitchar=[SPACE],string=$INFO[ListItem.Genre],output=SplitGenre3,index=4)</onload>
 	<onload condition="String.IsEqual(ListItem.DBType,season) + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) + String.IsEqual(ListItem.Label,All)">close</onload>
 	<onload condition="String.IsEqual(ListItem.DBType,set) + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">close</onload>
 	<include>UnloadSetProperties</include>
