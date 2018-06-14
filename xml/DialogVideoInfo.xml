@@ -8,6 +8,9 @@
 	<onload condition="String.IsEqual(ListItem.DBType,set) + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">close</onload>
 	<include>UnloadSetProperties</include>
 	<onunload condition="!String.IsEmpty(Window(home).Property(InfoDialogCloseFocus))">SetFocus(7070)</onunload>
+	<onunload>ClearProperty(SplitGenre1,home)</onunload>
+	<onunload>ClearProperty(SplitGenre2,home)</onunload>
+	<onunload>ClearProperty(SplitGenre3,home)</onunload>
 	<include>PropertyIncludes</include>
 	<controls>
 		<!-- Hidden -->
