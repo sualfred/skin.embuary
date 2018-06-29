@@ -11,6 +11,11 @@
 		<include content="Genre_View">
 			<param name="content" value="$INFO[Window(home).Property(ListGenres)]"/>
 		</include>
+		<!-- busy spinner -->
+		<include content="CustomBusySpinner">
+			<param name="diffuse" value="false"/>
+			<param name="visible" value="Container(2000).IsUpdating | Container(102).IsUpdating"/>
+		</include>
 		<!-- header bar -->
 		<include content="HeaderBar">
 			<param name="id">10</param>
@@ -18,10 +23,6 @@
 		<!-- side panel -->
 		<include content="SidePanel">
 			<param name="onright">10</param>
-		</include>
-		<!-- busy spinner -->
-		<include content="CustomBusySpinner">
-			<param name="visible" value="Container(2000).IsUpdating | Container(102).IsUpdating"/>
 		</include>
 	</controls>
 </window>
