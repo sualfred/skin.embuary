@@ -29,17 +29,17 @@
 				<include>ScrollTime</include>
 				<include>Bounce_Up_Down</include>
 				<include content="WidgetSpacer">
-					<param name="id" value="101"/>
+					<param name="id" value="100"/>
 				</include>
-				<control type="button" id="102">
+				<control type="button" id="101">
 					<include>HiddenObject</include>
 					<visible>!Integer.IsGreater(Container(2000).NumItems,0)</visible>
 				</control>
 				<include content="HomePosterWidget">
 					<param name="force_visible" value="Integer.IsGreater(Container(2000).NumItems,0)"/>
-					<param name="id" value="102"/>
+					<param name="id" value="101"/>
 					<param name="onup" value="6666"/>
-					<param name="ondown" value="103"/>
+					<param name="ondown" value="102"/>
 					<param name="headline" value="$INFO[Container(2000).ListItemAbsolute(0).Label]"/>
 					<param name="labels_visible" value="false"/>
 					<param name="widget_target" value="videos"/>
@@ -50,9 +50,9 @@
 				</include>
 				<include content="HomePosterWidget">
 					<param name="force_visible" value="Integer.IsGreater(Container(2000).NumItems,1)"/>
-					<param name="id" value="103"/>
-					<param name="onup" value="102"/>
-					<param name="ondown" value="104"/>
+					<param name="id" value="102"/>
+					<param name="onup" value="101"/>
+					<param name="ondown" value="103"/>
 					<param name="headline" value="$INFO[Container(2000).ListItemAbsolute(1).Label]"/>
 					<param name="labels_visible" value="false"/>
 					<param name="widget_target" value="videos"/>
@@ -63,9 +63,9 @@
 				</include>
 				<include content="HomePosterWidget">
 					<param name="force_visible" value="Integer.IsGreater(Container(2000).NumItems,2)"/>
-					<param name="id" value="104"/>
-					<param name="onup" value="103"/>
-					<param name="ondown" value="105"/>
+					<param name="id" value="103"/>
+					<param name="onup" value="102"/>
+					<param name="ondown" value="104"/>
 					<param name="headline" value="$INFO[Container(2000).ListItemAbsolute(2).Label]"/>
 					<param name="labels_visible" value="false"/>
 					<param name="widget_target" value="videos"/>
@@ -73,6 +73,19 @@
 					<param name="sortby" value="label"/>
 					<param name="sortorder" value="ascending"/>
 					<param name="content" value="$INFO[Container(2000).ListItemAbsolute(2).Folderpath]"/>
+				</include>
+				<include content="HomePosterWidget">
+					<param name="force_visible" value="Integer.IsGreater(Container(2000).NumItems,3)"/>
+					<param name="id" value="104"/>
+					<param name="onup" value="103"/>
+					<param name="ondown" value="105"/>
+					<param name="headline" value="$INFO[Container(2000).ListItemAbsolute(3).Label]"/>
+					<param name="labels_visible" value="false"/>
+					<param name="widget_target" value="videos"/>
+					<param name="height" value="663"/>
+					<param name="sortby" value="label"/>
+					<param name="sortorder" value="ascending"/>
+					<param name="content" value="$INFO[Container(2000).ListItemAbsolute(3).Folderpath]"/>
 				</include>
 				<include content="HomePosterWidget">
 					<param name="force_visible" value="Integer.IsGreater(Container(2000).NumItems,4)"/>
