@@ -736,6 +736,8 @@
 		<param name="sublabel">$VAR[SubListLabel]</param>
 		<param name="use_custom_content">true</param>
 		<param name="use_custom_onclick">false</param>
+		<param name="ondown_condition">true</param>
+		<param name="onup_condition">true</param>
 		<definition>
 			<control type="group" id="$PARAM[id]1">
 				<visible>$PARAM[visible]</visible>
@@ -775,14 +777,14 @@
 					<movement>5</movement>
 					<orientation>horizontal</orientation>
 					<preloaditems>4</preloaditems>
-					<ondown>$PARAM[ondown]</ondown>
+					<ondown condition="$PARAM[ondown_condition]">$PARAM[ondown]</ondown>
 					<include content="Bounce_Right">
 						<param name="id">$PARAM[id]</param>
 					</include>
 					<onright>SetProperty(BounceRight,1,home)</onright>
 					<onright>noop</onright>
 					<onleft>900</onleft>
-					<onup>$PARAM[onup]</onup>
+					<onup condition="$PARAM[onup_condition]">$PARAM[onup]</onup>
 					<include condition="$PARAM[use_custom_onclick]" content="ContainerOnClick">
 						<param name="onclick" value="$PARAM[onclick]"/>
 						<param name="onclick2" value="$PARAM[onclick2]"/>
