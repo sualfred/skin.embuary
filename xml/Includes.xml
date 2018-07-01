@@ -38,8 +38,6 @@
 
 	<expression name="MenuCheck">[String.IsEmpty(Skin.String(home_menu_pos_1)) + String.IsEmpty(Skin.String(home_menu_pos_2)) + String.IsEmpty(Skin.String(home_menu_pos_3)) + String.IsEmpty(Skin.String(home_menu_pos_4)) + String.IsEmpty(Skin.String(home_menu_pos_5)) + String.IsEmpty(Skin.String(home_menu_pos_6)) + String.IsEmpty(Skin.String(home_menu_pos_7)) + String.IsEmpty(Skin.String(home_menu_pos_8)) + String.IsEmpty(Skin.String(home_menu_pos_9)) + String.IsEmpty(Skin.String(home_menu_pos_10)) + String.IsEmpty(Skin.String(home_menu_pos_11)) + String.IsEmpty(Skin.String(home_menu_pos_12)) + String.IsEmpty(Skin.String(home_menu_pos_13)) + String.IsEmpty(Skin.String(home_menu_pos_14)) + String.IsEmpty(Skin.String(home_menu_pos_15)) + String.IsEmpty(Skin.String(home_menu_pos_16)) + String.IsEmpty(Skin.String(home_menu_pos_17)) + String.IsEmpty(Skin.String(home_menu_pos_18)) + String.IsEmpty(Skin.String(home_menu_pos_19)) + String.IsEmpty(Skin.String(home_menu_pos_20)) + String.IsEmpty(Skin.String(home_menu_pos_21)) + String.IsEmpty(Skin.String(home_menu_pos_22)) + String.IsEmpty(Skin.String(home_menu_pos_23)) + String.IsEmpty(Skin.String(home_menu_pos_24)) + String.IsEmpty(Skin.String(home_menu_pos_25)) + String.IsEmpty(Skin.String(home_menu_pos_26)) + String.IsEmpty(Skin.String(home_menu_pos_27)) + String.IsEmpty(Skin.String(home_menu_pos_28)) + String.IsEmpty(Skin.String(home_menu_pos_29)) + String.IsEmpty(Skin.String(home_menu_pos_30)) + String.IsEmpty(Skin.String(home_menu_pos_31)) + String.IsEmpty(Skin.String(home_menu_pos_32)) + String.IsEmpty(Skin.String(home_menu_pos_33)) + String.IsEmpty(Skin.String(home_menu_pos_34))]</expression>
 
-	<expression name="MenuMoviesVisiblity">[Library.HasContent(movies) | System.HasAddon(plugin.video.embycon)]</expression>
-
 	<expression name="HolidayThemeSound">!String.StartsWith(Player.Filenameandpath,special://skin/extras) + String.IsEmpty(Window(home).Property(SkinExtraSound)) + [[!Window.Previous(Startup) + Integer.IsGreater(Player.Duration,10)] | [Window.Previous(Startup) + Integer.IsGreater(Player.Duration,31)] | String.IsEmpty(Player.Duration)]</expression>
 
 	<expression name="HolidayTheme">[System.Date(12-01,01-06) + !Skin.HasSetting(HideHolidayTheme) + [[!Window.IsVisible(visualisation) + !VideoPlayer.IsFullscreen] | Window.IsActive(fullscreeninfo) | Window.IsActive(script-script.extendedinfo-DialogInfo.xml) | Window.IsActive(script-script.extendedinfo-DialogVideoInfo.xml)]]</expression>
@@ -174,11 +172,82 @@
 	</expression>
 
 	<!-- Menu -->
-	<expression name="MenuTVShowsVisiblity">[Library.HasContent(tvshows) | System.HasAddon(plugin.video.embycon)]</expression>
+	<expression name="MenuMoviesVisiblity">[Library.HasContent(movies)
+		| [System.HasAddon(plugin.video.embycon) + [
+		String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.0.type),movies)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.1.type),movies)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.2.type),movies)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.3.type),movies)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.4.type),movies)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.5.type),movies)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.6.type),movies)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.7.type),movies)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.8.type),movies)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.9.type),movies)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.10.type),movies)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.11.type),movies)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.12.type),movies)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.13.type),movies)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.14.type),movies)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.15.type),movies)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.16.type),movies)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.17.type),movies)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.18.type),movies)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.19.type),movies)
+		]]]
+	</expression>
+
+	<expression name="MenuTVShowsVisiblity">[Library.HasContent(tvshows)
+		| [System.HasAddon(plugin.video.embycon) + [
+		String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.0.type),tvshows)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.1.type),tvshows)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.2.type),tvshows)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.3.type),tvshows)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.4.type),tvshows)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.5.type),tvshows)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.6.type),tvshows)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.7.type),tvshows)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.8.type),tvshows)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.9.type),tvshows)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.10.type),tvshows)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.11.type),tvshows)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.12.type),tvshows)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.13.type),tvshows)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.14.type),tvshows)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.15.type),tvshows)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.16.type),tvshows)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.17.type),tvshows)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.18.type),tvshows)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.19.type),tvshows)
+		]]]
+	</expression>
 
 	<expression name="MenuPVRVisiblity">[Pvr.HasTVChannels]</expression>
 
-	<expression name="MenuMusicVisiblity">[Library.HasContent(music) | System.HasAddon(plugin.video.embycon)]</expression>
+	<expression name="MenuMusicVisiblity">[Library.HasContent(music)
+		| [System.HasAddon(plugin.video.embycon) + [
+		String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.0.type),music)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.1.type),music)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.2.type),music)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.3.type),music)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.4.type),music)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.5.type),music)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.6.type),music)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.7.type),music)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.8.type),music)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.9.type),music)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.10.type),music)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.11.type),music)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.12.type),music)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.13.type),music)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.14.type),music)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.15.type),music)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.16.type),music)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.17.type),music)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.18.type),music)
+		| String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.19.type),music)
+		]]]
+	</expression>
 
 	<expression name="MenuMusicvideosVisiblity">[Library.HasContent(musicvideos)]</expression>
 
