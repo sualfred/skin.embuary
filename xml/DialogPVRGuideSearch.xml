@@ -4,111 +4,105 @@
 	<include>Dialog_PopupOpenClose</include>
 	<include>PropertyIncludes</include>
 	<controls>
-		<include content="DiffuseMask">
-			<param name="visible">true</param>
-		</include>
+		<include content="DiffuseMask"/>
 		<control type="grouplist" id="1000">
 			<orientation>vertical</orientation>
 			<centerleft>50%</centerleft>
-			<width>600</width>
+			<width>800</width>
 			<height>auto</height>
 			<align>center</align>
 			<itemgap>0</itemgap>
-			<onright>noop</onright>
-			<onleft>noop</onleft>
-			<onup>noop</onup>
+			<onright>2000</onright>
+			<onleft>2000</onleft>
+			<onup>1000</onup>
+			<ondown>1000</ondown>
 			<usecontrolcoords>true</usecontrolcoords>
-			<control type="image">
+			<control type="image" id="1001">
 				<width>100%</width>
-				<height>10</height>
-				<texture border="10" colordiffuse="panel">common/menu_top.png</texture>
-			</control>
-			<control type="button">
-				<include content="CommonButton"/>
-				<label>$LOCALIZE[19133]:</label>
-				<enable>false</enable>
+				<height>61</height>
+				<texture border="65,0,65,0" colordiffuse="context_color">dialogs/context/top.png</texture>
 			</control>
 			<control type="edit" id="9">
-				<include content="CommonButton"/>
-				<hinttext>[COLOR softgrey]$LOCALIZE[16017][/COLOR]</hinttext>
+				<include content="ContextButton"/>
+				<hinttext>[COLOR disabled]$LOCALIZE[16017][/COLOR]</hinttext>
 			</control>
 			<control type="radiobutton" id="10">
-				<include content="CommonButton"/>
+				<include content="ContextButton"/>
 				<label>$LOCALIZE[19134]</label>
 			</control>
 			<control type="radiobutton" id="11">
 				<description>Case Sensitive</description>
-				<include content="CommonButton"/>
+				<include content="ContextButton"/>
 				<label>$LOCALIZE[19135]</label>
 			</control>
 			<control type="edit" id="14">
 				<description>Start Date</description>
-				<include content="CommonButton"/>
+				<include content="ContextButton"/>
 				<label>$LOCALIZE[19128]</label>
 			</control>
 			<control type="edit" id="15">
 				<description>Stop Date</description>
-				<include content="CommonButton"/>
+				<include content="ContextButton"/>
 				<label>$LOCALIZE[19129]</label>
 			</control>
 			<control type="spincontrolex" id="18">
 				<description>Genre</description>
-				<include content="CommonButton"/>
+				<include content="ContextButton"/>
 				<label>$LOCALIZE[515]</label>
 			</control>
 			<control type="radiobutton" id="20">
 				<description>Include unknown Genres</description>
-				<include content="CommonButton"/>
+				<include content="ContextButton"/>
 				<label>$LOCALIZE[19132]</label>
 			</control>
 			<control type="radiobutton" id="22">
 				<description>FTA only</description>
-				<include content="CommonButton"/>
+				<include content="ContextButton"/>
 				<label>$LOCALIZE[19123]</label>
 			</control>
 			<control type="radiobutton" id="24">
 				<description>Ignore Timers</description>
-				<include content="CommonButton"/>
+				<include content="ContextButton"/>
 				<label>$LOCALIZE[19124]</label>
 			</control>
 			<control type="spincontrolex" id="12">
 				<description>Min Duration</description>
-				<include content="CommonButton"/>
+				<include content="ContextButton"/>
 				<label>$LOCALIZE[19130]</label>
 			</control>
 			<control type="spincontrolex" id="13">
 				<description>Max Duration</description>
-				<include content="CommonButton"/>
+				<include content="ContextButton"/>
 				<label>$LOCALIZE[19131]</label>
 			</control>
 			<control type="edit" id="16">
 				<description>Start time</description>
-				<include content="CommonButton"/>
+				<include content="ContextButton"/>
 				<label>$LOCALIZE[19126]</label>
 			</control>
 			<control type="edit" id="17">
 				<description>Stop time</description>
-				<include content="CommonButton"/>
+				<include content="ContextButton"/>
 				<label>$LOCALIZE[19127]</label>
 			</control>
 			<control type="radiobutton" id="19">
 				<description>avoid repeats</description>
-				<include content="CommonButton"/>
+				<include content="ContextButton"/>
 				<label>$LOCALIZE[19121]</label>
 			</control>
 			<control type="spincontrolex" id="21">
 				<description>Groups</description>
-				<include content="CommonButton"/>
+				<include content="ContextButton"/>
 				<label>$LOCALIZE[19141]</label>
 			</control>
 			<control type="spincontrolex" id="23">
 				<description>Channels</description>
-				<include content="CommonButton"/>
+				<include content="ContextButton"/>
 				<label>$LOCALIZE[19148]</label>
 			</control>
 			<control type="radiobutton" id="27">
 				<description>Ignore Recordings</description>
-				<include content="CommonButton"/>
+				<include content="ContextButton"/>
 				<label>$LOCALIZE[19125]</label>
 			</control>
 			<control type="group" id="1001">
@@ -117,7 +111,7 @@
 				<control type="image">
 					<width>100%</width>
 					<height>70</height>
-					<texture border="10" colordiffuse="panel">common/menu_back.png</texture>
+					<texture border="65,0,65,0" colordiffuse="context_color">dialogs/context/middle.png</texture>
 				</control>
 				<control type="grouplist" id="2000">
 					<width>100%</width>
@@ -132,23 +126,26 @@
 						<include>DarkGreyButton</include>
 						<label>$LOCALIZE[137]</label>
 						<onup>SetFocus(27)</onup>
+						<ondown>SetFocus(9)</ondown>
 					</control>
 					<control type="button" id="28">
 						<include>DarkGreyButton</include>
 						<label>$LOCALIZE[10035]</label>
 						<onup>SetFocus(27)</onup>
+						<ondown>SetFocus(9)</ondown>
 					</control>
 					<control type="button" id="25">
 						<include>DarkGreyButton</include>
 						<label>$LOCALIZE[222]</label>
 						<onup>SetFocus(27)</onup>
+						<ondown>SetFocus(9)</ondown>
 					</control>
 				</control>
 			</control>
 			<control type="image">
 				<width>100%</width>
-				<height>10</height>
-				<texture border="10" colordiffuse="panel">common/menu_bottom.png</texture>
+				<height>61</height>
+				<texture border="65,0,65,0" colordiffuse="context_color">dialogs/context/bottom.png</texture>
 			</control>
 		</control>
 	</controls>

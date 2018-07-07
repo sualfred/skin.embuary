@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+	<!-- Color theme -->
+	<variable name="SkinTheme">
+		<value condition="String.IsEqual(Skin.CurrentColourTheme,Blue Radiance)">Blue Radiance</value>
+		<value>Default</value>
+	</variable>
 	<!-- Search -->
 	<variable name="EmbyCon.SearchMovies">
 		<value condition="!String.IsEmpty(Skin.String(CustomSearchTerm)) + System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?item_type=Movie&amp;mode=NEW_SEARCH&amp;query=$INFO[Skin.String(CustomSearchTerm)]</value>
@@ -136,7 +141,7 @@
 	</variable>
 	<!-- Embcon widget vars -->
 	<variable name="EmbyConLabel">
-		<value condition="!Skin.HasSetting(HideEmbyConLabel)"> [COLOR FF505050](EmbyCon)[/COLOR]</value>
+		<value condition="!Skin.HasSetting(HideEmbyConLabel)"> [COLOR text_sublabel](EmbyCon)[/COLOR]</value>
 	</variable>
 	<variable name="EmbyCon_RecentEpisodes_Mainlabel">
 		<value condition="!String.IsEmpty(ListItem.Episode)">$INFO[ListItem.TVShowTitle]</value>
@@ -206,7 +211,9 @@
 		<value condition="!String.IsEmpty(Container.ShowTitle)">$INFO[Container.ShowTitle]</value>
 		<value condition="Window.IsVisible(MyPVRGuide.xml)">$LOCALIZE[19069]</value>
 		<value condition="Window.IsVisible(MyPVRRecordings.xml)">$LOCALIZE[19017]</value>
+		<value condition="Window.IsVisible(MyPVRSearch.xml)">$LOCALIZE[19142]</value>
 		<value condition="!String.IsEmpty(Container.Foldername) + String.StartsWith(Container.Folderpath,plugin://) + !String.StartsWith(Container.Folderpath,plugin://plugin.video.emby)">$INFO[Container.Foldername]</value>
+		<value condition="String.StartsWith(Container.Folderpath,videodb://movies/sets/)">$INFO[Container.Foldername]</value>
 		<value condition="Container.Content(sets)">$LOCALIZE[31169]</value>
 		<value condition="Container.Content(movies)">$LOCALIZE[342]</value>
 		<value condition="Container.Content(tvshows)">$LOCALIZE[20343]</value>
@@ -316,7 +323,7 @@
 		<value condition="!String.StartsWith(ListItem.Icon,Default)">$INFO[ListItem.Icon]</value>
 	</variable>
 	<variable name="IconEpisodeThumb">
-		<value condition="Skin.HasSetting(HideUnwatchedThumbs) + ![Integer.IsLess(ListItem.Property(UnWatchedEpisodes),1) + !String.IsEqual(ListItem.Overlay,OverlayUnwatched.png) + [String.IsEqual(ListItem.Overlay,OverlayWatched.png) | Integer.IsGreaterOrEqual(ListItem.PlayCount,1)]]">items/unwatched.jpg</value>
+		<value condition="Skin.HasSetting(HideUnwatchedThumbs) + ![Integer.IsLess(ListItem.Property(UnWatchedEpisodes),1) + !String.IsEqual(ListItem.Overlay,OverlayUnwatched.png) + [String.IsEqual(ListItem.Overlay,OverlayWatched.png) | Integer.IsGreaterOrEqual(ListItem.PlayCount,1)]]">special://skin/extras/themes/$VAR[SkinTheme]/unwatched.jpg</value>
 		<value>$INFO[ListItem.Art(thumb)]</value>
 	</variable>
 	<variable name="IconPoster">
@@ -406,12 +413,12 @@
 	<variable name="ListItemEpisodeName">
 		<value condition="!String.IsEmpty(ListItem.EpisodeName)">$INFO[ListItem.EpisodeName]</value>
 		<value condition="!String.IsEmpty(ListItem.Genre) + !Window.IsVisible(pvrguideinfo) + !Control.IsVisible(57)">$LOCALIZE[515]: $INFO[ListItem.Genre]</value>
-		<value>[COLOR softgrey]$LOCALIZE[31156][/COLOR]</value>
+		<value>[COLOR text_sublabel]$LOCALIZE[31156][/COLOR]</value>
 	</variable>
 	<variable name="PlayerEpisodeName">
 		<value condition="!String.IsEmpty(VideoPlayer.EpisodeName)">$INFO[VideoPlayer.EpisodeName]</value>
 		<value condition="!String.IsEmpty(VideoPlayer.Genre)">$LOCALIZE[515]: $INFO[VideoPlayer.Genre]</value>
-		<value>[COLOR softgrey]$LOCALIZE[31156][/COLOR]</value>
+		<value>[COLOR text_sublabel]$LOCALIZE[31156][/COLOR]</value>
 	</variable>
 	<variable name="PlayerDiscArt">
 		<value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.Player.Art.DiscArt))">$INFO[Window(Home).Property(SkinHelper.Player.Art.DiscArt)]</value>

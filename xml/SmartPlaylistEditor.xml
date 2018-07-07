@@ -6,7 +6,7 @@
 		<include>Background</include>
 		<control type="group">
 			<include>Window_OpenClose</include>
-			<top>58</top>
+			<centertop>50%</centertop>
 			<!-- left col -->
 			<control type="grouplist">
 				<left>135</left>
@@ -25,29 +25,16 @@
 						<font>Reg24</font>
 						<aligny>center</aligny>
 						<textoffsetx>5</textoffsetx>
+						<textcolor>text_headline</textcolor>
 					</control>
-					<control type="image">
-						<width>100%</width>
-						<top>45</top>
-						<height>2</height>
-						<texture colordiffuse="lightgrey">common/white.jpg</texture>
-						<aspectratio>stretch</aspectratio>
-					</control>
-					<control type="image">
-						<width>100%</width>
-						<top>45</top>
-						<height>2</height>
-						<texture colordiffuse="emby">common/white.jpg</texture>
-						<aspectratio>stretch</aspectratio>
-						<include>WindowOpen_GreenBar</include>
-					</control>
+					<include>GreenBar</include>
 				</control>
 				<!-- list -->
 				<control type="group">
 					<height>520</height>
 					<control type="image">
 						<height>520</height>
-						<texture colordiffuse="thumb_background">common/white.jpg</texture>
+						<texture colordiffuse="panel_background">common/white.jpg</texture>
 						<aspectratio>stretch</aspectratio>
 					</control>
 					<control type="grouplist" id="100">
@@ -102,7 +89,7 @@
 						<orientation>vertical</orientation>
 						<showonepage>false</showonepage>
 						<texturesliderbackground colordiffuse="00ffffff">common/white.jpg</texturesliderbackground>
-						<texturesliderbar colordiffuse="softgrey">common/white.jpg</texturesliderbar>
+						<texturesliderbar colordiffuse="scrollbar_slider">common/white.jpg</texturesliderbar>
 					</control>
 				</control>
 				<!-- Button -->
@@ -145,30 +132,17 @@
 						<font>Reg24</font>
 						<aligny>center</aligny>
 						<textoffsetx>5</textoffsetx>
+						<textcolor>text_headline</textcolor>
 						<label>$LOCALIZE[31060]</label>
 					</control>
-					<control type="image">
-						<width>100%</width>
-						<top>45</top>
-						<height>2</height>
-						<texture colordiffuse="lightgrey">common/white.jpg</texture>
-						<aspectratio>stretch</aspectratio>
-					</control>
-					<control type="image">
-						<width>100%</width>
-						<top>45</top>
-						<height>2</height>
-						<texture colordiffuse="emby">common/white.jpg</texture>
-						<aspectratio>stretch</aspectratio>
-						<include>WindowOpen_GreenBar</include>
-					</control>
+					<include>GreenBar</include>
 				</control>
 				<!-- list -->
 				<control type="group">
 					<height>520</height>
 					<control type="image">
 						<height>520</height>
-						<texture colordiffuse="thumb_background">common/white.jpg</texture>
+						<texture colordiffuse="panel_background">common/white.jpg</texture>
 						<aspectratio>stretch</aspectratio>
 					</control>
 					<control type="list" id="10">
@@ -189,13 +163,14 @@
 								<aligny>center</aligny>
 								<font>Reg24</font>
 								<label>$INFO[ListItem.Label]</label>
+								<textcolor>panel_textcolor</textcolor>
 							</control>
 						</itemlayout>
 						<focusedlayout height="50" width="800">
 							<control type="image">
 								<width>100%</width>
 								<height>50</height>
-								<texture colordiffuse="list_hover">common/white.jpg</texture>
+								<texture colordiffuse="panel_focus">common/white.jpg</texture>
 								<visible>Control.HasFocus(10)</visible>
 							</control>
 							<control type="label">
@@ -204,6 +179,7 @@
 								<height>50</height>
 								<aligny>center</aligny>
 								<font>Reg24</font>
+								<textcolor>panel_textcolor</textcolor>
 								<label>$INFO[ListItem.Label]</label>
 							</control>
 						</focusedlayout>
@@ -216,7 +192,7 @@
 						<orientation>vertical</orientation>
 						<showonepage>false</showonepage>
 						<texturesliderbackground colordiffuse="00ffffff">common/white.jpg</texturesliderbackground>
-						<texturesliderbar colordiffuse="softgrey">common/white.jpg</texturesliderbar>
+						<texturesliderbar colordiffuse="scrollbar_slider">common/white.jpg</texturesliderbar>
 					</control>
 				</control>
 				<control type="textbox">

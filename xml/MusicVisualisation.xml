@@ -92,7 +92,7 @@
 						<left>29</left>
 						<width>250</width>
 						<height>250</height>
-						<texture colordiffuse="thumb_background" diffuse="views/player/mask_square.png">common/white.jpg</texture>
+						<texture colordiffuse="thumb_background_player" diffuse="views/player/mask_square.png">common/white.jpg</texture>
 						<aspectratio scalediffuse="false">stretch</aspectratio>
 						<visible>!String.IsEmpty(MusicPlayer.Cover) + !String.StartsWith(MusicPlayer.Cover,Default)</visible>
 					</control>
@@ -130,7 +130,7 @@
 						<include>PlayerProgressDimension</include>
 						<info>Player.Progress</info>
 						<texturebg colordiffuse="00ffffff">common/white.jpg</texturebg>
-						<midtexture colordiffuse="emby">common/white.jpg</midtexture>
+						<midtexture colordiffuse="player_osd_color">common/white.jpg</midtexture>
 					</control>
 				</control>
 				<!-- Label section -->
@@ -146,7 +146,7 @@
 						<height>30</height>
 						<aligny>center</aligny>
 						<font>med24</font>
-												<label>$VAR[PlayerFullLabel]   </label>
+						<label>$VAR[PlayerFullLabel]   </label>
 					</control>
 					<control type="label" id="99">
 						<width>auto</width>
@@ -154,7 +154,7 @@
 						<aligny>center</aligny>
 						<label>$INFO[MusicPlayer.Codec]   </label>
 						<font>reg24</font>
-												<visible>!String.IsEmpty(MusicPlayer.Codec)</visible>
+						<visible>!String.IsEmpty(MusicPlayer.Codec)</visible>
 					</control>
 					<control type="label" id="99">
 						<width>auto</width>
@@ -162,7 +162,7 @@
 						<aligny>center</aligny>
 						<label>$INFO[MusicPlayer.Bitrate,, kbit/s]   </label>
 						<font>reg24</font>
-												<visible>!String.IsEmpty(MusicPlayer.Bitrate)</visible>
+						<visible>!String.IsEmpty(MusicPlayer.Bitrate)</visible>
 					</control>
 				</control>
 				<control type="grouplist" id="99">
@@ -178,7 +178,7 @@
 						<aligny>center</aligny>
 						<font>reg24</font>
 						<textcolor>softgrey</textcolor>
-												<label fallback="19055">$INFO[MusicPlayer.Album,$LOCALIZE[558]: ]$INFO[MusicPlayer.Year, (,)]</label>
+						<label fallback="19055">$INFO[MusicPlayer.Album,$LOCALIZE[558]: ]$INFO[MusicPlayer.Year, (,)]</label>
 					</control>
 					<control type="label" id="99">
 						<width>790</width>
@@ -187,7 +187,7 @@
 						<aligny>center</aligny>
 						<font>reg24</font>
 						<textcolor>softgrey</textcolor>
-												<label>$INFO[MusicPlayer.PlaylistPosition,$LOCALIZE[554] , / ]$INFO[MusicPlayer.PlaylistLength]</label>
+						<label>$INFO[MusicPlayer.PlaylistPosition,$LOCALIZE[554] , / ]$INFO[MusicPlayer.PlaylistLength]</label>
 						<visible>Integer.IsGreater(MusicPlayer.PlaylistLength,0)</visible>
 					</control>
 				</control>
