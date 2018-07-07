@@ -3,11 +3,9 @@
 	<defaultcontrol always="true">100</defaultcontrol>
 	<include>PropertyIncludes</include>
 	<controls>
-		<control type="image">
-			<include>Visible_Fade</include>
-			<include>FullscreenDimensions</include>
-			<texture colordiffuse="background">common/white.jpg</texture>
-		</control>
+		<include content="DiffuseMask">
+			<param name="color">background_diffuse</param>
+		</include>
 		<control type="grouplist">
 			<include>Dialog_PopupOpenClose</include>
 			<centerleft>50%</centerleft>
@@ -25,6 +23,7 @@
 					<height>48</height>
 					<ondown>10</ondown>
 					<font>Reg24</font>
+					<textcolor>text_headline</textcolor>
 					<focusedcolor>emby</focusedcolor>
 					<hinttext>[COLOR text_white]$LOCALIZE[21899][/COLOR]</hinttext>
 					<onup>noop</onup>
@@ -36,14 +35,14 @@
 					<width>100%</width>
 					<top>45</top>
 					<height>2</height>
-					<texture colordiffuse="lightgrey">common/white.jpg</texture>
+					<texture colordiffuse="text_headline">common/white.jpg</texture>
 					<aspectratio>stretch</aspectratio>
 				</control>
 				<control type="image">
 					<width>100%</width>
 					<top>45</top>
 					<height>2</height>
-					<texture colordiffuse="emby">common/white.jpg</texture>
+					<texture colordiffuse="headline_line">common/white.jpg</texture>
 					<aspectratio>stretch</aspectratio>
 					<include>WindowOpen_GreenBar</include>
 				</control>
@@ -53,7 +52,7 @@
 				<height>270</height>
 				<control type="image">
 					<height>270</height>
-					<texture colordiffuse="thumb_background">common/white.jpg</texture>
+					<texture colordiffuse="panel_background">common/white.jpg</texture>
 					<aspectratio>stretch</aspectratio>
 				</control>
 				<control type="list" id="10">
@@ -73,6 +72,7 @@
 							<autoscroll>false</autoscroll>
 							<align>center</align>
 							<aligny>center</aligny>
+							<textcolor>panel_textcolor</textcolor>
 							<label>$INFO[ListItem.Label]</label>
 						</control>
 					</itemlayout>
@@ -80,7 +80,7 @@
 						<control type="image">
 							<width>100%</width>
 							<height>50</height>
-							<texture colordiffuse="list_hover">common/white.jpg</texture>
+							<texture colordiffuse="panel_focus">common/white.jpg</texture>
 						</control>
 						<control type="label">
 							<width>100%</width>
@@ -89,6 +89,7 @@
 							<autoscroll>false</autoscroll>
 							<align>center</align>
 							<aligny>center</aligny>
+							<textcolor>panel_textcolor</textcolor>
 							<label>$INFO[ListItem.Label]</label>
 						</control>
 					</focusedlayout>

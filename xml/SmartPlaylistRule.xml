@@ -3,17 +3,15 @@
 	<defaultcontrol>100</defaultcontrol>
 	<include>PropertyIncludes</include>
 	<controls>
-		<include content="DiffuseMask">
-			<param name="visible">true</param>
-		</include>
+		<include content="DiffuseMask"/>
 		<control type="group">
 			<visible>!Window.IsVisible(selectdialog)</visible>
 			<include>Dialog_PopupOpenClose</include>
 			<include>Visible_PopupOpenClose</include>
 			<centerleft>50%</centerleft>
-			<width>484</width>
+			<width>584</width>
 			<centertop>50%</centertop>
-			<height>970</height>
+			<height>982</height>
 			<control type="grouplist" id="100">
 				<orientation>vertical</orientation>
 				<height>auto</height>
@@ -24,14 +22,14 @@
 				<usecontrolcoords>true</usecontrolcoords>
 				<control type="image">
 					<width>100%</width>
-					<height>10</height>
-					<texture border="5" colordiffuse="panel">common/menu_top.png</texture>
+					<height>61</height>
+					<texture border="65,0,65,0" colordiffuse="context_color">dialogs/context/top.png</texture>
 				</control>
 				<control type="button" id="15">
-					<include content="CommonButton"/>
+					<include content="ContextButton"/>
 				</control>
 				<control type="button" id="16">
-					<include content="CommonButton"/>
+					<include content="ContextButton"/>
 					<ondown>17</ondown>
 				</control>
 				<control type="group" id="101">
@@ -40,7 +38,7 @@
 					<control type="image">
 						<width>100%</width>
 						<height>50</height>
-						<texture border="10" colordiffuse="panel">common/menu_back.png</texture>
+						<texture border="65,0,65,0" colordiffuse="context_color">dialogs/context/middle.png</texture>
 					</control>
 					<control type="grouplist" >
 						<height>50</height>
@@ -50,10 +48,10 @@
 						<ondown>noop</ondown>
 						<orientation>horizontal</orientation>
 						<control type="edit" id="17">
-							<width>414</width>
+							<width>454</width>
 							<include>NoTextures</include>
 							<include>CommonButton</include>
-							<hinttext>$LOCALIZE[31008]</hinttext>
+							<hinttext>[COLOR disabled]$LOCALIZE[31008][/COLOR]</hinttext>
 							<focusedcolor>emby</focusedcolor>
 							<onup>16</onup>
 							<ondown>18</ondown>
@@ -76,7 +74,7 @@
 					<control type="image">
 						<width>100%</width>
 						<height>62</height>
-						<texture border="10" colordiffuse="panel">common/menu_back.png</texture>
+						<texture border="65,0,65,0" colordiffuse="context_color">dialogs/context/middle.png</texture>
 					</control>
 					<control type="grouplist">
 						<top>10</top>
@@ -108,8 +106,8 @@
 				</control>
 				<control type="image">
 					<width>100%</width>
-					<height>10</height>
-					<texture border="5" colordiffuse="panel">common/menu_bottom.png</texture>
+					<height>61</height>
+					<texture border="65,0,65,0" colordiffuse="context_color">dialogs/context/bottom.png</texture>
 				</control>
 			</control>
 		</control>
