@@ -4,13 +4,12 @@
 	<zorder>999</zorder>
 	<include>PropertyIncludes</include>
 	<controls>
+		<!-- Hidden Control-->
 		<control type="progress" id="32">
 			<include>HiddenObject</include>
 		</control>
 		<!-- Dialog -->
 		<control type="group">
-			<top>70</top>
-			<right>70</right>
 			<animation type="WindowOpen" reversible="false">
 				<effect type="slide" start="0,-200" end="0,0" delay="100" tween="circle" easin="out" time="400" />
 				<effect type="fade" delay="160" end="100" time="400" />
@@ -19,44 +18,26 @@
 				<effect type="slide" start="0,0" end="0,-200" easing="in" tween="circle" easin="out" time="400" />
 				<effect type="fade" start="100" end="0" time="400" />
 			</animation>
-			<width>500</width>
-			<height>145</height>
+			<width>550</width>
+			<height>240</height>
+			<right>30</right>
+			<top>30</top>
 			<!-- Background image -->
 			<control type="image">
-				<texture colordiffuse="panel" border="10">common/dialog_back.png</texture>
-			</control>
-			<!-- Heading -->
-			<control id="10" type="label">
-				<top>15</top>
-				<left>20</left>
-				<right>20</right>
-				<font>Med24</font>
-				<align>center</align>
-				<aligny>top</aligny>
-			</control>
-			<!-- Details -->
-			<control id="12" type="label">
-				<bottom>15</bottom>
-				<height>25</height>
-				<left>20</left>
-				<right>20</right>
-				<font>Reg22</font>
-				<align>center</align>
-				<aligny>top</aligny>
-				<scroll>true</scroll>
+				<texture colordiffuse="context_color" border="65">dialogs/notification/bg.png</texture>
 			</control>
 			<!-- Slider -->
 			<control type="group">
 				<centertop>50%</centertop>
-				<left>20</left>
-				<right>20</right>
+				<left>80</left>
+				<right>80</right>
 				<height>26</height>
 				<control type="image">
 					<top>8</top>
 					<description>Slider</description>
 					<width>100%</width>
 					<height>10</height>
-					<texture colordiffuse="background_diffuse">common/white.jpg</texture>
+					<texture colordiffuse="scrollbar_background">common/white.jpg</texture>
 				</control>
 				<control type="slider" id="11">
 					<top>5</top>
@@ -67,6 +48,28 @@
 					<onleft>11</onleft>
 					<onright>11</onright>
 				</control>
+			</control>
+			<!-- Heading -->
+			<control id="10" type="label">
+				<top>65</top>
+				<left>80</left>
+				<right>80</right>
+				<font>Med24</font>
+				<align>center</align>
+				<aligny>top</aligny>
+				<textcolor>context_textcolor</textcolor>
+			</control>
+			<!-- Details -->
+			<control id="12" type="label">
+				<bottom>65</bottom>
+				<height>25</height>
+				<left>80</left>
+				<right>80</right>
+				<font>Reg22</font>
+				<align>center</align>
+				<aligny>top</aligny>
+				<scroll>true</scroll>
+				<textcolor>context_textcolor</textcolor>
 			</control>
 		</control>
 	</controls>
