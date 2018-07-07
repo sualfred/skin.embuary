@@ -4,117 +4,6 @@
 	<defaultcontrol always="true">603</defaultcontrol>
 	<include>PropertyIncludes</include>
 	<controls>
-		<!-- Menu -->
-		<control type="group">
-			<visible>ControlGroup(700).HasFocus + !Window.IsVisible(DialogSettings.xml) + !Window.IsVisible(playerprocessinfo)</visible>
-			<include>Visible_PopupOpenClose</include>
-			<centerleft>50%</centerleft>
-			<width>384</width>
-			<centertop>50%</centertop>
-			<height>970</height>
-			<control type="grouplist" id="700">
-				<orientation>vertical</orientation>
-				<height>auto</height>
-				<align>center</align>
-				<itemgap>0</itemgap>
-				<onright>close</onright>
-				<onleft>close</onleft>
-				<onback>612</onback>
-				<usecontrolcoords>true</usecontrolcoords>
-				<control type="image">
-					<width>100%</width>
-					<height>10</height>
-					<texture border="5" colordiffuse="panel">common/menu_top.png</texture>
-				</control>
-				<control type="button" id="701">
-					<include content="CommonButton"/>
-					<label>$LOCALIZE[13395]</label>
-					<onclick>ActivateWindow(osdvideosettings)</onclick>
-				</control>
-				<control type="button" id="702">
-					<include content="CommonButton"/>
-					<label>$LOCALIZE[31039]</label>
-					<onclick>ActivateWindow(osdaudiosettings)</onclick>
-				</control>
-				<control type="radiobutton" id="703">
-					<include content="CommonButton"/>
-					<label>$LOCALIZE[590]</label>
-					<selected>Playlist.IsRandom</selected>
-					<onclick>PlayerControl(random)</onclick>
-					<visible>Integer.IsGreater(Playlist.Length(video),1)</visible>
-				</control>
-				<control type="button" id="704">
-					<include content="CommonButton"/>
-					<label>$LOCALIZE[486]</label>
-					<label2>[COLOR lightgrey]$VAR[PlaylistRepeatButtonLabel][/COLOR]</label2>
-					<onclick>PlayerControl(Repeat)</onclick>
-					<visible>Integer.IsGreater(Playlist.Length(video),1)</visible>
-				</control>
-				<control type="button" id="705">
-					<include content="CommonButton"/>
-					<label>$LOCALIZE[31041]</label>
-					<onclick>ActivateWindow(playerprocessinfo)</onclick>
-				</control>
-				<control type="image">
-					<width>100%</width>
-					<height>10</height>
-					<texture border="5" colordiffuse="panel">common/menu_bottom.png</texture>
-				</control>
-			</control>
-		</control>
-		<control type="group">
-			<visible>ControlGroup(800).HasFocus + !Window.IsVisible(DialogSettings.xml) + !Window.IsVisible(playerprocessinfo)</visible>
-			<include>Visible_PopupOpenClose</include>
-			<centerleft>50%</centerleft>
-			<width>384</width>
-			<centertop>50%</centertop>
-			<height>970</height>
-			<control type="grouplist" id="800">
-				<orientation>vertical</orientation>
-				<height>auto</height>
-				<align>center</align>
-				<itemgap>0</itemgap>
-				<onright>close</onright>
-				<onleft>close</onleft>
-				<onback>609</onback>
-				<usecontrolcoords>true</usecontrolcoords>
-				<control type="image">
-					<width>100%</width>
-					<height>10</height>
-					<texture border="5" colordiffuse="panel">common/menu_top.png</texture>
-				</control>
-				<control type="button" id="803">
-					<include content="CommonButton"/>
-					<label>$LOCALIZE[19023]</label>
-					<onclick>Dialog.Close(videoosd)</onclick>
-					<onclick>ActivateWindow(pvrosdchannels)</onclick>
-				</control>
-				<control type="button" id="804">
-					<include content="CommonButton"/>
-					<label>$LOCALIZE[31071]</label>
-					<onclick>Dialog.Close(videoosd)</onclick>
-					<onclick>ActivateWindow(PVRChannelGuide)</onclick>
-				</control>
-				<control type="button" id="802">
-					<include content="CommonButton"/>
-					<label>$LOCALIZE[4]</label>
-					<onclick>Dialog.Close(videoosd)</onclick>
-					<onclick>ActivateWindow(tvguide)</onclick>
-				</control>
-				<control type="button" id="801">
-					<include content="CommonButton"/>
-					<label>$LOCALIZE[14233]</label>
-					<onclick>Dialog.Close(videoosd)</onclick>
-					<onclick>ActivateWindow(Teletext)</onclick>
-					<visible>VideoPlayer.HasTeletext</visible>
-				</control>
-				<control type="image">
-					<width>100%</width>
-					<height>10</height>
-					<texture border="5" colordiffuse="panel">common/menu_bottom.png</texture>
-				</control>
-			</control>
-		</control>
 		<!--Player Controls-->
 		<control type="group" id="1">
 			<visible>!Window.IsVisible(sliderdialog)</visible>
@@ -170,7 +59,7 @@
 					<colordiffuse>$VAR[PlayerRecordIconColor]</colordiffuse>
 					<include content="PlayerButtons">
 						<param name="type" value="rec"/>
-					</include>					
+					</include>
 					<onclick>PVR.ToggleRecordPlayingChannel</onclick>
 					<selected>PVR.IsRecordingPlayingChannel</selected>
 					<visible>PVR.CanRecordPlayingChannel</visible>
@@ -230,6 +119,121 @@
 					<width>10</width>
 				</control>
 				<include>PlayerBottomLabels</include>
+			</control>
+		</control>
+		<!-- Diffuse -->
+		<include content="DiffuseMask">
+			<param name="visible">[ControlGroup(700).HasFocus | ControlGroup(800).HasFocus | ControlGroup(900).HasFocus]</param>
+		</include>
+		<!-- Menu -->
+		<control type="group">
+			<visible>ControlGroup(700).HasFocus + !Window.IsVisible(DialogSettings.xml) + !Window.IsVisible(playerprocessinfo)</visible>
+			<include>Visible_PopupOpenClose</include>
+			<centerleft>50%</centerleft>
+			<width>500</width>
+			<centertop>50%</centertop>
+			<height>982</height>
+			<control type="grouplist" id="700">
+				<orientation>vertical</orientation>
+				<height>auto</height>
+				<align>center</align>
+				<itemgap>0</itemgap>
+				<onright>close</onright>
+				<onleft>close</onleft>
+				<onback>612</onback>
+				<usecontrolcoords>true</usecontrolcoords>
+				<control type="image">
+					<width>100%</width>
+					<height>61</height>
+					<texture border="65,0,65,0" colordiffuse="context_color">dialogs/context/top.png</texture>
+				</control>
+				<control type="button" id="701">
+					<include content="ContextButton"/>
+					<label>$LOCALIZE[13395]</label>
+					<onclick>ActivateWindow(osdvideosettings)</onclick>
+				</control>
+				<control type="button" id="702">
+					<include content="ContextButton"/>
+					<label>$LOCALIZE[31039]</label>
+					<onclick>ActivateWindow(osdaudiosettings)</onclick>
+				</control>
+				<control type="radiobutton" id="703">
+					<include content="ContextButton"/>
+					<label>$LOCALIZE[590]</label>
+					<selected>Playlist.IsRandom</selected>
+					<onclick>PlayerControl(random)</onclick>
+					<visible>Integer.IsGreater(Playlist.Length(video),1)</visible>
+				</control>
+				<control type="button" id="704">
+					<include content="ContextButton"/>
+					<label>$LOCALIZE[486]</label>
+					<label2>[COLOR lightgrey]$VAR[PlaylistRepeatButtonLabel][/COLOR]</label2>
+					<onclick>PlayerControl(Repeat)</onclick>
+					<visible>Integer.IsGreater(Playlist.Length(video),1)</visible>
+				</control>
+				<control type="button" id="705">
+					<include content="ContextButton"/>
+					<label>$LOCALIZE[31041]</label>
+					<onclick>ActivateWindow(playerprocessinfo)</onclick>
+				</control>
+				<control type="image">
+					<width>100%</width>
+					<height>61</height>
+					<texture border="65,0,65,0" colordiffuse="context_color">dialogs/context/bottom.png</texture>
+				</control>
+			</control>
+		</control>
+		<control type="group">
+			<visible>ControlGroup(800).HasFocus + !Window.IsVisible(DialogSettings.xml) + !Window.IsVisible(playerprocessinfo)</visible>
+			<include>Visible_PopupOpenClose</include>
+			<centerleft>50%</centerleft>
+			<width>500</width>
+			<centertop>50%</centertop>
+			<height>982</height>
+			<control type="grouplist" id="800">
+				<orientation>vertical</orientation>
+				<height>auto</height>
+				<align>center</align>
+				<itemgap>0</itemgap>
+				<onright>close</onright>
+				<onleft>close</onleft>
+				<onback>609</onback>
+				<usecontrolcoords>true</usecontrolcoords>
+				<control type="image">
+					<width>100%</width>
+					<height>61</height>
+					<texture border="65,0,65,0" colordiffuse="context_color">dialogs/context/top.png</texture>
+				</control>
+				<control type="button" id="803">
+					<include content="ContextButton"/>
+					<label>$LOCALIZE[19023]</label>
+					<onclick>Dialog.Close(videoosd)</onclick>
+					<onclick>ActivateWindow(pvrosdchannels)</onclick>
+				</control>
+				<control type="button" id="804">
+					<include content="ContextButton"/>
+					<label>$LOCALIZE[31071]</label>
+					<onclick>Dialog.Close(videoosd)</onclick>
+					<onclick>ActivateWindow(PVRChannelGuide)</onclick>
+				</control>
+				<control type="button" id="802">
+					<include content="ContextButton"/>
+					<label>$LOCALIZE[4]</label>
+					<onclick>Dialog.Close(videoosd)</onclick>
+					<onclick>ActivateWindow(tvguide)</onclick>
+				</control>
+				<control type="button" id="801">
+					<include content="ContextButton"/>
+					<label>$LOCALIZE[14233]</label>
+					<onclick>Dialog.Close(videoosd)</onclick>
+					<onclick>ActivateWindow(Teletext)</onclick>
+					<visible>VideoPlayer.HasTeletext</visible>
+				</control>
+				<control type="image">
+					<width>100%</width>
+					<height>61</height>
+					<texture border="65,0,65,0" colordiffuse="context_color">dialogs/context/bottom.png</texture>
+				</control>
 			</control>
 		</control>
 	</controls>

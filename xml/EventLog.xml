@@ -24,40 +24,26 @@
 					<font>Reg24</font>
 					<aligny>center</aligny>
 					<textoffsetx>5</textoffsetx>
-					<textcolor>text_white</textcolor>
+					<textcolor>text_headline</textcolor>
 					<label>$LOCALIZE[14111]</label>
 				</control>
-				<control type="image">
-					<width>100%</width>
-					<top>45</top>
-					<height>2</height>
-					<texture colordiffuse="lightgrey">common/white.jpg</texture>
-					<aspectratio>stretch</aspectratio>
-				</control>
-				<control type="image">
-					<width>100%</width>
-					<top>45</top>
-					<height>2</height>
-					<texture colordiffuse="emby">common/white.jpg</texture>
-					<aspectratio>stretch</aspectratio>
-					<include>WindowOpen_GreenBar</include>
-				</control>
+				<include>GreenBar</include>
 			</control>
 			<!-- list -->
-			<control type="group">
+			<control type="group" id="100">
 				<height>820</height>
 				<control type="image">
 					<height>820</height>
-					<texture colordiffuse="thumb_background">common/white.jpg</texture>
+					<texture colordiffuse="panel_background">common/white.jpg</texture>
 					<aspectratio>stretch</aspectratio>
 				</control>
 				<control type="list" id="50">
 					<centerleft>50%</centerleft>
 					<top>10</top>
 					<height>800</height>
-					<onup>12</onup>
-					<onleft>5</onleft>
-					<onright>5</onright>
+					<onup>6666</onup>
+					<onleft>900</onleft>
+					<onright>noop</onright>
 					<ondown>100</ondown>
 					<pagecontrol>60</pagecontrol>
 					<scrolltime>200</scrolltime>
@@ -76,16 +62,15 @@
 							<height>75</height>
 							<aligny>center</aligny>
 							<font>Reg24</font>
-							<textcolor>text_white</textcolor>
-							<textshadow>text_shadow</textshadow>
-							<label>$INFO[ListItem.Label]$INFO[ListItem.Property(Event.Description), - ]$INFO[ListItem.Label2,[COLOR softgrey] [,][/COLOR]]</label>
+							<textcolor>panel_textcolor</textcolor>
+							<label>$INFO[ListItem.Label]$INFO[ListItem.Property(Event.Description), - ]$INFO[ListItem.Label2,[COLOR panel_textcolor2] [,][/COLOR]]</label>
 						</control>
 					</itemlayout>
 					<focusedlayout height="75" width="1720">
 						<control type="image">
 							<width>100%</width>
 							<height>75</height>
-							<texture colordiffuse="list_hover">common/white.jpg</texture>
+							<texture colordiffuse="panel_focus">common/white.jpg</texture>
 							<visible>Control.HasFocus(50)</visible>
 						</control>
 						<control type="image">
@@ -102,9 +87,8 @@
 							<height>75</height>
 							<aligny>center</aligny>
 							<font>Reg24</font>
-							<textcolor>text_white</textcolor>
-							<textshadow>text_shadow</textshadow>
-							<label>$INFO[ListItem.Label]$INFO[ListItem.Property(Event.Description), - ]$INFO[ListItem.Label2,[COLOR softgrey] [,][/COLOR]]</label>
+							<textcolor>panel_textcolor</textcolor>
+							<label>$INFO[ListItem.Label]$INFO[ListItem.Property(Event.Description), - ]$INFO[ListItem.Label2,[COLOR panel_textcolor2] [,][/COLOR]]</label>
 						</control>
 					</focusedlayout>
 				</control>
@@ -116,7 +100,7 @@
 					<orientation>vertical</orientation>
 					<showonepage>false</showonepage>
 					<texturesliderbackground colordiffuse="00ffffff">common/white.jpg</texturesliderbackground>
-					<texturesliderbar colordiffuse="softgrey">common/white.jpg</texturesliderbar>
+					<texturesliderbar colordiffuse="scrollbar_slider">common/white.jpg</texturesliderbar>
 				</control>
 			</control>
 		</control>
@@ -130,9 +114,9 @@
 				<visible>ControlGroup(4000).HasFocus</visible>
 				<include>Visible_PopupOpenClose</include>
 				<centerleft>50%</centerleft>
-				<width>384</width>
+				<width>500</width>
 				<centertop>50%</centertop>
-				<height>970</height>
+				<height>982</height>
 				<control type="grouplist" id="4000">
 					<orientation>vertical</orientation>
 					<height>auto</height>
@@ -144,17 +128,23 @@
 					<usecontrolcoords>true</usecontrolcoords>
 					<control type="image" id="4001">
 						<width>100%</width>
-						<height>10</height>
-						<texture border="5" colordiffuse="panel">common/menu_top.png</texture>
+						<height>61</height>
+						<texture border="65,0,65,0" colordiffuse="context_color">dialogs/context/top.png</texture>
 					</control>
-					<control type="spincontrolex" id="3">
-						<include content="CommonButton"/>
-						<label>$LOCALIZE[31066]</label>
+					<control type="button" id="20">
+						<include content="ContextButton"/>
+						<label>$LOCALIZE[19185]</label>
+					</control>
+					<control type="button" id="21">
+						<include content="ContextButton"/>
+					</control>
+					<control type="radiobutton" id="22">
+						<include content="ContextButton"/>
 					</control>
 					<control type="image" id="4002">
 						<width>100%</width>
-						<height>10</height>
-						<texture border="5" colordiffuse="panel">common/menu_bottom.png</texture>
+						<height>61</height>
+						<texture border="65,0,65,0" colordiffuse="context_color">dialogs/context/bottom.png</texture>
 					</control>
 				</control>
 			</control>
