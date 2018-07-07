@@ -90,53 +90,50 @@
 			<texture colordiffuse="background">common/white.jpg</texture>
 		</control>
 		<control type="group">
+			<visible>Player.HasMedia + !Skin.HasSetting(HideBackgroundPlayback) + $EXP[HideBackground]</visible>
 			<control type="videowindow">
 				<include>FullscreenDimensions</include>
-				<visible>Player.HasVideo + !Skin.HasSetting(HideBackgroundPlayback) + $EXP[HideBackground]</visible>
+				<visible>Player.HasVideo</visible>
 			</control>
 			<control type="group">
-				<visible>Player.HasAudio + !Skin.HasSetting(HideBackgroundPlayback) + $EXP[HideBackground]</visible>
+				<visible>Player.HasAudio</visible>
 				<include>MusicBackground</include>
 			</control>
-			<control type="group">
-				<visible>[!Player.HasMedia | Skin.HasSetting(HideBackgroundPlayback)] + !Skin.HasSetting(HideBackground) + !Window.IsVisible(MyPVRguide.xml) + $EXP[HideBackground]</visible>
-				<include>Visible_Fade</include>
-				<control type="image">
-					<include>FullscreenDimensions</include>
-					<texture background="true">$VAR[BackgroundSource]</texture>
-					<fadetime>1000</fadetime>
-					<aspectratio>scale</aspectratio>
-					<visible>!Skin.HasSetting(ShowRandomBackgroundImage)</visible>
-				</control>
-				<control type="multiimage">
-					<include>FullscreenDimensions</include>
-					<imagepath background="true">$INFO[Skin.String(RandomBackgroundImage)]</imagepath>
-					<timeperimage>15000</timeperimage>
-					<fadetime>1000</fadetime>
-					<pauseatend>10000</pauseatend>
-					<randomize>true</randomize>
-					<aspectratio>scale</aspectratio>
-					<visible>Skin.HasSetting(ShowRandomBackgroundImage)</visible>
-				</control>
-			</control>
-			<control type="group">
-				<visible>[Player.HasMedia + !Skin.HasSetting(HideBackgroundPlayback)] | [!Skin.HasSetting(HideBackground) + !Window.IsVisible(MyPVRguide.xml) + $EXP[HideBackground]]</visible>
-				<control type="image">
-					<include>FullscreenDimensions</include>
-					<texture>common/background_vignette.png</texture>
-					<colordiffuse>$VAR[BackgroundColordiffuse]</colordiffuse>
-				</control>
-				<control type="image">
-					<include>FullscreenDimensions</include>
-					<texture>common/vignette.png</texture>
-				</control>
-			</control>
+		</control>
+		<control type="group">
+			<visible>[!Player.HasMedia | Skin.HasSetting(HideBackgroundPlayback)] + !Skin.HasSetting(HideBackground) + !Window.IsVisible(MyPVRguide.xml) + !Window.IsVisible(virtualkeyboard) + $EXP[HideBackground]</visible>
+			<include>Visible_Fade</include>
 			<control type="image">
 				<include>FullscreenDimensions</include>
-				<texture background="true">holiday/winter/frost.png</texture>
-				<aspectratio>stretch</aspectratio>
-				<visible>$EXP[HolidayTheme]</visible>
+				<texture background="true">$VAR[BackgroundSource]</texture>
+				<fadetime>1000</fadetime>
+				<aspectratio>scale</aspectratio>
+				<visible>!Skin.HasSetting(ShowRandomBackgroundImage)</visible>
 			</control>
+			<control type="multiimage">
+				<include>FullscreenDimensions</include>
+				<imagepath background="true">$INFO[Skin.String(RandomBackgroundImage)]</imagepath>
+				<timeperimage>15000</timeperimage>
+				<fadetime>1000</fadetime>
+				<pauseatend>10000</pauseatend>
+				<randomize>true</randomize>
+				<aspectratio>scale</aspectratio>
+				<visible>Skin.HasSetting(ShowRandomBackgroundImage)</visible>
+			</control>
+		</control>
+		<control type="image">
+			<include>FullscreenDimensions</include>
+			<texture>special://skin/extras/themes/$VAR[SkinTheme]/background.png</texture>
+		</control>
+		<control type="image">
+			<include>FullscreenDimensions</include>
+			<texture>special://skin/extras/themes/$VAR[SkinTheme]/vignette.png</texture>
+		</control>
+		<control type="image">
+			<include>FullscreenDimensions</include>
+			<texture background="true">holiday/winter/frost.png</texture>
+			<aspectratio>stretch</aspectratio>
+			<visible>$EXP[HolidayTheme]</visible>
 		</control>
 	</include>
 	<!-- No textures -->
@@ -176,7 +173,7 @@
 		<param name="width">400</param>
 		<param name="left">0</param>
 		<param name="height">100%</param>
-		<param name="color">thumb_background</param>
+		<param name="color">panel_background</param>
 		<definition>
 			<control type="image">
 				<texture colordiffuse="$PARAM[color]">common/white.jpg</texture>
@@ -189,7 +186,7 @@
 		</definition>
 	</include>
 	<!-- Side Menu Button Layout -->
-	<include name="SideMenuButton">
+	<include name="SideButton">
 		<param name="width">100%</param>
 		<param name="icon"></param>
 		<param name="icon_left">55</param>
@@ -212,7 +209,7 @@
 				<control type="image">
 					<height>50</height>
 					<width>$PARAM[width]</width>
-					<texture colordiffuse="panel_hover">common/white.jpg</texture>
+					<texture colordiffuse="sidepanel_focus">common/white.jpg</texture>
 					<aspectratio>stretch</aspectratio>
 					<visible>Control.HasFocus($PARAM[id])</visible>
 				</control>
@@ -223,7 +220,7 @@
 					<aligny>center</aligny>
 					<align>left</align>
 					<font>Material20</font>
-					<textcolor>panel_text</textcolor>
+					<textcolor>sidepanel_textcolor</textcolor>
 					<label>$PARAM[icon]</label>
 				</control>
 				<control type="button" id="$PARAM[id]">
@@ -238,9 +235,9 @@
 					<align>left</align>
 					<aligny>center</aligny>
 					<font>Reg22</font>
-					<textcolor>panel_text</textcolor>
-					<focusedcolor>panel_text</focusedcolor>
-					<selectedcolor>panel_text</selectedcolor>
+					<textcolor>sidepanel_textcolor</textcolor>
+					<focusedcolor>sidepanel_textcolor</focusedcolor>
+					<selectedcolor>sidepanel_textcolor</selectedcolor>
 					<label>$PARAM[label]</label>
 					<onclick condition="$PARAM[closepanel]">right</onclick>
 					<onclick>Dialog.Close(all,force)</onclick>
@@ -252,9 +249,10 @@
 		</definition>
 	</include>
 	<!-- Side Menu Headline -->
-	<include name="SideMenuHeadline">
+	<include name="SideHeadline">
 		<param name="width">100%</param>
 		<param name="visible">true</param>
+		<param name="color">panel_textcolor</param>
 		<definition>
 			<control type="group" id="99$PARAM[nr]">
 				<visible>$PARAM[visible]</visible>
@@ -263,7 +261,7 @@
 					<top>9</top>
 					<height>1</height>
 					<width>$PARAM[width]</width>
-					<texture colordiffuse="panel_hover">common/white.jpg</texture>
+					<texture colordiffuse="grid_border">common/white.jpg</texture>
 					<aspectratio>stretch</aspectratio>
 				</control>
 				<!-- headline -->
@@ -272,7 +270,7 @@
 					<width>$PARAM[width]</width>
 					<height>50</height>
 					<font>Med22</font>
-					<textcolor>panel_text</textcolor>
+					<textcolor>$PARAM[color]</textcolor>
 					<label>$PARAM[label]</label>
 					<textoffsetx>15</textoffsetx>
 					<aligny>top</aligny>
@@ -282,13 +280,17 @@
 	</include>
 	<!-- diffuse -->
 	<include name="DiffuseMask">
-		<control type="image">
-			<include>Visible_Fade</include>
-			<include>FullscreenDimensions</include>
-			<texture colordiffuse="CC000000">common/white.jpg</texture>
-			<aspectratio>stretch</aspectratio>
-			<visible>$PARAM[visible]</visible>
-		</control>
+		<param name="color">black_diffuse</param>
+		<param name="visible">true</param>
+		<definition>
+			<control type="image">
+				<include>Visible_Fade</include>
+				<include>FullscreenDimensions</include>
+				<texture colordiffuse="$PARAM[color]">common/white.jpg</texture>
+				<aspectratio>stretch</aspectratio>
+				<visible>$PARAM[visible]</visible>
+			</control>
+		</definition>
 	</include>
 	<include name="PlainBackground">
 		<control type="image">
@@ -311,10 +313,18 @@
 				</animation>
 				<left>-$PARAM[width]</left>
 				<!-- background -->
+				<control type="image">
+					<left>400</left>
+					<width>100</width>
+					<height>100%</height>
+					<texture colordiffuse="black">common/panel_shadow.png</texture>
+					<aspectratio>stretch</aspectratio>
+					<visible>ControlGroup(9999).HasFocus</visible>
+				</control>
 				<include content="ContentPanel">
 					<param name="width">$PARAM[width]</param>
 					<param name="height">100%</param>
-					<param name="color">panel</param>
+					<param name="color">sidepanel_background</param>
 				</include>
 				<!-- grouplist -->
 				<control type="grouplist" id="9999">
@@ -324,7 +334,7 @@
 					<orientation>vertical</orientation>
 					<itemgap>0</itemgap>
 					<!--top-->
-					<include content="SideMenuButton">
+					<include content="SideButton">
 						<param name="id">900</param>
 						<param name="onup">918</param>
 						<param name="ondown">901</param>
@@ -334,13 +344,13 @@
 						<param name="action1">ActivateWindow(Home)</param>
 					</include>
 					<!-- seperator -->
-					<include content="SideMenuHeadline">
+					<include content="SideHeadline">
 						<param name="nr">1</param>
 						<param name="label">14211</param>
 						<param name="visible">!Skin.HasSetting(HideSPMovies) | !Skin.HasSetting(HideSPTVshows) | !Skin.HasSetting(HideSPVideos) | !Skin.HasSetting(HideSPPVR) | !Skin.HasSetting(HideSPMusic) | !Skin.HasSetting(HideSPPictures)</param>
 					</include>
 					<!--media-->
-					<include content="SideMenuButton">
+					<include content="SideButton">
 						<param name="id">901</param>
 						<param name="onup">900</param>
 						<param name="ondown">902</param>
@@ -353,7 +363,7 @@
 						<param name="action2">ActivateWindow(Videos,sources://video/,return)</param>
 						<param name="visible">!Skin.HasSetting(HideSPMovies)</param>
 					</include>
-					<include content="SideMenuButton">
+					<include content="SideButton">
 						<param name="id">902</param>
 						<param name="onup">901</param>
 						<param name="ondown">903</param>
@@ -366,7 +376,7 @@
 						<param name="action2">ActivateWindow(Videos,sources://video/,return)</param>
 						<param name="visible">!Skin.HasSetting(HideSPTVshows)</param>
 					</include>
-					<include content="SideMenuButton">
+					<include content="SideButton">
 						<param name="id">903</param>
 						<param name="onup">902</param>
 						<param name="ondown">904</param>
@@ -376,7 +386,7 @@
 						<param name="action1">ActivateWindow(Videos,root)</param>
 						<param name="visible">!Skin.HasSetting(HideSPVideos)</param>
 					</include>
-					<include content="SideMenuButton">
+					<include content="SideButton">
 						<param name="id">904</param>
 						<param name="onup">903</param>
 						<param name="ondown">905</param>
@@ -386,7 +396,7 @@
 						<param name="action1">ActivateWindow(1124)</param>
 						<param name="visible">!Skin.HasSetting(HideSPPVR) + [Pvr.HasTVChannels | Pvr.HasRadioChannels]</param>
 					</include>
-					<include content="SideMenuButton">
+					<include content="SideButton">
 						<param name="id">905</param>
 						<param name="onup">904</param>
 						<param name="ondown">906</param>
@@ -399,7 +409,7 @@
 						<param name="action2">ActivateWindow(Music,root,return)</param>
 						<param name="visible">!Skin.HasSetting(HideSPMusic)</param>
 					</include>
-					<include content="SideMenuButton">
+					<include content="SideButton">
 						<param name="id">906</param>
 						<param name="onup">905</param>
 						<param name="ondown">907</param>
@@ -410,7 +420,7 @@
 						<param name="action1">ActivateWindow(videos,videodb://musicvideos/titles/,return)</param>
 						<param name="visible">!Skin.HasSetting(HideSPMusicvideos) + Library.HasContent(musicvideos)</param>
 					</include>
-					<include content="SideMenuButton">
+					<include content="SideButton">
 						<param name="id">907</param>
 						<param name="onup">906</param>
 						<param name="ondown">908</param>
@@ -421,13 +431,13 @@
 						<param name="visible">!Skin.HasSetting(HideSPPictures)</param>
 					</include>
 					<!-- seperator -->
-					<include content="SideMenuHeadline">
+					<include content="SideHeadline">
 						<param name="nr">2</param>
 						<param name="label">31001</param>
 						<param name="visible">!Skin.HasSetting(HideSPAddons) | !Skin.HasSetting(HideSPFavourites) | !Skin.HasSetting(HideSPWeather) | System.HasMediaDVD</param>
 					</include>
 					<!-- misc -->
-					<include content="SideMenuButton">
+					<include content="SideButton">
 						<param name="id">908</param>
 						<param name="onup">907</param>
 						<param name="ondown">909</param>
@@ -437,7 +447,7 @@
 						<param name="action1">PlayDisc</param>
 						<param name="visible">System.HasMediaDVD</param>
 					</include>
-					<include content="SideMenuButton">
+					<include content="SideButton">
 						<param name="id">909</param>
 						<param name="onup">908</param>
 						<param name="ondown">910</param>
@@ -447,7 +457,7 @@
 						<param name="action1">ActivateWindow(addonbrowser)</param>
 						<param name="visible">!Skin.HasSetting(HideSPAddons)</param>
 					</include>
-					<include content="SideMenuButton">
+					<include content="SideButton">
 						<param name="id">910</param>
 						<param name="onup">909</param>
 						<param name="ondown">911</param>
@@ -457,7 +467,7 @@
 						<param name="action1">ActivateWindow(favourites)</param>
 						<param name="visible">!Skin.HasSetting(HideSPFavourites)</param>
 					</include>
-					<include content="SideMenuButton">
+					<include content="SideButton">
 						<param name="id">911</param>
 						<param name="onup">910</param>
 						<param name="ondown">912</param>
@@ -471,12 +481,12 @@
 						<param name="visible">!Skin.HasSetting(HideSPWeather) + !Skin.HasSetting(HideHeaderWeather) + !String.IsEmpty(Weather.Temperature) + !String.Contains(Weather.Temperature,$LOCALIZE[503]) + !String.IsEqual(Weather.fanartcode,na) + Weather.IsFetched</param>
 					</include>
 					<!-- seperator -->
-					<include content="SideMenuHeadline">
+					<include content="SideHeadline">
 						<param name="nr">3</param>
 						<param name="label">13000</param>
 					</include>
 					<!-- system -->
-					<include content="SideMenuButton">
+					<include content="SideButton">
 						<param name="id">912</param>
 						<param name="onup">911</param>
 						<param name="ondown">913</param>
@@ -486,7 +496,7 @@
 						<param name="action1">UpdateLibrary(video)</param>
 						<param name="visible">!Skin.HasSetting(KioskMode) + !Skin.HasSetting(HideSPVideoUpdate)</param>
 					</include>
-					<include content="SideMenuButton">
+					<include content="SideButton">
 						<param name="id">913</param>
 						<param name="onup">912</param>
 						<param name="ondown">914</param>
@@ -496,7 +506,7 @@
 						<param name="action1">UpdateLibrary(music)</param>
 						<param name="visible">!Skin.HasSetting(KioskMode) + !Skin.HasSetting(HideSPMusicUpdate)</param>
 					</include>
-					<include content="SideMenuButton">
+					<include content="SideButton">
 						<param name="id">914</param>
 						<param name="onup">913</param>
 						<param name="ondown">915</param>
@@ -508,7 +518,7 @@
 						<param name="action3">UpdateLocalAddons</param>
 						<param name="visible">!Skin.HasSetting(KioskMode) + !Skin.HasSetting(HideSPAddonUpdate)</param>
 					</include>
-					<include content="SideMenuButton">
+					<include content="SideButton">
 						<param name="id">915</param>
 						<param name="onup">914</param>
 						<param name="ondown">916</param>
@@ -518,7 +528,7 @@
 						<param name="action1">ActivateWindow(settings)</param>
 						<param name="visible">!Skin.HasSetting(KioskMode)</param>
 					</include>
-					<include content="SideMenuButton">
+					<include content="SideButton">
 						<param name="id">916</param>
 						<param name="onup">915</param>
 						<param name="ondown">917</param>
@@ -528,7 +538,7 @@
 						<param name="action1">Skin.ToggleSetting(DebugInfo)</param>
 						<param name="visible">!Skin.HasSetting(KioskMode) + !Skin.HasSetting(HideSPDebug)</param>
 					</include>
-					<include content="SideMenuButton">
+					<include content="SideButton">
 						<param name="id">917</param>
 						<param name="onup">916</param>
 						<param name="ondown">918</param>
@@ -538,7 +548,7 @@
 						<param name="action1">ReloadSkin()</param>
 						<param name="visible">!Skin.HasSetting(KioskMode) + !Skin.HasSetting(HideSPReload)</param>
 					</include>
-					<include content="SideMenuButton">
+					<include content="SideButton">
 						<param name="id">918</param>
 						<param name="onup">917</param>
 						<param name="ondown">900</param>
@@ -714,6 +724,7 @@
 		<param name="bottom">0</param>
 		<param name="onup">noop</param>
 		<param name="ondown">noop</param>
+		<param name="onleft">noop</param>
 		<param name="visible">$EXP[ScrollbarContainers]</param>
 		<definition>
 			<control type="scrollbar" id="$PARAM[id]">
@@ -724,6 +735,7 @@
 				<width>$PARAM[width]</width>
 				<onup>$PARAM[onup]</onup>
 				<ondown>$PARAM[ondown]</ondown>
+				<onleft>$PARAM[onleft]</onleft>
 				<onleft condition="Control.IsVisible(50)">50</onleft>
 				<onleft condition="Control.IsVisible(51)">51</onleft>
 				<onleft condition="Control.IsVisible(52)">52</onleft>
@@ -732,9 +744,9 @@
 				<onleft condition="Control.IsVisible(59)">59</onleft>
 				<orientation>vertical</orientation>
 				<showonepage>false</showonepage>
-				<texturesliderbackground colordiffuse="ff3b3b3b">common/white.jpg</texturesliderbackground>
-				<texturesliderbar colordiffuse="lightgrey">common/white.jpg</texturesliderbar>
-				<texturesliderbarfocus colordiffuse="emby">common/white.jpg</texturesliderbarfocus>
+				<texturesliderbackground colordiffuse="scrollbar_background">common/white.jpg</texturesliderbackground>
+				<texturesliderbar colordiffuse="scrollbar_slider">common/white.jpg</texturesliderbar>
+				<texturesliderbarfocus colordiffuse="scrollbar_focus">common/white.jpg</texturesliderbarfocus>
 			</control>
 		</definition>
 	</include>
@@ -949,7 +961,7 @@
 			<info>player.volume</info>
 			<texturebg colordiffuse="grey">common/white.jpg</texturebg>
 			<lefttexture>-</lefttexture>
-			<midtexture colordiffuse="emby">common/white.jpg</midtexture>
+			<midtexture colordiffuse="player_osd_color">common/white.jpg</midtexture>
 			<righttexture>-</righttexture>
 			<overlaytexture>-</overlaytexture>
 			<visible>Integer.IsGreater(player.volume,1)</visible>
@@ -998,7 +1010,7 @@
 		</control>
 		<control type="button" id="$PARAM[id]3">
 			<textcolor>emby</textcolor>
-			<texturenofocus colordiffuse="subsetting_nofocus">common/white.jpg</texturenofocus>
+			<texturenofocus colordiffuse="panel_subitem">common/white.jpg</texturenofocus>
 			<include>SettingsButton</include>
 			<onclick>RunScript(script.skin.helper.service,action=setskinsetting,setting=UserWidget$PARAM[nr]_target,header=$LOCALIZE[15021])</onclick>
 			<label>• $LOCALIZE[15021]</label>
@@ -1007,7 +1019,7 @@
 		</control>
 		<control type="button" id="$PARAM[id]4">
 			<textcolor>emby</textcolor>
-			<texturenofocus colordiffuse="subsetting_nofocus">common/white.jpg</texturenofocus>
+			<texturenofocus colordiffuse="panel_subitem">common/white.jpg</texturenofocus>
 			<include>SettingsButton</include>
 			<onclick>Skin.SetString(UserWidget$PARAM[nr]_name)</onclick>
 			<label>• $LOCALIZE[21864]</label>
@@ -1016,7 +1028,7 @@
 		</control>
 		<control type="button" id="$PARAM[id]5">
 			<textcolor>emby</textcolor>
-			<texturenofocus colordiffuse="subsetting_nofocus">common/white.jpg</texturenofocus>
+			<texturenofocus colordiffuse="panel_subitem">common/white.jpg</texturenofocus>
 			<include>SettingsButton</include>
 			<onclick>RunScript(script.skin.helper.service,action=setskinsetting,setting=UserWidget$PARAM[nr]_layout,header=$LOCALIZE[31099])</onclick>
 			<label>• $LOCALIZE[31101]</label>
@@ -1039,7 +1051,7 @@
 			</control>
 			<control type="button" id="$PARAM[section]$PARAM[id]2">
 				<textcolor>emby</textcolor>
-				<texturenofocus colordiffuse="subsetting_nofocus">common/white.jpg</texturenofocus>
+				<texturenofocus colordiffuse="panel_subitem">common/white.jpg</texturenofocus>
 				<include>SettingsButton</include>
 				<onclick>RunScript(script.skinshortcuts,type=shortcuts&amp;showNone=True&amp;custom=True&amp;grouping=$PARAM[group]&amp;skinLabel=User$PARAM[type]Hub$PARAM[id]_name&amp;skinAction=User$PARAM[type]Hub$PARAM[id]_action&amp;skinList=User$PARAM[type]Hub$PARAM[id]_path)</onclick>
 				<label>• $LOCALIZE[573]</label>
@@ -1049,7 +1061,7 @@
 			</control>
 			<control type="button" id="$PARAM[section]$PARAM[id]3">
 				<textcolor>emby</textcolor>
-				<texturenofocus colordiffuse="subsetting_nofocus">common/white.jpg</texturenofocus>
+				<texturenofocus colordiffuse="panel_subitem">common/white.jpg</texturenofocus>
 				<include>SettingsButton</include>
 				<onclick>Skin.SetString(User$PARAM[type]Hub$PARAM[id]_name)</onclick>
 				<label>• $LOCALIZE[21899]</label>
@@ -1059,7 +1071,7 @@
 			</control>
 			<control type="button" id="$PARAM[section]$PARAM[id]4">
 				<textcolor>emby</textcolor>
-				<texturenofocus colordiffuse="subsetting_nofocus">common/white.jpg</texturenofocus>
+				<texturenofocus colordiffuse="panel_subitem">common/white.jpg</texturenofocus>
 				<include>SettingsButton</include>
 				<onclick>RunScript(script.skin.helper.service,action=setskinsetting,setting=User$PARAM[type]Hub$PARAM[id]_target,header=$LOCALIZE[15021])</onclick>
 				<label>• $LOCALIZE[15021]</label>
@@ -1152,13 +1164,13 @@
 				<control type="image">
 					<width>100%</width>
 					<height>50</height>
-					<texture border="10" colordiffuse="panel_hover">common/menu_back.png</texture>
+					<texture border="65,10,65,10" colordiffuse="context_focusedcolor">dialogs/context/middle.png</texture>
 					<visible>Container($PARAM[container]).Position($PARAM[id]) + Control.HasFocus($PARAM[container])</visible>
 				</control>
 				<control type="image">
 					<width>100%</width>
 					<height>50</height>
-					<texture border="10" colordiffuse="panel">common/menu_back.png</texture>
+					<texture border="65,10,65,10" colordiffuse="context_color">dialogs/context/middle.png</texture>
 					<visible>!Container($PARAM[container]).Position($PARAM[id]) | !Control.HasFocus($PARAM[container])</visible>
 				</control>
 				<control type="label">
@@ -1166,9 +1178,9 @@
 					<height>50</height>
 					<align>left</align>
 					<aligny>center</aligny>
-					<textoffsetx>20</textoffsetx>
+					<textoffsetx>80</textoffsetx>
 					<font>med22</font>
-					<textcolor>text_white</textcolor>
+					<textcolor>context_textcolor_focused</textcolor>
 					<textshadow>text_shadow</textshadow>
 					<scroll>true</scroll>
 					<label>$INFO[Container($PARAM[container]).ListItemPosition($PARAM[id]).Label]</label>
@@ -1179,7 +1191,7 @@
 					<height>50</height>
 					<align>left</align>
 					<aligny>center</aligny>
-					<textoffsetx>20</textoffsetx>
+					<textoffsetx>80</textoffsetx>
 					<font>med22</font>
 					<textcolor>selected</textcolor>
 					<textshadow>text_shadow</textshadow>
@@ -1192,9 +1204,9 @@
 					<height>50</height>
 					<align>left</align>
 					<aligny>center</aligny>
-					<textoffsetx>20</textoffsetx>
+					<textoffsetx>80</textoffsetx>
 					<font>med22</font>
-					<textcolor>text_white</textcolor>
+					<textcolor>context_textcolor</textcolor>
 					<textshadow>text_shadow</textshadow>
 					<scroll>false</scroll>
 					<label>$INFO[Container($PARAM[container]).ListItemPosition($PARAM[id]).Label]</label>
@@ -1205,7 +1217,7 @@
 					<height>50</height>
 					<align>left</align>
 					<aligny>center</aligny>
-					<textoffsetx>20</textoffsetx>
+					<textoffsetx>80</textoffsetx>
 					<font>med22</font>
 					<textcolor>selected</textcolor>
 					<textshadow>text_shadow</textshadow>
@@ -1229,7 +1241,7 @@
 		<param name="id">41</param>
 		<definition>
 			<control type="radiobutton" id="$PARAM[id]02">
-				<include content="CommonButton"/>
+				<include content="ContextButton"/>
 				<label>$LOCALIZE[20021]</label>
 				<onclick>Container.SetViewMode(51)</onclick>
 				<selected>Control.IsVisible(51)</selected>
@@ -1237,15 +1249,15 @@
 			</control>
 			<control type="radiobutton" id="$PARAM[id]03">
 				<textcolor>emby</textcolor>
-				<texturenofocus border="10" colordiffuse="subsetting_nofocus">common/menu_back.png</texturenofocus>
-				<include content="CommonButton"/>
+				<texturenofocus border="65,10,65,10" colordiffuse="context_subitem">dialogs/context/middle.png</texturenofocus>
+				<include content="ContextButton"/>
 				<label>• $LOCALIZE[31198]</label>
 				<onclick>Skin.ToggleSetting(HidePosterLabels)</onclick>
 				<selected>Skin.HasSetting(HidePosterLabels)</selected>
 				<visible>Control.IsVisible(51) + Window.IsVisible(myvideonav.xml)</visible>
 			</control>
 			<control type="radiobutton" id="$PARAM[id]04">
-				<include content="CommonButton"/>
+				<include content="ContextButton"/>
 				<label>$LOCALIZE[31004]</label>
 				<onclick>Container.SetViewMode(50)</onclick>
 				<selected>Control.IsVisible(50)</selected>
@@ -1253,29 +1265,29 @@
 			</control>
 			<control type="radiobutton" id="$PARAM[id]05">
 				<textcolor>emby</textcolor>
-				<texturenofocus border="10" colordiffuse="subsetting_nofocus">common/menu_back.png</texturenofocus>
-				<include content="CommonButton"/>
+				<texturenofocus border="65,10,65,10" colordiffuse="context_subitem">dialogs/context/middle.png</texturenofocus>
+				<include content="ContextButton"/>
 				<label>• $LOCALIZE[31198]</label>
 				<onclick>Skin.ToggleSetting(HideWideLabels)</onclick>
 				<selected>Skin.HasSetting(HideWideLabels)</selected>
 				<visible>Control.IsVisible(50) + Window.IsVisible(myvideonav.xml)</visible>
 			</control>
 			<control type="radiobutton" id="$PARAM[id]06">
-				<include content="CommonButton"/>
+				<include content="ContextButton"/>
 				<label>$LOCALIZE[31199]</label>
 				<onclick>Container.SetViewMode(56)</onclick>
 				<selected>Control.IsVisible(56)</selected>
 				<visible>$EXP[SetViewVisible]</visible>
 			</control>
 			<control type="radiobutton" id="$PARAM[id]07">
-				<include content="CommonButton"/>
+				<include content="ContextButton"/>
 				<label>$LOCALIZE[31199]</label>
 				<onclick>Container.SetViewMode(57)</onclick>
 				<selected>Control.IsVisible(57)</selected>
 				<visible>Window.IsVisible(tvchannels) | Window.IsVisible(tvrecordings)</visible>
 			</control>
 			<control type="radiobutton" id="$PARAM[id]08">
-				<include content="CommonButton"/>
+				<include content="ContextButton"/>
 				<label>$LOCALIZE[20020]</label>
 				<onclick>Container.SetViewMode(58)</onclick>
 				<selected>Control.IsVisible(58)</selected>
@@ -1283,29 +1295,29 @@
 			</control>
 			<control type="radiobutton" id="$PARAM[id]09">
 				<textcolor>emby</textcolor>
-				<texturenofocus border="10" colordiffuse="subsetting_nofocus">common/menu_back.png</texturenofocus>
-				<include content="CommonButton"/>
+				<texturenofocus border="65,10,65,10" colordiffuse="context_subitem">dialogs/context/middle.png</texturenofocus>
+				<include content="ContextButton"/>
 				<label>• $LOCALIZE[31198]</label>
 				<onclick>Skin.ToggleSetting(HideBannerLabels)</onclick>
 				<selected>Skin.HasSetting(HideBannerLabels)</selected>
 				<visible>Control.IsVisible(58) + Window.IsVisible(myvideonav.xml)</visible>
 			</control>
 			<control type="radiobutton" id="$PARAM[id]10">
-				<include content="CommonButton"/>
+				<include content="ContextButton"/>
 				<label>$LOCALIZE[31005]</label>
 				<onclick>Container.SetViewMode(52)</onclick>
 				<selected>Control.IsVisible(52)</selected>
 				<visible>$EXP[SquareViewVisible]</visible>
 			</control>
 			<control type="radiobutton" id="$PARAM[id]11">
-				<include content="CommonButton"/>
+				<include content="ContextButton"/>
 				<label>$LOCALIZE[20373]</label>
 				<onclick>Container.SetViewMode(54)</onclick>
 				<selected>Control.IsVisible(54)</selected>
 				<visible>$EXP[SeasonViewVisible]</visible>
 			</control>
 			<control type="radiobutton" id="$PARAM[id]12">
-				<include content="CommonButton"/>
+				<include content="ContextButton"/>
 				<label>$LOCALIZE[20359] - $LOCALIZE[31219]</label>
 				<onclick condition="Skin.HasSetting(ViewEpisodeList)">Skin.ToggleSetting(ViewEpisodeList)</onclick>
 				<onclick>Container.SetViewMode(55)</onclick>
@@ -1313,14 +1325,14 @@
 				<visible>$EXP[EpisodeViewVisible]</visible>
 			</control>
 			<control type="radiobutton" id="$PARAM[id]13">
-				<include content="CommonButton"/>
+				<include content="ContextButton"/>
 				<label>$LOCALIZE[535]</label>
 				<onclick>Container.SetViewMode(53)</onclick>
 				<selected>Control.IsVisible(53)</selected>
 				<visible>$EXP[ListViewVisible]</visible>
 			</control>
 			<control type="radiobutton" id="$PARAM[id]14">
-				<include content="CommonButton"/>
+				<include content="ContextButton"/>
 				<label>$LOCALIZE[20359] - $LOCALIZE[31220]</label>
 				<onclick condition="!Skin.HasSetting(ViewEpisodeList) + !Window.IsVisible(MyPVRRecordings.xml)">Skin.ToggleSetting(ViewEpisodeList)</onclick>
 				<onclick>Container.SetViewMode(59)</onclick>
@@ -1340,9 +1352,9 @@
 				<visible>ControlGroup(4100).HasFocus</visible>
 				<include>Visible_PopupOpenClose</include>
 				<centerleft>50%</centerleft>
-				<width>384</width>
+				<width>500</width>
 				<centertop>50%</centertop>
-				<height>970</height>
+				<height>982</height>
 				<control type="grouplist" id="4100">
 					<orientation>vertical</orientation>
 					<height>auto</height>
@@ -1354,14 +1366,14 @@
 					<usecontrolcoords>true</usecontrolcoords>
 					<control type="image" id="4101">
 						<width>100%</width>
-						<height>10</height>
-						<texture border="5" colordiffuse="panel">common/menu_top.png</texture>
+						<height>61</height>
+						<texture border="65,0,65,0" colordiffuse="context_color">dialogs/context/top.png</texture>
 					</control>
 					<include>AvailableViews</include>
 					<control type="image" id="4120">
 						<width>100%</width>
-						<height>10</height>
-						<texture border="5" colordiffuse="panel">common/menu_bottom.png</texture>
+						<height>61</height>
+						<texture border="65,0,65,0" colordiffuse="context_color">dialogs/context/bottom.png</texture>
 					</control>
 				</control>
 			</control>
@@ -1385,6 +1397,23 @@
 				<itemlayout/>
 				<focusedlayout/>
 			</control>
+		</control>
+	</include>
+	<include name="GreenBar">
+		<control type="image">
+			<width>100%</width>
+			<top>45</top>
+			<height>2</height>
+			<texture colordiffuse="grid_border">common/white.jpg</texture>
+			<aspectratio>stretch</aspectratio>
+		</control>
+		<control type="image">
+			<width>100%</width>
+			<top>45</top>
+			<height>2</height>
+			<texture colordiffuse="headline_line">common/white.jpg</texture>
+			<aspectratio>stretch</aspectratio>
+			<include>WindowOpen_GreenBar</include>
 		</control>
 	</include>
 </includes>

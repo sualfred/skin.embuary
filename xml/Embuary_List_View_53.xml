@@ -74,13 +74,13 @@
 					<width>690</width>
 					<control type="image">
 						<height>100%</height>
-						<texture colordiffuse="44141414">common/white.jpg</texture>
+						<texture colordiffuse="list_panel">common/white.jpg</texture>
 					</control>
 					<control type="image">
 						<left>690</left>
 						<width>1</width>
 						<height>100%</height>
-						<texture colordiffuse="ff2a2a2a">common/white.jpg</texture>
+						<texture colordiffuse="grid_border">common/white.jpg</texture>
 					</control>
 					<control type="group">
 						<top>120</top>
@@ -103,7 +103,7 @@
 									<control type="image">
 										<width>590</width>
 										<height>332</height>
-										<texture colordiffuse="thumb_background_fallback" diffuse="items/mask_wide_big.png">common/white.jpg</texture>
+										<texture colordiffuse="thumb_background_fallback">common/white.jpg</texture>
 										<aspectratio scalediffuse="false">stretch</aspectratio>
 									</control>
 									<control type="textbox">
@@ -123,13 +123,13 @@
 									<control type="image">
 										<width>590</width>
 										<height>332</height>
-										<texture colordiffuse="thumb_background" diffuse="items/mask_wide_big.png">common/white.jpg</texture>
+										<texture colordiffuse="thumb_background">common/white.jpg</texture>
 										<aspectratio scalediffuse="false">stretch</aspectratio>
 									</control>
 									<control type="image">
 										<width>590</width>
 										<height>332</height>
-										<texture diffuse="items/mask_wide_db.png" background="true">$VAR[IconLandscape]</texture>
+										<texture background="true">$VAR[IconLandscape]</texture>
 										<aspectratio scalediffuse="false">keep</aspectratio>
 										<bordersize>20</bordersize>
 										<visible>String.StartsWith(ListItem.Path,pvr://) + !String.Contains(ListItem.Icon,.jpg)</visible>
@@ -137,7 +137,7 @@
 									<control type="image">
 										<width>590</width>
 										<height>332</height>
-										<texture diffuse="items/mask_wide_db.png" background="true">$VAR[IconLandscape]</texture>
+										<texture background="true">$VAR[IconLandscape]</texture>
 										<aspectratio scalediffuse="false">keep</aspectratio>
 										<visible>!String.StartsWith(ListItem.Path,pvr://) | [String.StartsWith(ListItem.Path,pvr://) + String.Contains(ListItem.Icon,.jpg)]</visible>
 									</control>
@@ -146,7 +146,6 @@
 									<width>590</width>
 									<height>332</height>
 									<include>bubble_overlay</include>
-									<include>bubble_play</include>
 								</control>
 								<include content="progress">
 									<param name="top" value="328"/>
@@ -171,14 +170,14 @@
 									<control type="image">
 										<width>222</width>
 										<height>332</height>
-										<texture colordiffuse="thumb_background_fallback" diffuse="items/mask_poster_list.png">common/white.jpg</texture>
+										<texture colordiffuse="thumb_background_fallback">common/white.jpg</texture>
 										<aspectratio scalediffuse="false">stretch</aspectratio>
 										<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
 									</control>
 									<control type="image">
 										<width>222</width>
 										<height>332</height>
-										<texture colordiffuse="thumb_background" diffuse="items/mask_poster_list.png">common/white.jpg</texture>
+										<texture colordiffuse="thumb_background">common/white.jpg</texture>
 										<aspectratio scalediffuse="false">stretch</aspectratio>
 										<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
 									</control>
@@ -197,14 +196,13 @@
 									<control type="image">
 										<width>222</width>
 										<height>332</height>
-										<texture diffuse="items/mask_poster_list.png" background="true">$VAR[IconPoster]</texture>
+										<texture background="true">$VAR[IconPoster]</texture>
 										<aspectratio scalediffuse="false">stretch</aspectratio>
 									</control>
 									<control type="group">
 										<width>222</width>
 										<height>332</height>
 										<include>bubble_overlay</include>
-										<include>bubble_play</include>
 									</control>
 									<include content="progress">
 										<param name="top" value="328"/>
@@ -232,14 +230,14 @@
 									<control type="image">
 										<width>332</width>
 										<height>332</height>
-										<texture colordiffuse="thumb_background_fallback" diffuse="items/mask_square_big.png">common/white.jpg</texture>
+										<texture colordiffuse="thumb_background_fallback">common/white.jpg</texture>
 										<aspectratio scalediffuse="false">stretch</aspectratio>
 										<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
 									</control>
 									<control type="image">
 										<width>332</width>
 										<height>332</height>
-										<texture colordiffuse="dark_button" diffuse="items/mask_square_big.png">common/white.jpg</texture>
+										<texture colordiffuse="dark_button">common/white.jpg</texture>
 										<aspectratio scalediffuse="false">stretch</aspectratio>
 										<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
 									</control>
@@ -258,14 +256,13 @@
 									<control type="image">
 										<width>332</width>
 										<height>332</height>
-										<texture diffuse="items/mask_square_big.png" background="true">$VAR[IconSquare]</texture>
+										<texture background="true">$VAR[IconSquare]</texture>
 										<aspectratio scalediffuse="false">scale</aspectratio>
 									</control>
 									<control type="group">
 										<width>332</width>
 										<height>332</height>
 										<include>bubble_overlay</include>
-										<include>bubble_play</include>
 									</control>
 									<include content="progress">
 										<param name="top" value="328"/>

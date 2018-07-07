@@ -41,18 +41,18 @@
 				<control type="group" id="99">
 					<visible>[VideoPlayer.Content(movies) | VideoPlayer.Content(episodes)] + !VideoPlayer.Content(musicvideos) + [!String.IsEmpty(Player.Art(poster)) | !String.IsEmpty(Player.Art(tvshow.poster))] + ![VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)]</visible>
 					<control type="image" id="99">
-						<bottom>20</bottom>
-						<left>20</left>
-						<width>268</width>
-						<height>393</height>
-						<texture>views/player/shadow_poster.png</texture>
+						<bottom>25</bottom>
+						<left>27</left>
+						<width>256</width>
+						<height>381</height>
+						<texture border="20,20,20,20">items/shadow.png</texture>
 					</control>
 					<control type="image" id="99">
 						<bottom>29</bottom>
 						<left>29</left>
 						<width>250</width>
 						<height>375</height>
-						<texture colordiffuse="thumb_background" diffuse="views/player/mask_poster.png">common/white.jpg</texture>
+						<texture colordiffuse="thumb_background_player">common/white.jpg</texture>
 						<aspectratio scalediffuse="false">stretch</aspectratio>
 					</control>
 					<control type="image" id="99">
@@ -60,7 +60,7 @@
 						<left>29</left>
 						<width>250</width>
 						<height>375</height>
-						<texture diffuse="views/player/mask_poster.png">$VAR[PlayerIcon]</texture>
+						<texture>$VAR[PlayerIcon]</texture>
 						<aspectratio scalediffuse="false">stretch</aspectratio>
 					</control>
 				</control>
@@ -68,18 +68,18 @@
 				<control type="group" id="99">
 					<visible>VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)</visible>
 					<control type="image" id="99">
-						<bottom>20</bottom>
-						<left>20</left>
-						<width>268</width>
-						<height>268</height>
-						<texture>views/player/shadow_square.png</texture>
+						<bottom>25</bottom>
+						<left>27</left>
+						<width>256</width>
+						<height>256</height>
+						<texture border="20,20,20,20">items/shadow.png</texture>
 					</control>
 					<control type="image" id="99">
 						<bottom>29</bottom>
 						<left>29</left>
 						<width>250</width>
 						<height>250</height>
-						<texture colordiffuse="thumb_background_fallback" diffuse="views/player/mask_square.png">common/white.jpg</texture>
+						<texture colordiffuse="thumb_background_fallback">common/white.jpg</texture>
 						<aspectratio scalediffuse="false">stretch</aspectratio>
 						<visible>String.IsEmpty(VideoPlayer.Cover) | String.StartsWith(VideoPlayer.Cover,Default)</visible>
 					</control>
@@ -100,7 +100,7 @@
 						<left>29</left>
 						<width>250</width>
 						<height>250</height>
-						<texture colordiffuse="thumb_background" diffuse="views/player/mask_square.png">common/white.jpg</texture>
+						<texture colordiffuse="thumb_background_player">common/white.jpg</texture>
 						<aspectratio scalediffuse="false">stretch</aspectratio>
 						<visible>!String.IsEmpty(VideoPlayer.Cover) + !String.StartsWith(VideoPlayer.Cover,Default)</visible>
 					</control>
@@ -109,7 +109,7 @@
 						<left>29</left>
 						<width>250</width>
 						<height>250</height>
-						<texture diffuse="views/player/mask_square.png">$VAR[PlayerIcon]</texture>
+						<texture>$VAR[PlayerIcon]</texture>
 						<bordersize>20</bordersize>
 						<aspectratio scalediffuse="false">keep</aspectratio>
 						<visible>!String.StartsWith(VideoPlayer.Cover,Default)</visible>
@@ -119,18 +119,18 @@
 				<control type="group" id="99">
 					<visible>![VideoPlayer.Content(movies) | VideoPlayer.Content(episodes) | VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)] | VideoPlayer.Content(musicvideos) | [String.IsEmpty(Player.Art(poster)) + String.IsEmpty(Player.Art(tvshow.poster)) + !VideoPlayer.Content(livetv) + !String.StartsWith(Player.Filenameandpath,pvr://)]</visible>
 					<control type="image" id="99">
-						<bottom>20</bottom>
-						<left>20</left>
-						<width>268</width>
-						<height>159</height>
-						<texture>views/player/shadow_wide.png</texture>
+						<bottom>25</bottom>
+						<left>27</left>
+						<width>256</width>
+						<height>147</height>
+						<texture border="20,20,20,20">items/shadow.png</texture>
 					</control>
 					<control type="image" id="99">
 						<bottom>29</bottom>
 						<left>29</left>
 						<width>250</width>
 						<height>141</height>
-						<texture colordiffuse="thumb_background_fallback" diffuse="views/player/mask_wide.png">common/white.jpg</texture>
+						<texture colordiffuse="thumb_background_fallback">common/white.jpg</texture>
 						<aspectratio scalediffuse="false">stretch</aspectratio>
 						<visible>String.IsEmpty(Player.Art(thumb)) | String.StartsWith(Player.Art(thumb),Default)</visible>
 					</control>
@@ -151,7 +151,7 @@
 						<left>29</left>
 						<width>250</width>
 						<height>141</height>
-						<texture colordiffuse="thumb_background" diffuse="views/player/mask_wide.png">common/white.jpg</texture>
+						<texture colordiffuse="thumb_background_player">common/white.jpg</texture>
 						<aspectratio scalediffuse="false">stretch</aspectratio>
 						<visible>!String.IsEmpty(Player.Art(thumb)) + !String.StartsWith(Player.Art(thumb),Default)</visible>
 					</control>
@@ -160,7 +160,7 @@
 						<left>29</left>
 						<width>250</width>
 						<height>141</height>
-						<texture diffuse="views/player/mask_square.png">$INFO[Player.Art(thumb)]</texture>
+						<texture>$INFO[Player.Art(thumb)]</texture>
 						<aspectratio scalediffuse="false">scale</aspectratio>
 						<visible>!String.IsEmpty(Player.Art(thumb)) + !String.StartsWith(Player.Art(thumb),Default)</visible>
 					</control>
@@ -179,7 +179,7 @@
 						<include>PlayerProgressDimension</include>
 						<info>Player.Progress</info>
 						<texturebg colordiffuse="00ffffff">common/white.jpg</texturebg>
-						<midtexture colordiffuse="emby_secondary">common/white.jpg</midtexture>
+						<midtexture colordiffuse="player_osd_color">common/white.jpg</midtexture>
 						<visible>!VideoPlayer.Content(livetv)</visible>
 					</control>
 					<!-- LiveTV + timeshift progress bar -->
@@ -187,14 +187,14 @@
 						<include>PlayerProgressDimension</include>
 						<info>Player.Progress</info>
 						<texturebg colordiffuse="00ffffff">common/white.jpg</texturebg>
-						<midtexture colordiffuse="blue">common/white.jpg</midtexture>
+						<midtexture colordiffuse="text_white">common/white.jpg</midtexture>
 						<visible>VideoPlayer.Content(livetv)</visible>
 					</control>
 					<control type="progress" id="99">
 						<include>PlayerProgressDimension</include>
 						<info>PVR.Progress</info>
 						<texturebg colordiffuse="00ffffff">common/white.jpg</texturebg>
-						<midtexture colordiffuse="emby_secondary">common/white.jpg</midtexture>
+						<midtexture colordiffuse="player_osd_color">common/white.jpg</midtexture>
 						<visible>VideoPlayer.Content(livetv)</visible>
 					</control>
 				</control>

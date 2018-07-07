@@ -32,9 +32,9 @@
 			</include>
 			<control type="group">
 				<centerleft>50%</centerleft>
-				<width>384</width>
+				<width>500</width>
 				<centertop>50%</centertop>
-				<height>970</height>
+				<height>982</height>
 				<control type="grouplist" id="4000">
 					<orientation>vertical</orientation>
 					<height>auto</height>
@@ -46,49 +46,48 @@
 					<usecontrolcoords>true</usecontrolcoords>
 					<control type="image" id="4001">
 						<width>100%</width>
-						<height>10</height>
-						<texture border="5" colordiffuse="panel">common/menu_top.png</texture>
+						<height>61</height>
+						<texture border="65,0,65,0" colordiffuse="context_color">dialogs/context/top.png</texture>
 					</control>
 					<control type="togglebutton" id="4">
-						<include content="CommonButton"/>
+						<include content="ContextButton"/>
 						<label>$LOCALIZE[580]: $LOCALIZE[584]</label>
 						<altlabel>$LOCALIZE[580]: $LOCALIZE[585]</altlabel>
 						<visible>Control.IsEnabled(4)</visible>
 					</control>
 					<control type="button" id="3">
-						<include content="CommonButton"/>
+						<include content="ContextButton"/>
 						<label>$LOCALIZE[581]</label>
 						<visible>Control.IsEnabled(3)</visible>
 					</control>
 					<control type="radiobutton" id="5">
-						<include content="CommonButton"/>
+						<include content="ContextButton"/>
 						<label>$LOCALIZE[21340]</label>
 						<visible>Control.IsEnabled(5)</visible>
 					</control>
 					<control type="radiobutton" id="6">
-						<include content="CommonButton"/>
+						<include content="ContextButton"/>
 						<label>$LOCALIZE[25000]</label>
 						<visible>Control.IsEnabled(6)</visible>
 					</control>
 					<control type="radiobutton" id="7">
-						<include content="CommonButton"/>
+						<include content="ContextButton"/>
 						<label>$LOCALIZE[31133]</label>
 						<visible>Control.IsEnabled(7)</visible>
 					</control>
-					<control type="radiobutton" id="8">
-						<include content="CommonButton"/>
-						<label>$LOCALIZE[31128]</label>
-						<visible>Control.IsEnabled(8)</visible>
-					</control>
 					<control type="button" id="9">
-						<include content="CommonButton"/>
+						<include content="ContextButton"/>
 						<label>$LOCALIZE[24034]</label>
 						<visible>Control.IsEnabled(9)</visible>
 					</control>
+					<control type="radiobutton" id="8">
+						<include content="ContextButton"/>
+						<label>$LOCALIZE[31128]</label>
+					</control>
 					<control type="image" id="4002">
 						<width>100%</width>
-						<height>10</height>
-						<texture border="5" colordiffuse="panel">common/menu_bottom.png</texture>
+						<height>61</height>
+						<texture border="65,0,65,0" colordiffuse="context_color">dialogs/context/bottom.png</texture>
 					</control>
 				</control>
 			</control>
@@ -98,26 +97,26 @@
 		<!-- Download -->
 		<control type="group">
 			<visible>String.EndsWith(ListItem.Label2,&#x25;)</visible>
-			<bottom>70</bottom>
-			<animation type="Visible" reversible="false">
+			<animation type="WindowOpen" reversible="false">
 				<effect type="slide" start="0,200" end="0,0" delay="100" tween="circle" easin="out" time="400" />
 				<effect type="fade" delay="160" end="100" time="400" />
 			</animation>
-			<animation type="Hidden" reversible="false">
+			<animation type="WindowClose" reversible="false">
 				<effect type="slide" start="0,0" end="0,200" easing="in" tween="circle" easin="out" time="400" />
 				<effect type="fade" start="100" end="0" time="400" />
 			</animation>
-			<width>350</width>
-			<height>122</height>
-			<left>70</left>
+			<width>550</width>
+			<height>240</height>
+			<left>30</left>
+			<bottom>30</bottom>
 			<!-- Background image -->
 			<control type="image">
-				<texture colordiffuse="panel" border="10">common/dialog_back.png</texture>
+				<texture colordiffuse="context_color" border="65">dialogs/notification/bg.png</texture>
 			</control>
 			<!-- icon -->
 			<control type="group">
 				<centertop>50%</centertop>
-				<left>10</left>
+				<left>65</left>
 				<width>80</width>
 				<height>80</height>
 				<!-- Icon back -->
@@ -126,28 +125,31 @@
 				</control>
 				<control type="image">
 					<texture>dialogs/progress/100.png</texture>
-					<colordiffuse>thumb_background</colordiffuse>
+					<colordiffuse>30ffffff</colordiffuse>
 				</control>
 				<!-- Icon -->
 				<control type="textbox">
 					<align>center</align>
 					<aligny>center</aligny>
 					<font>Material24</font>
+					<textcolor>text_white</textcolor>
 					<label></label>
 				</control>
 			</control>
 			<!-- Details -->
 			<control type="textbox">
-				<top>20</top>
-				<left>100</left>
-				<right>20</right>
-				<bottom>20</bottom>
+				<top>80</top>
+				<left>160</left>
+				<right>80</right>
+				<bottom>80</bottom>
 				<font>Reg22</font>
 				<scroll>true</scroll>
 				<aligny>center</aligny>
-				<label>$INFO[ListItem.Label2]</label>
+				<textcolor>context_textcolor</textcolor>
+				<label>adsfasdfasdf $INFO[ListItem.Label2]</label>
 			</control>
 		</control>
+
 		<!-- header bar -->
 		<include content="HeaderBar">
 			<param name="id">50</param>

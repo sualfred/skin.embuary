@@ -6,14 +6,11 @@
 	<zorder>99</zorder>
 	<include>PropertyIncludes</include>
 	<controls>
-		<control type="image">
-			<include>Visible_Fade</include>
-			<include>FullscreenDimensions</include>
-			<texture colordiffuse="background">common/white.jpg</texture>
-		</control>
 		<control type="label" id="311">
 			<include>HiddenObject</include>
 		</control>
+		<!-- background -->
+		<include>Background</include>
 		<!-- Dialog group -->
 		<control type="group">
 			<visible>!Window.IsVisible(numericinput)</visible>
@@ -57,7 +54,7 @@
 					<width>50</width>
 					<height>50</height>
 					<font>Material40</font>
-					<textcolor>lightgrey</textcolor>
+					<textcolor>text_sublabel</textcolor>
 					<label></label>
 					<aligny>top</aligny>
 				</control>
@@ -141,7 +138,7 @@
 						<control type="image">
 							<width>228</width>
 							<height>68</height>
-							<texture border="10" colordiffuse="light_button">dialogs/keyboard/keyboard_button_mask.png</texture>
+							<texture border="10" colordiffuse="selected_button">dialogs/keyboard/keyboard_button_mask.png</texture>
 							<visible>String.Contains(Control.GetLabel(303),*)</visible>
 						</control>
 						<!-- Caps lock off-->
@@ -155,7 +152,7 @@
 						<control type="image">
 							<width>228</width>
 							<height>68</height>
-							<texture border="10" colordiffuse="light_button">dialogs/keyboard/keyboard_button_mask.png</texture>
+							<texture border="10" colordiffuse="selected_button">dialogs/keyboard/keyboard_button_mask.png</texture>
 							<visible>String.Contains(Control.GetLabel(302),*)</visible>
 						</control>
 						<!-- Shift off -->
@@ -823,7 +820,7 @@
 						<control type="image">
 							<width>68</width>
 							<height>68</height>
-							<texture border="10" colordiffuse="light_button">dialogs/keyboard/keyboard_button_mask.png</texture>
+							<texture border="10" colordiffuse="selected_button">dialogs/keyboard/keyboard_button_mask.png</texture>
 							<visible>String.Contains(Control.GetLabel(304),*)</visible>
 						</control>
 						<!-- Symbols off -->
@@ -916,7 +913,7 @@
 				<onup>5000</onup>
 				<font>Material24</font>
 				<label></label>
-				<textcolor>lightgrey</textcolor>
+				<textcolor>text_sublabel</textcolor>
 				<visible>!Control.HasFocus(309)</visible>
 			</control>
 			<control type="label">
@@ -937,7 +934,7 @@
 				<height>24</height>
 				<onup>5000</onup>
 				<aligny>center</aligny>
-				<textcolor>lightgrey</textcolor>
+				<textcolor>text_sublabel</textcolor>
 				<focusedcolor>emby</focusedcolor>
 			</control>
 		</control>

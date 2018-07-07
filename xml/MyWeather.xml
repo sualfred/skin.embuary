@@ -25,8 +25,8 @@
 					<font>Med18</font>
 					<align>center</align>
 					<aligny>center</aligny>
-					<textcolor>softgrey</textcolor>
-										<label>$INFO[Control.GetLabel(3)]$INFO[Control.GetLabel(11), - $LOCALIZE[12014]: ]</label>
+					<textcolor>text_white</textcolor>
+					<label>$INFO[Control.GetLabel(3)]$INFO[Control.GetLabel(11), - $LOCALIZE[12014]: ]</label>
 				</control>
 				<control type="button" id="2">
 					<width>auto</width>
@@ -34,8 +34,8 @@
 					<font>Med18</font>
 					<align>center</align>
 					<aligny>center</aligny>
-					<textcolor>softgrey</textcolor>
-										<onup>6666</onup>
+					<textcolor>text_white</textcolor>
+					<onup>6666</onup>
 					<label>$LOCALIZE[184]</label>
 				</control>
 			</control>
@@ -47,7 +47,7 @@
 				<align>center</align>
 				<height>853</height>
 				<orientation>horizontal</orientation>
-				<itemgap>1</itemgap>
+				<itemgap>0</itemgap>
 				<control type="group">
 					<left>5</left>
 					<width>550</width>
@@ -137,6 +137,11 @@
 						</control>
 					</control>
 				</control>
+				<control type="image">
+					<width>1</width>
+					<height>100%</height>
+					<texture colordiffuse="black">common/white.jpg</texture>
+				</control>
 				<include content="weather_small_template">
 					<param name="visible" value="!String.IsEmpty(Window(Weather).Property(Day1.Outlook))"/>
 					<param name="art" value="$INFO[Window(Weather).Property(Day1.FanartCode),special://skin/extras/weather/,.jpg]"/>
@@ -145,6 +150,11 @@
 					<param name="outlook" value="$INFO[Window(Weather).Property(Day1.Outlook)]"/>
 					<param name="temp" value="$INFO[Window(Weather).Property(Day1.LowTemp),$LOCALIZE[391] ,°]    $INFO[Window(Weather).Property(Day1.HighTemp),$LOCALIZE[393] ,°]"/>
 				</include>
+				<control type="image">
+					<width>1</width>
+					<height>100%</height>
+					<texture colordiffuse="black">common/white.jpg</texture>
+				</control>
 				<include content="weather_small_template">
 					<param name="visible" value="!String.IsEmpty(Window(Weather).Property(Day2.Outlook))"/>
 					<param name="art" value="$INFO[Window(Weather).Property(Day2.FanartCode),special://skin/extras/weather/,.jpg]"/>
@@ -153,6 +163,11 @@
 					<param name="outlook" value="$INFO[Window(Weather).Property(Day2.Outlook)]"/>
 					<param name="temp" value="$INFO[Window(Weather).Property(Day2.LowTemp),$LOCALIZE[391] ,°]    $INFO[Window(Weather).Property(Day2.HighTemp),$LOCALIZE[393] ,°]"/>
 				</include>
+				<control type="image">
+					<width>1</width>
+					<height>100%</height>
+					<texture colordiffuse="black">common/white.jpg</texture>
+				</control>
 				<include content="weather_small_template">
 					<param name="visible" value="!String.IsEmpty(Window(Weather).Property(Day3.Outlook))"/>
 					<param name="art" value="$INFO[Window(Weather).Property(Day3.FanartCode),special://skin/extras/weather/,.jpg]"/>
@@ -161,6 +176,11 @@
 					<param name="outlook" value="$INFO[Window(Weather).Property(Day3.Outlook)]"/>
 					<param name="temp" value="$INFO[Window(Weather).Property(Day3.LowTemp),$LOCALIZE[391] ,°]    $INFO[Window(Weather).Property(Day3.HighTemp),$LOCALIZE[393] ,°]"/>
 				</include>
+				<control type="image">
+					<width>1</width>
+					<height>100%</height>
+					<texture colordiffuse="black">common/white.jpg</texture>
+				</control>
 				<include content="weather_small_template">
 					<param name="visible" value="!String.IsEmpty(Window(Weather).Property(Day4.Outlook))"/>
 					<param name="art" value="$INFO[Window(Weather).Property(Day4.FanartCode),special://skin/extras/weather/,.jpg]"/>
@@ -181,9 +201,9 @@
 				<visible>ControlGroup(4000).HasFocus</visible>
 				<include>Visible_PopupOpenClose</include>
 				<centerleft>50%</centerleft>
-				<width>384</width>
+				<width>800</width>
 				<centertop>50%</centertop>
-				<height>970</height>
+				<height>982</height>
 				<control type="grouplist" id="4000">
 					<orientation>vertical</orientation>
 					<height>auto</height>
@@ -195,17 +215,17 @@
 					<usecontrolcoords>true</usecontrolcoords>
 					<control type="image" id="4001">
 						<width>100%</width>
-						<height>10</height>
-						<texture border="5" colordiffuse="panel">common/menu_top.png</texture>
+						<height>61</height>
+						<texture border="65,0,65,0" colordiffuse="context_color">dialogs/context/top.png</texture>
 					</control>
 					<control type="spincontrolex" id="3">
-						<include content="CommonButton"/>
+						<include content="ContextButton"/>
 						<label>$LOCALIZE[31066]</label>
 					</control>
 					<control type="image" id="4002">
 						<width>100%</width>
-						<height>10</height>
-						<texture border="5" colordiffuse="panel">common/menu_bottom.png</texture>
+						<height>61</height>
+						<texture border="65,0,65,0" colordiffuse="context_color">dialogs/context/bottom.png</texture>
 					</control>
 				</control>
 			</control>
