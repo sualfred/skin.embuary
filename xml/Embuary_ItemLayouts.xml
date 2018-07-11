@@ -26,7 +26,7 @@
 				<align>left</align>
 				<aligny>center</aligny>
 				<label>$PARAM[headline]</label>
-				<textcolor>emby</textcolor>
+				<textcolor>accent</textcolor>
 				<visible>Control.HasFocus($PARAM[id]) + [Container($PARAM[id]).IsUpdating + !Integer.IsGreater(Container($PARAM[id]).NumItems,0)]</visible>
 			</control>
 		</definition>
@@ -145,7 +145,7 @@
 				<control type="image">
 					<width>44</width>
 					<height>44</height>
-					<texture colordiffuse="emby_secondary">items/bubble_small.png</texture>
+					<texture colordiffuse="accent">items/bubble_small.png</texture>
 					<aspectratio>keep</aspectratio>
 				</control>
 				<control type="label">
@@ -191,7 +191,7 @@
 				<control type="image">
 					<width>44</width>
 					<height>44</height>
-					<texture colordiffuse="emby_secondary">items/bubble_small.png</texture>
+					<texture colordiffuse="accent">items/bubble_small.png</texture>
 					<aspectratio>keep</aspectratio>
 					<visible>String.IsEqual(ListItem.Label2,$LOCALIZE[305])</visible>
 				</control>
@@ -235,7 +235,7 @@
 			<control type="image">
 				<width>36</width>
 				<height>36</height>
-				<texture colordiffuse="emby">items/bubble_mini.png</texture>
+				<texture colordiffuse="accent">items/bubble_mini.png</texture>
 				<aspectratio>keep</aspectratio>
 			</control>
 			<control type="label">
@@ -431,7 +431,7 @@
 			<centertop>50%</centertop>
 			<height>150</height>
 			<width>150</width>
-			<texture colordiffuse="white">common/spinner-blue.gif</texture>
+			<texture colordiffuse="white">common/spinner.gif</texture>
 			<aspectratio align="center" aligny="center">keep</aspectratio>
 		</control>
 	</include>
@@ -531,7 +531,7 @@
 					<control type="image">
 						<width>276</width>
 						<height>414</height>
-						<texture colordiffuse="thumb_background">common/white.jpg</texture>
+						<texture colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
 						<aspectratio scalediffuse="false">stretch</aspectratio>
 						<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
 					</control>
@@ -622,7 +622,7 @@
 					<control type="image">
 						<width>237</width>
 						<height>355</height>
-						<texture colordiffuse="thumb_background">common/white.jpg</texture>
+						<texture colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
 						<aspectratio scalediffuse="false">stretch</aspectratio>
 						<visible>[!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)] | !String.IsEmpty(ListItem.Art(tvshow.poster))</visible>
 					</control>
@@ -723,7 +723,7 @@
 						<control type="image">
 							<width>237</width>
 							<height>355</height>
-							<texture colordiffuse="thumb_background">common/white.jpg</texture>
+							<texture colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
 							<aspectratio scalediffuse="false">stretch</aspectratio>
 						</control>
 						<control type="image">
@@ -798,7 +798,7 @@
 					<control type="image">
 						<width>880</width>
 						<height>163</height>
-						<texture colordiffuse="thumb_background">common/white.jpg</texture>
+						<texture colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
 						<aspectratio scalediffuse="false">stretch</aspectratio>
 						<visible>!String.IsEmpty(ListItem.Art(banner)) | !String.IsEmpty(ListItem.Art(tvshow.banner)) | !String.IsEmpty(ListItem.Art(fanart)) | !String.IsEmpty(ListItem.Art(tvshow.fanart))</visible>
 					</control>
@@ -899,7 +899,7 @@
 					<control type="image">
 						<width>424</width>
 						<height>239</height>
-						<texture colordiffuse="thumb_background">common/white.jpg</texture>
+						<texture colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
 						<aspectratio scalediffuse="false">stretch</aspectratio>
 						<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
 					</control>
@@ -999,7 +999,7 @@
 					<control type="image">
 						<width>430</width>
 						<height>242</height>
-						<texture colordiffuse="thumb_background">common/white.jpg</texture>
+						<texture colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
 						<aspectratio scalediffuse="false">stretch</aspectratio>
 						<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
 					</control>
@@ -1162,7 +1162,7 @@
 					<control type="image">
 						<width>276</width>
 						<height>276</height>
-						<texture colordiffuse="thumb_background">common/white.jpg</texture>
+						<texture colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
 						<aspectratio scalediffuse="false">stretch</aspectratio>
 						<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
 					</control>
@@ -1262,7 +1262,7 @@
 					<control type="image">
 						<width>340</width>
 						<height>340</height>
-						<texture colordiffuse="thumb_background">common/white.jpg</texture>
+						<texture colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
 						<aspectratio scalediffuse="false">stretch</aspectratio>
 						<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
 					</control>
@@ -1640,7 +1640,7 @@
 						<left>3</left>
 						<control type="image">
 							<height>108</height>
-							<texture colordiffuse="thumb_background">common/white.jpg</texture>
+							<texture colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
 							<aspectratio>scale</aspectratio>
 						</control>
 						<control type="image">
@@ -1651,7 +1651,7 @@
 						<control type="image">
 							<top>113</top>
 							<height>108</height>
-							<texture flipy="true" diffuse="items/mirror_mask.png" colordiffuse="thumb_background">common/white.jpg</texture>
+							<texture flipy="true" diffuse="items/mirror_mask.png" colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
 							<aspectratio scalediffuse="false">scale</aspectratio>
 						</control>
 						<control type="image">
@@ -1668,7 +1668,7 @@
 						<control type="image">
 							<width>65</width>
 							<height>108</height>
-							<texture colordiffuse="thumb_background">common/white.jpg</texture>
+							<texture colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
 							<aspectratio>scale</aspectratio>
 						</control>
 						<control type="image">
@@ -1679,7 +1679,7 @@
 						<control type="image">
 							<top>111</top>
 							<height>108</height>
-							<texture flipy="true" diffuse="items/mirror_mask.png" colordiffuse="thumb_background">common/white.jpg</texture>
+							<texture flipy="true" diffuse="items/mirror_mask.png" colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
 							<aspectratio scalediffuse="false">scale</aspectratio>
 						</control>
 						<control type="image">
@@ -1695,7 +1695,7 @@
 						<left>140</left>
 						<control type="image">
 							<height>108</height>
-							<texture colordiffuse="thumb_background">common/white.jpg</texture>
+							<texture colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
 							<aspectratio>scale</aspectratio>
 						</control>
 						<control type="image">
@@ -1706,7 +1706,7 @@
 						<control type="image">
 							<top>111</top>
 							<height>108</height>
-							<texture flipy="true" diffuse="items/mirror_mask.png" colordiffuse="thumb_background">common/white.jpg</texture>
+							<texture flipy="true" diffuse="items/mirror_mask.png" colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
 							<aspectratio scalediffuse="false">scale</aspectratio>
 						</control>
 						<control type="image">
@@ -1722,7 +1722,7 @@
 						<left>208</left>
 						<control type="image">
 							<height>108</height>
-							<texture colordiffuse="thumb_background">common/white.jpg</texture>
+							<texture colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
 							<aspectratio>scale</aspectratio>
 						</control>
 						<control type="image">
@@ -1733,7 +1733,7 @@
 						<control type="image">
 							<top>111</top>
 							<height>108</height>
-							<texture flipy="true" diffuse="items/mirror_mask.png" colordiffuse="thumb_background">common/white.jpg</texture>
+							<texture flipy="true" diffuse="items/mirror_mask.png" colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
 							<aspectratio scalediffuse="false">scale</aspectratio>
 						</control>
 						<control type="image">
@@ -1908,7 +1908,7 @@
 					<control type="image">
 						<width>424</width>
 						<height>239</height>
-						<texture colordiffuse="thumb_background">common/white.jpg</texture>
+						<texture colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
 						<aspectratio scalediffuse="false">stretch</aspectratio>
 						<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
 					</control>
@@ -2064,7 +2064,7 @@
 					<control type="image">
 						<width>276</width>
 						<height>276</height>
-						<texture colordiffuse="thumb_background">common/white.jpg</texture>
+						<texture colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
 						<aspectratio scalediffuse="false">stretch</aspectratio>
 						<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
 					</control>

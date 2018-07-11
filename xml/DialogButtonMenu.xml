@@ -86,7 +86,7 @@
 								<width>264</width>
 								<height>264</height>
 								<texture>items/big_circle_focus.png</texture>
-								<colordiffuse>emby</colordiffuse>
+								<colordiffuse>accent</colordiffuse>
 								<include>Animation_FocusTextureFade</include>
 								<visible>Control.HasFocus(6000)</visible>
 							</control>
@@ -198,7 +198,7 @@
 						<onclick>dialog.close(all,true)</onclick>
 						<onclick>RunScript(plugin.video.embycon,0,?mode=CHANGE_USER)</onclick>
 						<visible>System.HasAddon(plugin.video.embycon) + !String.IsEmpty(Window(Home).Property(plugin.video.embycon-userid))</visible>
-						<property name="color">emby</property>
+						<property name="color">accent</property>
 					</item>
 					<item>
 						<label>$LOCALIZE[31225]</label>
@@ -206,7 +206,7 @@
 						<onclick>dialog.close(all,true)</onclick>
 						<onclick>RunScript(plugin.video.embycon,0,?mode=CHANGE_USER)</onclick>
 						<visible>System.HasAddon(plugin.video.embycon) + String.IsEmpty(Window(Home).Property(plugin.video.embycon-userid))</visible>
-						<property name="color">emby</property>
+						<property name="color">accent</property>
 					</item>
 					<item>
 						<label>$LOCALIZE[20126] $INFO[system.profilename]</label>
@@ -215,21 +215,21 @@
 						<onclick>System.LogOff</onclick>
 						<visible>System.HasLoginScreen | Integer.IsGreater(System.ProfileCount,1)</visible>
 						<visible>System.Loggedon</visible>
-						<property name="color">emby</property>
+						<property name="color">accent</property>
 					</item>
 					<item>
 						<label>$LOCALIZE[20046]</label>
 						<label2></label2>
 						<onclick>mastermode</onclick>
 						<visible>System.HasLocks + System.IsMaster</visible>
-						<property name="color">emby</property>
+						<property name="color">accent</property>
 					</item>
 					<item>
 						<label>$LOCALIZE[20045]</label>
 						<label2></label2>
 						<onclick>mastermode</onclick>
 						<visible>System.HasLocks + !System.IsMaster</visible>
-						<property name="color">emby</property>
+						<property name="color">accent</property>
 					</item>
 				</content>
 			</control>

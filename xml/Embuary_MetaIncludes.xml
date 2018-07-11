@@ -381,7 +381,7 @@
 			<control type="image">
 				<width>276</width>
 				<height>414</height>
-				<texture colordiffuse="thumb_background">common/white.jpg</texture>
+				<texture colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
 				<aspectratio scalediffuse="false">stretch</aspectratio>
 				<visible>!String.IsEmpty(ListItem.Art(poster)) | !String.IsEmpty(ListItem.Art(tvshow.poster)) | !String.StartsWith(ListItem.Icon,default)</visible>
 			</control>
@@ -425,7 +425,7 @@
 			<control type="image">
 				<width>276</width>
 				<height>414</height>
-				<texture colordiffuse="thumb_background">common/white.jpg</texture>
+				<texture colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
 				<aspectratio scalediffuse="false">stretch</aspectratio>
 				<visible>!String.IsEmptyWindow.Property(thumb)</visible>
 			</control>
@@ -503,7 +503,7 @@
 			<control type="image">
 				<width>430</width>
 				<height>242</height>
-				<texture colordiffuse="thumb_background">common/white.jpg</texture>
+				<texture colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
 				<aspectratio scalediffuse="false">stretch</aspectratio>
 				<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
 			</control>
@@ -569,7 +569,7 @@
 			<control type="image">
 				<width>340</width>
 				<height>340</height>
-				<texture colordiffuse="thumb_background">common/white.jpg</texture>
+				<texture colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
 				<aspectratio scalediffuse="false">stretch</aspectratio>
 				<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
 			</control>
@@ -618,7 +618,7 @@
 					<control type="image">
 						<width>590</width>
 						<height>332</height>
-						<texture colordiffuse="thumb_background">common/white.jpg</texture>
+						<texture colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
 						<aspectratio scalediffuse="false">stretch</aspectratio>
 						<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
 					</control>
@@ -901,7 +901,7 @@
 				<label>$INFO[ListItem.AddonType,, ]$INFO[$PARAM[type].Genre,$LOCALIZE[515]: ,   ]$INFO[$PARAM[type].Director,$LOCALIZE[20339]: ]</label>
 				<font>reg22</font>
 				<aligny>top</aligny>
-				<textcolor>emby</textcolor>
+				<textcolor>accent</textcolor>
 				<visible>$PARAM[visible]</visible>
 				<visible>!String.IsEmpty($PARAM[type].Genre) | !String.IsEmpty($PARAM[type].Director)</visible>
 			</control>
@@ -911,7 +911,7 @@
 				<label>[CAPITALIZE]$LOCALIZE[31189][/CAPITALIZE]</label>
 				<font>reg22</font>
 				<aligny>top</aligny>
-				<textcolor>emby</textcolor>
+				<textcolor>accent</textcolor>
 				<visible>$PARAM[visible]</visible>
 				<visible>String.IsEqual(ListItem.DBType,set)</visible>
 			</control>
