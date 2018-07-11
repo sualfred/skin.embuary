@@ -56,6 +56,7 @@
 							<ondown>101</ondown>
 							<onclick>SetProperty(CustomSearch,1,home)</onclick>
 							<onclick>Skin.Reset(CustomSearchTerm)</onclick>
+							<onclick>Skin.Reset(CustomSearchEmbyID)</onclick>
 							<onclick>Skin.SetString(CustomSearchTerm)</onclick>
 							<visible>!$EXP[IsSearching]</visible>
 						</control>
@@ -162,37 +163,77 @@
 				<param name="id" value="109"/>
 				<param name="onup" value="108"/>
 				<param name="ondown" value="110"/>
+				<param name="headline" value="$LOCALIZE[31233] [CAPITALIZE]$VAR[SearchString][/CAPITALIZE]$VAR[EmbyConLabel]"/>
+				<param name="force_visible" value="!String.IsEmpty(Window(home).Property(CustomSearch)) + !String.IsEmpty(Skin.String(CustomSearchTerm))"/>
+				<param name="use_custom_content" value="true"/>
+				<param name="widget_target" value="videos"/>
+				<param name="content" value="$VAR[EmbyCon.SearchActorMovies]"/>
+			</include>
+			<include content="HomePosterWidget">
+				<param name="id" value="110"/>
+				<param name="onup" value="109"/>
+				<param name="ondown" value="111"/>
 				<param name="headline" value="$LOCALIZE[31234] [CAPITALIZE]$VAR[SearchString][/CAPITALIZE]"/>
 				<param name="force_visible" value="!String.IsEmpty(Window(home).Property(CustomSearch)) + !String.IsEmpty(Skin.String(CustomSearchTerm))"/>
 				<param name="use_custom_content" value="true"/>
 				<param name="widget_target" value="videos"/>
 				<param name="content" value="$VAR[Local.SearchActorShows]"/>
 			</include>
+			<include content="HomePosterWidget">
+				<param name="id" value="111"/>
+				<param name="onup" value="110"/>
+				<param name="ondown" value="112"/>
+				<param name="headline" value="$LOCALIZE[31234] [CAPITALIZE]$VAR[SearchString][/CAPITALIZE]$VAR[EmbyConLabel]"/>
+				<param name="force_visible" value="!String.IsEmpty(Window(home).Property(CustomSearch)) + !String.IsEmpty(Skin.String(CustomSearchTerm))"/>
+				<param name="use_custom_content" value="true"/>
+				<param name="widget_target" value="videos"/>
+				<param name="content" value="$VAR[EmbyCon.SearchActorShows]"/>
+			</include>
 			<include content="HomeWideWidget">
-				<param name="id" value="110"/>
-				<param name="onup" value="109"/>
-				<param name="ondown" value="111"/>
+				<param name="id" value="112"/>
+				<param name="onup" value="111"/>
+				<param name="ondown" value="113"/>
 				<param name="headline" value="$LOCALIZE[31236] [CAPITALIZE]$VAR[SearchString][/CAPITALIZE]"/>
 				<param name="force_visible" value="!String.IsEmpty(Window(home).Property(CustomSearch)) + !String.IsEmpty(Skin.String(CustomSearchTerm))"/>
 				<param name="use_custom_content" value="true"/>
 				<param name="widget_target" value="videos"/>
 				<param name="content" value="$VAR[Local.SearchActorEpisodes]"/>
 			</include>
+			<include content="HomeWideWidget">
+				<param name="id" value="113"/>
+				<param name="onup" value="112"/>
+				<param name="ondown" value="114"/>
+				<param name="headline" value="$LOCALIZE[31236] [CAPITALIZE]$VAR[SearchString][/CAPITALIZE]$VAR[EmbyConLabel]"/>
+				<param name="force_visible" value="!String.IsEmpty(Window(home).Property(CustomSearch)) + !String.IsEmpty(Skin.String(CustomSearchTerm))"/>
+				<param name="use_custom_content" value="true"/>
+				<param name="widget_target" value="videos"/>
+				<param name="content" value="$VAR[EmbyCon.SearchActorEpisodes]"/>
+			</include>
 			<include content="HomePosterWidget">
-				<param name="id" value="111"/>
-				<param name="onup" value="110"/>
-				<param name="ondown" value="112"/>
+				<param name="id" value="114"/>
+				<param name="onup" value="113"/>
+				<param name="ondown" value="115"/>
 				<param name="headline" value="$LOCALIZE[31235] [CAPITALIZE]$VAR[SearchString][/CAPITALIZE]"/>
 				<param name="force_visible" value="!String.IsEmpty(Window(home).Property(CustomSearch)) + !String.IsEmpty(Skin.String(CustomSearchTerm))"/>
 				<param name="use_custom_content" value="true"/>
 				<param name="widget_target" value="videos"/>
 				<param name="content" value="$VAR[Local.SearchDirectorMovies]"/>
 			</include>
+			<include content="HomePosterWidget">
+				<param name="id" value="115"/>
+				<param name="onup" value="114"/>
+				<param name="ondown" value="116"/>
+				<param name="headline" value="$LOCALIZE[31157] [CAPITALIZE]$VAR[SearchString][/CAPITALIZE]$VAR[EmbyConLabel]"/>
+				<param name="force_visible" value="!String.IsEmpty(Window(home).Property(CustomSearch)) + !String.IsEmpty(Skin.String(CustomSearchTerm))"/>
+				<param name="use_custom_content" value="true"/>
+				<param name="widget_target" value="videos"/>
+				<param name="content" value="$VAR[EmbyCon.SearchPerson]"/>
+			</include>
 			<!-- artists -->
 			<include content="HomeSquareWidget">
-				<param name="id" value="112"/>
-				<param name="onup" value="111"/>
-				<param name="ondown" value="113"/>
+				<param name="id" value="116"/>
+				<param name="onup" value="115"/>
+				<param name="ondown" value="117"/>
 				<param name="headline" value="$LOCALIZE[133]"/>
 				<param name="force_visible" value="!String.IsEmpty(Window(home).Property(CustomSearch)) + !String.IsEmpty(Skin.String(CustomSearchTerm))"/>
 				<param name="use_custom_content" value="true"/>
@@ -201,9 +242,9 @@
 			</include>
 			<!-- albums -->
 			<include content="HomeSquareWidget">
-				<param name="id" value="113"/>
-				<param name="onup" value="112"/>
-				<param name="ondown" value="114"/>
+				<param name="id" value="117"/>
+				<param name="onup" value="116"/>
+				<param name="ondown" value="118"/>
 				<param name="headline" value="$LOCALIZE[132]"/>
 				<param name="force_visible" value="!String.IsEmpty(Window(home).Property(CustomSearch)) + !String.IsEmpty(Skin.String(CustomSearchTerm))"/>
 				<param name="use_custom_content" value="true"/>
@@ -211,9 +252,9 @@
 				<param name="content" value="$VAR[Local.SearchAlbums]"/>
 			</include>
 			<include content="HomeSquareWidget">
-				<param name="id" value="114"/>
-				<param name="onup" value="113"/>
-				<param name="ondown" value="115"/>
+				<param name="id" value="118"/>
+				<param name="onup" value="117"/>
+				<param name="ondown" value="119"/>
 				<param name="headline" value="$LOCALIZE[132]$VAR[EmbyConLabel]"/>
 				<param name="force_visible" value="!String.IsEmpty(Window(home).Property(CustomSearch)) + !String.IsEmpty(Skin.String(CustomSearchTerm))"/>
 				<param name="use_custom_content" value="true"/>
@@ -222,9 +263,9 @@
 			</include>
 			<!-- songs -->
 			<include content="HomeSquareWidget">
-				<param name="id" value="115"/>
-				<param name="onup" value="114"/>
-				<param name="ondown" value="116"/>
+				<param name="id" value="119"/>
+				<param name="onup" value="118"/>
+				<param name="ondown" value="120"/>
 				<param name="headline" value="$LOCALIZE[134]"/>
 				<param name="force_visible" value="!String.IsEmpty(Window(home).Property(CustomSearch)) + !String.IsEmpty(Skin.String(CustomSearchTerm))"/>
 				<param name="use_custom_content" value="true"/>
@@ -232,9 +273,9 @@
 				<param name="content" value="$VAR[Local.SearchSongs]"/>
 			</include>
 			<include content="HomeSquareWidget">
-				<param name="id" value="116"/>
-				<param name="onup" value="115"/>
-				<param name="ondown" value="117"/>
+				<param name="id" value="120"/>
+				<param name="onup" value="119"/>
+				<param name="ondown" value="121"/>
 				<param name="headline" value="$LOCALIZE[134]$VAR[EmbyConLabel]"/>
 				<param name="force_visible" value="!String.IsEmpty(Window(home).Property(CustomSearch)) + !String.IsEmpty(Skin.String(CustomSearchTerm))"/>
 				<param name="use_custom_content" value="true"/>
