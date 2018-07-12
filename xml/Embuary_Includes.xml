@@ -664,7 +664,7 @@
 								<left>-5</left>
 								<width>51</width>
 								<height>51</height>
-								<texture border="20,20,20,20" colordiffuse="emby_secondary">items/focus.png</texture>
+								<texture border="20,20,20,20" colordiffuse="accent">items/focus.png</texture>
 								<visible>Control.HasFocus($PARAM[id])</visible>
 							</control>
 							<control type="textbox">
@@ -776,7 +776,7 @@
 	</include>
 	<!-- Busy spinner -->
 	<include name="FullscreenBusySpinner">
-		<param name="colordiffuse">emby_secondary</param>
+		<param name="colordiffuse">accent</param>
 		<definition>
 			<control type="image" id="99">
 				<centerleft>50%</centerleft>
@@ -959,7 +959,7 @@
 			<height>50</height>
 			<aligny>center</aligny>
 			<font>reg24</font>
-			<textcolor>emby</textcolor>
+			<textcolor>accent</textcolor>
 			<label>$LOCALIZE[31038]</label>
 			<visible>Pvr.IsTimeShift</visible>
 		</control>
@@ -1017,6 +1017,7 @@
 	<include name="search_action">
 		<onclick condition="!Skin.HasSetting(UseGlobalsearch)">SetProperty(CustomSearch,1,home)</onclick>
 		<onclick condition="!Skin.HasSetting(UseGlobalsearch)">Skin.Reset(CustomSearchTerm)</onclick>
+		<onclick condition="!Skin.HasSetting(UseGlobalsearch)">Skin.Reset(CustomSearchEmbyID)</onclick>
 		<onclick condition="!Skin.HasSetting(UseGlobalsearch)">Skin.SetString(CustomSearchTerm)</onclick>
 		<onclick condition="!Skin.HasSetting(UseGlobalsearch)">ActivateWindow(1115)</onclick>
 		<onclick condition="Skin.HasSetting(UseGlobalsearch)">RunScript(script.globalsearch)</onclick>
@@ -1033,7 +1034,7 @@
 			<label2>$INFO[Skin.String(UserWidget$PARAM[nr]_path)]</label2>
 		</control>
 		<control type="button" id="$PARAM[id]3">
-			<textcolor>emby</textcolor>
+			<textcolor>accent</textcolor>
 			<texturenofocus colordiffuse="panel_subitem">common/white.jpg</texturenofocus>
 			<include>SettingsButton</include>
 			<onclick>RunScript(script.skin.helper.service,action=setskinsetting,setting=UserWidget$PARAM[nr]_target,header=$LOCALIZE[15021])</onclick>
@@ -1042,7 +1043,7 @@
 			<visible>!String.IsEmpty(Skin.String(UserWidget$PARAM[nr]_path))</visible>
 		</control>
 		<control type="button" id="$PARAM[id]4">
-			<textcolor>emby</textcolor>
+			<textcolor>accent</textcolor>
 			<texturenofocus colordiffuse="panel_subitem">common/white.jpg</texturenofocus>
 			<include>SettingsButton</include>
 			<onclick>Skin.SetString(UserWidget$PARAM[nr]_name)</onclick>
@@ -1051,7 +1052,7 @@
 			<visible>!String.IsEmpty(Skin.String(UserWidget$PARAM[nr]_path))</visible>
 		</control>
 		<control type="button" id="$PARAM[id]5">
-			<textcolor>emby</textcolor>
+			<textcolor>accent</textcolor>
 			<texturenofocus colordiffuse="panel_subitem">common/white.jpg</texturenofocus>
 			<include>SettingsButton</include>
 			<onclick>RunScript(script.skin.helper.service,action=setskinsetting,setting=UserWidget$PARAM[nr]_layout,header=$LOCALIZE[31099])</onclick>
@@ -1074,7 +1075,7 @@
 				<label>$LOCALIZE[31151] #$PARAM[id]</label>
 			</control>
 			<control type="button" id="$PARAM[section]$PARAM[id]2">
-				<textcolor>emby</textcolor>
+				<textcolor>accent</textcolor>
 				<texturenofocus colordiffuse="panel_subitem">common/white.jpg</texturenofocus>
 				<include>SettingsButton</include>
 				<onclick>RunScript(script.skinshortcuts,type=shortcuts&amp;showNone=True&amp;custom=True&amp;grouping=$PARAM[group]&amp;skinLabel=User$PARAM[type]Hub$PARAM[id]_name&amp;skinAction=User$PARAM[type]Hub$PARAM[id]_action&amp;skinList=User$PARAM[type]Hub$PARAM[id]_path)</onclick>
@@ -1084,7 +1085,7 @@
 				<visible>Skin.HasSetting(User$PARAM[type]Hub$PARAM[id])</visible>
 			</control>
 			<control type="button" id="$PARAM[section]$PARAM[id]3">
-				<textcolor>emby</textcolor>
+				<textcolor>accent</textcolor>
 				<texturenofocus colordiffuse="panel_subitem">common/white.jpg</texturenofocus>
 				<include>SettingsButton</include>
 				<onclick>Skin.SetString(User$PARAM[type]Hub$PARAM[id]_name)</onclick>
@@ -1094,7 +1095,7 @@
 				<visible>Skin.HasSetting(User$PARAM[type]Hub$PARAM[id]) + !String.IsEmpty(Skin.String(User$PARAM[type]Hub$PARAM[id]_path))</visible>
 			</control>
 			<control type="button" id="$PARAM[section]$PARAM[id]4">
-				<textcolor>emby</textcolor>
+				<textcolor>accent</textcolor>
 				<texturenofocus colordiffuse="panel_subitem">common/white.jpg</texturenofocus>
 				<include>SettingsButton</include>
 				<onclick>RunScript(script.skin.helper.service,action=setskinsetting,setting=User$PARAM[type]Hub$PARAM[id]_target,header=$LOCALIZE[15021])</onclick>
@@ -1272,7 +1273,7 @@
 				<visible>$EXP[PosterViewVisible]</visible>
 			</control>
 			<control type="radiobutton" id="$PARAM[id]03">
-				<textcolor>emby</textcolor>
+				<textcolor>accent</textcolor>
 				<texturenofocus border="65,10,65,10" colordiffuse="context_subitem">dialogs/context/middle.png</texturenofocus>
 				<include content="ContextButton"/>
 				<label>• $LOCALIZE[31198]</label>
@@ -1288,7 +1289,7 @@
 				<visible>$EXP[WideViewVisible]</visible>
 			</control>
 			<control type="radiobutton" id="$PARAM[id]05">
-				<textcolor>emby</textcolor>
+				<textcolor>accent</textcolor>
 				<texturenofocus border="65,10,65,10" colordiffuse="context_subitem">dialogs/context/middle.png</texturenofocus>
 				<include content="ContextButton"/>
 				<label>• $LOCALIZE[31198]</label>
@@ -1318,7 +1319,7 @@
 				<visible>$EXP[BannerViewVisible]</visible>
 			</control>
 			<control type="radiobutton" id="$PARAM[id]09">
-				<textcolor>emby</textcolor>
+				<textcolor>accent</textcolor>
 				<texturenofocus border="65,10,65,10" colordiffuse="context_subitem">dialogs/context/middle.png</texturenofocus>
 				<include content="ContextButton"/>
 				<label>• $LOCALIZE[31198]</label>
