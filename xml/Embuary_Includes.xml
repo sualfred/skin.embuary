@@ -1460,4 +1460,8 @@
 			<include>WindowOpen_GreenBar</include>
 		</control>
 	</include>
+	<include name="ToggleWatchedAction">
+		<onclick condition="String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) + !String.IsEmpty(ListItem.Property(id))">RunScript(plugin.video.embycon,0,?mode=TOGGLE_WATCHED&amp;item_id=$INFO[ListItem.Property(id)])</onclick>
+		<onclick condition="![String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) + !String.IsEmpty(ListItem.Property(id))]">ToggleWatched</onclick>
+	</include>
 </includes>
