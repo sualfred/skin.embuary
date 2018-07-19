@@ -6,12 +6,10 @@
 	<include>PropertyIncludes</include>
 	<controls>
 		<!-- Background -->
-		<control type="image">
-			<include>Visible_Fade</include>
-			<include>FullscreenDimensions</include>
-			<texture colordiffuse="background_diffuse">common/white.jpg</texture>
-			<visible>!Window.IsVisible(virtualkeyboard)</visible>
-		</control>
+		<include content="DiffuseMask">
+			<param name="color">background_diffuse</param>
+			<param name="visible">!Window.IsVisible(virtualkeyboard)</param>
+		</include>
 		<!-- Control group -->
 		<control type="grouplist">
 			<include>Dialog_PopupOpenClose</include>
