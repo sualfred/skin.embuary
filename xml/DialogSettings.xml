@@ -3,20 +3,16 @@
 	<defaultcontrol always="true">5</defaultcontrol>
 	<include>PropertyIncludes</include>
 	<controls>
-		<control type="image">
-			<include>Visible_Fade</include>
-			<include>FullscreenDimensions</include>
-			<texture colordiffuse="background_diffuse">common/white.jpg</texture>
-			<visible>[VideoPlayer.IsFullscreen | Window.IsVisible(visualisation)] + !Window.IsVisible(DialogSlider.xml)</visible>
-		</control>
-		<control type="image">
-			<include>Visible_Fade</include>
-			<include>FullscreenDimensions</include>
-			<texture colordiffuse="background">common/white.jpg</texture>
-			<visible>!VideoPlayer.IsFullscreen + !Window.IsVisible(visualisation) + !Window.IsVisible(DialogSlider.xml)</visible>
-		</control>
+		<include content="DiffuseMask">
+			<param name="color">background_diffuse</param>
+			<param name="visible">[VideoPlayer.IsFullscreen | Window.IsVisible(visualisation)] + !Window.IsVisible(DialogSlider.xml) + !Window.IsVisible(subtitlesearch) + !Window.IsVisible(filebrowser)</param>
+		</include>
+		<include content="DiffuseMask">
+			<param name="background">background_diffuse</param>
+			<param name="visible">!VideoPlayer.IsFullscreen + !Window.IsVisible(visualisation) + !Window.IsVisible(DialogSlider.xml) + !Window.IsVisible(subtitlesearch) + !Window.IsVisible(filebrowser)</param>
+		</include>
 		<control type="grouplist">
-			<visible>!Window.IsVisible(DialogSlider.xml) + !Window.IsVisible(selectdialog)</visible>
+			<visible>!Window.IsVisible(DialogSlider.xml) + !Window.IsVisible(selectdialog) + !Window.IsVisible(subtitlesearch)</visible>
 			<include>Visible_PopupOpenClose</include>
 			<include>Dialog_PopupOpenClose</include>
 			<centerleft>50%</centerleft>
