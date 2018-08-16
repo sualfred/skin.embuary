@@ -1629,7 +1629,7 @@
 		<value>ExtendedInfo</value>
 	</variable>
 	<variable name="EpisodeListLabel">
-		<value condition="String.IsEqual(Container.Foldername,$LOCALIZE[20366])">$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title]</value>
+		<value condition="String.IsEqual(Container.Foldername,$LOCALIZE[20366]) | !String.Contains(Container.Foldername,$LOCALIZE[20373])">$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title]</value>
 		<value condition="String.IsEmpty(Container.ShowTitle)">$INFO[ListItem.TvShowTitle,, - ]$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title]</value>
 		<value>$INFO[ListItem.Episode,,. ]$INFO[ListItem.Title]</value>
 	</variable>
