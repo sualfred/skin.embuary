@@ -9,7 +9,7 @@
 			<param name="visible">!Window.IsVisible(mediasource) + !Window.IsVisible(osdsubtitlesettings)</param>
 		</include>
 		<control type="grouplist">
-			<visible>!Window.IsVisible(DialogSettings.xml) | Window.IsVisible(osdsubtitlesettings)</visible>
+			<visible>!Window.IsVisible(busydialog) + [!Window.IsVisible(DialogSettings.xml) | Window.IsVisible(osdsubtitlesettings)]</visible>
 			<include>Visible_PopupOpenClose</include>
 			<include>Dialog_PopupOpenClose</include>
 			<centerleft>50%</centerleft>
@@ -53,6 +53,7 @@
 			</control>
 			<!-- list -->
 			<control type="group">
+				<visible>Control.IsVisible(450)</visible>
 				<animation effect="slide" start="0,0" end="150,0" condition="true">Conditional</animation>
 				<width>800</width>
 				<visible>Control.IsVisible(450)</visible>
