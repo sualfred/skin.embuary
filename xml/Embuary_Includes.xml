@@ -148,20 +148,20 @@
 	</include>
 	<!-- No textures -->
 	<include name="NoTextures">
-		<texturefocus>-</texturefocus>
-		<texturenofocus>-</texturenofocus>
-		<textureup>-</textureup>
-		<texturedown>-</texturedown>
-		<textureupfocus>-</textureupfocus>
-		<texturedownfocus>-</texturedownfocus>
-		<textureupdisabled>-</textureupdisabled>
-		<texturedowndisabled>-</texturedowndisabled>
-		<textureradioonfocus>-</textureradioonfocus>
-		<textureradioonnofocus>-</textureradioonnofocus>
-		<textureradioofffocus>-</textureradioofffocus>
-		<textureradiooffnofocus>-</textureradiooffnofocus>
-		<radiowidth>-</radiowidth>
-		<radioheight>-</radioheight>
+		<texturefocus></texturefocus>
+		<texturenofocus></texturenofocus>
+		<textureup></textureup>
+		<texturedown></texturedown>
+		<textureupfocus></textureupfocus>
+		<texturedownfocus></texturedownfocus>
+		<textureupdisabled></textureupdisabled>
+		<texturedowndisabled></texturedowndisabled>
+		<textureradioonfocus></textureradioonfocus>
+		<textureradioonnofocus></textureradioonnofocus>
+		<textureradioofffocus></textureradioofffocus>
+		<textureradiooffnofocus></textureradiooffnofocus>
+		<radiowidth></radiowidth>
+		<radioheight></radioheight>
 	</include>
 	<!-- Spacer for grouplists -->
 	<include name="Spacer">
@@ -173,7 +173,7 @@
 				<width>$PARAM[width]</width>
 				<height>$PARAM[height]</height>
 				<font>invisible</font>
-				<label>-</label>
+				<label></label>
 				<visible>$PARAM[visible]</visible>
 			</control>
 		</definition>
@@ -687,8 +687,8 @@
 	<!-- Invisible focus button -->
 	<include name="SetPropertyOnFocus">
 		<control type="button">
-			<texturefocus>-</texturefocus>
-			<texturenofocus>-</texturenofocus>
+			<texturefocus></texturefocus>
+			<texturenofocus></texturenofocus>
 			<onfocus>ClearProperty(FocusBounce,home)</onfocus>
 			<onfocus condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)]">SetProperty(TVShowRating,$INFO[ListItem.Rating],home)</onfocus>
 			<onfocus condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)]">SetProperty(TVShowDBID,$INFO[ListItem.DBID],home)</onfocus>
@@ -706,8 +706,8 @@
 	</include>
 	<include name="WidgetSetPropertyOnFocus">
 		<control type="button">
-			<texturefocus>-</texturefocus>
-			<texturenofocus>-</texturenofocus>
+			<texturefocus></texturefocus>
+			<texturenofocus></texturenofocus>
 			<onfocus>ClearProperty(FocusBounce,home)</onfocus>
 			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow)">SetProperty(TVShowRating,$INFO[Container($PARAM[id]).ListItem.Rating],home)</onfocus>
 			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow)">SetProperty(TVShowDBID,$INFO[Container($PARAM[id]).ListItem.DBID],home)</onfocus>
@@ -986,10 +986,10 @@
 			<height>5</height>
 			<info>player.volume</info>
 			<texturebg colordiffuse="grey">common/white.jpg</texturebg>
-			<lefttexture>-</lefttexture>
+			<lefttexture></lefttexture>
 			<midtexture colordiffuse="player_osd_color">common/white.jpg</midtexture>
-			<righttexture>-</righttexture>
-			<overlaytexture>-</overlaytexture>
+			<righttexture></righttexture>
+			<overlaytexture></overlaytexture>
 			<visible>Integer.IsGreater(player.volume,1)</visible>
 		</control>
 		<control type="progress" id="99">
@@ -998,10 +998,10 @@
 			<width>150</width>
 			<height>5</height>
 			<texturebg colordiffuse="grey">common/white.jpg</texturebg>
-			<lefttexture>-</lefttexture>
+			<lefttexture></lefttexture>
 			<midtexture colordiffuse="ff00000">common/white.jpg</midtexture>
-			<righttexture>-</righttexture>
-			<overlaytexture>-</overlaytexture>
+			<righttexture></righttexture>
+			<overlaytexture></overlaytexture>
 			<visible>!Integer.IsGreater(player.volume,1)</visible>
 		</control>
 	</include>
@@ -1012,9 +1012,9 @@
 		<right>31</right>
 		<height>5</height>
 		<reveal>true</reveal>
-		<righttexture>-</righttexture>
-		<overlaytexture>-</overlaytexture>
-		<lefttexture>-</lefttexture>
+		<righttexture></righttexture>
+		<overlaytexture></overlaytexture>
+		<lefttexture></lefttexture>
 	</include>
 	<include name="search_action">
 		<onclick condition="!Skin.HasSetting(UseGlobalsearch)">SetProperty(CustomSearch,1,home)</onclick>
