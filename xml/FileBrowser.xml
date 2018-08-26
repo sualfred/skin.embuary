@@ -6,10 +6,10 @@
 	<controls>
 		<include content="DiffuseMask">
 			<param name="color">background_diffuse</param>
-			<param name="visible">!Window.IsVisible(mediasource)</param>
+			<param name="visible">!Window.IsVisible(mediasource) + ![Window.IsVisible(DialogSettings.xml) + Window.IsVisible(profilesettings)]</param>
 		</include>
 		<control type="grouplist">
-			<visible>!Window.IsVisible(DialogSettings.xml)</visible>
+			<visible>!Window.IsVisible(DialogSettings.xml) | Window.IsVisible(profilesettings)</visible>
 			<include>Visible_PopupOpenClose</include>
 			<include>Dialog_PopupOpenClose</include>
 			<centerleft>50%</centerleft>

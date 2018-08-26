@@ -5,14 +5,10 @@
 	<controls>
 		<include content="DiffuseMask">
 			<param name="color">background_diffuse</param>
-			<param name="visible">[VideoPlayer.IsFullscreen | Window.IsVisible(visualisation)] + !Window.IsVisible(DialogSlider.xml) + !Window.IsVisible(subtitlesearch) + !Window.IsVisible(filebrowser)</param>
-		</include>
-		<include content="DiffuseMask">
-			<param name="background">background_diffuse</param>
-			<param name="visible">!VideoPlayer.IsFullscreen + !Window.IsVisible(visualisation) + !Window.IsVisible(DialogSlider.xml) + !Window.IsVisible(subtitlesearch) + !Window.IsVisible(filebrowser)</param>
 		</include>
 		<control type="grouplist">
 			<visible>!Window.IsVisible(DialogSlider.xml) + !Window.IsVisible(selectdialog) + !Window.IsVisible(subtitlesearch)</visible>
+			<visible>![Window.IsVisible(profilesettings) + Window.IsVisible(filebrowser)]</visible>
 			<include>Visible_PopupOpenClose</include>
 			<include>Dialog_PopupOpenClose</include>
 			<centerleft>50%</centerleft>
