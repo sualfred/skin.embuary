@@ -18,141 +18,22 @@
 	<!-- first run -->
 	<onload condition="!Skin.HasSetting(EmbuaryFirstRun)">ReplaceWindow(1119)</onload>
 	<include>PropertyIncludes</include>
+
+
+	<onload>RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=100&amp;levels=0&amp;group=mainmenu|moviehub|tvshowhub|musichub)</onload>
+
+
 	<controls>
 		<control type="group">
 			<visible>String.IsEmpty(Window(home).Property(pvrhub))</visible>
 			<include>HiddenHomeLists</include>
 			<!-- background -->
 			<include>Background</include>
-			<!-- hub -->
-			<control type="grouplist" id="10">
-				<include>Window_OpenClose</include>
-				<defaultcontrol>100</defaultcontrol>
-				<width>100%</width>
-				<height>100%</height>
-				<itemgap>-160</itemgap>
-				<orientation>vertical</orientation>
-				<usecontrolcoords>true</usecontrolcoords>
-				<pagecontrol>17</pagecontrol>
-				<include>ScrollTime</include>
-				<ondown>noop</ondown>
-				<include content="WidgetSpacer">
-					<param name="id" value="101"/>
-				</include>
-				<include content="HomeWidgetMenu">
-					<param name="id" value="100"/>
-					<param name="onup" value="6666"/>
-					<param name="ondown" value="200"/>
-					<param name="headline" value="$LOCALIZE[14211]"/>
-				</include>
-				<include content="WidgetCall">
-					<param name="pos" value="1"/>
-					<param name="id" value="200"/>
-					<param name="onup" value="100"/>
-					<param name="ondown" value="201"/>
-				</include>
-				<include content="WidgetCall">
-					<param name="pos" value="2"/>
-					<param name="id" value="201"/>
-					<param name="onup" value="200"/>
-					<param name="ondown" value="202"/>
-				</include>
-				<include content="WidgetCall">
-					<param name="pos" value="3"/>
-					<param name="id" value="202"/>
-					<param name="onup" value="201"/>
-					<param name="ondown" value="203"/>
-				</include>
-				<include content="WidgetCall">
-					<param name="pos" value="4"/>
-					<param name="id" value="203"/>
-					<param name="onup" value="202"/>
-					<param name="ondown" value="204"/>
-				</include>
-				<include content="WidgetCall">
-					<param name="pos" value="5"/>
-					<param name="id" value="204"/>
-					<param name="onup" value="203"/>
-					<param name="ondown" value="205"/>
-				</include>
-				<include content="WidgetCall">
-					<param name="pos" value="6"/>
-					<param name="id" value="205"/>
-					<param name="onup" value="204"/>
-					<param name="ondown" value="206"/>
-				</include>
-				<include content="WidgetCall">
-					<param name="pos" value="7"/>
-					<param name="id" value="206"/>
-					<param name="onup" value="205"/>
-					<param name="ondown" value="207"/>
-				</include>
-				<include content="WidgetCall">
-					<param name="pos" value="8"/>
-					<param name="id" value="207"/>
-					<param name="onup" value="206"/>
-					<param name="ondown" value="208"/>
-				</include>
-				<include content="WidgetCall">
-					<param name="pos" value="9"/>
-					<param name="id" value="208"/>
-					<param name="onup" value="207"/>
-					<param name="ondown" value="209"/>
-				</include>
-				<include content="WidgetCall">
-					<param name="pos" value="10"/>
-					<param name="id" value="209"/>
-					<param name="onup" value="208"/>
-					<param name="ondown" value="210"/>
-				</include>
-				<include content="WidgetCall">
-					<param name="pos" value="11"/>
-					<param name="id" value="210"/>
-					<param name="onup" value="209"/>
-					<param name="ondown" value="211"/>
-				</include>
-				<include content="WidgetCall">
-					<param name="pos" value="12"/>
-					<param name="id" value="211"/>
-					<param name="onup" value="210"/>
-					<param name="ondown" value="212"/>
-				</include>
-				<include content="WidgetCall">
-					<param name="pos" value="13"/>
-					<param name="id" value="212"/>
-					<param name="onup" value="211"/>
-					<param name="ondown" value="213"/>
-				</include>
-				<include content="WidgetCall">
-					<param name="pos" value="14"/>
-					<param name="id" value="213"/>
-					<param name="onup" value="212"/>
-					<param name="ondown" value="214"/>
-				</include>
-				<include content="WidgetCall">
-					<param name="pos" value="15"/>
-					<param name="id" value="214"/>
-					<param name="onup" value="213"/>
-					<param name="ondown" value="215"/>
-				</include>
-				<include content="WidgetCall">
-					<param name="pos" value="16"/>
-					<param name="id" value="215"/>
-					<param name="onup" value="214"/>
-					<param name="ondown" value="216"/>
-				</include>
-				<include content="WidgetCall">
-					<param name="pos" value="17"/>
-					<param name="id" value="216"/>
-					<param name="onup" value="215"/>
-					<param name="ondown" value="217"/>
-				</include>
-			</control>
-
-			<!-- header bar -->
-			<include content="HeaderBar">
-				<param name="id">10</param>
-			</include>
+			<!-- content -->
+			<include condition="!Skin.HasSetting(HomePanelLayout)">HomeDefaultLayout</include>
+			<include condition="Skin.HasSetting(HomePanelLayout)">HomePanelLayout</include>
+			<!-- menu fake art -->
+			<include>skinshortcuts-template-itemArt</include>
 			<!-- side panel -->
 			<include content="SidePanel"/>
 		</control>
