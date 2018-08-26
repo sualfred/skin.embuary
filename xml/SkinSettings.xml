@@ -24,7 +24,7 @@
 						<ondown>noop</ondown>
 						<include content="SideHeadline">
 							<param name="nr">1</param>
-							<param name="label">$LOCALIZE[14211]</param>
+							<param name="label">$LOCALIZE[31249]</param>
 						</include>
 						<control type="button" id="101">
 							<width>400</width>
@@ -38,7 +38,7 @@
 							<selectedcolor>panel_textcolor</selectedcolor>
 							<texturefocus colordiffuse="panel_focus">common/white.jpg</texturefocus>
 							<include>NoTextures</include>
-							<label>$LOCALIZE[10000]</label>
+							<label>$LOCALIZE[31247]</label>
 							<onright>200</onright>
 						</control>
 						<control type="button" id="102">
@@ -53,9 +53,13 @@
 							<selectedcolor>panel_textcolor</selectedcolor>
 							<texturefocus colordiffuse="panel_focus">common/white.jpg</texturefocus>
 							<include>NoTextures</include>
-							<label>$LOCALIZE[31173]</label>
+							<label>$LOCALIZE[31125]</label>
 							<onright>300</onright>
 						</control>
+						<include content="SideHeadline">
+							<param name="nr">2</param>
+							<param name="label">$LOCALIZE[128]</param>
+						</include>
 						<control type="button" id="103">
 							<width>400</width>
 							<height>50</height>
@@ -68,7 +72,7 @@
 							<selectedcolor>panel_textcolor</selectedcolor>
 							<texturefocus colordiffuse="panel_focus">common/white.jpg</texturefocus>
 							<include>NoTextures</include>
-							<label>$LOCALIZE[31172]</label>
+							<label>$LOCALIZE[480]</label>
 							<onright>400</onright>
 						</control>
 						<control type="button" id="104">
@@ -83,7 +87,7 @@
 							<selectedcolor>panel_textcolor</selectedcolor>
 							<texturefocus colordiffuse="panel_focus">common/white.jpg</texturefocus>
 							<include>NoTextures</include>
-							<label>$LOCALIZE[31174]</label>
+							<label>$LOCALIZE[31134]</label>
 							<onright>500</onright>
 						</control>
 						<control type="button" id="105">
@@ -98,57 +102,8 @@
 							<selectedcolor>panel_textcolor</selectedcolor>
 							<texturefocus colordiffuse="panel_focus">common/white.jpg</texturefocus>
 							<include>NoTextures</include>
-							<label>$LOCALIZE[31125]</label>
-							<onright>600</onright>
-						</control>
-						<include content="SideHeadline">
-							<param name="nr">2</param>
-							<param name="label">$LOCALIZE[128]</param>
-						</include>
-						<control type="button" id="106">
-							<width>400</width>
-							<height>50</height>
-							<align>left</align>
-							<aligny>center</aligny>
-							<font>Reg22</font>
-							<textoffsetx>50</textoffsetx>
-							<textcolor>panel_textcolor</textcolor>
-							<focusedcolor>panel_textcolor</focusedcolor>
-							<selectedcolor>panel_textcolor</selectedcolor>
-							<texturefocus colordiffuse="panel_focus">common/white.jpg</texturefocus>
-							<include>NoTextures</include>
-							<label>$LOCALIZE[480]</label>
-							<onright>700</onright>
-						</control>
-						<control type="button" id="107">
-							<width>400</width>
-							<height>50</height>
-							<align>left</align>
-							<aligny>center</aligny>
-							<font>Reg22</font>
-							<textoffsetx>50</textoffsetx>
-							<textcolor>panel_textcolor</textcolor>
-							<focusedcolor>panel_textcolor</focusedcolor>
-							<selectedcolor>panel_textcolor</selectedcolor>
-							<texturefocus colordiffuse="panel_focus">common/white.jpg</texturefocus>
-							<include>NoTextures</include>
-							<label>$LOCALIZE[31134]</label>
-							<onright>800</onright>
-						</control>
-						<control type="button" id="108">
-							<width>400</width>
-							<height>50</height>
-							<align>left</align>
-							<aligny>center</aligny>
-							<font>Reg22</font>
-							<textoffsetx>50</textoffsetx>
-							<textcolor>panel_textcolor</textcolor>
-							<focusedcolor>panel_textcolor</focusedcolor>
-							<selectedcolor>panel_textcolor</selectedcolor>
-							<texturefocus colordiffuse="panel_focus">common/white.jpg</texturefocus>
-							<include>NoTextures</include>
 							<label>$LOCALIZE[31224]</label>
-							<onright>900</onright>
+							<onright>600</onright>
 						</control>
 					</control>
 				</control>
@@ -183,7 +138,7 @@
 					<font>reg22</font>
 					<label>$VAR[SettingHelpText]</label>
 				</control>
-				<!-- home -->
+				<!-- menus widgets -->
 				<control type="grouplist" id="200">
 					<visible>ControlGroup(100).HasFocus(101)</visible>
 					<left>500</left>
@@ -196,445 +151,88 @@
 					<pagecontrol>60</pagecontrol>
 					<scrolltime>200</scrolltime>
 					<itemgap>0</itemgap>
-					<!-- media menu -->
+					<!-- main menu -->
 					<include content="SkinSettingsHeadlineLabel">
-						<param name="id" value="310"/>
-						<param name="label" value="$LOCALIZE[31028]"/>
+						<param name="id" value="201"/>
+						<param name="label" value="$LOCALIZE[10000]"/>
 					</include>
-					<control type="button" id="311">
+					<control type="button" id="202">
 						<include>SettingsButton</include>
-						<onclick>SetProperty(PositionCount,54,home)</onclick>
-						<onclick>ActivateWindow(1110)</onclick>
-						<label>$LOCALIZE[31218]</label>
+						<label>$LOCALIZE[31244]</label>
+						<onclick>RunScript(script.skinshortcuts,type=manage&amp;group=mainmenu)</onclick>
 					</control>
-					<control type="button" id="312">
-						<include>SettingsButton</include>
-						<onclick>ActivateWindow(1113)</onclick>
-						<label>$LOCALIZE[31205]</label>
-					</control>
-					<control type="button" id="313">
-						<include>SettingsButton</include>
-						<onclick>SetProperty(MainMenuReset,1,home)</onclick>
-						<label>$LOCALIZE[31204]</label>
-					</control>
-					<!-- widgets -->
-					<include content="SkinSettingsHeadlineLabel">
-						<param name="id" value="320"/>
-						<param name="label" value="$LOCALIZE[31103]"/>
-					</include>
-					<control type="button" id="321">
+					<control type="button" id="203">
 						<include>SettingsButton</include>
 						<onclick>SetProperty(PositionCount,17,home)</onclick>
 						<onclick>SetProperty(SelectorContent,HomeWidgets,home)</onclick>
 						<onclick>ActivateWindow(1110)</onclick>
-						<label>$LOCALIZE[31218]</label>
+						<enable>!Skin.HasSetting(HomePanelLayout)</enable>
+						<label>$LOCALIZE[31245]</label>
 					</control>
-					<control type="button" id="322">
+					<control type="radiobutton" id="204">
 						<include>SettingsButton</include>
-						<onclick>SetProperty(HomeWidgetReset,1,home)</onclick>
-						<onclick>ActivateWindow(1112)</onclick>
-						<label>$LOCALIZE[31216]</label>
+						<onclick>Skin.ToggleSetting(HomePanelLayout)</onclick>
+						<selected>Skin.HasSetting(HomePanelLayout)</selected>
+						<label>$LOCALIZE[31153]</label>
 					</control>
-					<!-- custom media menu -->
+					<!-- movie -->
 					<include content="SkinSettingsHeadlineLabel">
-						<param name="id" value="330"/>
-						<param name="label" value="$LOCALIZE[31178]"/>
+						<param name="id" value="211"/>
+						<param name="label" value="$LOCALIZE[31173]"/>
 					</include>
-					<include content="CustomHubShortcutSettingsTemplate">
-						<param name="section" value="33"/>
-						<param name="id" value="1"/>
-						<param name="type" value="Home"/>
-						<param name="group" value="homemediamenu"/>
-					</include>
-					<include content="CustomHubShortcutSettingsTemplate">
-						<param name="section" value="33"/>
-						<param name="id" value="2"/>
-						<param name="type" value="Home"/>
-						<param name="group" value="homemediamenu"/>
-					</include>
-					<include content="CustomHubShortcutSettingsTemplate">
-						<param name="section" value="33"/>
-						<param name="id" value="3"/>
-						<param name="type" value="Home"/>
-						<param name="group" value="homemediamenu"/>
-					</include>
-					<include content="CustomHubShortcutSettingsTemplate">
-						<param name="section" value="33"/>
-						<param name="id" value="4"/>
-						<param name="type" value="Home"/>
-						<param name="group" value="homemediamenu"/>
-					</include>
-					<include content="CustomHubShortcutSettingsTemplate">
-						<param name="section" value="33"/>
-						<param name="id" value="5"/>
-						<param name="type" value="Home"/>
-						<param name="group" value="homemediamenu"/>
-					</include>
-					<include content="CustomHubShortcutSettingsTemplate">
-						<param name="section" value="33"/>
-						<param name="id" value="6"/>
-						<param name="type" value="Home"/>
-						<param name="group" value="homemediamenu"/>
-					</include>
-				</control>
-				<!-- Movie hub -->
-				<control type="grouplist" id="300">
-					<visible>ControlGroup(100).HasFocus(102)</visible>
-					<left>500</left>
-					<right>100</right>
-					<height>100%</height>
-					<onup>6666</onup>
-					<onleft>100</onleft>
-					<onright>noop</onright>
-					<ondown>noop</ondown>
-					<pagecontrol>60</pagecontrol>
-					<scrolltime>200</scrolltime>
-					<itemgap>0</itemgap>
-					<!-- shortcuts -->
-					<include content="SkinSettingsHeadlineLabel">
-						<param name="id" value="510"/>
-						<param name="label" value="$LOCALIZE[111]"/>
-					</include>
-					<control type="radiobutton" id="511">
+					<control type="button" id="212">
 						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideMovieHubMovieButton)</onclick>
-						<selected>!Skin.HasSetting(HideMovieHubMovieButton)</selected>
-						<label>$LOCALIZE[342]</label>
+						<label>$LOCALIZE[31244]</label>
+						<onclick>RunScript(script.skinshortcuts,type=manage&amp;group=moviehub)</onclick>
 					</control>
-					<control type="radiobutton" id="512">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideMovieHubBoxsetsButton)</onclick>
-						<selected>!Skin.HasSetting(HideMovieHubBoxsetsButton)</selected>
-						<label>$LOCALIZE[31169]</label>
-					</control>
-					<control type="radiobutton" id="513">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideMovieHubGenreButton)</onclick>
-						<selected>!Skin.HasSetting(HideMovieHubGenreButton)</selected>
-						<label>$LOCALIZE[135]</label>
-					</control>
-					<control type="radiobutton" id="514">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideMovieHubLibraryButton)</onclick>
-						<selected>!Skin.HasSetting(HideMovieHubLibraryButton)</selected>
-						<label>$LOCALIZE[14022]</label>
-					</control>
-					<control type="radiobutton" id="515">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideMovieHubEmbyConButton)</onclick>
-						<selected>!Skin.HasSetting(HideMovieHubEmbyConButton)</selected>
-						<label>$LOCALIZE[31118]</label>
-						<enable>System.HasAddon(plugin.video.embycon)</enable>
-					</control>
-					<control type="radiobutton" id="516">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideMovieHubSearchButton)</onclick>
-						<selected>!Skin.HasSetting(HideMovieHubSearchButton)</selected>
-						<label>$LOCALIZE[137]</label>
-					</control>
-					<!-- widgets -->
-					<include content="SkinSettingsHeadlineLabel">
-						<param name="id" value="520"/>
-						<param name="label" value="$LOCALIZE[31103]"/>
-					</include>
-					<control type="button" id="521">
+					<control type="button" id="214">
 						<include>SettingsButton</include>
 						<onclick>SetProperty(PositionCount,19,home)</onclick>
 						<onclick>SetProperty(SelectorContent,MovieHubWidgets,home)</onclick>
 						<onclick>ActivateWindow(1110)</onclick>
-						<label>$LOCALIZE[31218]</label>
+						<label>$LOCALIZE[31245]</label>
 					</control>
-					<control type="button" id="522">
-						<include>SettingsButton</include>
-						<onclick>SetProperty(MovieHubWidgetReset,1,home)</onclick>
-						<onclick>ActivateWindow(1112)</onclick>
-						<label>$LOCALIZE[31216]</label>
-					</control>
-					<!-- custom shortcuts -->
+					<!-- tvshows -->
 					<include content="SkinSettingsHeadlineLabel">
-						<param name="id" value="530"/>
-						<param name="label" value="$LOCALIZE[31027]"/>
+						<param name="id" value="221"/>
+						<param name="label" value="$LOCALIZE[31172]"/>
 					</include>
-					<include content="CustomHubShortcutSettingsTemplate">
-						<param name="section" value="53"/>
-						<param name="id" value="1"/>
-						<param name="type" value="Movie"/>
-					</include>
-					<include content="CustomHubShortcutSettingsTemplate">
-						<param name="section" value="53"/>
-						<param name="id" value="2"/>
-						<param name="type" value="Movie"/>
-					</include>
-					<include content="CustomHubShortcutSettingsTemplate">
-						<param name="section" value="53"/>
-						<param name="id" value="3"/>
-						<param name="type" value="Movie"/>
-					</include>
-					<include content="CustomHubShortcutSettingsTemplate">
-						<param name="section" value="53"/>
-						<param name="id" value="4"/>
-						<param name="type" value="Movie"/>
-					</include>
-					<include content="CustomHubShortcutSettingsTemplate">
-						<param name="section" value="53"/>
-						<param name="id" value="5"/>
-						<param name="type" value="Movie"/>
-					</include>
-					<include content="CustomHubShortcutSettingsTemplate">
-						<param name="section" value="53"/>
-						<param name="id" value="6"/>
-						<param name="type" value="Movie"/>
-					</include>
-					<control type="label">
-						<height>50</height>
-					</control>
-				</control>
-				<!-- TV show hub -->
-				<control type="grouplist" id="400">
-					<visible>ControlGroup(100).HasFocus(103)</visible>
-					<left>500</left>
-					<right>100</right>
-					<height>100%</height>
-					<onup>6666</onup>
-					<onleft>100</onleft>
-					<onright>noop</onright>
-					<ondown>noop</ondown>
-					<pagecontrol>60</pagecontrol>
-					<scrolltime>200</scrolltime>
-					<itemgap>0</itemgap>
-					<!-- shortcuts -->
-					<include content="SkinSettingsHeadlineLabel">
-						<param name="id" value="610"/>
-						<param name="label" value="$LOCALIZE[111]"/>
-					</include>
-					<control type="radiobutton" id="611">
+					<control type="button" id="222">
 						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideTVShowHubShowButton)</onclick>
-						<selected>!Skin.HasSetting(HideTVShowHubShowButton)</selected>
-						<label>$LOCALIZE[20343]</label>
+						<label>$LOCALIZE[31244]</label>
+						<onclick>RunScript(script.skinshortcuts,type=manage&amp;group=tvshowhub)</onclick>
 					</control>
-					<control type="radiobutton" id="612">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideTVShowHubGenreButton)</onclick>
-						<selected>!Skin.HasSetting(HideTVShowHubGenreButton)</selected>
-						<label>$LOCALIZE[135]</label>
-					</control>
-					<control type="radiobutton" id="613">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideTVShowHubNextAiredButton)</onclick>
-						<selected>!Skin.HasSetting(HideTVShowHubNextAiredButton)</selected>
-						<label>$LOCALIZE[31154]</label>
-						<enable>System.HasAddon(script.tv.show.next.aired)</enable>
-					</control>
-					<control type="radiobutton" id="614">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideTVShowHubLibrary)</onclick>
-						<selected>!Skin.HasSetting(HideTVShowHubLibrary)</selected>
-						<label>$LOCALIZE[14022]</label>
-					</control>
-					<control type="radiobutton" id="615">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideTVShowHubEmbyConButton)</onclick>
-						<selected>!Skin.HasSetting(HideTVShowHubEmbyConButton)</selected>
-						<label>$LOCALIZE[31118]</label>
-						<enable>System.HasAddon(plugin.video.embycon)</enable>
-					</control>
-					<control type="radiobutton" id="616">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideTVShowHubSearchButton)</onclick>
-						<selected>!Skin.HasSetting(HideTVShowHubSearchButton)</selected>
-						<label>$LOCALIZE[137]</label>
-					</control>
-					<!-- widgets -->
-					<include content="SkinSettingsHeadlineLabel">
-						<param name="id" value="620"/>
-						<param name="label" value="$LOCALIZE[31103]"/>
-					</include>
-					<control type="button" id="621">
+					<control type="button" id="223">
 						<include>SettingsButton</include>
 						<onclick>SetProperty(PositionCount,19,home)</onclick>
 						<onclick>SetProperty(SelectorContent,TVShowHubWidgets,home)</onclick>
 						<onclick>ActivateWindow(1110)</onclick>
-						<label>$LOCALIZE[31218]</label>
+						<label>$LOCALIZE[31245]</label>
 					</control>
-					<control type="button" id="622">
-						<include>SettingsButton</include>
-						<onclick>SetProperty(TVShowHubWidgetReset,1,home)</onclick>
-						<onclick>ActivateWindow(1112)</onclick>
-						<label>$LOCALIZE[31216]</label>
-					</control>
-					<!-- custom shortcuts -->
+					<!-- music -->
 					<include content="SkinSettingsHeadlineLabel">
-						<param name="id" value="630"/>
-						<param name="label" value="$LOCALIZE[31027]"/>
+						<param name="id" value="241"/>
+						<param name="label" value="$LOCALIZE[31174]"/>
 					</include>
-					<include content="CustomHubShortcutSettingsTemplate">
-						<param name="section" value="63"/>
-						<param name="id" value="1"/>
-						<param name="type" value="TVShow"/>
-					</include>
-					<include content="CustomHubShortcutSettingsTemplate">
-						<param name="section" value="63"/>
-						<param name="id" value="2"/>
-						<param name="type" value="TVShow"/>
-					</include>
-					<include content="CustomHubShortcutSettingsTemplate">
-						<param name="section" value="63"/>
-						<param name="id" value="3"/>
-						<param name="type" value="TVShow"/>
-					</include>
-					<include content="CustomHubShortcutSettingsTemplate">
-						<param name="section" value="63"/>
-						<param name="id" value="4"/>
-						<param name="type" value="TVShow"/>
-					</include>
-					<include content="CustomHubShortcutSettingsTemplate">
-						<param name="section" value="63"/>
-						<param name="id" value="5"/>
-						<param name="type" value="TVShow"/>
-					</include>
-					<include content="CustomHubShortcutSettingsTemplate">
-						<param name="section" value="63"/>
-						<param name="id" value="6"/>
-						<param name="type" value="TVShow"/>
-					</include>
-					<control type="label">
-						<height>50</height>
-					</control>
-				</control>
-				<!-- Music hub -->
-				<control type="grouplist" id="500">
-					<visible>ControlGroup(100).HasFocus(104)</visible>
-					<left>500</left>
-					<right>100</right>
-					<height>100%</height>
-					<onup>6666</onup>
-					<onleft>100</onleft>
-					<onright>noop</onright>
-					<ondown>noop</ondown>
-					<pagecontrol>60</pagecontrol>
-					<scrolltime>200</scrolltime>
-					<itemgap>0</itemgap>
-					<!-- shortcuts -->
-					<include content="SkinSettingsHeadlineLabel">
-						<param name="id" value="710"/>
-						<param name="label" value="$LOCALIZE[111]"/>
-					</include>
-					<control type="radiobutton" id="711">
+					<control type="button" id="242">
 						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideMusicHubArtistButton)</onclick>
-						<selected>!Skin.HasSetting(HideMusicHubArtistButton)</selected>
-						<label>$LOCALIZE[133]</label>
+						<label>$LOCALIZE[31244]</label>
+						<onclick>RunScript(script.skinshortcuts,type=manage&amp;group=musichub)</onclick>
 					</control>
-					<control type="radiobutton" id="712">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideMusicHubAlbumButton)</onclick>
-						<selected>!Skin.HasSetting(HideMusicHubAlbumButton)</selected>
-						<label>$LOCALIZE[132]</label>
-					</control>
-					<control type="radiobutton" id="713">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideMusicHubSongButton)</onclick>
-						<selected>!Skin.HasSetting(HideMusicHubSongButton)</selected>
-						<label>$LOCALIZE[134]</label>
-					</control>
-					<control type="radiobutton" id="714">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideMusicHubPlaylistButton)</onclick>
-						<selected>!Skin.HasSetting(HideMusicHubPlaylistButton)</selected>
-						<label>$LOCALIZE[136]</label>
-					</control>
-					<control type="radiobutton" id="715">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideMusicHubLibraryButton)</onclick>
-						<selected>!Skin.HasSetting(HideMusicHubLibraryButton)</selected>
-						<label>$LOCALIZE[14022]</label>
-					</control>
-					<control type="radiobutton" id="716">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideMusicHubMusicvideoButton)</onclick>
-						<selected>!Skin.HasSetting(HideMusicHubMusicvideoButton)</selected>
-						<label>$LOCALIZE[20389]</label>
-					</control>
-					<control type="radiobutton" id="717">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideMusicHubPartymodeButton)</onclick>
-						<selected>!Skin.HasSetting(HideMusicHubPartymodeButton)</selected>
-						<label>$LOCALIZE[589]</label>
-					</control>
-					<control type="radiobutton" id="718">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideMusicHubEmbyConButton)</onclick>
-						<selected>!Skin.HasSetting(HideMusicHubEmbyConButton)</selected>
-						<label>$LOCALIZE[31118]</label>
-						<enable>System.HasAddon(plugin.video.embycon)</enable>
-					</control>
-					<control type="radiobutton" id="719">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideMusicHubSearchButton)</onclick>
-						<selected>!Skin.HasSetting(HideMusicHubSearchButton)</selected>
-						<label>$LOCALIZE[137]</label>
-					</control>
-					<!-- widgets -->
-					<include content="SkinSettingsHeadlineLabel">
-						<param name="id" value="720"/>
-						<param name="label" value="$LOCALIZE[31103]"/>
-					</include>
-					<control type="button" id="721">
+					<control type="button" id="243">
 						<include>SettingsButton</include>
 						<onclick>SetProperty(PositionCount,14,home)</onclick>
 						<onclick>SetProperty(SelectorContent,MusicHubWidgets,home)</onclick>
 						<onclick>ActivateWindow(1110)</onclick>
-						<label>$LOCALIZE[31218]</label>
+						<label>$LOCALIZE[31245]</label>
 					</control>
-					<control type="button" id="722">
-						<include>SettingsButton</include>
-						<onclick>SetProperty(MusicHubWidgetReset,1,home)</onclick>
-						<onclick>ActivateWindow(1112)</onclick>
-						<label>$LOCALIZE[31216]</label>
-					</control>
-					<!-- custom shortcuts -->
-					<include content="SkinSettingsHeadlineLabel">
-						<param name="id" value="730"/>
-						<param name="label" value="$LOCALIZE[31027]"/>
-					</include>
-					<include content="CustomHubShortcutSettingsTemplate">
-						<param name="section" value="73"/>
-						<param name="id" value="1"/>
-						<param name="type" value="Music"/>
-					</include>
-					<include content="CustomHubShortcutSettingsTemplate">
-						<param name="section" value="73"/>
-						<param name="id" value="2"/>
-						<param name="type" value="Music"/>
-					</include>
-					<include content="CustomHubShortcutSettingsTemplate">
-						<param name="section" value="73"/>
-						<param name="id" value="3"/>
-						<param name="type" value="Music"/>
-					</include>
-					<include content="CustomHubShortcutSettingsTemplate">
-						<param name="section" value="73"/>
-						<param name="id" value="4"/>
-						<param name="type" value="Music"/>
-					</include>
-					<include content="CustomHubShortcutSettingsTemplate">
-						<param name="section" value="73"/>
-						<param name="id" value="5"/>
-						<param name="type" value="Music"/>
-					</include>
-					<include content="CustomHubShortcutSettingsTemplate">
-						<param name="section" value="73"/>
-						<param name="id" value="6"/>
-						<param name="type" value="Music"/>
-					</include>
 					<control type="label">
 						<height>50</height>
 					</control>
 				</control>
 				<!-- Widgets -->
-				<control type="grouplist" id="600">
-					<visible>ControlGroup(100).HasFocus(105)</visible>
+				<control type="grouplist" id="300">
+					<visible>ControlGroup(100).HasFocus(102)</visible>
 					<left>500</left>
 					<right>100</right>
 					<height>100%</height>
@@ -730,8 +328,8 @@
 					</control>
 				</control>
 				<!-- appearancesettings -->
-				<control type="grouplist" id="700">
-					<visible>ControlGroup(100).HasFocus(106)</visible>
+				<control type="grouplist" id="400">
+					<visible>ControlGroup(100).HasFocus(103)</visible>
 					<left>500</left>
 					<right>100</right>
 					<height>100%</height>
@@ -875,35 +473,29 @@
 					</control>
 					<control type="radiobutton" id="234">
 						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(ShowGlobalCustomShortcuts)</onclick>
-						<selected>Skin.HasSetting(ShowGlobalCustomShortcuts)</selected>
-						<label>$LOCALIZE[31084]</label>
-					</control>
-					<control type="radiobutton" id="235">
-						<include>SettingsButton</include>
 						<onclick>Skin.ToggleSetting(NoJumpToFirstPage)</onclick>
 						<selected>!Skin.HasSetting(NoJumpToFirstPage)</selected>
 						<label>$LOCALIZE[31221]</label>
 					</control>
-					<control type="radiobutton" id="236">
+					<control type="radiobutton" id="235">
 						<include>SettingsButton</include>
 						<label>$LOCALIZE[31230]</label>
 						<selected>Skin.HasSetting(HideUnwatchedThumbs)</selected>
 						<onclick>Skin.ToggleSetting(HideUnwatchedThumbs)</onclick>
 					</control>
-					<control type="radiobutton" id="237">
+					<control type="radiobutton" id="236">
 						<include>SettingsButton</include>
 						<label>$LOCALIZE[31231]</label>
 						<selected>!Skin.HasSetting(DoNotPauseOnInfo)</selected>
 						<onclick>Skin.ToggleSetting(DoNotPauseOnInfo)</onclick>
 					</control>
-					<control type="button" id="238">
+					<control type="button" id="237">
 						<include>SettingsButton</include>
 						<label>$LOCALIZE[31228]</label>
 						<label2>[COLOR accent]$VAR[SearchProvider][/COLOR]</label2>
 						<onclick>Skin.ToggleSetting(UseGlobalsearch)</onclick>
 					</control>
-					<control type="button" id="239">
+					<control type="button" id="238">
 						<include>SettingsButton</include>
 						<label>$LOCALIZE[31238]</label>
 						<label2>[COLOR accent]$VAR[CastSearchProvider][/COLOR]</label2>
@@ -914,8 +506,8 @@
 					</control>
 				</control>
 				<!-- side panel -->
-				<control type="grouplist" id="800">
-					<visible>ControlGroup(100).HasFocus(107)</visible>
+				<control type="grouplist" id="500">
+					<visible>ControlGroup(100).HasFocus(104)</visible>
 					<left>500</left>
 					<right>100</right>
 					<height>100%</height>
@@ -1036,8 +628,8 @@
 					</control>
 				</control>
 				<!-- Power menu -->
-				<control type="grouplist" id="900">
-					<visible>ControlGroup(100).HasFocus(108)</visible>
+				<control type="grouplist" id="600">
+					<visible>ControlGroup(100).HasFocus(105)</visible>
 					<left>500</left>
 					<right>100</right>
 					<height>100%</height>

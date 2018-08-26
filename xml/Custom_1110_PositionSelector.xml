@@ -8,7 +8,9 @@
 	<include>PropertyIncludes</include>
 	<controls>
 		<!-- background -->
-		<include>Background</include>
+		<include content="DiffuseMask">
+			<param name="color">background_diffuse</param>
+		</include>
 		<!-- dialog -->
 		<control type="group">
 			<include>FullscreenDimensions</include>
@@ -18,7 +20,7 @@
 				<include>Visible_PopupOpenClose</include>
 				<centerleft>50%</centerleft>
 				<centertop>50%</centertop>
-				<width>800</width>
+				<width>1100</width>
 				<height max="940">auto</height>
 				<orientation>vertical</orientation>
 				<itemgap>20</itemgap>
@@ -33,7 +35,7 @@
 						<aligny>center</aligny>
 						<textoffsetx>5</textoffsetx>
 						<textcolor>text_headline</textcolor>
-						<label>$LOCALIZE[31201]</label>
+						<label>$VAR[PositionselectorHeadline] - $LOCALIZE[31083]</label>
 					</control>
 					<include>GreenBar</include>
 				</control>
@@ -45,7 +47,7 @@
 						<texture colordiffuse="panel_background">common/white.jpg</texture>
 						<aspectratio>stretch</aspectratio>
 					</control>
-					<control type="list" id="100">
+					<control type="list" id="211">
 						<centerleft>50%</centerleft>
 						<top>10</top>
 						<height>750</height>
@@ -55,7 +57,7 @@
 						<ondown>101</ondown>
 						<pagecontrol>60</pagecontrol>
 						<scrolltime>200</scrolltime>
-						<itemlayout height="75" width="800">
+						<itemlayout height="75" width="1100">
 							<control type="image">
 								<height>75</height>
 								<width>75</width>
@@ -63,42 +65,43 @@
 								<bordersize>5</bordersize>
 								<texture background="true">$INFO[ListItem.Icon]</texture>
 								<aspectratio>keep</aspectratio>
-								<visible>!String.IsEmpty(ListItem.Label)</visible>
+								<visible>!String.IsEmpty(ListItem.Property(item))</visible>
 							</control>
 							<control type="image">
 								<height>75</height>
 								<width>75</width>
 								<left>10</left>
 								<bordersize>5</bordersize>
-								<texture colordiffuse="disabled">DefaultAddSource.png</texture>
+								<texture>DefaultFolderBack.png</texture>
 								<aspectratio>keep</aspectratio>
-								<visible>String.IsEmpty(ListItem.Label)</visible>
+								<visible>String.IsEmpty(ListItem.Property(item))</visible>
 							</control>
 							<control type="label">
-								<right>20</right>
+								<right>220</right>
 								<left>100</left>
 								<height>75</height>
 								<aligny>center</aligny>
 								<font>Reg24</font>
-								<label>$INFO[ListItem.Property(pos),,    ][COLOR panel_textcolor2]$INFO[ListItem.Label]$INFO[ListItem.Label2, (,)][/COLOR]</label>
+								<label>$INFO[ListItem.Property(pos),,    ][COLOR disabled]$INFO[ListItem.Label][/COLOR]</label>
 								<scroll>false</scroll>
 								<textcolor>panel_textcolor</textcolor>
-								<visible>!String.IsEmpty(ListItem.Label)</visible>
+								<visible>String.IsEmpty(ListItem.Property(item))</visible>
 							</control>
 							<control type="label">
-								<right>20</right>
+								<right>220</right>
 								<left>100</left>
 								<height>75</height>
 								<aligny>center</aligny>
 								<font>Reg24</font>
-								<label>[COLOR disabled]$INFO[ListItem.Property(pos),,    ]$LOCALIZE[504][/COLOR]</label>
+								<label>$INFO[ListItem.Property(pos),,    ][COLOR panel_textcolor2]$INFO[ListItem.Label][/COLOR]</label>
 								<scroll>false</scroll>
-								<visible>String.IsEmpty(ListItem.Label)</visible>
+								<textcolor>panel_textcolor</textcolor>
+								<visible>!String.IsEmpty(ListItem.Property(item))</visible>
 							</control>
 						</itemlayout>
-						<focusedlayout height="75" width="800">
+						<focusedlayout height="75" width="1100">
 							<control type="group">
-								<visible>Control.HasFocus(100)</visible>
+								<visible>ControlGroup(100).HasFocus</visible>
 								<control type="image">
 									<width>100%</width>
 									<height>75</height>
@@ -111,41 +114,30 @@
 									<bordersize>5</bordersize>
 									<texture background="true">$INFO[ListItem.Icon]</texture>
 									<aspectratio>keep</aspectratio>
-									<visible>!String.IsEmpty(ListItem.Label)</visible>
+									<visible>!String.IsEmpty(ListItem.Property(item))</visible>
 								</control>
 								<control type="image">
 									<height>75</height>
 									<width>75</width>
 									<left>10</left>
 									<bordersize>5</bordersize>
-									<texture colordiffuse="panel_textcolor">DefaultAddSource.png</texture>
+									<texture>DefaultFolderBack.png</texture>
 									<aspectratio>keep</aspectratio>
-									<visible>String.IsEmpty(ListItem.Label)</visible>
+									<visible>String.IsEmpty(ListItem.Property(item))</visible>
 								</control>
 								<control type="label">
-									<right>20</right>
+									<right>220</right>
 									<left>100</left>
 									<height>75</height>
 									<aligny>center</aligny>
 									<font>Reg24</font>
-									<label>$INFO[ListItem.Property(pos),,    ]$INFO[ListItem.Label]$INFO[ListItem.Label2, (,)]</label>
+									<label>$INFO[ListItem.Property(pos),,    ]$INFO[ListItem.Label]</label>
 									<scroll>true</scroll>
 									<textcolor>panel_textcolor</textcolor>
-									<visible>!String.IsEmpty(ListItem.Label)</visible>
-								</control>
-								<control type="label">
-									<right>20</right>
-									<left>100</left>
-									<height>75</height>
-									<aligny>center</aligny>
-									<font>Reg24</font>
-									<label>[COLOR panel_textcolor]$INFO[ListItem.Property(pos),,    ]$LOCALIZE[504][/COLOR]</label>
-									<scroll>true</scroll>
-									<visible>String.IsEmpty(ListItem.Label)</visible>
 								</control>
 							</control>
 							<control type="group">
-								<visible>!Control.HasFocus(100)</visible>
+								<visible>!ControlGroup(100).HasFocus</visible>
 								<control type="image">
 									<height>75</height>
 									<width>75</width>
@@ -153,54 +145,52 @@
 									<bordersize>5</bordersize>
 									<texture background="true">$INFO[ListItem.Icon]</texture>
 									<aspectratio>keep</aspectratio>
-									<visible>!String.IsEmpty(ListItem.Label)</visible>
+									<visible>!String.IsEmpty(ListItem.Property(item))</visible>
 								</control>
 								<control type="image">
 									<height>75</height>
 									<width>75</width>
 									<left>10</left>
 									<bordersize>5</bordersize>
-									<texture colordiffuse="disabled">DefaultAddSource.png</texture>
+									<texture>DefaultFolderBack.png</texture>
 									<aspectratio>keep</aspectratio>
-									<visible>String.IsEmpty(ListItem.Label)</visible>
+									<visible>String.IsEmpty(ListItem.Property(item))</visible>
 								</control>
 								<control type="label">
-									<right>20</right>
+									<right>220</right>
 									<left>100</left>
 									<height>75</height>
 									<aligny>center</aligny>
 									<font>Reg24</font>
-									<label>$INFO[ListItem.Property(pos),,    ][COLOR panel_textcolor2]$INFO[ListItem.Label]$INFO[ListItem.Label2, (,)][/COLOR]</label>
+									<label>$INFO[ListItem.Property(pos),,    ][COLOR disabled]$INFO[ListItem.Label][/COLOR]</label>
 									<scroll>false</scroll>
 									<textcolor>panel_textcolor</textcolor>
-									<visible>!String.IsEmpty(ListItem.Label)</visible>
+									<visible>String.IsEmpty(ListItem.Property(item))</visible>
 								</control>
 								<control type="label">
-									<right>20</right>
+									<right>220</right>
 									<left>100</left>
 									<height>75</height>
 									<aligny>center</aligny>
 									<font>Reg24</font>
-									<label>[COLOR disabled]$INFO[ListItem.Property(pos),,    ]$LOCALIZE[504][/COLOR]</label>
+									<label>$INFO[ListItem.Property(pos),,    ][COLOR panel_textcolor2]$INFO[ListItem.Label][/COLOR]</label>
 									<scroll>false</scroll>
-									<visible>String.IsEmpty(ListItem.Label)</visible>
+									<textcolor>panel_textcolor</textcolor>
+									<visible>!String.IsEmpty(ListItem.Property(item))</visible>
 								</control>
 							</control>
 						</focusedlayout>
-						<include condition="String.IsEmpty(Window(home).Property(SelectorContent))" content="PositionSelectorItems">
-							<param name="content" value="MainMenuPositionSelector"/>
-						</include>
 						<include condition="String.IsEqual(Window(home).Property(SelectorContent),HomeWidgets)" content="PositionSelectorItems">
-							<param name="content" value="HomeWidgetsPositionSelector"/>
+							<param name="content" value="HomeWidgetsPositionSelectorTemplate"/>
 						</include>
 						<include condition="String.IsEqual(Window(home).Property(SelectorContent),MovieHubWidgets)" content="PositionSelectorItems">
-							<param name="content" value="MovieHubWidgetsPositionSelector"/>
+							<param name="content" value="MovieHubWidgetsPositionSelectorTemplate"/>
 						</include>
 						<include condition="String.IsEqual(Window(home).Property(SelectorContent),TVShowHubWidgets)" content="PositionSelectorItems">
-							<param name="content" value="TVShowHubWidgetsPositionSelector"/>
+							<param name="content" value="TVShowHubWidgetsPositionSelectorTemplate"/>
 						</include>
 						<include condition="String.IsEqual(Window(home).Property(SelectorContent),MusicHubWidgets)" content="PositionSelectorItems">
-							<param name="content" value="MusicHubWidgetsPositionSelector"/>
+							<param name="content" value="MusicHubWidgetsPositionSelectorTemplate"/>
 						</include>
 					</control>
 					<control type="scrollbar" id="60">
@@ -213,20 +203,143 @@
 						<texturesliderbackground colordiffuse="00ffffff">common/white.jpg</texturesliderbackground>
 						<texturesliderbar colordiffuse="scrollbar_slider">common/white.jpg</texturesliderbar>
 					</control>
+					<control type="grouplist" id="100">
+						<visible allowhiddenfocus="true">ControlGroup(100).HasFocus</visible>
+						<animation effect="slide" end="0,75" time="0" reversible="false" condition="Container(211).Position(1)">Conditional</animation>
+						<animation effect="slide" end="0,150" time="0" reversible="false" condition="Container(211).Position(2)">Conditional</animation>
+						<animation effect="slide" end="0,225" time="0" reversible="false" condition="Container(211).Position(3)">Conditional</animation>
+						<animation effect="slide" end="0,300" time="0" reversible="false" condition="Container(211).Position(4)">Conditional</animation>
+						<animation effect="slide" end="0,375" time="0" reversible="false" condition="Container(211).Position(5)">Conditional</animation>
+						<animation effect="slide" end="0,450" time="0" reversible="false" condition="Container(211).Position(6)">Conditional</animation>
+						<animation effect="slide" end="0,525" time="0" reversible="false" condition="Container(211).Position(7)">Conditional</animation>
+						<animation effect="slide" end="0,600" time="0" reversible="false" condition="Container(211).Position(8)">Conditional</animation>
+						<animation effect="slide" end="0,675" time="0" reversible="false" condition="Container(211).Position(9)">Conditional</animation>
+						<top>10</top>
+						<right>10</right>
+						<width>400</width>
+						<height>75</height>
+						<align>right</align>
+						<onleft>200</onleft>
+						<onright>200</onright>
+						<orientation>horizontal</orientation>
+						<!-- Move up -->
+						<control type="button" id="101">
+							<height>75</height>
+							<width>50</width>
+							<font>Material26</font>
+							<textcolor>white</textcolor>
+							<focusedcolor>accent</focusedcolor>
+							<selectedcolor>white</selectedcolor>
+							<label></label>
+							<include>NoTextures</include>
+							<textoffsetx>0</textoffsetx>
+							<onup condition="!String.IsEmpty(Container(211).ListItemNoWrap(-1).Label + !System.HasAlarm(move))">Control.Move(211,-1)</onup>
+							<ondown condition="!String.IsEmpty(Container(211).ListItemNoWrap(1).Label) + !System.HasAlarm(move)">Control.Move(211,1)</ondown>
+							<ondown condition="String.IsEmpty(Container(211).ListItemNoWrap(1).Label) + !System.HasAlarm(move)">200</ondown>
+							<include content="PositionSelectorMoveFunc">
+								<param name="direction" value="-1"/>
+							</include>
+						</control>
+						<!-- Move down -->
+						<control type="button" id="102">
+							<height>75</height>
+							<width>50</width>
+							<font>Material26</font>
+							<textcolor>white</textcolor>
+							<focusedcolor>accent</focusedcolor>
+							<selectedcolor>white</selectedcolor>
+							<label></label>
+							<include>NoTextures</include>
+							<textoffsetx>0</textoffsetx>
+							<onup condition="!String.IsEmpty(Container(211).ListItemNoWrap(-1).Label + !System.HasAlarm(move))">Control.Move(211,-1)</onup>
+							<ondown condition="!String.IsEmpty(Container(211).ListItemNoWrap(1).Label) + !System.HasAlarm(move)">Control.Move(211,1)</ondown>
+							<ondown condition="String.IsEmpty(Container(211).ListItemNoWrap(1).Label) + !System.HasAlarm(move)">200</ondown>
+							<include content="PositionSelectorMoveFunc">
+								<param name="direction" value="1"/>
+							</include>
+						</control>
+						<!-- Add -->
+						<control type="button" id="103">
+							<height>75</height>
+							<width>50</width>
+							<font>Material26</font>
+							<textcolor>white</textcolor>
+							<focusedcolor>accent</focusedcolor>
+							<selectedcolor>white</selectedcolor>
+							<label></label>
+							<include>NoTextures</include>
+							<textoffsetx>0</textoffsetx>
+							<onup condition="!String.IsEmpty(Container(211).ListItemNoWrap(-1).Label + !System.HasAlarm(move))">Control.Move(211,-1)</onup>
+							<ondown condition="!String.IsEmpty(Container(211).ListItemNoWrap(1).Label) + !System.HasAlarm(move)">Control.Move(211,1)</ondown>
+							<ondown condition="String.IsEmpty(Container(211).ListItemNoWrap(1).Label) + !System.HasAlarm(move)">200</ondown>
+							<onclick>SetProperty($VAR[PositionselectorGroup]_widget_position,$INFO[Container(211).ListItem.Property(pos)],home)</onclick>
+							<onclick>ActivateWindow(1111)</onclick>
+							<visible>String.IsEmpty(Container(211).ListItem.Property(item))</visible>
+						</control>
+						<!-- Change -->
+						<control type="button" id="104">
+							<height>75</height>
+							<width>50</width>
+							<font>Material26</font>
+							<textcolor>white</textcolor>
+							<focusedcolor>accent</focusedcolor>
+							<selectedcolor>white</selectedcolor>
+							<label></label>
+							<include>NoTextures</include>
+							<textoffsetx>0</textoffsetx>
+							<onup condition="!String.IsEmpty(Container(211).ListItemNoWrap(-1).Label + !System.HasAlarm(move))">Control.Move(211,-1)</onup>
+							<ondown condition="!String.IsEmpty(Container(211).ListItemNoWrap(1).Label) + !System.HasAlarm(move)">Control.Move(211,1)</ondown>
+							<ondown condition="String.IsEmpty(Container(211).ListItemNoWrap(1).Label) + !System.HasAlarm(move)">200</ondown>
+							<onclick>SetProperty($VAR[PositionselectorGroup]_widget_position,$INFO[Container(211).ListItem.Property(pos)],home)</onclick>
+							<onclick>ActivateWindow(1111)</onclick>
+							<visible>!String.IsEmpty(Container(211).ListItem.Property(item))</visible>
+						</control>
+						<!-- Delete -->
+						<control type="button" id="108">
+							<height>75</height>
+							<width>50</width>
+							<font>Material26</font>
+							<textcolor>white</textcolor>
+							<focusedcolor>accent</focusedcolor>
+							<selectedcolor>white</selectedcolor>
+							<label></label>
+							<include>NoTextures</include>
+							<textoffsetx>0</textoffsetx>
+							<onup condition="!String.IsEmpty(Container(211).ListItemNoWrap(-1).Label + !System.HasAlarm(move))">Control.Move(211,-1)</onup>
+							<ondown condition="!String.IsEmpty(Container(211).ListItemNoWrap(1).Label) + !System.HasAlarm(move)">Control.Move(211,1)</ondown>
+							<ondown condition="String.IsEmpty(Container(211).ListItemNoWrap(1).Label) + !System.HasAlarm(move)">200</ondown>
+							<onclick>Skin.Reset($VAR[PositionselectorGroup]_widget_pos_$INFO[Container(211).ListItem.Property(pos)])</onclick>
+							<onclick>Skin.Reset($VAR[PositionselectorGroup]_widget_pos_$INFO[Container(211).ListItem.Property(pos)].label)</onclick>
+							<visible>!String.IsEmpty(Container(211).ListItem.Property(item))</visible>
+						</control>
+					</control>
 				</control>
 				<!-- Button -->
-				<control type="grouplist">
+				<control type="grouplist" id="200">
 					<height>50</height>
 					<width>100%</width>
 					<orientation>horizontal</orientation>
 					<itemgap>5</itemgap>
 					<align>center</align>
-					<onright>noop</onright>
-					<onleft>noop</onleft>
-					<control type="button" id="101">
+					<onright>102</onright>
+					<onleft>101</onleft>
+					<control type="button" id="201">
 						<include>DarkGreyButton</include>
 						<label>$LOCALIZE[15067]</label>
 						<onclick>close</onclick>
+						<onup>SetFocus(100)</onup>
+					</control>
+					<control type="button" id="202">
+						<include>DarkGreyButton</include>
+						<label>$LOCALIZE[31248]</label>
+						<onclick>SetProperty(DoNotKillProperties,1,home)</onclick>
+						<onclick>close</onclick>
+						<onclick condition="String.IsEqual(Window(home).Property(SelectorContent),HomeWidgets)">SetProperty(HomeWidgetReset,1,home)</onclick>
+						<onclick condition="String.IsEqual(Window(home).Property(SelectorContent),MovieHubWidgets)">SetProperty(MovieHubWidgetReset,1,home)</onclick>
+						<onclick condition="String.IsEqual(Window(home).Property(SelectorContent),TVShowHubWidgets)">SetProperty(TVShowHubWidgetReset,1,home)</onclick>
+						<onclick condition="String.IsEqual(Window(home).Property(SelectorContent),MusicHubWidgets)">SetProperty(MusicHubWidgetReset,1,home)</onclick>
+						<onclick>ActivateWindow(1112)</onclick>
+						<onclick>AlarmClock(restorewidgets,ActivateWindow(1110),00:01,silent)</onclick>
 						<onup>SetFocus(100)</onup>
 					</control>
 				</control>

@@ -1061,66 +1061,6 @@
 			<visible>!String.IsEmpty(Skin.String(UserWidget$PARAM[nr]_path))</visible>
 		</control>
 	</include>
-	<include name="CustomHubShortcutSettingsTemplate">
-		<param name="group">shortcut</param>
-		<definition>
-			<control type="radiobutton" id="$PARAM[section]$PARAM[id]1">
-				<include>SettingsButton</include>
-				<onclick condition="Skin.HasSetting(User$PARAM[type]Hub$PARAM[id])">Skin.Reset(User$PARAM[type]Hub$PARAM[id]_path)</onclick>
-				<onclick condition="Skin.HasSetting(User$PARAM[type]Hub$PARAM[id])">Skin.Reset(User$PARAM[type]Hub$PARAM[id]_action)</onclick>
-				<onclick condition="Skin.HasSetting(User$PARAM[type]Hub$PARAM[id])">Skin.Reset(User$PARAM[type]Hub$PARAM[id]_name)</onclick>
-				<onclick condition="Skin.HasSetting(User$PARAM[type]Hub$PARAM[id])">Skin.Reset(User$PARAM[type]Hub$PARAM[id]_target)</onclick>
-				<onclick>Skin.ToggleSetting(User$PARAM[type]Hub$PARAM[id])</onclick>
-				<selected>Skin.HasSetting(User$PARAM[type]Hub$PARAM[id])</selected>
-				<label>$LOCALIZE[31151] #$PARAM[id]</label>
-			</control>
-			<control type="button" id="$PARAM[section]$PARAM[id]2">
-				<textcolor>accent</textcolor>
-				<texturenofocus colordiffuse="panel_subitem">common/white.jpg</texturenofocus>
-				<include>SettingsButton</include>
-				<onclick>RunScript(script.skinshortcuts,type=shortcuts&amp;showNone=True&amp;custom=True&amp;grouping=$PARAM[group]&amp;skinLabel=User$PARAM[type]Hub$PARAM[id]_name&amp;skinAction=User$PARAM[type]Hub$PARAM[id]_action&amp;skinList=User$PARAM[type]Hub$PARAM[id]_path)</onclick>
-				<label>• $LOCALIZE[573]</label>
-				<label2>$INFO[Skin.String(User$PARAM[type]Hub$PARAM[id]_path)]</label2>
-				<enable>Skin.HasSetting(User$PARAM[type]Hub$PARAM[id])</enable>
-				<visible>Skin.HasSetting(User$PARAM[type]Hub$PARAM[id])</visible>
-			</control>
-			<control type="button" id="$PARAM[section]$PARAM[id]3">
-				<textcolor>accent</textcolor>
-				<texturenofocus colordiffuse="panel_subitem">common/white.jpg</texturenofocus>
-				<include>SettingsButton</include>
-				<onclick>Skin.SetString(User$PARAM[type]Hub$PARAM[id]_name)</onclick>
-				<label>• $LOCALIZE[21899]</label>
-				<label2>$INFO[Skin.String(User$PARAM[type]Hub$PARAM[id]_name)]</label2>
-				<enable>Skin.HasSetting(User$PARAM[type]Hub$PARAM[id])</enable>
-				<visible>Skin.HasSetting(User$PARAM[type]Hub$PARAM[id]) + !String.IsEmpty(Skin.String(User$PARAM[type]Hub$PARAM[id]_path))</visible>
-			</control>
-			<control type="button" id="$PARAM[section]$PARAM[id]4">
-				<textcolor>accent</textcolor>
-				<texturenofocus colordiffuse="panel_subitem">common/white.jpg</texturenofocus>
-				<include>SettingsButton</include>
-				<onclick>RunScript(script.skin.helper.service,action=setskinsetting,setting=User$PARAM[type]Hub$PARAM[id]_target,header=$LOCALIZE[15021])</onclick>
-				<label>• $LOCALIZE[15021]</label>
-				<label2>$INFO[Skin.String(User$PARAM[type]Hub$PARAM[id]_target)]</label2>
-				<enable>Skin.HasSetting(User$PARAM[type]Hub$PARAM[id]) + String.StartsWith(Skin.String(User$PARAM[type]Hub$PARAM[id]_action),ActivateWindow)</enable>
-				<visible>Skin.HasSetting(User$PARAM[type]Hub$PARAM[id]) + !String.IsEmpty(Skin.String(User$PARAM[type]Hub$PARAM[id]_path))</visible>
-			</control>
-		</definition>
-	</include>
-	<include name="CustomHubShortcutTemplate">
-		<param name="onup">6666</param>
-		<param name="ondown">200</param>
-		<definition>
-			<control type="button" id="$PARAM[id]">
-				<visible>Skin.HasSetting(User$PARAM[type]Hub$PARAM[nr])</visible>
-				<include>DarkGreyButton</include>
-				<label>$INFO[Skin.String(User$PARAM[type]Hub$PARAM[nr]_name)]</label>
-				<onclick condition="String.StartsWith(Skin.String(User$PARAM[type]Hub$PARAM[nr]_action),ActivateWindow)">ActivateWindow($INFO[Skin.String(User$PARAM[type]Hub$PARAM[nr]_target)],$INFO[Skin.String(User$PARAM[type]Hub$PARAM[nr]_path)],return)</onclick>
-				<onclick condition="!String.StartsWith(Skin.String(User$PARAM[type]Hub$PARAM[nr]_action),ActivateWindow)">$INFO[Skin.String(User$PARAM[type]Hub$PARAM[nr]_action)]</onclick>
-				<onup>$PARAM[onup]</onup>
-				<ondown>$PARAM[ondown]</ondown>
-			</control>
-		</definition>
-	</include>
 	<include name="weather_small_template">
 		<control type="group">
 			<visible>$PARAM[visible]</visible>
@@ -1444,5 +1384,57 @@
 	<include name="ToggleWatchedAction">
 		<onclick condition="String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) + !String.IsEmpty(ListItem.Property(id))">RunScript(plugin.video.embycon,0,?mode=TOGGLE_WATCHED&amp;item_id=$INFO[ListItem.Property(id)])</onclick>
 		<onclick condition="![String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) + !String.IsEmpty(ListItem.Property(id))]">ToggleWatched</onclick>
+	</include>
+	<!-- static menus -->
+	<include name="PVRHub_Menu">
+		<item>
+			<label>$LOCALIZE[19023]</label>
+			<onclick>ActivateWindow(tvchannels)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[19069]</label>
+			<onclick>ActivateWindow(tvguide)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[19017]</label>
+			<onclick>ActivateWindow(tvrecordings)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[19040]</label>
+			<onclick>ActivateWindow(tvtimers)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[19138]</label>
+			<onclick>ActivateWindow(tvtimerrules)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[19024]</label>
+			<onclick>ActivateWindow(radiochannels)</onclick>
+			<visible>Pvr.HasRadioChannels</visible>
+		</item>
+	</include>
+	<include name="AddonHub_Menu">
+		<item>
+			<label>$LOCALIZE[31193]</label>
+			<onclick>ActivateWindow(addonbrowser,addons://user/,return)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[24004]</label>
+			<onclick>ActivateWindow(addonbrowser,addons://recently_updated/,return)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[31243]</label>
+			<onclick>SetProperty(NoJumpToFirstPage,1,home)</onclick>
+			<onclick>ActivateWindow(addonbrowser,addons://install/,return)</onclick>
+			<onclick>select</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[31242]</label>
+			<onclick>ActivateWindow(addonbrowser,addons://repos/,return)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[31194]</label>
+			<onclick>ActivateWindow(addonbrowser,addons://search/,return)</onclick>
+		</item>
 	</include>
 </includes>

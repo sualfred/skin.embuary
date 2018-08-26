@@ -1,7 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 	<!-- Movie template -->
+	<include name="EmbyHub_MovieMenu">
+		<item>
+			<label>$LOCALIZE[342]</label>
+			<onclick>ActivateWindow(videos,$INFO[Window(home).Property(emby.nodes.$PARAM[nr].content)],return)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[31209]</label>
+			<onclick>ActivateWindow(videos,$INFO[Window(home).Property(emby.nodes.$PARAM[nr].index),,unwatched.xml],return)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[31169]</label>
+			<onclick>ActivateWindow(videos,$INFO[Window(home).Property(emby.nodes.$PARAM[nr].index),,sets.xml],return)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[135]</label>
+			<onclick>SetProperty(ListGenres,$INFO[Window(home).Property(emby.nodes.$PARAM[nr].index),,genres.xml],home)</onclick>
+			<onclick>ActivateWindow(1114)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[137]</label>
+			<include>search_action</include>
+		</item>
+	</include>
 	<include name="EmbyHubMovieTemplate">
+		<control type="label" id="199">
+			<include>HiddenObject</include>
+			<label>$INFO[Window(home).Property(emby.nodes.$PARAM[nr].title)]</label>
+		</control>
 		<!-- background -->
 		<include>Background</include>
 		<!-- hub -->
@@ -20,94 +47,14 @@
 				<param name="id" value="101"/>
 			</include>
 			<!-- menu -->
-			<control type="group">
-				<width>1920</width>
-				<height>300</height>
-				<control type="group">
-					<include content="widget_headline">
-						<param name="headline">$INFO[Window(home).Property(emby.nodes.$PARAM[nr].title)]</param>
-						<param name="left">65</param>
-						<param name="headlineID">199</param>
-					</include>
-					<control type="grouplist" id="100">
-						<top>90</top>
-						<left>70</left>
-						<height>50</height>
-						<orientation>horizontal</orientation>
-						<itemgap>5</itemgap>
-						<onright>noop</onright>
-						<onleft>900</onleft>
-						<onup>6666</onup>
-						<ondown>200</ondown>
-						<control type="button" id="101">
-							<include>DarkGreyButton</include>
-							<label>$LOCALIZE[31180]</label>
-							<onclick>ActivateWindow(videos,$INFO[Window(home).Property(emby.nodes.$PARAM[nr].content)],return)</onclick>
-							<onup>6666</onup>
-							<ondown>200</ondown>
-						</control>
-						<control type="button" id="102">
-							<include>DarkGreyButton</include>
-							<label>$LOCALIZE[31209]</label>
-							<onclick>ActivateWindow(videos,$INFO[Window(home).Property(emby.nodes.$PARAM[nr].index),,unwatched.xml],return)</onclick>
-							<onup>6666</onup>
-							<ondown>200</ondown>
-						</control>
-						<control type="button" id="103">
-							<include>DarkGreyButton</include>
-							<label>$LOCALIZE[31169]</label>
-							<onclick>ActivateWindow(videos,$INFO[Window(home).Property(emby.nodes.$PARAM[nr].index),,sets.xml],return)</onclick>
-							<onup>6666</onup>
-							<ondown>200</ondown>
-						</control>
-						<control type="button" id="104">
-							<include>DarkGreyButton</include>
-							<label>$LOCALIZE[135]</label>
-							<onclick>SetProperty(ListGenres,$INFO[Window(home).Property(emby.nodes.$PARAM[nr].index),,genres.xml],home)</onclick>
-							<onclick>ActivateWindow(1114)</onclick>
-							<onup>6666</onup>
-							<ondown>200</ondown>
-						</control>
-						<include condition="Skin.HasSetting(ShowGlobalCustomShortcuts)" content="CustomHubShortcutTemplate">
-							<param name="id" value="110"/>
-							<param name="type" value="Movie"/>
-							<param name="nr" value="1"/>
-						</include>
-						<include condition="Skin.HasSetting(ShowGlobalCustomShortcuts)" content="CustomHubShortcutTemplate">
-							<param name="id" value="111"/>
-							<param name="type" value="Movie"/>
-							<param name="nr" value="2"/>
-						</include>
-						<include condition="Skin.HasSetting(ShowGlobalCustomShortcuts)" content="CustomHubShortcutTemplate">
-							<param name="id" value="112"/>
-							<param name="type" value="Movie"/>
-							<param name="nr" value="3"/>
-						</include>
-						<include condition="Skin.HasSetting(ShowGlobalCustomShortcuts)" content="CustomHubShortcutTemplate">
-							<param name="id" value="113"/>
-							<param name="type" value="Movie"/>
-							<param name="nr" value="4"/>
-						</include>
-						<include condition="Skin.HasSetting(ShowGlobalCustomShortcuts)" content="CustomHubShortcutTemplate">
-							<param name="id" value="114"/>
-							<param name="type" value="Movie"/>
-							<param name="nr" value="5"/>
-						</include>
-						<include condition="Skin.HasSetting(ShowGlobalCustomShortcuts)" content="CustomHubShortcutTemplate">
-							<param name="id" value="115"/>
-							<param name="type" value="Movie"/>
-							<param name="nr" value="6"/>
-						</include>
-						<control type="button" id="198">
-							<include>DarkGreyButton</include>
-							<label>$LOCALIZE[137]</label>
-							<include>search_action</include>
-							<onup>6666</onup>
-							<ondown>200</ondown>
-						</control>
-					</control>
-				</control>
-			</control>
+			<include content="HomeWidgetSmallMenu">
+				<param name="id" value="100"/>
+				<param name="onup" value="6666"/>
+				<param name="ondown" value="200"/>
+				<param name="headline" value="$INFO[Window(home).Property(emby.nodes.$PARAM[nr].title)]"/>
+				<param name="content" value="EmbyHub_MovieMenu"/>
+				<param name="nr" value="$PARAM[nr]"/>
+			</include>
 			<!-- In progress -->
 			<include content="HomeWideWidget">
 				<param name="id" value="200"/>
@@ -165,7 +112,26 @@
 		<include content="SidePanel"/>
 	</include>
 	<!-- TV show template -->
+	<include name="EmbyHub_TVshowMenu">
+		<item>
+			<label>$LOCALIZE[20343]</label>
+			<onclick>ActivateWindow(videos,$INFO[Window(home).Property(emby.nodes.$PARAM[nr].content)],return)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[135]</label>
+			<onclick>SetProperty(ListGenres,$INFO[Window(home).Property(emby.nodes.$PARAM[nr].index),,genres.xml],home)</onclick>
+			<onclick>ActivateWindow(1114)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[137]</label>
+			<include>search_action</include>
+		</item>
+	</include>
 	<include name="EmbyHubTVShowTemplate">
+		<control type="label" id="199">
+			<include>HiddenObject</include>
+			<label>$INFO[Window(home).Property(emby.nodes.$PARAM[nr].title)]</label>
+		</control>
 		<!-- background -->
 		<include>Background</include>
 		<!-- hub -->
@@ -183,80 +149,14 @@
 				<param name="id" value="101"/>
 			</include>
 			<!-- menu -->
-			<control type="group">
-				<width>1920</width>
-				<height>300</height>
-				<control type="group">
-					<include content="widget_headline">
-						<param name="headline">$INFO[Window(home).Property(emby.nodes.$PARAM[nr].title)]</param>
-						<param name="left">65</param>
-						<param name="headlineID">199</param>
-					</include>
-					<control type="grouplist" id="100">
-						<top>90</top>
-						<left>70</left>
-						<height>50</height>
-						<orientation>horizontal</orientation>
-						<itemgap>5</itemgap>
-						<onright>noop</onright>
-						<onleft>900</onleft>
-						<onup>6666</onup>
-						<ondown>200</ondown>
-						<control type="button" id="101">
-							<include>DarkGreyButton</include>
-							<label>$LOCALIZE[31179]</label>
-							<onclick>ActivateWindow(videos,$INFO[Window(home).Property(emby.nodes.$PARAM[nr].content)],return)</onclick>
-							<onup>6666</onup>
-							<ondown>200</ondown>
-						</control>
-						<control type="button" id="102">
-							<include>DarkGreyButton</include>
-							<label>$LOCALIZE[135]</label>
-							<onclick>SetProperty(ListGenres,$INFO[Window(home).Property(emby.nodes.$PARAM[nr].index),,genres.xml],home)</onclick>
-							<onclick>ActivateWindow(1114)</onclick>
-							<onup>6666</onup>
-							<ondown>200</ondown>
-						</control>
-						<include condition="Skin.HasSetting(ShowGlobalCustomShortcuts)" content="CustomHubShortcutTemplate">
-							<param name="id" value="110"/>
-							<param name="type" value="TVShow"/>
-							<param name="nr" value="1"/>
-						</include>
-						<include condition="Skin.HasSetting(ShowGlobalCustomShortcuts)" content="CustomHubShortcutTemplate">
-							<param name="id" value="111"/>
-							<param name="type" value="TVShow"/>
-							<param name="nr" value="2"/>
-						</include>
-						<include condition="Skin.HasSetting(ShowGlobalCustomShortcuts)" content="CustomHubShortcutTemplate">
-							<param name="id" value="112"/>
-							<param name="type" value="TVShow"/>
-							<param name="nr" value="3"/>
-						</include>
-						<include condition="Skin.HasSetting(ShowGlobalCustomShortcuts)" content="CustomHubShortcutTemplate">
-							<param name="id" value="113"/>
-							<param name="type" value="TVShow"/>
-							<param name="nr" value="4"/>
-						</include>
-						<include condition="Skin.HasSetting(ShowGlobalCustomShortcuts)" content="CustomHubShortcutTemplate">
-							<param name="id" value="114"/>
-							<param name="type" value="TVShow"/>
-							<param name="nr" value="5"/>
-						</include>
-						<include condition="Skin.HasSetting(ShowGlobalCustomShortcuts)" content="CustomHubShortcutTemplate">
-							<param name="id" value="115"/>
-							<param name="type" value="TVShow"/>
-							<param name="nr" value="6"/>
-						</include>
-						<control type="button" id="198">
-							<include>DarkGreyButton</include>
-							<label>$LOCALIZE[137]</label>
-							<include>search_action</include>
-							<onup>6666</onup>
-							<ondown>200</ondown>
-						</control>
-					</control>
-				</control>
-			</control>
+			<include content="HomeWidgetSmallMenu">
+				<param name="id" value="100"/>
+				<param name="onup" value="6666"/>
+				<param name="ondown" value="200"/>
+				<param name="headline" value="$INFO[Window(home).Property(emby.nodes.$PARAM[nr].title)]"/>
+				<param name="content" value="EmbyHub_TVshowMenu"/>
+				<param name="nr" value="$PARAM[nr]"/>
+			</include>
 			<!-- In progress -->
 			<include content="HomeWideWidget">
 				<param name="id" value="200"/>

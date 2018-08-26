@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window>
+	<defaultcontrol always="true">303</defaultcontrol>
+	<include>PropertyIncludes</include>
+	<!--<onunload>RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=100)</onunload>-->
+	<onunload>RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=100&amp;mode=single&amp;group=mainmenu|moviehub|tvshowhub|musichub)</onunload>
+	<controls>
+		<control type="button" id="308">
+			<include>HiddenObject</include>
+		</control>
+		<!-- background -->
+		<include content="DiffuseMask">
+			<param name="color">background_diffuse</param>
+		</include>
+		<!-- dialog -->
+		<control type="grouplist" id="20">>
+			<visible>!Window.IsVisible(DialogSelect.xml) + !Window.IsVisible(filebrowser) + !Window.IsVisible(virtualkeyboard)</visible>
+			<include>Dialog_PopupOpenClose</include>
+			<include>Visible_PopupOpenClose</include>
+			<centertop>50%</centertop>
+			<centerleft>50%</centerleft>
+			<width>1100</width>
+			<height max="940">auto</height>
+			<orientation>vertical</orientation>
+			<itemgap>20</itemgap>
+			<align>center</align>
+			<!-- heading -->
+			<control type="group">
+				<height>50</height>
+				<control type="label">
+					<height>48</height>
+					<font>Reg24</font>
+					<aligny>center</aligny>
+					<textoffsetx>5</textoffsetx>
+					<textcolor>text_headline</textcolor>
+					<label>$VAR[SkinshortcutsGroup]</label>
+				</control>
+				<include>GreenBar</include>
+			</control>
+			<!-- list -->
+			<control type="group">
+				<height>770</height>
+				<control type="image">
+					<height>770</height>
+					<texture colordiffuse="panel_background">common/white.jpg</texture>
+					<aspectratio>stretch</aspectratio>
+				</control>
+				<control type="list" id="211">
+					<centerleft>50%</centerleft>
+					<top>10</top>
+					<height>750</height>
+					<onup>6666</onup>
+					<onleft>900</onleft>
+					<onright>303</onright>
+					<ondown>200</ondown>
+					<pagecontrol>60</pagecontrol>
+					<scrolltime>200</scrolltime>
+					<itemlayout height="75" width="1100">
+						<control type="image">
+							<height>75</height>
+							<width>75</width>
+							<left>15</left>
+							<bordersize>5</bordersize>
+							<aspectratio>keep</aspectratio>
+							<texture background="true">$INFO[ListItem.Icon]</texture>
+							<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
+						</control>
+						<control type="image">
+							<height>75</height>
+							<width>75</width>
+							<left>15</left>
+							<bordersize>5</bordersize>
+							<aspectratio>keep</aspectratio>
+							<texture>$VAR[SkinshortcutsIcon]</texture>
+							<visible>String.StartsWith(ListItem.Icon,Default) | String.IsEmpty(ListItem.Icon)</visible>
+						</control>
+						<control type="label">
+							<right>420</right>
+							<left>105</left>
+							<height>75</height>
+							<aligny>center</aligny>
+							<font>Reg24</font>
+							<textcolor>panel_textcolor</textcolor>
+							<label>$VAR[SkinshortcutsLabel]</label>
+							<visible>!String.IsEqual(ListItem.Property(skinshortcuts-disabled),True)</visible>
+						</control>
+						<control type="label">
+							<right>420</right>
+							<left>105</left>
+							<height>75</height>
+							<aligny>center</aligny>
+							<font>Reg24</font>
+							<textcolor>disabled</textcolor>
+							<label>$VAR[SkinshortcutsLabel]</label>
+							<visible>String.IsEqual(ListItem.Property(skinshortcuts-disabled),True)</visible>
+						</control>
+					</itemlayout>
+					<focusedlayout height="75" width="1100">
+						<control type="image">
+							<width>100%</width>
+							<height>75</height>
+							<texture colordiffuse="panel_focus">common/white.jpg</texture>
+							<visible>ControlGroup(100).HasFocus</visible>
+						</control>
+						<control type="image">
+							<height>75</height>
+							<width>75</width>
+							<left>15</left>
+							<bordersize>5</bordersize>
+							<aspectratio>keep</aspectratio>
+							<texture background="true">$INFO[ListItem.Icon]</texture>
+							<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
+						</control>
+						<control type="image">
+							<height>75</height>
+							<width>75</width>
+							<left>15</left>
+							<bordersize>5</bordersize>
+							<aspectratio>keep</aspectratio>
+							<texture>$VAR[SkinshortcutsIcon]</texture>
+							<visible>String.StartsWith(ListItem.Icon,Default) | String.IsEmpty(ListItem.Icon)</visible>
+						</control>
+						<control type="label">
+							<right>420</right>
+							<left>105</left>
+							<height>75</height>
+							<aligny>center</aligny>
+							<font>Reg24</font>
+							<textcolor>panel_textcolor</textcolor>
+							<label>$VAR[SkinshortcutsLabel]</label>
+							<visible>!String.IsEqual(ListItem.Property(skinshortcuts-disabled),True)</visible>
+						</control>
+						<control type="label">
+							<right>420</right>
+							<left>105</left>
+							<height>75</height>
+							<aligny>center</aligny>
+							<font>Reg24</font>
+							<textcolor>disabled</textcolor>
+							<label>$VAR[SkinshortcutsLabel]</label>
+							<visible>String.IsEqual(ListItem.Property(skinshortcuts-disabled),True)</visible>
+						</control>
+					</focusedlayout>
+				</control>
+				<control type="scrollbar" id="60">
+					<right>0</right>
+					<top>0</top>
+					<bottom>0</bottom>
+					<width>4</width>
+					<orientation>vertical</orientation>
+					<showonepage>false</showonepage>
+					<texturesliderbackground colordiffuse="00ffffff">common/white.jpg</texturesliderbackground>
+					<texturesliderbar colordiffuse="scrollbar_slider">common/white.jpg</texturesliderbar>
+				</control>
+				<control type="grouplist" id="100">
+					<visible allowhiddenfocus="true">ControlGroup(100).HasFocus</visible>
+					<animation effect="slide" end="0,75" time="0" reversible="false" condition="Container(211).Position(1)">Conditional</animation>
+					<animation effect="slide" end="0,150" time="0" reversible="false" condition="Container(211).Position(2)">Conditional</animation>
+					<animation effect="slide" end="0,225" time="0" reversible="false" condition="Container(211).Position(3)">Conditional</animation>
+					<animation effect="slide" end="0,300" time="0" reversible="false" condition="Container(211).Position(4)">Conditional</animation>
+					<animation effect="slide" end="0,375" time="0" reversible="false" condition="Container(211).Position(5)">Conditional</animation>
+					<animation effect="slide" end="0,450" time="0" reversible="false" condition="Container(211).Position(6)">Conditional</animation>
+					<animation effect="slide" end="0,525" time="0" reversible="false" condition="Container(211).Position(7)">Conditional</animation>
+					<animation effect="slide" end="0,600" time="0" reversible="false" condition="Container(211).Position(8)">Conditional</animation>
+					<animation effect="slide" end="0,675" time="0" reversible="false" condition="Container(211).Position(9)">Conditional</animation>
+					<top>10</top>
+					<right>10</right>
+					<width>400</width>
+					<height>75</height>
+					<align>right</align>
+					<onleft>200</onleft>
+					<onright>200</onright>
+					<orientation>horizontal</orientation>
+					<!-- Move up -->
+					<control type="button" id="303">
+						<height>75</height>
+						<width>50</width>
+						<font>Material26</font>
+						<textcolor>white</textcolor>
+						<focusedcolor>accent</focusedcolor>
+						<selectedcolor>white</selectedcolor>
+						<label></label>
+						<include>NoTextures</include>
+						<textoffsetx>0</textoffsetx>
+						<onup condition="!String.IsEmpty(Container(211).ListItemNoWrap(-1).Label)">Control.Move(211,-1)</onup>
+						<ondown condition="!String.IsEmpty(Container(211).ListItemNoWrap(1).Label)">Control.Move(211,1)</ondown>
+						<ondown condition="String.IsEmpty(Container(211).ListItemNoWrap(1).Label)">200</ondown>
+					</control>
+					<!-- Move down -->
+					<control type="button" id="304">
+						<height>75</height>
+						<width>50</width>
+						<font>Material26</font>
+						<textcolor>white</textcolor>
+						<focusedcolor>accent</focusedcolor>
+						<selectedcolor>white</selectedcolor>
+						<label></label>
+						<include>NoTextures</include>
+						<textoffsetx>0</textoffsetx>
+						<onup condition="!String.IsEmpty(Container(211).ListItemNoWrap(-1).Label)">Control.Move(211,-1)</onup>
+						<ondown condition="!String.IsEmpty(Container(211).ListItemNoWrap(1).Label)">Control.Move(211,1)</ondown>
+						<ondown condition="String.IsEmpty(Container(211).ListItemNoWrap(1).Label)">200</ondown>
+					</control>
+					<!-- Rename -->
+					<control type="button" id="305">
+						<height>75</height>
+						<width>50</width>
+						<font>Material26</font>
+						<textcolor>white</textcolor>
+						<focusedcolor>accent</focusedcolor>
+						<selectedcolor>white</selectedcolor>
+						<label></label>
+						<include>NoTextures</include>
+						<textoffsetx>0</textoffsetx>
+						<onup condition="!String.IsEmpty(Container(211).ListItemNoWrap(-1).Label)">Control.Move(211,-1)</onup>
+						<ondown condition="!String.IsEmpty(Container(211).ListItemNoWrap(1).Label)">Control.Move(211,1)</ondown>
+						<ondown condition="String.IsEmpty(Container(211).ListItemNoWrap(1).Label)">200</ondown>
+						<visible>!String.StartsWith(Container(211).ListItem.Property(defaultID),embuary_emby)</visible>
+						<visible>!String.StartsWith(Container(211).ListItem.Property(defaultID),embuary_musichub_partymode)</visible>
+					</control>
+					<!-- Path -->
+					<control type="button" id="401">
+						<height>75</height>
+						<width>50</width>
+						<font>Material26</font>
+						<textcolor>white</textcolor>
+						<focusedcolor>accent</focusedcolor>
+						<selectedcolor>white</selectedcolor>
+						<label></label>
+						<include>NoTextures</include>
+						<textoffsetx>0</textoffsetx>
+						<onup condition="!String.IsEmpty(Container(211).ListItemNoWrap(-1).Label)">Control.Move(211,-1)</onup>
+						<ondown condition="!String.IsEmpty(Container(211).ListItemNoWrap(1).Label)">Control.Move(211,1)</ondown>
+						<ondown condition="String.IsEmpty(Container(211).ListItemNoWrap(1).Label)">200</ondown>
+						<visible>String.IsEmpty(Container(211).ListItem.Property(isDefault))</visible>
+					</control>
+					<!-- Thumb -->
+					<control type="button" id="306">
+						<height>75</height>
+						<width>50</width>
+						<font>Material26</font>
+						<textcolor>white</textcolor>
+						<focusedcolor>accent</focusedcolor>
+						<selectedcolor>white</selectedcolor>
+						<label></label>
+						<include>NoTextures</include>
+						<textoffsetx>0</textoffsetx>
+						<onup condition="!String.IsEmpty(Container(211).ListItemNoWrap(-1).Label)">Control.Move(211,-1)</onup>
+						<ondown condition="!String.IsEmpty(Container(211).ListItemNoWrap(1).Label)">Control.Move(211,1)</ondown>
+						<ondown condition="String.IsEmpty(Container(211).ListItemNoWrap(1).Label)">200</ondown>
+						<visible>String.IsEqual(Window.Property(groupname),mainmenu) + !String.StartsWith(Container(211).ListItem.Property(defaultID),embuary_emby)</visible>
+					</control>
+					<!-- Hide -->
+					<control type="button" id="313">
+						<height>75</height>
+						<width>50</width>
+						<font>Material26</font>
+						<textcolor>white</textcolor>
+						<focusedcolor>accent</focusedcolor>
+						<selectedcolor>white</selectedcolor>
+						<label>$VAR[SkinshortcutsHideIcon]</label>
+						<include>NoTextures</include>
+						<textoffsetx>0</textoffsetx>
+						<onup condition="!String.IsEmpty(Container(211).ListItemNoWrap(-1).Label)">Control.Move(211,-1)</onup>
+						<ondown condition="!String.IsEmpty(Container(211).ListItemNoWrap(1).Label)">Control.Move(211,1)</ondown>
+						<ondown condition="String.IsEmpty(Container(211).ListItemNoWrap(1).Label)">200</ondown>
+					</control>
+					<!-- Delete -->
+					<control type="button" id="302">
+						<height>75</height>
+						<width>50</width>
+						<font>Material26</font>
+						<textcolor>white</textcolor>
+						<focusedcolor>accent</focusedcolor>
+						<selectedcolor>white</selectedcolor>
+						<label></label>
+						<include>NoTextures</include>
+						<textoffsetx>0</textoffsetx>
+						<onup condition="!String.IsEmpty(Container(211).ListItemNoWrap(-1).Label)">Control.Move(211,-1)</onup>
+						<ondown condition="!String.IsEmpty(Container(211).ListItemNoWrap(1).Label)">Control.Move(211,1)</ondown>
+						<ondown condition="String.IsEmpty(Container(211).ListItemNoWrap(1).Label)">200</ondown>
+						<visible>String.IsEmpty(Container(211).ListItem.Property(isDefault))</visible>
+					</control>
+					<!-- Add -->
+					<control type="button" id="301">
+						<height>75</height>
+						<width>50</width>
+						<font>Material26</font>
+						<textcolor>white</textcolor>
+						<focusedcolor>accent</focusedcolor>
+						<selectedcolor>white</selectedcolor>
+						<label></label>
+						<include>NoTextures</include>
+						<textoffsetx>0</textoffsetx>
+						<onup condition="!String.IsEmpty(Container(211).ListItemNoWrap(-1).Label)">Control.Move(211,-1)</onup>
+						<ondown condition="!String.IsEmpty(Container(211).ListItemNoWrap(1).Label)">Control.Move(211,1)</ondown>
+						<ondown condition="String.IsEmpty(Container(211).ListItemNoWrap(1).Label)">200</ondown>
+					</control>
+				</control>
+			</control>
+			<!-- Button -->
+			<control type="grouplist" id="200">
+				<height>50</height>
+				<width>100%</width>
+				<orientation>horizontal</orientation>
+				<itemgap>5</itemgap>
+				<align>center</align>
+				<onright>noop</onright>
+				<onleft>noop</onleft>
+				<control type="button" id="201">
+					<include>DarkGreyButton</include>
+					<label>$LOCALIZE[14070]</label>
+					<onclick>close</onclick>
+					<onup>SetFocus(100)</onup>
+				</control>
+				<control type="button" id="202">
+					<include>DarkGreyButton</include>
+					<label>$LOCALIZE[31204]</label>
+					<onclick condition="String.IsEqual(Window.Property(groupname),mainmenu)">AlarmClock(restoremenu,RunScript(script.skinshortcuts,type=manage&amp;group=mainmenu),00:01,silent)</onclick>
+					<onclick condition="String.IsEqual(Window.Property(groupname),moviehub)">AlarmClock(restoremenu,RunScript(script.skinshortcuts,type=manage&amp;group=moviehub),00:01,silent)</onclick>
+					<onclick condition="String.IsEqual(Window.Property(groupname),tvshowhub)">AlarmClock(restoremenu,RunScript(script.skinshortcuts,type=manage&amp;group=tvshowhub),00:01,silent)</onclick>
+					<onclick condition="String.IsEqual(Window.Property(groupname),musichub)">AlarmClock(restoremenu,RunScript(script.skinshortcuts,type=manage&amp;group=musichub),00:01,silent)</onclick>
+					<onclick>SendClick(308)</onclick>
+					<onclick>close</onclick>
+					<onclick>AlarmClock(restoremenu2,Notification(Embuary,$LOCALIZE[31207]),00:01,silent)</onclick>
+					<onup>SetFocus(100)</onup>
+				</control>
+			</control>
+		</control>
+	</controls>
+</window>

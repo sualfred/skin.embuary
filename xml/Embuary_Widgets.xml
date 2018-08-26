@@ -551,7 +551,7 @@
 		</definition>
 	</include>
 	<!-- ##### HOME ##### -->
-	<!-- Menu Buttons -->
+	<!-- home menu -->
 	<include name="HomeWidgetMenu">
 		<param name="headline">$LOCALIZE[416]</param>
 		<definition>
@@ -601,15 +601,142 @@
 							</include>
 						</control>
 					</focusedlayout>
-					<include content="MainMenuContent">
-						<param name="id" value="$PARAM[id]" />
-					</include>
+					<content>
+						<include>Home_Menu</include>
+					</content>
 				</control>
 				<include content="list_mask">
 					<param name="height" value="159"/>
 					<param name="width" value="75"/>
 					<param name="id" value="$PARAM[id]"/>
 				</include>
+			</control>
+		</definition>
+	</include>
+	<include name="HomeWidgetPanelMenu">
+		<param name="headline">$LOCALIZE[416]</param>
+		<definition>
+			<control type="group" id="$PARAM[id]1">
+				<width>100%</width>
+				<height>1080</height>
+				<control id="$PARAM[id]" type="panel">
+					<include>FocusBounce</include>
+					<width>auto</width>
+					<height>1133</height>
+					<onright>noop</onright>
+					<ondown>noop</ondown>
+					<onup>SetFocus(6666)</onup>
+					<onleft>900</onleft>
+					<include>ScrollTime</include>
+					<orientation>vertical</orientation>
+					<preloaditems>4</preloaditems>
+					<defaultcontrol always="true">0</defaultcontrol>
+					<itemlayout width="297" height="231">
+						<control type="group">
+							<left>79</left>
+							<top>114</top>
+							<include content="MainMenuLayout">
+								<param name="mainlabel" value="$PARAM[mainlabel]" />
+								<param name="focused" value="false" />
+								<param name="id" value="$PARAM[id]" />
+							</include>
+						</control>
+					</itemlayout>
+					<focusedlayout width="297" height="231">
+						<include content="WidgetSetPropertyOnFocus">
+							<param name="id" value="$PARAM[id]"/>
+						</include>
+						<control type="group">
+							<left>79</left>
+							<top>114</top>
+							<include content="MainMenuLayout">
+								<param name="mainlabel" value="$PARAM[mainlabel]" />
+								<param name="focused" value="true" />
+								<param name="id" value="$PARAM[id]" />
+							</include>
+						</control>
+					</focusedlayout>
+					<content>
+						<include>Home_Menu</include>
+					</content>
+				</control>
+			</control>
+		</definition>
+	</include>
+	<!-- home menu -->
+	<include name="HomeWidgetSmallMenu">
+		<param name="headline">$LOCALIZE[416]</param>
+		<param name="mainlabel">$INFO[ListItem.Label]</param>
+		<definition>
+			<control type="group" id="$PARAM[id]1">
+				<width>100%</width>
+				<height>319</height>
+				<control type="group">
+					<include content="widget_headline">
+						<param name="headline">$PARAM[headline]</param>
+						<param name="left">65</param>
+					</include>
+					<control type="fixedlist" id="$PARAM[id]">
+						<include>FocusBounce</include>
+						<top>28</top>
+						<width>100%</width>
+						<orientation>horizontal</orientation>
+						<preloaditems>4</preloaditems>
+						<movement>6</movement>
+						<ondown>$PARAM[ondown]</ondown>s
+						<onright>SetProperty(BounceRight,1,home)</onright>
+						<include content="Bounce_Right">
+							<param name="id">$PARAM[id]</param>
+						</include>
+						<onright>noop</onright>
+						<onleft>900</onleft>
+						<onup>$PARAM[onup]</onup>
+						<itemlayout width="255">
+							<control type="group">
+								<left>70</left>
+								<top>64</top>
+								<include content="SmallMenuLayout">
+									<param name="mainlabel" value="$PARAM[mainlabel]" />
+									<param name="focused" value="false" />
+									<param name="id" value="$PARAM[id]" />
+								</include>
+							</control>
+						</itemlayout>
+						<focusedlayout width="255">
+							<include content="WidgetSetPropertyOnFocus">
+								<param name="id" value="$PARAM[id]"/>
+							</include>
+							<control type="group">
+								<left>70</left>
+								<top>64</top>
+								<include content="SmallMenuLayout">
+									<param name="mainlabel" value="$PARAM[mainlabel]" />
+									<param name="focused" value="true" />
+									<param name="id" value="$PARAM[id]" />
+								</include>
+							</control>
+						</focusedlayout>
+						<content>
+							<item>
+								<property name="fallback">true</property>
+								<label>$LOCALIZE[31028]</label>
+								<onclick condition="Window.IsVisible(1120)">RunScript(script.skinshortcuts,type=manage&amp;group=moviehub)</onclick>
+								<onclick condition="Window.IsVisible(1121)">RunScript(script.skinshortcuts,type=manage&amp;group=tvshowhub)</onclick>
+								<onclick condition="Window.IsVisible(1122)">RunScript(script.skinshortcuts,type=manage&amp;group=musichub)</onclick>
+								<visible>Window.IsVisible(1120) | Window.IsVisible(1121) | Window.IsVisible(1122)</visible>
+								<visible>String.IsEmpty(Container($PARAM[id]).ListItemAbsolute(0).Property(id)) + String.IsEmpty(Container($PARAM[id]).ListItemAbsolute(1).Property(id))</visible>
+							</item>
+							<include content="$PARAM[content]">
+								<param name="nr" value="$PARAM[nr]"/>
+							</include>
+						</content>
+					</control>
+					<include content="list_mask">
+						<param name="height" value="60"/>
+						<param name="width" value="75"/>
+						<param name="id" value="$PARAM[id]"/>
+					</include>
+				</control>
 			</control>
 		</definition>
 	</include>
@@ -622,6 +749,7 @@
 		<param name="mainlabel">$VAR[MainListLabel]</param>
 		<param name="sublabel">$VAR[SubListLabel]</param>
 		<param name="layout">LandscapeLayout</param>
+		<param name="height">549</param>
 		<param name="use_custom_content">true</param>
 		<param name="use_custom_onclick">false</param>
 		<definition>
@@ -629,7 +757,7 @@
 				<visible>$PARAM[visible]</visible>
 				<visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating | $PARAM[force_visible]</visible>
 				<width>100%</width>
-				<height>556</height>
+				<height>$PARAM[height]</height>
 				<include content="widget_headline">
 					<param name="headline">$PARAM[headline]</param>
 					<param name="id">$PARAM[id]</param>
@@ -859,7 +987,7 @@
 		<param name="sublabel">$VAR[SubListLabel]</param>
 		<param name="use_custom_content">true</param>
 		<param name="use_custom_onclick">false</param>
-		<param name="height">594</param>
+		<param name="height">585</param>
 		<param name="layout">SquareLayout</param>
 		<definition>
 			<control type="group" id="$PARAM[id]1">

@@ -1564,42 +1564,29 @@
 					<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
 				</control>
 				<control type="group">
-					<visible>!String.IsEmpty(ListItem.Icon) | !String.IsEmpty(ListItem.Property(defaultart))</visible>
-					<control type="image">
-						<width>277</width>
-						<height>156</height>
-						<texture background="true">$INFO[ListItem.Icon]</texture>
-						<aspectratio scalediffuse="false">scale</aspectratio>
-						<visible>!String.IsEmpty(ListItem.Icon)</visible>
-					</control>
-					<control type="image">
-						<width>277</width>
-						<height>156</height>
-						<texture background="true">$INFO[ListItem.Property(defaultart)]</texture>
-						<aspectratio scalediffuse="false">scale</aspectratio>
-						<visible>String.IsEmpty(ListItem.Icon)</visible>
-					</control>
-				</control>
-				<control type="group">
-					<visible>String.IsEmpty(ListItem.Icon) + String.IsEmpty(ListItem.Property(defaultart)) + [String.IsEmpty(ListItem.Property(Art1)) | String.IsEmpty(ListItem.Property(Art2)) | String.IsEmpty(ListItem.Property(Art3)) | String.IsEmpty(ListItem.Property(Art4))]</visible>
+					<visible>String.IsEmpty(ListItem.Art(thumb))</visible>
+					<visible>String.StartsWith(ListItem.Icon,Default) | String.IsEmpty(ListItem.Icon)</visible>
+					<visible>![String.IsEmpty(ListItem.Art(thumb)) + !String.IsEmpty(ListItem.Property(Art1)) + !String.IsEmpty(ListItem.Property(Art2)) + !String.IsEmpty(ListItem.Property(Art3)) + !String.IsEmpty(ListItem.Property(Art4))]</visible>
 					<control type="image">
 						<width>277</width>
 						<height>156</height>
 						<texture colordiffuse="thumb_background_fallback_secondary">common/white.jpg</texture>
 						<aspectratio>stretch</aspectratio>
-						<visible>[String.StartsWith(ListItem.Property(action),ActivateWindow) | String.IsEmpty(ListItem.Property(action))] + String.IsEmpty(ListItem.Property(fallback))</visible>
+						<visible>String.StartsWith(ListItem.Property(path),ActivateWindow)</visible>
 					</control>
 					<control type="image">
 						<width>277</width>
 						<height>156</height>
 						<texture colordiffuse="lila">common/white.jpg</texture>
-						<visible>!String.StartsWith(ListItem.Property(action),ActivateWindow) + !String.IsEmpty(ListItem.Property(action)) + String.IsEmpty(ListItem.Property(fallback))</visible>
+						<aspectratio>stretch</aspectratio>
+						<visible>!String.StartsWith(ListItem.Property(path),ActivateWindow) + !String.StartsWith(ListItem.Property(path),emby)</visible>
 					</control>
 					<control type="image">
 						<width>277</width>
 						<height>156</height>
-						<texture colordiffuse="turquoise">common/white.jpg</texture>
-						<visible>!String.IsEmpty(ListItem.Property(fallback))</visible>
+						<texture colordiffuse="green">common/white.jpg</texture>
+						<aspectratio>stretch</aspectratio>
+						<visible>String.StartsWith(ListItem.Property(defaultID),embuary_emby)</visible>
 					</control>
 					<control type="label">
 						<width>277</width>
@@ -1610,22 +1597,27 @@
 						<align>center</align>
 						<aligny>center</aligny>
 						<label>$INFO[ListItem.Label]</label>
-						<visible>String.IsEmpty(ListItem.Property(fallback))</visible>
-					</control>
-					<control type="label">
-						<width>277</width>
-						<height>156</height>
-						<font>Material70</font>
-						<textcolor>EEFFFFFF</textcolor>
-						<textoffsetx>10</textoffsetx>
-						<align>center</align>
-						<aligny>center</aligny>
-						<label>$INFO[ListItem.Label2]</label>
-						<visible>!String.IsEmpty(ListItem.Property(fallback))</visible>
 					</control>
 				</control>
 				<control type="group">
-					<visible>String.IsEmpty(ListItem.Icon) + String.IsEmpty(ListItem.Property(defaultart)) + !String.IsEmpty(ListItem.Property(Art1)) + !String.IsEmpty(ListItem.Property(Art2)) + !String.IsEmpty(ListItem.Property(Art3)) + !String.IsEmpty(ListItem.Property(Art4))</visible>
+					<visible>!String.IsEmpty(ListItem.Art(thumb)) | !String.StartsWith(ListItem.Icon,Default)</visible>
+					<control type="image">
+						<width>277</width>
+						<height>156</height>
+						<texture background="true">$INFO[ListItem.Icon]</texture>
+						<aspectratio scalediffuse="false">scale</aspectratio>
+						<visible>String.IsEmpty(ListItem.Art(thumb))</visible>
+					</control>
+					<control type="image">
+						<width>277</width>
+						<height>156</height>
+						<texture background="true">$INFO[ListItem.Art(thumb)]</texture>
+						<aspectratio scalediffuse="false">scale</aspectratio>
+						<visible>!String.IsEmpty(ListItem.Art(thumb))</visible>
+					</control>
+				</control>
+				<control type="group">
+					<visible>String.IsEmpty(ListItem.Art(thumb)) + !String.IsEmpty(ListItem.Property(Art1)) + !String.IsEmpty(ListItem.Property(Art2)) + !String.IsEmpty(ListItem.Property(Art3)) + !String.IsEmpty(ListItem.Property(Art4))</visible>
 					<top>2</top>
 					<width>277</width>
 					<control type="image">
@@ -1751,6 +1743,62 @@
 						<param name="focused" value="$PARAM[focused]"/>
 						<param name="id" value="$PARAM[id]"/>
 					</include>
+				</control>
+			</control>
+		</definition>
+	</include>
+
+	<!-- Small Menu -->
+	<include name="SmallMenuLayout">
+		<param name="focused">false</param>
+		<definition>
+			<control type="group">
+				<height>60</height>
+				<control type="group">
+					<visible>!Control.HasFocus($PARAM[id]) | !$PARAM[focused]</visible>
+					<control type="image">
+						<width>250</width>
+						<height>60</height>
+						<texture border="10" colordiffuse="grey_button">items/button.png</texture>
+						<aspectratio>stretch</aspectratio>
+					</control>
+					<control type="label">
+						<width>250</width>
+						<height>60</height>
+						<font>med22</font>
+						<textcolor>white</textcolor>
+						<focusedcolor>white</focusedcolor>
+						<selectedcolor>white</selectedcolor>
+						<shadowcolor>text_shadow</shadowcolor>
+						<textoffsetx>10</textoffsetx>
+						<aligny>center</aligny>
+						<align>center</align>
+						<label>$INFO[ListItem.Label]</label>
+						<scroll>false</scroll>
+					</control>
+				</control>
+				<control type="group">
+					<visible>Control.HasFocus($PARAM[id]) + $PARAM[focused]</visible>
+					<control type="image">
+						<width>250</width>
+						<height>60</height>
+						<texture border="10" colordiffuse="button_focus">items/button.png</texture>
+						<aspectratio>stretch</aspectratio>
+					</control>
+					<control type="label">
+						<width>250</width>
+						<height>60</height>
+						<font>med22</font>
+						<textcolor>white</textcolor>
+						<focusedcolor>white</focusedcolor>
+						<selectedcolor>white</selectedcolor>
+						<shadowcolor>text_shadow</shadowcolor>
+						<textoffsetx>10</textoffsetx>
+						<aligny>center</aligny>
+						<align>center</align>
+						<label>$INFO[ListItem.Label]</label>
+						<scroll>true</scroll>
+					</control>
 				</control>
 			</control>
 		</definition>

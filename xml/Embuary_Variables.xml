@@ -10,6 +10,38 @@
 		<value condition="Window.IsVisible(pvrosdchannels)">thumb_background_player</value>
 		<value>thumb_background</value>
 	</variable>
+	<!-- Menu & widget vars -->
+	<variable name="SkinshortcutsGroup">
+		<value condition="String.IsEqual(Window.Property(groupname),mainmenu)">Main menu</value>
+		<value condition="String.IsEqual(Window.Property(groupname),moviehub)">$LOCALIZE[31173]</value>
+		<value condition="String.IsEqual(Window.Property(groupname),tvshowhub)">$LOCALIZE[31172]</value>
+		<value condition="String.IsEqual(Window.Property(groupname),musichub)">$LOCALIZE[31174]</value>
+	</variable>
+	<variable name="SkinshortcutsLabel">
+		<value condition="!String.IsEmpty(ListItem.Label)">$INFO[ListItem.Label]</value>
+		<value condition="!String.IsEmpty(ListItem.Label2)">$INFO[ListItem.Label2]</value>
+		<value>$LOCALIZE[31159]</value>
+	</variable>
+	<variable name="SkinshortcutsIcon">
+		<value condition="String.StartsWith(ListItem.Property(path),ActivateWindow) | String.StartsWith(ListItem.Property(defaultID),embuary_)">DefaultFolder.png</value>
+		<value>DefaultAddon.png</value>
+	</variable>
+	<variable name="SkinshortcutsHideIcon">
+		<value condition="!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)"></value>
+		<value></value>
+	</variable>
+	<variable name="PositionselectorHeadline">
+		<value condition="String.IsEqual(Window(home).Property(SelectorContent),HomeWidgets)">$LOCALIZE[10000]</value>
+		<value condition="String.IsEqual(Window(home).Property(SelectorContent),MovieHubWidgets)">$LOCALIZE[31173]</value>
+		<value condition="String.IsEqual(Window(home).Property(SelectorContent),TVShowHubWidgets)">$LOCALIZE[31172]</value>
+		<value condition="String.IsEqual(Window(home).Property(SelectorContent),MusicHubWidgets)">$LOCALIZE[31174]</value>
+	</variable>
+	<variable name="PositionselectorGroup">
+		<value condition="String.IsEqual(Window(home).Property(SelectorContent),HomeWidgets)">home</value>
+		<value condition="String.IsEqual(Window(home).Property(SelectorContent),MovieHubWidgets)">moviehub</value>
+		<value condition="String.IsEqual(Window(home).Property(SelectorContent),TVShowHubWidgets)">tvshowhub</value>
+		<value condition="String.IsEqual(Window(home).Property(SelectorContent),MusicHubWidgets)">musichub</value>
+	</variable>
 	<!-- Search -->
 	<variable name="EmbyCon.SearchMovies">
 		<value condition="!String.IsEmpty(Skin.String(CustomSearchTerm)) + System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?item_type=Movie&amp;mode=NEW_SEARCH&amp;query=$INFO[Skin.String(CustomSearchTerm)]</value>
@@ -73,6 +105,9 @@
 	</variable>
 
 	<!-- EmbyCon sources -->
+	<variable name="EmbyCon.SetsPath">
+		<value>ActivateWindow(videos,plugin://plugin.video.embycon/?media_type=boxsets&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems?ParentId=$PARAM[parentID]&amp;IsVirtualUnaired%3dfalse%26CollapseBoxSetItems%3dtrue%26Recursive%3dtrue%26IsMissing%3dFalse%26Fields%3d%7bfield_filters%7d%26ImageTypeLimit%3d1%26format%3djson,return)</value>
+	</variable>
 	<variable name="EmbyCon.FavMovies">
 		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?media_type=Movies&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fFields%3d%7bfield_filters%7d%26Recursive%3dtrue%26Filters%3dIsFavorite%26IncludeItemTypes%3dMovie%26ImageTypeLimit%3d1%26format%3djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]</value>
 	</variable>
@@ -1564,13 +1599,10 @@
 	</variable>
 	<variable name="SettingHelpText">
 		<value condition="ControlGroup(100).HasFocus(101)">$LOCALIZE[31106]</value>
-		<value condition="ControlGroup(100).HasFocus(102)">$LOCALIZE[31153]</value>
-		<value condition="ControlGroup(100).HasFocus(103)">$LOCALIZE[31153]</value>
-		<value condition="ControlGroup(100).HasFocus(104)">$LOCALIZE[31153]</value>
-		<value condition="ControlGroup(100).HasFocus(105)">$LOCALIZE[31229]</value>
-		<value condition="ControlGroup(100).HasFocus(106)">$LOCALIZE[31105]</value>
-		<value condition="ControlGroup(100).HasFocus(107)">$LOCALIZE[31147]</value>
-		<value condition="ControlGroup(100).HasFocus(108)">$LOCALIZE[31223]</value>
+		<value condition="ControlGroup(100).HasFocus(102)">$LOCALIZE[31229]</value>
+		<value condition="ControlGroup(100).HasFocus(103)">$LOCALIZE[31105]</value>
+		<value condition="ControlGroup(100).HasFocus(104)">$LOCALIZE[31147]</value>
+		<value condition="ControlGroup(100).HasFocus(105)">$LOCALIZE[31223]</value>
 	</variable>
 	<variable name="NextUpThumb">
 		<value condition="!String.IsEmpty(Control.GetLabel(4002))">$INFO[Control.GetLabel(4002)]</value>
@@ -1632,5 +1664,16 @@
 		<value condition="String.IsEqual(Container.Foldername,$LOCALIZE[20366]) | !String.Contains(Container.Foldername,$LOCALIZE[20373])">$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title]</value>
 		<value condition="String.IsEmpty(Container.ShowTitle)">$INFO[ListItem.TvShowTitle,, - ]$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title]</value>
 		<value>$INFO[ListItem.Episode,,. ]$INFO[ListItem.Title]</value>
+	</variable>
+	<variable name="SelectDialogIcon">
+		<value condition="ListItem.IsParent | String.IsEqual(ListItem.Label,..)">DefaultFolderBack.png</value>
+		<value condition="!String.IsEmpty(ListItem.Icon)">$INFO[ListItem.Icon]</value>
+		<value condition="ListItem.IsFolder">DefaultFolder.png</value>
+		<value>DefaultAddon.png</value>
+	</variable>
+	<variable name="DownloadSubtitlesFlags">
+		<value condition="!String.IsEqual(ListItem.property(sync),false) + !String.IsEqual(ListItem.property(hearing_imp),false)">[COLOR accent]SYNC CC[/COLOR]</value>
+		<value condition="!String.IsEqual(ListItem.property(sync),false)">[COLOR accent]SYNC[/COLOR]</value>
+		<value condition="!String.IsEqual(ListItem.property(hearing_imp),false)">[COLOR accent]CC[/COLOR]</value>
 	</variable>
 </includes>
