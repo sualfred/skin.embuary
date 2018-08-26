@@ -1,6 +1,544 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <overrides>
 	<alwaysReset>True</alwaysReset>
+	<doNotShareMenu />
+
+	<!-- action overrides -->
+	<override action="start_search">
+		<condition>!Skin.HasSetting(UseGlobalsearch)</condition>
+		<action>SetProperty(CustomSearch,1,home)</action>
+		<action>Skin.Reset(CustomSearchTerm)</action>
+		<action>Skin.Reset(CustomSearchEmbyID)</action>
+		<action>Skin.SetString(CustomSearchTerm)</action>
+		<action>ActivateWindow(1115)</action>
+	</override>
+	<override action="start_search">
+		<condition>Skin.HasSetting(UseGlobalsearch)</condition>
+		<action>RunScript(script.globalsearch)</action>
+	</override>
+
+	<override action="partymode_action">
+		<condition>MusicPartyMode.Enabled</condition>
+		<action>Playercontrol(stop)</action>
+	</override>
+	<override action="partymode_action">
+		<condition>!MusicPartyMode.Enabled</condition>
+		<action>Playercontrol(partymode(music))</action>
+	</override>
+
+	<override action="tvshows_genre">
+		<action>SetProperty(ListGenres,videodb://tvshows/genres,home)</action>
+		<action>ActivateWindow(1114)</action>
+	</override>
+
+	<override action="movies_genre">
+		<action>SetProperty(ListGenres,videodb://movies/genres,home)</action>
+		<action>ActivateWindow(1114)</action>
+	</override>
+
+	<!-- emby overrides -->
+	<override action="emby0">
+		<condition>!String.IsEqual(Window(home).Property(emby.nodes.0.type),homevideos)</condition>
+		<action>SetProperty(EmbyHubNr,0,home)</action>
+		<action>ActivateWindow(1130)</action>
+	</override>
+	<override action="emby0">
+		<condition>String.IsEqual(Window(home).Property(emby.nodes.0.type),homevideos)</condition>
+		<action>ActivateWindow(pictures,$INFO[Window(home).Property(emby.nodes.0.content)],return)</action>
+	</override>
+	<override action="emby1">
+		<condition>!String.IsEqual(Window(home).Property(emby.nodes.1.type),homevideos)</condition>
+		<action>SetProperty(EmbyHubNr,1,home)</action>
+		<action>ActivateWindow(1130)</action>
+	</override>
+	<override action="emby1">
+		<condition>String.IsEqual(Window(home).Property(emby.nodes.1.type),homevideos)</condition>
+		<action>ActivateWindow(pictures,$INFO[Window(home).Property(emby.nodes.1.content)],return)</action>
+	</override>
+	<override action="emby2">
+		<condition>!String.IsEqual(Window(home).Property(emby.nodes.2.type),homevideos)</condition>
+		<action>SetProperty(EmbyHubNr,2,home)</action>
+		<action>ActivateWindow(1130)</action>
+	</override>
+	<override action="emby2">
+		<condition>String.IsEqual(Window(home).Property(emby.nodes.2.type),homevideos)</condition>
+		<action>ActivateWindow(pictures,$INFO[Window(home).Property(emby.nodes.2.content)],return)</action>
+	</override>
+	<override action="emby3">
+		<condition>!String.IsEqual(Window(home).Property(emby.nodes.3.type),homevideos)</condition>
+		<action>SetProperty(EmbyHubNr,3,home)</action>
+		<action>ActivateWindow(1130)</action>
+	</override>
+	<override action="emby3">
+		<condition>String.IsEqual(Window(home).Property(emby.nodes.3.type),homevideos)</condition>
+		<action>ActivateWindow(pictures,$INFO[Window(home).Property(emby.nodes.3.content)],return)</action>
+	</override>
+	<override action="emby4">
+		<condition>!String.IsEqual(Window(home).Property(emby.nodes.4.type),homevideos)</condition>
+		<action>SetProperty(EmbyHubNr,4,home)</action>
+		<action>ActivateWindow(1130)</action>
+	</override>
+	<override action="emby4">
+		<condition>String.IsEqual(Window(home).Property(emby.nodes.4.type),homevideos)</condition>
+		<action>ActivateWindow(pictures,$INFO[Window(home).Property(emby.nodes.4.content)],return)</action>
+	</override>
+	<override action="emby5">
+		<condition>!String.IsEqual(Window(home).Property(emby.nodes.5.type),homevideos)</condition>
+		<action>SetProperty(EmbyHubNr,5,home)</action>
+		<action>ActivateWindow(1130)</action>
+	</override>
+	<override action="emby5">
+		<condition>String.IsEqual(Window(home).Property(emby.nodes.5.type),homevideos)</condition>
+		<action>ActivateWindow(pictures,$INFO[Window(home).Property(emby.nodes.5.content)],return)</action>
+	</override>
+	<override action="emby6">
+		<condition>!String.IsEqual(Window(home).Property(emby.nodes.6.type),homevideos)</condition>
+		<action>SetProperty(EmbyHubNr,6,home)</action>
+		<action>ActivateWindow(1130)</action>
+	</override>
+	<override action="emby6">
+		<condition>String.IsEqual(Window(home).Property(emby.nodes.6.type),homevideos)</condition>
+		<action>ActivateWindow(pictures,$INFO[Window(home).Property(emby.nodes.6.content)],return)</action>
+	</override>
+	<override action="emby7">
+		<condition>!String.IsEqual(Window(home).Property(emby.nodes.7.type),homevideos)</condition>
+		<action>SetProperty(EmbyHubNr,7,home)</action>
+		<action>ActivateWindow(1130)</action>
+	</override>
+	<override action="emby7">
+		<condition>String.IsEqual(Window(home).Property(emby.nodes.7.type),homevideos)</condition>
+		<action>ActivateWindow(pictures,$INFO[Window(home).Property(emby.nodes.7.content)],return)</action>
+	</override>
+	<override action="emby8">
+		<condition>!String.IsEqual(Window(home).Property(emby.nodes.8.type),homevideos)</condition>
+		<action>SetProperty(EmbyHubNr,8,home)</action>
+		<action>ActivateWindow(1130)</action>
+	</override>
+	<override action="emby8">
+		<condition>String.IsEqual(Window(home).Property(emby.nodes.8.type),homevideos)</condition>
+		<action>ActivateWindow(pictures,$INFO[Window(home).Property(emby.nodes.8.content)],return)</action>
+	</override>
+	<override action="emby9">
+		<condition>!String.IsEqual(Window(home).Property(emby.nodes.9.type),homevideos)</condition>
+		<action>SetProperty(EmbyHubNr,9,home)</action>
+		<action>ActivateWindow(1130)</action>
+	</override>
+	<override action="emby9">
+		<condition>String.IsEqual(Window(home).Property(emby.nodes.9.type),homevideos)</condition>
+		<action>ActivateWindow(pictures,$INFO[Window(home).Property(emby.nodes.9.content)],return)</action>
+	</override>
+	<override action="emby10">
+		<condition>!String.IsEqual(Window(home).Property(emby.nodes.10.type),homevideos)</condition>
+		<action>SetProperty(EmbyHubNr,10,home)</action>
+		<action>ActivateWindow(1130)</action>
+	</override>
+	<override action="emby10">
+		<condition>String.IsEqual(Window(home).Property(emby.nodes.10.type),homevideos)</condition>
+		<action>ActivateWindow(pictures,$INFO[Window(home).Property(emby.nodes.10.content)],return)</action>
+	</override>
+	<override action="emby11">
+		<condition>!String.IsEqual(Window(home).Property(emby.nodes.11.type),homevideos)</condition>
+		<action>SetProperty(EmbyHubNr,11,home)</action>
+		<action>ActivateWindow(1130)</action>
+	</override>
+	<override action="emby11">
+		<condition>String.IsEqual(Window(home).Property(emby.nodes.11.type),homevideos)</condition>
+		<action>ActivateWindow(pictures,$INFO[Window(home).Property(emby.nodes.11.content)],return)</action>
+	</override>
+	<override action="emby12">
+		<condition>!String.IsEqual(Window(home).Property(emby.nodes.12.type),homevideos)</condition>
+		<action>SetProperty(EmbyHubNr,12,home)</action>
+		<action>ActivateWindow(1130)</action>
+	</override>
+	<override action="emby12">
+		<condition>String.IsEqual(Window(home).Property(emby.nodes.12.type),homevideos)</condition>
+		<action>ActivateWindow(pictures,$INFO[Window(home).Property(emby.nodes.12.content)],return)</action>
+	</override>
+	<override action="emby13">
+		<condition>!String.IsEqual(Window(home).Property(emby.nodes.13.type),homevideos)</condition>
+		<action>SetProperty(EmbyHubNr,13,home)</action>
+		<action>ActivateWindow(1130)</action>
+	</override>
+	<override action="emby13">
+		<condition>String.IsEqual(Window(home).Property(emby.nodes.13.type),homevideos)</condition>
+		<action>ActivateWindow(pictures,$INFO[Window(home).Property(emby.nodes.13.content)],return)</action>
+	</override>
+	<override action="emby14">
+		<condition>!String.IsEqual(Window(home).Property(emby.nodes.14.type),homevideos)</condition>
+		<action>SetProperty(EmbyHubNr,14,home)</action>
+		<action>ActivateWindow(1130)</action>
+	</override>
+	<override action="emby14">
+		<condition>String.IsEqual(Window(home).Property(emby.nodes.14.type),homevideos)</condition>
+		<action>ActivateWindow(pictures,$INFO[Window(home).Property(emby.nodes.14.content)],return)</action>
+	</override>
+	<override action="emby15">
+		<condition>!String.IsEqual(Window(home).Property(emby.nodes.15.type),homevideos)</condition>
+		<action>SetProperty(EmbyHubNr,15,home)</action>
+		<action>ActivateWindow(1130)</action>
+	</override>
+	<override action="emby15">
+		<condition>String.IsEqual(Window(home).Property(emby.nodes.15.type),homevideos)</condition>
+		<action>ActivateWindow(pictures,$INFO[Window(home).Property(emby.nodes.15.content)],return)</action>
+	</override>
+	<override action="emby16">
+		<condition>!String.IsEqual(Window(home).Property(emby.nodes.16.type),homevideos)</condition>
+		<action>SetProperty(EmbyHubNr,16,home)</action>
+		<action>ActivateWindow(1130)</action>
+	</override>
+	<override action="emby16">
+		<condition>String.IsEqual(Window(home).Property(emby.nodes.16.type),homevideos)</condition>
+		<action>ActivateWindow(pictures,$INFO[Window(home).Property(emby.nodes.16.content)],return)</action>
+	</override>
+	<override action="emby17">
+		<condition>!String.IsEqual(Window(home).Property(emby.nodes.17.type),homevideos)</condition>
+		<action>SetProperty(EmbyHubNr,17,home)</action>
+		<action>ActivateWindow(1130)</action>
+	</override>
+	<override action="emby17">
+		<condition>String.IsEqual(Window(home).Property(emby.nodes.17.type),homevideos)</condition>
+		<action>ActivateWindow(pictures,$INFO[Window(home).Property(emby.nodes.17.content)],return)</action>
+	</override>
+	<override action="emby18">
+		<condition>!String.IsEqual(Window(home).Property(emby.nodes.18.type),homevideos)</condition>
+		<action>SetProperty(EmbyHubNr,18,home)</action>
+		<action>ActivateWindow(1130)</action>
+	</override>
+	<override action="emby18">
+		<condition>String.IsEqual(Window(home).Property(emby.nodes.18.type),homevideos)</condition>
+		<action>ActivateWindow(pictures,$INFO[Window(home).Property(emby.nodes.18.content)],return)</action>
+	</override>
+	<override action="emby19">
+		<condition>!String.IsEqual(Window(home).Property(emby.nodes.19.type),homevideos)</condition>
+		<action>SetProperty(EmbyHubNr,19,home)</action>
+		<action>ActivateWindow(1130)</action>
+	</override>
+	<override action="emby19">
+		<condition>String.IsEqual(Window(home).Property(emby.nodes.19.type),homevideos)</condition>
+		<action>ActivateWindow(pictures,$INFO[Window(home).Property(emby.nodes.19.content)],return)</action>
+	</override>
+	<!-- embycon overrides -->
+	<override action="embycon0">
+		<condition>!String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.0.type),boxsets)</condition>
+		<action>SetProperty(EmbyHubNr,0,home)</action>
+		<action>ActivateWindow(1131)</action>
+	</override>
+	<override action="embycon0">
+		<condition>String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.0.type),boxsets)</condition>
+		<action>ActivateWindow(videos,plugin://plugin.video.embycon/?media_type=boxsets&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems?ParentId=$INFO[Window(home).Property(plugin.video.embycon-view_item.0.id)]&amp;IsVirtualUnaired%3dfalse%26CollapseBoxSetItems%3dtrue%26Recursive%3dtrue%26IsMissing%3dFalse%26Fields%3d%7bfield_filters%7d%26ImageTypeLimit%3d1%26format%3djson,return)</action>
+	</override>
+	<override action="embycon1">
+		<condition>!String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.1.type),boxsets)</condition>
+		<action>SetProperty(EmbyHubNr,1,home)</action>
+		<action>ActivateWindow(1131)</action>
+	</override>
+	<override action="embycon1">
+		<condition>String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.1.type),boxsets)</condition>
+		<action>ActivateWindow(videos,plugin://plugin.video.embycon/?media_type=boxsets&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems?ParentId=$INFO[Window(home).Property(plugin.video.embycon-view_item.1.id)]&amp;IsVirtualUnaired%3dfalse%26CollapseBoxSetItems%3dtrue%26Recursive%3dtrue%26IsMissing%3dFalse%26Fields%3d%7bfield_filters%7d%26ImageTypeLimit%3d1%26format%3djson,return)</action>
+	</override>
+	<override action="embycon2">
+		<condition>!String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.2.type),boxsets)</condition>
+		<action>SetProperty(EmbyHubNr,2,home)</action>
+		<action>ActivateWindow(1131)</action>
+	</override>
+	<override action="embycon2">
+		<condition>String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.2.type),boxsets)</condition>
+		<action>ActivateWindow(videos,plugin://plugin.video.embycon/?media_type=boxsets&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems?ParentId=$INFO[Window(home).Property(plugin.video.embycon-view_item.2.id)]&amp;IsVirtualUnaired%3dfalse%26CollapseBoxSetItems%3dtrue%26Recursive%3dtrue%26IsMissing%3dFalse%26Fields%3d%7bfield_filters%7d%26ImageTypeLimit%3d1%26format%3djson,return)</action>
+	</override>
+	<override action="embycon3">
+		<condition>!String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.3.type),boxsets)</condition>
+		<action>SetProperty(EmbyHubNr,3,home)</action>
+		<action>ActivateWindow(1131)</action>
+	</override>
+	<override action="embycon3">
+		<condition>String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.3.type),boxsets)</condition>
+		<action>ActivateWindow(videos,plugin://plugin.video.embycon/?media_type=boxsets&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems?ParentId=$INFO[Window(home).Property(plugin.video.embycon-view_item.3.id)]&amp;IsVirtualUnaired%3dfalse%26CollapseBoxSetItems%3dtrue%26Recursive%3dtrue%26IsMissing%3dFalse%26Fields%3d%7bfield_filters%7d%26ImageTypeLimit%3d1%26format%3djson,return)</action>
+	</override>
+	<override action="embycon4">
+		<condition>!String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.4.type),boxsets)</condition>
+		<action>SetProperty(EmbyHubNr,4,home)</action>
+		<action>ActivateWindow(1131)</action>
+	</override>
+	<override action="embycon4">
+		<condition>String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.4.type),boxsets)</condition>
+		<action>ActivateWindow(videos,plugin://plugin.video.embycon/?media_type=boxsets&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems?ParentId=$INFO[Window(home).Property(plugin.video.embycon-view_item.4.id)]&amp;IsVirtualUnaired%3dfalse%26CollapseBoxSetItems%3dtrue%26Recursive%3dtrue%26IsMissing%3dFalse%26Fields%3d%7bfield_filters%7d%26ImageTypeLimit%3d1%26format%3djson,return)</action>
+	</override>
+	<override action="embycon5">
+		<condition>!String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.5.type),boxsets)</condition>
+		<action>SetProperty(EmbyHubNr,5,home)</action>
+		<action>ActivateWindow(1131)</action>
+	</override>
+	<override action="embycon5">
+		<condition>String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.5.type),boxsets)</condition>
+		<action>ActivateWindow(videos,plugin://plugin.video.embycon/?media_type=boxsets&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems?ParentId=$INFO[Window(home).Property(plugin.video.embycon-view_item.5.id)]&amp;IsVirtualUnaired%3dfalse%26CollapseBoxSetItems%3dtrue%26Recursive%3dtrue%26IsMissing%3dFalse%26Fields%3d%7bfield_filters%7d%26ImageTypeLimit%3d1%26format%3djson,return)</action>
+	</override>
+	<override action="embycon6">
+		<condition>!String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.6.type),boxsets)</condition>
+		<action>SetProperty(EmbyHubNr,6,home)</action>
+		<action>ActivateWindow(1131)</action>
+	</override>
+	<override action="embycon6">
+		<condition>String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.6.type),boxsets)</condition>
+		<action>ActivateWindow(videos,plugin://plugin.video.embycon/?media_type=boxsets&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems?ParentId=$INFO[Window(home).Property(plugin.video.embycon-view_item.6.id)]&amp;IsVirtualUnaired%3dfalse%26CollapseBoxSetItems%3dtrue%26Recursive%3dtrue%26IsMissing%3dFalse%26Fields%3d%7bfield_filters%7d%26ImageTypeLimit%3d1%26format%3djson,return)</action>
+	</override>
+	<override action="embycon7">
+		<condition>!String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.7.type),boxsets)</condition>
+		<action>SetProperty(EmbyHubNr,7,home)</action>
+		<action>ActivateWindow(1131)</action>
+	</override>
+	<override action="embycon7">
+		<condition>String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.7.type),boxsets)</condition>
+		<action>ActivateWindow(videos,plugin://plugin.video.embycon/?media_type=boxsets&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems?ParentId=$INFO[Window(home).Property(plugin.video.embycon-view_item.7.id)]&amp;IsVirtualUnaired%3dfalse%26CollapseBoxSetItems%3dtrue%26Recursive%3dtrue%26IsMissing%3dFalse%26Fields%3d%7bfield_filters%7d%26ImageTypeLimit%3d1%26format%3djson,return)</action>
+	</override>
+	<override action="embycon8">
+		<condition>!String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.8.type),boxsets)</condition>
+		<action>SetProperty(EmbyHubNr,8,home)</action>
+		<action>ActivateWindow(1131)</action>
+	</override>
+	<override action="embycon8">
+		<condition>String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.8.type),boxsets)</condition>
+		<action>ActivateWindow(videos,plugin://plugin.video.embycon/?media_type=boxsets&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems?ParentId=$INFO[Window(home).Property(plugin.video.embycon-view_item.8.id)]&amp;IsVirtualUnaired%3dfalse%26CollapseBoxSetItems%3dtrue%26Recursive%3dtrue%26IsMissing%3dFalse%26Fields%3d%7bfield_filters%7d%26ImageTypeLimit%3d1%26format%3djson,return)</action>
+	</override>
+	<override action="embycon9">
+		<condition>!String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.9.type),boxsets)</condition>
+		<action>SetProperty(EmbyHubNr,9,home)</action>
+		<action>ActivateWindow(1131)</action>
+	</override>
+	<override action="embycon9">
+		<condition>String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.9.type),boxsets)</condition>
+		<action>ActivateWindow(videos,plugin://plugin.video.embycon/?media_type=boxsets&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems?ParentId=$INFO[Window(home).Property(plugin.video.embycon-view_item.9.id)]&amp;IsVirtualUnaired%3dfalse%26CollapseBoxSetItems%3dtrue%26Recursive%3dtrue%26IsMissing%3dFalse%26Fields%3d%7bfield_filters%7d%26ImageTypeLimit%3d1%26format%3djson,return)</action>
+	</override>
+	<override action="embycon10">
+		<condition>!String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.10.type),boxsets)</condition>
+		<action>SetProperty(EmbyHubNr,10,home)</action>
+		<action>ActivateWindow(1131)</action>
+	</override>
+	<override action="embycon10">
+		<condition>String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.10.type),boxsets)</condition>
+		<action>ActivateWindow(videos,plugin://plugin.video.embycon/?media_type=boxsets&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems?ParentId=$INFO[Window(home).Property(plugin.video.embycon-view_item.10.id)]&amp;IsVirtualUnaired%3dfalse%26CollapseBoxSetItems%3dtrue%26Recursive%3dtrue%26IsMissing%3dFalse%26Fields%3d%7bfield_filters%7d%26ImageTypeLimit%3d1%26format%3djson,return)</action>
+	</override>
+	<override action="embycon11">
+		<condition>!String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.11.type),boxsets)</condition>
+		<action>SetProperty(EmbyHubNr,11,home)</action>
+		<action>ActivateWindow(1131)</action>
+	</override>
+	<override action="embycon11">
+		<condition>String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.11.type),boxsets)</condition>
+		<action>ActivateWindow(videos,plugin://plugin.video.embycon/?media_type=boxsets&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems?ParentId=$INFO[Window(home).Property(plugin.video.embycon-view_item.11.id)]&amp;IsVirtualUnaired%3dfalse%26CollapseBoxSetItems%3dtrue%26Recursive%3dtrue%26IsMissing%3dFalse%26Fields%3d%7bfield_filters%7d%26ImageTypeLimit%3d1%26format%3djson,return)</action>
+	</override>
+	<override action="embycon12">
+		<condition>!String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.12.type),boxsets)</condition>
+		<action>SetProperty(EmbyHubNr,12,home)</action>
+		<action>ActivateWindow(1131)</action>
+	</override>
+	<override action="embycon12">
+		<condition>String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.12.type),boxsets)</condition>
+		<action>ActivateWindow(videos,plugin://plugin.video.embycon/?media_type=boxsets&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems?ParentId=$INFO[Window(home).Property(plugin.video.embycon-view_item.12.id)]&amp;IsVirtualUnaired%3dfalse%26CollapseBoxSetItems%3dtrue%26Recursive%3dtrue%26IsMissing%3dFalse%26Fields%3d%7bfield_filters%7d%26ImageTypeLimit%3d1%26format%3djson,return)</action>
+	</override>
+	<override action="embycon13">
+		<condition>!String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.13.type),boxsets)</condition>
+		<action>SetProperty(EmbyHubNr,13,home)</action>
+		<action>ActivateWindow(1131)</action>
+	</override>
+	<override action="embycon13">
+		<condition>String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.13.type),boxsets)</condition>
+		<action>ActivateWindow(videos,plugin://plugin.video.embycon/?media_type=boxsets&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems?ParentId=$INFO[Window(home).Property(plugin.video.embycon-view_item.13.id)]&amp;IsVirtualUnaired%3dfalse%26CollapseBoxSetItems%3dtrue%26Recursive%3dtrue%26IsMissing%3dFalse%26Fields%3d%7bfield_filters%7d%26ImageTypeLimit%3d1%26format%3djson,return)</action>
+	</override>
+	<override action="embycon14">
+		<condition>!String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.14.type),boxsets)</condition>
+		<action>SetProperty(EmbyHubNr,14,home)</action>
+		<action>ActivateWindow(1131)</action>
+	</override>
+	<override action="embycon14">
+		<condition>String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.14.type),boxsets)</condition>
+		<action>ActivateWindow(videos,plugin://plugin.video.embycon/?media_type=boxsets&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems?ParentId=$INFO[Window(home).Property(plugin.video.embycon-view_item.14.id)]&amp;IsVirtualUnaired%3dfalse%26CollapseBoxSetItems%3dtrue%26Recursive%3dtrue%26IsMissing%3dFalse%26Fields%3d%7bfield_filters%7d%26ImageTypeLimit%3d1%26format%3djson,return)</action>
+	</override>
+	<override action="embycon15">
+		<condition>!String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.15.type),boxsets)</condition>
+		<action>SetProperty(EmbyHubNr,15,home)</action>
+		<action>ActivateWindow(1131)</action>
+	</override>
+	<override action="embycon15">
+		<condition>String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.15.type),boxsets)</condition>
+		<action>ActivateWindow(videos,plugin://plugin.video.embycon/?media_type=boxsets&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems?ParentId=$INFO[Window(home).Property(plugin.video.embycon-view_item.15.id)]&amp;IsVirtualUnaired%3dfalse%26CollapseBoxSetItems%3dtrue%26Recursive%3dtrue%26IsMissing%3dFalse%26Fields%3d%7bfield_filters%7d%26ImageTypeLimit%3d1%26format%3djson,return)</action>
+	</override>
+	<override action="embycon16">
+		<condition>!String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.16.type),boxsets)</condition>
+		<action>SetProperty(EmbyHubNr,16,home)</action>
+		<action>ActivateWindow(1131)</action>
+	</override>
+	<override action="embycon16">
+		<condition>String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.16.type),boxsets)</condition>
+		<action>ActivateWindow(videos,plugin://plugin.video.embycon/?media_type=boxsets&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems?ParentId=$INFO[Window(home).Property(plugin.video.embycon-view_item.16.id)]&amp;IsVirtualUnaired%3dfalse%26CollapseBoxSetItems%3dtrue%26Recursive%3dtrue%26IsMissing%3dFalse%26Fields%3d%7bfield_filters%7d%26ImageTypeLimit%3d1%26format%3djson,return)</action>
+	</override>
+	<override action="embycon17">
+		<condition>!String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.17.type),boxsets)</condition>
+		<action>SetProperty(EmbyHubNr,17,home)</action>
+		<action>ActivateWindow(1131)</action>
+	</override>
+	<override action="embycon17">
+		<condition>String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.17.type),boxsets)</condition>
+		<action>ActivateWindow(videos,plugin://plugin.video.embycon/?media_type=boxsets&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems?ParentId=$INFO[Window(home).Property(plugin.video.embycon-view_item.17.id)]&amp;IsVirtualUnaired%3dfalse%26CollapseBoxSetItems%3dtrue%26Recursive%3dtrue%26IsMissing%3dFalse%26Fields%3d%7bfield_filters%7d%26ImageTypeLimit%3d1%26format%3djson,return)</action>
+	</override>
+	<override action="embycon18">
+		<condition>!String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.18.type),boxsets)</condition>
+		<action>SetProperty(EmbyHubNr,18,home)</action>
+		<action>ActivateWindow(1131)</action>
+	</override>
+	<override action="embycon18">
+		<condition>String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.18.type),boxsets)</condition>
+		<action>ActivateWindow(videos,plugin://plugin.video.embycon/?media_type=boxsets&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems?ParentId=$INFO[Window(home).Property(plugin.video.embycon-view_item.18.id)]&amp;IsVirtualUnaired%3dfalse%26CollapseBoxSetItems%3dtrue%26Recursive%3dtrue%26IsMissing%3dFalse%26Fields%3d%7bfield_filters%7d%26ImageTypeLimit%3d1%26format%3djson,return)</action>
+	</override>
+	<override action="embycon19">
+		<condition>!String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.19.type),boxsets)</condition>
+		<action>SetProperty(EmbyHubNr,19,home)</action>
+		<action>ActivateWindow(1131)</action>
+	</override>
+	<override action="embycon19">
+		<condition>String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.19.type),boxsets)</condition>
+		<action>ActivateWindow(videos,plugin://plugin.video.embycon/?media_type=boxsets&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems?ParentId=$INFO[Window(home).Property(plugin.video.embycon-view_item.19.id)]&amp;IsVirtualUnaired%3dfalse%26CollapseBoxSetItems%3dtrue%26Recursive%3dtrue%26IsMissing%3dFalse%26Fields%3d%7bfield_filters%7d%26ImageTypeLimit%3d1%26format%3djson,return)</action>
+	</override>
+
+	<!-- moviehub -->
+	<propertydefault defaultID="embuary_moviehub_movies" group="moviehub" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_moviehub_embycon_movies" group="moviehub" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_moviehub_collections" group="moviehub" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_moviehub_unwatched" group="moviehub" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_moviehub_genres" group="moviehub" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_moviehub_library" group="moviehub" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_moviehub_search" group="moviehub" property="isDefault">true</propertydefault>
+
+	<!-- moviehub -->
+	<propertydefault defaultID="embuary_tvshowhub_tvshows" group="tvshowhub" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_tvshowhub_embycon_tvshows" group="tvshowhub" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_tvshowhub_genres" group="tvshowhub" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_tvshowhub_unwatched" group="tvshowhub" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_tvshowhub_library" group="tvshowhub" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_tvshowhub_nextaired" group="tvshowhub" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_tvshowhub_search" group="tvshowhub" property="isDefault">true</propertydefault>
+
+	<!-- musichub -->
+	<propertydefault defaultID="embuary_musichub_artists" group="musichub" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_musichub_albums" group="musichub" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_musichub_songs" group="musichub" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_musichub_playlists" group="musichub" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_musichub_library" group="musichub" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_musichub_musicvideos" group="musichub" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_musichub_partymode" group="musichub" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_musichub_embycon_artists" group="musichub" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_musichub_embycon_albums" group="musichub" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_musichub_search" group="musichub" property="isDefault">true</propertydefault>
+
+	<!-- home -->
+	<propertydefault defaultID="embuary_all_movies" group="mainmenu" property="fakeArtSource">videodb://movies/titles/</propertydefault>
+	<propertydefault defaultID="embuary_collections" group="mainmenu" property="fakeArtSource">videodb://movies/sets/</propertydefault>
+	<propertydefault defaultID="embuary_all_shows" group="mainmenu" property="fakeArtSource">videodb://tvshows/titles/</propertydefault>
+	<propertydefault defaultID="embuary_all_music" group="mainmenu" property="fakeArtSource">musicdb://albums/</propertydefault>
+
+	<propertydefault defaultID="embuary_all_movies" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_collections" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_all_shows" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_all_music" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_musicvideos" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_emby0" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_emby1" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_emby2" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_emby3" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_emby4" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_emby5" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_emby6" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_emby7" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_emby8" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_emby9" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_emby10" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_emby11" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_emby12" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_emby13" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_emby14" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_emby15" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_emby16" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_emby17" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_emby18" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_emby19" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_embycon0" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_embycon1" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_embycon2" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_embycon3" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_embycon4" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_embycon5" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_embycon6" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_embycon7" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_embycon8" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_embycon9" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_embycon10" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_embycon11" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_embycon12" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_embycon13" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_embycon14" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_embycon15" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_embycon16" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_embycon17" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_embycon18" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_embycon19" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_pvr" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_recordings" group="mainmenu" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_addons" group="mainmenu" property="isDefault">true</propertydefault>
+
+	<propertydefault defaultID="embuary_all_movies" group="mainmenu" property="list">videodb://movies/titles/</propertydefault>
+	<propertydefault defaultID="embuary_collections" group="mainmenu" property="list">videodb://movies/sets/</propertydefault>
+	<propertydefault defaultID="embuary_all_shows" group="mainmenu" property="list">videodb://tvshows/titles/</propertydefault>
+	<propertydefault defaultID="embuary_all_music" group="mainmenu" property="list">musicdb://albums/</propertydefault>
+	<propertydefault defaultID="embuary_musicvideos" group="mainmenu" property="list">videodb://musicvideos/titles/</propertydefault>
+	<propertydefault defaultID="embuary_emby0" group="mainmenu" property="list">-</propertydefault>
+	<propertydefault defaultID="embuary_emby1" group="mainmenu" property="list">-</propertydefault>
+	<propertydefault defaultID="embuary_emby2" group="mainmenu" property="list">-</propertydefault>
+	<propertydefault defaultID="embuary_emby3" group="mainmenu" property="list">-</propertydefault>
+	<propertydefault defaultID="embuary_emby4" group="mainmenu" property="list">-</propertydefault>
+	<propertydefault defaultID="embuary_emby5" group="mainmenu" property="list">-</propertydefault>
+	<propertydefault defaultID="embuary_emby6" group="mainmenu" property="list">-</propertydefault>
+	<propertydefault defaultID="embuary_emby7" group="mainmenu" property="list">-</propertydefault>
+	<propertydefault defaultID="embuary_emby8" group="mainmenu" property="list">-</propertydefault>
+	<propertydefault defaultID="embuary_emby9" group="mainmenu" property="list">-</propertydefault>
+	<propertydefault defaultID="embuary_emby10" group="mainmenu" property="list">-</propertydefault>
+	<propertydefault defaultID="embuary_emby11" group="mainmenu" property="list">-</propertydefault>
+	<propertydefault defaultID="embuary_emby12" group="mainmenu" property="list">-</propertydefault>
+	<propertydefault defaultID="embuary_emby13" group="mainmenu" property="list">-</propertydefault>
+	<propertydefault defaultID="embuary_emby14" group="mainmenu" property="list">-</propertydefault>
+	<propertydefault defaultID="embuary_emby15" group="mainmenu" property="list">-</propertydefault>
+	<propertydefault defaultID="embuary_emby16" group="mainmenu" property="list">-</propertydefault>
+	<propertydefault defaultID="embuary_emby17" group="mainmenu" property="list">-</propertydefault>
+	<propertydefault defaultID="embuary_emby18" group="mainmenu" property="list">-</propertydefault>
+	<propertydefault defaultID="embuary_emby19" group="mainmenu" property="list">-</propertydefault>
+	<propertydefault defaultID="embuary_embycon0" group="mainmenu" property="list">-</propertydefault>
+	<propertydefault defaultID="embuary_embycon1" group="mainmenu" property="list">-</propertydefault>
+	<propertydefault defaultID="embuary_embycon2" group="mainmenu" property="list">-</propertydefault>
+	<propertydefault defaultID="embuary_embycon3" group="mainmenu" property="list">-</propertydefault>
+	<propertydefault defaultID="embuary_embycon4" group="mainmenu" property="list">-</propertydefault>
+	<propertydefault defaultID="embuary_embycon5" group="mainmenu" property="list">-</propertydefault>
+	<propertydefault defaultID="embuary_embycon6" group="mainmenu" property="list">-</propertydefault>
+	<propertydefault defaultID="embuary_embycon7" group="mainmenu" property="list">-</propertydefault>
+	<propertydefault defaultID="embuary_embycon8" group="mainmenu" property="list">-</propertydefault>
+	<propertydefault defaultID="embuary_embycon9" group="mainmenu" property="list">-</propertydefault>
+	<propertydefault defaultID="embuary_embycon10" group="mainmenu" property="list">-</propertydefault>
+	<propertydefault defaultID="embuary_embycon11" group="mainmenu" property="list">-</propertydefault>
+	<propertydefault defaultID="embuary_embycon12" group="mainmenu" property="list">-</propertydefault>
+	<propertydefault defaultID="embuary_embycon13" group="mainmenu" property="list">-</propertydefault>
+	<propertydefault defaultID="embuary_embycon14" group="mainmenu" property="list">-</propertydefault>
+	<propertydefault defaultID="embuary_embycon15" group="mainmenu" property="list">-</propertydefault>
+	<propertydefault defaultID="embuary_embycon16" group="mainmenu" property="list">-</propertydefault>
+	<propertydefault defaultID="embuary_embycon17" group="mainmenu" property="list">-</propertydefault>
+	<propertydefault defaultID="embuary_embycon18" group="mainmenu" property="list">-</propertydefault>
+	<propertydefault defaultID="embuary_embycon19" group="mainmenu" property="list">-</propertydefault>
+	<propertydefault defaultID="embuary_pvr" group="mainmenu" property="list">-</propertydefault>
+	<propertydefault defaultID="embuary_recordings" group="mainmenu" property="list">-</propertydefault>
+	<propertydefault defaultID="embuary_addons" group="mainmenu" property="list">-</propertydefault>
+
+	<propertypattern group="mainmenu" property="art1">$INFO[Container(4343::ID::).ListItem(0).Icon]</propertypattern>
+	<propertypattern group="mainmenu" property="art1">$INFO[Container(4343::ID::).ListItem(0).Icon]</propertypattern>
+	<propertypattern group="mainmenu" property="art2">$INFO[Container(4343::ID::).ListItem(1).Icon]</propertypattern>
+	<propertypattern group="mainmenu" property="art3">$INFO[Container(4343::ID::).ListItem(2).Icon]</propertypattern>
+	<propertypattern group="mainmenu" property="art4">$INFO[Container(4343::ID::).ListItem(3).Icon]</propertypattern>
+
 	<widget-groupings>
 		<node label="559">
 			<node label="32030">
@@ -61,7 +599,7 @@
 		<shortcut label="20244" icon="DefaultAddonProgram.png" widget="addon" widgetType="program" widgetTarget="programs" condition="System.Platform.Android">androidapp://sources/apps</shortcut>
 	</widget-groupings>
 
-	<shortcut-groupings>
+	<groupings>
 		<node label="559">
 			<node label="32030">
 				<content>playlist-video</content>
@@ -104,61 +642,33 @@
 			<content>addon-image</content>
 			<content>picturesources</content>
 		</node>
-		<node label="32009">
-			<content>addon-program</content>
-		</node>
-		<node label="32006">
-			<content>favourite</content>
-		</node>
-		<shortcut label="14224" icon="defaultfolder.png">||BROWSE||script.skin.helper.service/?action=widgets&amp;path=scriptwidgets</shortcut>
-	</shortcut-groupings>
-
-	<homemediamenu-groupings>
-		<node label="559">
-			<node label="32030">
-				<content>playlist-video</content>
-			</node>
-			<node label="32031">
-				<content>playlist-audio</content>
-			</node>
-		</node>
-		<node label="32030">
-			<node label="32040">
-				<content>playlist-video</content>
-			</node>
-			<node label="14022">
-				<content>video</content>
+		<node label="32007">
+			<node label="32009">
+				<content>addon-program-plugin</content>
 			</node>
 			<node label="32010">
 				<content>addon-video</content>
 			</node>
-			<node label="32075">
-				<content>videosources</content>
-				<content>upnp-video</content>
-			</node>
-		</node>
-		<node label="32031">
-			<node label="32040">
-				<content>playlist-audio</content>
-			</node>
-			<node label="14022">
-				<content>music</content>
-			</node>
 			<node label="32011">
 				<content>addon-audio</content>
 			</node>
-			<node label="32075">
-				<content>musicsources</content>
-				<content>upnp-music</content>
+			<node label="32012">
+				<content>addon-image</content>
 			</node>
-		</node>
-		<node label="32020">
-			<content>addon-image</content>
-			<content>picturesources</content>
+			<shortcut label="10001" type="32021" icon="DefaultAddonProgram.png" widget="addon" widgetType="program" widgetTarget="programs">addons://sources/executable</shortcut>
+			<shortcut label="20244" type="32021" icon="DefaultAddonProgram.png" widget="addon" widgetType="program" widgetTarget="programs" condition="System.Platform.Android">androidapp://sources/apps</shortcut>
+			<shortcut label="1037" type="32014" icon="DefaultAddonVideo.png" widget="addon" widgetType="video" widgetTarget="video">addons://sources/video</shortcut>
+			<shortcut label="1038" type="32019" icon="DefaultAddonMusic.png" widget="addon" widgetType="music" widgetTarget="music">addons://sources/audio</shortcut>
+			<shortcut label="1039" type="32020" icon="DefaultAddonPicture.png" widget="addon" widgetType="picture" widgetTarget="pictures">addons://sources/image</shortcut>
 		</node>
 		<node label="32006">
 			<content>favourite</content>
 		</node>
-	</homemediamenu-groupings>
+		<node label="32054">
+			<content>commands</content>
+		</node>
+		<shortcut label="1036" widget="favourites" widgetType="favourites" icon="defaultfavourites.png">plugin://script.skin.helper.widgets/?mediatype=favourites&amp;reload=$INFO[Window(Home).Property(widgetreload2)]</shortcut>
+		<shortcut label="20244" icon="DefaultAddonProgram.png" widget="addon" widgetType="program" widgetTarget="programs" condition="System.Platform.Android">androidapp://sources/apps</shortcut>
+	</groupings>
 
 </overrides>

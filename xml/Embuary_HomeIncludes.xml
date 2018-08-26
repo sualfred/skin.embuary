@@ -1,655 +1,176 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
-	<!-- main menu content -->
-	<include name="MainMenuItemTemplate">
-		<param name="artwork">thumb</param>
+	<!-- menu items -->
+	<include name="Home_Menu">
+		<param name="id">100</param>
 		<definition>
-			<item>
-				<label>$PARAM[label]</label>
-				<onclick>$PARAM[onclick]</onclick>
-				<icon>$PARAM[icon]</icon>
-				<property name="art1">$INFO[Container($PARAM[id]).ListItem(0).Art($PARAM[artwork])]</property>
-				<property name="art2">$INFO[Container($PARAM[id]).ListItem(1).Art($PARAM[artwork])]</property>
-				<property name="art3">$INFO[Container($PARAM[id]).ListItem(2).Art($PARAM[artwork])]</property>
-				<property name="art4">$INFO[Container($PARAM[id]).ListItem(3).Art($PARAM[artwork])]</property>
-				<property name="defaultart">$PARAM[defaultart]</property>
-				<property name="item">true</property>
-				<visible>$PARAM[visible]</visible>
-			</item>
-		</definition>
-	</include>
-	<include name="CustomMainMenuItemTemplate">
-		<item>
-			<label>$INFO[Skin.String(UserHomeHub$PARAM[nr]_name)]</label>
-			<onclick condition="String.StartsWith(Skin.String(UserHomeHub$PARAM[nr]_action),ActivateWindow)">ActivateWindow($INFO[Skin.String(UserHomeHub$PARAM[nr]_target)],$INFO[Skin.String(UserHomeHub$PARAM[nr]_path)],return)</onclick>
-			<onclick condition="!String.StartsWith(Skin.String(UserHomeHub$PARAM[nr]_action),ActivateWindow)">$INFO[Skin.String(UserHomeHub$PARAM[nr]_action)]</onclick>
-			<icon>$PARAM[icon]</icon>
-			<property name="art1">$INFO[Container(4$PARAM[nr]).ListItem(0).Art(thumb)]</property>
-			<property name="art2">$INFO[Container(4$PARAM[nr]).ListItem(1).Art(thumb)]</property>
-			<property name="art3">$INFO[Container(4$PARAM[nr]).ListItem(2).Art(thumb)]</property>
-			<property name="art4">$INFO[Container(4$PARAM[nr]).ListItem(3).Art(thumb)]</property>
-			<property name="action">$INFO[Skin.String(UserHomeHub$PARAM[nr]_action)]</property>
-			<property name="item">true</property>
-			<visible>$PARAM[visible] + Skin.HasSetting(UserHomeHub$PARAM[nr]) + !String.IsEmpty(Skin.String(UserHomeHub$PARAM[nr]_action))</visible>
-		</item>
-	</include>
-	<include name="EmbyConNodeMainMenuItemTemplate">
-		<item>
-			<label>$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].name)]$VAR[EmbyConLabel]</label>
-			<onclick>SetProperty(EmbyHubNr,$PARAM[nr],home)</onclick>
-			<onclick condition="!String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].type),boxsets)">ActivateWindow(1131)</onclick>
-			<onclick condition="String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].type),boxsets)">ActivateWindow(videos,plugin://plugin.video.embycon/?media_type=boxsets&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems?ParentId=$PARAM[parentID]&amp;IsVirtualUnaired%3dfalse%26CollapseBoxSetItems%3dtrue%26Recursive%3dtrue%26IsMissing%3dFalse%26Fields%3d%7bfield_filters%7d%26ImageTypeLimit%3d1%26format%3djson,return)</onclick>
-			<icon>$PARAM[icon]</icon>
-			<property name="defaultart">$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].thumb)]</property>
-			<property name="item">true</property>
-			<visible>$PARAM[visible]</visible>
-		</item>
-	</include>
-	<include name="EmbyNodeMainMenuItemTemplate">
-		<item>
-			<label>$INFO[Window(home).Property(emby.nodes.$PARAM[nr].title)]</label>
-			<onclick>SetProperty(EmbyHubNr,$PARAM[nr],home)</onclick>
-			<onclick condition="!String.IsEqual(Window(home).Property(emby.nodes.$PARAM[nr].type),homevideos)">ActivateWindow(1130)</onclick>
-			<onclick condition="String.IsEqual(Window(home).Property(emby.nodes.$PARAM[nr].type),homevideos)">ActivateWindow(pictures,$INFO[Window(home).Property(emby.nodes.$PARAM[nr].content)],return)</onclick>
-			<icon>$PARAM[icon]</icon>
-			<property name="defaultart">$INFO[Window(home).Property(emby.nodes.$PARAM[nr].artwork)]</property>
-			<property name="item">true</property>
-			<visible>$PARAM[visible]</visible>
-		</item>
-	</include>
-
-	<include name="MainMenuPosition">
-		<!-- all movies -->
-		<include content="MainMenuItemTemplate">
-			<param name="id" value="51"/>
-			<param name="label" value="$INFO[Skin.String(home_menu_pos_$PARAM[nr].label)]"/>
-			<param name="icon" value="$INFO[Skin.String(movies.icon)]"/>
-			<param name="onclick" value="ActivateWindow(1120,return)"/>
-			<param name="artwork" value="poster"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),movies) + !String.IsEmpty(Skin.String(home_menu_pos_$PARAM[nr].label)) + $EXP[MenuMoviesVisiblity]"/>
-		</include>
-		<!-- collections -->
-		<include content="MainMenuItemTemplate">
-			<param name="id" value="56"/>
-			<param name="label" value="$INFO[Skin.String(home_menu_pos_$PARAM[nr].label)]"/>
-			<param name="icon" value="$INFO[Skin.String(sets.icon)]"/>
-			<param name="onclick" value="ActivateWindow(videos,library://video/movies/sets.xml/,return)"/>
-			<param name="artwork" value="poster"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),sets) + !String.IsEmpty(Skin.String(home_menu_pos_$PARAM[nr].label)) + Library.HasContent(MovieSets)"/>
-		</include>
-		<!-- all shows -->
-		<include content="MainMenuItemTemplate">
-			<param name="id" value="52"/>
-			<param name="label" value="$INFO[Skin.String(home_menu_pos_$PARAM[nr].label)]"/>
-			<param name="icon" value="$INFO[Skin.String(shows.icon)]"/>
-			<param name="onclick" value="ActivateWindow(1121,return)"/>
-			<param name="artwork" value="poster"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),shows) + !String.IsEmpty(Skin.String(home_menu_pos_$PARAM[nr].label)) + $EXP[MenuTVShowsVisiblity]"/>
-		</include>
-		<!-- Emby nodes -->
-		<include content="EmbyNodeMainMenuItemTemplate">
-			<param name="nr" value="0"/>
-			<param name="icon" value="$INFO[Skin.String(emby0.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),emby0) + $EXP[MenuEmby0Visiblity]"/>
-		</include>
-		<include content="EmbyNodeMainMenuItemTemplate">
-			<param name="nr" value="1"/>
-			<param name="icon" value="$INFO[Skin.String(emby1.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),emby1) + $EXP[MenuEmby1Visiblity]"/>
-		</include>
-		<include content="EmbyNodeMainMenuItemTemplate">
-			<param name="nr" value="2"/>
-			<param name="icon" value="$INFO[Skin.String(emby2.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),emby2) + $EXP[MenuEmby2Visiblity]"/>
-		</include>
-		<include content="EmbyNodeMainMenuItemTemplate">
-			<param name="nr" value="3"/>
-			<param name="icon" value="$INFO[Skin.String(emby3.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),emby3) + $EXP[MenuEmby3Visiblity]"/>
-		</include>
-		<include content="EmbyNodeMainMenuItemTemplate">
-			<param name="nr" value="4"/>
-			<param name="icon" value="$INFO[Skin.String(emby4.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),emby4) + $EXP[MenuEmby4Visiblity]"/>
-		</include>
-		<include content="EmbyNodeMainMenuItemTemplate">
-			<param name="nr" value="5"/>
-			<param name="icon" value="$INFO[Skin.String(emby5.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),emby5) + $EXP[MenuEmby5Visiblity]"/>
-		</include>
-		<include content="EmbyNodeMainMenuItemTemplate">
-			<param name="nr" value="6"/>
-			<param name="icon" value="$INFO[Skin.String(emby6.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),emby6) + $EXP[MenuEmby6Visiblity]"/>
-		</include>
-		<include content="EmbyNodeMainMenuItemTemplate">
-			<param name="nr" value="7"/>
-			<param name="icon" value="$INFO[Skin.String(emby7.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),emby7) + $EXP[MenuEmby7Visiblity]"/>
-		</include>
-		<include content="EmbyNodeMainMenuItemTemplate">
-			<param name="nr" value="8"/>
-			<param name="icon" value="$INFO[Skin.String(emby8.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),emby8) + $EXP[MenuEmby8Visiblity]"/>
-		</include>
-		<include content="EmbyNodeMainMenuItemTemplate">
-			<param name="nr" value="9"/>
-			<param name="icon" value="$INFO[Skin.String(emby9.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),emby9) + $EXP[MenuEmby9Visiblity]"/>
-		</include>
-		<include content="EmbyNodeMainMenuItemTemplate">
-			<param name="nr" value="10"/>
-			<param name="icon" value="$INFO[Skin.String(emby10.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),emby10) + $EXP[MenuEmby10Visiblity]"/>
-		</include>
-		<include content="EmbyNodeMainMenuItemTemplate">
-			<param name="nr" value="11"/>
-			<param name="icon" value="$INFO[Skin.String(emby11.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),emby11) + $EXP[MenuEmby11Visiblity]"/>
-		</include>
-		<include content="EmbyNodeMainMenuItemTemplate">
-			<param name="nr" value="12"/>
-			<param name="icon" value="$INFO[Skin.String(emby12.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),emby12) + $EXP[MenuEmby12Visiblity]"/>
-		</include>
-		<include content="EmbyNodeMainMenuItemTemplate">
-			<param name="nr" value="13"/>
-			<param name="icon" value="$INFO[Skin.String(emby13.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),emby13) + $EXP[MenuEmby13Visiblity]"/>
-		</include>
-		<include content="EmbyNodeMainMenuItemTemplate">
-			<param name="nr" value="14"/>
-			<param name="icon" value="$INFO[Skin.String(emby14.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),emby14) + $EXP[MenuEmby14Visiblity]"/>
-		</include>
-		<include content="EmbyNodeMainMenuItemTemplate">
-			<param name="nr" value="15"/>
-			<param name="icon" value="$INFO[Skin.String(emby15.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),emby15) + $EXP[MenuEmby15Visiblity]"/>
-		</include>
-		<include content="EmbyNodeMainMenuItemTemplate">
-			<param name="nr" value="16"/>
-			<param name="icon" value="$INFO[Skin.String(emby16.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),emby16) + $EXP[MenuEmby16Visiblity]"/>
-		</include>
-		<include content="EmbyNodeMainMenuItemTemplate">
-			<param name="nr" value="17"/>
-			<param name="icon" value="$INFO[Skin.String(emby17.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),emby17) + $EXP[MenuEmby17Visiblity]"/>
-		</include>
-		<include content="EmbyNodeMainMenuItemTemplate">
-			<param name="nr" value="18"/>
-			<param name="icon" value="$INFO[Skin.String(emby18.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),emby18) + $EXP[MenuEmby18Visiblity]"/>
-		</include>
-		<include content="EmbyNodeMainMenuItemTemplate">
-			<param name="nr" value="19"/>
-			<param name="icon" value="$INFO[Skin.String(emby19.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),emby19) + $EXP[MenuEmby19Visiblity]"/>
-		</include>
-		<!-- EmbyCon nodes -->
-		<include content="EmbyConNodeMainMenuItemTemplate">
-			<param name="nr" value="0"/>
-			<param name="parentID" value="$INFO[Window(home).Property(plugin.video.embycon-view_item.0.id)]"/>
-			<param name="icon" value="$INFO[Skin.String(embycon0.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),embycon0) + $EXP[MenuEmbyCon0Visiblity]"/>
-		</include>
-		<include content="EmbyConNodeMainMenuItemTemplate">
-			<param name="nr" value="1"/>
-			<param name="parentID" value="$INFO[Window(home).Property(plugin.video.embycon-view_item.1.id)]"/>
-			<param name="icon" value="$INFO[Skin.String(embycon1.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),embycon1) + $EXP[MenuEmbyCon1Visiblity]"/>
-		</include>
-		<include content="EmbyConNodeMainMenuItemTemplate">
-			<param name="nr" value="2"/>
-			<param name="parentID" value="$INFO[Window(home).Property(plugin.video.embycon-view_item.2.id)]"/>
-			<param name="icon" value="$INFO[Skin.String(embycon2.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),embycon2) + $EXP[MenuEmbyCon2Visiblity]"/>
-		</include>
-		<include content="EmbyConNodeMainMenuItemTemplate">
-			<param name="nr" value="3"/>
-			<param name="parentID" value="$INFO[Window(home).Property(plugin.video.embycon-view_item.3.id)]"/>
-			<param name="icon" value="$INFO[Skin.String(embycon3.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),embycon3) + $EXP[MenuEmbyCon3Visiblity]"/>
-		</include>
-		<include content="EmbyConNodeMainMenuItemTemplate">
-			<param name="nr" value="4"/>
-			<param name="parentID" value="$INFO[Window(home).Property(plugin.video.embycon-view_item.4.id)]"/>
-			<param name="icon" value="$INFO[Skin.String(embycon4.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),embycon4) + $EXP[MenuEmbyCon4Visiblity]"/>
-		</include>
-		<include content="EmbyConNodeMainMenuItemTemplate">
-			<param name="nr" value="5"/>
-			<param name="parentID" value="$INFO[Window(home).Property(plugin.video.embycon-view_item.5.id)]"/>
-			<param name="icon" value="$INFO[Skin.String(embycon5.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),embycon5) + $EXP[MenuEmbyCon5Visiblity]"/>
-		</include>
-		<include content="EmbyConNodeMainMenuItemTemplate">
-			<param name="nr" value="6"/>
-			<param name="parentID" value="$INFO[Window(home).Property(plugin.video.embycon-view_item.6.id)]"/>
-			<param name="icon" value="$INFO[Skin.String(embycon6.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),embycon6) + $EXP[MenuEmbyCon6Visiblity]"/>
-		</include>
-		<include content="EmbyConNodeMainMenuItemTemplate">
-			<param name="nr" value="7"/>
-			<param name="parentID" value="$INFO[Window(home).Property(plugin.video.embycon-view_item.7.id)]"/>
-			<param name="icon" value="$INFO[Skin.String(embycon7.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),embycon7) + $EXP[MenuEmbyCon7Visiblity]"/>
-		</include>
-		<include content="EmbyConNodeMainMenuItemTemplate">
-			<param name="nr" value="8"/>
-			<param name="parentID" value="$INFO[Window(home).Property(plugin.video.embycon-view_item.8.id)]"/>
-			<param name="icon" value="$INFO[Skin.String(embycon8.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),embycon8) + $EXP[MenuEmbyCon8Visiblity]"/>
-		</include>
-		<include content="EmbyConNodeMainMenuItemTemplate">
-			<param name="nr" value="9"/>
-			<param name="parentID" value="$INFO[Window(home).Property(plugin.video.embycon-view_item.9.id)]"/>
-			<param name="icon" value="$INFO[Skin.String(embycon9.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),embycon9) + $EXP[MenuEmbyCon9Visiblity]"/>
-		</include>
-		<include content="EmbyConNodeMainMenuItemTemplate">
-			<param name="nr" value="10"/>
-			<param name="parentID" value="$INFO[Window(home).Property(plugin.video.embycon-view_item.10.id)]"/>
-			<param name="icon" value="$INFO[Skin.String(embycon10.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),embycon10) + $EXP[MenuEmbyCon10Visiblity]"/>
-		</include>
-		<include content="EmbyConNodeMainMenuItemTemplate">
-			<param name="nr" value="11"/>
-			<param name="parentID" value="$INFO[Window(home).Property(plugin.video.embycon-view_item.11.id)]"/>
-			<param name="icon" value="$INFO[Skin.String(embycon11.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),embycon11) + $EXP[MenuEmbyCon11Visiblity]"/>
-		</include>
-		<include content="EmbyConNodeMainMenuItemTemplate">
-			<param name="nr" value="12"/>
-			<param name="parentID" value="$INFO[Window(home).Property(plugin.video.embycon-view_item.12.id)]"/>
-			<param name="icon" value="$INFO[Skin.String(embycon12.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),embycon12) + $EXP[MenuEmbyCon12Visiblity]"/>
-		</include>
-		<include content="EmbyConNodeMainMenuItemTemplate">
-			<param name="nr" value="13"/>
-			<param name="parentID" value="$INFO[Window(home).Property(plugin.video.embycon-view_item.13.id)]"/>
-			<param name="icon" value="$INFO[Skin.String(embycon13.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),embycon13) + $EXP[MenuEmbyCon13Visiblity]"/>
-		</include>
-		<include content="EmbyConNodeMainMenuItemTemplate">
-			<param name="nr" value="14"/>
-			<param name="parentID" value="$INFO[Window(home).Property(plugin.video.embycon-view_item.14.id)]"/>
-			<param name="icon" value="$INFO[Skin.String(embycon14.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),embycon14) + $EXP[MenuEmbyCon14Visiblity]"/>
-		</include>
-		<include content="EmbyConNodeMainMenuItemTemplate">
-			<param name="nr" value="15"/>
-			<param name="parentID" value="$INFO[Window(home).Property(plugin.video.embycon-view_item.15.id)]"/>
-			<param name="icon" value="$INFO[Skin.String(embycon15.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),embycon15) + $EXP[MenuEmbyCon15Visiblity]"/>
-		</include>
-		<include content="EmbyConNodeMainMenuItemTemplate">
-			<param name="nr" value="16"/>
-			<param name="parentID" value="$INFO[Window(home).Property(plugin.video.embycon-view_item.16.id)]"/>
-			<param name="icon" value="$INFO[Skin.String(embycon16.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),embycon16) + $EXP[MenuEmbyCon16Visiblity]"/>
-		</include>
-		<include content="EmbyConNodeMainMenuItemTemplate">
-			<param name="nr" value="17"/>
-			<param name="parentID" value="$INFO[Window(home).Property(plugin.video.embycon-view_item.17.id)]"/>
-			<param name="icon" value="$INFO[Skin.String(embycon17.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),embycon17) + $EXP[MenuEmbyCon17Visiblity]"/>
-		</include>
-		<include content="EmbyConNodeMainMenuItemTemplate">
-			<param name="nr" value="18"/>
-			<param name="parentID" value="$INFO[Window(home).Property(plugin.video.embycon-view_item.18.id)]"/>
-			<param name="icon" value="$INFO[Skin.String(embycon18.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),embycon18) + $EXP[MenuEmbyCon18Visiblity]"/>
-		</include>
-		<include content="EmbyConNodeMainMenuItemTemplate">
-			<param name="nr" value="19"/>
-			<param name="parentID" value="$INFO[Window(home).Property(plugin.video.embycon-view_item.19.id)]"/>
-			<param name="icon" value="$INFO[Skin.String(embycon19.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),embycon19) + $EXP[MenuEmbyCon19Visiblity]"/>
-		</include>
-		<!-- pvr -->
-		<include content="MainMenuItemTemplate">
-			<param name="id" value="53"/>
-			<param name="label" value="$VAR[PVRLabel]"/>
-			<param name="icon" value="$INFO[Skin.String(pvr.icon)]"/>
-			<param name="defaultart" value="special://skin/extras/icons/thumb_livetv.jpg"/>
-			<param name="onclick" value="ActivateWindow(1124,return)"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),pvr) + $EXP[MenuPVRVisiblity]"/>
-		</include>
-		<include content="MainMenuItemTemplate">
-			<param name="id" value="58"/>
-			<param name="label" value="$LOCALIZE[19017]"/>
-			<param name="icon" value="$INFO[Skin.String(recordings.icon)]"/>
-			<param name="defaultart" value="special://skin/extras/icons/thumb_recordings.jpg"/>
-			<param name="onclick" value="ActivateWindow(tvrecordings)"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),recordings) + $EXP[MenuPVRVisiblity] + Integer.IsGreater(Container(58).NumItems,0)"/>
-		</include>
-		<!-- music -->
-		<include content="MainMenuItemTemplate">
-			<param name="id" value="54"/>
-			<param name="label" value="$INFO[Skin.String(home_menu_pos_$PARAM[nr].label)]"/>
-			<param name="icon" value="$INFO[Skin.String(music.icon)]"/>
-			<param name="onclick" value="ActivateWindow(1122,return)"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),music) + !String.IsEmpty(Skin.String(home_menu_pos_$PARAM[nr].label)) + $EXP[MenuMusicVisiblity]"/>
-		</include>
-		<!-- music videos -->
-		<include content="MainMenuItemTemplate">
-			<param name="id" value="57"/>
-			<param name="label" value="$INFO[Skin.String(home_menu_pos_$PARAM[nr].label)]"/>
-			<param name="icon" value="$INFO[Skin.String(musicvideos.icon)]"/>
-			<param name="onclick" value="ActivateWindow(videos,videodb://musicvideos/titles/,return)"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),musicvideos) + !String.IsEmpty(Skin.String(home_menu_pos_$PARAM[nr].label)) + $EXP[MenuMusicvideosVisiblity]"/>
-		</include>
-		<!-- addons -->
-		<include content="MainMenuItemTemplate">
-			<param name="id" value="55"/>
-			<param name="label" value="$INFO[Skin.String(home_menu_pos_$PARAM[nr].label)]"/>
-			<param name="icon" value="$INFO[Skin.String(addons.icon)]"/>
-			<param name="defaultart" value="special://skin/extras/icons/thumb_addons.jpg"/>
-			<param name="onclick" value="ActivateWindow(1123,return)"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),addons) + !String.IsEmpty(Skin.String(home_menu_pos_$PARAM[nr].label))"/>
-		</include>
-		<!-- custom entries -->
-		<include content="CustomMainMenuItemTemplate">
-			<param name="nr" value="1"/>
-			<param name="icon" value="$INFO[Skin.String(custom1.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),custom1) + !String.IsEmpty(Skin.String(UserHomeHub1_name))"/>
-		</include>
-		<include content="CustomMainMenuItemTemplate">
-			<param name="nr" value="2"/>
-			<param name="icon" value="$INFO[Skin.String(custom2.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),custom2) + !String.IsEmpty(Skin.String(UserHomeHub2_name))"/>
-		</include>
-		<include content="CustomMainMenuItemTemplate">
-			<param name="nr" value="3"/>
-			<param name="icon" value="$INFO[Skin.String(custom3.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),custom3) + !String.IsEmpty(Skin.String(UserHomeHub3_name))"/>
-		</include>
-		<include content="CustomMainMenuItemTemplate">
-			<param name="nr" value="4"/>
-			<param name="icon" value="$INFO[Skin.String(custom4.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),custom4) + !String.IsEmpty(Skin.String(UserHomeHub4_name))"/>
-		</include>
-		<include content="CustomMainMenuItemTemplate">
-			<param name="nr" value="5"/>
-			<param name="icon" value="$INFO[Skin.String(custom5.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),custom5) + !String.IsEmpty(Skin.String(UserHomeHub5_name))"/>
-		</include>
-		<include content="CustomMainMenuItemTemplate">
-			<param name="nr" value="6"/>
-			<param name="icon" value="$INFO[Skin.String(custom6.icon)]"/>
-			<param name="visible" value="String.IsEqual(Skin.String(home_menu_pos_$PARAM[nr]),custom6) + !String.IsEmpty(Skin.String(UserHomeHub6_name))"/>
-		</include>
-	</include>
-
-	<include name="MainMenuContent">
-		<content>
 			<item>
 				<property name="fallback">true</property>
 				<label>$LOCALIZE[20186]</label>
-				<label2></label2>
+				<thumb>special://skin/extras/icons/menu_loading.jpg</thumb>
 				<onclick>noop</onclick>
-				<visible>!String.IsEmpty(Window(home).Property(startup)) + [$EXP[MenuCheck] | [String.IsEmpty(Container($PARAM[id]).ListItemAbsolute(0).Property(item)) + String.IsEmpty(Container($PARAM[id]).ListItemAbsolute(1).Property(item))]]</visible>
+				<visible>!String.IsEmpty(Window(home).Property(startup)) + [String.IsEmpty(Container($PARAM[id]).ListItemAbsolute(0).Property(id)) + String.IsEmpty(Container($PARAM[id]).ListItemAbsolute(1).Property(id))]</visible>
 			</item>
 			<item>
 				<property name="fallback">true</property>
 				<label>$LOCALIZE[31028]</label>
-				<label2></label2>
-				<onclick>SetProperty(PositionCount,54,home)</onclick>
-				<onclick>ActivateWindow(1110)</onclick>
-				<visible>String.IsEmpty(Window(home).Property(startup)) + [$EXP[MenuCheck] | [String.IsEmpty(Container($PARAM[id]).ListItemAbsolute(0).Property(item)) + String.IsEmpty(Container($PARAM[id]).ListItemAbsolute(1).Property(item))]]</visible>
+				<thumb>special://skin/extras/icons/menu_conf.jpg</thumb>
+				<onclick>RunScript(script.skinshortcuts,type=manage&amp;group=mainmenu)</onclick>
+				<visible>String.IsEmpty(Window(home).Property(startup)) + [String.IsEmpty(Container($PARAM[id]).ListItemAbsolute(0).Property(id)) + String.IsEmpty(Container($PARAM[id]).ListItemAbsolute(1).Property(id))]</visible>
 			</item>
-			<include content="MainMenuPosition">
-				<param name="nr" value="1"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="2"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="3"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="4"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="5"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="6"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="7"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="8"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="9"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="10"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="11"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="12"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="13"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="14"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="15"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="16"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="17"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="18"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="19"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="20"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="21"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="22"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="23"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="24"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="25"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="26"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="27"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="28"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="29"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="30"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="31"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="32"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="33"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="34"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="35"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="36"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="37"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="38"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="39"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="40"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="41"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="42"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="43"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="44"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="45"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="46"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="47"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="48"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="49"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="50"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="51"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="52"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="53"/>
-			</include>
-			<include content="MainMenuPosition">
-				<param name="nr" value="54"/>
-			</include>
-
+			<include>skinshortcuts-mainmenu</include>
 			<item>
 				<label>$LOCALIZE[341]</label>
 				<onclick>PlayDisc</onclick>
 				<visible>System.HasMediaDVD</visible>
 			</item>
-		</content>
+		</definition>
 	</include>
-
-	<!-- Required hidden lists -->
-	<include name="CustomHiddenHomeListTemplate">
-		<control type="list" id="4$PARAM[nr]">
-			<include>HiddenObject</include>
-			<itemlayout/>
-			<focusedlayout/>
-			<content limit="4" sortby="random">$INFO[Skin.String(UserHomeHub$PARAM[nr]_path)]</content>
-			<visible>Skin.HasSetting(UserHomeHub$PARAM[nr]) + String.StartsWith(Skin.String(UserHomeHub$PARAM[nr]_action),ActivateWindow)</visible>
+	<!-- default layout -->
+	<include name="HomeDefaultLayout">
+		<control type="grouplist" id="10">
+			<include>Window_OpenClose</include>
+			<defaultcontrol>100</defaultcontrol>
+			<width>100%</width>
+			<height>100%</height>
+			<itemgap>-160</itemgap>
+			<orientation>vertical</orientation>
+			<usecontrolcoords>true</usecontrolcoords>
+			<pagecontrol>17</pagecontrol>
+			<include>ScrollTime</include>
+			<ondown>noop</ondown>
+			<include content="WidgetSpacer">
+				<param name="id" value="101"/>
+			</include>
+			<include content="HomeWidgetMenu">
+				<param name="id" value="100"/>
+				<param name="onup" value="6666"/>
+				<param name="ondown" value="200"/>
+				<param name="headline" value="$LOCALIZE[14211]"/>
+			</include>
+			<include content="WidgetCall">
+				<param name="pos" value="1"/>
+				<param name="id" value="200"/>
+				<param name="onup" value="100"/>
+				<param name="ondown" value="201"/>
+			</include>
+			<include content="WidgetCall">
+				<param name="pos" value="2"/>
+				<param name="id" value="201"/>
+				<param name="onup" value="200"/>
+				<param name="ondown" value="202"/>
+			</include>
+			<include content="WidgetCall">
+				<param name="pos" value="3"/>
+				<param name="id" value="202"/>
+				<param name="onup" value="201"/>
+				<param name="ondown" value="203"/>
+			</include>
+			<include content="WidgetCall">
+				<param name="pos" value="4"/>
+				<param name="id" value="203"/>
+				<param name="onup" value="202"/>
+				<param name="ondown" value="204"/>
+			</include>
+			<include content="WidgetCall">
+				<param name="pos" value="5"/>
+				<param name="id" value="204"/>
+				<param name="onup" value="203"/>
+				<param name="ondown" value="205"/>
+			</include>
+			<include content="WidgetCall">
+				<param name="pos" value="6"/>
+				<param name="id" value="205"/>
+				<param name="onup" value="204"/>
+				<param name="ondown" value="206"/>
+			</include>
+			<include content="WidgetCall">
+				<param name="pos" value="7"/>
+				<param name="id" value="206"/>
+				<param name="onup" value="205"/>
+				<param name="ondown" value="207"/>
+			</include>
+			<include content="WidgetCall">
+				<param name="pos" value="8"/>
+				<param name="id" value="207"/>
+				<param name="onup" value="206"/>
+				<param name="ondown" value="208"/>
+			</include>
+			<include content="WidgetCall">
+				<param name="pos" value="9"/>
+				<param name="id" value="208"/>
+				<param name="onup" value="207"/>
+				<param name="ondown" value="209"/>
+			</include>
+			<include content="WidgetCall">
+				<param name="pos" value="10"/>
+				<param name="id" value="209"/>
+				<param name="onup" value="208"/>
+				<param name="ondown" value="210"/>
+			</include>
+			<include content="WidgetCall">
+				<param name="pos" value="11"/>
+				<param name="id" value="210"/>
+				<param name="onup" value="209"/>
+				<param name="ondown" value="211"/>
+			</include>
+			<include content="WidgetCall">
+				<param name="pos" value="12"/>
+				<param name="id" value="211"/>
+				<param name="onup" value="210"/>
+				<param name="ondown" value="212"/>
+			</include>
+			<include content="WidgetCall">
+				<param name="pos" value="13"/>
+				<param name="id" value="212"/>
+				<param name="onup" value="211"/>
+				<param name="ondown" value="213"/>
+			</include>
+			<include content="WidgetCall">
+				<param name="pos" value="14"/>
+				<param name="id" value="213"/>
+				<param name="onup" value="212"/>
+				<param name="ondown" value="214"/>
+			</include>
+			<include content="WidgetCall">
+				<param name="pos" value="15"/>
+				<param name="id" value="214"/>
+				<param name="onup" value="213"/>
+				<param name="ondown" value="215"/>
+			</include>
+			<include content="WidgetCall">
+				<param name="pos" value="16"/>
+				<param name="id" value="215"/>
+				<param name="onup" value="214"/>
+				<param name="ondown" value="216"/>
+			</include>
+			<include content="WidgetCall">
+				<param name="pos" value="17"/>
+				<param name="id" value="216"/>
+				<param name="onup" value="215"/>
+				<param name="ondown" value="217"/>
+			</include>
 		</control>
+		<!-- header bar -->
+		<include content="HeaderBar">
+			<param name="id">10</param>
+		</include>
 	</include>
-	<include name="EmbyHiddenHomeListTemplate">
-		<control type="list" id="3$PARAM[nr]">
-			<include>HiddenObject</include>
-			<itemlayout/>
-			<focusedlayout/>
-			<content limit="4" sortby="random">$INFO[Window(home).Property(emby.nodes.$PARAM[nr].content)]</content>
-			<visible>System.HasAddon(plugin.video.emby)</visible>
+	<!-- panel layout -->
+	<include name="HomePanelLayout">
+		<!-- menu -->
+		<control type="group" id="10">
+			<include>Window_OpenClose</include>
+			<include content="HomeWidgetPanelMenu">
+				<param name="id" value="100"/>
+				<param name="onup" value="6666"/>
+				<param name="ondown" value="200"/>
+				<param name="headline" value="$LOCALIZE[14211]"/>
+			</include>
 		</control>
-	</include>
-	<include name="LibraryHomeListTemplate">
-		<control type="list" id="$PARAM[id]">
-			<include>HiddenObject</include>
-			<itemlayout/>
-			<focusedlayout/>
-			<content limit="4" sortby="random">$PARAM[content]</content>
-		</control>
-	</include>
-	<include name="HiddenHomeLists">
-		<!-- Custom Home Menu Paths -->
-		<include content="CustomHiddenHomeListTemplate">
-			<param name="nr" value="1"/>
-		</include>
-		<include content="CustomHiddenHomeListTemplate">
-			<param name="nr" value="2"/>
-		</include>
-		<include content="CustomHiddenHomeListTemplate">
-			<param name="nr" value="3"/>
-		</include>
-		<include content="CustomHiddenHomeListTemplate">
-			<param name="nr" value="4"/>
-		</include>
-		<include content="CustomHiddenHomeListTemplate">
-			<param name="nr" value="5"/>
-		</include>
-		<include content="CustomHiddenHomeListTemplate">
-			<param name="nr" value="6"/>
-		</include>
-		<!-- Library -->
-		<include condition="Library.HasContent(movies)" content="LibraryHomeListTemplate">
-			<param name="id" value="51"/>
-			<param name="content" value="videodb://movies/titles/"/>
-		</include>
-		<include condition="Library.HasContent(tvshows)" content="LibraryHomeListTemplate">
-			<param name="id" value="52"/>
-			<param name="content" value="videodb://tvshows/titles/"/>
-		</include>
-		<include content="LibraryHomeListTemplate">
-			<param name="id" value="53"/>
-			<param name="content" value="pvr://channels/tv/*"/>
-		</include>
-		<include content="LibraryHomeListTemplate">
-			<param name="id" value="54"/>
-			<param name="content" value="musicdb://albums/"/>
-		</include>
-		<include content="LibraryHomeListTemplate">
-			<param name="id" value="55"/>
-			<param name="content" value="addons://user/all"/>
-		</include>
-		<include content="LibraryHomeListTemplate">
-			<param name="id" value="56"/>
-			<param name="content" value="videodb://movies/sets/"/>
-		</include>
-		<include content="LibraryHomeListTemplate">
-			<param name="id" value="57"/>
-			<param name="content" value="videodb://musicvideos/titles/"/>
-		</include>
-		<include content="LibraryHomeListTemplate">
-			<param name="id" value="58"/>
-			<param name="content" value="pvr://recordings/tv/active/"/>
+		<!-- header bar -->
+		<include content="HeaderBar">
+			<param name="id">100</param>
 		</include>
 	</include>
 </includes>
