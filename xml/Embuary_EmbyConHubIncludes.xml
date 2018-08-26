@@ -1,7 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 	<!-- Movie template -->
+	<include name="EmbyConHub_MovieMenu">
+		<item>
+			<label>$LOCALIZE[342]</label>
+			<onclick>ActivateWindow(videos,plugin://plugin.video.embycon/?media_type=movies&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fParentId%3d$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].id)]%26IsVirtualUnaired%3dfalse%26IsMissing%3dFalse%26Fields%3d%7bfield_filters%7d%26ImageTypeLimit%3d1%26format%3djson,return)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[31209]</label>
+			<onclick>ActivateWindow(videos,plugin://plugin.video.embycon/?media_type=movies&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fParentId%3d$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].id)]%26IsVirtualUnaired%3dfalse%26IsMissing%3dFalse%26Fields%3d%7bfield_filters%7d%26Filters%3dIsUnplayed%26ImageTypeLimit%3d1%26format%3djson,return)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[135]</label>
+			<onclick>SetProperty(ListGenres,plugin://plugin.video.embycon/?item_type=movie&amp;mode=GENRES&amp;parent_id=$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].id)],home)</onclick>
+			<onclick>ActivateWindow(1114)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[31169]</label>
+			<onclick>ActivateWindow(videos,plugin://plugin.video.embycon/?media_type=BoxSets&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fRecursive%3dtrue%26Fields%3dDateCreated%2cEpisodeCount%2cSeasonCount%2cPath%2cGenres%2cStudios%2cEtag%2cMediaStreams%2cOverview%26IncludeItemTypes%3dBoxSet%26ImageTypeLimit%3d1%26format%3djson,return)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[137]</label>
+			<include>search_action</include>
+		</item>
+	</include>
 	<include name="EmbyConHubMovieTemplate">
+		<control type="label" id="199">
+			<include>HiddenObject</include>
+			<label>$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].Name)]</label>
+		</control>
 		<!-- background -->
 		<include>Background</include>
 		<!-- hub -->
@@ -19,64 +46,14 @@
 				<param name="id" value="101"/>
 			</include>
 			<!-- menu -->
-			<control type="group">
-				<width>1920</width>
-				<height>300</height>
-				<control type="group">
-					<include content="widget_headline">
-						<param name="headline">$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].Name)]</param>
-						<param name="left">65</param>
-						<param name="headlineID">199</param>
-					</include>
-					<control type="grouplist" id="100">
-						<top>90</top>
-						<left>70</left>
-						<height>50</height>
-						<orientation>horizontal</orientation>
-						<itemgap>5</itemgap>
-						<onright>noop</onright>
-						<onleft>900</onleft>
-						<onup>6666</onup>
-						<ondown>200</ondown>
-						<control type="button" id="101">
-							<include>DarkGreyButton</include>
-							<label>$LOCALIZE[31180]</label>
-							<onclick>ActivateWindow(videos,plugin://plugin.video.embycon/?media_type=movies&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fParentId%3d$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].id)]%26IsVirtualUnaired%3dfalse%26IsMissing%3dFalse%26Fields%3d%7bfield_filters%7d%26ImageTypeLimit%3d1%26format%3djson,return)</onclick>
-							<onup>6666</onup>
-							<ondown>200</ondown>
-						</control>
-						<control type="button" id="102">
-							<include>DarkGreyButton</include>
-							<label>$LOCALIZE[31209]</label>
-							<onclick>ActivateWindow(videos,plugin://plugin.video.embycon/?media_type=movies&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fParentId%3d$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].id)]%26IsVirtualUnaired%3dfalse%26IsMissing%3dFalse%26Fields%3d%7bfield_filters%7d%26Filters%3dIsUnplayed%26ImageTypeLimit%3d1%26format%3djson,return)</onclick>
-							<onup>6666</onup>
-							<ondown>200</ondown>
-						</control>
-						<control type="button" id="103">
-							<include>DarkGreyButton</include>
-							<label>$LOCALIZE[135]</label>
-							<onclick>SetProperty(ListGenres,plugin://plugin.video.embycon/?item_type=movie&amp;mode=GENRES&amp;parent_id=$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].id)],home)</onclick>
-							<onclick>ActivateWindow(1114)</onclick>
-							<onup>6666</onup>
-							<ondown>200</ondown>
-						</control>
-						<control type="button" id="104">
-							<include>DarkGreyButton</include>
-							<label>$LOCALIZE[31169]</label>
-							<onclick>ActivateWindow(videos,plugin://plugin.video.embycon/?media_type=BoxSets&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fRecursive%3dtrue%26Fields%3dDateCreated%2cEpisodeCount%2cSeasonCount%2cPath%2cGenres%2cStudios%2cEtag%2cMediaStreams%2cOverview%26IncludeItemTypes%3dBoxSet%26ImageTypeLimit%3d1%26format%3djson,return)</onclick>
-							<onup>6666</onup>
-							<ondown>200</ondown>
-						</control>
-						<control type="button" id="198">
-							<include>DarkGreyButton</include>
-							<label>$LOCALIZE[137]</label>
-							<include>search_action</include>
-							<onup>6666</onup>
-							<ondown>200</ondown>
-						</control>
-					</control>
-				</control>
-			</control>
+			<include content="HomeWidgetSmallMenu">
+				<param name="id" value="100"/>
+				<param name="onup" value="6666"/>
+				<param name="ondown" value="200"/>
+				<param name="headline" value="$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].Name)]"/>
+				<param name="content" value="EmbyConHub_MovieMenu"/>
+				<param name="nr" value="$PARAM[nr]"/>
+			</include>
 			<!-- In progress -->
 			<include content="HomeWideWidget">
 				<param name="id" value="200"/>
@@ -132,6 +109,7 @@
 			<!-- Genre -->
 			<include content="HomePosterWidget">
 				<param name="id" value="204"/>
+				<param name="height" value="694"/>
 				<param name="onup" value="203"/>
 				<param name="ondown" value="noop"/>
 				<param name="headline" value="$LOCALIZE[135]"/>
@@ -149,7 +127,30 @@
 		<include content="SidePanel"/>
 	</include>
 	<!-- TV show template -->
+	<include name="EmbyConHub_TVShowMenu">
+		<item>
+			<label>$LOCALIZE[20343]</label>
+			<onclick>ActivateWindow(videos,plugin://plugin.video.embycon/?media_type=tvshows&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fParentId%3d$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].id)]%26IsVirtualUnaired%3dfalse%26IsMissing%3dFalse%26Fields%3d%7bfield_filters%7d%26ImageTypeLimit%3d1%26format%3djson,return)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[31210]</label>
+			<onclick>ActivateWindow(videos,plugin://plugin.video.embycon/?media_type=tvshows&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fParentId%3d$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].id)]%26IsVirtualUnaired%3dfalse%26IsMissing%3dFalse%26Fields%3d%7bfield_filters%7d%26Filters%3dIsUnplayed%26Recursive%3dtrue%26IncludeItemTypes%3dSeries%26ImageTypeLimit%3d1%26format%3djson,return)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[135]</label>
+			<onclick>SetProperty(ListGenres,plugin://plugin.video.embycon/?item_type=tvshow&amp;mode=GENRES&amp;parent_id=$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].id)],home)</onclick>
+			<onclick>ActivateWindow(1114)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[137]</label>
+			<include>search_action</include>
+		</item>
+	</include>
 	<include name="EmbyConHubTVShowTemplate">
+		<control type="label" id="199">
+			<include>HiddenObject</include>
+			<label>$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].Name)]</label>
+		</control>
 		<!-- background -->
 		<include>Background</include>
 		<!-- hub -->
@@ -167,57 +168,14 @@
 				<param name="id" value="101"/>
 			</include>
 			<!-- menu -->
-			<control type="group">
-				<width>1920</width>
-				<height>300</height>
-				<control type="group">
-					<include content="widget_headline">
-						<param name="headline">$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].Name)]</param>
-						<param name="left">65</param>
-						<param name="headlineID">199</param>
-					</include>
-					<control type="grouplist" id="100">
-						<top>90</top>
-						<left>70</left>
-						<height>50</height>
-						<orientation>horizontal</orientation>
-						<itemgap>5</itemgap>
-						<onright>noop</onright>
-						<onleft>900</onleft>
-						<onup>6666</onup>
-						<ondown>200</ondown>
-						<control type="button" id="101">
-							<include>DarkGreyButton</include>
-							<label>$LOCALIZE[31179]</label>
-							<onclick>ActivateWindow(videos,plugin://plugin.video.embycon/?media_type=tvshows&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fParentId%3d$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].id)]%26IsVirtualUnaired%3dfalse%26IsMissing%3dFalse%26Fields%3d%7bfield_filters%7d%26ImageTypeLimit%3d1%26format%3djson,return)</onclick>
-							<onup>6666</onup>
-							<ondown>200</ondown>
-						</control>
-						<control type="button" id="102">
-							<include>DarkGreyButton</include>
-							<label>$LOCALIZE[31210]</label>
-							<onclick>ActivateWindow(videos,plugin://plugin.video.embycon/?media_type=tvshows&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fParentId%3d$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].id)]%26IsVirtualUnaired%3dfalse%26IsMissing%3dFalse%26Fields%3d%7bfield_filters%7d%26Filters%3dIsUnplayed%26Recursive%3dtrue%26IncludeItemTypes%3dSeries%26ImageTypeLimit%3d1%26format%3djson,return)</onclick>
-							<onup>6666</onup>
-							<ondown>200</ondown>
-						</control>
-						<control type="button" id="103">
-							<include>DarkGreyButton</include>
-							<label>$LOCALIZE[135]</label>
-							<onclick>SetProperty(ListGenres,plugin://plugin.video.embycon/?item_type=tvshow&amp;mode=GENRES&amp;parent_id=$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].id)],home)</onclick>
-							<onclick>ActivateWindow(1114)</onclick>
-							<onup>6666</onup>
-							<ondown>200</ondown>
-						</control>
-						<control type="button" id="198">
-							<include>DarkGreyButton</include>
-							<label>$LOCALIZE[137]</label>
-							<include>search_action</include>
-							<onup>6666</onup>
-							<ondown>200</ondown>
-						</control>
-					</control>
-				</control>
-			</control>
+			<include content="HomeWidgetSmallMenu">
+				<param name="id" value="100"/>
+				<param name="onup" value="6666"/>
+				<param name="ondown" value="200"/>
+				<param name="headline" value="$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].Name)]"/>
+				<param name="content" value="EmbyConHub_TVShowMenu"/>
+				<param name="nr" value="$PARAM[nr]"/>
+			</include>
 			<!-- In progress -->
 			<include content="HomeWideWidget">
 				<param name="id" value="200"/>
@@ -279,6 +237,7 @@
 			<!-- Genre -->
 			<include content="HomePosterWidget">
 				<param name="id" value="205"/>
+				<param name="height" value="694"/>
 				<param name="onup" value="204"/>
 				<param name="ondown" value="noop"/>
 				<param name="headline" value="$LOCALIZE[135]"/>
@@ -296,7 +255,25 @@
 		<include content="SidePanel"/>
 	</include>
 	<!-- Music template -->
+	<include name="EmbyConHub_MusicMenu">
+		<item>
+			<label>$LOCALIZE[133]</label>
+			<onclick>ActivateWindow(music,&quot;plugin://plugin.video.embycon/?media_type=MusicArtists&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fArtists%2fAlbumArtists%3fRecursive%3dtrue%26ParentId%3d$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].id)]%26ImageTypeLimit%3d1%26EnableImageTypes%3dPrimary%2cBackdrop%2cBanner%2cThumb%26format%3djson&quot;,return)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[132]</label>
+			<onclick>ActivateWindow(music,&quot;plugin://plugin.video.embycon/?media_type=MusicAlbums&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fRecursive%3dtrue%26ParentId%3d$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].id)]%26IncludeItemTypes%3dMusicAlbum%26ImageTypeLimit%3d1%26EnableImageTypes%3dPrimary%2cBackdrop%2cBanner%2cThumb%26format%3djson&quot;,return)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[137]</label>
+			<include>search_action</include>
+		</item>
+	</include>
 	<include name="EmbyConHubMusicTemplate">
+		<control type="label" id="199">
+			<include>HiddenObject</include>
+			<label>$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].Name)]</label>
+		</control>
 		<!-- background -->
 		<include>Background</include>
 		<!-- hub -->
@@ -314,42 +291,14 @@
 				<param name="id" value="101"/>
 			</include>
 			<!-- menu -->
-			<control type="group">
-				<width>1920</width>
-				<height>300</height>
-				<control type="group">
-					<include content="widget_headline">
-						<param name="headline">$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].Name)]</param>
-						<param name="left">65</param>
-						<param name="headlineID">199</param>
-					</include>
-					<control type="grouplist" id="100">
-						<top>90</top>
-						<left>70</left>
-						<height>50</height>
-						<orientation>horizontal</orientation>
-						<itemgap>5</itemgap>
-						<onright>noop</onright>
-						<onleft>900</onleft>
-						<onup>6666</onup>
-						<ondown>200</ondown>
-						<control type="button" id="101">
-							<include>DarkGreyButton</include>
-							<label>$LOCALIZE[133]</label>
-							<onclick>ActivateWindow(music,&quot;plugin://plugin.video.embycon/?media_type=MusicArtists&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fArtists%2fAlbumArtists%3fRecursive%3dtrue%26ParentId%3d$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].id)]%26ImageTypeLimit%3d1%26EnableImageTypes%3dPrimary%2cBackdrop%2cBanner%2cThumb%26format%3djson&quot;,return)</onclick>
-							<onup>6666</onup>
-							<ondown>200</ondown>
-						</control>
-						<control type="button" id="102">
-							<include>DarkGreyButton</include>
-							<label>$LOCALIZE[132]</label>
-							<onclick>ActivateWindow(music,&quot;plugin://plugin.video.embycon/?media_type=MusicAlbums&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fRecursive%3dtrue%26ParentId%3d$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].id)]%26IncludeItemTypes%3dMusicAlbum%26ImageTypeLimit%3d1%26EnableImageTypes%3dPrimary%2cBackdrop%2cBanner%2cThumb%26format%3djson&quot;,return)</onclick>
-							<onup>6666</onup>
-							<ondown>200</ondown>
-						</control>
-					</control>
-				</control>
-			</control>
+			<include content="HomeWidgetSmallMenu">
+				<param name="id" value="100"/>
+				<param name="onup" value="6666"/>
+				<param name="ondown" value="200"/>
+				<param name="headline" value="$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].Name)]"/>
+				<param name="content" value="EmbyConHub_MusicMenu"/>
+				<param name="nr" value="$PARAM[nr]"/>
+			</include>
 			<!-- recently added -->
 			<include content="HomeSquareWidget">
 				<param name="id" value="200"/>

@@ -9,7 +9,10 @@
 	<include>PropertyIncludes</include>
 	<controls>
 		<!-- background -->
-		<include>Background</include>
+		<include content="DiffuseMask">
+			<param name="color">background_diffuse</param>
+			<param name="visible">!Window.IsVisible(1110)</param>
+		</include>
 		<!-- dialog -->
 		<control type="group">
 			<include>FullscreenDimensions</include>
@@ -120,7 +123,6 @@
 							</control>
 						</focusedlayout>
 						<content>
-							<include condition="!String.IsEmpty(Window(home).Property(menu_position))">MainMenuAvailableItems</include>
 							<include condition="!String.IsEmpty(Window(home).Property(home_widget_position))">HomeAvailableWidgets</include>
 							<include condition="!String.IsEmpty(Window(home).Property(moviehub_widget_position))">MovieHubAvailableWidgets</include>
 							<include condition="!String.IsEmpty(Window(home).Property(tvshowhub_widget_position))">TVShowHubAvailableWidgets</include>
