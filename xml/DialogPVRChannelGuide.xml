@@ -16,7 +16,7 @@
 				<include>Visible_PopupOpenClose</include>
 				<centerleft>50%</centerleft>
 				<centertop>50%</centertop>
-				<width>800</width>
+				<width>1100</width>
 				<height max="940">auto</height>
 				<orientation>vertical</orientation>
 				<itemgap>20</itemgap>
@@ -50,67 +50,108 @@
 				</control>
 				<!-- list -->
 				<control type="group">
-					<height>520</height>
+					<height>770</height>
 					<control type="image">
-						<height>520</height>
+						<height>770</height>
 						<texture colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
 						<aspectratio>stretch</aspectratio>
 					</control>
 					<control type="list" id="11">
 						<centerleft>50%</centerleft>
 						<top>10</top>
-						<height>500</height>
+						<height>750</height>
 						<onup>12</onup>
 						<onleft>100</onleft>
 						<onright>100</onright>
 						<ondown>100</ondown>
 						<pagecontrol>60</pagecontrol>
 						<scrolltime>200</scrolltime>
-						<itemlayout height="100" width="800">
-							<control type="label">
-								<top>8</top>
-								<right>10</right>
-								<left>10</left>
-								<height>50</height>
-								<aligny>center</aligny>
-								<font>Reg24</font>
-								<label>$INFO[ListItem.StartTime,, - ]$INFO[ListItem.Label]</label>
+						<itemlayout height="125" width="1100">
+							<control type="image">
+								<width>204</width>
+								<heigth>115</heigth>
+								<left>5</left>
+								<bordersize>5</bordersize>
+								<aspectratio align="left">keep</aspectratio>
+								<texture background="true">$INFO[ListItem.Icon]</texture>
+								<visible>String.EndsWith(ListItem.Icon,.jpg)</visible>
+							</control>
+							<control type="image">
+								<width>204</width>
+								<heigth>115</heigth>
+								<left>5</left>
+								<bordersize>5</bordersize>
+								<aspectratio align="left">keep</aspectratio>
+								<texture>special://skin/extras/themes/$VAR[SkinTheme]/unwatched.jpg</texture>
+								<visible>!String.EndsWith(ListItem.Icon,.jpg)</visible>
 							</control>
 							<control type="label">
-								<top>42</top>
+								<top>2</top>
 								<right>10</right>
-								<left>10</left>
+								<left>214</left>
 								<height>50</height>
 								<aligny>center</aligny>
 								<font>Reg24</font>
-								<textcolor>lightgrey</textcolor>
+								<textcolor>panel_textcolor</textcolor>
+								<label>$INFO[ListItem.Date,, - ]$INFO[ListItem.Label]</label>
+							</control>
+							<control type="textbox">
+								<top>45</top>
+								<right>10</right>
+								<left>214</left>
+								<height>70</height>
+								<aligny>top</aligny>
+								<font>Reg24</font>
+								<textcolor>panel_textcolor2</textcolor>
+								<autoscroll>false</autoscroll>
 								<label>$VAR[ListItemEpisodeName]</label>
 							</control>
 						</itemlayout>
-						<focusedlayout height="100" width="800">
+						<focusedlayout height="125" width="1100">
 							<control type="image">
 								<width>100%</width>
 								<height>100%</height>
-								<texture colordiffuse="list_hover">common/white.jpg</texture>
+								<texture colordiffuse="panel_focus">common/white.jpg</texture>
 								<visible>Control.HasFocus(11)</visible>
 							</control>
-							<control type="label">
-								<top>8</top>
-								<right>10</right>
-								<left>10</left>
-								<height>50</height>
-								<aligny>center</aligny>
-								<font>Reg24</font>
-								<label>$INFO[ListItem.StartTime,, - ]$INFO[ListItem.Label]</label>
+							<control type="image">
+								<width>204</width>
+								<heigth>115</heigth>
+								<left>5</left>
+								<bordersize>5</bordersize>
+								<aspectratio align="left">keep</aspectratio>
+								<texture background="true">$INFO[ListItem.Icon]</texture>
+								<visible>String.EndsWith(ListItem.Icon,.jpg)</visible>
+							</control>
+							<control type="image">
+								<width>204</width>
+								<heigth>115</heigth>
+								<left>5</left>
+								<bordersize>5</bordersize>
+								<aspectratio align="left">keep</aspectratio>
+								<texture>special://skin/extras/themes/$VAR[SkinTheme]/unwatched.jpg</texture>
+								<visible>!String.EndsWith(ListItem.Icon,.jpg)</visible>
 							</control>
 							<control type="label">
-								<top>42</top>
+								<top>2</top>
 								<right>10</right>
-								<left>10</left>
+								<left>214</left>
 								<height>50</height>
 								<aligny>center</aligny>
 								<font>Reg24</font>
-								<textcolor>lightgrey</textcolor>
+								<textcolor>panel_textcolor</textcolor>
+								<scroll>true</scroll>
+								<label>$INFO[ListItem.Date,, - ]$INFO[ListItem.Label]</label>
+							</control>
+							<control type="textbox">
+								<top>45</top>
+								<right>10</right>
+								<left>214</left>
+								<height>70</height>
+								<aligny>top</aligny>
+								<font>Reg24</font>
+								<textcolor>panel_textcolor2</textcolor>
+								<autoscroll delay="2000" time="3000" repeat="10000">true</autoscroll>
 								<label>$VAR[ListItemEpisodeName]</label>
 							</control>
 						</focusedlayout>
