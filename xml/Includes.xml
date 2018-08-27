@@ -70,6 +70,7 @@
 		+ !Window.IsVisible(MyPVRSearch.xml)
 		+ !Window.IsVisible(MyPVRTimers.xml)
 		+ !Window.IsVisible(MyPVRguide.xml)
+		+ !String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres)
 		]
 		| Window.IsVisible(MyPics.xml)
 		]
@@ -79,7 +80,6 @@
 		[Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets) | Container.Content(actors) | Container.Content(directors)]
 		+ !String.Contains(Container.Folderpath,setid)
 		+ ![String.Contains(Container.FolderPath,BoxSet) + !String.Contains(Container.FolderPath,CollapseBoxSet) + Container.Content(movies)]
-		+ !String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres)
 		]
 	</expression>
 
@@ -131,6 +131,7 @@
 		[Container.Content(movies) | Container.Content(tvshows)]
 		+ !String.Contains(Container.FolderPath,setid)
 		+ ![String.Contains(Container.FolderPath,BoxSet) + !String.Contains(Container.FolderPath,CollapseBoxSet) + Container.Content(movies)]
+		+ !String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres)
 		]
 	</expression>
 

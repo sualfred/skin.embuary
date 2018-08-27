@@ -1490,6 +1490,116 @@
 			</control>
 		</definition>
 	</include>
+	<include name="GenreLayout_Size2">
+		<param name="mainlabel">$VAR[MainListLabel]</param>
+		<param name="sublabel">$VAR[SubListLabel]</param>
+		<param name="thumblabel">$VAR[MainListLabel]</param>
+		<param name="focused">false</param>
+		<param name="visible">true</param>
+		<definition>
+			<control type="group">
+				<visible>$PARAM[visible]</visible>
+				<include content="widget_labels">
+					<param name="top">367</param>
+					<param name="width">237</param>
+					<param name="id">$PARAM[id]</param>
+					<param name="mainlabel">$PARAM[mainlabel]</param>
+					<param name="sublabel">$PARAM[sublabel]</param>
+					<param name="focused">$PARAM[focused]</param>
+					<param name="labels_visible">$PARAM[labels_visible]</param>
+				</include>
+				<control type="group">
+					<include content="Animation_FocusBounce">
+						<param name="id" value="$PARAM[id]"/>
+					</include>
+					<height>355</height>
+					<control type="image">
+						<top>-2</top>
+						<left>-2</left>
+						<width>243</width>
+						<height>361</height>
+						<texture border="20,20,20,20">items/shadow.png</texture>
+					</control>
+					<control type="image">
+						<left>-12</left>
+						<top>-7</top>
+						<width>261</width>
+						<height>379</height>
+						<texture border="20,20,20,20" colordiffuse="focus_widget">items/focus.png</texture>
+						<aspectratio>stretch</aspectratio>
+						<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
+						<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
+					</control>
+					<control type="image">
+						<width>237</width>
+						<height>355</height>
+						<texture colordiffuse="thumb_background_fallback">common/white.jpg</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<visible>String.IsEmpty(ListItem.Art(poster.0))</visible>
+					</control>
+					<control type="image">
+						<width>237</width>
+						<height>355</height>
+						<texture colordiffuse="ff010202">common/white.jpg</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<visible>!String.IsEmpty(ListItem.Art(poster.0))</visible>
+					</control>
+					<control type="textbox">
+						<top>10</top>
+						<left>10</left>
+						<width>217</width>
+						<height>335</height>
+						<font>Light24</font>
+						<textcolor>white</textcolor>
+						<align>center</align>
+						<aligny>center</aligny>
+						<label>$PARAM[thumblabel]</label>
+						<visible>String.IsEmpty(ListItem.Art(poster.0))</visible>
+					</control>
+					<control type="group">
+						<width>237</width>
+						<height>355</height>
+						<control type="image">
+							<width>119</width>
+							<height>178</height>
+							<texture background="true">$INFO[ListItem.Art(poster.0)]</texture>
+							<aspectratio>scale</aspectratio>
+						</control>
+						<control type="image">
+							<right>0</right>
+							<width>119</width>
+							<height>178</height>
+							<texture background="true">$INFO[ListItem.Art(poster.1)]</texture>
+							<aspectratio>scale</aspectratio>
+						</control>
+						<control type="image">
+							<bottom>0</bottom>
+							<width>119</width>
+							<height>178</height>
+							<texture background="true">$INFO[ListItem.Art(poster.2)]</texture>
+							<aspectratio>scale</aspectratio>
+						</control>
+						<control type="image">
+							<right>0</right>
+							<bottom>0</bottom>
+							<width>119</width>
+							<height>178</height>
+							<texture background="true">$INFO[ListItem.Art(poster.3)]</texture>
+							<aspectratio>scale</aspectratio>
+						</control>
+					</control>
+					<control type="group">
+						<width>237</width>
+						<height>355</height>
+						<include content="bubble_play">
+							<param name="focused" value="$PARAM[focused]"/>
+							<param name="id" value="$PARAM[id]"/>
+						</include>
+					</control>
+				</control>
+			</control>
+		</definition>
+	</include>
 
 	<!-- Main Menu -->
 	<include name="MainMenuLayout">
