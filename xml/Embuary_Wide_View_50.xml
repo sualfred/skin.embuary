@@ -8,7 +8,7 @@
 		<definition>
 			<control type="group">
 				<include>Visible_OpenClose</include>
-				<animation effect="slide" condition="Skin.HasSetting(HideWideLabels) + ![[Integer.IsGreaterOrEqual(Container(50).CurrentItem,12) + Container.HasParent] | Integer.IsGreaterOrEqual(Container(50).CurrentItem,13) | Container(50).HasPrevious] + !$EXP[IsGenre] + Window.IsVisible(myvideonav.xml)" time="200" end="0,90">Conditional</animation>
+				<animation effect="slide" condition="Skin.HasSetting(HideWideLabels) + ![[Integer.IsGreaterOrEqual(Container(50).CurrentItem,12) + Container.HasParent] | Integer.IsGreaterOrEqual(Container(50).CurrentItem,13) | Container(50).HasPrevious] + Window.IsVisible(myvideonav.xml)" time="200" end="0,90">Conditional</animation>
 				<visible>Control.IsVisible(50)</visible>
 				<control id="50" type="panel">
 					<visible>$EXP[WideViewVisible]</visible>
@@ -28,60 +28,34 @@
 					<pagecontrol>17</pagecontrol>
 					<include>ScrollTime</include>
 					<oninfo condition="String.IsEqual(ListItem.DBType,set) + !String.StartsWith(ListItem.Path,plugin://plugin.video)">RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCINFO[Window(home).Property(SkinHelper.ListItem.ExtendedPlot)]')</oninfo>
-					<itemlayout condition="!Skin.HasSetting(HideWideLabels) | $EXP[IsGenre] | !Window.IsVisible(myvideonav.xml)" width="444" height="305">
+					<itemlayout condition="!Skin.HasSetting(HideWideLabels) | !Window.IsVisible(myvideonav.xml)" width="444" height="305">
 						<control type="group">
 							<left>82</left>
 							<top>122</top>
-							<control type="group">
-								<visible>!$EXP[IsGenre]</visible>
-								<include content="$PARAM[layout]">
-									<param name="mainlabel" value="$PARAM[mainlabel]" />
-									<param name="sublabel" value="" />
-									<param name="thumblabel" value="$PARAM[thumblabel]" />
-									<param name="focused" value="false" />
-									<param name="id" value="50" />
-								</include>
-							</control>
-							<control type="group">
-								<visible>$EXP[IsGenre]</visible>
-								<include content="GenreLayout">
-									<param name="mainlabel" value="$PARAM[mainlabel]" />
-									<param name="sublabel" value="" />
-									<param name="thumblabel" value="$PARAM[thumblabel]" />
-									<param name="focused" value="false" />
-									<param name="id" value="50" />
-								</include>
-							</control>
+							<include content="$PARAM[layout]">
+								<param name="mainlabel" value="$PARAM[mainlabel]" />
+								<param name="sublabel" value="" />
+								<param name="thumblabel" value="$PARAM[thumblabel]" />
+								<param name="focused" value="false" />
+								<param name="id" value="50" />
+							</include>
 						</control>
 					</itemlayout>
-					<focusedlayout condition="!Skin.HasSetting(HideWideLabels) | $EXP[IsGenre] | !Window.IsVisible(myvideonav.xml)" width="444" height="305">
+					<focusedlayout condition="!Skin.HasSetting(HideWideLabels) | !Window.IsVisible(myvideonav.xml)" width="444" height="305">
 						<include>SetPropertyOnFocus</include>
 						<control type="group">
 							<left>82</left>
 							<top>122</top>
-							<control type="group">
-								<visible>!$EXP[IsGenre]</visible>
-								<include content="$PARAM[layout]">
-									<param name="mainlabel" value="$PARAM[mainlabel]" />
-									<param name="sublabel" value="" />
-									<param name="thumblabel" value="$PARAM[thumblabel]" />
-									<param name="focused" value="true" />
-									<param name="id" value="50" />
-								</include>
-							</control>
-							<control type="group">
-								<visible>$EXP[IsGenre]</visible>
-								<include content="GenreLayout">
-									<param name="mainlabel" value="$PARAM[mainlabel]" />
-									<param name="sublabel" value="" />
-									<param name="thumblabel" value="$PARAM[thumblabel]" />
-									<param name="focused" value="true" />
-									<param name="id" value="50" />
-								</include>
-							</control>
+							<include content="$PARAM[layout]">
+								<param name="mainlabel" value="$PARAM[mainlabel]" />
+								<param name="sublabel" value="" />
+								<param name="thumblabel" value="$PARAM[thumblabel]" />
+								<param name="focused" value="true" />
+								<param name="id" value="50" />
+							</include>
 						</control>
 					</focusedlayout>
-					<itemlayout condition="Skin.HasSetting(HideWideLabels) + !$EXP[IsGenre] + Window.IsVisible(myvideonav.xml)" width="444" height="259">
+					<itemlayout condition="Skin.HasSetting(HideWideLabels) + Window.IsVisible(myvideonav.xml)" width="444" height="259">
 						<control type="group">
 							<left>82</left>
 							<top>32</top>
@@ -94,7 +68,7 @@
 							</include>
 						</control>
 					</itemlayout>
-					<focusedlayout condition="Skin.HasSetting(HideWideLabels) + !$EXP[IsGenre] + Window.IsVisible(myvideonav.xml)" width="444" height="259">
+					<focusedlayout condition="Skin.HasSetting(HideWideLabels) + Window.IsVisible(myvideonav.xml)" width="444" height="259">
 						<include>SetPropertyOnFocus</include>
 						<control type="group">
 							<left>82</left>
