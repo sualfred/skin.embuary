@@ -1390,8 +1390,8 @@
 			<control type="group">
 				<visible>$PARAM[visible]</visible>
 				<include content="widget_labels">
-					<param name="top">251</param>
-					<param name="width">424</param>
+					<param name="top">426</param>
+					<param name="width">276</param>
 					<param name="id">$PARAM[id]</param>
 					<param name="mainlabel">$PARAM[mainlabel]</param>
 					<param name="sublabel">$PARAM[sublabel]</param>
@@ -1402,43 +1402,43 @@
 					<include content="Animation_FocusBounce">
 						<param name="id" value="$PARAM[id]"/>
 					</include>
-					<height>239</height>
+					<height>414</height>
 					<control type="image">
 						<top>-2</top>
 						<left>-2</left>
-						<width>430</width>
-						<height>245</height>
+						<width>282</width>
+						<height>420</height>
 						<texture border="20,20,20,20">items/shadow.png</texture>
 					</control>
 					<control type="image">
 						<left>-12</left>
 						<top>-7</top>
-						<width>448</width>
-						<height>262</height>
+						<width>300</width>
+						<height>438</height>
 						<texture border="20,20,20,20" colordiffuse="focus_widget">items/focus.png</texture>
 						<aspectratio>stretch</aspectratio>
 						<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
 						<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
 					</control>
 					<control type="image">
-						<width>424</width>
-						<height>239</height>
-						<texture colordiffuse="ff010202">common/white.jpg</texture>
-						<aspectratio  scalediffuse="false">stretch</aspectratio>
-						<visible>!String.IsEmpty(ListItem.Art(poster.0))</visible>
+						<width>276</width>
+						<height>414</height>
+						<texture colordiffuse="thumb_background_fallback">common/white.jpg</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<visible>String.IsEmpty(ListItem.Art(poster.0))</visible>
 					</control>
 					<control type="image">
-						<width>424</width>
-						<height>239</height>
-						<texture colordiffuse="thumb_background_fallback">common/white.jpg</texture>
-						<aspectratio  scalediffuse="false">stretch</aspectratio>
-						<visible>String.IsEmpty(ListItem.Art(poster.0))</visible>
+						<width>276</width>
+						<height>414</height>
+						<texture colordiffuse="ff010202">common/white.jpg</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<visible>!String.IsEmpty(ListItem.Art(poster.0))</visible>
 					</control>
 					<control type="textbox">
 						<top>10</top>
 						<left>10</left>
-						<width>404</width>
-						<height>219</height>
+						<width>246</width>
+						<height>394</height>
 						<font>Light24</font>
 						<textcolor>white</textcolor>
 						<align>center</align>
@@ -1447,82 +1447,45 @@
 						<visible>String.IsEmpty(ListItem.Art(poster.0))</visible>
 					</control>
 					<control type="group">
-						<left>5</left>
-						<top>5</top>
+						<width>276</width>
+						<height>414</height>
 						<control type="image">
-							<width>99</width>
-							<height>169</height>
+							<width>138</width>
+							<height>207</height>
 							<texture background="true">$INFO[ListItem.Art(poster.0)]</texture>
 							<aspectratio>scale</aspectratio>
 						</control>
 						<control type="image">
-							<left>105</left>
-							<width>99</width>
-							<height>169</height>
+							<right>0</right>
+							<width>138</width>
+							<height>207</height>
 							<texture background="true">$INFO[ListItem.Art(poster.1)]</texture>
 							<aspectratio>scale</aspectratio>
 						</control>
 						<control type="image">
-							<left>210</left>
-							<width>99</width>
-							<height>169</height>
+							<bottom>0</bottom>
+							<width>138</width>
+							<height>207</height>
 							<texture background="true">$INFO[ListItem.Art(poster.2)]</texture>
 							<aspectratio>scale</aspectratio>
 						</control>
 						<control type="image">
-							<left>315</left>
-							<width>99</width>
-							<height>169</height>
+							<right>0</right>
+							<bottom>0</bottom>
+							<width>138</width>
+							<height>207</height>
 							<texture background="true">$INFO[ListItem.Art(poster.3)]</texture>
 							<aspectratio>scale</aspectratio>
 						</control>
 					</control>
 					<control type="group">
-						<left>5</left>
-						<top>177</top>
-						<control type="image">
-							<width>99</width>
-							<height>169</height>
-							<texture flipy="true" diffuse="items/mirror_mask.png" background="true">$INFO[ListItem.Art(poster.0)]</texture>
-							<aspectratio scalediffuse="false">scale</aspectratio>
-						</control>
-						<control type="image">
-							<left>105</left>
-							<left>67</left>
-							<width>99</width>
-							<height>169</height>
-							<texture flipy="true" diffuse="items/mirror_mask.png" background="true">$INFO[ListItem.Art(poster.1)]</texture>
-							<aspectratio scalediffuse="false">scale</aspectratio>
-						</control>
-						<control type="image">
-							<left>210</left>
-							<width>99</width>
-							<height>169</height>
-							<texture flipy="true" diffuse="items/mirror_mask.png" background="true">$INFO[ListItem.Art(poster.2)]</texture>
-							<aspectratio scalediffuse="false">scale</aspectratio>
-						</control>
-						<control type="image">
-							<left>315</left>
-							<width>99</width>
-							<height>169</height>
-							<texture flipy="true" diffuse="items/mirror_mask.png" background="true">$INFO[ListItem.Art(poster.3)]</texture>
-							<aspectratio scalediffuse="false">scale</aspectratio>
-						</control>
-					</control>
-					<control type="group">
-						<width>424</width>
-						<height>239</height>
-
+						<width>276</width>
+						<height>414</height>
 						<include content="bubble_play">
 							<param name="focused" value="$PARAM[focused]"/>
 							<param name="id" value="$PARAM[id]"/>
 						</include>
-						<include>bubble_overlay</include>
 					</control>
-					<include content="progress">
-						<param name="top" value="235"/>
-						<param name="width" value="424"/>
-					</include>
 				</control>
 			</control>
 		</definition>
