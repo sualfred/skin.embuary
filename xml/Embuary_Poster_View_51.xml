@@ -23,55 +23,30 @@
 				<viewtype label="$LOCALIZE[20021]">panel</viewtype>
 				<pagecontrol>17</pagecontrol>
 				<oninfo condition="String.IsEqual(ListItem.DBType,set) + !String.StartsWith(ListItem.Path,plugin://plugin.video)">RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCINFO[Window(home).Property(SkinHelper.ListItem.ExtendedPlot)]')</oninfo>
-				<itemlayout condition="!Skin.HasSetting(HidePosterLabels) | !Window.IsVisible(myvideonav.xml) | $EXP[IsGenre]" width="257" height="445">
+				<itemlayout condition="[!Skin.HasSetting(HidePosterLabels) | !Window.IsVisible(myvideonav.xml)] + !$EXP[IsGenre]" width="257" height="445">
 					<control type="group">
 						<left>70.5</left>
 						<top>122</top>
-						<control type="group">
-							<visible>!$EXP[IsGenre]</visible>
-							<include content="PosterLayout_Size2">
-								<param name="mainlabel" value="$VAR[MainListLabel]" />
-								<param name="sublabel" value="$VAR[SubListLabel]" />
-								<param name="focused" value="false" />
-								<param name="id" value="51" />
-							</include>
-						</control>
-						<control type="group">
-							<visible>$EXP[IsGenre]</visible>
-							<include content="GenreLayout_Size2">
-								<param name="mainlabel" value="$VAR[MainListLabel]" />
-								<param name="sublabel" value="" />
-								<param name="focused" value="false" />
-								<param name="id" value="51" />
-							</include>
-						</control>
+						<include content="PosterLayout_Size2">
+							<param name="mainlabel" value="$VAR[MainListLabel]" />
+							<param name="sublabel" value="$VAR[SubListLabel]" />
+							<param name="focused" value="false" />
+							<param name="id" value="51" />
+						</include>
 					</control>
 				</itemlayout>
-				<focusedlayout condition="!Skin.HasSetting(HidePosterLabels) | !Window.IsVisible(myvideonav.xml) | $EXP[IsGenre]" width="257" height="445">
+				<focusedlayout condition="[!Skin.HasSetting(HidePosterLabels) | !Window.IsVisible(myvideonav.xml)] + !$EXP[IsGenre]" width="257" height="445">
 					<include>SetPropertyOnFocus</include>
 					<control type="group">
 						<left>70.5</left>
 						<top>122</top>
-						<control type="group">
-							<visible>!$EXP[IsGenre]</visible>
-							<include content="PosterLayout_Size2">
-								<param name="mainlabel" value="$VAR[MainListLabel]" />
-								<param name="sublabel" value="$VAR[SubListLabel]" />
-								<param name="focused" value="true" />
-								<param name="id" value="51" />
-								<param name="visible_forced" value="true"/>
-							</include>
-						</control>
-						<control type="group">
-							<visible>$EXP[IsGenre]</visible>
-							<include content="GenreLayout_Size2">
-								<param name="mainlabel" value="$VAR[MainListLabel]" />
-								<param name="sublabel" value="" />
-								<param name="focused" value="true" />
-								<param name="id" value="51" />
-								<param name="visible_forced" value="true"/>
-							</include>
-						</control>
+						<include content="PosterLayout_Size2">
+							<param name="mainlabel" value="$VAR[MainListLabel]" />
+							<param name="sublabel" value="$VAR[SubListLabel]" />
+							<param name="focused" value="true" />
+							<param name="id" value="51" />
+							<param name="visible_forced" value="true"/>
+						</include>
 					</control>
 				</focusedlayout>
 				<itemlayout condition="Skin.HasSetting(HidePosterLabels) + Window.IsVisible(myvideonav.xml) + !$EXP[IsGenre]" width="257" height="378">
@@ -93,6 +68,32 @@
 						<top>175</top>
 						<include content="PosterLayout_Size2">
 							<param name="mainlabel" value="" />
+							<param name="sublabel" value="" />
+							<param name="focused" value="true" />
+							<param name="id" value="51" />
+							<param name="visible_forced" value="true"/>
+						</include>
+					</control>
+				</focusedlayout>
+				<itemlayout condition="$EXP[IsGenre]" width="257" height="416">
+					<control type="group">
+						<left>70.5</left>
+						<top>122</top>
+						<include content="GenreLayout_Size2">
+							<param name="mainlabel" value="$VAR[MainListLabel]" />
+							<param name="sublabel" value="" />
+							<param name="focused" value="false" />
+							<param name="id" value="51" />
+						</include>
+					</control>
+				</itemlayout>
+				<focusedlayout condition="$EXP[IsGenre]" width="257" height="416">
+					<include>SetPropertyOnFocus</include>
+					<control type="group">
+						<left>70.5</left>
+						<top>122</top>
+						<include content="GenreLayout_Size2">
+							<param name="mainlabel" value="$VAR[MainListLabel]" />
 							<param name="sublabel" value="" />
 							<param name="focused" value="true" />
 							<param name="id" value="51" />
