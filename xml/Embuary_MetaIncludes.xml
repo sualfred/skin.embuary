@@ -201,48 +201,6 @@
 			</control>
 		</definition>
 	</include>
-	<include name="MetaAlbumInfos">
-		<param name="width">940</param>
-		<definition>
-			<control type="grouplist">
-				<height>40</height>
-				<width>$PARAM[width]</width>
-				<itemgap>5</itemgap>
-				<orientation>horizontal</orientation>
-				<control type="label">
-					<include>MetaLabel</include>
-					<label>$INFO[ListItem.Year]   </label>
-					<visible>!String.IsEmpty(ListItem.Year)</visible>
-				</control>
-				<control type="label">
-					<include>MetaLabel</include>
-					<label>$INFO[Container(200).NumItems,$LOCALIZE[182]: ]   </label>
-					<visible>!String.IsEmpty(Container(200).NumItems)</visible>
-				</control>
-			</control>
-		</definition>
-	</include>
-	<include name="MetaSongInfos">
-		<param name="width">940</param>
-		<definition>
-			<control type="grouplist">
-				<height>40</height>
-				<width>$PARAM[width]</width>
-				<itemgap>5</itemgap>
-				<orientation>horizontal</orientation>
-				<control type="label">
-					<include>MetaLabel</include>
-					<label>$LOCALIZE[554]: $INFO[ListItem.Tracknumber]   </label>
-					<visible>!String.IsEmpty(ListItem.Tracknumber)</visible>
-				</control>
-				<control type="label">
-					<include>MetaLabel</include>
-					<label>$LOCALIZE[180]: $VAR[DurationMinutes]   </label>
-					<visible>!String.IsEmpty(ListItem.Duration)</visible>
-				</control>
-			</control>
-		</definition>
-	</include>
 	<!-- PVR -->
 	<include name="MetaPVRInfos">
 		<param name="width">100%</param>
