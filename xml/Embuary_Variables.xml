@@ -457,6 +457,8 @@
 		<value>$INFO[ListItem.VideoResolution]</value>
 	</variable>
 	<variable name="ListItemEpisodeName">
+		<value condition="Window.IsVisible(pvrosdguide) + !String.IsEmpty(ListItem.EpisodeName)">$INFO[ListItem.EpisodeName]$INFO[ListItem.Genre,[CR]]</value>
+		<value condition="Window.IsVisible(pvrosdguide) + !String.IsEmpty(ListItem.Genre)">$INFO[ListItem.Genre]</value>
 		<value condition="!String.IsEmpty(ListItem.EpisodeName)">$INFO[ListItem.EpisodeName]</value>
 		<value condition="!String.IsEmpty(ListItem.Genre) + !Window.IsVisible(pvrguideinfo) + !Control.IsVisible(57)">$LOCALIZE[515]: $INFO[ListItem.Genre]</value>
 		<value>[COLOR text_sublabel]$LOCALIZE[31156][/COLOR]</value>
