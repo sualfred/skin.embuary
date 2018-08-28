@@ -320,7 +320,7 @@
 		<!-- static for non listitems -->
 		<value condition="Skin.HasSetting(ShowStaticBackgroundImage) + !String.IsEmpty(Skin.String(StaticBackgroundImage))">$INFO[Skin.String(StaticBackgroundImage)]</value>
 		<!-- non listitem fanarts -->
-		<value condition="[String.StartsWith(Container.Folderpath,plugin://plugin.video.embycon) | Window.IsVisible(1160) | Window.IsVisible(1161) | Window.IsVisible(1162) | Window.IsVisible(1163) | Window.IsVisible(1164) | Window.IsVisible(1165) | Window.IsVisible(1166) | Window.IsVisible(1167) | Window.IsVisible(1168) | Window.IsVisible(1169)] + !String.IsEmpty(Window(home).Property(plugin.video.embycon-random-gb))">$INFO[Window(home).Property(plugin.video.embycon-random-gb)]</value>
+		<value condition="String.StartsWith(Container.Folderpath,plugin://plugin.video.embycon) + !String.IsEmpty(Window(home).Property(plugin.video.embycon-random-gb))">$INFO[Window(home).Property(plugin.video.embycon-random-gb)]</value>
 		<value condition="[Window.IsVisible(1122) | Container.Content(musicvideos) | Window.IsVisible(mymusicnav.xml)] + !String.IsEmpty(Window(home).Property(SkinHelper.AllMusicBackground))">$INFO[Window(home).Property(SkinHelper.AllMusicBackground)]</value>
 		<value condition="[Window.IsVisible(1121) | String.StartsWith(Container.FolderPath,videodb://tvshows)] + !String.IsEmpty(Window(home).Property(SkinHelper.AllTvShowsBackground))">$INFO[Window(home).Property(SkinHelper.AllTvShowsBackground)]</value>
 		<value condition="[Window.IsVisible(1120) | String.StartsWith(Container.FolderPath,videodb://movies)]  + !String.IsEmpty(Window(home).Property(SkinHelper.AllMoviesBackground))">$INFO[Window(home).Property(SkinHelper.AllMoviesBackground)]</value>
