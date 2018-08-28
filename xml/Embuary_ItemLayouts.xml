@@ -1283,7 +1283,8 @@
 						<height>340</height>
 						<texture background="true">$INFO[ListItem.Icon]</texture>
 						<aspectratio scalediffuse="false">scale</aspectratio>
-						<visible>!String.StartsWith(ListItem.Path,pvr://) + !String.StartsWith(ListItem.Icon,Default)</visible>
+						<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
+						<visible>![[Window.IsVisible(script-globalsearch.xml) + Container.Content(livetv)] | [String.StartsWith(ListItem.Path,pvr://)]]</visible>
 					</control>
 					<control type="image">
 						<width>340</width>
@@ -1291,7 +1292,8 @@
 						<texture background="true">$INFO[ListItem.Icon]</texture>
 						<aspectratio scalediffuse="false">keep</aspectratio>
 						<bordersize>20</bordersize>
-						<visible>String.StartsWith(ListItem.Path,pvr://) + !String.StartsWith(ListItem.Icon,Default)</visible>
+						<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
+						<visible>[Window.IsVisible(script-globalsearch.xml) + Container.Content(livetv)] | [String.StartsWith(ListItem.Path,pvr://)]</visible>
 					</control>
 					<control type="group">
 						<width>340</width>
