@@ -70,6 +70,7 @@
 		+ !Window.IsVisible(MyPVRTimers.xml)
 		+ !Window.IsVisible(MyPVRguide.xml)
 		+ !String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres)
+		+ !String.StartsWith(Container.FolderPath,pvr://channels/radio/)
 		]
 		| Window.IsVisible(MyPics.xml)
 		]
@@ -93,6 +94,7 @@
 		+ !Window.IsVisible(MyPVRSearch.xml)
 		+ !Window.IsVisible(MyPVRTimers.xml)
 		+ !Window.IsVisible(MyPVRguide.xml)
+		+ !String.StartsWith(Container.FolderPath,pvr://channels/radio/)
 		]
 		| Window.IsVisible(MyPics.xml)
 		]
@@ -163,7 +165,7 @@
 		| String.IsEqual(ListItem.DBType,set)
 		| String.IsEqual(ListItem.DBType,musicvideo)
 		| Container.Content(episodes)
-		| [String.StartsWith(ListItem.Path,pvr://) + !String.IsEmpty(ListItem.Title)]
+		| [String.StartsWith(ListItem.Path,pvr://) + !String.IsEmpty(ListItem.Art(thumb))]
 		| [String.StartsWith(Container.FolderPath,plugin://plugin.video.emby/) + String.Contains(Container.FolderPath,type=homevideos)]
 		]
 		+ !ListItem.IsParentDir
