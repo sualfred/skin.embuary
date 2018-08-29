@@ -132,14 +132,14 @@
 										<texture background="true">$VAR[IconLandscape]</texture>
 										<aspectratio scalediffuse="false">keep</aspectratio>
 										<bordersize>20</bordersize>
-										<visible>String.StartsWith(ListItem.Path,pvr://) + !String.Contains(ListItem.Icon,.jpg)</visible>
+										<visible>[String.StartsWith(ListItem.Path,pvr://) + String.IsEmpty(ListItem.EpgEventIcon) + [String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)]] + !String.StartsWith(ListItem.Icon,Default)</visible>
 									</control>
 									<control type="image">
 										<width>590</width>
 										<height>332</height>
 										<texture background="true">$VAR[IconLandscape]</texture>
 										<aspectratio scalediffuse="false">keep</aspectratio>
-										<visible>!String.StartsWith(ListItem.Path,pvr://) | [String.StartsWith(ListItem.Path,pvr://) + String.Contains(ListItem.Icon,.jpg)]</visible>
+										<visible>![String.StartsWith(ListItem.Path,pvr://) + String.IsEmpty(ListItem.EpgEventIcon) + [String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)]] + !String.StartsWith(ListItem.Icon,Default)</visible>
 									</control>
 								</control>
 								<control type="group">

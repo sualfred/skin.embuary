@@ -151,14 +151,38 @@
 	<include name="bubble_overlay">
 		<control type="group">
 			<visible>!Window.IsVisible(1114)</visible>
-			<control type="image">
-				<right>10</right>
-				<top>10</top>
-				<width>32</width>
-				<height>28</height>
-				<texture colordiffuse="red">$VAR[PVRTimerIcon]</texture>
-				<aspectratio align="right">keep</aspectratio>
+			<control type="group">
 				<visible>String.StartsWith(ListItem.Path,pvr://)</visible>
+				<control type="image">
+					<right>10</right>
+					<top>10</top>
+					<width>32</width>
+					<height>28</height>
+					<texture colordiffuse="red">$VAR[PVRTimerIcon]</texture>
+					<aspectratio align="right">keep</aspectratio>
+				</control>
+				<control type="group">
+					<visible>!String.IsEmpty(ListItem.EpgEventIcon) + !Window.IsVisible(fullscreeninfo) + !Window.IsVisible(pvrguideinfo) + !String.IsEqual(Container.ViewMode,$LOCALIZE[535]) + !String.IsEqual(Container.ViewMode,$LOCALIZE[31005])</visible>
+					<control type="image">
+						<bottom>0</bottom>
+						<width>100%</width>
+						<height>35</height>
+						<texture colordiffuse="black">views/player/mask_bottom.png</texture>
+					</control>
+					<control type="label">
+						<bottom>10</bottom>
+						<right>10</right>
+						<left>10</left>
+						<height>20</height>
+						<label>$INFO[ListItem.Channelname]</label>
+						<font>BubbleFont</font>
+						<textcolor>ffdfdfdf</textcolor>
+						<shadowcolor>text_shadow</shadowcolor>
+						<selectedcolor>ffcfcfcf</selectedcolor>
+						<align>right</align>
+						<aligny>top</aligny>
+					</control>
+				</control>
 			</control>
 			<control type="group">
 				<visible>[String.IsEqual(ListItem.DBtype,tvshow) + !String.IsEmpty(ListItem.Property(UnWatchedEpisodes)) + Integer.IsLess(ListItem.Property(UnWatchedEpisodes),1)] | String.IsEqual(ListItem.Overlay,OverlayWatched.png) | Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0) | Integer.IsGreaterOrEqual(ListItem.PlayCount,1)</visible>
@@ -932,22 +956,21 @@
 					<control type="image">
 						<width>424</width>
 						<height>239</height>
-						<texture background="true">$INFO[ListItem.Icon]</texture>
-						<aspectratio scalediffuse="false">keep</aspectratio>
-						<bordersize>20</bordersize>
-						<visible>String.StartsWith(ListItem.Path,pvr://) + !String.StartsWith(ListItem.Icon,Default)</visible>
+						<texture background="true">$PARAM[thumb]</texture>
+						<aspectratio scalediffuse="false">scale</aspectratio>
+						<visible>![String.StartsWith(ListItem.Path,pvr://) + String.IsEmpty(ListItem.EpgEventIcon) + [String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)]] + !String.StartsWith(ListItem.Icon,Default)</visible>
 					</control>
 					<control type="image">
 						<width>424</width>
 						<height>239</height>
-						<texture background="true">$PARAM[thumb]</texture>
-						<aspectratio scalediffuse="false">scale</aspectratio>
-						<visible>!String.StartsWith(ListItem.Path,pvr://) + !String.StartsWith(ListItem.Icon,Default)</visible>
+						<texture background="true">$INFO[ListItem.Icon]</texture>
+						<aspectratio scalediffuse="false">keep</aspectratio>
+						<bordersize>20</bordersize>
+						<visible>[String.StartsWith(ListItem.Path,pvr://) + String.IsEmpty(ListItem.EpgEventIcon) + [String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)]] + !String.StartsWith(ListItem.Icon,Default)</visible>
 					</control>
 					<control type="group">
 						<width>424</width>
 						<height>239</height>
-
 						<include content="bubble_play">
 							<param name="focused" value="$PARAM[focused]"/>
 							<param name="id" value="$PARAM[id]"/>
@@ -1032,22 +1055,21 @@
 					<control type="image">
 						<width>430</width>
 						<height>242</height>
-						<texture background="true">$INFO[ListItem.Icon]</texture>
-						<aspectratio scalediffuse="false">keep</aspectratio>
-						<bordersize>20</bordersize>
-						<visible>String.StartsWith(ListItem.Path,pvr://) + !String.StartsWith(ListItem.Icon,Default)</visible>
+						<texture background="true">$VAR[IconLandscape]</texture>
+						<aspectratio scalediffuse="false">scale</aspectratio>
+						<visible>![String.StartsWith(ListItem.Path,pvr://) + String.IsEmpty(ListItem.EpgEventIcon) + [String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)]] + !String.StartsWith(ListItem.Icon,Default)</visible>
 					</control>
 					<control type="image">
 						<width>430</width>
 						<height>242</height>
-						<texture background="true">$VAR[IconLandscape]</texture>
-						<aspectratio scalediffuse="false">scale</aspectratio>
-						<visible>!String.StartsWith(ListItem.Path,pvr://) + !String.StartsWith(ListItem.Icon,Default)</visible>
+						<texture background="true">$INFO[ListItem.Icon]</texture>
+						<aspectratio scalediffuse="false">keep</aspectratio>
+						<bordersize>20</bordersize>
+						<visible>[String.StartsWith(ListItem.Path,pvr://) + String.IsEmpty(ListItem.EpgEventIcon) + [String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)]] + !String.StartsWith(ListItem.Icon,Default)</visible>
 					</control>
 					<control type="group">
 						<width>430</width>
 						<height>242</height>
-
 						<include content="bubble_play">
 							<param name="focused" value="$PARAM[focused]"/>
 							<param name="id" value="$PARAM[id]"/>
@@ -1195,9 +1217,9 @@
 					<control type="image">
 						<width>276</width>
 						<height>276</height>
-						<texture background="true">$INFO[ListItem.Icon]</texture>
+						<texture background="true">$VAR[IconSquare]</texture>
 						<aspectratio scalediffuse="false">scale</aspectratio>
-						<visible>[!String.StartsWith(ListItem.Path,pvr://) | [String.StartsWith(ListItem.Path,pvr://) + ![String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)]]] + !String.StartsWith(ListItem.Icon,Default)</visible>
+						<visible>![String.StartsWith(ListItem.Path,pvr://) + [String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)]] + !String.StartsWith(ListItem.Icon,Default)</visible>
 					</control>
 					<control type="image">
 						<width>276</width>
