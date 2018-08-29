@@ -4,185 +4,29 @@
 	<include>PropertyIncludes</include>
 	<controls>
 		<control type="group">
-			<control type="image">
-				<include>Visible_Fade</include>
-				<include>FullscreenDimensions</include>
-				<texture colordiffuse="background_diffuse">common/white.jpg</texture>
-				<visible>!Window.IsVisible(pvrguideinfo)</visible>
-			</control>
-			<control type="grouplist">
-				<visible>!Window.IsVisible(pvrguideinfo)</visible>
-				<include>Dialog_PopupOpenClose</include>
-				<include>Visible_PopupOpenClose</include>
-				<centerleft>50%</centerleft>
-				<centertop>50%</centertop>
-				<width>1100</width>
-				<height max="940">auto</height>
-				<orientation>vertical</orientation>
-				<itemgap>20</itemgap>
-				<align>center</align>
-				<!-- edit -->
-				<control type="group">
-					<height>50</height>
-					<control type="label">
-						<width>100%</width>
-						<height>48</height>
-						<font>Reg24</font>
-						<aligny>center</aligny>
-						<textoffsetx>5</textoffsetx>
-						<label>$INFO[VideoPlayer.ChannelName]</label>
-					</control>
-					<control type="image">
-						<width>100%</width>
-						<top>45</top>
-						<height>2</height>
-						<texture colordiffuse="lightgrey">common/white.jpg</texture>
-						<aspectratio>stretch</aspectratio>
-					</control>
-					<control type="image">
-						<width>100%</width>
-						<top>45</top>
-						<height>2</height>
-						<texture colordiffuse="accent">common/white.jpg</texture>
-						<aspectratio>stretch</aspectratio>
-						<include>WindowOpen_GreenBar</include>
-					</control>
-				</control>
-				<!-- list -->
-				<control type="group">
-					<height>770</height>
-					<control type="image">
-						<height>770</height>
-						<texture colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
-						<aspectratio>stretch</aspectratio>
-					</control>
-					<control type="list" id="11">
-						<centerleft>50%</centerleft>
-						<top>10</top>
-						<height>750</height>
-						<onup>12</onup>
-						<onleft>100</onleft>
-						<onright>100</onright>
-						<ondown>100</ondown>
-						<pagecontrol>60</pagecontrol>
-						<scrolltime>200</scrolltime>
-						<itemlayout height="125" width="1100">
-							<control type="image">
-								<width>204</width>
-								<heigth>115</heigth>
-								<left>5</left>
-								<bordersize>5</bordersize>
-								<aspectratio align="left">keep</aspectratio>
-								<texture background="true">$INFO[ListItem.Icon]</texture>
-								<visible>String.EndsWith(ListItem.Icon,.jpg)</visible>
-							</control>
-							<control type="image">
-								<width>204</width>
-								<heigth>115</heigth>
-								<left>5</left>
-								<bordersize>5</bordersize>
-								<aspectratio align="center">keep</aspectratio>
-								<texture>special://skin/extras/themes/$VAR[SkinTheme]/unwatched.jpg</texture>
-								<visible>!String.EndsWith(ListItem.Icon,.jpg)</visible>
-							</control>
-							<control type="label">
-								<top>2</top>
-								<right>10</right>
-								<left>214</left>
-								<height>50</height>
-								<aligny>center</aligny>
-								<font>Reg24</font>
-								<textcolor>panel_textcolor</textcolor>
-								<label>$INFO[ListItem.Date,, - ]$INFO[ListItem.Label]</label>
-							</control>
-							<control type="textbox">
-								<top>45</top>
-								<right>10</right>
-								<left>214</left>
-								<height>70</height>
-								<aligny>top</aligny>
-								<font>Reg24</font>
-								<textcolor>panel_textcolor2</textcolor>
-								<autoscroll>false</autoscroll>
-								<label>$VAR[ListItemEpisodeName]</label>
-							</control>
-						</itemlayout>
-						<focusedlayout height="125" width="1100">
-							<control type="image">
-								<width>100%</width>
-								<height>100%</height>
-								<texture colordiffuse="panel_focus">common/white.jpg</texture>
-								<visible>Control.HasFocus(11)</visible>
-							</control>
-							<control type="image">
-								<width>204</width>
-								<heigth>115</heigth>
-								<left>5</left>
-								<bordersize>5</bordersize>
-								<aspectratio align="left">keep</aspectratio>
-								<texture background="true">$INFO[ListItem.Icon]</texture>
-								<visible>String.EndsWith(ListItem.Icon,.jpg)</visible>
-							</control>
-							<control type="image">
-								<width>204</width>
-								<heigth>115</heigth>
-								<left>5</left>
-								<bordersize>5</bordersize>
-								<aspectratio align="center">keep</aspectratio>
-								<texture>special://skin/extras/themes/$VAR[SkinTheme]/unwatched.jpg</texture>
-								<visible>!String.EndsWith(ListItem.Icon,.jpg)</visible>
-							</control>
-							<control type="label">
-								<top>2</top>
-								<right>10</right>
-								<left>214</left>
-								<height>50</height>
-								<aligny>center</aligny>
-								<font>Reg24</font>
-								<textcolor>panel_textcolor</textcolor>
-								<scroll>true</scroll>
-								<label>$INFO[ListItem.Date,, - ]$INFO[ListItem.Label]</label>
-							</control>
-							<control type="textbox">
-								<top>45</top>
-								<right>10</right>
-								<left>214</left>
-								<height>70</height>
-								<aligny>top</aligny>
-								<font>Reg24</font>
-								<textcolor>panel_textcolor2</textcolor>
-								<autoscroll delay="2000" time="3000" repeat="10000">true</autoscroll>
-								<label>$VAR[ListItemEpisodeName]</label>
-							</control>
-						</focusedlayout>
-					</control>
-					<control type="scrollbar" id="60">
-						<right>0</right>
-						<top>0</top>
-						<bottom>0</bottom>
-						<width>4</width>
-						<orientation>vertical</orientation>
-						<showonepage>false</showonepage>
-						<texturesliderbackground colordiffuse="00ffffff">common/white.jpg</texturesliderbackground>
-						<texturesliderbar colordiffuse="scrollbar_slider">common/white.jpg</texturesliderbar>
-					</control>
-				</control>
-				<!-- Button -->
-				<control type="grouplist" id="100">
-					<height>50</height>
+			<visible>!Window.IsVisible(pvrguideinfo)</visible>
+			<!--Top-->
+			<include>PlayerTopBar</include>
+			<!--Bottom-->
+			<control type="group">
+				<bottom>0</bottom>
+				<height>440</height>
+				<control type="image">
+					<bottom>0</bottom>
 					<width>100%</width>
-					<orientation>horizontal</orientation>
-					<itemgap>5</itemgap>
-					<align>center</align>
-					<onright>noop</onright>
-					<onleft>noop</onleft>
-					<control type="button" id="101">
-						<include>DarkGreyButton</include>
-						<label>$LOCALIZE[15067]</label>
-						<onup>SetFocus(11)</onup>
-						<onclick>Close</onclick>
-					</control>
+					<height>395</height>
+					<texture colordiffuse="black">views/player/mask_bottom.png</texture>
 				</control>
+				<include content="HomeWideWidget">
+					<param name="id" value="11"/>
+					<param name="onup" value="noop"/>
+					<param name="ondown" value="noop"/>
+					<param name="headline" value="[COLOR white]$INFO[VideoPlayer.Channelname] - $LOCALIZE[19222][/COLOR]"/>
+					<param name="mainlabel" value="$INFO[ListItem.Title]"/>
+					<param name="thumblabel" value="$INFO[ListItem.Title]"/>
+					<param name="sublabel" value="$INFO[ListItem.Date]"/>
+					<param name="use_custom_content" value="false"/>
+				</include>
 			</control>
 		</control>
 	</controls>

@@ -921,14 +921,14 @@
 						<texture background="true">$INFO[ListItem.Icon]</texture>
 						<aspectratio scalediffuse="false">keep</aspectratio>
 						<bordersize>20</bordersize>
-						<visible>String.StartsWith(ListItem.Path,pvr://) + !String.StartsWith(ListItem.Icon,Default)</visible>
+						<visible>String.StartsWith(ListItem.Path,pvr://) + String.Contains(ListItem.Icon,.png) + !String.StartsWith(ListItem.Icon,Default)</visible>
 					</control>
 					<control type="image">
 						<width>424</width>
 						<height>239</height>
 						<texture background="true">$PARAM[thumb]</texture>
 						<aspectratio scalediffuse="false">scale</aspectratio>
-						<visible>!String.StartsWith(ListItem.Path,pvr://) + !String.StartsWith(ListItem.Icon,Default)</visible>
+						<visible>![String.StartsWith(ListItem.Path,pvr://) + String.Contains(ListItem.Icon,.png)] + !String.StartsWith(ListItem.Icon,Default)</visible>
 					</control>
 					<control type="group">
 						<width>424</width>
