@@ -77,11 +77,11 @@
 				</control>
 			</focusedlayout>
 			<!-- square -->
-			<itemlayout condition="Container.Content(livetv) | Container.Content(albums) | Container.Content(artists) | Container.Content(songs)" width="360" height="440">
+			<itemlayout condition="Container.Content(livetv) | Container.Content(albums) | Container.Content(artists) | Container.Content(songs)" width="300" height="380">
 				<control type="group">
 					<left>70</left>
 					<top>122</top>
-					<include content="SquareLayout_Size2">
+					<include content="SquareLayout">
 						<param name="mainlabel" value="$VAR[MainListLabel]" />
 						<param name="sublabel" value="$INFO[ListItem.Property(Starttime)]$VAR[SubListLabel]" />
 						<param name="focused" value="false" />
@@ -89,12 +89,12 @@
 					</include>
 				</control>
 			</itemlayout>
-			<focusedlayout condition="Container.Content(livetv) | Container.Content(albums) | Container.Content(artists) | Container.Content(songs)" width="360" height="440">
+			<focusedlayout condition="Container.Content(livetv) | Container.Content(albums) | Container.Content(artists) | Container.Content(songs)" width="300" height="380">
 				<include>SetPropertyOnFocus</include>
 				<control type="group">
 					<left>70</left>
 					<top>122</top>
-					<include content="SquareLayout_Size2">
+					<include content="SquareLayout">
 						<param name="mainlabel" value="$VAR[MainListLabel]" />
 						<param name="sublabel" value="$INFO[ListItem.Property(Starttime)]$VAR[SubListLabel]" />
 						<param name="focused" value="true" />
