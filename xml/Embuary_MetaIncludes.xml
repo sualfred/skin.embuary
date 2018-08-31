@@ -683,14 +683,25 @@
 					<label>$INFO[VideoPlayer.Channelname]</label>
 					<visible>String.IsEmpty(VideoPlayer.Cover) | String.StartsWith(VideoPlayer.Cover,Default)</visible>
 				</control>
-				<control type="image">
-					<width>590</width>
-					<height>332</height>
-					<texture background="true">$VAR[PlayerIcon]</texture>
-					<fadetime>200</fadetime>
-					<aspectratio scalediffuse="false">keep</aspectratio>
-					<bordersize>20</bordersize>
+				<control type="group">
 					<visible>!String.StartsWith(VideoPlayer.Cover,Default)</visible>
+					<control type="image">
+						<width>590</width>
+						<height>332</height>
+						<texture background="true">$INFO[VideoPlayer.Cover]</texture>
+						<fadetime>200</fadetime>
+						<aspectratio scalediffuse="false">keep</aspectratio>
+						<bordersize>20</bordersize>
+						<visible>[String.IsEmpty(PVR.EpgEventIcon) + [String.Contains(VideoPlayer.Cover,imagecache) | !String.Contains(VideoPlayer.Cover,.jpg)]]</visible>
+					</control>
+					<control type="image">
+						<width>590</width>
+						<height>332</height>
+						<texture background="true">$INFO[PVR.EpgEventIcon]</texture>
+						<fadetime>200</fadetime>
+						<aspectratio scalediffuse="false">keep</aspectratio>
+						<visible>![String.IsEmpty(PVR.EpgEventIcon) + [String.Contains(VideoPlayer.Cover,imagecache) | !String.Contains(VideoPlayer.Cover,.jpg)]]</visible>
+					</control>
 				</control>
 				<control type="group">
 					<width>590</width>
