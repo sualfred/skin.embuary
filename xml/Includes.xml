@@ -165,7 +165,7 @@
 		| String.IsEqual(ListItem.DBType,set)
 		| String.IsEqual(ListItem.DBType,musicvideo)
 		| Container.Content(episodes)
-		| [String.StartsWith(ListItem.Path,pvr://) + !String.IsEmpty(ListItem.Art(thumb))]
+		| [String.StartsWith(ListItem.Path,pvr://) + !String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)]
 		| [String.StartsWith(Container.FolderPath,plugin://plugin.video.emby/) + String.Contains(Container.FolderPath,type=homevideos)]
 		]
 		+ !ListItem.IsParentDir
