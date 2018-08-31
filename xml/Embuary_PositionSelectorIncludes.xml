@@ -85,6 +85,9 @@
 				<include condition="Integer.IsGreaterOrEqual(Window(home).Property(PositionCount),19)" content="$PARAM[content]">
 					<param name="nr" value="19"/>
 				</include>
+				<include condition="Integer.IsGreaterOrEqual(Window(home).Property(PositionCount),20)" content="$PARAM[content]">
+					<param name="nr" value="20"/>
+				</include>
 			</content>
 		</definition>
 	</include>
@@ -273,6 +276,10 @@
 			<param name="label" value="$LOCALIZE[359]   ($LOCALIZE[31208])"/>
 			<param name="item" value="W_EmbyCon_NewAlbums"/>
 		</include>
+		<include content="HomeSetWidget">
+			<param name="label" value="$LOCALIZE[1036]"/>
+			<param name="item" value="W_Fav"/>
+		</include>
 		<include content="AvailableCustomWidgets">
 			<param name="type" value="Home"/>
 		</include>
@@ -321,6 +328,8 @@
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_widget_pos_16),$PARAM[item])">Skin.Reset(home_widget_pos_16.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_widget_pos_17),$PARAM[item])">Skin.Reset(home_widget_pos_17)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_widget_pos_17),$PARAM[item])">Skin.Reset(home_widget_pos_17.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_widget_pos_18),$PARAM[item])">Skin.Reset(home_widget_pos_18)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(home_widget_pos_18),$PARAM[item])">Skin.Reset(home_widget_pos_18.label)</onclick>
 				<onclick condition="$PARAM[setitem]">Skin.SetString(home_widget_pos_$PARAM[nr].label,$PARAM[label])</onclick>
 				<onclick condition="$PARAM[setitem]">Skin.SetString(home_widget_pos_$PARAM[nr],$PARAM[item])</onclick>
 				<onclick condition="$PARAM[clearitem]">Skin.Reset(home_widget_pos_$PARAM[nr])</onclick>
@@ -419,6 +428,10 @@
 			<param name="item" value="W_EmbyCon_FavMovies"/>
 			<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
 		</include>
+		<include content="MovieHubSetWidget">
+			<param name="label" value="$LOCALIZE[1036]"/>
+			<param name="item" value="W_Fav"/>
+		</include>
 		<include content="AvailableCustomWidgets">
 			<param name="type" value="MovieHub"/>
 		</include>
@@ -471,6 +484,8 @@
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(moviehub_widget_pos_18),$PARAM[item])">Skin.Reset(moviehub_widget_pos_18.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(moviehub_widget_pos_19),$PARAM[item])">Skin.Reset(moviehub_widget_pos_19)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(moviehub_widget_pos_19),$PARAM[item])">Skin.Reset(moviehub_widget_pos_19.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(moviehub_widget_pos_20),$PARAM[item])">Skin.Reset(moviehub_widget_pos_20)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(moviehub_widget_pos_20),$PARAM[item])">Skin.Reset(moviehub_widget_pos_20.label)</onclick>
 				<onclick condition="$PARAM[setitem]">Skin.SetString(moviehub_widget_pos_$PARAM[nr].label,$PARAM[label])</onclick>
 				<onclick condition="$PARAM[setitem]">Skin.SetString(moviehub_widget_pos_$PARAM[nr],$PARAM[item])</onclick>
 				<onclick condition="$PARAM[clearitem]">Skin.Reset(moviehub_widget_pos_$PARAM[nr])</onclick>
@@ -569,6 +584,10 @@
 			<param name="item" value="W_EmbyCon_FavShows"/>
 			<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
 		</include>
+		<include content="TVShowHubSetWidget">
+			<param name="label" value="$LOCALIZE[1036]"/>
+			<param name="item" value="W_Fav"/>
+		</include>
 		<include content="AvailableCustomWidgets">
 			<param name="type" value="TVShowHub"/>
 		</include>
@@ -621,6 +640,8 @@
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(tvshowhub_widget_pos_18),$PARAM[item])">Skin.Reset(tvshowhub_widget_pos_18.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(tvshowhub_widget_pos_19),$PARAM[item])">Skin.Reset(tvshowhub_widget_pos_19)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(tvshowhub_widget_pos_19),$PARAM[item])">Skin.Reset(tvshowhub_widget_pos_19.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(tvshowhub_widget_pos_20),$PARAM[item])">Skin.Reset(tvshowhub_widget_pos_20)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(tvshowhub_widget_pos_20),$PARAM[item])">Skin.Reset(tvshowhub_widget_pos_20.label)</onclick>
 				<onclick condition="$PARAM[setitem]">Skin.SetString(tvshowhub_widget_pos_$PARAM[nr].label,$PARAM[label])</onclick>
 				<onclick condition="$PARAM[setitem]">Skin.SetString(tvshowhub_widget_pos_$PARAM[nr],$PARAM[item])</onclick>
 				<onclick condition="$PARAM[clearitem]">Skin.Reset(tvshowhub_widget_pos_$PARAM[nr])</onclick>
@@ -697,6 +718,10 @@
 			<param name="item" value="W_EmbyCon_FavSongs"/>
 			<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
 		</include>
+		<include content="MusicHubSetWidget">
+			<param name="label" value="$LOCALIZE[1036]"/>
+			<param name="item" value="W_Fav"/>
+		</include>
 		<include content="AvailableCustomWidgets">
 			<param name="type" value="MusicHub"/>
 		</include>
@@ -739,6 +764,8 @@
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(musichub_widget_pos_13),$PARAM[item])">Skin.Reset(musichub_widget_pos_13.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(musichub_widget_pos_14),$PARAM[item])">Skin.Reset(musichub_widget_pos_14)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(musichub_widget_pos_14),$PARAM[item])">Skin.Reset(musichub_widget_pos_14.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(musichub_widget_pos_15),$PARAM[item])">Skin.Reset(musichub_widget_pos_15)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(musichub_widget_pos_15),$PARAM[item])">Skin.Reset(musichub_widget_pos_15.label)</onclick>
 				<onclick condition="$PARAM[setitem]">Skin.SetString(musichub_widget_pos_$PARAM[nr].label,$PARAM[label])</onclick>
 				<onclick condition="$PARAM[setitem]">Skin.SetString(musichub_widget_pos_$PARAM[nr],$PARAM[item])</onclick>
 				<onclick condition="$PARAM[clearitem]">Skin.Reset(musichub_widget_pos_$PARAM[nr])</onclick>
