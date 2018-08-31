@@ -1193,14 +1193,54 @@
 			</control>
 		</definition>
 	</include>
-	<!-- Available views check -->
-	<include name="AvailableViewsCheck">
-		<control type="grouplist" id="4200">
-			<include>HiddenObject</include>
-			<include content="AvailableViews">
-				<param name="id" value="42"/>
-			</include>
-		</control>
+	<!-- View selector -->
+	<include name="ViewSelector">
+		<param name="onback">50</param>
+		<definition>
+			<control type="group">
+				<include>FullscreenDimensions</include>
+				<include content="DiffuseMask">
+					<param name="visible">ControlGroup(4100).HasFocus</param>
+				</include>
+				<control type="group">
+					<animation type="Conditional" reversible="false" condition="ControlGroup(4100).HasFocus">
+						<effect type="slide" delay="0" start="0,-3000" end="0,0" time="0" />
+						<effect type="zoom" start="80" end="100" center="960,540" delay="160" tween="circle" easin="out" time="240" />
+						<effect type="fade" delay="160" end="100" time="240" />
+					</animation>
+					<animation type="Conditional" reversible="false" condition="!ControlGroup(4100).HasFocus">
+						<effect type="slide" delay="0" end="0,-3000" start="0,0" time="0" />
+						<effect type="zoom" start="100" end="80" center="960,540" easing="in" tween="circle" easin="out" time="240" />
+						<effect type="fade" start="100" end="0" time="240" />
+					</animation>
+					<centerleft>50%</centerleft>
+					<width>484</width>
+					<centertop>50%</centertop>
+					<height>970</height>
+					<control type="grouplist" id="4100">
+						<orientation>vertical</orientation>
+						<height>auto</height>
+						<align>center</align>
+						<itemgap>0</itemgap>
+						<onright>$PARAM[onback]</onright>
+						<onleft>$PARAM[onback]</onleft>
+						<onback>$PARAM[onback]</onback>
+						<usecontrolcoords>true</usecontrolcoords>
+						<control type="image" id="4101">
+							<width>100%</width>
+							<height>10</height>
+							<texture border="65,0,65,0" colordiffuse="context_color">dialogs/context/top.png</texture>
+						</control>
+						<include>AvailableViews</include>
+						<control type="image" id="4120">
+							<width>100%</width>
+							<height>10</height>
+							<texture border="65,0,65,0" colordiffuse="context_color">dialogs/context/bottom.png</texture>
+						</control>
+					</control>
+				</control>
+			</control>
+		</definition>
 	</include>
 	<include name="AvailableViews">
 		<param name="id">41</param>
@@ -1305,44 +1345,6 @@
 				<visible>$EXP[EpisodeViewVisible] | Window.IsVisible(MyPVRRecordings.xml)</visible>
 			</control>
 		</definition>
-	</include>
-	<!-- View selector -->
-	<include name="ViewSelector">
-		<control type="group">
-			<include>FullscreenDimensions</include>
-			<include content="DiffuseMask">
-				<param name="visible">ControlGroup(4100).HasFocus</param>
-			</include>
-			<control type="group">
-				<visible>ControlGroup(4100).HasFocus</visible>
-				<include>Visible_PopupOpenClose</include>
-				<centerleft>50%</centerleft>
-				<width>500</width>
-				<centertop>50%</centertop>
-				<height>982</height>
-				<control type="grouplist" id="4100">
-					<orientation>vertical</orientation>
-					<height>auto</height>
-					<align>center</align>
-					<itemgap>0</itemgap>
-					<onright>50</onright>
-					<onleft>50</onleft>
-					<onback>50</onback>
-					<usecontrolcoords>true</usecontrolcoords>
-					<control type="image" id="4101">
-						<width>100%</width>
-						<height>61</height>
-						<texture border="65,0,65,0" colordiffuse="context_color">dialogs/context/top.png</texture>
-					</control>
-					<include>AvailableViews</include>
-					<control type="image" id="4120">
-						<width>100%</width>
-						<height>61</height>
-						<texture border="65,0,65,0" colordiffuse="context_color">dialogs/context/bottom.png</texture>
-					</control>
-				</control>
-			</control>
-		</control>
 	</include>
 	<include name="ScrollTime">
 		<scrolltime tween="cubic" easing="out">700</scrolltime>
