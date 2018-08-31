@@ -37,7 +37,11 @@
 				<param name="rightlabel">$VAR[DurationMinutes]</param>
 				<param name="rightlabel2">$INFO[ListItem.Date]</param>
 			</include>
-			<include>EpisodeList_View_59</include>
+			<include content="EpisodeList_View_59">
+				<param name="mainlabel">$INFO[ListItem.Label]</param>
+				<param name="sublabel">$INFO[ListItem.Date,,   ]$INFO[ListItem.Channelname,,   ]$VAR[DurationMinutes,,   ]$INFO[ListItem.EndTime,$LOCALIZE[31037] ]</param>
+				<param name="thumblabel">$INFO[ListItem.Channelname]</param>
+			</include>
 		</control>
 		<!-- scrollbar -->
 		<include>Scrollbar</include>

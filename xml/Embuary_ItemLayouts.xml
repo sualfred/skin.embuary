@@ -1584,9 +1584,9 @@
 	</include>
 	<!-- Episode list -->
 	<include name="EpisodeListLayout">
-		<param name="mainlabel">$VAR[MainListLabel]</param>
-		<param name="sublabel">$VAR[SubListLabel]</param>
-		<param name="thumblabel">$VAR[MainListLabel]</param>
+		<param name="mainlabel">$VAR[EpisodeListLabel]</param>
+		<param name="sublabel">$VAR[DurationMinutes,,   ]$INFO[ListItem.EndTime,$LOCALIZE[31037] ]</param>
+		<param name="thumblabel">$VAR[EpisodeListLabel]</param>
 		<param name="thumb">$VAR[IconLandscape]</param>
 		<param name="focused">false</param>
 		<param name="visible">true</param>
@@ -1699,7 +1699,7 @@
 					<left>450</left>
 					<control type="label">
 						<height>50</height>
-						<label>$VAR[EpisodeListLabel]</label>
+						<label>$PARAM[mainlabel]</label>
 						<font>Reg26</font>
 						<aligny>top</aligny>
 					</control>
@@ -1731,7 +1731,7 @@
 						<animation effect="slide" end="95,0" time="0" condition="!String.IsEmpty(ListItem.Rating) + String.IsEqual(ListItem.Rating,10.0)">Conditional</animation>
 						<top>50</top>
 						<height>50</height>
-						<label>$VAR[DurationMinutes,,   ]$INFO[ListItem.EndTime,$LOCALIZE[31037] ]</label>
+						<label>$PARAM[sublabel]</label>
 						<font>Reg24</font>
 						<selectedcolor>text_white</selectedcolor>
 						<aligny>top</aligny>

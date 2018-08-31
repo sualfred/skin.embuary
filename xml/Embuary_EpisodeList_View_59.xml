@@ -8,7 +8,6 @@
 				<visible>Control.IsVisible($PARAM[id])</visible>
 				<animation effect="slide" condition="!String.IsEmpty(Container.ShowTitle) + !Container.HasParent + !Integer.IsGreaterOrEqual(Container($PARAM[id]).CurrentItem,2) + !Container($PARAM[id]).HasPrevious" time="200" end="0,150">Conditional</animation>
 				<animation effect="slide" condition="!String.IsEmpty(Container.ShowTitle) + Container.HasParent + !Integer.IsGreaterOrEqual(Container($PARAM[id]).CurrentItem,1) + !Container($PARAM[id]).HasPrevious" time="200" end="0,150">Conditional</animation>
-				<!-- Header -->
 				<control type="group">
 					<visible>!String.IsEmpty(Container.ShowTitle)</visible>
 					<animation effect="fade" condition="!Container.HasParent + !Integer.IsGreaterOrEqual(Container($PARAM[id]).CurrentItem,4) + !Container($PARAM[id]).HasPrevious" time="100" delay="100" start="0" end="100">Conditional</animation>
@@ -18,7 +17,6 @@
 					<left>70</left>
 					<right>70</right>
 					<top>-30</top>
-					<!-- Title -->
 					<control type="label">
 						<height>80</height>
 						<right>400</right>
@@ -35,7 +33,6 @@
 						<font>Reg37</font>
 						<visible>String.IsEqual(Container.Foldername,Container.ShowTitle)</visible>
 					</control>
-					<!-- logo -->
 					<control type="image">
 						<right>0</right>
 						<width>400</width>
@@ -44,7 +41,6 @@
 						<aspectratio align="right">keep</aspectratio>
 					</control>
 				</control>
-				<!-- List -->
 				<control id="$PARAM[id]" type="fixedlist">
 					<visible>[$EXP[EpisodeViewVisible] + Skin.HasSetting(ViewEpisodeList)] | Window.IsVisible(MyPVRRecordings.xml)</visible>
 					<animation effect="slide" time="0" end="0,-305" condition="!Container.HasParent + [Integer.IsEqual(Container($PARAM[id]).NumItems,2) | Integer.IsEqual(Container($PARAM[id]).NumItems,1)]">Conditional</animation>
@@ -73,6 +69,9 @@
 							<top>122</top>
 							<include content="EpisodeListLayout">
 								<param name="id">$PARAM[id]</param>
+								<param name="mainlabel">$PARAM[mainlabel]</param>
+								<param name="sublabel">$PARAM[sublabel]</param>
+								<param name="thumblabel">$PARAM[sublabel]</param>
 							</include>
 						</control>
 					</itemlayout>
@@ -84,6 +83,9 @@
 							<top>122</top>
 							<include content="EpisodeListLayout">
 								<param name="id">$PARAM[id]</param>
+								<param name="mainlabel">$PARAM[mainlabel]</param>
+								<param name="sublabel">$PARAM[sublabel]</param>
+								<param name="thumblabel">$PARAM[sublabel]</param>
 								<param name="focused" value="true"/>
 							</include>
 						</control>
