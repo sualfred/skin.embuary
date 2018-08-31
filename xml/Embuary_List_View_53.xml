@@ -37,7 +37,7 @@
 					<pagecontrol>17</pagecontrol>
 					<include>ScrollTime</include>
 					<preloaditems>4</preloaditems>
-					<oninfo condition="String.IsEqual(ListItem.DBType,set) + !String.StartsWith(ListItem.Path,plugin://plugin.video)">RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCINFO[Window(home).Property(SkinHelper.ListItem.ExtendedPlot)]')</oninfo>
+					<oninfo condition="String.IsEqual(ListItem.DBType,set) + !String.IsEmpty(Container(2001).ListItem.Label)">RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCVAR[ListViewPlot]')</oninfo>
 					<itemlayout height="120" width="1230">
 						<control type="group">
 							<left>70</left>
@@ -279,7 +279,7 @@
 							<param name="sublabel">$PARAM[sublabel]</param>
 							<param name="fallbacklabel">$PARAM[fallbacklabel]</param>
 						</include>
-						<control type="textbox" id="97">
+						<control type="textbox">
 							<top>435</top>
 							<bottom>0</bottom>
 							<align>justify</align>
@@ -287,7 +287,17 @@
 							<label>$VAR[ListViewPlot]</label>
 							<font>Light24</font>
 							<autoscroll>false</autoscroll>
-							<visible>!Window.IsVisible(musicplaylist)</visible>
+							<visible>!Window.IsVisible(musicplaylist) + [!String.IsEqual(ListItem.DBType,set) | String.IsEmpty(Container(2001).ListItem.Label)]</visible>
+						</control>
+						<control type="textbox">
+							<top>435</top>
+							<bottom>0</bottom>
+							<align>justify</align>
+							<aligny>top</aligny>
+							<label>[B]$INFO[Container(2001).NumItems,, ]$LOCALIZE[342]:[/B][CR]$VAR[ListViewPlot]</label>
+							<font>Light24</font>
+							<autoscroll>false</autoscroll>
+							<visible>!Window.IsVisible(musicplaylist) + String.IsEqual(ListItem.DBType,set) + !String.IsEmpty(Container(2001).ListItem.Label)</visible>
 						</control>
 						<!-- Buttons -->
 						<control type="grouplist" id="100">

@@ -27,7 +27,7 @@
 					<viewtype label="$LOCALIZE[31004]">panel</viewtype>
 					<pagecontrol>17</pagecontrol>
 					<include>ScrollTime</include>
-					<oninfo condition="String.IsEqual(ListItem.DBType,set) + !String.StartsWith(ListItem.Path,plugin://plugin.video)">RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCINFO[Window(home).Property(SkinHelper.ListItem.ExtendedPlot)]')</oninfo>
+					<oninfo condition="String.IsEqual(ListItem.DBType,set) + !String.IsEmpty(Container(2001).ListItem.Label)">RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCVAR[ListViewPlot]')</oninfo>
 					<itemlayout condition="!Skin.HasSetting(HideWideLabels) | !Window.IsVisible(myvideonav.xml)" width="447" height="305">
 						<control type="group">
 							<left>74</left>
