@@ -188,7 +188,7 @@
 						<onright>SetProperty(BounceRight,1,home)</onright>
 						<onright>noop</onright>
 						<onleft>900</onleft>
-						<oninfo condition="String.IsEqual(ListItem.DBType,set) + !String.StartsWith(ListItem.Path,plugin://plugin.video)">RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCINFO[Window(home).Property(SkinHelper.ListItem.ExtendedPlot)]')</oninfo>
+						<oninfo condition="String.IsEqual(ListItem.DBType,set) + !String.IsEmpty(Container(2001).ListItem.Label)">RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCVAR[ListViewPlot]')</oninfo>
 						<include condition="$PARAM[use_custom_onclick]" content="ContainerOnClick">
 							<param name="onclick" value="$PARAM[onclick]"/>
 							<param name="onclick2" value="$PARAM[onclick2]"/>
@@ -944,33 +944,33 @@
 						<param name="onclick11" value="$PARAM[onclick11]"/>
 						<param name="onclick12" value="$PARAM[onclick12]"/>
 					</include>
-						<itemlayout width="450">
-							<control type="group">
-								<left>70</left>
-								<top>64</top>
-								<include content="LandscapeLayout">
-									<param name="mainlabel" value="$PARAM[mainlabel]" />
-									<param name="sublabel" value="$PARAM[sublabel]" />
-									<param name="labels_visible" value="$PARAM[labels_visible]" />
-									<param name="focused" value="false" />
-									<param name="id" value="$PARAM[id]" />
-								</include>
-							</control>
-						</itemlayout>
-						<focusedlayout width="450">
-							<include>SetPropertyOnFocus</include>
-							<control type="group">
-								<left>70</left>
-								<top>64</top>
-								<include content="LandscapeLayout">
-									<param name="mainlabel" value="$PARAM[mainlabel]" />
-									<param name="sublabel" value="$PARAM[sublabel]" />
-									<param name="labels_visible" value="$PARAM[labels_visible]" />
-									<param name="focused" value="true" />
-									<param name="id" value="$PARAM[id]" />
-								</include>
-							</control>
-						</focusedlayout>
+					<itemlayout width="450">
+						<control type="group">
+							<left>70</left>
+							<top>64</top>
+							<include content="LandscapeLayout">
+								<param name="mainlabel" value="$PARAM[mainlabel]" />
+								<param name="sublabel" value="$PARAM[sublabel]" />
+								<param name="labels_visible" value="$PARAM[labels_visible]" />
+								<param name="focused" value="false" />
+								<param name="id" value="$PARAM[id]" />
+							</include>
+						</control>
+					</itemlayout>
+					<focusedlayout width="450">
+						<include>SetPropertyOnFocus</include>
+						<control type="group">
+							<left>70</left>
+							<top>64</top>
+							<include content="LandscapeLayout">
+								<param name="mainlabel" value="$PARAM[mainlabel]" />
+								<param name="sublabel" value="$PARAM[sublabel]" />
+								<param name="labels_visible" value="$PARAM[labels_visible]" />
+								<param name="focused" value="true" />
+								<param name="id" value="$PARAM[id]" />
+							</include>
+						</control>
+					</focusedlayout>
 					<include condition="$PARAM[use_custom_content]" content="ContainerContentPath">
 						<param name="widget_target">$PARAM[widget_target]</param>
 						<param name="sortby">$PARAM[sortby]</param>
