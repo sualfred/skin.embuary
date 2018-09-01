@@ -160,13 +160,14 @@
 						<include>SettingsButton</include>
 						<label>$LOCALIZE[31244]</label>
 						<onclick>RunScript(script.skinshortcuts,type=manage&amp;group=mainmenu)</onclick>
+						<enable>!Skin.HasSetting(HideMainMenu)</enable>
 					</control>
 					<control type="button" id="203">
 						<include>SettingsButton</include>
 						<onclick>SetProperty(PositionCount,18,home)</onclick>
 						<onclick>SetProperty(SelectorContent,HomeWidgets,home)</onclick>
 						<onclick>ActivateWindow(1110)</onclick>
-						<enable>!Skin.HasSetting(HomePanelLayout)</enable>
+						<enable>!Skin.HasSetting(HomePanelLayout) + !Skin.HasSetting(HideMainMenu)</enable>
 						<label>$LOCALIZE[31245]</label>
 					</control>
 					<control type="radiobutton" id="204">
@@ -174,6 +175,14 @@
 						<onclick>Skin.ToggleSetting(HomePanelLayout)</onclick>
 						<selected>Skin.HasSetting(HomePanelLayout)</selected>
 						<label>$LOCALIZE[31153]</label>
+						<enable>!Skin.HasSetting(HideMainMenu)</enable>
+					</control>
+					<control type="radiobutton" id="205">
+						<include>SettingsButton</include>
+						<onclick>Skin.ToggleSetting(HideMainMenu)</onclick>
+						<selected>Skin.HasSetting(HideMainMenu)</selected>
+						<enable>!Skin.HasSetting(HomePanelLayout)</enable>
+						<label>$LOCALIZE[31254]</label>
 					</control>
 					<!-- movie -->
 					<include content="SkinSettingsHeadlineLabel">
