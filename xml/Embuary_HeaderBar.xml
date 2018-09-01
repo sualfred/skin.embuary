@@ -10,7 +10,7 @@
 		<definition>
 			<!-- Top bar -->
 			<control type="group">
-				<animation effect="slide" start="0,0" end="0,-80"  time="500" delay="100" condition="!ControlGroup(6666).HasFocus + [[Container($PARAM[id]).HasPrevious + !Integer.IsEqual(Container($PARAM[id]).CurrentItem,1) + $PARAM[auto_hide]] | [$PARAM[hide_header]]]" tween="sine" easing="inout">Conditional</animation>
+				<animation effect="slide" start="0,0" end="0,-80"  time="500" delay="100" condition="String.IsEmpty(Window(home).Property(ShowHeader)) + !ControlGroup(6666).HasFocus + [[Container($PARAM[id]).HasPrevious + !Integer.IsEqual(Container($PARAM[id]).CurrentItem,1) + $PARAM[auto_hide]] | [$PARAM[hide_header]]]" tween="sine" easing="inout">Conditional</animation>
 				<control type="group">
 					<include>Animation_ScrollbarIsVisible</include>
 					<visible>!$EXP[InfoDialogActive]</visible>
