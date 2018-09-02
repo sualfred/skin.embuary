@@ -740,10 +740,13 @@
 	</include>
 	<!-- Global property onload unload -->
 	<include name="PropertyIncludes">
-		<onload>ClearProperty(FocusBounce,home)</onload>
-		<onunload>ClearProperty(FocusBounce,home)</onunload>
-		<onunload>SetProperty(ShowHeader,1,home)</onunload>
-		<onunload>AlarmClock(ShowHeader,ClearProperty(ShowHeader,home),00:02,silent)</onunload>
+		<param name="ShowHeader">false</param>
+		<definition>
+			<onload>ClearProperty(FocusBounce,home)</onload>
+			<onunload>ClearProperty(FocusBounce,home)</onunload>
+			<onunload condition="$PARAM[ShowHeader]">SetProperty(ShowHeader,1,home)</onunload>
+			<onunload condition="$PARAM[ShowHeader]">AlarmClock(ShowHeader,ClearProperty(ShowHeader,home),00:02,silent)</onunload>
+		</definition>
 	</include>
 	<!-- Scrollbars -->
 	<include name="Scrollbar">

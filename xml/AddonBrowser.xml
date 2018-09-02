@@ -7,7 +7,9 @@
 	<include>UnloadSetProperties</include>
 	<onload condition="!Window.Previous(fullscreenvideo) + !Window.Previous(visualisation) + Skin.HasSetting(JumpToFirstPage) + String.IsEmpty(Window(home).Property(NoJumpToFirstPage))">action(firstpage)</onload>
 	<onload>ClearProperty(NoJumpToFirstPage,home)</onload>
-	<include>PropertyIncludes</include>
+	<include content="PropertyIncludes">
+		<param name="ShowHeader" value="true"/>
+	</include>
 	<controls>
 		<control type="button" id="2">
 			<include>HiddenObject</include>
