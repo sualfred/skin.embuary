@@ -691,25 +691,6 @@
 			<texturefocus>-</texturefocus>
 			<texturenofocus>-</texturenofocus>
 			<onfocus>ClearProperty(FocusBounce,home)</onfocus>
-			<onfocus condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)]">SetProperty(TVShowRating,$INFO[ListItem.Rating],home)</onfocus>
-			<onfocus condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)]">SetProperty(TVShowDBID,$INFO[ListItem.DBID],home)</onfocus>
-			<onfocus condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)]">SetProperty(TVShowIMDB,$INFO[ListItem.IMDBnumber],home)</onfocus>
-			<onfocus condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)]">SetProperty(TVShowPremiered,$INFO[ListItem.Premiered],home)</onfocus>
-			<onfocus condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)]">SetProperty(TVShowOverlay,$INFO[ListItem.Overlay],home)</onfocus>
-			<onfocus condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)]">SetProperty(TVShowTotalSeasons,$INFO[ListItem.Property(TotalSeasons)],home)</onfocus>
-			<onfocus condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)]">SetProperty(TVShowTotalEpisodes,$INFO[ListItem.Property(TotalEpisodes)],home)</onfocus>
-			<onfocus condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)]">SetProperty(UnwatchedEpisodes,$INFO[ListItem.Property(unwatchedepisodes)],home)</onfocus>
-			<onfocus condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)] + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">SetProperty(EmbyID,$INFO[ListItem.Property(id)],home)</onfocus>
-			<onfocus condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)] + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">SetProperty(EmbyMPAA,$INFO[ListItem.MPAA],home)</onfocus>
-			<onfocus condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)] + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">SetProperty(EmbyGenre,$INFO[ListItem.Genre],home)</onfocus>
-			<onfocus condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)] + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">SetProperty(UnwatchedEpisodes,$INFO[ListItem.Property(unwatchedepisodes)],home)</onfocus>
-		</control>
-	</include>
-	<include name="WidgetSetPropertyOnFocus">
-		<control type="button">
-			<texturefocus>-</texturefocus>
-			<texturenofocus>-</texturenofocus>
-			<onfocus>ClearProperty(FocusBounce,home)</onfocus>
 			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow)">SetProperty(TVShowRating,$INFO[Container($PARAM[id]).ListItem.Rating],home)</onfocus>
 			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow)">SetProperty(TVShowDBID,$INFO[Container($PARAM[id]).ListItem.DBID],home)</onfocus>
 			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow)">SetProperty(TVShowIMDB,$INFO[Container($PARAM[id]).ListItem.IMDBnumber],home)</onfocus>
