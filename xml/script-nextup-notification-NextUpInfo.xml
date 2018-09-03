@@ -31,6 +31,9 @@
 		<control type="label" id="3002">
 			<include>HiddenObject</include>
 		</control>
+		<control type="label" id="3003">
+			<include>HiddenObject</include>
+		</control>
 		<control type="label" id="3004">
 			<include>HiddenObject</include>
 		</control>
@@ -178,15 +181,16 @@
 						<label></label>
 						<font>Material26</font>
 						<textcolor>red</textcolor>
-						<visible>!String.IsEmpty(Control.GetLabel(3003))</visible>
+						<visible>!String.IsEmpty(Control.GetLabel(3003)) + !String.IsEqual(Control.GetLabel(3003),0)</visible>
 					</control>
-					<control type="label" id="3003">
+					<control type="label">
 						<width>auto</width>
 						<height>30</height>
 						<aligny>center</aligny>
-						<label>$INFO[VideoPlayer.Rating]   </label>
+						<label>$INFO[Control.GetLabel(3003),,   ]</label>
 						<font>reg24</font>
 						<textcolor>white</textcolor>
+						<visible>!String.IsEmpty(Control.GetLabel(3003)) + !String.IsEqual(Control.GetLabel(3003),0)</visible>
 					</control>
 				</control>
 				<!-- Bottom label section -->

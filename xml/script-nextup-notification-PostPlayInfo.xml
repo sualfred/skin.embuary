@@ -98,12 +98,12 @@
 								<textcolor>red</textcolor>
 								<include>MetaLabel</include>
 								<label></label>
-								<visible>!String.IsEmpty(Window.Property(next.rating))</visible>
+								<visible>!String.IsEmpty(Window.Property(next.rating)) + !String.IsEqual(Window.Property(next.rating),0)</visible>
 							</control>
 							<control type="label">
 								<include>MetaLabel</include>
 								<label>$INFO[Window.Property(next.rating)]   </label>
-								<visible>!String.IsEmpty(Window.Property(next.rating))</visible>
+								<visible>!String.IsEmpty(Window.Property(next.rating)) + !String.IsEqual(Window.Property(next.rating),0)</visible>
 							</control>
 						</control>
 						<control type="grouplist" id="100">
