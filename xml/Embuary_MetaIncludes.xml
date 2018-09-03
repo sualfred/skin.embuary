@@ -475,7 +475,19 @@
 				<align>center</align>
 				<aligny>center</aligny>
 				<label>$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title]</label>
-				<visible>!ListItem.IsParentFolder + [String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)]</visible>
+				<visible>!String.StartsWith(ListItem.Path,pvr://) + !ListItem.IsParentFolder + [String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)]</visible>
+			</control>
+			<control type="textbox">
+				<top>10</top>
+				<left>10</left>
+				<width>410</width>
+				<height>222</height>
+				<font>Light24</font>
+				<textcolor>white</textcolor>
+				<align>center</align>
+				<aligny>center</aligny>
+				<label>$INFO[ListItem.Channelname,, ]$INFO[ListItem.Label]</label>
+				<visible>String.StartsWith(ListItem.Path,pvr://) + !ListItem.IsParentFolder + [String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)]</visible>
 			</control>
 			<control type="textbox">
 				<top>10</top>
