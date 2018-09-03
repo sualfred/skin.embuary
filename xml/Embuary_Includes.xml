@@ -723,10 +723,12 @@
 	<include name="PropertyIncludes">
 		<param name="ShowHeader">false</param>
 		<definition>
+			<onload condition="$PARAM[ShowHeader]">SetProperty(ShowHeader,1,home)</onload>
+			<onload condition="$PARAM[ShowHeader]">AlarmClock(ShowHeader,ClearProperty(ShowHeader,home),00:02,silent)</onload>
 			<onload>ClearProperty(FocusBounce,home)</onload>
 			<onunload>ClearProperty(FocusBounce,home)</onunload>
-			<onunload condition="$PARAM[ShowHeader]">SetProperty(ShowHeader,1,home)</onunload>
-			<onunload condition="$PARAM[ShowHeader]">AlarmClock(ShowHeader,ClearProperty(ShowHeader,home),00:02,silent)</onunload>
+			<onunload>ClearProperty(ShowHeader,home)</onunload>
+			<onunload condition="System.HasAlarm(ShowHeader)">CancelAlarm(ShowHeader,silent)</onunload>
 		</definition>
 	</include>
 	<!-- Scrollbars -->
