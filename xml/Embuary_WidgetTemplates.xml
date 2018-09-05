@@ -62,8 +62,8 @@
 			<param name="mainlabel" value="$INFO[ListItem.TvShowTitle]"/>
 			<param name="sublabel" value="$INFO[ListItem.Year]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="limit" value="30"/>
-			<param name="content" value="special://skin/playlists/video/InProgressTVShows.xsp"/>
+			<param name="limit" value="25"/>
+			<param name="content" value="videodb://tvshows/titles/?xsp=%7b%22limit%22%3a25%2c%22order%22%3a%7b%22direction%22%3a%22descending%22%2c%22ignorefolders%22%3a0%2c%22method%22%3a%22lastplayed%22%7d%2c%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22inprogress%22%2c%22operator%22%3a%22true%22%2c%22value%22%3a%5b%5d%7d%5d%7d%2c%22type%22%3a%22tvshows%22%7d&amp;reload=$INFO[Window(Home).Property(widgetreload)]"/>
 		</include>
 	</include>
 	<include name="W_EmbyCon_NextUp">
@@ -76,7 +76,7 @@
 			<param name="mainlabel" value="$INFO[ListItem.TvShowTitle]"/>
 			<param name="sublabel" value="$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="limit" value="30"/>
+			<param name="limit" value="25"/>
 			<param name="content" value="$VAR[EmbyCon.NextUp]"/>
 		</include>
 	</include>
@@ -90,8 +90,10 @@
 			<param name="mainlabel" value="$INFO[ListItem.Label]"/>
 			<param name="sublabel" value="$INFO[ListItem.Year]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="limit" value="30"/>
-			<param name="content" value="special://skin/playlists/video/RecentlyAddedMovies.xsp"/>
+			<param name="limit" value="25"/>
+			<param name="sortby" value="dateadded"/>
+			<param name="sortorder" value="descending"/>
+			<param name="content" value="videodb://movies/titles/?xsp=%7b%22limit%22%3a25%2c%22order%22%3a%7b%22direction%22%3a%22descending%22%2c%22ignorefolders%22%3a0%2c%22method%22%3a%22dateadded%22%7d%2c%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22dateadded%22%2c%22operator%22%3a%22inthelast%22%2c%22value%22%3a%5b%2260%22%5d%7d%2c%7b%22field%22%3a%22playcount%22%2c%22operator%22%3a%22is%22%2c%22value%22%3a%5b%220%22%5d%7d%5d%7d%2c%22type%22%3a%22movies%22%7d&amp;reload=$INFO[Window(Home).Property(widgetreload)]"/>
 		</include>
 	</include>
 	<include name="W_EmbyCon_NewMovies">
@@ -104,7 +106,7 @@
 			<param name="mainlabel" value="$INFO[ListItem.Label]"/>
 			<param name="sublabel" value="$INFO[ListItem.Year]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="limit" value="30"/>
+			<param name="limit" value="25"/>
 			<param name="content" value="$VAR[EmbyCon.NewMovies]"/>
 		</include>
 	</include>
@@ -118,8 +120,10 @@
 			<param name="mainlabel" value="$INFO[ListItem.Label]"/>
 			<param name="sublabel" value="$INFO[ListItem.Year]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="limit" value="30"/>
-			<param name="content" value="special://skin/playlists/video/RecentlyUpdatedTVShows.xsp"/>
+			<param name="limit" value="25"/>
+			<param name="sortby" value="dateadded"/>
+			<param name="sortorder" value="descending"/>
+			<param name="content" value="videodb://tvshows/titles/?xsp=%7b%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22dateadded%22%2c%22operator%22%3a%22inthelast%22%2c%22value%22%3a%5b%2260%22%5d%7d%2c%7b%22field%22%3a%22playcount%22%2c%22operator%22%3a%22is%22%2c%22value%22%3a%5b%220%22%5d%7d%5d%7d%2c%22type%22%3a%22tvshows%22%7d&amp;reload=$INFO[Window(Home).Property(widgetreload)]"/>
 		</include>
 	</include>
 	<include name="W_EmbyCon_NewEpisodes">
@@ -146,7 +150,7 @@
 			<param name="mainlabel" value="$INFO[ListItem.Album]"/>
 			<param name="sublabel" value="$INFO[ListItem.Artist]"/>
 			<param name="widget_target" value="music"/>
-			<param name="limit" value="30"/>
+			<param name="limit" value="25"/>
 			<param name="content" value="musicdb://recentlyaddedalbums/"/>
 		</include>
 	</include>
@@ -162,7 +166,7 @@
 			<param name="sortby" value="dateadded"/>
 			<param name="sortorder" value="ascending"/>
 			<param name="widget_target" value="music"/>
-			<param name="limit" value="30"/>
+			<param name="limit" value="25"/>
 			<param name="content" value="$VAR[EmbyCon.NewAlbums]"/>
 		</include>
 	</include>
@@ -176,8 +180,9 @@
 			<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 			<param name="sublabel" value="$INFO[ListItem.Year]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="limit" value="30"/>
-			<param name="content" value="special://skin/playlists/video/InProgressMovies.xsp"/>
+			<param name="sortby" value="lastplayed"/>
+			<param name="sortorder" value="descending"/>
+			<param name="content" value="videodb://movies/titles/?xsp=%7b%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22inprogress%22%2c%22operator%22%3a%22true%22%2c%22value%22%3a%5b%5d%7d%5d%7d%2c%22type%22%3a%22movies%22%7d&amp;reload=$INFO[Window(Home).Property(widgetreload)]"/>
 		</include>
 	</include>
 	<include name="W_EmbyCon_InProgressMovies">
@@ -230,8 +235,10 @@
 			<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 			<param name="sublabel" value="$INFO[ListItem.Year]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="limit" value="30"/>
-			<param name="content" value="special://skin/playlists/video/RecommendedMovies.xsp"/>
+			<param name="limit" value="25"/>
+			<param name="sortby" value="rating"/>
+			<param name="sortorder" value="descending"/>
+			<param name="content" value="videodb://movies/titles/?xsp=%7b%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22playcount%22%2c%22operator%22%3a%22is%22%2c%22value%22%3a%5b%220%22%5d%7d%5d%7d%2c%22type%22%3a%22movies%22%7d&amp;reload=$INFO[Window(Home).Property(widgetreload)]"/>
 		</include>
 	</include>
 	<include name="W_EmbyCon_RecommendedMovies">
@@ -246,7 +253,7 @@
 			<param name="widget_target" value="videos"/>
 			<param name="sortby" value="rating"/>
 			<param name="sortorder" value="descending"/>
-			<param name="limit" value="30"/>
+			<param name="limit" value="25"/>
 			<param name="content" value="$VAR[EmbyCon.RecommendedMovies]"/>
 		</include>
 	</include>
@@ -260,7 +267,7 @@
 			<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 			<param name="sublabel" value="$INFO[ListItem.Year]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="limit" value="30"/>
+			<param name="limit" value="25"/>
 			<param name="content" value="plugin://script.skin.helper.widgets/?action=similar&amp;mediatype=movies&amp;reload=$INFO[Window(Home).Property(widgetreload2)]"/>
 		</include>
 	</include>
@@ -274,7 +281,7 @@
 			<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 			<param name="sublabel" value="$INFO[ListItem.Year]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="limit" value="30"/>
+			<param name="limit" value="25"/>
 			<param name="content" value="$VAR[EmbyCon.SimilarMovies]"/>
 		</include>
 	</include>
@@ -324,7 +331,9 @@
 			<param name="ondown" value="$PARAM[ondown]"/>
 			<param name="headline" value="$LOCALIZE[31080]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="content" value="special://skin/playlists/video/InProgressEpisodes.xsp"/>
+			<param name="sortby" value="lastplayed"/>
+			<param name="sortorder" value="descending"/>
+			<param name="content" value="videodb://tvshows/titles/?xsp=%7b%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22inprogress%22%2c%22operator%22%3a%22true%22%2c%22value%22%3a%5b%5d%7d%5d%7d%2c%22type%22%3a%22tvshows%22%7d&amp;reload=$INFO[Window(Home).Property(widgetreload)]"/>
 		</include>
 	</include>
 	<include name="W_EmbyCon_InProgressShows">
@@ -374,8 +383,10 @@
 			<param name="headline" value="$LOCALIZE[31017]"/>
 			<param name="sublabel" value="$INFO[ListItem.Year]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="limit" value="30"/>
-			<param name="content" value="special://skin/playlists/video/RecommendedTVShows.xsp"/>
+			<param name="limit" value="25"/>
+			<param name="sortby" value="rating"/>
+			<param name="sortorder" value="descending"/>
+			<param name="content" value="videodb://tvshows/titles/?xsp=%7b%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22playcount%22%2c%22operator%22%3a%22is%22%2c%22value%22%3a%5b%220%22%5d%7d%5d%7d%2c%22type%22%3a%22tvshows%22%7d&amp;reload=$INFO[Window(Home).Property(widgetreload)]"/>
 		</include>
 	</include>
 	<include name="W_EmbyCon_RecommendedShows">
@@ -387,7 +398,7 @@
 			<param name="headline" value="$LOCALIZE[31017]$VAR[EmbyConLabel]"/>
 			<param name="sublabel" value="$INFO[ListItem.Year]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="limit" value="30"/>
+			<param name="limit" value="25"/>
 			<param name="sortby" value="rating"/>
 			<param name="sortorder" value="descending"/>
 			<param name="content" value="$VAR[EmbyCon.RecommendedShows]"/>
@@ -438,10 +449,10 @@
 			<param name="ondown" value="$PARAM[ondown]"/>
 			<param name="headline" value="$LOCALIZE[517]"/>
 			<param name="widget_target" value="music"/>
-			<param name="limit" value="30"/>
+			<param name="limit" value="25"/>
 			<param name="sortby" value="lastplayed"/>
 			<param name="sortorder" value="descending"/>
-			<param name="content" value="musicdb://recentlyplayedalbums/"/>
+			<param name="content" value="musicdb://recentlyplayedalbums/?reload=$INFO[Window(Home).Property(widgetreload)]"/>
 		</include>
 	</include>
 	<!-- Often played songs -->
@@ -452,10 +463,10 @@
 			<param name="ondown" value="$PARAM[ondown]"/>
 			<param name="headline" value="$LOCALIZE[31215]"/>
 			<param name="widget_target" value="music"/>
-			<param name="limit" value="30"/>
+			<param name="limit" value="25"/>
 			<param name="sortby" value="playcount"/>
 			<param name="sortorder" value="descending"/>
-			<param name="content" value="musicdb://songs/"/>
+			<param name="content" value="musicdb://songs/?reload=$INFO[Window(Home).Property(widgetreload)]"/>
 		</include>
 	</include>
 	<include name="W_EmbyCon_OftenPlayedSongs">
@@ -466,7 +477,7 @@
 			<param name="ondown" value="$PARAM[ondown]"/>
 			<param name="headline" value="$LOCALIZE[31215]$VAR[EmbyConLabel]"/>
 			<param name="widget_target" value="music"/>
-			<param name="limit" value="30"/>
+			<param name="limit" value="25"/>
 			<param name="content" value="$VAR[EmbyCon.OftenPlayedSongs]"/>
 		</include>
 	</include>
