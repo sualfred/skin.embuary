@@ -93,7 +93,7 @@
 			<texture colordiffuse="background">common/white.jpg</texture>
 		</control>
 		<control type="group">
-			<visible>Player.HasMedia + !Skin.HasSetting(HideBackgroundPlayback) + $EXP[HideBackground]</visible>
+			<visible>Player.HasMedia + !Skin.HasSetting(HideBackgroundPlayback) + [$EXP[HideBackground] | $PARAM[forced_visible]]</visible>
 			<control type="videowindow">
 				<include>FullscreenDimensions</include>
 				<visible>Player.HasVideo</visible>
@@ -104,7 +104,7 @@
 			</control>
 		</control>
 		<control type="group">
-			<visible>[!Player.HasMedia | Skin.HasSetting(HideBackgroundPlayback)] + !Skin.HasSetting(HideBackground) + !Window.IsVisible(MyPVRguide.xml) + !Window.IsVisible(virtualkeyboard) + $EXP[HideBackground]</visible>
+			<visible>[!Player.HasMedia | Skin.HasSetting(HideBackgroundPlayback)] + !Skin.HasSetting(HideBackground) + !Window.IsVisible(MyPVRguide.xml) + !Window.IsVisible(virtualkeyboard) + [$EXP[HideBackground] | $PARAM[forced_visible]]</visible>
 			<include>Visible_Fade</include>
 			<control type="image">
 				<include>FullscreenDimensions</include>
