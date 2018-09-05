@@ -87,65 +87,68 @@
 	</include>
 	<!-- Background -->
 	<include name="Background">
-		<control type="image">
-			<include>FullscreenDimensions</include>
-			<texture colordiffuse="background">common/white.jpg</texture>
-		</control>
-		<control type="group">
-			<visible>Player.HasMedia + !Skin.HasSetting(HideBackgroundPlayback) + [$EXP[HideBackground] | $PARAM[forced_visible]]</visible>
-			<control type="videowindow">
-				<include>FullscreenDimensions</include>
-				<visible>Player.HasVideo</visible>
-			</control>
-			<control type="group">
-				<visible>Player.HasAudio</visible>
-				<include>MusicBackground</include>
-			</control>
-		</control>
-		<control type="group">
-			<visible>[!Player.HasMedia | Skin.HasSetting(HideBackgroundPlayback)] + !Skin.HasSetting(HideBackground) + !Window.IsVisible(MyPVRguide.xml) + !Window.IsVisible(virtualkeyboard) + [$EXP[HideBackground] | $PARAM[forced_visible]]</visible>
-			<include>Visible_Fade</include>
+		<param name="forced_visible">false</param>
+		<definition>
 			<control type="image">
 				<include>FullscreenDimensions</include>
-				<texture background="true">$VAR[BackgroundSource]</texture>
-				<fadetime>1000</fadetime>
-				<aspectratio>scale</aspectratio>
-				<visible>!Skin.HasSetting(ShowRandomBackgroundImage)</visible>
+				<texture colordiffuse="background">common/white.jpg</texture>
 			</control>
-			<control type="multiimage">
+			<control type="group">
+				<visible>Player.HasMedia + !Skin.HasSetting(HideBackgroundPlayback) + [$EXP[HideBackground] | $PARAM[forced_visible]]</visible>
+				<control type="videowindow">
+					<include>FullscreenDimensions</include>
+					<visible>Player.HasVideo</visible>
+				</control>
+				<control type="group">
+					<visible>Player.HasAudio</visible>
+					<include>MusicBackground</include>
+				</control>
+			</control>
+			<control type="group">
+				<visible>[!Player.HasMedia | Skin.HasSetting(HideBackgroundPlayback)] + !Skin.HasSetting(HideBackground) + !Window.IsVisible(MyPVRguide.xml) + !Window.IsVisible(virtualkeyboard) + [$EXP[HideBackground] | $PARAM[forced_visible]]</visible>
+				<include>Visible_Fade</include>
+				<control type="image">
+					<include>FullscreenDimensions</include>
+					<texture background="true">$VAR[BackgroundSource]</texture>
+					<fadetime>1000</fadetime>
+					<aspectratio>scale</aspectratio>
+					<visible>!Skin.HasSetting(ShowRandomBackgroundImage)</visible>
+				</control>
+				<control type="multiimage">
+					<include>FullscreenDimensions</include>
+					<imagepath background="true">$INFO[Skin.String(RandomBackgroundImage)]</imagepath>
+					<timeperimage>15000</timeperimage>
+					<fadetime>1000</fadetime>
+					<pauseatend>10000</pauseatend>
+					<randomize>true</randomize>
+					<aspectratio>scale</aspectratio>
+					<visible>Skin.HasSetting(ShowRandomBackgroundImage)</visible>
+				</control>
+			</control>
+			<control type="image">
 				<include>FullscreenDimensions</include>
-				<imagepath background="true">$INFO[Skin.String(RandomBackgroundImage)]</imagepath>
-				<timeperimage>15000</timeperimage>
-				<fadetime>1000</fadetime>
-				<pauseatend>10000</pauseatend>
-				<randomize>true</randomize>
-				<aspectratio>scale</aspectratio>
-				<visible>Skin.HasSetting(ShowRandomBackgroundImage)</visible>
+				<texture>special://skin/extras/themes/$VAR[SkinTheme]/background.png</texture>
+				<animation effect="fade" start="100" end="90" time="0" condition="String.IsEqual(Skin.String(AlphaBackground),90)">Conditional</animation>
+				<animation effect="fade" start="100" end="80" time="0" condition="String.IsEqual(Skin.String(AlphaBackground),80)">Conditional</animation>
+				<animation effect="fade" start="100" end="70" time="0" condition="String.IsEqual(Skin.String(AlphaBackground),70)">Conditional</animation>
+				<animation effect="fade" start="100" end="60" time="0" condition="String.IsEqual(Skin.String(AlphaBackground),60)">Conditional</animation>
+				<animation effect="fade" start="100" end="50" time="0" condition="String.IsEqual(Skin.String(AlphaBackground),50)">Conditional</animation>
+				<animation effect="fade" start="100" end="40" time="0" condition="String.IsEqual(Skin.String(AlphaBackground),40)">Conditional</animation>
+				<animation effect="fade" start="100" end="30" time="0" condition="String.IsEqual(Skin.String(AlphaBackground),30)">Conditional</animation>
+				<animation effect="fade" start="100" end="20" time="0" condition="String.IsEqual(Skin.String(AlphaBackground),20)">Conditional</animation>
+				<animation effect="fade" start="100" end="10" time="0" condition="String.IsEqual(Skin.String(AlphaBackground),10)">Conditional</animation>
 			</control>
-		</control>
-		<control type="image">
-			<include>FullscreenDimensions</include>
-			<texture>special://skin/extras/themes/$VAR[SkinTheme]/background.png</texture>
-			<animation effect="fade" start="100" end="90" time="0" condition="String.IsEqual(Skin.String(AlphaBackground),90)">Conditional</animation>
-			<animation effect="fade" start="100" end="80" time="0" condition="String.IsEqual(Skin.String(AlphaBackground),80)">Conditional</animation>
-			<animation effect="fade" start="100" end="70" time="0" condition="String.IsEqual(Skin.String(AlphaBackground),70)">Conditional</animation>
-			<animation effect="fade" start="100" end="60" time="0" condition="String.IsEqual(Skin.String(AlphaBackground),60)">Conditional</animation>
-			<animation effect="fade" start="100" end="50" time="0" condition="String.IsEqual(Skin.String(AlphaBackground),50)">Conditional</animation>
-			<animation effect="fade" start="100" end="40" time="0" condition="String.IsEqual(Skin.String(AlphaBackground),40)">Conditional</animation>
-			<animation effect="fade" start="100" end="30" time="0" condition="String.IsEqual(Skin.String(AlphaBackground),30)">Conditional</animation>
-			<animation effect="fade" start="100" end="20" time="0" condition="String.IsEqual(Skin.String(AlphaBackground),20)">Conditional</animation>
-			<animation effect="fade" start="100" end="10" time="0" condition="String.IsEqual(Skin.String(AlphaBackground),10)">Conditional</animation>
-		</control>
-		<control type="image">
-			<include>FullscreenDimensions</include>
-			<texture>special://skin/extras/themes/$VAR[SkinTheme]/vignette.png</texture>
-		</control>
-		<control type="image">
-			<include>FullscreenDimensions</include>
-			<texture background="true">holiday/winter/frost.png</texture>
-			<aspectratio>stretch</aspectratio>
-			<visible>$EXP[HolidayTheme]</visible>
-		</control>
+			<control type="image">
+				<include>FullscreenDimensions</include>
+				<texture>special://skin/extras/themes/$VAR[SkinTheme]/vignette.png</texture>
+			</control>
+			<control type="image">
+				<include>FullscreenDimensions</include>
+				<texture background="true">holiday/winter/frost.png</texture>
+				<aspectratio>stretch</aspectratio>
+				<visible>$EXP[HolidayTheme]</visible>
+			</control>
+		</definition>
 	</include>
 	<!-- No textures -->
 	<include name="NoTextures">
