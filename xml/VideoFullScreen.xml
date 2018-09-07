@@ -56,6 +56,7 @@
 				</control>
 				<!-- Poster -->
 				<control type="group" id="99">
+					<visible>!String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
 					<visible>[VideoPlayer.Content(movies) | VideoPlayer.Content(episodes)] + !VideoPlayer.Content(musicvideos) + [!String.IsEmpty(Player.Art(poster)) | !String.IsEmpty(Player.Art(tvshow.poster))] + ![VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)]</visible>
 					<control type="image" id="99">
 						<bottom>25</bottom>
@@ -83,6 +84,7 @@
 				</control>
 				<!-- Square -->
 				<control type="group" id="99">
+					<visible>!String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
 					<visible>VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)</visible>
 					<control type="image" id="99">
 						<bottom>25</bottom>
@@ -134,7 +136,7 @@
 				</control>
 				<!-- Wide -->
 				<control type="group" id="99">
-					<visible>![VideoPlayer.Content(movies) | VideoPlayer.Content(episodes) | VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)] | VideoPlayer.Content(musicvideos) | [String.IsEmpty(Player.Art(poster)) + String.IsEmpty(Player.Art(tvshow.poster)) + !VideoPlayer.Content(livetv) + !String.StartsWith(Player.Filenameandpath,pvr://)]</visible>
+					<visible>![VideoPlayer.Content(movies) | VideoPlayer.Content(episodes) | VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)] | VideoPlayer.Content(musicvideos) | [String.IsEmpty(Player.Art(poster)) + String.IsEmpty(Player.Art(tvshow.poster)) + !VideoPlayer.Content(livetv) + !String.StartsWith(Player.Filenameandpath,pvr://)] | String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
 					<control type="image" id="99">
 						<bottom>25</bottom>
 						<left>27</left>
@@ -234,6 +236,7 @@
 						<font>reg24</font>
 						<textcolor>white</textcolor>
 						<visible>!String.IsEmpty(VideoPlayer.Year)</visible>
+						<visible>!String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
 					</control>
 					<control type="button" id="99">
 						<animation effect="slide" end="0,3" time="0" condition="true">Conditional</animation>
@@ -249,12 +252,14 @@
 						<texturenofocus border="10" colordiffuse="white">icons/rating/mpaa.png</texturenofocus>
 						<enable>false</enable>
 						<visible>!String.IsEmpty(VideoPlayer.Mpaa)</visible>
+						<visible>!String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
 					</control>
 					<control type="label" id="99">
 						<width>19</width>
 						<height>24</height>
 						<label/>
 						<visible>!String.IsEmpty(VideoPlayer.Mpaa)</visible>
+						<visible>!String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
 					</control>
 					<control type="label" id="99">
 						<animation effect="slide" end="-2,2" time="0" condition="true">Conditional</animation>
@@ -265,6 +270,7 @@
 						<font>Material26</font>
 						<textcolor>red</textcolor>
 						<visible>!String.IsEmpty(VideoPlayer.Rating)</visible>
+						<visible>!String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
 					</control>
 					<control type="label" id="99">
 						<width>auto</width>
@@ -274,6 +280,7 @@
 						<font>reg24</font>
 						<textcolor>white</textcolor>
 						<visible>!String.IsEmpty(VideoPlayer.Rating)</visible>
+						<visible>!String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
 					</control>
 					<control type="image" id="99">
 						<animation effect="slide" end="-2,6" time="0" condition="true">Conditional</animation>
@@ -282,6 +289,7 @@
 						<texture>icons/rating/metacritics_logo.png</texture>
 						<aspectratio>keep</aspectratio>
 						<visible>!String.IsEmpty(Window(Home).Property(SkinHelper.Player.MetaCritic.Rating))</visible>
+						<visible>!String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
 					</control>
 					<control type="label" id="99">
 						<width>auto</width>
@@ -291,6 +299,7 @@
 						<aligny>center</aligny>
 						<textcolor>white</textcolor>
 						<visible>!String.IsEmpty(Window(Home).Property(SkinHelper.Player.MetaCritic.Rating))</visible>
+						<visible>!String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
 					</control>
 					<control type="image" id="99">
 						<animation effect="slide" end="-2,6" time="0" condition="true">Conditional</animation>
@@ -299,6 +308,7 @@
 						<texture>icons/rating/rotten_fresh.png</texture>
 						<aspectratio>keep</aspectratio>
 						<visible>!String.IsEmpty(Window(Home).Property(SkinHelper.Player.RottenTomatoes.Rating)) + Integer.IsGreater(Window(Home).Property(SkinHelper.Player.RottenTomatoes.Rating),59)</visible>
+						<visible>!String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
 					</control>
 					<control type="image" id="99">
 						<animation effect="slide" end="-2,6" time="0" condition="true">Conditional</animation>
@@ -307,6 +317,7 @@
 						<texture>icons/rating/rotten_rotten.png</texture>
 						<aspectratio>keep</aspectratio>
 						<visible>!String.IsEmpty(Window(Home).Property(SkinHelper.Player.RottenTomatoes.Rating)) + !Integer.IsGreater(Window(Home).Property(SkinHelper.Player.RottenTomatoes.Rating),59)</visible>
+						<visible>!String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
 					</control>
 					<control type="label" id="99">
 						<width>auto</width>
@@ -316,6 +327,7 @@
 						<aligny>center</aligny>
 						<textcolor>white</textcolor>
 						<visible>!String.IsEmpty(Window(Home).Property(SkinHelper.Player.RottenTomatoes.Rating))</visible>
+						<visible>!String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
 					</control>
 				</control>
 				<!-- PVR EpisodeName -->
