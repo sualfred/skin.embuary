@@ -103,7 +103,19 @@
 	<variable name="EmbyCon.SearchMusic">
 		<value condition="!String.IsEmpty(Skin.String(CustomSearchTerm)) + System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?item_type=audio&amp;mode=NEW_SEARCH&amp;query=$INFO[Skin.String(CustomSearchTerm)]</value>
 	</variable>
-
+	<!-- Emby Fav sources -->
+	<variable name="Emby.FavMovies">
+		<value condition="String.StartsWith(System.AddonVersion(plugin.video.emby),3.0)">library://video/emby_Favorite movies.xml</value>
+		<value>library://video/emby_Favoritemovies.xml</value>
+	</variable>
+	<variable name="Emby.FavShows">
+		<value condition="String.StartsWith(System.AddonVersion(plugin.video.emby),3.0)">library://video/emby_Favorite tvshows.xml</value>
+		<value>library://video/emby_Favoritetvshows.xml</value>
+	</variable>
+	<variable name="Emby.FavEpisodes">
+		<value condition="String.StartsWith(System.AddonVersion(plugin.video.emby),3.0)">library://video/emby_Favorite episodes.xml</value>
+		<value>library://video/emby_Favoriteepisodes.xml</value>
+	</variable>
 	<!-- EmbyCon sources -->
 	<variable name="EmbyCon.SetsPath">
 		<value>ActivateWindow(videos,plugin://plugin.video.embycon/?media_type=boxsets&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems?ParentId=$PARAM[parentID]&amp;IsVirtualUnaired%3dfalse%26CollapseBoxSetItems%3dtrue%26Recursive%3dtrue%26IsMissing%3dFalse%26Fields%3d%7bfield_filters%7d%26ImageTypeLimit%3d1%26format%3djson,return)</value>
@@ -1503,6 +1515,7 @@
 		<value condition="!Control.HasFocus(607)">white</value>
 	</variable>
 	<variable name="PlayerFullLabel">
+		<value condition="String.Contains(Player.Art(thumb),KodiCinemaMode)">$LOCALIZE[31255]</value>
 		<value condition="String.IsEqual(VideoPlayer.Title,stream) + String.Contains(Player.Filenameandpath,/emby/videos/)">$LOCALIZE[31186]</value>
 		<value condition="!String.IsEmpty(MusicPlayer.Title) + !String.Contains(MusicPlayer.Title,pvr.hts_)">$INFO[MusicPlayer.Artist,, - ]$INFO[MusicPlayer.Tracknumber,,. ]$INFO[MusicPlayer.Title]</value>
 		<value condition="!String.IsEmpty(MusicPlayer.Title)">$INFO[MusicPlayer.Artist]</value>
@@ -1512,6 +1525,7 @@
 		<value>$INFO[VideoPlayer.Title]</value>
 	</variable>
 	<variable name="PlayerTitleLabel">
+		<value condition="String.Contains(Player.Art(thumb),KodiCinemaMode)">$LOCALIZE[31255]</value>
 		<value condition="String.IsEqual(VideoPlayer.Filename,stream) + String.Contains(VideoPlayer.Filenameandpath,/emby/videos/)">$LOCALIZE[31186]</value>
 		<value condition="!String.IsEmpty(MusicPlayer.Title)">$INFO[MusicPlayer.Title]</value>
 		<value condition="!String.IsEmpty(VideoPlayer.TVShowTitle)">$INFO[VideoPlayer.TVShowTitle]</value>
@@ -1529,7 +1543,7 @@
 		<value>$INFO[MusicPlayer.Title]</value>
 	</variable>
 	<variable name="PlayerTimeLabels">
-		<value condition="!Pvr.IsTimeShift + Player.HasVideo + !Window.IsVisible(fullscreeninfo)">$VAR[PlayerTime]$VAR[PlayerDuration, / ]$INFO[Player.FinishTime,  -  $LOCALIZE[31037] ]</value>
+		<value condition="!Pvr.IsTimeShift + Player.HasVideo + !Window.IsVisible(fullscreeninfo) + !String.Contains(Player.Art(thumb),KodiCinemaMode)">$VAR[PlayerTime]$VAR[PlayerDuration, / ]$INFO[Player.FinishTime,  -  $LOCALIZE[31037] ]</value>
 		<value>$VAR[PlayerTime]$VAR[PlayerDuration, / ]</value>
 	</variable>
 	<variable name="PlayerIcon">

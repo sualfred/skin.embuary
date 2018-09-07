@@ -796,6 +796,7 @@
 				<width>400</width>
 				<texture>$VAR[PlayerClearlogo]</texture>
 				<aspectratio align="left" aligny="top">keep</aspectratio>
+				<visible>!String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
 			</control>
 			<control type="label" id="99">
 				<top>21</top>
@@ -806,7 +807,7 @@
 				<font>Med34</font>
 				<textcolor>white</textcolor>
 				<label>$VAR[PlayerTitleLabel]</label>
-				<visible>String.IsEmpty(Player.Art(tvshow.clearlogo)) + String.IsEmpty(Player.Art(clearlogo))</visible>
+				<visible>[String.IsEmpty(Player.Art(tvshow.clearlogo)) + String.IsEmpty(Player.Art(clearlogo))] | String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
 			</control>
 			<control type="grouplist" id="99">
 				<top>21</top>
