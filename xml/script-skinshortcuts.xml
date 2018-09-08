@@ -217,6 +217,7 @@
 						<ondown condition="String.IsEmpty(Container(211).ListItemNoWrap(1).Label)">200</ondown>
 						<visible>!String.StartsWith(Container(211).ListItem.Property(defaultID),embuary_emby)</visible>
 						<visible>!String.StartsWith(Container(211).ListItem.Property(defaultID),embuary_musichub_partymode)</visible>
+						<visible>!String.IsEqual(Container(211).ListItem.Property(path),noop)</visible>
 					</control>
 					<!-- Path -->
 					<control type="button" id="401">
@@ -232,7 +233,23 @@
 						<onup condition="!String.IsEmpty(Container(211).ListItemNoWrap(-1).Label)">Control.Move(211,-1)</onup>
 						<ondown condition="!String.IsEmpty(Container(211).ListItemNoWrap(1).Label)">Control.Move(211,1)</ondown>
 						<ondown condition="String.IsEmpty(Container(211).ListItemNoWrap(1).Label)">200</ondown>
-						<visible>String.IsEmpty(Container(211).ListItem.Property(isDefault))</visible>
+						<visible>String.IsEmpty(Container(211).ListItem.Property(isDefault)) + String.IsEqual(Container(211).ListItem.Property(path),noop)</visible>
+					</control>
+					<!-- Path extended-->
+					<control type="button" id="307">
+						<height>75</height>
+						<width>50</width>
+						<font>Material26</font>
+						<textcolor>white</textcolor>
+						<focusedcolor>accent</focusedcolor>
+						<selectedcolor>white</selectedcolor>
+						<label></label>
+						<include>NoTextures</include>
+						<textoffsetx>0</textoffsetx>
+						<onup condition="!String.IsEmpty(Container(211).ListItemNoWrap(-1).Label)">Control.Move(211,-1)</onup>
+						<ondown condition="!String.IsEmpty(Container(211).ListItemNoWrap(1).Label)">Control.Move(211,1)</ondown>
+						<ondown condition="String.IsEmpty(Container(211).ListItemNoWrap(1).Label)">200</ondown>
+						<visible>String.IsEmpty(Container(211).ListItem.Property(isDefault)) + !String.IsEqual(Container(211).ListItem.Property(path),noop)</visible>
 					</control>
 					<!-- Thumb -->
 					<control type="button" id="306">
@@ -249,6 +266,7 @@
 						<ondown condition="!String.IsEmpty(Container(211).ListItemNoWrap(1).Label)">Control.Move(211,1)</ondown>
 						<ondown condition="String.IsEmpty(Container(211).ListItemNoWrap(1).Label)">200</ondown>
 						<visible>String.IsEqual(Window.Property(groupname),mainmenu) + !String.StartsWith(Container(211).ListItem.Property(defaultID),embuary_emby)</visible>
+						<visible>!String.IsEqual(Container(211).ListItem.Property(path),noop)</visible>
 					</control>
 					<!-- Hide -->
 					<control type="button" id="313">
@@ -264,6 +282,7 @@
 						<onup condition="!String.IsEmpty(Container(211).ListItemNoWrap(-1).Label)">Control.Move(211,-1)</onup>
 						<ondown condition="!String.IsEmpty(Container(211).ListItemNoWrap(1).Label)">Control.Move(211,1)</ondown>
 						<ondown condition="String.IsEmpty(Container(211).ListItemNoWrap(1).Label)">200</ondown>
+						<visible>!String.IsEqual(Container(211).ListItem.Property(path),noop)</visible>
 					</control>
 					<!-- Delete -->
 					<control type="button" id="302">
