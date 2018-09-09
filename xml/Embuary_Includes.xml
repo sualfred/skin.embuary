@@ -827,7 +827,7 @@
 					<textcolor>white</textcolor>
 					<font>Material34</font>
 					<label>$VAR[PlayerSeekStepIcon]</label>
-					<visible>!String.IsEmpty(Player.SeekStepSize) | !String.IsEmpty(Player.SeekOffset) | Player.DisplayAfterSeek</visible>
+					<visible>!String.IsEmpty(Player.SeekStepSize) | !String.IsEmpty(Player.SeekOffset) | [Integer.IsGreater(Player.ChapterCount,1) + !String.IsEqual(Player.Chapter,00) + !String.IsEqual(Player.Chapter,-1)]</visible>
 				</control>
 				<control type="label" id="99">
 					<width>auto</width>
@@ -836,7 +836,7 @@
 					<font>Med34</font>
 					<textcolor>white</textcolor>
 					<label>$VAR[TopPlayerSeekStepLabel,,     ]</label>
-					<visible>!String.IsEmpty(Player.SeekStepSize) | !String.IsEmpty(Player.SeekOffset) | Player.DisplayAfterSeek</visible>
+					<visible>!String.IsEmpty(Player.SeekStepSize) | !String.IsEmpty(Player.SeekOffset) | [Integer.IsGreater(Player.ChapterCount,1) + !String.IsEqual(Player.Chapter,00) + !String.IsEqual(Player.Chapter,-1)]</visible>
 				</control>
 				<control type="label" id="99">
 					<width>auto</width>
