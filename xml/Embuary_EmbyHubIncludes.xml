@@ -4,19 +4,19 @@
 	<include name="EmbyHub_MovieMenu">
 		<item>
 			<label>$LOCALIZE[342]</label>
-			<onclick>ActivateWindow(videos,$INFO[Window(home).Property(emby.nodes.$PARAM[nr].content)],return)</onclick>
+			<onclick>ActivateWindow(videos,$INFO[Window(home).Property(emby.wnodes.$PARAM[nr].content)],return)</onclick>
 		</item>
 		<item>
 			<label>$LOCALIZE[31209]</label>
-			<onclick>ActivateWindow(videos,$INFO[Window(home).Property(emby.nodes.$PARAM[nr].index),,unwatched.xml],return)</onclick>
+			<onclick>ActivateWindow(videos,$INFO[Window(home).Property(emby.wnodes.$PARAM[nr].index),,unwatched.xml],return)</onclick>
 		</item>
 		<item>
 			<label>$LOCALIZE[31169]</label>
-			<onclick>ActivateWindow(videos,$INFO[Window(home).Property(emby.nodes.$PARAM[nr].index),,sets.xml],return)</onclick>
+			<onclick>ActivateWindow(videos,$INFO[Window(home).Property(emby.wnodes.$PARAM[nr].index),,sets.xml],return)</onclick>
 		</item>
 		<item>
 			<label>$LOCALIZE[135]</label>
-			<onclick>SetProperty(ListGenres,$INFO[Window(home).Property(emby.nodes.$PARAM[nr].index),,genres.xml],home)</onclick>
+			<onclick>SetProperty(ListGenres,$INFO[Window(home).Property(emby.wnodes.$PARAM[nr].index),,genres.xml],home)</onclick>
 			<onclick>ActivateWindow(1114)</onclick>
 		</item>
 		<item>
@@ -27,7 +27,7 @@
 	<include name="EmbyHubMovieTemplate">
 		<control type="label" id="199">
 			<include>HiddenObject</include>
-			<label>$INFO[Window(home).Property(emby.nodes.$PARAM[nr].title)]</label>
+			<label>$INFO[Window(home).Property(emby.wnodes.$PARAM[nr].title)]</label>
 		</control>
 		<!-- background -->
 		<include>Background</include>
@@ -51,7 +51,7 @@
 				<param name="id" value="100"/>
 				<param name="onup" value="6666"/>
 				<param name="ondown" value="200"/>
-				<param name="headline" value="Emby - $INFO[Window(home).Property(emby.nodes.$PARAM[nr].title)]"/>
+				<param name="headline" value="Emby - $INFO[Window(home).Property(emby.wnodes.$PARAM[nr].title)]"/>
 				<param name="content" value="EmbyHub_MovieMenu"/>
 				<param name="nr" value="$PARAM[nr]"/>
 			</include>
@@ -65,7 +65,7 @@
 				<param name="sublabel" value="$INFO[ListItem.Year]"/>
 				<param name="widget_target" value="videos"/>
 				<param name="limit" value="25"/>
-				<param name="content" value="$INFO[Window(home).Property(emby.nodes.$PARAM[nr].index),,inprogress.xml]"/>
+				<param name="content" value="$INFO[Window(home).Property(emby.wnodes.$PARAM[nr].index),,inprogress.xml]"/>
 			</include>
 			<!-- Recently added -->
 			<include content="PosterWidget">
@@ -77,7 +77,7 @@
 				<param name="sublabel" value="$INFO[ListItem.Year]"/>
 				<param name="widget_target" value="videos"/>
 				<param name="limit" value="25"/>
-				<param name="content" value="$INFO[Window(home).Property(emby.nodes.$PARAM[nr].index),,recent.xml]"/>
+				<param name="content" value="$INFO[Window(home).Property(emby.wnodes.$PARAM[nr].index),,recent.xml]"/>
 			</include>
 			<!-- Recommended -->
 			<include content="PosterWidget">
@@ -89,7 +89,7 @@
 				<param name="sublabel" value="$INFO[ListItem.Year]"/>
 				<param name="widget_target" value="videos"/>
 				<param name="limit" value="25"/>
-				<param name="content" value="$INFO[Window(home).Property(emby.nodes.$PARAM[nr].index),,recommended.xml]"/>
+				<param name="content" value="$INFO[Window(home).Property(emby.wnodes.$PARAM[nr].index),,recommended.xml]"/>
 			</include>
 			<!-- Random -->
 			<include content="PosterWidget">
@@ -101,7 +101,7 @@
 				<param name="sublabel" value="$INFO[ListItem.Year]"/>
 				<param name="widget_target" value="videos"/>
 				<param name="limit" value="25"/>
-				<param name="content" value="$INFO[Window(home).Property(emby.nodes.$PARAM[nr].index),,random.xml]"/>
+				<param name="content" value="$INFO[Window(home).Property(emby.wnodes.$PARAM[nr].index),,random.xml]"/>
 			</include>
 		</control>
 		<!-- header bar -->
@@ -115,11 +115,11 @@
 	<include name="EmbyHub_TVshowMenu">
 		<item>
 			<label>$LOCALIZE[20343]</label>
-			<onclick>ActivateWindow(videos,$INFO[Window(home).Property(emby.nodes.$PARAM[nr].content)],return)</onclick>
+			<onclick>ActivateWindow(videos,$INFO[Window(home).Property(emby.wnodes.$PARAM[nr].content)],return)</onclick>
 		</item>
 		<item>
 			<label>$LOCALIZE[135]</label>
-			<onclick>SetProperty(ListGenres,$INFO[Window(home).Property(emby.nodes.$PARAM[nr].index),,genres.xml],home)</onclick>
+			<onclick>SetProperty(ListGenres,$INFO[Window(home).Property(emby.wnodes.$PARAM[nr].index),,genres.xml],home)</onclick>
 			<onclick>ActivateWindow(1114)</onclick>
 		</item>
 		<item>
@@ -130,7 +130,7 @@
 	<include name="EmbyHubTVShowTemplate">
 		<control type="label" id="199">
 			<include>HiddenObject</include>
-			<label>$INFO[Window(home).Property(emby.nodes.$PARAM[nr].title)]</label>
+			<label>$INFO[Window(home).Property(emby.wnodes.$PARAM[nr].title)]</label>
 		</control>
 		<!-- background -->
 		<include>Background</include>
@@ -153,7 +153,7 @@
 				<param name="id" value="100"/>
 				<param name="onup" value="6666"/>
 				<param name="ondown" value="200"/>
-				<param name="headline" value="Emby - $INFO[Window(home).Property(emby.nodes.$PARAM[nr].title)]"/>
+				<param name="headline" value="Emby - $INFO[Window(home).Property(emby.wnodes.$PARAM[nr].title)]"/>
 				<param name="content" value="EmbyHub_TVshowMenu"/>
 				<param name="nr" value="$PARAM[nr]"/>
 			</include>
@@ -165,7 +165,7 @@
 				<param name="headline" value="$LOCALIZE[31080]"/>
 				<param name="widget_target" value="videos"/>
 				<param name="limit" value="25"/>
-				<param name="content" value="$INFO[Window(home).Property(emby.nodes.$PARAM[nr].index),,inprogressepisodes.xml]"/>
+				<param name="content" value="$INFO[Window(home).Property(emby.wnodes.$PARAM[nr].index),,inprogressepisodes.xml]"/>
 			</include>
 			<!-- Next episodes -->
 			<include content="WideWidget">
@@ -179,7 +179,7 @@
 				<param name="limit" value="25"/>
 				<param name="sortby" value="lastplayed"/>
 				<param name="sortorder" value="descending"/>
-				<param name="content" value="$INFO[Window(home).Property(emby.nodes.$PARAM[nr].index),,inprogress.xml]"/>
+				<param name="content" value="$INFO[Window(home).Property(emby.wnodes.$PARAM[nr].index),,inprogress.xml]"/>
 			</include>
 			<!-- Recently added -->
 			<include content="WideWidget">
@@ -191,7 +191,7 @@
 				<param name="sublabel" value="$INFO[ListItem.Year]"/>
 				<param name="widget_target" value="videos"/>
 				<param name="limit" value="25"/>
-				<param name="content" value="$INFO[Window(home).Property(emby.nodes.$PARAM[nr].index),,recent.xml]"/>
+				<param name="content" value="$INFO[Window(home).Property(emby.wnodes.$PARAM[nr].index),,recent.xml]"/>
 			</include>
 			<!-- Recommended -->
 			<include content="WideWidget">
@@ -203,7 +203,7 @@
 				<param name="sublabel" value="$INFO[ListItem.Year]"/>
 				<param name="widget_target" value="videos"/>
 				<param name="limit" value="25"/>
-				<param name="content" value="$INFO[Window(home).Property(emby.nodes.$PARAM[nr].index),,recommended.xml]"/>
+				<param name="content" value="$INFO[Window(home).Property(emby.wnodes.$PARAM[nr].index),,recommended.xml]"/>
 			</include>
 			<!-- Random -->
 			<include content="WideWidget">
@@ -215,7 +215,7 @@
 				<param name="sublabel" value="$INFO[ListItem.Year]"/>
 				<param name="widget_target" value="videos"/>
 				<param name="limit" value="25"/>
-				<param name="content" value="$INFO[Window(home).Property(emby.nodes.$PARAM[nr].index),,random.xml]"/>
+				<param name="content" value="$INFO[Window(home).Property(emby.wnodes.$PARAM[nr].index),,random.xml]"/>
 			</include>
 		</control>
 		<!-- header bar -->
