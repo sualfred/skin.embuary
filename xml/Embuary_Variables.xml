@@ -213,10 +213,10 @@
 	</variable>
 	<variable name="EmbyCon_RecentEpisodes_Mainlabel">
 		<value condition="!String.IsEmpty(ListItem.Episode)">$INFO[ListItem.TVShowTitle]</value>
-		<value>$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title]</value>
+		<value>$VAR[ListItemSeasonEpisode]$INFO[ListItem.Title]</value>
 	</variable>
 	<variable name="EmbyCon_RecentEpisodes_Sublabel">
-		<value condition="!String.IsEmpty(ListItem.Episode)">$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title]</value>
+		<value condition="!String.IsEmpty(ListItem.Episode)">$VAR[ListItemSeasonEpisode]$INFO[ListItem.Title]</value>
 		<value>$INFO[ListItem.Year]</value>
 	</variable>
 	<variable name="HeaderCustomDeviceName">
@@ -410,7 +410,7 @@
 		<value condition=" Window.IsVisible(script-NextAired-TVGuide2.xml)">$INFO[ListItem.Label]$INFO[ListItem.Property(ShortTime), (,)]</value>
 		<value condition="String.StartsWith(ListItem.Path,pvr://) + !String.IsEmpty(ListItem.Title)">$INFO[ListItem.Title]</value>
 		<value condition="String.StartsWith(ListItem.Path,pvr://)">$INFO[ListItem.Label]</value>
-		<value condition="String.IsEqual(ListItem.DBType,episode)">$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title]</value>
+		<value condition="String.IsEqual(ListItem.DBType,episode)">$VAR[ListItemSeasonEpisode]$INFO[ListItem.Title]</value>
 		<value condition="String.IsEqual(ListItem.DBType,season)">$INFO[ListItem.Label]</value>
 		<value condition="String.IsEqual(ListItem.DBType,song) + !String.IsEmpty(ListItem.title)">$INFO[ListItem.Tracknumber,,. ]$INFO[ListItem.Title]</value>
 		<value condition="Container.Content(songs) + Integer.IsGreater(ListItem.Tracknumber,0) + !String.IsEmpty(ListItem.title)">$INFO[ListItem.Tracknumber,,. ]$INFO[ListItem.Title]</value>
@@ -1318,7 +1318,7 @@
 	</variable>
 	<variable name="TinyInfoDialogPlot">
 		<value condition="Window.IsVisible(DialogFullScreenInfo.xml)">$INFO[VideoPlayer.Season,S,:]$INFO[VideoPlayer.Episode,E, [CR][CR]]$VAR[PlayerDurationMinutes,$LOCALIZE[180]: ,[CR][CR]]$INFO[VideoPlayer.Plot]</value>
-		<value condition="String.IsEqual(ListItem.DBType,Episode)">$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title,,[CR][CR]]$VAR[DurationMinutes,$LOCALIZE[180]: ,[CR][CR]]$INFO[ListItem.Plot]</value>
+		<value condition="String.IsEqual(ListItem.DBType,Episode)">$VAR[ListItemSeasonEpisode]$INFO[ListItem.Title,,[CR][CR]]$VAR[DurationMinutes,$LOCALIZE[180]: ,[CR][CR]]$INFO[ListItem.Plot]</value>
 		<value condition="String.IsEqual(ListItem.DBType,song)">$VAR[DurationMinutes,$LOCALIZE[180]: ,[CR][CR]]$INFO[ListItem.Artist]$INFO[ListItem.Album, - ,[CR][CR]]$INFO[ListItem.Property(Album_Description)]</value>
 		<value condition="String.IsEqual(ListItem.DBType,musicvideo)">$VAR[DurationMinutes,$LOCALIZE[180]: ]</value>
 		<value condition="String.IsEqual(ListItem.DBType,album) + !String.IsEmpty(ListItem.Property(Album_Description))">$INFO[ListItem.Property(Album_Description)]</value>
@@ -1520,8 +1520,8 @@
 		<value condition="!String.IsEmpty(MusicPlayer.Title) + !String.Contains(MusicPlayer.Title,pvr.hts_)">$INFO[MusicPlayer.Artist,, - ]$INFO[MusicPlayer.Tracknumber,,. ]$INFO[MusicPlayer.Title]</value>
 		<value condition="!String.IsEmpty(MusicPlayer.Title)">$INFO[MusicPlayer.Artist]</value>
 		<value condition="VideoPlayer.Content(livetv)">$INFO[VideoPlayer.Title]</value>
-		<value condition="!String.IsEmpty(VideoPlayer.TVShowTitle) + [!VideoPlayer.IsFullscreen | Window.IsVisible(shutdownmenu)]">$INFO[VideoPlayer.TVShowTitle,, - ]$INFO[VideoPlayer.Season,S,:]$INFO[VideoPlayer.Episode,E, - ]$INFO[VideoPlayer.Title]</value>
-		<value condition="!String.IsEmpty(VideoPlayer.TVShowTitle)">$INFO[VideoPlayer.Season,S,:]$INFO[VideoPlayer.Episode,E, - ]$INFO[VideoPlayer.Title]</value>
+		<value condition="!String.IsEmpty(VideoPlayer.TVShowTitle) + [!VideoPlayer.IsFullscreen | Window.IsVisible(shutdownmenu)]">$INFO[VideoPlayer.TVShowTitle,, - ]$VAR[PlayerSeasonEpisode]$INFO[VideoPlayer.Title]</value>
+		<value condition="!String.IsEmpty(VideoPlayer.TVShowTitle)">$VAR[PlayerSeasonEpisode]$INFO[VideoPlayer.Title]</value>
 		<value>$INFO[VideoPlayer.Title]</value>
 	</variable>
 	<variable name="PlayerTitleLabel">
@@ -1690,8 +1690,8 @@
 		<value>ExtendedInfo</value>
 	</variable>
 	<variable name="EpisodeListLabel">
-		<value condition="String.IsEqual(Container.Foldername,$LOCALIZE[20366]) | !String.Contains(Container.Foldername,$LOCALIZE[20373])">$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title]</value>
-		<value condition="String.IsEmpty(Container.ShowTitle)">$INFO[ListItem.TvShowTitle,, - ]$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title]</value>
+		<value condition="String.IsEqual(Container.Foldername,$LOCALIZE[20366]) | !String.Contains(Container.Foldername,$LOCALIZE[20373])">$VAR[ListItemSeasonEpisode]$INFO[ListItem.Title]</value>
+		<value condition="String.IsEmpty(Container.ShowTitle)">$INFO[ListItem.TvShowTitle,, - ]$VAR[ListItemSeasonEpisode]$INFO[ListItem.Title]</value>
 		<value>$INFO[ListItem.Episode,,. ]$INFO[ListItem.Title]</value>
 	</variable>
 	<variable name="SelectDialogIcon">
@@ -1704,5 +1704,13 @@
 		<value condition="!String.IsEqual(ListItem.property(sync),false) + !String.IsEqual(ListItem.property(hearing_imp),false)">[COLOR accent]SYNC CC[/COLOR]</value>
 		<value condition="!String.IsEqual(ListItem.property(sync),false)">[COLOR accent]SYNC[/COLOR]</value>
 		<value condition="!String.IsEqual(ListItem.property(hearing_imp),false)">[COLOR accent]CC[/COLOR]</value>
+	</variable>
+	<variable name="ListItemSeasonEpisode">
+		<value condition="Integer.IsEqual(ListItem.Season,0) | String.StartsWith(ListItem.Episode,S)">$LOCALIZE[31257] $INFO[ListItem.Episode]</value>
+		<value>$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]</value>
+	</variable>
+	<variable name="PlayerSeasonEpisode">
+		<value condition="Integer.IsEqual(VideoPlayer.Season,0) | String.StartsWith(VideoPlayer.Episode,S)">$LOCALIZE[31257] $INFO[VideoPlayer.Episode]</value>
+		<value>$INFO[VideoPlayer.Season,S,:]$INFO[VideoPlayer.Episode,E, - ]</value>
 	</variable>
 </includes>
