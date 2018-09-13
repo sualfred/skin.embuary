@@ -10,11 +10,11 @@
 			<param name="widget_target" value="videos"/>
 			<param name="sortby" value="lastplayed"/>
 			<param name="sortorder" value="descending"/>
-			<param name="content" value="videodb://tvshows/titles/-1/-1/-1/-1/?xsp=%7b%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22inprogress%22%2c%22operator%22%3a%22true%22%2c%22value%22%3a%5b%5d%7d%5d%7d%2c%22type%22%3a%22episodes%22%7d&amp;reload=$INFO[Window(Home).Property(widgetreload)]"/>
+			<param name="content" value="videodb://tvshows/titles/-1/-1/-1/-1/?xsp=%7b%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22inprogress%22%2c%22operator%22%3a%22true%22%2c%22value%22%3a%5b%5d%7d%5d%7d%2c%22type%22%3a%22episodes%22%7d&amp;reload=$INFO[Window(Home).Property(widgetreload)]$INFO[Window(home).Property(EmbuaryWidgetReload)]"/>
 			<param name="widget_target2" value="videos"/>
 			<param name="sortby2" value="lastplayed"/>
 			<param name="sortorder2" value="descending"/>
-			<param name="content2" value="videodb://movies/titles/?xsp=%7b%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22inprogress%22%2c%22operator%22%3a%22true%22%2c%22value%22%3a%5b%5d%7d%5d%7d%2c%22type%22%3a%22movies%22%7d&amp;reload=$INFO[Window(Home).Property(widgetreload)]"/>
+			<param name="content2" value="videodb://movies/titles/?xsp=%7b%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22inprogress%22%2c%22operator%22%3a%22true%22%2c%22value%22%3a%5b%5d%7d%5d%7d%2c%22type%22%3a%22movies%22%7d&amp;reload=$INFO[Window(Home).Property(widgetreload)]$INFO[Window(home).Property(EmbuaryWidgetReload)]"/>
 		</include>
 	</include>
 	<include name="W_EmbyCon_InProgressMedia">
@@ -69,7 +69,7 @@
 			<param name="limit" value="25"/>
 			<param name="sortby" value="lastplayed"/>
 			<param name="sortorder" value="descending"/>
-			<param name="content" value="videodb://tvshows/titles/?xsp=%7b%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22inprogress%22%2c%22operator%22%3a%22true%22%2c%22value%22%3a%5b%5d%7d%5d%7d%2c%22type%22%3a%22tvshows%22%7d&amp;reload=$INFO[Window(Home).Property(widgetreload)]"/>
+			<param name="content" value="videodb://tvshows/titles/?xsp=%7b%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22inprogress%22%2c%22operator%22%3a%22true%22%2c%22value%22%3a%5b%5d%7d%5d%7d%2c%22type%22%3a%22tvshows%22%7d&amp;reload=$INFO[Window(Home).Property(widgetreload)]$INFO[Window(home).Property(EmbuaryWidgetReload)]"/>
 		</include>
 	</include>
 	<include name="W_EmbyCon_NextUp">
@@ -80,7 +80,7 @@
 			<param name="ondown" value="$PARAM[ondown]"/>
 			<param name="headline" value="$LOCALIZE[31012]$VAR[EmbyConLabel]"/>
 			<param name="mainlabel" value="$INFO[ListItem.TvShowTitle]"/>
-			<param name="sublabel" value="$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title]"/>
+			<param name="sublabel" value="$VAR[ListItemSeasonEpisode]$INFO[ListItem.Title]"/>
 			<param name="widget_target" value="videos"/>
 			<param name="limit" value="25"/>
 			<param name="content" value="$VAR[EmbyCon.NextUp]"/>
@@ -99,7 +99,7 @@
 			<param name="limit" value="25"/>
 			<param name="sortby" value="dateadded"/>
 			<param name="sortorder" value="descending"/>
-			<param name="content" value="videodb://movies/titles/?xsp=%7b%22limit%22%3a25%2c%22order%22%3a%7b%22direction%22%3a%22descending%22%2c%22ignorefolders%22%3a0%2c%22method%22%3a%22dateadded%22%7d%2c%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22dateadded%22%2c%22operator%22%3a%22inthelast%22%2c%22value%22%3a%5b%2260%22%5d%7d%2c%7b%22field%22%3a%22playcount%22%2c%22operator%22%3a%22is%22%2c%22value%22%3a%5b%220%22%5d%7d%5d%7d%2c%22type%22%3a%22movies%22%7d&amp;reload=$INFO[Window(Home).Property(widgetreload)]"/>
+			<param name="content" value="videodb://movies/titles/?xsp=%7b%22limit%22%3a25%2c%22order%22%3a%7b%22direction%22%3a%22descending%22%2c%22ignorefolders%22%3a0%2c%22method%22%3a%22dateadded%22%7d%2c%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22dateadded%22%2c%22operator%22%3a%22inthelast%22%2c%22value%22%3a%5b%2260%22%5d%7d%2c%7b%22field%22%3a%22playcount%22%2c%22operator%22%3a%22is%22%2c%22value%22%3a%5b%220%22%5d%7d%5d%7d%2c%22type%22%3a%22movies%22%7d&amp;reload=$INFO[Window(Home).Property(widgetreload)]$INFO[Window(home).Property(EmbuaryWidgetReload)]"/>
 		</include>
 	</include>
 	<include name="W_EmbyCon_NewMovies">
@@ -129,7 +129,7 @@
 			<param name="limit" value="25"/>
 			<param name="sortby" value="dateadded"/>
 			<param name="sortorder" value="descending"/>
-			<param name="content" value="videodb://tvshows/titles/?xsp=%7b%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22dateadded%22%2c%22operator%22%3a%22inthelast%22%2c%22value%22%3a%5b%2260%22%5d%7d%2c%7b%22field%22%3a%22playcount%22%2c%22operator%22%3a%22is%22%2c%22value%22%3a%5b%220%22%5d%7d%5d%7d%2c%22type%22%3a%22tvshows%22%7d&amp;reload=$INFO[Window(Home).Property(widgetreload)]"/>
+			<param name="content" value="videodb://tvshows/titles/?xsp=%7b%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22dateadded%22%2c%22operator%22%3a%22inthelast%22%2c%22value%22%3a%5b%2260%22%5d%7d%2c%7b%22field%22%3a%22playcount%22%2c%22operator%22%3a%22is%22%2c%22value%22%3a%5b%220%22%5d%7d%5d%7d%2c%22type%22%3a%22tvshows%22%7d&amp;reload=$INFO[Window(Home).Property(widgetreload)]$INFO[Window(home).Property(EmbuaryWidgetReload)]"/>
 		</include>
 	</include>
 	<include name="W_EmbyCon_NewEpisodes">
@@ -188,7 +188,7 @@
 			<param name="widget_target" value="videos"/>
 			<param name="sortby" value="lastplayed"/>
 			<param name="sortorder" value="descending"/>
-			<param name="content" value="videodb://movies/titles/?xsp=%7b%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22inprogress%22%2c%22operator%22%3a%22true%22%2c%22value%22%3a%5b%5d%7d%5d%7d%2c%22type%22%3a%22movies%22%7d&amp;reload=$INFO[Window(Home).Property(widgetreload)]"/>
+			<param name="content" value="videodb://movies/titles/?xsp=%7b%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22inprogress%22%2c%22operator%22%3a%22true%22%2c%22value%22%3a%5b%5d%7d%5d%7d%2c%22type%22%3a%22movies%22%7d&amp;reload=$INFO[Window(Home).Property(widgetreload)]$INFO[Window(home).Property(EmbuaryWidgetReload)]"/>
 		</include>
 	</include>
 	<include name="W_EmbyCon_InProgressMovies">
@@ -215,7 +215,7 @@
 			<param name="widget_target" value="videos"/>
 			<param name="sortby" value="sorttitle"/>
 			<param name="layout" value="GenreLayout"/>
-			<param name="content" value="plugin://script.skin.helper.widgets/?action=browsegenres&amp;mediatype=movies&amp;limit=1000&amp;reload=$INFO[Window(Home).Property(widgetreload)]"/>
+			<param name="content" value="plugin://script.skin.helper.widgets/?action=browsegenres&amp;mediatype=movies&amp;limit=1000&amp;reload=$INFO[Window(Home).Property(widgetreload)]$INFO[Window(home).Property(EmbuaryWidgetReload)]"/>
 		</include>
 	</include>
 	<include name="W_EmbyCon_MovieGenres">
@@ -244,7 +244,7 @@
 			<param name="limit" value="25"/>
 			<param name="sortby" value="rating"/>
 			<param name="sortorder" value="descending"/>
-			<param name="content" value="videodb://movies/titles/?xsp=%7b%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22playcount%22%2c%22operator%22%3a%22is%22%2c%22value%22%3a%5b%220%22%5d%7d%5d%7d%2c%22type%22%3a%22movies%22%7d&amp;reload=$INFO[Window(Home).Property(widgetreload)]"/>
+			<param name="content" value="videodb://movies/titles/?xsp=%7b%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22playcount%22%2c%22operator%22%3a%22is%22%2c%22value%22%3a%5b%220%22%5d%7d%5d%7d%2c%22type%22%3a%22movies%22%7d&amp;reload=$INFO[Window(Home).Property(widgetreload)]$INFO[Window(home).Property(EmbuaryWidgetReload)]"/>
 		</include>
 	</include>
 	<include name="W_EmbyCon_RecommendedMovies">
@@ -339,7 +339,7 @@
 			<param name="widget_target" value="videos"/>
 			<param name="sortby" value="lastplayed"/>
 			<param name="sortorder" value="descending"/>
-			<param name="content" value="videodb://tvshows/titles/-1/-1/-1/-1/?xsp=%7b%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22inprogress%22%2c%22operator%22%3a%22true%22%2c%22value%22%3a%5b%5d%7d%5d%7d%2c%22type%22%3a%22episodes%22%7d&amp;reload=$INFO[Window(Home).Property(widgetreload)]"/>
+			<param name="content" value="videodb://tvshows/titles/-1/-1/-1/-1/?xsp=%7b%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22inprogress%22%2c%22operator%22%3a%22true%22%2c%22value%22%3a%5b%5d%7d%5d%7d%2c%22type%22%3a%22episodes%22%7d&amp;reload=$INFO[Window(Home).Property(widgetreload)]$INFO[Window(home).Property(EmbuaryWidgetReload)]"/>
 		</include>
 	</include>
 	<include name="W_EmbyCon_InProgressShows">
@@ -392,7 +392,7 @@
 			<param name="limit" value="25"/>
 			<param name="sortby" value="rating"/>
 			<param name="sortorder" value="descending"/>
-			<param name="content" value="videodb://tvshows/titles/?xsp=%7b%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22playcount%22%2c%22operator%22%3a%22is%22%2c%22value%22%3a%5b%220%22%5d%7d%5d%7d%2c%22type%22%3a%22tvshows%22%7d&amp;reload=$INFO[Window(Home).Property(widgetreload)]"/>
+			<param name="content" value="videodb://tvshows/titles/?xsp=%7b%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22playcount%22%2c%22operator%22%3a%22is%22%2c%22value%22%3a%5b%220%22%5d%7d%5d%7d%2c%22type%22%3a%22tvshows%22%7d&amp;reload=$INFO[Window(Home).Property(widgetreload)]$INFO[Window(home).Property(EmbuaryWidgetReload)]"/>
 		</include>
 	</include>
 	<include name="W_EmbyCon_RecommendedShows">
@@ -460,7 +460,7 @@
 			<param name="limit" value="25"/>
 			<param name="sortby" value="lastplayed"/>
 			<param name="sortorder" value="descending"/>
-			<param name="content" value="musicdb://recentlyplayedalbums/?reload=$INFO[Window(Home).Property(widgetreload)]"/>
+			<param name="content" value="musicdb://recentlyplayedalbums/?reload=$INFO[Window(Home).Property(widgetreload)]$INFO[Window(home).Property(EmbuaryWidgetReload)]"/>
 		</include>
 	</include>
 	<!-- Often played songs -->
@@ -474,7 +474,7 @@
 			<param name="limit" value="25"/>
 			<param name="sortby" value="playcount"/>
 			<param name="sortorder" value="descending"/>
-			<param name="content" value="musicdb://songs/?reload=$INFO[Window(Home).Property(widgetreload)]"/>
+			<param name="content" value="musicdb://songs/?reload=$INFO[Window(Home).Property(widgetreload)]$INFO[Window(home).Property(EmbuaryWidgetReload)]"/>
 		</include>
 	</include>
 	<include name="W_EmbyCon_OftenPlayedSongs">
