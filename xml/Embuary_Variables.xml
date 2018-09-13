@@ -226,7 +226,7 @@
 	<variable name="ContainerContentPrefix">
 		<value condition="Window.IsVisible(script-globalsearch.xml) | Window.IsVisible(script-globalsearch-main.xml)">Globalsearch - </value>
 		<value condition="String.StartsWith(Container.Folderpath,plugin://plugin.video.embycon) | Window.IsVisible(1131)">EmbyCon - </value>
-		<value condition="Window.IsVisible(1130)">Emby - </value>
+		<value condition="String.StartsWith(Container.FolderPath,plugin://plugin.video.emby/) | Window.IsVisible(1130)">Emby - </value>
 	</variable>
 	<variable name="ContainerContent">
 		<value condition="Window.IsVisible(dialogpvrinfo.xml)">$LOCALIZE[19047]</value>
@@ -295,6 +295,7 @@
 		<value condition="String.StartsWith(Container.FolderPath,videodb://movies)">$LOCALIZE[342]</value>
 		<value condition="String.StartsWith(Container.FolderPath,videodb://tvshows)">$LOCALIZE[20343]</value>
 		<value condition="String.StartsWith(Container.FolderPath,musicdb://)">$LOCALIZE[2]</value>
+		<value condition="String.StartsWith(Container.FolderPath,plugin://plugin.video.emby/) + Window.IsVisible(mymusicnav.xml)">$LOCALIZE[292]</value>
 		<value condition="Window.IsVisible(mymusicnav.xml)">$LOCALIZE[2]</value>
 		<value condition="Window.IsVisible(myvideonav.xml)">$LOCALIZE[3]</value>
 		<value>$INFO[Container.Foldername]</value>
