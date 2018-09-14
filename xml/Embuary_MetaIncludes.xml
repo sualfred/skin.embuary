@@ -674,14 +674,14 @@
 					<height>332</height>
 					<texture colordiffuse="thumb_background_fallback">common/white.jpg</texture>
 					<aspectratio scalediffuse="false">stretch</aspectratio>
-					<visible>String.IsEmpty(VideoPlayer.Cover) | String.StartsWith(VideoPlayer.Cover,Default)</visible>
+					<visible>String.IsEmpty(Player.Icon) | String.StartsWith(Player.Icon,Default)</visible>
 				</control>
 				<control type="image">
 					<width>590</width>
 					<height>332</height>
 					<texture colordiffuse="dark_button">common/white.jpg</texture>
 					<aspectratio scalediffuse="false">stretch</aspectratio>
-					<visible>!String.IsEmpty(VideoPlayer.Cover) + !String.StartsWith(VideoPlayer.Cover,Default)</visible>
+					<visible>!String.IsEmpty(Player.Icon) + !String.StartsWith(Player.Icon,Default)</visible>
 				</control>
 				<control type="textbox">
 					<top>10</top>
@@ -693,18 +693,18 @@
 					<align>center</align>#
 					<aligny>center</aligny>
 					<label>$INFO[VideoPlayer.Channelname]</label>
-					<visible>String.IsEmpty(VideoPlayer.Cover) | String.StartsWith(VideoPlayer.Cover,Default)</visible>
+					<visible>String.IsEmpty(Player.Icon) | String.StartsWith(Player.Icon,Default)</visible>
 				</control>
 				<control type="group">
-					<visible>!String.StartsWith(VideoPlayer.Cover,Default)</visible>
+					<visible>!String.StartsWith(Player.Icon,Default)</visible>
 					<control type="image">
 						<width>590</width>
 						<height>332</height>
-						<texture background="true">$INFO[VideoPlayer.Cover]</texture>
+						<texture background="true">$INFO[Player.Icon]</texture>
 						<fadetime>200</fadetime>
 						<aspectratio scalediffuse="false">keep</aspectratio>
 						<bordersize>20</bordersize>
-						<visible>[String.IsEmpty(PVR.EpgEventIcon) + [String.Contains(VideoPlayer.Cover,imagecache) | !String.Contains(VideoPlayer.Cover,.jpg)]]</visible>
+						<visible>[String.IsEmpty(PVR.EpgEventIcon) + [String.Contains(Player.Icon,imagecache) | !String.Contains(Player.Icon,.jpg)]]</visible>
 					</control>
 					<control type="image">
 						<width>590</width>
@@ -712,7 +712,7 @@
 						<texture background="true">$INFO[PVR.EpgEventIcon]</texture>
 						<fadetime>200</fadetime>
 						<aspectratio scalediffuse="false">keep</aspectratio>
-						<visible>![String.IsEmpty(PVR.EpgEventIcon) + [String.Contains(VideoPlayer.Cover,imagecache) | !String.Contains(VideoPlayer.Cover,.jpg)]]</visible>
+						<visible>![String.IsEmpty(PVR.EpgEventIcon) + [String.Contains(Player.Icon,imagecache) | !String.Contains(Player.Icon,.jpg)]]</visible>
 					</control>
 				</control>
 				<control type="group">
