@@ -100,7 +100,7 @@
 						<height>250</height>
 						<texture colordiffuse="thumb_background_fallback">common/white.jpg</texture>
 						<aspectratio scalediffuse="false">stretch</aspectratio>
-						<visible>String.IsEmpty(VideoPlayer.Cover) | String.StartsWith(VideoPlayer.Cover,Default)</visible>
+						<visible>String.IsEmpty(player.icon) | String.StartsWith(player.icon,Default)</visible>
 					</control>
 					<control type="textbox" id="99">
 						<bottom>39</bottom>
@@ -112,7 +112,7 @@
 						<align>center</align>
 						<aligny>center</aligny>
 						<label>$INFO[VideoPlayer.Channelname]</label>
-						<visible>String.IsEmpty(VideoPlayer.Cover) | String.StartsWith(VideoPlayer.Cover,Default)</visible>
+						<visible>String.IsEmpty(player.icon) | String.StartsWith(player.icon,Default)</visible>
 					</control>
 					<control type="image" id="99">
 						<bottom>29</bottom>
@@ -121,7 +121,7 @@
 						<height>250</height>
 						<texture colordiffuse="thumb_background_player">common/white.jpg</texture>
 						<aspectratio scalediffuse="false">stretch</aspectratio>
-						<visible>!String.IsEmpty(VideoPlayer.Cover) + !String.StartsWith(VideoPlayer.Cover,Default)</visible>
+						<visible>!String.IsEmpty(player.icon) + !String.StartsWith(player.icon,Default)</visible>
 					</control>
 					<control type="image" id="99">
 						<bottom>29</bottom>
@@ -131,7 +131,7 @@
 						<texture>$VAR[PlayerIcon]</texture>
 						<bordersize>20</bordersize>
 						<aspectratio scalediffuse="false">keep</aspectratio>
-						<visible>!String.StartsWith(VideoPlayer.Cover,Default)</visible>
+						<visible>!String.StartsWith(player.icon,Default)</visible>
 					</control>
 				</control>
 				<!-- Wide -->
