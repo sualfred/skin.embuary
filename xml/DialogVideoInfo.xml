@@ -16,10 +16,10 @@
 			<include>HiddenObject</include>
 		</control>
 		<!-- Content -->
-		<include condition="String.IsEqual(ListItem.DBType,movie) + [!String.StartsWith(ListItem.Path,plugin://) | String.StartsWith(ListItem.Path,plugin://plugin.video.emby) | String.StartsWith(ListItem.Filenameandpath,plugin://plugin.video.emby)]">MovieInfoLayout</include>
-		<include condition="String.IsEqual(ListItem.DBType,tvshow) + [!String.StartsWith(ListItem.Path,plugin://) | String.StartsWith(ListItem.Path,plugin://plugin.video.emby) | String.StartsWith(ListItem.Filenameandpath,plugin://plugin.video.emby)]">TVShowInfoLayout</include>
-		<include condition="String.IsEqual(ListItem.DBType,episode) + [!String.StartsWith(ListItem.Path,plugin://) | String.StartsWith(ListItem.Path,plugin://plugin.video.emby) | String.StartsWith(ListItem.Filenameandpath,plugin://plugin.video.emby)]">EpisodeInfoLayout</include>
-		<include condition="[!String.IsEqual(ListItem.DBType,movie) + !String.IsEqual(ListItem.DBType,tvshow) + !String.IsEqual(ListItem.DBType,episode) + [String.IsEqual(ListItem.DBType,season) + !String.IsEmpty(ListItem.Plot)]] | [String.StartsWith(ListItem.Path,plugin://) + !String.StartsWith(ListItem.Path,plugin://plugin.video.emby) + !String.StartsWith(ListItem.Filenameandpath,plugin://plugin.video.emby)]">TinyInfoLayout</include>
+		<include condition="String.IsEqual(ListItem.DBType,movie) + [!String.StartsWith(ListItem.Path,plugin://) | String.StartsWith(ListItem.Path,plugin://plugin.video.emby)]">MovieInfoLayout</include>
+		<include condition="String.IsEqual(ListItem.DBType,tvshow) + [!String.StartsWith(ListItem.Path,plugin://) | String.StartsWith(ListItem.Path,plugin://plugin.video.emby)]">TVShowInfoLayout</include>
+		<include condition="String.IsEqual(ListItem.DBType,episode) + [!String.StartsWith(ListItem.Path,plugin://) | String.StartsWith(ListItem.Path,plugin://plugin.video.emby)]">EpisodeInfoLayout</include>
+		<include condition="[!String.IsEqual(ListItem.DBType,movie) + !String.IsEqual(ListItem.DBType,tvshow) + !String.IsEqual(ListItem.DBType,episode) + [String.IsEqual(ListItem.DBType,season) + !String.IsEmpty(ListItem.Plot)]] | [String.StartsWith(ListItem.Path,plugin://) + !String.StartsWith(ListItem.Path,plugin://plugin.video.emby)]">TinyInfoLayout</include>
 		<!-- Menu control -->
 		<control type="group">
 			<include>FullscreenDimensions</include>
