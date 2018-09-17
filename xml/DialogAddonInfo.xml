@@ -12,6 +12,9 @@
 			<showonepage>false</showonepage>
 			<orientation>vertical</orientation>
 		</control>
+		<control type="button" id="6">
+			<include>HiddenObject</include>
+		</control>
 		<!-- Background -->
 		<include>Background</include>
 		<!-- Info -->
@@ -48,10 +51,6 @@
 						<itemgap>5</itemgap>
 						<onleft>900</onleft>
 						<onright>noop</onright>
-						<control type="button" id="6">
-							<include>LightGreyButton</include>
-							<visible>Control.IsEnabled(6)</visible>
-						</control>
 						<control type="button" id="12">
 							<include>LightGreyButton</include>
 							<label>$LOCALIZE[518]</label>
@@ -67,6 +66,12 @@
 							<label>$LOCALIZE[24036]</label>
 							<onclick>RunScript(script.skin.helper.service,action=textviewer,header=$LOCALIZE[24036],message='$ESCINFO[ListItem.AddonNews]')</onclick>
 							<visible>!String.IsEmpty(ListItem.AddonNews)</visible>
+						</control>
+						<control type="button" id="101">
+							<include>LightGreyButton</include>
+							<label>$LOCALIZE[24038]</label>
+							<onclick>SendClick(6)</onclick>
+							<visible>String.IsEqual(Control.GetLabel(6),$LOCALIZE[24038])</visible>
 						</control>
 						<control type="button" id="110">
 							<include>LightGreyButton</include>
@@ -144,6 +149,12 @@
 					<control type="button" id="7">
 						<include content="ContextButton"/>
 						<visible>Control.IsEnabled(7)</visible>
+					</control>
+					<control type="button" id="4002">
+						<include content="ContextButton"/>
+						<label>$LOCALIZE[24037]</label>
+						<onclick>SendClick(6)</onclick>
+						<visible>!String.IsEqual(Control.GetLabel(6),$LOCALIZE[24038])</visible>
 					</control>
 					<control type="image" id="4005">
 						<width>100%</width>
