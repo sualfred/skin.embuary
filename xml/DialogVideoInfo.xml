@@ -3,6 +3,7 @@
 	<defaultcontrol always="true">100</defaultcontrol>
 	<onload condition="String.IsEqual(ListItem.DBType,season) + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) + String.IsEqual(ListItem.Label,All)">close</onload>
 	<onload condition="String.IsEqual(ListItem.DBType,set) + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">close</onload>
+	<onload condition="String.IsEqual(ListItem.DBType,artist) + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">close</onload>
 	<include>UnloadSetProperties</include>
 	<onunload condition="!String.IsEmpty(Window(home).Property(InfoDialogCloseFocus))">SetFocus(7070)</onunload>
 	<include>PropertyIncludes</include>
