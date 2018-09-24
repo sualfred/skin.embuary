@@ -406,6 +406,20 @@
 			<param name="content" value="$VAR[EmbyCon.RecommendedShows]"/>
 		</include>
 	</include>
+	<!-- Similar shows -->
+	<include name="W_SimilarShows">
+		<include content="PosterWidget">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$LOCALIZE[31018] $INFO[Container($PARAM[id]).ListItem.Property(similartitle)]"/>
+			<param name="mainlabel" value="$INFO[ListItem.Title]"/>
+			<param name="sublabel" value="$INFO[ListItem.Year]"/>
+			<param name="widget_target" value="videos"/>
+			<param name="limit" value="25"/>
+			<param name="content" value="plugin://script.embuary.helper/?info=getsimilar&amp;type=tvshow&amp;reload=$INFO[Window(Home).Property(widgetreload)]$INFO[Window(home).Property(EmbuaryWidgetReload)]"/>
+		</include>
+	</include>
 	<!-- top 250 -->
 	<include name="W_Top250Shows">
 		<include content="WideWidget">
