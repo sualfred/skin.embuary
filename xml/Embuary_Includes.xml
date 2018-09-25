@@ -599,40 +599,8 @@
 					<orientation>vertical</orientation>
 					<defaultcontrol>0</defaultcontrol>
 					<itemlayout height="35" width="45">
-						<control type="textbox">
-							<width>40</width>
-							<height>40</height>
-							<font>JumpToLetter</font>
-							<align>center</align>
-							<aligny>center</aligny>
-							<textcolor>text_sublabel</textcolor>
-							<label>$INFO[ListItem.Label]</label>
-							<visible>String.IsEmpty(ListItem.Property(NotAvailable)) + !String.IsEqual(ListItem.Label,Container.ListItem.SortLetter)</visible>
-						</control>
-						<control type="textbox">
-							<width>40</width>
-							<height>40</height>
-							<font>JumpToLetter</font>
-							<align>center</align>
-							<aligny>center</aligny>
-							<textcolor>disabled</textcolor>
-							<label>$INFO[ListItem.Label]</label>
-							<visible>!String.IsEmpty(ListItem.Property(NotAvailable)) + !String.IsEqual(ListItem.Label,Container.ListItem.SortLetter)</visible>
-						</control>
-						<control type="textbox">
-							<width>40</width>
-							<height>40</height>
-							<font>JumpToLetter</font>
-							<align>center</align>
-							<aligny>center</aligny>
-							<textcolor>white</textcolor>
-							<label>$INFO[ListItem.Label]</label>
-							<visible>String.IsEqual(ListItem.Label,Container.ListItem.SortLetter)</visible>
-						</control>
-					</itemlayout>
-					<focusedlayout height="35" width="45">
 						<control type="group">
-							<visible>!Control.HasFocus($PARAM[id])</visible>
+							<visible>!String.IsEqual(ListItem.Label,Container.ListItem.SortLetter) + !String.IsEqual(ListItem.Property(IsNumber),Container.ListItem.SortLetter)</visible>
 							<control type="textbox">
 								<width>40</width>
 								<height>40</height>
@@ -641,7 +609,7 @@
 								<aligny>center</aligny>
 								<textcolor>text_sublabel</textcolor>
 								<label>$INFO[ListItem.Label]</label>
-								<visible>String.IsEmpty(ListItem.Property(NotAvailable)) + !String.IsEqual(ListItem.Label,Container.ListItem.SortLetter)</visible>
+								<visible>String.IsEmpty(ListItem.Property(NotAvailable))</visible>
 							</control>
 							<control type="textbox">
 								<width>40</width>
@@ -651,7 +619,45 @@
 								<aligny>center</aligny>
 								<textcolor>disabled</textcolor>
 								<label>$INFO[ListItem.Label]</label>
-								<visible>!String.IsEmpty(ListItem.Property(NotAvailable)) + !String.IsEqual(ListItem.Label,Container.ListItem.SortLetter)</visible>
+								<visible>!String.IsEmpty(ListItem.Property(NotAvailable))</visible>
+							</control>
+						</control>
+						<control type="textbox">
+							<width>40</width>
+							<height>40</height>
+							<font>JumpToLetter</font>
+							<align>center</align>
+							<aligny>center</aligny>
+							<textcolor>white</textcolor>
+							<label>$INFO[ListItem.Label]</label>
+							<visible>String.IsEqual(ListItem.Label,Container.ListItem.SortLetter) | String.IsEqual(ListItem.Property(IsNumber),Container.ListItem.SortLetter)</visible>
+						</control>
+					</itemlayout>
+					<focusedlayout height="35" width="45">
+						<control type="group">
+							<visible>!Control.HasFocus($PARAM[id])</visible>
+							<control type="group">
+								<visible>!String.IsEqual(ListItem.Label,Container.ListItem.SortLetter) + !String.IsEqual(ListItem.Property(IsNumber),Container.ListItem.SortLetter)</visible>
+								<control type="textbox">
+									<width>40</width>
+									<height>40</height>
+									<font>JumpToLetter</font>
+									<align>center</align>
+									<aligny>center</aligny>
+									<textcolor>text_sublabel</textcolor>
+									<label>$INFO[ListItem.Label]</label>
+									<visible>String.IsEmpty(ListItem.Property(NotAvailable))</visible>
+								</control>
+								<control type="textbox">
+									<width>40</width>
+									<height>40</height>
+									<font>JumpToLetter</font>
+									<align>center</align>
+									<aligny>center</aligny>
+									<textcolor>disabled</textcolor>
+									<label>$INFO[ListItem.Label]</label>
+									<visible>!String.IsEmpty(ListItem.Property(NotAvailable))</visible>
+								</control>
 							</control>
 							<control type="textbox">
 								<width>40</width>
@@ -661,7 +667,7 @@
 								<aligny>center</aligny>
 								<textcolor>white</textcolor>
 								<label>$INFO[ListItem.Label]</label>
-								<visible>String.IsEqual(ListItem.Label,Container.ListItem.SortLetter)</visible>
+								<visible>String.IsEqual(ListItem.Label,Container.ListItem.SortLetter) | String.IsEqual(ListItem.Property(IsNumber),Container.ListItem.SortLetter)</visible>
 							</control>
 						</control>
 						<control type="group">
@@ -684,7 +690,7 @@
 							</control>
 						</control>
 					</focusedlayout>
-					<content>plugin://script.skin.helper.service/?action=alphabet&amp;reload=$INFO[Container.NumItems]</content>
+					<content>plugin://script.embuary.helper/?info=jumptoletter&amp;reload=$INFO[Container.NumItems]</content>
 				</control>
 			</control>
 		</definition>
