@@ -732,11 +732,9 @@
 	<include name="PropertyIncludes">
 		<param name="ShowHeader">false</param>
 		<definition>
-			<onload>SetProperty(EmbuaryWidgetReload,$INFO[System.Time(mm)],home)</onload>
 			<onload condition="$PARAM[ShowHeader]">SetProperty(ShowHeader,1,home)</onload>
 			<onload condition="$PARAM[ShowHeader]">AlarmClock(ShowHeader,ClearProperty(ShowHeader,home),00:02,silent)</onload>
 			<onload>ClearProperty(FocusBounce,home)</onload>
-			<onunload>SetProperty(EmbuaryWidgetReload,$INFO[System.Time(mm)],home)</onunload>
 			<onunload>ClearProperty(FocusBounce,home)</onunload>
 			<onunload>ClearProperty(ShowHeader,home)</onunload>
 			<onunload condition="System.HasAlarm(ShowHeader)">CancelAlarm(ShowHeader,silent)</onunload>
