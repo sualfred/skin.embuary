@@ -5,7 +5,9 @@
 		<include content="DiffuseMask">
 			<param name="color">bb000000</param>
 		</include>
+
 		<control type="textbox">
+			<visible>false</visible>
 			<height>100%</height>
 			<width>100%</width>
 			<label>
@@ -40,6 +42,55 @@
 				$INFO[Window(home).Property(emby.wnodes.28.content)] $INFO[Window(home).Property(emby.wnodes.28.type),,[CR]]
 				$INFO[Window(home).Property(emby.wnodes.29.content)] $INFO[Window(home).Property(emby.wnodes.29.type),,[CR]]
 			</label>
+		</control>
+
+		<control type="list" id="50">
+			<left>80</left>
+			<top>60</top>
+			<width>100%</width>
+			<height>100%</height>
+			<orientation>vertical</orientation>
+			<itemlayout width="250" height="29">
+				<control type="image">
+					<left>5</left>
+					<top>3</top>
+					<width>22</width>
+					<height>22</height>
+					<info>ListItem.Icon</info>
+				</control>
+				<control type="label">
+					<left>30</left>
+					<top>3</top>
+					<width>430</width>
+					<height>22</height>
+					<font>font13</font>
+					<aligny>center</aligny>
+					<selectedcolor>green</selectedcolor>
+					<align>left</align>
+					<info>ListItem.Label</info>
+				</control>
+			</itemlayout>
+			<focusedlayout height="29" width="250">
+				<control type="image">
+					<left>5</left>
+					<top>3</top>
+					<width>22</width>
+					<height>22</height>
+					<info>ListItem.Icon</info>
+				</control>
+				<control type="label">
+					<left>30</left>
+					<top>3</top>
+					<width>430</width>
+					<height>22</height>
+					<font>font13</font>
+					<aligny>center</aligny>
+					<selectedcolor>green</selectedcolor>
+					<align>left</align>
+					<info>ListItem.Label</info>
+				</control>
+			</focusedlayout>
+			<!--<content>plugin://script.embuary.helper/?info=getsimilar&amp;dbid=$INFO[ListItem.DBID]&amp;type=movie</content>-->
 		</control>
 	</controls>
 </window>

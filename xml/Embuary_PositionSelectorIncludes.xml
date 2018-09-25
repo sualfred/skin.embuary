@@ -88,6 +88,9 @@
 				<include condition="Integer.IsGreaterOrEqual(Window(home).Property(PositionCount),20)" content="$PARAM[content]">
 					<param name="nr" value="20"/>
 				</include>
+				<include condition="Integer.IsGreaterOrEqual(Window(home).Property(PositionCount),21)" content="$PARAM[content]">
+					<param name="nr" value="21"/>
+				</include>
 			</content>
 		</definition>
 	</include>
@@ -415,10 +418,6 @@
 			<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
 		</include>
 		<include content="MovieHubSetWidget">
-			<param name="label" value="$LOCALIZE[31097]"/>
-			<param name="item" value="W_Top250Movies"/>
-		</include>
-		<include content="MovieHubSetWidget">
 			<param name="label" value="$LOCALIZE[31062]   ($LOCALIZE[31181])"/>
 			<param name="item" value="W_FavMovies"/>
 			<param name="visible" value="System.HasAddon(plugin.video.emby)"/>
@@ -484,8 +483,6 @@
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(moviehub_widget_pos_18),$PARAM[item])">Skin.Reset(moviehub_widget_pos_18.label)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(moviehub_widget_pos_19),$PARAM[item])">Skin.Reset(moviehub_widget_pos_19)</onclick>
 				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(moviehub_widget_pos_19),$PARAM[item])">Skin.Reset(moviehub_widget_pos_19.label)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(moviehub_widget_pos_20),$PARAM[item])">Skin.Reset(moviehub_widget_pos_20)</onclick>
-				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(moviehub_widget_pos_20),$PARAM[item])">Skin.Reset(moviehub_widget_pos_20.label)</onclick>
 				<onclick condition="$PARAM[setitem]">Skin.SetString(moviehub_widget_pos_$PARAM[nr].label,$PARAM[label])</onclick>
 				<onclick condition="$PARAM[setitem]">Skin.SetString(moviehub_widget_pos_$PARAM[nr],$PARAM[item])</onclick>
 				<onclick condition="$PARAM[clearitem]">Skin.Reset(moviehub_widget_pos_$PARAM[nr])</onclick>
@@ -569,10 +566,6 @@
 			<param name="label" value="$LOCALIZE[31017]   ($LOCALIZE[31208])"/>
 			<param name="item" value="W_EmbyCon_RecommendedShows"/>
 			<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
-		</include>
-		<include content="TVShowHubSetWidget">
-			<param name="label" value="$LOCALIZE[31098]"/>
-			<param name="item" value="W_Top250Shows"/>
 		</include>
 		<include content="TVShowHubSetWidget">
 			<param name="label" value="$LOCALIZE[31064]   ($LOCALIZE[31181])"/>
