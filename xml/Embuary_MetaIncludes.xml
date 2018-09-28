@@ -942,7 +942,12 @@
 		<control type="button">
 			<include>MetaFlagsButton</include>
 			<label>$INFO[ListItem.DateAdded,$LOCALIZE[570]: ]</label>
-			<visible>!String.IsEmpty(ListItem.DateAdded)</visible>
+			<visible>!String.IsEmpty(ListItem.DateAdded) + !String.IsEqual(ListItem.DBType,tvshow)</visible>
+		</control>
+		<control type="button">
+			<include>MetaFlagsButton</include>
+			<label>$INFO[ListItem.DateAdded,$LOCALIZE[12014]: ]</label>
+			<visible>!String.IsEmpty(ListItem.DateAdded) + String.IsEqual(ListItem.DBType,tvshow)</visible>
 		</control>
 	</include>
 	<include name="PlayerFlags">
