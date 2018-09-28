@@ -60,12 +60,10 @@
 			<param name="ondown" value="$PARAM[ondown]"/>
 			<param name="headline" value="$LOCALIZE[31012]"/>
 			<param name="mainlabel" value="$INFO[ListItem.TvShowTitle]"/>
-			<param name="sublabel" value="$INFO[ListItem.Year]"/>
+			<param name="sublabel" value="$VAR[ListItemSeasonEpisode]$INFO[ListItem.Title]"/>
 			<param name="widget_target" value="videos"/>
 			<param name="limit" value="25"/>
-			<param name="sortby" value="lastplayed"/>
-			<param name="sortorder" value="descending"/>
-			<param name="content" value="videodb://tvshows/titles/?xsp=%7b%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22inprogress%22%2c%22operator%22%3a%22true%22%2c%22value%22%3a%5b%5d%7d%5d%7d%2c%22type%22%3a%22tvshows%22%7d&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
+			<param name="content" value="plugin://script.embuary.helper/?info=getnextup&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 		</include>
 	</include>
 	<include name="W_EmbyCon_NextUp">
@@ -119,13 +117,11 @@
 			<param name="onup" value="$PARAM[onup]"/>
 			<param name="ondown" value="$PARAM[ondown]"/>
 			<param name="headline" value="$LOCALIZE[31081]"/>
-			<param name="mainlabel" value="$INFO[ListItem.Label]"/>
-			<param name="sublabel" value="$INFO[ListItem.Year]"/>
+			<param name="mainlabel" value="$VAR[RecentEpisodes_Mainlabel]"/>
+			<param name="sublabel" value="$VAR[RecentEpisodes_Sublabel]"/>
 			<param name="widget_target" value="videos"/>
 			<param name="limit" value="25"/>
-			<param name="sortby" value="dateadded"/>
-			<param name="sortorder" value="descending"/>
-			<param name="content" value="videodb://tvshows/titles/?xsp=%7b%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22dateadded%22%2c%22operator%22%3a%22inthelast%22%2c%22value%22%3a%5b%2260%22%5d%7d%2c%7b%22field%22%3a%22playcount%22%2c%22operator%22%3a%22is%22%2c%22value%22%3a%5b%220%22%5d%7d%5d%7d%2c%22type%22%3a%22tvshows%22%7d&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
+			<param name="content" value="plugin://script.embuary.helper/?info=getnewshows&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 		</include>
 	</include>
 	<include name="W_EmbyCon_NewEpisodes">
@@ -135,8 +131,8 @@
 			<param name="onup" value="$PARAM[onup]"/>
 			<param name="ondown" value="$PARAM[ondown]"/>
 			<param name="headline" value="$LOCALIZE[31081]$VAR[EmbyConLabel]"/>
-			<param name="mainlabel" value="$VAR[EmbyCon_RecentEpisodes_Mainlabel]"/>
-			<param name="sublabel" value="$VAR[EmbyCon_RecentEpisodes_Sublabel]"/>
+			<param name="mainlabel" value="$VAR[RecentEpisodes_Mainlabel]"/>
+			<param name="sublabel" value="$VAR[RecentEpisodes_Sublabel]"/>
 			<param name="widget_target" value="videos"/>
 			<param name="limit" value="30"/>
 			<param name="content" value="$VAR[EmbyCon.NewEpisodes]"/>
