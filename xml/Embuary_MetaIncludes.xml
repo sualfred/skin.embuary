@@ -704,7 +704,15 @@
 						<fadetime>200</fadetime>
 						<aspectratio scalediffuse="false">keep</aspectratio>
 						<bordersize>20</bordersize>
-						<visible>[String.IsEmpty(PVR.EpgEventIcon) + [String.Contains(Player.Icon,imagecache) | !String.Contains(Player.Icon,.jpg)]]</visible>
+						<visible>String.IsEmpty(PVR.EpgEventIcon) + [String.Contains(Player.Icon,imagecache) | String.Contains(Player.Icon,.png)]</visible>
+					</control>
+					<control type="image">
+						<width>590</width>
+						<height>332</height>
+						<texture background="true">$INFO[Player.Icon]</texture>
+						<fadetime>200</fadetime>
+						<aspectratio scalediffuse="false">keep</aspectratio>
+						<visible>String.IsEmpty(PVR.EpgEventIcon) + !String.Contains(Player.Icon,imagecache) + !String.Contains(Player.Icon,.png)</visible>
 					</control>
 					<control type="image">
 						<width>590</width>
@@ -712,7 +720,7 @@
 						<texture background="true">$INFO[PVR.EpgEventIcon]</texture>
 						<fadetime>200</fadetime>
 						<aspectratio scalediffuse="false">keep</aspectratio>
-						<visible>![String.IsEmpty(PVR.EpgEventIcon) + [String.Contains(Player.Icon,imagecache) | !String.Contains(Player.Icon,.jpg)]]</visible>
+						<visible>!String.IsEmpty(PVR.EpgEventIcon)</visible>
 					</control>
 				</control>
 				<control type="group">
