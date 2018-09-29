@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 	<include name="ContainerContentPath">
+		<content>
+			<item>
+				<label>$LOCALIZE[1024]</label>
+				<icon>items/genrefolder.png</icon>
+				<onclick>ActivateWindow(videos,$PARAM[content],return)</onclick>
+				<property name="IsFolder">true</property>
+				<visible>Window.IsVisible(1114) + [!String.IsEmpty(Container($PARAM[id]).ListItemAbsolute(1).Label) | Container($PARAM[id]).IsUpdating]</visible>
+			</item>
+		</content>
 		<content target="$PARAM[widget_target]" sortby="$PARAM[sortby]" sortorder="$PARAM[sortorder]" limit="$PARAM[limit]">$PARAM[content]</content>
 		<content target="$PARAM[widget_target2]" sortby="$PARAM[sortby2]" sortorder="$PARAM[sortorder2]" limit="$PARAM[limit2]">$PARAM[content2]</content>
 	</include>
