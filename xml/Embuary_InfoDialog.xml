@@ -429,16 +429,16 @@
 				<param name="id" value="200"/>
 				<param name="onup" value="100"/>
 				<param name="ondown" value="300"/>
+				<param name="headline" value="$LOCALIZE[31259] $INFO[ListItem.Season]"/>
 				<param name="sublabel" value=""/>
 				<param name="height" value="438"/>
-				<param name="sortby" value="episode"/>
-				<param name="sortorder" value="ascending"/>
-				<param name="content" value="videodb://tvshows/titles/$INFO[Window(home).Property(TVShowDBID)]/$INFO[ListItem.Season]/?tvshowid=$INFO[Window(home).Property(TVShowDBID)]&amp;xsp=%7b%22order%22%3a%7b%22direction%22%3a%22ascending%22%2c%22ignorefolders%22%3a0%2c%22method%22%3a%22sorttitle%22%7d%2c%22type%22%3a%22tvshows%22%7d"/>
-				<param name="headline" value="$LOCALIZE[31259] $INFO[ListItem.Season]"/>
 				<param name="use_custom_onclick" value="Window.IsMedia"/>
 				<param name="onclick" value="close"/>
 				<param name="onclick2" value="ActivateWindow(home)"/>
 				<param name="onclick3" value="PlayMedia($INFO[ListItem.Filenameandpath])"/>
+				<param name="sortby" value="episode"/>
+				<param name="sortorder" value="ascending"/>
+				<param name="content" value="plugin://script.embuary.helper/?info=getseasonepisodes&amp;title='$ESCINFO[ListItem.TvShowTitle]'&amp;season=$INFO[ListItem.Season]&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 			</include>
 			<!-- Cast -->
 			<include content="CastWidget">
