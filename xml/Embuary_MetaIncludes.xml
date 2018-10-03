@@ -564,7 +564,7 @@
 				<textcolor>white</textcolor>
 				<align>center</align>
 				<aligny>center</aligny>
-				<label>$INFO[ListItem.Label]</label>
+				<label>$VAR[MainListLabel]</label>
 				<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
 			</control>
 			<control type="image">
@@ -905,7 +905,7 @@
 				<aligny>top</aligny>
 				<textcolor>accent</textcolor>
 				<visible>$PARAM[visible]</visible>
-				<visible>!String.IsEmpty($PARAM[type].Genre) | !String.IsEmpty($PARAM[type].Director)</visible>
+				<visible>!String.IsEmpty(ListItem.AddonType) | !String.IsEmpty($PARAM[type].Genre) | !String.IsEmpty($PARAM[type].Director)</visible>
 			</control>
 			<control type="label">
 				<animation effect="slide" end="0,2" time="0" condition="true">Conditional</animation>
