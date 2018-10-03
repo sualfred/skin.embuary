@@ -9,9 +9,9 @@
 			<param name="color">background_diffuse</param>
 		</include>
 		<control type="group">
-			<include>Dialog_PopupOpenClose</include>
 			<!-- Time -->
 			<control type="grouplist">
+				<include>Visible_Fade</include>
 				<right>70</right>
 				<height>110</height>
 				<bottom>50</bottom>
@@ -64,24 +64,59 @@
 					<visible>!String.IsEmpty(System.Time(xx))</visible>
 				</control>
 			</control>
-			<control type="group">
-				<!-- List -->
-				<control id="6000" type="fixedlist">
-					<centerleft>50%</centerleft>
-					<centertop>50%</centertop>
-					<width>1920</width>
-					<height>300</height>
-					<movement>2</movement>
-					<orientation>horizontal</orientation>
-					<focusposition>3</focusposition>
-					<defaultcontrol>0</defaultcontrol>
-					<ondown>6103</ondown>
-					<include>ScrollTime</include>
-					<animation effect="slide" time="0" end="-135,0" condition="String.IsEqual(Container(6000).NumItems,2) | String.IsEqual(Container(6000).NumItems,4) | String.IsEqual(Container(6000).NumItems,6)">Conditional</animation>
-					<itemlayout height="300" width="270">
+			<control id="6000" type="fixedlist">
+				<include>Dialog_PopupOpenClose</include>
+				<centerleft>50%</centerleft>
+				<centertop>50%</centertop>
+				<width>1920</width>
+				<height>300</height>
+				<movement>2</movement>
+				<orientation>horizontal</orientation>
+				<focusposition>3</focusposition>
+				<defaultcontrol>0</defaultcontrol>
+				<ondown>6103</ondown>
+				<include>ScrollTime</include>
+				<animation effect="slide" time="0" end="-135,0" condition="String.IsEqual(Container(6000).NumItems,2) | String.IsEqual(Container(6000).NumItems,4) | String.IsEqual(Container(6000).NumItems,6)">Conditional</animation>
+				<itemlayout height="300" width="270">
+					<control type="group">
+						<left>30</left>
+						<top>14</top>
+						<control type="image">
+							<top>-2</top>
+							<left>-2</left>
+							<width>246</width>
+							<height>246</height>
+							<texture diffuse="items/big_circle.png">$INFO[ListItem.Property(color),common/colors/,.jpg]</texture>
+						</control>
+						<control type="textbox">
+							<width>240</width>
+							<height>240</height>
+							<font>Material70</font>
+							<textcolor>EEFFFFFF</textcolor>
+							<align>center</align>
+							<aligny>center</aligny>
+							<label>$INFO[ListItem.Label2]</label>
+						</control>
+					</control>
+					<control type="label">
+						<bottom>0</bottom>
+						<left>20</left>
+						<width>260</width>
+						<height>25</height>
+						<align>center</align>
+						<aligny>center</aligny>
+						<font>med22</font>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+				</itemlayout>
+				<focusedlayout height="300" width="270">
+					<control type="group">
+						<left>30</left>
+						<top>14</top>
 						<control type="group">
-							<left>30</left>
-							<top>14</top>
+							<include content="Animation_FocusBounce">
+								<param name="id" value="6000"/>
+							</include>
 							<control type="image">
 								<top>-2</top>
 								<left>-2</left>
@@ -98,261 +133,225 @@
 								<aligny>center</aligny>
 								<label>$INFO[ListItem.Label2]</label>
 							</control>
-						</control>
-						<control type="label">
-							<bottom>0</bottom>
-							<left>20</left>
-							<width>260</width>
-							<height>25</height>
-							<align>center</align>
-							<aligny>center</aligny>
-							<font>med22</font>
-							<label>$INFO[ListItem.Label]</label>
-						</control>
-					</itemlayout>
-					<focusedlayout height="300" width="270">
-						<control type="group">
-							<left>30</left>
-							<top>14</top>
-							<control type="group">
-								<include content="Animation_FocusBounce">
-									<param name="id" value="6000"/>
-								</include>
-								<control type="image">
-									<top>-2</top>
-									<left>-2</left>
-									<width>246</width>
-									<height>246</height>
-									<texture diffuse="items/big_circle.png">$INFO[ListItem.Property(color),common/colors/,.jpg]</texture>
-								</control>
-								<control type="textbox">
-									<width>240</width>
-									<height>240</height>
-									<font>Material70</font>
-									<textcolor>EEFFFFFF</textcolor>
-									<align>center</align>
-									<aligny>center</aligny>
-									<label>$INFO[ListItem.Label2]</label>
-								</control>
-								<control type="image">
-									<top>-7</top>
-									<left>-12</left>
-									<width>264</width>
-									<height>264</height>
-									<texture>items/big_circle_focus.png</texture>
-									<colordiffuse>accent</colordiffuse>
-									<include>Animation_FocusTextureFade</include>
-									<visible>Control.HasFocus(6000)</visible>
-								</control>
+							<control type="image">
+								<top>-7</top>
+								<left>-12</left>
+								<width>264</width>
+								<height>264</height>
+								<texture>items/big_circle_focus.png</texture>
+								<colordiffuse>accent</colordiffuse>
+								<include>Animation_FocusTextureFade</include>
+								<visible>Control.HasFocus(6000)</visible>
 							</control>
 						</control>
-						<control type="label">
-							<bottom>0</bottom>
-							<left>20</left>
-							<width>260</width>
-							<height>25</height>
-							<align>center</align>
-							<aligny>center</aligny>
-							<font>med22</font>
-							<label>$INFO[ListItem.Label]</label>
-						</control>
-					</focusedlayout>
-					<content>
-						<item>
-							<label>$LOCALIZE[10000]</label>
-							<label2></label2>
-							<onclick>Dialog.Close(all,true)</onclick>
-							<onclick>ActivateWindow(home)</onclick>
-							<property name="color">orange</property>
-							<visible>!Window.IsVisible(loginscreen) + !Window.IsVisible(home)</visible>
-						</item>
-						<item>
-							<label>$LOCALIZE[5]</label>
-							<label2></label2>
-							<onclick>Dialog.Close(all,true)</onclick>
-							<onclick>ActivateWindow(settings)</onclick>
-							<property name="color">blue</property>
-							<visible>!Window.IsVisible(loginscreen) + !Window.IsVisible(settings) + !Skin.HasSetting(HidePowerSettings)</visible>
-						</item>
-						<item>
-							<label>$LOCALIZE[13012]</label>
-							<label2></label2>
-							<onclick>Quit()</onclick>
-							<visible>System.ShowExitButton + !Skin.HasSetting(HidePowerExit)</visible>
-							<property name="color">green</property>
-						</item>
-						<item>
-							<label>$LOCALIZE[13016]</label>
-							<label2></label2>
-							<onclick>Powerdown()</onclick>
-							<visible>System.CanPowerDown + !Skin.HasSetting(HidePowerOff)</visible>
-							<property name="color">red</property>
-						</item>
-						<item>
-							<label>$LOCALIZE[20150]</label>
-							<label2></label2>
-							<onclick>AlarmClock(shutdowntimer,Shutdown())</onclick>
-							<visible>!System.HasAlarm(shutdowntimer) + !Skin.HasSetting(HidePowerTimer)</visible>
-							<visible>System.CanPowerDown | System.CanSuspend | System.CanHibernate</visible>
-							<property name="color">red</property>
-						</item>
-						<item>
-							<label>$LOCALIZE[20151] $INFO[System.AlarmPos,(,)]</label>
-							<label2></label2>
-							<onclick>CancelAlarm(shutdowntimer)</onclick>
-							<visible>System.HasAlarm(shutdowntimer) + !Skin.HasSetting(HidePowerTimer)</visible>
-							<property name="color">grey</property>
-						</item>
-						<item>
-							<label>$LOCALIZE[13011]</label>
-							<label2></label2>
-							<onclick>Suspend()</onclick>
-							<visible>System.CanSuspend + !Skin.HasSetting(HidePowerSuspend)</visible>
-							<property name="color">lila</property>
-						</item>
-						<item>
-							<label>$LOCALIZE[13010]</label>
-							<label2></label2>
-							<onclick>Hibernate()</onclick>
-							<visible>System.CanHibernate + !Skin.HasSetting(HidePowerHibernate)</visible>
-							<property name="color">lila</property>
-						</item>
-						<item>
-							<label>$LOCALIZE[13013]</label>
-							<label2></label2>
-							<onclick>Reset()</onclick>
-							<visible>System.CanReboot + !Skin.HasSetting(HidePowerReboot)</visible>
-							<property name="color">turquoise</property>
-						</item>
-						<item>
-							<label>$LOCALIZE[13013] (NAND)</label>
-							<label2></label2>
-							<onclick>Dialog.Close(all,true)</onclick>
-							<onclick>System.ExecWait(&quot;/usr/sbin/rebootfromnand&quot;)</onclick>
-							<visible>System.CanReboot + !Skin.HasSetting(HidePowerRebootNAND) + [System.HasAddon(service.libreelec.settings) | System.HasAddon(service.coreelec.settings)]</visible>
-							<property name="color">turquoise</property>
-						</item>
-						<item>
-							<label>$LOCALIZE[13017]</label>
-							<label2></label2>
-							<onclick>InhibitIdleShutdown(true)</onclick>
-							<visible>System.HasShutdown + !System.IsInhibit + !Skin.HasSetting(HidePowerIdleShutdown)</visible>
-							<property name="color">lightgrey</property>
-						</item>
-						<item>
-							<label>$LOCALIZE[13018]</label>
-							<label2></label2>
-							<onclick>InhibitIdleShutdown(false)</onclick>
-							<visible>System.HasShutdown + System.IsInhibit + !Skin.HasSetting(HidePowerIdleShutdown)</visible>
-							<property name="color">lightgrey</property>
-						</item>
-						<item>
-							<label>$LOCALIZE[31226]</label>
-							<label2></label2>
-							<onclick>dialog.close(all,true)</onclick>
-							<onclick>RunScript(plugin.video.embycon,0,?mode=CHANGE_USER)</onclick>
-							<visible>System.HasAddon(plugin.video.embycon) + !String.IsEmpty(Window(Home).Property(plugin.video.embycon-userid))</visible>
-							<property name="color">accent</property>
-						</item>
-						<item>
-							<label>$LOCALIZE[31225]</label>
-							<label2></label2>
-							<onclick>dialog.close(all,true)</onclick>
-							<onclick>RunScript(plugin.video.embycon,0,?mode=CHANGE_USER)</onclick>
-							<visible>System.HasAddon(plugin.video.embycon) + String.IsEmpty(Window(Home).Property(plugin.video.embycon-userid))</visible>
-							<property name="color">accent</property>
-						</item>
-						<item>
-							<label>$LOCALIZE[20126] $INFO[system.profilename]</label>
-							<label2></label2>
-							<onclick>dialog.close(all,true)</onclick>
-							<onclick>System.LogOff</onclick>
-							<visible>System.HasLoginScreen | Integer.IsGreater(System.ProfileCount,1)</visible>
-							<visible>System.Loggedon</visible>
-							<property name="color">accent</property>
-						</item>
-						<item>
-							<label>$LOCALIZE[20046]</label>
-							<label2></label2>
-							<onclick>mastermode</onclick>
-							<visible>System.HasLocks + System.IsMaster</visible>
-							<property name="color">accent</property>
-						</item>
-						<item>
-							<label>$LOCALIZE[20045]</label>
-							<label2></label2>
-							<onclick>mastermode</onclick>
-							<visible>System.HasLocks + !System.IsMaster</visible>
-							<property name="color">accent</property>
-						</item>
-					</content>
-				</control>
-				<!-- Player controls -->
-				<control type="group">
-					<visible>Player.HasMedia</visible>
-					<left>70</left>
-					<height>110</height>
-					<bottom>50</bottom>
-					<width>1400</width>
-					<align>right</align>
-					<itemgap>10</itemgap>
-					<control type="label">
-						<bottom>50</bottom>
-						<height>23</height>
-						<align>left</align>
-						<label>$VAR[PlayerFullLabel]</label>
-						<font>reg24</font>
-						<textcolor>ffbfbcbb</textcolor>
 					</control>
-					<control type="grouplist" id="6100">
-						<left>-15</left>
-						<bottom>-9</bottom>
-						<height>50</height>
-						<itemgap>5</itemgap>
-						<orientation>horizontal</orientation>
-						<align>left</align>
-						<include>FocusBounce</include>
-						<onup>6000</onup>
-						<onright>noop</onright>
-						<onleft>noop</onleft>
-						<control type="button" id="6101">
-							<include content="PlayerButtons">
-								<param name="type" value="previous"/>
-							</include>
-							<onclick>PlayerControl(Previous)</onclick>
-							<visible>!VideoPlayer.Content(livetv) + !String.StartsWith(Player.Filenameandpath,pvr://)</visible>
-						</control>
-						<control type="togglebutton" id="6103">
-							<include content="PlayerButtons">
-								<param name="type" value="play"/>
-								<param name="alt" value="pause"/>
-							</include>
-							<selected>!Player.Paused + !Player.Forwarding + !Player.Rewinding + !Player.Seeking</selected>
-							<onclick>PlayerControl(Play)</onclick>
-						</control>
-						<control type="button" id="6104">
-							<include content="PlayerButtons">
-								<param name="type" value="stop"/>
-							</include>
-							<onclick>PlayerControl(Stop)</onclick>
-						</control>
-						<control type="button" id="6106">
-							<include content="PlayerButtons">
-								<param name="type" value="next"/>
-							</include>
-							<onclick>PlayerControl(Next)</onclick>
-							<visible>!VideoPlayer.Content(livetv) + !String.StartsWith(Player.Filenameandpath,pvr://)</visible>
-						</control>
-						<control type="button" id="6107">
-							<colordiffuse>$VAR[PlayerRecordIconColor]</colordiffuse>
-							<include content="PlayerButtons">
-								<param name="type" value="rec"/>
-							</include>
-							<onclick>PVR.ToggleRecordPlayingChannel</onclick>
-							<selected>PVR.IsRecordingPlayingChannel</selected>
-							<visible>PVR.CanRecordPlayingChannel</visible>
-							<visible>VideoPlayer.Content(livetv)</visible>
-						</control>
+					<control type="label">
+						<bottom>0</bottom>
+						<left>20</left>
+						<width>260</width>
+						<height>25</height>
+						<align>center</align>
+						<aligny>center</aligny>
+						<font>med22</font>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+				</focusedlayout>
+				<content>
+					<item>
+						<label>$LOCALIZE[10000]</label>
+						<label2></label2>
+						<onclick>Dialog.Close(all,true)</onclick>
+						<onclick>ActivateWindow(home)</onclick>
+						<property name="color">orange</property>
+						<visible>!Window.IsVisible(loginscreen) + !Window.IsVisible(home)</visible>
+					</item>
+					<item>
+						<label>$LOCALIZE[5]</label>
+						<label2></label2>
+						<onclick>Dialog.Close(all,true)</onclick>
+						<onclick>ActivateWindow(settings)</onclick>
+						<property name="color">blue</property>
+						<visible>!Window.IsVisible(loginscreen) + !Window.IsVisible(settings) + !Skin.HasSetting(HidePowerSettings)</visible>
+					</item>
+					<item>
+						<label>$LOCALIZE[13012]</label>
+						<label2></label2>
+						<onclick>Quit()</onclick>
+						<visible>System.ShowExitButton + [!Skin.HasSetting(HidePowerExit) | Window.IsVisible(loginscreen)]</visible>
+						<property name="color">green</property>
+					</item>
+					<item>
+						<label>$LOCALIZE[13016]</label>
+						<label2></label2>
+						<onclick>Powerdown()</onclick>
+						<visible>System.CanPowerDown + [!Skin.HasSetting(HidePowerOff) | Window.IsVisible(loginscreen)]</visible>
+						<property name="color">red</property>
+					</item>
+					<item>
+						<label>$LOCALIZE[20150]</label>
+						<label2></label2>
+						<onclick>AlarmClock(shutdowntimer,Shutdown())</onclick>
+						<visible>!System.HasAlarm(shutdowntimer) + !Skin.HasSetting(HidePowerTimer)</visible>
+						<visible>System.CanPowerDown | System.CanSuspend | System.CanHibernate</visible>
+						<property name="color">red</property>
+					</item>
+					<item>
+						<label>$LOCALIZE[20151] $INFO[System.AlarmPos,(,)]</label>
+						<label2></label2>
+						<onclick>CancelAlarm(shutdowntimer)</onclick>
+						<visible>System.HasAlarm(shutdowntimer) + !Skin.HasSetting(HidePowerTimer)</visible>
+						<property name="color">grey</property>
+					</item>
+					<item>
+						<label>$LOCALIZE[13011]</label>
+						<label2></label2>
+						<onclick>Suspend()</onclick>
+						<visible>System.CanSuspend + [!Skin.HasSetting(HidePowerSuspend) | Window.IsVisible(loginscreen)]</visible>
+						<property name="color">lila</property>
+					</item>
+					<item>
+						<label>$LOCALIZE[13010]</label>
+						<label2></label2>
+						<onclick>Hibernate()</onclick>
+						<visible>System.CanHibernate + [!Skin.HasSetting(HidePowerHibernate) | Window.IsVisible(loginscreen)]</visible>
+						<property name="color">lila</property>
+					</item>
+					<item>
+						<label>$LOCALIZE[13013]</label>
+						<label2></label2>
+						<onclick>Reset()</onclick>
+						<visible>System.CanReboot + [!Skin.HasSetting(HidePowerReboot) | Window.IsVisible(loginscreen)]</visible>
+						<property name="color">turquoise</property>
+					</item>
+					<item>
+						<label>$LOCALIZE[13013] (NAND)</label>
+						<label2></label2>
+						<onclick>Dialog.Close(all,true)</onclick>
+						<onclick>System.ExecWait(&quot;/usr/sbin/rebootfromnand&quot;)</onclick>
+						<visible>System.CanReboot + [!Skin.HasSetting(HidePowerRebootNAND) | Window.IsVisible(loginscreen)] + [System.HasAddon(service.libreelec.settings) | System.HasAddon(service.coreelec.settings)]</visible>
+						<property name="color">turquoise</property>
+					</item>
+					<item>
+						<label>$LOCALIZE[13017]</label>
+						<label2></label2>
+						<onclick>InhibitIdleShutdown(true)</onclick>
+						<visible>System.HasShutdown + !System.IsInhibit + !Skin.HasSetting(HidePowerIdleShutdown)</visible>
+						<property name="color">lightgrey</property>
+					</item>
+					<item>
+						<label>$LOCALIZE[13018]</label>
+						<label2></label2>
+						<onclick>InhibitIdleShutdown(false)</onclick>
+						<visible>System.HasShutdown + System.IsInhibit + !Skin.HasSetting(HidePowerIdleShutdown)</visible>
+						<property name="color">lightgrey</property>
+					</item>
+					<item>
+						<label>$LOCALIZE[31226]</label>
+						<label2></label2>
+						<onclick>dialog.close(all,true)</onclick>
+						<onclick>RunScript(plugin.video.embycon,0,?mode=CHANGE_USER)</onclick>
+						<visible>System.HasAddon(plugin.video.embycon) + !String.IsEmpty(Window(Home).Property(plugin.video.embycon-userid)) + !Window.IsVisible(loginscreen)</visible>
+						<property name="color">accent</property>
+					</item>
+					<item>
+						<label>$LOCALIZE[31225]</label>
+						<label2></label2>
+						<onclick>dialog.close(all,true)</onclick>
+						<onclick>RunScript(plugin.video.embycon,0,?mode=CHANGE_USER)</onclick>
+						<visible>System.HasAddon(plugin.video.embycon) + String.IsEmpty(Window(Home).Property(plugin.video.embycon-userid)) + !Window.IsVisible(loginscreen)</visible>
+						<property name="color">accent</property>
+					</item>
+					<item>
+						<label>$LOCALIZE[20126] $INFO[system.profilename]</label>
+						<label2></label2>
+						<onclick>dialog.close(all,true)</onclick>
+						<onclick>System.LogOff</onclick>
+						<visible>System.HasLoginScreen | Integer.IsGreater(System.ProfileCount,1)</visible>
+						<visible>System.Loggedon</visible>
+						<property name="color">accent</property>
+					</item>
+					<item>
+						<label>$LOCALIZE[20046]</label>
+						<label2></label2>
+						<onclick>mastermode</onclick>
+						<visible>System.HasLocks + System.IsMaster + !Window.IsVisible(loginscreen)</visible>
+						<property name="color">accent</property>
+					</item>
+					<item>
+						<label>$LOCALIZE[20045]</label>
+						<label2></label2>
+						<onclick>mastermode</onclick>
+						<visible>System.HasLocks + !System.IsMaster + !Window.IsVisible(loginscreen)</visible>
+						<property name="color">accent</property>
+					</item>
+				</content>
+			</control>
+			<!-- Player controls -->
+			<control type="group">
+				<include>Visible_Fade</include>
+				<visible>Player.HasMedia</visible>
+				<left>70</left>
+				<height>110</height>
+				<bottom>50</bottom>
+				<width>1400</width>
+				<align>right</align>
+				<itemgap>10</itemgap>
+				<control type="label">
+					<bottom>50</bottom>
+					<height>23</height>
+					<align>left</align>
+					<label>$VAR[PlayerFullLabel]</label>
+					<font>reg24</font>
+					<textcolor>ffbfbcbb</textcolor>
+				</control>
+				<control type="grouplist" id="6100">
+					<left>-15</left>
+					<bottom>-9</bottom>
+					<height>50</height>
+					<itemgap>5</itemgap>
+					<orientation>horizontal</orientation>
+					<align>left</align>
+					<include>FocusBounce</include>
+					<onup>6000</onup>
+					<onright>noop</onright>
+					<onleft>noop</onleft>
+					<control type="button" id="6101">
+						<include content="PlayerButtons">
+							<param name="type" value="previous"/>
+						</include>
+						<onclick>PlayerControl(Previous)</onclick>
+						<visible>!VideoPlayer.Content(livetv) + !String.StartsWith(Player.Filenameandpath,pvr://)</visible>
+					</control>
+					<control type="togglebutton" id="6103">
+						<include content="PlayerButtons">
+							<param name="type" value="play"/>
+							<param name="alt" value="pause"/>
+						</include>
+						<selected>!Player.Paused + !Player.Forwarding + !Player.Rewinding + !Player.Seeking</selected>
+						<onclick>PlayerControl(Play)</onclick>
+					</control>
+					<control type="button" id="6104">
+						<include content="PlayerButtons">
+							<param name="type" value="stop"/>
+						</include>
+						<onclick>PlayerControl(Stop)</onclick>
+					</control>
+					<control type="button" id="6106">
+						<include content="PlayerButtons">
+							<param name="type" value="next"/>
+						</include>
+						<onclick>PlayerControl(Next)</onclick>
+						<visible>!VideoPlayer.Content(livetv) + !String.StartsWith(Player.Filenameandpath,pvr://)</visible>
+					</control>
+					<control type="button" id="6107">
+						<colordiffuse>$VAR[PlayerRecordIconColor]</colordiffuse>
+						<include content="PlayerButtons">
+							<param name="type" value="rec"/>
+						</include>
+						<onclick>PVR.ToggleRecordPlayingChannel</onclick>
+						<selected>PVR.IsRecordingPlayingChannel</selected>
+						<visible>PVR.CanRecordPlayingChannel</visible>
+						<visible>VideoPlayer.Content(livetv)</visible>
 					</control>
 				</control>
 			</control>
