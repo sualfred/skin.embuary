@@ -12,7 +12,7 @@
 	</variable>
 	<!-- Menu & widget vars -->
 	<variable name="SkinshortcutsGroup">
-		<value condition="String.IsEqual(Window.Property(groupname),mainmenu)">Main menu</value>
+		<value condition="String.IsEqual(Window.Property(groupname),mainmenu)">$LOCALIZE[31261]</value>
 		<value condition="String.IsEqual(Window.Property(groupname),moviehub)">$LOCALIZE[31173]</value>
 		<value condition="String.IsEqual(Window.Property(groupname),tvshowhub)">$LOCALIZE[31172]</value>
 		<value condition="String.IsEqual(Window.Property(groupname),musichub)">$LOCALIZE[31174]</value>
@@ -421,6 +421,7 @@
 		<value condition="String.IsEqual(ListItem.DBType,song) + !String.IsEmpty(ListItem.title)">$INFO[ListItem.Tracknumber,,. ]$INFO[ListItem.Title]</value>
 		<value condition="Container.Content(songs) + Integer.IsGreater(ListItem.Tracknumber,0) + !String.IsEmpty(ListItem.title)">$INFO[ListItem.Tracknumber,,. ]$INFO[ListItem.Title]</value>
 		<value condition="Container.Content(songs) + !String.IsEmpty(ListItem.title)">$INFO[ListItem.Title]</value>
+		<value condition="!String.IsEmpty(ListItem.Addonname)">$INFO[ListItem.Addonname]</value>
 		<value>$INFO[ListItem.Label]</value>
 	</variable>
 	<variable name="SubListLabel">
