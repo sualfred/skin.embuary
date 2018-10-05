@@ -814,6 +814,7 @@
 		<value condition="!Control.HasFocus(607)">white</value>
 	</variable>
 	<variable name="PlayerFullLabel">
+		<value condition="String.Contains(Player.Art(thumb),KodiCinemaMode) + String.Contains(VideoPlayer.Title,Trailer)">$LOCALIZE[31255] - $INFO[VideoPlayer.Title]</value>
 		<value condition="String.Contains(Player.Art(thumb),KodiCinemaMode)">$LOCALIZE[31255]</value>
 		<value condition="String.IsEqual(VideoPlayer.Title,stream) + String.Contains(Player.Filenameandpath,/emby/videos/)">$LOCALIZE[31186]</value>
 		<value condition="!String.IsEmpty(MusicPlayer.Title) + !String.Contains(MusicPlayer.Title,pvr.hts_)">$INFO[MusicPlayer.Artist,, - ]$INFO[MusicPlayer.Tracknumber,,. ]$INFO[MusicPlayer.Title]</value>
@@ -1078,5 +1079,17 @@
 		<value condition="Integer.IsEqual(Container(2000).NumItems,59)">58</value>
 		<value condition="Integer.IsEqual(Container(2000).NumItems,60)">59</value>
 		<value condition="Integer.IsGreater(Container(2000).NumItems,60)">60&#x3C;</value>
+	</variable>
+	<variable name="PlaylistMainLabel">
+		<value condition="!String.IsEmpty(ListItem.TvShowTitle)">$INFO[ListItem.TvShowTitle]</value>
+		<value>$INFO[ListItem.Label]</value>
+	</variable>
+	<variable name="PlaylistSubLabel">
+		<value condition="!String.IsEmpty(ListItem.Episode)">$VAR[ListItemSeasonEpisode]$INFO[ListItem.Title]</value>
+		<value condition="Window.IsVisible(musicplaylist)">$INFO[ListItem.AlbumArtist]$INFO[ListItem.Album, - ]</value>
+	</variable>
+	<variable name="PlaylistThumbLabel">
+		<value condition="Window.IsVisible(musicplaylist)">$INFO[ListItem.AlbumArtist]</value>
+		<value>$INFO[ListItem.Title]</value>
 	</variable>
 </includes>
