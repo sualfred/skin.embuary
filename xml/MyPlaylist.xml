@@ -3,15 +3,35 @@
 	<defaultcontrol always="true">50</defaultcontrol>
 	<onload condition="!Integer.IsGreater(Container(50).NumItems,0)">close</onload>
 	<include content="PropertyIncludes">
-		<param name="ShowHeader" value="true"/>
 	</include>
 	<views>50</views>
 	<controls>
 		<control type="group">
 			<visible>Integer.IsGreater(Container(50).NumItems,0)</visible>
-			<!-- Content -->
-			<include condition="Window.IsVisible(videoplaylist)">VideoPlaylistLayout</include>
-			<include condition="Window.IsVisible(musicplaylist)">MusicPlaylistLayout</include>
+			<!-- background -->
+			<include content="Background">
+				<param name="forced_visible" value="true"/>
+			</include>
+			<control type="group">
+				<!-- Content -->
+				<include>Window_OpenClose</include>
+				<include content="List_View_53">
+					<param name="id" value="50"/>
+					<param name="mainlabel" value="$VAR[PlaylistMainLabel]"/>
+					<param name="sublabel" value="$VAR[PlaylistSubLabel]"/>
+					<param name="thumblabel" value="$VAR[PlaylistThumbLabel]"/>
+				</include>
+			</control>
+			<!-- header bar -->
+			<include content="HeaderBar">
+				<param name="id">50</param>
+				<param name="auto_hide">false</param>
+				<param name="hide_header">Integer.IsGreaterOrEqual(Container(50).NumItems,8) + [Integer.IsGreaterOrEqual(Container(50).CurrentItem,5) | Container(50).HasPrevious]</param>
+			</include>
+			<!-- side panel -->
+			<include content="SidePanel">
+				<param name="onright">50</param>
+			</include>
 		</control>
 	</controls>
 </window>

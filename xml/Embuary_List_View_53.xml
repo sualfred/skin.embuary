@@ -27,8 +27,8 @@
 					<onright condition="!Control.IsVisible(17) + Control.IsVisible(7000)">SetFocus(7000)</onright>
 					<onright condition="!Control.IsVisible(17) + !Control.IsVisible(7000)">SetFocus(6666)</onright>
 					<ondown>noop</ondown>
-					<onleft condition="Window.IsVisible(musicplaylist)">100</onleft>
-					<onleft condition="!Window.IsVisible(musicplaylist)">900</onleft>
+					<onleft condition="Window.IsVisible(MyPlaylist.xml)">100</onleft>
+					<onleft condition="!Window.IsVisible(MyPlaylist.xml)">900</onleft>
 					<defaultcontrol always="true">0</defaultcontrol>
 					<focusposition>4</focusposition>
 					<movement>3</movement>
@@ -281,30 +281,10 @@
 							<param name="sublabel">$PARAM[sublabel]</param>
 							<param name="fallbacklabel">$PARAM[fallbacklabel]</param>
 						</include>
-						<control type="textbox">
-							<top>435</top>
-							<bottom>0</bottom>
-							<align>justify</align>
-							<aligny>top</aligny>
-							<label>$VAR[ListViewPlot]</label>
-							<font>Light24</font>
-							<autoscroll>false</autoscroll>
-							<visible>!Window.IsVisible(musicplaylist) + [!String.IsEqual(ListItem.DBType,set) | String.IsEmpty(Container(2001).ListItem.Label)]</visible>
-						</control>
-						<control type="textbox">
-							<top>435</top>
-							<bottom>0</bottom>
-							<align>justify</align>
-							<aligny>top</aligny>
-							<label>[B]$INFO[Container(2001).NumItems,, ]$LOCALIZE[342]:[/B][CR]$VAR[ListViewPlot]</label>
-							<font>Light24</font>
-							<autoscroll>false</autoscroll>
-							<visible>!Window.IsVisible(musicplaylist) + String.IsEqual(ListItem.DBType,set) + !String.IsEmpty(Container(2001).ListItem.Label)</visible>
-						</control>
 						<!-- Buttons -->
 						<control type="grouplist" id="100">
-							<visible>Window.IsVisible(musicplaylist)</visible>
-							<top>435</top>
+							<visible>Window.IsVisible(MyPlaylist.xml)</visible>
+							<top>431</top>
 							<height>75</height>
 							<orientation>horizontal</orientation>
 							<itemgap>5</itemgap>
@@ -323,18 +303,59 @@
 								<onclick condition="MusicPartyMode.Enabled">Playercontrol(stop)</onclick>
 								<onclick condition="!MusicPartyMode.Enabled">Playercontrol(partymode(music))</onclick>
 								<onclick>close</onclick>
+								<visible>Window.IsVisible(musicplaylist)</visible>
 							</control>
 							<control type="button" id="21">
 								<include>LightGreyButton</include>
 								<label>$LOCALIZE[190]</label>
-								<visible>!MusicPartyMode.Enabled</visible>
+								<visible>!MusicPartyMode.Enabled | Window.IsVisible(videoplaylist)</visible>
 							</control>
 							<control type="button" id="22">
 								<include>LightGreyButton</include>
 								<label>$LOCALIZE[192]</label>
 								<onclick>close</onclick>
-								<visible>!MusicPartyMode.Enabled</visible>
+								<visible>!MusicPartyMode.Enabled | Window.IsVisible(videoplaylist)</visible>
 							</control>
+							<control type="button" id="97">
+								<include>LightGreyButton</include>
+								<width>70</width>
+								<height>50</height>
+								<font>material24</font>
+								<label></label>
+								<onclick>RunScript(script.skin.helper.service,action=textviewer,header='$ESCVAR[TinyInfoDialogHeadline]',message='$ESCVAR[TinyInfoDialogPlot]')</onclick>
+								<visible>!String.IsEmpty(ListItem.Plot) + Window.IsVisible(videoplaylist)</visible>
+							</control>
+						</control>
+						<!-- plot -->
+						<control type="textbox">
+							<top>510</top>
+							<bottom>-5</bottom>
+							<align>justify</align>
+							<aligny>top</aligny>
+							<label>$VAR[ListViewPlot]</label>
+							<font>Light24</font>
+							<autoscroll>false</autoscroll>
+							<visible>Window.IsVisible(MyPlaylist.xml)</visible>
+						</control>
+						<control type="textbox">
+							<top>435</top>
+							<bottom>0</bottom>
+							<align>justify</align>
+							<aligny>top</aligny>
+							<label>$VAR[ListViewPlot]</label>
+							<font>Light24</font>
+							<autoscroll>false</autoscroll>
+							<visible>!Window.IsVisible(MyPlaylist.xml) + [!String.IsEqual(ListItem.DBType,set) | String.IsEmpty(Container(2001).ListItem.Label)]</visible>
+						</control>
+						<control type="textbox">
+							<top>435</top>
+							<bottom>0</bottom>
+							<align>justify</align>
+							<aligny>top</aligny>
+							<label>[B]$INFO[Container(2001).NumItems,, ]$LOCALIZE[342]:[/B][CR]$VAR[ListViewPlot]</label>
+							<font>Light24</font>
+							<autoscroll>false</autoscroll>
+							<visible>!Window.IsVisible(MyPlaylist,xnk) + String.IsEqual(ListItem.DBType,set) + !String.IsEmpty(Container(2001).ListItem.Label)</visible>
 						</control>
 					</control>
 				</control>
