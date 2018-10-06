@@ -525,8 +525,8 @@
 			<include content="HeaderButton">
 				<param name="align" value="false"/>
 			</include>
-			<onclick condition="Player.HasVideo">ActivateWindow(videoplaylist)</onclick>
-			<onclick condition="!Player.HasVideo + Player.HasAudio">ActivateWindow(musicplaylist)</onclick>
+			<onclick condition="Integer.IsGreater(Playlist.Length(video),1) + !Integer.IsGreater(Playlist.Length(music),1)">ActivateWindow(videoplaylist)</onclick>
+			<onclick condition="!Integer.IsGreater(Playlist.Length(video),1) + Integer.IsGreater(Playlist.Length(music),1)">ActivateWindow(musicplaylist)</onclick>
 			<visible>[
 				[!VideoPlayer.Content(livetv) + Integer.IsGreater(Playlist.Length(video),1)]
 				| Integer.IsGreater(Playlist.Length(music),1)
