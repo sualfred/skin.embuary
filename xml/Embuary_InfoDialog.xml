@@ -212,7 +212,7 @@
 							<onclick>close</onclick>
 						</control>
 						<control type="button" id="102">
-							<visible>!String.IsEmpty(ListItem.DBID) + [String.IsEmpty(Container.Pluginname) | !String.StartsWith(ListItem.Path,plugin:// | String.StartsWith(ListItem.Path,plugin://plugin.video.emby.))]</visible>
+							<visible>!String.IsEmpty(ListItem.DBID) + [String.IsEmpty(Container.Pluginname) | !String.StartsWith(ListItem.Path,plugin://) | String.StartsWith(ListItem.Path,plugin://plugin.video.emby.)]</visible>
 							<include>LightGreyButton</include>
 							<label>$LOCALIZE[31011]</label>
 							<onclick>close</onclick>
@@ -272,7 +272,7 @@
 			<include content="WideWidget">
 				<param name="id" value="200"/>
 				<param name="onup" value="100"/>
-				<param name="ondown" value="300"/>
+				<param name="ondown" value="201"/>
 				<param name="headline" value="$LOCALIZE[31012]"/>
 				<param name="sublabel" value="$VAR[DurationMinutes]"/>
 				<param name="sortby" value="playcount"/>
@@ -282,18 +282,29 @@
 				<param name="onclick" value="RunScript(script.embuary.helper,action=playfromhome,item='$ESCINFO[ListItem.Filenameandpath]')"/>
 				<param name="content" value="$VAR[InfoDialog_NextUp_Content]"/>
 			</include>
+			<!-- Seasons -->
+			<include content="PosterWidget">
+				<param name="visible" value="!String.IsEqual(Window(home).Property(TVShowTotalSeasons),1)"/>
+				<param name="id" value="201"/>
+				<param name="onup" value="200"/>
+				<param name="ondown" value="202"/>
+				<param name="headline" value="$LOCALIZE[33054]"/>
+				<param name="height" value="551"/>
+				<param name="sortby" value="season"/>
+				<param name="content" value="plugin://script.embuary.helper/?info=getseasons&amp;dbid=$INFO[ListItem.DBID]"/>
+			</include>
 			<!-- Cast -->
 			<include content="CastWidget">
 				<param name="visible" value="Integer.IsGreater(Container(2000).NumItems,0)"/>
-				<param name="id" value="300"/>
-				<param name="onup" value="200"/>
-				<param name="ondown" value="400"/>
+				<param name="id" value="202"/>
+				<param name="onup" value="201"/>
+				<param name="ondown" value="203"/>
 				<param name="content" value="$VAR[View_Cast_Content]"/>
 			</include>
 			<!-- More like this -->
 			<include content="PosterWidget">
-				<param name="id" value="400"/>
-				<param name="onup" value="300"/>
+				<param name="id" value="203"/>
+				<param name="onup" value="202"/>
 				<param name="ondown" value="noop"/>
 				<param name="headline" value="$LOCALIZE[31002]"/>
 				<param name="limit" value="15"/>
