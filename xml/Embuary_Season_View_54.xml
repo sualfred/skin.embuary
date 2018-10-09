@@ -77,9 +77,10 @@
 								<include>LightGreyButton</include>
 								<label>$VAR[VideoInfoButton8]</label>
 								<onup>SetFocus(6666)</onup>
-								<onclick>SetFocus(50)</onclick>
+								<onclick>SetFocus(54)</onclick>
 								<onclick>Select</onclick>
-								<ondown>SetFocus(50)</ondown>
+								<ondown>SetFocus(54)</ondown>
+								<onback>SetFocus(54)</onback>
 							</control>
 							<control type="button" id="110">
 								<visible>!String.IsEmpty(ListItem.Plot)</visible>
@@ -91,6 +92,7 @@
 								<onclick>RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.TVShowTitle]',message='$ESCINFO[ListItem.Plot]')</onclick>
 								<onup>SetFocus(6666)</onup>
 								<ondown>SetFocus(54)</ondown>
+								<onback>SetFocus(54)</onback>
 							</control>
 							<control type="togglebutton" id="102">
 								<include>LightGreyButton</include>
@@ -102,6 +104,7 @@
 								<include>ToggleWatchedAction</include>
 								<onup>SetFocus(6666)</onup>
 								<ondown>SetFocus(54)</ondown>
+								<onback>SetFocus(54)</onback>
 								<selected>String.IsEqual(ListItem.Overlay,OverlayWatched.png) | Integer.IsGreaterOrEqual(ListItem.PlayCount,1) | [String.IsEqual(ListItem.DBtype,tvshow) + !String.IsEmpty(ListItem.Property(UnWatchedEpisodes)) + Integer.IsLess(ListItem.Property(UnWatchedEpisodes),1)]</selected>
 							</control>
 						</control>
