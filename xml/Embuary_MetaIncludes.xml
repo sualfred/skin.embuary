@@ -1019,6 +1019,18 @@
 	<include name="AddonFlags">
 		<control type="button">
 			<include>MetaFlagsButton</include>
+			<label>$LOCALIZE[449]</label>
+			<visible>ListItem.Property(Addon.IsInstalled) + ListItem.Property(Addon.IsEnabled)</visible>
+		</control>
+		<control type="button">
+			<texturefocus border="10" colordiffuse="red">items/button.png</texturefocus>
+			<texturenofocus border="10" colordiffuse="red">items/button.png</texturenofocus>
+			<include>MetaFlagsButton</include>
+			<label>$LOCALIZE[1223]</label>
+			<visible>ListItem.Property(Addon.IsInstalled) + !ListItem.Property(Addon.IsEnabled)</visible>
+		</control>
+		<control type="button">
+			<include>MetaFlagsButton</include>
 			<label>$LOCALIZE[31035]</label>
 			<visible>!String.IsEmpty(ListItem.AddonBroken)</visible>
 		</control>
@@ -1036,6 +1048,13 @@
 			<include>MetaFlagsButton</include>
 			<label>$LOCALIZE[12014]: $INFO[ListItem.AddonLastUpdated]</label>
 			<visible>!String.IsEmpty(ListItem.AddonLastUpdated)</visible>
+		</control>
+		<control type="button">
+			<texturefocus border="10" colordiffuse="blue">items/button.png</texturefocus>
+			<texturenofocus border="10" colordiffuse="blue">items/button.png</texturenofocus>
+			<include>MetaFlagsButton</include>
+			<label>$LOCALIZE[24068]</label>
+			<visible>ListItem.Property(Addon.HasUpdate)</visible>
 		</control>
 	</include>
 </includes>
