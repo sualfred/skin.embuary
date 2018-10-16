@@ -5,97 +5,85 @@
 	<onload>Dialog.Close(videoosd,true)</onload>
 	<include>PropertyIncludes</include>
 	<controls>
-		<!-- OSD -->
 		<control type="group">
 			<animation effect="fade" start="0" end="100" time="0">WindowOpen</animation>
 			<animation effect="fade" start="100" end="0" time="400">WindowClose</animation>
-			<!--Bottom-->
+			<bottom>0</bottom>
+			<height>181</height>
+			<!-- Background -->
+			<control type="image">
+				<width>100%</width>
+				<height>181</height>
+				<texture colordiffuse="black">views/player/mask_bottom.png</texture>
+			</control>
+			<!-- Thumb -->
 			<control type="group">
-				<!-- mask -->
+				<top>20</top>
+				<left>29</left>
 				<control type="image">
-					<bottom>0</bottom>
-					<width>100%</width>
-					<height>180</height>
-					<texture colordiffuse="black">views/player/mask_bottom.png</texture>
+					<top>-2</top>
+					<left>-2</left>
+					<width>256</width>
+					<height>147</height>
+					<texture border="20,20,20,20">items/shadow.png</texture>
 				</control>
-				<!-- Wide -->
-				<control type="group">
-					<visible>true</visible>
-					<control type="image">
-						<bottom>20</bottom>
-						<left>20</left>
-						<width>268</width>
-						<height>159</height>
-						<texture>views/player/shadow_wide.png</texture>
-					</control>
-					<control type="image">
-						<bottom>29</bottom>
-						<left>29</left>
-						<width>250</width>
-						<height>141</height>
-						<texture colordiffuse="thumb_background_fallback" diffuse="views/player/mask_wide.png">common/white.jpg</texture>
-						<aspectratio scalediffuse="false">stretch</aspectratio>
-						<visible>String.IsEmpty(Window.Property(thumb))</visible>
-					</control>
-					<control type="textbox">
-						<bottom>39</bottom>
-						<left>39</left>
-						<width>230</width>
-						<height>121</height>
-						<font>Light24</font>
-						<textcolor>white</textcolor>
-						<align>center</align>
-						<aligny>center</aligny>
-						<label>$INFO[Window.Property(tvshowtitle)]</label>
-						<visible>String.IsEmpty(Window.Property(thumb))</visible>
-					</control>
-					<control type="image">
-						<bottom>29</bottom>
-						<left>29</left>
-						<width>250</width>
-						<height>141</height>
-						<texture colordiffuse="$VAR[thumb_background_color]" diffuse="views/player/mask_wide.png">common/white.jpg</texture>
-						<aspectratio scalediffuse="false">stretch</aspectratio>
-						<visible>!String.IsEmpty(Window.Property(thumb))</visible>
-					</control>
-					<control type="image">
-						<bottom>29</bottom>
-						<left>29</left>
-						<width>250</width>
-						<height>141</height>
-						<texture diffuse="views/player/mask_square.png">$INFO[Window.Property(thumb)]</texture>
-						<aspectratio scalediffuse="false">scale</aspectratio>
-						<visible>!String.IsEmpty(Window.Property(thumb))</visible>
-					</control>
+				<control type="image">
+					<width>250</width>
+					<height>141</height>
+					<texture colordiffuse="thumb_background_fallback">common/white.jpg</texture>
+					<aspectratio>stretch</aspectratio>
+					<visible>String.IsEmpty(Window.Property(thumb))</visible>
 				</control>
-				<!-- Label section -->
-				<control type="grouplist">
-					<orientation>horizontal</orientation>
-					<height>31</height>
-					<bottom>135</bottom>
-					<left>309</left>
-					<right>30</right>
-					<itemgap>0</itemgap>
-					<control type="label">
-						<width>auto</width>
-						<height>30</height>
-						<aligny>center</aligny>
-						<font>med28</font>
-						<textcolor>white</textcolor>
-						<label>[LIGHT]$LOCALIZE[31012]   [COLOR accent]$VAR[PlayerTimeRemaining][/COLOR][/LIGHT]</label>
-					</control>
+				<control type="textbox">
+					<top>10</top>
+					<left>10</left>
+					<width>230</width>
+					<height>121</height>
+					<font>Light24</font>
+					<textcolor>white</textcolor>
+					<align>center</align>
+					<aligny>center</aligny>
+					<label>$INFO[Window.Property(tvshowtitle)]</label>
+					<visible>String.IsEmpty(Window.Property(thumb))</visible>
+				</control>
+				<control type="image">
+					<width>250</width>
+					<height>141</height>
+					<texture colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
+					<aspectratio>stretch</aspectratio>
+					<visible>!String.IsEmpty(Window.Property(thumb))</visible>
+				</control>
+				<control type="image">
+					<width>250</width>
+					<height>141</height>
+					<texture>$INFO[Window.Property(thumb)]</texture>
+					<aspectratio>scale</aspectratio>
+					<visible>!String.IsEmpty(Window.Property(thumb))</visible>
+				</control>
+			</control>
+			<!-- Labels -->
+			<control type="group">
+				<top>20</top>
+				<left>299</left>
+				<right>20</right>
+				<!-- Time -->
+				<control type="label">
+					<width>auto</width>
+					<height>35</height>
+					<aligny>center</aligny>
+					<font>med28</font>
+					<textcolor>white</textcolor>
+					<label>[LIGHT]$LOCALIZE[31012]   [COLOR accent]$VAR[PlayerTimeRemaining][/COLOR][/LIGHT]</label>
 				</control>
 				<!-- Details -->
 				<control type="grouplist">
 					<orientation>horizontal</orientation>
-					<height>31</height>
-					<bottom>98</bottom>
-					<left>309</left>
-					<right>30</right>
+					<height>35</height>
+					<top>40</top>
 					<itemgap>0</itemgap>
 					<control type="label">
 						<width>auto</width>
-						<height>30</height>
+						<height>35</height>
 						<aligny>center</aligny>
 						<font>reg24</font>
 						<textcolor>white</textcolor>
@@ -104,7 +92,7 @@
 					</control>
 					<control type="label">
 						<width>auto</width>
-						<height>30</height>
+						<height>35</height>
 						<aligny>center</aligny>
 						<font>reg24</font>
 						<textcolor>white</textcolor>
@@ -112,9 +100,9 @@
 						<visible>!String.IsEmpty(Window.Property(year))</visible>
 					</control>
 					<control type="label">
-						<animation effect="slide" end="-2,2" time="0" condition="true">Conditional</animation>
+						<animation effect="slide" end="-2,1" time="0" condition="true">Conditional</animation>
 						<width>auto</width>
-						<height>30</height>
+						<height>35</height>
 						<aligny>center</aligny>
 						<label></label>
 						<font>Material26</font>
@@ -123,7 +111,7 @@
 					</control>
 					<control type="label">
 						<width>auto</width>
-						<height>30</height>
+						<height>35</height>
 						<aligny>center</aligny>
 						<label>$INFO[Window.Property(rating),,   ]</label>
 						<font>reg24</font>
@@ -131,13 +119,11 @@
 						<visible>!String.IsEmpty(Window.Property(rating))</visible>
 					</control>
 				</control>
-				<!-- Bottom label section -->
+				<!-- Buttons -->
 				<control type="grouplist">
 					<orientation>horizontal</orientation>
 					<height>56</height>
-					<bottom>27</bottom>
-					<left>309</left>
-					<right>20</right>
+					<bottom>20</bottom>
 					<itemgap>5</itemgap>
 					<control type="button" id="3012">
 						<include>LightGreyButton</include>
