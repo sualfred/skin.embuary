@@ -349,11 +349,73 @@
 					<pagecontrol>60</pagecontrol>
 					<scrolltime>200</scrolltime>
 					<itemgap>0</itemgap>
+					<!-- colors -->
+					<include content="SkinSettingsHeadlineLabel">
+						<param name="id" value="401"/>
+						<param name="label" value="Custom accent colors"/>
+					</include>
+					<control type="radiobutton" id="402">
+						<radiowidth>40</radiowidth>
+						<radioheight>35</radioheight>
+						<textureradioonfocus colordiffuse="$VAR[AccentColor]">icons/misc/radio20_on_fo.png</textureradioonfocus>
+						<textureradioonnofocus colordiffuse="$VAR[AccentColor]">icons/misc/radio20_on.png</textureradioonnofocus>
+						<textureradioofffocus colordiffuse="$VAR[AccentColor]">icons/misc/radio20_on_fo.png</textureradioofffocus>
+						<textureradiooffnofocus colordiffuse="$VAR[AccentColor]">icons/misc/radio20_on.png</textureradiooffnofocus>
+						<textureradioondisabled colordiffuse="$VAR[AccentColor]">icons/misc/radio20_on_fo.png</textureradioondisabled>
+						<textureradiooffdisabled colordiffuse="$VAR[AccentColor]">icons/misc/radio20_on.png</textureradiooffdisabled>
+						<include>SettingsButton</include>
+						<onclick>RunScript(script.skin.helper.colorpicker,skinstring=color_accent,palette=rainbow)</onclick>
+						<label>Accent color</label>
+						<label2>$INFO[Skin.String(color_accent),,      ]</label2>
+					</control>
+					<control type="radiobutton" id="403">
+						<textureradioonfocus colordiffuse="$VAR[PlayerAccentColor]">icons/misc/radio20_on_fo.png</textureradioonfocus>
+						<textureradioonnofocus colordiffuse="$VAR[PlayerAccentColor]">icons/misc/radio20_on.png</textureradioonnofocus>
+						<textureradioofffocus colordiffuse="$VAR[PlayerAccentColor]">icons/misc/radio20_on_fo.png</textureradioofffocus>
+						<textureradiooffnofocus colordiffuse="$VAR[PlayerAccentColor]">icons/misc/radio20_on.png</textureradiooffnofocus>
+						<textureradioondisabled colordiffuse="$VAR[PlayerAccentColor]">icons/misc/radio20_on_fo.png</textureradioondisabled>
+						<textureradiooffdisabled colordiffuse="$VAR[PlayerAccentColor]">icons/misc/radio20_on.png</textureradiooffdisabled>
+						<include>SettingsButton</include>
+						<onclick>RunScript(script.skin.helper.colorpicker,skinstring=color_player_accent,palette=rainbow)</onclick>
+						<label>Player element accent color</label>
+						<label2>$INFO[Skin.String(color_player_accent),,      ]</label2>
+					</control>
+					<control type="radiobutton" id="404">
+						<textureradioonfocus colordiffuse="$VAR[ThumbFallbackColor]">icons/misc/radio20_on_fo.png</textureradioonfocus>
+						<textureradioonnofocus colordiffuse="$VAR[ThumbFallbackColor]">icons/misc/radio20_on.png</textureradioonnofocus>
+						<textureradioofffocus colordiffuse="$VAR[ThumbFallbackColor]">icons/misc/radio20_on_fo.png</textureradioofffocus>
+						<textureradiooffnofocus colordiffuse="$VAR[ThumbFallbackColor]">icons/misc/radio20_on.png</textureradiooffnofocus>
+						<textureradioondisabled colordiffuse="$VAR[ThumbFallbackColor]">icons/misc/radio20_on_fo.png</textureradioondisabled>
+						<textureradiooffdisabled colordiffuse="$VAR[ThumbFallbackColor]">icons/misc/radio20_on.png</textureradiooffdisabled>
+						<include>SettingsButton</include>
+						<onclick>RunScript(script.skin.helper.colorpicker,skinstring=color_thumb_fallback,palette=rainbow)</onclick>
+						<label>Item background fallback color</label>
+						<label2>$INFO[Skin.String(color_thumb_fallback),,      ]</label2>
+					</control>
+					<control type="radiobutton" id="405">
+						<textureradioonfocus colordiffuse="$VAR[ButtonAccentColor]">icons/misc/radio20_on_fo.png</textureradioonfocus>
+						<textureradioonnofocus colordiffuse="$VAR[ButtonAccentColor]">icons/misc/radio20_on.png</textureradioonnofocus>
+						<textureradioofffocus colordiffuse="$VAR[ButtonAccentColor]">icons/misc/radio20_on_fo.png</textureradioofffocus>
+						<textureradiooffnofocus colordiffuse="$VAR[ButtonAccentColor]">icons/misc/radio20_on.png</textureradiooffnofocus>
+						<textureradioondisabled colordiffuse="$VAR[ButtonAccentColor]">icons/misc/radio20_on_fo.png</textureradioondisabled>
+						<textureradiooffdisabled colordiffuse="$VAR[ButtonAccentColor]">icons/misc/radio20_on.png</textureradiooffdisabled>
+						<include>SettingsButton</include>
+						<onclick>RunScript(script.skin.helper.colorpicker,skinstring=button_focus_accent,palette=rainbow)</onclick>
+						<label>Button focused color</label>
+						<label2>$INFO[Skin.String(button_focus_accent),,      ]</label2>
+					</control>
 					<!-- background -->
 					<include content="SkinSettingsHeadlineLabel">
 						<param name="id" value="299"/>
-						<param name="label" value="$LOCALIZE[19190]"/>
+						<param name="label" value="$LOCALIZE[33068]"/>
 					</include>
+					<control type="button" id="203">
+						<include>SettingsButton</include>
+						<onclick>RunScript(script.skin.helper.service,action=setskinsetting,setting=AlphaBackground,header=$LOCALIZE[13324])</onclick>
+						<label>$LOCALIZE[13324]</label>
+						<label2>$INFO[Skin.String(AlphaBackground.label)]%</label2>
+						<enable>!Skin.HasSetting(HideBackground) | !Skin.HasSetting(HideBackgroundPlayback)</enable>
+					</control>
 					<control type="radiobutton" id="201">
 						<include>SettingsButton</include>
 						<onclick>Skin.ToggleSetting(HideBackground)</onclick>
@@ -385,7 +447,7 @@
 						<label>$LOCALIZE[31104]</label>
 					</control>
 					<control type="button" id="212">
-						<textcolor>accent</textcolor>
+						<textcolor>$VAR[AccentColor]</textcolor>
 						<texturenofocus colordiffuse="panel_subitem">common/white.jpg</texturenofocus>
 						<include>SettingsButton</include>
 						<onclick>Skin.SetImage(StaticBackgroundImage)</onclick>
@@ -395,7 +457,7 @@
 						<visible>Skin.HasSetting(ShowStaticBackgroundImage)</visible>
 					</control>
 					<control type="radiobutton" id="213">
-						<textcolor>accent</textcolor>
+						<textcolor>$VAR[AccentColor]</textcolor>
 						<texturenofocus colordiffuse="panel_subitem">common/white.jpg</texturenofocus>
 						<include>SettingsButton</include>
 						<onclick>Skin.SetImage(ShowStaticBackgroundImageGlobally)</onclick>
@@ -411,7 +473,7 @@
 						<label>$LOCALIZE[31195]</label>
 					</control>
 					<control type="button" id="215">
-						<textcolor>accent</textcolor>
+						<textcolor>$VAR[AccentColor]</textcolor>
 						<texturenofocus colordiffuse="panel_subitem">common/white.jpg</texturenofocus>
 						<include>SettingsButton</include>
 						<onclick>Skin.SetPath(RandomBackgroundImage)</onclick>
@@ -432,7 +494,7 @@
 						<label>$LOCALIZE[31117]</label>
 					</control>
 					<control type="button" id="222">
-						<textcolor>accent</textcolor>
+						<textcolor>$VAR[AccentColor]</textcolor>
 						<texturenofocus colordiffuse="panel_subitem">common/white.jpg</texturenofocus>
 						<include>SettingsButton</include>
 						<onclick>Skin.SetString(CustomDeviceName_label)</onclick>
@@ -512,13 +574,13 @@
 					<control type="button" id="266">
 						<include>SettingsButton</include>
 						<label>$LOCALIZE[31228]</label>
-						<label2>[COLOR accent]$VAR[SearchProvider][/COLOR]</label2>
+						<label2>[COLOR $VAR[AccentColor]]$VAR[SearchProvider][/COLOR]</label2>
 						<onclick>Skin.ToggleSetting(UseGlobalsearch)</onclick>
 					</control>
 					<control type="button" id="267">
 						<include>SettingsButton</include>
 						<label>$LOCALIZE[31238]</label>
-						<label2>[COLOR accent]$VAR[CastSearchProvider][/COLOR]</label2>
+						<label2>[COLOR $VAR[AccentColor]]$VAR[CastSearchProvider][/COLOR]</label2>
 						<onclick>Skin.ToggleSetting(DoNotUseExtendedInfo)</onclick>
 					</control>
 					<control type="label">

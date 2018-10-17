@@ -72,7 +72,7 @@
 						<animation effect="slide" end="0,19" time="0" condition="true">Conditional</animation>
 						<height>20</height>
 						<width>20</width>
-						<texture colordiffuse="accent">common/embuary_sign.png</texture>
+						<texture colordiffuse="$VAR[AccentColor]">common/embuary_sign.png</texture>
 						<aspectratio aligny="center">keep</aspectratio>
 						<visible>Window.Is(home) | Window.IsVisible(loginscreen)</visible>
 					</control>
@@ -298,7 +298,7 @@
 					<info>Player.Progress</info>
 					<texturebg colordiffuse="text_header_sublabel">common/white.jpg</texturebg>
 					<lefttexture></lefttexture>
-					<midtexture colordiffuse="player_osd_color">common/white.jpg</midtexture>
+					<midtexture colordiffuse="$VAR[PlayerAccentColor]">common/white.jpg</midtexture>
 					<righttexture></righttexture>
 					<overlaytexture></overlaytexture>
 					<visible>Player.HasMedia + !VideoPlayer.HasEpg</visible>
@@ -474,7 +474,7 @@
 			<include>HeaderButton</include>
 			<width>auto</width>
 			<textcolor>panel_textcolor</textcolor>
-			<focusedcolor>accent</focusedcolor>
+			<focusedcolor>$VAR[AccentColor]</focusedcolor>
 			<label>$LOCALIZE[19141]: $INFO[Control.GetLabel(30)]</label>
 			<onclick>SendClick(28)</onclick>
 			<visible>false</visible>
@@ -484,7 +484,7 @@
 			<include>HeaderButton</include>
 			<width>auto</width>
 			<textcolor>panel_textcolor</textcolor>
-			<focusedcolor>accent</focusedcolor>
+			<focusedcolor>$VAR[AccentColor]</focusedcolor>
 			<label>$LOCALIZE[31111]</label>
 			<onclick>SetFocus(4000)</onclick>
 			<visible>Window.IsVisible(weather) + !Skin.HasSetting(KioskMode)</visible>
@@ -603,7 +603,7 @@
 			<control type="label">
 				<scroll>true</scroll>
 				<label>$INFO[Container(9000).ListItemPosition($PARAM[id]).Label]</label>
-				<textcolor>accent</textcolor>
+				<textcolor>$VAR[AccentColor]</textcolor>
 				<include>HeaderButton</include>
 				<visible>Control.HasFocus(9000) + Container(9000).Position($PARAM[id]) + !String.IsEmpty(Container(9000).ListItemPosition($PARAM[id]).Label)</visible>
 			</control>
