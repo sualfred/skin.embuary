@@ -352,7 +352,7 @@
 					<!-- colors -->
 					<include content="SkinSettingsHeadlineLabel">
 						<param name="id" value="401"/>
-						<param name="label" value="Custom accent colors"/>
+						<param name="label" value="$LOCALIZE[31266]"/>
 					</include>
 					<control type="radiobutton" id="402">
 						<radiowidth>40</radiowidth>
@@ -365,8 +365,8 @@
 						<textureradiooffdisabled colordiffuse="$VAR[AccentColor]">icons/misc/radio20_on.png</textureradiooffdisabled>
 						<include>SettingsButton</include>
 						<onclick>RunScript(script.skin.helper.colorpicker,skinstring=color_accent,palette=rainbow)</onclick>
-						<label>Accent color</label>
-						<label2>$INFO[Skin.String(color_accent),,      ]</label2>
+						<label>$LOCALIZE[31267]</label>
+						<label2>$VAR[AccentColorLabel]</label2>
 					</control>
 					<control type="radiobutton" id="403">
 						<textureradioonfocus colordiffuse="$VAR[PlayerAccentColor]">icons/misc/radio20_on_fo.png</textureradioonfocus>
@@ -377,8 +377,8 @@
 						<textureradiooffdisabled colordiffuse="$VAR[PlayerAccentColor]">icons/misc/radio20_on.png</textureradiooffdisabled>
 						<include>SettingsButton</include>
 						<onclick>RunScript(script.skin.helper.colorpicker,skinstring=color_player_accent,palette=rainbow)</onclick>
-						<label>Player element accent color</label>
-						<label2>$INFO[Skin.String(color_player_accent),,      ]</label2>
+						<label>$LOCALIZE[31268]</label>
+						<label2>$VAR[PlayerAccentColorLabel]</label2>
 					</control>
 					<control type="radiobutton" id="404">
 						<textureradioonfocus colordiffuse="$VAR[ThumbFallbackColor]">icons/misc/radio20_on_fo.png</textureradioonfocus>
@@ -389,8 +389,8 @@
 						<textureradiooffdisabled colordiffuse="$VAR[ThumbFallbackColor]">icons/misc/radio20_on.png</textureradiooffdisabled>
 						<include>SettingsButton</include>
 						<onclick>RunScript(script.skin.helper.colorpicker,skinstring=color_thumb_fallback,palette=rainbow)</onclick>
-						<label>Item background fallback color</label>
-						<label2>$INFO[Skin.String(color_thumb_fallback),,      ]</label2>
+						<label>$LOCALIZE[31269]</label>
+						<label2>$VAR[ThumbFallbackColorLabel]</label2>
 					</control>
 					<control type="radiobutton" id="405">
 						<textureradioonfocus colordiffuse="$VAR[ButtonAccentColor]">icons/misc/radio20_on_fo.png</textureradioonfocus>
@@ -401,34 +401,34 @@
 						<textureradiooffdisabled colordiffuse="$VAR[ButtonAccentColor]">icons/misc/radio20_on.png</textureradiooffdisabled>
 						<include>SettingsButton</include>
 						<onclick>RunScript(script.skin.helper.colorpicker,skinstring=button_focus_accent,palette=rainbow)</onclick>
-						<label>Button focused color</label>
-						<label2>$INFO[Skin.String(button_focus_accent),,      ]</label2>
+						<label>$LOCALIZE[31270]</label>
+						<label2>$VAR[ButtonAccentColorLabel]</label2>
 					</control>
 					<!-- background -->
 					<include content="SkinSettingsHeadlineLabel">
-						<param name="id" value="299"/>
+						<param name="id" value="410"/>
 						<param name="label" value="$LOCALIZE[33068]"/>
 					</include>
-					<control type="button" id="203">
+					<control type="button" id="411">
 						<include>SettingsButton</include>
 						<onclick>RunScript(script.skin.helper.service,action=setskinsetting,setting=AlphaBackground,header=$LOCALIZE[13324])</onclick>
 						<label>$LOCALIZE[13324]</label>
 						<label2>$INFO[Skin.String(AlphaBackground.label)]%</label2>
 						<enable>!Skin.HasSetting(HideBackground) | !Skin.HasSetting(HideBackgroundPlayback)</enable>
 					</control>
-					<control type="radiobutton" id="201">
+					<control type="radiobutton" id="412">
 						<include>SettingsButton</include>
 						<onclick>Skin.ToggleSetting(HideBackground)</onclick>
 						<selected>!Skin.HasSetting(HideBackground)</selected>
 						<label>$LOCALIZE[31087]</label>
 					</control>
-					<control type="radiobutton" id="202">
+					<control type="radiobutton" id="413">
 						<include>SettingsButton</include>
 						<onclick>Skin.ToggleSetting(HideBackgroundPlayback)</onclick>
 						<selected>!Skin.HasSetting(HideBackgroundPlayback)</selected>
 						<label>$LOCALIZE[31088]</label>
 					</control>
-					<control type="button" id="203">
+					<control type="button" id="414">
 						<include>SettingsButton</include>
 						<onclick>RunScript(script.skin.helper.service,action=setskinsetting,setting=AlphaBackground,header=$LOCALIZE[13324])</onclick>
 						<label>$LOCALIZE[13324]</label>
@@ -436,17 +436,17 @@
 						<enable>!Skin.HasSetting(HideBackground) | !Skin.HasSetting(HideBackgroundPlayback)</enable>
 					</control>
 					<include content="SkinSettingsHeadlineLabel">
-						<param name="id" value="210"/>
+						<param name="id" value="420"/>
 						<param name="label" value="$LOCALIZE[33070]"/>
 					</include>
-					<control type="radiobutton" id="211">
+					<control type="radiobutton" id="421">
 						<include>SettingsButton</include>
 						<onclick>Skin.ToggleSetting(ShowStaticBackgroundImage)</onclick>
 						<selected>Skin.HasSetting(ShowStaticBackgroundImage)</selected>
 						<onclick condition="Skin.HasSetting(ShowRandomBackgroundImage)">Skin.ToggleSetting(ShowRandomBackgroundImage)</onclick>
 						<label>$LOCALIZE[31104]</label>
 					</control>
-					<control type="button" id="212">
+					<control type="button" id="422">
 						<textcolor>$VAR[AccentColor]</textcolor>
 						<texturenofocus colordiffuse="panel_subitem">common/white.jpg</texturenofocus>
 						<include>SettingsButton</include>
@@ -456,7 +456,7 @@
 						<enable>Skin.HasSetting(ShowStaticBackgroundImage)</enable>
 						<visible>Skin.HasSetting(ShowStaticBackgroundImage)</visible>
 					</control>
-					<control type="radiobutton" id="213">
+					<control type="radiobutton" id="423">
 						<textcolor>$VAR[AccentColor]</textcolor>
 						<texturenofocus colordiffuse="panel_subitem">common/white.jpg</texturenofocus>
 						<include>SettingsButton</include>
@@ -465,14 +465,14 @@
 						<selected>Skin.HasSetting(ShowStaticBackgroundImageGlobally)</selected>
 						<visible>Skin.HasSetting(ShowStaticBackgroundImage)</visible>
 					</control>
-					<control type="radiobutton" id="214">
+					<control type="radiobutton" id="424">
 						<include>SettingsButton</include>
 						<onclick>Skin.ToggleSetting(ShowRandomBackgroundImage)</onclick>
 						<onclick condition="Skin.HasSetting(ShowStaticBackgroundImage)">Skin.ToggleSetting(ShowStaticBackgroundImage)</onclick>
 						<selected>Skin.HasSetting(ShowRandomBackgroundImage)</selected>
 						<label>$LOCALIZE[31195]</label>
 					</control>
-					<control type="button" id="215">
+					<control type="button" id="425">
 						<textcolor>$VAR[AccentColor]</textcolor>
 						<texturenofocus colordiffuse="panel_subitem">common/white.jpg</texturenofocus>
 						<include>SettingsButton</include>
@@ -484,16 +484,16 @@
 					</control>
 					<!-- header -->
 					<include content="SkinSettingsHeadlineLabel">
-						<param name="id" value="220"/>
+						<param name="id" value="430"/>
 						<param name="label" value="$LOCALIZE[31109]"/>
 					</include>
-					<control type="radiobutton" id="221">
+					<control type="radiobutton" id="431">
 						<include>SettingsButton</include>
 						<onclick>Skin.ToggleSetting(CustomDeviceName)</onclick>
 						<selected>Skin.HasSetting(CustomDeviceName)</selected>
 						<label>$LOCALIZE[31117]</label>
 					</control>
-					<control type="button" id="222">
+					<control type="button" id="432">
 						<textcolor>$VAR[AccentColor]</textcolor>
 						<texturenofocus colordiffuse="panel_subitem">common/white.jpg</texturenofocus>
 						<include>SettingsButton</include>
@@ -502,7 +502,7 @@
 						<label2>$VAR[HeaderCustomDeviceName]</label2>
 						<visible>Skin.HasSetting(CustomDeviceName)</visible>
 					</control>
-					<control type="radiobutton" id="223">
+					<control type="radiobutton" id="433">
 						<include>SettingsButton</include>
 						<onclick>Skin.ToggleSetting(HideHeaderWeather)</onclick>
 						<selected>!Skin.HasSetting(HideHeaderWeather)</selected>
@@ -510,10 +510,10 @@
 					</control>
 					<!-- global widget settings -->
 					<include content="SkinSettingsHeadlineLabel">
-						<param name="id" value="240"/>
+						<param name="id" value="440"/>
 						<param name="label" value="$LOCALIZE[31083]"/>
 					</include>
-					<control type="radiobutton" id="241">
+					<control type="radiobutton" id="441">
 						<include>SettingsButton</include>
 						<onclick>Skin.ToggleSetting(HideEmbyConLabel)</onclick>
 						<selected>!Skin.HasSetting(HideEmbyConLabel)</selected>
@@ -521,16 +521,16 @@
 					</control>
 					<!-- playback -->
 					<include content="SkinSettingsHeadlineLabel">
-						<param name="id" value="250"/>
+						<param name="id" value="450"/>
 						<param name="label" value="$LOCALIZE[14086]"/>
 					</include>
-					<control type="radiobutton" id="251">
+					<control type="radiobutton" id="451">
 						<include>SettingsButton</include>
 						<onclick>Skin.ToggleSetting(StartMusicFullscreen)</onclick>
 						<selected>Skin.HasSetting(StartMusicFullscreen)</selected>
 						<label>$LOCALIZE[31250]</label>
 					</control>
-					<control type="radiobutton" id="252">
+					<control type="radiobutton" id="452">
 						<include>SettingsButton</include>
 						<label>$LOCALIZE[31231]</label>
 						<selected>!Skin.HasSetting(DoNotPauseOnInfo)</selected>
@@ -538,46 +538,46 @@
 					</control>
 					<!-- misc -->
 					<include content="SkinSettingsHeadlineLabel">
-						<param name="id" value="260"/>
+						<param name="id" value="460"/>
 						<param name="label" value="$LOCALIZE[31001]"/>
 					</include>
-					<control type="radiobutton" id="261">
+					<control type="radiobutton" id="461">
 						<include>SettingsButton</include>
 						<onclick>Skin.ToggleSetting(KioskMode)</onclick>
 						<selected>Skin.HasSetting(KioskMode)</selected>
 						<label>$LOCALIZE[31112]</label>
 					</control>
-					<control type="radiobutton" id="262">
+					<control type="radiobutton" id="462">
 						<include>SettingsButton</include>
 						<onclick>Skin.ToggleSetting(HideLibraryEditButtons)</onclick>
 						<selected>!Skin.HasSetting(HideLibraryEditButtons)</selected>
 						<label>$LOCALIZE[31155]</label>
 					</control>
-					<control type="radiobutton" id="263">
+					<control type="radiobutton" id="463">
 						<include>SettingsButton</include>
 						<onclick>Skin.ToggleSetting(HideHolidayTheme)</onclick>
 						<selected>!Skin.HasSetting(HideHolidayTheme)</selected>
 						<label>$LOCALIZE[31015]</label>
 					</control>
-					<control type="radiobutton" id="264">
+					<control type="radiobutton" id="464">
 						<include>SettingsButton</include>
 						<onclick>Skin.ToggleSetting(JumpToFirstPage)</onclick>
 						<selected>Skin.HasSetting(JumpToFirstPage)</selected>
 						<label>$LOCALIZE[31221]</label>
 					</control>
-					<control type="radiobutton" id="265">
+					<control type="radiobutton" id="465">
 						<include>SettingsButton</include>
 						<label>$LOCALIZE[31230]</label>
 						<selected>Skin.HasSetting(HideUnwatchedThumbs)</selected>
 						<onclick>Skin.ToggleSetting(HideUnwatchedThumbs)</onclick>
 					</control>
-					<control type="button" id="266">
+					<control type="button" id="466">
 						<include>SettingsButton</include>
 						<label>$LOCALIZE[31228]</label>
 						<label2>[COLOR $VAR[AccentColor]]$VAR[SearchProvider][/COLOR]</label2>
 						<onclick>Skin.ToggleSetting(UseGlobalsearch)</onclick>
 					</control>
-					<control type="button" id="267">
+					<control type="button" id="467">
 						<include>SettingsButton</include>
 						<label>$LOCALIZE[31238]</label>
 						<label2>[COLOR $VAR[AccentColor]]$VAR[CastSearchProvider][/COLOR]</label2>
