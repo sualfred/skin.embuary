@@ -30,7 +30,7 @@
 					<width>1480</width>
 					<control type="label">
 						<width>1040</width>
-						<height>60</height>
+						<height>55</height>
 						<label>$INFO[ListItem.Title]</label>
 						<aligny>top</aligny>
 						<font>Reg37</font>
@@ -39,7 +39,7 @@
 					<include>MetaMovieInfos</include>
 					<!-- buttons -->
 					<control type="grouplist" id="100">
-						<height>75</height>
+						<height>70</height>
 						<orientation>horizontal</orientation>
 						<itemgap>5</itemgap>
 						<onright>noop</onright>
@@ -49,6 +49,7 @@
 							<label>$LOCALIZE[15067]</label>
 							<ondown>200</ondown>
 							<onclick>close</onclick>
+							<visible>!Control.IsVisible(8)</visible>
 						</control>
 						<control type="button" id="8">
 							<include>LightGreyButton</include>
@@ -59,6 +60,15 @@
 							<visible>!String.IsEmpty(ListItem.Trailer)</visible>
 							<include>LightGreyButton</include>
 							<label>$LOCALIZE[20410]</label>
+							<ondown>200</ondown>
+						</control>
+						<control type="button" id="102">
+							<visible>!String.IsEmpty(ListItem.SetId) + !String.IsEmpty(ListItem.DBID)</visible>
+							<include>LightGreyButton</include>
+							<label>[CAPITALIZE]$LOCALIZE[31189][/CAPITALIZE]</label>
+							<onclick>close</onclick>
+							<onclick condition="!Window.IsMedia">ActivateWindow(videos,videodb://movies/sets/$INFO[ListItem.SetId]/?setid=$INFO[ListItem.SetId],return)</onclick>
+							<onclick condition="Window.IsMedia">Container.Update(videodb://movies/sets/$INFO[ListItem.SetId]/?setid=$INFO[ListItem.SetId])</onclick>
 							<ondown>200</ondown>
 						</control>
 						<control type="button" id="97">
@@ -108,21 +118,36 @@
 				<param name="visible" value="Integer.IsGreater(Container(2000).NumItems,0)"/>
 				<param name="id" value="200"/>
 				<param name="onup" value="100"/>
-				<param name="ondown" value="300"/>
+				<param name="ondown" value="201"/>
 				<param name="content" value="$VAR[View_Cast_Content]"/>
+			</include>
+			<!-- Set -->
+			<include content="PosterWidget">
+				<param name="visible" value="!String.IsEmpty(ListItem.SetId)"/>
+				<param name="id" value="201"/>
+				<param name="onup" value="200"/>
+				<param name="ondown" value="202"/>
+				<param name="headline" value="$INFO[ListItem.Set]"/>
+				<param name="use_custom_onclick" value="true"/>
+				<param name="onclick" value="RunScript(script.embuary.helper,action=playfromhome,item='$ESCINFO[ListItem.Filenameandpath]')"/>
+				<param name="content" value="videodb://movies/sets/$INFO[ListItem.SetId]/?setid=$INFO[ListItem.SetId]"/>
 			</include>
 			<!-- More like this -->
 			<include content="PosterWidget">
-				<param name="id" value="300"/>
-				<param name="onup" value="200"/>
-				<param name="ondown" value="400"/>
+				<param name="id" value="202"/>
+				<param name="onup" value="201"/>
+				<param name="ondown" value="203"/>
 				<param name="headline" value="$LOCALIZE[31002]"/>
+				<param name="limit" value="15"/>
+				<param name="sortby" value="random"/>
+				<param name="use_custom_onclick" value="true"/>
+				<param name="onclick" value="RunScript(script.embuary.helper,action=playfromhome,item='$ESCINFO[ListItem.Filenameandpath]')"/>
 				<param name="content" value="$VAR[InfoDialog_MoreLikeThis_Content]"/>
 			</include>
 			<!-- Media Info -->
 			<include content="InfoDialogMediaInfo">
-				<param name="id" value="400"/>
-				<param name="onup" value="300"/>
+				<param name="id" value="203"/>
+				<param name="onup" value="202"/>
 				<param name="ondown" value="noop"/>
 			</include>
 		</control>
@@ -165,7 +190,7 @@
 					<width>1480</width>
 					<control type="label">
 						<width>1040</width>
-						<height>60</height>
+						<height>55</height>
 						<label>$INFO[ListItem.Title]</label>
 						<aligny>top</aligny>
 						<font>Reg37</font>
@@ -174,16 +199,26 @@
 					<include>MetaShowInfos</include>
 					<!-- buttons -->
 					<control type="grouplist" id="100">
-						<height>75</height>
+						<height>70</height>
 						<orientation>horizontal</orientation>
 						<itemgap>5</itemgap>
 						<onright>noop</onright>
 						<onleft>900</onleft>
 						<control type="button" id="101">
+							<visible>!Control.IsVisible(102)</visible>
 							<include>LightGreyButton</include>
 							<label>$LOCALIZE[15067]</label>
 							<ondown>200</ondown>
 							<onclick>close</onclick>
+						</control>
+						<control type="button" id="102">
+							<visible>!String.IsEmpty(ListItem.DBID) + [String.IsEmpty(Container.Pluginname) | !String.StartsWith(ListItem.Path,plugin://) | String.StartsWith(ListItem.Path,plugin://plugin.video.emby.)]</visible>
+							<include>LightGreyButton</include>
+							<label>$LOCALIZE[31011]</label>
+							<onclick>close</onclick>
+							<onclick condition="Window.IsMedia">Container.Update(videodb://tvshows/titles/$INFO[ListItem.DBID]/)</onclick>
+							<onclick condition="!Window.IsMedia">ActivateWindow(videos,videodb://tvshows/titles/$INFO[ListItem.DBID]/,return)</onclick>
+							<ondown>200</ondown>
 						</control>
 						<control type="button" id="11">
 							<visible>!String.IsEmpty(ListItem.Trailer)</visible>
@@ -237,21 +272,46 @@
 			<include content="WideWidget">
 				<param name="id" value="200"/>
 				<param name="onup" value="100"/>
-				<param name="ondown" value="300"/>
+				<param name="ondown" value="201"/>
+				<param name="headline" value="$LOCALIZE[31012]"/>
 				<param name="sublabel" value="$VAR[DurationMinutes]"/>
 				<param name="sortby" value="playcount"/>
 				<param name="sortorder" value="ascending"/>
 				<param name="limit" value="1"/>
+				<param name="use_custom_onclick" value="true"/>
+				<param name="onclick" value="RunScript(script.embuary.helper,action=playfromhome,item='$ESCINFO[ListItem.Filenameandpath]')"/>
 				<param name="content" value="$VAR[InfoDialog_NextUp_Content]"/>
-				<param name="headline" value="$LOCALIZE[31012]"/>
+			</include>
+			<!-- Seasons -->
+			<include content="PosterWidget">
+				<param name="visible" value="!String.IsEqual(Window(home).Property(TVShowTotalSeasons),1)"/>
+				<param name="id" value="201"/>
+				<param name="onup" value="200"/>
+				<param name="ondown" value="202"/>
+				<param name="headline" value="$LOCALIZE[33054]"/>
+				<param name="height" value="551"/>
+				<param name="sortby" value="season"/>
+				<param name="content" value="plugin://script.embuary.helper/?info=getseasons&amp;dbid=$INFO[ListItem.DBID]"/>
 			</include>
 			<!-- Cast -->
 			<include content="CastWidget">
 				<param name="visible" value="Integer.IsGreater(Container(2000).NumItems,0)"/>
-				<param name="id" value="300"/>
-				<param name="onup" value="200"/>
-				<param name="ondown" value="noop"/>
+				<param name="id" value="202"/>
+				<param name="onup" value="201"/>
+				<param name="ondown" value="203"/>
 				<param name="content" value="$VAR[View_Cast_Content]"/>
+			</include>
+			<!-- More like this -->
+			<include content="PosterWidget">
+				<param name="id" value="203"/>
+				<param name="onup" value="202"/>
+				<param name="ondown" value="noop"/>
+				<param name="headline" value="$LOCALIZE[31002]"/>
+				<param name="limit" value="15"/>
+				<param name="sortby" value="random"/>
+				<param name="use_custom_onclick" value="String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)"/>
+				<param name="onclick" value="RunScript(script.embuary.helper,action=closeandopen,path='$ESCINFO[ListItem.Filenameandpath]',target=videos,rating=$INFO[ListItem.Rating],seasons=$INFO[ListItem.Property(TotalSeasons)],episodes=$INFO[ListItem.Property(TotalEpisodes)],mpaa=$INFO[ListItem.mpaa],year=$INFO[ListItem.Year],embyid=$INFO[ListItem.Property(id)])"/>
+				<param name="content" value="$VAR[InfoDialog_MoreLikeThis_Content]"/>
 			</include>
 		</control>
 		<!-- header bar -->
@@ -294,15 +354,15 @@
 					<right>70</right>
 					<control type="label">
 						<width>886</width>
-						<height>60</height>
+						<height>55</height>
 						<label>$INFO[ListItem.TvShowTitle]</label>
 						<font>Reg37</font>
 						<aligny>top</aligny>
 					</control>
 					<control type="label">
 						<width>886</width>
-						<height>60</height>
-						<label>$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title]</label>
+						<height>55</height>
+						<label>$VAR[ListItemSeasonEpisode]$INFO[ListItem.Title]</label>
 						<font>Reg37</font>
 						<aligny>top</aligny>
 					</control>
@@ -312,12 +372,13 @@
 					</include>
 					<!-- buttons -->
 					<control type="grouplist" id="100">
-						<height>75</height>
+						<height>70</height>
 						<orientation>horizontal</orientation>
 						<itemgap>5</itemgap>
 						<onright>noop</onright>
 						<onleft>900</onleft>
 						<control type="button" id="101">
+							<visible>!Control.IsVisible(8)</visible>
 							<include>LightGreyButton</include>
 							<label>$LOCALIZE[15067]</label>
 							<ondown>200</ondown>
@@ -373,19 +434,33 @@
 				<!-- logo -->
 				<include>MetaClearlogo</include>
 			</control>
-			<!-- Cast -->
-			<include content="CastWidget">
-				<param name="visible" value="Integer.IsGreater(Container(2000).NumItems,0)"/>
+			<!-- More from seasons %i -->
+			<include content="WideWidget">
+				<param name="visible" value="String.IsEmpty(Container.Pluginname) + !String.IsEmpty(ListItem.DBID) + !String.IsEmpty(Window(home).Property(TVShowDBID)) + !String.IsEmpty(ListItem.Season)"/>
 				<param name="id" value="200"/>
 				<param name="onup" value="100"/>
 				<param name="ondown" value="300"/>
+				<param name="headline" value="$LOCALIZE[31259] $INFO[ListItem.Season]"/>
+				<param name="sublabel" value="$VAR[DurationMinutes]"/>
+				<param name="use_custom_onclick" value="true"/>
+				<param name="onclick" value="RunScript(script.embuary.helper,action=playfromhome,item='$ESCINFO[ListItem.Filenameandpath]')"/>
+				<param name="sortby" value="episode"/>
+				<param name="sortorder" value="ascending"/>
+				<param name="content" value="plugin://script.embuary.helper/?info=getseasonepisodes&amp;title='$ESCINFO[ListItem.TvShowTitle]'&amp;season=$INFO[ListItem.Season]&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
+			</include>
+			<!-- Cast -->
+			<include content="CastWidget">
+				<param name="visible" value="Integer.IsGreater(Container(2000).NumItems,0)"/>
+				<param name="id" value="300"/>
+				<param name="onup" value="200"/>
+				<param name="ondown" value="400"/>
 				<param name="content" value="$VAR[View_Cast_Content]"/>
 				<param name="use_custom_onclick" value="true"/>
 			</include>
 			<!-- Media Info -->
 			<include content="InfoDialogMediaInfo">
-				<param name="id" value="300"/>
-				<param name="onup" value="200"/>
+				<param name="id" value="400"/>
+				<param name="onup" value="300"/>
 				<param name="ondown" value="noop"/>
 			</include>
 		</control>
@@ -475,7 +550,7 @@
 				<font>Med23</font>
 				<align>left</align>
 				<aligny>center</aligny>
-				<focusedcolor>emby</focusedcolor>
+				<focusedcolor>$VAR[AccentColor]</focusedcolor>
 				<label>$LOCALIZE[544]</label>
 				<onclick>noop</onclick>
 				<onup>$PARAM[onup]</onup>
@@ -495,7 +570,7 @@
 					<wrapmultiline>false</wrapmultiline>
 					<font>Reg20</font>
 					<aligny>bottom</aligny>
-					<label>[COLOR softgrey]$LOCALIZE[21800]:[/COLOR]  $INFO[ListItem.FileName]</label>
+					<label>[B]$LOCALIZE[21800]:[/B]    $INFO[ListItem.FileName]</label>
 					<visible>!String.IsEmpty(ListItem.FileName)</visible>
 				</control>
 				<control type="label">
@@ -503,7 +578,7 @@
 					<wrapmultiline>false</wrapmultiline>
 					<font>Reg20</font>
 					<aligny>bottom</aligny>
-					<label>[COLOR softgrey]$LOCALIZE[573]:[/COLOR]  $INFO[ListItem.Path]</label>
+					<label>[B]$LOCALIZE[573]:[/B]    $INFO[ListItem.Path]</label>
 					<visible>!String.IsEmpty(ListItem.Path)</visible>
 				</control>
 				<control type="label">
@@ -511,7 +586,7 @@
 					<wrapmultiline>false</wrapmultiline>
 					<font>Reg20</font>
 					<aligny>bottom</aligny>
-					<label>[COLOR softgrey]$LOCALIZE[291]:[/COLOR][UPPERCASE]  $VAR[ListItemResolution]$INFO[ListItem.VideoCodec, ,]$INFO[ListItem.VideoAspect, ,AR][/UPPERCASE]</label>
+					<label>[B]$LOCALIZE[291]:[/B][UPPERCASE]    $VAR[ListItemResolution]$INFO[ListItem.VideoCodec, ,]$INFO[ListItem.VideoAspect, ,AR][/UPPERCASE]</label>
 					<visible>!String.IsEmpty(ListItem.VideoResolution) + [String.IsEqual(ListItem.StereoscopicMode,mono) | String.IsEmpty(ListItem.StereoscopicMode)]</visible>
 				</control>
 				<control type="label">
@@ -519,7 +594,7 @@
 					<wrapmultiline>false</wrapmultiline>
 					<font>Reg20</font>
 					<aligny>bottom</aligny>
-					<label>[COLOR softgrey]$LOCALIZE[291]:[/COLOR][UPPERCASE]  $VAR[ListItemResolution]$INFO[ListItem.VideoCodec, ,]$INFO[ListItem.VideoAspect, ,AR][/UPPERCASE]$INFO[ListItem.StereoscopicMode,  [UPPERCASE][COLOR softgrey]$LOCALIZE[36501]:[/COLOR][/UPPERCASE]  ]</label>
+					<label>[B]$LOCALIZE[291]:[/B][UPPERCASE]    $VAR[ListItemResolution]$INFO[ListItem.VideoCodec, ,]$INFO[ListItem.VideoAspect, ,AR][/UPPERCASE]$INFO[ListItem.StereoscopicMode,  [UPPERCASE][B]$LOCALIZE[36501]:[/B][/UPPERCASE]  ]</label>
 					<visible>!String.IsEmpty(ListItem.VideoResolution) + !String.IsEqual(ListItem.StereoscopicMode,mono)</visible>
 				</control>
 				<control type="label">
@@ -527,7 +602,7 @@
 					<wrapmultiline>false</wrapmultiline>
 					<font>Reg20</font>
 					<aligny>bottom</aligny>
-					<label>[COLOR softgrey]$LOCALIZE[292]:[/COLOR][UPPERCASE]  $INFO[ListItem.Property(AudioLanguage.1),, ]$INFO[ListItem.Property(AudioChannels.1),,ch ]$INFO[ListItem.Property(AudioCodec.1),, ]$INFO[ListItem.Property(AudioLanguage.2),| , ]$INFO[ListItem.Property(AudioChannels.2),,ch ]$INFO[ListItem.Property(AudioCodec.2),, ]$INFO[ListItem.Property(AudioLanguage.3),| , ]$INFO[ListItem.Property(AudioChannels.3),,ch ]$INFO[ListItem.Property(AudioCodec.3),, ]$INFO[ListItem.Property(AudioLanguage.4),| , ]$INFO[ListItem.Property(AudioChannels.4),,ch ]$INFO[ListItem.Property(AudioCodec.4),, ]$INFO[ListItem.Property(AudioLanguage.5),| , ]$INFO[ListItem.Property(AudioChannels.5),,ch ]$INFO[ListItem.Property(AudioCodec.5),, ][/UPPERCASE]</label>
+					<label>[B]$LOCALIZE[292]:[/B][UPPERCASE]    $INFO[ListItem.Property(AudioLanguage.1),, ]$INFO[ListItem.Property(AudioChannels.1),,ch ]$INFO[ListItem.Property(AudioCodec.1),, ]$INFO[ListItem.Property(AudioLanguage.2),| , ]$INFO[ListItem.Property(AudioChannels.2),,ch ]$INFO[ListItem.Property(AudioCodec.2),, ]$INFO[ListItem.Property(AudioLanguage.3),| , ]$INFO[ListItem.Property(AudioChannels.3),,ch ]$INFO[ListItem.Property(AudioCodec.3),, ]$INFO[ListItem.Property(AudioLanguage.4),| , ]$INFO[ListItem.Property(AudioChannels.4),,ch ]$INFO[ListItem.Property(AudioCodec.4),, ]$INFO[ListItem.Property(AudioLanguage.5),| , ]$INFO[ListItem.Property(AudioChannels.5),,ch ]$INFO[ListItem.Property(AudioCodec.5),, ][/UPPERCASE]</label>
 					<visible>!String.IsEmpty(ListItem.Property(AudioLanguage.1))</visible>
 				</control>
 				<control type="label">
@@ -535,7 +610,7 @@
 					<wrapmultiline>false</wrapmultiline>
 					<font>Reg20</font>
 					<aligny>bottom</aligny>
-					<label>[COLOR softgrey]$LOCALIZE[459]:[/COLOR][UPPERCASE]  $INFO[ListItem.Property(SubtitleLanguage.1),, ]$INFO[ListItem.Property(SubtitleLanguage.2),| , ]$INFO[ListItem.Property(SubtitleLanguage.3),| , ]$INFO[ListItem.Property(SubtitleLanguage.4),| , ]$INFO[ListItem.Property(SubtitleLanguage.5),| , ][/UPPERCASE]</label>
+					<label>[B]$LOCALIZE[459]:[/B][UPPERCASE]    $INFO[ListItem.Property(SubtitleLanguage.1),, ]$INFO[ListItem.Property(SubtitleLanguage.2),| , ]$INFO[ListItem.Property(SubtitleLanguage.3),| , ]$INFO[ListItem.Property(SubtitleLanguage.4),| , ]$INFO[ListItem.Property(SubtitleLanguage.5),| , ][/UPPERCASE]</label>
 					<visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.1))</visible>
 				</control>
 			</control>
@@ -573,7 +648,7 @@
 						<itemgap>0</itemgap>
 						<control type="label">
 							<width>100%</width>
-							<height>60</height>
+							<height>55</height>
 							<label>$INFO[ListItem.Label]</label>
 							<font>Reg37</font>
 							<aligny>top</aligny>
@@ -582,17 +657,11 @@
 						<include>MetaArtistInfos</include>
 						<!-- buttons -->
 						<control type="grouplist" id="100">
-							<height>75</height>
+							<height>70</height>
 							<orientation>horizontal</orientation>
 							<itemgap>5</itemgap>
 							<onleft>900</onleft>
 							<onright>noop</onright>
-							<control type="button" id="101">
-								<include>LightGreyButton</include>
-								<label>$LOCALIZE[15067]</label>
-								<ondown>200</ondown>
-								<onclick>close</onclick>
-							</control>
 							<control type="button" id="102">
 								<include>LightGreyButton</include>
 								<label>$LOCALIZE[22083]</label>
@@ -666,127 +735,6 @@
 				<param name="onclick3" value="ActivateWindow(visualisation)"/>
 				<param name="widget_target" value="music"/>
 				<param name="content" value="musicdb://artists/$INFO[ListItem.DBID]/"/>
-			</include>
-		</control>
-		<!-- header bar -->
-		<include content="HeaderBar">
-			<param name="id">500</param>
-		</include>
-		<!-- side panel -->
-		<include content="SidePanel">
-			<param name="onright">500</param>
-		</include>
-	</include>
-	<!-- Album -->
-	<include name="AlbumInfoLayout">
-		<!-- Background -->
-		<include>Background</include>
-		<!-- Dialog -->
-		<control type="grouplist" id="500">
-			<include>Window_OpenClose</include>
-			<width>100%</width>
-			<height>100%</height>
-			<orientation>vertical</orientation>
-			<usecontrolcoords>true</usecontrolcoords>
-			<include>ScrollTime</include>
-			<itemgap>-80</itemgap>
-			<pagecontrol>17</pagecontrol>
-			<!-- Meta -->
-			<control type="group">
-				<top>90</top>
-				<width>100%</width>
-				<height>420</height>
-				<control type="group">
-					<width>100%</width>
-					<!-- Thumb image -->
-					<include>MetaSquareThumb</include>
-					<!-- meta -->
-					<control type="grouplist">
-						<left>434</left>
-						<orientation>vertical</orientation>
-						<height>1020</height>
-						<width>1416</width>
-						<align>top</align>
-						<itemgap>0</itemgap>
-						<control type="label">
-							<width>100%</width>
-							<height>60</height>
-							<label>$INFO[ListItem.Album]</label>
-							<font>Reg37</font>
-							<aligny>top</aligny>
-						</control>
-						<!-- meta -->
-						<include>MetaAlbumInfos</include>
-						<!-- buttons -->
-						<control type="grouplist" id="100">
-							<height>75</height>
-							<orientation>horizontal</orientation>
-							<itemgap>5</itemgap>
-							<onleft>900</onleft>
-							<onright>noop</onright>
-							<control type="button" id="101">
-								<include>LightGreyButton</include>
-								<label>$LOCALIZE[15067]</label>
-								<ondown>200</ondown>
-								<onclick>close</onclick>
-							</control>
-							<control type="button" id="102">
-								<include>LightGreyButton</include>
-								<label>$LOCALIZE[22083]</label>
-								<ondown>200</ondown>
-								<onclick>PlayMedia(musicdb://albums/$INFO[ListItem.DBID],isdir)</onclick>
-							</control>
-							<control type="button" id="103">
-								<include>LightGreyButton</include>
-								<ondown>200</ondown>
-								<width>70</width>
-								<height>50</height>
-								<font>material24</font>
-								<label></label>
-								<onclick>RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.Album]',message='$ESCINFO[ListItem.Property(Album_Description)]')</onclick>
-								<visible>!String.IsEmpty(ListItem.Property(Album_Description))</visible>
-							</control>
-							<control type="button" id="104">
-								<include>LightGreyButton</include>
-								<width>70</width>
-								<height>50</height>
-								<font>material24</font>
-								<label></label>
-								<ondown>200</ondown>
-								<onclick>SetFocus(4000)</onclick>
-								<visible>!Skin.HasSetting(HideLibraryEditButtons) + !Skin.HasSetting(KioskMode) + !String.StartsWith(ListItem.Path,plugin://)</visible>
-							</control>
-						</control>
-						<!-- genre -->
-						<include>MetaGenre</include>
-						<control type="textbox">
-							<width>100%</width>
-							<height max="130">auto</height>
-							<align>justify</align>
-							<aligny>top</aligny>
-							<label>$INFO[ListItem.Property(Album_Description)]</label>
-							<font>Light24</font>
-							<autoscroll>false</autoscroll>
-						</control>
-					</control>
-				</control>
-				<!-- logo -->
-				<include>MetaClearlogo</include>
-			</control>
-			<!-- Albums -->
-			<include content="SquareWidget">
-				<param name="id" value="200"/>
-				<param name="onup" value="100"/>
-				<param name="mainlabel" value="$INFO[ListItem.Label]"/>
-				<param name="sublabel" value="$INFO[ListItem.Label2]"/>
-				<param name="headline" value="$LOCALIZE[20396]"/>
-				<param name="use_custom_onclick" value="true"/>
-				<param name="onclick123123213" value="PlayMedia($INFO[ListItem.FolderPath],isdir)"/>
-				<param name="onclick2" value="close"/>
-				<param name="onclick3" value="Container.Update($INFO[ListItem.FolderPath])"/>
-				<param name="onclick3123123123123" value="ActivateWindow(visualisation)"/>
-				<param name="widget_target" value="music"/>
-				<param name="content" value="$VAR[InfoDialog_ArtistAlbums]"/>
 			</include>
 		</control>
 		<!-- header bar -->

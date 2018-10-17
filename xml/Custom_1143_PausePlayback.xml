@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="dialog" id="1143">
+	<visible>!Skin.HasSetting(DoNotPauseOnInfo) + !VideoPlayer.Content(livetv) + Window.IsVisible(fullscreenvideo) + [Window.IsVisible(fullscreeninfo) | [Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(selectdialog) | Window.IsVisible(busydialog)]]</visible>
+	<onload condition="!Player.Paused">Pause</onload>
+	<onunload condition="Player.Paused">Play</onunload>
+	<animation effect="fade" start="100" end="0" time="300">WindowClose</animation>
+	<controls />
+</window>

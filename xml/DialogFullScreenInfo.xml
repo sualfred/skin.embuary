@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<defaultcontrol always="true">100</defaultcontrol>
-	<onload condition="VideoPlayer.Content(musicvideos)">close</onload>
+	<onload condition="VideoPlayer.Content(musicvideos) | String.Contains(Player.Art(thumb),KodiCinemaMode)">close</onload>
 	<onload condition="String.IsEqual(VideoPlayer.Title,stream) + String.Contains(Player.Filenameandpath,/emby/videos/)">close</onload>
 	<include>PropertyIncludes</include>
 	<controls>
-		<!-- Hidden -->
-		<control type="list" id="2000">
-			<include>HiddenObject</include>
-			<content limit="1">$VAR[PlayerCastContent]</content>
+		<control type="group">
+			<visible>!VideoPlayer.Content(musicvideos) + !String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
+			<!-- Hidden -->
+			<control type="list" id="2000">
+				<include>HiddenObject</include>
+				<content limit="1">$VAR[PlayerCastContent]</content>
+			</control>
+			<!-- Content -->
+			<include condition="[VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)]">VideoPVRInfoLayout</include>
+			<include condition="VideoPlayer.Content(movies) | VideoPlayer.Content(episodes)">VideoInfoLayout</include>
+			<include condition="!VideoPlayer.Content(movies) + !VideoPlayer.Content(episodes) + !VideoPlayer.Content(musicvideos) + ![VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)]">TinyInfoLayout</include>
+			<!-- side panel -->
+			<include content="SidePanel">
+				<param name="onright">500</param>
+			</include>
 		</control>
-		<!-- Content -->
-		<include condition="[VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)]">VideoPVRInfoLayout</include>
-		<include condition="VideoPlayer.Content(movies) | VideoPlayer.Content(episodes)">VideoInfoLayout</include>
-		<include condition="!VideoPlayer.Content(movies) + !VideoPlayer.Content(episodes) + !VideoPlayer.Content(musicvideos) + ![VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)]">TinyInfoLayout</include>
-		<!-- side panel -->
-		<include content="SidePanel">
-			<param name="onright">500</param>
-		</include>
 	</controls>
 </window>

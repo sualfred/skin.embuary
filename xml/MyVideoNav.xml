@@ -2,11 +2,13 @@
 <window>
 	<defaultcontrol always="true">50</defaultcontrol>
 	<backgroundcolor>background</backgroundcolor>
-	<views>50,51,52,53,54,55,56,58</views>
+	<views>50,51,52,53,54,59,55,56,58</views>
 	<menucontrol>6666</menucontrol>
 	<include>UnloadSetProperties</include>
-	<onload condition="!Window.Previous(fullscreenvideo) + !Window.Previous(visualisation) + !Skin.HasSetting(NoJumpToFirstPage)">action(firstpage)</onload>
-	<include>PropertyIncludes</include>
+	<onload condition="!Window.Previous(fullscreenvideo) + !Window.Previous(visualisation) + Skin.HasSetting(JumpToFirstPage)">action(firstpage)</onload>
+	<include content="PropertyIncludes">
+		<param name="ShowHeader" value="true"/>
+	</include>
 	<controls>
 		<!-- hidden -->
 		<control type="button" id="2">
@@ -16,6 +18,16 @@
 			<visible>Control.IsVisible(54) | Control.IsVisible(55) | Control.IsVisible(56)</visible>
 			<include>HiddenObject</include>
 			<content limit="1">$VAR[View_Cast_Content]</content>
+		</control>
+		<control type="list" id="2001">
+			<include>HiddenObject</include>
+			<content sortby="year">$INFO[ListItem.FolderPath]</content>
+			<visible>String.IsEqual(ListItem.DBtype,set)</visible>
+		</control>
+		<control type="list" id="2002">
+			<visible>Control.IsVisible(54)</visible>
+			<include>HiddenObject</include>
+			<content limit="1">$VAR[View54_NextUp_Content]</content>
 		</control>
 		<!-- background -->
 		<include>Background</include>
@@ -28,6 +40,7 @@
 			<include>Square_View_52</include>
 			<include>List_View_53</include>
 			<include>Season_View_54</include>
+			<include>EpisodeList_View_59</include>
 			<include>Episode_View_55</include>
 			<include>Set_View_56</include>
 			<include>Banner_View_58</include>
@@ -44,9 +57,9 @@
 				<visible>ControlGroup(4000).HasFocus</visible>
 				<include>Visible_PopupOpenClose</include>
 				<centerleft>50%</centerleft>
-				<width>384</width>
+				<width>500</width>
 				<centertop>50%</centertop>
-				<height>970</height>
+				<height>982</height>
 				<control type="grouplist" id="4000">
 					<orientation>vertical</orientation>
 					<height>auto</height>
@@ -58,29 +71,29 @@
 					<usecontrolcoords>true</usecontrolcoords>
 					<control type="image" id="4001">
 						<width>100%</width>
-						<height>10</height>
-						<texture border="5" colordiffuse="panel">common/menu_top.png</texture>
+						<height>61</height>
+						<texture border="65,0,65,0" colordiffuse="context_color">dialogs/context/top.png</texture>
 					</control>
 					<control type="button" id="10">
-						<include content="CommonButton"/>
+						<include content="ContextButton"/>
 					</control>
 					<control type="togglebutton" id="4">
-						<include content="CommonButton"/>
+						<include content="ContextButton"/>
 						<label>$LOCALIZE[580]: $LOCALIZE[584]</label>
 						<altlabel>$LOCALIZE[580]: $LOCALIZE[585]</altlabel>
 					</control>
 					<control type="button" id="3">
-						<include content="CommonButton"/>
+						<include content="ContextButton"/>
 						<visible>Control.IsEnabled(3)</visible>
 					</control>
 					<control type="button" id="19">
-						<include content="CommonButton"/>
+						<include content="ContextButton"/>
 						<label>$LOCALIZE[31008]</label>
 					</control>
 					<control type="image" id="4005">
 						<width>100%</width>
-						<height>10</height>
-						<texture border="5" colordiffuse="panel">common/menu_bottom.png</texture>
+						<height>61</height>
+						<texture border="65,0,65,0" colordiffuse="context_color">dialogs/context/bottom.png</texture>
 					</control>
 				</control>
 			</control>

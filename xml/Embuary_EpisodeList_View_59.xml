@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+	<include name="EpisodeList_View_59">
+		<param name="id">59</param>
+		<definition>
+			<control type="group">
+				<include>Visible_OpenClose</include>
+				<visible>Control.IsVisible($PARAM[id])</visible>
+				<animation effect="slide" condition="!String.IsEmpty(Container.ShowTitle) + !Container.HasParent + !Integer.IsGreaterOrEqual(Container($PARAM[id]).CurrentItem,2) + !Container($PARAM[id]).HasPrevious" time="200" end="0,150">Conditional</animation>
+				<animation effect="slide" condition="!String.IsEmpty(Container.ShowTitle) + Container.HasParent + !Integer.IsGreaterOrEqual(Container($PARAM[id]).CurrentItem,1) + !Container($PARAM[id]).HasPrevious" time="200" end="0,150">Conditional</animation>
+				<control type="group">
+					<visible>!String.IsEmpty(Container.ShowTitle)</visible>
+					<animation effect="fade" condition="!Container.HasParent + !Integer.IsGreaterOrEqual(Container($PARAM[id]).CurrentItem,4) + !Container($PARAM[id]).HasPrevious" time="100" delay="100" start="0" end="100">Conditional</animation>
+					<animation effect="fade" condition="!Container.HasParent + ![!Integer.IsGreaterOrEqual(Container($PARAM[id]).CurrentItem,4) + !Container($PARAM[id]).HasPrevious]" time="0" start="100" end="0">Conditional</animation>
+					<animation effect="fade" condition="Container.HasParent + !Integer.IsGreaterOrEqual(Container($PARAM[id]).CurrentItem,3) + !Container($PARAM[id]).HasPrevious" time="100" delay="100" start="0" end="100">Conditional</animation>
+					<animation effect="fade" condition="Container.HasParent + ![!Integer.IsGreaterOrEqual(Container($PARAM[id]).CurrentItem,3) + !Container($PARAM[id]).HasPrevious]" time="0" start="100" end="0">Conditional</animation>
+					<left>70</left>
+					<right>70</right>
+					<top>-30</top>
+					<control type="label">
+						<height>80</height>
+						<right>400</right>
+						<label>$INFO[Container.ShowTitle,,[CR]]$INFO[Container.Foldername]</label>
+						<aligny>center</aligny>
+						<font>Reg37</font>
+						<visible>!String.IsEqual(Container.Foldername,Container.ShowTitle)</visible>
+					</control>
+					<control type="label">
+						<height>80</height>
+						<right>400</right>
+						<label>$INFO[Container.ShowTitle,,[CR]]$LOCALIZE[20360]</label>
+						<aligny>center</aligny>
+						<font>Reg37</font>
+						<visible>String.IsEqual(Container.Foldername,Container.ShowTitle)</visible>
+					</control>
+					<control type="image">
+						<right>0</right>
+						<width>400</width>
+						<height>80</height>
+						<texture background="true">$VAR[ListItemClearlogo]</texture>
+						<aspectratio align="right">keep</aspectratio>
+					</control>
+				</control>
+				<control id="$PARAM[id]" type="fixedlist">
+					<visible>[$EXP[EpisodeViewVisible] + Skin.HasSetting(ViewEpisodeList)] | Window.IsVisible(MyPVRRecordings.xml)</visible>
+					<animation effect="slide" time="0" end="0,-305" condition="!Container.HasParent + [Integer.IsEqual(Container($PARAM[id]).NumItems,2) | Integer.IsEqual(Container($PARAM[id]).NumItems,1)]">Conditional</animation>
+					<animation effect="slide" time="0" end="0,-305" condition="Container.HasParent + [Integer.IsEqual(Container($PARAM[id]).NumItems,1)]">Conditional</animation>
+					<height>100%</height>
+					<onup>SetFocus(6666)</onup>
+					<onright condition="Control.IsVisible(17)">SetFocus(17)</onright>
+					<onright condition="!Control.IsVisible(17) + Control.IsVisible(7000)">SetFocus(7000)</onright>
+					<onright condition="!Control.IsVisible(17) + !Control.IsVisible(7000)">SetFocus(6666)</onright>
+					<ondown>noop</ondown>
+					<onleft condition="Window.IsVisible(musicplaylist)">100</onleft>
+					<onleft condition="!Window.IsVisible(musicplaylist)">900</onleft>
+					<defaultcontrol always="true">0</defaultcontrol>
+					<focusposition>1</focusposition>
+					<movement>1</movement>
+					<orientation>vertical</orientation>
+					<viewtype label="$LOCALIZE[31232]">list</viewtype>
+					<pagecontrol>17</pagecontrol>
+					<include>ScrollTime</include>
+					<preloaditems>4</preloaditems>
+					<oninfo condition="String.IsEqual(ListItem.DBType,set) + !String.StartsWith(ListItem.Path,plugin://plugin.video)">RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCINFO[Window(home).Property(SkinHelper.ListItem.ExtendedPlot)]')</oninfo>
+					<itemlayout height="305" width="1920">
+						<control type="group">
+							<left>70</left>
+							<right>70</right>
+							<top>122</top>
+							<include content="EpisodeListLayout">
+								<param name="id">$PARAM[id]</param>
+								<param name="mainlabel">$PARAM[mainlabel]</param>
+								<param name="sublabel">$PARAM[sublabel]</param>
+								<param name="thumblabel">$PARAM[thumblabel]</param>
+							</include>
+						</control>
+					</itemlayout>
+					<focusedlayout height="305" width="1920">
+						<include content="SetPropertyOnFocus">
+							<param name="id" value="$PARAM[id]"/>
+						</include>
+						<control type="group">
+							<left>70</left>
+							<right>70</right>
+							<top>122</top>
+							<include content="EpisodeListLayout">
+								<param name="id">$PARAM[id]</param>
+								<param name="mainlabel">$PARAM[mainlabel]</param>
+								<param name="sublabel">$PARAM[sublabel]</param>
+								<param name="thumblabel">$PARAM[thumblabel]</param>
+								<param name="focused" value="true"/>
+							</include>
+						</control>
+					</focusedlayout>
+				</control>
+			</control>
+		</definition>
+	</include>
+</includes>

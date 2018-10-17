@@ -44,12 +44,6 @@
 					</control>
 					<control type="group">
 						<visible>Integer.IsGreater(MusicPlayer.Time,0) + !Skin.HasSetting(HideDiscArt)</visible>
-						<animation type="WindowClose" reversible="false">
-							<effect type="slide" start="0,0" end="0,100" tween="sine" easing="out" time="600" delay="0" />
-						</animation>
-						<animation type="WindowOpen" reversible="false">
-							<effect type="slide" start="0,100" end="0,0" tween="sine" easing="out" time="700" delay="1000" />
-						</animation>
 						<animation type="Hidden" reversible="false">
 							<effect type="slide" start="0,0" end="0,100" tween="sine" easing="out" time="600" delay="0" />
 						</animation>
@@ -72,7 +66,7 @@
 						<left>29</left>
 						<width>250</width>
 						<height>250</height>
-						<texture colordiffuse="thumb_background_fallback" diffuse="views/player/mask_square.png">common/white.jpg</texture>
+						<texture colordiffuse="$VAR[ThumbFallbackColor]" diffuse="views/player/mask_square.png">common/white.jpg</texture>
 						<aspectratio scalediffuse="false">stretch</aspectratio>
 						<visible>String.IsEmpty(MusicPlayer.Cover) | String.StartsWith(MusicPlayer.Cover,Default)</visible>
 					</control>
@@ -85,7 +79,7 @@
 						<textcolor>white</textcolor>
 						<align>center</align>
 						<aligny>center</aligny>
-						<label>$INFO[MusicPlayer.Album]</label>
+						<label>$VAR[MusicPlayerCoverTitle]</label>
 						<visible>String.IsEmpty(MusicPlayer.Cover) | String.StartsWith(MusicPlayer.Cover,Default)</visible>
 					</control>
 					<control type="image" id="99">
@@ -93,7 +87,7 @@
 						<left>29</left>
 						<width>250</width>
 						<height>250</height>
-						<texture colordiffuse="thumb_background" diffuse="views/player/mask_square.png">common/white.jpg</texture>
+						<texture colordiffuse="thumb_background_player" diffuse="views/player/mask_square.png">common/white.jpg</texture>
 						<aspectratio scalediffuse="false">stretch</aspectratio>
 						<visible>!String.IsEmpty(MusicPlayer.Cover) + !String.StartsWith(MusicPlayer.Cover,Default)</visible>
 					</control>
@@ -131,7 +125,7 @@
 						<include>PlayerProgressDimension</include>
 						<info>Player.Progress</info>
 						<texturebg colordiffuse="00ffffff">common/white.jpg</texturebg>
-						<midtexture colordiffuse="emby">common/white.jpg</midtexture>
+						<midtexture colordiffuse="$VAR[PlayerAccentColor]">common/white.jpg</midtexture>
 					</control>
 				</control>
 				<!-- Label section -->
@@ -147,7 +141,7 @@
 						<height>30</height>
 						<aligny>center</aligny>
 						<font>med24</font>
-												<label>$VAR[PlayerFullLabel]   </label>
+						<label>$VAR[PlayerFullLabel]   </label>
 					</control>
 					<control type="label" id="99">
 						<width>auto</width>
@@ -155,7 +149,7 @@
 						<aligny>center</aligny>
 						<label>$INFO[MusicPlayer.Codec]   </label>
 						<font>reg24</font>
-												<visible>!String.IsEmpty(MusicPlayer.Codec)</visible>
+						<visible>!String.IsEmpty(MusicPlayer.Codec)</visible>
 					</control>
 					<control type="label" id="99">
 						<width>auto</width>
@@ -163,7 +157,7 @@
 						<aligny>center</aligny>
 						<label>$INFO[MusicPlayer.Bitrate,, kbit/s]   </label>
 						<font>reg24</font>
-												<visible>!String.IsEmpty(MusicPlayer.Bitrate)</visible>
+						<visible>!String.IsEmpty(MusicPlayer.Bitrate)</visible>
 					</control>
 				</control>
 				<control type="grouplist" id="99">
@@ -179,7 +173,7 @@
 						<aligny>center</aligny>
 						<font>reg24</font>
 						<textcolor>softgrey</textcolor>
-												<label fallback="19055">$INFO[MusicPlayer.Album,$LOCALIZE[558]: ]$INFO[MusicPlayer.Year, (,)]</label>
+						<label fallback="19055">$INFO[MusicPlayer.Album,$LOCALIZE[558]: ]$INFO[MusicPlayer.Year, (,)]</label>
 					</control>
 					<control type="label" id="99">
 						<width>790</width>
@@ -188,7 +182,7 @@
 						<aligny>center</aligny>
 						<font>reg24</font>
 						<textcolor>softgrey</textcolor>
-												<label>$INFO[MusicPlayer.PlaylistPosition,$LOCALIZE[554] , / ]$INFO[MusicPlayer.PlaylistLength]</label>
+						<label>$INFO[MusicPlayer.PlaylistPosition,$LOCALIZE[554] , / ]$INFO[MusicPlayer.PlaylistLength]</label>
 						<visible>Integer.IsGreater(MusicPlayer.PlaylistLength,0)</visible>
 					</control>
 				</control>

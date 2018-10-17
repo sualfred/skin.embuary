@@ -21,23 +21,20 @@
 	<include file="Embuary_Set_View_56.xml" />
 	<include file="Embuary_PVRSet_View_57.xml" />
 	<include file="Embuary_Banner_View_58.xml" />
-	<include file="Embuary_Favourites_View_450.xml" />
+	<include file="Embuary_EpisodeList_View_59.xml" />
 	<include file="Embuary_Genre_View.xml" />
 	<include file="Embuary_VideoLyrics.xml" />
-	<include file="Embuary_HomeIncludes.xml" />
 	<include file="Embuary_EmbyHubIncludes.xml" />
 	<include file="Embuary_EmbyConHubIncludes.xml" />
 	<include file="Embuary_Settings.xml" />
 	<include file="Embuary_WidgetTemplates.xml" />
 	<include file="Embuary_WidgetCalls.xml" />
 	<include file="Embuary_PositionSelectorIncludes.xml" />
+	<include file="Embuary_HomeIncludes.xml" />
+	<include file="script-skinshortcuts-includes.xml" />
 
 	<!-- General -->
 	<expression name="SkinSetup">[!Skin.HasSetting(SkinSetup) + !Window.IsVisible(startup) + !Window.IsVisible(1119)]</expression>
-
-	<expression name="MenuCheck">[String.IsEmpty(Skin.String(home_menu_pos_1)) + String.IsEmpty(Skin.String(home_menu_pos_2)) + String.IsEmpty(Skin.String(home_menu_pos_3)) + String.IsEmpty(Skin.String(home_menu_pos_4)) + String.IsEmpty(Skin.String(home_menu_pos_5)) + String.IsEmpty(Skin.String(home_menu_pos_6)) + String.IsEmpty(Skin.String(home_menu_pos_7)) + String.IsEmpty(Skin.String(home_menu_pos_8)) + String.IsEmpty(Skin.String(home_menu_pos_9)) + String.IsEmpty(Skin.String(home_menu_pos_10)) + String.IsEmpty(Skin.String(home_menu_pos_11)) + String.IsEmpty(Skin.String(home_menu_pos_12)) + String.IsEmpty(Skin.String(home_menu_pos_13)) + String.IsEmpty(Skin.String(home_menu_pos_14)) + String.IsEmpty(Skin.String(home_menu_pos_15)) + String.IsEmpty(Skin.String(home_menu_pos_16)) + String.IsEmpty(Skin.String(home_menu_pos_17)) + String.IsEmpty(Skin.String(home_menu_pos_18)) + String.IsEmpty(Skin.String(home_menu_pos_19)) + String.IsEmpty(Skin.String(home_menu_pos_20)) + String.IsEmpty(Skin.String(home_menu_pos_21)) + String.IsEmpty(Skin.String(home_menu_pos_22)) + String.IsEmpty(Skin.String(home_menu_pos_23)) + String.IsEmpty(Skin.String(home_menu_pos_24)) + String.IsEmpty(Skin.String(home_menu_pos_25)) + String.IsEmpty(Skin.String(home_menu_pos_26)) + String.IsEmpty(Skin.String(home_menu_pos_27)) + String.IsEmpty(Skin.String(home_menu_pos_28)) + String.IsEmpty(Skin.String(home_menu_pos_29)) + String.IsEmpty(Skin.String(home_menu_pos_30)) + String.IsEmpty(Skin.String(home_menu_pos_31)) + String.IsEmpty(Skin.String(home_menu_pos_32)) + String.IsEmpty(Skin.String(home_menu_pos_33))]</expression>
-
-	<expression name="MenuMoviesVisiblity">[Library.HasContent(movies) | System.HasAddon(plugin.video.embycon)]</expression>
 
 	<expression name="HolidayThemeSound">!String.StartsWith(Player.Filenameandpath,special://skin/extras) + String.IsEmpty(Window(home).Property(SkinExtraSound)) + [[!Window.Previous(Startup) + Integer.IsGreater(Player.Duration,10)] | [Window.Previous(Startup) + Integer.IsGreater(Player.Duration,31)] | String.IsEmpty(Player.Duration)]</expression>
 
@@ -47,13 +44,15 @@
 
 	<expression name="HideBackground">[!Window.IsVisible(eventlog) + !Window.IsVisible(settingscategory.xml) + !Window.IsVisible(systeminfo) + !Window.IsVisible(skinsettings) + !Window.IsVisible(addonsettings) + !Window.IsVisible(filemanager) + !Window.IsVisible(profiles) + !Window.IsVisible(weather)]</expression>
 
-	<expression name="InfoDialogActive">[Window.IsVisible(musicinformation) | Window.IsVisible(movieinformation) | Window.IsVisible(addoninformation) | Window.IsVisible(pvrguideinfo) | Window.IsVisible(pvrrecordinginfo) | Window.IsVisible(fullscreeninfo) | Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(script-script.extendedinfo-VideoList.xml) | Window.IsVisible(1115)]</expression>
+	<expression name="InfoDialogActive">[Window.IsVisible(musicinformation) | Window.IsVisible(movieinformation) | Window.IsVisible(addoninformation) | Window.IsVisible(pvrguideinfo) | Window.IsVisible(pvrrecordinginfo) | Window.IsVisible(fullscreeninfo) | Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(script-script.extendedinfo-VideoList.xml) | Window.IsVisible(1115) | Window.IsVisible(subtitlesearch) | Window.IsVisible(favourites)]</expression>
 
-	<expression name="ScrollbarContainers">[Control.IsVisible(50) | Control.IsVisible(51) | Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(58)]</expression>
+	<expression name="ScrollbarContainers">[Control.IsVisible(50) | Control.IsVisible(51) | Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(58) | Control.IsVisible(59)]</expression>
 
 	<expression name="IsGenre">String.StartsWith(Container.Folderpath,plugin://script.skin.helper.widgets/?action=browsegenres)</expression>
 	<expression name="IsPlugin">[String.StartsWith(Container.Folderpath,plugin://) + !String.StartsWith(Container.FolderPath,plugin://plugin.video.emby/)]</expression>
 	<expression name="IsEmbyConSource">[String.StartsWith(Container.Folderpath,plugin://plugin.video.embycon) | Window.IsVisible(1160) | Window.IsVisible(1161) | Window.IsVisible(1162) | Window.IsVisible(1163) | Window.IsVisible(1164) | Window.IsVisible(1165) | Window.IsVisible(1166) | Window.IsVisible(1167) | Window.IsVisible(1168) | Window.IsVisible(1169)]</expression>
+
+	<expression name="IsSearching">[Container(101).IsUpdating | Container(102).IsUpdating | Container(103).IsUpdating | Container(104).IsUpdating | Container(105).IsUpdating | Container(106).IsUpdating | Container(107).IsUpdating | Container(108).IsUpdating | Container(109).IsUpdating | Container(110).IsUpdating | Container(111).IsUpdating | Container(112).IsUpdating | Container(113).IsUpdating | Container(114).IsUpdating | Container(115).IsUpdating | Container(116).IsUpdating]</expression>
 
 	<!-- Views -->
 	<expression name="WideViewVisible">[
@@ -68,6 +67,8 @@
 		+ !Window.IsVisible(MyPVRSearch.xml)
 		+ !Window.IsVisible(MyPVRTimers.xml)
 		+ !Window.IsVisible(MyPVRguide.xml)
+		+ !String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres)
+		+ !String.StartsWith(Container.FolderPath,pvr://channels/radio/)
 		]
 		| Window.IsVisible(MyPics.xml)
 		]
@@ -77,7 +78,6 @@
 		[Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets) | Container.Content(actors) | Container.Content(directors)]
 		+ !String.Contains(Container.Folderpath,setid)
 		+ ![String.Contains(Container.FolderPath,BoxSet) + !String.Contains(Container.FolderPath,CollapseBoxSet) + Container.Content(movies)]
-		+ !String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres)
 		]
 	</expression>
 
@@ -92,6 +92,7 @@
 		+ !Window.IsVisible(MyPVRSearch.xml)
 		+ !Window.IsVisible(MyPVRTimers.xml)
 		+ !Window.IsVisible(MyPVRguide.xml)
+		+ !String.StartsWith(Container.FolderPath,pvr://channels/radio/)
 		]
 		| Window.IsVisible(MyPics.xml)
 		]
@@ -104,7 +105,14 @@
 	</expression>
 
 	<expression name="ListViewVisible">[
-		[!Container.Content(seasons) + !Container.Content(episodes) + !String.Contains(Container.FolderPath,setid) + ![String.Contains(Container.FolderPath,BoxSet) + !String.Contains(Container.FolderPath,CollapseBoxSet) + Container.Content(movies)] + !String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres) + !Window.IsVisible(MyPVRguide.xml)]
+		[
+		!Container.Content(seasons)
+		+ !Container.Content(episodes)
+		+ !String.Contains(Container.FolderPath,setid)
+		+ ![String.Contains(Container.FolderPath,BoxSet) + !String.Contains(Container.FolderPath,CollapseBoxSet) + Container.Content(movies)]
+		+ !String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres)
+		+ !Window.IsVisible(MyPVRguide.xml)
+		]
 		| [Container.Content(episodes) + String.StartsWith(Container.FolderPath,plugin://) + !String.StartsWith(Container.FolderPath,plugin://plugin.video.emby) + !String.StartsWith(Container.FolderPath,plugin://plugin.video.plexbmc)]
 		| [Container.Content(seasons) + String.StartsWith(Container.FolderPath,plugin://) + !String.StartsWith(Container.FolderPath,plugin://plugin.video.emby)]
 		| Window.IsVisible(MyPics.xml)
@@ -122,6 +130,7 @@
 		[Container.Content(movies) | Container.Content(tvshows)]
 		+ !String.Contains(Container.FolderPath,setid)
 		+ ![String.Contains(Container.FolderPath,BoxSet) + !String.Contains(Container.FolderPath,CollapseBoxSet) + Container.Content(movies)]
+		+ !String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres)
 		]
 	</expression>
 
@@ -134,12 +143,14 @@
 	<expression name="HideHeaderBasedOnContainer">[Control.IsVisible(56) + [Container(560).HasPrevious + !Integer.IsEqual(Container(560).CurrentItem,1)]]
 		| [Control.IsVisible(54) + [Container(540).HasPrevious + !Integer.IsEqual(Container(540).CurrentItem,1)]]
 		| [Control.IsVisible(55) + [Container(550).HasPrevious + !Integer.IsEqual(Container(550).CurrentItem,1)]]
+		| [Control.IsVisible(59) + String.IsEmpty(Container.ShowTitle) + [Container(59).HasPrevious]]
+		| [Control.IsVisible(59) + !String.IsEmpty(Container.ShowTitle) + [Container(59).HasPrevious | Integer.IsGreaterOrEqual(Container(59).CurrentItem,2) | [Integer.IsGreaterOrEqual(Container(59).CurrentItem,1) + Container.HasParent]]]
 		| [Control.IsVisible(50) + [[Integer.IsGreaterOrEqual(Container(50).CurrentItem,12) + Container.HasParent] | Integer.IsGreaterOrEqual(Container(50).CurrentItem,13) | Container(50).HasPrevious]]
 		| [Control.IsVisible(51) + [[Integer.IsGreaterOrEqual(Container(51).CurrentItem,14) + Container.HasParent] | Integer.IsGreaterOrEqual(Container(51).CurrentItem,15) | Container(51).HasPrevious]]
-		| [Control.IsVisible(52) + [[Integer.IsGreaterOrEqual(Container(52).CurrentItem,10) + Container.HasParent] | Integer.IsGreaterOrEqual(Container(52).CurrentItem,11) | Container(52).HasPrevious]]
+		| [Control.IsVisible(52) + [[Integer.IsGreaterOrEqual(Container(52).CurrentItem,10) + Container.HasParent] | Integer.IsGreaterOrEqual(Container(52).CurrentItem,13) | Container(52).HasPrevious]]
 		| [Control.IsVisible(58) + !Skin.HasSetting(HideBannerLabels) + [[Integer.IsGreaterOrEqual(Container(58).CurrentItem,8) + Container.HasParent] | Integer.IsGreaterOrEqual(Container(58).CurrentItem,9)| Container(58).HasPrevious]]
 		| [Control.IsVisible(58) + Skin.HasSetting(HideBannerLabels) + [[Integer.IsGreaterOrEqual(Container(58).CurrentItem,10) + Container.HasParent] | Integer.IsGreaterOrEqual(Container(58).CurrentItem,11) | Container(58).HasPrevious]]
-		| [Control.IsVisible(53) + [Integer.IsGreaterOrEqual(Container(53).NumItems,9) | [Integer.IsGreaterOrEqual(Container(53).NumItems,8) + Container.HasParent]] + [[Integer.IsGreaterOrEqual(Container(53).CurrentItem,4) + Container.HasParent] | Integer.IsGreaterOrEqual(Container(53).CurrentItem,5) | Container(53).HasPrevious]]
+		| [Control.IsVisible(53) + [Integer.IsGreaterOrEqual(Container(53).NumItems,8) | [Integer.IsGreaterOrEqual(Container(53).NumItems,7) + Container.HasParent]] + [[Integer.IsGreaterOrEqual(Container(53).CurrentItem,4) + Container.HasParent] | Integer.IsGreaterOrEqual(Container(53).CurrentItem,5) | Container(53).HasPrevious]]
 	</expression>
 
 	<expression name="ListHasWideThumb">[
@@ -152,8 +163,7 @@
 		| String.IsEqual(ListItem.DBType,set)
 		| String.IsEqual(ListItem.DBType,musicvideo)
 		| Container.Content(episodes)
-		| [String.StartsWith(ListItem.Path,pvr://) + !String.IsEmpty(ListItem.Title)]
-		| [String.StartsWith(Container.FolderPath,plugin://plugin.video.embycon) + !String.EndsWith(ListItem.Art(poster),icon.png) + Container.Content(files)]
+		| [String.StartsWith(ListItem.Path,pvr://) + !String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)]
 		| [String.StartsWith(Container.FolderPath,plugin://plugin.video.emby/) + String.Contains(Container.FolderPath,type=homevideos)]
 		]
 		+ !ListItem.IsParentDir
@@ -161,36 +171,6 @@
 		+ !String.StartsWith(ListItem.Icon,Default)
 		]
 	</expression>
-
-	<!-- Menu -->
-	<expression name="MenuTVShowsVisiblity">[Library.HasContent(tvshows) | System.HasAddon(plugin.video.embycon)]</expression>
-
-	<expression name="MenuPVRVisiblity">[Pvr.HasTVChannels]</expression>
-
-	<expression name="MenuMusicVisiblity">[Library.HasContent(music) | System.HasAddon(plugin.video.embycon)]</expression>
-
-	<expression name="MenuMusicvideosVisiblity">[Library.HasContent(musicvideos)]</expression>
-
-	<expression name="MenuEmby0Visiblity">[System.HasAddon(plugin.video.emby) + !String.IsEmpty(Window(home).Property(emby.nodes.0.content)) + [String.IsEqual(Window(home).Property(emby.nodes.0.type),movies) | String.IsEqual(Window(home).Property(emby.nodes.0.type),tvshows) | String.IsEqual(Window(home).Property(emby.nodes.0.type),homevideos)]]</expression>
-	<expression name="MenuEmby1Visiblity">[System.HasAddon(plugin.video.emby) + !String.IsEmpty(Window(home).Property(emby.nodes.1.content)) + [String.IsEqual(Window(home).Property(emby.nodes.1.type),movies) | String.IsEqual(Window(home).Property(emby.nodes.1.type),tvshows) | String.IsEqual(Window(home).Property(emby.nodes.1.type),homevideos)]]</expression>
-	<expression name="MenuEmby2Visiblity">[System.HasAddon(plugin.video.emby) + !String.IsEmpty(Window(home).Property(emby.nodes.2.content)) + [String.IsEqual(Window(home).Property(emby.nodes.2.type),movies) | String.IsEqual(Window(home).Property(emby.nodes.2.type),tvshows) | String.IsEqual(Window(home).Property(emby.nodes.2.type),homevideos)]]</expression>
-	<expression name="MenuEmby3Visiblity">[System.HasAddon(plugin.video.emby) + !String.IsEmpty(Window(home).Property(emby.nodes.3.content)) + [String.IsEqual(Window(home).Property(emby.nodes.3.type),movies) | String.IsEqual(Window(home).Property(emby.nodes.3.type),tvshows) | String.IsEqual(Window(home).Property(emby.nodes.3.type),homevideos)]]</expression>
-	<expression name="MenuEmby4Visiblity">[System.HasAddon(plugin.video.emby) + !String.IsEmpty(Window(home).Property(emby.nodes.4.content)) + [String.IsEqual(Window(home).Property(emby.nodes.4.type),movies) | String.IsEqual(Window(home).Property(emby.nodes.4.type),tvshows) | String.IsEqual(Window(home).Property(emby.nodes.4.type),homevideos)]]</expression>
-	<expression name="MenuEmby5Visiblity">[System.HasAddon(plugin.video.emby) + !String.IsEmpty(Window(home).Property(emby.nodes.5.content)) + [String.IsEqual(Window(home).Property(emby.nodes.5.type),movies) | String.IsEqual(Window(home).Property(emby.nodes.5.type),tvshows) | String.IsEqual(Window(home).Property(emby.nodes.5.type),homevideos)]]</expression>
-	<expression name="MenuEmby6Visiblity">[System.HasAddon(plugin.video.emby) + !String.IsEmpty(Window(home).Property(emby.nodes.6.content)) + [String.IsEqual(Window(home).Property(emby.nodes.6.type),movies) | String.IsEqual(Window(home).Property(emby.nodes.6.type),tvshows) | String.IsEqual(Window(home).Property(emby.nodes.6.type),homevideos)]]</expression>
-	<expression name="MenuEmby7Visiblity">[System.HasAddon(plugin.video.emby) + !String.IsEmpty(Window(home).Property(emby.nodes.7.content)) + [String.IsEqual(Window(home).Property(emby.nodes.7.type),movies) | String.IsEqual(Window(home).Property(emby.nodes.7.type),tvshows) | String.IsEqual(Window(home).Property(emby.nodes.7.type),homevideos)]]</expression>
-	<expression name="MenuEmby8Visiblity">[System.HasAddon(plugin.video.emby) + !String.IsEmpty(Window(home).Property(emby.nodes.8.content)) + [String.IsEqual(Window(home).Property(emby.nodes.8.type),movies) | String.IsEqual(Window(home).Property(emby.nodes.8.type),tvshows) | String.IsEqual(Window(home).Property(emby.nodes.8.type),homevideos)]]</expression>
-	<expression name="MenuEmby9Visiblity">[System.HasAddon(plugin.video.emby) + !String.IsEmpty(Window(home).Property(emby.nodes.9.content)) + [String.IsEqual(Window(home).Property(emby.nodes.9.type),movies) | String.IsEqual(Window(home).Property(emby.nodes.9.type),tvshows) | String.IsEqual(Window(home).Property(emby.nodes.9.type),homevideos)]]</expression>
-	<expression name="MenuEmbyCon0Visiblity">[System.HasAddon(plugin.video.embycon) + [String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.0.type),movies) | String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.0.type),tvshows) | String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.0.type),music) | String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.0.type),boxsets)]]</expression>
-	<expression name="MenuEmbyCon1Visiblity">[System.HasAddon(plugin.video.embycon) + [String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.1.type),movies) | String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.1.type),tvshows) | String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.1.type),music) | String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.1.type),boxsets)]]</expression>
-	<expression name="MenuEmbyCon2Visiblity">[System.HasAddon(plugin.video.embycon) + [String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.2.type),movies) | String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.2.type),tvshows) | String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.2.type),music) | String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.2.type),boxsets)]]</expression>
-	<expression name="MenuEmbyCon3Visiblity">[System.HasAddon(plugin.video.embycon) + [String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.3.type),movies) | String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.3.type),tvshows) | String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.3.type),music) | String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.3.type),boxsets)]]</expression>
-	<expression name="MenuEmbyCon4Visiblity">[System.HasAddon(plugin.video.embycon) + [String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.4.type),movies) | String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.4.type),tvshows) | String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.4.type),music) | String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.4.type),boxsets)]]</expression>
-	<expression name="MenuEmbyCon5Visiblity">[System.HasAddon(plugin.video.embycon) + [String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.5.type),movies) | String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.5.type),tvshows) | String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.5.type),music) | String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.5.type),boxsets)]]</expression>
-	<expression name="MenuEmbyCon6Visiblity">[System.HasAddon(plugin.video.embycon) + [String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.6.type),movies) | String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.6.type),tvshows) | String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.6.type),music) | String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.6.type),boxsets)]]</expression>
-	<expression name="MenuEmbyCon7Visiblity">[System.HasAddon(plugin.video.embycon) + [String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.7.type),movies) | String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.7.type),tvshows) | String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.7.type),music) | String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.7.type),boxsets)]]</expression>
-	<expression name="MenuEmbyCon8Visiblity">[System.HasAddon(plugin.video.embycon) + [String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.8.type),movies) | String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.8.type),tvshows) | String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.8.type),music) | String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.8.type),boxsets)]]</expression>
-	<expression name="MenuEmbyCon9Visiblity">[System.HasAddon(plugin.video.embycon) + [String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.9.type),movies) | String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.9.type),tvshows) | String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.9.type),music) | String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.9.type),boxsets)]]</expression>
 
 </includes>
 

@@ -1,18 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<defaultcontrol always="true">6000</defaultcontrol>
+	<zorder>999</zorder>
 	<onload>Control.Move(6000,$INFO[Container(6000).CurrentItem,-])</onload>
 	<onload>Control.Move(6000,1)</onload>
 	<include>PropertyIncludes</include>
 	<controls>
 		<include content="DiffuseMask">
-			<param name="visible">true</param>
+			<param name="color">background_diffuse</param>
 		</include>
 		<control type="group">
-			<animation effect="slide" time="600" end="0,-158" tween="cubic" easing="inout" condition="ControlGroup(6100).HasFocus">Conditional</animation>
-			<include>Dialog_PopupOpenClose</include>
-			<!-- List -->
+			<!-- Time -->
+			<control type="grouplist">
+				<include>Visible_Fade</include>
+				<right>70</right>
+				<height>110</height>
+				<bottom>50</bottom>
+				<width>1596</width>
+				<align>right</align>
+				<itemgap>10</itemgap>
+				<orientation>horizontal</orientation>
+				<usecontrolcoords>true</usecontrolcoords>
+				<control type="label">
+					<width>auto</width>
+					<height>148</height>
+					<label>$INFO[System.Time(HH)]</label>
+					<font>Light80</font>
+					<textcolor>text_white</textcolor>
+				</control>
+				<control type="label">
+					<visible>String.EndsWith(System.Time(ss),0) | String.EndsWith(System.Time(ss),2) | String.EndsWith(System.Time(ss),4) | String.EndsWith(System.Time(ss),6) | String.EndsWith(System.Time(ss),8)</visible>
+					<top>62</top>
+					<width>auto</width>
+					<height>20</height>
+					<label>:</label>
+					<font>Light60</font>
+					<align>center</align>
+					<textcolor>text_white</textcolor>
+				</control>
+				<control type="label">
+					<visible>String.EndsWith(System.Time(ss),1) | String.EndsWith(System.Time(ss),3) | String.EndsWith(System.Time(ss),5) | String.EndsWith(System.Time(ss),7) | String.EndsWith(System.Time(ss),9)</visible>
+					<top>62</top>
+					<width>auto</width>
+					<height>20</height>
+					<label>:</label>
+					<font>Light60</font>
+					<align>center</align>
+					<textcolor>text_sublabel</textcolor>
+				</control>
+				<control type="label">
+					<width>auto</width>
+					<height>148</height>
+					<label>$INFO[System.Time(mm)]</label>
+					<font>Light80</font>
+					<textcolor>text_white</textcolor>
+				</control>
+				<control type="label">
+					<top>65</top>
+					<width>auto</width>
+					<height>58</height>
+					<label>$INFO[System.Time(xx)]</label>
+					<font>Med58</font>
+					<textcolor>text_white</textcolor>
+					<visible>!String.IsEmpty(System.Time(xx))</visible>
+				</control>
+			</control>
 			<control id="6000" type="fixedlist">
+				<include>Dialog_PopupOpenClose</include>
+				<visible allowhiddenfocus="true">true</visible>
 				<centerleft>50%</centerleft>
 				<centertop>50%</centertop>
 				<width>1920</width>
@@ -86,7 +141,7 @@
 								<width>264</width>
 								<height>264</height>
 								<texture>items/big_circle_focus.png</texture>
-								<colordiffuse>emby</colordiffuse>
+								<colordiffuse>$VAR[AccentColor]</colordiffuse>
 								<include>Animation_FocusTextureFade</include>
 								<visible>Control.HasFocus(6000)</visible>
 							</control>
@@ -118,20 +173,20 @@
 						<onclick>Dialog.Close(all,true)</onclick>
 						<onclick>ActivateWindow(settings)</onclick>
 						<property name="color">blue</property>
-						<visible>!Window.IsVisible(loginscreen) + !Window.IsVisible(settings)</visible>
+						<visible>!Window.IsVisible(loginscreen) + !Window.IsVisible(settings) + !Skin.HasSetting(HidePowerSettings)</visible>
 					</item>
 					<item>
 						<label>$LOCALIZE[13012]</label>
 						<label2></label2>
 						<onclick>Quit()</onclick>
-						<visible>System.ShowExitButton + !Skin.HasSetting(HidePowerExit)</visible>
+						<visible>System.ShowExitButton + [!Skin.HasSetting(HidePowerExit) | Window.IsVisible(loginscreen)]</visible>
 						<property name="color">green</property>
 					</item>
 					<item>
 						<label>$LOCALIZE[13016]</label>
 						<label2></label2>
 						<onclick>Powerdown()</onclick>
-						<visible>System.CanPowerDown + !Skin.HasSetting(HidePowerOff)</visible>
+						<visible>System.CanPowerDown + [!Skin.HasSetting(HidePowerOff) | Window.IsVisible(loginscreen)]</visible>
 						<property name="color">red</property>
 					</item>
 					<item>
@@ -153,21 +208,21 @@
 						<label>$LOCALIZE[13011]</label>
 						<label2></label2>
 						<onclick>Suspend()</onclick>
-						<visible>System.CanSuspend + !Skin.HasSetting(HidePowerSuspend)</visible>
+						<visible>System.CanSuspend + [!Skin.HasSetting(HidePowerSuspend) | Window.IsVisible(loginscreen)]</visible>
 						<property name="color">lila</property>
 					</item>
 					<item>
 						<label>$LOCALIZE[13010]</label>
 						<label2></label2>
 						<onclick>Hibernate()</onclick>
-						<visible>System.CanHibernate + !Skin.HasSetting(HidePowerHibernate)</visible>
+						<visible>System.CanHibernate + [!Skin.HasSetting(HidePowerHibernate) | Window.IsVisible(loginscreen)]</visible>
 						<property name="color">lila</property>
 					</item>
 					<item>
 						<label>$LOCALIZE[13013]</label>
 						<label2></label2>
 						<onclick>Reset()</onclick>
-						<visible>System.CanReboot + !Skin.HasSetting(HidePowerReboot)</visible>
+						<visible>System.CanReboot + [!Skin.HasSetting(HidePowerReboot) | Window.IsVisible(loginscreen)]</visible>
 						<property name="color">turquoise</property>
 					</item>
 					<item>
@@ -175,7 +230,7 @@
 						<label2></label2>
 						<onclick>Dialog.Close(all,true)</onclick>
 						<onclick>System.ExecWait(&quot;/usr/sbin/rebootfromnand&quot;)</onclick>
-						<visible>System.CanReboot + !Skin.HasSetting(HidePowerRebootNAND) + [System.HasAddon(service.libreelec.settings) | System.HasAddon(service.coreelec.settings)]</visible>
+						<visible>System.CanReboot + [!Skin.HasSetting(HidePowerRebootNAND) | Window.IsVisible(loginscreen)] + [System.HasAddon(service.libreelec.settings) | System.HasAddon(service.coreelec.settings)]</visible>
 						<property name="color">turquoise</property>
 					</item>
 					<item>
@@ -197,16 +252,16 @@
 						<label2></label2>
 						<onclick>dialog.close(all,true)</onclick>
 						<onclick>RunScript(plugin.video.embycon,0,?mode=CHANGE_USER)</onclick>
-						<visible>System.HasAddon(plugin.video.embycon) + !String.IsEmpty(Window(Home).Property(plugin.video.embycon-userid))</visible>
-						<property name="color">emby</property>
+						<visible>System.HasAddon(plugin.video.embycon) + !String.IsEmpty(Window(Home).Property(plugin.video.embycon-userid)) + !Window.IsVisible(loginscreen)</visible>
+						<property name="color">accent</property>
 					</item>
 					<item>
 						<label>$LOCALIZE[31225]</label>
 						<label2></label2>
 						<onclick>dialog.close(all,true)</onclick>
 						<onclick>RunScript(plugin.video.embycon,0,?mode=CHANGE_USER)</onclick>
-						<visible>System.HasAddon(plugin.video.embycon) + String.IsEmpty(Window(Home).Property(plugin.video.embycon-userid))</visible>
-						<property name="color">emby</property>
+						<visible>System.HasAddon(plugin.video.embycon) + String.IsEmpty(Window(Home).Property(plugin.video.embycon-userid)) + !Window.IsVisible(loginscreen)</visible>
+						<property name="color">accent</property>
 					</item>
 					<item>
 						<label>$LOCALIZE[20126] $INFO[system.profilename]</label>
@@ -215,44 +270,49 @@
 						<onclick>System.LogOff</onclick>
 						<visible>System.HasLoginScreen | Integer.IsGreater(System.ProfileCount,1)</visible>
 						<visible>System.Loggedon</visible>
-						<property name="color">emby</property>
+						<property name="color">accent</property>
 					</item>
 					<item>
 						<label>$LOCALIZE[20046]</label>
 						<label2></label2>
 						<onclick>mastermode</onclick>
-						<visible>System.HasLocks + System.IsMaster</visible>
-						<property name="color">emby</property>
+						<visible>System.HasLocks + System.IsMaster + !Window.IsVisible(loginscreen)</visible>
+						<property name="color">accent</property>
 					</item>
 					<item>
 						<label>$LOCALIZE[20045]</label>
 						<label2></label2>
 						<onclick>mastermode</onclick>
-						<visible>System.HasLocks + !System.IsMaster</visible>
-						<property name="color">emby</property>
+						<visible>System.HasLocks + !System.IsMaster + !Window.IsVisible(loginscreen)</visible>
+						<property name="color">accent</property>
 					</item>
 				</content>
 			</control>
 			<!-- Player controls -->
 			<control type="group">
+				<include>Visible_Fade</include>
 				<visible>Player.HasMedia</visible>
+				<left>70</left>
+				<height>110</height>
+				<bottom>50</bottom>
+				<width>1400</width>
+				<align>right</align>
+				<itemgap>10</itemgap>
 				<control type="label">
-					<width>1596</width>
-					<bottom>160</bottom>
-					<centerleft>50%</centerleft>
+					<bottom>50</bottom>
 					<height>23</height>
-					<align>center</align>
+					<align>left</align>
 					<label>$VAR[PlayerFullLabel]</label>
 					<font>reg24</font>
 					<textcolor>ffbfbcbb</textcolor>
 				</control>
 				<control type="grouplist" id="6100">
-					<centerleft>50%</centerleft>
-					<bottom>90</bottom>
+					<left>-15</left>
+					<bottom>-9</bottom>
 					<height>50</height>
 					<itemgap>5</itemgap>
 					<orientation>horizontal</orientation>
-					<align>center</align>
+					<align>left</align>
 					<include>FocusBounce</include>
 					<onup>6000</onup>
 					<onright>noop</onright>

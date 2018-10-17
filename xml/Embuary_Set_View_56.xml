@@ -33,7 +33,7 @@
 						<width>1480</width>
 						<control type="label">
 							<width>1040</width>
-							<height>60</height>
+							<height>55</height>
 							<label>$INFO[ListItem.Title]</label>
 							<aligny>top</aligny>
 							<font>Reg37</font>
@@ -56,7 +56,7 @@
 						</control>
 						<!-- buttons -->
 						<control type="grouplist" id="100">
-							<height>75</height>
+							<height>70</height>
 							<orientation>horizontal</orientation>
 							<itemgap>5</itemgap>
 							<onright>noop</onright>
@@ -69,6 +69,7 @@
 								<onclick>SetFocus(50)</onclick>
 								<onclick>Select</onclick>
 								<ondown>50</ondown>
+								<onback>SetFocus(50)</onback>
 							</control>
 							<control type="button" id="56102">
 								<visible>Container.Content(tvshows)</visible>
@@ -78,6 +79,7 @@
 								<onclick>SetFocus(50)</onclick>
 								<onclick>Select</onclick>
 								<ondown>50</ondown>
+								<onback>SetFocus(50)</onback>
 							</control>
 							<control type="button" id="56104">
 								<visible>!String.IsEmpty(ListItem.Trailer)</visible>
@@ -86,18 +88,20 @@
 								<onup>SetFocus(6666)</onup>
 								<onclick>PlayMedia($INFO[ListItem.Trailer])</onclick>
 								<ondown>50</ondown>
+								<onback>SetFocus(50)</onback>
 							</control>
 							<control type="button" id="56103">
-								<visible>!String.IsEmpty(ListItem.Plot) | !String.IsEmpty(Window(home).Property(SkinHelper.ListItem.Plot))</visible>
+								<visible>!String.IsEmpty(ListItem.Plot) | !String.IsEmpty(Window(home).Property(SkinHelper.ListItem.Plot)) | !String.IsEmpty(Container(2001).ListItem.Label)</visible>
 								<include>LightGreyButton</include>
 								<width>70</width>
 								<height>50</height>
 								<font>material24</font>
 								<label></label>
 								<onclick condition="!String.IsEqual(ListItem.DBType,set)">RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCINFO[ListItem.Plot]')</onclick>
-								<onclick condition="String.IsEqual(ListItem.DBType,set)">RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCINFO[Window(home).Property(SkinHelper.ListItem.ExtendedPlot)]')</onclick>
+								<onclick condition="String.IsEqual(ListItem.DBType,set) + !String.IsEmpty(Container(2001).ListItem.Label)">RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCVAR[ListViewPlot]')</onclick>
 								<onup>SetFocus(6666)</onup>
 								<ondown>50</ondown>
+								<onback>SetFocus(50)</onback>
 							</control>
 							<control type="togglebutton" id="56105">
 								<include>LightGreyButton</include>
@@ -106,9 +110,10 @@
 								<font>material24</font>
 								<label>[B][/B]</label>
 								<altlabel>[B][COLOR red][/COLOR][/B]</altlabel>
-								<onclick>ToggleWatched</onclick>
+								<include>ToggleWatchedAction</include>
 								<onup>SetFocus(6666)</onup>
 								<ondown>50</ondown>
+								<onback>SetFocus(50)</onback>
 								<selected>String.IsEqual(ListItem.Overlay,OverlayWatched.png) | Integer.IsGreaterOrEqual(ListItem.PlayCount,1)</selected>
 							</control>
 						</control>
@@ -172,6 +177,8 @@
 				<param name="headline" value="$LOCALIZE[31192]"/>
 				<param name="sortby" value="year"/>
 				<param name="sortorder" value="ascending"/>
+				<param name="use_custom_onclick" value="true"/>
+				<param name="onclick" value="RunScript(script.embuary.helper,action=playfromhome,item='$ESCINFO[ListItem.Filenameandpath]')"/>
 				<param name="content" value="$INFO[ListItem.FolderPath]"/>
 			</include>
 		</control>

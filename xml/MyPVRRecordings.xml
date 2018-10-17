@@ -2,10 +2,12 @@
 <window>
 	<defaultcontrol always="true">50</defaultcontrol>
 	<backgroundcolor>background</backgroundcolor>
-	<views>50,52,53,57</views>
+	<views>50,52,53,57,59</views>
 	<menucontrol>6666</menucontrol>
 	<onunload condition="Window.Previous(1124)">SetProperty(pvrhub,1,home)</onunload>
-	<include>PropertyIncludes</include>
+	<include content="PropertyIncludes">
+		<param name="ShowHeader" value="true"/>
+	</include>
 	<controls>
 		<control type="button" id="2">
 			<include>HiddenObject</include>
@@ -18,17 +20,17 @@
 			<include>Window_OpenClose</include>
 			<include content="Wide_View_50">
 				<param name="mainlabel">$INFO[ListItem.Label]$INFO[ListItem.Episodename, - ]</param>
-				<param name="thumblabel">$INFO[ListItem.Channelname]</param>
+				<param name="thumblabel">$INFO[ListItem.Channelname,, ]$INFO[ListItem.Label]</param>
 			</include>
 			<include content="Square_View_52">
 				<param name="mainlabel">$INFO[ListItem.Label]</param>
 				<param name="sublabel">$VAR[ListItemEpisodeName]</param>
-				<param name="thumblabel">$INFO[ListItem.Channelname]</param>
+				<param name="thumblabel">$INFO[ListItem.Channelname,, ]$INFO[ListItem.Label]</param>
 			</include>
 			<include content="PVRSet_View_57">
 				<param name="mainlabel">$INFO[ListItem.Label]</param>
 				<param name="sublabel">$INFO[ListItem.Channelname]</param>
-				<param name="thumblabel">$INFO[ListItem.Channelname]</param>
+				<param name="thumblabel">$INFO[ListItem.Channelname,, ]$INFO[ListItem.Label]</param>
 			</include>
 			<include content="List_View_53">
 				<param name="mainlabel">$INFO[ListItem.Label]</param>
@@ -36,6 +38,11 @@
 				<param name="thumblabel">$INFO[ListItem.Label]</param>
 				<param name="rightlabel">$VAR[DurationMinutes]</param>
 				<param name="rightlabel2">$INFO[ListItem.Date]</param>
+			</include>
+			<include content="EpisodeList_View_59">
+				<param name="mainlabel">$INFO[ListItem.Label]</param>
+				<param name="sublabel">$INFO[ListItem.Date,,   ]$INFO[ListItem.Channelname,,   ]$VAR[DurationMinutes,,   ]$INFO[ListItem.EndTime,$LOCALIZE[31037] ]</param>
+				<param name="thumblabel">$INFO[ListItem.Channelname,, ]$INFO[ListItem.Label]</param>
 			</include>
 		</control>
 		<!-- scrollbar -->
@@ -50,9 +57,9 @@
 				<visible>ControlGroup(4000).HasFocus</visible>
 				<include>Visible_PopupOpenClose</include>
 				<centerleft>50%</centerleft>
-				<width>384</width>
+				<width>500</width>
 				<centertop>50%</centertop>
-				<height>970</height>
+				<height>982</height>
 				<control type="grouplist" id="4000">
 					<orientation>vertical</orientation>
 					<height>auto</height>
@@ -64,35 +71,35 @@
 					<usecontrolcoords>true</usecontrolcoords>
 					<control type="image" id="4001">
 						<width>100%</width>
-						<height>10</height>
-						<texture border="5" colordiffuse="panel">common/menu_top.png</texture>
+						<height>61</height>
+						<texture border="65,0,65,0" colordiffuse="context_color">dialogs/context/top.png</texture>
 					</control>
 					<control type="button" id="10">
 						<label>$LOCALIZE[20367]</label>
 						<include content="CommonButton"/>
 					</control>
 					<control type="togglebutton" id="4">
-						<include content="CommonButton"/>
+						<include content="ContextButton"/>
 						<label>$LOCALIZE[580]: $LOCALIZE[584]</label>
 						<altlabel>$LOCALIZE[580]: $LOCALIZE[585]</altlabel>
 					</control>
 					<control type="button" id="3">
-						<include content="CommonButton"/>
+						<include content="ContextButton"/>
 					</control>
 					<control type="radiobutton" id="5">
-						<include content="CommonButton"/>
+						<include content="ContextButton"/>
 						<label>$LOCALIZE[31031]</label>
 						<label2></label2>
 					</control>
 					<control type="radiobutton" id="7">
-						<include content="CommonButton"/>
+						<include content="ContextButton"/>
 						<label>$LOCALIZE[31032]</label>
 						<label2></label2>
 					</control>
 					<control type="image" id="4002">
 						<width>100%</width>
-						<height>10</height>
-						<texture border="5" colordiffuse="panel">common/menu_bottom.png</texture>
+						<height>61</height>
+						<texture border="65,0,65,0" colordiffuse="context_color">dialogs/context/bottom.png</texture>
 					</control>
 				</control>
 			</control>

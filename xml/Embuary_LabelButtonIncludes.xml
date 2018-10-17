@@ -1,32 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
-	<!-- Common Button -->
-	<include name="CommonButton">
-		<param name="height">50</param>
-		<param name="width">100%</param>
-		<definition>
-			<width>$PARAM[width]</width>
-			<height>$PARAM[height]</height>
-			<align>left</align>
-			<aligny>center</aligny>
-			<textoffsetx>20</textoffsetx>
-			<font>med22</font>
-			<textcolor>text_white</textcolor>
-			<shadowcolor>text_shadow</shadowcolor>
-			<disabledcolor>grey</disabledcolor>
-			<include>radio20_style</include>
-			<texturefocus border="10" colordiffuse="panel_hover">common/menu_back.png</texturefocus>
-			<texturenofocus border="10"  colordiffuse="panel">common/menu_back.png</texturenofocus>
-			<alttexturefocus border="10"  colordiffuse="panel_hover">common/menu_back.png</alttexturefocus>
-			<alttexturenofocus border="10"  colordiffuse="panel">common/menu_back.png</alttexturenofocus>
-		</definition>
-	</include>
-	<!-- Settings Button -->
+	<!-- Radio styles -->
 	<include name="radio35_style">
 		<radiowidth>55</radiowidth>
 		<radioheight>35</radioheight>
-		<textureradioonfocus colordiffuse="emby_secondary">icons/misc/radio_on_fo.png</textureradioonfocus>
-		<textureradioonnofocus colordiffuse="emby_secondary">icons/misc/radio_on.png</textureradioonnofocus>
+		<textureradioonfocus colordiffuse="$VAR[AccentColor]">icons/misc/radio_on_fo.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="$VAR[AccentColor]">icons/misc/radio_on.png</textureradioonnofocus>
 		<textureradioofffocus colordiffuse="softgrey">icons/misc/radio_off_fo.png</textureradioofffocus>
 		<textureradiooffnofocus colordiffuse="softgrey">icons/misc/radio_off.png</textureradiooffnofocus>
 		<textureradioondisabled colordiffuse="disabled">icons/misc/radio_off.png</textureradioondisabled>
@@ -35,13 +14,74 @@
 	<include name="radio20_style">
 		<radiowidth>40</radiowidth>
 		<radioheight>35</radioheight>
-		<textureradioonfocus colordiffuse="emby_secondary">icons/misc/radio20_on_fo.png</textureradioonfocus>
-		<textureradioonnofocus colordiffuse="emby_secondary">icons/misc/radio20_on.png</textureradioonnofocus>
+		<textureradioonfocus colordiffuse="$VAR[AccentColor]">icons/misc/radio20_on_fo.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="$VAR[AccentColor]">icons/misc/radio20_on.png</textureradioonnofocus>
 		<textureradioofffocus colordiffuse="softgrey">icons/misc/radio20_off_fo.png</textureradioofffocus>
 		<textureradiooffnofocus colordiffuse="softgrey">icons/misc/radio20_off.png</textureradiooffnofocus>
 		<textureradioondisabled colordiffuse="disabled">icons/misc/radio20_off.png</textureradioondisabled>
 		<textureradiooffdisabled colordiffuse="disabled">icons/misc/radio20_off.png</textureradiooffdisabled>
 	</include>
+	<include name="radio80_style">
+		<radiowidth>100</radiowidth>
+		<radioheight>35</radioheight>
+		<textureradioonfocus colordiffuse="$VAR[AccentColor]">icons/misc/radio80_on_fo.png</textureradioonfocus>
+		<textureradioonnofocus colordiffuse="$VAR[AccentColor]">icons/misc/radio80_on.png</textureradioonnofocus>
+		<textureradioofffocus colordiffuse="softgrey">icons/misc/radio80_off_fo.png</textureradioofffocus>
+		<textureradiooffnofocus colordiffuse="softgrey">icons/misc/radio80_off.png</textureradiooffnofocus>
+		<textureradioondisabled colordiffuse="disabled">icons/misc/radio80_off.png</textureradioondisabled>
+		<textureradiooffdisabled colordiffuse="disabled">icons/misc/radio80_off.png</textureradiooffdisabled>
+	</include>
+	<!-- Common Button -->
+	<include name="CommonButton">
+		<param name="height">50</param>
+		<param name="width">100%</param>
+		<param name="focusedcolor">panel_focus</param>
+		<param name="color">panel_background</param>
+		<param name="textcolor">text_white</param>
+		<param name="textcolor_focused">text_white</param>
+		<definition>
+			<width>$PARAM[width]</width>
+			<height>$PARAM[height]</height>
+			<align>left</align>
+			<aligny>center</aligny>
+			<textoffsetx>80</textoffsetx>
+			<font>med22</font>
+			<textcolor>$PARAM[textcolor]</textcolor>
+			<focusedcolor>$PARAM[textcolor_focused]</focusedcolor>
+			<disabledcolor>grey</disabledcolor>
+			<include>radio20_style</include>
+			<texturefocus border="65,10,65,10" colordiffuse="$PARAM[focusedcolor]">dialogs/context/middle.png</texturefocus>
+			<texturenofocus border="65,10,65,10"  colordiffuse="$PARAM[color]">dialogs/context/middle.png</texturenofocus>
+			<alttexturefocus border="65,10,65,10"  colordiffuse="$PARAM[focusedcolor]">dialogs/context/middle.png</alttexturefocus>
+			<alttexturenofocus border="65,10,65,10"  colordiffuse="$PARAM[color]">dialogs/context/middle.png</alttexturenofocus>
+		</definition>
+	</include>
+	<!-- Context Button -->
+	<include name="ContextButton">
+		<param name="height">50</param>
+		<param name="width">100%</param>
+		<param name="focusedcolor">context_focusedcolor</param>
+		<param name="color">context_color</param>
+		<param name="textcolor">context_textcolor</param>
+		<param name="textcolor_focused">context_textcolor_focused</param>
+		<definition>
+			<width>$PARAM[width]</width>
+			<height>$PARAM[height]</height>
+			<align>left</align>
+			<aligny>center</aligny>
+			<textoffsetx>80</textoffsetx>
+			<font>med22</font>
+			<textcolor>$PARAM[textcolor]</textcolor>
+			<focusedcolor>$PARAM[textcolor_focused]</focusedcolor>
+			<disabledcolor>disabled</disabledcolor>
+			<include>radio80_style</include>
+			<texturefocus border="65,10,65,10" colordiffuse="$PARAM[focusedcolor]">dialogs/context/middle.png</texturefocus>
+			<texturenofocus border="65,10,65,10"  colordiffuse="$PARAM[color]">dialogs/context/middle.png</texturenofocus>
+			<alttexturefocus border="65,10,65,10"  colordiffuse="$PARAM[focusedcolor]">dialogs/context/middle.png</alttexturefocus>
+			<alttexturenofocus border="65,10,65,10"  colordiffuse="$PARAM[color]">dialogs/context/middle.png</alttexturenofocus>
+		</definition>
+	</include>
+	<!-- Settings Button -->
 	<include name="SettingsButton">
 		<param name="height">50</param>
 		<param name="width">100%</param>
@@ -58,9 +98,9 @@
 			<selectedcolor>selected</selectedcolor>
 			<textcolor>text_white</textcolor>
 			<focusedcolor>text_white</focusedcolor>
-			<disabledcolor>grey</disabledcolor>
-			<texturefocus colordiffuse="list_hover">common/white.jpg</texturefocus>
-			<texturenofocus colordiffuse="thumb_background">common/white.jpg</texturenofocus>
+			<disabledcolor>disabled</disabledcolor>
+			<texturefocus colordiffuse="panel_focus">common/white.jpg</texturefocus>
+			<texturenofocus colordiffuse="panel_background">common/white.jpg</texturenofocus>
 		</definition>
 	</include>
 	<include name="DialogSettingsButton">
@@ -79,19 +119,20 @@
 			<selectedcolor>selected</selectedcolor>
 			<textcolor>text_white</textcolor>
 			<focusedcolor>text_white</focusedcolor>
-			<disabledcolor>grey</disabledcolor>
-			<texturefocus colordiffuse="list_hover">common/white.jpg</texturefocus>
+			<disabledcolor>disabled</disabledcolor>
+			<texturefocus colordiffuse="panel_focus">common/white.jpg</texturefocus>
 			<texturenofocus />
 		</definition>
 	</include>
 	<!-- Skin settings headline -->
 	<include name="SkinSettingsHeadlineLabel">
 		<param name="visible">true</param>
+		<param name="color">text_white</param>
 		<definition>
 			<control type="label" id="$PARAM[id]">
 				<height>70</height>
 				<font>med22</font>
-				<textcolor>panel_text</textcolor>
+				<textcolor>text_white</textcolor>
 				<aligny>center</aligny>
 				<label>$PARAM[label]</label>
 				<animation effect="slide" end="0,10" time="0" condition="true">Conditional</animation>
@@ -107,7 +148,7 @@
 			<align>center</align>
 			<aligny>center</aligny>
 			<texture border="10" colordiffuse="dark_button">dialogs/keyboard/keyboard_button_mask.png</texture>
-			<animation effect="fade" end="33" start="0" time="0" condition="!Control.IsVisible($PARAM[ID])">Conditional</animation>
+			<animation effect="fade" end="0" start="33" time="0" condition="Control.IsVisible($PARAM[ID])">Conditional</animation>
 		</control>
 	</include>
 	<!-- Keyboard buttons -->
@@ -121,7 +162,7 @@
 		<disabledcolor>lightgrey</disabledcolor>
 		<focusedcolor>white</focusedcolor>
 		<texturenofocus border="10" colordiffuse="dark_button">dialogs/keyboard/keyboard_button_mask.png</texturenofocus>
-		<texturefocus border="10" colordiffuse="button_focus">dialogs/keyboard/keyboard_button_mask.png</texturefocus>
+		<texturefocus border="10" colordiffuse="$VAR[ButtonAccentColor]">dialogs/keyboard/keyboard_button_mask.png</texturefocus>
 	</include>
 	<!-- Numeric buttons -->
 	<include name="NumericButtons">
@@ -134,7 +175,7 @@
 		<disabledcolor>lightgrey</disabledcolor>
 		<focusedcolor>white</focusedcolor>
 		<texturenofocus border="10" colordiffuse="dark_button">dialogs/keyboard/keyboard_button_mask.png</texturenofocus>
-		<texturefocus border="10" colordiffuse="button_focus">dialogs/keyboard/keyboard_button_mask.png</texturefocus>
+		<texturefocus border="10" colordiffuse="$VAR[ButtonAccentColor]">dialogs/keyboard/keyboard_button_mask.png</texturefocus>
 	</include>
 	<!-- small meta labels -->
 	<include name="MetaLabel">
@@ -159,6 +200,7 @@
 	<!-- Header Button -->
 	<include name="HeaderButton">
 		<param name="align">true</param>
+		<param name="color">text_header</param>
 		<definition>
 			<animation effect="slide" time="0" end="0,-1" condition="$PARAM[align]">Conditional</animation>
 			<include>NoTextures</include>
@@ -166,8 +208,8 @@
 			<width>auto</width>
 			<aligny>center</aligny>
 			<font>med20</font>
-			<textcolor>text_header</textcolor>
-			<focusedcolor>emby_secondary</focusedcolor>
+			<textcolor>$PARAM[color]</textcolor>
+			<focusedcolor>$VAR[AccentColor]</focusedcolor>
 			<textoffsetx>0</textoffsetx>
 		</definition>
 	</include>
@@ -184,9 +226,9 @@
 			<shadowcolor>text_shadow</shadowcolor>
 			<aligny>center</aligny>
 			<align>center</align>
-			<texturefocus border="10" colordiffuse="button_focus">items/button.png</texturefocus>
+			<texturefocus border="10" colordiffuse="$VAR[ButtonAccentColor]">items/button.png</texturefocus>
 			<texturenofocus border="10" colordiffuse="light_button">items/button.png</texturenofocus>
-			<alttexturefocus border="10" colordiffuse="button_focus">items/button.png</alttexturefocus>
+			<alttexturefocus border="10" colordiffuse="$VAR[ButtonAccentColor]">items/button.png</alttexturefocus>
 			<alttexturenofocus border="10" colordiffuse="light_button">items/button.png</alttexturenofocus>
 			<pulseonselect>no</pulseonselect>
 		</definition>
@@ -205,9 +247,9 @@
 			<textoffsetx>20</textoffsetx>
 			<aligny>center</aligny>
 			<align>center</align>
-			<texturefocus border="10" colordiffuse="button_focus">items/button.png</texturefocus>
+			<texturefocus border="10" colordiffuse="$VAR[ButtonAccentColor]">items/button.png</texturefocus>
 			<texturenofocus border="10" colordiffuse="grey_button">items/button.png</texturenofocus>
-			<alttexturefocus border="10" colordiffuse="button_focus">items/button.png</alttexturefocus>
+			<alttexturefocus border="10" colordiffuse="$VAR[ButtonAccentColor]">items/button.png</alttexturefocus>
 			<alttexturenofocus border="10" colordiffuse="grey_button">items/button.png</alttexturenofocus>
 		</definition>
 	</include>
@@ -216,9 +258,9 @@
 		<param name="alt">$PARAM[type]</param>
 		<definition>
 			<texturenofocus>icons/player/$PARAM[type]_nf.png</texturenofocus>
-			<texturefocus colordiffuse="emby">icons/player/$PARAM[type]_fo.png</texturefocus>
+			<texturefocus colordiffuse="$VAR[PlayerAccentColor]">icons/player/$PARAM[type]_fo.png</texturefocus>
 			<alttexturenofocus>icons/player/$PARAM[alt]_nf.png</alttexturenofocus>
-			<alttexturefocus colordiffuse="emby">icons/player/$PARAM[alt]_fo.png</alttexturefocus>
+			<alttexturefocus colordiffuse="$VAR[PlayerAccentColor]">icons/player/$PARAM[alt]_fo.png</alttexturefocus>
 			<width>50</width>
 			<height>50</height>
 		</definition>

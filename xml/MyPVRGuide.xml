@@ -5,7 +5,9 @@
 	<views>10,20</views>
 	<menucontrol>6666</menucontrol>
 	<onunload condition="Window.Previous(1124)">SetProperty(pvrhub,1,home)</onunload>
-	<include>PropertyIncludes</include>
+	<include content="PropertyIncludes">
+		<param name="ShowHeader" value="true"/>
+	</include>
 	<controls>
 		<control type="label" id="29">
 			<font></font>
@@ -49,18 +51,12 @@
 							<textoffsetx>10</textoffsetx>
 						</control>
 					</rulerlayout>
-					<progresstexture colordiffuse="emby_secondary" border="0,70,18,14">views/guide/epg_progress.png</progresstexture>
+					<progresstexture colordiffuse="$VAR[AccentColor]" border="0,70,18,14">views/guide/epg_progress.png</progresstexture>
 					<channellayout height="83" width="395">
 						<control type="image">
 							<width>395</width>
 							<height>83</height>
-							<texture colordiffuse="background_diffuse2">common/white.jpg</texture>
-							<visible>Player.HasMedia</visible>
-						</control>
-						<control type="image">
-							<width>395</width>
-							<height>83</height>
-							<texture border="3,3,3,3" colordiffuse="ff383838">views/guide/epg_tile.png</texture>
+							<texture border="3,3,3,3" colordiffuse="grid_border">views/guide/epg_tile.png</texture>
 						</control>
 						<control type="label">
 							<left>15</left>
@@ -91,13 +87,7 @@
 						<control type="image">
 							<width>395</width>
 							<height>83</height>
-							<texture colordiffuse="background_diffuse2">common/white.jpg</texture>
-							<visible>Player.HasMedia</visible>
-						</control>
-						<control type="image">
-							<width>395</width>
-							<height>83</height>
-							<texture border="3,3,3,3" colordiffuse="ff383838">views/guide/epg_tile.png</texture>
+							<texture border="3,3,3,3" colordiffuse="grid_border">views/guide/epg_tile.png</texture>
 						</control>
 						<control type="label">
 							<left>15</left>
@@ -127,20 +117,15 @@
 					<itemlayout height="83" width="60">
 						<control type="image" id="2">
 							<height>83</height>
-							<texture colordiffuse="background_diffuse2">common/white.jpg</texture>
-							<visible>Player.HasMedia</visible>
-						</control>
-						<control type="image" id="2">
-							<height>83</height>
 							<texture colordiffuse="grid_label_inprogress">common/white.jpg</texture>
 							<visible>Integer.IsGreater(ListItem.Progress,0) + Integer.IsLess(ListItem.Progress,100)</visible>
 						</control>
 						<control type="image" id="2">
 							<height>83</height>
-							<texture border="3,3,3,3" colordiffuse="ff383838">views/guide/epg_tile.png</texture>
+							<texture border="3,3,3,3" colordiffuse="grid_border">views/guide/epg_tile.png</texture>
 						</control>
 						<control type="label" id="1">
-							<textoffsetx>15</textoffsetx>
+							<textoffsetx>25</textoffsetx>
 							<width>50</width>
 							<height>81</height>
 							<aligny>center</aligny>
@@ -169,25 +154,20 @@
 					<focusedlayout height="83" width="60">
 						<control type="image" id="2">
 							<height>83</height>
-							<texture colordiffuse="background_diffuse2">common/white.jpg</texture>
-							<visible>Player.HasMedia</visible>
-						</control>
-						<control type="image" id="2">
-							<height>83</height>
 							<texture colordiffuse="grid_label_inprogress">common/white.jpg</texture>
 							<visible>Integer.IsGreater(ListItem.Progress,0) + Integer.IsLess(ListItem.Progress,100) + !Control.HasFocus(10)</visible>
 						</control>
 						<control type="image" id="2">
 							<height>83</height>
-							<texture colordiffuse="grid_hover">common/white.jpg</texture>
+							<texture colordiffuse="$VAR[AccentColor]">common/white.jpg</texture>
 							<visible>Control.HasFocus(10)</visible>
 						</control>
 						<control type="image" id="2">
 							<height>83</height>
-							<texture border="3,3,3,3" colordiffuse="ff383838">views/guide/epg_tile.png</texture>
+							<texture border="3,3,3,3" colordiffuse="grid_border">views/guide/epg_tile.png</texture>
 						</control>
 						<control type="label" id="1">
-							<textoffsetx>15</textoffsetx>
+							<textoffsetx>25</textoffsetx>
 							<width>50</width>
 							<height>81</height>
 							<aligny>center</aligny>
@@ -216,14 +196,14 @@
 					</focusedlayout>
 				</control>
 				<control type="image">
-					<texture colordiffuse="ff383838">common/white.jpg</texture>
+					<texture colordiffuse="grid_border">common/white.jpg</texture>
 					<top>38</top>
 					<right>11</right>
 					<left>0</left>
 					<height>2</height>
 				</control>
 				<control type="image">
-					<texture colordiffuse="ff383838">common/white.jpg</texture>
+					<texture colordiffuse="grid_border">common/white.jpg</texture>
 					<bottom>0</bottom>
 					<right>11</right>
 					<left>0</left>
@@ -237,9 +217,9 @@
 					<width>10</width>
 					<orientation>vertical</orientation>
 					<showonepage>true</showonepage>
-					<texturesliderbackground colordiffuse="ff3b3b3b">common/white.jpg</texturesliderbackground>
-					<texturesliderbar colordiffuse="lightgrey">common/white.jpg</texturesliderbar>
-					<texturesliderbarfocus colordiffuse="lightgrey">common/white.jpg</texturesliderbarfocus>
+					<texturesliderbackground colordiffuse="scrollbar_background">common/white.jpg</texturesliderbackground>
+					<texturesliderbar colordiffuse="scrollbar_slider">common/white.jpg</texturesliderbar>
+					<texturesliderbarfocus colordiffuse="$VAR[AccentColor]">common/white.jpg</texturesliderbarfocus>
 				</control>
 			</control>
 			<!-- vertical -->
@@ -249,21 +229,21 @@
 				<top>168</top>
 				<height>619</height>
 				<control type="image">
-					<texture colordiffuse="ff383838">common/white.jpg</texture>
+					<texture colordiffuse="grid_border">common/white.jpg</texture>
 					<top>40</top>
 					<bottom>0</bottom>
 					<left>98</left>
 					<width>2</width>
 				</control>
 				<control type="image">
-					<texture colordiffuse="ff383838">common/white.jpg</texture>
+					<texture colordiffuse="grid_border">common/white.jpg</texture>
 					<top>40</top>
 					<right>11</right>
 					<left>0</left>
 					<height>2</height>
 				</control>
 				<control type="image">
-					<texture colordiffuse="ff383838">common/white.jpg</texture>
+					<texture colordiffuse="grid_border">common/white.jpg</texture>
 					<bottom>-2</bottom>
 					<right>11</right>
 					<left>0</left>
@@ -310,13 +290,7 @@
 						<control type="image">
 							<width>395</width>
 							<height>83</height>
-							<texture colordiffuse="background_diffuse2">common/white.jpg</texture>
-							<visible>Player.HasMedia</visible>
-						</control>
-						<control type="image">
-							<width>395</width>
-							<height>83</height>
-							<texture border="3,3,3,3" colordiffuse="ff383838">views/guide/epg_tile.png</texture>
+							<texture border="3,3,3,3" colordiffuse="grid_border">views/guide/epg_tile.png</texture>
 						</control>
 						<control type="label">
 							<left>15</left>
@@ -347,13 +321,7 @@
 						<control type="image">
 							<width>395</width>
 							<height>83</height>
-							<texture colordiffuse="background_diffuse2">common/white.jpg</texture>
-							<visible>Player.HasMedia</visible>
-						</control>
-						<control type="image">
-							<width>395</width>
-							<height>83</height>
-							<texture border="3,3,3,3" colordiffuse="ff383838">views/guide/epg_tile.png</texture>
+							<texture border="3,3,3,3" colordiffuse="grid_border">views/guide/epg_tile.png</texture>
 						</control>
 						<control type="label">
 							<left>15</left>
@@ -383,17 +351,12 @@
 					<itemlayout height="83" width="395">
 						<control type="image" id="2">
 							<height>83</height>
-							<texture colordiffuse="background_diffuse2">common/white.jpg</texture>
-							<visible>Player.HasMedia</visible>
-						</control>
-						<control type="image" id="2">
-							<height>83</height>
 							<texture colordiffuse="grid_label_inprogress">common/white.jpg</texture>
 							<visible>Integer.IsGreater(ListItem.Progress,0) + Integer.IsLess(ListItem.Progress,100)</visible>
 						</control>
 						<control type="image" id="2">
 							<height>83</height>
-							<texture border="3,3,3,3" colordiffuse="ff383838">views/guide/epg_tile.png</texture>
+							<texture border="3,3,3,3" colordiffuse="grid_border">views/guide/epg_tile.png</texture>
 						</control>
 						<control type="label" id="1">
 							<textoffsetx>15</textoffsetx>
@@ -438,22 +401,17 @@
 					<focusedlayout height="83" width="395">
 						<control type="image" id="2">
 							<height>83</height>
-							<texture colordiffuse="background_diffuse2">common/white.jpg</texture>
-							<visible>Player.HasMedia</visible>
-						</control>
-						<control type="image" id="2">
-							<height>83</height>
 							<texture colordiffuse="grid_label_inprogress">common/white.jpg</texture>
 							<visible>Integer.IsGreater(ListItem.Progress,0) + Integer.IsLess(ListItem.Progress,100) + !Control.HasFocus(20)</visible>
 						</control>
 						<control type="image" id="2">
 							<height>83</height>
-							<texture colordiffuse="grid_hover">common/white.jpg</texture>
+							<texture colordiffuse="$VAR[AccentColor]">common/white.jpg</texture>
 							<visible>Control.HasFocus(20)</visible>
 						</control>
 						<control type="image" id="2">
 							<height>83</height>
-							<texture border="3,3,3,3" colordiffuse="ff383838">views/guide/epg_tile.png</texture>
+							<texture border="3,3,3,3" colordiffuse="grid_border">views/guide/epg_tile.png</texture>
 						</control>
 						<control type="label" id="1">
 							<textoffsetx>15</textoffsetx>
@@ -497,7 +455,7 @@
 					</focusedlayout>
 				</control>
 				<control type="image">
-					<texture colordiffuse="ff383838">common/white.jpg</texture>
+					<texture colordiffuse="grid_border">common/white.jpg</texture>
 					<bottom>-2</bottom>
 					<right>11</right>
 					<left>0</left>
@@ -511,9 +469,9 @@
 					<bottom>-2</bottom>
 					<orientation>vertical</orientation>
 					<showonepage>true</showonepage>
-					<texturesliderbackground colordiffuse="ff3b3b3b">common/white.jpg</texturesliderbackground>
-					<texturesliderbar colordiffuse="lightgrey">common/white.jpg</texturesliderbar>
-					<texturesliderbarfocus colordiffuse="lightgrey">common/white.jpg</texturesliderbarfocus>
+					<texturesliderbackground colordiffuse="scrollbar_background">common/white.jpg</texturesliderbackground>
+					<texturesliderbar colordiffuse="scrollbar_slider">common/white.jpg</texturesliderbar>
+					<texturesliderbarfocus colordiffuse="$VAR[AccentColor]">common/white.jpg</texturesliderbarfocus>
 				</control>
 			</control>
 			<!-- Channel groups -->
@@ -536,7 +494,7 @@
 						<align>left</align>
 						<font>Reg24</font>
 						<label>$INFO[ListItem.Label]</label>
-						<textcolor>grey</textcolor>
+						<textcolor>disabled</textcolor>
 					</control>
 				</itemlayout>
 				<focusedlayout height="44" width="240">
@@ -557,7 +515,7 @@
 						<scroll>true</scroll>
 						<font>Reg24</font>
 						<label>$INFO[ListItem.Label]</label>
-						<textcolor>emby</textcolor>
+						<textcolor>$VAR[AccentColor]</textcolor>
 						<visible>Control.HasFocus(11)</visible>
 					</control>
 				</focusedlayout>

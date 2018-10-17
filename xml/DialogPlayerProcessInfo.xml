@@ -4,12 +4,13 @@
 	<defaultcontrol always="true">5550</defaultcontrol>
 	<include>PropertyIncludes</include>
 	<controls>
+		<include content="DiffuseMask"/>
 		<control type="group">
 			<include>Dialog_PopupOpenClose</include>
 			<centerleft>50%</centerleft>
 			<width>700</width>
 			<centertop>50%</centertop>
-			<height>970</height>
+			<height>982</height>
 			<control type="grouplist" id="9000">
 				<orientation>vertical</orientation>
 				<height>auto</height>
@@ -20,8 +21,8 @@
 				<usecontrolcoords>true</usecontrolcoords>
 				<control type="image">
 					<width>100%</width>
-					<height>10</height>
-					<texture border="5" colordiffuse="panel">common/menu_top.png</texture>
+					<height>61</height>
+					<texture border="65,0,65,0" colordiffuse="context_color">dialogs/context/top.png</texture>
 				</control>
 				<control type="group">
 					<visible>VideoPlayer.Content(livetv)</visible>
@@ -30,11 +31,11 @@
 					<control type="image">
 						<width>100%</width>
 						<height>50</height>
-						<texture border="10" colordiffuse="panel">common/menu_back.png</texture>
+						<texture border="65,0,65,0" colordiffuse="context_color">dialogs/context/middle.png</texture>
 					</control>
 					<control type="grouplist" id="5550">
-						<left>15</left>
-						<right>15</right>
+						<left>75</left>
+						<right>75</right>
 						<height>50</height>
 						<align>left</align>
 						<onright>noop</onright>
@@ -60,77 +61,77 @@
 				</control>
 				<!-- PVR -->
 				<control type="button">
-					<include content="CommonButton"/>
+					<include content="ContextButton"/>
 					<label>$INFO[PVR.ActStreamServiceName,$LOCALIZE[19099]: ]</label>
 					<onclick>noop</onclick>
 					<visible>Control.HasFocus(5551)</visible>
 					<visible>VideoPlayer.Content(livetv)</visible>
 				</control>
 				<control type="button">
-					<include content="CommonButton"/>
+					<include content="ContextButton"/>
 					<label>$INFO[PVR.ActStreamProviderName,$LOCALIZE[19101]: ]</label>
 					<onclick>noop</onclick>
 					<visible>Control.HasFocus(5551)</visible>
 					<visible>VideoPlayer.Content(livetv)</visible>
 				</control>
 				<control type="button">
-					<include content="CommonButton"/>
+					<include content="ContextButton"/>
 					<label>$INFO[PVR.ActStreamClient,$LOCALIZE[19012]: ]</label>
 					<onclick>noop</onclick>
 					<visible>Control.HasFocus(5551)</visible>
 					<visible>VideoPlayer.Content(livetv)</visible>
 				</control>
 				<control type="button">
-					<include content="CommonButton"/>
+					<include content="ContextButton"/>
 					<label>$INFO[PVR.ActStreamDevice,$LOCALIZE[19006]: ]</label>
 					<onclick>noop</onclick>
 					<visible>Control.HasFocus(5551)</visible>
 					<visible>VideoPlayer.Content(livetv)</visible>
 				</control>
 				<control type="button">
-					<include content="CommonButton"/>
+					<include content="ContextButton"/>
 					<label>$INFO[PVR.ActStreamStatus,$LOCALIZE[19007]: ]</label>
 					<onclick>noop</onclick>
 					<visible>Control.HasFocus(5551)</visible>
 					<visible>VideoPlayer.Content(livetv)</visible>
 				</control>
 				<control type="button">
-					<include content="CommonButton"/>
+					<include content="ContextButton"/>
 					<label>$INFO[PVR.ActStreamEncryptionName,$LOCALIZE[19015]: ]</label>
 					<onclick>noop</onclick>
 					<visible>Control.HasFocus(5551)</visible>
 					<visible>VideoPlayer.Content(livetv)</visible>
 				</control>
 				<control type="button">
-					<include content="CommonButton"/>
+					<include content="ContextButton"/>
 					<label>$INFO[PVR.ActStreamBer,$LOCALIZE[19010]: ]</label>
 					<onclick>noop</onclick>
 					<visible>Control.HasFocus(5551)</visible>
 					<visible>VideoPlayer.Content(livetv)</visible>
 				</control>
 				<control type="button">
-					<include content="CommonButton"/>
+					<include content="ContextButton"/>
 					<label>$INFO[PVR.ActStreamUnc,$LOCALIZE[19011]: ]</label>
 					<onclick>noop</onclick>
 					<visible>Control.HasFocus(5551)</visible>
 					<visible>VideoPlayer.Content(livetv)</visible>
 				</control>
 				<control type="button">
-					<include content="CommonButton"/>
+					<include content="ContextButton"/>
 					<label>$INFO[PVR.ActStreamMux,$LOCALIZE[19100]: ]</label>
 					<onclick>noop</onclick>
 					<visible>Control.HasFocus(5551)</visible>
 					<visible>VideoPlayer.Content(livetv)</visible>
 				</control>
 				<control type="button">
-					<include content="CommonButton"/>
+					<include content="ContextButton"/>
 					<label>$INFO[PVR.ActStreamSignal,$LOCALIZE[19008]: ]</label>
 					<onclick>noop</onclick>
 					<visible>Control.HasFocus(5551)</visible>
 					<visible>VideoPlayer.Content(livetv)</visible>
 				</control>
 				<control type="button">
-					<include content="CommonButton"/>
+					<include content="ContextButton"/>
 					<label>$INFO[PVR.ActStreamSNR,$LOCALIZE[19009]: ]</label>
 					<onclick>noop</onclick>
 					<visible>Control.HasFocus(5551)</visible>
@@ -138,81 +139,81 @@
 				</control>
 				<!-- Video -->
 				<control type="button">
-					<include content="CommonButton"/>
+					<include content="ContextButton"/>
 					<label>$INFO[Player.Process(videodecoder),$LOCALIZE[31046]: ]$VAR[VideoHWDecoder, (,)]</label>
 					<onclick>noop</onclick>
 					<visible>Control.HasFocus(5552)</visible>
 					<visible>Player.HasVideo</visible>
 				</control>
 				<control type="button">
-					<include content="CommonButton"/>
+					<include content="ContextButton"/>
 					<label>$INFO[Player.Process(pixformat),$LOCALIZE[31047]: ]</label>
 					<onclick>noop</onclick>
 					<visible>Control.HasFocus(5552)</visible>
 					<visible>Player.HasVideo</visible>
 				</control>
 				<control type="button">
-					<include content="CommonButton"/>
+					<include content="ContextButton"/>
 					<label>$INFO[Player.Process(deintmethod),$LOCALIZE[31048]: ]</label>
 					<onclick>noop</onclick>
 					<visible>Control.HasFocus(5552)</visible>
 					<visible>Player.HasVideo</visible>
 				</control>
 				<control type="button">
-					<include content="CommonButton"/>
+					<include content="ContextButton"/>
 					<label>$LOCALIZE[21443]: $INFO[Player.Process(videowidth)]x$INFO[Player.Process(videoheight),, px]</label>
 					<onclick>noop</onclick>
 					<visible>Control.HasFocus(5552)</visible>
 					<visible>Player.HasVideo</visible>
 				</control>
 				<control type="button">
-					<include content="CommonButton"/>
+					<include content="ContextButton"/>
 					<label>$LOCALIZE[21374]: $INFO[Player.Process(videodar),, AR]</label>
 					<onclick>noop</onclick>
 					<visible>Control.HasFocus(5552)</visible>
 					<visible>Player.HasVideo</visible>
 				</control>
 				<control type="button">
-					<include content="CommonButton"/>
+					<include content="ContextButton"/>
 					<label>$LOCALIZE[31049]: $INFO[Player.Process(videofps),, FPS]</label>
 					<onclick>noop</onclick>
 					<visible>Control.HasFocus(5552)</visible>
 					<visible>Player.HasVideo</visible>
 				</control>
 				<control type="button">
-					<include content="CommonButton"/>
+					<include content="ContextButton"/>
 					<label>$LOCALIZE[21444]: $INFO[Player.Process(audiochannels)]</label>
 					<onclick>noop</onclick>
 					<visible>Control.HasFocus(5552)</visible>
 				</control>
 				<control type="button">
-					<include content="CommonButton"/>
+					<include content="ContextButton"/>
 					<label>$LOCALIZE[460]: $INFO[Player.Process(audiodecoder)]$INFO[Player.Process(audiobitspersample),$COMMA , bits]$INFO[Player.Process(audiosamplerate),$COMMA , Hz]</label>
 					<onclick>noop</onclick>
 					<visible>Control.HasFocus(5552)</visible>
 				</control>
 				<control type="button">
-					<include content="CommonButton"/>
+					<include content="ContextButton"/>
 					<label>$LOCALIZE[460]: $INFO[Player.Process(audiochannels),,$COMMA ]$INFO[Player.Process(audiodecoder)]$INFO[Player.Process(audiobitspersample),$COMMA , bits]$INFO[Player.Process(audiosamplerate),$COMMA , Hz]</label>
 					<onclick>noop</onclick>
 					<visible>Control.HasFocus(5552)</visible>
 				</control>
 				<control type="button">
-					<include content="CommonButton"/>
+					<include content="ContextButton"/>
 					<label>$INFO[System.Memory(used.percent),$LOCALIZE[31045]: ]</label>
 					<onclick>noop</onclick>
 					<visible>Control.HasFocus(5552)</visible>
 				</control>
 				<control type="button">
-					<include content="CommonButton"/>
+					<include content="ContextButton"/>
 					<label>$INFO[System.CpuUsage,$LOCALIZE[13271] ]</label>
 					<onclick>noop</onclick>
 					<visible>Control.HasFocus(5552)</visible>
 				</control>
 				<control type="image">
 					<width>100%</width>
-					<height>10</height>
-					<texture border="5"  colordiffuse="panel">common/menu_bottom.png</texture>
+					<height>61</height>
+					<texture border="65,0,65,0" colordiffuse="context_color">dialogs/context/bottom.png</texture>
 				</control>
 			</control>
 		</control>

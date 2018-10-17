@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<controls>
+		<include content="DiffuseMask">
+			<param name="color">background_diffuse</param>
+		</include>
+		<control type="group">
+			<include>Dialog_PopupOpenClose</include>
+			<centerleft>50%</centerleft>
+			<width>1492</width>
+			<!-- headline -->
+			<control type="group">
+				<top>60</top>
+				<left>7</left>
+				<right>7</right>
+				<height>50</height>
+				<control type="label">
+					<height>48</height>
+					<font>Reg24</font>
+					<aligny>center</aligny>
+					<textoffsetx>5</textoffsetx>
+					<textcolor>text_headline</textcolor>
+					<label>$LOCALIZE[31263]</label>
+				</control>
+				<include>GreenBar</include>
+			</control>
+			<!-- Color picker panel -->
+			<control type="panel" id="3110">
+				<top>120</top>
+				<height>824</height>
+				<orientation>vertical</orientation>
+				<onleft>3110</onleft>
+				<onright>3110</onright>
+				<ondown>3010</ondown>
+				<preloaditems>4</preloaditems>
+				<pagecontrol>60</pagecontrol>
+				<itemlayout height="48" width="48">
+					<control type="image">
+						<top>7</top>
+						<left>7</left>
+						<width>38</width>
+						<height>38</height>
+						<texture border="5">$INFO[ListItem.Icon]</texture>
+					</control>
+				</itemlayout>
+				<focusedlayout height="48" width="48">
+					<control type="group">
+						<include content="Animation_FocusBounce">
+							<param name="id" value="3110"/>
+						</include>
+						<top>7</top>
+						<left>7</left>
+						<control type="image">
+							<width>38</width>
+							<height>38</height>
+							<texture border="5">$INFO[ListItem.Icon]</texture>
+						</control>
+						<control type="image">
+							<left>-12</left>
+							<top>-7</top>
+							<width>62</width>
+							<height>62</height>
+							<texture border="20,20,20,20" colordiffuse="white">items/focus.png</texture>
+							<aspectratio>stretch</aspectratio>
+							<visible>Control.HasFocus(3110)</visible>
+							<include>Animation_FocusTextureFade</include>
+						</control>
+					</control>
+				</focusedlayout>
+			</control>
+			<!-- Left grouplist -->
+			<control type="grouplist" id="100">
+				<orientation>horizontal</orientation>
+				<itemgap>5</itemgap>
+				<left>7</left>
+				<top>958</top>
+				<width>50%</width>
+				<onright>3012</onright>
+				<!-- color preview-->
+				<control type="image">
+					<animation effect="slide" time="0" end="0,2" condition="true">Conditional</animation>
+					<width>46</width>
+					<height>46</height>
+					<aspectratio>stretch</aspectratio>
+					<texture colordiffuse="$INFO[Window.Property(colorstring)]">common/white.jpg</texture>
+					<visible>!String.IsEmpty(Window.Property(colorstring)) + !String.IsEqual(Window.Property(colorstring),None)</visible>
+				</control>
+				<!-- edit manual -->
+				<control type="button" id="3010">
+					<width min="300">auto</width>
+					<include>DarkGreyButton</include>
+					<onup>3110</onup>
+					<ondown>SetFocus(3110,1)</ondown>
+					<onright condition="!String.IsEmpty(Window.Property(colorstring)) + !String.IsEqual(Window.Property(colorstring),None)">3015</onright>
+					<onright condition="String.IsEmpty(Window.Property(colorstring)) | String.IsEqual(Window.Property(colorstring),None)">3012</onright>
+					<label>$VAR[CurrentColorLabel]</label>
+				</control>
+				<control type="group" id="3020">
+					<visible>!String.IsEmpty(Window.Property(colorstring)) + !String.IsEqual(Window.Property(colorstring),None)</visible>
+					<width>250</width>
+					<height>50</height>
+					<control type="button">
+						<width min="160">auto</width>
+						<enable>false</enable>
+						<texturenofocus border="10" colordiffuse="$VAR[ButtonAccentColor]">items/button.png</texturenofocus>
+						<include>DarkGreyButton</include>
+						<disabledcolor>white</disabledcolor>
+						<label>$LOCALIZE[31264] $INFO[Control.Getlabel(3015)]</label>
+						<visible>Control.HasFocus(3015)</visible>
+					</control>
+					<control type="button">
+						<width min="160">auto</width>
+						<enable>false</enable>
+						<texturenofocus border="10" colordiffuse="grey_button">items/button.png</texturenofocus>
+						<include>DarkGreyButton</include>
+						<disabledcolor>white</disabledcolor>
+						<label>$LOCALIZE[31264] $INFO[Control.Getlabel(3015)]</label>
+						<visible>!Control.HasFocus(3015)</visible>
+					</control>
+					<control type="slider" id="3015">
+						<texturefocus/>
+						<texturenofocus/>
+						<texturesliderbar/>
+						<textureslidernib/>
+						<textureslidernibfocus/>
+						<orientation>vertical</orientation>
+						<onup>3110</onup>
+						<onleft>3010</onleft>
+						<onright>3012</onright>
+					</control>
+				</control>
+			</control>
+			<!-- Right grouplist -->
+			<control type="grouplist" id="100">
+				<orientation>horizontal</orientation>
+				<itemgap>5</itemgap>
+				<right>7</right>
+				<top>958</top>
+				<width>50%</width>
+				<align>right</align>
+				<onleft condition="!String.IsEmpty(Window.Property(colorstring)) + !String.IsEqual(Window.Property(colorstring),None)">3015</onleft>
+				<onleft condition="String.IsEmpty(Window.Property(colorstring)) | String.IsEqual(Window.Property(colorstring),None)">3010</onleft>
+				<onright>noop</onright>
+				<!-- Close button -->
+				<control type="button" id="3012">
+					<include>DarkGreyButton</include>
+					<onup>3110</onup>
+					<onleft>3010</onleft>
+					<label>$LOCALIZE[186]</label>
+				</control>
+				<!-- None -->
+				<control type="button" id="3011">
+					<include>DarkGreyButton</include>
+					<onup>3110</onup>
+					<onleft>3010</onleft>
+					<label>$LOCALIZE[13007]</label>
+				</control>
+			</control>
+		</control>
+	</controls>
+</window>

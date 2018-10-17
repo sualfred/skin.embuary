@@ -21,11 +21,11 @@
 					<height>435</height>
 					<width>1920</width>
 					<!-- thumb -->
-					<include>MetaThumbnail</include>
+					<include>MetaPoster</include>
 					<!-- meta -->
 					<control type="grouplist">
 						<visible>!ListItem.IsParentFolder</visible>
-						<left>524</left>
+						<left>370</left>
 						<orientation>vertical</orientation>
 						<height>500</height>
 						<align>top</align>
@@ -33,15 +33,15 @@
 						<right>70</right>
 						<control type="label">
 							<width>886</width>
-							<height>60</height>
+							<height>55</height>
 							<label>$INFO[ListItem.TvShowTitle]</label>
 							<font>Reg37</font>
 							<aligny>top</aligny>
 						</control>
 						<control type="label">
 							<width>886</width>
-							<height>60</height>
-							<label>$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title]</label>
+							<height>55</height>
+							<label>$VAR[ListItemSeasonEpisode]$INFO[ListItem.Title]</label>
 							<font>Reg37</font>
 							<aligny>top</aligny>
 						</control>
@@ -51,21 +51,22 @@
 						</include>
 						<!-- buttons -->
 						<control type="grouplist" id="100">
-							<height>75</height>
+							<height>70</height>
 							<orientation>horizontal</orientation>
 							<itemgap>5</itemgap>
 							<onright>noop</onright>
 							<onleft>900</onleft>
-							<control type="button" id="101">
+							<control type="button" id="55101">
 								<visible>!String.IsEmpty(ListItem.FileNameAndPath)</visible>
 								<include>LightGreyButton</include>
 								<label>$VAR[VideoInfoButton8]</label>
 								<onup>SetFocus(6666)</onup>
-								<onclick>SetFocus(50)</onclick>
+								<onclick>SetFocus(55)</onclick>
 								<onclick>Select</onclick>
-								<ondown>SetFocus(50)</ondown>
+								<ondown>SetFocus(55)</ondown>
+								<onback>SetFocus(55)</onback>
 							</control>
-							<control type="button" id="103">
+							<control type="button" id="55103">
 								<visible>!String.IsEmpty(ListItem.Plot)</visible>
 								<include>LightGreyButton</include>
 								<width>70</width>
@@ -74,18 +75,20 @@
 								<label></label>
 								<onclick>RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.TVShowTitle]',message='$ESCVAR[TinyInfoDialogPlot]')</onclick>
 								<onup>SetFocus(6666)</onup>
-								<ondown>SetFocus(54)</ondown>
+								<ondown>SetFocus(55)</ondown>
+								<onback>SetFocus(55)</onback>
 							</control>
-							<control type="togglebutton" id="102">
+							<control type="togglebutton" id="55102">
 								<include>LightGreyButton</include>
 								<width>70</width>
 								<height>50</height>
 								<font>material24</font>
 								<altlabel>[B][/B]</altlabel>
 								<label>[B][COLOR red][/COLOR][/B]</label>
-								<onclick>ToggleWatched</onclick>
+								<include>ToggleWatchedAction</include>
 								<onup>SetFocus(6666)</onup>
-								<ondown>SetFocus(54)</ondown>
+								<ondown>SetFocus(55)</ondown>
+								<onback>SetFocus(55)</onback>
 								<selected>!String.IsEqual(ListItem.Overlay,OverlayWatched.png)</selected>
 							</control>
 						</control>
@@ -119,7 +122,7 @@
 						<param name="sortorder" value="descending"/>
 						<param name="headline" value="$LOCALIZE[20360]"/>
 						<param name="use_custom_content" value="false"/>
-						<param name="content_visible" value="$EXP[EpisodeViewVisible]"/>
+						<param name="content_visible" value="$EXP[EpisodeViewVisible] + !Skin.HasSetting(ViewEpisodeList)"/>
 						<param name="list_name" value="$LOCALIZE[31199]"/>
 						<param name="height" value="438"/>
 					</include>

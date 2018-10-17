@@ -1,23 +1,125 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
-	<!-- Searcg sources -->
+	<!-- Color theme -->
+	<variable name="AccentColorLabel">
+		<value condition="!String.IsEmpty(Skin.String(color_accent)) + !String.IsEqual(Skin.String(color_accent),None)">$INFO[Skin.String(color_accent),,       ]</value>
+		<value>$LOCALIZE[571]       </value>
+	</variable>
+	<variable name="PlayerAccentColorLabel">
+		<value condition="!String.IsEmpty(Skin.String(color_player_accent)) + !String.IsEqual(Skin.String(color_player_accent),None)">$INFO[Skin.String(color_player_accent),,       ]</value>
+		<value>$LOCALIZE[571]       </value>
+	</variable>
+	<variable name="ThumbFallbackColorLabel">
+		<value condition="!String.IsEmpty(Skin.String(color_thumb_fallback)) + !String.IsEqual(Skin.String(color_thumb_fallback),None)">$INFO[Skin.String(color_thumb_fallback),,       ]</value>
+		<value>$LOCALIZE[571]       </value>
+	</variable>
+	<variable name="ButtonAccentColorLabel">
+		<value condition="!String.IsEmpty(Skin.String(button_focus_accent)) + !String.IsEqual(Skin.String(button_focus_accent),None)">$INFO[Skin.String(button_focus_accent),,       ]</value>
+		<value>$LOCALIZE[571]       </value>
+	</variable>
+	<variable name="AccentColor">
+		<value condition="!String.IsEmpty(Skin.String(color_accent)) + !String.IsEqual(Skin.String(color_accent),None)">$INFO[Skin.String(color_accent)]</value>
+		<value>accent</value>
+	</variable>
+	<variable name="PlayerAccentColor">
+		<value condition="!String.IsEmpty(Skin.String(color_player_accent)) + !String.IsEqual(Skin.String(color_player_accent),None)">$INFO[Skin.String(color_player_accent)]</value>
+		<value>player_osd_color</value>
+	</variable>
+	<variable name="ThumbFallbackColor">
+		<value condition="!String.IsEmpty(Skin.String(color_thumb_fallback)) + !String.IsEqual(Skin.String(color_thumb_fallback),None)">$INFO[Skin.String(color_thumb_fallback)]</value>
+		<value>thumb_background_fallback</value>
+	</variable>
+	<variable name="ButtonAccentColor">
+		<value condition="!String.IsEmpty(Skin.String(button_focus_accent)) + !String.IsEqual(Skin.String(button_focus_accent),None)">$INFO[Skin.String(button_focus_accent)]</value>
+		<value>accent</value>
+	</variable>
+	<variable name="thumb_background_color">
+		<value condition="Window.IsVisible(videobookmarks)">thumb_background_player</value>
+		<value condition="Window.IsVisible(pvrosdchannels)">thumb_background_player</value>
+		<value>thumb_background</value>
+	</variable>
+	<variable name="SkinTheme">
+		<value condition="!String.IsEqual(Skin.CurrentColourTheme,SKINDEFAULT) + !String.StartsWith(Skin.CurrentColourTheme,Default)">$INFO[Skin.CurrentColourTheme]</value>
+		<value>Default</value>
+	</variable>
+	<variable name="CurrentColorLabel">
+		<value condition="!String.IsEmpty(Window.Property(colorstring)) + !String.IsEqual(Window.Property(colorstring),None)">$LOCALIZE[31265]$INFO[Window.Property(colorstring), #]</value>
+		<value>No color set</value>
+	</variable>
+	<!-- Menu & widget vars -->
+	<variable name="SkinshortcutsGroup">
+		<value condition="String.IsEqual(Window.Property(groupname),mainmenu)">$LOCALIZE[31261]</value>
+		<value condition="String.IsEqual(Window.Property(groupname),moviehub)">$LOCALIZE[31173]</value>
+		<value condition="String.IsEqual(Window.Property(groupname),tvshowhub)">$LOCALIZE[31172]</value>
+		<value condition="String.IsEqual(Window.Property(groupname),musichub)">$LOCALIZE[31174]</value>
+	</variable>
+	<variable name="SkinshortcutsLabel">
+		<value condition="!String.IsEmpty(ListItem.Label)">$INFO[ListItem.Label]</value>
+		<value condition="!String.IsEmpty(ListItem.Label2)">$INFO[ListItem.Label2]</value>
+		<value>$LOCALIZE[31159]</value>
+	</variable>
+	<variable name="SkinshortcutsIcon">
+		<value condition="String.StartsWith(ListItem.Property(path),ActivateWindow) | String.StartsWith(ListItem.Property(defaultID),embuary_)">DefaultFolder.png</value>
+		<value>DefaultAddon.png</value>
+	</variable>
+	<variable name="SkinshortcutsHideIcon">
+		<value condition="!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)"></value>
+		<value></value>
+	</variable>
+	<variable name="PositionselectorHeadline">
+		<value condition="String.IsEqual(Window(home).Property(SelectorContent),HomeWidgets)">$LOCALIZE[10000]</value>
+		<value condition="String.IsEqual(Window(home).Property(SelectorContent),MovieHubWidgets)">$LOCALIZE[31173]</value>
+		<value condition="String.IsEqual(Window(home).Property(SelectorContent),TVShowHubWidgets)">$LOCALIZE[31172]</value>
+		<value condition="String.IsEqual(Window(home).Property(SelectorContent),MusicHubWidgets)">$LOCALIZE[31174]</value>
+	</variable>
+	<variable name="PositionselectorGroup">
+		<value condition="String.IsEqual(Window(home).Property(SelectorContent),HomeWidgets)">home</value>
+		<value condition="String.IsEqual(Window(home).Property(SelectorContent),MovieHubWidgets)">moviehub</value>
+		<value condition="String.IsEqual(Window(home).Property(SelectorContent),TVShowHubWidgets)">tvshowhub</value>
+		<value condition="String.IsEqual(Window(home).Property(SelectorContent),MusicHubWidgets)">musichub</value>
+	</variable>
+	<!-- Search -->
 	<variable name="EmbyCon.SearchMovies">
 		<value condition="!String.IsEmpty(Skin.String(CustomSearchTerm)) + System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?item_type=Movie&amp;mode=NEW_SEARCH&amp;query=$INFO[Skin.String(CustomSearchTerm)]</value>
 	</variable>
 	<variable name="Local.SearchMovies">
 		<value condition="!String.IsEmpty(Skin.String(CustomSearchTerm)) + Library.HasContent(movies)">videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[Skin.String(CustomSearchTerm)]%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D</value>
 	</variable>
+	<variable name="Local.SearchActorMovies">
+		<value condition="!String.IsEmpty(Skin.String(CustomSearchTerm)) + Library.HasContent(movies)">videodb://movies/titles/?xsp=%7b%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22actor%22%2c%22operator%22%3a%22is%22%2c%22value%22%3a%5b%22$INFO[Skin.String(CustomSearchTerm)]%22%5d%7d%5d%7d%2c%22type%22%3a%22movies%22%7d</value>
+	</variable>
+	<variable name="EmbyCon.SearchActorMovies">
+		<value condition="!String.IsEmpty(Skin.String(CustomSearchTerm)) + System.HasAddon(plugin.video.embycon) + !String.IsEmpty(Skin.String(CustomSearchEmbyID))">plugin://plugin.video.embycon/?media_type=Movies&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FUsers%2F%7Buserid%7D%2FItems%3FSortBy%3DSortName%26SortOrder%3DAscending%26IncludeItemTypes%3DMovie%26Recursive%3Dtrue%26Fields%3D%7Bfield_filters%7D%26ImageTypeLimit%3D1%26format%3Djson%26PersonIds%3D$INFO[Skin.String(CustomSearchEmbyID)]</value>
+	</variable>
+	<variable name="Local.SearchDirectorMovies">
+		<value condition="!String.IsEmpty(Skin.String(CustomSearchTerm)) + Library.HasContent(movies)">videodb://movies/titles/?xsp=%7b%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22director%22%2c%22operator%22%3a%22is%22%2c%22value%22%3a%5b%22$INFO[Skin.String(CustomSearchTerm)]%22%5d%7d%5d%7d%2c%22type%22%3a%22movies%22%7d</value>
+	</variable>
 	<variable name="EmbyCon.SearchShows">
 		<value condition="!String.IsEmpty(Skin.String(CustomSearchTerm)) + System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?item_type=Series&amp;mode=NEW_SEARCH&amp;query=$INFO[Skin.String(CustomSearchTerm)]</value>
 	</variable>
+	<variable name="EmbyCon.SearchPerson">
+		<value condition="!String.IsEmpty(Skin.String(CustomSearchTerm)) + System.HasAddon(plugin.video.embycon) + String.IsEmpty(Skin.String(CustomSearchEmbyID))">plugin://plugin.video.embycon/?mode=NEW_SEARCH&amp;item_type=Person&amp;query=$INFO[Skin.String(CustomSearchTerm)]</value>
+	</variable>
 	<variable name="Local.SearchShows">
 		<value condition="!String.IsEmpty(Skin.String(CustomSearchTerm)) + Library.HasContent(tvshows)">videodb://tvshows/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[Skin.String(CustomSearchTerm)]%22%5D%7D%5D%7D%2C%22type%22%3A%22tvshows%22%7D</value>
+	</variable>
+	<variable name="Local.SearchActorShows">
+		<value condition="!String.IsEmpty(Skin.String(CustomSearchTerm)) + Library.HasContent(tvshows)">videodb://tvshows/titles/?xsp=%7b%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22actor%22%2c%22operator%22%3a%22is%22%2c%22value%22%3a%5b%22$INFO[Skin.String(CustomSearchTerm)]%22%5d%7d%5d%7d%2c%22type%22%3a%22tvshows%22%7d</value>
+	</variable>
+	<variable name="EmbyCon.SearchActorShows">
+		<value condition="!String.IsEmpty(Skin.String(CustomSearchTerm)) + System.HasAddon(plugin.video.embycon) + !String.IsEmpty(Skin.String(CustomSearchEmbyID))">plugin://plugin.video.embycon/?media_type=tvshows&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FUsers%2F%7Buserid%7D%2FItems%3FSortBy%3DSortName%26SortOrder%3DAscending%26Fields%3D%7Bfield_filters%7D%26Recursive%3Dtrue%26IncludeItemTypes%3DSeries%26ImageTypeLimit%3D1%26format%3Djson%26PersonIds%3D$INFO[Skin.String(CustomSearchEmbyID)]</value>
 	</variable>
 	<variable name="EmbyCon.SearchEpisodes">
 		<value condition="!String.IsEmpty(Skin.String(CustomSearchTerm)) + System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?item_type=Episode&amp;mode=NEW_SEARCH&amp;query=$INFO[Skin.String(CustomSearchTerm)]</value>
 	</variable>
 	<variable name="Local.SearchEpisodes">
 		<value condition="!String.IsEmpty(Skin.String(CustomSearchTerm)) + Library.HasContent(tvshows)">videodb://tvshows/titles/-1/-1/-1/-1/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[Skin.String(CustomSearchTerm)]%22%5D%7D%5D%7D%2C%22type%22%3A%22episodes%22%7D</value>
+	</variable>
+	<variable name="Local.SearchActorEpisodes">
+		<value condition="!String.IsEmpty(Skin.String(CustomSearchTerm)) + Library.HasContent(tvshows)">videodb://tvshows/titles/-1/-1/-1/-1/?xsp=%7b%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22actor%22%2c%22operator%22%3a%22is%22%2c%22value%22%3a%5b%22$INFO[Skin.String(CustomSearchTerm)]%22%5d%7d%5d%7d%2c%22type%22%3a%22episodes%22%7d</value>
+	</variable>
+	<variable name="EmbyCon.SearchActorEpisodes">
+		<value condition="!String.IsEmpty(Skin.String(CustomSearchTerm)) + System.HasAddon(plugin.video.embycon) + !String.IsEmpty(Skin.String(CustomSearchEmbyID))">plugin://plugin.video.embycon/?media_type=Episode&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FUsers%2F%7Buserid%7D%2FItems%3FSortBy%3DSortName%26SortOrder%3DAscending%26IncludeItemTypes%3DEpisode%26Recursive%3Dtrue%26Fields%3D%7Bfield_filters%7D%26ImageTypeLimit%3D1%26format%3Djson%26PersonIds%3D$INFO[Skin.String(CustomSearchEmbyID)]</value>
 	</variable>
 	<variable name="Local.SearchMusicVideos">
 		<value condition="!String.IsEmpty(Skin.String(CustomSearchTerm)) + Library.HasContent(musicvideos)">videodb://musicvideos/titles/?xsp=%7b%22order%22%3a%7b%22direction%22%3a%22ascending%22%2c%22ignorefolders%22%3a0%2c%22method%22%3a%22sorttitle%22%7d%2c%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22title%22%2c%22operator%22%3a%22contains%22%2c%22value%22%3a%5b%22$INFO[Skin.String(CustomSearchTerm)]%22%5d%7d%5d%7d%2c%22type%22%3a%22musicvideos%22%7d</value>
@@ -37,101 +139,125 @@
 	<variable name="EmbyCon.SearchMusic">
 		<value condition="!String.IsEmpty(Skin.String(CustomSearchTerm)) + System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?item_type=audio&amp;mode=NEW_SEARCH&amp;query=$INFO[Skin.String(CustomSearchTerm)]</value>
 	</variable>
-
+	<!-- Emby Fav sources -->
+	<variable name="Emby.FavMovies">
+		<value condition="String.StartsWith(System.AddonVersion(plugin.video.emby),3.0)">library://video/emby_Favorite movies.xml</value>
+		<value>library://video/emby_Favoritemovies.xml</value>
+	</variable>
+	<variable name="Emby.FavShows">
+		<value condition="String.StartsWith(System.AddonVersion(plugin.video.emby),3.0)">library://video/emby_Favorite tvshows.xml</value>
+		<value>library://video/emby_Favoritetvshows.xml</value>
+	</variable>
+	<variable name="Emby.FavEpisodes">
+		<value condition="String.StartsWith(System.AddonVersion(plugin.video.emby),3.0)">library://video/emby_Favorite episodes.xml</value>
+		<value>library://video/emby_Favoriteepisodes.xml</value>
+	</variable>
 	<!-- EmbyCon sources -->
+	<variable name="EmbyCon.SetsPath">
+		<value>ActivateWindow(videos,plugin://plugin.video.embycon/?media_type=boxsets&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems?ParentId=$PARAM[parentID]&amp;IsVirtualUnaired%3dfalse%26CollapseBoxSetItems%3dtrue%26Recursive%3dtrue%26IsMissing%3dFalse%26Fields%3d%7bfield_filters%7d%26ImageTypeLimit%3d1%26format%3djson,return)</value>
+	</variable>
 	<variable name="EmbyCon.FavMovies">
-		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?media_type=Movies&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fFields%3d%7bfield_filters%7d%26Recursive%3dtrue%26Filters%3dIsFavorite%26IncludeItemTypes%3dMovie%26ImageTypeLimit%3d1%26format%3djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]</value>
+		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?media_type=Movies&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fFields%3d%7bfield_filters%7d%26Recursive%3dtrue%26Filters%3dIsFavorite%26IncludeItemTypes%3dMovie%26ImageTypeLimit%3d1%26format%3djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]$INFO[Window(home).Property(EmbuaryWidgetUpdate)]</value>
 	</variable>
 	<variable name="EmbyCon.FavTVShows">
-		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?media_type=tvshows&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fFields%3d%7bfield_filters%7d%26Recursive%3dtrue%26Filters%3dIsFavorite%26IncludeItemTypes%3dSeries%26ImageTypeLimit%3d1%26format%3djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]</value>
+		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?media_type=tvshows&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fFields%3d%7bfield_filters%7d%26Recursive%3dtrue%26Filters%3dIsFavorite%26IncludeItemTypes%3dSeries%26ImageTypeLimit%3d1%26format%3djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]$INFO[Window(home).Property(EmbuaryWidgetUpdate)]</value>
 	</variable>
 	<variable name="EmbyCon.FavEpisodes">
-		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?media_type=Episodes&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FUsers%2F%7Buserid%7D%2FItems%3FSortBy%3DSortName%26amp%3BSortOrder%3DAscending%26amp%3BFilters%3DIsFavorite%26amp%3BRecursive%3Dtrue%26amp%3BFields%3DPrimaryImageAspectRatio%2CBasicSyncInfo%26amp%3BCollapseBoxSetItems%3Dfalse%26amp%3BExcludeLocationTypes%3DVirtual%26amp%3BEnableTotalRecordCount%3Dfalse%26amp%3BLimit%3D100%26amp%3BIncludeItemTypes%3DEpisode&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]</value>
+		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?media_type=Episodes&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FUsers%2F%7Buserid%7D%2FItems%3FSortBy%3DSortName%26amp%3BSortOrder%3DAscending%26amp%3BFilters%3DIsFavorite%26amp%3BRecursive%3Dtrue%26amp%3BFields%3DPrimaryImageAspectRatio%2CBasicSyncInfo%26amp%3BCollapseBoxSetItems%3Dfalse%26amp%3BExcludeLocationTypes%3DVirtual%26amp%3BEnableTotalRecordCount%3Dfalse%26amp%3BLimit%3D100%26amp%3BIncludeItemTypes%3DEpisode&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]$INFO[Window(home).Property(EmbuaryWidgetUpdate)]</value>
 	</variable>
 	<variable name="EmbyCon.FavArtists">
-		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?media_type=songs&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FArtists%3FSortBy%3DSortName%26SortOrder%3DAscending%26Filters%3DIsFavorite%26Recursive%3Dtrue%26Fields%3DPrimaryImageAspectRatio%252CBasicSyncInfo%26CollapseBoxSetItems%3Dfalse%26ExcludeLocationTypes%3DVirtual%26EnableTotalRecordCount%3Dfalse%26Limit%3D20%26userId%3D%7Buserid%7D&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]</value>
+		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?media_type=songs&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FArtists%3FSortBy%3DSortName%26SortOrder%3DAscending%26Filters%3DIsFavorite%26Recursive%3Dtrue%26Fields%3DPrimaryImageAspectRatio%252CBasicSyncInfo%26CollapseBoxSetItems%3Dfalse%26ExcludeLocationTypes%3DVirtual%26EnableTotalRecordCount%3Dfalse%26Limit%3D20%26userId%3D%7Buserid%7D&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]$INFO[Window(home).Property(EmbuaryWidgetUpdate)]</value>
 	</variable>
 	<variable name="EmbyCon.FavAlbums">
-		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?media_type=songs&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FUsers%2F%7Buserid%7D%2FItems%3FSortBy%3DSortName%26SortOrder%3DAscending%26Filters%3DIsFavorite%26Recursive%3Dtrue%26Fields%3DPrimaryImageAspectRatio%252CBasicSyncInfo%26CollapseBoxSetItems%3Dfalse%26ExcludeLocationTypes%3DVirtual%26EnableTotalRecordCount%3Dfalse%26Limit%3D20%26IncludeItemTypes%3DMusicAlbum&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]</value>
+		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?media_type=songs&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FUsers%2F%7Buserid%7D%2FItems%3FSortBy%3DSortName%26SortOrder%3DAscending%26Filters%3DIsFavorite%26Recursive%3Dtrue%26Fields%3DPrimaryImageAspectRatio%252CBasicSyncInfo%26CollapseBoxSetItems%3Dfalse%26ExcludeLocationTypes%3DVirtual%26EnableTotalRecordCount%3Dfalse%26Limit%3D20%26IncludeItemTypes%3DMusicAlbum&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]$INFO[Window(home).Property(EmbuaryWidgetUpdate)]</value>
 	</variable>
 	<variable name="EmbyCon.FavSongs">
-		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?media_type=songs&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FUsers%2F%7Buserid%7D%2FItems%3FSortBy%3DSortName%26SortOrder%3DAscending%26Filters%3DIsFavorite%26Recursive%3Dtrue%26Fields%3DPrimaryImageAspectRatio%252CBasicSyncInfo%26CollapseBoxSetItems%3Dfalse%26ExcludeLocationTypes%3DVirtual%26EnableTotalRecordCount%3Dfalse%26Limit%3D20%26IncludeItemTypes%3DAudio&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]</value>
+		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?media_type=songs&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FUsers%2F%7Buserid%7D%2FItems%3FSortBy%3DSortName%26SortOrder%3DAscending%26Filters%3DIsFavorite%26Recursive%3Dtrue%26Fields%3DPrimaryImageAspectRatio%252CBasicSyncInfo%26CollapseBoxSetItems%3Dfalse%26ExcludeLocationTypes%3DVirtual%26EnableTotalRecordCount%3Dfalse%26Limit%3D20%26IncludeItemTypes%3DAudio&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]$INFO[Window(home).Property(EmbuaryWidgetUpdate)]</value>
 	</variable>
 	<variable name="EmbyCon.InProgressMedia">
-		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?mode=GET_CONTENT&amp;media_type=Video&amp;url=%7Bserver%7D%2Femby%2FUsers%2F%7Buserid%7D%2FItems%2FResume%3FLimit%3D12%26Recursive%3Dtrue%26Fields%3DPrimaryImageAspectRatio%2CBasicSyncInfo%26ImageTypeLimit%3D1%26EnableImageTypes%3DPrimary%2CBackdrop%2CThumb%26EnableTotalRecordCount%3Dfalse%26MediaTypes%3DVideo&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]</value>
+		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?media_type=Video&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FUsers%2F%7Buserid%7D%2FItems%3FSortBy%3DDatePlayed%2CSortName%26SortOrder%3DDescending%26IncludeItemTypes%3DMovie%2CEpisode%26Limit%3D50%26Recursive%3Dtrue%26Fields%3D%7Bfield_filters%7D%26Filters%3DIsResumable%26ImageTypeLimit%3D1%26format%3Djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]$INFO[Window(home).Property(EmbuaryWidgetUpdate)]</value>
 	</variable>
 	<variable name="EmbyCon.NextUp">
-		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?media_type=Episodes&amp;mode=GET_CONTENT&amp;name_format=Episode%7cepisode_name_format&amp;url=%7bserver%7d%2femby%2fShows%2fNextUp%2f%3fUserid%3d%7buserid%7d%26Limit%3d%7bItemLimit%7d%26Recursive%3dtrue%26Fields%3d%7bfield_filters%7d%26Filters%3dIsUnplayed%2cIsNotFolder%26IsVirtualUnaired%3dfalse%26IsMissing%3dFalse%26IncludeItemTypes%3dEpisode%26ImageTypeLimit%3d1%26format%3djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]</value>
+		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?media_type=Episodes&amp;mode=GET_CONTENT&amp;name_format=Episode%7cepisode_name_format&amp;url=%7bserver%7d%2femby%2fShows%2fNextUp%2f%3fUserid%3d%7buserid%7d%26Limit%3d%7bItemLimit%7d%26Recursive%3dtrue%26Fields%3d%7bfield_filters%7d%26Filters%3dIsUnplayed%2cIsNotFolder%26IsVirtualUnaired%3dfalse%26IsMissing%3dFalse%26IncludeItemTypes%3dEpisode%26ImageTypeLimit%3d1%26format%3djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]$INFO[Window(home).Property(EmbuaryWidgetUpdate)]</value>
 	</variable>
 	<variable name="EmbyCon.NewMovies">
-		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?media_type=Movies&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fLimit%3d%7bItemLimit%7d%26Recursive%3dtrue%26SortBy%3dDateCreated%26Fields%3d%7bfield_filters%7d%26SortOrder%3dDescending%26Filters%3d%7bIsUnplayed%2c%7dIsNotFolder%26IncludeItemTypes%3dMovie%26ImageTypeLimit%3d1%26format%3djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]</value>
+		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?media_type=Movies&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FUsers%2F%7Buserid%7D%2FItems%2FLatest%3FLimit%3D%7BItemLimit%7D%26Recursive%3Dtrue%26GroupItems%3Dtrue%26SortBy%3DDateCreated%26Fields%3D%7Bfield_filters%7D%26SortOrder%3DDescending%26Filters%3D%7BIsUnplayed%7D%26IncludeItemTypes%3DMovie%26ImageTypeLimit%3D1%26format%3Djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]$INFO[Window(home).Property(EmbuaryWidgetUpdate)]</value>
 	</variable>
 	<variable name="EmbyCon.NewEpisodes">
-		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?media_type=Episodes&amp;mode=GET_CONTENT&amp;name_format=Episode%7cepisode_name_format&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%2fLatest%3fLimit%3d%7bItemLimit%7d%26Recursive%3dtrue%26GroupItems%3dtrue%26SortBy%3dDateCreated%26Fields%3d%7bfield_filters%7d%26SortOrder%3dDescending%26Filters%3d%7bIsUnplayed%7d%26IsVirtualUnaired%3dfalse%26IsMissing%3dFalse%26IncludeItemTypes%3dEpisode%26ImageTypeLimit%3d1%26format%3djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]</value>
+		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?media_type=Episodes&amp;mode=GET_CONTENT&amp;name_format=Episode%7cepisode_name_format&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%2fLatest%3fLimit%3d%7bItemLimit%7d%26Recursive%3dtrue%26GroupItems%3dtrue%26SortBy%3dDateCreated%26Fields%3d%7bfield_filters%7d%26SortOrder%3dDescending%26Filters%3d%7bIsUnplayed%7d%26IsVirtualUnaired%3dfalse%26IsMissing%3dFalse%26IncludeItemTypes%3dEpisode%26ImageTypeLimit%3d1%26format%3djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]$INFO[Window(home).Property(EmbuaryWidgetUpdate)]</value>
 	</variable>
 	<variable name="EmbyCon.NewAlbums">
-		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?media_type=albums&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FUsers%2F%7Buserid%7D%2FItems%2FLatest%3FIncludeItemTypes%3DAudio%26Limit%3D24%26Fields%3DPrimaryImageAspectRatio%252CBasicSyncInfo%26ImageTypeLimit%3D1%26EnableImageTypes%3DPrimary%252CBackdrop%252CBanner%252CThumb%26EnableTotalRecordCount%3Dfalse&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]</value>
+		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?media_type=albums&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FUsers%2F%7Buserid%7D%2FItems%2FLatest%3FIncludeItemTypes%3DAudio%26Limit%3D24%26Fields%3DPrimaryImageAspectRatio%252CBasicSyncInfo%26ImageTypeLimit%3D1%26EnableImageTypes%3DPrimary%252CBackdrop%252CBanner%252CThumb%26EnableTotalRecordCount%3Dfalse&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]$INFO[Window(home).Property(EmbuaryWidgetUpdate)]</value>
 	</variable>
 	<variable name="EmbyCon.InProgressMovies">
-		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?media_type=Movies&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fLimit%3d%7bItemLimit%7d%26Recursive%3dtrue%26Fields%3d%7bfield_filters%7d%26Filters%3dIsResumable%26IncludeItemTypes%3dMovie%26ImageTypeLimit%3d1%26format%3djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]</value>
+		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?media_type=Movies&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fLimit%3d%7bItemLimit%7d%26Recursive%3dtrue%26Fields%3d%7bfield_filters%7d%26Filters%3dIsResumable%26IncludeItemTypes%3dMovie%26ImageTypeLimit%3d1%26format%3djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]$INFO[Window(home).Property(EmbuaryWidgetUpdate)]</value>
 	</variable>
 	<variable name="EmbyCon.MovieGenres">
-		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?mode=GENRES&amp;item_type=movie&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]</value>
+		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?mode=GENRES&amp;item_type=movie&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]$INFO[Window(home).Property(EmbuaryWidgetUpdate)]</value>
 	</variable>
 	<variable name="EmbyCon.RecommendedMovies">
-		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?media_type=Movies&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FUsers%2F%7Buserid%7D%2FItems%3FSortBy%3DCommunityRating%252CSortName%26SortOrder%3DDescending%26IncludeItemTypes%3DMovie%26Recursive%3Dtrue%26Fields%3DPrimaryImageAspectRatio%252CMediaSourceCount%252CBasicSyncInfo%26ImageTypeLimit%3D1%26EnableImageTypes%3DPrimary%252CBackdrop%252CBanner%252CThumb%26StartIndex%3D0%26Limit%3D100%26Filters%3DIsUnPlayed&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]</value>
+		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?media_type=Movies&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FUsers%2F%7Buserid%7D%2FItems%3FSortBy%3DCommunityRating%252CSortName%26SortOrder%3DDescending%26IncludeItemTypes%3DMovie%26Recursive%3Dtrue%26Fields%3DPrimaryImageAspectRatio%252CMediaSourceCount%252CBasicSyncInfo%26ImageTypeLimit%3D1%26EnableImageTypes%3DPrimary%252CBackdrop%252CBanner%252CThumb%26StartIndex%3D0%26Limit%3D100%26Filters%3DIsUnPlayed&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]$INFO[Window(home).Property(EmbuaryWidgetUpdate)]</value>
 	</variable>
 	<variable name="EmbyCon.SimilarMovies">
-		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?media_type=Movies&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FMovies%2FRecommendations%3FuserId%3D%7Buserid%7D%26categoryLimit%3D1%26ItemLimit%3D8%26format%3Djson%26ImageTypeLimit%3D1%26IsMissing%3DFalse&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]</value>
+		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?media_type=Movies&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fMovies%2fRecommendations%3fuserId%3d%7buserid%7d%26categoryLimit%3d1%26ItemLimit%3d%7bItemLimit%7d%26format%3djson%26ImageTypeLimit%3d1%26Fields%3d%7bfield_filters%7d%26IsMissing%3dFalse&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]$INFO[Window(home).Property(EmbuaryWidgetUpdate)]</value>
 	</variable>
 	<variable name="EmbyCon.InProgressShows">
-		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?media_type=Episodes&amp;mode=GET_CONTENT&amp;name_format=Episode%7cepisode_name_format&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fLimit%3d%7bItemLimit%7d%26Recursive%3dtrue%26Fields%3d%7bfield_filters%7d%26Filters%3dIsResumable%26IncludeItemTypes%3dEpisode%26ImageTypeLimit%3d1%26format%3djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]</value>
+		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?media_type=Episodes&amp;mode=GET_CONTENT&amp;name_format=Episode%7cepisode_name_format&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fLimit%3d%7bItemLimit%7d%26Recursive%3dtrue%26Fields%3d%7bfield_filters%7d%26Filters%3dIsResumable%26IncludeItemTypes%3dEpisode%26ImageTypeLimit%3d1%26format%3djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]$INFO[Window(home).Property(EmbuaryWidgetUpdate)]</value>
 	</variable>
 	<variable name="EmbyCon.TVShowGenres">
-		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?mode=GENRES&amp;item_type=tvshow&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]</value>
+		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?mode=GENRES&amp;item_type=tvshow&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]$INFO[Window(home).Property(EmbuaryWidgetUpdate)]</value>
 	</variable>
 	<variable name="EmbyCon.RecommendedShows">
-		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?media_type=tvshows&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FUsers%2F%7Buserid%7D%2FItems%3FSortBy%3DSortName%26SortOrder%3DAscending%26IncludeItemTypes%3DSeries%26Recursive%3Dtrue%26Fields%3DPrimaryImageAspectRatio%252CBasicSyncInfo%26ImageTypeLimit%3D1%26EnableImageTypes%3DPrimary%252CBackdrop%252CBanner%252CThumb%26StartIndex%3D0%26Limit%3D100%26Filters%3DIsUnPlayed&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]</value>
-		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?item_type=Series&amp;media_type=tvshows&amp;mode=SHOW_CONTENT&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]</value>
+		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?media_type=tvshows&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FUsers%2F%7Buserid%7D%2FItems%3FSortBy%3DSortName%26SortOrder%3DAscending%26IncludeItemTypes%3DSeries%26Recursive%3Dtrue%26Fields%3DPrimaryImageAspectRatio%252CBasicSyncInfo%26ImageTypeLimit%3D1%26EnableImageTypes%3DPrimary%252CBackdrop%252CBanner%252CThumb%26StartIndex%3D0%26Limit%3D100%26Filters%3DIsUnPlayed&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]$INFO[Window(home).Property(EmbuaryWidgetUpdate)]</value>
+		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?item_type=Series&amp;media_type=tvshows&amp;mode=SHOW_CONTENT&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]$INFO[Window(home).Property(EmbuaryWidgetUpdate)]</value>
 	</variable>
 	<variable name="EmbyCon.OftenPlayedSongs">
-		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?media_type=songs&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FUsers%2F%7Buserid%7D%2FItems%3FSortBy%3DPlayCount%26SortOrder%3DDescending%26IncludeItemTypes%3DAudio%26Limit%3D12%26Recursive%3Dtrue%26Fields%3DPrimaryImageAspectRatio%252CAudioInfo%26Filters%3DIsPlayed%26ImageTypeLimit%3D1%26EnableImageTypes%3DPrimary%252CBackdrop%252CBanner%252CThumb%26EnableTotalRecordCount%3Dfalse&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]</value>
+		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?media_type=songs&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FUsers%2F%7Buserid%7D%2FItems%3FSortBy%3DPlayCount%26SortOrder%3DDescending%26IncludeItemTypes%3DAudio%26Limit%3D12%26Recursive%3Dtrue%26Fields%3DPrimaryImageAspectRatio%252CAudioInfo%26Filters%3DIsPlayed%26ImageTypeLimit%3D1%26EnableImageTypes%3DPrimary%252CBackdrop%252CBanner%252CThumb%26EnableTotalRecordCount%3Dfalse&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]$INFO[Window(home).Property(EmbuaryWidgetUpdate)]</value>
 	</variable>
 	<!-- Embcon/Native DB vars -->
 	<variable name="View_Cast_Content">
+		<value condition="!String.IsEmpty(Container.Pluginname) + !String.StartsWith(Container.Folderpath,plugin://plugin.video.embycon)"></value>
 		<value condition="String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) + Container.Content(seasons) + ListItem.IsParentFolder">plugin://plugin.video.embycon?mode=WIDGET_CONTENT_CAST&amp;id=$INFO[ListItem(1).Property(id)]</value>
 		<value condition="String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">plugin://plugin.video.embycon?mode=WIDGET_CONTENT_CAST&amp;id=$INFO[ListItem.Property(id)]</value>
-		<value condition="String.IsEqual(ListItem.DBType,movie) + !String.IsEmpty(ListItem.DBID) + !String.IsEqual(ListItem.DBID,0)">plugin://plugin.get.cast?mode=dbid&amp;&amp;dbtype=movie&amp;&amp;dbinfo=$INFO[ListItem.DBID]</value>
-		<value condition="String.IsEqual(ListItem.DBType,movie) + String.IsEqual(ListItem.DBID,0)">plugin://plugin.get.cast?mode=title&amp;&amp;dbtype=movie&amp;&amp;dbinfo=$INFO[ListItem.Title]</value>
-		<value condition="String.IsEqual(ListItem.DBType,tvshow) + !String.IsEmpty(ListItem.DBID) + !String.IsEqual(ListItem.DBID,0)">plugin://plugin.get.cast?mode=dbid&amp;&amp;dbtype=tvshow&amp;&amp;dbinfo=$INFO[ListItem.DBID]</value>
-		<value condition="String.IsEqual(ListItem.DBType,tvshow) + String.IsEqual(ListItem.DBID,0)">plugin://plugin.get.cast?mode=title&amp;&amp;dbtype=tvshow&amp;&amp;dbinfo=$INFO[ListItem.TVShowTitle]</value>
-		<value condition="[String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,season)] + !String.IsEmpty(ListItem.DBID)">plugin://plugin.get.cast?mode=title&amp;&amp;dbtype=tvshow&amp;&amp;dbinfo=$INFO[ListItem.TVShowTitle]</value>
-		<value condition="Container.Content(seasons) + !String.IsEmpty(ListItem(1).DBID)">plugin://plugin.get.cast?mode=title&amp;&amp;dbtype=tvshow&amp;&amp;dbinfo=$INFO[ListItem(1).TVShowTitle]</value>
-		<value condition="Container.Content(seasons) + !String.IsEmpty(ListItem(2).DBID)">plugin://plugin.get.cast?mode=title&amp;&amp;dbtype=tvshow&amp;&amp;dbinfo=$INFO[ListItem(2).TVShowTitle]</value>
+
+		<value condition="String.IsEqual(ListItem.DBType,movie) + !String.IsEmpty(ListItem.DBID) + !String.IsEqual(ListItem.DBID,0)">plugin://script.embuary.helper?info=getcast&amp;type=movie&amp;dbid=$INFO[ListItem.DBID]</value>
+		<value condition="String.IsEqual(ListItem.DBType,movie) + String.IsEqual(ListItem.DBID,0)">plugin://script.embuary.helper?info=getcast&amp;type=movie&amp;title='$ESCINFO[ListItem.Title]'</value>
+
+		<value condition="String.IsEqual(ListItem.DBType,tvshow) + !String.IsEmpty(ListItem.DBID) + !String.IsEqual(ListItem.DBID,0)">plugin://script.embuary.helper?info=getcast&amp;type=tvshow&amp;dbid=$INFO[ListItem.DBID]</value>
+		<value condition="String.IsEqual(ListItem.DBType,tvshow) + String.IsEqual(ListItem.DBID,0)">plugin://script.embuary.helper?info=getcast&amp;type=tvshow&amp;title='$ESCINFO[ListItem.TVShowTitle]'</value>
+
+		<value condition="[String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,season)] + !String.IsEmpty(ListItem.DBID)">plugin://script.embuary.helper?info=getcast&amp;type=tvshow&amp;title='$ESCINFO[ListItem.TVShowTitle]'</value>
+
+		<value condition="Container.Content(seasons) + !String.IsEmpty(ListItem(1).DBID)">plugin://script.embuary.helper?info=getcast&amp;type=tvshow&amp;title='$ESCINFO[ListItem(1).TVShowTitle]'</value>
+
+		<value condition="Container.Content(seasons) + !String.IsEmpty(ListItem(2).DBID)">plugin://script.embuary.helper?info=getcast&amp;type=tvshow&amp;title='$ESCINFO[ListItem(2).TVShowTitle]'</value>
 	</variable>
 	<variable name="View54_NextUp_Content">
+		<value condition="!String.IsEmpty(Container.Pluginname) + !String.StartsWith(Container.Folderpath,plugin://plugin.video.embycon)"></value>
 		<value condition="Container.Content(seasons) + Integer.IsGreater(Window(home).Property(UnwatchedEpisodes),0) + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">plugin://plugin.video.embycon/?mode=GET_CONTENT&amp;media_type=Episodes&amp;url=%7Bserver%7D%2Femby%2FShows%2FNextUp%3FuserId%3D%7Buserid%7D%26Limit%3D%7BItemLimit%7D%26Filters%3D%7Bfield_filters%7D%26format%3Djson%26ImageTypeLimit%3D1%26IsMissing%3DFalse%26SeriesId%3D$INFO[Window(home).Property(EmbyID)]</value>
 		<value condition="Container.Content(seasons) + Integer.IsGreater(Window(home).Property(UnwatchedEpisodes),0) + !String.IsEmpty(Window(home).Property(TVShowDBID))">videodb://inprogresstvshows/$INFO[Window(home).Property(TVShowDBID)]/-2/?tvshowid=$INFO[Window(home).Property(TVShowDBID)]</value>
 	</variable>
 	<variable name="InfoDialog_NextUp_Content">
+		<value condition="!String.IsEmpty(Container.Pluginname) + !String.StartsWith(Container.Folderpath,plugin://plugin.video.embycon)"></value>
 		<value condition="Integer.IsGreater(Window(home).Property(UnwatchedEpisodes),0) + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">plugin://plugin.video.embycon/?mode=GET_CONTENT&amp;media_type=Episodes&amp;url=%7Bserver%7D%2Femby%2FShows%2FNextUp%3FuserId%3D%7Buserid%7D%26Limit%3D%7BItemLimit%7D%26Filters%3D%7Bfield_filters%7D%26format%3Djson%26ImageTypeLimit%3D1%26IsMissing%3DFalse%26SeriesId%3D$INFO[ListItem.Property(id)]</value>
 		<value condition="Integer.IsGreater(Window(home).Property(UnwatchedEpisodes),0) + !String.IsEmpty(ListItem.DBID)">videodb://inprogresstvshows/$INFO[ListItem.DBID]/-2/?tvshowid=$INFO[ListItem.DBID]</value>
 	</variable>
 	<variable name="InfoDialog_MoreLikeThis_Content">
+		<value condition="!String.IsEmpty(Container.Pluginname) + !String.StartsWith(Container.Folderpath,plugin://plugin.video.embycon)"></value>
 		<value condition="String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">plugin://plugin.video.embycon/?mode=GET_CONTENT&amp;media_type=Movies&amp;url=%7Bserver%7D%2Femby%2FItems%2F$INFO[ListItem.Property(id)]%2FSimilar%3FuserId%3D%7Buserid%7D%26Limit%3D%7BItemLimit%7D%26format%3Djson%26ImageTypeLimit%3D1%26IsMissing%3DFalse%26Filters%3D%7Bfield_filters%7D</value>
-		<value condition="String.IsEqual(ListItem.DBType,movie) + !String.IsEmpty(ListItem.IMDBNumber)">plugin://script.skin.helper.widgets/?action=similar&amp;mediatype=movies&amp;imdbid=$INFO[ListItem.IMDBNumber]</value>
-		<value>plugin://script.skin.helper.widgets/?action=similarshows&amp;imdbid=$INFO[ListItem.IMDBNumber]</value>
+		<value condition="String.IsEqual(ListItem.DBType,movie) + !String.IsEmpty(ListItem.DBID)">plugin://script.embuary.helper/?info=getsimilar&amp;dbid=$INFO[ListItem.DBID]&amp;type=movie</value>
+		<value condition="String.IsEqual(ListItem.DBType,tvshow) + !String.IsEmpty(ListItem.DBID)">plugin://script.embuary.helper/?info=getsimilar&amp;dbid=$INFO[ListItem.DBID]&amp;type=tvshow</value>
 	</variable>
 	<!-- Embcon widget vars -->
 	<variable name="EmbyConLabel">
-		<value condition="!Skin.HasSetting(HideEmbyConLabel)"> [COLOR FF505050](EmbyCon)[/COLOR]</value>
+		<value condition="!Skin.HasSetting(HideEmbyConLabel)"> [COLOR text_sublabel](EmbyCon)[/COLOR]</value>
 	</variable>
-	<variable name="EmbyCon_RecentEpisodes_Mainlabel">
+	<variable name="RecentEpisodes_Mainlabel">
 		<value condition="!String.IsEmpty(ListItem.Episode)">$INFO[ListItem.TVShowTitle]</value>
-		<value>$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title]</value>
+		<value>$VAR[ListItemSeasonEpisode]$INFO[ListItem.Title]</value>
 	</variable>
-	<variable name="EmbyCon_RecentEpisodes_Sublabel">
-		<value condition="!String.IsEmpty(ListItem.Episode)">$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title]</value>
+	<variable name="RecentEpisodes_Sublabel">
+		<value condition="!String.IsEmpty(ListItem.Episode)">$VAR[ListItemSeasonEpisode]$INFO[ListItem.Title]</value>
 		<value>$INFO[ListItem.Year]</value>
 	</variable>
 	<variable name="HeaderCustomDeviceName">
@@ -140,7 +266,8 @@
 	</variable>
 	<variable name="ContainerContentPrefix">
 		<value condition="Window.IsVisible(script-globalsearch.xml) | Window.IsVisible(script-globalsearch-main.xml)">Globalsearch - </value>
-		<value condition="String.StartsWith(Container.Folderpath,plugin://plugin.video.embycon) | Window.IsVisible(1160) | Window.IsVisible(1161) | Window.IsVisible(1162) | Window.IsVisible(1163) | Window.IsVisible(1164) | Window.IsVisible(1165) | Window.IsVisible(1166) | Window.IsVisible(1167) | Window.IsVisible(1168) | Window.IsVisible(1169)">EmbyCon - </value>
+		<value condition="String.StartsWith(Container.Folderpath,plugin://plugin.video.embycon) | Window.IsVisible(1131)">EmbyCon - </value>
+		<value condition="String.StartsWith(Container.FolderPath,plugin://plugin.video.emby/) | Window.IsVisible(1130)">Emby - </value>
 	</variable>
 	<variable name="ContainerContent">
 		<value condition="Window.IsVisible(dialogpvrinfo.xml)">$LOCALIZE[19047]</value>
@@ -150,30 +277,14 @@
 		<value condition="Window.IsVisible(movieinformation) + String.IsEqual(ListItem.DBType,tvshow)">$LOCALIZE[20351]</value>
 		<value condition="Window.IsVisible(movieinformation) + String.IsEqual(ListItem.DBType,movie)">$LOCALIZE[10524]</value>
 		<value condition="Window.IsVisible(movieinformation) + String.IsEqual(ListItem.DBType,episode)">$LOCALIZE[20352]</value>
+		<value condition="Window.IsVisible(favourites)">$LOCALIZE[1036]</value>
 		<value condition="Window.IsVisible(script-globalsearch.xml) | Window.IsVisible(script-globalsearch-main.xml)">$LOCALIZE[283]</value>
 		<value condition="String.StartsWith(Container.FolderPath,plugin://plugin.video.emby/) + String.Contains(Container.FolderPath,type=homevideos)">$LOCALIZE[31187]</value>
+		<value condition="String.StartsWith(Container.FolderPath,plugin://plugin.video.emby/) + String.Contains(Container.FolderPath,type=books)">$LOCALIZE[31262]</value>
 		<value condition="Window.IsVisible(1114)">$LOCALIZE[135]</value>
 		<value condition="Window.IsVisible(1115)">$LOCALIZE[283]</value>
-		<value condition="Window.IsVisible(1130)">$INFO[Window(home).Property(emby.nodes.0.title)]</value>
-		<value condition="Window.IsVisible(1131)">$INFO[Window(home).Property(emby.nodes.1.title)]</value>
-		<value condition="Window.IsVisible(1132)">$INFO[Window(home).Property(emby.nodes.2.title)]</value>
-		<value condition="Window.IsVisible(1133)">$INFO[Window(home).Property(emby.nodes.3.title)]</value>
-		<value condition="Window.IsVisible(1134)">$INFO[Window(home).Property(emby.nodes.4.title)]</value>
-		<value condition="Window.IsVisible(1135)">$INFO[Window(home).Property(emby.nodes.5.title)]</value>
-		<value condition="Window.IsVisible(1136)">$INFO[Window(home).Property(emby.nodes.6.title)]</value>
-		<value condition="Window.IsVisible(1137)">$INFO[Window(home).Property(emby.nodes.7.title)]</value>
-		<value condition="Window.IsVisible(1138)">$INFO[Window(home).Property(emby.nodes.8.title)]</value>
-		<value condition="Window.IsVisible(1139)">$INFO[Window(home).Property(emby.nodes.9.title)]</value>
-		<value condition="Window.IsVisible(1160)">$INFO[Window(home).Property(plugin.video.embycon-view_item.0.name)]</value>
-		<value condition="Window.IsVisible(1161)">$INFO[Window(home).Property(plugin.video.embycon-view_item.1.name)]</value>
-		<value condition="Window.IsVisible(1162)">$INFO[Window(home).Property(plugin.video.embycon-view_item.2.name)]</value>
-		<value condition="Window.IsVisible(1163)">$INFO[Window(home).Property(plugin.video.embycon-view_item.3.name)]</value>
-		<value condition="Window.IsVisible(1164)">$INFO[Window(home).Property(plugin.video.embycon-view_item.4.name)]</value>
-		<value condition="Window.IsVisible(1165)">$INFO[Window(home).Property(plugin.video.embycon-view_item.5.name)]</value>
-		<value condition="Window.IsVisible(1166)">$INFO[Window(home).Property(plugin.video.embycon-view_item.6.name)]</value>
-		<value condition="Window.IsVisible(1167)">$INFO[Window(home).Property(plugin.video.embycon-view_item.7.name)]</value>
-		<value condition="Window.IsVisible(1168)">$INFO[Window(home).Property(plugin.video.embycon-view_item.8.name)]</value>
-		<value condition="Window.IsVisible(1169)">$INFO[Window(home).Property(plugin.video.embycon-view_item.9.name)]</value>
+		<value condition="Window.IsVisible(1130)">$INFO[Control.GetLabel(199),, ]$LOCALIZE[31253]</value>
+		<value condition="Window.IsVisible(1131)">$INFO[Control.GetLabel(199),, ]$LOCALIZE[31253]</value>
 		<value condition="String.StartsWith(Container.FolderPath,videodb://movies/genres/)">$INFO[Container.Foldername]</value>
 		<value condition="String.StartsWith(Container.FolderPath,videodb://tvshows/genres/)">$INFO[Container.Foldername]</value>
 		<value condition="String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres)">$LOCALIZE[135]</value>
@@ -187,7 +298,6 @@
 		<value condition="Window.IsVisible(script-nextup-notification-PostPlayInfo.xml)">$LOCALIZE[31079]</value>
 		<value condition="Window.IsVisible(musicplaylisteditor)">$LOCALIZE[10503]</value>
 		<value condition="Window.IsVisible(weather)">$LOCALIZE[8]</value>
-		<value condition="Window.IsVisible(favourites)">$LOCALIZE[1036]</value>
 		<value condition="Window.IsVisible(smartplaylisteditor)">$LOCALIZE[10136]</value>
 		<value condition="Window.IsVisible(DialogPVRChannelManager.xml)">$LOCALIZE[19199]</value>
 		<value condition="Window.IsVisible(pvrgroupmanager)">$LOCALIZE[19048]</value>
@@ -204,15 +314,17 @@
 		<value condition="Window.IsVisible(DialogAddonSettings.xml)">$INFO[Control.GetLabel(2)]</value>
 		<value condition="Window.IsVisible(SettingsCategory.xml)">$LOCALIZE[5]: $INFO[Control.GetLabel(2)]</value>
 		<value condition="Window.IsVisible(Settings.xml)">$LOCALIZE[5]</value>
-		<value condition="Window.IsVisible(1120)">$LOCALIZE[342]</value>
-		<value condition="Window.IsVisible(1121)">$LOCALIZE[20343]</value>
-		<value condition="Window.IsVisible(1122)">$LOCALIZE[2]</value>
-		<value condition="Window.IsVisible(1123)">$LOCALIZE[24001]</value>
-		<value condition="Window.IsVisible(1124)">$VAR[PVRLabel]</value>
+		<value condition="Window.IsVisible(1120)">$LOCALIZE[31173]</value>
+		<value condition="Window.IsVisible(1121)">$LOCALIZE[31172]</value>
+		<value condition="Window.IsVisible(1122)">$LOCALIZE[31174]</value>
+		<value condition="Window.IsVisible(1123)">$LOCALIZE[31251]</value>
+		<value condition="Window.IsVisible(1124)">$LOCALIZE[31252]</value>
 		<value condition="!String.IsEmpty(Container.ShowTitle)">$INFO[Container.ShowTitle]</value>
 		<value condition="Window.IsVisible(MyPVRGuide.xml)">$LOCALIZE[19069]</value>
 		<value condition="Window.IsVisible(MyPVRRecordings.xml)">$LOCALIZE[19017]</value>
-		<value condition="!String.IsEmpty(Container.Foldername) + String.StartsWith(Colder.Folderpath,plugin://) + !String.StartsWith(Colder.Folderpath,plugin://plugin.video.emby)">$INFO[Container.Foldername]</value>
+		<value condition="Window.IsVisible(MyPVRSearch.xml)">$LOCALIZE[19142]</value>
+		<value condition="!String.IsEmpty(Container.Foldername) + String.StartsWith(Container.Folderpath,plugin://) + !String.StartsWith(Container.Folderpath,plugin://plugin.video.emby)">$INFO[Container.Foldername]</value>
+		<value condition="String.StartsWith(Container.Folderpath,videodb://movies/sets/)">$INFO[Container.Foldername]</value>
 		<value condition="Container.Content(sets)">$LOCALIZE[31169]</value>
 		<value condition="Container.Content(movies)">$LOCALIZE[342]</value>
 		<value condition="Container.Content(tvshows)">$LOCALIZE[20343]</value>
@@ -220,9 +332,11 @@
 		<value condition="Container.Content(artists)">$LOCALIZE[133]</value>
 		<value condition="Container.Content(songs)">$LOCALIZE[134]</value>
 		<value condition="Container.Content(albums)">$LOCALIZE[132]</value>
+		<value condition="Container.Content(episodes)">$LOCALIZE[20360]</value>
 		<value condition="String.StartsWith(Container.FolderPath,videodb://movies)">$LOCALIZE[342]</value>
 		<value condition="String.StartsWith(Container.FolderPath,videodb://tvshows)">$LOCALIZE[20343]</value>
 		<value condition="String.StartsWith(Container.FolderPath,musicdb://)">$LOCALIZE[2]</value>
+		<value condition="String.StartsWith(Container.FolderPath,plugin://plugin.video.emby/) + Window.IsVisible(mymusicnav.xml)">$LOCALIZE[292]</value>
 		<value condition="Window.IsVisible(mymusicnav.xml)">$LOCALIZE[2]</value>
 		<value condition="Window.IsVisible(myvideonav.xml)">$LOCALIZE[3]</value>
 		<value>$INFO[Container.Foldername]</value>
@@ -240,86 +354,7 @@
 		<value condition="Container.Content(songs) + !Window.IsVisible(musicinformation)">$INFO[Container.NumItems]</value>
 		<value condition="Container.Content(artists) + !Window.IsVisible(musicinformation)">$INFO[Container.NumItems]</value>
 	</variable>
-	<!-- Custom widgets -->
-	<variable name="UserWidget1_content">
-		<value condition="Skin.HasSetting(UserWidget1)">$INFO[Skin.String(UserWidget1_path)]</value>
-	</variable>
-	<variable name="UserWidget2_content">
-		<value condition="Skin.HasSetting(UserWidget2)">$INFO[Skin.String(UserWidget2_path)]</value>
-	</variable>
-	<variable name="UserWidget3_content">
-		<value condition="Skin.HasSetting(UserWidget3)">$INFO[Skin.String(UserWidget3_path)]</value>
-	</variable>
-	<variable name="UserWidget4_content">
-		<value condition="Skin.HasSetting(UserWidget4)">$INFO[Skin.String(UserWidget4_path)]</value>
-	</variable>
-	<variable name="UserWidget5_content">
-		<value condition="Skin.HasSetting(UserWidget5)">$INFO[Skin.String(UserWidget5_path)]</value>
-	</variable>
-	<variable name="UserWidget6_content">
-		<value condition="Skin.HasSetting(UserWidget6)">$INFO[Skin.String(UserWidget6_path)]</value>
-	</variable>
-	<variable name="UserMovieWidget1_content">
-		<value condition="Skin.HasSetting(UserMovieWidget1)">$INFO[Skin.String(UserMovieWidget1_path)]</value>
-	</variable>
-	<variable name="UserMovieWidget2_content">
-		<value condition="Skin.HasSetting(UserMovieWidget2)">$INFO[Skin.String(UserMovieWidget2_path)]</value>
-	</variable>
-	<variable name="UserMovieWidget3_content">
-		<value condition="Skin.HasSetting(UserMovieWidget3)">$INFO[Skin.String(UserMovieWidget3_path)]</value>
-	</variable>
-	<variable name="UserMovieWidget4_content">
-		<value condition="Skin.HasSetting(UserMovieWidget4)">$INFO[Skin.String(UserMovieWidget4_path)]</value>
-	</variable>
-	<variable name="UserMovieWidget5_content">
-		<value condition="Skin.HasSetting(UserMovieWidget5)">$INFO[Skin.String(UserMovieWidget5_path)]</value>
-	</variable>
-	<variable name="UserMovieWidget6_content">
-		<value condition="Skin.HasSetting(UserMovieWidget6)">$INFO[Skin.String(UserMovieWidget6_path)]</value>
-	</variable>
-	<variable name="UserTVShowWidget1_content">
-		<value condition="Skin.HasSetting(UserTVShowWidget1)">$INFO[Skin.String(UserTVShowWidget1_path)]</value>
-	</variable>
-	<variable name="UserTVShowWidget2_content">
-		<value condition="Skin.HasSetting(UserTVShowWidget2)">$INFO[Skin.String(UserTVShowWidget2_path)]</value>
-	</variable>
-	<variable name="UserTVShowWidget3_content">
-		<value condition="Skin.HasSetting(UserTVShowWidget3)">$INFO[Skin.String(UserTVShowWidget3_path)]</value>
-	</variable>
-	<variable name="UserTVShowWidget4_content">
-		<value condition="Skin.HasSetting(UserTVShowWidget4)">$INFO[Skin.String(UserTVShowWidget4_path)]</value>
-	</variable>
-	<variable name="UserTVShowWidget5_content">
-		<value condition="Skin.HasSetting(UserTVShowWidget5)">$INFO[Skin.String(UserTVShowWidget5_path)]</value>
-	</variable>
-	<variable name="UserTVShowWidget6_content">
-		<value condition="Skin.HasSetting(UserTVShowWidget6)">$INFO[Skin.String(UserTVShowWidget6_path)]</value>
-	</variable>
-	<variable name="UserMusicWidget1_content">
-		<value condition="Skin.HasSetting(UserMusicWidget1)">$INFO[Skin.String(UserMusicWidget1_path)]</value>
-	</variable>
-	<variable name="UserMusicWidget2_content">
-		<value condition="Skin.HasSetting(UserMusicWidget2)">$INFO[Skin.String(UserMusicWidget2_path)]</value>
-	</variable>
-	<variable name="UserMusicWidget3_content">
-		<value condition="Skin.HasSetting(UserMusicWidget3)">$INFO[Skin.String(UserMusicWidget3_path)]</value>
-	</variable>
-	<variable name="UserMusicWidget4_content">
-		<value condition="Skin.HasSetting(UserMusicWidget4)">$INFO[Skin.String(UserMusicWidget4_path)]</value>
-	</variable>
-	<variable name="UserMusicWidget5_content">
-		<value condition="Skin.HasSetting(UserMusicWidget5)">$INFO[Skin.String(UserMusicWidget5_path)]</value>
-	</variable>
-	<variable name="UserMusicWidget6_content">
-		<value condition="Skin.HasSetting(UserMusicWidget6)">$INFO[Skin.String(UserMusicWidget6_path)]</value>
-	</variable>
 	<!-- background -->
-	<variable name="BackgroundColordiffuse">
-		<value condition="String.IsEqual(Skin.String(BackgroundAlpha),0) | String.IsEmpty(Skin.String(BackgroundAlpha))">ff141414</value>
-		<value condition="String.IsEqual(Skin.String(BackgroundAlpha),1)">bf141414</value>
-		<value condition="String.IsEqual(Skin.String(BackgroundAlpha),2)">80141414</value>
-		<value condition="String.IsEqual(Skin.String(BackgroundAlpha),3)">40141414</value>
-	</variable>
 	<variable name="BackgroundSource">
 		<!-- global static -->
 		<value condition="Skin.HasSetting(ShowStaticBackgroundImage) + Skin.HasSetting(ShowStaticBackgroundImageGlobally) + !String.IsEmpty(Skin.String(StaticBackgroundImage))">$INFO[Skin.String(StaticBackgroundImage)]</value>
@@ -346,7 +381,7 @@
 		<!-- static for non listitems -->
 		<value condition="Skin.HasSetting(ShowStaticBackgroundImage) + !String.IsEmpty(Skin.String(StaticBackgroundImage))">$INFO[Skin.String(StaticBackgroundImage)]</value>
 		<!-- non listitem fanarts -->
-		<value condition="[String.StartsWith(Container.Folderpath,plugin://plugin.video.embycon) | Window.IsVisible(1160) | Window.IsVisible(1161) | Window.IsVisible(1162) | Window.IsVisible(1163) | Window.IsVisible(1164) | Window.IsVisible(1165) | Window.IsVisible(1166) | Window.IsVisible(1167) | Window.IsVisible(1168) | Window.IsVisible(1169)] + !String.IsEmpty(Window(home).Property(plugin.video.embycon-random-gb))">$INFO[Window(home).Property(plugin.video.embycon-random-gb)]</value>
+		<value condition="String.StartsWith(Container.Folderpath,plugin://plugin.video.embycon) + !String.IsEmpty(Window(home).Property(plugin.video.embycon-random-gb))">$INFO[Window(home).Property(plugin.video.embycon-random-gb)]</value>
 		<value condition="[Window.IsVisible(1122) | Container.Content(musicvideos) | Window.IsVisible(mymusicnav.xml)] + !String.IsEmpty(Window(home).Property(SkinHelper.AllMusicBackground))">$INFO[Window(home).Property(SkinHelper.AllMusicBackground)]</value>
 		<value condition="[Window.IsVisible(1121) | String.StartsWith(Container.FolderPath,videodb://tvshows)] + !String.IsEmpty(Window(home).Property(SkinHelper.AllTvShowsBackground))">$INFO[Window(home).Property(SkinHelper.AllTvShowsBackground)]</value>
 		<value condition="[Window.IsVisible(1120) | String.StartsWith(Container.FolderPath,videodb://movies)]  + !String.IsEmpty(Window(home).Property(SkinHelper.AllMoviesBackground))">$INFO[Window(home).Property(SkinHelper.AllMoviesBackground)]</value>
@@ -365,6 +400,7 @@
 	<variable name="ListItemClearlogo">
 		<value condition="!String.IsEmpty(ListItem.Art(tvshow.clearlogo))">$INFO[ListItem.Art(tvshow.clearlogo)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(clearlogo))">$INFO[ListItem.Art(clearlogo)]</value>
+		<value condition="!String.IsEmpty(Container.ShowTitle) + !String.IsEmpty(ListItem(1).Art(tvshow.clearlogo))">$INFO[ListItem(1).Art(tvshow.clearlogo)]</value>
 	</variable>
 	<variable name="GlobalSearchIconTVShows">
 		<value condition="!String.IsEmpty(ListItem.Property(art(clearart)))">$INFO[ListItem.Property(art(landscape))]</value>
@@ -377,22 +413,29 @@
 		<value condition="!String.IsEmpty(ListItem.Art(tvshow.fanart))">$INFO[ListItem.Art(tvshow.fanart)]</value>
 	</variable>
 	<variable name="IconLandscape">
+		<value condition="!String.IsEmpty(ListItem.EpgEventIcon)">$INFO[ListItem.EpgEventIcon]</value>
 		<value condition="Window.IsVisible(videobookmarks) + !String.StartsWith(ListItem.Icon,Default)">$INFO[ListItem.Icon]</value>
 		<value condition="String.StartsWith(ListItem.Path,pvr://) + !String.StartsWith(ListItem.Icon,Default)">$INFO[ListItem.Icon]</value>
-		<value condition="Window.IsVisible(1115) + String.IsEqual(ListItem.DBType,episode) + !String.IsEmpty(ListItem.Art(thumb)) + !String.StartsWith(ListItem.Art(thumb),Default)">$INFO[ListItem.Art(thumb)]</value>
-		<value condition="[Window.IsVisible(videoplaylist) | Window.IsVisible(movieinformation) | Window.IsVisible(favourites)] + [String.IsEqual(ListItem.DBType,episode) | !String.IsEmpty(ListItem.Episode)] + !String.IsEmpty(ListItem.Art(thumb)) + !String.StartsWith(ListItem.Art(thumb),Default)">$INFO[ListItem.Art(thumb)]</value>
+		<value condition="Window.IsVisible(1115) + String.IsEqual(ListItem.DBType,episode) + !String.IsEmpty(ListItem.Art(thumb)) + !String.StartsWith(ListItem.Art(thumb),Default)">$VAR[IconEpisodeThumb]</value>
+		<value condition="[Window.IsVisible(movieinformation) | Window.IsVisible(favourites)] + [String.IsEqual(ListItem.DBType,episode) | !String.IsEmpty(ListItem.Episode)] + !String.IsEmpty(ListItem.Art(thumb)) + !String.StartsWith(ListItem.Art(thumb),Default)">$VAR[IconEpisodeThumb]</value>
+		<value condition="[String.IsEqual(ListItem.DBType,episode) | Container.Content(episodes)] + Window.IsMedia + !String.IsEmpty(ListItem.Art(thumb)) + !String.StartsWith(ListItem.Art(thumb),Default)">$VAR[IconEpisodeThumb]</value>
 		<value condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)] + !String.IsEmpty(ListItem.Art(tvshow.landscape))">$INFO[ListItem.Art(tvshow.landscape)]</value>
 		<value condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)] + !String.IsEmpty(ListItem.Art(landscape))">$INFO[ListItem.Art(landscape)]</value>
 		<value condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)] + !String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
-		<value condition="[String.IsEqual(ListItem.DBType,episode) | Container.Content(episodes)] + Window.IsMedia + !String.IsEmpty(ListItem.Art(thumb)) + !String.StartsWith(ListItem.Art(thumb),Default)">$INFO[ListItem.Art(thumb)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(tvshow.landscape))">$INFO[ListItem.Art(tvshow.landscape)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(landscape))">$INFO[ListItem.Art(landscape)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(tvshow.fanart))">$INFO[ListItem.Art(tvshow.fanart)]</value>
+		<value condition="[Container.Content(videos) | String.IsEqual(ListItem.DBType,video) | [String.StartsWith(ListItem.Path,plugin://) + !String.StartsWith(ListItem.Path,plugin://plugin.video.emby)]] + !String.StartsWith(ListItem.Icon,Default)">$INFO[ListItem.Icon]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(fanart)) + [!String.IsEmpty(ListItem.DBType) | String.StartsWith(ListItem.Path,plugin://) | Window.IsVisible(addonbrowser) | Window.IsVisible(programs)]">$INFO[ListItem.Art(fanart)]</value>
 		<value condition="!String.IsEmpty(ListItem.Property(fanart))">$INFO[ListItem.Property(fanart)]</value>
 		<value condition="!String.StartsWith(ListItem.Icon,Default)">$INFO[ListItem.Icon]</value>
 	</variable>
+	<variable name="IconEpisodeThumb">
+		<value condition="Skin.HasSetting(HideUnwatchedThumbs) + ![Integer.IsLess(ListItem.Property(UnWatchedEpisodes),1) + !String.IsEqual(ListItem.Overlay,OverlayUnwatched.png) + [String.IsEqual(ListItem.Overlay,OverlayWatched.png) | Integer.IsGreaterOrEqual(ListItem.PlayCount,1)]]">special://skin/extras/themes/$VAR[SkinTheme]/unwatched.jpg</value>
+		<value>$INFO[ListItem.Art(thumb)]</value>
+	</variable>
 	<variable name="IconPoster">
+		<value condition="!String.IsEmpty(ListItem.Art(season.poster))">$INFO[ListItem.Art(season.poster)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(poster))">$INFO[ListItem.Art(poster)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(tvshow.poster))">$INFO[ListItem.Art(tvshow.poster)]</value>
 		<value condition="!String.StartsWith(ListItem.Icon,Default)">$INFO[ListItem.Icon]</value>
@@ -407,16 +450,16 @@
 	</variable>
 	<variable name="MainListLabel">
 		<value condition="String.IsEqual(ListItem.DBType,season) + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) + String.IsEqual(ListItem.Label,All)">$LOCALIZE[20366]</value>
-		<value condition="String.IsEqual(ListItem.Filename,stream) + String.Contains(ListItem.Filenameandpath,/emby/videos/)">$LOCALIZE[31186]</value>
 		<value condition="Window.IsVisible(script-NextAired-TVGuide.xml)">$INFO[ListItem.Property(NextDate),, - ]$INFO[ListItem.Label]$INFO[ListItem.Property(ShortTime), (,)]</value>
 		<value condition=" Window.IsVisible(script-NextAired-TVGuide2.xml)">$INFO[ListItem.Label]$INFO[ListItem.Property(ShortTime), (,)]</value>
 		<value condition="String.StartsWith(ListItem.Path,pvr://) + !String.IsEmpty(ListItem.Title)">$INFO[ListItem.Title]</value>
 		<value condition="String.StartsWith(ListItem.Path,pvr://)">$INFO[ListItem.Label]</value>
-		<value condition="String.IsEqual(ListItem.DBType,episode)">$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title]</value>
-		<value condition="String.IsEqual(ListItem.DBType,season) + !String.IsEmpty(ListItem.Season)">$INFO[ListItem.Season,$LOCALIZE[20373] ]</value>
+		<value condition="String.IsEqual(ListItem.DBType,episode)">$VAR[ListItemSeasonEpisode]$INFO[ListItem.Title]</value>
+		<value condition="String.IsEqual(ListItem.DBType,season)">$INFO[ListItem.Label]</value>
 		<value condition="String.IsEqual(ListItem.DBType,song) + !String.IsEmpty(ListItem.title)">$INFO[ListItem.Tracknumber,,. ]$INFO[ListItem.Title]</value>
 		<value condition="Container.Content(songs) + Integer.IsGreater(ListItem.Tracknumber,0) + !String.IsEmpty(ListItem.title)">$INFO[ListItem.Tracknumber,,. ]$INFO[ListItem.Title]</value>
 		<value condition="Container.Content(songs) + !String.IsEmpty(ListItem.title)">$INFO[ListItem.Title]</value>
+		<value condition="!String.IsEmpty(ListItem.Addonname)">$INFO[ListItem.Addonname]</value>
 		<value>$INFO[ListItem.Label]</value>
 	</variable>
 	<variable name="SubListLabel">
@@ -481,12 +524,13 @@
 	<variable name="ListItemEpisodeName">
 		<value condition="!String.IsEmpty(ListItem.EpisodeName)">$INFO[ListItem.EpisodeName]</value>
 		<value condition="!String.IsEmpty(ListItem.Genre) + !Window.IsVisible(pvrguideinfo) + !Control.IsVisible(57)">$LOCALIZE[515]: $INFO[ListItem.Genre]</value>
-		<value>[COLOR softgrey]$LOCALIZE[31156][/COLOR]</value>
+		<value condition="ListItem.IsFolder">$LOCALIZE[19076]</value>
+		<value>[COLOR text_sublabel]$LOCALIZE[31156][/COLOR]</value>
 	</variable>
 	<variable name="PlayerEpisodeName">
 		<value condition="!String.IsEmpty(VideoPlayer.EpisodeName)">$INFO[VideoPlayer.EpisodeName]</value>
 		<value condition="!String.IsEmpty(VideoPlayer.Genre)">$LOCALIZE[515]: $INFO[VideoPlayer.Genre]</value>
-		<value>[COLOR softgrey]$LOCALIZE[31156][/COLOR]</value>
+		<value>[COLOR text_sublabel]$LOCALIZE[31156][/COLOR]</value>
 	</variable>
 	<variable name="PlayerDiscArt">
 		<value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.Player.Art.DiscArt))">$INFO[Window(Home).Property(SkinHelper.Player.Art.DiscArt)]</value>
@@ -500,7 +544,7 @@
 		<value>$INFO[VideoPlayer.VideoResolution]</value>
 	</variable>
 	<variable name="PlayerTimeRemaining">
-		<value condition="Integer.IsGreater(Player.TimeRemaining,60)">$INFO[Player.TimeRemaining]</value>
+		<value condition="Integer.IsGreater(Player.TimeRemaining,59)">$INFO[Player.TimeRemaining]</value>
 		<value>$INFO[Player.TimeRemaining(ss)] $LOCALIZE[31077]</value>
 	</variable>
 	<variable name="PlayerTime">
@@ -514,8 +558,8 @@
 		<value>$INFO[Player.Duration(mm:ss)]</value>
 	</variable>
 	<variable name="PlayerFinishTime">
-		<value condition="VideoPlayer.HasEpg + !String.IsEmpty(PVR.EpgEventFinishTime)">$INFO[PVR.EpgEventFinishTime]</value>
-		<value condition="!VideoPlayer.HasEpg + !String.IsEmpty(VideoPlayer.FinishTime)">$INFO[VideoPlayer.FinishTime]</value>
+		<value condition="!String.Contains(Player.Art(thumb),KodiCinemaMode) + VideoPlayer.HasEpg + !String.IsEmpty(PVR.EpgEventFinishTime)">$INFO[PVR.EpgEventFinishTime]</value>
+		<value condition="!String.Contains(Player.Art(thumb),KodiCinemaMode) + !VideoPlayer.HasEpg + !String.IsEmpty(VideoPlayer.FinishTime)">$INFO[VideoPlayer.FinishTime]</value>
 	</variable>
 	<variable name="PlayerPlayPauseLabel">
 		<value condition="Player.Paused">$LOCALIZE[31096]</value>
@@ -602,6 +646,7 @@
 		<value condition="String.IsEqual(ListItem.DBType,set)">$LOCALIZE[1024]</value>
 		<value condition="ListItem.IsResumable">$LOCALIZE[13404]</value>
 		<value condition="Integer.IsGreater(ListItem.PlayCount,0)">$LOCALIZE[31009]</value>
+		<value condition="ListItem.IsFolder">$LOCALIZE[1024]</value>
 		<value>$LOCALIZE[31010]</value>
 	</variable>
 	<variable name="TinyInfoDialogHeadline">
@@ -612,8 +657,8 @@
 		<value>$INFO[ListItem.Title]</value>
 	</variable>
 	<variable name="TinyInfoDialogPlot">
-		<value condition="Window.IsVisible(DialogFullScreenInfo.xml)">$INFO[VideoPlayer.Season,S,:]$INFO[VideoPlayer.Episode,E, [CR][CR]]$VAR[PlayerDurationMinutes,$LOCALIZE[180]: ,[CR][CR]]$INFO[VideoPlayer.Plot]</value>
-		<value condition="String.IsEqual(ListItem.DBType,Episode)">$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title,,[CR][CR]]$VAR[DurationMinutes,$LOCALIZE[180]: ,[CR][CR]]$INFO[ListItem.Plot]</value>
+		<value condition="Window.IsVisible(DialogFullScreenInfo.xml) + !String.IsEmpty(VideoPlayer.Plot)">$INFO[VideoPlayer.Season,S,:]$INFO[VideoPlayer.Episode,E, [CR][CR]]$VAR[PlayerDurationMinutes,$LOCALIZE[180]: ,[CR][CR]]$INFO[VideoPlayer.Plot]</value>
+		<value condition="String.IsEqual(ListItem.DBType,Episode)">$VAR[ListItemSeasonEpisode]$INFO[ListItem.Title,,[CR][CR]]$VAR[DurationMinutes,$LOCALIZE[180]: ,[CR][CR]]$INFO[ListItem.Plot]</value>
 		<value condition="String.IsEqual(ListItem.DBType,song)">$VAR[DurationMinutes,$LOCALIZE[180]: ,[CR][CR]]$INFO[ListItem.Artist]$INFO[ListItem.Album, - ,[CR][CR]]$INFO[ListItem.Property(Album_Description)]</value>
 		<value condition="String.IsEqual(ListItem.DBType,musicvideo)">$VAR[DurationMinutes,$LOCALIZE[180]: ]</value>
 		<value condition="String.IsEqual(ListItem.DBType,album) + !String.IsEmpty(ListItem.Property(Album_Description))">$INFO[ListItem.Property(Album_Description)]</value>
@@ -626,8 +671,11 @@
 		<value condition="!String.IsEmpty(Container(100).ListItem.Property(Album_Description))">$INFO[Container(100).ListItem.Property(Album_Description)]</value>
 		<value condition="!String.IsEmpty(Container(100).ListItem.Property(Comment))">$INFO[Container(100).ListItem.Property(Comment)]</value>
 	</variable>
+	<variable name="BoxSetItems">
+		<value></value>
+	</variable>
 	<variable name="ListViewPlot">
-		<value condition="String.IsEqual(ListItem.DBType,set) + !String.StartsWith(ListItem.Path,plugin://plugin.video)">$INFO[Window(home).Property(SkinHelper.ListItem.Count),[B]$LOCALIZE[342]: ,[/B][CR]]$INFO[Window(home).Property(SkinHelper.ListItem.ExtendedPlot)]</value>
+		<value condition="String.IsEqual(ListItem.DBType,set)">$INFO[ListItem.Plot,,[CR][CR]]$INFO[Container(2001).ListItemAbsolute(0).Label,$LOCALIZE[31192]:[CR]]$INFO[Container(2001).ListItemAbsolute(0).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(1).Label]$INFO[Container(2001).ListItemAbsolute(1).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(2).Label]$INFO[Container(2001).ListItemAbsolute(2).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(3).Label]$INFO[Container(2001).ListItemAbsolute(3).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(4).Label]$INFO[Container(2001).ListItemAbsolute(4).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(5).Label]$INFO[Container(2001).ListItemAbsolute(5).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(6).Label]$INFO[Container(2001).ListItemAbsolute(6).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(7).Label]$INFO[Container(2001).ListItemAbsolute(7).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(8).Label]$INFO[Container(2001).ListItemAbsolute(8).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(9).Label]$INFO[Container(2001).ListItemAbsolute(9).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(10).Label]$INFO[Container(2001).ListItemAbsolute(10).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(11).Label]$INFO[Container(2001).ListItemAbsolute(11).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(12).Label]$INFO[Container(2001).ListItemAbsolute(12).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(13).Label]$INFO[Container(2001).ListItemAbsolute(13).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(14).Label]$INFO[Container(2001).ListItemAbsolute(14).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(15).Label]$INFO[Container(2001).ListItemAbsolute(15).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(16).Label]$INFO[Container(2001).ListItemAbsolute(16).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(17).Label]$INFO[Container(2001).ListItemAbsolute(17).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(18).Label]$INFO[Container(2001).ListItemAbsolute(18).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(19).Label]$INFO[Container(2001).ListItemAbsolute(19).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(20).Label]$INFO[Container(2001).ListItemAbsolute(20).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(21).Label]$INFO[Container(2001).ListItemAbsolute(21).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(22).Label]$INFO[Container(2001).ListItemAbsolute(22).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(23).Label]$INFO[Container(2001).ListItemAbsolute(23).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(24).Label]$INFO[Container(2001).ListItemAbsolute(24).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(25).Label]$INFO[Container(2001).ListItemAbsolute(25).Year, (,)[CR]]</value>
 		<value condition="Window.IsVisible(tvrecordings)">$INFO[ListItem.Plot]</value>
 		<value condition="!String.IsEmpty(ListItem.Property(Album_Description))">$INFO[ListItem.Property(Album_Description)]</value>
 		<value condition="!String.IsEmpty(ListItem.Property(Artist_Description))">$INFO[ListItem.Property(Artist_Description)]</value>
@@ -635,6 +683,7 @@
 		<value>$INFO[ListItem.Tagline,[B],[/B][CR][CR]]$INFO[ListItem.Plot]</value>
 	</variable>
 	<variable name="SetViewPlot">
+		<value condition="String.IsEqual(ListItem.DBType,set)">$INFO[ListItem.Plot,,[CR][CR]]$INFO[Container(2001).ListItemAbsolute(0).Label,$LOCALIZE[31192]: ]$INFO[Container(2001).ListItemAbsolute(0).Year, (,)]$INFO[Container(2001).ListItemAbsolute(1).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(1).Year, (,)]$INFO[Container(2001).ListItemAbsolute(2).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(2).Year, (,)]$INFO[Container(2001).ListItemAbsolute(3).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(3).Year, (,)]$INFO[Container(2001).ListItemAbsolute(4).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(4).Year, (,)]$INFO[Container(2001).ListItemAbsolute(5).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(5).Year, (,)]$INFO[Container(2001).ListItemAbsolute(6).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(6).Year, (,)]$INFO[Container(2001).ListItemAbsolute(7).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(7).Year, (,)]$INFO[Container(2001).ListItemAbsolute(8).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(8).Year, (,)]$INFO[Container(2001).ListItemAbsolute(9).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(9).Year, (,)]$INFO[Container(2001).ListItemAbsolute(10).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(10).Year, (,)]$INFO[Container(2001).ListItemAbsolute(11).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(11).Year, (,)]$INFO[Container(2001).ListItemAbsolute(12).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(12).Year, (,)]$INFO[Container(2001).ListItemAbsolute(13).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(13).Year, (,)]$INFO[Container(2001).ListItemAbsolute(14).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(14).Year, (,)]$INFO[Container(2001).ListItemAbsolute(15).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(15).Year, (,)]$INFO[Container(2001).ListItemAbsolute(16).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(16).Year, (,)]$INFO[Container(2001).ListItemAbsolute(17).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(17).Year, (,)]$INFO[Container(2001).ListItemAbsolute(18).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(18).Year, (,)]$INFO[Container(2001).ListItemAbsolute(19).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(19).Year, (,)]$INFO[Container(2001).ListItemAbsolute(20).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(20).Year, (,)]$INFO[Container(2001).ListItemAbsolute(21).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(21).Year, (,)]$INFO[Container(2001).ListItemAbsolute(22).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(22).Year, (,)]$INFO[Container(2001).ListItemAbsolute(23).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(23).Year, (,)]$INFO[Container(2001).ListItemAbsolute(24).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(24).Year, (,)]$INFO[Container(2001).ListItemAbsolute(25).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(25).Year, (,)]</value>
 		<value condition="!String.IsEmpty(ListItem.Plot)">$INFO[ListItem.Tagline,[B],[/B][CR]]$INFO[ListItem.Plot]</value>
 		<value condition="!String.IsEmpty(Window(home).Property(SkinHelper.ListItem.Plot))">$INFO[Window(home).Property(SkinHelper.ListItem.Plot)]</value>
 		<value>$LOCALIZE[19055]</value>
@@ -805,15 +854,19 @@
 		<value condition="!Control.HasFocus(607)">white</value>
 	</variable>
 	<variable name="PlayerFullLabel">
+		<value condition="String.Contains(Player.Art(thumb),KodiCinemaMode) + String.Contains(VideoPlayer.Title,Trailer)">$LOCALIZE[31255] - $INFO[VideoPlayer.Title]</value>
+		<value condition="String.Contains(Player.Art(thumb),KodiCinemaMode)">$LOCALIZE[31255]</value>
 		<value condition="String.IsEqual(VideoPlayer.Title,stream) + String.Contains(Player.Filenameandpath,/emby/videos/)">$LOCALIZE[31186]</value>
 		<value condition="!String.IsEmpty(MusicPlayer.Title) + !String.Contains(MusicPlayer.Title,pvr.hts_)">$INFO[MusicPlayer.Artist,, - ]$INFO[MusicPlayer.Tracknumber,,. ]$INFO[MusicPlayer.Title]</value>
 		<value condition="!String.IsEmpty(MusicPlayer.Title)">$INFO[MusicPlayer.Artist]</value>
+		<value condition="VideoPlayer.Content(livetv) + Window.IsVisible(shutdownmenu)">$INFO[VideoPlayer.Channelname,, - ]$INFO[VideoPlayer.Title]</value>
 		<value condition="VideoPlayer.Content(livetv)">$INFO[VideoPlayer.Title]</value>
-		<value condition="!String.IsEmpty(VideoPlayer.TVShowTitle) + [!VideoPlayer.IsFullscreen | Window.IsVisible(shutdownmenu)]">$INFO[VideoPlayer.TVShowTitle,, - ]$INFO[VideoPlayer.Season,S,:]$INFO[VideoPlayer.Episode,E, - ]$INFO[VideoPlayer.Title]</value>
-		<value condition="!String.IsEmpty(VideoPlayer.TVShowTitle)">$INFO[VideoPlayer.Season,S,:]$INFO[VideoPlayer.Episode,E, - ]$INFO[VideoPlayer.Title]</value>
+		<value condition="!String.IsEmpty(VideoPlayer.TVShowTitle) + [!VideoPlayer.IsFullscreen | Window.IsVisible(shutdownmenu)]">$INFO[VideoPlayer.TVShowTitle,, - ]$VAR[PlayerSeasonEpisode]$INFO[VideoPlayer.Title]</value>
+		<value condition="!String.IsEmpty(VideoPlayer.TVShowTitle)">$VAR[PlayerSeasonEpisode]$INFO[VideoPlayer.Title]</value>
 		<value>$INFO[VideoPlayer.Title]</value>
 	</variable>
 	<variable name="PlayerTitleLabel">
+		<value condition="String.Contains(Player.Art(thumb),KodiCinemaMode)">$LOCALIZE[31255]</value>
 		<value condition="String.IsEqual(VideoPlayer.Filename,stream) + String.Contains(VideoPlayer.Filenameandpath,/emby/videos/)">$LOCALIZE[31186]</value>
 		<value condition="!String.IsEmpty(MusicPlayer.Title)">$INFO[MusicPlayer.Title]</value>
 		<value condition="!String.IsEmpty(VideoPlayer.TVShowTitle)">$INFO[VideoPlayer.TVShowTitle]</value>
@@ -824,6 +877,12 @@
 		<value condition="!String.IsEmpty(Player.Art(tvshow.clearlogo))">$INFO[Player.Art(tvshow.clearlogo)]</value>
 		<value condition="!String.IsEmpty(Player.Art(clearlogo))">$INFO[Player.Art(clearlogo)]</value>
 	</variable>
+	<variable name="MusicPlayerCoverTitle">
+		<value condition="!String.IsEmpty(MusicPlayer.Album)">$INFO[MusicPlayer.Album]</value>
+		<value condition="!String.IsEmpty(MusicPlayer.AlbumArtist)">$INFO[MusicPlayer.AlbumArtist]</value>
+		<value condition="!String.IsEmpty(MusicPlayer.Artist)">$INFO[MusicPlayer.Artist]</value>
+		<value>$INFO[MusicPlayer.Title]</value>
+	</variable>
 	<variable name="PlayerTimeLabels">>
 		<value condition="Window.IsVisible(fullscreeninfo)">$VAR[PlayerTime]$VAR[PlayerDuration, / ]</value>
 		<value>$VAR[PlayerTime]$VAR[PlayerDuration, / ]$VAR[PlayerFinishTime,  -  $LOCALIZE[31037] ]</value>
@@ -831,14 +890,15 @@
 	<variable name="PlayerIcon">
 		<value condition="!String.IsEmpty(Player.Art(tvshow.poster))">$INFO[Player.Art(tvshow.poster)]</value>
 		<value condition="!String.IsEmpty(Player.Art(poster))">$INFO[Player.Art(poster)]</value>
+		<value condition="!String.IsEmpty(Player.Icon) + !String.StartsWith(Player.Icon,default)">$INFO[Player.Icon]</value>
 		<value condition="!String.IsEmpty(VideoPlayer.Cover) + !String.StartsWith(VideoPlayer.Cover,default)">$INFO[VideoPlayer.Cover]</value>
 		<value condition="!String.IsEmpty(MusicPlayer.Cover) + !String.StartsWith(MusicPlayer.Cover,default)">$INFO[MusicPlayer.Cover]</value>
 	</variable>
 	<variable name="PlayerCastContent">
 		<value condition="!String.IsEmpty(Window(home).Property(plugin.video.embycon-currently_playing_id))">plugin://plugin.video.embycon?mode=WIDGET_CONTENT_CAST&amp;id=$INFO[Window(home).Property(plugin.video.embycon-currently_playing_id)]</value>
-		<value condition="!String.IsEmpty(VideoPlayer.DBID) + VideoPlayer.Content(episodes)">plugin://plugin.get.cast?mode=title&amp;&amp;dbtype=tvshow&amp;&amp;dbinfo=$INFO[VideoPlayer.TVShowTitle]</value>
-		<value condition="!String.IsEmpty(VideoPlayer.DBID) + !String.IsEqual(VideoPlayer.DBID,0) + !VideoPlayer.Content(episodes)">plugin://plugin.get.cast?mode=dbid&amp;&amp;dbtype=movie&amp;&amp;dbinfo=$INFO[VideoPlayer.DBID]</value>
-		<value condition="!String.IsEmpty(VideoPlayer.DBID) + String.IsEqual(VideoPlayer.DBID,0) + !VideoPlayer.Content(episodes)">plugin://plugin.get.cast?mode=title&amp;&amp;dbtype=movie&amp;&amp;dbinfo=$INFO[VideoPlayer.Title]</value>
+		<value condition="!String.IsEmpty(VideoPlayer.DBID) + VideoPlayer.Content(episodes)">plugin://script.embuary.helper?info=getcast&amp;type=tvshow&amp;title='$ESCINFO[VideoPlayer.TVShowTitle]'</value>
+		<value condition="!String.IsEmpty(VideoPlayer.DBID) + !String.IsEqual(VideoPlayer.DBID,0) + !VideoPlayer.Content(episodes)">plugin://script.embuary.helper?info=getcast&amp;type=movie&amp;dbid=$INFO[VideoPlayer.DBID]</value>
+		<value condition="!String.IsEmpty(VideoPlayer.DBID) + String.IsEqual(VideoPlayer.DBID,0) + !VideoPlayer.Content(episodes)">plugin://script.embuary.helper?info=getcast&amp;type=movie&amp;title='$ESCINFO[VideoPlayer.Title]'</value>
 	</variable>
 	<variable name="PlayerSimilarContent">
 		<value condition="VideoPlayer.Content(episodes)">plugin://script.skin.helper.widgets/?action=similarshows&amp;imdbid=$INFO[VideoPlayer.IMDBNumber]</value>
@@ -857,6 +917,12 @@
 	<variable name="PlayerSeekStepIcon">
 		<value condition="[!String.IsEmpty(Player.SeekOffset) + !String.Contains(Player.SeekOffset,-)] | [!String.IsEmpty(Player.SeekStepSize) + !String.Contains(Player.SeekStepSize,-)]"></value>
 		<value condition="[!String.IsEmpty(Player.SeekOffset) + String.Contains(Player.SeekOffset,-)] | [!String.IsEmpty(Player.SeekStepSize) + String.Contains(Player.SeekStepSize,-)]"></value>
+		<value condition="!String.IsEmpty(Player.Chapter)"></value>
+	</variable>
+	<variable name="TopPlayerSeekStepLabel">
+		<value condition="!String.IsEmpty(Player.SeekStepSize)">$INFO[Player.SeekStepSize]</value>
+		<value condition="!String.IsEmpty(Player.SeekOffset)">$INFO[Player.SeekOffset]</value>
+		<value condition="!String.IsEmpty(Player.Chapter)">$INFO[Player.Chapter,$LOCALIZE[21396] ]</value>
 	</variable>
 	<variable name="PlayerSeekStepLabel">
 		<value condition="!String.IsEmpty(PVR.EpgEventSeekTime) + VideoPlayer.HasEpg">$INFO[PVR.EpgEventSeekTime]</value>
@@ -883,7 +949,7 @@
 		<value condition="Playlist.IsRepeat"></value>
 	</variable>
 	<variable name="PlaylistRepeatButtonColor">
-		<value condition="Playlist.IsRepeatOne | Playlist.IsRepeat | Control.HasFocus(613)">emby</value>
+		<value condition="Playlist.IsRepeatOne | Playlist.IsRepeat | Control.HasFocus(613)">$VAR[AccentColor]</value>
 	</variable>
 	<variable name="VideoHWDecoder">
 		<value condition="Player.Process(videohwdecoder)">HW</value>
@@ -906,28 +972,11 @@
 		<value>$LOCALIZE[31042] &amp; $LOCALIZE[19021]</value>
 	</variable>
 	<variable name="SettingHelpText">
-		<value condition="ControlGroup(100).HasFocus(101)">$LOCALIZE[31105]</value>
-		<value condition="ControlGroup(100).HasFocus(102)">$LOCALIZE[31106]</value>
-		<value condition="ControlGroup(100).HasFocus(103)">$LOCALIZE[31147]</value>
-		<value condition="ControlGroup(100).HasFocus(104)">$LOCALIZE[31153]</value>
-		<value condition="ControlGroup(100).HasFocus(105)">$LOCALIZE[31153]</value>
-		<value condition="ControlGroup(100).HasFocus(106)">$LOCALIZE[31153]</value>
-		<value condition="ControlGroup(100).HasFocus(107)">$LOCALIZE[31223]</value>
-	</variable>
-	<variable name="SkinSettingsHeadline">
-		<value condition="ControlGroup(100).HasFocus(101)">$LOCALIZE[480]</value>
-		<value condition="ControlGroup(100).HasFocus(102)">$LOCALIZE[10000]</value>
-		<value condition="ControlGroup(100).HasFocus(103)">$LOCALIZE[31134]</value>
-		<value condition="ControlGroup(100).HasFocus(104)">$LOCALIZE[31173]</value>
-		<value condition="ControlGroup(100).HasFocus(105)">$LOCALIZE[31172]</value>
-		<value condition="ControlGroup(100).HasFocus(106)">$LOCALIZE[31174]</value>
-		<value condition="ControlGroup(100).HasFocus(106)">$LOCALIZE[31224]</value>
-	</variable>
-	<variable name="NextUpThumb">
-		<value condition="!String.IsEmpty(Control.GetLabel(4002))">$INFO[Control.GetLabel(4002)]</value>
-		<value condition="!String.IsEmpty(Control.GetLabel(4007))">$INFO[Control.GetLabel(4007)]</value>
-		<value condition="!String.IsEmpty(Control.GetLabel(3008))">$INFO[Control.GetLabel(3008)]</value>
-		<value condition="!String.IsEmpty(Control.GetLabel(3005))">$INFO[Control.GetLabel(3005)]</value>
+		<value condition="ControlGroup(100).HasFocus(101)">$LOCALIZE[31106]</value>
+		<value condition="ControlGroup(100).HasFocus(102)">$LOCALIZE[31229]</value>
+		<value condition="ControlGroup(100).HasFocus(103)">$LOCALIZE[31105]</value>
+		<value condition="ControlGroup(100).HasFocus(104)">$LOCALIZE[31147]</value>
+		<value condition="ControlGroup(100).HasFocus(105)">$LOCALIZE[31223]</value>
 	</variable>
 	<variable name="BackgroundAlphaLabel">
 		<value condition="!String.IsEmpty(Skin.String(BackgroundAlpha.label))">$INFO[Skin.String(BackgroundAlpha.label)]</value>
@@ -958,8 +1007,8 @@
 	<variable name="SortLetterLabel">
 		<value condition="Window.IsVisible(MyPlaylist.xml)">$INFO[Container(50).CurrentItem]</value>
 		<value condition="Window.IsVisible(DialogPVRChannelsOSD.xml)">$INFO[Container(11).ListItem.ChannelNumberLabel]</value>
-		<value condition="Container.Content(episodes) + !Window.IsVisible(pictures)">$INFO[ListItem.Episode]</value>
-		<value condition="Container.Content(seasons)">$INFO[ListItem.Season]</value>
+		<value condition="Container.Content(episodes) + !String.IsEmpty(ListItem.Episode)">$INFO[ListItem.Episode]</value>
+		<value condition="Container.Content(seasons) + !String.IsEmpty(ListItem.Season)">$INFO[ListItem.Season]</value>
 		<value condition="Window.IsVisible(MyPVRChannels.xml)">$INFO[ListItem.ChannelNumberLabel]</value>
 		<value>$INFO[ListItem.SortLetter]</value>
 	</variable>
@@ -974,5 +1023,107 @@
 	<variable name="SearchProvider">
 		<value condition="Skin.HasSetting(UseGlobalsearch)">Globalsearch</value>
 		<value>Embuary</value>
+	</variable>
+	<variable name="CastSearchProvider">
+		<value condition="Skin.HasSetting(DoNotUseExtendedInfo)">$LOCALIZE[31237]</value>
+		<value>ExtendedInfo</value>
+	</variable>
+	<variable name="EpisodeListLabel">
+		<value condition="String.IsEqual(Container.Foldername,$LOCALIZE[20366]) | !String.Contains(Container.Foldername,$LOCALIZE[20373])">$VAR[ListItemSeasonEpisode]$INFO[ListItem.Title]</value>
+		<value condition="String.IsEmpty(Container.ShowTitle)">$INFO[ListItem.TvShowTitle,, - ]$VAR[ListItemSeasonEpisode]$INFO[ListItem.Title]</value>
+		<value>$INFO[ListItem.Episode,,. ]$INFO[ListItem.Title]</value>
+	</variable>
+	<variable name="SelectDialogIcon">
+		<value condition="ListItem.IsParent | String.IsEqual(ListItem.Label,..)">DefaultFolderBack.png</value>
+		<value condition="!String.IsEmpty(ListItem.Icon)">$INFO[ListItem.Icon]</value>
+		<value condition="ListItem.IsFolder">DefaultFolder.png</value>
+		<value>DefaultAddon.png</value>
+	</variable>
+	<variable name="DownloadSubtitlesFlags">
+		<value condition="!String.IsEqual(ListItem.property(sync),false) + !String.IsEqual(ListItem.property(hearing_imp),false)">[COLOR $VAR[AccentColor]]SYNC CC[/COLOR]</value>
+		<value condition="!String.IsEqual(ListItem.property(sync),false)">[COLOR $VAR[AccentColor]]SYNC[/COLOR]</value>
+		<value condition="!String.IsEqual(ListItem.property(hearing_imp),false)">[COLOR $VAR[AccentColor]]CC[/COLOR]</value>
+	</variable>
+	<variable name="ListItemSeasonEpisode">
+		<value condition="String.StartsWith(ListItem.Episode,S)">$INFO[ListItem.Episode,, - ]</value>
+		<value>$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]</value>
+	</variable>
+	<variable name="PlayerSeasonEpisode">
+		<value condition="String.StartsWith(VideoPlayer.Episode,S)">$INFO[VideoPlayer.Episode,, - ]</value>
+		<value>$INFO[VideoPlayer.Season,S,:]$INFO[VideoPlayer.Episode,E, - ]</value>
+	</variable>
+	<variable name="AvailableUpdates">
+		<value condition="Integer.IsEqual(Container(2000).NumItems,2)">1</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,3)">2</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,4)">3</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,5)">4</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,6)">5</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,7)">6</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,8)">7</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,9)">8</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,10)">9</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,11)">10</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,12)">11</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,13)">12</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,14)">13</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,15)">14</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,16)">15</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,17)">16</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,18)">17</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,19)">18</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,20)">19</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,21)">20</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,22)">21</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,23)">22</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,24)">23</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,25)">24</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,26)">25</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,27)">26</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,28)">27</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,29)">28</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,30)">29</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,31)">30</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,32)">31</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,33)">32</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,34)">33</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,35)">34</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,36)">35</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,37)">36</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,38)">37</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,39)">38</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,40)">39</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,41)">40</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,42)">41</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,43)">42</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,44)">43</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,45)">44</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,46)">45</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,47)">46</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,48)">47</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,49)">48</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,50)">49</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,51)">50</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,52)">51</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,53)">52</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,54)">53</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,55)">54</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,56)">55</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,57)">56</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,58)">57</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,59)">58</value>
+		<value condition="Integer.IsEqual(Container(2000).NumItems,60)">59</value>
+		<value condition="Integer.IsGreater(Container(2000).NumItems,60)">60&#x3C;</value>
+	</variable>
+	<variable name="PlaylistMainLabel">
+		<value condition="!String.IsEmpty(ListItem.TvShowTitle)">$INFO[ListItem.TvShowTitle]</value>
+		<value>$INFO[ListItem.Label]</value>
+	</variable>
+	<variable name="PlaylistSubLabel">
+		<value condition="!String.IsEmpty(ListItem.Episode)">$VAR[ListItemSeasonEpisode]$INFO[ListItem.Title]</value>
+		<value condition="Window.IsVisible(musicplaylist)">$INFO[ListItem.AlbumArtist]$INFO[ListItem.Album, - ]</value>
+	</variable>
+	<variable name="PlaylistThumbLabel">
+		<value condition="Window.IsVisible(musicplaylist)">$INFO[ListItem.AlbumArtist]</value>
+		<value>$INFO[ListItem.Title]</value>
 	</variable>
 </includes>

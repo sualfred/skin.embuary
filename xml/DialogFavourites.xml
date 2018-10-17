@@ -1,25 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?><!--450-->
 <window>
 	<defaultcontrol always="true">10</defaultcontrol>
-	<onload condition="Integer.IsGreater(Container(450).NumItems,0)">SetFocus(450)</onload>
-	<onload condition="!Integer.IsGreater(Container(450).NumItems,0) + Integer.IsGreater(Container(201).NumItems,0)">SetFocus(201)</onload>
-	<onload condition="!Integer.IsGreater(Container(450).NumItems,0) + !Integer.IsGreater(Container(201).NumItems,0) + Integer.IsGreater(Container(202).NumItems,0)">SetFocus(202)</onload>
-	<onload condition="!Integer.IsGreater(Container(450).NumItems,0) + !Integer.IsGreater(Container(201).NumItems,0) + !Integer.IsGreater(Container(202).NumItems,0) + Integer.IsGreater(Container(203).NumItems,0)">SetFocus(203)</onload>
 	<backgroundcolor>background</backgroundcolor>
 	<onunload condition="!String.IsEmpty(Window(home).Property(NextWindow))">ActivateWindow(videos,$INFO[Window(home).Property(NextWindow)])</onunload>
 	<onunload condition="!String.IsEmpty(Window(home).Property(PlayItem))">PlayMedia($INFO[Window(home).Property(PlayItem)])</onunload>
 	<onunload>ClearProperty(NextWindow,home)</onunload>
 	<onunload>ClearProperty(PlayItem,home)</onunload>
-	<menucontrol>6666</menucontrol>
-	<include>PropertyIncludes</include>
+	<include content="PropertyIncludes">
+		<param name="ShowHeader" value="true"/>
+	</include>
 	<controls>
-		<include>Background</include>
+		<!-- background -->
+		<include content="Background">
+			<param name="forced_visible" value="true"/>
+		</include>
+		<!-- favs -->
 		<control type="grouplist" id="10">
 			<include>Window_OpenClose</include>
 			<defaultcontrol>10000</defaultcontrol>
 			<width>100%</width>
 			<height>100%</height>
-			<itemgap>-160</itemgap>
+			<itemgap>-80</itemgap>
 			<orientation>vertical</orientation>
 			<usecontrolcoords>true</usecontrolcoords>
 			<include>ScrollTime</include>
@@ -28,17 +29,18 @@
 				<param name="id" value="101"/>
 			</include>
 			<!-- local favs -->
-			<include content="HomeSquareWidget">
+			<include content="SquareWidget">
 				<param name="id" value="450"/>
-				<param name="onup" value="6666"/>
+				<param name="onup" value="noop"/>
 				<param name="ondown" value="201"/>
+				<param name="height" value="476"/>
 				<param name="layout" value="SquareFavourits"/>
 				<param name="mainlabel" value="$INFO[ListItem.Label]"/>
 				<param name="headline" value="$LOCALIZE[31063]"/>
 				<param name="use_custom_content" value="false"/>
 			</include>
 			<!-- emby movies -->
-			<include content="HomePosterWidget">
+			<include content="PosterWidget">
 				<param name="visible" value="System.HasAddon(plugin.video.emby)"/>
 				<param name="id" value="201"/>
 				<param name="onup" value="450"/>
@@ -49,9 +51,9 @@
 				<param name="use_custom_onclick" value="true"/>
 				<param name="onclick" value="SetProperty(PlayItem,$INFO[ListItem.FileNameAndPath],home)"/>
 				<param name="onclick2" value="close"/>
-				<param name="content" value="library://video/emby_Favorite movies.xml"/>
+				<param name="content" value="$VAR[Emby.FavMovies]"/>
 			</include>
-			<include content="HomePosterWidget">
+			<include content="PosterWidget">
 				<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
 				<param name="id" value="202"/>
 				<param name="onup" value="201"/>
@@ -66,7 +68,7 @@
 				<param name="content" value="$VAR[EmbyCon.FavMovies]"/>
 			</include>
 			<!-- emby shows -->
-			<include content="HomePosterWidget">
+			<include content="PosterWidget">
 				<param name="visible" value="System.HasAddon(plugin.video.emby)"/>
 				<param name="id" value="203"/>
 				<param name="onup" value="202"/>
@@ -77,9 +79,9 @@
 				<param name="use_custom_onclick" value="true"/>
 				<param name="onclick" value="SetProperty(NextWindow,$INFO[ListItem.FolderPath],home)"/>
 				<param name="onclick2" value="close"/>
-				<param name="content" value="library://video/emby_Favorite tvshows.xml"/>
+				<param name="content" value="$VAR[Emby.FavShows]"/>
 			</include>
-			<include content="HomePosterWidget">
+			<include content="PosterWidget">
 				<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
 				<param name="id" value="204"/>
 				<param name="onup" value="203"/>
@@ -94,27 +96,27 @@
 				<param name="content" value="$VAR[EmbyCon.FavTVShows]"/>
 			</include>
 			<!-- emby episodes -->
-			<include content="HomeWideWidget">
+			<include content="WideWidget">
 				<param name="visible" value="System.HasAddon(plugin.video.emby)"/>
 				<param name="id" value="205"/>
 				<param name="onup" value="204"/>
 				<param name="ondown" value="206"/>
 				<param name="headline" value="$LOCALIZE[31065]"/>
 				<param name="sublabel" value="$INFO[ListItem.TvShowTitle]"/>
-				<param name="mainlabel" value="$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title]"/>
+				<param name="mainlabel" value="$VAR[ListItemSeasonEpisode]$INFO[ListItem.Title]"/>
 				<param name="use_custom_onclick" value="true"/>
 				<param name="onclick" value="SetProperty(PlayItem,$INFO[ListItem.FileNameAndPath],home)"/>
 				<param name="onclick2" value="close"/>
-				<param name="content" value="library://video/emby_Favorite episodes.xml"/>
+				<param name="content" value="$VAR[Emby.FavEpisodes]"/>
 			</include>
-			<include content="HomeWideWidget">
+			<include content="WideWidget">
 				<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
 				<param name="id" value="206"/>
 				<param name="onup" value="205"/>
 				<param name="ondown" value="207"/>
 				<param name="headline" value="$LOCALIZE[31065]$VAR[EmbyConLabel]"/>
 				<param name="sublabel" value="$INFO[ListItem.TvShowTitle]"/>
-				<param name="mainlabel" value="$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.Title]"/>
+				<param name="mainlabel" value="$VAR[ListItemSeasonEpisode]$INFO[ListItem.Title]"/>
 				<param name="sortby" value="label"/>
 				<param name="use_custom_onclick" value="true"/>
 				<param name="onclick" value="SetProperty(PlayItem,$INFO[ListItem.FileNameAndPath],home)"/>
@@ -122,7 +124,7 @@
 				<param name="content" value="$VAR[EmbyCon.FavEpisodes]"/>
 			</include>
 			<!-- Fav artist -->
-			<include content="HomeSquareWidget">
+			<include content="SquareWidget">
 				<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
 				<param name="id" value="207"/>
 				<param name="onup" value="206"/>
@@ -138,7 +140,7 @@
 				<param name="content" value="$VAR[EmbyCon.FavArtists]"/>
 			</include>
 			<!-- fav album -->
-			<include content="HomeSquareWidget">
+			<include content="SquareWidget">
 				<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
 				<param name="id" value="208"/>
 				<param name="onup" value="207"/>
@@ -154,7 +156,7 @@
 				<param name="content" value="$VAR[EmbyCon.FavAlbums]"/>
 			</include>
 			<!-- fav song -->
-			<include content="HomeSquareWidget">
+			<include content="SquareWidget">
 				<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
 				<param name="id" value="209"/>
 				<param name="onup" value="208"/>
@@ -174,6 +176,7 @@
 		<!-- header bar -->
 		<include content="HeaderBar">
 			<param name="id">10</param>
+			<param name="header_label">$LOCALIZE[1036]</param>
 		</include>
 		<!-- side panel -->
 		<include content="SidePanel">

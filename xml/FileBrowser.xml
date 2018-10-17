@@ -4,19 +4,14 @@
 	<onload condition="Control.IsVisible(451)">SetFocus(451)</onload>
 	<include>PropertyIncludes</include>
 	<controls>
-		<control type="image">
-			<include>Visible_Fade</include>
-			<include>FullscreenDimensions</include>
-			<texture colordiffuse="background">common/white.jpg</texture>
-			<visible>![VideoPlayer.IsFullscreen | Window.IsVisible(visualisation)] + !Window.IsVisible(DialogSlider.xml)</visible>
-		</control>
-		<control type="image">
-			<include>Visible_Fade</include>
-			<include>FullscreenDimensions</include>
-			<texture colordiffuse="background_diffuse">common/white.jpg</texture>
-			<visible>[VideoPlayer.IsFullscreen | Window.IsVisible(visualisation)] + !Window.IsVisible(DialogSlider.xml)</visible>
-		</control>
+		<include content="DiffuseMask">
+			<param name="color">background_diffuse</param>
+			<param name="visible">!Window.IsVisible(mediasource) + !Window.IsVisible(osdsubtitlesettings) + ![Window.IsVisible(DialogSettings.xml) + Window.IsVisible(profilesettings)]</param>
+		</include>
 		<control type="grouplist">
+			<visible>!Window.IsVisible(busydialog)</visible>
+			<visible>!Window.IsVisible(DialogSettings.xml) | Window.IsVisible(osdsubtitlesettings) | Window.IsVisible(profilesettings)</visible>
+			<include>Visible_PopupOpenClose</include>
 			<include>Dialog_PopupOpenClose</include>
 			<centerleft>50%</centerleft>
 			<centertop>50%</centertop>
@@ -37,23 +32,10 @@
 					<font>Reg24</font>
 					<aligny>center</aligny>
 					<textoffsetx>5</textoffsetx>
+					<textcolor>text_headline</textcolor>
 					<label>$LOCALIZE[10126]</label>
 				</control>
-				<control type="image">
-					<width>100%</width>
-					<top>45</top>
-					<height>2</height>
-					<texture colordiffuse="lightgrey">common/white.jpg</texture>
-					<aspectratio>stretch</aspectratio>
-				</control>
-				<control type="image">
-					<width>100%</width>
-					<top>45</top>
-					<height>2</height>
-					<texture colordiffuse="emby">common/white.jpg</texture>
-					<aspectratio>stretch</aspectratio>
-					<include>WindowOpen_GreenBar</include>
-				</control>
+				<include>GreenBar</include>
 			</control>
 			<control type="group">
 				<visible>Control.IsVisible(451)</visible>
@@ -65,33 +47,21 @@
 					<font>Reg24</font>
 					<aligny>center</aligny>
 					<textoffsetx>5</textoffsetx>
+					<textcolor>text_headline</textcolor>
 					<label>$LOCALIZE[13511]</label>
 				</control>
-				<control type="image">
-					<width>100%</width>
-					<top>45</top>
-					<height>2</height>
-					<texture colordiffuse="lightgrey">common/white.jpg</texture>
-					<aspectratio>stretch</aspectratio>
-				</control>
-				<control type="image">
-					<width>100%</width>
-					<top>45</top>
-					<height>2</height>
-					<texture colordiffuse="emby">common/white.jpg</texture>
-					<aspectratio>stretch</aspectratio>
-					<include>WindowOpen_GreenBar</include>
-				</control>
+				<include>GreenBar</include>
 			</control>
 			<!-- list -->
 			<control type="group">
+				<visible>Control.IsVisible(450)</visible>
 				<animation effect="slide" start="0,0" end="150,0" condition="true">Conditional</animation>
 				<width>800</width>
 				<visible>Control.IsVisible(450)</visible>
 				<height>470</height>
 				<control type="image">
 					<height>470</height>
-					<texture colordiffuse="thumb_background">common/white.jpg</texture>
+					<texture colordiffuse="panel_background">common/white.jpg</texture>
 					<aspectratio>stretch</aspectratio>
 				</control>
 				<control type="list" id="450">
@@ -117,6 +87,7 @@
 							<height>50</height>
 							<aligny>center</aligny>
 							<font>Reg24</font>
+							<textcolor>panel_textcolor</textcolor>
 							<label>$INFO[ListItem.Label]</label>
 						</control>
 					</itemlayout>
@@ -124,7 +95,7 @@
 						<control type="image">
 							<width>100%</width>
 							<height>50</height>
-							<texture colordiffuse="list_hover">common/white.jpg</texture>
+							<texture colordiffuse="panel_focus">common/white.jpg</texture>
 							<visible>Control.HasFocus(450)</visible>
 						</control>
 						<control type="image">
@@ -141,6 +112,7 @@
 							<height>50</height>
 							<aligny>center</aligny>
 							<font>Reg24</font>
+							<textcolor>panel_textcolor</textcolor>
 							<label>$INFO[ListItem.Label]</label>
 						</control>
 					</focusedlayout>
@@ -153,7 +125,7 @@
 					<orientation>vertical</orientation>
 					<showonepage>false</showonepage>
 					<texturesliderbackground colordiffuse="00ffffff">common/white.jpg</texturesliderbackground>
-					<texturesliderbar colordiffuse="softgrey">common/white.jpg</texturesliderbar>
+					<texturesliderbar colordiffuse="scrollbar_slider">common/white.jpg</texturesliderbar>
 				</control>
 			</control>
 			<!-- list thumbs -->
@@ -164,14 +136,14 @@
 					<height>470</height>
 					<left>0</left>
 					<right>350</right>
-					<texture colordiffuse="thumb_background">common/white.jpg</texture>
+					<texture colordiffuse="panel_background">common/white.jpg</texture>
 					<aspectratio>stretch</aspectratio>
 				</control>
 				<control type="image">
 					<height>470</height>
 					<right>0</right>
 					<left>765</left>
-					<texture colordiffuse="thumb_background">common/white.jpg</texture>
+					<texture colordiffuse="panel_background">common/white.jpg</texture>
 					<aspectratio>stretch</aspectratio>
 				</control>
 				<control type="image">
@@ -207,6 +179,7 @@
 							<height>50</height>
 							<aligny>center</aligny>
 							<font>Reg24</font>
+							<textcolor>panel_textcolor</textcolor>
 							<label>$INFO[ListItem.Label]</label>
 						</control>
 					</itemlayout>
@@ -214,7 +187,7 @@
 						<control type="image">
 							<width>100%</width>
 							<height>50</height>
-							<texture colordiffuse="list_hover">common/white.jpg</texture>
+							<texture colordiffuse="panel_focus">common/white.jpg</texture>
 							<visible>Control.HasFocus(451)</visible>
 						</control>
 						<control type="image">
@@ -231,6 +204,7 @@
 							<height>50</height>
 							<aligny>center</aligny>
 							<font>Reg24</font>
+							<textcolor>panel_textcolor</textcolor>
 							<label>$INFO[ListItem.Label]</label>
 						</control>
 					</focusedlayout>
@@ -243,7 +217,7 @@
 					<orientation>vertical</orientation>
 					<showonepage>false</showonepage>
 					<texturesliderbackground colordiffuse="00ffffff">common/white.jpg</texturesliderbackground>
-					<texturesliderbar colordiffuse="softgrey">common/white.jpg</texturesliderbar>
+					<texturesliderbar colordiffuse="scrollbar_slider">common/white.jpg</texturesliderbar>
 				</control>
 			</control>
 			<!-- Button -->

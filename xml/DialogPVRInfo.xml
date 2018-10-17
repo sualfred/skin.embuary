@@ -26,13 +26,13 @@
 					<align>top</align>
 					<itemgap>0</itemgap>
 					<control type="label">
-						<height>60</height>
+						<height>55</height>
 						<label>$INFO[ListItem.Title]</label>
 						<font>Reg37</font>
 						<aligny>top</aligny>
 					</control>
 					<control type="label">
-						<height>60</height>
+						<height>55</height>
 						<label>$VAR[ListItemEpisodeName]</label>
 						<font>Reg37</font>
 						<aligny>top</aligny>
@@ -45,12 +45,13 @@
 					</include>
 					<!-- buttons -->
 					<control type="grouplist" id="100">
-						<height>75</height>
+						<height>70</height>
 						<orientation>horizontal</orientation>
 						<itemgap>5</itemgap>
 						<onleft>900</onleft>
 						<onright>noop</onright>
 						<control type="button" id="101">
+							<visible>!Control.IsVisible(5)</visible>
 							<include>LightGreyButton</include>
 							<label>$LOCALIZE[15067]</label>
 							<onclick>close</onclick>
@@ -81,12 +82,9 @@
 							<onclick>RunScript(script.skin.helper.service,action=textviewer,info=textviewer,header='$ESCVAR[TinyInfoDialogHeadline]',message='$ESCVAR[TinyInfoDialogPlot]')</onclick>
 						</control>
 					</control>
-					<control type="label">
-						<height>40</height>
-						<label>$INFO[ListItem.Genre,$LOCALIZE[515]: ,   ]$INFO[ListItem.Director,$LOCALIZE[20339]: ]</label>
-						<font>reg22</font>
-						<textcolor>emby</textcolor>
-					</control>
+					<!-- genre -->
+					<include>MetaGenre</include>
+					<!-- plot -->
 					<control type="textbox">
 						<height>auto</height>
 						<align>justify</align>

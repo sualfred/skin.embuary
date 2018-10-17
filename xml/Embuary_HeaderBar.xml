@@ -5,14 +5,12 @@
 		<param name="id">10</param>
 		<param name="auto_hide">true</param>
 		<param name="hide_header">false</param>
-		<param name="header_label">$VAR[ContainerContentPrefix]$VAR[ContainerContent]$VAR[ContainerCountLabel,[COLOR text_header2]  |  ,[/COLOR]]</param>
+		<param name="header_label">$VAR[ContainerContentPrefix]$VAR[ContainerContent]$VAR[ContainerCountLabel,[COLOR text_header_sublabel]  |  ,[/COLOR]]</param>
 		<param name="content">HeaderDefault</param>
 		<definition>
-			<!-- Check for views -->
-			<include condition="Window.IsMedia">AvailableViewsCheck</include>
 			<!-- Top bar -->
 			<control type="group">
-				<animation effect="slide" start="0,0" end="0,-80"  time="500" delay="100" condition="!ControlGroup(6666).HasFocus + [[Container($PARAM[id]).HasPrevious + !Integer.IsEqual(Container($PARAM[id]).CurrentItem,1) + $PARAM[auto_hide]] | [$PARAM[hide_header]]]" tween="sine" easing="inout">Conditional</animation>
+				<animation effect="slide" start="0,0" end="0,-80"  time="500" delay="100" condition="String.IsEmpty(Window(home).Property(ShowHeader)) + !ControlGroup(6666).HasFocus + [[Container($PARAM[id]).HasPrevious + !Integer.IsEqual(Container($PARAM[id]).CurrentItem,1) + $PARAM[auto_hide]] | [$PARAM[hide_header]]]" tween="sine" easing="inout">Conditional</animation>
 				<control type="group">
 					<include>Animation_ScrollbarIsVisible</include>
 					<visible>!$EXP[InfoDialogActive]</visible>
@@ -21,8 +19,9 @@
 						<left>0</left>
 						<right>0</right>
 						<height>58</height>
-						<texture colordiffuse="headerbar">common/white.jpg</texture>
+						<texture>special://skin/extras/themes/$VAR[SkinTheme]/header.png</texture>
 						<aspectratio>stretch</aspectratio>
+						<visible>true</visible>
 					</control>
 					<control type="image">
 						<top>58</top>
@@ -31,6 +30,7 @@
 						<height>4</height>
 						<texture>common/shadow.png</texture>
 						<aspectratio>stretch</aspectratio>
+						<visible>false</visible>
 					</control>
 				</control>
 				<control type="image">
@@ -38,7 +38,7 @@
 					<left>0</left>
 					<right>0</right>
 					<height>68</height>
-					<texture colordiffuse="headerbar" border="2">common/gradient.png</texture>
+					<texture colordiffuse="header_shadow" border="2">common/gradient.png</texture>
 					<aspectratio>stretch</aspectratio>
 					<visible>$EXP[InfoDialogActive]</visible>
 					<animation effect="slide" start="0,0" end="-8,0"  time="0" condition="Control.IsVisible(17)">Conditional</animation>
@@ -55,14 +55,16 @@
 						<label></label>
 						<include content="HeaderButton">
 							<param name="align" value="false"/>
+							<param name="color" value="text_header_mainlabel"/>
 						</include>
-						<visible>!Window.IsVisible(loginscreen) + !Window.IsVisible(home)</visible>
+						<visible>!Window.IsVisible(loginscreen) + !Window.Is(home)</visible>
 					</control>
 					<control type="label">
 						<font>Material24</font>
 						<label></label>
 						<include content="HeaderButton">
 							<param name="align" value="false"/>
+							<param name="color" value="text_header_mainlabel"/>
 						</include>
 						<visible>!Window.IsVisible(loginscreen)</visible>
 					</control>
@@ -70,24 +72,28 @@
 						<animation effect="slide" end="0,19" time="0" condition="true">Conditional</animation>
 						<height>20</height>
 						<width>20</width>
-						<texture colordiffuse="emby_secondary">common/embuary_sign.png</texture>
+						<texture colordiffuse="$VAR[AccentColor]">common/embuary_sign.png</texture>
 						<aspectratio aligny="center">keep</aspectratio>
-						<visible>[Window.IsVisible(home) | Window.IsVisible(loginscreen)] + !Window.IsVisible(script-globalsearch-main.xml) + !Window.IsVisible(favourites) + !$EXP[InfoDialogActive]</visible>
+						<visible>Window.Is(home) | Window.IsVisible(loginscreen)</visible>
 					</control>
 					<control type="label">
 						<animation effect="slide" end="-5,20" time="0" condition="true">Conditional</animation>
 						<height>17</height>
 						<width>auto</width>
-						<label>$VAR[HeaderCustomDeviceName]</label>
 						<font>med17</font>
-						<textcolor>text_white</textcolor>
+						<include content="HeaderButton">
+							<param name="color" value="text_header_mainlabel"/>
+						</include>
+						<label>$VAR[HeaderCustomDeviceName]</label>
 						<aligny>center</aligny>
 						<aspectratio>keep</aspectratio>
-						<visible>[Window.IsVisible(home) | Window.IsVisible(loginscreen)] + !Window.IsVisible(script-globalsearch-main.xml) + !Window.IsVisible(favourites) + !$EXP[InfoDialogActive]</visible>
+						<visible>Window.Is(home) | Window.IsVisible(loginscreen)</visible>
 					</control>
 					<control type="label">
 						<label>$PARAM[header_label]</label>
-						<include>HeaderButton</include>
+						<include content="HeaderButton">
+							<param name="color" value="text_header_mainlabel"/>
+						</include>
 					</control>
 				</control>
 				<control type="grouplist" id="6666">
@@ -118,6 +124,7 @@
 						<label></label>
 						<include content="HeaderButton">
 							<param name="align" value="false"/>
+							<param name="color" value="text_header_mainlabel"/>
 						</include>
 						<visible>Player.HasMedia + !Player.Paused + $EXP[HolidayThemeSound]</visible>
 					</control>
@@ -126,6 +133,7 @@
 						<label></label>
 						<include content="HeaderButton">
 							<param name="align" value="false"/>
+							<param name="color" value="text_header_mainlabel"/>
 						</include>
 						<visible>Player.HasMedia + Player.Paused + $EXP[HolidayThemeSound]</visible>
 					</control>
@@ -138,6 +146,7 @@
 						<label></label>
 						<include content="HeaderButton">
 							<param name="align" value="false"/>
+							<param name="color" value="text_header_mainlabel"/>
 						</include>
 						<visible>Player.Muted</visible>
 					</control>
@@ -146,7 +155,9 @@
 						<width>0</width>
 					</control>
 					<control type="label">
-						<include>HeaderButton</include>
+						<include content="HeaderButton">
+							<param name="color" value="text_header_mainlabel"/>
+						</include>
 						<label>$INFO[Weather.Temperature]</label>
 						<visible>!Skin.HasSetting(HideHeaderWeather) + !String.IsEmpty(Weather.Temperature) + !String.Contains(Weather.Temperature,$LOCALIZE[503]) + !String.IsEqual(Weather.fanartcode,na) + Weather.IsFetched</visible>
 					</control>
@@ -154,12 +165,14 @@
 						<animation effect="slide" end="0,10" time="0" condition="true">Conditional</animation>
 						<height>38</height>
 						<width>43</width>
-						<texture colordiffuse="text_header">$INFO[Weather.fanartcode,resource://resource.images.weathericons.outline-hd/,.png]</texture>
+						<texture colordiffuse="text_header_mainlabel">$INFO[Weather.fanartcode,resource://resource.images.weathericons.outline-hd/,.png]</texture>
 						<aspectratio scalediffuse="false" align="left">stretch</aspectratio>
 						<visible>!Skin.HasSetting(HideHeaderWeather) + !String.IsEmpty(Weather.Temperature) + !String.Contains(Weather.Temperature,$LOCALIZE[503]) + !String.IsEqual(Weather.fanartcode,na) + Weather.IsFetched</visible>
 					</control>
 					<control type="label">
-						<include>HeaderButton</include>
+						<include content="HeaderButton">
+							<param name="color" value="text_header_mainlabel"/>
+						</include>
 						<label>$INFO[System.Time]</label>
 					</control>
 					<control type="group">
@@ -192,24 +205,6 @@
 					| Window.IsVisible(1124)
 					| Window.IsVisible(1130)
 					| Window.IsVisible(1131)
-					| Window.IsVisible(1132)
-					| Window.IsVisible(1133)
-					| Window.IsVisible(1134)
-					| Window.IsVisible(1135)
-					| Window.IsVisible(1136)
-					| Window.IsVisible(1137)
-					| Window.IsVisible(1138)
-					| Window.IsVisible(1139)
-					| Window.IsVisible(1160)
-					| Window.IsVisible(1161)
-					| Window.IsVisible(1162)
-					| Window.IsVisible(1163)
-					| Window.IsVisible(1164)
-					| Window.IsVisible(1165)
-					| Window.IsVisible(1166)
-					| Window.IsVisible(1167)
-					| Window.IsVisible(1168)
-					| Window.IsVisible(1169)
 					| Window.IsVisible(1114)
 					| Window.IsVisible(script-NextAired-TVGuide.xml)
 					| Window.IsVisible(script-NextAired-TVGuide2.xml)
@@ -230,20 +225,22 @@
 				<animation effect="slide" start="0,58" end="0,0"  time="500" tween="sine" easing="inout">Visible</animation>
 				<animation effect="slide" start="0,0" end="0,80"  time="500" delay="100" condition="!ControlGroup(6666).HasFocus + [[Container($PARAM[id]).HasPrevious + !Integer.IsEqual(Container($PARAM[id]).CurrentItem,1) + $PARAM[auto_hide]] | [$PARAM[hide_header]]]" tween="sine" easing="inout">Conditional</animation>
 				<control type="image">
-					<height>58</height>
+					<height>61</height>
 					<bottom>0</bottom>
 					<left>0</left>
 					<right>0</right>
 					<texture colordiffuse="footerbar">common/white.jpg</texture>
 					<aspectratio>stretch</aspectratio>
+					<visible>false</visible>
 				</control>
 				<control type="image">
-					<bottom>58</bottom>
+					<height>58</height>
+					<bottom>0</bottom>
 					<left>0</left>
 					<right>0</right>
-					<height>4</height>
-					<texture flipy="true">common/shadow.png</texture>
+					<texture>special://skin/extras/themes/$VAR[SkinTheme]/header.png</texture>
 					<aspectratio>stretch</aspectratio>
+					<visible>true</visible>
 				</control>
 				<control type="grouplist">
 					<left>12</left>
@@ -269,8 +266,9 @@
 						<visible>String.IsEmpty(Player.Art(tvshow.poster)) + String.IsEmpty(Player.Art(poster))</visible>
 					</control>
 					<control type="label">
-						<align>right</align>
-						<include>HeaderButton</include>
+						<include content="HeaderButton">
+							<param name="color" value="text_header_mainlabel"/>
+						</include>
 						<label>$VAR[PlayerFullLabel]</label>
 						<visible>Player.HasMedia</visible>
 					</control>
@@ -285,7 +283,9 @@
 					<itemgap>10</itemgap>
 					<align>right</align>
 					<control type="label">
-						<include>HeaderButton</include>
+						<include content="HeaderButton">
+							<param name="color" value="text_header_mainlabel"/>
+						</include>
 						<label>$VAR[PlayerTimeLabels]</label>
 					</control>
 				</control>
@@ -293,14 +293,14 @@
 					<bottom>56</bottom>
 					<left>0</left>
 					<right>0</right>
-					<height>2</height>
+					<height>3</height>
 					<reveal>true</reveal>
 					<info>Player.Progress</info>
-					<texturebg colordiffuse="grey">common/white.jpg</texturebg>
-					<lefttexture>-</lefttexture>
-					<midtexture colordiffuse="emby_secondary">common/white.jpg</midtexture>
-					<righttexture>-</righttexture>
-					<overlaytexture>-</overlaytexture>
+					<texturebg colordiffuse="text_header_sublabel">common/white.jpg</texturebg>
+					<lefttexture></lefttexture>
+					<midtexture colordiffuse="$VAR[PlayerAccentColor]">common/white.jpg</midtexture>
+					<righttexture></righttexture>
+					<overlaytexture></overlaytexture>
 					<visible>Player.HasMedia + !VideoPlayer.HasEpg</visible>
 				</control>
 				<control type="progress">
@@ -311,15 +311,15 @@
 					<reveal>true</reveal>
 					<info>PVR.EpgEventProgress</info>
 					<texturebg colordiffuse="grey">common/white.jpg</texturebg>
-					<lefttexture>-</lefttexture>
+					<lefttexture></lefttexture>
 					<midtexture colordiffuse="emby_secondary">common/white.jpg</midtexture>
-					<righttexture>-</righttexture>
-					<overlaytexture>-</overlaytexture>
+					<righttexture></righttexture>
+					<overlaytexture></overlaytexture>
 					<visible>Player.HasMedia + VideoPlayer.HasEpg</visible>
 				</control>
 			</control>
 			<!-- ScrollLetter -->
-			<include condition="Window.IsMedia">ScrollSortLetter</include>
+			<include condition="Window.IsMedia + !$EXP[InfoDialogActive]">ScrollSortLetter</include>
 		</definition>
 	</include>
 	<!-- Defaults -->
@@ -329,6 +329,7 @@
 			<label>$LOCALIZE[31000]</label>
 			<onclick>Dialog.Close(all,true)</onclick>
 			<onclick>ActivateWindow(home)</onclick>
+			<visible>!Window.Is(home)</visible>
 		</control>
 		<control type="button" id="6602">
 			<include>HeaderButton</include>
@@ -358,8 +359,8 @@
 		<control type="button" id="6603">
 			<include>HeaderButton</include>
 			<label>$LOCALIZE[31169]</label>
-			<onclick condition="!Window.IsActive(videos)">ActivateWindow(videos,videodb://movies/sets,return)</onclick>
-			<onclick condition="Window.IsActive(videos)">Container.Update(videodb://movies/sets)</onclick>
+			<onclick condition="!Window.IsActive(videos)">ActivateWindow(videos,library://video/movies/sets.xml/,return)</onclick>
+			<onclick condition="Window.IsActive(videos)">Container.Update(library://video/movies/sets.xml/)</onclick>
 			<visible>[
 				String.IsEqual(Container.FolderPath,library://video/movies/)
 				| String.StartsWith(Container.FolderPath,videodb://movies/titles)
@@ -448,7 +449,7 @@
 			<include>HeaderButton</include>
 			<label>$LOCALIZE[1036]</label>
 			<onclick>ActivateWindow(favourites)</onclick>
-			<visible>!Window.IsVisible(favourites)</visible>
+			<visible>!Window.Is(favourites)</visible>
 		</control>
 		<control type="button" id="6604">
 			<include>HeaderButton</include>
@@ -472,8 +473,8 @@
 		<control type="button" id="6607">
 			<include>HeaderButton</include>
 			<width>auto</width>
-			<textcolor>panel_text</textcolor>
-			<focusedcolor>emby</focusedcolor>
+			<textcolor>panel_textcolor</textcolor>
+			<focusedcolor>$VAR[AccentColor]</focusedcolor>
 			<label>$LOCALIZE[19141]: $INFO[Control.GetLabel(30)]</label>
 			<onclick>SendClick(28)</onclick>
 			<visible>false</visible>
@@ -482,8 +483,8 @@
 		<control type="button" id="6608">
 			<include>HeaderButton</include>
 			<width>auto</width>
-			<textcolor>panel_text</textcolor>
-			<focusedcolor>emby</focusedcolor>
+			<textcolor>panel_textcolor</textcolor>
+			<focusedcolor>$VAR[AccentColor]</focusedcolor>
 			<label>$LOCALIZE[31111]</label>
 			<onclick>SetFocus(4000)</onclick>
 			<visible>Window.IsVisible(weather) + !Skin.HasSetting(KioskMode)</visible>
@@ -505,6 +506,7 @@
 				| Window.IsVisible(programs)
 				| Window.IsVisible(pictures)
 				| Window.IsVisible(addonbrowser)
+				| Window.IsVisible(eventlog)
 				]
 				+ !Window.IsVisible(1114)
 				+ !Skin.HasSetting(KioskMode)
@@ -518,7 +520,7 @@
 				<param name="align" value="false"/>
 			</include>
 			<onclick>SetFocus(4100)</onclick>
-			<visible>Integer.IsGreater(Container(4200).NumItems,1) + !Skin.HasSetting(KioskMode)</visible>
+			<visible>Integer.IsGreater(Container(4100).NumItems,1) + !Skin.HasSetting(KioskMode)</visible>
 		</control>
 		<control type="button" id="6611">
 			<font>Material22</font>
@@ -538,7 +540,6 @@
 			<include content="HeaderButton">
 				<param name="align" value="false"/>
 			</include>
-			<onclick condition="Integer.IsGreater(Playlist.Length(video),1) + Integer.IsGreater(Playlist.Length(music),1)">ActivateWindow(1145)</onclick>
 			<onclick condition="Integer.IsGreater(Playlist.Length(video),1) + !Integer.IsGreater(Playlist.Length(music),1)">ActivateWindow(videoplaylist)</onclick>
 			<onclick condition="!Integer.IsGreater(Playlist.Length(video),1) + Integer.IsGreater(Playlist.Length(music),1)">ActivateWindow(musicplaylist)</onclick>
 			<visible>[
@@ -602,7 +603,7 @@
 			<control type="label">
 				<scroll>true</scroll>
 				<label>$INFO[Container(9000).ListItemPosition($PARAM[id]).Label]</label>
-				<textcolor>emby_secondary</textcolor>
+				<textcolor>$VAR[AccentColor]</textcolor>
 				<include>HeaderButton</include>
 				<visible>Control.HasFocus(9000) + Container(9000).Position($PARAM[id]) + !String.IsEmpty(Container(9000).ListItemPosition($PARAM[id]).Label)</visible>
 			</control>

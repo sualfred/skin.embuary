@@ -3,20 +3,14 @@
 	<defaultcontrol always="true">5</defaultcontrol>
 	<include>PropertyIncludes</include>
 	<controls>
-		<control type="image">
-			<include>Visible_Fade</include>
-			<include>FullscreenDimensions</include>
-			<texture colordiffuse="background_diffuse">common/white.jpg</texture>
-			<visible>[VideoPlayer.IsFullscreen | Window.IsVisible(visualisation)] + !Window.IsVisible(DialogSlider.xml) + !Window.IsVisible(subtitlesearch) + !Window.IsVisible(filebrowser)</visible>
-		</control>
-		<control type="image">
-			<include>Visible_Fade</include>
-			<include>FullscreenDimensions</include>
-			<texture colordiffuse="background">common/white.jpg</texture>
-			<visible>!VideoPlayer.IsFullscreen + !Window.IsVisible(visualisation) + !Window.IsVisible(DialogSlider.xml) + !Window.IsVisible(subtitlesearch) + !Window.IsVisible(filebrowser)</visible>
-		</control>
+		<include content="DiffuseMask">
+			<param name="color">background_diffuse</param>
+			<param name="visible">!Window.IsVisible(sliderdialog)</param>
+		</include>
 		<control type="grouplist">
-			<visible>!Window.IsVisible(DialogSlider.xml) + !Window.IsVisible(selectdialog) + !Window.IsVisible(subtitlesearch) + !Window.IsVisible(filebrowser)</visible>
+			<visible>!Window.IsVisible(DialogSlider.xml) + !Window.IsVisible(selectdialog) + !Window.IsVisible(subtitlesearch)</visible>
+			<visible>![Window.IsVisible(profilesettings) + Window.IsVisible(filebrowser)]</visible>
+			<visible>![Window.IsVisible(osdsubtitlesettings) + Window.IsVisible(filebrowser)]</visible>
 			<include>Visible_PopupOpenClose</include>
 			<include>Dialog_PopupOpenClose</include>
 			<centerleft>50%</centerleft>
@@ -35,29 +29,16 @@
 					<font>Reg24</font>
 					<aligny>center</aligny>
 					<textoffsetx>5</textoffsetx>
+					<textcolor>text_headline</textcolor>
 				</control>
-				<control type="image">
-					<width>100%</width>
-					<top>45</top>
-					<height>2</height>
-					<texture colordiffuse="lightgrey">common/white.jpg</texture>
-					<aspectratio>stretch</aspectratio>
-				</control>
-				<control type="image">
-					<width>100%</width>
-					<top>45</top>
-					<height>2</height>
-					<texture colordiffuse="emby">common/white.jpg</texture>
-					<aspectratio>stretch</aspectratio>
-					<include>WindowOpen_GreenBar</include>
-				</control>
+				<include>GreenBar</include>
 			</control>
 			<!-- list -->
 			<control type="group">
 				<height>470</height>
 				<control type="image">
 					<height>470</height>
-					<texture colordiffuse="thumb_background">common/white.jpg</texture>
+					<texture colordiffuse="panel_background">common/white.jpg</texture>
 					<aspectratio>stretch</aspectratio>
 				</control>
 				<control type="grouplist" id="5">
@@ -78,7 +59,7 @@
 					<orientation>vertical</orientation>
 					<showonepage>false</showonepage>
 					<texturesliderbackground colordiffuse="00ffffff">common/white.jpg</texturesliderbackground>
-					<texturesliderbar colordiffuse="softgrey">common/white.jpg</texturesliderbar>
+					<texturesliderbar colordiffuse="scrollbar_slider">common/white.jpg</texturesliderbar>
 				</control>
 			</control>
 			<!-- Button -->
@@ -126,7 +107,7 @@
 			<height>50</height>
 			<font>Reg24</font>
 			<textoffsetx>10</textoffsetx>
-			<textcolor>panel_text</textcolor>
+			<textcolor>panel_textcolor</textcolor>
 			<aligny>center</aligny>
 		</control>
 		<control type="image" id="11">

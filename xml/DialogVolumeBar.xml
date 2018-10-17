@@ -11,7 +11,6 @@
 		<!-- Dialog -->
 		<control type="group">
 			<visible>!VideoPlayer.IsFullscreen + !Window.IsVisible(visualisation)</visible>
-			<top>70</top>
 			<animation type="WindowOpen" reversible="false">
 				<effect type="slide" start="0,-200" end="0,0" delay="100" tween="circle" easin="out" time="400" />
 				<effect type="fade" delay="160" end="100" time="400" />
@@ -28,16 +27,17 @@
 				<effect type="slide" start="0,0" end="0,-200" easing="in" tween="circle" easin="out" time="400" />
 				<effect type="fade" start="100" end="0" time="400"/>
 			</animation>
-			<width>280</width>
-			<height>182</height>
-			<right>70</right>
+			<width>380</width>
+			<height>280</height>
+			<right>30</right>
+			<top>30</top>
 			<!-- Background image -->
 			<control type="image">
-				<texture colordiffuse="panel" border="10">common/dialog_back.png</texture>
+				<texture colordiffuse="context_color" border="65">dialogs/notification/bg.png</texture>
 			</control>
 			<!-- icon -->
 			<control type="group">
-				<top>30</top>
+				<top>80</top>
 				<centerleft>50%</centerleft>
 				<width>80</width>
 				<height>80</height>
@@ -47,11 +47,11 @@
 				</control>
 				<control type="image">
 					<texture>dialogs/progress/100.png</texture>
-					<colordiffuse>grey</colordiffuse>
+					<colordiffuse>30ffffff</colordiffuse>
 				</control>
 				<control type="image">
 					<texture>dialogs/progress/$VAR[VolumeIconCircle].png</texture>
-					<colordiffuse>emby</colordiffuse>
+					<colordiffuse>$VAR[AccentColor]</colordiffuse>
 				</control>
 				<!-- Icon -->
 				<control type="textbox">
@@ -63,24 +63,26 @@
 			</control>
 			<!-- Details -->
 			<control type="label">
-				<top>120</top>
+				<bottom>85</bottom>
+				<height>25</height>
 				<left>20</left>
 				<right>20</right>
-				<bottom>20</bottom>
 				<font>Reg22</font>
 				<scroll>true</scroll>
 				<align>center</align>
+				<textcolor>context_textcolor</textcolor>
 				<label>$LOCALIZE[13376] $VAR[VolumeDetails]</label>
 				<visible>!player.passthrough</visible>
 			</control>
 			<control type="label">
-				<top>120</top>
+				<centertop>45%</centertop>
+				<height>25</height>
 				<left>20</left>
 				<right>20</right>
-				<bottom>20</bottom>
 				<font>Reg22</font>
 				<scroll>true</scroll>
 				<align>center</align>
+				<textcolor>context_textcolor</textcolor>
 				<label>$LOCALIZE[14252]</label>
 				<visible>player.passthrough</visible>
 			</control>

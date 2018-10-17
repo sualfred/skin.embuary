@@ -3,11 +3,9 @@
 	<defaultcontrol always="true">100</defaultcontrol>
 	<include>PropertyIncludes</include>
 	<controls>
-		<control type="image">
-			<include>Visible_Fade</include>
-			<include>FullscreenDimensions</include>
-			<texture colordiffuse="background_diffuse">common/white.jpg</texture>
-		</control>
+		<include content="DiffuseMask">
+			<param name="color">background_diffuse</param>
+		</include>
 		<control type="scrollbar" id="3000">
 			<include>HiddenObject</include>
 		</control>
@@ -41,14 +39,14 @@
 					<control type="image">
 						<width>590</width>
 						<height>332</height>
-						<texture colordiffuse="thumb_background_fallback" diffuse="items/mask_wide_big.png">common/white.jpg</texture>
+						<texture colordiffuse="$VAR[ThumbFallbackColor]">common/white.jpg</texture>
 						<aspectratio scalediffuse="false">stretch</aspectratio>
 						<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
 					</control>
 					<control type="image">
 						<width>590</width>
 						<height>332</height>
-						<texture colordiffuse="dark_button" diffuse="items/mask_wide_big.png">common/white.jpg</texture>
+						<texture colordiffuse="dark_button">common/white.jpg</texture>
 						<aspectratio scalediffuse="false">stretch</aspectratio>
 						<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
 					</control>
@@ -66,7 +64,7 @@
 					<control type="image">
 						<width>590</width>
 						<height>332</height>
-						<texture diffuse="items/mask_wide_db.png" background="true">$VAR[IconLandscape]</texture>
+						<texture background="true">$VAR[IconLandscape]</texture>
 						<aspectratio scalediffuse="false">keep</aspectratio>
 						<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
 					</control>

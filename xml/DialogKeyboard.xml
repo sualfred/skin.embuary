@@ -5,16 +5,12 @@
 	<onunload>ClearProperty(DisableSuggestions,home)</onunload>
 	<zorder>99</zorder>
 	<include>PropertyIncludes</include>
-	<onunload condition="!String.IsEmpty(Window(home).Property(CustomSearch))">AlarmClock(CustomSearch,ClearProperty(CustomSearch,home),00:01,silent)</onunload>
 	<controls>
-		<control type="image">
-			<include>Visible_Fade</include>
-			<include>FullscreenDimensions</include>
-			<texture colordiffuse="background">common/white.jpg</texture>
-		</control>
 		<control type="label" id="311">
 			<include>HiddenObject</include>
 		</control>
+		<!-- background -->
+		<include>Background</include>
 		<!-- Dialog group -->
 		<control type="group">
 			<visible>!Window.IsVisible(numericinput)</visible>
@@ -32,7 +28,7 @@
 					<ondown condition="Integer.IsLess(Container(9091).NumItems,1)">300</ondown>
 					<ondown condition="!Integer.IsLess(Container(9091).NumItems,1)">9091</ondown>
 					<font>Reg24</font>
-					<focusedcolor>emby</focusedcolor>
+					<focusedcolor>$VAR[AccentColor]</focusedcolor>
 					<hinttext>[COLOR text_white]$VAR[KeyboardHinttext][/COLOR]</hinttext>
 				</control>
 				<!-- Edit Text line -->
@@ -49,7 +45,7 @@
 					<top>45</top>
 					<width>1127</width>
 					<height>2</height>
-					<texture colordiffuse="emby">common/white.jpg</texture>
+					<texture colordiffuse="$VAR[AccentColor]">common/white.jpg</texture>
 					<include>WindowOpen_GreenBar</include>
 				</control>
 				<!-- icon -->
@@ -58,7 +54,7 @@
 					<width>50</width>
 					<height>50</height>
 					<font>Material40</font>
-					<textcolor>lightgrey</textcolor>
+					<textcolor>text_sublabel</textcolor>
 					<label></label>
 					<aligny>top</aligny>
 				</control>
@@ -91,7 +87,7 @@
 						<height>35</height>
 						<font>Reg24</font>
 						<align>center</align>
-						<textcolor>emby</textcolor>
+						<textcolor>$VAR[AccentColor]</textcolor>
 						<label>$INFO[ListItem.Label]</label>
 					</control>
 				</itemlayout>
@@ -110,7 +106,7 @@
 						<height>35</height>
 						<font>Reg24</font>
 						<align>center</align>
-						<textcolor>emby</textcolor>
+						<textcolor>$VAR[AccentColor]</textcolor>
 						<label>$INFO[ListItem.Label]</label>
 						<visible>!Control.HasFocus(9091)</visible>
 					</control>
@@ -142,7 +138,7 @@
 						<control type="image">
 							<width>228</width>
 							<height>68</height>
-							<texture border="10" colordiffuse="light_button">dialogs/keyboard/keyboard_button_mask.png</texture>
+							<texture border="10" colordiffuse="selected_button">dialogs/keyboard/keyboard_button_mask.png</texture>
 							<visible>String.Contains(Control.GetLabel(303),*)</visible>
 						</control>
 						<!-- Caps lock off-->
@@ -156,7 +152,7 @@
 						<control type="image">
 							<width>228</width>
 							<height>68</height>
-							<texture border="10" colordiffuse="light_button">dialogs/keyboard/keyboard_button_mask.png</texture>
+							<texture border="10" colordiffuse="selected_button">dialogs/keyboard/keyboard_button_mask.png</texture>
 							<visible>String.Contains(Control.GetLabel(302),*)</visible>
 						</control>
 						<!-- Shift off -->
@@ -226,11 +222,11 @@
 							<align>center</align>
 							<radiowidth>1</radiowidth>
 							<radioheight>1</radioheight>
-							<texturenofocus>-</texturenofocus>
-							<textureradioonfocus>-</textureradioonfocus>
-							<textureradioonnofocus>-</textureradioonnofocus>
-							<textureradioofffocus>-</textureradioofffocus>
-							<textureradiooffnofocus>-</textureradiooffnofocus>
+							<texturenofocus></texturenofocus>
+							<textureradioonfocus></textureradioonfocus>
+							<textureradioonnofocus></textureradioonnofocus>
+							<textureradioofffocus></textureradioofffocus>
+							<textureradiooffnofocus></textureradiooffnofocus>
 							<onleft condition="Control.IsVisible(151)">151</onleft>
 							<onleft condition="!Control.IsVisible(151) + Control.IsVisible(150)">150</onleft>
 							<onleft condition="!Control.IsVisible(151) + !Control.IsVisible(150) + Control.IsVisible(149)">149</onleft>
@@ -254,11 +250,11 @@
 							<align>center</align>
 							<radiowidth>1</radiowidth>
 							<radioheight>1</radioheight>
-							<texturenofocus>-</texturenofocus>
-							<textureradioonfocus>-</textureradioonfocus>
-							<textureradioonnofocus>-</textureradioonnofocus>
-							<textureradioofffocus>-</textureradioofffocus>
-							<textureradiooffnofocus>-</textureradiooffnofocus>
+							<texturenofocus></texturenofocus>
+							<textureradioonfocus></textureradioonfocus>
+							<textureradioonnofocus></textureradioonnofocus>
+							<textureradioofffocus></textureradioofffocus>
+							<textureradiooffnofocus></textureradiooffnofocus>
 							<onleft condition="Control.IsVisible(171)">171</onleft>
 							<onleft condition="!Control.IsVisible(171) + Control.IsVisible(170)">170</onleft>
 							<onleft condition="!Control.IsVisible(171) + !Control.IsVisible(170) + Control.IsVisible(169)">169</onleft>
@@ -824,7 +820,7 @@
 						<control type="image">
 							<width>68</width>
 							<height>68</height>
-							<texture border="10" colordiffuse="light_button">dialogs/keyboard/keyboard_button_mask.png</texture>
+							<texture border="10" colordiffuse="selected_button">dialogs/keyboard/keyboard_button_mask.png</texture>
 							<visible>String.Contains(Control.GetLabel(304),*)</visible>
 						</control>
 						<!-- Symbols off -->
@@ -850,11 +846,11 @@
 							<align>center</align>
 							<radiowidth>1</radiowidth>
 							<radioheight>1</radioheight>
-							<texturenofocus>-</texturenofocus>
-							<textureradioonfocus>-</textureradioonfocus>
-							<textureradioonnofocus>-</textureradioonnofocus>
-							<textureradioofffocus>-</textureradioofffocus>
-							<textureradiooffnofocus>-</textureradiooffnofocus>
+							<texturenofocus></texturenofocus>
+							<textureradioonfocus></textureradioonfocus>
+							<textureradioonnofocus></textureradioonnofocus>
+							<textureradioofffocus></textureradioofffocus>
+							<textureradiooffnofocus></textureradiooffnofocus>
 							<include>KeyboardButtons</include>
 							<onup>160</onup>
 							<ondown>309</ondown>
@@ -917,7 +913,7 @@
 				<onup>5000</onup>
 				<font>Material24</font>
 				<label></label>
-				<textcolor>lightgrey</textcolor>
+				<textcolor>text_sublabel</textcolor>
 				<visible>!Control.HasFocus(309)</visible>
 			</control>
 			<control type="label">
@@ -926,7 +922,7 @@
 				<onup>5000</onup>
 				<font>Material24</font>
 				<label></label>
-				<textcolor>emby</textcolor>
+				<textcolor>$VAR[AccentColor]</textcolor>
 				<aligny>center</aligny>
 				<visible>Control.HasFocus(309)</visible>
 			</control>
@@ -938,8 +934,8 @@
 				<height>24</height>
 				<onup>5000</onup>
 				<aligny>center</aligny>
-				<textcolor>lightgrey</textcolor>
-				<focusedcolor>emby</focusedcolor>
+				<textcolor>text_sublabel</textcolor>
+				<focusedcolor>$VAR[AccentColor]</focusedcolor>
 			</control>
 		</control>
 	</controls>

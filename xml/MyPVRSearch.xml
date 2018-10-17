@@ -5,7 +5,9 @@
 	<views>53</views>
 	<menucontrol>6666</menucontrol>
 	<onunload condition="Window.Previous(1124)">SetProperty(pvrhub,1,home)</onunload>
-	<include>PropertyIncludes</include>
+	<include content="PropertyIncludes">
+		<param name="ShowHeader" value="true"/>
+	</include>
 	<controls>
 		<control type="label" id="28">
 			<include>HiddenObject</include>
@@ -33,9 +35,9 @@
 				<visible>ControlGroup(4000).HasFocus</visible>
 				<include>Visible_PopupOpenClose</include>
 				<centerleft>50%</centerleft>
-				<width>384</width>
+				<width>500</width>
 				<centertop>50%</centertop>
-				<height>970</height>
+				<height>982</height>
 				<control type="grouplist" id="4000">
 					<orientation>vertical</orientation>
 					<height>auto</height>
@@ -47,21 +49,21 @@
 					<usecontrolcoords>true</usecontrolcoords>
 					<control type="image" id="4001">
 						<width>100%</width>
-						<height>10</height>
-						<texture border="5" colordiffuse="panel">common/menu_top.png</texture>
+						<height>61</height>
+						<texture border="65,0,65,0" colordiffuse="context_color">dialogs/context/top.png</texture>
 					</control>
 					<control type="togglebutton" id="4">
-						<include content="CommonButton"/>
+						<include content="ContextButton"/>
 						<label>$LOCALIZE[580]: $LOCALIZE[584]</label>
 						<altlabel>$LOCALIZE[580]: $LOCALIZE[585]</altlabel>
 					</control>
 					<control type="button" id="3">
-						<include content="CommonButton"/>
+						<include content="ContextButton"/>
 					</control>
 					<control type="image" id="4002">
 						<width>100%</width>
-						<height>10</height>
-						<texture border="5" colordiffuse="panel">common/menu_bottom.png</texture>
+						<height>61</height>
+						<texture border="65,0,65,0" colordiffuse="context_color">dialogs/context/bottom.png</texture>
 					</control>
 				</control>
 			</control>
@@ -72,6 +74,7 @@
 		<include content="HeaderBar">
 			<param name="id">53</param>
 			<param name="auto_hide">false</param>
+			<param name="hide_header">$EXP[HideHeaderBasedOnContainer]</param>
 		</include>
 		<!-- side panel -->
 		<include content="SidePanel">

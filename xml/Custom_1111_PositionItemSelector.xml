@@ -8,13 +8,14 @@
 	<onunload>ClearProperty(musichub_widget_position,home)</onunload>
 	<include>PropertyIncludes</include>
 	<controls>
+		<!-- background -->
+		<include content="DiffuseMask">
+			<param name="color">background_diffuse</param>
+			<param name="visible">!Window.IsVisible(1110)</param>
+		</include>
+		<!-- dialog -->
 		<control type="group">
 			<include>FullscreenDimensions</include>
-			<control type="image">
-				<include>Visible_Fade</include>
-				<include>FullscreenDimensions</include>
-				<texture colordiffuse="background">common/white.jpg</texture>
-			</control>
 			<control type="grouplist">
 				<include>Dialog_PopupOpenClose</include>
 				<include>Visible_PopupOpenClose</include>
@@ -34,37 +35,23 @@
 						<font>Reg24</font>
 						<aligny>center</aligny>
 						<textoffsetx>5</textoffsetx>
-						<textcolor>text_white</textcolor>
+						<textcolor>text_headline</textcolor>
 						<label>$LOCALIZE[31107]</label>
 					</control>
-					<control type="image">
-						<width>100%</width>
-						<top>45</top>
-						<height>2</height>
-						<texture colordiffuse="lightgrey">common/white.jpg</texture>
-						<aspectratio>stretch</aspectratio>
-					</control>
-					<control type="image">
-						<width>100%</width>
-						<top>45</top>
-						<height>2</height>
-						<texture colordiffuse="emby">common/white.jpg</texture>
-						<aspectratio>stretch</aspectratio>
-						<include>WindowOpen_GreenBar</include>
-					</control>
+					<include>GreenBar</include>
 				</control>
 				<!-- list -->
 				<control type="group">
-					<height>470</height>
+					<height>770</height>
 					<control type="image">
-						<height>470</height>
-						<texture colordiffuse="thumb_background">common/white.jpg</texture>
+						<height>770</height>
+						<texture colordiffuse="panel_background">common/white.jpg</texture>
 						<aspectratio>stretch</aspectratio>
 					</control>
 					<control type="list" id="100">
 						<centerleft>50%</centerleft>
 						<top>10</top>
-						<height>450</height>
+						<height>750</height>
 						<onup>noop</onup>
 						<onleft>101</onleft>
 						<onright>101</onright>
@@ -96,6 +83,7 @@
 								<height>75</height>
 								<aligny>center</aligny>
 								<font>Reg24</font>
+								<textcolor>panel_textcolor</textcolor>
 								<label>$INFO[ListItem.Label]$INFO[ListItem.Label2, [,]]</label>
 							</control>
 						</itemlayout>
@@ -103,7 +91,7 @@
 							<control type="image">
 								<width>100%</width>
 								<height>75</height>
-								<texture colordiffuse="list_hover">common/white.jpg</texture>
+								<texture colordiffuse="panel_focus">common/white.jpg</texture>
 								<visible>Control.HasFocus(100)</visible>
 							</control>
 							<control type="image">
@@ -130,11 +118,11 @@
 								<height>75</height>
 								<aligny>center</aligny>
 								<font>Reg24</font>
+								<textcolor>panel_textcolor</textcolor>
 								<label>$INFO[ListItem.Label]$INFO[ListItem.Label2, [,]]</label>
 							</control>
 						</focusedlayout>
 						<content>
-							<include condition="!String.IsEmpty(Window(home).Property(menu_position))">MainMenuAvailableItems</include>
 							<include condition="!String.IsEmpty(Window(home).Property(home_widget_position))">HomeAvailableWidgets</include>
 							<include condition="!String.IsEmpty(Window(home).Property(moviehub_widget_position))">MovieHubAvailableWidgets</include>
 							<include condition="!String.IsEmpty(Window(home).Property(tvshowhub_widget_position))">TVShowHubAvailableWidgets</include>
@@ -149,7 +137,7 @@
 						<orientation>vertical</orientation>
 						<showonepage>false</showonepage>
 						<texturesliderbackground colordiffuse="00ffffff">common/white.jpg</texturesliderbackground>
-						<texturesliderbar colordiffuse="softgrey">common/white.jpg</texturesliderbar>
+						<texturesliderbar colordiffuse="scrollbar_slider">common/white.jpg</texturesliderbar>
 					</control>
 				</control>
 				<!-- Button -->
