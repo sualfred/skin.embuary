@@ -377,16 +377,12 @@
 		<value condition="[Window.IsVisible(script-NextAired-TVGuide2.xml) | Window.IsVisible(script-NextAired-TVGuide.xml)] + !String.IsEmpty(Window(home).Property(TVGuide.BackgroundFanart)) + Control.HasFocus(214)">$INFO[Container(214).ListItem.Property(Fanart)]</value>
 		<value condition="[Window.IsVisible(script-NextAired-TVGuide2.xml) | Window.IsVisible(script-NextAired-TVGuide.xml)] + !String.IsEmpty(Window(home).Property(TVGuide.BackgroundFanart)) + Control.HasFocus(215)">$INFO[Container(215).ListItem.Property(Fanart)]</value>
 		<value condition="!String.IsEmpty(Window.Property(background))">$INFO[Window.Property(background)]</value>
-		<value condition="!String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
+		<value condition="[Window.IsMedia | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml)] + !String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
 		<!-- static for non listitems -->
 		<value condition="Skin.HasSetting(ShowStaticBackgroundImage) + !String.IsEmpty(Skin.String(StaticBackgroundImage))">$INFO[Skin.String(StaticBackgroundImage)]</value>
 		<!-- non listitem fanarts -->
 		<value condition="String.StartsWith(Container.Folderpath,plugin://plugin.video.embycon) + !String.IsEmpty(Window(home).Property(plugin.video.embycon-random-gb))">$INFO[Window(home).Property(plugin.video.embycon-random-gb)]</value>
-		<value condition="[Window.IsVisible(1122) | Container.Content(musicvideos) | Window.IsVisible(mymusicnav.xml)] + !String.IsEmpty(Window(home).Property(SkinHelper.AllMusicBackground))">$INFO[Window(home).Property(SkinHelper.AllMusicBackground)]</value>
-		<value condition="[Window.IsVisible(1121) | String.StartsWith(Container.FolderPath,videodb://tvshows)] + !String.IsEmpty(Window(home).Property(SkinHelper.AllTvShowsBackground))">$INFO[Window(home).Property(SkinHelper.AllTvShowsBackground)]</value>
-		<value condition="[Window.IsVisible(1120) | String.StartsWith(Container.FolderPath,videodb://movies)]  + !String.IsEmpty(Window(home).Property(SkinHelper.AllMoviesBackground))">$INFO[Window(home).Property(SkinHelper.AllMoviesBackground)]</value>
-		<value condition="!String.IsEmpty(Window(home).Property(SkinHelper.AllVideosBackground))">$INFO[Window(home).Property(SkinHelper.AllVideosBackground)]</value>
-		<value condition="!String.IsEmpty(Window(home).Property(SkinHelper.AllMoviesBackground))">$INFO[Window(home).Property(SkinHelper.AllMoviesBackground)]</value>
+		<value condition="!String.IsEmpty(Window(home).Property(EmbuaryBackground))">$INFO[Window(home).Property(EmbuaryBackground)]</value>
 		<value>$INFO[Window(home).Property(plugin.video.embycon-random-gb)]</value>
 	</variable>
 	<variable name="FakeButtonAddonInfo13">
