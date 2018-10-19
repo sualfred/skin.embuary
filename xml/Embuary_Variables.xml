@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 	<!-- Color theme -->
+	<variable name="AccentColorLabel">
+		<value condition="!String.IsEmpty(Skin.String(color_accent)) + !String.IsEqual(Skin.String(color_accent),None)">$INFO[Skin.String(color_accent),,       ]</value>
+		<value>$LOCALIZE[571]       </value>
+	</variable>
+	<variable name="PlayerAccentColorLabel">
+		<value condition="!String.IsEmpty(Skin.String(color_player_accent)) + !String.IsEqual(Skin.String(color_player_accent),None)">$INFO[Skin.String(color_player_accent),,       ]</value>
+		<value>$LOCALIZE[571]       </value>
+	</variable>
+	<variable name="ThumbFallbackColorLabel">
+		<value condition="!String.IsEmpty(Skin.String(color_thumb_fallback)) + !String.IsEqual(Skin.String(color_thumb_fallback),None)">$INFO[Skin.String(color_thumb_fallback),,       ]</value>
+		<value>$LOCALIZE[571]       </value>
+	</variable>
+	<variable name="ButtonAccentColorLabel">
+		<value condition="!String.IsEmpty(Skin.String(button_focus_accent)) + !String.IsEqual(Skin.String(button_focus_accent),None)">$INFO[Skin.String(button_focus_accent),,       ]</value>
+		<value>$LOCALIZE[571]       </value>
+	</variable>
 	<variable name="AccentColor">
 		<value condition="!String.IsEmpty(Skin.String(color_accent)) + !String.IsEqual(Skin.String(color_accent),None)">$INFO[Skin.String(color_accent)]</value>
 		<value>accent</value>
@@ -17,14 +33,14 @@
 		<value condition="!String.IsEmpty(Skin.String(button_focus_accent)) + !String.IsEqual(Skin.String(button_focus_accent),None)">$INFO[Skin.String(button_focus_accent)]</value>
 		<value>accent</value>
 	</variable>
-	<variable name="SkinTheme">
-		<value condition="!String.IsEqual(Skin.CurrentColourTheme,SKINDEFAULT) + !String.StartsWith(Skin.CurrentColourTheme,Default)">$INFO[Skin.CurrentColourTheme]</value>
-		<value>Default</value>
-	</variable>
 	<variable name="thumb_background_color">
 		<value condition="Window.IsVisible(videobookmarks)">thumb_background_player</value>
 		<value condition="Window.IsVisible(pvrosdchannels)">thumb_background_player</value>
 		<value>thumb_background</value>
+	</variable>
+	<variable name="SkinTheme">
+		<value condition="!String.IsEqual(Skin.CurrentColourTheme,SKINDEFAULT) + !String.StartsWith(Skin.CurrentColourTheme,Default)">$INFO[Skin.CurrentColourTheme]</value>
+		<value>Default</value>
 	</variable>
 	<variable name="CurrentColorLabel">
 		<value condition="!String.IsEmpty(Window.Property(colorstring)) + !String.IsEqual(Window.Property(colorstring),None)">$LOCALIZE[31265]$INFO[Window.Property(colorstring), #]</value>
