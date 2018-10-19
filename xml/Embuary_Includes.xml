@@ -1047,9 +1047,17 @@
 			<textcolor>$VAR[AccentColor]</textcolor>
 			<texturenofocus colordiffuse="panel_subitem">common/white.jpg</texturenofocus>
 			<include>SettingsButton</include>
-			<onclick>RunScript(script.skin.helper.service,action=setskinsetting,setting=UserWidget$PARAM[nr]_target,header=$LOCALIZE[467])</onclick>
+			<onclick>SetProperty(Dialog.1.Label,$LOCALIZE[3])</onclick>
+			<onclick>SetProperty(Dialog.1.BuiltIn,Skin.SetString(UserWidget$PARAM[nr]_target,videos)||Skin.SetString(UserWidget$PARAM[nr]_target.label,$LOCALIZE[3]))</onclick>
+			<onclick>SetProperty(Dialog.2.Label,$LOCALIZE[2])</onclick>
+			<onclick>SetProperty(Dialog.2.BuiltIn,Skin.SetString(UserWidget$PARAM[nr]_target,music)||Skin.SetString(UserWidget$PARAM[nr]_target.label,$LOCALIZE[2]))</onclick>
+			<onclick>SetProperty(Dialog.3.Label,$LOCALIZE[1])</onclick>
+			<onclick>SetProperty(Dialog.3.BuiltIn,Skin.SetString(UserWidget$PARAM[nr]_target,pictures)||Skin.SetString(UserWidget$PARAM[nr]_target.label,$LOCALIZE[1]))</onclick>
+			<onclick>SetProperty(Dialog.4.Label,$LOCALIZE[29921])</onclick>
+			<onclick>SetProperty(Dialog.4.BuiltIn,Skin.Reset(UserWidget$PARAM[nr]_target)||Skin.SetString(UserWidget$PARAM[nr]_target.label,$LOCALIZE[29921]))</onclick>
+			<onclick>RunScript(script.toolbox,info=selectdialog,header=$LOCALIZE[467])</onclick>
 			<label>• $LOCALIZE[467]</label>
-			<label2>$INFO[Skin.String(UserWidget$PARAM[nr]_target)]</label2>
+			<label2>$INFO[Skin.String(UserWidget$PARAM[nr]_target.label)]</label2>
 			<visible>!String.IsEmpty(Skin.String(UserWidget$PARAM[nr]_path))</visible>
 		</control>
 		<control type="button" id="$PARAM[id]4">
@@ -1065,7 +1073,13 @@
 			<textcolor>$VAR[AccentColor]</textcolor>
 			<texturenofocus colordiffuse="panel_subitem">common/white.jpg</texturenofocus>
 			<include>SettingsButton</include>
-			<onclick>RunScript(script.skin.helper.service,action=setskinsetting,setting=UserWidget$PARAM[nr]_layout,header=$LOCALIZE[31099])</onclick>
+			<onclick>SetProperty(Dialog.1.Label,$LOCALIZE[20021])</onclick>
+			<onclick>SetProperty(Dialog.1.BuiltIn,Skin.SetString(UserWidget$PARAM[nr]_layout,HomePosterWidget)||Skin.SetString(UserWidget$PARAM[nr]_layout.label,$LOCALIZE[20021]))</onclick>
+			<onclick>SetProperty(Dialog.2.Label,$LOCALIZE[31004])</onclick>
+			<onclick>SetProperty(Dialog.2.BuiltIn,Skin.SetString(UserWidget$PARAM[nr]_layout,HomeWideWidget)||Skin.SetString(UserWidget$PARAM[nr]_layout.label,$LOCALIZE[31004]))</onclick>
+			<onclick>SetProperty(Dialog.3.Label,$LOCALIZE[31005])</onclick>
+			<onclick>SetProperty(Dialog.3.BuiltIn,Skin.SetString(UserWidget$PARAM[nr]_layout,HomeSquareWidget)||Skin.SetString(UserWidget$PARAM[nr]_layout.label,$LOCALIZE[31005]))</onclick>
+			<onclick>RunScript(script.toolbox,info=selectdialog,header=$LOCALIZE[31101])</onclick>
 			<label>• $LOCALIZE[31101]</label>
 			<label2>$INFO[Skin.String(UserWidget$PARAM[nr]_layout.label)]</label2>
 			<visible>!String.IsEmpty(Skin.String(UserWidget$PARAM[nr]_path))</visible>

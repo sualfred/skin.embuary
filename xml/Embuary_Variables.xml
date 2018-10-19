@@ -896,10 +896,6 @@
 		<value condition="!String.IsEmpty(VideoPlayer.DBID) + !String.IsEqual(VideoPlayer.DBID,0) + !VideoPlayer.Content(episodes)">plugin://script.embuary.helper?info=getcast&amp;type=movie&amp;dbid=$INFO[VideoPlayer.DBID]</value>
 		<value condition="!String.IsEmpty(VideoPlayer.DBID) + String.IsEqual(VideoPlayer.DBID,0) + !VideoPlayer.Content(episodes)">plugin://script.embuary.helper?info=getcast&amp;type=movie&amp;title='$ESCINFO[VideoPlayer.Title]'</value>
 	</variable>
-	<variable name="PlayerSimilarContent">
-		<value condition="VideoPlayer.Content(episodes)">plugin://script.skin.helper.widgets/?action=similarshows&amp;imdbid=$INFO[VideoPlayer.IMDBNumber]</value>
-		<value>plugin://script.skin.helper.widgets/?action=similar&amp;mediatype=movies&amp;imdbid=$INFO[VideoPlayer.IMDBNumber]</value>
-	</variable>
 	<variable name="PlayerForwardRewind">
 		<value condition="Player.Forwarding4x">4x</value>
 		<value condition="Player.Forwarding8x">8x</value>
