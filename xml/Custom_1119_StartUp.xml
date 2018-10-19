@@ -62,8 +62,9 @@
 						<include>DarkGreyButton</include>
 						<label>$LOCALIZE[31093]</label>
 						<onclick>Skin.SetBool(EmbuaryFirstStartup)</onclick>
-						<onclick condition="System.GetBool(filelists.showparentdiritems)">RunScript(script.skin.helper.service,action=togglekodisetting,setting=filelists.showparentdiritems)</onclick>
-						<onclick condition="System.GetBool(input.enablemouse)">RunScript(script.skin.helper.service,action=togglekodisetting,setting=input.enablemouse)</onclick>
+						<onclick condition="System.GetBool(filelists.showparentdiritems)">RunScript(script.embuary.helper,action=togglekodisetting,setting=filelists.showparentdiritems)</onclick>
+						<onclick condition="System.GetBool(input.enablemouse)">RunScript(script.embuary.helper,action=togglekodisetting,setting=input.enablemouse)</onclick>
+						<onclick>RunScript(script.embuary.helper,action=setkodisetting,setting=videolibrary.tvshowsselectfirstunwatcheditem,value=2)</onclick>
 						<onclick>ReplaceWindow($INFO[System.StartupWindow])</onclick>
 						<onup>PageUp(3000)</onup>
 						<ondown>PageDown(3000)</ondown>
