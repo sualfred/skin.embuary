@@ -681,7 +681,6 @@
 	<variable name="SetViewPlot">
 		<value condition="String.IsEqual(ListItem.DBType,set)">$INFO[ListItem.Plot,,[CR][CR]]$INFO[Container(2001).ListItemAbsolute(0).Label,$LOCALIZE[31192]: ]$INFO[Container(2001).ListItemAbsolute(0).Year, (,)]$INFO[Container(2001).ListItemAbsolute(1).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(1).Year, (,)]$INFO[Container(2001).ListItemAbsolute(2).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(2).Year, (,)]$INFO[Container(2001).ListItemAbsolute(3).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(3).Year, (,)]$INFO[Container(2001).ListItemAbsolute(4).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(4).Year, (,)]$INFO[Container(2001).ListItemAbsolute(5).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(5).Year, (,)]$INFO[Container(2001).ListItemAbsolute(6).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(6).Year, (,)]$INFO[Container(2001).ListItemAbsolute(7).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(7).Year, (,)]$INFO[Container(2001).ListItemAbsolute(8).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(8).Year, (,)]$INFO[Container(2001).ListItemAbsolute(9).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(9).Year, (,)]$INFO[Container(2001).ListItemAbsolute(10).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(10).Year, (,)]$INFO[Container(2001).ListItemAbsolute(11).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(11).Year, (,)]$INFO[Container(2001).ListItemAbsolute(12).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(12).Year, (,)]$INFO[Container(2001).ListItemAbsolute(13).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(13).Year, (,)]$INFO[Container(2001).ListItemAbsolute(14).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(14).Year, (,)]$INFO[Container(2001).ListItemAbsolute(15).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(15).Year, (,)]$INFO[Container(2001).ListItemAbsolute(16).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(16).Year, (,)]$INFO[Container(2001).ListItemAbsolute(17).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(17).Year, (,)]$INFO[Container(2001).ListItemAbsolute(18).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(18).Year, (,)]$INFO[Container(2001).ListItemAbsolute(19).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(19).Year, (,)]$INFO[Container(2001).ListItemAbsolute(20).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(20).Year, (,)]$INFO[Container(2001).ListItemAbsolute(21).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(21).Year, (,)]$INFO[Container(2001).ListItemAbsolute(22).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(22).Year, (,)]$INFO[Container(2001).ListItemAbsolute(23).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(23).Year, (,)]$INFO[Container(2001).ListItemAbsolute(24).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(24).Year, (,)]$INFO[Container(2001).ListItemAbsolute(25).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(25).Year, (,)]</value>
 		<value condition="!String.IsEmpty(ListItem.Plot)">$INFO[ListItem.Tagline,[B],[/B][CR]]$INFO[ListItem.Plot]</value>
-		<value condition="!String.IsEmpty(Window(home).Property(SkinHelper.ListItem.Plot))">$INFO[Window(home).Property(SkinHelper.ListItem.Plot)]</value>
 		<value>$LOCALIZE[19055]</value>
 	</variable>
 	<variable name="ArtistInfoPlot">
@@ -975,7 +974,6 @@
 		<value>$LOCALIZE[31157]</value>
 	</variable>
 	<variable name="MusicPlayerFanart">
-		<value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.Player.Art.Fanart))">$INFO[Window(Home).Property(SkinHelper.Player.Art.Fanart)]</value>
 		<value condition="!String.IsEmpty(Player.Art(fanart))">$INFO[Player.Art(fanart)]</value>
 		<value>views/player/music_back.jpg</value>
 	</variable>
@@ -991,10 +989,6 @@
 		<value condition="Integer.IsGreater(Container(150).NumItems,0) + Integer.IsGreater(Container(250).NumItems,0)">$VAR[ExtendedInfoFilmographyMovies] &amp; $VAR[ExtendedInfoFilmographyTVShows]</value>
 		<value condition="Integer.IsGreater(Container(150).NumItems,0) + !Integer.IsGreater(Container(250).NumItems,0)">$VAR[ExtendedInfoFilmographyMovies]</value>
 		<value condition="!Integer.IsGreater(Container(150).NumItems,0) + Integer.IsGreater(Container(250).NumItems,0)">$VAR[ExtendedInfoFilmographyTVShows]</value>
-	</variable>
-	<variable name="ListItemStatus">
-		<value condition="String.IsEqual(Window(home).Property(SkinHelper.ListItem.Status),Ended)">$LOCALIZE[31196]</value>
-		<value condition="String.IsEqual(Window(home).Property(SkinHelper.ListItem.Status),continuing)">$LOCALIZE[31197]</value>
 	</variable>
 	<variable name="SortLetterLabel">
 		<value condition="Window.IsVisible(MyPlaylist.xml)">$INFO[Container(50).CurrentItem]</value>
