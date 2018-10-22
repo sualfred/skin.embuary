@@ -768,6 +768,27 @@
 				<include>MetaLabel</include>
 				<visible>String.IsEmpty($PARAM[type].Rating) + !Window.IsVisible(fullscreeninfo) + !String.IsEmpty(Window(home).Property(TvShowRating)) + [String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,season)]</visible>
 			</control>
+			<control type="image">
+				<animation effect="slide" end="0,3" time="0" condition="true">Conditional</animation>
+				<width>24</width>
+				<height>20</height>
+				<texture>icons/rating/rotten_fresh.png</texture>
+				<aspectratio>keep</aspectratio>
+				<visible>!String.IsEmpty($PARAM[type].UserRating) + Integer.IsGreater($PARAM[type].UserRating,59)</visible>
+			</control>e
+			<control type="image">
+				<animation effect="slide" end="0,3" time="0" condition="true">Conditional</animation>
+				<width>24</width>
+				<height>20</height>
+				<texture>icons/rating/rotten_rotten.png</texture>
+				<aspectratio>keep</aspectratio>
+				<visible>!String.IsEmpty($PARAM[type].UserRating) + !Integer.IsGreater($PARAM[type].UserRating,59)</visible>
+			</control>
+			<control type="label">
+				<label>$INFO[$PARAM[type].UserRating]   </label>
+				<include>MetaLabel</include>
+				<visible>!String.IsEmpty($PARAM[type].UserRating)</visible>
+			</control>
 		</definition>
 	</include>
 	<include name="MpaaIcon">
