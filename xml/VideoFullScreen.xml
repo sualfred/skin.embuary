@@ -244,14 +244,14 @@
 						<visible>!String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
 					</control>
 					<control type="label" id="99">
-						<width>19</width>
+						<width>20</width>
 						<height>24</height>
 						<label/>
 						<visible>!String.IsEmpty(VideoPlayer.Mpaa)</visible>
 						<visible>!String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
 					</control>
 					<control type="label" id="99">
-						<animation effect="slide" end="-2,2" time="0" condition="true">Conditional</animation>
+						<animation effect="slide" end="-4,2" time="0" condition="true">Conditional</animation>
 						<width>auto</width>
 						<height>30</height>
 						<aligny>center</aligny>
@@ -269,6 +269,34 @@
 						<font>reg24</font>
 						<textcolor>white</textcolor>
 						<visible>!String.IsEmpty(VideoPlayer.Rating)</visible>
+						<visible>!String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
+					</control>
+					<control type="image" id="99">
+						<animation effect="slide" end="-4,7" time="0" condition="true">Conditional</animation>
+						<width>24</width>
+						<height>20</height>
+						<texture>icons/rating/rotten_fresh.png</texture>
+						<aspectratio>keep</aspectratio>
+						<visible>!String.IsEmpty(VideoPlayer.UserRating) + Integer.IsGreater(VideoPlayer.UserRating,59)</visible>
+						<visible>!String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
+					</control>e
+					<control type="image" id="99">
+						<animation effect="slide" end="-4,7" time="0" condition="true">Conditional</animation>
+						<width>24</width>
+						<height>20</height>
+						<texture>icons/rating/rotten_rotten.png</texture>
+						<aspectratio>keep</aspectratio>
+						<visible>!String.IsEmpty(VideoPlayer.UserRating) + !Integer.IsGreater(VideoPlayer.UserRating,59)</visible>
+						<visible>!String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
+					</control>
+					<control type="label" id="99">
+						<width>auto</width>
+						<height>30</height>
+						<aligny>center</aligny>
+						<label>$INFO[VideoPlayer.UserRating]   </label>
+						<font>reg24</font>
+						<textcolor>white</textcolor>
+						<visible>!String.IsEmpty(VideoPlayer.UserRating)</visible>
 						<visible>!String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
 					</control>
 				</control>
