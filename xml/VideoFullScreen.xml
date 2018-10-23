@@ -277,7 +277,7 @@
 						<height>20</height>
 						<texture>icons/rating/rotten_fresh.png</texture>
 						<aspectratio>keep</aspectratio>
-						<visible>!String.IsEmpty(VideoPlayer.UserRating) + Integer.IsGreater(VideoPlayer.UserRating,59)</visible>
+						<visible>!String.IsEmpty(VideoPlayer.UserRating) + Integer.IsGreater(VideoPlayer.UserRating,59) + [System.HasAddon(plugin.video.emby) | String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) | String.Contains(Player.Filenameandpath,/emby/)]</visible>
 						<visible>!String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
 					</control>e
 					<control type="image" id="99">
@@ -286,7 +286,7 @@
 						<height>20</height>
 						<texture>icons/rating/rotten_rotten.png</texture>
 						<aspectratio>keep</aspectratio>
-						<visible>!String.IsEmpty(VideoPlayer.UserRating) + !Integer.IsGreater(VideoPlayer.UserRating,59)</visible>
+						<visible>!String.IsEmpty(VideoPlayer.UserRating) + !Integer.IsGreater(VideoPlayer.UserRating,59) + [System.HasAddon(plugin.video.emby) | String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) | String.Contains(Player.Filenameandpath,/emby/)]</visible>
 						<visible>!String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
 					</control>
 					<control type="label" id="99">
@@ -296,7 +296,7 @@
 						<label>$INFO[VideoPlayer.UserRating]   </label>
 						<font>reg24</font>
 						<textcolor>white</textcolor>
-						<visible>!String.IsEmpty(VideoPlayer.UserRating)</visible>
+						<visible>!String.IsEmpty(VideoPlayer.UserRating) + [System.HasAddon(plugin.video.emby) | String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) | String.Contains(Player.Filenameandpath,/emby/)]</visible>
 						<visible>!String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
 					</control>
 				</control>
