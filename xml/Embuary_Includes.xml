@@ -81,7 +81,7 @@
 				<fadetime>400</fadetime>
 				<texture background="true">$VAR[MusicPlayerFanart]</texture>
 				<include>VisAnimation</include>
-				<visible>!Skin.HasSetting(VisFanartDisabled) + [!Skin.HasSetting(VisRandomFanart) | String.IsEmpty(Window(Visualisation).Property(ArtistSlideshow)) | String.EndsWith(Window(Visualisation).Property(ArtistSlideshow),black) | !Skin.HasAddon(script.artistslideshow)]</visible>
+				<visible>!Skin.HasSetting(VisFanartDisabled) + [!Skin.HasSetting(VisRandomFanart) | String.IsEmpty(Window(Visualisation).Property(ArtistSlideshow)) | String.EndsWith(Window(Visualisation).Property(ArtistSlideshow),black) | !System.HasAddon(script.artistslideshow)]</visible>
 			</control>
 			<control type="multiimage">
 				<include>FullscreenDimensions</include>
@@ -91,7 +91,7 @@
 				<timeperimage>10000</timeperimage>
 				<imagepath background="true">$INFO[Window(Visualisation).Property(ArtistSlideshow)]</imagepath>
 				<include>VisAnimation</include>
-				<visible>Skin.HasSetting(VisRandomFanart) + !Skin.HasSetting(VisFanartDisabled) + Skin.HasAddon(script.artistslideshow)</visible>
+				<visible>Skin.HasSetting(VisRandomFanart) + !Skin.HasSetting(VisFanartDisabled) + System.HasAddon(script.artistslideshow)</visible>
 			</control>
 		</control>
 	</include>
