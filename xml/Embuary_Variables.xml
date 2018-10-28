@@ -1562,7 +1562,8 @@
 		<value condition="String.IsEqual(VideoPlayer.Title,stream) + String.Contains(Player.Filenameandpath,/emby/videos/)">$LOCALIZE[31186]</value>
 		<value condition="!String.IsEmpty(MusicPlayer.Title) + !String.Contains(MusicPlayer.Title,pvr.hts_)">$INFO[MusicPlayer.Artist,, - ]$INFO[MusicPlayer.Tracknumber,,. ]$INFO[MusicPlayer.Title]</value>
 		<value condition="!String.IsEmpty(MusicPlayer.Title)">$INFO[MusicPlayer.Artist]</value>
-		<value condition="VideoPlayer.Content(livetv) + Window.IsVisible(shutdownmenu)">$INFO[VideoPlayer.Channelname,, - ]$INFO[VideoPlayer.Title]</value>
+		<value condition="VideoPlayer.Content(livetv) + String.IsEmpty(VideoPlayer.Title)">$INFO[VideoPlayer.Channelname]</value>
+		<value condition="VideoPlayer.Content(livetv) + Window.IsVisible(shutdownmenu)">$INFO[VideoPlayer.Channelname]$INFO[VideoPlayer.Title, - ]</value>
 		<value condition="VideoPlayer.Content(livetv)">$INFO[VideoPlayer.Title]</value>
 		<value condition="!String.IsEmpty(VideoPlayer.TVShowTitle) + [!VideoPlayer.IsFullscreen | Window.IsVisible(shutdownmenu)]">$INFO[VideoPlayer.TVShowTitle,, - ]$VAR[PlayerSeasonEpisode]$INFO[VideoPlayer.Title]</value>
 		<value condition="!String.IsEmpty(VideoPlayer.TVShowTitle)">$VAR[PlayerSeasonEpisode]$INFO[VideoPlayer.Title]</value>
