@@ -2,11 +2,13 @@
 <window>
 	<defaultcontrol always="true">100</defaultcontrol>
 	<onload condition="VideoPlayer.Content(musicvideos) | String.Contains(Player.Art(thumb),KodiCinemaMode)">close</onload>
+	<onload condition="VideoPlayer.Content(livetv) + !VideoPlayer.HasEpg">close</onload>
 	<onload condition="String.IsEqual(VideoPlayer.Title,stream) + String.Contains(Player.Filenameandpath,/emby/videos/)">close</onload>
 	<include>PropertyIncludes</include>
 	<controls>
 		<control type="group">
 			<visible>!VideoPlayer.Content(musicvideos) + !String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
+			<visible>!VideoPlayer.Content(livetv) | [VideoPlayer.Content(livetv) + VideoPlayer.HasEpg]</visible>
 			<!-- Hidden -->
 			<control type="list" id="2000">
 				<include>HiddenObject</include>
