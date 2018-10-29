@@ -20,13 +20,14 @@
 						<param name="type" value="previous"/>
 					</include>
 					<onclick>PlayerControl(Previous)</onclick>
-					<visible>!VideoPlayer.Content(livetv) + !String.StartsWith(Player.Filenameandpath,pvr://)</visible>
+					<visible>Player.SeekEnabled</visible>
 				</control>
 				<control type="button" id="602">
 					<include content="PlayerButtons">
 						<param name="type" value="rewind"/>
 					</include>
 					<onclick>PlayerControl(Rewind)</onclick>
+					<visible>Player.SeekEnabled</visible>
 				</control>
 				<control type="togglebutton" id="603">
 					<include content="PlayerButtons">
@@ -47,13 +48,14 @@
 						<param name="type" value="forward"/>
 					</include>
 					<onclick>PlayerControl(Forward)</onclick>
+					<visible>Player.SeekEnabled</visible>
 				</control>
 				<control type="button" id="606">
 					<include content="PlayerButtons">
 						<param name="type" value="next"/>
 					</include>
 					<onclick>PlayerControl(Next)</onclick>
-					<visible>!VideoPlayer.Content(livetv) + !String.StartsWith(Player.Filenameandpath,pvr://)</visible>
+					<visible>Player.SeekEnabled</visible>
 				</control>
 				<control type="button" id="607">
 					<colordiffuse>$VAR[PlayerRecordIconColor]</colordiffuse>
