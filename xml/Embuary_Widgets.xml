@@ -309,14 +309,14 @@
 						<onright>SetProperty(BounceRight,1,home)</onright>
 						<onright>noop</onright>
 						<onleft>900</onleft>
-						<onclick condition="!Skin.HasSetting(DoNotUseExtendedInfo)">RunScript(script.extendedinfo,info=extendedactorinfo,name=$INFO[ListItem.Label])</onclick>
-						<onclick condition="Skin.HasSetting(DoNotUseExtendedInfo) + Window.IsVisible(movieinformation)">close</onclick>
-						<onclick condition="Skin.HasSetting(DoNotUseExtendedInfo) + !Skin.HasSetting(UseGlobalsearch)">SetProperty(CustomSearch,1,home)</onclick>
-						<onclick condition="Skin.HasSetting(DoNotUseExtendedInfo) + !Skin.HasSetting(UseGlobalsearch)">Skin.SetString(CustomSearchTerm,$INFO[ListItem.Label])</onclick>
-						<onclick condition="Skin.HasSetting(DoNotUseExtendedInfo) + !Skin.HasSetting(UseGlobalsearch)">Skin.SetString(CustomSearchEmbyID,$INFO[ListItem.Property(id)])</onclick>
-						<onclick condition="Skin.HasSetting(DoNotUseExtendedInfo) + !Skin.HasSetting(UseGlobalsearch)">ActivateWindow(1115)</onclick>
-						<onclick condition="Skin.HasSetting(DoNotUseExtendedInfo) + !Skin.HasSetting(UseGlobalsearch)">AlarmClock(Wait,ClearProperty(CustomSearch,home),00:01,silent)</onclick>
-						<onclick condition="Skin.HasSetting(DoNotUseExtendedInfo) + Skin.HasSetting(UseGlobalsearch)">RunScript(script.globalsearch,searchstring=$INFO[ListItem.Label])</onclick>
+						<onclick condition="!Skin.HasSetting(DoNotUseExtendedInfo) + System.HasAddon(script.extendedinfo)">RunScript(script.extendedinfo,info=extendedactorinfo,name=$INFO[ListItem.Label])</onclick>
+						<onclick condition="[Skin.HasSetting(DoNotUseExtendedInfo) | !System.HasAddon(script.extendedinfo)] + Window.IsVisible(movieinformation)">close</onclick>
+						<onclick condition="[Skin.HasSetting(DoNotUseExtendedInfo) | !System.HasAddon(script.extendedinfo)] + [!Skin.HasSetting(UseGlobalsearch) | !System.HasAddon(script.globalsearch)]">SetProperty(CustomSearch,1,home)</onclick>
+						<onclick condition="[Skin.HasSetting(DoNotUseExtendedInfo) | !System.HasAddon(script.extendedinfo)] + [!Skin.HasSetting(UseGlobalsearch) | !System.HasAddon(script.globalsearch)]">Skin.SetString(CustomSearchTerm,$INFO[ListItem.Label])</onclick>
+						<onclick condition="[Skin.HasSetting(DoNotUseExtendedInfo) | !System.HasAddon(script.extendedinfo)] + [!Skin.HasSetting(UseGlobalsearch) | !System.HasAddon(script.globalsearch)]">Skin.SetString(CustomSearchEmbyID,$INFO[ListItem.Property(id)])</onclick>
+						<onclick condition="[Skin.HasSetting(DoNotUseExtendedInfo) | !System.HasAddon(script.extendedinfo)] + [!Skin.HasSetting(UseGlobalsearch) | !System.HasAddon(script.globalsearch)]">ActivateWindow(1115)</onclick>
+						<onclick condition="[Skin.HasSetting(DoNotUseExtendedInfo) | !System.HasAddon(script.extendedinfo)] + [!Skin.HasSetting(UseGlobalsearch) | !System.HasAddon(script.globalsearch)]">AlarmClock(Wait,ClearProperty(CustomSearch,home),00:01,silent)</onclick>
+						<onclick condition="[Skin.HasSetting(DoNotUseExtendedInfo) | !System.HasAddon(script.extendedinfo)] + Skin.HasSetting(UseGlobalsearch) + System.HasAddon(script.globalsearch)">RunScript(script.globalsearch,searchstring=$INFO[ListItem.Label])</onclick>
 						<pagecontrol>$PARAM[id]1</pagecontrol>
 						<viewtype label="$LOCALIZE[31006]">list</viewtype>
 						<itemlayout width="257">

@@ -5,7 +5,7 @@
 	<thumbnail label="$LOCALIZE[31257]">::NONE::</thumbnail>
 	<!-- action overrides -->
 	<override action="start_search">
-		<condition>!Skin.HasSetting(UseGlobalsearch)</condition>
+		<condition>!Skin.HasSetting(UseGlobalsearch) | !System.HasAddon(script.globalsearch)</condition>
 		<action>SetProperty(CustomSearch,1,home)</action>
 		<action>Skin.Reset(CustomSearchTerm)</action>
 		<action>Skin.Reset(CustomSearchEmbyID)</action>
@@ -13,7 +13,7 @@
 		<action>ActivateWindow(1115)</action>
 	</override>
 	<override action="start_search">
-		<condition>Skin.HasSetting(UseGlobalsearch)</condition>
+		<condition>Skin.HasSetting(UseGlobalsearch) + System.HasAddon(script.globalsearch)</condition>
 		<action>RunScript(script.globalsearch)</action>
 	</override>
 

@@ -1014,12 +1014,12 @@
 		<lefttexture>-</lefttexture>
 	</include>
 	<include name="search_action">
-		<onclick condition="!Skin.HasSetting(UseGlobalsearch)">SetProperty(CustomSearch,1,home)</onclick>
-		<onclick condition="!Skin.HasSetting(UseGlobalsearch)">Skin.Reset(CustomSearchTerm)</onclick>
-		<onclick condition="!Skin.HasSetting(UseGlobalsearch)">Skin.Reset(CustomSearchEmbyID)</onclick>
-		<onclick condition="!Skin.HasSetting(UseGlobalsearch)">Skin.SetString(CustomSearchTerm)</onclick>
-		<onclick condition="!Skin.HasSetting(UseGlobalsearch)">ActivateWindow(1115)</onclick>
-		<onclick condition="Skin.HasSetting(UseGlobalsearch)">RunScript(script.globalsearch)</onclick>
+		<onclick condition="!Skin.HasSetting(UseGlobalsearch) | !System.HasAddon(script.globalsearch)">SetProperty(CustomSearch,1,home)</onclick>
+		<onclick condition="!Skin.HasSetting(UseGlobalsearch) | !System.HasAddon(script.globalsearch)">Skin.Reset(CustomSearchTerm)</onclick>
+		<onclick condition="!Skin.HasSetting(UseGlobalsearch) | !System.HasAddon(script.globalsearch)">Skin.Reset(CustomSearchEmbyID)</onclick>
+		<onclick condition="!Skin.HasSetting(UseGlobalsearch) | !System.HasAddon(script.globalsearch)">Skin.SetString(CustomSearchTerm)</onclick>
+		<onclick condition="!Skin.HasSetting(UseGlobalsearch) | !System.HasAddon(script.globalsearch)">ActivateWindow(1115)</onclick>
+		<onclick condition="Skin.HasSetting(UseGlobalsearch) + System.HasAddon(script.globalsearch)">RunScript(script.globalsearch)</onclick>
 	</include>
 	<include name="CustomWidgetTemplate">
 		<include content="SkinSettingsHeadlineLabel">

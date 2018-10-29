@@ -105,6 +105,25 @@
 							<label>$LOCALIZE[31224]</label>
 							<onright>600</onright>
 						</control>
+						<include content="SideHeadline">
+							<param name="nr">3</param>
+							<param name="label">$LOCALIZE[29921]</param>
+						</include>
+						<control type="button" id="106">
+							<width>400</width>
+							<height>50</height>
+							<align>left</align>
+							<aligny>center</aligny>
+							<font>Reg22</font>
+							<textoffsetx>50</textoffsetx>
+							<textcolor>panel_textcolor</textcolor>
+							<focusedcolor>panel_textcolor</focusedcolor>
+							<selectedcolor>panel_textcolor</selectedcolor>
+							<texturefocus colordiffuse="panel_focus">common/white.jpg</texturefocus>
+							<include>NoTextures</include>
+							<label>Dependencies &amp; add-ons</label>
+							<onright>700</onright>
+						</control>
 					</control>
 				</control>
 			</control>
@@ -582,12 +601,14 @@
 						<label>$LOCALIZE[31228]</label>
 						<label2>[COLOR $VAR[AccentColor]]$VAR[SearchProvider][/COLOR]</label2>
 						<onclick>Skin.ToggleSetting(UseGlobalsearch)</onclick>
+						<enable>System.HasAddon(script.globalsearch)</enable>
 					</control>
 					<control type="button" id="467">
 						<include>SettingsButton</include>
 						<label>$LOCALIZE[31238]</label>
 						<label2>[COLOR $VAR[AccentColor]]$VAR[CastSearchProvider][/COLOR]</label2>
 						<onclick>Skin.ToggleSetting(DoNotUseExtendedInfo)</onclick>
+						<enable>System.HasAddon(script.extendedinfo)</enable>
 					</control>
 					<control type="label">
 						<height>50</height>
@@ -795,6 +816,100 @@
 						<selected>!Skin.HasSetting(HidePowerIdleShutdown)</selected>
 						<label>$LOCALIZE[13017] / $LOCALIZE[13018]</label>
 						<visible>System.HasShutdown</visible>
+					</control>
+				</control>
+				<!-- addons -->
+				<control type="grouplist" id="700">
+					<visible>ControlGroup(100).HasFocus(106)</visible>
+					<left>500</left>
+					<right>100</right>
+					<height>100%</height>
+					<onup>6666</onup>
+					<onleft>100</onleft>
+					<onright>noop</onright>
+					<ondown>noop</ondown>
+					<pagecontrol>60</pagecontrol>
+					<scrolltime>200</scrolltime>
+					<itemgap>0</itemgap>
+					<include content="SkinSettingsHeadlineLabel">
+						<param name="id" value="710"/>
+						<param name="label" value="$LOCALIZE[31273]"/>
+					</include>
+					<control type="radiobutton" id="711">
+						<include>SettingsButton</include>
+						<onclick condition="!System.HasAddon(script.embuary.helper)">InstallAddon(script.embuary.helper)</onclick>
+						<selected>System.HasAddon(script.embuary.helper)</selected>
+						<label>Embuary Helper Script  (script.embuary.helper)</label>
+					</control>
+					<control type="radiobutton" id="712">
+						<include>SettingsButton</include>
+						<onclick condition="!System.HasAddon(script.skinshortcuts)">InstallAddon(script.skinshortcuts)</onclick>
+						<selected>System.HasAddon(script.skinshortcuts)</selected>
+						<label>Skin Shortcuts  (script.skinshortcuts)</label>
+					</control>
+					<control type="radiobutton" id="713">
+						<include>SettingsButton</include>
+						<onclick condition="!System.HasAddon(script.toolbox)">InstallAddon(script.toolbox)</onclick>
+						<selected>System.HasAddon(script.toolbox)</selected>
+						<label>Toolbox Script  (script.toolbox)</label>
+					</control>
+					<control type="radiobutton" id="714">
+						<include>SettingsButton</include>
+						<onclick condition="!System.HasAddon(plugin.program.autocompletion)">InstallAddon(plugin.program.autocompletion)</onclick>
+						<selected>System.HasAddon(plugin.program.autocompletion)</selected>
+						<label>Auto Completion Plugin (plugin.program.autocompletion)</label>
+					</control>
+					<control type="radiobutton" id="715">
+						<include>SettingsButton</include>
+						<onclick condition="!System.HasAddon(resource.images.weathericons.outline-hd)">InstallAddon(resource.images.weathericons.outline-hd)</onclick>
+						<selected>System.HasAddon(resource.images.weathericons.outline-hd)</selected>
+						<label>Outline HD Weather Icons (resource.images.weathericons.outline-hd)</label>
+					</control>
+					<include content="SkinSettingsHeadlineLabel">
+						<param name="id" value="701"/>
+						<param name="label" value="$LOCALIZE[31274]"/>
+					</include>
+					<control type="radiobutton" id="702">
+						<include>SettingsButton</include>
+						<onclick condition="!System.HasAddon(service.upnext)">InstallAddon(service.upnext)</onclick>
+						<selected>System.HasAddon(service.upnext)</selected>
+						<label>Up Next  (service.upnext)</label>
+					</control>
+					<control type="radiobutton" id="703">
+						<include>SettingsButton</include>
+						<onclick condition="!System.HasAddon(script.tv.show.next.aired)">InstallAddon(script.tv.show.next.aired)</onclick>
+						<selected>System.HasAddon(script.tv.show.next.aired)</selected>
+						<label>Next Aired  (script.tv.show.next.aired)</label>
+					</control>
+					<control type="radiobutton" id="704">
+						<include>SettingsButton</include>
+						<onclick condition="!System.HasAddon(script.artistslideshow)">InstallAddon(script.artistslideshow)</onclick>
+						<selected>System.HasAddon(script.artistslideshow)</selected>
+						<label>Artist Slideshow  (script.artistslideshow)</label>
+					</control>
+					<control type="radiobutton" id="705">
+						<include>SettingsButton</include>
+						<onclick condition="!System.HasAddon(script.skin.helper.skinbackup)">InstallAddon(script.skin.helper.skinbackup)</onclick>
+						<selected>System.HasAddon(script.skin.helper.skinbackup)</selected>
+						<label>Skin Helper Script: Skin Backup  (script.skin.helper.skinbackup)</label>
+					</control>
+					<control type="radiobutton" id="706">
+						<include>SettingsButton</include>
+						<onclick condition="!System.HasAddon(script.skin.helper.colorpicker)">InstallAddon(script.skin.helper.colorpicker)</onclick>
+						<selected>System.HasAddon(script.skin.helper.colorpicker)</selected>
+						<label>Skin Helper Script: Colorpicker  (script.skin.helper.colorpicker)</label>
+					</control>
+					<control type="radiobutton" id="707">
+						<include>SettingsButton</include>
+						<onclick condition="!System.HasAddon(script.globalsearch)">InstallAddon(script.globalsearch)</onclick>
+						<selected>System.HasAddon(script.globalsearch)</selected>
+						<label>GlobalSearch  (script.globalsearch)</label>
+					</control>
+					<control type="radiobutton" id="708">
+						<include>SettingsButton</include>
+						<onclick condition="!System.HasAddon(script.extendedinfo)">InstallAddon(script.extendedinfo)</onclick>
+						<selected>System.HasAddon(script.extendedinfo)</selected>
+						<label>Extended Info Script  (script.extendedinfo)</label>
 					</control>
 				</control>
 			</control>
