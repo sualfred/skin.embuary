@@ -472,7 +472,7 @@
 		<value condition="String.IsEqual(ListItem.DBType,song)">$INFO[ListItem.Artist]</value>
 		<value condition="String.IsEqual(ListItem.DBType,artist)">$LOCALIZE[557]</value>
 		<value condition="Window.IsVisible(addonbrowser)">$INFO[ListItem.AddonType]</value>
-		<value condition="Container.Content(images)">$INFO[ListItem.size]</value>
+		<value condition="Container.Content(images) + !String.IsEqual(ListItem.size,0 B)">$INFO[ListItem.size]</value>
 		<value condition="Container.Content(songs)">$INFO[ListItem.Artist]</value>
 		<value condition="Container.Content(albums) + !String.IsEmpty(ListItem.AlbumArtist)">$INFO[ListItem.AlbumArtist]</value>
 		<value condition="Container.Content(albums)">$INFO[ListItem.Artist]</value>
