@@ -216,7 +216,7 @@
 							<visible>!String.IsEmpty(ListItem.DBID) + [String.IsEmpty(Container.Pluginname) | !String.StartsWith(ListItem.Path,plugin://) | String.StartsWith(ListItem.Path,plugin://plugin.video.emby.)]</visible>
 							<include>LightGreyButton</include>
 							<label>$LOCALIZE[31011]</label>
-							<onclick>close</onclick>
+							<onclick>Dialog.Close(all)</onclick>
 							<onclick condition="Window.IsMedia">Container.Update(videodb://tvshows/titles/$INFO[ListItem.DBID]/)</onclick>
 							<onclick condition="!Window.IsMedia">ActivateWindow(videos,videodb://tvshows/titles/$INFO[ListItem.DBID]/,return)</onclick>
 							<ondown>200</ondown>
