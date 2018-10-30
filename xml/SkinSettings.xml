@@ -561,6 +561,13 @@
 						<selected>!Skin.HasSetting(DoNotPauseOnInfo)</selected>
 						<onclick>Skin.ToggleSetting(DoNotPauseOnInfo)</onclick>
 					</control>
+					<control type="radiobutton" id="453">
+						<include>SettingsButton</include>
+						<label>$LOCALIZE[31277]</label>
+						<selected>!Skin.HasSetting(FancyLyrics)</selected>
+						<onclick>Skin.ToggleSetting(FancyLyrics)</onclick>
+						<enable>System.HasAddon(script.cu.lrclyrics)</enable>
+					</control>
 					<!-- misc -->
 					<include content="SkinSettingsHeadlineLabel">
 						<param name="id" value="460"/>
@@ -904,6 +911,12 @@
 						<onclick condition="!System.HasAddon(script.extendedinfo)">InstallAddon(script.extendedinfo)</onclick>
 						<selected>System.HasAddon(script.extendedinfo)</selected>
 						<label>Extended Info Script  (script.extendedinfo)</label>
+					</control>
+					<control type="radiobutton" id="709">
+						<include>SettingsButton</include>
+						<onclick condition="!System.HasAddon(script.cu.lrclyrics)">InstallAddon(script.cu.lrclyrics)</onclick>
+						<selected>System.HasAddon(script.cu.lrclyrics)</selected>
+						<label>CU LRC Lyrics  (script.cu.lrclyrics)</label>
 					</control>
 				</control>
 			</control>

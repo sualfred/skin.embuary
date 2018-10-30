@@ -58,10 +58,12 @@
 					<include content="PlayerButtons">
 						<param name="type" value="playlist"/>
 					</include>
-					<onclick>close</onclick>
+					<onclick condition="!Window.IsVisible(script-cu-irclyrics-main.xml)">close</onclick>
+					<onclick condition="Window.IsVisible(script-cu-irclyrics-main.xml)">Dialog.Close(all,true)</onclick>
+					<onclick condition="Window.IsVisible(script-cu-irclyrics-main.xml)">Action(fullscreen)</onclick>
 					<onclick condition="Integer.IsGreater(Playlist.Length(video),1) + !Integer.IsGreater(Playlist.Length(music),1)">ActivateWindow(videoplaylist)</onclick>
 					<onclick condition="!Integer.IsGreater(Playlist.Length(video),1) + Integer.IsGreater(Playlist.Length(music),1)">ActivateWindow(musicplaylist)</onclick>
-					<visible>Integer.IsGreater(Playlist.Length(music),1)</visible>
+					<visible>Integer.IsGreater(Playlist.Length(music),1) | Integer.IsGreater(Playlist.Lenght(video),1)</visible>
 				</control>
 				<control type="button" id="6080">
 					<include content="PlayerButtons">

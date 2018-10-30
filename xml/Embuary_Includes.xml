@@ -65,7 +65,8 @@
 		</control>
 		<!-- Fanart -->
 		<control type="group">
-			<animation effect="fade" end="33" start="100" time="0" condition="Visualisation.Enabled | [Window.IsVisible(visualisation) + !String.IsEmpty(Window(Home).Property(culrc.lyrics)) + Window.IsVisible(script-cu-lrclyrics-main.xml)]">Conditional</animation>
+			<animation effect="fade" end="33" start="100" time="0" condition="Visualisation.Enabled">Conditional</animation>
+			<animation effect="fade" end="33" start="100" time="400" condition="!Visualisation.Enabled + [Window.IsVisible(visualisation) + !String.IsEmpty(Window(Home).Property(culrc.lyrics)) + Window.IsVisible(script-cu-lrclyrics-main.xml)]">Conditional</animation>
 			<control type="image">
 				<include>FullscreenDimensions</include>
 				<fadetime>400</fadetime>
