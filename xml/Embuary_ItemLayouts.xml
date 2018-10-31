@@ -150,6 +150,7 @@
 	<!-- ListItem overlay -->
 	<include name="listitem_overlay">
 		<control type="group">
+			<visible>!String.IsEqual(ListItem.DBType,artist) + !String.IsEqual(ListItem.DBType,album) + !String.IsEqual(ListItem.DBType,song)</visible>
 			<control type="group">
 				<visible>String.StartsWith(ListItem.Path,pvr://)</visible>
 				<control type="image">
