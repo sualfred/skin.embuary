@@ -82,7 +82,7 @@
 				<fadetime>400</fadetime>
 				<texture background="true">$VAR[MusicPlayerFanart]</texture>
 				<include>VisAnimation</include>
-				<visible>!Skin.HasSetting(VisFanartDisabled) + [!Skin.HasSetting(VisRandomFanart) | String.IsEmpty(Window(Visualisation).Property(ArtistSlideshow)) | String.EndsWith(Window(Visualisation).Property(ArtistSlideshow),black) | !System.HasAddon(script.artistslideshow)]</visible>
+				<visible>!Skin.HasSetting(VisFanartDisabled) + ![Skin.HasSetting(VisRandomFanart) + !Skin.HasSetting(VisFanartDisabled) + System.HasAddon(script.artistslideshow) + !String.IsEmpty(Window(Visualisation).Property(ArtistSlideshow)) + !String.EndsWith(Window(Visualisation).Property(ArtistSlideshow),black)]</visible>
 			</control>
 			<control type="multiimage">
 				<include>FullscreenDimensions</include>
@@ -92,7 +92,7 @@
 				<timeperimage>10000</timeperimage>
 				<imagepath background="true">$INFO[Window(Visualisation).Property(ArtistSlideshow)]</imagepath>
 				<include>VisAnimation</include>
-				<visible>Skin.HasSetting(VisRandomFanart) + !Skin.HasSetting(VisFanartDisabled) + System.HasAddon(script.artistslideshow)</visible>
+				<visible>Skin.HasSetting(VisRandomFanart) + !Skin.HasSetting(VisFanartDisabled) + System.HasAddon(script.artistslideshow) + !String.IsEmpty(Window(Visualisation).Property(ArtistSlideshow)) + !String.EndsWith(Window(Visualisation).Property(ArtistSlideshow),black)</visible>
 			</control>
 		</control>
 	</include>
@@ -105,7 +105,7 @@
 				<texture colordiffuse="background">common/white.jpg</texture>
 			</control>
 			<control type="group">
-				<visible>Player.HasMedia + !Skin.HasSetting(HideBackgroundPlayback) + [$EXP[HideBackground] | $PARAM[forced_visible]]</visible>
+				<visible>Player.HasMedia + !Skin.HasSetting(HideBackgroundPlayback) + $EXP[HolidayThemeSound] + [$EXP[HideBackground] | $PARAM[forced_visible]]</visible>
 				<control type="videowindow">
 					<include>FullscreenDimensions</include>
 					<visible>Player.HasVideo</visible>
@@ -116,7 +116,7 @@
 				</control>
 			</control>
 			<control type="group">
-				<visible>[!Player.HasMedia | Skin.HasSetting(HideBackgroundPlayback)] + !Skin.HasSetting(HideBackground) + !Window.IsVisible(MyPVRguide.xml) + !Window.IsVisible(virtualkeyboard) + [$EXP[HideBackground] | $PARAM[forced_visible]]</visible>
+				<visible>[!Player.HasMedia | Skin.HasSetting(HideBackgroundPlayback) | !$EXP[HolidayThemeSound]] + !Skin.HasSetting(HideBackground) + !Window.IsVisible(MyPVRguide.xml) + !Window.IsVisible(virtualkeyboard) + [$EXP[HideBackground] | $PARAM[forced_visible]]</visible>
 				<include>Visible_Fade</include>
 				<control type="image">
 					<include>FullscreenDimensions</include>
