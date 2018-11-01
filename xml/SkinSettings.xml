@@ -254,6 +254,28 @@
 						<onclick>ActivateWindow(1110)</onclick>
 						<label>$LOCALIZE[31245]</label>
 					</control>
+					<!-- emby hubs -->
+					<include content="SkinSettingsHeadlineLabel">
+						<param name="id" value="250"/>
+						<param name="label" value="$LOCALIZE[31279]"/>
+						<param name="visible" value="System.HasAddon(plugin.video.emby)"/>
+					</include>
+					<control type="button" id="251">
+						<include>SettingsButton</include>
+						<onclick>SetProperty(PositionCount,6,home)</onclick>
+						<onclick>SetProperty(SelectorContent,EmbyMovieHubWidgets,home)</onclick>
+						<onclick>ActivateWindow(1110)</onclick>
+						<label>$LOCALIZE[31281]</label>
+						<visible>System.HasAddon(plugin.video.emby)</visible>
+					</control>
+					<control type="button" id="252">
+						<include>SettingsButton</include>
+						<onclick>SetProperty(PositionCount,7,home)</onclick>
+						<onclick>SetProperty(SelectorContent,EmbyTVShowHubWidgets,home)</onclick>
+						<onclick>ActivateWindow(1110)</onclick>
+						<label>$LOCALIZE[31280]</label>
+						<visible>System.HasAddon(plugin.video.emby)</visible>
+					</control>
 					<control type="label">
 						<height>50</height>
 					</control>

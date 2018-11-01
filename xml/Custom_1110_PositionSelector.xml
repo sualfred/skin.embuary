@@ -192,6 +192,12 @@
 						<include condition="String.IsEqual(Window(home).Property(SelectorContent),MusicHubWidgets)" content="PositionSelectorItems">
 							<param name="content" value="MusicHubWidgetsPositionSelectorTemplate"/>
 						</include>
+						<include condition="String.IsEqual(Window(home).Property(SelectorContent),EmbyMovieHubWidgets)" content="PositionSelectorItems">
+							<param name="content" value="EmbyMovieHubWidgetsPositionSelectorTemplate"/>
+						</include>
+						<include condition="String.IsEqual(Window(home).Property(SelectorContent),EmbyTVShowHubWidgets)" content="PositionSelectorItems">
+							<param name="content" value="EmbyTVShowHubWidgetsPositionSelectorTemplate"/>
+						</include>
 					</control>
 					<control type="scrollbar" id="60">
 						<right>0</right>
@@ -338,6 +344,8 @@
 						<onclick condition="String.IsEqual(Window(home).Property(SelectorContent),MovieHubWidgets)">SetProperty(MovieHubWidgetReset,1,home)</onclick>
 						<onclick condition="String.IsEqual(Window(home).Property(SelectorContent),TVShowHubWidgets)">SetProperty(TVShowHubWidgetReset,1,home)</onclick>
 						<onclick condition="String.IsEqual(Window(home).Property(SelectorContent),MusicHubWidgets)">SetProperty(MusicHubWidgetReset,1,home)</onclick>
+						<onclick condition="String.IsEqual(Window(home).Property(SelectorContent),EmbyMovieHubWidgets)">SetProperty(EmbyMovieHubWidgetsReset,1,home)</onclick>
+						<onclick condition="String.IsEqual(Window(home).Property(SelectorContent),EmbyTVShowHubWidgets)">SetProperty(EmbyTVShowHubWidgetsReset,1,home)</onclick>
 						<onclick>ActivateWindow(1112)</onclick>
 						<onclick>AlarmClock(restorewidgets,ActivateWindow(1110),00:01,silent)</onclick>
 						<onup>SetFocus(100)</onup>

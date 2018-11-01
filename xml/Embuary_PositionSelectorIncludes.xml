@@ -791,4 +791,182 @@
 		</definition>
 	</include>
 
+	<!-- Emby movie HUB Widgets -->
+	<include name="EmbyMovieHubWidgetsPositionSelectorTemplate">
+		<item>
+			<icon>DefaultFolder.png</icon>
+			<label>$INFO[Skin.String(embymoviehub_widget_pos_$PARAM[nr].label)]</label>
+			<property name="pos">$NUMBER[$PARAM[nr]]</property>
+			<property name="itemlabel">$INFO[Skin.String(embymoviehub_widget_pos_$PARAM[nr].label)]</property>
+			<property name="item">$INFO[Skin.String(embymoviehub_widget_pos_$PARAM[nr])]</property>
+			<onclick>SetProperty(embymoviehub_widget_position,$PARAM[nr],home)</onclick>
+			<onclick>ActivateWindow(1111)</onclick>
+			<visible>!String.IsEmpty(Skin.String(embymoviehub_widget_pos_$PARAM[nr].label))</visible>
+		</item>
+		<item>
+			<icon>DefaultFolderBack.png</icon>
+			<label>$LOCALIZE[504]</label>
+			<property name="pos">$NUMBER[$PARAM[nr]]</property>
+			<property name="itemlabel">$LOCALIZE[504]</property>
+			<onclick>noop</onclick>
+			<visible>String.IsEmpty(Skin.String(embymoviehub_widget_pos_$PARAM[nr].label))</visible>
+		</item>
+	</include>
+	<!-- Available Emby movie widgets -->
+	<include name="EmbyMovieHubAvailableWidgets">
+		<include content="EmbyMovieHubSetWidget">
+			<param name="label" value="$LOCALIZE[192]"/>
+			<param name="setitem" value="false"/>
+			<param name="clearitem" value="true"/>
+			<param name="icon" value="DefaultAddonNone"/>
+		</include>
+		<include content="EmbyMovieHubSetWidget">
+			<param name="label" value="$LOCALIZE[31080]"/>
+			<param name="item" value="W_EmbyInProgressMovies"/>
+		</include>
+		<include content="EmbyMovieHubSetWidget">
+			<param name="label" value="$LOCALIZE[20386]"/>
+			<param name="item" value="W_EmbyNewMovies"/>
+		</include>
+		<include content="EmbyMovieHubSetWidget">
+			<param name="label" value="$LOCALIZE[31017]"/>
+			<param name="item" value="W_EmbyRecommendedMovies"/>
+		</include>
+		<include content="EmbyMovieHubSetWidget">
+			<param name="label" value="$LOCALIZE[31018]"/>
+			<param name="item" value="W_EmbySimilarMovies"/>
+		</include>
+		<include content="EmbyMovieHubSetWidget">
+			<param name="label" value="$LOCALIZE[31278]"/>
+			<param name="item" value="W_EmbyMoviesByGenre"/>
+		</include>
+		<include content="EmbyMovieHubSetWidget">
+			<param name="label" value="$LOCALIZE[31184]"/>
+			<param name="item" value="W_EmbyRandomMovies"/>
+		</include>
+	</include>
+	<include name="EmbyMovieHubSetWidget">
+		<param name="icon">DefaultFolder</param>
+		<param name="setitem">true</param>
+		<param name="clearitem">false</param>
+		<param name="visible">true</param>
+		<param name="nr">$INFO[Window(home).Property(embymoviehub_widget_position)]</param>
+		<definition>
+			<item>
+				<icon>$PARAM[icon].png</icon>
+				<label>$PARAM[label]</label>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(embymoviehub_widget_pos_1),$PARAM[item])">Skin.Reset(embymoviehub_widget_pos_1)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(embymoviehub_widget_pos_1),$PARAM[item])">Skin.Reset(embymoviehub_widget_pos_1.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(embymoviehub_widget_pos_2),$PARAM[item])">Skin.Reset(embymoviehub_widget_pos_2)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(embymoviehub_widget_pos_2),$PARAM[item])">Skin.Reset(embymoviehub_widget_pos_2.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(embymoviehub_widget_pos_3),$PARAM[item])">Skin.Reset(embymoviehub_widget_pos_3)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(embymoviehub_widget_pos_3),$PARAM[item])">Skin.Reset(embymoviehub_widget_pos_3.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(embymoviehub_widget_pos_4),$PARAM[item])">Skin.Reset(embymoviehub_widget_pos_4)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(embymoviehub_widget_pos_4),$PARAM[item])">Skin.Reset(embymoviehub_widget_pos_4.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(embymoviehub_widget_pos_5),$PARAM[item])">Skin.Reset(embymoviehub_widget_pos_5)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(embymoviehub_widget_pos_5),$PARAM[item])">Skin.Reset(embymoviehub_widget_pos_5.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(embymoviehub_widget_pos_6),$PARAM[item])">Skin.Reset(embymoviehub_widget_pos_6)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(embymoviehub_widget_pos_6),$PARAM[item])">Skin.Reset(embymoviehub_widget_pos_6.label)</onclick>
+				<onclick condition="$PARAM[setitem]">Skin.SetString(embymoviehub_widget_pos_$PARAM[nr].label,$PARAM[label])</onclick>
+				<onclick condition="$PARAM[setitem]">Skin.SetString(embymoviehub_widget_pos_$PARAM[nr],$PARAM[item])</onclick>
+				<onclick condition="$PARAM[clearitem]">Skin.Reset(embymoviehub_widget_pos_$PARAM[nr])</onclick>
+				<onclick condition="$PARAM[clearitem]">Skin.Reset(embymoviehub_widget_pos_$PARAM[nr].label)</onclick>
+				<onclick>Dialog.Close(1111)</onclick>
+				<visible>$PARAM[visible]</visible>
+			</item>
+		</definition>
+	</include>
+
+	<!-- Emby TV show HUB Widgets -->
+	<include name="EmbyTVShowHubWidgetsPositionSelectorTemplate">
+		<item>
+			<icon>DefaultFolder.png</icon>
+			<label>$INFO[Skin.String(embytvshowhub_widget_pos_$PARAM[nr].label)]</label>
+			<property name="pos">$NUMBER[$PARAM[nr]]</property>
+			<property name="itemlabel">$INFO[Skin.String(embytvshowhub_widget_pos_$PARAM[nr].label)]</property>
+			<property name="item">$INFO[Skin.String(embytvshowhub_widget_pos_$PARAM[nr])]</property>
+			<onclick>SetProperty(embytvshowhub_widget_position,$PARAM[nr],home)</onclick>
+			<onclick>ActivateWindow(1111)</onclick>
+			<visible>!String.IsEmpty(Skin.String(embytvshowhub_widget_pos_$PARAM[nr].label))</visible>
+		</item>
+		<item>
+			<icon>DefaultFolderBack.png</icon>
+			<label>$LOCALIZE[504]</label>
+			<property name="pos">$NUMBER[$PARAM[nr]]</property>
+			<property name="itemlabel">$LOCALIZE[504]</property>
+			<onclick>noop</onclick>
+			<visible>String.IsEmpty(Skin.String(embytvshowhub_widget_pos_$PARAM[nr].label))</visible>
+		</item>
+	</include>
+	<!-- Available Emby TV show widgets -->
+	<include name="EmbyTVShowHubAvailableWidgets">
+		<include content="EmbyTVShowHubSetWidget">
+			<param name="label" value="$LOCALIZE[192]"/>
+			<param name="setitem" value="false"/>
+			<param name="clearitem" value="true"/>
+			<param name="icon" value="DefaultAddonNone"/>
+		</include>
+		<include content="EmbyTVShowHubSetWidget">
+			<param name="label" value="$LOCALIZE[31080]"/>
+			<param name="item" value="W_EmbyInprogressEpisodes"/>
+		</include>
+		<include content="EmbyTVShowHubSetWidget">
+			<param name="label" value="$LOCALIZE[31012]"/>
+			<param name="item" value="W_EmbyNextUp"/>
+		</include>
+		<include content="EmbyTVShowHubSetWidget">
+			<param name="label" value="$LOCALIZE[31081]"/>
+			<param name="item" value="W_EmbyNewEpisodes"/>
+		</include>
+		<include content="EmbyTVShowHubSetWidget">
+			<param name="label" value="$LOCALIZE[31017]"/>
+			<param name="item" value="W_EmbyRecommendedShows"/>
+		</include>
+		<include content="EmbyTVShowHubSetWidget">
+			<param name="label" value="$LOCALIZE[31018]"/>
+			<param name="item" value="W_EmbySimilarShows"/>
+		</include>
+		<include content="EmbyTVShowHubSetWidget">
+			<param name="label" value="$LOCALIZE[31278]"/>
+			<param name="item" value="W_EmbyTVShowsByGenre"/>
+		</include>
+		<include content="EmbyTVShowHubSetWidget">
+			<param name="label" value="$LOCALIZE[31185]"/>
+			<param name="item" value="W_EmbyRandomShows"/>
+		</include>
+	</include>
+	<include name="EmbyTVShowHubSetWidget">
+		<param name="icon">DefaultFolder</param>
+		<param name="setitem">true</param>
+		<param name="clearitem">false</param>
+		<param name="visible">true</param>
+		<param name="nr">$INFO[Window(home).Property(embytvshowhub_widget_position)]</param>
+		<definition>
+			<item>
+				<icon>$PARAM[icon].png</icon>
+				<label>$PARAM[label]</label>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(embytvshowhub_widget_pos_1),$PARAM[item])">Skin.Reset(embytvshowhub_widget_pos_1)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(embytvshowhub_widget_pos_1),$PARAM[item])">Skin.Reset(embytvshowhub_widget_pos_1.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(embytvshowhub_widget_pos_2),$PARAM[item])">Skin.Reset(embytvshowhub_widget_pos_2)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(embytvshowhub_widget_pos_2),$PARAM[item])">Skin.Reset(embytvshowhub_widget_pos_2.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(embytvshowhub_widget_pos_3),$PARAM[item])">Skin.Reset(embytvshowhub_widget_pos_3)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(embytvshowhub_widget_pos_3),$PARAM[item])">Skin.Reset(embytvshowhub_widget_pos_3.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(embytvshowhub_widget_pos_4),$PARAM[item])">Skin.Reset(embytvshowhub_widget_pos_4)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(embytvshowhub_widget_pos_4),$PARAM[item])">Skin.Reset(embytvshowhub_widget_pos_4.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(embytvshowhub_widget_pos_5),$PARAM[item])">Skin.Reset(embytvshowhub_widget_pos_5)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(embytvshowhub_widget_pos_5),$PARAM[item])">Skin.Reset(embytvshowhub_widget_pos_5.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(embytvshowhub_widget_pos_6),$PARAM[item])">Skin.Reset(embytvshowhub_widget_pos_6)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(embytvshowhub_widget_pos_6),$PARAM[item])">Skin.Reset(embytvshowhub_widget_pos_6.label)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(embytvshowhub_widget_pos_7),$PARAM[item])">Skin.Reset(embytvshowhub_widget_pos_7)</onclick>
+				<onclick condition="$PARAM[setitem] + String.IsEqual(Skin.String(embytvshowhub_widget_pos_7),$PARAM[item])">Skin.Reset(embytvshowhub_widget_pos_7.label)</onclick>
+				<onclick condition="$PARAM[setitem]">Skin.SetString(embytvshowhub_widget_pos_$PARAM[nr].label,$PARAM[label])</onclick>
+				<onclick condition="$PARAM[setitem]">Skin.SetString(embytvshowhub_widget_pos_$PARAM[nr],$PARAM[item])</onclick>
+				<onclick condition="$PARAM[clearitem]">Skin.Reset(embytvshowhub_widget_pos_$PARAM[nr])</onclick>
+				<onclick condition="$PARAM[clearitem]">Skin.Reset(embytvshowhub_widget_pos_$PARAM[nr].label)</onclick>
+				<onclick>Dialog.Close(1111)</onclick>
+				<visible>$PARAM[visible]</visible>
+			</item>
+		</definition>
+	</include>
+
 </includes>
