@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window id="1112" type="dialog">
-	<visible>[!Skin.HasSetting(SkinSetup) + !Window.IsVisible(startup) + !Window.IsVisible(1119)] | !String.IsEmpty(Window(home).Property(HomeWidgetReset)) | !String.IsEmpty(Window(home).Property(MovieHubWidgetReset)) | !String.IsEmpty(Window(home).Property(MusicHubWidgetReset))</visible>
+	<visible>[!Skin.HasSetting(SkinSetup) + !Window.IsVisible(startup) + !Window.IsVisible(1119)] | !String.IsEmpty(Window(home).Property(HomeWidgetReset)) | !String.IsEmpty(Window(home).Property(MovieHubWidgetReset)) | !String.IsEmpty(Window(home).Property(MusicHubWidgetReset)) | !String.IsEmpty(Window(home).Property(EmbyMovieHubWidgetsReset)) | !String.IsEmpty(Window(home).Property(EmbyTVShowHubWidgetsReset))</visible>
 
 	<onload condition="$EXP[SkinSetup]">Notification(Embuary,$LOCALIZE[31217])</onload>
 
@@ -44,7 +44,7 @@
 	<onload condition="$EXP[SkinSetup] | !String.IsEmpty(Window(home).Property(HomeWidgetReset))">Skin.Reset(home_widget_pos_18.label)</onload>
 	<onload condition="$EXP[SkinSetup] | !String.IsEmpty(Window(home).Property(HomeWidgetReset))">Skin.Reset(home_widget_pos_19.label)</onload>
 
-	<onload condition="!String.IsEmpty(Window(home).Property(HomeWidgetReset))">Notification(Embuary,$LOCALIZE[31127])</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(HomeWidgetReset))">Notification($LOCALIZE[513],$LOCALIZE[31127])</onload>
 
 	<!-- movie widget reset -->
 	<onload condition="$EXP[SkinSetup] | !String.IsEmpty(Window(home).Property(MovieHubWidgetReset))">Skin.SetString(moviehub_widget_pos_1,W_InProgressMovies)</onload>
@@ -88,7 +88,7 @@
 	<onload condition="$EXP[SkinSetup] | !String.IsEmpty(Window(home).Property(MovieHubWidgetReset))">Skin.Reset(moviehub_widget_pos_19.label)</onload>
 	<onload condition="$EXP[SkinSetup] | !String.IsEmpty(Window(home).Property(MovieHubWidgetReset))">Skin.Reset(moviehub_widget_pos_20.label)</onload>
 
-	<onload condition="!String.IsEmpty(Window(home).Property(MovieHubWidgetReset))">Notification(Embuary,$LOCALIZE[31127])</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(MovieHubWidgetReset))">Notification($LOCALIZE[31173],$LOCALIZE[31127])</onload>
 
 	<!-- tvshow widget reset -->
 	<onload condition="$EXP[SkinSetup] | !String.IsEmpty(Window(home).Property(TVShowHubWidgetReset))">Skin.SetString(tvshowhub_widget_pos_1,W_InProgressShows)</onload>
@@ -134,7 +134,7 @@
 	<onload condition="$EXP[SkinSetup] | !String.IsEmpty(Window(home).Property(TVShowHubWidgetReset))">Skin.Reset(tvshowhub_widget_pos_20.label)</onload>
 	<onload condition="$EXP[SkinSetup] | !String.IsEmpty(Window(home).Property(TVShowHubWidgetReset))">Skin.Reset(tvshowhub_widget_pos_21.label)</onload>
 
-	<onload condition="!String.IsEmpty(Window(home).Property(TVShowHubWidgetReset))">Notification(Embuary,$LOCALIZE[31127])</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(TVShowHubWidgetReset))">Notification($LOCALIZE[31172],$LOCALIZE[31127])</onload>
 
 	<!-- music widget reset -->
 	<onload condition="$EXP[SkinSetup] | !String.IsEmpty(Window(home).Property(MusicHubWidgetReset))">Skin.SetString(musichub_widget_pos_1,W_NewAlbums)</onload>
@@ -168,7 +168,7 @@
 	<onload condition="$EXP[SkinSetup] | !String.IsEmpty(Window(home).Property(MusicHubWidgetReset))">Skin.Reset(musichub_widget_pos_14.label)</onload>
 	<onload condition="$EXP[SkinSetup] | !String.IsEmpty(Window(home).Property(MusicHubWidgetReset))">Skin.Reset(musichub_widget_pos_15.label)</onload>
 
-	<onload condition="!String.IsEmpty(Window(home).Property(MusicHubWidgetReset))">Notification(Embuary,$LOCALIZE[31127])</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(MusicHubWidgetReset))">Notification($LOCALIZE[31174],$LOCALIZE[31127])</onload>
 
 	<!-- Emby movie widget reset -->
 	<onload condition="$EXP[SkinSetup] | !String.IsEmpty(Window(home).Property(EmbyMovieHubWidgetsReset))">Skin.SetString(embymoviehub_widget_pos_1,W_EmbyHub_InProgressMovies)</onload>
@@ -184,7 +184,7 @@
 	<onload condition="$EXP[SkinSetup] | !String.IsEmpty(Window(home).Property(EmbyMovieHubWidgetsReset))">Skin.SetString(embymoviehub_widget_pos_5.label,$LOCALIZE[31278])</onload>
 	<onload condition="$EXP[SkinSetup] | !String.IsEmpty(Window(home).Property(EmbyMovieHubWidgetsReset))">Skin.SetString(embymoviehub_widget_pos_6.label,$LOCALIZE[31184])</onload>
 
-	<onload condition="!String.IsEmpty(Window(home).Property(EmbyMovieHubWidgetsReset))">Notification(Embuary,$LOCALIZE[31127])</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(EmbyMovieHubWidgetsReset))">Notification($LOCALIZE[31279],$LOCALIZE[31127])</onload>
 
 	<!-- Emby tvshow widget reset -->
 	<onload condition="$EXP[SkinSetup] | !String.IsEmpty(Window(home).Property(EmbyTVShowHubWidgetsReset))">Skin.SetString(embytvshowhub_widget_pos_1,W_EmbyHub_InprogressEpisodes)</onload>
@@ -202,7 +202,7 @@
 	<onload condition="$EXP[SkinSetup] | !String.IsEmpty(Window(home).Property(EmbyTVShowHubWidgetsReset))">Skin.SetString(embytvshowhub_widget_pos_6.label,$LOCALIZE[31278])</onload>
 	<onload condition="$EXP[SkinSetup] | !String.IsEmpty(Window(home).Property(EmbyTVShowHubWidgetsReset))">Skin.SetString(embytvshowhub_widget_pos_7.label,$LOCALIZE[31185])</onload>
 
-	<onload condition="!String.IsEmpty(Window(home).Property(EmbyTVShowHubWidgetsReset))">Notification(Embuary,$LOCALIZE[31127])</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(EmbyTVShowHubWidgetsReset))">Notification($LOCALIZE[31279],$LOCALIZE[31127])</onload>
 
 	<!-- unload -->
 	<onload>ClearProperty(HomeWidgetReset,home)</onload>
@@ -210,6 +210,8 @@
 	<onload>ClearProperty(TVShowHubWidgetReset,home)</onload>
 	<onload>ClearProperty(MusicHubWidgetReset,home)</onload>
 	<onload>ClearProperty(MusicHubWidgetReset,home)</onload>
+	<onload>ClearProperty(EmbyMovieHubWidgetsReset,home)</onload>
+	<onload>ClearProperty(EmbyTVShowHubWidgetsReset,home)</onload>
 	<onload>Skin.SetBool(SkinSetup)</onload>
 	<onunload condition="Window.IsVisible(home)">AlarmClock(ReloadSkin,ReloadSkin(),00:02,silent)</onunload>
 
