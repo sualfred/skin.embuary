@@ -55,7 +55,7 @@
 			<param name="headline" value="$LOCALIZE[31018] $INFO[Container($PARAM[id]).ListItem.Property(searchstring),',']"/>
 			<param name="widget_target" value="videos"/>
 			<param name="limit" value="25"/>
-			<param name="content" value="plugin://script.embuary.helper/?info=getsimilar&amp;type=movie&amp;tag='$ESCINFO[Window(home).Property(emby.wnodes.$PARAM[nr].title)]'"/>
+			<param name="content" value="plugin://script.embuary.helper/?info=getsimilar&amp;type=movie&amp;tag='$ESCINFO[Window(home).Property(emby.wnodes.$PARAM[nr].title)]'&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 		</include>
 	</include>
 	<!-- Suggestions by movie genre -->
@@ -67,7 +67,7 @@
 			<param name="headline" value="$LOCALIZE[31278] $INFO[Container($PARAM[id]).ListItem.Property(searchstring),',']"/>
 			<param name="widget_target" value="videos"/>
 			<param name="limit" value="25"/>
-			<param name="content" value="plugin://script.embuary.helper/?info=getbygenre&amp;unwatched=True&amp;type=movie&amp;tag='$ESCINFO[Window(home).Property(emby.wnodes.$PARAM[nr].title)]'"/>
+			<param name="content" value="plugin://script.embuary.helper/?info=getbygenre&amp;unwatched=True&amp;type=movie&amp;tag='$ESCINFO[Window(home).Property(emby.wnodes.$PARAM[nr].title)]'&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 		</include>
 	</include>
 	<!-- Random movies -->
@@ -113,7 +113,7 @@
 			<param name="limit" value="25"/>
 			<param name="sortby" value="lastplayed"/>
 			<param name="sortorder" value="descending"/>
-			<param name="content" value="plugin://script.embuary.helper/?info=getnextup&amp;tag='$ESCINFO[Window(home).Property(emby.wnodes.$PARAM[nr].title)]'"/>
+			<param name="content" value="plugin://script.embuary.helper/?info=getnextup&amp;tag='$ESCINFO[Window(home).Property(emby.wnodes.$PARAM[nr].title)]'&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 		</include>
 	</include>
 	<!-- Recently updated shows -->
@@ -127,7 +127,7 @@
 			<param name="sublabel" value="$VAR[RecentEpisodes_Sublabel]"/>
 			<param name="widget_target" value="videos"/>
 			<param name="limit" value="25"/>
-			<param name="content" value="plugin://script.embuary.helper/?info=getnewshows&amp;tag='$ESCINFO[Window(home).Property(emby.wnodes.$PARAM[nr].title)]'"/>
+			<param name="content" value="plugin://script.embuary.helper/?info=getnewshows&amp;tag='$ESCINFO[Window(home).Property(emby.wnodes.$PARAM[nr].title)]'&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 		</include>
 	</include>
 	<!-- Recommended shows -->
