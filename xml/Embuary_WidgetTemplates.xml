@@ -263,7 +263,7 @@
 			<param name="id" value="$PARAM[id]"/>
 			<param name="onup" value="$PARAM[onup]"/>
 			<param name="ondown" value="$PARAM[ondown]"/>
-			<param name="headline" value="$LOCALIZE[31018] $INFO[Container($PARAM[id]).ListItem.Property(similartitle)]"/>
+			<param name="headline" value="$LOCALIZE[31018] $INFO[Container($PARAM[id]).ListItem.Property(searchstring)]"/>
 			<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 			<param name="sublabel" value="$INFO[ListItem.Year]"/>
 			<param name="widget_target" value="videos"/>
@@ -397,7 +397,7 @@
 			<param name="id" value="$PARAM[id]"/>
 			<param name="onup" value="$PARAM[onup]"/>
 			<param name="ondown" value="$PARAM[ondown]"/>
-			<param name="headline" value="$LOCALIZE[31018] $INFO[Container($PARAM[id]).ListItem.Property(similartitle)]"/>
+			<param name="headline" value="$LOCALIZE[31018] $INFO[Container($PARAM[id]).ListItem.Property(searchstring)]"/>
 			<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 			<param name="sublabel" value="$INFO[ListItem.Year]"/>
 			<param name="widget_target" value="videos"/>
@@ -516,6 +516,42 @@
 			<param name="headline" value="$LOCALIZE[1036]"/>
 			<param name="content" value="favourites://"/>
 			<param name="layout" value="SquareFavourits"/>
+		</include>
+	</include>
+	<!-- Mixed suggestions by genre -->
+	<include name="W_MixedByGenre">
+		<include content="PosterWidget">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$LOCALIZE[31278] $INFO[Container($PARAM[id]).ListItem.Property(searchstring),',']"/>
+			<param name="widget_target" value="videos"/>
+			<param name="limit" value="25"/>
+			<param name="content" value="plugin://script.embuary.helper/?info=getbygenre&amp;unwatched=True&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
+		</include>
+	</include>
+	<!-- Movie suggestions by genre -->
+	<include name="W_MoviesByGenre">
+		<include content="PosterWidget">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$LOCALIZE[31278] $INFO[Container($PARAM[id]).ListItem.Property(searchstring),',']"/>
+			<param name="widget_target" value="videos"/>
+			<param name="limit" value="25"/>
+			<param name="content" value="plugin://script.embuary.helper/?info=getbygenre&amp;unwatched=True&amp;type=movie&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
+		</include>
+	</include>
+	<!-- TV show suggestions by genre -->
+	<include name="W_TVShowsByGenre">
+		<include content="WideWidget">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$LOCALIZE[31278] $INFO[Container($PARAM[id]).ListItem.Property(searchstring),',']"/>
+			<param name="widget_target" value="videos"/>
+			<param name="limit" value="25"/>
+			<param name="content" value="plugin://script.embuary.helper/?info=getbygenre&amp;unwatched=True&amp;type=tvshow&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 		</include>
 	</include>
 

@@ -93,10 +93,30 @@
 				<param name="limit" value="25"/>
 				<param name="content" value="$INFO[Window(home).Property(emby.wnodes.$PARAM[nr].index),,recommended.xml]"/>
 			</include>
-			<!-- Random -->
+			<!-- Because you watched -->
 			<include content="PosterWidget">
 				<param name="id" value="203"/>
 				<param name="onup" value="202"/>
+				<param name="ondown" value="204"/>
+				<param name="headline" value="$LOCALIZE[31018] $INFO[Container(203).ListItem.Property(searchstring),',']"/>
+				<param name="widget_target" value="videos"/>
+				<param name="limit" value="25"/>
+				<param name="content" value="plugin://script.embuary.helper/?info=getsimilar&amp;type=movie&amp;tag='$ESCINFO[Window(home).Property(emby.wnodes.$PARAM[nr].title)]'"/>
+			</include>
+			<!-- Suggestions by genre -->
+			<include content="PosterWidget">
+				<param name="id" value="204"/>
+				<param name="onup" value="203"/>
+				<param name="ondown" value="205"/>
+				<param name="headline" value="$LOCALIZE[31278] $INFO[Container(204).ListItem.Property(searchstring),',']"/>
+				<param name="widget_target" value="videos"/>
+				<param name="limit" value="25"/>
+				<param name="content" value="plugin://script.embuary.helper/?info=getbygenre&amp;unwatched=True&amp;type=movie&amp;tag='$ESCINFO[Window(home).Property(emby.wnodes.$PARAM[nr].title)]'"/>
+			</include>
+			<!-- Random -->
+			<include content="PosterWidget">
+				<param name="id" value="205"/>
+				<param name="onup" value="204"/>
 				<param name="ondown" value="noop"/>
 				<param name="headline" value="$LOCALIZE[31184]"/>
 				<param name="mainlabel" value="$INFO[ListItem.Title]"/>
@@ -209,10 +229,30 @@
 				<param name="limit" value="25"/>
 				<param name="content" value="$INFO[Window(home).Property(emby.wnodes.$PARAM[nr].index),,recommended.xml]"/>
 			</include>
-			<!-- Random -->
+			<!-- Because you watched -->
 			<include content="WideWidget">
 				<param name="id" value="204"/>
 				<param name="onup" value="203"/>
+				<param name="ondown" value="205"/>
+				<param name="headline" value="$LOCALIZE[31018] $INFO[Container(204).ListItem.Property(searchstring),',']"/>
+				<param name="widget_target" value="videos"/>
+				<param name="limit" value="25"/>
+				<param name="content" value="plugin://script.embuary.helper/?info=getsimilar&amp;type=tvshow&amp;tag='$ESCINFO[Window(home).Property(emby.wnodes.$PARAM[nr].title)]'"/>
+			</include>
+			<!-- Suggestions by genre -->
+			<include content="WideWidget">
+				<param name="id" value="205"/>
+				<param name="onup" value="204"/>
+				<param name="ondown" value="206"/>
+				<param name="headline" value="$LOCALIZE[31278] $INFO[Container(205).ListItem.Property(searchstring),',']"/>
+				<param name="widget_target" value="videos"/>
+				<param name="limit" value="25"/>
+				<param name="content" value="plugin://script.embuary.helper/?info=getbygenre&amp;unwatched=True&amp;type=tvshow&amp;tag='$ESCINFO[Window(home).Property(emby.wnodes.$PARAM[nr].title)]'"/>
+			</include>
+			<!-- Random -->
+			<include content="WideWidget">
+				<param name="id" value="206"/>
+				<param name="onup" value="205"/>
 				<param name="ondown" value="noop"/>
 				<param name="headline" value="$LOCALIZE[31185]"/>
 				<param name="mainlabel" value="$INFO[ListItem.Title]"/>
