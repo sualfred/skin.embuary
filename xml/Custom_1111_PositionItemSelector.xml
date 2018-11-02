@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window id="1111" type="dialog">
 	<defaultcontrol always="true">100</defaultcontrol>
-	<onunload>ClearProperty(menu_position,home)</onunload>
-	<onunload>ClearProperty(home_widget_position,home)</onunload>
-	<onunload>ClearProperty(moviehub_widget_position,home)</onunload>
-	<onunload>ClearProperty(tvshowhub_widget_position,home)</onunload>
-	<onunload>ClearProperty(musichub_widget_position,home)</onunload>
-	<onunload>ClearProperty(embymoviehub_widget_position,home)</onunload>
-	<onunload>ClearProperty(embytvshowhub_widget_position,home)</onunload>
+	<onunload>ClearProperty(widget_position,home)</onunload>
 	<include>PropertyIncludes</include>
 	<controls>
 		<!-- background -->
@@ -125,12 +119,15 @@
 							</control>
 						</focusedlayout>
 						<content>
-							<include condition="!String.IsEmpty(Window(home).Property(home_widget_position))">HomeAvailableWidgets</include>
-							<include condition="!String.IsEmpty(Window(home).Property(moviehub_widget_position))">MovieHubAvailableWidgets</include>
-							<include condition="!String.IsEmpty(Window(home).Property(tvshowhub_widget_position))">TVShowHubAvailableWidgets</include>
-							<include condition="!String.IsEmpty(Window(home).Property(musichub_widget_position))">MusicHubAvailableWidgets</include>
-							<include condition="!String.IsEmpty(Window(home).Property(embymoviehub_widget_position))">EmbyMovieHubAvailableWidgets</include>
-							<include condition="!String.IsEmpty(Window(home).Property(embytvshowhub_widget_position))">EmbyTVShowHubAvailableWidgets</include>
+							<include condition="String.IsEqual(Window(home).Property(SelectorContent),HomeWidgets)">HomeAvailableWidgets</include>
+							<include condition="String.IsEqual(Window(home).Property(SelectorContent),MovieHubWidgets)">MovieHubAvailableWidgets</include>
+							<include condition="String.IsEqual(Window(home).Property(SelectorContent),TVShowHubWidgets)">TVShowHubAvailableWidgets</include>
+							<include condition="String.IsEqual(Window(home).Property(SelectorContent),MusicHubWidgets)">MusicHubAvailableWidgets</include>
+							<include condition="String.IsEqual(Window(home).Property(SelectorContent),EmbyMovieHubWidgets)">EmbyMovieHubAvailableWidgets</include>
+							<include condition="String.IsEqual(Window(home).Property(SelectorContent),EmbyTVShowHubWidgets)">EmbyTVShowHubAvailableWidgets</include>
+							<include condition="String.IsEqual(Window(home).Property(SelectorContent),EmbyConMovieHubWidgets)">EmbyConMovieHubAvailableWidgets</include>
+							<include condition="String.IsEqual(Window(home).Property(SelectorContent),EmbyConTVShowHubWidgets)">EmbyConTVShowHubAvailableWidgets</include>
+							<include condition="String.IsEqual(Window(home).Property(SelectorContent),EmbyConMusicHubWidgets)">EmbyConMusicHubAvailableWidgets</include>
 						</content>
 					</control>
 					<control type="scrollbar" id="60">

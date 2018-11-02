@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <window>
-	<defaultcontrol always="true">303</defaultcontrol>
+	<defaultcontrol always="true">100</defaultcontrol>
 	<include>PropertyIncludes</include>
 	<!--<onunload>RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=100)</onunload>-->
 	<onunload>RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=100&amp;mode=single&amp;group=mainmenu|moviehub|tvshowhub|musichub)</onunload>
@@ -185,6 +185,7 @@
 						<onup condition="!String.IsEmpty(Container(211).ListItemNoWrap(-1).Label)">Control.Move(211,-1)</onup>
 						<ondown condition="!String.IsEmpty(Container(211).ListItemNoWrap(1).Label)">Control.Move(211,1)</ondown>
 						<ondown condition="String.IsEmpty(Container(211).ListItemNoWrap(1).Label)">200</ondown>
+						<visible>!String.IsEmpty(Container(211).ListItemNoWrap(-1).Label)</visible>
 					</control>
 					<!-- Move down -->
 					<control type="button" id="304">
@@ -200,6 +201,7 @@
 						<onup condition="!String.IsEmpty(Container(211).ListItemNoWrap(-1).Label)">Control.Move(211,-1)</onup>
 						<ondown condition="!String.IsEmpty(Container(211).ListItemNoWrap(1).Label)">Control.Move(211,1)</ondown>
 						<ondown condition="String.IsEmpty(Container(211).ListItemNoWrap(1).Label)">200</ondown>
+						<visible>!String.IsEmpty(Container(211).ListItemNoWrap(1).Label)</visible>
 					</control>
 					<!-- Rename -->
 					<control type="button" id="305">

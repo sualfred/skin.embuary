@@ -181,22 +181,31 @@
 							</control>
 						</focusedlayout>
 						<include condition="String.IsEqual(Window(home).Property(SelectorContent),HomeWidgets)" content="PositionSelectorItems">
-							<param name="content" value="HomeWidgetsPositionSelectorTemplate"/>
+							<param name="type" value="home"/>
 						</include>
 						<include condition="String.IsEqual(Window(home).Property(SelectorContent),MovieHubWidgets)" content="PositionSelectorItems">
-							<param name="content" value="MovieHubWidgetsPositionSelectorTemplate"/>
+							<param name="type" value="moviehub"/>
 						</include>
 						<include condition="String.IsEqual(Window(home).Property(SelectorContent),TVShowHubWidgets)" content="PositionSelectorItems">
-							<param name="content" value="TVShowHubWidgetsPositionSelectorTemplate"/>
+							<param name="type" value="tvshowhub"/>
 						</include>
 						<include condition="String.IsEqual(Window(home).Property(SelectorContent),MusicHubWidgets)" content="PositionSelectorItems">
-							<param name="content" value="MusicHubWidgetsPositionSelectorTemplate"/>
+							<param name="type" value="musichub"/>
 						</include>
 						<include condition="String.IsEqual(Window(home).Property(SelectorContent),EmbyMovieHubWidgets)" content="PositionSelectorItems">
-							<param name="content" value="EmbyMovieHubWidgetsPositionSelectorTemplate"/>
+							<param name="type" value="embymoviehub"/>
 						</include>
 						<include condition="String.IsEqual(Window(home).Property(SelectorContent),EmbyTVShowHubWidgets)" content="PositionSelectorItems">
-							<param name="content" value="EmbyTVShowHubWidgetsPositionSelectorTemplate"/>
+							<param name="type" value="embytvshowhub"/>
+						</include>
+						<include condition="String.IsEqual(Window(home).Property(SelectorContent),EmbyConMovieHubWidgets)" content="PositionSelectorItems">
+							<param name="type" value="embyconmoviehub"/>
+						</include>
+						<include condition="String.IsEqual(Window(home).Property(SelectorContent),EmbyConTVShowHubWidgets)" content="PositionSelectorItems">
+							<param name="type" value="embycontvshowhub"/>
+						</include>
+						<include condition="String.IsEqual(Window(home).Property(SelectorContent),EmbyConMusicHubWidgets)" content="PositionSelectorItems">
+							<param name="type" value="embyconmusichub"/>
 						</include>
 					</control>
 					<control type="scrollbar" id="60">
@@ -245,6 +254,7 @@
 							<include content="PositionSelectorMoveFunc">
 								<param name="direction" value="-1"/>
 							</include>
+							<visible>!String.IsEmpty(Container(211).ListItemNoWrap(-1).Label)</visible>
 						</control>
 						<!-- Move down -->
 						<control type="button" id="102">
@@ -263,6 +273,7 @@
 							<include content="PositionSelectorMoveFunc">
 								<param name="direction" value="1"/>
 							</include>
+							<visible>!String.IsEmpty(Container(211).ListItemNoWrap(1).Label)</visible>
 						</control>
 						<!-- Add -->
 						<control type="button" id="103">
@@ -278,7 +289,7 @@
 							<onup condition="!String.IsEmpty(Container(211).ListItemNoWrap(-1).Label + !System.HasAlarm(move))">Control.Move(211,-1)</onup>
 							<ondown condition="!String.IsEmpty(Container(211).ListItemNoWrap(1).Label) + !System.HasAlarm(move)">Control.Move(211,1)</ondown>
 							<ondown condition="String.IsEmpty(Container(211).ListItemNoWrap(1).Label) + !System.HasAlarm(move)">200</ondown>
-							<onclick>SetProperty($VAR[PositionselectorGroup]_widget_position,$INFO[Container(211).ListItem.Property(pos)],home)</onclick>
+							<onclick>SetProperty(widget_position,$INFO[Container(211).ListItem.Property(pos)],home)</onclick>
 							<onclick>ActivateWindow(1111)</onclick>
 							<visible>String.IsEmpty(Container(211).ListItem.Property(item))</visible>
 						</control>
@@ -296,7 +307,7 @@
 							<onup condition="!String.IsEmpty(Container(211).ListItemNoWrap(-1).Label + !System.HasAlarm(move))">Control.Move(211,-1)</onup>
 							<ondown condition="!String.IsEmpty(Container(211).ListItemNoWrap(1).Label) + !System.HasAlarm(move)">Control.Move(211,1)</ondown>
 							<ondown condition="String.IsEmpty(Container(211).ListItemNoWrap(1).Label) + !System.HasAlarm(move)">200</ondown>
-							<onclick>SetProperty($VAR[PositionselectorGroup]_widget_position,$INFO[Container(211).ListItem.Property(pos)],home)</onclick>
+							<onclick>SetProperty(widget_position,$INFO[Container(211).ListItem.Property(pos)],home)</onclick>
 							<onclick>ActivateWindow(1111)</onclick>
 							<visible>!String.IsEmpty(Container(211).ListItem.Property(item))</visible>
 						</control>
@@ -346,6 +357,9 @@
 						<onclick condition="String.IsEqual(Window(home).Property(SelectorContent),MusicHubWidgets)">SetProperty(MusicHubWidgetReset,1,home)</onclick>
 						<onclick condition="String.IsEqual(Window(home).Property(SelectorContent),EmbyMovieHubWidgets)">SetProperty(EmbyMovieHubWidgetsReset,1,home)</onclick>
 						<onclick condition="String.IsEqual(Window(home).Property(SelectorContent),EmbyTVShowHubWidgets)">SetProperty(EmbyTVShowHubWidgetsReset,1,home)</onclick>
+						<onclick condition="String.IsEqual(Window(home).Property(SelectorContent),EmbyConMovieHubWidgets)">SetProperty(EmbyConMovieHubWidgetsReset,1,home)</onclick>
+						<onclick condition="String.IsEqual(Window(home).Property(SelectorContent),EmbyConTVShowHubWidgets)">SetProperty(EmbyConTVShowHubWidgetsReset,1,home)</onclick>
+						<onclick condition="String.IsEqual(Window(home).Property(SelectorContent),EmbyConMusicHubWidgets)">SetProperty(EmbyConMusicHubWidgetsReset,1,home)</onclick>
 						<onclick>ActivateWindow(1112)</onclick>
 						<onclick>AlarmClock(restorewidgets,ActivateWindow(1110),00:01,silent)</onclick>
 						<onup>SetFocus(100)</onup>
