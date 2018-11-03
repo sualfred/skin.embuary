@@ -276,7 +276,7 @@
 	</variable>
 	<variable name="ContainerContentPrefix">
 		<value condition="Window.IsVisible(script-globalsearch.xml) | Window.IsVisible(script-globalsearch-main.xml)">Globalsearch - </value>
-		<value condition="String.StartsWith(Container.Folderpath,plugin://plugin.video.embycon) | Window.IsVisible(1131)">EmbyCon - </value>
+		<value condition="[String.StartsWith(Container.Folderpath,plugin://plugin.video.embycon) | Window.IsVisible(1131)] + !Skin.HasSetting(HideEmbyConLabel)">EmbyCon - </value>
 		<value condition="String.StartsWith(Container.FolderPath,plugin://plugin.video.emby/) | Window.IsVisible(1130)">Emby - </value>
 	</variable>
 	<variable name="ContainerContent">
