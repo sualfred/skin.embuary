@@ -1,17 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 	<include name="ContainerContentPath">
-		<content>
-			<item>
-				<label>$LOCALIZE[1024]</label>
-				<icon>items/genrefolder.png</icon>
-				<onclick>ActivateWindow(videos,$PARAM[content],return)</onclick>
-				<property name="IsFolder">true</property>
-				<visible>Window.Is(1114) + [!String.IsEmpty(Container($PARAM[id]).ListItemAbsolute(1).Label) | Container($PARAM[id]).IsUpdating]</visible>
-			</item>
-		</content>
-		<content target="$PARAM[widget_target]" sortby="$PARAM[sortby]" sortorder="$PARAM[sortorder]" limit="$PARAM[limit]">$PARAM[content]</content>
-		<content target="$PARAM[widget_target2]" sortby="$PARAM[sortby2]" sortorder="$PARAM[sortorder2]" limit="$PARAM[limit2]">$PARAM[content2]</content>
+		<param name="showdummy">false</param>
+		<param name="dummylabel">$LOCALIZE[31284]</param>
+		<definition>
+			<content>
+				<item>
+					<label>$LOCALIZE[1024]</label>
+					<icon>items/genrefolder.png</icon>
+					<onclick>ActivateWindow(videos,$PARAM[content],return)</onclick>
+					<property name="IsFolder">true</property>
+					<visible>Window.Is(1114) + [!String.IsEmpty(Container($PARAM[id]).ListItemAbsolute(1).Label) | Container($PARAM[id]).IsUpdating]</visible>
+				</item>
+				<item>
+					<label>$PARAM[dummylabel]</label>
+					<label2>$PARAM[dummylabel2]</label2>
+					<icon>$PARAM[dummyicon]</icon>
+					<onclick>$PARAM[dummyaction]</onclick>
+					<property name="IsFolder">true</property>
+					<property name="IsDummy">true</property>
+					<visible>String.IsEmpty(Container($PARAM[id]).ListItemAbsolute(1).Label) + [$PARAM[showdummy]]</visible>
+				</item>
+			</content>
+			<content target="$PARAM[widget_target]" sortby="$PARAM[sortby]" sortorder="$PARAM[sortorder]" limit="$PARAM[limit]">$PARAM[content]</content>
+			<content target="$PARAM[widget_target2]" sortby="$PARAM[sortby2]" sortorder="$PARAM[sortorder2]" limit="$PARAM[limit2]">$PARAM[content2]</content>
+		</definition>
 	</include>
 	<include name="ContainerOnClick">
 		<onclick>$PARAM[onclick]</onclick>
@@ -30,8 +43,10 @@
 	<include name="CustomBusySpinner">
 		<param name="visible">Container.IsUpdating</param>
 		<param name="diffuse">true</param>
+		<param name="delay">false</param>
 		<definition>
 			<control type="group">
+				<animation effect="fade" start="100" end="0" time="0" delay="100" condition="$PARAM[delay]">Hidden</animation>
 				<visible>$PARAM[visible]</visible>
 				<include condition="$PARAM[diffuse]" content="DiffuseMask"/>
 				<include condition="!$PARAM[diffuse]" content="PlainBackground"/>
@@ -784,7 +799,7 @@
 	<include name="BusySpinner">
 		<param name="colordiffuse">$VAR[AccentColor]</param>
 		<definition>
-			<control type="image" id="99">
+			<control type="image" id="$PARAM[id]">
 				<centerleft>50%</centerleft>
 				<centertop>50%</centertop>
 				<width>150</width>
