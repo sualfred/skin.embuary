@@ -37,7 +37,7 @@
 					<pagecontrol>17</pagecontrol>
 					<include>ScrollTime</include>
 					<preloaditems>4</preloaditems>
-					<oninfo condition="String.IsEqual(ListItem.DBType,set) + !String.IsEmpty(Container(2001).ListItem.Label)">RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCVAR[ListViewPlot]')</oninfo>
+					<oninfo condition="String.IsEqual(ListItem.DBType,set) + !String.IsEmpty(Container(2001).ListItem.Label)">RunScript(script.embuary.helper,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCVAR[ListViewPlot]')</oninfo>
 					<itemlayout height="120" width="1230">
 						<control type="group">
 							<left>70</left>
@@ -125,7 +125,7 @@
 									<control type="image">
 										<width>590</width>
 										<height>332</height>
-										<texture colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
+										<texture colordiffuse="$VAR[ThumbBackgroundColor]">common/white.jpg</texture>
 										<aspectratio scalediffuse="false">stretch</aspectratio>
 									</control>
 									<control type="image">
@@ -179,7 +179,7 @@
 									<control type="image">
 										<width>222</width>
 										<height>332</height>
-										<texture colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
+										<texture colordiffuse="$VAR[ThumbBackgroundColor]">common/white.jpg</texture>
 										<aspectratio scalediffuse="false">stretch</aspectratio>
 										<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
 									</control>
@@ -322,7 +322,7 @@
 								<height>50</height>
 								<font>material24</font>
 								<label></label>
-								<onclick>RunScript(script.skin.helper.service,action=textviewer,header='$ESCVAR[TinyInfoDialogHeadline]',message='$ESCVAR[TinyInfoDialogPlot]')</onclick>
+								<onclick>RunScript(script.embuary.helper,action=textviewer,header='$ESCVAR[TinyInfoDialogHeadline]',message='$ESCVAR[TinyInfoDialogPlot]')</onclick>
 								<visible>!String.IsEmpty(ListItem.Plot) + Window.IsVisible(videoplaylist)</visible>
 							</control>
 						</control>

@@ -1,17 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 	<include name="ContainerContentPath">
-		<content>
-			<item>
-				<label>$LOCALIZE[1024]</label>
-				<icon>items/genrefolder.png</icon>
-				<onclick>ActivateWindow(videos,$PARAM[content],return)</onclick>
-				<property name="IsFolder">true</property>
-				<visible>Window.Is(1114) + [!String.IsEmpty(Container($PARAM[id]).ListItemAbsolute(1).Label) | Container($PARAM[id]).IsUpdating]</visible>
-			</item>
-		</content>
-		<content target="$PARAM[widget_target]" sortby="$PARAM[sortby]" sortorder="$PARAM[sortorder]" limit="$PARAM[limit]">$PARAM[content]</content>
-		<content target="$PARAM[widget_target2]" sortby="$PARAM[sortby2]" sortorder="$PARAM[sortorder2]" limit="$PARAM[limit2]">$PARAM[content2]</content>
+		<param name="showdummy">false</param>
+		<param name="dummylabel">$LOCALIZE[31284]</param>
+		<definition>
+			<content>
+				<item>
+					<label>$LOCALIZE[1024]</label>
+					<icon>items/genrefolder.png</icon>
+					<onclick>ActivateWindow(videos,$PARAM[content],return)</onclick>
+					<property name="IsFolder">true</property>
+					<visible>Window.Is(1114) + [!String.IsEmpty(Container($PARAM[id]).ListItemAbsolute(1).Label) | Container($PARAM[id]).IsUpdating]</visible>
+				</item>
+				<item>
+					<label>$PARAM[dummylabel]</label>
+					<label2>$PARAM[dummylabel2]</label2>
+					<icon>$PARAM[dummyicon]</icon>
+					<onclick>$PARAM[dummyaction]</onclick>
+					<property name="IsFolder">true</property>
+					<property name="IsDummy">true</property>
+					<visible>String.IsEmpty(Container($PARAM[id]).ListItemAbsolute(1).Label) + [$PARAM[showdummy]]</visible>
+				</item>
+			</content>
+			<content target="$PARAM[widget_target]" sortby="$PARAM[sortby]" sortorder="$PARAM[sortorder]" limit="$PARAM[limit]">$PARAM[content]</content>
+			<content target="$PARAM[widget_target2]" sortby="$PARAM[sortby2]" sortorder="$PARAM[sortorder2]" limit="$PARAM[limit2]">$PARAM[content2]</content>
+		</definition>
 	</include>
 	<include name="ContainerOnClick">
 		<onclick>$PARAM[onclick]</onclick>
@@ -30,8 +43,10 @@
 	<include name="CustomBusySpinner">
 		<param name="visible">Container.IsUpdating</param>
 		<param name="diffuse">true</param>
+		<param name="delay">false</param>
 		<definition>
 			<control type="group">
+				<animation effect="fade" start="100" end="0" time="0" delay="100" condition="$PARAM[delay]">Hidden</animation>
 				<visible>$PARAM[visible]</visible>
 				<include condition="$PARAM[diffuse]" content="DiffuseMask"/>
 				<include condition="!$PARAM[diffuse]" content="PlainBackground"/>
@@ -75,13 +90,14 @@
 		</control>
 		<!-- Fanart -->
 		<control type="group">
-			<animation effect="fade" end="33" start="100" time="0" condition="Visualisation.Enabled | [Window.IsVisible(visualisation) + !String.IsEmpty(Window(Home).Property(culrc.lyrics)) + Window.IsVisible(script-cu-lrclyrics-main.xml)]">Conditional</animation>
+			<animation effect="fade" end="33" start="100" time="0" condition="Visualisation.Enabled">Conditional</animation>
+			<animation effect="fade" end="33" start="100" time="400" condition="!Visualisation.Enabled + [Window.IsVisible(visualisation) + !String.IsEmpty(Window(Home).Property(culrc.lyrics)) + Window.IsVisible(script-cu-lrclyrics-main.xml)]">Conditional</animation>
 			<control type="image">
 				<include>FullscreenDimensions</include>
 				<fadetime>400</fadetime>
 				<texture background="true">$VAR[MusicPlayerFanart]</texture>
 				<include>VisAnimation</include>
-				<visible>!Skin.HasSetting(VisFanartDisabled) + [!Skin.HasSetting(VisRandomFanart) | String.IsEmpty(Window(Home).Property(SkinHelper.Player.Art.ExtraFanArt))]</visible>
+				<visible>!Skin.HasSetting(VisFanartDisabled) + ![Skin.HasSetting(VisRandomFanart) + !Skin.HasSetting(VisFanartDisabled) + System.HasAddon(script.artistslideshow) + !String.IsEmpty(Window(Visualisation).Property(ArtistSlideshow)) + !String.EndsWith(Window(Visualisation).Property(ArtistSlideshow),black)]</visible>
 			</control>
 			<control type="multiimage">
 				<include>FullscreenDimensions</include>
@@ -89,9 +105,9 @@
 				<randomize>true</randomize>
 				<aspectratio>scale</aspectratio>
 				<timeperimage>10000</timeperimage>
-				<imagepath background="true">$INFO[Window(Home).Property(SkinHelper.Player.Art.ExtraFanArt)]</imagepath>
+				<imagepath background="true">$INFO[Window(Visualisation).Property(ArtistSlideshow)]</imagepath>
 				<include>VisAnimation</include>
-				<visible>Skin.HasSetting(VisRandomFanart) + !Skin.HasSetting(VisFanartDisabled)</visible>
+				<visible>Skin.HasSetting(VisRandomFanart) + !Skin.HasSetting(VisFanartDisabled) + System.HasAddon(script.artistslideshow) + !String.IsEmpty(Window(Visualisation).Property(ArtistSlideshow)) + !String.EndsWith(Window(Visualisation).Property(ArtistSlideshow),black)</visible>
 			</control>
 		</control>
 	</include>
@@ -104,7 +120,7 @@
 				<texture colordiffuse="background">common/white.jpg</texture>
 			</control>
 			<control type="group">
-				<visible>Player.HasMedia + !Skin.HasSetting(HideBackgroundPlayback) + [$EXP[HideBackground] | $PARAM[forced_visible]]</visible>
+				<visible>Player.HasMedia + !Skin.HasSetting(HideBackgroundPlayback) + $EXP[HolidayThemeSound] + [$EXP[HideBackground] | $PARAM[forced_visible]]</visible>
 				<control type="videowindow">
 					<include>FullscreenDimensions</include>
 					<visible>Player.HasVideo</visible>
@@ -115,7 +131,7 @@
 				</control>
 			</control>
 			<control type="group">
-				<visible>[!Player.HasMedia | Skin.HasSetting(HideBackgroundPlayback)] + !Skin.HasSetting(HideBackground) + !Window.IsVisible(MyPVRguide.xml) + !Window.IsVisible(virtualkeyboard) + [$EXP[HideBackground] | $PARAM[forced_visible]]</visible>
+				<visible>[!Player.HasMedia | Skin.HasSetting(HideBackgroundPlayback) | !$EXP[HolidayThemeSound]] + !Skin.HasSetting(HideBackground) + !Window.IsVisible(MyPVRguide.xml) + !Window.IsVisible(virtualkeyboard) + [$EXP[HideBackground] | $PARAM[forced_visible]]</visible>
 				<include>Visible_Fade</include>
 				<control type="image">
 					<include>FullscreenDimensions</include>
@@ -783,7 +799,7 @@
 	<include name="BusySpinner">
 		<param name="colordiffuse">$VAR[AccentColor]</param>
 		<definition>
-			<control type="image" id="99">
+			<control type="image" id="$PARAM[id]">
 				<centerleft>50%</centerleft>
 				<centertop>50%</centertop>
 				<width>150</width>
@@ -998,19 +1014,19 @@
 			<midtexture colordiffuse="$VAR[PlayerAccentColor]">common/white.jpg</midtexture>
 			<righttexture></righttexture>
 			<overlaytexture></overlaytexture>
-			<visible>Integer.IsGreater(player.volume,1)</visible>
+			<visible>Integer.IsGreater(player.volume,0)</visible>
 		</control>
 		<control type="progress" id="99">
 			<bottom>53</bottom>
 			<right>31</right>
 			<width>150</width>
 			<height>5</height>
-			<texturebg colordiffuse="grey">common/white.jpg</texturebg>
+			<texturebg border="1" colordiffuse="grey">common/white.jpg</texturebg>
 			<lefttexture></lefttexture>
-			<midtexture colordiffuse="ff00000">common/white.jpg</midtexture>
+			<midtexture></midtexture>
 			<righttexture></righttexture>
 			<overlaytexture></overlaytexture>
-			<visible>!Integer.IsGreater(player.volume,1)</visible>
+			<visible>!Integer.IsGreater(player.volume,0)</visible>
 		</control>
 	</include>
 	<!-- Player progress bar dimensions -->
@@ -1025,12 +1041,12 @@
 		<lefttexture></lefttexture>
 	</include>
 	<include name="search_action">
-		<onclick condition="!Skin.HasSetting(UseGlobalsearch)">SetProperty(CustomSearch,1,home)</onclick>
-		<onclick condition="!Skin.HasSetting(UseGlobalsearch)">Skin.Reset(CustomSearchTerm)</onclick>
-		<onclick condition="!Skin.HasSetting(UseGlobalsearch)">Skin.Reset(CustomSearchEmbyID)</onclick>
-		<onclick condition="!Skin.HasSetting(UseGlobalsearch)">Skin.SetString(CustomSearchTerm)</onclick>
-		<onclick condition="!Skin.HasSetting(UseGlobalsearch)">ActivateWindow(1115)</onclick>
-		<onclick condition="Skin.HasSetting(UseGlobalsearch)">RunScript(script.globalsearch)</onclick>
+		<onclick condition="!Skin.HasSetting(UseGlobalsearch) | !System.HasAddon(script.globalsearch)">SetProperty(CustomSearch,1,home)</onclick>
+		<onclick condition="!Skin.HasSetting(UseGlobalsearch) | !System.HasAddon(script.globalsearch)">Skin.Reset(CustomSearchTerm)</onclick>
+		<onclick condition="!Skin.HasSetting(UseGlobalsearch) | !System.HasAddon(script.globalsearch)">Skin.Reset(CustomSearchEmbyID)</onclick>
+		<onclick condition="!Skin.HasSetting(UseGlobalsearch) | !System.HasAddon(script.globalsearch)">Skin.SetString(CustomSearchTerm)</onclick>
+		<onclick condition="!Skin.HasSetting(UseGlobalsearch) | !System.HasAddon(script.globalsearch)">ActivateWindow(1115)</onclick>
+		<onclick condition="Skin.HasSetting(UseGlobalsearch) + System.HasAddon(script.globalsearch)">RunScript(script.globalsearch)</onclick>
 	</include>
 	<include name="CustomWidgetTemplate">
 		<include content="SkinSettingsHeadlineLabel">
@@ -1047,9 +1063,17 @@
 			<textcolor>$VAR[AccentColor]</textcolor>
 			<texturenofocus colordiffuse="panel_subitem">common/white.jpg</texturenofocus>
 			<include>SettingsButton</include>
-			<onclick>RunScript(script.skin.helper.service,action=setskinsetting,setting=UserWidget$PARAM[nr]_target,header=$LOCALIZE[467])</onclick>
+			<onclick>SetProperty(Dialog.1.Label,$LOCALIZE[3])</onclick>
+			<onclick>SetProperty(Dialog.1.BuiltIn,Skin.SetString(UserWidget$PARAM[nr]_target,videos)||Skin.SetString(UserWidget$PARAM[nr]_target.label,$LOCALIZE[3]))</onclick>
+			<onclick>SetProperty(Dialog.2.Label,$LOCALIZE[2])</onclick>
+			<onclick>SetProperty(Dialog.2.BuiltIn,Skin.SetString(UserWidget$PARAM[nr]_target,music)||Skin.SetString(UserWidget$PARAM[nr]_target.label,$LOCALIZE[2]))</onclick>
+			<onclick>SetProperty(Dialog.3.Label,$LOCALIZE[1])</onclick>
+			<onclick>SetProperty(Dialog.3.BuiltIn,Skin.SetString(UserWidget$PARAM[nr]_target,pictures)||Skin.SetString(UserWidget$PARAM[nr]_target.label,$LOCALIZE[1]))</onclick>
+			<onclick>SetProperty(Dialog.4.Label,$LOCALIZE[29921])</onclick>
+			<onclick>SetProperty(Dialog.4.BuiltIn,Skin.Reset(UserWidget$PARAM[nr]_target)||Skin.SetString(UserWidget$PARAM[nr]_target.label,$LOCALIZE[29921]))</onclick>
+			<onclick>RunScript(script.embuary.helper,action=createselect,header=$LOCALIZE[467])</onclick>
 			<label>• $LOCALIZE[467]</label>
-			<label2>$INFO[Skin.String(UserWidget$PARAM[nr]_target)]</label2>
+			<label2>$INFO[Skin.String(UserWidget$PARAM[nr]_target.label)]</label2>
 			<visible>!String.IsEmpty(Skin.String(UserWidget$PARAM[nr]_path))</visible>
 		</control>
 		<control type="button" id="$PARAM[id]4">
@@ -1065,9 +1089,69 @@
 			<textcolor>$VAR[AccentColor]</textcolor>
 			<texturenofocus colordiffuse="panel_subitem">common/white.jpg</texturenofocus>
 			<include>SettingsButton</include>
-			<onclick>RunScript(script.skin.helper.service,action=setskinsetting,setting=UserWidget$PARAM[nr]_layout,header=$LOCALIZE[31099])</onclick>
+			<onclick>SetProperty(Dialog.1.Label,$LOCALIZE[20021])</onclick>
+			<onclick>SetProperty(Dialog.1.BuiltIn,Skin.SetString(UserWidget$PARAM[nr]_layout,HomePosterWidget)||Skin.SetString(UserWidget$PARAM[nr]_layout.label,$LOCALIZE[20021]))</onclick>
+			<onclick>SetProperty(Dialog.2.Label,$LOCALIZE[31004])</onclick>
+			<onclick>SetProperty(Dialog.2.BuiltIn,Skin.SetString(UserWidget$PARAM[nr]_layout,HomeWideWidget)||Skin.SetString(UserWidget$PARAM[nr]_layout.label,$LOCALIZE[31004]))</onclick>
+			<onclick>SetProperty(Dialog.3.Label,$LOCALIZE[31005])</onclick>
+			<onclick>SetProperty(Dialog.3.BuiltIn,Skin.SetString(UserWidget$PARAM[nr]_layout,HomeSquareWidget)||Skin.SetString(UserWidget$PARAM[nr]_layout.label,$LOCALIZE[31005]))</onclick>
+			<onclick>RunScript(script.embuary.helper,action=createselect,header=$LOCALIZE[31101])</onclick>
 			<label>• $LOCALIZE[31101]</label>
 			<label2>$INFO[Skin.String(UserWidget$PARAM[nr]_layout.label)]</label2>
+			<visible>!String.IsEmpty(Skin.String(UserWidget$PARAM[nr]_path))</visible>
+		</control>
+		<control type="button" id="$PARAM[id]6">
+			<textcolor>$VAR[AccentColor]</textcolor>
+			<texturenofocus colordiffuse="panel_subitem">common/white.jpg</texturenofocus>
+			<include>SettingsButton</include>
+			<label>• $LOCALIZE[581]</label>
+			<onclick>SetProperty(Dialog.1.Label,$LOCALIZE[571])</onclick>
+			<onclick>SetProperty(Dialog.1.BuiltIn,Skin.Reset(UserWidget$PARAM[nr]_sortby))</onclick>
+			<onclick>SetProperty(Dialog.2.Label,Label)</onclick>
+			<onclick>SetProperty(Dialog.2.BuiltIn,Skin.SetString(UserWidget$PARAM[nr]_sortby,label))</onclick>
+			<onclick>SetProperty(Dialog.3.Label,Title)</onclick>
+			<onclick>SetProperty(Dialog.3.BuiltIn,Skin.SetString(UserWidget$PARAM[nr]_sortby,title))</onclick>
+			<onclick>SetProperty(Dialog.4.Label,TVShowTitle)</onclick>
+			<onclick>SetProperty(Dialog.4.BuiltIn,Skin.SetString(UserWidget$PARAM[nr]_sortby,tvshowtitle))</onclick>
+			<onclick>SetProperty(Dialog.5.Label,SortTitle)</onclick>
+			<onclick>SetProperty(Dialog.5.BuiltIn,Skin.SetString(UserWidget$PARAM[nr]_sortby,sorttitle))</onclick>
+			<onclick>SetProperty(Dialog.6.Label,Artist)</onclick>
+			<onclick>SetProperty(Dialog.6.BuiltIn,Skin.SetString(UserWidget$PARAM[nr]_sortby,artist))</onclick>
+			<onclick>SetProperty(Dialog.7.Label,Album)</onclick>
+			<onclick>SetProperty(Dialog.7.BuiltIn,Skin.SetString(UserWidget$PARAM[nr]_sortby,album))</onclick>
+			<onclick>SetProperty(Dialog.8.Label,Random)</onclick>
+			<onclick>SetProperty(Dialog.8.BuiltIn,Skin.SetString(UserWidget$PARAM[nr]_sortby,random))</onclick>
+			<onclick>SetProperty(Dialog.9.Label,Year)</onclick>
+			<onclick>SetProperty(Dialog.9.BuiltIn,Skin.SetString(UserWidget$PARAM[nr]_sortby,year))</onclick>
+			<onclick>SetProperty(Dialog.10.Label,DateAdded)</onclick>
+			<onclick>SetProperty(Dialog.10.BuiltIn,Skin.SetString(UserWidget$PARAM[nr]_sortby,dateadded))</onclick>
+			<onclick>SetProperty(Dialog.11.Label,LastPlayed)</onclick>
+			<onclick>SetProperty(Dialog.11.BuiltIn,Skin.SetString(UserWidget$PARAM[nr]_sortby,lastplayed))</onclick>
+			<onclick>SetProperty(Dialog.12.Label,PlayCount)</onclick>
+			<onclick>SetProperty(Dialog.12.BuiltIn,Skin.SetString(UserWidget$PARAM[nr]_sortby,playcount))</onclick>
+			<onclick>SetProperty(Dialog.13.Label,Season)</onclick>
+			<onclick>SetProperty(Dialog.13.BuiltIn,Skin.SetString(UserWidget$PARAM[nr]_sortby,season))</onclick>
+			<onclick>SetProperty(Dialog.14.Label,Episode)</onclick>
+			<onclick>SetProperty(Dialog.14.BuiltIn,Skin.SetString(UserWidget$PARAM[nr]_sortby,episode))</onclick>
+			<onclick>SetProperty(Dialog.15.Label,TrackNumber)</onclick>
+			<onclick>SetProperty(Dialog.15.BuiltIn,Skin.SetString(UserWidget$PARAM[nr]_sortby,tracknumber))</onclick>
+			<onclick>RunScript(script.embuary.helper,action=createselect,header=$LOCALIZE[581])</onclick>
+			<label2>$INFO[Skin.String(UserWidget$PARAM[nr]_sortby),',']</label2>
+			<visible>!String.IsEmpty(Skin.String(UserWidget$PARAM[nr]_path))</visible>
+		</control>
+		<control type="button" id="$PARAM[id]7">
+			<textcolor>$VAR[AccentColor]</textcolor>
+			<texturenofocus colordiffuse="panel_subitem">common/white.jpg</texturenofocus>
+			<include>SettingsButton</include>
+			<label>• $LOCALIZE[580]</label>
+			<onclick>SetProperty(Dialog.1.Label,$LOCALIZE[571])</onclick>
+			<onclick>SetProperty(Dialog.1.BuiltIn,Skin.Reset(UserWidget$PARAM[nr]_sortorder))</onclick>
+			<onclick>SetProperty(Dialog.2.Label,$LOCALIZE[584])</onclick>
+			<onclick>SetProperty(Dialog.2.BuiltIn,Skin.SetString(UserWidget$PARAM[nr]_sortorder,ascending))</onclick>
+			<onclick>SetProperty(Dialog.3.Label,$LOCALIZE[585])</onclick>
+			<onclick>SetProperty(Dialog.3.BuiltIn,Skin.SetString(UserWidget$PARAM[nr]_sortorder,descending))</onclick>
+			<onclick>RunScript(script.embuary.helper,action=createselect,header=$LOCALIZE[580])</onclick>
+			<label2>$INFO[Skin.String(UserWidget$PARAM[nr]_sortorder),',']</label2>
 			<visible>!String.IsEmpty(Skin.String(UserWidget$PARAM[nr]_path))</visible>
 		</control>
 	</include>

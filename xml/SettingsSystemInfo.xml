@@ -140,7 +140,7 @@
 						<texturefocus colordiffuse="panel_focus">common/white.jpg</texturefocus>
 						<include>NoTextures</include>
 						<label>$LOCALIZE[12389]</label>
-						<onclick>RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[Control.GetLabel(40)]',message='$ESCINFO[Control.GetLabel(30)]')</onclick>
+						<onclick>RunScript(script.embuary.helper,action=textviewer,header='$ESCINFO[Control.GetLabel(40)]',message='$ESCINFO[Control.GetLabel(30)]')</onclick>
 					</control>
 				</control>
 			</control>
@@ -250,6 +250,11 @@
 					<visible>ControlGroup(1000).HasFocus(95)</visible>
 				</control>
 				<control type="button">
+					<label>Embuary Helper Script $INFO[System.AddonVersion(script.embuary.helper)]</label>
+					<include>SettingsButton</include>
+					<visible>ControlGroup(1000).HasFocus(95)</visible>
+				</control>
+				<control type="button">
 					<label>Emby For Kodi $INFO[System.AddonVersion(plugin.video.emby)]</label>
 					<include>SettingsButton</include>
 					<visible>ControlGroup(1000).HasFocus(95) + System.HasAddon(plugin.video.emby)</visible>
@@ -267,7 +272,7 @@
 				<control type="group">
 					<visible>ControlGroup(1000).HasFocus(98)</visible>
 					<control type="image">
-						<texture colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
+						<texture colordiffuse="$VAR[ThumbBackgroundColor]">common/white.jpg</texture>
 						<width>100%</width>
 						<height>160</height>
 					</control>

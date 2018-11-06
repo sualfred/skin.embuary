@@ -14,6 +14,7 @@
 		<control type="group" id="99">
 			<visible>Player.Caching + !Window.IsVisible(busydialog)</visible>
 			<include content="BusySpinner">
+				<param name="id" value="99"/>
 				<param name="colordiffuse" value="white"/>
 			</include>
 		</control>
@@ -254,14 +255,14 @@
 						<visible>!String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
 					</control>
 					<control type="label" id="99">
-						<width>19</width>
+						<width>20</width>
 						<height>24</height>
 						<label/>
 						<visible>!String.IsEmpty(VideoPlayer.Mpaa)</visible>
 						<visible>!String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
 					</control>
 					<control type="label" id="99">
-						<animation effect="slide" end="-2,2" time="0" condition="true">Conditional</animation>
+						<animation effect="slide" end="-4,2" time="0" condition="true">Conditional</animation>
 						<width>auto</width>
 						<height>30</height>
 						<aligny>center</aligny>
@@ -282,50 +283,31 @@
 						<visible>!String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
 					</control>
 					<control type="image" id="99">
-						<animation effect="slide" end="-2,6" time="0" condition="true">Conditional</animation>
-						<width>30</width>
-						<height>20</height>
-						<texture>icons/rating/metacritics_logo.png</texture>
-						<aspectratio>keep</aspectratio>
-						<visible>!String.IsEmpty(Window(Home).Property(SkinHelper.Player.MetaCritic.Rating))</visible>
-						<visible>!String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
-					</control>
-					<control type="label" id="99">
-						<width>auto</width>
-						<height>30</height>
-						<label>$INFO[Window(Home).Property(SkinHelper.Player.MetaCritic.Rating),,%]   </label>
-						<font>reg24</font>
-						<aligny>center</aligny>
-						<textcolor>white</textcolor>
-						<visible>!String.IsEmpty(Window(Home).Property(SkinHelper.Player.MetaCritic.Rating))</visible>
-						<visible>!String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
-					</control>
-					<control type="image" id="99">
-						<animation effect="slide" end="-2,6" time="0" condition="true">Conditional</animation>
+						<animation effect="slide" end="-4,7" time="0" condition="true">Conditional</animation>
 						<width>24</width>
 						<height>20</height>
 						<texture>icons/rating/rotten_fresh.png</texture>
 						<aspectratio>keep</aspectratio>
-						<visible>!String.IsEmpty(Window(Home).Property(SkinHelper.Player.RottenTomatoes.Rating)) + Integer.IsGreater(Window(Home).Property(SkinHelper.Player.RottenTomatoes.Rating),59)</visible>
+						<visible>!String.IsEmpty(VideoPlayer.UserRating) + Integer.IsGreater(VideoPlayer.UserRating,59) + [System.HasAddon(plugin.video.emby) | String.Contains(Player.Filenameandpath,/emby/)]</visible>
 						<visible>!String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
-					</control>
+					</control>e
 					<control type="image" id="99">
-						<animation effect="slide" end="-2,6" time="0" condition="true">Conditional</animation>
+						<animation effect="slide" end="-4,7" time="0" condition="true">Conditional</animation>
 						<width>24</width>
 						<height>20</height>
 						<texture>icons/rating/rotten_rotten.png</texture>
 						<aspectratio>keep</aspectratio>
-						<visible>!String.IsEmpty(Window(Home).Property(SkinHelper.Player.RottenTomatoes.Rating)) + !Integer.IsGreater(Window(Home).Property(SkinHelper.Player.RottenTomatoes.Rating),59)</visible>
+						<visible>!String.IsEmpty(VideoPlayer.UserRating) + !Integer.IsGreater(VideoPlayer.UserRating,59) + [System.HasAddon(plugin.video.emby) | String.Contains(Player.Filenameandpath,/emby/)]</visible>
 						<visible>!String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
 					</control>
 					<control type="label" id="99">
 						<width>auto</width>
 						<height>30</height>
-						<label>$INFO[Window(Home).Property(SkinHelper.Player.RottenTomatoes.Rating),,%]   </label>
-						<font>reg24</font>
 						<aligny>center</aligny>
+						<label>$INFO[VideoPlayer.UserRating]   </label>
+						<font>reg24</font>
 						<textcolor>white</textcolor>
-						<visible>!String.IsEmpty(Window(Home).Property(SkinHelper.Player.RottenTomatoes.Rating))</visible>
+						<visible>!String.IsEmpty(VideoPlayer.UserRating) + [System.HasAddon(plugin.video.emby) | String.Contains(Player.Filenameandpath,/emby/)]</visible>
 						<visible>!String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
 					</control>
 				</control>

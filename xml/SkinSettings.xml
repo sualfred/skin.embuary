@@ -105,6 +105,25 @@
 							<label>$LOCALIZE[31224]</label>
 							<onright>600</onright>
 						</control>
+						<include content="SideHeadline">
+							<param name="nr">3</param>
+							<param name="label">$LOCALIZE[29921]</param>
+						</include>
+						<control type="button" id="106">
+							<width>400</width>
+							<height>50</height>
+							<align>left</align>
+							<aligny>center</aligny>
+							<font>Reg22</font>
+							<textoffsetx>50</textoffsetx>
+							<textcolor>panel_textcolor</textcolor>
+							<focusedcolor>panel_textcolor</focusedcolor>
+							<selectedcolor>panel_textcolor</selectedcolor>
+							<texturefocus colordiffuse="panel_focus">common/white.jpg</texturefocus>
+							<include>NoTextures</include>
+							<label>$LOCALIZE[31276]</label>
+							<onright>700</onright>
+						</control>
 					</control>
 				</control>
 			</control>
@@ -164,7 +183,7 @@
 					</control>
 					<control type="button" id="203">
 						<include>SettingsButton</include>
-						<onclick>SetProperty(PositionCount,18,home)</onclick>
+						<onclick>SetProperty(PositionCount,19,home)</onclick>
 						<onclick>SetProperty(SelectorContent,HomeWidgets,home)</onclick>
 						<onclick>ActivateWindow(1110)</onclick>
 						<enable>!Skin.HasSetting(HomePanelLayout)</enable>
@@ -196,7 +215,7 @@
 					</control>
 					<control type="button" id="214">
 						<include>SettingsButton</include>
-						<onclick>SetProperty(PositionCount,19,home)</onclick>
+						<onclick>SetProperty(PositionCount,20,home)</onclick>
 						<onclick>SetProperty(SelectorContent,MovieHubWidgets,home)</onclick>
 						<onclick>ActivateWindow(1110)</onclick>
 						<label>$LOCALIZE[31245]</label>
@@ -213,7 +232,7 @@
 					</control>
 					<control type="button" id="223">
 						<include>SettingsButton</include>
-						<onclick>SetProperty(PositionCount,20,home)</onclick>
+						<onclick>SetProperty(PositionCount,21,home)</onclick>
 						<onclick>SetProperty(SelectorContent,TVShowHubWidgets,home)</onclick>
 						<onclick>ActivateWindow(1110)</onclick>
 						<label>$LOCALIZE[31245]</label>
@@ -234,6 +253,64 @@
 						<onclick>SetProperty(SelectorContent,MusicHubWidgets,home)</onclick>
 						<onclick>ActivateWindow(1110)</onclick>
 						<label>$LOCALIZE[31245]</label>
+					</control>
+					<!-- emby hubs -->
+					<include content="SkinSettingsHeadlineLabel">
+						<param name="id" value="250"/>
+						<param name="label" value="$LOCALIZE[31279]"/>
+						<param name="visible" value="System.HasAddon(plugin.video.emby)"/>
+					</include>
+					<control type="button" id="251">
+						<include>SettingsButton</include>
+						<onclick>SetProperty(PositionCount,6,home)</onclick>
+						<onclick>SetProperty(SelectorContent,EmbyMovieHubWidgets,home)</onclick>
+						<onclick>ActivateWindow(1110)</onclick>
+						<label>$LOCALIZE[31281]</label>
+						<visible>System.HasAddon(plugin.video.emby)</visible>
+					</control>
+					<control type="button" id="252">
+						<include>SettingsButton</include>
+						<onclick>SetProperty(PositionCount,7,home)</onclick>
+						<onclick>SetProperty(SelectorContent,EmbyTVShowHubWidgets,home)</onclick>
+						<onclick>ActivateWindow(1110)</onclick>
+						<label>$LOCALIZE[31280]</label>
+						<visible>System.HasAddon(plugin.video.emby)</visible>
+					</control>
+					<!-- embycon hubs -->
+					<include content="SkinSettingsHeadlineLabel">
+						<param name="id" value="260"/>
+						<param name="label" value="$LOCALIZE[31282]"/>
+						<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
+					</include>
+					<control type="button" id="261">
+						<include>SettingsButton</include>
+						<onclick>SetProperty(PositionCount,5,home)</onclick>
+						<onclick>SetProperty(SelectorContent,EmbyConMovieHubWidgets,home)</onclick>
+						<onclick>ActivateWindow(1110)</onclick>
+						<label>$LOCALIZE[31281]</label>
+						<visible>System.HasAddon(plugin.video.embycon)</visible>
+					</control>
+					<control type="button" id="262">
+						<include>SettingsButton</include>
+						<onclick>SetProperty(PositionCount,6,home)</onclick>
+						<onclick>SetProperty(SelectorContent,EmbyConTVShowHubWidgets,home)</onclick>
+						<onclick>ActivateWindow(1110)</onclick>
+						<label>$LOCALIZE[31280]</label>
+						<visible>System.HasAddon(plugin.video.embycon)</visible>
+					</control>
+					<control type="button" id="263">
+						<include>SettingsButton</include>
+						<onclick>SetProperty(PositionCount,6,home)</onclick>
+						<onclick>SetProperty(SelectorContent,EmbyConMusicHubWidgets,home)</onclick>
+						<onclick>ActivateWindow(1110)</onclick>
+						<label>$LOCALIZE[31283]</label>
+						<visible>System.HasAddon(plugin.video.embycon)</visible>
+					</control>
+					<control type="radiobutton" id="264">
+						<include>SettingsButton</include>
+						<onclick>Skin.ToggleSetting(HideEmbyConLabel)</onclick>
+						<selected>!Skin.HasSetting(HideEmbyConLabel)</selected>
+						<label>$LOCALIZE[31085]</label>
 					</control>
 					<control type="label">
 						<height>50</height>
@@ -364,7 +441,8 @@
 						<textureradioondisabled colordiffuse="$VAR[AccentColor]">icons/misc/radio20_on_fo.png</textureradioondisabled>
 						<textureradiooffdisabled colordiffuse="$VAR[AccentColor]">icons/misc/radio20_on.png</textureradiooffdisabled>
 						<include>SettingsButton</include>
-						<onclick>RunScript(script.skin.helper.colorpicker,skinstring=color_accent,palette=rainbow)</onclick>
+						<onclick condition="!System.HasAddon(script.skin.helper.colorpicker)">InstallAddon(script.skin.helper.colorpicker)</onclick>
+						<onclick condition="System.HasAddon(script.skin.helper.colorpicker)">RunScript(script.skin.helper.colorpicker,skinstring=color_accent,palette=rainbow)</onclick>
 						<label>$LOCALIZE[31267]</label>
 						<label2>$VAR[AccentColorLabel]</label2>
 					</control>
@@ -376,7 +454,8 @@
 						<textureradioondisabled colordiffuse="$VAR[PlayerAccentColor]">icons/misc/radio20_on_fo.png</textureradioondisabled>
 						<textureradiooffdisabled colordiffuse="$VAR[PlayerAccentColor]">icons/misc/radio20_on.png</textureradiooffdisabled>
 						<include>SettingsButton</include>
-						<onclick>RunScript(script.skin.helper.colorpicker,skinstring=color_player_accent,palette=rainbow)</onclick>
+						<onclick condition="!System.HasAddon(script.skin.helper.colorpicker)">InstallAddon(script.skin.helper.colorpicker)</onclick>
+						<onclick condition="System.HasAddon(script.skin.helper.colorpicker)">RunScript(script.skin.helper.colorpicker,skinstring=color_player_accent,palette=rainbow)</onclick>
 						<label>$LOCALIZE[31268]</label>
 						<label2>$VAR[PlayerAccentColorLabel]</label2>
 					</control>
@@ -388,7 +467,8 @@
 						<textureradioondisabled colordiffuse="$VAR[ThumbFallbackColor]">icons/misc/radio20_on_fo.png</textureradioondisabled>
 						<textureradiooffdisabled colordiffuse="$VAR[ThumbFallbackColor]">icons/misc/radio20_on.png</textureradiooffdisabled>
 						<include>SettingsButton</include>
-						<onclick>RunScript(script.skin.helper.colorpicker,skinstring=color_thumb_fallback,palette=rainbow)</onclick>
+						<onclick condition="!System.HasAddon(script.skin.helper.colorpicker)">InstallAddon(script.skin.helper.colorpicker)</onclick>
+						<onclick condition="System.HasAddon(script.skin.helper.colorpicker)">RunScript(script.skin.helper.colorpicker,skinstring=color_thumb_fallback,palette=rainbow)</onclick>
 						<label>$LOCALIZE[31269]</label>
 						<label2>$VAR[ThumbFallbackColorLabel]</label2>
 					</control>
@@ -400,7 +480,8 @@
 						<textureradioondisabled colordiffuse="$VAR[ButtonAccentColor]">icons/misc/radio20_on_fo.png</textureradioondisabled>
 						<textureradiooffdisabled colordiffuse="$VAR[ButtonAccentColor]">icons/misc/radio20_on.png</textureradiooffdisabled>
 						<include>SettingsButton</include>
-						<onclick>RunScript(script.skin.helper.colorpicker,skinstring=button_focus_accent,palette=rainbow)</onclick>
+						<onclick condition="!System.HasAddon(script.skin.helper.colorpicker)">InstallAddon(script.skin.helper.colorpicker)</onclick>
+						<onclick condition="System.HasAddon(script.skin.helper.colorpicker)">RunScript(script.skin.helper.colorpicker,skinstring=button_focus_accent,palette=rainbow)</onclick>
 						<label>$LOCALIZE[31270]</label>
 						<label2>$VAR[ButtonAccentColorLabel]</label2>
 					</control>
@@ -411,9 +492,18 @@
 					</include>
 					<control type="button" id="411">
 						<include>SettingsButton</include>
-						<onclick>RunScript(script.skin.helper.service,action=setskinsetting,setting=AlphaBackground,header=$LOCALIZE[13324])</onclick>
-						<label>$LOCALIZE[13324]</label>
-						<label2>$INFO[Skin.String(AlphaBackground.label)]%</label2>
+						<onclick condition="String.IsEqual(Skin.String(AlphaBackground),10)">Skin.Reset(AlphaBackground)</onclick>
+						<onclick condition="String.IsEqual(Skin.String(AlphaBackground),20)">Skin.SetString(AlphaBackground,10)</onclick>
+						<onclick condition="String.IsEqual(Skin.String(AlphaBackground),30)">Skin.SetString(AlphaBackground,20)</onclick>
+						<onclick condition="String.IsEqual(Skin.String(AlphaBackground),40)">Skin.SetString(AlphaBackground,30)</onclick>
+						<onclick condition="String.IsEqual(Skin.String(AlphaBackground),50)">Skin.SetString(AlphaBackground,40)</onclick>
+						<onclick condition="String.IsEqual(Skin.String(AlphaBackground),60)">Skin.SetString(AlphaBackground,50)</onclick>
+						<onclick condition="String.IsEqual(Skin.String(AlphaBackground),70)">Skin.SetString(AlphaBackground,60)</onclick>
+						<onclick condition="String.IsEqual(Skin.String(AlphaBackground),80)">Skin.SetString(AlphaBackground,70)</onclick>
+						<onclick condition="String.IsEqual(Skin.String(AlphaBackground),90)">Skin.SetString(AlphaBackground,80)</onclick>
+						<onclick condition="String.IsEmpty(Skin.String(AlphaBackground)) | String.IsEqual(Skin.String(AlphaBackground),100)">Skin.SetString(AlphaBackground,90)</onclick>
+						<label>$LOCALIZE[31271]</label>
+						<label2>$VAR[BackgroundOpacity,,%]</label2>
 						<enable>!Skin.HasSetting(HideBackground) | !Skin.HasSetting(HideBackgroundPlayback)</enable>
 					</control>
 					<control type="radiobutton" id="412">
@@ -427,13 +517,6 @@
 						<onclick>Skin.ToggleSetting(HideBackgroundPlayback)</onclick>
 						<selected>!Skin.HasSetting(HideBackgroundPlayback)</selected>
 						<label>$LOCALIZE[31088]</label>
-					</control>
-					<control type="button" id="414">
-						<include>SettingsButton</include>
-						<onclick>RunScript(script.skin.helper.service,action=setskinsetting,setting=AlphaBackground,header=$LOCALIZE[13324])</onclick>
-						<label>$LOCALIZE[13324]</label>
-						<label2>$INFO[Skin.String(AlphaBackground.label)]%</label2>
-						<enable>!Skin.HasSetting(HideBackground) | !Skin.HasSetting(HideBackgroundPlayback)</enable>
 					</control>
 					<include content="SkinSettingsHeadlineLabel">
 						<param name="id" value="420"/>
@@ -508,17 +591,6 @@
 						<selected>!Skin.HasSetting(HideHeaderWeather)</selected>
 						<label>$LOCALIZE[31110]</label>
 					</control>
-					<!-- global widget settings -->
-					<include content="SkinSettingsHeadlineLabel">
-						<param name="id" value="440"/>
-						<param name="label" value="$LOCALIZE[31083]"/>
-					</include>
-					<control type="radiobutton" id="441">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideEmbyConLabel)</onclick>
-						<selected>!Skin.HasSetting(HideEmbyConLabel)</selected>
-						<label>$LOCALIZE[31085]</label>
-					</control>
 					<!-- playback -->
 					<include content="SkinSettingsHeadlineLabel">
 						<param name="id" value="450"/>
@@ -535,6 +607,13 @@
 						<label>$LOCALIZE[31231]</label>
 						<selected>!Skin.HasSetting(DoNotPauseOnInfo)</selected>
 						<onclick>Skin.ToggleSetting(DoNotPauseOnInfo)</onclick>
+					</control>
+					<control type="radiobutton" id="453">
+						<include>SettingsButton</include>
+						<label>$LOCALIZE[31277]</label>
+						<selected>!Skin.HasSetting(FancyLyrics)</selected>
+						<onclick>Skin.ToggleSetting(FancyLyrics)</onclick>
+						<enable>System.HasAddon(script.cu.lrclyrics)</enable>
 					</control>
 					<!-- misc -->
 					<include content="SkinSettingsHeadlineLabel">
@@ -576,12 +655,14 @@
 						<label>$LOCALIZE[31228]</label>
 						<label2>[COLOR $VAR[AccentColor]]$VAR[SearchProvider][/COLOR]</label2>
 						<onclick>Skin.ToggleSetting(UseGlobalsearch)</onclick>
+						<enable>System.HasAddon(script.globalsearch)</enable>
 					</control>
 					<control type="button" id="467">
 						<include>SettingsButton</include>
 						<label>$LOCALIZE[31238]</label>
 						<label2>[COLOR $VAR[AccentColor]]$VAR[CastSearchProvider][/COLOR]</label2>
 						<onclick>Skin.ToggleSetting(DoNotUseExtendedInfo)</onclick>
+						<enable>System.HasAddon(script.extendedinfo)</enable>
 					</control>
 					<control type="label">
 						<height>50</height>
@@ -731,6 +812,7 @@
 						<include>SettingsButton</include>
 						<onclick>Skin.ToggleSetting(HidePowerExit)</onclick>
 						<selected>!Skin.HasSetting(HidePowerExit)</selected>
+						<visible>!System.Platform.Android</visible>
 						<label>$LOCALIZE[13012]</label>
 					</control>
 					<control type="radiobutton" id="603">
@@ -780,7 +862,7 @@
 						<onclick>Skin.ToggleSetting(HidePowerRebootNAND)</onclick>
 						<selected>!Skin.HasSetting(HidePowerRebootNAND)</selected>
 						<label>$LOCALIZE[13013] (NAND)</label>
-						<visible>System.CanReboot + System.HasAddon(service.libreelec.settings)</visible>
+						<visible>System.CanReboot + [System.HasAddon(service.libreelec.settings) | System.HasAddon(service.corelec.settings)]</visible>
 					</control>
 					<control type="radiobutton" id="610">
 						<include>SettingsButton</include>
@@ -788,6 +870,100 @@
 						<selected>!Skin.HasSetting(HidePowerIdleShutdown)</selected>
 						<label>$LOCALIZE[13017] / $LOCALIZE[13018]</label>
 						<visible>System.HasShutdown</visible>
+					</control>
+				</control>
+				<!-- addons -->
+				<control type="grouplist" id="700">
+					<visible>ControlGroup(100).HasFocus(106)</visible>
+					<left>500</left>
+					<right>100</right>
+					<height>100%</height>
+					<onup>6666</onup>
+					<onleft>100</onleft>
+					<onright>noop</onright>
+					<ondown>noop</ondown>
+					<pagecontrol>60</pagecontrol>
+					<scrolltime>200</scrolltime>
+					<itemgap>0</itemgap>
+					<include content="SkinSettingsHeadlineLabel">
+						<param name="id" value="710"/>
+						<param name="label" value="$LOCALIZE[31273]"/>
+					</include>
+					<control type="radiobutton" id="711">
+						<include>SettingsButton</include>
+						<onclick condition="!System.HasAddon(script.embuary.helper)">InstallAddon(script.embuary.helper)</onclick>
+						<selected>System.HasAddon(script.embuary.helper)</selected>
+						<label>Embuary Helper Script  (script.embuary.helper)</label>
+					</control>
+					<control type="radiobutton" id="712">
+						<include>SettingsButton</include>
+						<onclick condition="!System.HasAddon(script.skinshortcuts)">InstallAddon(script.skinshortcuts)</onclick>
+						<selected>System.HasAddon(script.skinshortcuts)</selected>
+						<label>Skin Shortcuts  (script.skinshortcuts)</label>
+					</control>
+					<control type="radiobutton" id="713">
+						<include>SettingsButton</include>
+						<onclick condition="!System.HasAddon(plugin.program.autocompletion)">InstallAddon(plugin.program.autocompletion)</onclick>
+						<selected>System.HasAddon(plugin.program.autocompletion)</selected>
+						<label>Auto Completion Plugin (plugin.program.autocompletion)</label>
+					</control>
+					<control type="radiobutton" id="714">
+						<include>SettingsButton</include>
+						<onclick condition="!System.HasAddon(resource.images.weathericons.outline-hd)">InstallAddon(resource.images.weathericons.outline-hd)</onclick>
+						<selected>System.HasAddon(resource.images.weathericons.outline-hd)</selected>
+						<label>Outline HD Weather Icons (resource.images.weathericons.outline-hd)</label>
+					</control>
+					<include content="SkinSettingsHeadlineLabel">
+						<param name="id" value="701"/>
+						<param name="label" value="$LOCALIZE[31274]"/>
+					</include>
+					<control type="radiobutton" id="702">
+						<include>SettingsButton</include>
+						<onclick condition="!System.HasAddon(service.upnext)">InstallAddon(service.upnext)</onclick>
+						<selected>System.HasAddon(service.upnext)</selected>
+						<label>Up Next  (service.upnext)</label>
+					</control>
+					<control type="radiobutton" id="703">
+						<include>SettingsButton</include>
+						<onclick condition="!System.HasAddon(script.tv.show.next.aired)">InstallAddon(script.tv.show.next.aired)</onclick>
+						<selected>System.HasAddon(script.tv.show.next.aired)</selected>
+						<label>Next Aired  (script.tv.show.next.aired)</label>
+					</control>
+					<control type="radiobutton" id="704">
+						<include>SettingsButton</include>
+						<onclick condition="!System.HasAddon(script.artistslideshow)">InstallAddon(script.artistslideshow)</onclick>
+						<selected>System.HasAddon(script.artistslideshow)</selected>
+						<label>Artist Slideshow  (script.artistslideshow)</label>
+					</control>
+					<control type="radiobutton" id="705">
+						<include>SettingsButton</include>
+						<onclick condition="!System.HasAddon(script.skin.helper.skinbackup)">InstallAddon(script.skin.helper.skinbackup)</onclick>
+						<selected>System.HasAddon(script.skin.helper.skinbackup)</selected>
+						<label>Skin Helper Script: Skin Backup  (script.skin.helper.skinbackup)</label>
+					</control>
+					<control type="radiobutton" id="706">
+						<include>SettingsButton</include>
+						<onclick condition="!System.HasAddon(script.skin.helper.colorpicker)">InstallAddon(script.skin.helper.colorpicker)</onclick>
+						<selected>System.HasAddon(script.skin.helper.colorpicker)</selected>
+						<label>Skin Helper Script: Colorpicker  (script.skin.helper.colorpicker)</label>
+					</control>
+					<control type="radiobutton" id="707">
+						<include>SettingsButton</include>
+						<onclick condition="!System.HasAddon(script.globalsearch)">InstallAddon(script.globalsearch)</onclick>
+						<selected>System.HasAddon(script.globalsearch)</selected>
+						<label>GlobalSearch  (script.globalsearch)</label>
+					</control>
+					<control type="radiobutton" id="708">
+						<include>SettingsButton</include>
+						<onclick condition="!System.HasAddon(script.extendedinfo)">InstallAddon(script.extendedinfo)</onclick>
+						<selected>System.HasAddon(script.extendedinfo)</selected>
+						<label>Extended Info Script  (script.extendedinfo)</label>
+					</control>
+					<control type="radiobutton" id="709">
+						<include>SettingsButton</include>
+						<onclick condition="!System.HasAddon(script.cu.lrclyrics)">InstallAddon(script.cu.lrclyrics)</onclick>
+						<selected>System.HasAddon(script.cu.lrclyrics)</selected>
+						<label>CU LRC Lyrics  (script.cu.lrclyrics)</label>
 					</control>
 				</control>
 			</control>

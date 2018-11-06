@@ -195,7 +195,7 @@
 						<onright>SetProperty(BounceRight,1,home)</onright>
 						<onright>noop</onright>
 						<onleft>900</onleft>
-						<oninfo condition="String.IsEqual(ListItem.DBType,set) + !String.IsEmpty(Container(2001).ListItem.Label)">RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCVAR[ListViewPlot]')</oninfo>
+						<oninfo condition="String.IsEqual(ListItem.DBType,set) + !String.IsEmpty(Container(2001).ListItem.Label)">RunScript(script.embuary.helper,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCVAR[ListViewPlot]')</oninfo>
 						<include condition="$PARAM[use_custom_onclick]" content="ContainerOnClick">
 							<param name="onclick" value="$PARAM[onclick]"/>
 							<param name="onclick2" value="$PARAM[onclick2]"/>
@@ -321,14 +321,14 @@
 						<onright>SetProperty(BounceRight,1,home)</onright>
 						<onright>noop</onright>
 						<onleft>900</onleft>
-						<onclick condition="!Skin.HasSetting(DoNotUseExtendedInfo)">RunScript(script.extendedinfo,info=extendedactorinfo,name=$INFO[ListItem.Label])</onclick>
-						<onclick condition="Skin.HasSetting(DoNotUseExtendedInfo) + Window.IsVisible(movieinformation)">close</onclick>
-						<onclick condition="Skin.HasSetting(DoNotUseExtendedInfo) + !Skin.HasSetting(UseGlobalsearch)">SetProperty(CustomSearch,1,home)</onclick>
-						<onclick condition="Skin.HasSetting(DoNotUseExtendedInfo) + !Skin.HasSetting(UseGlobalsearch)">Skin.SetString(CustomSearchTerm,$INFO[ListItem.Label])</onclick>
-						<onclick condition="Skin.HasSetting(DoNotUseExtendedInfo) + !Skin.HasSetting(UseGlobalsearch)">Skin.SetString(CustomSearchEmbyID,$INFO[ListItem.Property(id)])</onclick>
-						<onclick condition="Skin.HasSetting(DoNotUseExtendedInfo) + !Skin.HasSetting(UseGlobalsearch)">ActivateWindow(1115)</onclick>
-						<onclick condition="Skin.HasSetting(DoNotUseExtendedInfo) + !Skin.HasSetting(UseGlobalsearch)">AlarmClock(Wait,ClearProperty(CustomSearch,home),00:01,silent)</onclick>
-						<onclick condition="Skin.HasSetting(DoNotUseExtendedInfo) + Skin.HasSetting(UseGlobalsearch)">RunScript(script.globalsearch,searchstring=$INFO[ListItem.Label])</onclick>
+						<onclick condition="!Skin.HasSetting(DoNotUseExtendedInfo) + System.HasAddon(script.extendedinfo)">RunScript(script.extendedinfo,info=extendedactorinfo,name=$INFO[ListItem.Label])</onclick>
+						<onclick condition="[Skin.HasSetting(DoNotUseExtendedInfo) | !System.HasAddon(script.extendedinfo)] + Window.IsVisible(movieinformation)">close</onclick>
+						<onclick condition="[Skin.HasSetting(DoNotUseExtendedInfo) | !System.HasAddon(script.extendedinfo)] + [!Skin.HasSetting(UseGlobalsearch) | !System.HasAddon(script.globalsearch)]">SetProperty(CustomSearch,1,home)</onclick>
+						<onclick condition="[Skin.HasSetting(DoNotUseExtendedInfo) | !System.HasAddon(script.extendedinfo)] + [!Skin.HasSetting(UseGlobalsearch) | !System.HasAddon(script.globalsearch)]">Skin.SetString(CustomSearchTerm,$INFO[ListItem.Label])</onclick>
+						<onclick condition="[Skin.HasSetting(DoNotUseExtendedInfo) | !System.HasAddon(script.extendedinfo)] + [!Skin.HasSetting(UseGlobalsearch) | !System.HasAddon(script.globalsearch)]">Skin.SetString(CustomSearchEmbyID,$INFO[ListItem.Property(id)])</onclick>
+						<onclick condition="[Skin.HasSetting(DoNotUseExtendedInfo) | !System.HasAddon(script.extendedinfo)] + [!Skin.HasSetting(UseGlobalsearch) | !System.HasAddon(script.globalsearch)]">ActivateWindow(1115)</onclick>
+						<onclick condition="[Skin.HasSetting(DoNotUseExtendedInfo) | !System.HasAddon(script.extendedinfo)] + [!Skin.HasSetting(UseGlobalsearch) | !System.HasAddon(script.globalsearch)]">AlarmClock(Wait,ClearProperty(CustomSearch,home),00:01,silent)</onclick>
+						<onclick condition="[Skin.HasSetting(DoNotUseExtendedInfo) | !System.HasAddon(script.extendedinfo)] + Skin.HasSetting(UseGlobalsearch) + System.HasAddon(script.globalsearch)">RunScript(script.globalsearch,searchstring=$INFO[ListItem.Label])</onclick>
 						<pagecontrol>$PARAM[id]1</pagecontrol>
 						<viewtype label="$LOCALIZE[31006]">list</viewtype>
 						<itemlayout width="257">
@@ -848,7 +848,6 @@
 					<param name="headline">$VAR[PVRLabel]</param>
 				</include>
 				<control type="grouplist" id="$PARAM[id]01">
-					<enable>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</enable>
 					<top>90</top>
 					<left>68</left>
 					<height>50</height>
@@ -990,6 +989,11 @@
 						</control>
 					</focusedlayout>
 					<include condition="$PARAM[use_custom_content]" content="ContainerContentPath">
+						<param name="id" value="$PARAM[id]" />
+						<param name="showdummy" value="String.IsEmpty(Container($PARAM[id]).ListItemAbsolute(0).Channelname)" />
+						<param name="dummylabel" value="$LOCALIZE[31285]" />
+						<param name="dummylabel2" value="$LOCALIZE[19023]" />
+						<param name="dummyaction" value="ActivateWindow(tvchannels)" />
 						<param name="widget_target">$PARAM[widget_target]</param>
 						<param name="sortby">$PARAM[sortby]</param>
 						<param name="sortorder">$PARAM[sortorder]</param>

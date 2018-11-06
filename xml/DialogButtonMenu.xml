@@ -163,6 +163,7 @@
 						<label>$LOCALIZE[10000]</label>
 						<label2></label2>
 						<onclick>Dialog.Close(all,true)</onclick>
+						<onclick condition="Window.IsVisible(visualisation)">Action(fullscreen)</onclick>
 						<onclick>ActivateWindow(home)</onclick>
 						<property name="color">orange</property>
 						<visible>!Window.IsVisible(loginscreen) + !Window.IsVisible(home)</visible>
@@ -171,6 +172,7 @@
 						<label>$LOCALIZE[5]</label>
 						<label2></label2>
 						<onclick>Dialog.Close(all,true)</onclick>
+						<onclick condition="Window.IsVisible(visualisation)">Action(fullscreen)</onclick>
 						<onclick>ActivateWindow(settings)</onclick>
 						<property name="color">blue</property>
 						<visible>!Window.IsVisible(loginscreen) + !Window.IsVisible(settings) + !Skin.HasSetting(HidePowerSettings)</visible>
@@ -179,7 +181,7 @@
 						<label>$LOCALIZE[13012]</label>
 						<label2></label2>
 						<onclick>Quit()</onclick>
-						<visible>System.ShowExitButton + [!Skin.HasSetting(HidePowerExit) | Window.IsVisible(loginscreen)]</visible>
+						<visible>System.Platform.Android | [System.ShowExitButton + [!Skin.HasSetting(HidePowerExit) | Window.IsVisible(loginscreen)]]</visible>
 						<property name="color">green</property>
 					</item>
 					<item>

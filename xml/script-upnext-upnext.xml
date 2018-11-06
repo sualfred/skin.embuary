@@ -5,6 +5,9 @@
 	<onload>Dialog.Close(videoosd,true)</onload>
 	<include>PropertyIncludes</include>
 	<controls>
+		<control type="progress" id="3014">
+			<include>HiddenObject</include>
+		</control>
 		<control type="group">
 			<animation effect="fade" start="0" end="100" time="0">WindowOpen</animation>
 			<animation effect="fade" start="100" end="0" time="400">WindowClose</animation>
@@ -27,38 +30,40 @@
 					<height>147</height>
 					<texture border="20,20,20,20">items/shadow.png</texture>
 				</control>
-				<control type="image">
-					<width>250</width>
-					<height>141</height>
-					<texture colordiffuse="$VAR[ThumbFallbackColor]">common/white.jpg</texture>
-					<aspectratio>stretch</aspectratio>
-					<visible>String.IsEmpty(Window.Property(thumb))</visible>
+				<control type="group">
+					<visible>String.IsEmpty(Window.Property(thumb)) + String.IsEmpty(Window.Property(landscape))</visible>
+					<control type="image">
+						<width>250</width>
+						<height>141</height>
+						<texture colordiffuse="$VAR[ThumbFallbackColor]">common/white.jpg</texture>
+						<aspectratio>stretch</aspectratio>
+					</control>
+					<control type="textbox">
+						<top>10</top>
+						<left>10</left>
+						<width>230</width>
+						<height>121</height>
+						<font>Light24</font>
+						<textcolor>white</textcolor>
+						<align>center</align>
+						<aligny>center</aligny>
+						<label>$INFO[Window.Property(tvshowtitle)]</label>
+					</control>
 				</control>
-				<control type="textbox">
-					<top>10</top>
-					<left>10</left>
-					<width>230</width>
-					<height>121</height>
-					<font>Light24</font>
-					<textcolor>white</textcolor>
-					<align>center</align>
-					<aligny>center</aligny>
-					<label>$INFO[Window.Property(tvshowtitle)]</label>
-					<visible>String.IsEmpty(Window.Property(thumb))</visible>
-				</control>
-				<control type="image">
-					<width>250</width>
-					<height>141</height>
-					<texture colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
-					<aspectratio>stretch</aspectratio>
-					<visible>!String.IsEmpty(Window.Property(thumb))</visible>
-				</control>
-				<control type="image">
-					<width>250</width>
-					<height>141</height>
-					<texture>$INFO[Window.Property(thumb)]</texture>
-					<aspectratio>scale</aspectratio>
-					<visible>!String.IsEmpty(Window.Property(thumb))</visible>
+				<control type="group">
+					<visible>!String.IsEmpty(Window.Property(thumb)) | !String.IsEmpty(Window.Property(landscape))</visible>
+					<control type="image">
+						<width>250</width>
+						<height>141</height>
+						<texture colordiffuse="thumb_background_player">common/white.jpg</texture>
+						<aspectratio>stretch</aspectratio>
+					</control>
+					<control type="image">
+						<width>250</width>
+						<height>141</height>
+						<texture>$VAR[UpNextThumb]</texture>
+						<aspectratio>scale</aspectratio>
+					</control>
 				</control>
 			</control>
 			<!-- Labels -->

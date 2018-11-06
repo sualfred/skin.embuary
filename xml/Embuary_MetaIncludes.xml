@@ -10,9 +10,9 @@
 				<itemgap>5</itemgap>
 				<orientation>horizontal</orientation>
 				<control type="label">
-					<label>$INFO[Window(home).Property(SkinHelper.ListItem.Year)]   </label>
+					<label>$INFO[Container(5601).ListItemAbsolute(0).Year]$VAR[SetLastYear, - ]   </label>
 					<include>MetaLabel</include>
-					<visible>!String.IsEmpty(Window(home).Property(SkinHelper.ListItem.Year))</visible>
+					<visible>!String.IsEmpty(Container(5601).NumItems) + !String.IsEqual(Container(5601).NumItems,0) + [!Container(5601).IsUpdating | !String.StartsWith(Container.Folderpath,plugin://)]</visible>
 				</control>
 				<control type="label">
 					<label>$INFO[Container(5601).NumItems,, $LOCALIZE[36901]]   </label>
@@ -23,11 +23,6 @@
 					<label>$LOCALIZE[1040]   </label>
 					<include>MetaLabel</include>
 					<visible>![!String.IsEmpty(Container(5601).NumItems) + !String.IsEqual(Container(5601).NumItems,0) + [!Container(5601).IsUpdating | !String.StartsWith(Container.Folderpath,plugin://)]]</visible>
-				</control>
-				<control type="label">
-					<label>$INFO[Window(home).Property(SkinHelper.ListItem.Runtime),, $LOCALIZE[31089]]   </label>
-					<include>MetaLabel</include>
-					<visible>!String.IsEmpty(Window(home).Property(SkinHelper.ListItem.Runtime))</visible>
 				</control>
 			</control>
 		</definition>
@@ -54,7 +49,6 @@
 				<include>MpaaIcon</include>
 				<include>CCIcon</include>
 				<include>MetaRating</include>
-				<include>SkinHelperRatings</include>
 				<control type="label">
 					<include>MetaLabel</include>
 					<label>$INFO[ListItem.EndTimeResume,$LOCALIZE[31037] ]</label>
@@ -94,11 +88,6 @@
 				</control>
 				<include>MpaaIcon</include>
 				<include>MetaRating</include>
-				<control type="label">
-					<label>$VAR[ListItemStatus]   </label>
-					<include>MetaLabel</include>
-					<visible>!String.IsEmpty(Window(home).Property(SkinHelper.ListItem.Status))</visible>
-				</control>
 			</control>
 		</definition>
 	</include>
@@ -312,9 +301,6 @@
 				<include content="MetaRating">
 					<param name="type" value="VideoPlayer"/>
 				</include>
-				<include content="SkinHelperRatings">
-					<param name="type" value="Player"/>
-				</include>
 			</control>
 		</definition>
 	</include>
@@ -339,7 +325,7 @@
 			<control type="image">
 				<width>276</width>
 				<height>414</height>
-				<texture colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
+				<texture colordiffuse="$VAR[ThumbBackgroundColor]">common/white.jpg</texture>
 				<aspectratio scalediffuse="false">stretch</aspectratio>
 				<visible>!String.IsEmpty(ListItem.Art(poster)) | !String.IsEmpty(ListItem.Art(tvshow.poster)) | !String.StartsWith(ListItem.Icon,default)</visible>
 			</control>
@@ -383,7 +369,7 @@
 			<control type="image">
 				<width>276</width>
 				<height>414</height>
-				<texture colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
+				<texture colordiffuse="$VAR[ThumbBackgroundColor]">common/white.jpg</texture>
 				<aspectratio scalediffuse="false">stretch</aspectratio>
 				<visible>!String.IsEmptyWindow.Property(thumb)</visible>
 			</control>
@@ -461,7 +447,7 @@
 			<control type="image">
 				<width>430</width>
 				<height>242</height>
-				<texture colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
+				<texture colordiffuse="$VAR[ThumbBackgroundColor]">common/white.jpg</texture>
 				<aspectratio scalediffuse="false">stretch</aspectratio>
 				<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
 			</control>
@@ -524,7 +510,7 @@
 			<control type="image">
 				<width>430</width>
 				<height>242</height>
-				<texture background="true">$VAR[IconLandscape]</texture>
+				<texture background="true">$INFO[ListItem.Icon]</texture>
 				<aspectratio scalediffuse="false">scale</aspectratio>
 				<visible>!String.StartsWith(ListItem.Icon,Default) + !String.StartsWith(ListItem.Path,pvr://)</visible>
 			</control>
@@ -551,7 +537,7 @@
 			<control type="image">
 				<width>340</width>
 				<height>340</height>
-				<texture colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
+				<texture colordiffuse="$VAR[ThumbBackgroundColor]">common/white.jpg</texture>
 				<aspectratio scalediffuse="false">stretch</aspectratio>
 				<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
 			</control>
@@ -600,7 +586,7 @@
 					<control type="image">
 						<width>590</width>
 						<height>332</height>
-						<texture colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
+						<texture colordiffuse="$VAR[ThumbBackgroundColor]">common/white.jpg</texture>
 						<aspectratio scalediffuse="false">stretch</aspectratio>
 						<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
 					</control>
@@ -782,31 +768,13 @@
 				<include>MetaLabel</include>
 				<visible>String.IsEmpty($PARAM[type].Rating) + !Window.IsVisible(fullscreeninfo) + !String.IsEmpty(Window(home).Property(TvShowRating)) + [String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,season)]</visible>
 			</control>
-		</definition>
-	</include>
-	<include name="SkinHelperRatings">
-		<param name="type">ListItem</param>
-		<definition>
-			<control type="image">
-				<animation effect="slide" end="0,3" time="0" condition="true">Conditional</animation>
-				<width>24</width>
-				<height>20</height>
-				<texture>icons/rating/metacritics_logo.png</texture>
-				<aspectratio>keep</aspectratio>
-				<visible>!String.IsEmpty(Window(Home).Property(SkinHelper.$PARAM[type].MetaCritic.Rating))</visible>
-			</control>
-			<control type="label">
-				<label>$INFO[Window(Home).Property(SkinHelper.$PARAM[type].MetaCritic.Rating),,%]   </label>
-				<include>MetaLabel</include>
-				<visible>!String.IsEmpty(Window(Home).Property(SkinHelper.$PARAM[type].MetaCritic.Rating))</visible>
-			</control>
 			<control type="image">
 				<animation effect="slide" end="0,3" time="0" condition="true">Conditional</animation>
 				<width>24</width>
 				<height>20</height>
 				<texture>icons/rating/rotten_fresh.png</texture>
 				<aspectratio>keep</aspectratio>
-				<visible>!String.IsEmpty(Window(Home).Property(SkinHelper.$PARAM[type].RottenTomatoes.Rating)) + Integer.IsGreater(Window(Home).Property(SkinHelper.$PARAM[type].RottenTomatoes.Rating),59)</visible>
+				<visible>!String.IsEmpty($PARAM[type].UserRating) + Integer.IsGreater($PARAM[type].UserRating,59) + [System.HasAddon(plugin.video.emby) | String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) | String.Contains(Player.Filenameandpath,/emby/)]</visible>
 			</control>e
 			<control type="image">
 				<animation effect="slide" end="0,3" time="0" condition="true">Conditional</animation>
@@ -814,12 +782,12 @@
 				<height>20</height>
 				<texture>icons/rating/rotten_rotten.png</texture>
 				<aspectratio>keep</aspectratio>
-				<visible>!String.IsEmpty(Window(Home).Property(SkinHelper.$PARAM[type].RottenTomatoes.Rating)) + !Integer.IsGreater(Window(Home).Property(SkinHelper.$PARAM[type].RottenTomatoes.Rating),59)</visible>
+				<visible>!String.IsEmpty($PARAM[type].UserRating) + !Integer.IsGreater($PARAM[type].UserRating,59) + [System.HasAddon(plugin.video.emby) | String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) | String.Contains(Player.Filenameandpath,/emby/)]</visible>
 			</control>
 			<control type="label">
-				<label>$INFO[Window(Home).Property(SkinHelper.$PARAM[type].RottenTomatoes.Rating),,%]   </label>
+				<label>$INFO[$PARAM[type].UserRating]   </label>
 				<include>MetaLabel</include>
-				<visible>!String.IsEmpty(Window(Home).Property(SkinHelper.$PARAM[type].RottenTomatoes.Rating))</visible>
+				<visible>!String.IsEmpty($PARAM[type].UserRating) + [System.HasAddon(plugin.video.emby) | String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) | String.Contains(Player.Filenameandpath,/emby/)]</visible>
 			</control>
 		</definition>
 	</include>
@@ -905,6 +873,7 @@
 				<aligny>top</aligny>
 				<textcolor>$VAR[AccentColor]</textcolor>
 				<visible>$PARAM[visible]</visible>
+				<visible>!String.IsEqual(ListItem.DBType,set)</visible>
 				<visible>!String.IsEmpty(ListItem.AddonType) | !String.IsEmpty($PARAM[type].Genre) | !String.IsEmpty($PARAM[type].Director)</visible>
 			</control>
 			<control type="label">

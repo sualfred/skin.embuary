@@ -150,6 +150,7 @@
 	<!-- ListItem overlay -->
 	<include name="listitem_overlay">
 		<control type="group">
+			<visible>!String.IsEqual(ListItem.DBType,artist) + !String.IsEqual(ListItem.DBType,album) + !String.IsEqual(ListItem.DBType,song)</visible>
 			<control type="group">
 				<visible>String.StartsWith(ListItem.Path,pvr://)</visible>
 				<control type="image">
@@ -565,7 +566,7 @@
 					<control type="image">
 						<width>237</width>
 						<height>355</height>
-						<texture colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
+						<texture colordiffuse="$VAR[ThumbBackgroundColor]">common/white.jpg</texture>
 						<aspectratio scalediffuse="false">stretch</aspectratio>
 						<visible>[!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)] | !String.IsEmpty(ListItem.Art(tvshow.poster))</visible>
 					</control>
@@ -666,7 +667,7 @@
 						<control type="image">
 							<width>237</width>
 							<height>355</height>
-							<texture colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
+							<texture colordiffuse="$VAR[ThumbBackgroundColor]">common/white.jpg</texture>
 							<aspectratio scalediffuse="false">stretch</aspectratio>
 						</control>
 						<control type="image">
@@ -740,7 +741,7 @@
 					<control type="image">
 						<width>880</width>
 						<height>163</height>
-						<texture colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
+						<texture colordiffuse="$VAR[ThumbBackgroundColor]">common/white.jpg</texture>
 						<aspectratio scalediffuse="false">stretch</aspectratio>
 						<visible>!String.IsEmpty(ListItem.Art(banner)) | !String.IsEmpty(ListItem.Art(tvshow.banner)) | !String.IsEmpty(ListItem.Art(fanart)) | !String.IsEmpty(ListItem.Art(tvshow.fanart))</visible>
 					</control>
@@ -839,7 +840,7 @@
 					<control type="image">
 						<width>430</width>
 						<height>242</height>
-						<texture colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
+						<texture colordiffuse="$VAR[ThumbBackgroundColor]">common/white.jpg</texture>
 						<aspectratio scalediffuse="false">stretch</aspectratio>
 						<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
 					</control>
@@ -860,7 +861,14 @@
 						<height>242</height>
 						<texture background="true">$VAR[IconLandscape]</texture>
 						<aspectratio scalediffuse="false">scale</aspectratio>
-						<visible>![String.StartsWith(ListItem.Path,pvr://) + String.IsEmpty(ListItem.EpgEventIcon) + [String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)]] + !String.StartsWith(ListItem.Icon,Default)</visible>
+						<visible>![String.StartsWith(ListItem.Path,pvr://) + String.IsEmpty(ListItem.EpgEventIcon) + [String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)]] + !String.StartsWith(ListItem.Icon,Default) + !String.StartsWith(ListItem.Art(thumb),image://picturefolder) + !String.EndsWith(ListItem.Art(thumb),folder.jpg)</visible>
+					</control>
+					<control type="image">
+						<width>430</width>
+						<height>242</height>
+						<texture background="true">$INFO[ListItem.Art(thumb)]</texture>
+						<aspectratio scalediffuse="false">keep</aspectratio>
+						<visible>String.StartsWith(ListItem.Art(thumb),image://picturefolder) | String.EndsWith(ListItem.Art(thumb),folder.jpg)</visible>
 					</control>
 					<control type="image">
 						<width>430</width>
@@ -868,7 +876,7 @@
 						<texture background="true">$INFO[ListItem.Icon]</texture>
 						<aspectratio scalediffuse="false">keep</aspectratio>
 						<bordersize>20</bordersize>
-						<visible>[String.StartsWith(ListItem.Path,pvr://) + String.IsEmpty(ListItem.EpgEventIcon) + [String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)]] + !String.StartsWith(ListItem.Icon,Default)</visible>
+						<visible>[String.StartsWith(ListItem.Path,pvr://) + String.IsEmpty(ListItem.EpgEventIcon) + [String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)]] + !String.StartsWith(ListItem.Icon,Default) + !String.StartsWith(ListItem.Art(thumb),image://picturefolder) + !String.EndsWith(ListItem.Art(thumb),folder.jpg)</visible>
 					</control>
 					<control type="group">
 						<width>430</width>
@@ -999,7 +1007,7 @@
 					<control type="image">
 						<width>280</width>
 						<height>280</height>
-						<texture colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
+						<texture colordiffuse="$VAR[ThumbBackgroundColor]">common/white.jpg</texture>
 						<aspectratio scalediffuse="false">stretch</aspectratio>
 						<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
 					</control>
@@ -1327,7 +1335,7 @@
 						<left>3</left>
 						<control type="image">
 							<height>110</height>
-							<texture colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
+							<texture colordiffuse="$VAR[ThumbBackgroundColor]">common/white.jpg</texture>
 							<aspectratio>scale</aspectratio>
 						</control>
 						<control type="image">
@@ -1338,7 +1346,7 @@
 						<control type="image">
 							<top>112</top>
 							<height>110</height>
-							<texture flipy="true" diffuse="items/mirror_mask.png" colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
+							<texture flipy="true" diffuse="items/mirror_mask.png" colordiffuse="$VAR[ThumbBackgroundColor]">common/white.jpg</texture>
 							<aspectratio scalediffuse="false">scale</aspectratio>
 						</control>
 						<control type="image">
@@ -1354,7 +1362,7 @@
 						<left>72</left>
 						<control type="image">
 							<height>110</height>
-							<texture colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
+							<texture colordiffuse="$VAR[ThumbBackgroundColor]">common/white.jpg</texture>
 							<aspectratio>scale</aspectratio>
 						</control>
 						<control type="image">
@@ -1365,7 +1373,7 @@
 						<control type="image">
 							<top>112</top>
 							<height>110</height>
-							<texture flipy="true" diffuse="items/mirror_mask.png" colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
+							<texture flipy="true" diffuse="items/mirror_mask.png" colordiffuse="$VAR[ThumbBackgroundColor]">common/white.jpg</texture>
 							<aspectratio scalediffuse="false">scale</aspectratio>
 						</control>
 						<control type="image">
@@ -1381,7 +1389,7 @@
 						<left>142</left>
 						<control type="image">
 							<height>110</height>
-							<texture colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
+							<texture colordiffuse="$VAR[ThumbBackgroundColor]">common/white.jpg</texture>
 							<aspectratio>scale</aspectratio>
 						</control>
 						<control type="image">
@@ -1392,7 +1400,7 @@
 						<control type="image">
 							<top>112</top>
 							<height>110</height>
-							<texture flipy="true" diffuse="items/mirror_mask.png" colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
+							<texture flipy="true" diffuse="items/mirror_mask.png" colordiffuse="$VAR[ThumbBackgroundColor]">common/white.jpg</texture>
 							<aspectratio scalediffuse="false">scale</aspectratio>
 						</control>
 						<control type="image">
@@ -1408,7 +1416,7 @@
 						<left>211</left>
 						<control type="image">
 							<height>110</height>
-							<texture colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
+							<texture colordiffuse="$VAR[ThumbBackgroundColor]">common/white.jpg</texture>
 							<aspectratio>scale</aspectratio>
 						</control>
 						<control type="image">
@@ -1419,7 +1427,7 @@
 						<control type="image">
 							<top>112</top>
 							<height>110</height>
-							<texture flipy="true" diffuse="items/mirror_mask.png" colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
+							<texture flipy="true" diffuse="items/mirror_mask.png" colordiffuse="$VAR[ThumbBackgroundColor]">common/white.jpg</texture>
 							<aspectratio scalediffuse="false">scale</aspectratio>
 						</control>
 						<control type="image">
@@ -1647,7 +1655,7 @@
 					<control type="image">
 						<width>424</width>
 						<height>239</height>
-						<texture colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
+						<texture colordiffuse="$VAR[ThumbBackgroundColor]">common/white.jpg</texture>
 						<aspectratio scalediffuse="false">stretch</aspectratio>
 						<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
 					</control>
@@ -1801,7 +1809,7 @@
 					<control type="image">
 						<width>280</width>
 						<height>280</height>
-						<texture colordiffuse="$VAR[thumb_background_color]">common/white.jpg</texture>
+						<texture colordiffuse="$VAR[ThumbBackgroundColor]">common/white.jpg</texture>
 						<aspectratio scalediffuse="false">stretch</aspectratio>
 						<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
 					</control>

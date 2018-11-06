@@ -23,7 +23,7 @@
 	<include file="Embuary_Banner_View_58.xml" />
 	<include file="Embuary_EpisodeList_View_59.xml" />
 	<include file="Embuary_Genre_View.xml" />
-	<include file="Embuary_VideoLyrics.xml" />
+	<include file="Embuary_Lyrics.xml" />
 	<include file="Embuary_EmbyHubIncludes.xml" />
 	<include file="Embuary_EmbyConHubIncludes.xml" />
 	<include file="Embuary_Settings.xml" />
@@ -36,11 +36,11 @@
 	<!-- General -->
 	<expression name="SkinSetup">[!Skin.HasSetting(SkinSetup) + !Window.IsVisible(startup) + !Window.IsVisible(1119)]</expression>
 
-	<expression name="HolidayThemeSound">!String.StartsWith(Player.Filenameandpath,special://skin/extras) + String.IsEmpty(Window(home).Property(SkinExtraSound)) + [[!Window.Previous(Startup) + Integer.IsGreater(Player.Duration,10)] | [Window.Previous(Startup) + Integer.IsGreater(Player.Duration,31)] | String.IsEmpty(Player.Duration)]</expression>
+	<expression name="HolidayThemeSound">[!String.StartsWith(Player.Filenameandpath,special://skin/extras) + String.IsEmpty(Window(home).Property(SkinExtraSound)) + [[!Window.Previous(Startup) + Integer.IsGreater(Player.Duration,10)] | [Window.Previous(Startup) + Integer.IsGreater(Player.Duration,31)] | String.IsEmpty(Player.Duration)]]</expression>
 
 	<expression name="HolidayTheme">[System.Date(12-01,01-06) + !Skin.HasSetting(HideHolidayTheme) + [[!Window.IsVisible(visualisation) + !VideoPlayer.IsFullscreen] | Window.IsActive(fullscreeninfo) | Window.IsActive(script-script.extendedinfo-DialogInfo.xml) | Window.IsActive(script-script.extendedinfo-DialogVideoInfo.xml)]]</expression>
 
-	<expression name="HolidayTheme2">[System.Date(10-31,10-31) + !Skin.HasSetting(HideHolidayTheme) + [[!Window.IsVisible(visualisation) + !VideoPlayer.IsFullscreen] | Window.IsActive(fullscreeninfo) | Window.IsActive(script-script.extendedinfo-DialogInfo.xml) | Window.IsActive(script-script.extendedinfo-DialogVideoInfo.xml)]]</expression>
+	<expression name="HolidayTheme2">[String.IsEqual(System.Date(ddmm),3110) + !Skin.HasSetting(HideHolidayTheme) + [[!Window.IsVisible(visualisation) + !VideoPlayer.IsFullscreen] | Window.IsActive(fullscreeninfo) | Window.IsActive(script-script.extendedinfo-DialogInfo.xml) | Window.IsActive(script-script.extendedinfo-DialogVideoInfo.xml)]]</expression>
 
 	<expression name="HideBackground">[!Window.IsVisible(eventlog) + !Window.IsVisible(settingscategory.xml) + !Window.IsVisible(systeminfo) + !Window.IsVisible(skinsettings) + !Window.IsVisible(addonsettings) + !Window.IsVisible(filemanager) + !Window.IsVisible(profiles) + !Window.IsVisible(weather)]</expression>
 
@@ -69,6 +69,7 @@
 		+ !Window.IsVisible(MyPVRguide.xml)
 		+ !String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres)
 		+ !String.StartsWith(Container.FolderPath,pvr://channels/radio/)
+		+ !String.StartsWith(Container.Folderpath,androidapp://)
 		]
 		| Window.IsVisible(MyPics.xml)
 		]
@@ -92,6 +93,7 @@
 		+ !Window.IsVisible(MyPVRSearch.xml)
 		+ !Window.IsVisible(MyPVRTimers.xml)
 		+ !Window.IsVisible(MyPVRguide.xml)
+		+ !String.StartsWith(Container.Folderpath,androidapp://)
 		+ !String.StartsWith(Container.FolderPath,pvr://channels/radio/)
 		]
 		| Window.IsVisible(MyPics.xml)

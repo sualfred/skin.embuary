@@ -66,7 +66,7 @@
 								<height>50</height>
 								<font>material24</font>
 								<label></label>
-								<onclick>RunScript(script.skin.helper.service,action=textviewer,header='$ESCVAR[TinyInfoDialogHeadline]',message='$ESCVAR[TinyInfoDialogPlot]')</onclick>
+								<onclick>RunScript(script.embuary.helper,action=textviewer,header='$ESCVAR[TinyInfoDialogHeadline]',message='$ESCVAR[TinyInfoDialogPlot]')</onclick>
 								<ondown>200</ondown>
 							</control>
 						</control>
@@ -235,6 +235,15 @@
 						<label>$INFO[VideoPlayer.Title]</label>
 						<font>Reg37</font>
 						<aligny>top</aligny>
+						<visible>!String.IsEmpty(VideoPlayer.Title)</visible>
+					</control>
+					<control type="label">
+						<width>1166</width>
+						<height>55</height>
+						<label>$INFO[VideoPlayer.ChannelName]</label>
+						<font>Reg37</font>
+						<aligny>top</aligny>
+						<visible>String.IsEmpty(VideoPlayer.Title)</visible>
 					</control>
 					<control type="grouplist">
 						<height>55</height>
@@ -280,7 +289,7 @@
 							<height>50</height>
 							<font>material24</font>
 							<label></label>
-							<onclick>RunScript(script.skin.helper.service,action=textviewer,header='$ESCINFO[VideoPlayer.Channelname]',message='$ESCVAR[TinyInfoDialogPlot]')</onclick>
+							<onclick>RunScript(script.embuary.helper,action=textviewer,header='$ESCINFO[VideoPlayer.Channelname]',message='$ESCVAR[TinyInfoDialogPlot]')</onclick>
 						</control>
 					</control>
 					<!-- Genre -->
