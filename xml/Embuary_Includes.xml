@@ -1130,6 +1130,19 @@
 			<label2>$INFO[Skin.String(UserWidget$PARAM[nr]_sortorder),',']</label2>
 			<visible>!String.IsEmpty(Skin.String(UserWidget$PARAM[nr]_path))</visible>
 		</control>
+		<control type="button" id="$PARAM[id]8">
+			<textcolor>$VAR[AccentColor]</textcolor>
+			<texturenofocus colordiffuse="panel_subitem">common/white.jpg</texturenofocus>
+			<include>SettingsButton</include>
+			<label>• $LOCALIZE[21427]</label>
+			<onclick>SetProperty(Dialog.1.Label,$LOCALIZE[21428])</onclick>
+			<onclick>SetProperty(Dialog.1.BuiltIn,Skin.Reset(UserWidget$PARAM[nr]_limit))</onclick>
+			<onclick>SetProperty(Dialog.2.Label,$LOCALIZE[21427])</onclick>
+			<onclick>SetProperty(Dialog.2.BuiltIn,Skin.SetNumeric(UserWidget$PARAM[nr]_limit,ascending))</onclick>>
+			<onclick>RunScript(script.embuary.helper,action=createselect,header=$LOCALIZE[21427])</onclick>
+			<label2>$INFO[Skin.String(UserWidget$PARAM[nr]_limit)]</label2>
+			<visible>!String.IsEmpty(Skin.String(UserWidget$PARAM[nr]_path))</visible>
+		</control>
 	</include>
 	<include name="weather_small_template">
 		<control type="group">

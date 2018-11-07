@@ -14,7 +14,7 @@
 			<param name="widget_target" value="videos"/>
 			<param name="sortby" value="lastplayed"/>
 			<param name="sortorder" value="descending"/>
-			<param name="limit" value="25"/>
+			<param name="limit" value="$VAR[WideWidgetLimit]"/>
 			<param name="content" value="$INFO[Window(home).Property(emby.wnodes.$PARAM[nr].index),,inprogress.xml]"/>
 		</include>
 	</include>
@@ -28,7 +28,7 @@
 			<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 			<param name="sublabel" value="$INFO[ListItem.Year]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="limit" value="25"/>
+			<param name="limit" value="$VAR[PosterWidgetLimit]"/>
 			<param name="content" value="$INFO[Window(home).Property(emby.wnodes.$PARAM[nr].index),,recent.xml]"/>
 		</include>
 	</include>
@@ -42,7 +42,7 @@
 			<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 			<param name="sublabel" value="$INFO[ListItem.Year]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="limit" value="25"/>
+			<param name="limit" value="$VAR[PosterWidgetLimit]"/>
 			<param name="content" value="$INFO[Window(home).Property(emby.wnodes.$PARAM[nr].index),,recommended.xml]"/>
 		</include>
 	</include>
@@ -54,7 +54,7 @@
 			<param name="ondown" value="$PARAM[ondown]"/>
 			<param name="headline" value="$LOCALIZE[31018] $INFO[Container($PARAM[id]).ListItem.Property(searchstring),',']"/>
 			<param name="widget_target" value="videos"/>
-			<param name="limit" value="25"/>
+			<param name="limit" value="$VAR[PosterWidgetLimit]"/>
 			<param name="content" value="plugin://script.embuary.helper/?info=getsimilar&amp;type=movie&amp;tag='$ESCINFO[Window(home).Property(emby.wnodes.$PARAM[nr].title)]'&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 		</include>
 	</include>
@@ -66,7 +66,7 @@
 			<param name="ondown" value="$PARAM[ondown]"/>
 			<param name="headline" value="$LOCALIZE[31278] $INFO[Container($PARAM[id]).ListItem.Property(searchstring),',']"/>
 			<param name="widget_target" value="videos"/>
-			<param name="limit" value="25"/>
+			<param name="limit" value="$VAR[PosterWidgetLimit]"/>
 			<param name="content" value="plugin://script.embuary.helper/?info=getbygenre&amp;unwatched=True&amp;type=movie&amp;tag='$ESCINFO[Window(home).Property(emby.wnodes.$PARAM[nr].title)]'&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 		</include>
 	</include>
@@ -80,7 +80,7 @@
 			<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 			<param name="sublabel" value="$INFO[ListItem.Year]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="limit" value="25"/>
+			<param name="limit" value="$VAR[PosterWidgetLimit]"/>
 			<param name="content" value="$INFO[Window(home).Property(emby.wnodes.$PARAM[nr].index),,random.xml]"/>
 		</include>
 	</include>
@@ -96,7 +96,7 @@
 			<param name="widget_target" value="videos"/>
 			<param name="sortby" value="lastplayed"/>
 			<param name="sortorder" value="descending"/>
-			<param name="limit" value="25"/>
+			<param name="limit" value="$VAR[WideWidgetLimit]"/>
 			<param name="content" value="$INFO[Window(home).Property(emby.wnodes.$PARAM[nr].index),,inprogressepisodes.xml]"/>
 		</include>
 	</include>
@@ -110,7 +110,7 @@
 			<param name="mainlabel" value="$INFO[ListItem.TvShowTitle]"/>
 			<param name="sublabel" value="$VAR[ListItemSeasonEpisode]$INFO[ListItem.Title]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="limit" value="25"/>
+			<param name="limit" value="$VAR[WideWidgetLimit]"/>
 			<param name="sortby" value="lastplayed"/>
 			<param name="sortorder" value="descending"/>
 			<param name="content" value="plugin://script.embuary.helper/?info=getnextup&amp;tag='$ESCINFO[Window(home).Property(emby.wnodes.$PARAM[nr].title)]'&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
@@ -126,7 +126,7 @@
 			<param name="mainlabel" value="$VAR[RecentEpisodes_Mainlabel]"/>
 			<param name="sublabel" value="$VAR[RecentEpisodes_Sublabel]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="limit" value="25"/>
+			<param name="limit" value="$VAR[WideWidgetLimit]"/>
 			<param name="content" value="plugin://script.embuary.helper/?info=getnewshows&amp;tag='$ESCINFO[Window(home).Property(emby.wnodes.$PARAM[nr].title)]'&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 		</include>
 	</include>
@@ -140,7 +140,7 @@
 			<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 			<param name="sublabel" value="$INFO[ListItem.Year]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="limit" value="25"/>
+			<param name="limit" value="$VAR[WideWidgetLimit]"/>
 			<param name="content" value="$INFO[Window(home).Property(emby.wnodes.$PARAM[nr].index),,recommended.xml]"/>
 		</include>
 	</include>
@@ -152,7 +152,7 @@
 			<param name="ondown" value="$PARAM[ondown]"/>
 			<param name="headline" value="$LOCALIZE[31018] $INFO[Container($PARAM[id]).ListItem.Property(searchstring),',']"/>
 			<param name="widget_target" value="videos"/>
-			<param name="limit" value="25"/>
+			<param name="limit" value="$VAR[WideWidgetLimit]"/>
 			<param name="content" value="plugin://script.embuary.helper/?info=getsimilar&amp;type=tvshow&amp;tag='$ESCINFO[Window(home).Property(emby.wnodes.$PARAM[nr].title)]'"/>
 		</include>
 	</include>
@@ -164,7 +164,7 @@
 			<param name="ondown" value="$PARAM[ondown]"/>
 			<param name="headline" value="$LOCALIZE[31278] $INFO[Container($PARAM[id]).ListItem.Property(searchstring),',']"/>
 			<param name="widget_target" value="videos"/>
-			<param name="limit" value="25"/>
+			<param name="limit" value="$VAR[WideWidgetLimit]"/>
 			<param name="content" value="plugin://script.embuary.helper/?info=getbygenre&amp;unwatched=True&amp;type=tvshow&amp;tag='$ESCINFO[Window(home).Property(emby.wnodes.$PARAM[nr].title)]'"/>
 		</include>
 	</include>
@@ -178,7 +178,7 @@
 			<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 			<param name="sublabel" value="$INFO[ListItem.Year]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="limit" value="25"/>
+			<param name="limit" value="$VAR[WideWidgetLimit]"/>
 			<param name="content" value="$INFO[Window(home).Property(emby.wnodes.$PARAM[nr].index),,random.xml]"/>
 		</include>
 	</include>
@@ -196,6 +196,7 @@
 			<param name="headline" value="$LOCALIZE[31080]"/>
 			<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 			<param name="sublabel" value="$INFO[ListItem.Year]"/>
+			<param name="limit" value="$VAR[WideWidgetLimit]"/>
 			<param name="widget_target" value="videos"/>
 			<param name="content" value="plugin://plugin.video.embycon/?media_type=movies&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fSortBy%3DDatePlayed%2CSortName%26SortOrder%3DDescending%26ParentId%3d$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].id)]%26Limit%3d%7bItemLimit%7d%26IsVirtualUnaired%3dfalse%26IsMissing%3dFalse%26Fields%3d%7bfield_filters%7d%26Filters%3dIsResumable%26ImageTypeLimit%3d1%26format%3djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 		</include>
@@ -212,7 +213,7 @@
 			<param name="widget_target" value="videos"/>
 			<param name="sortby" value="dateadded"/>
 			<param name="sortorder" value="descending"/>
-			<param name="limit" value="25"/>
+			<param name="limit" value="$VAR[PosterWidgetLimit]"/>
 			<param name="content" value="plugin://plugin.video.embycon/?media_type=Movies&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FUsers%2F%7Buserid%7D%2FItems%2FLatest%3FLimit%3D%7BItemLimit%7D%26Recursive%3Dtrue%26GroupItems%3Dtrue%26SortBy%3DDateCreated%26Fields%3D%7Bfield_filters%7D%26SortOrder%3DDescending%26Filters%3D%7BIsUnplayed%7D%26IncludeItemTypes%3DMovie%26ImageTypeLimit%3D1%26format%3Djson%26ParentId%3d$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].id)]&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 		</include>
 	</include>
@@ -226,7 +227,7 @@
 			<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 			<param name="sublabel" value="$INFO[ListItem.Year]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="limit" value="25"/>
+			<param name="limit" value="$VAR[PosterWidgetLimit]"/>
 			<param name="sortby" value="rating"/>
 			<param name="sortorder" value="descending"/>
 			<param name="content" value="plugin://plugin.video.embycon/?media_type=movies&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fParentId%3d$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].id)]%26IsVirtualUnaired%3dfalse%26IsMissing%3dFalse%26Fields%3d%7bfield_filters%7d%26Filters%3dIsUnplayed%26ImageTypeLimit%3d1%26format%3djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
@@ -242,7 +243,7 @@
 			<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 			<param name="sublabel" value="$INFO[ListItem.Year]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="limit" value="25"/>
+			<param name="limit" value="$VAR[PosterWidgetLimit]"/>
 			<param name="sortby" value="random"/>
 			<param name="content" value="plugin://plugin.video.embycon/?media_type=movies&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fParentId%3d$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].id)]%26IsVirtualUnaired%3dfalse%26IsMissing%3dFalse%26Fields%3d%7bfield_filters%7d%26Filters%3dIsUnplayed%26ImageTypeLimit%3d1%26format%3djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 		</include>
@@ -271,6 +272,7 @@
 			<param name="ondown" value="$PARAM[ondown]"/>
 			<param name="headline" value="$LOCALIZE[31080]"/>
 			<param name="widget_target" value="videos"/>
+			<param name="limit" value="$VAR[WideWidgetLimit]"/>
 			<param name="content" value="plugin://plugin.video.embycon/?media_type=Episodes&amp;mode=GET_CONTENT&amp;name_format=Episode%7cepisode_name_format&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fSortBy%3DDatePlayed%2CSortName%26SortOrder%3DDescending%26ParentId%3d$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].id)]%26Limit%3d%7bItemLimit%7d%26IsVirtualUnaired%3dfalse%26IsMissing%3dFalse%26Fields%3d%7bfield_filters%7d%26Filters%3dIsResumable%26Recursive%3dtrue%26IncludeItemTypes%3dEpisode%26ImageTypeLimit%3d1%26format%3djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 		</include>
 	</include>
@@ -284,6 +286,7 @@
 			<param name="mainlabel" value="$INFO[ListItem.TvShowTitle]"/>
 			<param name="sublabel" value="$VAR[ListItemSeasonEpisode]$INFO[ListItem.Title]"/>
 			<param name="widget_target" value="videos"/>
+			<param name="limit" value="$VAR[WideWidgetLimit]"/>
 			<param name="content" value="plugin://plugin.video.embycon/?media_type=Episodes&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FShows%2FNextUp%3FLimit%3D24%26Fields%3DPrimaryImageAspectRatio%252CSeriesInfo%252CDateCreated%252CBasicSyncInfo%26UserId%3D%7Buserid%7D%26ImageTypeLimit%3D1%26EnableImageTypes%3DPrimary%252CBackdrop%252CThumb%26EnableTotalRecordCount%3Dfalse%26ParentId%3D$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].id)]&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 		</include>
 	</include>
@@ -297,6 +300,7 @@
 			<param name="mainlabel" value="$VAR[RecentEpisodes_Mainlabel]"/>
 			<param name="sublabel" value="$VAR[RecentEpisodes_Sublabel]"/>
 			<param name="widget_target" value="videos"/>
+			<param name="limit" value="$VAR[WideWidgetLimit]"/>
 			<param name="content" value="plugin://plugin.video.embycon/?media_type=Episodes&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FUsers%2F%7Buserid%7D%2FItems%2FLatest%3FIncludeItemTypes%3DEpisode%26Limit%3D30%26Fields%3DPrimaryImageAspectRatio%252CBasicSyncInfo%26ParentId%3D$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].id)]%26ImageTypeLimit%3D1%26EnableImageTypes%3DPrimary%252CBackdrop%252CThumb&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 		</include>
 	</include>
@@ -310,7 +314,7 @@
 			<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 			<param name="sublabel" value="$INFO[ListItem.Year]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="limit" value="25"/>
+			<param name="limit" value="$VAR[WideWidgetLimit]"/>
 			<param name="sortby" value="rating"/>
 			<param name="sortorder" value="descending"/>
 			<param name="content" value="plugin://plugin.video.embycon/?media_type=tvshows&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fParentId%3d$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].id)]%26IsVirtualUnaired%3dfalse%26IsMissing%3dFalse%26Fields%3d%7bfield_filters%7d%26Filters%3dIsUnplayed%26Recursive%3dtrue%26IncludeItemTypes%3dSeries%26ImageTypeLimit%3d1%26format%3djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
@@ -326,7 +330,7 @@
 			<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 			<param name="sublabel" value="$INFO[ListItem.Year]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="limit" value="25"/>
+			<param name="limit" value="$VAR[WideWidgetLimit]"/>
 			<param name="sortby" value="random"/>
 			<param name="content" value="plugin://plugin.video.embycon/?media_type=tvshows&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fParentId%3d$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].id)]%26IsVirtualUnaired%3dfalse%26IsMissing%3dFalse%26Fields%3d%7bfield_filters%7d%26Filters%3dIsUnplayed%26ImageTypeLimit%3d1%26format%3djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 		</include>
@@ -355,6 +359,7 @@
 			<param name="ondown" value="$PARAM[ondown]"/>
 			<param name="headline" value="$LOCALIZE[359]"/>
 			<param name="widget_target" value="music"/>
+			<param name="limit" value="$VAR[SquareWidgetLimit]"/>
 			<param name="content" value="plugin://plugin.video.embycon/?media_type=MusicAlbums&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FUsers%2F%7Buserid%7D%2FItems%2FLatest%3FIncludeItemTypes%3DAudio%26Limit%3D24%26Fields%3DPrimaryImageAspectRatio%252CBasicSyncInfo%26ParentId%3D$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].id)]%26ImageTypeLimit%3D1%26EnableImageTypes%3DPrimary%252CBackdrop%252CBanner%252CThumb%26EnableTotalRecordCount%3Dfalse&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 		</include>
 	</include>
@@ -367,6 +372,7 @@
 			<param name="headline" value="$LOCALIZE[31211]"/>
 			<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 			<param name="sublabel" value="$INFO[ListItem.artist]"/>
+			<param name="limit" value="$VAR[SquareWidgetLimit]"/>
 			<param name="content" value="plugin://plugin.video.embycon/?media_type=Music&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FUsers%2F%7Buserid%7D%2FItems%3FSortBy%3DDatePlayed%26SortOrder%3DDescending%26IncludeItemTypes%3DAudio%26Limit%3D12%26Recursive%3Dtrue%26Fields%3DPrimaryImageAspectRatio%252CAudioInfo%26Filters%3DIsPlayed%26ParentId%3D$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].id)]%26ImageTypeLimit%3D1%26EnableImageTypes%3DPrimary%252CBackdrop%252CBanner%252CThumb%26EnableTotalRecordCount%3Dfalse&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 		</include>
 	</include>
@@ -379,6 +385,7 @@
 			<param name="headline" value="$LOCALIZE[31215]"/>
 			<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 			<param name="sublabel" value="$INFO[ListItem.artist]"/>
+			<param name="limit" value="$VAR[SquareWidgetLimit]"/>
 			<param name="content" value="plugin://plugin.video.embycon/?media_type=Music&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FUsers%2F%7Buserid%7D%2FItems%3FSortBy%3DPlayCount%26SortOrder%3DDescending%26IncludeItemTypes%3DAudio%26Limit%3D12%26Recursive%3Dtrue%26Fields%3DPrimaryImageAspectRatio%252CAudioInfo%26Filters%3DIsPlayed%26ParentId%3D$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].id)]%26ImageTypeLimit%3D1%26EnableImageTypes%3DPrimary%252CBackdrop%252CBanner%252CThumb%26EnableTotalRecordCount%3Dfalse&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 		</include>
 	</include>
@@ -392,6 +399,7 @@
 			<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 			<param name="sublabel" value="$INFO[ListItem.Year]"/>
 			<param name="widget_target" value="music"/>
+			<param name="limit" value="$VAR[SquareWidgetLimit]"/>
 			<param name="content" value="plugin://plugin.video.embycon/?media_type=MusicArtists&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FArtists%3FSortBy%3DSortName%26SortOrder%3DAscending%26Filters%3DIsFavorite%26Recursive%3Dtrue%26Fields%3DPrimaryImageAspectRatio%252CBasicSyncInfo%26CollapseBoxSetItems%3Dfalse%26ExcludeLocationTypes%3DVirtual%26EnableTotalRecordCount%3Dfalse%26ParentId%3D$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].id)]%26Limit%3D8%26userId%3D%7Buserid%7D&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 		</include>
 	</include>
@@ -405,6 +413,7 @@
 			<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 			<param name="sublabel" value="$INFO[ListItem.artist]"/>
 			<param name="widget_target" value="music"/>
+			<param name="limit" value="$VAR[SquareWidgetLimit]"/>
 			<param name="content" value="plugin://plugin.video.embycon/?media_type=MusicAlbums&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FUsers%2F%7Buserid%7D%2FItems%3FSortBy%3DSortName%26SortOrder%3DAscending%26Filters%3DIsFavorite%26Recursive%3Dtrue%26Fields%3DPrimaryImageAspectRatio%252CBasicSyncInfo%26CollapseBoxSetItems%3Dfalse%26ExcludeLocationTypes%3DVirtual%26EnableTotalRecordCount%3Dfalse%26ParentId%3D$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].id)]%26Limit%3D8%26IncludeItemTypes%3DMusicAlbum&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 		</include>
 	</include>
@@ -417,13 +426,14 @@
 			<param name="headline" value="$LOCALIZE[31214]"/>
 			<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 			<param name="sublabel" value="$INFO[ListItem.artist]"/>
+			<param name="limit" value="$VAR[SquareWidgetLimit]"/>
 			<param name="content" value="plugin://plugin.video.embycon/?media_type=Music&amp;mode=GET_CONTENT&amp;url=%7Bserver%7D%2Femby%2FUsers%2F%7Buserid%7D%2FItems%3FSortBy%3DSortName%26SortOrder%3DAscending%26Filters%3DIsFavorite%26Recursive%3Dtrue%26Fields%3DPrimaryImageAspectRatio%252CBasicSyncInfo%26CollapseBoxSetItems%3Dfalse%26ExcludeLocationTypes%3DVirtual%26EnableTotalRecordCount%3Dfalse%26ParentId%3D$INFO[Window(home).Property(plugin.video.embycon-view_item.$PARAM[nr].id)]%26Limit%3D8%26IncludeItemTypes%3DAudio&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 		</include>
 	</include>
 
 	<!-- ############## General widgets ############## -->
 
-	<!-- in progerss media -->
+	<!-- in progress media -->
 	<include name="W_InProgressMedia">
 		<include content="WideWidget">
 			<param name="id" value="$PARAM[id]"/>
@@ -473,7 +483,7 @@
 			<param name="sublabel" value="$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, - ]"/>
 			<param name="sortby" value="lastplayed"/>
 			<param name="sortorder" value="descending"/>
-			<param name="limit" value="20"/>
+			<param name="limit" value="$VAR[WideWidgetLimit]"/>
 			<param name="content" value="pvr://channels/tv/*?view=lastplayed"/>
 		</include>
 	</include>
@@ -487,7 +497,7 @@
 			<param name="mainlabel" value="$INFO[ListItem.TvShowTitle]"/>
 			<param name="sublabel" value="$VAR[ListItemSeasonEpisode]$INFO[ListItem.Title]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="limit" value="25"/>
+			<param name="limit" value="$VAR[WideWidgetLimit]"/>
 			<param name="content" value="plugin://script.embuary.helper/?info=getnextup&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 		</include>
 	</include>
@@ -501,7 +511,7 @@
 			<param name="mainlabel" value="$INFO[ListItem.TvShowTitle]"/>
 			<param name="sublabel" value="$VAR[ListItemSeasonEpisode]$INFO[ListItem.Title]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="limit" value="25"/>
+			<param name="limit" value="$VAR[WideWidgetLimit]"/>
 			<param name="content" value="$VAR[EmbyCon.NextUp]"/>
 		</include>
 	</include>
@@ -515,9 +525,9 @@
 			<param name="mainlabel" value="$INFO[ListItem.Label]"/>
 			<param name="sublabel" value="$INFO[ListItem.Year]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="limit" value="25"/>
 			<param name="sortby" value="dateadded"/>
 			<param name="sortorder" value="descending"/>
+			<param name="limit" value="$VAR[PosterWidgetLimit]"/>
 			<param name="content" value="videodb://movies/titles/?xsp=%7b%22limit%22%3a25%2c%22order%22%3a%7b%22direction%22%3a%22descending%22%2c%22ignorefolders%22%3a0%2c%22method%22%3a%22dateadded%22%7d%2c%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22dateadded%22%2c%22operator%22%3a%22inthelast%22%2c%22value%22%3a%5b%2260%22%5d%7d%2c%7b%22field%22%3a%22playcount%22%2c%22operator%22%3a%22is%22%2c%22value%22%3a%5b%220%22%5d%7d%5d%7d%2c%22type%22%3a%22movies%22%7d&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 		</include>
 	</include>
@@ -531,7 +541,7 @@
 			<param name="mainlabel" value="$INFO[ListItem.Label]"/>
 			<param name="sublabel" value="$INFO[ListItem.Year]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="limit" value="25"/>
+			<param name="limit" value="$VAR[PosterWidgetLimit]"/>
 			<param name="content" value="$VAR[EmbyCon.NewMovies]"/>
 		</include>
 	</include>
@@ -545,7 +555,7 @@
 			<param name="mainlabel" value="$VAR[RecentEpisodes_Mainlabel]"/>
 			<param name="sublabel" value="$VAR[RecentEpisodes_Sublabel]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="limit" value="25"/>
+			<param name="limit" value="$VAR[WideWidgetLimit]"/>
 			<param name="content" value="plugin://script.embuary.helper/?info=getnewshows&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 		</include>
 	</include>
@@ -559,7 +569,7 @@
 			<param name="mainlabel" value="$VAR[RecentEpisodes_Mainlabel]"/>
 			<param name="sublabel" value="$VAR[RecentEpisodes_Sublabel]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="limit" value="30"/>
+			<param name="limit" value="$VAR[WideWidgetLimit]"/>
 			<param name="content" value="$VAR[EmbyCon.NewEpisodes]"/>
 		</include>
 	</include>
@@ -573,7 +583,7 @@
 			<param name="mainlabel" value="$INFO[ListItem.Album]"/>
 			<param name="sublabel" value="$INFO[ListItem.Artist]"/>
 			<param name="widget_target" value="music"/>
-			<param name="limit" value="25"/>
+			<param name="limit" value="$VAR[SquareWidgetLimit]"/>
 			<param name="content" value="musicdb://recentlyaddedalbums/"/>
 		</include>
 	</include>
@@ -589,7 +599,7 @@
 			<param name="sortby" value="dateadded"/>
 			<param name="sortorder" value="ascending"/>
 			<param name="widget_target" value="music"/>
-			<param name="limit" value="25"/>
+			<param name="limit" value="$VAR[SquareWidgetLimit]"/>
 			<param name="content" value="$VAR[EmbyCon.NewAlbums]"/>
 		</include>
 	</include>
@@ -658,7 +668,7 @@
 			<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 			<param name="sublabel" value="$INFO[ListItem.Year]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="limit" value="25"/>
+			<param name="limit" value="$VAR[PosterWidgetLimit]"/>
 			<param name="sortby" value="rating"/>
 			<param name="sortorder" value="descending"/>
 			<param name="content" value="videodb://movies/titles/?xsp=%7b%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22playcount%22%2c%22operator%22%3a%22is%22%2c%22value%22%3a%5b%220%22%5d%7d%5d%7d%2c%22type%22%3a%22movies%22%7d&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
@@ -676,7 +686,7 @@
 			<param name="widget_target" value="videos"/>
 			<param name="sortby" value="rating"/>
 			<param name="sortorder" value="descending"/>
-			<param name="limit" value="25"/>
+			<param name="limit" value="$VAR[PosterWidgetLimit]"/>
 			<param name="content" value="$VAR[EmbyCon.RecommendedMovies]"/>
 		</include>
 	</include>
@@ -690,7 +700,7 @@
 			<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 			<param name="sublabel" value="$INFO[ListItem.Year]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="limit" value="25"/>
+			<param name="limit" value="$VAR[PosterWidgetLimit]"/>
 			<param name="content" value="plugin://script.embuary.helper/?info=getsimilar&amp;type=movie&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 		</include>
 	</include>
@@ -704,7 +714,7 @@
 			<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 			<param name="sublabel" value="$INFO[ListItem.Year]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="limit" value="25"/>
+			<param name="limit" value="$VAR[PosterWidgetLimit]"/>
 			<param name="content" value="$VAR[EmbyCon.SimilarMovies]"/>
 		</include>
 	</include>
@@ -793,9 +803,9 @@
 			<param name="headline" value="$LOCALIZE[31017]"/>
 			<param name="sublabel" value="$INFO[ListItem.Year]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="limit" value="25"/>
 			<param name="sortby" value="rating"/>
 			<param name="sortorder" value="descending"/>
+			<param name="limit" value="$VAR[WideWidgetLimit]"/>
 			<param name="content" value="videodb://tvshows/titles/?xsp=%7b%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22playcount%22%2c%22operator%22%3a%22is%22%2c%22value%22%3a%5b%220%22%5d%7d%5d%7d%2c%22type%22%3a%22tvshows%22%7d&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 		</include>
 	</include>
@@ -808,9 +818,9 @@
 			<param name="headline" value="$LOCALIZE[31017]$VAR[EmbyConLabel]"/>
 			<param name="sublabel" value="$INFO[ListItem.Year]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="limit" value="25"/>
 			<param name="sortby" value="rating"/>
 			<param name="sortorder" value="descending"/>
+			<param name="limit" value="$VAR[WideWidgetLimit]"/>
 			<param name="content" value="$VAR[EmbyCon.RecommendedShows]"/>
 		</include>
 	</include>
@@ -824,7 +834,7 @@
 			<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 			<param name="sublabel" value="$INFO[ListItem.Year]"/>
 			<param name="widget_target" value="videos"/>
-			<param name="limit" value="25"/>
+			<param name="limit" value="$VAR[PosterWidgetLimit]"/>
 			<param name="content" value="plugin://script.embuary.helper/?info=getsimilar&amp;type=tvshow&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 		</include>
 	</include>
@@ -862,7 +872,7 @@
 			<param name="ondown" value="$PARAM[ondown]"/>
 			<param name="headline" value="$LOCALIZE[517]"/>
 			<param name="widget_target" value="music"/>
-			<param name="limit" value="25"/>
+			<param name="limit" value="$VAR[SquareWidgetLimit]"/>
 			<param name="sortby" value="lastplayed"/>
 			<param name="sortorder" value="descending"/>
 			<param name="content" value="musicdb://recentlyplayedalbums/?reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
@@ -876,7 +886,7 @@
 			<param name="ondown" value="$PARAM[ondown]"/>
 			<param name="headline" value="$LOCALIZE[31215]"/>
 			<param name="widget_target" value="music"/>
-			<param name="limit" value="25"/>
+			<param name="limit" value="$VAR[SquareWidgetLimit]"/>
 			<param name="sortby" value="playcount"/>
 			<param name="sortorder" value="descending"/>
 			<param name="content" value="musicdb://songs/?reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
@@ -890,7 +900,7 @@
 			<param name="ondown" value="$PARAM[ondown]"/>
 			<param name="headline" value="$LOCALIZE[31215]$VAR[EmbyConLabel]"/>
 			<param name="widget_target" value="music"/>
-			<param name="limit" value="25"/>
+			<param name="limit" value="$VAR[SquareWidgetLimit]"/>
 			<param name="content" value="$VAR[EmbyCon.OftenPlayedSongs]"/>
 		</include>
 	</include>
@@ -951,7 +961,7 @@
 			<param name="ondown" value="$PARAM[ondown]"/>
 			<param name="headline" value="$LOCALIZE[31278] $INFO[Container($PARAM[id]).ListItem.Property(searchstring),',']"/>
 			<param name="widget_target" value="videos"/>
-			<param name="limit" value="25"/>
+			<param name="limit" value="$VAR[PosterWidgetLimit]"/>
 			<param name="content" value="plugin://script.embuary.helper/?info=getbygenre&amp;unwatched=True&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 		</include>
 	</include>
@@ -963,7 +973,7 @@
 			<param name="ondown" value="$PARAM[ondown]"/>
 			<param name="headline" value="$LOCALIZE[31278] $INFO[Container($PARAM[id]).ListItem.Property(searchstring),',']"/>
 			<param name="widget_target" value="videos"/>
-			<param name="limit" value="25"/>
+			<param name="limit" value="$VAR[PosterWidgetLimit]"/>
 			<param name="content" value="plugin://script.embuary.helper/?info=getbygenre&amp;unwatched=True&amp;type=movie&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 		</include>
 	</include>
@@ -975,7 +985,7 @@
 			<param name="ondown" value="$PARAM[ondown]"/>
 			<param name="headline" value="$LOCALIZE[31278] $INFO[Container($PARAM[id]).ListItem.Property(searchstring),',']"/>
 			<param name="widget_target" value="videos"/>
-			<param name="limit" value="25"/>
+			<param name="limit" value="$VAR[WideWidgetLimit]"/>
 			<param name="content" value="plugin://script.embuary.helper/?info=getbygenre&amp;unwatched=True&amp;type=tvshow&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 		</include>
 	</include>
@@ -993,6 +1003,7 @@
 			<param name="widget_target" value="$INFO[Skin.String(UserWidget$PARAM[nr]_target)]"/>
 			<param name="sortby" value="$INFO[Skin.String(UserWidget$PARAM[nr]_sortby)]"/>
 			<param name="sortorder" value="$INFO[Skin.String(UserWidget$PARAM[nr]_sortorder)]"/>
+			<param name="limit" value="$INFO[Skin.String(UserWidget$PARAM[nr]_limit)]"/>
 			<param name="content" value="$VAR[CWidgetReloadPath$PARAM[nr]]"/>
 		</include>
 		<include condition="!String.IsEqual(Skin.String(UserWidget$PARAM[nr]_path),favourites://) + String.IsEqual(Skin.String(UserWidget$PARAM[nr]_layout),HomeWideWidget)" content="WideWidget">
@@ -1004,6 +1015,7 @@
 			<param name="widget_target" value="$INFO[Skin.String(UserWidget$PARAM[nr]_target)]"/>
 			<param name="sortby" value="$INFO[Skin.String(UserWidget$PARAM[nr]_sortby)]"/>
 			<param name="sortorder" value="$INFO[Skin.String(UserWidget$PARAM[nr]_sortorder)]"/>
+			<param name="limit" value="$INFO[Skin.String(UserWidget$PARAM[nr]_limit)]"/>
 			<param name="content" value="$VAR[CWidgetReloadPath$PARAM[nr]]"/>
 		</include>
 		<include condition="!String.IsEqual(Skin.String(UserWidget$PARAM[nr]_path),favourites://) + String.IsEqual(Skin.String(UserWidget$PARAM[nr]_layout),HomeSquareWidget)" content="SquareWidget">
@@ -1015,6 +1027,7 @@
 			<param name="widget_target" value="$INFO[Skin.String(UserWidget$PARAM[nr]_target)]"/>
 			<param name="sortby" value="$INFO[Skin.String(UserWidget$PARAM[nr]_sortby)]"/>
 			<param name="sortorder" value="$INFO[Skin.String(UserWidget$PARAM[nr]_sortorder)]"/>
+			<param name="limit" value="$INFO[Skin.String(UserWidget$PARAM[nr]_limit)]"/>
 			<param name="content" value="$VAR[CWidgetReloadPath$PARAM[nr]]"/>
 		</include>
 		<include condition="String.IsEqual(Skin.String(UserWidget$PARAM[nr]_path),favourites://) + [String.IsEqual(Skin.String(UserWidget$PARAM[nr]_layout),HomePosterWidget) | String.IsEmpty(Skin.String(UserWidget$PARAM[nr]_layout))]" content="PosterWidget">

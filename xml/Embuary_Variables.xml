@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+	<!-- Widget count -->
+	<variable name="PosterWidgetLimit">
+		<value condition="!String.IsEmpty(Skin.String(poster_widget_limit)) + !Integer.IsGreater(Skin.String(poster_widget_limit),25) + !Integer.IsEqual(Skin.String(poster_widget_limit),0)">$INFO[Skin.String(poster_widget_limit)]</value>
+		<value>25</value>
+	</variable>
+	<variable name="SquareWidgetLimit">
+		<value condition="!String.IsEmpty(Skin.String(square_widget_limit)) + !Integer.IsGreater(Skin.String(square_widget_limit),25) + !Integer.IsEqual(Skin.String(square_widget_limit),0)">$INFO[Skin.String(square_widget_limit)]</value>
+		<value>25</value>
+	</variable>
+	<variable name="WideWidgetLimit">
+		<value condition="!String.IsEmpty(Skin.String(wide_widget_limit)) + !Integer.IsGreater(Skin.String(wide_widget_limit),25) + !Integer.IsEqual(Skin.String(wide_widget_limit),0)">$INFO[Skin.String(wide_widget_limit)]</value>
+		<value>25</value>
+	</variable>
 	<!-- Color theme -->
 	<variable name="AccentColorLabel">
 		<value condition="!String.IsEmpty(Skin.String(color_accent)) + !String.IsEqual(Skin.String(color_accent),None)">$INFO[Skin.String(color_accent),,       ]</value>
