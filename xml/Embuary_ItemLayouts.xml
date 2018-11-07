@@ -824,7 +824,14 @@
 						<height>242</height>
 						<texture background="true">$VAR[IconLandscape]</texture>
 						<aspectratio scalediffuse="false">scale</aspectratio>
-						<visible>![String.StartsWith(ListItem.Path,pvr://) + [String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)]] + !String.StartsWith(ListItem.Icon,Default)</visible>
+						<visible>![String.StartsWith(ListItem.Path,pvr://) + [String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)]] + !String.StartsWith(ListItem.Icon,Default) + !String.StartsWith(ListItem.Art(thumb),image://picturefolder) + !String.EndsWith(ListItem.Art(thumb),folder.jpg)</visible>
+					</control>
+					<control type="image">
+						<width>430</width>
+						<height>242</height>
+						<texture background="true">$INFO[ListItem.Art(thumb)]</texture>
+						<aspectratio scalediffuse="false">keep</aspectratio>
+						<visible>String.StartsWith(ListItem.Art(thumb),image://picturefolder) | String.EndsWith(ListItem.Art(thumb),folder.jpg)</visible>
 					</control>
 					<control type="image">
 						<width>430</width>
@@ -832,7 +839,7 @@
 						<texture background="true">$INFO[ListItem.Icon]</texture>
 						<aspectratio scalediffuse="false">keep</aspectratio>
 						<bordersize>20</bordersize>
-						<visible>[String.StartsWith(ListItem.Path,pvr://) + [String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)]] + !String.StartsWith(ListItem.Icon,Default)</visible>
+						<visible>[String.StartsWith(ListItem.Path,pvr://) + [String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)]] + !String.StartsWith(ListItem.Icon,Default) + !String.StartsWith(ListItem.Art(thumb),image://picturefolder) + !String.EndsWith(ListItem.Art(thumb),folder.jpg)</visible>
 					</control>
 					<control type="group">
 						<width>430</width>
