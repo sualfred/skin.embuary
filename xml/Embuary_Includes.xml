@@ -20,8 +20,10 @@
 	<include name="CustomBusySpinner">
 		<param name="visible">Container.IsUpdating</param>
 		<param name="diffuse">true</param>
+		<param name="delay">false</param>
 		<definition>
 			<control type="group">
+				<animation effect="fade" start="100" end="0" time="0" delay="100" condition="$PARAM[delay]">Hidden</animation>
 				<visible>$PARAM[visible]</visible>
 				<include condition="$PARAM[diffuse]" content="DiffuseMask"/>
 				<include condition="!$PARAM[diffuse]" content="PlainBackground"/>

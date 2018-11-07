@@ -448,7 +448,8 @@
 	</variable>
 	<variable name="PVRWidgetMainListLabel">
 		<value condition="!String.IsEmpty(ListItem.Title)">$INFO[ListItem.Title]</value>
-		<value>$INFO[ListItem.Channelname]</value>
+		<value condition="!String.IsEmpty(ListItem.Channelname)">$INFO[ListItem.Channelname]</value>
+		<value>$INFO[ListItem.Label]</value>
 	</variable>
 	<variable name="MainListLabel">
 		<value condition="String.IsEqual(ListItem.DBType,season) + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) + String.IsEqual(ListItem.Label,All)">$LOCALIZE[20366]</value>
