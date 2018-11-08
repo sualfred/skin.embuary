@@ -79,7 +79,6 @@
 						<param name="left">65</param>
 						<param name="id">$PARAM[id]</param>
 					</include>
-						<include content="WidgetLoadingSpinner"/>
 					<include content="LoadingWidget">
 						<param name="id" value="$PARAM[id]"/>
 						<param name="shadow_width" value="436"/>
@@ -904,27 +903,6 @@
 					<param name="headline">$PARAM[headline]</param>
 					<param name="id">$PARAM[id]</param>
 				</include>
-				<control type="group">
-					<visible>Container($PARAM[id]).IsUpdating + !Integer.IsGreater(Container($PARAM[id]).NumItems,0)</visible>
-					<left>79</left>
-					<top>214</top>
-					<width>276</width>
-					<height>276</height>
-					<control type="image">
-						<top>-2</top>
-						<left>-2</left>
-						<width>282</width>
-						<height>282</height>
-						<texture border="20,20,20,20">items/shadow.png</texture>
-					</control>
-					<control type="image">
-						<width>276</width>
-						<height>276</height>
-						<texture colordiffuse="thumb_background_fallback_secondary">common/white.jpg</texture>
-						<aspectratio>stretch</aspectratio>
-					</control>
-					<include content="WidgetLoadingSpinner"/>
-				</control>
 				<control type="fixedlist" id="$PARAM[id]">
 					<include>FocusBounce</include>
 					<top>150</top>
