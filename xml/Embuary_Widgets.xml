@@ -298,6 +298,7 @@
 		<param name="mainlabel">$INFO[ListItem.Label]</param>
 		<param name="sublabel">$INFO[ListItem.Label2,$LOCALIZE[20347] ]</param>
 		<param name="use_custom_content">true</param>
+		<param name="use_custom_onclick">true</param>
 		<param name="onback">noop</param>
 		<definition>
 			<control type="group">
@@ -338,14 +339,14 @@
 						<onright>SetProperty(BounceRight,1,home)</onright>
 						<onright>noop</onright>
 						<onleft>900</onleft>
-						<onclick condition="!Skin.HasSetting(DoNotUseExtendedInfo) + System.HasAddon(script.extendedinfo)">RunScript(script.extendedinfo,info=extendedactorinfo,name=$INFO[ListItem.Label])</onclick>
-						<onclick condition="[Skin.HasSetting(DoNotUseExtendedInfo) | !System.HasAddon(script.extendedinfo)] + Window.IsVisible(movieinformation)">close</onclick>
-						<onclick condition="[Skin.HasSetting(DoNotUseExtendedInfo) | !System.HasAddon(script.extendedinfo)] + [!Skin.HasSetting(UseGlobalsearch) | !System.HasAddon(script.globalsearch)]">SetProperty(CustomSearch,1,home)</onclick>
-						<onclick condition="[Skin.HasSetting(DoNotUseExtendedInfo) | !System.HasAddon(script.extendedinfo)] + [!Skin.HasSetting(UseGlobalsearch) | !System.HasAddon(script.globalsearch)]">Skin.SetString(CustomSearchTerm,$INFO[ListItem.Label])</onclick>
-						<onclick condition="[Skin.HasSetting(DoNotUseExtendedInfo) | !System.HasAddon(script.extendedinfo)] + [!Skin.HasSetting(UseGlobalsearch) | !System.HasAddon(script.globalsearch)]">Skin.SetString(CustomSearchEmbyID,$INFO[ListItem.Property(id)])</onclick>
-						<onclick condition="[Skin.HasSetting(DoNotUseExtendedInfo) | !System.HasAddon(script.extendedinfo)] + [!Skin.HasSetting(UseGlobalsearch) | !System.HasAddon(script.globalsearch)]">ActivateWindow(1115)</onclick>
-						<onclick condition="[Skin.HasSetting(DoNotUseExtendedInfo) | !System.HasAddon(script.extendedinfo)] + [!Skin.HasSetting(UseGlobalsearch) | !System.HasAddon(script.globalsearch)]">AlarmClock(Wait,ClearProperty(CustomSearch,home),00:01,silent)</onclick>
-						<onclick condition="[Skin.HasSetting(DoNotUseExtendedInfo) | !System.HasAddon(script.extendedinfo)] + Skin.HasSetting(UseGlobalsearch) + System.HasAddon(script.globalsearch)">RunScript(script.globalsearch,searchstring=$INFO[ListItem.Label])</onclick>
+						<onclick condition="$PARAM[use_custom_onclick] + [!Skin.HasSetting(DoNotUseExtendedInfo) + System.HasAddon(script.extendedinfo)]">RunScript(script.extendedinfo,info=extendedactorinfo,name=$INFO[ListItem.Label])</onclick>
+						<onclick condition="$PARAM[use_custom_onclick] + [Skin.HasSetting(DoNotUseExtendedInfo) | !System.HasAddon(script.extendedinfo)] + Window.IsVisible(movieinformation)">close</onclick>
+						<onclick condition="$PARAM[use_custom_onclick] + [Skin.HasSetting(DoNotUseExtendedInfo) | !System.HasAddon(script.extendedinfo)] + [!Skin.HasSetting(UseGlobalsearch) | !System.HasAddon(script.globalsearch)]">SetProperty(CustomSearch,1,home)</onclick>
+						<onclick condition="$PARAM[use_custom_onclick] + [Skin.HasSetting(DoNotUseExtendedInfo) | !System.HasAddon(script.extendedinfo)] + [!Skin.HasSetting(UseGlobalsearch) | !System.HasAddon(script.globalsearch)]">Skin.SetString(CustomSearchTerm,$INFO[ListItem.Label])</onclick>
+						<onclick condition="$PARAM[use_custom_onclick] + [Skin.HasSetting(DoNotUseExtendedInfo) | !System.HasAddon(script.extendedinfo)] + [!Skin.HasSetting(UseGlobalsearch) | !System.HasAddon(script.globalsearch)]">Skin.SetString(CustomSearchEmbyID,$INFO[ListItem.Property(id)])</onclick>
+						<onclick condition="$PARAM[use_custom_onclick] + [Skin.HasSetting(DoNotUseExtendedInfo) | !System.HasAddon(script.extendedinfo)] + [!Skin.HasSetting(UseGlobalsearch) | !System.HasAddon(script.globalsearch)]">ActivateWindow(1115)</onclick>
+						<onclick condition="$PARAM[use_custom_onclick] + [Skin.HasSetting(DoNotUseExtendedInfo) | !System.HasAddon(script.extendedinfo)] + [!Skin.HasSetting(UseGlobalsearch) | !System.HasAddon(script.globalsearch)]">AlarmClock(Wait,ClearProperty(CustomSearch,home),00:01,silent)</onclick>
+						<onclick condition="$PARAM[use_custom_onclick] + [Skin.HasSetting(DoNotUseExtendedInfo) | !System.HasAddon(script.extendedinfo)] + Skin.HasSetting(UseGlobalsearch) + System.HasAddon(script.globalsearch)">RunScript(script.globalsearch,searchstring=$INFO[ListItem.Label])</onclick>
 						<pagecontrol>$PARAM[id]1</pagecontrol>
 						<viewtype label="$LOCALIZE[31006]">list</viewtype>
 						<itemlayout width="257">
