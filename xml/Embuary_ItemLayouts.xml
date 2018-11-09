@@ -149,7 +149,7 @@
 					<aspectratio align="right">keep</aspectratio>
 				</control>
 				<control type="group">
-					<visible>!String.IsEmpty(ListItem.EpgEventIcon) + !Window.IsVisible(fullscreeninfo) + !Window.IsVisible(pvrguideinfo) + !String.IsEqual(Container.ViewMode,$LOCALIZE[535]) + !String.IsEqual(Container.ViewMode,$LOCALIZE[31005])</visible>
+					<visible>!Skin.HasSetting(UseChannelLogo) + !String.IsEmpty(ListItem.EpgEventIcon) + !Window.IsVisible(fullscreeninfo) + !Window.IsVisible(pvrguideinfo) + !String.IsEqual(Container.ViewMode,$LOCALIZE[535]) + !String.IsEqual(Container.ViewMode,$LOCALIZE[31005])</visible>
 					<control type="image">
 						<bottom>0</bottom>
 						<width>100%</width>
@@ -848,14 +848,15 @@
 						<height>242</height>
 						<texture background="true">$VAR[IconLandscape]</texture>
 						<aspectratio scalediffuse="false">scale</aspectratio>
-						<visible>![String.StartsWith(ListItem.Path,pvr://) + String.IsEmpty(ListItem.EpgEventIcon) + [String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)]] + !String.StartsWith(ListItem.Icon,Default) + !String.StartsWith(ListItem.Art(thumb),image://picturefolder) + !String.EndsWith(ListItem.Art(thumb),folder.jpg)</visible>
-					</control>
-					<control type="image">
-						<width>430</width>
-						<height>242</height>
-						<texture background="true">$INFO[ListItem.Art(thumb)]</texture>
-						<aspectratio scalediffuse="false">keep</aspectratio>
-						<visible>String.StartsWith(ListItem.Art(thumb),image://picturefolder) | String.EndsWith(ListItem.Art(thumb),folder.jpg)</visible>
+						<visible>
+							[
+							![String.StartsWith(ListItem.Path,pvr://) + String.IsEmpty(ListItem.EpgEventIcon) + [String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)]]
+							+ ![String.StartsWith(ListItem.Path,pvr://) + Skin.HasSetting(UseChannelLogo)]
+							]
+							+ !String.StartsWith(ListItem.Icon,Default)
+							+ !String.StartsWith(ListItem.Art(thumb),image://picturefolder)
+							+ !String.EndsWith(ListItem.Art(thumb),folder.jpg)
+						</visible>
 					</control>
 					<control type="image">
 						<width>430</width>
@@ -863,7 +864,22 @@
 						<texture background="true">$INFO[ListItem.Icon]</texture>
 						<aspectratio scalediffuse="false">keep</aspectratio>
 						<bordersize>20</bordersize>
-						<visible>[String.StartsWith(ListItem.Path,pvr://) + String.IsEmpty(ListItem.EpgEventIcon) + [String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)]] + !String.StartsWith(ListItem.Icon,Default) + !String.StartsWith(ListItem.Art(thumb),image://picturefolder) + !String.EndsWith(ListItem.Art(thumb),folder.jpg)</visible>
+						<visible>
+							[
+							[String.StartsWith(ListItem.Path,pvr://) + String.IsEmpty(ListItem.EpgEventIcon) + [String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)]]
+							| [String.StartsWith(ListItem.Path,pvr://) + Skin.HasSetting(UseChannelLogo)]
+							]
+							+ !String.StartsWith(ListItem.Art(thumb),image://picturefolder)
+							+ !String.EndsWith(ListItem.Art(thumb),folder.jpg)
+							+ !String.StartsWith(ListItem.Icon,Default)
+						</visible>
+					</control>
+					<control type="image">
+						<width>430</width>
+						<height>242</height>
+						<texture background="true">$INFO[ListItem.Art(thumb)]</texture>
+						<aspectratio scalediffuse="false">keep</aspectratio>
+						<visible>String.StartsWith(ListItem.Art(thumb),image://picturefolder) | String.EndsWith(ListItem.Art(thumb),folder.jpg)</visible>
 					</control>
 					<control type="group">
 						<width>430</width>
