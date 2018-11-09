@@ -1039,6 +1039,35 @@
 			<textcolor>$VAR[AccentColor]</textcolor>
 			<texturenofocus colordiffuse="panel_subitem">common/white.jpg</texturenofocus>
 			<include>SettingsButton</include>
+			<onclick>SetProperty(custom_widget_nr,$PARAM[nr],home)</onclick>
+			<onclick>ActivateWindow(1113)</onclick>
+			<label>$LOCALIZE[31290]</label>
+			<label2>$INFO[Skin.String(UserWidget$PARAM[nr]_target.label),$LOCALIZE[467]: ]$INFO[Skin.String(UserWidget$PARAM[nr]_layout.label),   $LOCALIZE[31101]: ]$INFO[Skin.String(UserWidget$PARAM[nr]_sortby),   $LOCALIZE[581]: ',']$INFO[Skin.String(UserWidget$PARAM[nr]_sortorder),   $LOCALIZE[21429]: ',']$INFO[Skin.String(UserWidget$PARAM[nr]_limit),   $LOCALIZE[31288]: ]</label2>
+			<visible>!String.IsEmpty(Skin.String(UserWidget$PARAM[nr]_path))</visible>
+			<visible>![String.IsEmpty(Skin.String(UserWidget$PARAM[nr]_target.label)) + String.IsEmpty(Skin.String(UserWidget$PARAM[nr]_layout.label)) + String.IsEmpty(Skin.String(UserWidget$PARAM[nr]_sortby.label)) + String.IsEmpty(Skin.String(UserWidget$PARAM[nr]_sortorder.label)) + String.IsEmpty(Skin.String(UserWidget$PARAM[nr]_limit.label))]</visible>
+		</control>
+		<control type="button" id="$PARAM[id]4">
+			<textcolor>$VAR[AccentColor]</textcolor>
+			<texturenofocus colordiffuse="panel_subitem">common/white.jpg</texturenofocus>
+			<include>SettingsButton</include>
+			<onclick>Action(up)</onclick>
+			<onclick>SetProperty(custom_widget_nr,$PARAM[nr],home)</onclick>
+			<onclick>ActivateWindow(1113)</onclick>
+			<label>$LOCALIZE[31290]</label>
+			<label2>$LOCALIZE[31289]</label2>
+			<visible>!String.IsEmpty(Skin.String(UserWidget$PARAM[nr]_path))</visible>
+			<visible>String.IsEmpty(Skin.String(UserWidget$PARAM[nr]_target.label)) + String.IsEmpty(Skin.String(UserWidget$PARAM[nr]_layout.label)) + String.IsEmpty(Skin.String(UserWidget$PARAM[nr]_sortby.label)) + String.IsEmpty(Skin.String(UserWidget$PARAM[nr]_sortorder.label)) + String.IsEmpty(Skin.String(UserWidget$PARAM[nr]_limit.label))</visible>
+		</control>
+	</include>
+	<include name="CustomWidgetConfigTemplate">
+		<control type="button" id="101">
+			<include>SettingsButton</include>
+			<onclick>Skin.SetString(UserWidget$PARAM[nr]_name)</onclick>
+			<label>$LOCALIZE[21864]</label>
+			<label2>$INFO[Skin.String(UserWidget$PARAM[nr]_name)]</label2>
+		</control>
+		<control type="button" id="102">
+			<include>SettingsButton</include>
 			<onclick>SetProperty(Dialog.1.Label,$LOCALIZE[3])</onclick>
 			<onclick>SetProperty(Dialog.1.BuiltIn,Skin.SetString(UserWidget$PARAM[nr]_target,videos)||Skin.SetString(UserWidget$PARAM[nr]_target.label,$LOCALIZE[3]))</onclick>
 			<onclick>SetProperty(Dialog.2.Label,$LOCALIZE[2])</onclick>
@@ -1048,22 +1077,10 @@
 			<onclick>SetProperty(Dialog.4.Label,$LOCALIZE[29921])</onclick>
 			<onclick>SetProperty(Dialog.4.BuiltIn,Skin.Reset(UserWidget$PARAM[nr]_target)||Skin.SetString(UserWidget$PARAM[nr]_target.label,$LOCALIZE[29921]))</onclick>
 			<onclick>RunScript(script.embuary.helper,action=createselect,header=$LOCALIZE[467])</onclick>
-			<label>• $LOCALIZE[467]</label>
+			<label>$LOCALIZE[467]</label>
 			<label2>$INFO[Skin.String(UserWidget$PARAM[nr]_target.label)]</label2>
-			<visible>!String.IsEmpty(Skin.String(UserWidget$PARAM[nr]_path))</visible>
 		</control>
-		<control type="button" id="$PARAM[id]4">
-			<textcolor>$VAR[AccentColor]</textcolor>
-			<texturenofocus colordiffuse="panel_subitem">common/white.jpg</texturenofocus>
-			<include>SettingsButton</include>
-			<onclick>Skin.SetString(UserWidget$PARAM[nr]_name)</onclick>
-			<label>• $LOCALIZE[21864]</label>
-			<label2>$INFO[Skin.String(UserWidget$PARAM[nr]_name)]</label2>
-			<visible>!String.IsEmpty(Skin.String(UserWidget$PARAM[nr]_path))</visible>
-		</control>
-		<control type="button" id="$PARAM[id]5">
-			<textcolor>$VAR[AccentColor]</textcolor>
-			<texturenofocus colordiffuse="panel_subitem">common/white.jpg</texturenofocus>
+		<control type="button" id="103">
 			<include>SettingsButton</include>
 			<onclick>SetProperty(Dialog.1.Label,$LOCALIZE[20021])</onclick>
 			<onclick>SetProperty(Dialog.1.BuiltIn,Skin.SetString(UserWidget$PARAM[nr]_layout,HomePosterWidget)||Skin.SetString(UserWidget$PARAM[nr]_layout.label,$LOCALIZE[20021]))</onclick>
@@ -1072,15 +1089,12 @@
 			<onclick>SetProperty(Dialog.3.Label,$LOCALIZE[31005])</onclick>
 			<onclick>SetProperty(Dialog.3.BuiltIn,Skin.SetString(UserWidget$PARAM[nr]_layout,HomeSquareWidget)||Skin.SetString(UserWidget$PARAM[nr]_layout.label,$LOCALIZE[31005]))</onclick>
 			<onclick>RunScript(script.embuary.helper,action=createselect,header=$LOCALIZE[31101])</onclick>
-			<label>• $LOCALIZE[31101]</label>
+			<label>$LOCALIZE[31101]</label>
 			<label2>$INFO[Skin.String(UserWidget$PARAM[nr]_layout.label)]</label2>
-			<visible>!String.IsEmpty(Skin.String(UserWidget$PARAM[nr]_path))</visible>
 		</control>
-		<control type="button" id="$PARAM[id]6">
-			<textcolor>$VAR[AccentColor]</textcolor>
-			<texturenofocus colordiffuse="panel_subitem">common/white.jpg</texturenofocus>
+		<control type="button" id="104">
 			<include>SettingsButton</include>
-			<label>• $LOCALIZE[581]</label>
+			<label>$LOCALIZE[581]</label>
 			<onclick>SetProperty(Dialog.1.Label,$LOCALIZE[571])</onclick>
 			<onclick>SetProperty(Dialog.1.BuiltIn,Skin.Reset(UserWidget$PARAM[nr]_sortby))</onclick>
 			<onclick>SetProperty(Dialog.2.Label,Label)</onclick>
@@ -1113,13 +1127,10 @@
 			<onclick>SetProperty(Dialog.15.BuiltIn,Skin.SetString(UserWidget$PARAM[nr]_sortby,tracknumber))</onclick>
 			<onclick>RunScript(script.embuary.helper,action=createselect,header=$LOCALIZE[581])</onclick>
 			<label2>$INFO[Skin.String(UserWidget$PARAM[nr]_sortby),',']</label2>
-			<visible>!String.IsEmpty(Skin.String(UserWidget$PARAM[nr]_path))</visible>
 		</control>
-		<control type="button" id="$PARAM[id]7">
-			<textcolor>$VAR[AccentColor]</textcolor>
-			<texturenofocus colordiffuse="panel_subitem">common/white.jpg</texturenofocus>
+		<control type="button" id="105">
 			<include>SettingsButton</include>
-			<label>• $LOCALIZE[580]</label>
+			<label>$LOCALIZE[580]</label>
 			<onclick>SetProperty(Dialog.1.Label,$LOCALIZE[571])</onclick>
 			<onclick>SetProperty(Dialog.1.BuiltIn,Skin.Reset(UserWidget$PARAM[nr]_sortorder))</onclick>
 			<onclick>SetProperty(Dialog.2.Label,$LOCALIZE[584])</onclick>
@@ -1128,20 +1139,12 @@
 			<onclick>SetProperty(Dialog.3.BuiltIn,Skin.SetString(UserWidget$PARAM[nr]_sortorder,descending))</onclick>
 			<onclick>RunScript(script.embuary.helper,action=createselect,header=$LOCALIZE[580])</onclick>
 			<label2>$INFO[Skin.String(UserWidget$PARAM[nr]_sortorder),',']</label2>
-			<visible>!String.IsEmpty(Skin.String(UserWidget$PARAM[nr]_path))</visible>
 		</control>
-		<control type="button" id="$PARAM[id]8">
-			<textcolor>$VAR[AccentColor]</textcolor>
-			<texturenofocus colordiffuse="panel_subitem">common/white.jpg</texturenofocus>
+		<control type="button" id="106">
 			<include>SettingsButton</include>
-			<label>• $LOCALIZE[21427]</label>
-			<onclick>SetProperty(Dialog.1.Label,$LOCALIZE[21428])</onclick>
-			<onclick>SetProperty(Dialog.1.BuiltIn,Skin.Reset(UserWidget$PARAM[nr]_limit))</onclick>
-			<onclick>SetProperty(Dialog.2.Label,$LOCALIZE[21427])</onclick>
-			<onclick>SetProperty(Dialog.2.BuiltIn,Skin.SetNumeric(UserWidget$PARAM[nr]_limit,ascending))</onclick>>
-			<onclick>RunScript(script.embuary.helper,action=createselect,header=$LOCALIZE[21427])</onclick>
+			<label>$LOCALIZE[21427]</label>
+			<onclick>Skin.SetNumeric(UserWidget$PARAM[nr]_limit)</onclick>
 			<label2>$INFO[Skin.String(UserWidget$PARAM[nr]_limit)]</label2>
-			<visible>!String.IsEmpty(Skin.String(UserWidget$PARAM[nr]_path))</visible>
 		</control>
 	</include>
 	<include name="weather_small_template">
