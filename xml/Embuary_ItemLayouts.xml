@@ -5,17 +5,28 @@
 		<param name="top">25</param>
 		<param name="left">67</param>
 		<definition>
-			<control type="label" id="$PARAM[headlineID]">
+			<control type="grouplist" id="$PARAM[headlineID]">
 				<top>$PARAM[top]</top>
 				<left>$PARAM[left]</left>
-				<width>1000</width>
+				<orientation>horizontal</orientation>
+				<itemgap>10</itemgap>
 				<height>87</height>
-				<font>Med23</font>
-				<align>left</align>
-				<aligny>center</aligny>
-				<label>$PARAM[headline]</label>
-				<textcolor>text_headline</textcolor>
+				<control type="label">
+					<width>auto</width>
+					<font>Med23</font>
+					<align>left</align>
+					<aligny>center</aligny>
+					<label>$PARAM[headline]</label>
+					<textcolor>text_headline</textcolor>
+				</control>
+				<control type="image">
+					<animation effect="slide" end="0,28" time="0" condition="true">Conditional</animation>
+					<height>30</height>
+					<width>30</width>
+					<texture>$PARAM[headline_icon]</texture>
+				</control>
 			</control>
+
 		</definition>
 	</include>
 	<!-- Widget labels -->
