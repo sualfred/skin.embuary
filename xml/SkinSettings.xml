@@ -661,8 +661,8 @@
 					</include>
 					<control type="radiobutton" id="451">
 						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(StartMusicFullscreen)</onclick>
-						<selected>Skin.HasSetting(StartMusicFullscreen)</selected>
+						<onclick>Skin.ToggleSetting(StartPlayerFullscreen)</onclick>
+						<selected>Skin.HasSetting(StartPlayerFullscreen)</selected>
 						<label>$LOCALIZE[31250]</label>
 					</control>
 					<control type="radiobutton" id="452">
@@ -701,20 +701,32 @@
 						<selected>!Skin.HasSetting(HideHolidayTheme)</selected>
 						<label>$LOCALIZE[31015]</label>
 					</control>
+					<control type="radiobutton" id="464">
+						<include>SettingsButton</include>
+						<onclick>Skin.ToggleSetting(HideSeasonalWidgets)</onclick>
+						<selected>!Skin.HasSetting(HideSeasonalWidgets)</selected>
+						<label>$LOCALIZE[31293]</label>
+					</control>
 					<control type="radiobutton" id="465">
+						<include>SettingsButton</include>
+						<onclick>Skin.ToggleSetting(UseChannelLogo)</onclick>
+						<selected>!Skin.HasSetting(UseChannelLogo)</selected>
+						<label>$LOCALIZE[31221]</label>
+					</control>
+					<control type="radiobutton" id="466">
 						<include>SettingsButton</include>
 						<label>$LOCALIZE[31230]</label>
 						<selected>Skin.HasSetting(HideUnwatchedThumbs)</selected>
 						<onclick>Skin.ToggleSetting(HideUnwatchedThumbs)</onclick>
 					</control>
-					<control type="button" id="466">
+					<control type="button" id="467">
 						<include>SettingsButton</include>
 						<label>$LOCALIZE[31228]</label>
 						<label2>[COLOR $VAR[AccentColor]]$VAR[SearchProvider][/COLOR]</label2>
 						<onclick>Skin.ToggleSetting(UseGlobalsearch)</onclick>
 						<enable>System.HasAddon(script.globalsearch)</enable>
 					</control>
-					<control type="button" id="467">
+					<control type="button" id="468">
 						<include>SettingsButton</include>
 						<label>$LOCALIZE[31238]</label>
 						<label2>[COLOR $VAR[AccentColor]]$VAR[CastSearchProvider][/COLOR]</label2>

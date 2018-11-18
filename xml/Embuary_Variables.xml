@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+	<!-- Holiday widget sources -->
+	<variable name="SeasonalSpecialHeadline">
+		<value condition="System.Date(12-01,12-27)">[COLOR $VAR[AccentColor]]$LOCALIZE[31292][/COLOR]</value>
+		<value condition="System.Date(10-30,11-01)">[COLOR $VAR[AccentColor]]$LOCALIZE[31291][/COLOR]</value>
+	</variable>
+	<variable name="SeasonalSpecialHeadlineIcon">
+		<value condition="System.Date(12-01,12-27)">holiday/winter/snowman.png</value>
+		<value condition="System.Date(10-30,11-01)">holiday/halloween/halloween4.png</value>
+	</variable>
+	<variable name="SeasonalSpecial">
+		<value condition="!Skin.HasSetting(HideSeasonalWidgets) + System.Date(12-01,12-27) + Window.IsVisible(home)">plugin://script.embuary.helper/?info=getseasonal&amp;list=xmas&amp;limit=15&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]</value>
+		<value condition="!Skin.HasSetting(HideSeasonalWidgets) + System.Date(12-01,12-27) + Window.IsVisible(1120)">plugin://script.embuary.helper/?info=getseasonal&amp;list=xmas&amp;type=movie&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]</value>
+		<value condition="!Skin.HasSetting(HideSeasonalWidgets) + System.Date(12-01,12-27) + Window.IsVisible(1121)">plugin://script.embuary.helper/?info=getseasonal&amp;list=xmas&amp;type=tvshow&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]</value>
+		<value condition="!Skin.HasSetting(HideSeasonalWidgets) + System.Date(10-30,11-01) + Window.IsVisible(home)">plugin://script.embuary.helper/?info=getseasonal&amp;list=horror&amp;limit=15&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]</value>
+		<value condition="!Skin.HasSetting(HideSeasonalWidgets) + System.Date(10-30,11-01) + Window.IsVisible(1120)">plugin://script.embuary.helper/?info=getseasonal&amp;list=horror&amp;type=movie&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]</value>
+		<value condition="!Skin.HasSetting(HideSeasonalWidgets) + System.Date(10-30,11-01) + Window.IsVisible(1121)">plugin://script.embuary.helper/?info=getseasonal&amp;list=horror&amp;type=tvshow&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]</value>
+	</variable>
 	<!-- Widget count -->
 	<variable name="PosterWidgetLimit">
 		<value condition="!String.IsEmpty(Skin.String(poster_widget_limit)) + !Integer.IsGreater(Skin.String(poster_widget_limit),25) + !Integer.IsEqual(Skin.String(poster_widget_limit),0)">$INFO[Skin.String(poster_widget_limit)]</value>
