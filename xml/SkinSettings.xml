@@ -678,60 +678,77 @@
 						<onclick>Skin.ToggleSetting(FancyLyrics)</onclick>
 						<enable>System.HasAddon(script.cu.lrclyrics)</enable>
 					</control>
-					<!-- misc -->
+					<!-- library and media -->
 					<include content="SkinSettingsHeadlineLabel">
 						<param name="id" value="460"/>
-						<param name="label" value="$LOCALIZE[31001]"/>
+						<param name="label" value="$LOCALIZE[14211]"/>
 					</include>
-					<control type="radiobutton" id="461">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(KioskMode)</onclick>
-						<selected>Skin.HasSetting(KioskMode)</selected>
-						<label>$LOCALIZE[31112]</label>
-					</control>
-					<control type="radiobutton" id="462">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideLibraryEditButtons)</onclick>
-						<selected>!Skin.HasSetting(HideLibraryEditButtons)</selected>
-						<label>$LOCALIZE[31155]</label>
-					</control>
-					<control type="radiobutton" id="463">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideHolidayTheme)</onclick>
-						<selected>!Skin.HasSetting(HideHolidayTheme)</selected>
-						<label>$LOCALIZE[31015]</label>
-					</control>
-					<control type="radiobutton" id="464">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideSeasonalWidgets)</onclick>
-						<selected>!Skin.HasSetting(HideSeasonalWidgets)</selected>
-						<label>$LOCALIZE[31293]</label>
-					</control>
-					<control type="radiobutton" id="465">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(UseChannelLogo)</onclick>
-						<selected>!Skin.HasSetting(UseChannelLogo)</selected>
-						<label>$LOCALIZE[31221]</label>
-					</control>
-					<control type="radiobutton" id="466">
-						<include>SettingsButton</include>
-						<label>$LOCALIZE[31230]</label>
-						<selected>Skin.HasSetting(HideUnwatchedThumbs)</selected>
-						<onclick>Skin.ToggleSetting(HideUnwatchedThumbs)</onclick>
-					</control>
-					<control type="button" id="467">
+					<control type="button" id="461">
 						<include>SettingsButton</include>
 						<label>$LOCALIZE[31228]</label>
 						<label2>[COLOR $VAR[AccentColor]]$VAR[SearchProvider][/COLOR]</label2>
 						<onclick>Skin.ToggleSetting(UseGlobalsearch)</onclick>
 						<enable>System.HasAddon(script.globalsearch)</enable>
 					</control>
-					<control type="button" id="468">
+					<control type="button" id="462">
 						<include>SettingsButton</include>
 						<label>$LOCALIZE[31238]</label>
 						<label2>[COLOR $VAR[AccentColor]]$VAR[CastSearchProvider][/COLOR]</label2>
 						<onclick>Skin.ToggleSetting(DoNotUseExtendedInfo)</onclick>
 						<enable>System.HasAddon(script.extendedinfo)</enable>
+					</control>
+					<control type="radiobutton" id="463">
+						<include>SettingsButton</include>
+						<onclick>Skin.ToggleSetting(UseChannelLogo)</onclick>
+						<selected>!Skin.HasSetting(UseChannelLogo)</selected>
+						<label>$LOCALIZE[31221]</label>
+					</control>
+					<control type="radiobutton" id="464">
+						<include>SettingsButton</include>
+						<label>$LOCALIZE[31230]</label>
+						<selected>Skin.HasSetting(HideUnwatchedThumbs)</selected>
+						<onclick>Skin.ToggleSetting(HideUnwatchedThumbs)</onclick>
+					</control>
+					<control type="radiobutton" id="465">
+						<include>SettingsButton</include>
+						<onclick>Skin.ToggleSetting(HideLibraryEditButtons)</onclick>
+						<selected>!Skin.HasSetting(HideLibraryEditButtons)</selected>
+						<label>$LOCALIZE[31155]</label>
+					</control>
+					<!-- holiday theems -->
+					<include content="SkinSettingsHeadlineLabel">
+						<param name="id" value="470"/>
+						<param name="label" value="$LOCALIZE[31015]"/>
+					</include>
+					<control type="radiobutton" id="471">
+						<include>SettingsButton</include>
+						<onclick>Skin.ToggleSetting(HideHolidayTheme)</onclick>
+						<selected>!Skin.HasSetting(HideHolidayTheme)</selected>
+						<label>Enable holiday themes</label>
+					</control>
+					<control type="radiobutton" id="472">
+						<include>SettingsButton</include>
+						<onclick>Skin.ToggleSetting(DoNotUseHolidayThemeSound)</onclick>
+						<selected>!Skin.HasSetting(DoNotUseHolidayThemeSound)</selected>
+						<enable>!Skin.HasSetting(HideHolidayTheme)</enable>
+						<label>Enable startup sound</label>
+					</control>
+					<control type="radiobutton" id="473">
+						<include>SettingsButton</include>
+						<onclick>Skin.ToggleSetting(HideSeasonalWidgets)</onclick>
+						<selected>!Skin.HasSetting(HideSeasonalWidgets)</selected>
+						<label>$LOCALIZE[31293]</label>
+					</control>
+					<!-- misc -->
+					<include content="SkinSettingsHeadlineLabel">
+						<param name="id" value="480"/>
+						<param name="label" value="$LOCALIZE[31001]"/>
+					</include>
+					<control type="radiobutton" id="481">
+						<include>SettingsButton</include>
+						<onclick>Skin.ToggleSetting(KioskMode)</onclick>
+						<selected>Skin.HasSetting(KioskMode)</selected>
+						<label>$LOCALIZE[31112]</label>
 					</control>
 					<control type="label">
 						<height>50</height>
