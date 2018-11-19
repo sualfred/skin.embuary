@@ -4,7 +4,6 @@
 	<onload condition="String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) + [String.IsEqual(ListItem.DBType,season) + String.IsEqual(ListItem.Label,All)]">close</onload>
 	<onload condition="!String.IsEqual(ListItem.DBType,movie) + !String.IsEqual(ListItem.DBType,tvshow) + !String.IsEqual(ListItem.DBType,episode) + !String.IsEqual(ListItem.DBType,season) + String.IsEmpty(ListItem.Plot)">close</onload>
 	<include>UnloadSetProperties</include>
-	<onunload condition="!String.IsEmpty(Window(home).Property(InfoDialogCloseFocus))">SetFocus(7070)</onunload>
 	<include>PropertyIncludes</include>
 	<onload>Control.Move(200,$INFO[Container(200).CurrentItem,-])</onload>
 	<onload>Control.Move(200,1)</onload>

@@ -217,19 +217,30 @@
 						<onright>noop</onright>
 						<onleft>900</onleft>
 						<control type="button" id="101">
-							<visible>!Control.IsVisible(102)</visible>
+							<visible>!Control.IsVisible(102) + !Control.IsVisible(8)</visible>
 							<include>LightGreyButton</include>
 							<label>$LOCALIZE[15067]</label>
 							<ondown>200</ondown>
 							<onclick>close</onclick>
 						</control>
 						<control type="button" id="102">
-							<visible>!String.IsEmpty(ListItem.DBID) + [String.IsEmpty(Container.Pluginname) | !String.StartsWith(ListItem.Path,plugin://) | String.StartsWith(ListItem.Path,plugin://plugin.video.emby.)]</visible>
+							<visible>
+								[String.StartsWith(ListItem.Path,plugin://) + !String.StartsWith(ListItem.Path,plugin://plugin.video.emby.) + !String.IsEmpty(ListItem.Filenameandpath)]
+								| [[!String.StartsWith(ListItem.Path,plugin://) | String.StartsWith(ListItem.Path,plugin://plugin.video.emby.)] + !String.IsEmpty(ListItem.DBID)]
+							</visible>
 							<include>LightGreyButton</include>
 							<label>$LOCALIZE[31011]</label>
 							<onclick>Dialog.Close(all)</onclick>
-							<onclick condition="Window.IsMedia">Container.Update(videodb://tvshows/titles/$INFO[ListItem.DBID]/)</onclick>
-							<onclick condition="!Window.IsMedia">ActivateWindow(videos,videodb://tvshows/titles/$INFO[ListItem.DBID]/,return)</onclick>
+							<onclick condition="[!String.StartsWith(ListItem.Path,plugin://) | String.StartsWith(ListItem.Path,plugin://plugin.video.emby.)] + Window.IsMedia">Container.Update(videodb://tvshows/titles/$INFO[ListItem.DBID]/)</onclick>
+							<onclick condition="[!String.StartsWith(ListItem.Path,plugin://) | String.StartsWith(ListItem.Path,plugin://plugin.video.emby.)] + !Window.IsMedia">ActivateWindow(videos,videodb://tvshows/titles/$INFO[ListItem.DBID]/,return)</onclick>
+							<onclick condition="String.StartsWith(ListItem.Path,plugin://) + !String.StartsWith(ListItem.Path,plugin://plugin.video.emby.) + Window.IsMedia">Container.Update($INFO[ListItem.Filenameandpath])</onclick>
+							<onclick condition="String.StartsWith(ListItem.Path,plugin://) + !String.StartsWith(ListItem.Path,plugin://plugin.video.emby.) + !Window.IsMedia">ActivateWindow(videos,$INFO[ListItem.Filenameandpath],return)</onclick>
+							<ondown>200</ondown>
+						</control>
+						<control type="button" id="8">
+							<visible>!Control.IsVisible(102)</visible>
+							<include>LightGreyButton</include>
+							<label>$VAR[VideoInfoButton8]</label>
 							<ondown>200</ondown>
 						</control>
 						<control type="button" id="11">
