@@ -491,9 +491,10 @@
 		<value condition="String.StartsWith(ListItem.Path,pvr://)">$INFO[ListItem.Label]</value>
 		<value condition="String.IsEqual(ListItem.DBType,episode)">$VAR[ListItemSeasonEpisode]$INFO[ListItem.Title]</value>
 		<value condition="String.IsEqual(ListItem.DBType,season)">$INFO[ListItem.Label]</value>
-		<value condition="String.IsEqual(ListItem.DBType,song) + !String.IsEmpty(ListItem.title)">$INFO[ListItem.Tracknumber,,. ]$INFO[ListItem.Title]</value>
+		<value condition="Container.Content(songs) + String.StartsWith(Container.Folderpath,musicdb://songs/)">$INFO[ListItem.Title]</value>
 		<value condition="Container.Content(songs) + Integer.IsGreater(ListItem.Tracknumber,0) + !String.IsEmpty(ListItem.title)">$INFO[ListItem.Tracknumber,,. ]$INFO[ListItem.Title]</value>
 		<value condition="Container.Content(songs) + !String.IsEmpty(ListItem.title)">$INFO[ListItem.Title]</value>
+		<value condition="String.IsEqual(ListItem.DBType,song) + !String.IsEmpty(ListItem.title)">$INFO[ListItem.Tracknumber,,. ]$INFO[ListItem.Title]</value>
 		<value condition="!String.IsEmpty(ListItem.Addonname)">$INFO[ListItem.Addonname]</value>
 		<value>$INFO[ListItem.Label]</value>
 	</variable>
