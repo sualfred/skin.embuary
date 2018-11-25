@@ -124,6 +124,21 @@
 							<label>Dependencies &amp; add-ons</label>
 							<onright>700</onright>
 						</control>
+						<control type="button" id="107">
+							<width>400</width>
+							<height>50</height>
+							<align>left</align>
+							<aligny>center</aligny>
+							<font>Reg22</font>
+							<textoffsetx>50</textoffsetx>
+							<textcolor>panel_textcolor</textcolor>
+							<focusedcolor>panel_textcolor</focusedcolor>
+							<selectedcolor>panel_textcolor</selectedcolor>
+							<texturefocus colordiffuse="panel_focus">common/white.jpg</texturefocus>
+							<include>NoTextures</include>
+							<label>$LOCALIZE[31298]</label>
+							<onright>noop</onright>
+						</control>
 					</control>
 				</control>
 			</control>
@@ -1050,6 +1065,30 @@
 						<onclick condition="!System.HasAddon(script.cu.lrclyrics)">InstallAddon(script.cu.lrclyrics)</onclick>
 						<selected>System.HasAddon(script.cu.lrclyrics)</selected>
 						<label>CU LRC Lyrics  (script.cu.lrclyrics)</label>
+					</control>
+				</control>
+				<!-- donate -->
+				<control type="grouplist" id="800">
+					<visible>ControlGroup(100).HasFocus(107)</visible>
+					<left>500</left>
+					<right>100</right>
+					<height>100%</height>
+					<onup>6666</onup>
+					<onleft>100</onleft>
+					<onright>noop</onright>
+					<ondown>noop</ondown>
+					<pagecontrol>60</pagecontrol>
+					<scrolltime>200</scrolltime>
+					<itemgap>0</itemgap>
+					<include content="SkinSettingsHeadlineLabel">
+						<param name="id" value="801"/>
+						<param name="label" value="$LOCALIZE[31297]"/>
+					</include>
+					<control type="image">
+						<visible>ControlGroup(100).HasFocus(107)</visible>
+						<width>720</width>
+						<height>720</height>
+						<texture>common/donate.jpg</texture>
 					</control>
 				</control>
 			</control>
