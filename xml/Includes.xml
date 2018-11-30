@@ -167,6 +167,7 @@
 		| Container.Content(episodes)
 		| [String.StartsWith(ListItem.Path,pvr://) + !String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)]
 		| [String.StartsWith(Container.FolderPath,plugin://plugin.video.emby/) + String.Contains(Container.FolderPath,type=homevideos)]
+		| String.StartsWith(ListItem.Art(thumb),image://video)
 		]
 		+ !ListItem.IsParentDir
 		+ !String.IsEqual(ListItem.Label,..)
