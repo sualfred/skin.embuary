@@ -162,8 +162,7 @@
 					<item>
 						<label>$LOCALIZE[10000]</label>
 						<label2></label2>
-						<onclick>Dialog.Close(all,true)</onclick>
-						<onclick condition="Window.IsVisible(visualisation)">Action(fullscreen)</onclick>
+						<include>DialogCloseAll</include>
 						<onclick>ActivateWindow(home)</onclick>
 						<property name="color">orange</property>
 						<visible>!Window.IsVisible(loginscreen) + !Window.IsVisible(home)</visible>
@@ -171,8 +170,7 @@
 					<item>
 						<label>$LOCALIZE[5]</label>
 						<label2></label2>
-						<onclick>Dialog.Close(all,true)</onclick>
-						<onclick condition="Window.IsVisible(visualisation)">Action(fullscreen)</onclick>
+						<include>DialogCloseAll</include>
 						<onclick>ActivateWindow(settings)</onclick>
 						<property name="color">blue</property>
 						<visible>!Window.IsVisible(loginscreen) + !Window.IsVisible(settings) + !Skin.HasSetting(HidePowerSettings)</visible>
@@ -230,7 +228,7 @@
 					<item>
 						<label>$LOCALIZE[13013] (NAND)</label>
 						<label2></label2>
-						<onclick>Dialog.Close(all,true)</onclick>
+						<include>DialogCloseAll</include>
 						<onclick>System.ExecWait(&quot;/usr/sbin/rebootfromnand&quot;)</onclick>
 						<visible>System.CanReboot + [!Skin.HasSetting(HidePowerRebootNAND) | Window.IsVisible(loginscreen)] + [System.HasAddon(service.libreelec.settings) | System.HasAddon(service.coreelec.settings)]</visible>
 						<property name="color">turquoise</property>
@@ -252,7 +250,7 @@
 					<item>
 						<label>$LOCALIZE[31226]</label>
 						<label2></label2>
-						<onclick>dialog.close(all,true)</onclick>
+						<include>DialogCloseAll</include>
 						<onclick>RunScript(plugin.video.embycon,0,?mode=CHANGE_USER)</onclick>
 						<visible>System.HasAddon(plugin.video.embycon) + !String.IsEmpty(Window(Home).Property(plugin.video.embycon-userid)) + !Window.IsVisible(loginscreen)</visible>
 						<property name="color">accent</property>
@@ -260,7 +258,7 @@
 					<item>
 						<label>$LOCALIZE[31225]</label>
 						<label2></label2>
-						<onclick>dialog.close(all,true)</onclick>
+						<include>DialogCloseAll</include>
 						<onclick>RunScript(plugin.video.embycon,0,?mode=CHANGE_USER)</onclick>
 						<visible>System.HasAddon(plugin.video.embycon) + String.IsEmpty(Window(Home).Property(plugin.video.embycon-userid)) + !Window.IsVisible(loginscreen)</visible>
 						<property name="color">accent</property>
@@ -268,7 +266,7 @@
 					<item>
 						<label>$LOCALIZE[20126] $INFO[system.profilename]</label>
 						<label2></label2>
-						<onclick>dialog.close(all,true)</onclick>
+						<include>DialogCloseAll</include>
 						<onclick>System.LogOff</onclick>
 						<visible>System.HasLoginScreen | Integer.IsGreater(System.ProfileCount,1)</visible>
 						<visible>System.Loggedon</visible>
