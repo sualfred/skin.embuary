@@ -2,7 +2,8 @@
 <window>
 	<defaultcontrol always="true">10</defaultcontrol>
 	<backgroundcolor>background</backgroundcolor>
-	<onunload condition="!String.IsEmpty(Window(home).Property(NextWindow))">ActivateWindow(videos,$INFO[Window(home).Property(NextWindow)])</onunload>
+	<onunload condition="!String.IsEmpty(Window(home).Property(NextWindow)) + !Window.IsVisible(MyVideoNav.xml)">ActivateWindow(videos,$INFO[Window(home).Property(NextWindow)],return)</onunload>
+	<onunload condition="!String.IsEmpty(Window(home).Property(NextWindow)) + Window.IsVisible(MyVideoNav.xml)">Container.Update($INFO[Window(home).Property(NextWindow)])</onunload>
 	<onunload condition="!String.IsEmpty(Window(home).Property(PlayItem))">PlayMedia($INFO[Window(home).Property(PlayItem)])</onunload>
 	<onunload>ClearProperty(NextWindow,home)</onunload>
 	<onunload>ClearProperty(PlayItem,home)</onunload>
