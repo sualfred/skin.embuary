@@ -49,11 +49,13 @@
 						<texture>views/player/shadow_square.png</texture>
 					</control>
 					<control type="group">
-						<visible>Integer.IsGreater(MusicPlayer.Time,0) + !Skin.HasSetting(HideDiscArt)</visible>
-						<animation type="Hidden" reversible="false">
+						<visible>!Skin.HasSetting(HideDiscArt)</visible>
+						<visible>Window.IsVisible(musicosd) | Window.IsVisible(seekbar) | Player.Paused | [Window.IsVisible(volumebar) + !Player.Muted] | !String.IsEmpty(Window(home).Property(showvisinfo))</visible>
+						<animation effect="fade" start="100" end="0" time="400" delay="1700">Hidden</animation>
+						<animation type="WindowClose" reversible="false">
 							<effect type="slide" start="0,0" end="0,100" tween="sine" easing="out" time="600" delay="0" />
 						</animation>
-						<animation type="Visible" reversible="false">
+						<animation type="WindowOpen" reversible="false">
 							<effect type="slide" start="0,100" end="0,0" tween="sine" easing="out" time="700" delay="1000" />
 						</animation>
 						<control type="image">
@@ -155,7 +157,7 @@
 						<aligny>center</aligny>
 						<label>$INFO[MusicPlayer.Codec]   </label>
 						<font>reg24</font>
-						<visible>!String.IsEmpty(MusicPlayer.Codec)</visible>
+						<visible>!String.IsEmpty(MusicPlayer.Codec) + !Pvr.IsPlayingRadio</visible>
 					</control>
 					<control type="label" id="99">
 						<width>auto</width>
@@ -163,7 +165,7 @@
 						<aligny>center</aligny>
 						<label>$INFO[MusicPlayer.Bitrate,, kbit/s]   </label>
 						<font>reg24</font>
-						<visible>!String.IsEmpty(MusicPlayer.Bitrate)</visible>
+						<visible>!String.IsEmpty(MusicPlayer.Bitrate) + !Pvr.IsPlayingRadio</visible>
 					</control>
 				</control>
 				<control type="grouplist" id="99">
@@ -179,7 +181,7 @@
 						<aligny>center</aligny>
 						<font>reg24</font>
 						<textcolor>softgrey</textcolor>
-						<label fallback="19055">$INFO[MusicPlayer.Album,$LOCALIZE[558]: ]$INFO[MusicPlayer.Year, (,)]</label>
+						<label fallback="19055">$VAR[PlayerEpisodeName]</label>
 					</control>
 					<control type="label" id="99">
 						<width>790</width>
