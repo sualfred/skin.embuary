@@ -484,6 +484,7 @@
 		<value>$INFO[ListItem.Label]</value>
 	</variable>
 	<variable name="MainListLabel">
+		<value condition="Window.IsVisible(DialogPVRChannelsOSD.xml)">$INFO[ListItem.ChannelName]$INFO[ListItem.Title, - ]</value>
 		<value condition="Window.IsVisible(MyPVRChannels.xml) + !String.IsEmpty(ListItem.Title)">$INFO[ListItem.StartTime,, - ]$INFO[ListItem.EndTime,,: ]$INFO[ListItem.Title]</value>
 		<value condition="Window.IsVisible(MyPVRChannels.xml)">$LOCALIZE[19055]</value>
 		<value condition="String.IsEqual(ListItem.DBType,season) + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) + String.IsEqual(ListItem.Label,All)">$LOCALIZE[20366]</value>
@@ -501,6 +502,7 @@
 		<value>$INFO[ListItem.Label]</value>
 	</variable>
 	<variable name="SubListLabel">
+		<value condition="Window.IsVisible(DialogPVRChannelsOSD.xml)">$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, - ]</value>
 		<value condition="Window.IsVisible(script-NextAired-TVGuide.xml)">$INFO[ListItem.Property(NextSeasonNumber),S,]$INFO[ListItem.Property(NextEpisodeNumber),:E]$INFO[ListItem.Property(NextTitle), - ]</value>
 		<value condition="Window.IsVisible(script-NextAired-TVGuide2.xml)">$INFO[ListItem.Property(NextSeasonNumber),S,]$INFO[ListItem.Property(NextEpisodeNumber),:E]$INFO[ListItem.Property(NextTitle), - ]</value>
 		<value condition="String.StartsWith(ListItem.Path,pvr://)">$INFO[ListItem.Label]</value>
@@ -563,8 +565,10 @@
 		<value>[COLOR text_sublabel]$LOCALIZE[31156][/COLOR]</value>
 	</variable>
 	<variable name="PlayerEpisodeName">
-		<value condition="!String.IsEmpty(VideoPlayer.EpisodeName)">$INFO[VideoPlayer.EpisodeName]</value>
-		<value condition="!String.IsEmpty(VideoPlayer.Genre)">$LOCALIZE[515]: $INFO[VideoPlayer.Genre]</value>
+		<value condition="Pvr.IsPlayingRadio + !String.StartsWith(MusicPlayer.Title,pvr) + !String.IsEqual(MusicPlayer.Artist,MusicPlayer.Channelname)">$INFO[MusicPlayer.Artist,, - ]$INFO[MusicPlayer.Title]</value>
+		<value condition="Player.HasAudio + !String.IsEmpty(MusicPlayer.Album)">$INFO[MusicPlayer.Album,$LOCALIZE[558]: ]$INFO[MusicPlayer.Year, (,)]</value>
+		<value condition="Player.HasVideo + !String.IsEmpty(VideoPlayer.EpisodeName)">$INFO[VideoPlayer.EpisodeName]</value>
+		<value condition="Player.HasVideo + !String.IsEmpty(VideoPlayer.Genre)">$LOCALIZE[515]: $INFO[VideoPlayer.Genre]</value>
 		<value>[COLOR text_sublabel]$LOCALIZE[31156][/COLOR]</value>
 	</variable>
 	<variable name="PlayerDiscArt">
@@ -1594,6 +1598,7 @@
 		<value condition="!Control.HasFocus(607)">white</value>
 	</variable>
 	<variable name="PlayerFullLabel">
+		<value condition="Pvr.IsPlayingRadio">$INFO[MusicPlayer.Channelname]$INFO[Player.Title, - ]</value>
 		<value condition="String.Contains(Player.Art(thumb),KodiCinemaMode) + String.Contains(VideoPlayer.Title,Trailer)">$LOCALIZE[31255] - $INFO[VideoPlayer.Title]</value>
 		<value condition="String.Contains(Player.Art(thumb),KodiCinemaMode)">$LOCALIZE[31255]</value>
 		<value condition="String.IsEqual(VideoPlayer.Title,stream) + String.Contains(Player.Filenameandpath,/emby/videos/)">$LOCALIZE[31186]</value>
@@ -1607,6 +1612,7 @@
 		<value>$INFO[VideoPlayer.Title]</value>
 	</variable>
 	<variable name="PlayerTitleLabel">
+		<value condition="Pvr.IsPlayingRadio">$LOCALIZE[19021]</value>
 		<value condition="String.Contains(Player.Art(thumb),KodiCinemaMode)">$LOCALIZE[31255]</value>
 		<value condition="String.IsEqual(VideoPlayer.Filename,stream) + String.Contains(VideoPlayer.Filenameandpath,/emby/videos/)">$LOCALIZE[31186]</value>
 		<value condition="!String.IsEmpty(MusicPlayer.Title)">$INFO[MusicPlayer.Title]</value>
