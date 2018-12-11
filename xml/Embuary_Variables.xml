@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+	<!-- Startup window -->
+	<variable name="StartUpWindow">
+		<value condition="!String.IsEmpty(Skin.String(StartUpWindow))">$INFO[Skin.String(StartUpWindow)]</value>
+		<value>$INFO[System.StartupWindow]</value>
+	</variable>
 	<!-- Holiday widget sources -->
 	<variable name="SeasonalSpecialHeadline">
 		<value condition="System.Date(12-01,12-27)">[COLOR $VAR[AccentColor]]$LOCALIZE[31292][/COLOR]</value>
