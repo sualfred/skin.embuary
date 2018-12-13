@@ -72,19 +72,29 @@
 				<itemgap>5</itemgap>
 				<orientation>horizontal</orientation>
 				<control type="label">
-					<label>$INFO[ListItem.Year]   </label>
+					<label>$INFO[ListItem.Year]$VAR[TVShowStatus,  ([LOWERCASE],[/LOWERCASE])]   </label>
 					<include>MetaLabel</include>
 					<visible>!String.IsEmpty(ListItem.Year)</visible>
 				</control>
 				<control type="label">
+					<label>$INFO[ListItem.Season,$LOCALIZE[33054]: ]   </label>
+					<include>MetaLabel</include>
+					<visible>!String.IsEmpty(ListItem.Season)</visible>
+				</control>
+				<control type="label">
+					<label>$INFO[ListItem.Episode,$LOCALIZE[20360]: ]   </label>
+					<include>MetaLabel</include>
+					<visible>!String.IsEmpty(ListItem.Episode)</visible>
+				</control>
+				<control type="label">
 					<label>$INFO[Window(home).Property(TVShowTotalSeasons),$LOCALIZE[33054]: ]   </label>
 					<include>MetaLabel</include>
-					<visible>!String.IsEmpty(Window(home).Property(TVShowTotalSeasons))</visible>
+					<visible>String.IsEmpty(ListItem.Season) + !String.IsEmpty(Window(home).Property(TVShowTotalSeasons))</visible>
 				</control>
 				<control type="label">
 					<label>$INFO[Window(home).Property(TVShowTotalEpisodes),$LOCALIZE[20360]: ]   </label>
 					<include>MetaLabel</include>
-					<visible>!String.IsEmpty(Window(home).Property(TVShowTotalEpisodes))</visible>
+					<visible>String.IsEmpty(ListItem.Episode) + !String.IsEmpty(Window(home).Property(TVShowTotalEpisodes))</visible>
 				</control>
 				<include>MpaaIcon</include>
 				<include>MetaRating</include>
@@ -100,19 +110,14 @@
 				<itemgap>5</itemgap>
 				<orientation>horizontal</orientation>
 				<control type="label">
-					<label>$INFO[Window(home).Property(TVShowYear)]   </label>
+					<label>$INFO[ListItem.Year]   </label>
 					<include>MetaLabel</include>
-					<visible>!String.IsEmpty(Window(home).Property(TVShowYear))</visible>
+					<visible>!String.IsEmpty(ListItem.Year)</visible>
 				</control>
 				<control type="label">
-					<label>$INFO[Window(home).Property(TVShowTotalSeasons),$LOCALIZE[33054]: ]   </label>
+					<label>$INFO[ListItem.Property(TotalEpisodes),$LOCALIZE[20360]: ]   </label>
 					<include>MetaLabel</include>
-					<visible>!String.IsEmpty(Window(home).Property(TVShowTotalSeasons))</visible>
-				</control>
-				<control type="label">
-					<label>$INFO[Window(home).Property(TVShowTotalEpisodes),$LOCALIZE[20360]: ]   </label>
-					<include>MetaLabel</include>
-					<visible>!String.IsEmpty(Window(home).Property(TVShowTotalEpisodes))</visible>
+					<visible>!String.IsEmpty(ListItem.Property(TotalEpisodes))</visible>
 				</control>
 				<include>MpaaIcon</include>
 				<include>MetaRating</include>
