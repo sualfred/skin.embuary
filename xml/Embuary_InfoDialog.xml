@@ -312,9 +312,12 @@
 				<param name="onup" value="200"/>
 				<param name="ondown" value="202"/>
 				<param name="headline" value="$LOCALIZE[33054]"/>
+				<param name="sublabel" value=""/>
 				<param name="height" value="551"/>
 				<param name="sortby" value="season"/>
-				<param name="content" value="plugin://script.embuary.helper/?info=getseasons&amp;dbid=$INFO[ListItem.DBID]"/>
+				<param name="use_custom_onclick" value="String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)"/>
+				<param name="onclick" value="RunScript(script.embuary.helper,action=closeandopen,path='$ESCINFO[ListItem.Filenameandpath]',target=videos)"/>
+				<param name="content" value="$VAR[InfoDialog_Season_Content]"/>
 			</include>
 			<!-- Cast -->
 			<include content="CastWidget">
