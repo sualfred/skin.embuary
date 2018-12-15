@@ -295,11 +295,10 @@
 		<value condition="!Skin.HasSetting(HideEmbyConLabel)"> [COLOR text_sublabel](EmbyCon)[/COLOR]</value>
 	</variable>
 	<variable name="RecentEpisodes_Mainlabel">
-		<value condition="!String.IsEmpty(ListItem.Episode)">$INFO[ListItem.TVShowTitle]</value>
-		<value>$VAR[ListItemSeasonEpisode]$INFO[ListItem.Title]</value>
+		<value>$INFO[ListItem.TVShowTitle]</value>
 	</variable>
 	<variable name="RecentEpisodes_Sublabel">
-		<value condition="!String.IsEmpty(ListItem.Episode)">$VAR[ListItemSeasonEpisode]$INFO[ListItem.Title]</value>
+		<value condition="String.IsEqual(ListItem.DBType,episode)">$VAR[ListItemSeasonEpisode]$INFO[ListItem.Title]</value>
 		<value>$INFO[ListItem.Year]</value>
 	</variable>
 	<variable name="HeaderCustomDeviceName">
