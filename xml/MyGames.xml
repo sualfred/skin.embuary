@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<defaultcontrol always="true">50</defaultcontrol>
+	<backgroundcolor>background</backgroundcolor>
+	<views>50,51,52,53,54,59,55,56,58</views>
+	<menucontrol>6666</menucontrol>
+	<include>UnloadSetProperties</include>
+	<include content="PropertyIncludes">
+		<param name="ShowHeader" value="true"/>
+	</include>
+	<controls>
+		<!-- background -->
+		<include>Background</include>
+		<!-- views -->
+		<control type="group" id="70">
+			<include>Window_OpenClose</include>
+			<include>JumpToLetter_vertical</include>
+			<include>Wide_View_50</include>
+			<include>Square_View_52</include>
+			<include>List_View_53</include>
+		</control>
+		<!-- scrollbar -->
+		<include>Scrollbar</include>
+		<!-- Menu control -->
+		<control type="group">
+			<include>FullscreenDimensions</include>
+			<include content="DiffuseMask">
+				<param name="visible">ControlGroup(4000).HasFocus</param>
+			</include>
+			<control type="group">
+				<visible>ControlGroup(4000).HasFocus</visible>
+				<include>Visible_PopupOpenClose</include>
+				<centerleft>50%</centerleft>
+				<width>500</width>
+				<centertop>50%</centertop>
+				<height>982</height>
+				<control type="grouplist" id="4000">
+					<orientation>vertical</orientation>
+					<height>auto</height>
+					<align>center</align>
+					<itemgap>0</itemgap>
+					<onright>50</onright>
+					<onleft>50</onleft>
+					<onback>50</onback>
+					<usecontrolcoords>true</usecontrolcoords>
+					<control type="image" id="4001">
+						<width>100%</width>
+						<height>61</height>
+						<texture border="65,0,65,0" colordiffuse="context_color">dialogs/context/top.png</texture>
+					</control>
+					<control type="button" id="10">
+						<include content="ContextButton"/>
+					</control>
+					<control type="togglebutton" id="4">
+						<include content="ContextButton"/>
+						<label>$LOCALIZE[580]: $LOCALIZE[584]</label>
+						<altlabel>$LOCALIZE[580]: $LOCALIZE[585]</altlabel>
+					</control>
+					<control type="button" id="3">
+						<include content="ContextButton"/>
+						<visible>Control.IsEnabled(3)</visible>
+					</control>
+					<control type="button" id="19">
+						<include content="ContextButton"/>
+						<label>$LOCALIZE[31008]</label>
+					</control>
+					<control type="image" id="4005">
+						<width>100%</width>
+						<height>61</height>
+						<texture border="65,0,65,0" colordiffuse="context_color">dialogs/context/bottom.png</texture>
+					</control>
+				</control>
+			</control>
+		</control>
+		<!-- View select -->
+		<include>ViewSelector</include>
+		<!-- header bar -->
+		<include content="HeaderBar">
+			<param name="id">70</param>
+			<param name="auto_hide">false</param>
+			<param name="hide_header">$EXP[HideHeaderBasedOnContainer]</param>
+		</include>
+		<!-- side panel -->
+		<include content="SidePanel">
+			<param name="onright">70</param>
+		</include>
+	</controls>
+</window>

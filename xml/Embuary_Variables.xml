@@ -385,6 +385,7 @@
 		<value condition="String.StartsWith(Container.FolderPath,plugin://plugin.video.emby/) + Window.IsVisible(mymusicnav.xml)">$LOCALIZE[292]</value>
 		<value condition="Window.IsVisible(mymusicnav.xml)">$LOCALIZE[2]</value>
 		<value condition="Window.IsVisible(myvideonav.xml)">$LOCALIZE[3]</value>
+		<value condition="Window.IsVisible(games)">$LOCALIZE[10821]</value>
 		<value>$INFO[Container.Foldername]</value>
 	</variable>
 	<variable name="ContainerCountLabel">
@@ -455,6 +456,7 @@
 		<value condition="!String.IsEmpty(ListItem.Art(tvshow.fanart))">$INFO[ListItem.Art(tvshow.fanart)]</value>
 	</variable>
 	<variable name="IconLandscape">
+		<value condition="Player.HasGame + Window.IsVisible(fullscreenvideo) + Dialog.IsVisible(selectdialog)">$INFO[ListItem.Icon]</value>
 		<value condition="Container.Content(images) + !String.StartsWith(ListItem.Icon,Default)">$INFO[ListItem.Icon]</value>
 		<value condition="!String.IsEmpty(ListItem.EpgEventIcon)">$INFO[ListItem.EpgEventIcon]</value>
 		<value condition="Window.IsVisible(videobookmarks) + !String.StartsWith(ListItem.Icon,Default)">$INFO[ListItem.Icon]</value>
@@ -469,7 +471,7 @@
 		<value condition="!String.IsEmpty(ListItem.Art(landscape))">$INFO[ListItem.Art(landscape)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(tvshow.fanart))">$INFO[ListItem.Art(tvshow.fanart)]</value>
 		<value condition="[Container.Content(videos) | String.IsEqual(ListItem.DBType,video) | [String.StartsWith(ListItem.Path,plugin://) + !String.StartsWith(ListItem.Path,plugin://plugin.video.emby)]] + !String.StartsWith(ListItem.Icon,Default)">$INFO[ListItem.Icon]</value>
-		<value condition="!String.IsEmpty(ListItem.Art(fanart)) + [!String.IsEmpty(ListItem.DBType) | String.StartsWith(ListItem.Path,plugin://) | Window.IsVisible(addonbrowser) | Window.IsVisible(programs)]">$INFO[ListItem.Art(fanart)]</value>
+		<value condition="!String.IsEmpty(ListItem.Art(fanart)) + [!String.IsEmpty(ListItem.DBType) | String.StartsWith(ListItem.Path,plugin://) | Window.IsVisible(addonbrowser) | Window.IsVisible(programs) | Container.Content(addons)]">$INFO[ListItem.Art(fanart)]</value>
 		<value condition="!String.IsEmpty(ListItem.Property(fanart))">$INFO[ListItem.Property(fanart)]</value>
 		<value condition="!String.StartsWith(ListItem.Icon,Default)">$INFO[ListItem.Icon]</value>
 	</variable>
@@ -548,7 +550,7 @@
 		<value condition="Container.Content(albums)">$INFO[ListItem.Year]</value>
 		<value condition="Container.Content(songs)">$INFO[ListItem.Duration]</value>
 		<value condition="Window.IsVisible(MyPics.xml) + !String.IsEmpty(ListItem.Date)">$INFO[ListItem.Date]</value>
-		<value condition="ListItem.IsFolder">$LOCALIZE[19076]</value>
+		<value condition="ListItem.IsFolder + !String.IsEqual(ListItem.Label,$LOCALIZE[35250])">$LOCALIZE[19076]</value>
 	</variable>
 	<variable name="RightListLabel2">
 		<value condition="Container.Content(tvshows) + !String.IsEmpty(ListItem.Property(TotalSeasons))">$INFO[ListItem.Property(TotalSeasons),, $LOCALIZE[36905]]</value>
@@ -1214,6 +1216,11 @@
 		<value condition="String.IsEqual(Skin.String(AlphaBackground),80)">80</value>
 		<value condition="String.IsEqual(Skin.String(AlphaBackground),90)">90</value>
 		<value>100</value>
+	</variable>
+	<variable name="GameSettingsHeadline">
+		<value condition="!String.IsEmpty(Control.GetLabel(12))">$INFO[Control.GetLabel(12)]</value>
+		<value condition="Window.IsVisible(GameVideoRotation)">$LOCALIZE[35227]</value>
+		<value condition="Window.IsVisible(GameStretchMode)">$LOCALIZE[35233]</value>
 	</variable>
 	<variable name="UpNextThumb">
 		<value condition="!String.IsEmpty(Window.Property(thumb))">$INFO[Window.Property(thumb)]</value>

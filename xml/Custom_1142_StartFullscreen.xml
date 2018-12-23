@@ -2,6 +2,6 @@
     <onload condition="!Window.IsVisible(visualisation) + !Window.IsVisible(fullscreenvideo) + Skin.HasSetting(StartPlayerFullscreen) + String.IsEmpty(Window(home).Property(SkipAutoFullscreen)) + $EXP[HolidayThemeSound]">FullScreen</onload>
     <onload condition="!Window.IsVisible(visualisation) + !Window.IsVisible(fullscreenvideo) + Skin.HasSetting(StartPlayerFullscreen) + String.IsEmpty(Window(home).Property(SkipAutoFullscreen)) + $EXP[HolidayThemeSound]">Dialog.Close(all,true)</onload>
     <onload>ClearProperty(SkipAutoFullscreen,home)</onload>
-    <visible>Player.HasMedia</visible>
+    <visible>Player.HasMedia + !Player.HasGame</visible>
     <controls/>
 </window>

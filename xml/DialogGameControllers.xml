@@ -3,9 +3,13 @@
 	<defaultcontrol always="true">3</defaultcontrol>
 	<include>PropertyIncludes</include>
 	<controls>
-		<include>Background</include>
+		<include condition="!Window.IsVisible(VideoFullscreen.xml)">Background</include>
+		<include condition="Window.IsVisible(VideoFullscreen.xml)" content="DiffuseMask">
+			<param name="color">background_diffuse</param>
+		</include>
 		<control type="group">
-			<include>Window_OpenClose</include>
+			<include condition="!Window.IsVisible(VideoFullscreen.xml)">Window_OpenClose</include>
+			<include condition="Window.IsVisible(VideoFullscreen.xml)">Dialog_PopupOpenClose</include>
 			<centertop>50%</centertop>
 			<!-- left col -->
 			<control type="grouplist">
@@ -77,7 +81,7 @@
 				<centerleft>50%</centerleft>
 				<centertop>43%</centertop>
 				<width>350</width>
-				<height>219</height>
+				<height>350</height>
 			</control>
 			<!-- right col -->
 			<control type="grouplist">
@@ -165,12 +169,12 @@
 			</control>
 		</control>
 		<!-- header bar -->
-		<include content="HeaderBar">
+		<include condition="!Window.IsVisible(VideoFullscreen.xml)" content="HeaderBar">
 			<param name="id">3</param>
 			<param name="auto_hide">false</param>
 		</include>
 		<!-- side panel -->
-		<include content="SidePanel">
+		<include condition="!Window.IsVisible(VideoFullscreen.xml)" content="SidePanel">
 			<param name="onright">3</param>
 		</include>
 	</controls>

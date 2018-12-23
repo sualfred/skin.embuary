@@ -126,7 +126,7 @@
 							<param name="align" value="false"/>
 							<param name="color" value="text_header_mainlabel"/>
 						</include>
-						<visible>Player.HasMedia + !Player.Paused + $EXP[HolidayThemeSound]</visible>
+						<visible>Player.HasMedia + !Player.HasGame + !Player.Paused + $EXP[HolidayThemeSound]</visible>
 					</control>
 					<control type="label">
 						<font>Material24</font>
@@ -135,10 +135,10 @@
 							<param name="align" value="false"/>
 							<param name="color" value="text_header_mainlabel"/>
 						</include>
-						<visible>Player.HasMedia + Player.Paused + $EXP[HolidayThemeSound]</visible>
+						<visible>Player.HasMedia + !Player.HasGame + Player.Paused + $EXP[HolidayThemeSound]</visible>
 					</control>
 					<control type="label">
-						<visible>Player.HasMedia + $EXP[HolidayThemeSound]</visible>
+						<visible>Player.HasMedia + !Player.HasGame + $EXP[HolidayThemeSound]</visible>
 						<width>0</width>
 					</control>
 					<control type="label">
@@ -214,6 +214,7 @@
 					| Window.IsVisible(favourites)
 					]
 					+ Player.HasMedia
+					+ !Player.HasGame
 					+ !Window.IsVisible(extendedprogressdialog)
 					+ !Window.IsVisible(fullscreeninfo)
 					+ !Window.IsVisible(fullscreenvideo)
@@ -458,28 +459,11 @@
 			<include>search_action</include>
 			<visible>!Window.IsVisible(script-globalsearch-main.xml) + !Window.IsVisible(script-globalsearch.xml) + !Window.IsVisible(1115)</visible>
 		</control>
-		<control type="button" id="6605">
-			<include>HeaderButton</include>
-			<label>$INFO[Control.GetLabel(28)]</label>
-			<onclick>SendClick(28)</onclick>
-			<visible>false</visible>
-			<visible>[Window.IsVisible(MyPVRTimers.xml) | Window.IsVisible(MyPVRSearch.xml)]</visible>
-		</control>
 		<control type="button" id="6606">
 			<include>HeaderButton</include>
 			<label>$LOCALIZE[19141]: $INFO[Control.GetLabel(29)]</label>
 			<onclick>SendClick(28)</onclick>
 			<visible>[Window.IsVisible(MyPVRChannels.xml)]</visible>
-		</control>
-		<control type="button" id="6607">
-			<include>HeaderButton</include>
-			<width>auto</width>
-			<textcolor>panel_textcolor</textcolor>
-			<focusedcolor>$VAR[AccentColor]</focusedcolor>
-			<label>$LOCALIZE[19141]: $INFO[Control.GetLabel(30)]</label>
-			<onclick>SendClick(28)</onclick>
-			<visible>false</visible>
-			<visible>[Window.IsVisible(MyPVRGuide.xml)]</visible>
 		</control>
 		<control type="button" id="6608">
 			<include>HeaderButton</include>
@@ -531,6 +515,7 @@
 			</include>
 			<onclick>ActivateWindow(playercontrols)</onclick>
 			<visible>Player.HasMedia
+				+ !Player.HasGame
 				+ !String.StartsWith(Player.Filenameandpath,special://skin/extras)
 				+ String.IsEmpty(Window(home).Property(SkinExtraSound))
 			</visible>
@@ -558,8 +543,7 @@
 			<include content="HeaderButton">
 				<param name="align" value="false"/>
 			</include>
-			<onclick condition="Player.HasVideo">ActivateWindow(fullscreenvideo)</onclick>
-			<onclick condition="Player.HasAudio">ActivateWindow(visualisation)</onclick>
+			<onclick>fullscreen</onclick>
 			<visible>Player.HasMedia
 				+ !String.StartsWith(Player.Filenameandpath,special://skin/extras)
 				+ String.IsEmpty(Window(home).Property(SkinExtraSound))

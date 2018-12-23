@@ -227,9 +227,9 @@
 					<aligny>top</aligny>
 					<visible>
 						Integer.IsLess(ListItem.Property(UnWatchedEpisodes),1)
-					 	+ !String.IsEqual(ListItem.Overlay,OverlayUnwatched.png)
-					 	+ [String.IsEqual(ListItem.Overlay,OverlayWatched.png) | Integer.IsGreaterOrEqual(ListItem.PlayCount,1)]
-					 </visible>
+						+ !String.IsEqual(ListItem.Overlay,OverlayUnwatched.png)
+						+ [String.IsEqual(ListItem.Overlay,OverlayWatched.png) | Integer.IsGreaterOrEqual(ListItem.PlayCount,1)]
+					</visible>
 				</control>
 			</control>
 			<control type="group">
@@ -916,6 +916,64 @@
 						<param name="top" value="238"/>
 						<param name="width" value="430"/>
 					</include>
+				</control>
+			</control>
+		</definition>
+	</include>
+	<!-- Landscape Retroplayer -->
+	<include name="GameFilterLayout">
+		<param name="mainlabel">$VAR[MainListLabel]</param>
+		<param name="sublabel">$VAR[SubListLabel]</param>
+		<param name="thumblabel">$VAR[MainListLabel]</param>
+		<param name="focused">false</param>
+		<param name="visible">true</param>
+		<definition>
+			<control type="group">
+				<visible>$PARAM[visible]</visible>
+				<include content="widget_labels">
+					<param name="top">254</param>
+					<param name="width">430</param>
+					<param name="id">$PARAM[id]</param>
+					<param name="mainlabel">$PARAM[mainlabel]</param>
+					<param name="sublabel">$PARAM[sublabel]</param>
+					<param name="focused">$PARAM[focused]</param>
+					<param name="labels_visible">$PARAM[labels_visible]</param>
+				</include>
+				<control type="group">
+					<include content="Animation_FocusBounce">
+						<param name="id" value="$PARAM[id]"/>
+					</include>
+					<height>242</height>
+					<control type="image">
+						<top>-2</top>
+						<left>-2</left>
+						<width>436</width>
+						<height>248</height>
+						<texture border="20,20,20,20">items/shadow.png</texture>
+					</control>
+					<control type="image">
+						<left>-12</left>
+						<top>-7</top>
+						<width>454</width>
+						<height>266</height>
+						<texture border="20,20,20,20" colordiffuse="$VAR[AccentColor]">items/focus.png</texture>
+						<aspectratio>stretch</aspectratio>
+						<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
+						<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
+					</control>
+					<control type="image">
+						<width>430</width>
+						<height>242</height>
+						<texture colordiffuse="$VAR[ThumbBackgroundColor]">common/white.jpg</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+					</control>
+					<control type="gamewindow">
+						<width>430</width>
+						<height>242</height>
+						<videofilter>$INFO[ListItem.Property(game.videofilter)]</videofilter>
+						<stretchmode>$INFO[ListItem.Property(game.stretchmode)]</stretchmode>
+						<rotation>$INFO[ListItem.Property(game.videorotation)]</rotation>
+					</control>
 				</control>
 			</control>
 		</definition>

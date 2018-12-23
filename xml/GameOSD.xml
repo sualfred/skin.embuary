@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<defaultcontrol>1</defaultcontrol>
+	<onload condition="System.GetBool(gamesgeneral.showosdhelp) + !String.IsEmpty(Control.GetLabel(1101))">Notification($LOCALIZE[29915],$INFO[Control.GetLabel(1101)])</onload>
+	<onload condition="System.GetBool(gamesgeneral.showosdhelp)">Dialog.Close(all,true)</onload>
+	<include>PropertyIncludes</include>
+	<controls>
+		<control type="textbox" id="1101">
+			<include>HiddenObject</include>
+		</control>
+		<include content="DiffuseMask">
+			<param name="visible" value="!Window.IsVisible(DialogSelect.xml) + !Window.IsVisible(GameVolume) + !Window.IsVisible(GameControllers) + !Window.IsVisible(GameAdvancedSettings)"/>
+		</include>
+		<control type="group">
+			<visible>!Window.IsVisible(DialogSelect.xml) + !Window.IsVisible(GameVolume) + !Window.IsVisible(GameControllers) + !Window.IsVisible(GameAdvancedSettings)</visible>
+			<include>Dialog_PopupOpenClose</include>
+			<include>Visible_PopupOpenClose</include>
+			<centerleft>50%</centerleft>
+			<width>500</width>
+			<centertop>50%</centertop>
+			<height>982</height>
+			<control type="grouplist" id="1">
+				<defaultcontrol always="true">21</defaultcontrol>
+				<orientation>vertical</orientation>
+				<height>auto</height>
+				<align>center</align>
+				<itemgap>0</itemgap>
+				<onright>close</onright>
+				<onleft>close</onleft>
+				<usecontrolcoords>true</usecontrolcoords>
+				<control type="image" id="21">
+					<width>100%</width>
+					<height>61</height>
+					<texture border="65,0,65,0" colordiffuse="context_color">dialogs/context/top.png</texture>
+				</control>
+				<control type="button" id="22">
+					<include content="ContextButton"/>
+					<label>$LOCALIZE[35224]</label>
+					<label2>[COLOR disabled]Select + X[/COLOR]</label2>
+					<onclick>Play</onclick>
+				</control>
+				<control type="button" id="23">
+					<include content="ContextButton"/>
+					<label>$LOCALIZE[13007]</label>
+					<onclick>PlayerControl(Reset)</onclick>
+				</control>
+				<control type="button" id="24">
+					<include content="ContextButton"/>
+					<label>$LOCALIZE[35222]</label>
+					<label2>[COLOR disabled]Select + Start[/COLOR]</label2>
+					<onclick>Stop</onclick>
+				</control>
+				<control type="button" id="25">
+					<include content="ContextButton"/>
+					<label>$LOCALIZE[31000]</label>
+					<onclick>Pause</onclick>
+					<onclick>Dialog.Close(all,true)</onclick>
+					<onclick>ActivateWindow(home)</onclick>
+				</control>
+				<control type="button" id="26">
+					<include content="ContextButton"/>
+					<label>$LOCALIZE[5]</label>
+					<enable>false</enable>
+				</control>
+				<control type="button" id="27">
+					<include content="ContextButton"/>
+					<label>$LOCALIZE[35225]</label>
+					<onclick>ActivateWindow(GameVideoFilter)</onclick>
+				</control>
+				<control type="button" id="28">
+					<include content="ContextButton"/>
+					<label>$LOCALIZE[35233]</label>
+					<onclick>ActivateWindow(GameStretchMode)</onclick>
+				</control>
+				<control type="button" id="29">
+					<include content="ContextButton"/>
+					<label>$LOCALIZE[35227]</label>
+					<onclick>ActivateWindow(GameVideoRotation)</onclick>
+				</control>
+				<control type="button" id="30">
+					<include content="ContextButton"/>
+					<label>$LOCALIZE[13376]</label>
+					<onclick>ActivateWindow(GameVolume)</onclick>
+				</control>
+				<control type="button" id="31">
+					<include content="ContextButton"/>
+					<label>$LOCALIZE[10823]</label>
+					<onclick>ActivateWindow(GameControllers)</onclick>
+				</control>
+				<control type="button" id="32">
+					<include content="ContextButton"/>
+					<label>$LOCALIZE[35226]</label>
+					<onclick>ActivateWindow(GameAdvancedSettings)</onclick>
+				</control>
+				<control type="image" id="33">
+					<width>100%</width>
+					<height>61</height>
+					<texture border="65,0,65,0" colordiffuse="context_color">dialogs/context/bottom.png</texture>
+				</control>
+			</control>
+		</control>
+	</controls>
+</window>
