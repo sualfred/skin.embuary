@@ -420,6 +420,14 @@
 							<label>$VAR[VideoInfoButton8]</label>
 							<ondown>200</ondown>
 						</control>
+						<control type="button" id="102">
+							<include>LightGreyButton</include>
+							<label>$LOCALIZE[31011]</label>
+							<ondown>200</ondown>
+							<onclick>close</onclick>
+							<onclick>RunScript(script.embuary.helper,action=jumptoshow_by_episode,dbid=$INFO[ListItem.DBID])</onclick>
+							<visible>!String.IsEmpty(ListItem.DBID) + !String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)</visible>
+						</control>
 						<control type="button" id="11">
 							<visible>!String.IsEmpty(ListItem.Trailer)</visible>
 							<include>LightGreyButton</include>
