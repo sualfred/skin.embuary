@@ -751,18 +751,6 @@
 				<include>MetaLabel</include>
 				<visible>!String.IsEmpty($PARAM[type].Rating)</visible>
 			</control>
-			<control type="label">
-				<label></label>
-				<font>Material26</font>
-				<textcolor>red</textcolor>
-				<include>MetaLabel</include>
-				<visible>String.IsEmpty($PARAM[type].Rating) + !Window.IsVisible(fullscreeninfo) + !String.IsEmpty(Window(home).Property(TvShowRating)) + [String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,season)]</visible>
-			</control>
-			<control type="label">
-				<label>$INFO[Window(home).Property(TvShowRating)]   </label>
-				<include>MetaLabel</include>
-				<visible>String.IsEmpty($PARAM[type].Rating) + !Window.IsVisible(fullscreeninfo) + !String.IsEmpty(Window(home).Property(TvShowRating)) + [String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,season)]</visible>
-			</control>
 			<control type="image">
 				<animation effect="slide" end="0,3" time="0" condition="true">Conditional</animation>
 				<width>24</width>
@@ -808,26 +796,6 @@
 				<height>24</height>
 				<label/>
 				<visible>!String.IsEmpty($PARAM[type].Mpaa)</visible>
-			</control>
-			<control type="button">
-				<width min="24">auto</width>
-				<height>28</height>
-				<font>med16</font>
-				<label>$INFO[Window(home).Property(EmbyMPAA)]</label>
-				<textoffsetx>10</textoffsetx>
-				<align>center</align>
-				<textcolor>text_white</textcolor>
-				<disabledcolor>text_white</disabledcolor>
-				<texturefocus border="10" colordiffuse="text_white">icons/rating/mpaa.png</texturefocus>
-				<texturenofocus border="10" colordiffuse="text_white">icons/rating/mpaa.png</texturenofocus>
-				<enable>false</enable>
-				<visible>String.IsEmpty($PARAM[type].Mpaa) + !String.IsEmpty(Window(home).Property(EmbyMPAA)) + String.StartsWith($PARAM[type].Path,plugin://plugin.video.embycon)</visible>
-			</control>
-			<control type="label">
-				<width>12</width>
-				<height>24</height>
-				<label/>
-				<visible>String.IsEmpty($PARAM[type].Mpaa) + !String.IsEmpty(Window(home).Property(EmbyMPAA)) + String.StartsWith($PARAM[type].Path,plugin://plugin.video.embycon)</visible>
 			</control>
 		</definition>
 	</include>

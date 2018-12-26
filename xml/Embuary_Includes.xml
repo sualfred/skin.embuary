@@ -730,24 +730,7 @@
 			<texturefocus></texturefocus>
 			<texturenofocus></texturenofocus>
 			<onfocus>ClearProperty(FocusBounce,home)</onfocus>
-			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow)">SetProperty(TVShowRating,$INFO[Container($PARAM[id]).ListItem.Rating],home)</onfocus>
-			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow)">SetProperty(TVShowDBID,$INFO[Container($PARAM[id]).ListItem.DBID],home)</onfocus>
-			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow)">SetProperty(TVShowYear,$INFO[Container($PARAM[id]).ListItem.Year],home)</onfocus>
-			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow)">SetProperty(UnwatchedEpisodes,$INFO[Container($PARAM[id]).ListItem.Property(unwatchedepisodes)],home)</onfocus>
-			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow) + String.StartsWith(Container($PARAM[id]).ListItem.Path,plugin://plugin.video.embycon)">SetProperty(EmbyID,$INFO[Container($PARAM[id]).ListItem.Property(id)],home)</onfocus>
-			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow) + String.StartsWith(Container($PARAM[id]).ListItem.Path,plugin://plugin.video.embycon)">SetProperty(EmbyMPAA,$INFO[Container($PARAM[id]).ListItem.MPAA],home)</onfocus>
-			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow) + String.StartsWith(Container($PARAM[id]).ListItem.Path,plugin://plugin.video.embycon)">SetProperty(EmbyGenre,$INFO[Container($PARAM[id]).ListItem.Genre],home)</onfocus>
-			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow) + String.StartsWith(Container($PARAM[id]).ListItem.Path,plugin://plugin.video.embycon)">SetProperty(UnwatchedEpisodes,$INFO[Container($PARAM[id]).ListItem.Property(unwatchedepisodes)],home)</onfocus>
 		</control>
-	</include>
-	<include name="UnloadSetProperties">
-		<onunload condition="Window.Next(home)">ClearProperty(TVShowRating,home)</onunload>
-		<onunload condition="Window.Next(home)">ClearProperty(TVShowDBID,home)</onunload>
-		<onunload condition="Window.Next(home)">ClearProperty(TVShowYear,home)</onunload>
-		<onunload condition="Window.Next(home)">ClearProperty(EmbyID,home)</onunload>
-		<onunload condition="Window.Next(home)">ClearProperty(EmbyMPAA,home)</onunload>
-		<onunload condition="Window.Next(home)">ClearProperty(EmbyGenre,home)</onunload>
-		<onunload condition="Window.Next(home)">ClearProperty(UnwatchedEpisodes,home)</onunload>
 	</include>
 	<!-- Global property onload unload -->
 	<include name="PropertyIncludes">

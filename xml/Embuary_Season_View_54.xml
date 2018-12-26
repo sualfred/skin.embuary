@@ -110,15 +110,6 @@
 						</control>
 						<!-- genre -->
 						<include>MetaGenre</include>
-						<control type="label">
-							<width>auto</width>
-							<height>40</height>
-							<label>$INFO[Window(home).Property(EmbyGenre),$LOCALIZE[515]: ,   ]</label>
-							<font>reg22</font>
-							<aligny>top</aligny>
-							<textcolor>$VAR[AccentColor]</textcolor>
-							<visible>String.IsEmpty(ListItem.Genre) + !String.IsEmpty(Window(home).Property(EmbyGenre)) + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)</visible>
-						</control>
 						<control type="textbox">
 							<width>100%</width>
 							<height max="130">auto</height>
@@ -148,28 +139,11 @@
 					</include>
 				</control>
 			</control>
-			<!-- Next Up -->
-			<include content="WideWidget">
-				<param name="force_visible" value="Integer.IsGreater(Container(2002).NumItems,0)"/>
-				<param name="id" value="200"/>
-				<param name="onup" value="54"/>
-				<param name="ondown" value="300"/>
-				<param name="onback" value="54"/>
-				<param name="height" value="438"/>
-				<param name="sublabel" value=""/>
-				<param name="sortby" value="playcount"/>
-				<param name="sortorder" value="ascending"/>
-				<param name="limit" value="1"/>
-				<param name="headline" value="$LOCALIZE[31012]"/>
-				<param name="use_custom_onclick" value="true"/>
-				<param name="onclick" value="RunScript(script.embuary.helper,action=playfromhome,item='$ESCINFO[ListItem.Filenameandpath]')"/>
-				<param name="content" value="$VAR[View54_NextUp_Content]"/>
-			</include>
 			<!-- Cast -->
 			<include content="CastWidget">
 				<param name="visible" value="Integer.IsGreater(Container(2000).NumItems,0)"/>
-				<param name="id" value="300"/>
-				<param name="onup" value="200"/>
+				<param name="id" value="200"/>
+				<param name="onup" value="54"/>
 				<param name="ondown" value="noop"/>
 				<param name="onback" value="54"/>
 				<param name="content" value="$VAR[View_Cast_Content]"/>
