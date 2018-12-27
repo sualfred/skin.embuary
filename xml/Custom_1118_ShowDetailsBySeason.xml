@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window id="1118" type="dialog">
+	<visible>Container.Content(seasons) + String.IsEmpty(Container.Pluginname)</visible>
+	<onload condition="!String.IsEmpty(ListItemAbsolute(0).DBID)">Runscript(script.embuary.helper,action=details_by_season,dbid=$INFO[ListItemAbsolute(0).DBID])</onload>
+	<onload condition="String.IsEmpty(ListItemAbsolute(0).DBID) + !String.IsEmpty(ListItemAbsolute(1).DBID)">Runscript(script.embuary.helper,action=details_by_season,dbid=$INFO[ListItemAbsolute(1).DBID])</onload>
+	<onunload>ClearProperty(tvshow.dbid,home)</onunload>
+	<onunload>ClearProperty(tvshow.rating,home)</onunload>
+	<onunload>ClearProperty(tvshow.seasons,home)</onunload>
+	<onunload>ClearProperty(tvshow.episodes,home)</onunload>
+	<onunload>ClearProperty(tvshow.watchedepisodes,home)</onunload>
+	<onunload>ClearProperty(tvshow.unwatchedepisodes,home)</onunload>
+	<controls/>
+</window>

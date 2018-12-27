@@ -720,6 +720,19 @@
 				<include>MetaLabel</include>
 				<visible>!String.IsEmpty($PARAM[type].Rating)</visible>
 			</control>
+			<control type="label">
+				<animation effect="slide" end="0,1" time="0" condition="true">Conditional</animation>
+				<label></label>
+				<font>Material26</font>
+				<textcolor>red</textcolor>
+				<include>MetaLabel</include>
+				<visible>String.IsEmpty($PARAM[type].Rating) + !String.IsEmpty(Window(home).Property(tvshow.rating))</visible>
+			</control>
+			<control type="label">
+				<label>$INFO[Window(home).Property(tvshow.rating)]   </label>
+				<include>MetaLabel</include>
+				<visible>String.IsEmpty($PARAM[type].Rating) + !String.IsEmpty(Window(home).Property(tvshow.rating))</visible>
+			</control>
 			<control type="image">
 				<animation effect="slide" end="0,3" time="0" condition="true">Conditional</animation>
 				<width>24</width>
