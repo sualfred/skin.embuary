@@ -23,9 +23,8 @@
 					<left>690</left>
 					<height>100%</height>
 					<onup>SetFocus(6666)</onup>
-					<onright condition="Control.IsVisible(17)">SetFocus(17)</onright>
-					<onright condition="!Control.IsVisible(17) + Control.IsVisible(7000)">SetFocus(7000)</onright>
-					<onright condition="!Control.IsVisible(17) + !Control.IsVisible(7000)">SetFocus(6666)</onright>
+					<onright condition="!Control.IsVisible(7000) + Control.IsVisible(17)">SetFocus(17)</onright>
+					<onright condition="Control.IsVisible(7000)">SetFocus(7000)</onright>
 					<ondown>noop</ondown>
 					<onleft condition="Window.IsVisible(MyPlaylist.xml)">100</onleft>
 					<onleft condition="!Window.IsVisible(MyPlaylist.xml)">900</onleft>
@@ -38,7 +37,7 @@
 					<include>ScrollTime</include>
 					<preloaditems>4</preloaditems>
 					<oninfo condition="String.IsEqual(ListItem.DBType,set) + !String.IsEmpty(Container(2001).ListItem.Label)">RunScript(script.embuary.helper,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCVAR[ListViewPlot]')</oninfo>
-					<itemlayout height="120" width="1230">
+					<itemlayout condition="!Control.IsVisible(7000)" height="120" width="1230">
 						<control type="group">
 							<left>70</left>
 							<right>70</right>
@@ -52,7 +51,39 @@
 							</include>
 						</control>
 					</itemlayout>
-					<focusedlayout height="120" width="1230">
+					<focusedlayout condition="!Control.IsVisible(7000)"  height="120" width="1230">
+						<include content="SetPropertyOnFocus">
+							<param name="id" value="$PARAM[id]"/>
+						</include>
+						<control type="group">
+							<left>70</left>
+							<right>70</right>
+							<include content="ListLayout">
+								<param name="focused" value="true"/>
+								<param name="id">$PARAM[id]</param>
+								<param name="mainlabel">$PARAM[mainlabel]</param>
+								<param name="sublabel">$PARAM[sublabel]</param>
+								<param name="rightlabel">$PARAM[rightlabel]</param>
+								<param name="rightlabel2">$PARAM[rightlabel2]</param>
+								<param name="fallbacklabel">$PARAM[fallbacklabel]</param>
+							</include>
+						</control>
+					</focusedlayout>
+					<itemlayout condition="Control.IsVisible(7000)" height="120" width="1190">
+						<control type="group">
+							<left>70</left>
+							<right>70</right>
+							<include content="ListLayout">
+								<param name="id">$PARAM[id]</param>
+								<param name="mainlabel">$PARAM[mainlabel]</param>
+								<param name="sublabel">$PARAM[sublabel]</param>
+								<param name="rightlabel">$PARAM[rightlabel]</param>
+								<param name="rightlabel2">$PARAM[rightlabel2]</param>
+								<param name="fallbacklabel">$PARAM[fallbacklabel]</param>
+							</include>
+						</control>
+					</itemlayout>
+					<focusedlayout condition="Control.IsVisible(7000)"  height="120" width="1190">
 						<include content="SetPropertyOnFocus">
 							<param name="id" value="$PARAM[id]"/>
 						</include>
