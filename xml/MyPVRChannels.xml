@@ -44,10 +44,10 @@
 		<control type="group">
 			<include>FullscreenDimensions</include>
 			<include content="DiffuseMask">
-				<param name="visible">ControlGroup(4000).HasFocus</param>
+				<param name="visible">ControlGroup(4000).HasFocus + !Window.IsVisible(selectdialog)</param>
 			</include>
 			<control type="group">
-				<visible>ControlGroup(4000).HasFocus</visible>
+				<visible>ControlGroup(4000).HasFocus + !Window.IsVisible(selectdialog)</visible>
 				<include>Visible_PopupOpenClose</include>
 				<centerleft>50%</centerleft>
 				<width>500</width>
