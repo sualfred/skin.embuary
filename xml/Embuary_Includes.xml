@@ -627,101 +627,120 @@
 					<orientation>vertical</orientation>
 					<defaultcontrol>0</defaultcontrol>
 					<itemlayout height="35" width="45">
-						<control type="group">
-							<visible>!String.IsEqual(ListItem.Label,Container.ListItem.SortLetter) + !String.IsEqual(ListItem.Property(IsNumber),Container.ListItem.SortLetter)</visible>
-							<control type="textbox">
-								<width>40</width>
-								<height>40</height>
-								<font>JumpToLetter</font>
-								<align>center</align>
-								<aligny>center</aligny>
-								<textcolor>text_sublabel</textcolor>
-								<label>$INFO[ListItem.Label]</label>
-								<visible>String.IsEmpty(ListItem.Property(NotAvailable))</visible>
-							</control>
-							<control type="textbox">
-								<width>40</width>
-								<height>40</height>
-								<font>JumpToLetter</font>
-								<align>center</align>
-								<aligny>center</aligny>
-								<textcolor>disabled</textcolor>
-								<label>$INFO[ListItem.Label]</label>
-								<visible>!String.IsEmpty(ListItem.Property(NotAvailable))</visible>
-							</control>
-						</control>
-						<control type="textbox">
-							<width>40</width>
-							<height>40</height>
-							<font>JumpToLetter</font>
-							<align>center</align>
-							<aligny>center</aligny>
-							<textcolor>white</textcolor>
-							<label>$INFO[ListItem.Label]</label>
-							<visible>String.IsEqual(ListItem.Label,Container.ListItem.SortLetter) | String.IsEqual(ListItem.Property(IsNumber),Container.ListItem.SortLetter)</visible>
-						</control>
+						<include content="JumpToLetter_Itemlayout">
+							<param name="id" value="$PARAM[id]"/>
+						</include>
 					</itemlayout>
-					<focusedlayout height="35" width="45">
-						<control type="group">
-							<visible>!Control.HasFocus($PARAM[id])</visible>
-							<control type="group">
-								<visible>!String.IsEqual(ListItem.Label,Container.ListItem.SortLetter) + !String.IsEqual(ListItem.Property(IsNumber),Container.ListItem.SortLetter)</visible>
-								<control type="textbox">
-									<width>40</width>
-									<height>40</height>
-									<font>JumpToLetter</font>
-									<align>center</align>
-									<aligny>center</aligny>
-									<textcolor>text_sublabel</textcolor>
-									<label>$INFO[ListItem.Label]</label>
-									<visible>String.IsEmpty(ListItem.Property(NotAvailable))</visible>
-								</control>
-								<control type="textbox">
-									<width>40</width>
-									<height>40</height>
-									<font>JumpToLetter</font>
-									<align>center</align>
-									<aligny>center</aligny>
-									<textcolor>disabled</textcolor>
-									<label>$INFO[ListItem.Label]</label>
-									<visible>!String.IsEmpty(ListItem.Property(NotAvailable))</visible>
-								</control>
-							</control>
-							<control type="textbox">
-								<width>40</width>
-								<height>40</height>
-								<font>JumpToLetter</font>
-								<align>center</align>
-								<aligny>center</aligny>
-								<textcolor>white</textcolor>
-								<label>$INFO[ListItem.Label]</label>
-								<visible>String.IsEqual(ListItem.Label,Container.ListItem.SortLetter) | String.IsEqual(ListItem.Property(IsNumber),Container.ListItem.SortLetter)</visible>
-							</control>
-						</control>
-						<control type="group">
-							<visible>Control.HasFocus($PARAM[id])</visible>
-							<control type="image">
-								<left>-5</left>
-								<width>51</width>
-								<height>51</height>
-								<texture border="20,20,20,20" colordiffuse="$VAR[AccentColor]">items/focus.png</texture>
-								<visible>Control.HasFocus($PARAM[id])</visible>
-							</control>
-							<control type="textbox">
-								<width>40</width>
-								<height>40</height>
-								<font>JumpToLetter</font>
-								<align>center</align>
-								<aligny>center</aligny>
-								<textcolor>white</textcolor>
-								<label>$INFO[ListItem.Label]</label>
-							</control>
-						</control>
+					<focusedlayout condition="!Control.HasFocus($PARAM[id])" height="35" width="45">
+						<include content="JumpToLetter_Itemlayout">
+							<param name="id" value="$PARAM[id]"/>
+						</include>
+					</focusedlayout>
+					<focusedlayout condition="Control.HasFocus($PARAM[id])" height="35" width="45">
+						<include content="JumpToLetter_Focuslayout">
+							<param name="id" value="$PARAM[id]"/>
+						</include>
 					</focusedlayout>
 					<content>plugin://script.embuary.helper/?info=jumptoletter&amp;reload=$INFO[Container.NumItems]</content>
 				</control>
 			</control>
 		</definition>
+	</include>
+	<include name="JumpToLetter_horizontal">
+		<param name="id">7001</param>
+		<param name="top">0</param>
+		<param name="visible">[[Container.HasNext | Container.HasPrevious] + [[Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(artists) | Container.Content(albums) | Container.Content(addons)] + [String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[561]) | String.IsEqual(Container.SortMethod,$LOCALIZE[558]) | String.IsEqual(Container.SortMethod,$LOCALIZE[557]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556])]]]</param>
+		<definition>
+			<control type="group">
+				<top>$PARAM[top]</top>
+				<control type="panel" id="$PARAM[id]">
+					<visible>$PARAM[visible]</visible>
+					<include>Visible_OpenClose</include>
+					<right>57</right>
+					<width>950</width>
+					<height>45</height>
+					<onleft>noop</onleft>
+					<onright>noop</onright>
+					<onup>100</onup>
+					<ondown>SetFocus(50)</ondown>
+					<scrolltime>0</scrolltime>
+					<orientation>horizontal</orientation>
+					<defaultcontrol>0</defaultcontrol>
+					<itemlayout height="45" width="35">
+						<include content="JumpToLetter_Itemlayout">
+							<param name="id" value="$PARAM[id]"/>
+						</include>
+					</itemlayout>
+					<focusedlayout condition="!Control.HasFocus($PARAM[id])" height="45" width="35">
+						<include content="JumpToLetter_Itemlayout">
+							<param name="id" value="$PARAM[id]"/>
+						</include>
+					</focusedlayout>
+					<focusedlayout condition="Control.HasFocus($PARAM[id])" height="45" width="35">
+						<include content="JumpToLetter_Focuslayout">
+							<param name="id" value="$PARAM[id]"/>
+						</include>
+					</focusedlayout>
+					<content>plugin://script.embuary.helper/?info=jumptoletter&amp;reload=$INFO[Container.NumItems]</content>
+				</control>
+			</control>
+		</definition>
+	</include>
+	<include name="JumpToLetter_Itemlayout">
+		<control type="group">
+			<visible>!String.IsEqual(ListItem.Label,Container.ListItem.SortLetter) + !String.IsEqual(ListItem.Property(IsNumber),Container.ListItem.SortLetter)</visible>
+			<animation effect="fade" start="100" end="70" time="0" condition="!Control.HasFocus($PARAM[id])">Conditional</animation>
+			<control type="textbox">
+				<width>40</width>
+				<height>40</height>
+				<font>JumpToLetter</font>
+				<align>center</align>
+				<aligny>center</aligny>
+				<textcolor>text_sublabel</textcolor>
+				<label>$INFO[ListItem.Label]</label>
+				<visible>String.IsEmpty(ListItem.Property(NotAvailable))</visible>
+			</control>
+			<control type="textbox">
+				<width>40</width>
+				<height>40</height>
+				<font>JumpToLetter</font>
+				<align>center</align>
+				<aligny>center</aligny>
+				<textcolor>disabled</textcolor>
+				<label>$INFO[ListItem.Label]</label>
+				<visible>!String.IsEmpty(ListItem.Property(NotAvailable))</visible>
+			</control>
+		</control>
+		<control type="textbox">
+			<width>40</width>
+			<height>40</height>
+			<font>JumpToLetter</font>
+			<align>center</align>
+			<aligny>center</aligny>
+			<textcolor>white</textcolor>
+			<label>$INFO[ListItem.Label]</label>
+			<visible>String.IsEqual(ListItem.Label,Container.ListItem.SortLetter) | String.IsEqual(ListItem.Property(IsNumber),Container.ListItem.SortLetter)</visible>
+		</control>
+	</include>
+	<include name="JumpToLetter_Focuslayout">
+		<control type="group">
+			<control type="image">
+				<left>-5</left>
+				<width>51</width>
+				<height>51</height>
+				<texture border="20,20,20,20" colordiffuse="$VAR[AccentColor]">items/focus.png</texture>
+				<visible>Control.HasFocus($PARAM[id])</visible>
+			</control>
+			<control type="textbox">
+				<width>40</width>
+				<height>40</height>
+				<font>JumpToLetter</font>
+				<align>center</align>
+				<aligny>center</aligny>
+				<textcolor>white</textcolor>
+				<label>$INFO[ListItem.Label]</label>
+			</control>
+		</control>
 	</include>
 	<!-- Invisible focus button -->
 	<include name="SetPropertyOnFocus">
