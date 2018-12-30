@@ -353,7 +353,7 @@
 					<!--top-->
 					<include content="SideButton">
 						<param name="id">900</param>
-						<param name="onup">918</param>
+						<param name="onup">917</param>
 						<param name="ondown">901</param>
 						<param name="onright">$PARAM[onright]</param>
 						<param name="label">31000</param>
@@ -374,8 +374,8 @@
 						<param name="onright">$PARAM[onright]</param>
 						<param name="label">342</param>
 						<param name="icon">&#xE04A;</param>
-						<param name="condition1">Library.HasContent(movies)</param>
-						<param name="condition2">!Library.HasContent(movies)</param>
+						<param name="condition1">Library.HasContent(movies) | System.HasAddon(plugin.video.embycon)</param>
+						<param name="condition2">!Library.HasContent(movies) + !System.HasAddon(plugin.video.embycon)</param>
 						<param name="action1">ActivateWindow(1120)</param>
 						<param name="action2">ActivateWindow(Videos,sources://video/,return)</param>
 						<param name="visible">!Skin.HasSetting(HideSPMovies)</param>
@@ -387,8 +387,8 @@
 						<param name="onright">$PARAM[onright]</param>
 						<param name="label">20343</param>
 						<param name="icon">&#xE04A;</param>
-						<param name="condition1">Library.HasContent(tvshows)</param>
-						<param name="condition2">!Library.HasContent(tvshows)</param>
+						<param name="condition1">Library.HasContent(tvshows) | System.HasAddon(plugin.video.embycon)</param>
+						<param name="condition2">!Library.HasContent(tvshows) + !System.HasAddon(plugin.video.embycon)</param>
 						<param name="action1">ActivateWindow(1121)</param>
 						<param name="action2">ActivateWindow(Videos,sources://video/,return)</param>
 						<param name="visible">!Skin.HasSetting(HideSPTVshows)</param>
@@ -420,8 +420,8 @@
 						<param name="onright">$PARAM[onright]</param>
 						<param name="label">2</param>
 						<param name="icon">&#xE030;</param>
-						<param name="condition1">Library.HasContent(music)</param>
-						<param name="condition2">!Library.HasContent(music)</param>
+						<param name="condition1">Library.HasContent(music) | System.HasAddon(plugin.video.embycon)</param>
+						<param name="condition2">!Library.HasContent(music) + !System.HasAddon(plugin.video.embycon)</param>
 						<param name="action1">ActivateWindow(1122)</param>
 						<param name="action2">ActivateWindow(Music,root,return)</param>
 						<param name="visible">!Skin.HasSetting(HideSPMusic)</param>
@@ -459,25 +459,15 @@
 						<param name="onup">907</param>
 						<param name="ondown">909</param>
 						<param name="onright">$PARAM[onright]</param>
-						<param name="label">427</param>
-						<param name="icon">&#xE037;</param>
-						<param name="action1">PlayDisc</param>
-						<param name="visible">System.HasMediaDVD</param>
-					</include>
-					<include content="SideButton">
-						<param name="id">909</param>
-						<param name="onup">908</param>
-						<param name="ondown">910</param>
-						<param name="onright">$PARAM[onright]</param>
 						<param name="label">24001</param>
 						<param name="icon">&#xE5C3;</param>
 						<param name="action1">ActivateWindow(addonbrowser)</param>
 						<param name="visible">!Skin.HasSetting(HideSPAddons)</param>
 					</include>
 					<include content="SideButton">
-						<param name="id">910</param>
-						<param name="onup">909</param>
-						<param name="ondown">911</param>
+						<param name="id">909</param>
+						<param name="onup">908</param>
+						<param name="ondown">910</param>
 						<param name="onright">$PARAM[onright]</param>
 						<param name="label">10134</param>
 						<param name="icon">&#xE838;</param>
@@ -485,9 +475,9 @@
 						<param name="visible">!Skin.HasSetting(HideSPFavourites)</param>
 					</include>
 					<include content="SideButton">
-						<param name="id">911</param>
-						<param name="onup">910</param>
-						<param name="ondown">912</param>
+						<param name="id">910</param>
+						<param name="onup">909</param>
+						<param name="ondown">911</param>
 						<param name="onright">$PARAM[onright]</param>
 						<param name="label">8</param>
 						<param name="icon">&#xE430;</param>
@@ -495,7 +485,7 @@
 						<param name="action1">ActivateWindow(Weather)</param>
 						<param name="condition2">String.IsEmpty(Weather.Plugin)</param>
 						<param name="action2">ReplaceWindow(servicesettings,weather)</param>
-						<param name="visible">!Skin.HasSetting(HideSPWeather) + !Skin.HasSetting(HideHeaderWeather) + !String.IsEmpty(Weather.Temperature) + !String.Contains(Weather.Temperature,$LOCALIZE[503]) + !String.IsEqual(Weather.fanartcode,na) + Weather.IsFetched</param>
+						<param name="visible">!Skin.HasSetting(HideSPWeather) + !String.IsEmpty(Weather.Temperature) + !String.Contains(Weather.Temperature,$LOCALIZE[503]) + !String.IsEqual(Weather.fanartcode,na) + Weather.IsFetched</param>
 					</include>
 					<!-- seperator -->
 					<include content="SideHeadline">
@@ -504,29 +494,30 @@
 					</include>
 					<!-- system -->
 					<include content="SideButton">
+						<param name="id">911</param>
+						<param name="onup">910</param>
+						<param name="ondown">912</param>
+						<param name="onright">$PARAM[onright]</param>
+						<param name="label">$LOCALIZE[31226]</param>
+						<param name="icon"></param>
+						<param name="action1">RunScript(plugin.video.embycon,0,?mode=CHANGE_USER)</param>
+						<param name="visible">!Skin.HasSetting(KioskMode) + !Skin.HasSetting(HideSPEmbyConUser)</param>
+					</include>
+					<include content="SideButton">
 						<param name="id">912</param>
 						<param name="onup">911</param>
 						<param name="ondown">913</param>
 						<param name="onright">$PARAM[onright]</param>
-						<param name="label">$LOCALIZE[184] ($LOCALIZE[3])</param>
+						<param name="label">$LOCALIZE[799]</param>
 						<param name="icon"></param>
 						<param name="action1">UpdateLibrary(video)</param>
-						<param name="visible">!Skin.HasSetting(KioskMode) + !Skin.HasSetting(HideSPVideoUpdate)</param>
+						<param name="action2">UpdateLibrary(music)</param>
+						<param name="visible">!Skin.HasSetting(KioskMode) + !Skin.HasSetting(HideSPLibUpdate)</param>
 					</include>
 					<include content="SideButton">
 						<param name="id">913</param>
 						<param name="onup">912</param>
 						<param name="ondown">914</param>
-						<param name="onright">$PARAM[onright]</param>
-						<param name="label">$LOCALIZE[184] ($LOCALIZE[2])</param>
-						<param name="icon"></param>
-						<param name="action1">UpdateLibrary(music)</param>
-						<param name="visible">!Skin.HasSetting(KioskMode) + !Skin.HasSetting(HideSPMusicUpdate)</param>
-					</include>
-					<include content="SideButton">
-						<param name="id">914</param>
-						<param name="onup">913</param>
-						<param name="ondown">915</param>
 						<param name="onright">$PARAM[onright]</param>
 						<param name="label">$LOCALIZE[31129]</param>
 						<param name="icon"></param>
@@ -536,9 +527,9 @@
 						<param name="visible">!Skin.HasSetting(KioskMode) + !Skin.HasSetting(HideSPAddonUpdate)</param>
 					</include>
 					<include content="SideButton">
-						<param name="id">915</param>
-						<param name="onup">914</param>
-						<param name="ondown">916</param>
+						<param name="id">914</param>
+						<param name="onup">913</param>
+						<param name="ondown">915</param>
 						<param name="onright">$PARAM[onright]</param>
 						<param name="label">5</param>
 						<param name="icon">&#xE8B8;</param>
@@ -546,9 +537,9 @@
 						<param name="visible">!Skin.HasSetting(KioskMode)</param>
 					</include>
 					<include content="SideButton">
-						<param name="id">916</param>
-						<param name="onup">915</param>
-						<param name="ondown">917</param>
+						<param name="id">915</param>
+						<param name="onup">914</param>
+						<param name="ondown">916</param>
 						<param name="onright">$PARAM[onright]</param>
 						<param name="label">14260</param>
 						<param name="icon">&#xE868;</param>
@@ -556,9 +547,9 @@
 						<param name="visible">!Skin.HasSetting(KioskMode) + !Skin.HasSetting(HideSPDebug)</param>
 					</include>
 					<include content="SideButton">
-						<param name="id">917</param>
-						<param name="onup">916</param>
-						<param name="ondown">918</param>
+						<param name="id">916</param>
+						<param name="onup">915</param>
+						<param name="ondown">917</param>
 						<param name="onright">$PARAM[onright]</param>
 						<param name="label">20183</param>
 						<param name="icon"></param>
@@ -566,8 +557,8 @@
 						<param name="visible">!Skin.HasSetting(KioskMode) + !Skin.HasSetting(HideSPReload)</param>
 					</include>
 					<include content="SideButton">
-						<param name="id">918</param>
-						<param name="onup">917</param>
+						<param name="id">917</param>
+						<param name="onup">916</param>
 						<param name="ondown">900</param>
 						<param name="onright">$PARAM[onright]</param>
 						<param name="label">$LOCALIZE[33060]</param>

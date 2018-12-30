@@ -3,6 +3,9 @@
 	<defaultcontrol always="true">3</defaultcontrol>
 	<include>PropertyIncludes</include>
 	<controls>
+		<control type="label" id="1">
+			<include>HiddenObject</include>
+		</control>
 		<!-- Small select dialog -->
 		<control type="group">
 			<visible>Control.IsVisible(3)</visible>
@@ -11,7 +14,7 @@
 				<top>-10</top>
 				<left>-10</left>
 				<width>1</width>
-				<height>800</height>
+				<height>750</height>
 				<pagecontrol>17</pagecontrol>
 				<onup>noop</onup>
 				<onleft>100</onleft>
@@ -43,6 +46,28 @@
 						<width>100%</width>
 						<height>61</height>
 						<texture border="65,0,65,0" colordiffuse="context_color">dialogs/context/top.png</texture>
+					</control>
+					<control type="group">
+						<visible>!String.IsEmpty(Control.GetLabel(1))</visible>
+						<width>100%</width>
+						<height>50</height>
+						<control type="image">
+							<width>100%</width>
+							<height>50</height>
+							<texture border="65,10,65,10" colordiffuse="context_color">dialogs/context/middle.png</texture>
+						</control>
+						<control type="label">
+							<width>100%</width>
+							<height>50</height>
+							<align>left</align>
+							<aligny>center</aligny>
+							<textoffsetx>80</textoffsetx>
+							<font>med22</font>
+							<textcolor>disabled</textcolor>
+							<textshadow>text_shadow</textshadow>
+							<scroll>true</scroll>
+							<label>$INFO[Control.GetLabel(1)]</label>
+						</control>
 					</control>
 					<include content="SmallSelectDialogItem">
 						<param name="id" value="0"/>
@@ -88,9 +113,6 @@
 					</include>
 					<include content="SmallSelectDialogItem">
 						<param name="id" value="14"/>
-					</include>
-					<include content="SmallSelectDialogItem">
-						<param name="id" value="15"/>
 					</include>
 					<control type="group">
 						<width>100%</width>
@@ -158,13 +180,14 @@
 				<!-- edit -->
 				<control type="group">
 					<height>50</height>
-					<control type="label" id="1">
+					<control type="label">
 						<width>100%</width>
 						<height>48</height>
 						<font>Reg24</font>
 						<aligny>center</aligny>
 						<textoffsetx>5</textoffsetx>
 						<textcolor>text_headline</textcolor>
+						<label>$INFO[Control.GetLabel(1)]</label>
 					</control>
 					<include>GreenBar</include>
 				</control>
