@@ -819,6 +819,7 @@
 						<onclick>Skin.ToggleSetting(HideSPPVR)</onclick>
 						<selected>!Skin.HasSetting(HideSPPVR)</selected>
 						<label>$LOCALIZE[31138]</label>
+						<enable>Pvr.HasTVChannels | Pvr.HasRadioChannels</enable>
 					</control>
 					<control type="radiobutton" id="454">
 						<include>SettingsButton</include>
@@ -860,6 +861,7 @@
 						<onclick>Skin.ToggleSetting(HideSPWeather)</onclick>
 						<selected>!Skin.HasSetting(HideSPWeather)</selected>
 						<label>$LOCALIZE[31143]</label>
+						<enable>Weather.IsFetched</enable>
 					</control>
 					<!-- system -->
 					<include content="SkinSettingsHeadlineLabel">
@@ -868,14 +870,15 @@
 					</include>
 					<control type="radiobutton" id="471">
 						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideSPVideoUpdate)</onclick>
-						<selected>!Skin.HasSetting(HideSPVideoUpdate)</selected>
+						<onclick>Skin.ToggleSetting(HideSPEmbyConUser)</onclick>
+						<selected>!Skin.HasSetting(HideSPEmbyConUser)</selected>
 						<label>$LOCALIZE[31113]</label>
+						<enable>System.HasAddon(plugin.video.embycon)</enable>
 					</control>
 					<control type="radiobutton" id="472">
 						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideSPMusicUpdate)</onclick>
-						<selected>!Skin.HasSetting(HideSPMusicUpdate)</selected>
+						<onclick>Skin.ToggleSetting(HideSPLibUpdate)</onclick>
+						<selected>!Skin.HasSetting(HideSPLibUpdate)</selected>
 						<label>$LOCALIZE[31114]</label>
 					</control>
 					<control type="radiobutton" id="473">
