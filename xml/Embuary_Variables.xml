@@ -551,29 +551,42 @@
 		<value condition="!String.IsEmpty(ListItem.Art(tvshow.fanart))">$INFO[ListItem.Art(tvshow.fanart)]</value>
 	</variable>
 	<variable name="IconLandscape">
-		<value condition="Container.Content(images) + !String.StartsWith(ListItem.Icon,Default)">$INFO[ListItem.Icon]</value>
-		<value condition="!String.IsEmpty(ListItem.EpgEventIcon)">$INFO[ListItem.EpgEventIcon]</value>
 		<value condition="Window.IsVisible(videobookmarks) + !String.StartsWith(ListItem.Icon,Default)">$INFO[ListItem.Icon]</value>
+		<!-- pvr -->
+		<value condition="!String.IsEmpty(ListItem.EpgEventIcon)">$INFO[ListItem.EpgEventIcon]</value>
 		<value condition="String.StartsWith(ListItem.Path,pvr://) + !String.StartsWith(ListItem.Icon,Default)">$INFO[ListItem.Icon]</value>
+		<!-- episodes -->
 		<value condition="Window.IsVisible(1115) + String.IsEqual(ListItem.DBType,episode) + !String.StartsWith(ListItem.Art(thumb),Default)">$VAR[IconEpisodeThumb]</value>
 		<value condition="[Window.IsVisible(movieinformation) | Window.IsVisible(favourites)] + [String.IsEqual(ListItem.DBType,episode) | !String.IsEmpty(ListItem.Episode)] + !String.StartsWith(ListItem.Art(thumb),Default)">$VAR[IconEpisodeThumb]</value>
 		<value condition="[String.IsEqual(ListItem.DBType,episode) | Container.Content(episodes)] + Window.IsMedia + !String.StartsWith(ListItem.Art(thumb),Default)">$VAR[IconEpisodeThumb]</value>
+		<value condition="[String.IsEqual(ListItem.DBType,episode) | Container.Content(episodes)] + !String.IsEmpty(ListItem.Art(tvshow.landscape))">$INFO[ListItem.Art(tvshow.landscape)]</value>
+		<value condition="[String.IsEqual(ListItem.DBType,episode) | Container.Content(episodes)] + !String.IsEmpty(ListItem.Art(landscape))">$INFO[ListItem.Art(landscape)]</value>
+		<value condition="[String.IsEqual(ListItem.DBType,episode) | Container.Content(episodes)] + !String.IsEmpty(ListItem.Art(tvshow.fanart))">$INFO[ListItem.Art(tvshow.fanart)]</value>
+		<value condition="[String.IsEqual(ListItem.DBType,episode) | Container.Content(episodes)] + !String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
+		<!-- tvshows -->
+		<value condition="[String.IsEqual(ListItem.DBType,season) | Container.Content(seasons)] + !String.IsEmpty(ListItem.Art(tvshow.landscape))">$INFO[ListItem.Art(season.landscape)]</value>
+		<value condition="[String.IsEqual(ListItem.DBType,season) | Container.Content(seasons)] + !String.IsEmpty(ListItem.Art(landscape))">$INFO[ListItem.Art(landscape)]</value>
 		<value condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)] + !String.IsEmpty(ListItem.Art(tvshow.landscape))">$INFO[ListItem.Art(tvshow.landscape)]</value>
 		<value condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)] + !String.IsEmpty(ListItem.Art(landscape))">$INFO[ListItem.Art(landscape)]</value>
+		<value condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)] + !String.IsEmpty(ListItem.Art(tvshow.fanart))">$INFO[ListItem.Art(tvshow.fanart)]</value>
 		<value condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)] + !String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
-		<value condition="!String.IsEmpty(ListItem.Art(tvshow.landscape))">$INFO[ListItem.Art(tvshow.landscape)]</value>
-		<value condition="!String.IsEmpty(ListItem.Art(landscape))">$INFO[ListItem.Art(landscape)]</value>
-		<value condition="!String.IsEmpty(ListItem.Art(tvshow.fanart))">$INFO[ListItem.Art(tvshow.fanart)]</value>
-		<value condition="[Container.Content(videos) | String.IsEqual(ListItem.DBType,video) | [String.StartsWith(ListItem.Path,plugin://) + !String.StartsWith(ListItem.Path,plugin://plugin.video.emby)]] + !String.StartsWith(ListItem.Icon,Default)">$INFO[ListItem.Icon]</value>
+		<!-- movies -->
+		<value condition="[String.IsEqual(ListItem.DBType,movie) | Container.Content(movies)] + !String.IsEmpty(ListItem.Art(landscape))">$INFO[ListItem.Art(landscape)]</value>
+		<value condition="[String.IsEqual(ListItem.DBType,movie) | Container.Content(movies)] + !String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
+		<!-- other -->
+		<value condition="[Container.Content(videos) | String.IsEqual(ListItem.DBType,video)] + !String.StartsWith(ListItem.Icon,Default)">$INFO[ListItem.Icon]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(fanart)) + [!String.IsEmpty(ListItem.DBType) | String.StartsWith(ListItem.Path,plugin://) | Window.IsVisible(addonbrowser) | Window.IsVisible(programs) | Container.Content(addons)]">$INFO[ListItem.Art(fanart)]</value>
 		<value condition="!String.IsEmpty(ListItem.Property(fanart))">$INFO[ListItem.Property(fanart)]</value>
 		<value condition="!String.StartsWith(ListItem.Icon,Default)">$INFO[ListItem.Icon]</value>
 	</variable>
 	<variable name="IconEpisodeThumb">
 		<value condition="String.IsEqual(ListItem.Art(thumb),OverlaySpoiler.png)">special://skin/extras/themes/$VAR[SkinTheme]/unwatched.jpg</value>
-		<value condition="String.IsEmpty(ListItem.Art(thumb)) + !String.IsEmpty(ListItem.Art(landscape))">$INFO[ListItem.Art(landscape)]</value>
-		<value condition="String.IsEmpty(ListItem.Art(thumb)) + !String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
-		<value>$INFO[ListItem.Art(thumb)]</value>
+		<value condition="!String.IsEmpty(ListItem.Art(thumb))">$INFO[ListItem.Art(thumb)]</value>
+		<value condition="!String.IsEmpty(ListItem.Art(tvshow.landscape))">$INFO[ListItem.Art(tvshow.landscape)]</value>
+		<value condition="!String.IsEmpty(ListItem.Art(landscape))">$INFO[ListItem.Art(landscape)]</value>
+		<value condition="!String.IsEmpty(ListItem.Art(tvshow.fanart))">$INFO[ListItem.Art(tvshow.fanart)]</value>
+		<value condition="!String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
+		<value>$INFO[ListItem.Icon]</value>
 	</variable>
 	<variable name="IconPoster">
 		<value condition="!String.IsEmpty(ListItem.Art(season.poster))">$INFO[ListItem.Art(season.poster)]</value>
