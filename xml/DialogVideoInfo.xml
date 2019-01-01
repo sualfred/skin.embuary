@@ -1,25 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<defaultcontrol always="true">100</defaultcontrol>
-	<onload condition="String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) + [String.IsEqual(ListItem.DBType,season) + String.IsEqual(ListItem.Label,All)]">close</onload>
-	<onload condition="!String.IsEqual(ListItem.DBType,movie) + !String.IsEqual(ListItem.DBType,tvshow) + !String.IsEqual(ListItem.DBType,episode) + !String.IsEqual(ListItem.DBType,season) + String.IsEmpty(ListItem.Plot)">close</onload>
+	<onload condition="$EXP[AutoCloseInfoDialog]">close</onload>
+	<onload condition="!$EXP[AutoCloseInfoDialog]">Control.Move(200,$INFO[Container(200).CurrentItem,-])</onload>
+	<onload condition="!$EXP[AutoCloseInfoDialog]">Control.Move(200,1)</onload>
+	<onload condition="!$EXP[AutoCloseInfoDialog]">Control.Move(201,$INFO[Container(201).CurrentItem,-])</onload>
+	<onload condition="!$EXP[AutoCloseInfoDialog]">Control.Move(201,1)</onload>
+	<onload condition="!$EXP[AutoCloseInfoDialog]">Control.Move(202,$INFO[Container(202).CurrentItem,-])</onload>
+	<onload condition="!$EXP[AutoCloseInfoDialog]">Control.Move(202,1)</onload>
+	<onload condition="!$EXP[AutoCloseInfoDialog]">Control.Move(203,$INFO[Container(203).CurrentItem,-])</onload>
+	<onload condition="!$EXP[AutoCloseInfoDialog]">Control.Move(203,1)</onload>
+	<onload condition="!$EXP[AutoCloseInfoDialog]">Control.Move(204,$INFO[Container(204).CurrentItem,-])</onload>
+	<onload condition="!$EXP[AutoCloseInfoDialog]">Control.Move(204,1)</onload>
 	<include>PropertyIncludes</include>
-	<onload>Control.Move(200,$INFO[Container(200).CurrentItem,-])</onload>
-	<onload>Control.Move(200,1)</onload>
-	<onload>Control.Move(201,$INFO[Container(201).CurrentItem,-])</onload>
-	<onload>Control.Move(201,1)</onload>
-	<onload>Control.Move(202,$INFO[Container(202).CurrentItem,-])</onload>
-	<onload>Control.Move(202,1)</onload>
-	<onload>Control.Move(203,$INFO[Container(203).CurrentItem,-])</onload>
-	<onload>Control.Move(203,1)</onload>
-	<onload>Control.Move(204,$INFO[Container(204).CurrentItem,-])</onload>
-	<onload>Control.Move(204,1)</onload>
 	<controls>
 		<control type="group">
-			<visible>
-				![String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) + [String.IsEqual(ListItem.DBType,season) + String.IsEqual(ListItem.Label,All)]]
-				+ ![!String.IsEqual(ListItem.DBType,movie) + !String.IsEqual(ListItem.DBType,tvshow) + !String.IsEqual(ListItem.DBType,episode) + !String.IsEqual(ListItem.DBType,season) + String.IsEmpty(ListItem.Plot)]
-			</visible>
+			<visible>!$EXP[AutoCloseInfoDialog]</visible>
 			<!-- Hidden -->
 			<control type="list" id="2000">
 				<include>HiddenObject</include>
