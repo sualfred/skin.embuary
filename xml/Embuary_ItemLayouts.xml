@@ -164,15 +164,27 @@
 					<control type="image">
 						<bottom>0</bottom>
 						<width>100%</width>
-						<height>35</height>
-						<texture colordiffuse="black">views/player/mask_bottom.png</texture>
+						<height>60</height>
+						<texture colordiffuse="f2141414">views/player/mask_bottom.png</texture>
+					</control>
+					<control type="image">
+						<animation effect="slide" end="0,-2" time="0" condition="Integer.IsGreater(ListItem.Progress,0)">Conditional</animation>
+						<bottom>0</bottom>
+						<width>40%</width>
+						<height>60</height>
+						<texture background="true">$INFO[ListItem.Icon]</texture>
+						<aspectratio align="left">keep</aspectratio>
+						<bordersize>10</bordersize>
+						<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
 					</control>
 					<control type="label">
-						<bottom>10</bottom>
+						<animation effect="slide" end="0,-2" time="0" condition="Integer.IsGreater(ListItem.Progress,0)">Conditional</animation>
+						<bottom>0</bottom>
 						<right>10</right>
-						<left>10</left>
-						<height>20</height>
-						<label>$INFO[ListItem.ChannelNumberLabel,,. ]$INFO[ListItem.Channelname]</label>
+						<width>60%</width>
+						<height>60</height>
+						<aligny>center</aligny>
+						<label>$INFO[ListItem.Channelname]</label>
 						<font>BubbleFont</font>
 						<textcolor>ffdfdfdf</textcolor>
 						<shadowcolor>text_shadow</shadowcolor>
