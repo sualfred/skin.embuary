@@ -322,33 +322,37 @@
 		</control>
 	</include>
 	<include name="listitem_action_overlay">
-		<control type="group">
-			<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
-			<include>Animation_FocusTextureFade</include>
-			<control type="image">
-				<texture>items/inner_shadow.png</texture>
-				<aspectratio>stretch</aspectratio>
-			</control>
+		<param name="visible_icon">true</param>
+		<definition>
 			<control type="group">
-				<visible>[!String.IsEmpty(ListItem.DBtype) + !String.IsEmpty(ListItem.DBID)] | [!String.IsEmpty(ListItem.FileNameAndPath) + [String.StartsWith(ListItem.Path,plugin://plugin.video) | String.StartsWith(ListItem.Path,plugin://plugin.audio) | String.Contains(ListItem.AddonType,$LOCALIZE[20094])]] | String.StartsWith(ListItem.Path,pvr://channels) | String.StartsWith(ListItem.Path,pvr://recordings) | [ListItem.IsFolder + !String.StartsWith(ListItem.Path,pvr://)] | String.IsEqual(ListItem.Property(IsFolder),true)</visible>
+				<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
+				<include>Animation_FocusTextureFade</include>
 				<control type="image">
-					<centerleft>50%</centerleft>
-					<centertop>50%</centertop>
-					<width>70</width>
-					<height>70</height>
-					<texture>items/icon_play.png</texture>
-					<visible>![[String.IsEqual(ListItem.Property(IsFolder),true) | String.IsEqual(ListItem.DBType,set) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | String.IsEqual(ListItem.DBType,artist) | ListItem.IsFolder] + !String.IsEqual(ListItem.DBType,album)]</visible>
+					<texture>items/inner_shadow.png</texture>
+					<aspectratio>stretch</aspectratio>
 				</control>
-				<control type="image">
-					<centerleft>50%</centerleft>
-					<centertop>50%</centertop>
-					<width>70</width>
-					<height>70</height>
-					<texture>items/icon_folder.png</texture>
-					<visible>[String.IsEqual(ListItem.Property(IsFolder),true) | String.IsEqual(ListItem.DBType,set) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | String.IsEqual(ListItem.DBType,artist) | ListItem.IsFolder] + !String.IsEqual(ListItem.DBType,album)</visible>
+				<control type="group">
+					<visible>$PARAM[visible_icon]</visible>
+					<visible>[!String.IsEmpty(ListItem.DBtype) + !String.IsEmpty(ListItem.DBID)] | [!String.IsEmpty(ListItem.FileNameAndPath) + [String.StartsWith(ListItem.Path,plugin://plugin.video) | String.StartsWith(ListItem.Path,plugin://plugin.audio) | String.Contains(ListItem.AddonType,$LOCALIZE[20094])]] | String.StartsWith(ListItem.Path,pvr://channels) | String.StartsWith(ListItem.Path,pvr://recordings) | [ListItem.IsFolder + !String.StartsWith(ListItem.Path,pvr://)] | String.IsEqual(ListItem.Property(IsFolder),true)</visible>
+					<control type="image">
+						<centerleft>50%</centerleft>
+						<centertop>50%</centertop>
+						<width>70</width>
+						<height>70</height>
+						<texture>items/icon_play.png</texture>
+						<visible>![[String.IsEqual(ListItem.Property(IsFolder),true) | String.IsEqual(ListItem.DBType,set) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | String.IsEqual(ListItem.DBType,artist) | ListItem.IsFolder] + !String.IsEqual(ListItem.DBType,album)]</visible>
+					</control>
+					<control type="image">
+						<centerleft>50%</centerleft>
+						<centertop>50%</centertop>
+						<width>70</width>
+						<height>70</height>
+						<texture>items/icon_folder.png</texture>
+						<visible>[String.IsEqual(ListItem.Property(IsFolder),true) | String.IsEqual(ListItem.DBType,set) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | String.IsEqual(ListItem.DBType,artist) | ListItem.IsFolder] + !String.IsEqual(ListItem.DBType,album)</visible>
+					</control>
 				</control>
 			</control>
-		</control>
+		</definition>
 	</include>
 	<!-- HasNext arrow -->
 	<include name="list_mask">
@@ -705,6 +709,7 @@
 						<include content="listitem_action_overlay">
 							<param name="focused" value="$PARAM[focused]"/>
 							<param name="id" value="$PARAM[id]"/>
+							<param name="visible_icon" value="false"/>
 						</include>
 					</control>
 				</control>
