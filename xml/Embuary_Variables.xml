@@ -601,6 +601,17 @@
 		<value condition="!String.IsEmpty(ListItem.Channelname)">$INFO[ListItem.Channelname]</value>
 		<value>$INFO[ListItem.Label]</value>
 	</variable>
+	<variable name="ThumbMainListLabel">
+		<value condition="Window.IsVisible(music) + !String.IsEmpty(ListItem.AlbumArtist)">$INFO[ListItem.AlbumArtist]</value>
+		<value condition="Window.IsVisible(music) + !String.IsEmpty(ListItem.Artist)">$INFO[ListItem.Artist]</value>
+		<value>$VAR[MainListLabel]</value>
+	</variable>
+	<variable name="ThumbSubListLabel">
+		<value condition="Window.IsVisible(music) + !String.IsEmpty(ListItem.Album)">$INFO[ListItem.Album]</value>
+		<value condition="Window.IsVisible(music) + !String.IsEmpty(ListItem.Artist)">$LOCALIZE[557]</value>
+		<value condition="String.StartsWith(ListItem.Path,pvr://)">$INFO[ListItem.Channelname]</value>
+		<value>$VAR[SubListLabel]</value>
+	</variable>
 	<variable name="MainListLabel">
 		<value condition="Window.IsVisible(DialogPVRChannelsOSD.xml)">$INFO[ListItem.ChannelName]$INFO[ListItem.Title, - ]</value>
 		<value condition="Window.IsVisible(MyPVRChannels.xml) + !String.IsEmpty(ListItem.Title)">$INFO[ListItem.StartTime,, - ]$INFO[ListItem.EndTime,,: ]$INFO[ListItem.Title]</value>

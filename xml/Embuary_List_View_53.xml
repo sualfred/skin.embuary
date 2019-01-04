@@ -5,6 +5,8 @@
 		<param name="mainlabel">$VAR[MainListLabel]</param>
 		<param name="sublabel">$VAR[SubListLabel]</param>
 		<param name="thumblabel">$VAR[MainListLabel]</param>
+		<param name="thumbmainlabel">$VAR[ThumbMainListLabel]</param>
+		<param name="thumbsublabel">$VAR[ThumbSubListLabel]</param>
 		<param name="rightlabel">$VAR[RightListLabel]</param>
 		<param name="rightlabel2">$VAR[RightListLabel2]</param>
 		<definition>
@@ -20,7 +22,7 @@
 					<animation effect="slide" time="0" end="0,-120" condition="Container.HasParent + [Integer.IsEqual(Container($PARAM[id]).NumItems,5) | Integer.IsEqual(Container($PARAM[id]).NumItems,4)]">Conditional</animation>
 					<animation effect="slide" time="0" end="0,-240" condition="Container.HasParent + [Integer.IsEqual(Container($PARAM[id]).NumItems,3) | Integer.IsEqual(Container($PARAM[id]).NumItems,2)]">Conditional</animation>
 					<animation effect="slide" time="0" end="0,-360" condition="Container.HasParent + [Integer.IsEqual(Container($PARAM[id]).NumItems,1) | Integer.IsEqual(Container($PARAM[id]).NumItems,0)]">Conditional</animation>
-					<left>690</left>
+					<left>660</left>
 					<height>100%</height>
 					<onup>SetFocus(6666)</onup>
 					<onright condition="!Control.IsVisible(7000) + Control.IsVisible(17)">SetFocus(17)</onright>
@@ -37,7 +39,7 @@
 					<include>ScrollTime</include>
 					<preloaditems>4</preloaditems>
 					<oninfo condition="String.IsEqual(ListItem.DBType,set) + !String.IsEmpty(Container(2001).ListItem.Label)">RunScript(script.embuary.helper,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCVAR[ListViewPlot]')</oninfo>
-					<itemlayout condition="!Control.IsVisible(7000)" height="120" width="1230">
+					<itemlayout height="120" width="1229">
 						<control type="group">
 							<left>70</left>
 							<right>70</right>
@@ -47,11 +49,10 @@
 								<param name="sublabel">$PARAM[sublabel]</param>
 								<param name="rightlabel">$PARAM[rightlabel]</param>
 								<param name="rightlabel2">$PARAM[rightlabel2]</param>
-								<param name="fallbacklabel">$PARAM[fallbacklabel]</param>
 							</include>
 						</control>
 					</itemlayout>
-					<focusedlayout condition="!Control.IsVisible(7000)"  height="120" width="1230">
+					<focusedlayout height="120" width="1229">
 						<include content="SetPropertyOnFocus">
 							<param name="id" value="$PARAM[id]"/>
 						</include>
@@ -65,56 +66,14 @@
 								<param name="sublabel">$PARAM[sublabel]</param>
 								<param name="rightlabel">$PARAM[rightlabel]</param>
 								<param name="rightlabel2">$PARAM[rightlabel2]</param>
-								<param name="fallbacklabel">$PARAM[fallbacklabel]</param>
-							</include>
-						</control>
-					</focusedlayout>
-					<itemlayout condition="Control.IsVisible(7000)" height="120" width="1190">
-						<control type="group">
-							<left>70</left>
-							<right>70</right>
-							<include content="ListLayout">
-								<param name="id">$PARAM[id]</param>
-								<param name="mainlabel">$PARAM[mainlabel]</param>
-								<param name="sublabel">$PARAM[sublabel]</param>
-								<param name="rightlabel">$PARAM[rightlabel]</param>
-								<param name="rightlabel2">$PARAM[rightlabel2]</param>
-								<param name="fallbacklabel">$PARAM[fallbacklabel]</param>
-							</include>
-						</control>
-					</itemlayout>
-					<focusedlayout condition="Control.IsVisible(7000)"  height="120" width="1190">
-						<include content="SetPropertyOnFocus">
-							<param name="id" value="$PARAM[id]"/>
-						</include>
-						<control type="group">
-							<left>70</left>
-							<right>70</right>
-							<include content="ListLayout">
-								<param name="focused" value="true"/>
-								<param name="id">$PARAM[id]</param>
-								<param name="mainlabel">$PARAM[mainlabel]</param>
-								<param name="sublabel">$PARAM[sublabel]</param>
-								<param name="rightlabel">$PARAM[rightlabel]</param>
-								<param name="rightlabel2">$PARAM[rightlabel2]</param>
-								<param name="fallbacklabel">$PARAM[fallbacklabel]</param>
 							</include>
 						</control>
 					</focusedlayout>
 				</control>
 				<!-- side info panel -->
 				<control type="group">
+					<left>20</left>
 					<width>690</width>
-					<control type="image">
-						<height>100%</height>
-						<texture colordiffuse="list_panel">common/white.jpg</texture>
-					</control>
-					<control type="image">
-						<left>690</left>
-						<width>1</width>
-						<height>100%</height>
-						<texture colordiffuse="grid_border">common/white.jpg</texture>
-					</control>
 					<control type="group">
 						<top>120</top>
 						<bottom>120</bottom>
@@ -317,9 +276,8 @@
 						<include content="static_labels">
 							<param name="top">348</param>
 							<param name="width">590</param>
-							<param name="mainlabel">$PARAM[mainlabel]</param>
-							<param name="sublabel">$PARAM[sublabel]</param>
-							<param name="fallbacklabel">$PARAM[fallbacklabel]</param>
+							<param name="mainlabel">$PARAM[thumbmainlabel]</param>
+							<param name="sublabel">$PARAM[thumbsublabel]</param>
 						</include>
 						<!-- Buttons -->
 						<control type="grouplist" id="100">
