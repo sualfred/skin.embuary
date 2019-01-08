@@ -79,11 +79,11 @@
 	</variable>
 	<variable name="CurrentColorLabel">
 		<value condition="!String.IsEmpty(Window.Property(colorstring)) + !String.IsEqual(Window.Property(colorstring),None)">$LOCALIZE[31265]$INFO[Window.Property(colorstring), #]</value>
-		<value>No color set</value>
+		<value>$LOCALIZE[31305]</value>
 	</variable>
 	<!-- Menu & widget vars -->
 	<variable name="MainMenuMovieHubIcon">
-		<value condition="Library.HasContent(movies)"></value>
+		<value condition="Library.HasContent(movies)">DefaultVideo.png</value>
 		<value condition="!String.IsEmpty(Window(home).Property(plugin.video.embycon-view_item.0.thumb)) + String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.0.type),movies)">$INFO[Window(home).Property(plugin.video.embycon-view_item.0.thumb)]</value>
 		<value condition="!String.IsEmpty(Window(home).Property(plugin.video.embycon-view_item.1.thumb)) + String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.1.type),movies)">$INFO[Window(home).Property(plugin.video.embycon-view_item.1.thumb)]</value>
 		<value condition="!String.IsEmpty(Window(home).Property(plugin.video.embycon-view_item.2.thumb)) + String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.2.type),movies)">$INFO[Window(home).Property(plugin.video.embycon-view_item.2.thumb)]</value>
@@ -114,9 +114,10 @@
 		<value condition="!String.IsEmpty(Window(home).Property(plugin.video.embycon-view_item.27.thumb)) + String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.27.type),movies)">$INFO[Window(home).Property(plugin.video.embycon-view_item.27.thumb)]</value>
 		<value condition="!String.IsEmpty(Window(home).Property(plugin.video.embycon-view_item.28.thumb)) + String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.28.type),movies)">$INFO[Window(home).Property(plugin.video.embycon-view_item.28.thumb)]</value>
 		<value condition="!String.IsEmpty(Window(home).Property(plugin.video.embycon-view_item.29.thumb)) + String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.29.type),movies)">$INFO[Window(home).Property(plugin.video.embycon-view_item.29.thumb)]</value>
+		<value>DefaultVideo.png</value>
 	</variable>
 	<variable name="MainMenuTVShowHubIcon">
-		<value condition="Library.HasContent(tvshows)"></value>
+		<value condition="Library.HasContent(tvshows)">DefaultVideo.png</value>
 		<value condition="!String.IsEmpty(Window(home).Property(plugin.video.embycon-view_item.0.thumb)) + String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.0.type),tvshows)">$INFO[Window(home).Property(plugin.video.embycon-view_item.0.thumb)]</value>
 		<value condition="!String.IsEmpty(Window(home).Property(plugin.video.embycon-view_item.1.thumb)) + String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.1.type),tvshows)">$INFO[Window(home).Property(plugin.video.embycon-view_item.1.thumb)]</value>
 		<value condition="!String.IsEmpty(Window(home).Property(plugin.video.embycon-view_item.2.thumb)) + String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.2.type),tvshows)">$INFO[Window(home).Property(plugin.video.embycon-view_item.2.thumb)]</value>
@@ -147,9 +148,10 @@
 		<value condition="!String.IsEmpty(Window(home).Property(plugin.video.embycon-view_item.27.thumb)) + String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.27.type),tvshows)">$INFO[Window(home).Property(plugin.video.embycon-view_item.27.thumb)]</value>
 		<value condition="!String.IsEmpty(Window(home).Property(plugin.video.embycon-view_item.28.thumb)) + String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.28.type),tvshows)">$INFO[Window(home).Property(plugin.video.embycon-view_item.28.thumb)]</value>
 		<value condition="!String.IsEmpty(Window(home).Property(plugin.video.embycon-view_item.29.thumb)) + String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.29.type),tvshows)">$INFO[Window(home).Property(plugin.video.embycon-view_item.29.thumb)]</value>
+		<value>DefaultVideo.png</value>
 	</variable>
 	<variable name="MainMenuMusicHubIcon">
-		<value condition="Library.HasContent(music)"></value>
+		<value condition="Library.HasContent(music)">DefaultMusic.png</value>
 		<value condition="!String.IsEmpty(Window(home).Property(plugin.video.embycon-view_item.0.thumb)) + String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.0.type),music)">$INFO[Window(home).Property(plugin.video.embycon-view_item.0.thumb)]</value>
 		<value condition="!String.IsEmpty(Window(home).Property(plugin.video.embycon-view_item.1.thumb)) + String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.1.type),music)">$INFO[Window(home).Property(plugin.video.embycon-view_item.1.thumb)]</value>
 		<value condition="!String.IsEmpty(Window(home).Property(plugin.video.embycon-view_item.2.thumb)) + String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.2.type),music)">$INFO[Window(home).Property(plugin.video.embycon-view_item.2.thumb)]</value>
@@ -180,6 +182,17 @@
 		<value condition="!String.IsEmpty(Window(home).Property(plugin.video.embycon-view_item.27.thumb)) + String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.27.type),music)">$INFO[Window(home).Property(plugin.video.embycon-view_item.27.thumb)]</value>
 		<value condition="!String.IsEmpty(Window(home).Property(plugin.video.embycon-view_item.28.thumb)) + String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.28.type),music)">$INFO[Window(home).Property(plugin.video.embycon-view_item.28.thumb)]</value>
 		<value condition="!String.IsEmpty(Window(home).Property(plugin.video.embycon-view_item.29.thumb)) + String.IsEqual(Window(home).Property(plugin.video.embycon-view_item.29.type),music)">$INFO[Window(home).Property(plugin.video.embycon-view_item.29.thumb)]</value>
+		<value>DefaultMusic.png</value>
+	</variable>
+	<variable name="MainMenuFallbackIcon">
+		<value condition="String.Contains(ListItem.Property(defaultID),embuary_emby)">DefaultEmby.png</value>
+		<value condition="String.Contains(ListItem.Property(list),library://video) | String.Contains(ListItem.Property(list),videodb://)">DefaultVideo.png</value>
+		<value condition="String.Contains(ListItem.Property(list),library://music) | String.Contains(ListItem.Property(list),musicdb://)">DefaultMusic.png</value>
+		<value condition="String.Contains(ListItem.Property(path),RunAddOn) | String.Contains(ListItem.Property(path),RunScript) | String.Contains(ListItem.Property(list),addons://)">DefaultAddon.png</value>
+		<value condition="String.Contains(ListItem.Property(path),ActivateWindow) + String.Contains(ListItem.Property(path),Pictures)">DefaultPicture.png</value>
+		<value condition="String.Contains(ListItem.Property(path),ActivateWindow)">DefaultFolder.png</value>
+		<value condition="String.StartsWith(ListItem.Icon,Default)">$INFO[ListItem.Icon]</value>
+		<value>DefaultShortcut.png</value>
 	</variable>
 	<variable name="SkinshortcutsGroup">
 		<value condition="String.IsEqual(Window.Property(groupname),mainmenu)">$LOCALIZE[31261]</value>
@@ -193,7 +206,13 @@
 		<value>$LOCALIZE[31159]</value>
 	</variable>
 	<variable name="SkinshortcutsIcon">
-		<value condition="String.StartsWith(ListItem.Property(path),ActivateWindow) | String.StartsWith(ListItem.Property(defaultID),embuary_)">DefaultFolder.png</value>
+		<value condition="String.Contains(ListItem.Property(defaultID),embuary_emby)">DefaultEmby.png</value>
+		<value condition="String.Contains(ListItem.Property(list),library://video) | String.Contains(ListItem.Property(list),videodb://)">DefaultVideo.png</value>
+		<value condition="String.Contains(ListItem.Property(list),library://music) | String.Contains(ListItem.Property(list),musicdb://)">DefaultMusic.png</value>
+		<value condition="String.Contains(ListItem.Property(path),RunAddOn) | String.Contains(ListItem.Property(path),RunScript) | String.Contains(ListItem.Property(list),addons://)">DefaultAddon.png</value>
+		<value condition="String.Contains(ListItem.Property(path),ActivateWindow) + String.Contains(ListItem.Property(path),Pictures)">DefaultPicture.png</value>
+		<value condition="String.StartsWith(ListItem.Property(path),ActivateWindow)">DefaultFolder.png</value>
+		<value condition="String.StartsWith(ListItem.Icon,Default)">$INFO[ListItem.Icon]</value>
 		<value>DefaultAddon.png</value>
 	</variable>
 	<variable name="SkinshortcutsHideIcon">
