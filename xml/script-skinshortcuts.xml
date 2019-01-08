@@ -275,10 +275,7 @@
 						<label></label>
 						<include>NoTextures</include>
 						<textoffsetx>0</textoffsetx>
-
 						<onclick>SetFocus(4000)</onclick>
-
-
 						<onup condition="!String.IsEmpty(Container(211).ListItemNoWrap(-1).Label)">Control.Move(211,-1)</onup>
 						<ondown condition="!String.IsEmpty(Container(211).ListItemNoWrap(1).Label)">Control.Move(211,1)</ondown>
 						<ondown condition="String.IsEmpty(Container(211).ListItemNoWrap(1).Label)">200</ondown>
@@ -409,6 +406,7 @@
 						<onclick condition="!String.IsEqual(container(211).listitem.property(useFakeArt),true)">SetProperty(customValue,true)</onclick>
 						<onclick condition="!String.IsEqual(container(211).listitem.property(useFakeArt),true)">SendClick(404)</onclick>
 						<selected>String.IsEqual(container(211).listitem.property(useFakeArt),true)</selected>
+						<visible>!String.StartsWith(Container(211).ListItem.Property(defaultID),embuary_emby)</visible>
 					</control>
 					<control type="image" id="4004">
 						<width>100%</width>
