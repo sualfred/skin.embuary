@@ -1366,61 +1366,60 @@
 					<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
 					<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
 				</control>
+				<!-- default icon -->
 				<control type="group">
-					<visible>String.IsEmpty(ListItem.Art(thumb))</visible>
-					<visible>String.StartsWith(ListItem.Icon,Default) | String.IsEmpty(ListItem.Icon)</visible>
-					<visible>![String.IsEmpty(ListItem.Art(thumb)) + !String.IsEmpty(ListItem.Property(Art1)) + !String.IsEmpty(ListItem.Property(Art2)) + !String.IsEmpty(ListItem.Property(Art3)) + !String.IsEmpty(ListItem.Property(Art4))]</visible>
+					<visible>
+						![String.IsEqual(ListItem.Property(useFakeArt),false) + !String.IsEmpty(ListItem.Art(thumb))]
+						+ [String.IsEqual(ListItem.Property(useFakeArt),true) + [String.IsEmpty(ListItem.Property(Art1)) | String.IsEmpty(ListItem.Property(Art2)) | String.IsEmpty(ListItem.Property(Art3)) | String.IsEmpty(ListItem.Property(Art4))]]
+					</visible>
 					<control type="image">
 						<width>280</width>
 						<height>158</height>
 						<texture colordiffuse="thumb_background_fallback_secondary">common/white.jpg</texture>
 						<aspectratio>stretch</aspectratio>
-						<visible>String.StartsWith(ListItem.Property(path),ActivateWindow)</visible>
+						<visible>String.StartsWith(ListItem.Icon,Default) | String.IsEmpty(ListItem.Icon)</visible>
 					</control>
 					<control type="image">
 						<width>280</width>
 						<height>158</height>
-						<texture colordiffuse="lila">common/white.jpg</texture>
-						<aspectratio>stretch</aspectratio>
-						<visible>!String.StartsWith(ListItem.Property(path),ActivateWindow) + !String.StartsWith(ListItem.Property(path),emby)</visible>
+						<texture colordiffuse="ff010202">common/white.jpg</texture>
+						<visible>!String.StartsWith(ListItem.Icon,Default) + !String.IsEmpty(ListItem.Icon)</visible>
 					</control>
-					<control type="image">
-						<width>280</width>
-						<height>158</height>
-						<texture colordiffuse="green">common/white.jpg</texture>
-						<aspectratio>stretch</aspectratio>
-						<visible>String.StartsWith(ListItem.Property(defaultID),embuary_emby)</visible>
-					</control>
-					<control type="label">
-						<width>280</width>
-						<height>158</height>
-						<font>Light24</font>
-						<textcolor>white</textcolor>
-						<textoffsetx>10</textoffsetx>
-						<align>center</align>
-						<aligny>center</aligny>
-						<label>$INFO[ListItem.Label]</label>
-					</control>
-				</control>
-				<control type="group">
-					<visible>!String.IsEmpty(ListItem.Art(thumb)) | !String.StartsWith(ListItem.Icon,Default)</visible>
 					<control type="image">
 						<width>280</width>
 						<height>158</height>
 						<texture background="true">$INFO[ListItem.Icon]</texture>
-						<aspectratio scalediffuse="false">scale</aspectratio>
-						<visible>![String.IsEmpty(ListItem.Art(thumb)) + !String.IsEmpty(ListItem.Property(Art1)) + !String.IsEmpty(ListItem.Property(Art2)) + !String.IsEmpty(ListItem.Property(Art3)) + !String.IsEmpty(ListItem.Property(Art4))]</visible>
+						<aspectratio scalediffuse="false">keep</aspectratio>
+						<visible>!String.StartsWith(ListItem.Icon,Default) + !String.IsEmpty(ListItem.Icon)</visible>
+					</control>
+					<control type="image">
+						<width>280</width>
+						<height>158</height>
+						<texture background="true">$VAR[MainMenuFallbackIcon]</texture>
+						<colordiffuse>ccffffff</colordiffuse>
+						<aspectratio scalediffuse="false">keep</aspectratio>
+						<bordersize>10</bordersize>
+						<visible>String.StartsWith(ListItem.Icon,Default) | String.IsEmpty(ListItem.Icon)</visible>
+					</control>
+				</control>
+				<!-- user art -->
+				<control type="group">
+					<visible>String.IsEqual(ListItem.Property(useFakeArt),false) + !String.IsEmpty(ListItem.Art(thumb))</visible>
+					<control type="image">
+						<width>280</width>
+						<height>158</height>
+						<texture colordiffuse="ff010202">common/white.jpg</texture>
 					</control>
 					<control type="image">
 						<width>280</width>
 						<height>158</height>
 						<texture background="true">$INFO[ListItem.Art(thumb)]</texture>
-						<aspectratio scalediffuse="false">scale</aspectratio>
-						<visible>!String.IsEmpty(ListItem.Art(thumb))</visible>
+						<aspectratio scalediffuse="false">keep</aspectratio>
 					</control>
 				</control>
+				<!-- emby styled art -->
 				<control type="group">
-					<visible>String.IsEmpty(ListItem.Art(thumb)) + !String.IsEmpty(ListItem.Property(Art1)) + !String.IsEmpty(ListItem.Property(Art2)) + !String.IsEmpty(ListItem.Property(Art3)) + !String.IsEmpty(ListItem.Property(Art4))</visible>
+					<visible>String.IsEqual(ListItem.Property(useFakeArt),true) + !String.IsEmpty(ListItem.Property(Art1)) + !String.IsEmpty(ListItem.Property(Art2)) + !String.IsEmpty(ListItem.Property(Art3)) + !String.IsEmpty(ListItem.Property(Art4))</visible>
 					<top>2</top>
 					<width>280</width>
 					<control type="image">
@@ -1458,8 +1457,8 @@
 					</control>
 					<!-- art 2 -->
 					<control type="group">
-						<width>66</width>
-						<left>72</left>
+						<width>65</width>
+						<left>73</left>
 						<control type="image">
 							<height>110</height>
 							<texture colordiffuse="$VAR[ThumbBackgroundColor]">common/white.jpg</texture>
@@ -1485,7 +1484,7 @@
 					</control>
 					<!-- art 3 -->
 					<control type="group">
-						<width>66</width>
+						<width>65</width>
 						<left>142</left>
 						<control type="image">
 							<height>110</height>
