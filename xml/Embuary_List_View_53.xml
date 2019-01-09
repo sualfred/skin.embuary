@@ -156,7 +156,7 @@
 						</control>
 						<!-- poster thumb -->
 						<control type="group">
-							<visible>[!String.IsEmpty(ListItem.Art(poster)) | !String.IsEmpty(ListItem.Art(tvshow.poster))]	+ !$EXP[ListHasWideThumb] + !String.EndsWith(ListItem.Art(poster),\icon.png) + !String.EndsWith(ListItem.Art(poster),/icon.png) + !Window.IsVisible(music)</visible>
+							<visible>$EXP[ListHasPosterThumb] + !$EXP[ListHasWideThumb]</visible>
 							<control type="group">
 								<control type="group">
 									<centerleft>50%</centerleft>
@@ -214,7 +214,7 @@
 						</control>
 						<!-- square thumb -->
 						<control type="group">
-							<visible>[String.EndsWith(ListItem.Art(poster),\icon.png) | String.EndsWith(ListItem.Art(poster),/icon.png) | [String.IsEmpty(ListItem.Art(poster)) + String.IsEmpty(ListItem.Art(tvshow.poster))] | Window.IsVisible(music)] + !$EXP[ListHasWideThumb]</visible>
+							<visible>!$EXP[ListHasPosterThumb] + !$EXP[ListHasWideThumb]</visible>
 							<centerleft>50%</centerleft>
 							<width>590</width>
 							<control type="group">
