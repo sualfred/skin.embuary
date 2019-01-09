@@ -1385,12 +1385,29 @@
 						<texture colordiffuse="ff010202">common/white.jpg</texture>
 						<visible>!String.StartsWith(ListItem.Icon,Default) + !String.IsEmpty(ListItem.Icon)</visible>
 					</control>
-					<control type="image">
-						<width>280</width>
-						<height>158</height>
-						<texture background="true">$INFO[ListItem.Icon]</texture>
-						<aspectratio scalediffuse="false">keep</aspectratio>
+					<control type="group">
 						<visible>!String.StartsWith(ListItem.Icon,Default) + !String.IsEmpty(ListItem.Icon)</visible>
+						<control type="image">
+							<width>280</width>
+							<height>158</height>
+							<texture background="true">$INFO[ListItem.Icon]</texture>
+							<aspectratio scalediffuse="false">keep</aspectratio>
+							<visible>String.IsEqual(ListItem.Property(aspectRatio),keep)</visible>
+						</control>
+						<control type="image">
+							<width>280</width>
+							<height>158</height>
+							<texture background="true">$INFO[ListItem.Icon]</texture>
+							<aspectratio scalediffuse="false">stretch</aspectratio>
+							<visible>String.IsEqual(ListItem.Property(aspectRatio),stretch)</visible>
+						</control>
+						<control type="image">
+							<width>280</width>
+							<height>158</height>
+							<texture background="true">$INFO[ListItem.Icon]</texture>
+							<aspectratio scalediffuse="false">scale</aspectratio>
+							<visible>String.IsEqual(ListItem.Property(aspectRatio),scale)</visible>
+						</control>
 					</control>
 					<control type="image">
 						<width>280</width>
@@ -1415,6 +1432,21 @@
 						<height>158</height>
 						<texture background="true">$INFO[ListItem.Art(thumb)]</texture>
 						<aspectratio scalediffuse="false">keep</aspectratio>
+						<visible>String.IsEqual(ListItem.Property(aspectRatio),keep)</visible>
+					</control>
+					<control type="image">
+						<width>280</width>
+						<height>158</height>
+						<texture background="true">$INFO[ListItem.Art(thumb)]</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<visible>String.IsEqual(ListItem.Property(aspectRatio),stretch)</visible>
+					</control>
+					<control type="image">
+						<width>280</width>
+						<height>158</height>
+						<texture background="true">$INFO[ListItem.Art(thumb)]</texture>
+						<aspectratio scalediffuse="false">scale</aspectratio>
+						<visible>String.IsEqual(ListItem.Property(aspectRatio),scale)</visible>
 					</control>
 				</control>
 				<!-- emby styled art -->
