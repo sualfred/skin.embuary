@@ -177,7 +177,16 @@
 		+ !ListItem.IsParentDir
 		+ !String.IsEqual(ListItem.Label,..)
 		+ !String.StartsWith(ListItem.Icon,Default)
+		+ [String.StartsWith(Container.FolderPath,plugin://plugin.video.emby/) + !String.Contains(Container.FolderPath,folder=) + [String.Contains(Container.FolderPath,type=books) | String.Contains(Container.FolderPath,type=audiobooks)]]
 		]
+	</expression>
+
+	<expression name="ListHasPosterThumb">
+		[!String.IsEmpty(ListItem.Art(poster)) | !String.IsEmpty(ListItem.Art(tvshow.poster))]
+		+ !String.EndsWith(ListItem.Art(poster),\icon.png)
+		+ !String.EndsWith(ListItem.Art(poster),/icon.png)
+		+ !Window.IsVisible(music)
+		+ [String.StartsWith(Container.FolderPath,plugin://plugin.video.emby/) + !String.Contains(Container.FolderPath,folder=) + [String.Contains(Container.FolderPath,type=books) | String.Contains(Container.FolderPath,type=audiobooks)]]
 	</expression>
 
 </includes>
