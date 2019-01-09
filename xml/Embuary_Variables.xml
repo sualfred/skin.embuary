@@ -403,6 +403,10 @@
 		<value condition="String.IsEqual(ListItem.DBType,movie) + !String.IsEmpty(ListItem.DBID)">plugin://script.embuary.helper/?info=getsimilar&amp;dbid=$INFO[ListItem.DBID]&amp;type=movie</value>
 		<value condition="String.IsEqual(ListItem.DBType,tvshow) + !String.IsEmpty(ListItem.DBID)">plugin://script.embuary.helper/?info=getsimilar&amp;dbid=$INFO[ListItem.DBID]&amp;type=tvshow</value>
 	</variable>
+	<variable name="InfoDialog_Season_Content_Headline">
+		<value condition="String.StartsWith(ListItem.Episode,S) | ListItem.Property(IsSpecial)">$LOCALIZE[31307]</value>
+		<value>$LOCALIZE[31259] $INFO[ListItem.Season]</value>
+	</variable>
 	<variable name="InfoDialog_Season_Content">
 		<value condition="!String.IsEmpty(Container.Pluginname) + !String.StartsWith(Container.Folderpath,plugin://plugin.video.embycon)"></value>
 		<value condition="String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">plugin://plugin.video.embycon/?media_type=tvshows&amp;mode=GET_CONTENT&amp;use_cache=false&amp;url=%7Bserver%7D%2F%2Femby%2FShows%2F$INFO[ListItem.Property(id)]%2FSeasons%3FuserId%3D%7Buserid%7D%26Fields%3DItemCounts%252CPrimaryImageAspectRatio%252CBasicSyncInfo%252CCanDelete%252CMediaSourceCount</value>
@@ -427,6 +431,10 @@
 		<value condition="Window.IsVisible(script-globalsearch.xml) | Window.IsVisible(script-globalsearch-main.xml)">Globalsearch - </value>
 		<value condition="[String.StartsWith(Container.Folderpath,plugin://plugin.video.embycon) | Window.IsVisible(1131)] + !Skin.HasSetting(HideEmbyConLabel)">EmbyCon - </value>
 		<value condition="String.StartsWith(Container.FolderPath,plugin://plugin.video.emby/) | Window.IsVisible(1130)">Emby - </value>
+	</variable>
+	<variable name="EpisodesSpecialsHeadline">
+		<value condition="String.StartsWith(ListItem.Episode,S) | ListItem.Property(IsSpecial)">$LOCALIZE[20381]</value>
+		<value>$LOCALIZE[20360]</value>
 	</variable>
 	<variable name="ContainerContent">
 		<value condition="Window.IsVisible(dialogpvrinfo.xml)">$LOCALIZE[19047]</value>
