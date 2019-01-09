@@ -1366,10 +1366,10 @@
 					<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
 					<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
 				</control>
-				<!-- default icon -->
+				<!-- icon -->
 				<control type="group">
 					<visible>
-						[String.IsEqual(ListItem.Property(useFakeArt),false) + String.IsEmpty(ListItem.Art(thumb))]
+						String.IsEqual(ListItem.Property(useFakeArt),false)
 						| [String.IsEqual(ListItem.Property(useFakeArt),true) + [String.IsEmpty(ListItem.Property(Art1)) | String.IsEmpty(ListItem.Property(Art2)) | String.IsEmpty(ListItem.Property(Art3)) | String.IsEmpty(ListItem.Property(Art4))]]
 					</visible>
 					<control type="image">
@@ -1417,36 +1417,6 @@
 						<aspectratio scalediffuse="false">keep</aspectratio>
 						<bordersize>10</bordersize>
 						<visible>String.StartsWith(ListItem.Icon,Default) | String.IsEmpty(ListItem.Icon)</visible>
-					</control>
-				</control>
-				<!-- user art -->
-				<control type="group">
-					<visible>String.IsEqual(ListItem.Property(useFakeArt),false) + !String.IsEmpty(ListItem.Art(thumb))</visible>
-					<control type="image">
-						<width>280</width>
-						<height>158</height>
-						<texture colordiffuse="ff010202">common/white.jpg</texture>
-					</control>
-					<control type="image">
-						<width>280</width>
-						<height>158</height>
-						<texture background="true">$INFO[ListItem.Art(thumb)]</texture>
-						<aspectratio scalediffuse="false">keep</aspectratio>
-						<visible>String.IsEqual(ListItem.Property(aspectRatio),keep)</visible>
-					</control>
-					<control type="image">
-						<width>280</width>
-						<height>158</height>
-						<texture background="true">$INFO[ListItem.Art(thumb)]</texture>
-						<aspectratio scalediffuse="false">stretch</aspectratio>
-						<visible>String.IsEqual(ListItem.Property(aspectRatio),stretch)</visible>
-					</control>
-					<control type="image">
-						<width>280</width>
-						<height>158</height>
-						<texture background="true">$INFO[ListItem.Art(thumb)]</texture>
-						<aspectratio scalediffuse="false">scale</aspectratio>
-						<visible>String.IsEqual(ListItem.Property(aspectRatio),scale)</visible>
 					</control>
 				</control>
 				<!-- emby styled art -->
