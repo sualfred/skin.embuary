@@ -488,18 +488,16 @@
 					<width>430</width>
 					<height>242</height>
 					<texture background="true">$INFO[ListItem.Icon]</texture>
-					<fadetime>200</fadetime>
 					<aspectratio scalediffuse="false">keep</aspectratio>
 					<bordersize>20</bordersize>
-					<visible>[String.IsEmpty(ListItem.EpgEventIcon) + [String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)]]</visible>
+					<visible>[String.IsEmpty(ListItem.EpgEventIcon) + [String.Contains(ListItem.Icon,imagecache) | String.Contains(ListItem.Icon,.png)]]</visible>
 				</control>
 				<control type="image">
 					<width>430</width>
 					<height>242</height>
 					<texture background="true">$VAR[IconLandscape]</texture>
-					<fadetime>200</fadetime>
 					<aspectratio scalediffuse="false">keep</aspectratio>
-					<visible>![String.IsEmpty(ListItem.EpgEventIcon) + [String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)]]</visible>
+					<visible>![String.IsEmpty(ListItem.EpgEventIcon) + [String.Contains(ListItem.Icon,imagecache) | String.Contains(ListItem.Icon,.png)]]</visible>
 				</control>
 			</control>
 			<control type="image">
