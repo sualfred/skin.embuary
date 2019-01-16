@@ -9,7 +9,7 @@
 		<control type="group">
 			<!-- Seekbar nib -->
 			<control type="slider" id="401">
-				<visible>Player.Forwarding | Player.Rewinding | Player.Seeking | !String.IsEmpty(Player.SeekOffset)</visible>
+				<visible>Player.Forwarding | Player.Rewinding | Player.Seeking | [Player.DisplayAfterSeek + !String.IsEmpty(Player.SeekOffset)]</visible>
 				<visible>!VideoPlayer.HasEpg</visible>
 				<bottom>98</bottom>
 				<left>309</left>
@@ -21,7 +21,7 @@
 				<textureslidernibfocus colordiffuse="$VAR[PlayerAccentColor]">views/player/nib_bubble.png</textureslidernibfocus>
 			</control>
 			<control type="slider" id="402">
-				<visible>Player.Forwarding | Player.Rewinding | Player.Seeking | !String.IsEmpty(Player.SeekOffset)</visible>
+				<visible>Player.Forwarding | Player.Rewinding | Player.Seeking | [Player.DisplayAfterSeek + !String.IsEmpty(Player.SeekOffset)]</visible>
 				<visible>VideoPlayer.HasEpg</visible>
 				<bottom>98</bottom>
 				<left>309</left>
@@ -33,7 +33,7 @@
 				<textureslidernibfocus colordiffuse="$VAR[PlayerAccentColor]">views/player/nib_bubble.png</textureslidernibfocus>
 			</control>
 			<control type="group">
-				<visible>Player.Forwarding | Player.Rewinding | Player.Seeking | !String.IsEmpty(Player.SeekOffset) | !String.IsEmpty(Player.SeekNumeric)</visible>
+				<visible>Player.Forwarding | Player.Rewinding | Player.Seeking | [Player.DisplayAfterSeek + !String.IsEmpty(Player.SeekOffset)] | !String.IsEmpty(Player.SeekNumeric)</visible>
 				<include condition="!VideoPlayer.HasEpg">OSD_Seek_Position</include>
 				<include condition="VideoPlayer.HasEpg" content="OSD_Seek_Position">
 					<param name="id" value="402"/>
