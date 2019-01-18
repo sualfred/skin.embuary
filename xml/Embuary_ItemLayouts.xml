@@ -203,6 +203,7 @@
 					+ [String.IsEqual(ListItem.Overlay,OverlayWatched.png) | Integer.IsGreaterOrEqual(ListItem.PlayCount,1)]
 					]
 				</visible>
+				<visible>![Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml)]</visible>
 				<right>8</right>
 				<top>9</top>
 				<width>44</width>
@@ -242,6 +243,31 @@
 						+ !String.IsEqual(ListItem.Overlay,OverlayUnwatched.png)
 						+ [String.IsEqual(ListItem.Overlay,OverlayWatched.png) | Integer.IsGreaterOrEqual(ListItem.PlayCount,1)]
 					</visible>
+				</control>
+			</control>
+			<control type="group">
+				<visible>[Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml)] + !String.IsEmpty(ListItem.DBID)</visible>
+				<right>8</right>
+				<top>9</top>
+				<width>44</width>
+				<height>44</height>
+				<control type="image">
+					<width>44</width>
+					<height>44</height>
+					<texture colordiffuse="$VAR[AccentColor]">items/bubble_small.png</texture>
+					<aspectratio>keep</aspectratio>
+				</control>
+				<control type="label">
+					<top>10</top>
+					<left>1</left>
+					<width>44</width>
+					<height>44</height>
+					<label></label>
+					<font>FontAwesome20Light</font>
+					<textcolor>white</textcolor>
+					<selectedcolor>white</selectedcolor>
+					<align>center</align>
+					<aligny>top</aligny>
 				</control>
 			</control>
 			<control type="group">
@@ -619,6 +645,7 @@
 						<include content="listitem_action_overlay">
 							<param name="focused" value="$PARAM[focused]"/>
 							<param name="id" value="$PARAM[id]"/>
+							<param name="visible_icon" value="$PARAM[visible_icon]"/>
 						</include>
 						<include>listitem_overlay</include>
 					</control>
@@ -804,6 +831,7 @@
 						<include content="listitem_action_overlay">
 							<param name="focused" value="$PARAM[focused]"/>
 							<param name="id" value="$PARAM[id]"/>
+							<param name="visible_icon" value="$PARAM[visible_icon]"/>
 						</include>
 						<include>listitem_overlay</include>
 					</control>
@@ -926,6 +954,7 @@
 						<include content="listitem_action_overlay">
 							<param name="focused" value="$PARAM[focused]"/>
 							<param name="id" value="$PARAM[id]"/>
+							<param name="visible_icon" value="$PARAM[visible_icon]"/>
 						</include>
 						<include>listitem_overlay</include>
 					</control>
@@ -1144,6 +1173,7 @@
 						<include content="listitem_action_overlay">
 							<param name="focused" value="$PARAM[focused]"/>
 							<param name="id" value="$PARAM[id]"/>
+							<param name="visible_icon" value="$PARAM[visible_icon]"/>
 						</include>
 						<include>listitem_overlay</include>
 					</control>
@@ -1325,6 +1355,7 @@
 						<include content="listitem_action_overlay">
 							<param name="focused" value="$PARAM[focused]"/>
 							<param name="id" value="$PARAM[id]"/>
+							<param name="visible_icon" value="$PARAM[visible_icon]"/>
 						</include>
 					</control>
 				</control>
@@ -1545,6 +1576,7 @@
 					<include content="listitem_action_overlay">
 						<param name="focused" value="$PARAM[focused]"/>
 						<param name="id" value="$PARAM[id]"/>
+							<param name="visible_icon" value="$PARAM[visible_icon]"/>
 					</include>
 				</control>
 			</control>
@@ -1793,6 +1825,7 @@
 						<include content="listitem_action_overlay">
 							<param name="focused" value="$PARAM[focused]"/>
 							<param name="id" value="$PARAM[id]"/>
+							<param name="visible_icon" value="$PARAM[visible_icon]"/>
 						</include>
 						<include>listitem_overlay</include>
 					</control>
@@ -1940,6 +1973,7 @@
 						<include content="listitem_action_overlay">
 							<param name="focused" value="$PARAM[focused]"/>
 							<param name="id" value="$PARAM[id]"/>
+							<param name="visible_icon" value="$PARAM[visible_icon]"/>
 						</include>
 					</control>
 				</control>
