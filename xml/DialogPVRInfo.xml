@@ -51,7 +51,7 @@
 						<onleft>900</onleft>
 						<onright>noop</onright>
 						<control type="button" id="101">
-							<visible>!Control.IsVisible(5)</visible>
+							<visible>!Control.IsVisible(5) + !Control.IsVisible(8)</visible>
 							<include>LightGreyButton</include>
 							<label>$LOCALIZE[15067]</label>
 							<onclick>close</onclick>
@@ -59,6 +59,12 @@
 						<control type="button" id="5">
 							<include>LightGreyButton</include>
 							<label>$VAR[VideoInfoButton8]</label>
+							<visible>Window.IsVisible(PVRGuideInfo)</visible>
+						</control>
+						<control type="button" id="8">
+							<include>LightGreyButton</include>
+							<label>$VAR[PVRInfoButton8]</label>
+							<visible>Window.IsVisible(PVRRecordingInfo) | Window.IsVisible(PVRGuideInfo)</visible>
 						</control>
 						<control type="button" id="6">
 							<include>LightGreyButton</include>
