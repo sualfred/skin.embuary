@@ -5,22 +5,21 @@
 		<param name="id">100</param>
 		<definition>
 			<item>
-				<property name="fallback">true</property>
 				<label>$LOCALIZE[20186]</label>
-				<thumb>special://skin/extras/icons/menu_loading.jpg</thumb>
+				<icon>special://skin/extras/icons/menu_loading.jpg</icon>
 				<onclick>noop</onclick>
 				<visible>!String.IsEmpty(Window(home).Property(startup)) + [String.IsEmpty(Container($PARAM[id]).ListItemAbsolute(0).Property(id)) + String.IsEmpty(Container($PARAM[id]).ListItemAbsolute(1).Property(id))]</visible>
 			</item>
 			<item>
-				<property name="fallback">true</property>
 				<label>$LOCALIZE[31028]</label>
-				<thumb>special://skin/extras/icons/menu_conf.jpg</thumb>
+				<icon>special://skin/extras/icons/menu_conf.jpg</icon>
 				<onclick>RunScript(script.skinshortcuts,type=manage&amp;group=mainmenu)</onclick>
 				<visible>String.IsEmpty(Window(home).Property(startup)) + [String.IsEmpty(Container($PARAM[id]).ListItemAbsolute(0).Property(id)) + String.IsEmpty(Container($PARAM[id]).ListItemAbsolute(1).Property(id))]</visible>
 			</item>
 			<include>skinshortcuts-mainmenu</include>
 			<item>
 				<label>$LOCALIZE[341]</label>
+				<icon>DefaultDVDRom.png</icon>
 				<onclick>PlayDisc</onclick>
 				<visible>System.HasMediaDVD</visible>
 			</item>
