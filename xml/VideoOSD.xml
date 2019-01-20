@@ -20,7 +20,7 @@
 						<param name="type" value="previous"/>
 					</include>
 					<onclick>PlayerControl(Previous)</onclick>
-					<visible>Player.SeekEnabled</visible>
+					<visible>Player.ChapterCount | Integer.IsGreater(Playlist.Length(video),1) | Player.SeekEnabled</visible>
 				</control>
 				<control type="button" id="602">
 					<include content="PlayerButtons">
@@ -56,7 +56,7 @@
 						<param name="type" value="next"/>
 					</include>
 					<onclick>PlayerControl(Next)</onclick>
-					<visible>Player.SeekEnabled</visible>
+					<visible>Player.ChapterCount | Integer.IsGreater(Playlist.Length(video),1) | Player.SeekEnabled</visible>
 				</control>
 				<control type="button" id="607">
 					<colordiffuse>$VAR[PlayerRecordIconColor]</colordiffuse>
