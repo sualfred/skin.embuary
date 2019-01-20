@@ -1400,7 +1400,8 @@
 				<!-- icon -->
 				<control type="group">
 					<visible>
-						String.IsEqual(ListItem.Property(useFakeArt),false)
+						String.IsEmpty(ListItem.Property(useFakeArt))
+						| String.IsEqual(ListItem.Property(useFakeArt),false)
 						| [String.IsEqual(ListItem.Property(useFakeArt),true) + [String.IsEmpty(ListItem.Property(Art1)) | String.IsEmpty(ListItem.Property(Art2)) | String.IsEmpty(ListItem.Property(Art3)) | String.IsEmpty(ListItem.Property(Art4))]]
 					</visible>
 					<control type="image">
@@ -1423,7 +1424,7 @@
 							<height>158</height>
 							<texture background="true">$INFO[ListItem.Icon]</texture>
 							<aspectratio scalediffuse="false">keep</aspectratio>
-							<visible>String.IsEqual(ListItem.Property(aspectRatio),keep)</visible>
+							<visible>String.IsEqual(ListItem.Property(aspectRatio),keep) | String.IsEmpty(ListItem.Property(aspectRatio))</visible>
 						</control>
 						<control type="image">
 							<width>280</width>
