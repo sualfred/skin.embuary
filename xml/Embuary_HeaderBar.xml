@@ -137,7 +137,7 @@
 							<param name="align" value="false"/>
 							<param name="color" value="text_header_mainlabel"/>
 						</include>
-						<visible>Player.HasMedia + !Player.Paused + $EXP[HolidayThemeSound]</visible>
+						<visible>Player.HasMedia + !Player.Paused</visible>
 					</control>
 					<control type="label">
 						<font>Material24</font>
@@ -146,10 +146,10 @@
 							<param name="align" value="false"/>
 							<param name="color" value="text_header_mainlabel"/>
 						</include>
-						<visible>Player.HasMedia + Player.Paused + $EXP[HolidayThemeSound]</visible>
+						<visible>Player.HasMedia + Player.Paused</visible>
 					</control>
 					<control type="label">
-						<visible>Player.HasMedia + $EXP[HolidayThemeSound]</visible>
+						<visible>Player.HasMedia</visible>
 						<width>0</width>
 					</control>
 					<control type="label">
@@ -231,7 +231,6 @@
 					+ !Window.IsVisible(visualisation)
 					+ !Window.IsVisible(addonsettings)
 					+ !$EXP[InfoDialogActive]
-					+ $EXP[HolidayThemeSound]
 				</visible>
 				<animation effect="slide" start="0,0" end="0,58"  time="500" tween="sine" easing="inout">Hidden</animation>
 				<animation effect="slide" start="0,58" end="0,0"  time="500" tween="sine" easing="inout">Visible</animation>
@@ -526,10 +525,7 @@
 				<param name="align" value="false"/>
 			</include>
 			<onclick>ActivateWindow(playercontrols)</onclick>
-			<visible>Player.HasMedia
-				+ !String.StartsWith(Player.Filenameandpath,special://skin/extras)
-				+ String.IsEmpty(Window(home).Property(SkinExtraSound))
-			</visible>
+			<visible>Player.HasMedia</visible>
 		</control>
 		<control type="button" id="6612">
 			<font>Material24</font>
@@ -544,8 +540,6 @@
 				| Integer.IsGreater(Playlist.Length(music),1)
 				]
 				+ !Window.IsVisible(MyPlaylist.xml)
-				+ !String.StartsWith(Player.Filenameandpath,special://skin/extras)
-				+ String.IsEmpty(Window(home).Property(SkinExtraSound))
 			</visible>
 		</control>
 		<control type="button" id="6620">
@@ -554,12 +548,8 @@
 			<include content="HeaderButton">
 				<param name="align" value="false"/>
 			</include>
-			<onclick condition="Player.HasVideo">ActivateWindow(fullscreenvideo)</onclick>
-			<onclick condition="Player.HasAudio">ActivateWindow(visualisation)</onclick>
-			<visible>Player.HasMedia
-				+ !String.StartsWith(Player.Filenameandpath,special://skin/extras)
-				+ String.IsEmpty(Window(home).Property(SkinExtraSound))
-			</visible>
+			<onclick>fullscreen</onclick>
+			<visible>Player.HasMedia</visible>
 		</control>
 	</include>
 </includes>
