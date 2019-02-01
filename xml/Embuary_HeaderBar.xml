@@ -137,7 +137,7 @@
 							<param name="align" value="false"/>
 							<param name="color" value="text_header_mainlabel"/>
 						</include>
-						<visible>Player.HasMedia + !Player.HasGame + !Player.Paused + $EXP[HolidayThemeSound]</visible>
+						<visible>Player.HasMedia + !Player.HasGame + !Player.Paused</visible>
 					</control>
 					<control type="label">
 						<font>Material24</font>
@@ -146,10 +146,10 @@
 							<param name="align" value="false"/>
 							<param name="color" value="text_header_mainlabel"/>
 						</include>
-						<visible>Player.HasMedia + !Player.HasGame + Player.Paused + $EXP[HolidayThemeSound]</visible>
+						<visible>Player.HasMedia + !Player.HasGame + Player.Paused</visible>
 					</control>
 					<control type="label">
-						<visible>Player.HasMedia + !Player.HasGame + $EXP[HolidayThemeSound]</visible>
+						<visible>Player.HasMedia + !Player.HasGame</visible>
 						<width>0</width>
 					</control>
 					<control type="label">
@@ -232,7 +232,6 @@
 					+ !Window.IsVisible(visualisation)
 					+ !Window.IsVisible(addonsettings)
 					+ !$EXP[InfoDialogActive]
-					+ $EXP[HolidayThemeSound]
 				</visible>
 				<animation effect="slide" start="0,0" end="0,58"  time="500" tween="sine" easing="inout">Hidden</animation>
 				<animation effect="slide" start="0,58" end="0,0"  time="500" tween="sine" easing="inout">Visible</animation>
@@ -525,11 +524,7 @@
 				<param name="align" value="false"/>
 			</include>
 			<onclick>ActivateWindow(playercontrols)</onclick>
-			<visible>Player.HasMedia
-				+ !Player.HasGame
-				+ !String.StartsWith(Player.Filenameandpath,special://skin/extras)
-				+ String.IsEmpty(Window(home).Property(SkinExtraSound))
-			</visible>
+			<visible>Player.HasMedia + !Player.HasGame</visible>
 		</control>
 		<control type="button" id="6612">
 			<font>Material24</font>
@@ -544,8 +539,6 @@
 				| Integer.IsGreater(Playlist.Length(music),1)
 				]
 				+ !Window.IsVisible(MyPlaylist.xml)
-				+ !String.StartsWith(Player.Filenameandpath,special://skin/extras)
-				+ String.IsEmpty(Window(home).Property(SkinExtraSound))
 			</visible>
 		</control>
 		<control type="button" id="6620">
@@ -555,10 +548,7 @@
 				<param name="align" value="false"/>
 			</include>
 			<onclick>fullscreen</onclick>
-			<visible>Player.HasMedia
-				+ !String.StartsWith(Player.Filenameandpath,special://skin/extras)
-				+ String.IsEmpty(Window(home).Property(SkinExtraSound))
-			</visible>
+			<visible>Player.HasMedia</visible>
 		</control>
 	</include>
 	<!-- Globalsearch -->
