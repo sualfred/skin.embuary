@@ -482,11 +482,23 @@
 				<param name="sortorder" value="ascending"/>
 				<param name="content" value="plugin://script.embuary.helper/?info=getseasonepisodes&amp;title='$ESCINFO[ListItem.TvShowTitle]'&amp;season=$INFO[ListItem.Season]&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 			</include>
+			<!-- Seasons -->
+			<include content="PosterWidget">
+				<param name="visible" value="!String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)"/>
+				<param name="id" value="201"/>
+				<param name="onup" value="200"/>
+				<param name="ondown" value="202"/>
+				<param name="headline" value="$LOCALIZE[31322]"/>
+				<param name="sublabel" value=""/>
+				<param name="height" value="551"/>
+				<param name="sortby" value="season"/>
+				<param name="content" value="$VAR[InfoDialog_Season_Content]"/>
+			</include>
 			<!-- Cast -->
 			<include content="CastWidget">
 				<param name="visible" value="Integer.IsGreater(Container(2000).NumItems,0)"/>
-				<param name="id" value="201"/>
-				<param name="onup" value="200"/>
+				<param name="id" value="202"/>
+				<param name="onup" value="201"/>
 				<param name="ondown" value="400"/>
 				<param name="content" value="$VAR[View_Cast_Content]"/>
 				<param name="use_custom_onclick" value="true"/>

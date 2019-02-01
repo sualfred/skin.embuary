@@ -413,8 +413,9 @@
 	</variable>
 	<variable name="InfoDialog_Season_Content">
 		<value condition="!String.IsEmpty(Container.Pluginname) + !String.StartsWith(Container.Folderpath,plugin://plugin.video.embycon)"></value>
-		<value condition="String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">plugin://plugin.video.embycon/?media_type=tvshows&amp;mode=GET_CONTENT&amp;use_cache=false&amp;url=%7Bserver%7D%2F%2Femby%2FShows%2F$INFO[ListItem.Property(id)]%2FSeasons%3FuserId%3D%7Buserid%7D%26Fields%3DItemCounts%252CPrimaryImageAspectRatio%252CBasicSyncInfo%252CCanDelete%252CMediaSourceCount</value>
-		<value condition="!String.IsEmpty(ListItem.DBID)">plugin://script.embuary.helper/?info=getseasons&amp;dbid=$INFO[ListItem.DBID]</value>
+		<value condition="String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) + !String.IsEqual(ListItem.DBType,episode)">plugin://plugin.video.embycon/?media_type=tvshows&amp;mode=GET_CONTENT&amp;use_cache=false&amp;url=%7Bserver%7D%2F%2Femby%2FShows%2F$INFO[ListItem.Property(id)]%2FSeasons%3FuserId%3D%7Buserid%7D%26Fields%3DItemCounts%252CPrimaryImageAspectRatio%252CBasicSyncInfo%252CCanDelete%252CMediaSourceCount</value>
+		<value condition="!String.IsEmpty(ListItem.DBID) + !String.IsEqual(ListItem.DBType,episode)">plugin://script.embuary.helper/?info=getseasons&amp;dbid=$INFO[ListItem.DBID]&amp;allseasons=false</value>
+		<value condition="!String.IsEmpty(ListItem.DBID)">plugin://script.embuary.helper/?info=getseasons&amp;title=$INFO[ListItem.TVShowTitle]&amp;allseasons=false</value>
 	</variable>
 	<!-- Embcon widget vars -->
 	<variable name="EmbyConLabel">
