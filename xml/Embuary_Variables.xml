@@ -696,7 +696,8 @@
 		<value condition="String.StartsWith(ListItem.Path,plugin://plugin.audio.prime_music) + String.Contains(ListItem.Filenameandpath,playTrack)">$INFO[ListItem.Artist]</value>
 	</variable>
 	<variable name="RightListLabel">
-		<value condition="Window.IsVisible(addonbrowser)">$INFO[ListItem.Label2]</value>
+		<value condition="Window.IsVisible(addonbrowser) + !String.IsEmpty(ListItem.Label2)">$INFO[ListItem.Label2]</value>
+		<value condition="Window.IsVisible(addonbrowser) + !String.IsEmpty(ListItem.AddonVersion)">$INFO[ListItem.AddonVersion]</value>
 		<value condition="!String.IsEmpty(ListItem.Duration)">$VAR[DurationMinutes]</value>
 		<value condition="String.IsEqual(ListItem.DBType,album)">$INFO[ListItem.Year]</value>
 		<value condition="Container.Content(tvshows) + !String.IsEmpty(ListItem.Property(TotalEpisodes))">$INFO[ListItem.Property(TotalEpisodes),, $LOCALIZE[20453]]</value>
