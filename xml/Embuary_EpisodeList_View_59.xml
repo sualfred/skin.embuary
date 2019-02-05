@@ -10,10 +10,10 @@
 				<animation effect="slide" condition="!String.IsEmpty(Container.ShowTitle) + Container.HasParent + !Integer.IsGreaterOrEqual(Container($PARAM[id]).CurrentItem,1) + !Container($PARAM[id]).HasPrevious" time="200" end="0,150">Conditional</animation>
 				<control type="group">
 					<visible>!String.IsEmpty(Container.ShowTitle)</visible>
-					<animation effect="fade" condition="!Container.HasParent + !Integer.IsGreaterOrEqual(Container($PARAM[id]).CurrentItem,4) + !Container($PARAM[id]).HasPrevious" time="100" delay="100" start="0" end="100">Conditional</animation>
-					<animation effect="fade" condition="!Container.HasParent + ![!Integer.IsGreaterOrEqual(Container($PARAM[id]).CurrentItem,4) + !Container($PARAM[id]).HasPrevious]" time="0" start="100" end="0">Conditional</animation>
-					<animation effect="fade" condition="Container.HasParent + !Integer.IsGreaterOrEqual(Container($PARAM[id]).CurrentItem,3) + !Container($PARAM[id]).HasPrevious" time="100" delay="100" start="0" end="100">Conditional</animation>
-					<animation effect="fade" condition="Container.HasParent + ![!Integer.IsGreaterOrEqual(Container($PARAM[id]).CurrentItem,3) + !Container($PARAM[id]).HasPrevious]" time="0" start="100" end="0">Conditional</animation>
+					<animation reversible="false" effect="slide" condition="!Container.HasParent + !Integer.IsGreaterOrEqual(Container($PARAM[id]).CurrentItem,4) + !Container($PARAM[id]).HasPrevious" time="300" delay="0" start="0,-305" end="0,0" tween="sine" easing="inout">Conditional</animation>
+					<animation reversible="false" effect="slide" condition="!Container.HasParent + ![!Integer.IsGreaterOrEqual(Container($PARAM[id]).CurrentItem,4) + !Container($PARAM[id]).HasPrevious]" time="300" end="0,-305" start="0,0" tween="sine" easing="inout">Conditional</animation>
+					<animation reversible="false" effect="slide" condition="Container.HasParent + !Integer.IsGreaterOrEqual(Container($PARAM[id]).CurrentItem,3) + !Container($PARAM[id]).HasPrevious" time="300" delay="0" start="0,-305" end="0,0" tween="sine" easing="inout">Conditional</animation>
+					<animation reversible="false" effect="slide" condition="Container.HasParent + ![!Integer.IsGreaterOrEqual(Container($PARAM[id]).CurrentItem,3) + !Container($PARAM[id]).HasPrevious]" time="300" end="0,-305" start="0,0" tween="sine" easing="inout">Conditional</animation>
 					<left>70</left>
 					<right>70</right>
 					<top>-30</top>
