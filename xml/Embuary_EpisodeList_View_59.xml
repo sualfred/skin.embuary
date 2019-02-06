@@ -6,47 +6,133 @@
 			<control type="group">
 				<include>Visible_OpenClose</include>
 				<visible>Control.IsVisible($PARAM[id])</visible>
-				<animation effect="slide" condition="!String.IsEmpty(Container.ShowTitle) + !Container.HasParent + !Integer.IsGreaterOrEqual(Container($PARAM[id]).CurrentItem,2) + !Container($PARAM[id]).HasPrevious" time="200" end="0,150">Conditional</animation>
-				<animation effect="slide" condition="!String.IsEmpty(Container.ShowTitle) + Container.HasParent + !Integer.IsGreaterOrEqual(Container($PARAM[id]).CurrentItem,1) + !Container($PARAM[id]).HasPrevious" time="200" end="0,150">Conditional</animation>
+				<animation effect="slide" condition="Container.Content(episodes) + !Container.HasParent + [[!Integer.IsGreaterOrEqual(Container($PARAM[id]).CurrentItem,2) + !Container($PARAM[id]).HasPrevious] | Integer.IsLess(Container(59).NumItems,3)]" time="200" end="0,170">Conditional</animation>
+				<animation effect="slide" condition="Container.Content(episodes) + Container.HasParent + [[!Integer.IsGreaterOrEqual(Container($PARAM[id]).CurrentItem,1) + !Container($PARAM[id]).HasPrevious] | Integer.IsLess(Container(59).NumItems,2)]" time="200" end="0,170">Conditional</animation>
 				<control type="group">
-					<visible>!String.IsEmpty(Container.ShowTitle)</visible>
-					<animation reversible="false" effect="slide" condition="!Container.HasParent + !Integer.IsGreaterOrEqual(Container($PARAM[id]).CurrentItem,4) + !Container($PARAM[id]).HasPrevious" time="300" delay="0" start="0,-305" end="0,0" tween="sine" easing="inout">Conditional</animation>
-					<animation reversible="false" effect="slide" condition="!Container.HasParent + ![!Integer.IsGreaterOrEqual(Container($PARAM[id]).CurrentItem,4) + !Container($PARAM[id]).HasPrevious]" time="300" end="0,-305" start="0,0" tween="sine" easing="inout">Conditional</animation>
-					<animation reversible="false" effect="slide" condition="Container.HasParent + !Integer.IsGreaterOrEqual(Container($PARAM[id]).CurrentItem,3) + !Container($PARAM[id]).HasPrevious" time="300" delay="0" start="0,-305" end="0,0" tween="sine" easing="inout">Conditional</animation>
-					<animation reversible="false" effect="slide" condition="Container.HasParent + ![!Integer.IsGreaterOrEqual(Container($PARAM[id]).CurrentItem,3) + !Container($PARAM[id]).HasPrevious]" time="300" end="0,-305" start="0,0" tween="sine" easing="inout">Conditional</animation>
+					<animation type="Conditional" reversible="false" condition="!Container.HasParent + !Integer.IsGreaterOrEqual(Container($PARAM[id]).CurrentItem,4) + !Container($PARAM[id]).HasPrevious">
+						<effect type="fade" time="150" delay="150" start="0" end="100" tween="sine" easing="inout"/>
+					</animation>
+					<animation type="Conditional" reversible="false" condition="!Container.HasParent + ![!Integer.IsGreaterOrEqual(Container($PARAM[id]).CurrentItem,4) + !Container($PARAM[id]).HasPrevious]">
+						<effect type="slide" time="300" end="0,-305" start="0,0" tween="sine" easing="inout"/>
+					</animation>
+					<animation type="Conditional" reversible="false" condition="Container.HasParent + !Integer.IsGreaterOrEqual(Container($PARAM[id]).CurrentItem,3) + !Container($PARAM[id]).HasPrevious">
+						<effect type="fade" time="150" delay="150" start="0" end="100" tween="sine" easing="inout"/>
+					</animation>
+					<animation type="Conditional" reversible="false" condition="Container.HasParent + ![!Integer.IsGreaterOrEqual(Container($PARAM[id]).CurrentItem,3) + !Container($PARAM[id]).HasPrevious]">
+						<effect type="slide" time="300" end="0,-305" start="0,0" tween="sine" easing="inout"/>
+					</animation>
 					<left>70</left>
 					<right>70</right>
-					<top>-30</top>
-					<control type="label">
-						<height>80</height>
-						<right>400</right>
-						<label>$INFO[Container.ShowTitle,,[CR]]$INFO[Container.Foldername]</label>
-						<aligny>center</aligny>
-						<font>Reg37</font>
-						<visible>!String.IsEqual(Container.Foldername,Container.ShowTitle)</visible>
-					</control>
-					<control type="label">
-						<height>80</height>
-						<right>400</right>
-						<label>$INFO[Container.ShowTitle,,[CR]]$LOCALIZE[20360]</label>
-						<aligny>center</aligny>
-						<font>Reg37</font>
-						<visible>String.IsEqual(Container.Foldername,Container.ShowTitle)</visible>
-					</control>
+					<top>-50</top>
+					<!-- clearlogo -->
 					<control type="image">
 						<right>0</right>
 						<width>400</width>
-						<height>80</height>
+						<height>100</height>
 						<texture background="true">$VAR[ListItemClearlogo]</texture>
 						<aspectratio align="right">keep</aspectratio>
 					</control>
+					<!-- poster -->
+					<control type="group">
+						<visible>[!String.IsEmpty(Container.ShowTitle) | [String.Contains(Container.Folderpath,plugin.video.embycon) + [String.Contains(Container.Folderpath,media_type=season) | String.Contains(Container.Folderpath,media_type=series)]]] + !String.IsEmpty(ListItem.Art(tvshow.poster))</visible>
+						<top>-3</top>
+						<control type="image">
+							<top>-2</top>
+							<left>-2</left>
+							<width>86</width>
+							<height>126</height>
+							<texture border="20,20,20,20">items/shadow.png</texture>
+						</control>
+						<control type="image">
+							<width>80</width>
+							<height>120</height>
+							<texture colordiffuse="$VAR[ThumbFallbackColor]">common/white.jpg</texture>
+							<aspectratio scalediffuse="false">stretch</aspectratio>
+							<visible>String.IsEmpty(ListItem.Art(poster)) + String.IsEmpty(ListItem.Art(tvshow.poster)) + String.StartsWith(ListItem.Icon,default)</visible>
+						</control>
+						<control type="image">
+							<width>80</width>
+							<height>120</height>
+							<texture colordiffuse="$VAR[ThumbBackgroundColor]">common/white.jpg</texture>
+							<aspectratio scalediffuse="false">stretch</aspectratio>
+							<visible>!String.IsEmpty(ListItem.Art(poster)) | !String.IsEmpty(ListItem.Art(tvshow.poster)) | !String.StartsWith(ListItem.Icon,default)</visible>
+						</control>
+						<control type="textbox">
+							<top>10</top>
+							<left>10</left>
+							<width>60</width>
+							<height>100</height>
+							<font>Light24</font>
+							<textcolor>white</textcolor>
+							<align>center</align>
+							<aligny>center</aligny>
+							<label>$VAR[ListItemTitleLabel]</label>
+							<visible>String.IsEmpty(ListItem.Art(poster)) + String.IsEmpty(ListItem.Art(tvshow.poster)) + String.StartsWith(ListItem.Icon,default)</visible>
+						</control>
+						<control type="image">
+							<width>80</width>
+							<height>120</height>
+							<texture background="true">$INFO[ListItem.Art(tvshow.poster)]</texture>
+							<aspectratio scalediffuse="false">stretch</aspectratio>
+						</control>
+					</control>
+					<!-- buttons -->
+					<control type="group">
+						<animation effect="slide" end="110,0" time="0" condition="[!String.IsEmpty(Container.ShowTitle) | [String.Contains(Container.Folderpath,plugin.video.embycon) + [String.Contains(Container.Folderpath,media_type=season) | String.Contains(Container.Folderpath,media_type=series)]]] + !String.IsEmpty(ListItem.Art(tvshow.poster))">Conditional</animation>
+						<control type="label">
+							<height>50</height>
+							<right>400</right>
+							<label>$VAR[View59Headline]</label>
+							<aligny>top</aligny>
+							<font>Reg37</font>
+						</control>
+						<control type="grouplist" id="100">
+							<top>50</top>
+							<height>70</height>
+							<orientation>horizontal</orientation>
+							<itemgap>5</itemgap>
+							<onright>noop</onright>
+							<onleft>900</onleft>
+							<control type="button" id="101">
+								<include>LightGreyButton</include>
+								<label>$LOCALIZE[22083]</label>
+								<onup>6666</onup>
+								<ondown>$PARAM[id]</ondown>
+								<onclick>RunScript(script.embuary.helper,action=playall)</onclick>
+								<visible>String.StartsWith(Container.Folderpath,videodb://)</visible>
+							</control>
+							<control type="button" id="102">
+								<include>LightGreyButton</include>
+								<label>$LOCALIZE[31323]</label>
+								<onup>6666</onup>
+								<ondown>$PARAM[id]</ondown>
+								<onclick>RunScript(script.embuary.helper,action=playrandom)</onclick>
+							</control>
+							<control type="button" id="103">
+								<include>LightGreyButton</include>
+								<label>$LOCALIZE[31011]</label>
+								<onup>6666</onup>
+								<ondown>$PARAM[id]</ondown>
+								<onclick>SetFocus(50)</onclick>
+								<onclick condition="!String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) + !Container.HasParent">RunScript(script.embuary.helper,action=jumptoshow_by_episode,dbid=$INFO[Container.ListItemAbsolute(0).DBID])</onclick>
+								<onclick condition="!String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) + Container.HasParent">RunScript(script.embuary.helper,action=jumptoshow_by_episode,dbid=$INFO[Container.ListItemAbsolute(1).DBID])</onclick>
+								<onclick condition="String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) + !Container.HasParent">RunScript(script.embuary.helper,action=goto,path='"plugin://plugin.video.embycon/?media_type=Series&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fShows%2f$INFO[Container.ListItemAbsolute(0).Property(series_id)]%2fSeasons%3fuserId%3d%7buserid%7d%26Fields%3d%7bfield_filters%7d%26format%3djson"',target=videos)</onclick>
+								<onclick condition="String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) + Container.HasParent">RunScript(script.embuary.helper,action=goto,path='"plugin://plugin.video.embycon/?media_type=Series&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fShows%2f$INFO[Container.ListItemAbsolute(1).Property(series_id)]%2fSeasons%3fuserId%3d%7buserid%7d%26Fields%3d%7bfield_filters%7d%26format%3djson"',target=videos)</onclick>
+								<visible>
+									[String.StartsWith(Container.Folderpath,videodb://) + String.Contains(Container.Foldername,$LOCALIZE[20373]) | String.Contains(Container.Foldername,$LOCALIZE[31258])]
+									| [String.Contains(Container.Folderpath,plugin.video.embycon) + [String.Contains(Container.Folderpath,media_type=season) | String.Contains(Container.Folderpath,media_type=series)]]
+								</visible>
+							</control>
+						</control>
+					</control>
 				</control>
 				<control id="$PARAM[id]" type="fixedlist">
-					<visible>[$EXP[EpisodeViewVisible] + Skin.HasSetting(ViewEpisodeList)] | Window.IsVisible(MyPVRRecordings.xml)</visible>
+					<visible>[$EXP[EpisodeViewVisible] + !Skin.HasSetting(ViewEpisodeToggle)] | Window.IsVisible(MyPVRRecordings.xml)</visible>
 					<animation effect="slide" time="0" end="0,-305" condition="!Container.HasParent + [Integer.IsEqual(Container($PARAM[id]).NumItems,2) | Integer.IsEqual(Container($PARAM[id]).NumItems,1)]">Conditional</animation>
 					<animation effect="slide" time="0" end="0,-305" condition="Container.HasParent + [Integer.IsEqual(Container($PARAM[id]).NumItems,1)]">Conditional</animation>
 					<height>100%</height>
-					<onup>SetFocus(6666)</onup>
+					<onup condition="Container.Content(episodes)">100</onup>
+					<onup condition="!Container.Content(episodes)">6666</onup>
 					<onright condition="Control.IsVisible(17)">SetFocus(17)</onright>
 					<onright condition="!Control.IsVisible(17) + Control.IsVisible(7000)">SetFocus(7000)</onright>
 					<onright condition="!Control.IsVisible(17) + !Control.IsVisible(7000)">SetFocus(6666)</onright>

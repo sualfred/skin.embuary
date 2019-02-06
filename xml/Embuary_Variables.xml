@@ -432,6 +432,15 @@
 		<value condition="Skin.HasSetting(CustomDeviceName) + !String.IsEmpty(Skin.String(CustomDeviceName_label))">$INFO[Skin.String(CustomDeviceName_label)]</value>
 		<value>embuary</value>
 	</variable>
+	<variable name="View59Headline">
+		<value condition="String.Contains(Container.Folderpath,plugin.video.embycon) + [String.Contains(Container.Folderpath,media_type=season) | String.Contains(Container.Folderpath,media_type=series)] + !Container.HasParent">$INFO[Container.ListItemAbsolute(0).TvShowTitle]</value>
+		<value condition="String.Contains(Container.Folderpath,plugin.video.embycon) + [String.Contains(Container.Folderpath,media_type=season) | String.Contains(Container.Folderpath,media_type=series)] + Container.HasParent">$INFO[Container.ListItemAbsolute(1).TvShowTitle]</value>
+		<value condition="String.IsEmpty(Container.ShowTitle)">$LOCALIZE[20360]</value>
+		<value condition="!String.IsEqual(Container.Foldername,Container.ShowTitle) + String.IsEqual(Container.Foldername,$LOCALIZE[20366])">$INFO[Container.ShowTitle] - $LOCALIZE[20360]</value>
+		<value condition="!String.IsEqual(Container.Foldername,Container.ShowTitle)">$INFO[Container.ShowTitle]$INFO[Container.Foldername, - ]</value>
+		<value condition="String.IsEqual(Container.Foldername,Container.ShowTitle)">$INFO[Container.ShowTitle] - $LOCALIZE[20360]</value>
+		<value>$INFO[Container.Foldername]</value>
+	</variable>
 	<variable name="ContainerContentPrefix">
 		<value condition="Window.IsVisible(script-globalsearch.xml) | Window.IsVisible(script-globalsearch-main.xml)">Globalsearch - </value>
 		<value condition="[String.StartsWith(Container.Folderpath,plugin://plugin.video.embycon) | Window.IsVisible(1131)] + !Skin.HasSetting(HideEmbyConLabel)">EmbyCon - </value>
@@ -624,6 +633,7 @@
 		<value>$INFO[ListItem.Icon]</value>
 	</variable>
 	<variable name="IconPoster">
+		<value condition="!String.IsEmpty(ListItem.Art(tvshow.poster)) + String.IsEqual(ListItem.DBType,season) + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) + String.IsEqual(ListItem.Label,All)">$INFO[ListItem.Art(tvshow.poster)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(season.poster))">$INFO[ListItem.Art(season.poster)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(poster))">$INFO[ListItem.Art(poster)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(tvshow.poster))">$INFO[ListItem.Art(tvshow.poster)]</value>
@@ -1241,10 +1251,12 @@
 		<value condition="Skin.HasSetting(DoNotUseExtendedInfo)">$LOCALIZE[31237]</value>
 		<value>ExtendedInfo</value>
 	</variable>
-	<variable name="EpisodeListLabel">
+	<variable name="EpisodeListLabel">"
+		<value condition="ListItem.IsParentFolder">$INFO[ListItem.Label]</value>
 		<value condition="String.IsEqual(Container.Foldername,$LOCALIZE[20366]) | !String.Contains(Container.Foldername,$LOCALIZE[20373])">$VAR[ListItemSeasonEpisode]$INFO[ListItem.Title]</value>
 		<value condition="String.IsEmpty(Container.ShowTitle)">$INFO[ListItem.TvShowTitle,, - ]$VAR[ListItemSeasonEpisode]$INFO[ListItem.Title]</value>
-		<value>$INFO[ListItem.Episode,,. ]$INFO[ListItem.Title]</value>
+		<value condition="!String.IsEmpty(ListItem.Title)">$INFO[ListItem.Episode,,. ]$INFO[ListItem.Title]</value>
+		<value>$INFO[ListItem.Label]</value>
 	</variable>
 	<variable name="SelectDialogIcon">
 		<value condition="ListItem.IsParent | String.IsEqual(ListItem.Label,..)">DefaultFolderBack.png</value>
