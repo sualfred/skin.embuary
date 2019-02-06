@@ -298,7 +298,7 @@
 					<selectedcolor>sidepanel_textcolor</selectedcolor>
 					<label>$PARAM[label]</label>
 					<onclick condition="$PARAM[closepanel]">right</onclick>
-					<onclick>Dialog.Close(all,force)</onclick>
+					<onclick>Dialog.Close(all,true)</onclick>
 					<onclick condition="$PARAM[condition1]">$PARAM[action1]</onclick>
 					<onclick condition="$PARAM[condition2]">$PARAM[action2]</onclick>
 					<onclick condition="$PARAM[condition3]">$PARAM[action3]</onclick>
@@ -1642,10 +1642,6 @@
 			<label>$LOCALIZE[31194]</label>
 			<onclick>ActivateWindow(addonbrowser,addons://search/,return)</onclick>
 		</item>
-	</include>
-	<include name="DialogCloseAll">
-		<onclick condition="Skin.HasSetting(StartPlayerFullscreen)">SetProperty(SkipAutoFullscreen,1,home)</onclick>
-		<onclick>Dialog.Close(all,true)</onclick>
 	</include>
 	<include name="MultiFanart">
 		<param name="id">2003</param>
