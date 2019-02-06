@@ -66,7 +66,24 @@
 								<ondown>SetFocus(55)</ondown>
 								<onback>SetFocus(55)</onback>
 							</control>
+							<control type="button" id="55102">
+								<include>LightGreyButton</include>
+								<label>$LOCALIZE[22083]</label>
+								<onup>SetFocus(6666)</onup>
+								<ondown>SetFocus(55)</ondown>
+								<onback>SetFocus(55)</onback>
+								<onclick>RunScript(script.embuary.helper,action=playall)</onclick>
+								<visible>String.StartsWith(Container.Folderpath,videodb://)</visible>
+							</control>
 							<control type="button" id="55103">
+								<include>LightGreyButton</include>
+								<label>$LOCALIZE[31323]</label>
+								<onup>SetFocus(6666)</onup>
+								<ondown>SetFocus(55)</ondown>
+								<onback>SetFocus(55)</onback>
+								<onclick>RunScript(script.embuary.helper,action=playrandom)</onclick>
+							</control>
+							<control type="button" id="55104">
 								<visible>!String.IsEmpty(ListItem.Plot)</visible>
 								<include>LightGreyButton</include>
 								<width>70</width>
@@ -78,7 +95,7 @@
 								<ondown>SetFocus(55)</ondown>
 								<onback>SetFocus(55)</onback>
 							</control>
-							<control type="togglebutton" id="55102">
+							<control type="togglebutton" id="55105">
 								<include>LightGreyButton</include>
 								<width>70</width>
 								<height>50</height>
@@ -122,7 +139,7 @@
 						<param name="sortorder" value="descending"/>
 						<param name="headline" value="$VAR[EpisodesSpecialsHeadline]"/>
 						<param name="use_custom_content" value="false"/>
-						<param name="content_visible" value="$EXP[EpisodeViewVisible] + !Skin.HasSetting(ViewEpisodeList)"/>
+						<param name="content_visible" value="$EXP[EpisodeViewVisible] + Skin.HasSetting(ViewEpisodeToggle)"/>
 						<param name="list_name" value="$LOCALIZE[31199]"/>
 						<param name="height" value="438"/>
 					</include>

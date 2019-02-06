@@ -1477,9 +1477,9 @@
 			<control type="radiobutton" id="$PARAM[id]12">
 				<include content="ContextButton"/>
 				<label>$LOCALIZE[20359] - $LOCALIZE[31219]</label>
-				<onclick condition="Skin.HasSetting(ViewEpisodeList)">Skin.ToggleSetting(ViewEpisodeList)</onclick>
+				<onclick condition="!Skin.HasSetting(ViewEpisodeToggle)">Skin.ToggleSetting(ViewEpisodeToggle)</onclick>
 				<onclick>Container.SetViewMode(55)</onclick>
-				<selected>Control.IsVisible(55) + !Skin.HasSetting(ViewEpisodeList)</selected>
+				<selected>Control.IsVisible(55) + Skin.HasSetting(ViewEpisodeToggle)</selected>
 				<visible>$EXP[EpisodeViewVisible]</visible>
 			</control>
 			<control type="radiobutton" id="$PARAM[id]13">
@@ -1492,9 +1492,9 @@
 			<control type="radiobutton" id="$PARAM[id]14">
 				<include content="ContextButton"/>
 				<label>$LOCALIZE[20359] - $LOCALIZE[31220]</label>
-				<onclick condition="!Skin.HasSetting(ViewEpisodeList) + !Window.IsVisible(MyPVRRecordings.xml)">Skin.ToggleSetting(ViewEpisodeList)</onclick>
+				<onclick condition="Skin.HasSetting(ViewEpisodeToggle) + !Window.IsVisible(MyPVRRecordings.xml)">Skin.ToggleSetting(ViewEpisodeToggle)</onclick>
 				<onclick>Container.SetViewMode(59)</onclick>
-				<selected>Control.IsVisible(59) + [Skin.HasSetting(ViewEpisodeList) | Window.IsVisible(MyPVRRecordings.xml)]</selected>
+				<selected>Control.IsVisible(59) + [!Skin.HasSetting(ViewEpisodeToggle) | Window.IsVisible(MyPVRRecordings.xml)]</selected>
 				<visible>$EXP[EpisodeViewVisible] | Window.IsVisible(MyPVRRecordings.xml)</visible>
 			</control>
 		</definition>
