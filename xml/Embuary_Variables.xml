@@ -1075,6 +1075,7 @@
 		<value condition="!Control.HasFocus(607)">white</value>
 	</variable>
 	<variable name="PlayerFullLabel">
+		<value condition="String.IsEqual(Player.Title,emby-loading.mp4)">$LOCALIZE[20186]</value>
 		<value condition="Pvr.IsPlayingRadio">$INFO[MusicPlayer.Channelname]$INFO[Player.Title, - ]</value>
 		<value condition="String.Contains(Player.Art(thumb),KodiCinemaMode) + String.Contains(VideoPlayer.Title,Trailer)">$LOCALIZE[31255] - $INFO[VideoPlayer.Title]</value>
 		<value condition="String.Contains(Player.Art(thumb),KodiCinemaMode)">$LOCALIZE[31255]</value>
@@ -1089,6 +1090,7 @@
 		<value>$INFO[VideoPlayer.Title]</value>
 	</variable>
 	<variable name="PlayerTitleLabel">
+		<value condition="String.IsEqual(Player.Title,emby-loading.mp4)">$LOCALIZE[20186]</value>
 		<value condition="Pvr.IsPlayingRadio">$LOCALIZE[19021]</value>
 		<value condition="String.Contains(Player.Art(thumb),KodiTrailer)">$LOCALIZE[20410]</value>
 		<value condition="String.Contains(Player.Art(thumb),KodiCinemaMode)">$LOCALIZE[31255]</value>
@@ -1120,6 +1122,7 @@
 		<value condition="!String.IsEmpty(MusicPlayer.Cover) + !String.StartsWith(MusicPlayer.Cover,default)">$INFO[MusicPlayer.Cover]</value>
 	</variable>
 	<variable name="WidePlayerIcon">
+		<value condition="String.IsEqual(Player.Title,emby-loading.mp4)">icons/player/waiting.gif</value>
 		<value condition="!String.StartsWith(Player.Art(thumb),special://home/addons/)">$INFO[Player.Art(thumb)]</value>
 		<value condition="!String.IsEmpty(Player.Art(landscape))">$INFO[Player.Art(landscape)]</value>
 		<value condition="!String.IsEmpty(Player.Art(fanart))">$INFO[Player.Art(fanart)]</value>
