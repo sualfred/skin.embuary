@@ -8,12 +8,13 @@
 			<include>PlayerTopBar</include>
 			<!--Bottom-->
 			<control type="group">
+				<!--<animation effect="slide" time="0" end="0,365" condition="Integer.IsLess(Container(11).NumItems,1)">Conditional</animation>-->
 				<bottom>0</bottom>
-				<height>510</height>
+				<height>520</height>
 				<control type="image">
 					<bottom>0</bottom>
 					<width>100%</width>
-					<height>465</height>
+					<height>475</height>
 					<texture colordiffuse="black">views/player/mask_bottom.png</texture>
 				</control>
 				<!-- buttons -->
@@ -29,13 +30,13 @@
 						<include>LightGreyButton</include>
 						<label>$LOCALIZE[294]</label>
 						<onup>SetFocus(6666)</onup>
-						<ondown>SetFocus(11)</ondown>
+						<ondown>11</ondown>
 					</control>
 					<control type="button" id="3">
 						<include>LightGreyButton</include>
 						<label>$LOCALIZE[296]</label>
 						<onup>SetFocus(6666)</onup>
-						<ondown>SetFocus(11)</ondown>
+						<ondown>11</ondown>
 					</control>
 				</control>
 				<!-- bookmarks -->
@@ -48,8 +49,21 @@
 						<param name="ondown" value="noop"/>
 						<param name="mainlabel" value="$INFO[ListItem.Label]"/>
 						<param name="sublabel" value="$INFO[ListItem.Label2]"/>
+						<param name="thumblabel" value="$LOCALIZE[20018]"/>
 						<param name="headline" value="$LOCALIZE[298]"/>
 						<param name="use_custom_content" value="false"/>
+					</include>
+					<include content="WideWidget">
+						<param name="visible" value="Integer.IsLess(Container(11).NumItems,1)"/>
+						<param name="id" value="200"/>
+						<param name="onup" value="100"/>
+						<param name="ondown" value="noop"/>
+						<param name="mainlabel" value="$INFO[ListItem.Label]"/>
+						<param name="sublabel" value="$INFO[ListItem.Label2]"/>
+						<param name="thumblabel" value="$LOCALIZE[10006]"/>
+						<param name="headline" value="$LOCALIZE[298]"/>
+						<param name="showdummy" value="true"/>
+						<param name="use_custom_content" value="true"/>
 					</include>
 				</control>
 			</control>
