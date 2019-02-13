@@ -33,6 +33,8 @@
 	<include file="script-skinshortcuts-includes.xml" />
 
 	<!-- General -->
+	<expression name="EmbyLoading">[String.IsEqual(Player.Title,emby-loading.mp4)]</expression>
+
 	<expression name="SkinSetup">[!Skin.HasSetting(SkinSetup) + !Window.IsVisible(startup) + !Window.IsVisible(1119)]</expression>
 
 	<expression name="HolidayTheme">[System.Date(12-01,01-07) + !Skin.HasSetting(HideHolidayTheme) + [[!Window.IsVisible(visualisation) + !VideoPlayer.IsFullscreen] | Window.IsActive(fullscreeninfo) | Window.IsActive(script-script.extendedinfo-DialogInfo.xml) | Window.IsActive(script-script.extendedinfo-DialogVideoInfo.xml)]]</expression>

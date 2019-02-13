@@ -9,6 +9,7 @@
 			<visible>!Window.IsVisible(sliderdialog) + !Window.IsVisible(shutdownmenu)</visible>
 			<bottom>0</bottom>
 			<control type="grouplist" id="600">
+				<animation effect="slide" end="-278,0" time="0" condition="$EXP[EmbyLoading]">Conditional</animation>
 				<orientation>horizontal</orientation>
 				<height>50</height>
 				<bottom>30</bottom>
@@ -85,6 +86,7 @@
 					</include>
 					<onclick>SetFocus(900)</onclick>
 					<visible>!VideoPlayer.Content(livetv) + !VideoPlayer.Content(musicvideos)</visible>
+					<visible>!$EXP[EmbyLoading]</visible>
 				</control>
 				<control type="button" id="608">
 					<include content="PlayerButtons">
@@ -93,6 +95,7 @@
 					<onclick>close</onclick>
 					<onclick>ActivateWindow(fullscreeninfo)</onclick>
 					<visible>!VideoPlayer.Content(musicvideos)</visible>
+					<visible>!$EXP[EmbyLoading]</visible>
 				</control>
 				<control type="button" id="609">
 					<include content="PlayerButtons">
@@ -109,6 +112,7 @@
 					<onclick>close</onclick>
 					<onclick>ActivateWindow(videobookmarks)</onclick>
 					<visible>!VideoPlayer.Content(livetv) + !VideoPlayer.Content(musicvideos)</visible>
+					<visible>!$EXP[EmbyLoading]</visible>
 				</control>
 				<control type="button" id="611">
 					<include content="PlayerButtons">

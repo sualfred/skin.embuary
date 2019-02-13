@@ -119,6 +119,7 @@
 				</control>
 				<!-- Wide -->
 				<control type="group" id="99">
+					<visible>!$EXP[EmbyLoading]</visible>
 					<visible>![VideoPlayer.Content(movies) | VideoPlayer.Content(episodes) | VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)] | VideoPlayer.Content(musicvideos) | [String.IsEmpty(Player.Art(poster)) + String.IsEmpty(Player.Art(tvshow.poster)) + !VideoPlayer.Content(livetv) + !String.StartsWith(Player.Filenameandpath,pvr://)] | String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
 					<control type="image" id="99">
 						<bottom>25</bottom>
@@ -134,7 +135,7 @@
 						<height>141</height>
 						<texture colordiffuse="$VAR[ThumbFallbackColor]">common/white.jpg</texture>
 						<aspectratio scalediffuse="false">stretch</aspectratio>
-						<visible>String.IsEmpty(Player.Art(thumb)) | String.StartsWith(Player.Art(thumb),Default)</visible>
+						<visible>[String.IsEmpty(Player.Art(thumb)) | String.StartsWith(Player.Art(thumb),Default)]</visible>
 					</control>
 					<control type="textbox" id="99">
 						<bottom>39</bottom>
@@ -146,7 +147,7 @@
 						<align>center</align>
 						<aligny>center</aligny>
 						<label></label>
-						<visible>String.IsEmpty(Player.Art(thumb)) | String.StartsWith(Player.Art(thumb),Default)</visible>
+						<visible>[String.IsEmpty(Player.Art(thumb)) | String.StartsWith(Player.Art(thumb),Default)]</visible>
 					</control>
 					<control type="image" id="99">
 						<bottom>29</bottom>
@@ -167,14 +168,25 @@
 						<visible>!String.IsEmpty(Player.Art(thumb)) + !String.StartsWith(Player.Art(thumb),Default)</visible>
 					</control>
 				</control>
+				<!-- Emby loading -->
+				<control type="image" id="99">
+					<top>29</top>
+					<left>29</left>
+					<width>60</width>
+					<height>60</height>
+					<texture>special://skin/extras/spinner.apng</texture>
+					<aspectratio scalediffuse="false">keep</aspectratio>
+					<visible>$EXP[EmbyLoading]</visible>
+				</control>
 				<!-- Progress bars -->
 				<control type="group" id="99">
-					<!--  Cache bar -->
+					<!-- Cache bar -->
 					<control type="progress" id="99">
 						<include>PlayerProgressDimension</include>
 						<info>Player.ProgressCache</info>
 						<texturebg colordiffuse="grey">common/white.jpg</texturebg>
 						<midtexture colordiffuse="white">common/white.jpg</midtexture>
+						<visible>!$EXP[EmbyLoading]</visible>
 					</control>
 					<!-- Video progress bar -->
 					<control type="progress" id="99">
@@ -182,6 +194,7 @@
 						<info>Player.Progress</info>
 						<texturebg colordiffuse="00ffffff">common/white.jpg</texturebg>
 						<midtexture colordiffuse="$VAR[PlayerAccentColor]">common/white.jpg</midtexture>
+						<visible>!$EXP[EmbyLoading]</visible>
 						<visible>!VideoPlayer.Content(livetv)</visible>
 					</control>
 					<!-- LiveTV + timeshift progress bar -->
@@ -202,6 +215,7 @@
 				</control>
 				<!-- Label section -->
 				<control type="grouplist" id="99">
+					<visible>!$EXP[EmbyLoading]</visible>
 					<animation effect="slide" time="0" start="0,0" end="0,-36" condition="VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)">Conditional</animation>
 					<orientation>horizontal</orientation>
 					<height>31</height>
