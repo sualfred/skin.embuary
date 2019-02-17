@@ -50,12 +50,21 @@
 							<label>$LOCALIZE[15067]</label>
 							<ondown>200</ondown>
 							<onclick>close</onclick>
-							<visible>!Control.IsVisible(8)</visible>
+							<visible>!Control.IsVisible(8) + !Control.IsVisible(104)</visible>
 						</control>
 						<control type="button" id="8">
 							<include>LightGreyButton</include>
 							<label>$VAR[VideoInfoButton8]</label>
 							<ondown>200</ondown>
+							<visible>!Control.IsVisible(104)</visible>
+						</control>
+						<control type="button" id="104">
+							<include>LightGreyButton</include>
+							<onclick>close</onclick>
+							<onclick>RunScript(script.embuary.helper,action=playcinema,dbid=$INFO[ListItem.DBID],type=$INFO[ListItem.DBType]),title='$ESCINFO[ListItem.Title]')</onclick>
+							<label>$VAR[VideoInfoButton8]</label>
+							<ondown>200</ondown>
+							<visible>Skin.HasSetting(AlwaysCinemaMode) + $EXP[CinemaMode]</visible>
 						</control>
 						<control type="button" id="11">
 							<visible>!String.IsEmpty(ListItem.Trailer)</visible>
@@ -404,7 +413,7 @@
 						<onright>noop</onright>
 						<onleft>900</onleft>
 						<control type="button" id="101">
-							<visible>!Control.IsVisible(8)</visible>
+							<visible>!Control.IsVisible(8) + !Control.IsVisible(104)</visible>
 							<include>LightGreyButton</include>
 							<label>$LOCALIZE[15067]</label>
 							<ondown>200</ondown>
@@ -414,6 +423,15 @@
 							<include>LightGreyButton</include>
 							<label>$VAR[VideoInfoButton8]</label>
 							<ondown>200</ondown>
+							<visible>!Control.IsVisible(104)</visible>
+						</control>
+						<control type="button" id="104">
+							<include>LightGreyButton</include>
+							<onclick>close</onclick>
+							<onclick>RunScript(script.embuary.helper,action=playcinema,dbid=$INFO[ListItem.DBID],type=$INFO[ListItem.DBType]),title='$ESCINFO[ListItem.Label]')</onclick>
+							<label>$VAR[VideoInfoButton8]</label>
+							<ondown>200</ondown>
+							<visible>Skin.HasSetting(AlwaysCinemaMode) + $EXP[CinemaMode]</visible>
 						</control>
 						<control type="button" id="102">
 							<include>LightGreyButton</include>

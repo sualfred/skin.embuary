@@ -39,7 +39,7 @@
 							<texturefocus colordiffuse="panel_focus">common/white.jpg</texturefocus>
 							<include>NoTextures</include>
 							<label>$LOCALIZE[31247]</label>
-							<onright>200</onright>
+							<onright>1000</onright>
 						</control>
 						<control type="button" id="102">
 							<width>400</width>
@@ -54,7 +54,7 @@
 							<texturefocus colordiffuse="panel_focus">common/white.jpg</texturefocus>
 							<include>NoTextures</include>
 							<label>$LOCALIZE[31125]</label>
-							<onright>300</onright>
+							<onright>1100</onright>
 						</control>
 						<include content="SideHeadline">
 							<param name="nr">2</param>
@@ -73,7 +73,7 @@
 							<texturefocus colordiffuse="panel_focus">common/white.jpg</texturefocus>
 							<include>NoTextures</include>
 							<label>$LOCALIZE[480]</label>
-							<onright>400</onright>
+							<onright>1200</onright>
 						</control>
 						<control type="button" id="104">
 							<width>400</width>
@@ -87,8 +87,8 @@
 							<selectedcolor>panel_textcolor</selectedcolor>
 							<texturefocus colordiffuse="panel_focus">common/white.jpg</texturefocus>
 							<include>NoTextures</include>
-							<label>$LOCALIZE[31134]</label>
-							<onright>500</onright>
+							<label>Playback &amp; media</label>
+							<onright>1300</onright>
 						</control>
 						<control type="button" id="105">
 							<width>400</width>
@@ -102,13 +102,9 @@
 							<selectedcolor>panel_textcolor</selectedcolor>
 							<texturefocus colordiffuse="panel_focus">common/white.jpg</texturefocus>
 							<include>NoTextures</include>
-							<label>$LOCALIZE[31224]</label>
-							<onright>600</onright>
+							<label>$LOCALIZE[31134]</label>
+							<onright>1400</onright>
 						</control>
-						<include content="SideHeadline">
-							<param name="nr">3</param>
-							<param name="label">$LOCALIZE[29921]</param>
-						</include>
 						<control type="button" id="106">
 							<width>400</width>
 							<height>50</height>
@@ -121,10 +117,29 @@
 							<selectedcolor>panel_textcolor</selectedcolor>
 							<texturefocus colordiffuse="panel_focus">common/white.jpg</texturefocus>
 							<include>NoTextures</include>
-							<label>$LOCALIZE[31276]</label>
-							<onright>700</onright>
+							<label>$LOCALIZE[31224]</label>
+							<onright>1500</onright>
 						</control>
+						<include content="SideHeadline">
+							<param name="nr">3</param>
+							<param name="label">$LOCALIZE[29921]</param>
+						</include>
 						<control type="button" id="107">
+							<width>400</width>
+							<height>50</height>
+							<align>left</align>
+							<aligny>center</aligny>
+							<font>Reg22</font>
+							<textoffsetx>50</textoffsetx>
+							<textcolor>panel_textcolor</textcolor>
+							<focusedcolor>panel_textcolor</focusedcolor>
+							<selectedcolor>panel_textcolor</selectedcolor>
+							<texturefocus colordiffuse="panel_focus">common/white.jpg</texturefocus>
+							<include>NoTextures</include>
+							<label>$LOCALIZE[31276]</label>
+							<onright>1600</onright>
+						</control>
+						<control type="button" id="108">
 							<width>400</width>
 							<height>50</height>
 							<align>left</align>
@@ -173,952 +188,88 @@
 					<label>$VAR[SettingHelpText]</label>
 				</control>
 				<!-- menus widgets -->
-				<control type="grouplist" id="200">
+				<control type="grouplist" id="1000">
 					<visible>ControlGroup(100).HasFocus(101)</visible>
-					<left>500</left>
-					<right>100</right>
-					<height>100%</height>
-					<onup>6666</onup>
-					<onleft>100</onleft>
-					<onright>noop</onright>
-					<ondown>noop</ondown>
-					<pagecontrol>60</pagecontrol>
-					<scrolltime>200</scrolltime>
-					<itemgap>0</itemgap>
-					<!-- main menu -->
-					<include content="SkinSettingsHeadlineLabel">
-						<param name="id" value="201"/>
-						<param name="label" value="$LOCALIZE[10000]"/>
+					<include>SettingsGrouplist</include>
+					<include content="SkinSettingsMenuWidgets">
+						<param name="id" value="10"/>
 					</include>
-					<control type="button" id="202">
-						<include>SettingsButton</include>
-						<label>$LOCALIZE[31244]</label>
-						<onclick>RunScript(script.skinshortcuts,type=manage&amp;group=mainmenu)</onclick>
-						<enable>!Skin.HasSetting(HideMainMenu)</enable>
-					</control>
-					<control type="button" id="203">
-						<include>SettingsButton</include>
-						<onclick>SetProperty(PositionCount,29,home)</onclick>
-						<onclick>SetProperty(SelectorContent,HomeWidgets,home)</onclick>
-						<onclick>ActivateWindow(1110)</onclick>
-						<enable>!Skin.HasSetting(HomePanelLayout)</enable>
-						<label>$LOCALIZE[31245]</label>
-					</control>
-					<control type="radiobutton" id="204">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HomePanelLayout)</onclick>
-						<selected>Skin.HasSetting(HomePanelLayout)</selected>
-						<label>$LOCALIZE[31153]</label>
-						<enable>!Skin.HasSetting(HideMainMenu)</enable>
-					</control>
-					<control type="radiobutton" id="205">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideMainMenu)</onclick>
-						<selected>Skin.HasSetting(HideMainMenu)</selected>
-						<enable>!Skin.HasSetting(HomePanelLayout)</enable>
-						<label>$LOCALIZE[31254]</label>
-					</control>
-					<!-- movie -->
-					<include content="SkinSettingsHeadlineLabel">
-						<param name="id" value="211"/>
-						<param name="label" value="$LOCALIZE[31173]"/>
-					</include>
-					<control type="button" id="212">
-						<include>SettingsButton</include>
-						<label>$LOCALIZE[31244]</label>
-						<onclick>RunScript(script.skinshortcuts,type=manage&amp;group=moviehub)</onclick>
-					</control>
-					<control type="button" id="214">
-						<include>SettingsButton</include>
-						<onclick>SetProperty(PositionCount,30,home)</onclick>
-						<onclick>SetProperty(SelectorContent,MovieHubWidgets,home)</onclick>
-						<onclick>ActivateWindow(1110)</onclick>
-						<label>$LOCALIZE[31245]</label>
-					</control>
-					<!-- tvshows -->
-					<include content="SkinSettingsHeadlineLabel">
-						<param name="id" value="221"/>
-						<param name="label" value="$LOCALIZE[31172]"/>
-					</include>
-					<control type="button" id="222">
-						<include>SettingsButton</include>
-						<label>$LOCALIZE[31244]</label>
-						<onclick>RunScript(script.skinshortcuts,type=manage&amp;group=tvshowhub)</onclick>
-					</control>
-					<control type="button" id="223">
-						<include>SettingsButton</include>
-						<onclick>SetProperty(PositionCount,31,home)</onclick>
-						<onclick>SetProperty(SelectorContent,TVShowHubWidgets,home)</onclick>
-						<onclick>ActivateWindow(1110)</onclick>
-						<label>$LOCALIZE[31245]</label>
-					</control>
-					<!-- music -->
-					<include content="SkinSettingsHeadlineLabel">
-						<param name="id" value="241"/>
-						<param name="label" value="$LOCALIZE[31174]"/>
-					</include>
-					<control type="button" id="242">
-						<include>SettingsButton</include>
-						<label>$LOCALIZE[31244]</label>
-						<onclick>RunScript(script.skinshortcuts,type=manage&amp;group=musichub)</onclick>
-					</control>
-					<control type="button" id="243">
-						<include>SettingsButton</include>
-						<onclick>SetProperty(PositionCount,25,home)</onclick>
-						<onclick>SetProperty(SelectorContent,MusicHubWidgets,home)</onclick>
-						<onclick>ActivateWindow(1110)</onclick>
-						<label>$LOCALIZE[31245]</label>
-					</control>
-					<!-- emby hubs -->
-					<include content="SkinSettingsHeadlineLabel">
-						<param name="id" value="250"/>
-						<param name="label" value="$LOCALIZE[31279]"/>
-						<param name="visible" value="System.HasAddon(plugin.video.emby)"/>
-					</include>
-					<control type="button" id="251">
-						<include>SettingsButton</include>
-						<onclick>SetProperty(PositionCount,6,home)</onclick>
-						<onclick>SetProperty(SelectorContent,EmbyMovieHubWidgets,home)</onclick>
-						<onclick>ActivateWindow(1110)</onclick>
-						<label>$LOCALIZE[31281]</label>
-						<visible>System.HasAddon(plugin.video.emby)</visible>
-					</control>
-					<control type="button" id="252">
-						<include>SettingsButton</include>
-						<onclick>SetProperty(PositionCount,7,home)</onclick>
-						<onclick>SetProperty(SelectorContent,EmbyTVShowHubWidgets,home)</onclick>
-						<onclick>ActivateWindow(1110)</onclick>
-						<label>$LOCALIZE[31280]</label>
-						<visible>System.HasAddon(plugin.video.emby)</visible>
-					</control>
-					<!-- embycon hubs -->
-					<include content="SkinSettingsHeadlineLabel">
-						<param name="id" value="260"/>
-						<param name="label" value="$LOCALIZE[31282]"/>
-						<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
-					</include>
-					<control type="button" id="261">
-						<include>SettingsButton</include>
-						<onclick>SetProperty(PositionCount,5,home)</onclick>
-						<onclick>SetProperty(SelectorContent,EmbyConMovieHubWidgets,home)</onclick>
-						<onclick>ActivateWindow(1110)</onclick>
-						<label>$LOCALIZE[31281]</label>
-						<visible>System.HasAddon(plugin.video.embycon)</visible>
-					</control>
-					<control type="button" id="262">
-						<include>SettingsButton</include>
-						<onclick>SetProperty(PositionCount,6,home)</onclick>
-						<onclick>SetProperty(SelectorContent,EmbyConTVShowHubWidgets,home)</onclick>
-						<onclick>ActivateWindow(1110)</onclick>
-						<label>$LOCALIZE[31280]</label>
-						<visible>System.HasAddon(plugin.video.embycon)</visible>
-					</control>
-					<control type="button" id="263">
-						<include>SettingsButton</include>
-						<onclick>SetProperty(PositionCount,6,home)</onclick>
-						<onclick>SetProperty(SelectorContent,EmbyConMusicHubWidgets,home)</onclick>
-						<onclick>ActivateWindow(1110)</onclick>
-						<label>$LOCALIZE[31283]</label>
-						<visible>System.HasAddon(plugin.video.embycon)</visible>
-					</control>
-					<control type="radiobutton" id="264">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideEmbyConLabel)</onclick>
-						<selected>!Skin.HasSetting(HideEmbyConLabel)</selected>
-						<label>$LOCALIZE[31085]</label>
-						<visible>System.HasAddon(plugin.video.embycon)</visible>
-					</control>
-					<!-- widget limits -->
-					<include content="SkinSettingsHeadlineLabel">
-						<param name="id" value="270"/>
-						<param name="label" value="$LOCALIZE[31286] (1-25)"/>
-					</include>
-					<control type="button" id="271">
-						<include>SettingsButton</include>
-						<onclick>Skin.SetNumeric(poster_widget_limit)</onclick>
-						<label>$LOCALIZE[31099] '$LOCALIZE[20021]'</label>
-						<label2>$VAR[PosterWidgetLimit]</label2>
-					</control>
-					<control type="button" id="272">
-						<include>SettingsButton</include>
-						<onclick>Skin.SetNumeric(wide_widget_limit)</onclick>
-						<label>$LOCALIZE[31099] '$LOCALIZE[31004]'</label>
-						<label2>$VAR[WideWidgetLimit]</label2>
-					</control>
-					<control type="button" id="273">
-						<include>SettingsButton</include>
-						<onclick>Skin.SetNumeric(square_widget_limit)</onclick>
-						<label>$LOCALIZE[31099] '$LOCALIZE[31005]'</label>
-						<label2>$VAR[SquareWidgetLimit]</label2>
-					</control>
 					<control type="label">
 						<height>50</height>
 					</control>
 				</control>
 				<!-- Widgets -->
-				<control type="grouplist" id="300">
+				<control type="grouplist" id="1100">
 					<visible>ControlGroup(100).HasFocus(102)</visible>
-					<left>500</left>
-					<right>100</right>
-					<height>100%</height>
-					<onup>6666</onup>
-					<onleft>100</onleft>
-					<onright>noop</onright>
-					<ondown>noop</ondown>
-					<pagecontrol>60</pagecontrol>
-					<scrolltime>200</scrolltime>
-					<itemgap>0</itemgap>
-					<include content="CustomWidgetTemplate">
-						<param name="id" value="801"/>
-						<param name="nr" value="1"/>
-					</include>
-					<include content="CustomWidgetTemplate">
-						<param name="id" value="802"/>
-						<param name="nr" value="2"/>
-					</include>
-					<include content="CustomWidgetTemplate">
-						<param name="id" value="803"/>
-						<param name="nr" value="3"/>
-					</include>
-					<include content="CustomWidgetTemplate">
-						<param name="id" value="804"/>
-						<param name="nr" value="4"/>
-					</include>
-					<include content="CustomWidgetTemplate">
-						<param name="id" value="805"/>
-						<param name="nr" value="5"/>
-					</include>
-					<include content="CustomWidgetTemplate">
-						<param name="id" value="806"/>
-						<param name="nr" value="6"/>
-					</include>
-					<include content="CustomWidgetTemplate">
-						<param name="id" value="807"/>
-						<param name="nr" value="7"/>
-					</include>
-					<include content="CustomWidgetTemplate">
-						<param name="id" value="808"/>
-						<param name="nr" value="8"/>
-					</include>
-					<include content="CustomWidgetTemplate">
-						<param name="id" value="809"/>
-						<param name="nr" value="9"/>
-					</include>
-					<include content="CustomWidgetTemplate">
-						<param name="id" value="810"/>
-						<param name="nr" value="10"/>
-					</include>
-					<include content="CustomWidgetTemplate">
-						<param name="id" value="811"/>
-						<param name="nr" value="11"/>
-					</include>
-					<include content="CustomWidgetTemplate">
-						<param name="id" value="812"/>
-						<param name="nr" value="12"/>
-					</include>
-					<include content="CustomWidgetTemplate">
-						<param name="id" value="813"/>
-						<param name="nr" value="13"/>
-					</include>
-					<include content="CustomWidgetTemplate">
-						<param name="id" value="814"/>
-						<param name="nr" value="14"/>
-					</include>
-					<include content="CustomWidgetTemplate">
-						<param name="id" value="815"/>
-						<param name="nr" value="15"/>
-					</include>
-					<include content="CustomWidgetTemplate">
-						<param name="id" value="816"/>
-						<param name="nr" value="16"/>
-					</include>
-					<include content="CustomWidgetTemplate">
-						<param name="id" value="817"/>
-						<param name="nr" value="17"/>
-					</include>
-					<include content="CustomWidgetTemplate">
-						<param name="id" value="818"/>
-						<param name="nr" value="18"/>
-					</include>
-					<include content="CustomWidgetTemplate">
-						<param name="id" value="819"/>
-						<param name="nr" value="19"/>
-					</include>
-					<include content="CustomWidgetTemplate">
-						<param name="id" value="820"/>
-						<param name="nr" value="20"/>
-					</include>
-					<include content="CustomWidgetTemplate">
-						<param name="id" value="821"/>
-						<param name="nr" value="21"/>
-					</include>
-					<include content="CustomWidgetTemplate">
-						<param name="id" value="822"/>
-						<param name="nr" value="22"/>
-					</include>
-					<include content="CustomWidgetTemplate">
-						<param name="id" value="823"/>
-						<param name="nr" value="23"/>
-					</include>
-					<include content="CustomWidgetTemplate">
-						<param name="id" value="824"/>
-						<param name="nr" value="24"/>
-					</include>
-					<include content="CustomWidgetTemplate">
-						<param name="id" value="825"/>
-						<param name="nr" value="25"/>
-					</include>
-					<include content="CustomWidgetTemplate">
-						<param name="id" value="826"/>
-						<param name="nr" value="26"/>
-					</include>
-					<include content="CustomWidgetTemplate">
-						<param name="id" value="827"/>
-						<param name="nr" value="27"/>
-					</include>
-					<include content="CustomWidgetTemplate">
-						<param name="id" value="828"/>
-						<param name="nr" value="28"/>
-					</include>
-					<include content="CustomWidgetTemplate">
-						<param name="id" value="829"/>
-						<param name="nr" value="29"/>
-					</include>
-					<include content="CustomWidgetTemplate">
-						<param name="id" value="830"/>
-						<param name="nr" value="30"/>
+					<include>SettingsGrouplist</include>
+					<include content="SkinSettingsCustomWidgets">
+						<param name="id" value="11"/>
 					</include>
 					<control type="label">
 						<height>50</height>
 					</control>
 				</control>
-				<!-- appearancesettings -->
-				<control type="grouplist" id="400">
+				<!-- appearance -->
+				<control type="grouplist" id="1200">
 					<visible>ControlGroup(100).HasFocus(103)</visible>
-					<left>500</left>
-					<right>100</right>
-					<height>100%</height>
-					<onup>6666</onup>
-					<onleft>100</onleft>
-					<onright>noop</onright>
-					<ondown>noop</ondown>
-					<pagecontrol>60</pagecontrol>
-					<scrolltime>200</scrolltime>
-					<itemgap>0</itemgap>
-					<!-- colors -->
-					<include content="SkinSettingsHeadlineLabel">
-						<param name="id" value="401"/>
-						<param name="label" value="$LOCALIZE[31266]"/>
+					<include>SettingsGrouplist</include>
+					<include content="SkinSettingsAppearance">
+						<param name="id" value="12"/>
 					</include>
-					<control type="radiobutton" id="402">
-						<radiowidth>40</radiowidth>
-						<radioheight>35</radioheight>
-						<textureradioonfocus colordiffuse="$VAR[AccentColor]">icons/misc/radio20_on_fo.png</textureradioonfocus>
-						<textureradioonnofocus colordiffuse="$VAR[AccentColor]">icons/misc/radio20_on.png</textureradioonnofocus>
-						<textureradioofffocus colordiffuse="$VAR[AccentColor]">icons/misc/radio20_on_fo.png</textureradioofffocus>
-						<textureradiooffnofocus colordiffuse="$VAR[AccentColor]">icons/misc/radio20_on.png</textureradiooffnofocus>
-						<textureradioondisabled colordiffuse="$VAR[AccentColor]">icons/misc/radio20_on_fo.png</textureradioondisabled>
-						<textureradiooffdisabled colordiffuse="$VAR[AccentColor]">icons/misc/radio20_on.png</textureradiooffdisabled>
-						<include>SettingsButton</include>
-						<onclick condition="!System.HasAddon(script.skin.helper.colorpicker)">InstallAddon(script.skin.helper.colorpicker)</onclick>
-						<onclick condition="System.HasAddon(script.skin.helper.colorpicker)">RunScript(script.skin.helper.colorpicker,skinstring=color_accent,palette=rainbow)</onclick>
-						<label>$LOCALIZE[31267]</label>
-						<label2>$VAR[AccentColorLabel]</label2>
+					<control type="label">
+						<height>50</height>
 					</control>
-					<control type="radiobutton" id="403">
-						<textureradioonfocus colordiffuse="$VAR[PlayerAccentColor]">icons/misc/radio20_on_fo.png</textureradioonfocus>
-						<textureradioonnofocus colordiffuse="$VAR[PlayerAccentColor]">icons/misc/radio20_on.png</textureradioonnofocus>
-						<textureradioofffocus colordiffuse="$VAR[PlayerAccentColor]">icons/misc/radio20_on_fo.png</textureradioofffocus>
-						<textureradiooffnofocus colordiffuse="$VAR[PlayerAccentColor]">icons/misc/radio20_on.png</textureradiooffnofocus>
-						<textureradioondisabled colordiffuse="$VAR[PlayerAccentColor]">icons/misc/radio20_on_fo.png</textureradioondisabled>
-						<textureradiooffdisabled colordiffuse="$VAR[PlayerAccentColor]">icons/misc/radio20_on.png</textureradiooffdisabled>
-						<include>SettingsButton</include>
-						<onclick condition="!System.HasAddon(script.skin.helper.colorpicker)">InstallAddon(script.skin.helper.colorpicker)</onclick>
-						<onclick condition="System.HasAddon(script.skin.helper.colorpicker)">RunScript(script.skin.helper.colorpicker,skinstring=color_player_accent,palette=rainbow)</onclick>
-						<label>$LOCALIZE[31268]</label>
-						<label2>$VAR[PlayerAccentColorLabel]</label2>
-					</control>
-					<control type="radiobutton" id="404">
-						<textureradioonfocus colordiffuse="$VAR[ThumbFallbackColor]">icons/misc/radio20_on_fo.png</textureradioonfocus>
-						<textureradioonnofocus colordiffuse="$VAR[ThumbFallbackColor]">icons/misc/radio20_on.png</textureradioonnofocus>
-						<textureradioofffocus colordiffuse="$VAR[ThumbFallbackColor]">icons/misc/radio20_on_fo.png</textureradioofffocus>
-						<textureradiooffnofocus colordiffuse="$VAR[ThumbFallbackColor]">icons/misc/radio20_on.png</textureradiooffnofocus>
-						<textureradioondisabled colordiffuse="$VAR[ThumbFallbackColor]">icons/misc/radio20_on_fo.png</textureradioondisabled>
-						<textureradiooffdisabled colordiffuse="$VAR[ThumbFallbackColor]">icons/misc/radio20_on.png</textureradiooffdisabled>
-						<include>SettingsButton</include>
-						<onclick condition="!System.HasAddon(script.skin.helper.colorpicker)">InstallAddon(script.skin.helper.colorpicker)</onclick>
-						<onclick condition="System.HasAddon(script.skin.helper.colorpicker)">RunScript(script.skin.helper.colorpicker,skinstring=color_thumb_fallback,palette=rainbow)</onclick>
-						<label>$LOCALIZE[31269]</label>
-						<label2>$VAR[ThumbFallbackColorLabel]</label2>
-					</control>
-					<control type="radiobutton" id="405">
-						<textureradioonfocus colordiffuse="$VAR[ButtonAccentColor]">icons/misc/radio20_on_fo.png</textureradioonfocus>
-						<textureradioonnofocus colordiffuse="$VAR[ButtonAccentColor]">icons/misc/radio20_on.png</textureradioonnofocus>
-						<textureradioofffocus colordiffuse="$VAR[ButtonAccentColor]">icons/misc/radio20_on_fo.png</textureradioofffocus>
-						<textureradiooffnofocus colordiffuse="$VAR[ButtonAccentColor]">icons/misc/radio20_on.png</textureradiooffnofocus>
-						<textureradioondisabled colordiffuse="$VAR[ButtonAccentColor]">icons/misc/radio20_on_fo.png</textureradioondisabled>
-						<textureradiooffdisabled colordiffuse="$VAR[ButtonAccentColor]">icons/misc/radio20_on.png</textureradiooffdisabled>
-						<include>SettingsButton</include>
-						<onclick condition="!System.HasAddon(script.skin.helper.colorpicker)">InstallAddon(script.skin.helper.colorpicker)</onclick>
-						<onclick condition="System.HasAddon(script.skin.helper.colorpicker)">RunScript(script.skin.helper.colorpicker,skinstring=button_focus_accent,palette=rainbow)</onclick>
-						<label>$LOCALIZE[31270]</label>
-						<label2>$VAR[ButtonAccentColorLabel]</label2>
-					</control>
-					<!-- background -->
-					<include content="SkinSettingsHeadlineLabel">
-						<param name="id" value="410"/>
-						<param name="label" value="$LOCALIZE[33068]"/>
+				</control>
+				<!-- playback / media -->
+				<control type="grouplist" id="1300">
+					<visible>ControlGroup(100).HasFocus(104)</visible>
+					<include>SettingsGrouplist</include>
+					<include content="SkinSettingsPlaybackMedia">
+						<param name="id" value="13"/>
 					</include>
-					<control type="button" id="411">
-						<include>SettingsButton</include>
-						<onclick condition="String.IsEqual(Skin.String(AlphaBackground),10)">Skin.Reset(AlphaBackground)</onclick>
-						<onclick condition="String.IsEqual(Skin.String(AlphaBackground),20)">Skin.SetString(AlphaBackground,10)</onclick>
-						<onclick condition="String.IsEqual(Skin.String(AlphaBackground),30)">Skin.SetString(AlphaBackground,20)</onclick>
-						<onclick condition="String.IsEqual(Skin.String(AlphaBackground),40)">Skin.SetString(AlphaBackground,30)</onclick>
-						<onclick condition="String.IsEqual(Skin.String(AlphaBackground),50)">Skin.SetString(AlphaBackground,40)</onclick>
-						<onclick condition="String.IsEqual(Skin.String(AlphaBackground),60)">Skin.SetString(AlphaBackground,50)</onclick>
-						<onclick condition="String.IsEqual(Skin.String(AlphaBackground),70)">Skin.SetString(AlphaBackground,60)</onclick>
-						<onclick condition="String.IsEqual(Skin.String(AlphaBackground),80)">Skin.SetString(AlphaBackground,70)</onclick>
-						<onclick condition="String.IsEqual(Skin.String(AlphaBackground),90)">Skin.SetString(AlphaBackground,80)</onclick>
-						<onclick condition="String.IsEmpty(Skin.String(AlphaBackground)) | String.IsEqual(Skin.String(AlphaBackground),100)">Skin.SetString(AlphaBackground,90)</onclick>
-						<label>$LOCALIZE[31271]</label>
-						<label2>$VAR[BackgroundOpacity,,%]</label2>
-						<enable>!Skin.HasSetting(HideBackground) | !Skin.HasSetting(HideBackgroundPlayback)</enable>
-					</control>
-					<control type="radiobutton" id="412">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideBackground)</onclick>
-						<selected>!Skin.HasSetting(HideBackground)</selected>
-						<label>$LOCALIZE[31087]</label>
-					</control>
-					<control type="radiobutton" id="413">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideBackgroundPlayback)</onclick>
-						<selected>!Skin.HasSetting(HideBackgroundPlayback)</selected>
-						<label>$LOCALIZE[31088]</label>
-					</control>
-					<include content="SkinSettingsHeadlineLabel">
-						<param name="id" value="420"/>
-						<param name="label" value="$LOCALIZE[33070]"/>
-					</include>
-					<control type="radiobutton" id="421">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(ShowStaticBackgroundImage)</onclick>
-						<selected>Skin.HasSetting(ShowStaticBackgroundImage)</selected>
-						<onclick condition="Skin.HasSetting(ShowRandomBackgroundImage)">Skin.ToggleSetting(ShowRandomBackgroundImage)</onclick>
-						<label>$LOCALIZE[31104]</label>
-					</control>
-					<control type="button" id="422">
-						<textcolor>$VAR[AccentColor]</textcolor>
-						<texturenofocus colordiffuse="panel_subitem">common/white.jpg</texturenofocus>
-						<include>SettingsButton</include>
-						<onclick>Skin.SetImage(StaticBackgroundImage)</onclick>
-						<label>• $LOCALIZE[573]</label>
-						<label2>$INFO[Skin.String(StaticBackgroundImage)]</label2>
-						<enable>Skin.HasSetting(ShowStaticBackgroundImage)</enable>
-						<visible>Skin.HasSetting(ShowStaticBackgroundImage)</visible>
-					</control>
-					<control type="radiobutton" id="423">
-						<textcolor>$VAR[AccentColor]</textcolor>
-						<texturenofocus colordiffuse="panel_subitem">common/white.jpg</texturenofocus>
-						<include>SettingsButton</include>
-						<onclick>Skin.SetImage(ShowStaticBackgroundImageGlobally)</onclick>
-						<label>• $LOCALIZE[31222]</label>
-						<selected>Skin.HasSetting(ShowStaticBackgroundImageGlobally)</selected>
-						<visible>Skin.HasSetting(ShowStaticBackgroundImage)</visible>
-					</control>
-					<control type="radiobutton" id="424">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(ShowRandomBackgroundImage)</onclick>
-						<onclick condition="Skin.HasSetting(ShowStaticBackgroundImage)">Skin.ToggleSetting(ShowStaticBackgroundImage)</onclick>
-						<selected>Skin.HasSetting(ShowRandomBackgroundImage)</selected>
-						<label>$LOCALIZE[31195]</label>
-					</control>
-					<control type="button" id="425">
-						<textcolor>$VAR[AccentColor]</textcolor>
-						<texturenofocus colordiffuse="panel_subitem">common/white.jpg</texturenofocus>
-						<include>SettingsButton</include>
-						<onclick>Skin.SetPath(RandomBackgroundImage)</onclick>
-						<label>• $LOCALIZE[573]</label>
-						<label2>$INFO[Skin.String(RandomBackgroundImage)]</label2>
-						<enable>Skin.HasSetting(ShowRandomBackgroundImage)</enable>
-						<visible>Skin.HasSetting(ShowRandomBackgroundImage)</visible>
-					</control>
-					<!-- header -->
-					<include content="SkinSettingsHeadlineLabel">
-						<param name="id" value="430"/>
-						<param name="label" value="$LOCALIZE[31109]"/>
-					</include>
-					<control type="radiobutton" id="431">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(CustomDeviceName)</onclick>
-						<selected>Skin.HasSetting(CustomDeviceName)</selected>
-						<label>$LOCALIZE[31117]</label>
-					</control>
-					<control type="button" id="432">
-						<textcolor>$VAR[AccentColor]</textcolor>
-						<texturenofocus colordiffuse="panel_subitem">common/white.jpg</texturenofocus>
-						<include>SettingsButton</include>
-						<onclick>Skin.SetString(CustomDeviceName_label)</onclick>
-						<label>• $LOCALIZE[21899]</label>
-						<label2>$VAR[HeaderCustomDeviceName]</label2>
-						<visible>Skin.HasSetting(CustomDeviceName)</visible>
-					</control>
-					<control type="radiobutton" id="433">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideHeaderWeather)</onclick>
-						<selected>!Skin.HasSetting(HideHeaderWeather)</selected>
-						<label>$LOCALIZE[31110]</label>
-					</control>
-					<!-- playback -->
-					<include content="SkinSettingsHeadlineLabel">
-						<param name="id" value="450"/>
-						<param name="label" value="$LOCALIZE[14086]"/>
-					</include>
-					<control type="radiobutton" id="451">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(StartPlayerFullscreen)</onclick>
-						<selected>Skin.HasSetting(StartPlayerFullscreen)</selected>
-						<label>$LOCALIZE[31250]</label>
-					</control>
-					<control type="radiobutton" id="452">
-						<include>SettingsButton</include>
-						<label>$LOCALIZE[31231]</label>
-						<selected>!Skin.HasSetting(DoNotPauseOnInfo)</selected>
-						<onclick>Skin.ToggleSetting(DoNotPauseOnInfo)</onclick>
-					</control>
-					<control type="radiobutton" id="453">
-						<include>SettingsButton</include>
-						<label>$LOCALIZE[31277]</label>
-						<selected>!Skin.HasSetting(FancyLyrics)</selected>
-						<onclick>Skin.ToggleSetting(FancyLyrics)</onclick>
-						<enable>System.HasAddon(script.cu.lrclyrics)</enable>
-					</control>
-					<!-- library and media -->
-					<include content="SkinSettingsHeadlineLabel">
-						<param name="id" value="460"/>
-						<param name="label" value="$LOCALIZE[14211]"/>
-					</include>
-					<control type="button" id="461">
-						<include>SettingsButton</include>
-						<label>$LOCALIZE[31228]</label>
-						<label2>[COLOR $VAR[AccentColor]]$VAR[SearchProvider][/COLOR]</label2>
-						<onclick>Skin.ToggleSetting(UseGlobalsearch)</onclick>
-						<enable>System.HasAddon(script.globalsearch)</enable>
-					</control>
-					<control type="button" id="462">
-						<include>SettingsButton</include>
-						<label>$LOCALIZE[31238]</label>
-						<label2>[COLOR $VAR[AccentColor]]$VAR[CastSearchProvider][/COLOR]</label2>
-						<onclick>Skin.ToggleSetting(DoNotUseExtendedInfo)</onclick>
-						<enable>System.HasAddon(script.extendedinfo)</enable>
-					</control>
-					<control type="radiobutton" id="463">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(UseChannelLogo)</onclick>
-						<selected>!Skin.HasSetting(UseChannelLogo)</selected>
-						<label>$LOCALIZE[31221]</label>
-					</control>
-					<control type="radiobutton" id="464">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideEPGThumbOverlay)</onclick>
-						<selected>!Skin.HasSetting(HideEPGThumbOverlay)</selected>
-						<label>$LOCALIZE[31317]</label>
-						<enable>!Skin.HasSetting(UseChannelLogo)</enable>
-					</control>
-					<control type="radiobutton" id="465">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideLibraryEditButtons)</onclick>
-						<selected>!Skin.HasSetting(HideLibraryEditButtons)</selected>
-						<label>$LOCALIZE[31155]</label>
-					</control>
-					<!-- holiday theems -->
-					<include content="SkinSettingsHeadlineLabel">
-						<param name="id" value="470"/>
-						<param name="label" value="$LOCALIZE[31015]"/>
-					</include>
-					<control type="radiobutton" id="471">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideHolidayTheme)</onclick>
-						<selected>!Skin.HasSetting(HideHolidayTheme)</selected>
-						<label>$LOCALIZE[31295]</label>
-					</control>
-					<control type="radiobutton" id="472">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(DoNotUseHolidayThemeSound)</onclick>
-						<selected>!Skin.HasSetting(DoNotUseHolidayThemeSound)</selected>
-						<enable>!Skin.HasSetting(HideHolidayTheme)</enable>
-						<label>$LOCALIZE[31294]</label>
-					</control>
-					<control type="radiobutton" id="473">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideSeasonalWidgets)</onclick>
-						<selected>!Skin.HasSetting(HideSeasonalWidgets)</selected>
-						<label>$LOCALIZE[31293]</label>
-					</control>
-					<!-- misc -->
-					<include content="SkinSettingsHeadlineLabel">
-						<param name="id" value="480"/>
-						<param name="label" value="$LOCALIZE[31001]"/>
-					</include>
-					<control type="radiobutton" id="481">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(KioskMode)</onclick>
-						<selected>Skin.HasSetting(KioskMode)</selected>
-						<label>$LOCALIZE[31112]</label>
-					</control>
-					<control type="button" id="482">
-						<include>SettingsButton</include>
-						<onclick>SetProperty(Dialog.1.Label,$LOCALIZE[571])</onclick>
-						<onclick>SetProperty(Dialog.1.BuiltIn,Skin.Reset(StartUpWindow))</onclick>
-						<onclick>SetProperty(Dialog.2.Label,$LOCALIZE[31173])</onclick>
-						<onclick>SetProperty(Dialog.2.BuiltIn,Skin.SetString(StartUpWindow,1120))</onclick>
-						<onclick>SetProperty(Dialog.3.Label,$LOCALIZE[31172])</onclick>
-						<onclick>SetProperty(Dialog.3.BuiltIn,Skin.SetString(StartUpWindow,1121))</onclick>
-						<onclick>SetProperty(Dialog.4.Label,$LOCALIZE[31174])</onclick>
-						<onclick>SetProperty(Dialog.4.BuiltIn,Skin.SetString(StartUpWindow,1122))</onclick>
-						<onclick>RunScript(script.embuary.helper,action=createselect,header=$LOCALIZE[512])</onclick>
-						<label>$LOCALIZE[512]</label>
-						<label2>[COLOR $VAR[AccentColor]]ID: $VAR[StartUpWindow][/COLOR]</label2>
-					</control>
 					<control type="label">
 						<height>50</height>
 					</control>
 				</control>
 				<!-- side panel -->
-				<control type="grouplist" id="500">
-					<visible>ControlGroup(100).HasFocus(104)</visible>
-					<left>500</left>
-					<right>100</right>
-					<height>100%</height>
-					<onup>6666</onup>
-					<onleft>100</onleft>
-					<onright>noop</onright>
-					<ondown>noop</ondown>
-					<pagecontrol>60</pagecontrol>
-					<scrolltime>200</scrolltime>
-					<itemgap>0</itemgap>
-					<!-- local / embycon source -->
-					<include content="SkinSettingsHeadlineLabel">
-						<param name="id" value="501"/>
-						<param name="label" value="$LOCALIZE[14211]"/>
+				<control type="grouplist" id="1400">
+					<visible>ControlGroup(100).HasFocus(105)</visible>
+					<include>SettingsGrouplist</include>
+					<include content="SkinSettingsSidePanel">
+						<param name="id" value="14"/>
 					</include>
-					<control type="radiobutton" id="502">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideSPMovies)</onclick>
-						<selected>!Skin.HasSetting(HideSPMovies)</selected>
-						<label>$LOCALIZE[31135]</label>
-					</control>
-					<control type="radiobutton" id="503">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideSPTVshows)</onclick>
-						<selected>!Skin.HasSetting(HideSPTVshows)</selected>
-						<label>$LOCALIZE[31136]</label>
-					</control>
-					<control type="radiobutton" id="504">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideSPVideos)</onclick>
-						<selected>!Skin.HasSetting(HideSPVideos)</selected>
-						<label>$LOCALIZE[31137]</label>
-					</control>
-					<control type="radiobutton" id="505">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideSPPVR)</onclick>
-						<selected>!Skin.HasSetting(HideSPPVR)</selected>
-						<label>$LOCALIZE[31138]</label>
-						<enable>Pvr.HasTVChannels | Pvr.HasRadioChannels</enable>
-					</control>
-					<control type="radiobutton" id="506">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideSPMusic)</onclick>
-						<selected>!Skin.HasSetting(HideSPMusic)</selected>
-						<label>$LOCALIZE[31139]</label>
-					</control>
-					<control type="radiobutton" id="507">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideSPMusicvideos)</onclick>
-						<selected>!Skin.HasSetting(HideSPMusicvideos)</selected>
-						<label>$LOCALIZE[31168]</label>
-					</control>
-					<control type="radiobutton" id="508">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideSPPictures)</onclick>
-						<selected>!Skin.HasSetting(HideSPPictures)</selected>
-						<label>$LOCALIZE[31140]</label>
-					</control>
-					<!-- misc -->
-					<include content="SkinSettingsHeadlineLabel">
-						<param name="id" value="509"/>
-						<param name="label" value="$LOCALIZE[31001]"/>
-					</include>
-					<control type="radiobutton" id="510">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideSPAddons)</onclick>
-						<selected>!Skin.HasSetting(HideSPAddons)</selected>
-						<label>$LOCALIZE[31141]</label>
-					</control>
-					<control type="radiobutton" id="511">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideSPFavourites)</onclick>
-						<selected>!Skin.HasSetting(HideSPFavourites)</selected>
-						<label>$LOCALIZE[31142]</label>
-					</control>
-					<control type="radiobutton" id="512">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideSPWeather)</onclick>
-						<selected>!Skin.HasSetting(HideSPWeather)</selected>
-						<label>$LOCALIZE[31143]</label>
-						<enable>Weather.IsFetched</enable>
-					</control>
-					<!-- system -->
-					<include content="SkinSettingsHeadlineLabel">
-						<param name="id" value="513"/>
-						<param name="label" value="$LOCALIZE[13000]"/>
-					</include>
-					<control type="radiobutton" id="514">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideSPEmbyConUser)</onclick>
-						<selected>!Skin.HasSetting(HideSPEmbyConUser)</selected>
-						<label>$LOCALIZE[31113]</label>
-						<enable>System.HasAddon(plugin.video.embycon)</enable>
-					</control>
-					<control type="radiobutton" id="515">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideSPLibUpdate)</onclick>
-						<selected>!Skin.HasSetting(HideSPLibUpdate)</selected>
-						<label>$LOCALIZE[31114]</label>
-					</control>
-					<control type="radiobutton" id="516">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideSPAddonUpdate)</onclick>
-						<selected>!Skin.HasSetting(HideSPAddonUpdate)</selected>
-						<label>$LOCALIZE[31144]</label>
-					</control>
-					<control type="radiobutton" id="517">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideSPDebug)</onclick>
-						<selected>!Skin.HasSetting(HideSPDebug)</selected>
-						<label>$LOCALIZE[31145]</label>
-					</control>
-					<control type="radiobutton" id="518">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HideSPReload)</onclick>
-						<selected>!Skin.HasSetting(HideSPReload)</selected>
-						<label>$LOCALIZE[31146]</label>
-					</control>
 					<control type="label">
 						<height>50</height>
 					</control>
 				</control>
 				<!-- Power menu -->
-				<control type="grouplist" id="600">
-					<visible>ControlGroup(100).HasFocus(105)</visible>
-					<left>500</left>
-					<right>100</right>
-					<height>100%</height>
-					<onup>6666</onup>
-					<onleft>100</onleft>
-					<onright>noop</onright>
-					<ondown>noop</ondown>
-					<pagecontrol>60</pagecontrol>
-					<scrolltime>200</scrolltime>
-					<itemgap>0</itemgap>
-					<!-- shortcuts -->
-					<include content="SkinSettingsHeadlineLabel">
-						<param name="id" value="601"/>
-						<param name="label" value="$LOCALIZE[111]"/>
+				<control type="grouplist" id="1500">
+					<visible>ControlGroup(100).HasFocus(106)</visible>
+					<include>SettingsGrouplist</include>
+					<include content="SkinSettingsPowerMenu">
+						<param name="id" value="15"/>
 					</include>
-					<control type="radiobutton" id="602">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HidePowerExit)</onclick>
-						<selected>!Skin.HasSetting(HidePowerExit)</selected>
-						<visible>!System.Platform.Android</visible>
-						<label>$LOCALIZE[13012]</label>
-					</control>
-					<control type="radiobutton" id="603">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HidePowerSettings)</onclick>
-						<selected>!Skin.HasSetting(HidePowerSettings)</selected>
-						<label>$LOCALIZE[5]</label>
-						<visible>System.ShowExitButton</visible>
-					</control>
-					<control type="radiobutton" id="604">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HidePowerOff)</onclick>
-						<selected>!Skin.HasSetting(HidePowerOff)</selected>
-						<label>$LOCALIZE[13016]</label>
-						<visible>System.CanPowerDown</visible>
-					</control>
-					<control type="radiobutton" id="605">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HidePowerTimer)</onclick>
-						<selected>!Skin.HasSetting(HidePowerTimer)</selected>
-						<label>$LOCALIZE[20150] / $LOCALIZE[20151]</label>
-						<visible>System.CanPowerDown | System.CanSuspend | System.CanHibernate</visible>
-					</control>
-					<control type="radiobutton" id="606">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HidePowerSuspend)</onclick>
-						<selected>!Skin.HasSetting(HidePowerSuspend)</selected>
-						<label>$LOCALIZE[13011]</label>
-						<visible>System.CanSuspend</visible>
-					</control>
-					<control type="radiobutton" id="607">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HidePowerHibernate)</onclick>
-						<selected>!Skin.HasSetting(HidePowerHibernate)</selected>
-						<label>$LOCALIZE[13010]</label>
-						<visible>System.CanHibernate</visible>
-					</control>
-					<control type="radiobutton" id="608">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HidePowerReboot)</onclick>
-						<selected>!Skin.HasSetting(HidePowerReboot)</selected>
-						<label>$LOCALIZE[13013]</label>
-						<visible>System.CanReboot</visible>
-					</control>
-					<control type="radiobutton" id="609">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HidePowerRebootNAND)</onclick>
-						<selected>!Skin.HasSetting(HidePowerRebootNAND)</selected>
-						<label>$LOCALIZE[13013] (NAND)</label>
-						<visible>System.CanReboot + [System.HasAddon(service.libreelec.settings) | System.HasAddon(service.corelec.settings)]</visible>
-					</control>
-					<control type="radiobutton" id="610">
-						<include>SettingsButton</include>
-						<onclick>Skin.ToggleSetting(HidePowerIdleShutdown)</onclick>
-						<selected>!Skin.HasSetting(HidePowerIdleShutdown)</selected>
-						<label>$LOCALIZE[13017] / $LOCALIZE[13018]</label>
-						<visible>System.HasShutdown</visible>
-					</control>
 				</control>
 				<!-- addons -->
-				<control type="grouplist" id="700">
-					<visible>ControlGroup(100).HasFocus(106)</visible>
-					<left>500</left>
-					<right>100</right>
-					<height>100%</height>
-					<onup>6666</onup>
-					<onleft>100</onleft>
-					<onright>noop</onright>
-					<ondown>noop</ondown>
-					<pagecontrol>60</pagecontrol>
-					<scrolltime>200</scrolltime>
-					<itemgap>0</itemgap>
-					<include content="SkinSettingsHeadlineLabel">
-						<param name="id" value="710"/>
-						<param name="label" value="$LOCALIZE[31273]"/>
+				<control type="grouplist" id="1600">
+					<visible>ControlGroup(100).HasFocus(107)</visible>
+					<include>SettingsGrouplist</include>
+					<include content="SkinSettingsDependencies">
+						<param name="id" value="17"/>
 					</include>
-					<control type="radiobutton" id="711">
-						<include>SettingsButton</include>
-						<onclick condition="!System.HasAddon(script.embuary.helper)">InstallAddon(script.embuary.helper)</onclick>
-						<selected>System.HasAddon(script.embuary.helper)</selected>
-						<label>Embuary Helper Script  (script.embuary.helper)</label>
-					</control>
-					<control type="radiobutton" id="712">
-						<include>SettingsButton</include>
-						<onclick condition="!System.HasAddon(script.skinshortcuts)">InstallAddon(script.skinshortcuts)</onclick>
-						<selected>System.HasAddon(script.skinshortcuts)</selected>
-						<label>Skin Shortcuts  (script.skinshortcuts)</label>
-					</control>
-					<control type="radiobutton" id="713">
-						<include>SettingsButton</include>
-						<onclick condition="!System.HasAddon(plugin.program.autocompletion)">InstallAddon(plugin.program.autocompletion)</onclick>
-						<selected>System.HasAddon(plugin.program.autocompletion)</selected>
-						<label>Auto Completion Plugin (plugin.program.autocompletion)</label>
-					</control>
-					<control type="radiobutton" id="714">
-						<include>SettingsButton</include>
-						<onclick condition="!System.HasAddon(resource.images.weathericons.outline-hd)">InstallAddon(resource.images.weathericons.outline-hd)</onclick>
-						<selected>System.HasAddon(resource.images.weathericons.outline-hd)</selected>
-						<label>Outline HD Weather Icons (resource.images.weathericons.outline-hd)</label>
-					</control>
-					<include content="SkinSettingsHeadlineLabel">
-						<param name="id" value="701"/>
-						<param name="label" value="$LOCALIZE[31274]"/>
-					</include>
-					<control type="radiobutton" id="702">
-						<include>SettingsButton</include>
-						<onclick condition="!System.HasAddon(service.upnext)">InstallAddon(service.upnext)</onclick>
-						<selected>System.HasAddon(service.upnext)</selected>
-						<label>Up Next  (service.upnext)</label>
-					</control>
-					<control type="radiobutton" id="703">
-						<include>SettingsButton</include>
-						<onclick condition="!System.HasAddon(script.tv.show.next.aired)">InstallAddon(script.tv.show.next.aired)</onclick>
-						<selected>System.HasAddon(script.tv.show.next.aired)</selected>
-						<label>Next Aired  (script.tv.show.next.aired)</label>
-					</control>
-					<control type="radiobutton" id="704">
-						<include>SettingsButton</include>
-						<onclick condition="!System.HasAddon(script.artistslideshow)">InstallAddon(script.artistslideshow)</onclick>
-						<selected>System.HasAddon(script.artistslideshow)</selected>
-						<label>Artist Slideshow  (script.artistslideshow)</label>
-					</control>
-					<control type="radiobutton" id="705">
-						<include>SettingsButton</include>
-						<onclick condition="!System.HasAddon(script.skin.helper.skinbackup)">InstallAddon(script.skin.helper.skinbackup)</onclick>
-						<selected>System.HasAddon(script.skin.helper.skinbackup)</selected>
-						<label>Skin Helper Script: Skin Backup  (script.skin.helper.skinbackup)</label>
-					</control>
-					<control type="radiobutton" id="706">
-						<include>SettingsButton</include>
-						<onclick condition="!System.HasAddon(script.skin.helper.colorpicker)">InstallAddon(script.skin.helper.colorpicker)</onclick>
-						<selected>System.HasAddon(script.skin.helper.colorpicker)</selected>
-						<label>Skin Helper Script: Colorpicker  (script.skin.helper.colorpicker)</label>
-					</control>
-					<control type="radiobutton" id="707">
-						<include>SettingsButton</include>
-						<onclick condition="!System.HasAddon(script.globalsearch)">InstallAddon(script.globalsearch)</onclick>
-						<selected>System.HasAddon(script.globalsearch)</selected>
-						<label>GlobalSearch  (script.globalsearch)</label>
-					</control>
-					<control type="radiobutton" id="708">
-						<include>SettingsButton</include>
-						<onclick condition="!System.HasAddon(script.extendedinfo)">InstallAddon(script.extendedinfo)</onclick>
-						<selected>System.HasAddon(script.extendedinfo)</selected>
-						<label>Extended Info Script  (script.extendedinfo)</label>
-					</control>
-					<control type="radiobutton" id="709">
-						<include>SettingsButton</include>
-						<onclick condition="!System.HasAddon(script.cu.lrclyrics)">InstallAddon(script.cu.lrclyrics)</onclick>
-						<selected>System.HasAddon(script.cu.lrclyrics)</selected>
-						<label>CU LRC Lyrics  (script.cu.lrclyrics)</label>
-					</control>
-					<include content="SkinSettingsHeadlineLabel">
-						<param name="id" value="720"/>
-						<param name="label" value="$LOCALIZE[31001]"/>
-					</include>
-					<control type="radiobutton" id="721">
-						<include>SettingsButton</include>
-						<onclick condition="![!System.HasAddon(script.module.metadatautils) + !System.HasAddon(script.skin.helper.service) + !System.HasAddon(script.skin.helper.widgets) + !System.HasAddon(script.skin.helper.backgrounds)]">RunScript(script.embuary.helper,action=dialogyesno,header=$LOCALIZE[31312],message=$LOCALIZE[31314][CR][CR]$LOCALIZE[31316],yesaction=RunScript(script.embuary.helper,action=toggleaddons,addonid=script.module.metadatautils+script.skin.helper.service+script.skin.helper.widgets+script.skin.helper.backgrounds,enable=false))</onclick>
-						<onclick condition="[!System.HasAddon(script.module.metadatautils) + !System.HasAddon(script.skin.helper.service) + !System.HasAddon(script.skin.helper.widgets) + !System.HasAddon(script.skin.helper.backgrounds)]">RunScript(script.embuary.helper,action=dialogyesno,header=$LOCALIZE[31313],message=$LOCALIZE[31314][CR][CR]$LOCALIZE[31315],yesaction=RunScript(script.embuary.helper,action=toggleaddons,addonid=script.module.metadatautils+script.skin.helper.service+script.skin.helper.widgets+script.skin.helper.backgrounds,enable=true))</onclick>
-						<label>$LOCALIZE[31312]</label>
-						<selected>!System.HasAddon(script.module.metadatautils) + !System.HasAddon(script.skin.helper.service) + !System.HasAddon(script.skin.helper.widgets) + !System.HasAddon(script.skin.helper.backgrounds)</selected>
-					</control>
 					<control type="label">
 						<height>50</height>
 					</control>
 				</control>
 				<!-- donate -->
-				<control type="grouplist" id="800">
-					<visible>ControlGroup(100).HasFocus(107)</visible>
-					<left>500</left>
-					<right>100</right>
-					<height>100%</height>
-					<onup>6666</onup>
-					<onleft>100</onleft>
-					<onright>noop</onright>
-					<ondown>noop</ondown>
-					<pagecontrol>60</pagecontrol>
-					<scrolltime>200</scrolltime>
-					<itemgap>0</itemgap>
+				<control type="grouplist" id="1700">
+					<visible>ControlGroup(100).HasFocus(108)</visible>
+					<include>SettingsGrouplist</include>
 					<include content="SkinSettingsHeadlineLabel">
 						<param name="id" value="801"/>
 						<param name="label" value="$LOCALIZE[31297]"/>
 					</include>
 					<control type="image">
-						<visible>ControlGroup(100).HasFocus(107)</visible>
 						<width>720</width>
 						<height>720</height>
 						<texture>common/donate.jpg</texture>
