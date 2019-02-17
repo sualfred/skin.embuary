@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window id="1118" type="dialog">
 	<visible>Container.Content(seasons) + String.IsEmpty(Container.Pluginname)</visible>
-	<onload condition="!String.IsEmpty(ListItemAbsolute(0).DBID)">Runscript(script.embuary.helper,action=details_by_season,dbid=$INFO[ListItemAbsolute(0).DBID])</onload>
-	<onload condition="String.IsEmpty(ListItemAbsolute(0).DBID) + !String.IsEmpty(ListItemAbsolute(1).DBID)">Runscript(script.embuary.helper,action=details_by_season,dbid=$INFO[ListItemAbsolute(1).DBID])</onload>
+	<onload condition="Integer.IsGreater(ListItemAbsolute(0).Season,0) + !String.IsEmtpy(Container.ListItemAbsolute(0).DBID)">RunScript(script.embuary.helper,action=details_by_season,dbid=$INFO[Container.ListItemAbsolute(0).DBID])</onload>
+	<onload condition="Integer.IsGreater(ListItemAbsolute(1).Season,0) + !String.IsEmtpy(Container.ListItemAbsolute(1).DBID)">RunScript(script.embuary.helper,action=details_by_season,dbid=$INFO[Container.ListItemAbsolute(1).DBID])</onload>
+	<onload condition="Integer.IsGreater(ListItemAbsolute(2).Season,0) + !String.IsEmtpy(Container.ListItemAbsolute(2).DBID)">RunScript(script.embuary.helper,action=details_by_season,dbid=$INFO[Container.ListItemAbsolute(2).DBID])</onload>
+	<onload condition="Integer.IsGreater(ListItemAbsolute(3).Season,0) + !String.IsEmtpy(Container.ListItemAbsolute(3).DBID)">RunScript(script.embuary.helper,action=details_by_season,dbid=$INFO[Container.ListItemAbsolute(3).DBID])</onload>
 	<onunload>ClearProperty(tvshow.dbid,home)</onunload>
 	<onunload>ClearProperty(tvshow.rating,home)</onunload>
 	<onunload>ClearProperty(tvshow.seasons,home)</onunload>
