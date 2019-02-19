@@ -31,7 +31,12 @@
 			<control type="group">
 				<include>Dialog_PopupOpenClose</include>
 				<centerleft>50%</centerleft>
-				<width>550</width>
+					<include content="ParamWidth" condition="!Window.IsVisible(subtitlesearch)">
+						<param name="width" value="550"/>
+					</include>
+					<include content="ParamWidth" condition="Window.IsVisible(subtitlesearch)">
+						<param name="width" value="1000"/>
+					</include>
 				<centertop>50%</centertop>
 				<height>982</height>
 				<control type="grouplist">
