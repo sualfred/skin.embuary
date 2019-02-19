@@ -30,9 +30,12 @@
 	<include file="Embuary_WidgetCalls.xml" />
 	<include file="Embuary_PositionSelectorIncludes.xml" />
 	<include file="Embuary_HomeIncludes.xml" />
+	<include file="Embuary_SkinSettings.xml" />
 	<include file="script-skinshortcuts-includes.xml" />
 
 	<!-- General -->
+	<expression name="CinemaMode">[!String.IsEmpty(Skin.String(IntroPath)) | Integer.IsGreater(Skin.String(TrailerCount),0)]</expression>
+
 	<expression name="EmbyLoading">[String.IsEqual(Player.Title,emby-loading.mp4)]</expression>
 
 	<expression name="SkinSetup">[!Skin.HasSetting(SkinSetup) + !Window.IsVisible(startup) + !Window.IsVisible(1119)]</expression>

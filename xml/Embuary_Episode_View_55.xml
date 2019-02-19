@@ -62,7 +62,8 @@
 								<label>$VAR[VideoInfoButton8]</label>
 								<onup>SetFocus(6666)</onup>
 								<onclick>SetFocus(55)</onclick>
-								<onclick>Select</onclick>
+								<onclick condition="!Skin.HasSetting(AlwaysCinemaMode) | !$EXP[CinemaMode]">Select</onclick>
+								<onclick condition="Skin.HasSetting(AlwaysCinemaMode) + $EXP[CinemaMode]">RunScript(script.embuary.helper,action=playcinema)</onclick>
 								<ondown>SetFocus(55)</ondown>
 								<onback>SetFocus(55)</onback>
 							</control>

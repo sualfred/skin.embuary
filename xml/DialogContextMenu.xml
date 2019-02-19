@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
-	<defaultcontrol>996</defaultcontrol>
+	<defaultcontrol>1999</defaultcontrol>
 	<include>PropertyIncludes</include>
 	<controls>
 		<include content="DiffuseMask"/>
@@ -18,15 +18,21 @@
 				<onright>close</onright>
 				<onleft>close</onleft>
 				<usecontrolcoords>true</usecontrolcoords>
-				<control type="image" id="998">
+				<control type="image" id="1">
 					<width>100%</width>
 					<height>61</height>
 					<texture border="65,0,65,0" colordiffuse="context_color">dialogs/context/top.png</texture>
 				</control>
+				<control type="button" id="1999">
+					<include content="ContextButton"/>
+					<label>$LOCALIZE[31326]</label>
+					<onclick>RunScript(script.embuary.helper,action=playcinema)</onclick>
+					<visible>!String.IsEmpty(Window(home).Property(ListItemDBID)) + $EXP[CinemaMode]</visible>
+				</control>
 				<control type="button" id="1000">
 					<include content="ContextButton"/>
 				</control>
-				<control type="image" id="995">
+				<control type="image" id="2">
 					<width>100%</width>
 					<height>61</height>
 					<texture border="65,0,65,0" colordiffuse="context_color">dialogs/context/bottom.png</texture>
