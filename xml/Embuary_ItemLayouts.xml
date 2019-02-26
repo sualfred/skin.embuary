@@ -160,7 +160,8 @@
 					<aspectratio align="right">keep</aspectratio>
 				</control>
 				<control type="group">
-					<visible>!Skin.HasSetting(UseChannelLogo) + !Skin.HasSetting(HideEPGThumbOverlay) + !String.IsEmpty(ListItem.EpgEventIcon) + !Window.IsVisible(fullscreeninfo) + !Window.IsVisible(pvrguideinfo) + !String.IsEqual(Container.ViewMode,$LOCALIZE[535]) + !String.IsEqual(Container.ViewMode,$LOCALIZE[31005])</visible>
+					<visible>!String.IsEmpty(ListItem.EpgEventIcon) | [Window.IsVisible(MyPVRrecordings.xml) + !String.IsEqual(ListItem.ActualIcon,ListItem.Icon)]</visible>
+					<visible>!Skin.HasSetting(UseChannelLogo) + !Skin.HasSetting(HideEPGThumbOverlay) + !Window.IsVisible(fullscreeninfo) + !Window.IsVisible(pvrguideinfo) + !String.IsEqual(Container.ViewMode,$LOCALIZE[535]) + !String.IsEqual(Container.ViewMode,$LOCALIZE[31005])</visible>
 					<control type="image">
 						<bottom>0</bottom>
 						<width>100%</width>
@@ -168,17 +169,17 @@
 						<texture colordiffuse="f2141414">views/player/mask_bottom.png</texture>
 					</control>
 					<control type="image">
-						<animation effect="slide" end="0,-2" time="0" condition="Integer.IsGreater(ListItem.Progress,0)">Conditional</animation>
+						<animation effect="slide" end="0,-2" time="0" condition="[String.StartsWith(ListItem.Path,pvr://channels) + Integer.IsGreater(ListItem.Progress,0)] | [!String.StartsWith(ListItem.Path,pvr://channels) + Integer.IsGreater(ListItem.PercentPlayed,0)]">Conditional</animation>
 						<bottom>0</bottom>
 						<width>40%</width>
 						<height>60</height>
-						<texture background="true">$INFO[ListItem.Icon]</texture>
+						<texture background="true">$INFO[ListItem.ActualIcon]</texture>
 						<aspectratio align="left">keep</aspectratio>
 						<bordersize>10</bordersize>
-						<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
+						<visible>!String.StartsWith(ListItem.ActualIcon,Default)</visible>
 					</control>
 					<control type="label">
-						<animation effect="slide" end="0,-2" time="0" condition="Integer.IsGreater(ListItem.Progress,0)">Conditional</animation>
+						<animation effect="slide" end="0,-2" time="0" condition="[String.StartsWith(ListItem.Path,pvr://channels) + Integer.IsGreater(ListItem.Progress,0)] | [!String.StartsWith(ListItem.Path,pvr://channels) + Integer.IsGreater(ListItem.PercentPlayed,0)]">Conditional</animation>
 						<bottom>0</bottom>
 						<right>10</right>
 						<width>60%</width>
@@ -1157,15 +1158,17 @@
 						<height>280</height>
 						<texture background="true">$VAR[IconSquare]</texture>
 						<aspectratio scalediffuse="false">scale</aspectratio>
-						<visible>![String.StartsWith(ListItem.Path,pvr://) + [String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)]] + !String.StartsWith(ListItem.Icon,Default)</visible>
+						<visible>![String.StartsWith(ListItem.Path,pvr://) + [String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)]] + !Window.IsVisible(MyPVRRecordings.xml)</visible>
+						<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
 					</control>
 					<control type="image">
 						<width>280</width>
 						<height>280</height>
-						<texture background="true">$INFO[ListItem.Icon]</texture>
+						<texture background="true">$VAR[IconSquare]</texture>
 						<aspectratio scalediffuse="false">keep</aspectratio>
 						<bordersize>20</bordersize>
-						<visible>String.StartsWith(ListItem.Path,pvr://) + [String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)] + !String.StartsWith(ListItem.Icon,Default)</visible>
+						<visible>[String.StartsWith(ListItem.Path,pvr://) + [String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)]] | Window.IsVisible(MyPVRRecordings.xml)</visible>
+						<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
 					</control>
 					<control type="group">
 						<width>280</width>
@@ -1676,7 +1679,7 @@
 				<control type="image">
 					<width>68</width>
 					<height>100</height>
-					<texture background="true">$INFO[ListItem.Icon]</texture>
+					<texture background="true">$VAR[IconListView]</texture>
 					<aspectratio aligny="center" align="center">keep</aspectratio>
 					<visible>!String.IsEmpty(ListItem.Icon)</visible>
 				</control>
