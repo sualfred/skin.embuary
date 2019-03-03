@@ -34,6 +34,12 @@
 	<include file="script-skinshortcuts-includes.xml" />
 
 	<!-- General -->
+	<expression name="HasEmbyContext">[[!String.IsEmpty(ListItem.DBID) + !String.IsEqual(ListItem.DBID,-1) | !String.IsEmpty(ListItem.Property(embyid))] + !String.IsEmpty(Window(10000).Property(emby_context)) + !Skin.HasSetting(KioskMode)]</expression>
+
+	<expression name="HasEmbyConContext">[!String.IsEmpty(ListItem.Property(id)) + String.StartsWith(ListItem.FolderPath,plugin://plugin.video.embycon) + False]</expression>
+
+	<expression name="HasLibraryEditButton">[!Skin.HasSetting(HideLibraryEditButtons) + !Skin.HasSetting(KioskMode) + !String.StartsWith(ListItem.Path,plugin://)]</expression>
+
 	<expression name="CinemaMode">[!String.IsEmpty(Skin.String(IntroPath)) | Integer.IsGreater(Skin.String(TrailerCount),0)]</expression>
 
 	<expression name="EmbyLoading">[String.IsEqual(Player.Title,emby-loading.mp4)]</expression>

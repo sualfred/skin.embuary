@@ -81,23 +81,21 @@
 						</control>
 						<control type="button" id="97">
 							<visible>!String.IsEmpty(ListItem.Plot)</visible>
-							<include>LightGreyButton</include>
-							<width>70</width>
-							<height>50</height>
+							<include>LightGreyButtonRound</include>
 							<font>material24</font>
 							<label></label>
 							<onclick>RunScript(script.embuary.helper,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCINFO[ListItem.Plot]')</onclick>
 							<ondown>200</ondown>
 						</control>
 						<control type="button" id="103">
-							<include>LightGreyButton</include>
-							<width>70</width>
-							<height>50</height>
+							<include>LightGreyButtonRound</include>
 							<font>material24</font>
 							<label></label>
 							<ondown>200</ondown>
-							<onclick>SetFocus(4000)</onclick>
-							<visible>!Skin.HasSetting(HideLibraryEditButtons) + !Skin.HasSetting(KioskMode) + !String.StartsWith(ListItem.Path,plugin://)</visible>
+							<onclick condition="!$EXP[HasEmbyContext] + $EXP[HasLibraryEditButton]">SetFocus(4000)</onclick>
+							<onclick condition="$EXP[HasEmbyContext]">RunScript(special://home/addons/plugin.video.emby/context.py)</onclick>
+							<onclick condition="$EXP[HasEmbyConContext]">RunScript(special://home/addons/plugin.video.embycon/contextmenu.py)</onclick>
+							<visible>$EXP[HasEmbyContext] | $EXP[HasLibraryEditButton] | $EXP[HasEmbyConContext]</visible>
 						</control>
 					</control>
 					<!-- genre -->
@@ -257,23 +255,21 @@
 						</control>
 						<control type="button" id="97">
 							<visible>!String.IsEmpty(ListItem.Plot)</visible>
-							<include>LightGreyButton</include>
-							<width>70</width>
-							<height>50</height>
+							<include>LightGreyButtonRound</include>
 							<font>material24</font>
 							<label></label>
 							<onclick>RunScript(script.embuary.helper,action=textviewer,header='$ESCINFO[ListItem.TVShowTitle]',message='$ESCVAR[TinyInfoDialogPlot]')</onclick>
 							<ondown>200</ondown>
 						</control>
 						<control type="button" id="103">
-							<include>LightGreyButton</include>
-							<width>70</width>
-							<height>50</height>
+							<include>LightGreyButtonRound</include>
 							<font>material24</font>
 							<label></label>
 							<ondown>200</ondown>
-							<onclick>SetFocus(4000)</onclick>
-							<visible>!Skin.HasSetting(HideLibraryEditButtons) + !Skin.HasSetting(KioskMode) + !String.StartsWith(ListItem.Path,plugin://)</visible>
+							<onclick condition="!$EXP[HasEmbyContext] + $EXP[HasLibraryEditButton]">SetFocus(4000)</onclick>
+							<onclick condition="$EXP[HasEmbyContext]">RunScript(special://home/addons/plugin.video.emby/context.py)</onclick>
+							<onclick condition="$EXP[HasEmbyConContext]">RunScript(special://home/addons/plugin.video.embycon/contextmenu.py)</onclick>
+							<visible>$EXP[HasEmbyContext] | $EXP[HasLibraryEditButton] | $EXP[HasEmbyConContext]</visible>
 						</control>
 					</control>
 					<!-- genre -->
@@ -449,23 +445,21 @@
 						</control>
 						<control type="button" id="97">
 							<visible>!String.IsEmpty(ListItem.Plot)</visible>
-							<include>LightGreyButton</include>
-							<width>70</width>
-							<height>50</height>
+							<include>LightGreyButtonRound</include>
 							<font>material24</font>
 							<label></label>
 							<onclick>RunScript(script.embuary.helper,action=textviewer,header='$ESCINFO[ListItem.TVShowTitle]',message='$ESCVAR[TinyInfoDialogPlot]')</onclick>
 							<ondown>200</ondown>
 						</control>
 						<control type="button" id="103">
-							<include>LightGreyButton</include>
-							<width>70</width>
-							<height>50</height>
+							<include>LightGreyButtonRound</include>
 							<font>material24</font>
 							<label></label>
 							<ondown>200</ondown>
-							<onclick>SetFocus(4000)</onclick>
-							<visible>!Skin.HasSetting(HideLibraryEditButtons) + !Skin.HasSetting(KioskMode) + !String.StartsWith(ListItem.Path,plugin://)</visible>
+							<onclick condition="!$EXP[HasEmbyContext] + $EXP[HasLibraryEditButton]">SetFocus(4000)</onclick>
+							<onclick condition="$EXP[HasEmbyContext]">RunScript(special://home/addons/plugin.video.emby/context.py)</onclick>
+							<onclick condition="$EXP[HasEmbyConContext]">RunScript(special://home/addons/plugin.video.embycon/contextmenu.py)</onclick>
+							<visible>$EXP[HasEmbyContext] | $EXP[HasLibraryEditButton] | $EXP[HasEmbyConContext]</visible>
 						</control>
 					</control>
 					<control type="textbox">
@@ -733,9 +727,7 @@
 								<onclick>PlayMedia(musicdb://songs/?artistid=$INFO[ListItem.DBID],isdir)</onclick>
 							</control>
 							<control type="button" id="103">
-								<include>LightGreyButton</include>
-								<width>70</width>
-								<height>50</height>
+							<include>LightGreyButtonRound</include>
 								<font>material24</font>
 								<label></label>
 								<ondown>200</ondown>
@@ -743,14 +735,14 @@
 								<visible>!String.IsEmpty(ListItem.Property(Artist_Description))</visible>
 							</control>
 							<control type="button" id="104">
-								<include>LightGreyButton</include>
-								<width>70</width>
-								<height>50</height>
+							<include>LightGreyButtonRound</include>
 								<font>material24</font>
 								<label></label>
 								<ondown>200</ondown>
-								<onclick>SetFocus(4000)</onclick>
-								<visible>!Skin.HasSetting(HideLibraryEditButtons) + !Skin.HasSetting(KioskMode) + !String.StartsWith(ListItem.Path,plugin://)</visible>
+								<onclick condition="!$EXP[HasEmbyContext] + $EXP[HasLibraryEditButton]">SetFocus(4000)</onclick>
+								<onclick condition="$EXP[HasEmbyContext]">RunScript(special://home/addons/plugin.video.emby/context.py)</onclick>
+								<onclick condition="$EXP[HasEmbyConContext]">RunScript(special://home/addons/plugin.video.embycon/contextmenu.py)</onclick>
+								<visible>$EXP[HasEmbyContext] | $EXP[HasLibraryEditButton] | $EXP[HasEmbyConContext]</visible>
 							</control>
 						</control>
 						<!-- genre -->
