@@ -113,7 +113,7 @@
 								<ondown>SetFocus(55)</ondown>
 								<onback>SetFocus(55)</onback>
 								<onclick condition="$EXP[HasEmbyContext]">RunScript(special://home/addons/plugin.video.emby/context.py)</onclick>
-								<onclick condition="$EXP[HasEmbyConContext]">RunScript(special://home/addons/plugin.video.embycon/contextmenu.py)</onclick>
+								<onclick condition="$EXP[HasEmbyConContext]">RunPlugin(plugin://plugin.video.embycon?mode=SHOW_MENU&amp;item_id=$INFO[ListItem.Property(id)])</onclick>
 								<visible>$EXP[HasEmbyContext] | $EXP[HasEmbyConContext]</visible>
 							</control>
 						</control>

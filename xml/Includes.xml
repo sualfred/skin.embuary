@@ -34,9 +34,9 @@
 	<include file="script-skinshortcuts-includes.xml" />
 
 	<!-- General -->
-	<expression name="HasEmbyContext">[[!String.IsEmpty(ListItem.DBID) + !String.IsEqual(ListItem.DBID,-1) | !String.IsEmpty(ListItem.Property(embyid))] + !String.IsEmpty(Window(10000).Property(emby_context)) + !Skin.HasSetting(KioskMode)]</expression>
+	<expression name="HasEmbyContext">[[!String.IsEmpty(ListItem.DBID) + !String.IsEqual(ListItem.DBID,-1) | !String.IsEmpty(ListItem.Property(embyid))] + !String.IsEmpty(Window(10000).Property(emby_context)) + !Skin.HasSetting(KioskMode) + !String.StartsWith(ListItem.FolderPath,plugin://plugin.video.embycon)]</expression>
 
-	<expression name="HasEmbyConContext">[!String.IsEmpty(ListItem.Property(id)) + String.StartsWith(ListItem.FolderPath,plugin://plugin.video.embycon) + False]</expression>
+	<expression name="HasEmbyConContext">[!String.IsEmpty(ListItem.Property(id)) + String.StartsWith(ListItem.FolderPath,plugin://plugin.video.embycon)]</expression>
 
 	<expression name="HasLibraryEditButton">[!Skin.HasSetting(HideLibraryEditButtons) + !Skin.HasSetting(KioskMode) + !String.StartsWith(ListItem.Path,plugin://)]</expression>
 
