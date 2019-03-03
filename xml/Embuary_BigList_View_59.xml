@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
-	<include name="EpisodeList_View_59">
+	<include name="BigList_View_59">
 		<param name="id">59</param>
 		<definition>
 			<control type="group">
@@ -127,7 +127,7 @@
 					</control>
 				</control>
 				<control id="$PARAM[id]" type="fixedlist">
-					<visible>[$EXP[EpisodeViewVisible] + !Skin.HasSetting(ViewEpisodeToggle)] | Window.IsVisible(MyPVRRecordings.xml)</visible>
+					<visible>[$EXP[EpisodeViewVisible] + !Skin.HasSetting(ViewEpisodeToggle)] | Window.IsVisible(MyPVRRecordings.xml) | Window.IsVisible(tvchannels)</visible>
 					<animation effect="slide" time="0" end="0,-305" condition="!Container.HasParent + [Integer.IsEqual(Container($PARAM[id]).NumItems,2) | Integer.IsEqual(Container($PARAM[id]).NumItems,1)]">Conditional</animation>
 					<animation effect="slide" time="0" end="0,-305" condition="Container.HasParent + [Integer.IsEqual(Container($PARAM[id]).NumItems,1)]">Conditional</animation>
 					<height>100%</height>

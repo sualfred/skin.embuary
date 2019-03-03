@@ -1604,7 +1604,6 @@
 		<param name="mainlabel">$VAR[EpisodeListLabel]</param>
 		<param name="sublabel">$VAR[DurationMinutes,,   ]$INFO[ListItem.EndTime,$LOCALIZE[31037] ]</param>
 		<param name="thumblabel">$VAR[EpisodeListLabel]</param>
-		<param name="thumb">$VAR[IconLandscape]</param>
 		<param name="focused">false</param>
 		<param name="visible">true</param>
 		<definition>
@@ -1684,17 +1683,33 @@
 					<control type="image">
 						<width>424</width>
 						<height>239</height>
-						<texture background="true">$INFO[ListItem.Icon]</texture>
+						<texture background="true">$VAR[IconLandscape]</texture>
 						<aspectratio scalediffuse="false">keep</aspectratio>
-						<bordersize>20</bordersize>
-						<visible>String.StartsWith(ListItem.Path,pvr://) + [String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)] + !String.StartsWith(ListItem.Icon,Default)</visible>
+						<visible>
+							[
+							![String.StartsWith(ListItem.Path,pvr://) + String.IsEmpty(ListItem.EpgEventIcon) + [String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)]]
+							+ ![String.StartsWith(ListItem.Path,pvr://) + Skin.HasSetting(UseChannelLogo)]
+							]
+							+ !String.StartsWith(ListItem.Icon,Default)
+							+ !String.StartsWith(ListItem.Art(thumb),image://picturefolder)
+							+ !String.EndsWith(ListItem.Art(thumb),folder.jpg)
+						</visible>
 					</control>
 					<control type="image">
 						<width>424</width>
 						<height>239</height>
-						<texture background="true">$PARAM[thumb]</texture>
+						<texture background="true">$INFO[ListItem.Icon]</texture>
 						<aspectratio scalediffuse="false">keep</aspectratio>
-						<visible>[!String.StartsWith(ListItem.Path,pvr://) | [String.StartsWith(ListItem.Path,pvr://) + ![String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)]]] + !String.StartsWith(ListItem.Icon,Default)</visible>
+						<bordersize>20</bordersize>
+						<visible>
+							[
+							[String.StartsWith(ListItem.Path,pvr://) + String.IsEmpty(ListItem.EpgEventIcon) + [String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)]]
+							| [String.StartsWith(ListItem.Path,pvr://) + Skin.HasSetting(UseChannelLogo)]
+							]
+							+ !String.StartsWith(ListItem.Art(thumb),image://picturefolder)
+							+ !String.EndsWith(ListItem.Art(thumb),folder.jpg)
+							+ !String.StartsWith(ListItem.Icon,Default)
+						</visible>
 					</control>
 					<control type="group">
 						<width>424</width>
