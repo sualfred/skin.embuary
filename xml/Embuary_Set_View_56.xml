@@ -93,9 +93,7 @@
 							</control>
 							<control type="button" id="56103">
 								<visible>!String.IsEmpty(ListItem.Plot) | !String.IsEmpty(Container(2001).ListItem.Label)</visible>
-								<include>LightGreyButton</include>
-								<width>70</width>
-								<height>50</height>
+								<include>LightGreyButtonRound</include>
 								<font>material24</font>
 								<label></label>
 								<onclick condition="!String.IsEqual(ListItem.DBType,set)">RunScript(script.embuary.helper,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCINFO[ListItem.Plot]')</onclick>
@@ -105,9 +103,7 @@
 								<onback>SetFocus(50)</onback>
 							</control>
 							<control type="togglebutton" id="56105">
-								<include>LightGreyButton</include>
-								<width>70</width>
-								<height>50</height>
+								<include>LightGreyButtonRound</include>
 								<font>material24</font>
 								<label>[B][/B]</label>
 								<altlabel>[B][COLOR red][/COLOR][/B]</altlabel>
@@ -116,6 +112,17 @@
 								<ondown>50</ondown>
 								<onback>SetFocus(50)</onback>
 								<selected>String.IsEqual(ListItem.Overlay,OverlayWatched.png) | Integer.IsGreaterOrEqual(ListItem.PlayCount,1)</selected>
+							</control>
+							<control type="button" id="56106">
+								<include>LightGreyButtonRound</include>
+								<font>material24</font>
+								<label></label>
+								<onup>SetFocus(6666)</onup>
+								<ondown>50</ondown>
+								<onback>SetFocus(50)</onback>
+								<onclick condition="$EXP[HasEmbyContext]">RunScript(special://home/addons/plugin.video.emby/context.py)</onclick>
+								<onclick condition="$EXP[HasEmbyConContext]">RunScript(special://home/addons/plugin.video.embycon/contextmenu.py)</onclick>
+								<visible>$EXP[HasEmbyContext] | $EXP[HasEmbyConContext]</visible>
 							</control>
 						</control>
 						<!-- genre -->
