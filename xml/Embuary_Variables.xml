@@ -667,12 +667,13 @@
 	<variable name="ThumbSubListLabel">
 		<value condition="Window.IsVisible(music) + !String.IsEmpty(ListItem.Album)">$INFO[ListItem.Album]</value>
 		<value condition="Window.IsVisible(music) + !String.IsEmpty(ListItem.Artist)">$LOCALIZE[557]</value>
-		<value condition="String.StartsWith(ListItem.Path,pvr://)">$INFO[ListItem.Channelname]</value>
 		<value>$VAR[SubListLabel]</value>
 	</variable>
 	<variable name="MainListLabel">
 		<value condition="Window.IsVisible(DialogPVRChannelsOSD.xml)">$INFO[ListItem.ChannelName]$INFO[ListItem.Title, - ]</value>
-		<value condition="Window.IsVisible(MyPVRChannels.xml) + !String.IsEmpty(ListItem.Title)">$INFO[ListItem.StartTime,, - ]$INFO[ListItem.EndTime,,: ]$INFO[ListItem.Title]</value>
+		<value condition="Window.IsVisible(MyPVRChannels.xml) + [String.IsEqual(ListItem.Title,ListItem.Label) | String.IsEmpty(ListItem.Title)]">$INFO[ListItem.Label]</value>
+		<value condition="Window.IsVisible(MyPVRChannels.xml) + !String.IsEmpty(ListItem.Title) + !String.IsEqual(Container.Viewmode,$LOCALIZE[537]) + !String.IsEqual(Container.Viewmode,$LOCALIZE[31199])">$INFO[ListItem.StartTime,, - ]$INFO[ListItem.EndTime,,: ]$INFO[ListItem.Title]</value>
+		<value condition="Window.IsVisible(MyPVRChannels.xml) + !String.IsEmpty(ListItem.Title)">$INFO[ListItem.Title]</value>
 		<value condition="Window.IsVisible(MyPVRChannels.xml)">$LOCALIZE[19055]</value>
 		<value condition="String.IsEqual(ListItem.DBType,season) + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) + String.IsEqual(ListItem.Label,All)">$LOCALIZE[20366]</value>
 		<value condition="Window.IsVisible(script-NextAired-TVGuide.xml)">$INFO[ListItem.Property(NextDate),, - ]$INFO[ListItem.Label]$INFO[ListItem.Property(ShortTime), (,)]</value>
@@ -692,7 +693,7 @@
 		<value condition="Window.IsVisible(DialogPVRChannelsOSD.xml)">$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, - ]</value>
 		<value condition="Window.IsVisible(script-NextAired-TVGuide.xml)">$INFO[ListItem.Property(NextSeasonNumber),S,]$INFO[ListItem.Property(NextEpisodeNumber),:E]$INFO[ListItem.Property(NextTitle), - ]</value>
 		<value condition="Window.IsVisible(script-NextAired-TVGuide2.xml)">$INFO[ListItem.Property(NextSeasonNumber),S,]$INFO[ListItem.Property(NextEpisodeNumber),:E]$INFO[ListItem.Property(NextTitle), - ]</value>
-		<value condition="String.StartsWith(ListItem.Path,pvr://)">$INFO[ListItem.Label]</value>
+		<value condition="String.StartsWith(ListItem.Path,pvr://) + ![String.IsEqual(ListItem.Title,ListItem.Label) | String.IsEmpty(ListItem.Title)]">$INFO[ListItem.Label]</value>
 		<value condition="String.IsEqual(ListItem.DBType,episode)">$INFO[ListItem.TvShowTitle]</value>
 		<value condition="String.IsEqual(ListItem.DBType,season)">$INFO[ListItem.TvShowTitle]</value>
 		<value condition="String.IsEqual(ListItem.DBType,movie)">$INFO[ListItem.Year]</value>
