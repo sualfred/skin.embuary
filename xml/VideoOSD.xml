@@ -2,6 +2,7 @@
 <window>
 	<onload>Dialog.Close(fullscreeninfo)</onload>
 	<defaultcontrol always="true">603</defaultcontrol>
+	<onload condition="VideoPlayer.Content(livetv) + !Player.CanRecordPlayingChannel">SetFocus(604)</onload>
 	<include>PropertyIncludes</include>
 	<controls>
 		<!--Player Controls-->
@@ -37,6 +38,7 @@
 					<selected>!Player.Paused + !Player.Forwarding + !Player.Rewinding + !Player.Seeking</selected>
 					<onclick condition="Player.Paused">close</onclick>
 					<onclick>PlayerControl(Play)</onclick>
+					<visible>!VideoPlayer.Content(livetv) | Player.CanRecordPlayingChannel</visible>
 				</control>
 				<control type="button" id="604">
 					<include content="PlayerButtons">
