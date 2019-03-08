@@ -533,11 +533,12 @@
 		</include>
 		<control type="button" id="$PARAM[id]02">
 			<include>SettingsButton</include>
-			<onclick>SetProperty(Dialog.1.Label,$LOCALIZE[192])</onclick>
-			<onclick>SetProperty(Dialog.1.BuiltIn,Skin.Reset(IntroPath))</onclick>
-			<onclick>SetProperty(Dialog.2.Label,$LOCALIZE[748])</onclick>
-			<onclick>SetProperty(Dialog.2.BuiltIn,Skin.SetPath(IntroPath))</onclick>
-			<onclick>RunScript(script.embuary.helper,action=createselect)</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(IntroPath))">SetProperty(Dialog.1.Label,$LOCALIZE[192])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(IntroPath))">SetProperty(Dialog.1.BuiltIn,Skin.Reset(IntroPath))</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(IntroPath))">SetProperty(Dialog.2.Label,$LOCALIZE[748])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(IntroPath))">SetProperty(Dialog.2.BuiltIn,Skin.SetPath(IntroPath))</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(IntroPath))">RunScript(script.embuary.helper,action=createselect)</onclick>
+			<onclick condition="String.IsEmpty(Skin.String(IntroPath))">Skin.SetPath(IntroPath)</onclick>
 			<label>$LOCALIZE[31324]</label>
 			<label2>[COLOR $VAR[AccentColor]]$INFO[Skin.String(IntroPath)][/COLOR]</label2>
 			<enable>Library.HasContent(movies) | Library.HasContent(tvshows)</enable>
