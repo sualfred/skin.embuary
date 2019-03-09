@@ -123,6 +123,13 @@
 				<texture colordiffuse="background">common/white.jpg</texture>
 			</control>
 			<control type="group">
+				<description>Workaround for Leia bug / video sound stuttering</description>
+				<visible>Player.HasVideo + [Skin.HasSetting(HideBackgroundPlayback) | !$EXP[HideBackground]]</visible>
+				<control type="videowindow">
+					<include>HiddenObject</include>
+				</control>
+			</control>
+			<control type="group">
 				<visible>Player.HasMedia + !Skin.HasSetting(HideBackgroundPlayback) + [$EXP[HideBackground] | $PARAM[forced_visible]]</visible>
 				<control type="videowindow">
 					<include>FullscreenDimensions</include>
