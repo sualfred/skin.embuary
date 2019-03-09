@@ -1261,12 +1261,12 @@
 		<value>n/a</value>
 	</variable>
 	<variable name="SearchProvider">
-		<value condition="Skin.HasSetting(UseGlobalsearch)">Globalsearch</value>
+		<value condition="Skin.HasSetting(UseGlobalsearch) + System.HasAddon(script.globalsearch)">$INFO[System.AddonTitle(script.globalsearch)]</value>
 		<value>Embuary</value>
 	</variable>
 	<variable name="CastSearchProvider">
-		<value condition="Skin.HasSetting(DoNotUseExtendedInfo)">$LOCALIZE[31237]</value>
-		<value>ExtendedInfo</value>
+		<value condition="Skin.HasSetting(DoNotUseExtendedInfo) | !System.HasAddon(script.extendedinfo)">$LOCALIZE[31237]</value>
+		<value>$INFO[System.AddonTitle(script.extendedinfo)]</value>
 	</variable>
 	<variable name="EpisodeListLabel">"
 		<value condition="ListItem.IsParentFolder">$INFO[ListItem.Label]</value>
