@@ -314,16 +314,16 @@
 	</variable>
 	<!-- Emby Fav sources -->
 	<variable name="Emby.FavMovies">
-		<value condition="String.StartsWith(System.AddonVersion(plugin.video.emby),3.0)">library://video/emby_Favorite movies.xml</value>
-		<value>library://video/emby_Favoritemovies.xml</value>
+		<value condition="System.HasAddon(plugin.video.emby) + String.StartsWith(System.AddonVersion(plugin.video.emby),3.0)">library://video/emby_Favorite movies.xml</value>
+		<value condition="System.HasAddon(plugin.video.emby)">library://video/emby_Favoritemovies.xml</value>
 	</variable>
 	<variable name="Emby.FavShows">
-		<value condition="String.StartsWith(System.AddonVersion(plugin.video.emby),3.0)">library://video/emby_Favorite tvshows.xml</value>
-		<value>library://video/emby_Favoritetvshows.xml</value>
+		<value condition="System.HasAddon(plugin.video.emby) + String.StartsWith(System.AddonVersion(plugin.video.emby),3.0)">library://video/emby_Favorite tvshows.xml</value>
+		<value condition="System.HasAddon(plugin.video.emby)">library://video/emby_Favoritetvshows.xml</value>
 	</variable>
 	<variable name="Emby.FavEpisodes">
-		<value condition="String.StartsWith(System.AddonVersion(plugin.video.emby),3.0)">library://video/emby_Favorite episodes.xml</value>
-		<value>library://video/emby_Favoriteepisodes.xml</value>
+		<value condition="System.HasAddon(plugin.video.emby) + String.StartsWith(System.AddonVersion(plugin.video.emby),3.0)">library://video/emby_Favorite episodes.xml</value>
+		<value condition="System.HasAddon(plugin.video.emby)">library://video/emby_Favoriteepisodes.xml</value>
 	</variable>
 	<!-- EmbyCon sources -->
 	<variable name="EmbyCon.FavMovies">
