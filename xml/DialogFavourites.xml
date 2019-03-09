@@ -2,11 +2,6 @@
 <window>
 	<defaultcontrol always="true">10</defaultcontrol>
 	<backgroundcolor>background</backgroundcolor>
-	<onunload condition="!String.IsEmpty(Window(home).Property(NextWindow)) + !Window.IsVisible(MyVideoNav.xml)">ActivateWindow(videos,$INFO[Window(home).Property(NextWindow)],return)</onunload>
-	<onunload condition="!String.IsEmpty(Window(home).Property(NextWindow)) + Window.IsVisible(MyVideoNav.xml)">Container.Update($INFO[Window(home).Property(NextWindow)])</onunload>
-	<onunload condition="!String.IsEmpty(Window(home).Property(PlayItem))">PlayMedia($INFO[Window(home).Property(PlayItem)])</onunload>
-	<onunload>ClearProperty(NextWindow,home)</onunload>
-	<onunload>ClearProperty(PlayItem,home)</onunload>
 	<include content="PropertyIncludes">
 		<param name="ShowHeader" value="true"/>
 	</include>
@@ -50,8 +45,7 @@
 				<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 				<param name="sublabel" value="$INFO[ListItem.Year]"/>
 				<param name="use_custom_onclick" value="true"/>
-				<param name="onclick" value="SetProperty(PlayItem,$INFO[ListItem.FileNameAndPath],home)"/>
-				<param name="onclick2" value="close"/>
+				<param name="onclick" value="RunScript(script.embuary.helper,action=playitem,item='$ESCINFO[ListItem.Filenameandpath]')"/>
 				<param name="content" value="$VAR[Emby.FavMovies]"/>
 			</include>
 			<include content="PosterWidget">
@@ -64,8 +58,7 @@
 				<param name="sublabel" value="$INFO[ListItem.Year]"/>
 				<param name="sortby" value="label"/>
 				<param name="use_custom_onclick" value="true"/>
-				<param name="onclick" value="SetProperty(PlayItem,$INFO[ListItem.FileNameAndPath],home)"/>
-				<param name="onclick2" value="close"/>
+				<param name="onclick" value="RunScript(script.embuary.helper,action=playitem,item='$ESCINFO[ListItem.Filenameandpath]')"/>
 				<param name="content" value="$VAR[EmbyCon.FavMovies]"/>
 			</include>
 			<!-- emby shows -->
@@ -78,8 +71,7 @@
 				<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 				<param name="sublabel" value="$INFO[ListItem.Year]"/>
 				<param name="use_custom_onclick" value="true"/>
-				<param name="onclick" value="SetProperty(NextWindow,$INFO[ListItem.FolderPath],home)"/>
-				<param name="onclick2" value="close"/>
+				<param name="onclick" value="RunScript(script.embuary.helper,action=goto,path='$ESCINFO[ListItem.FolderPath]',target=videos)"/>
 				<param name="content" value="$VAR[Emby.FavShows]"/>
 			</include>
 			<include content="PosterWidget">
@@ -92,8 +84,7 @@
 				<param name="sublabel" value="$INFO[ListItem.Year]"/>
 				<param name="sortby" value="label"/>
 				<param name="use_custom_onclick" value="true"/>
-				<param name="onclick" value="SetProperty(NextWindow,$INFO[ListItem.FolderPath],home)"/>
-				<param name="onclick2" value="close"/>
+				<param name="onclick" value="RunScript(script.embuary.helper,action=goto,path='$ESCINFO[ListItem.Filenameandpath]',target=videos)"/>
 				<param name="content" value="$VAR[EmbyCon.FavTVShows]"/>
 			</include>
 			<!-- emby episodes -->
@@ -106,8 +97,7 @@
 				<param name="sublabel" value="$INFO[ListItem.TvShowTitle]"/>
 				<param name="mainlabel" value="$VAR[ListItemSeasonEpisode]$INFO[ListItem.Title]"/>
 				<param name="use_custom_onclick" value="true"/>
-				<param name="onclick" value="SetProperty(PlayItem,$INFO[ListItem.FileNameAndPath],home)"/>
-				<param name="onclick2" value="close"/>
+				<param name="onclick" value="RunScript(script.embuary.helper,action=playitem,item='$ESCINFO[ListItem.Filenameandpath]')"/>
 				<param name="content" value="$VAR[Emby.FavEpisodes]"/>
 			</include>
 			<include content="WideWidget">
@@ -120,8 +110,7 @@
 				<param name="mainlabel" value="$VAR[ListItemSeasonEpisode]$INFO[ListItem.Title]"/>
 				<param name="sortby" value="label"/>
 				<param name="use_custom_onclick" value="true"/>
-				<param name="onclick" value="SetProperty(PlayItem,$INFO[ListItem.FileNameAndPath],home)"/>
-				<param name="onclick2" value="close"/>
+				<param name="onclick" value="RunScript(script.embuary.helper,action=playitem,item='$ESCINFO[ListItem.Filenameandpath]')"/>
 				<param name="content" value="$VAR[EmbyCon.FavEpisodes]"/>
 			</include>
 			<!-- Fav artist -->
@@ -135,8 +124,7 @@
 				<param name="sublabel" value="$INFO[ListItem.Year]"/>
 				<param name="sortby" value="label"/>
 				<param name="use_custom_onclick" value="true"/>
-				<param name="onclick" value="SetProperty(NextWindow,$INFO[ListItem.FolderPath],home)"/>
-				<param name="onclick2" value="close"/>
+				<param name="onclick" value="RunScript(script.embuary.helper,action=goto,path='$ESCINFO[ListItem.Filenameandpath]',target=music)"/>
 				<param name="widget_target" value="music"/>
 				<param name="content" value="$VAR[EmbyCon.FavArtists]"/>
 			</include>
@@ -151,8 +139,7 @@
 				<param name="sublabel" value="$INFO[ListItem.artist]"/>
 				<param name="sortby" value="label"/>
 				<param name="use_custom_onclick" value="true"/>
-				<param name="onclick" value="SetProperty(NextWindow,$INFO[ListItem.FolderPath],home)"/>
-				<param name="onclick2" value="close"/>
+				<param name="onclick" value="RunScript(script.embuary.helper,action=goto,path='$ESCINFO[ListItem.Filenameandpath]',target=music)"/>
 				<param name="widget_target" value="music"/>
 				<param name="content" value="$VAR[EmbyCon.FavAlbums]"/>
 			</include>
@@ -167,8 +154,7 @@
 				<param name="sublabel" value="$INFO[ListItem.artist]"/>
 				<param name="sortby" value="label"/>
 				<param name="use_custom_onclick" value="true"/>
-				<param name="onclick" value="SetProperty(PlayItem,$INFO[ListItem.FileNameAndPath],home)"/>
-				<param name="onclick2" value="close"/>
+				<param name="onclick" value="RunScript(script.embuary.helper,action=playitem,item='$ESCINFO[ListItem.Filenameandpath]')"/>
 				<param name="widget_target" value="music"/>
 				<param name="content" value="$VAR[EmbyCon.FavSongs]"/>
 			</include>
