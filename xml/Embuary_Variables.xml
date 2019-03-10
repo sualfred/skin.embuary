@@ -748,16 +748,18 @@
 		<value>$INFO[ListItem.VideoResolution]</value>
 	</variable>
 	<variable name="ListItemEpisodeName">
-		<value condition="!String.IsEmpty(ListItem.EpisodeName)">$INFO[ListItem.EpisodeName]</value>
-		<value condition="!String.IsEmpty(ListItem.Genre) + !Window.IsVisible(pvrguideinfo) + !Control.IsVisible(57)">$LOCALIZE[515]: $INFO[ListItem.Genre]</value>
-		<value condition="ListItem.IsFolder">$LOCALIZE[19076]</value>
-		<value>[COLOR text_sublabel]$LOCALIZE[31156][/COLOR]</value>
+		<value condition="!String.IsEmpty(ListItem.EpisodeName)">$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.EpisodeName]</value>
+		<value condition="!String.IsEmpty(ListItem.Season) + !String.IsEmpty(ListItem.Episode)">$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E]</value>
+		<value condition="!String.IsEmpty(ListItem.Episode)">$INFO[ListItem.Episode,E]</value>
+		<value condition="ListItem.IsFolder + Window.IsVisible(MyPVRRecordings.xml)">$LOCALIZE[19076]</value>
+		<value condition="!Window.IsVisible(MyPVRGuide.xml) + !String.IsEqual(Container.Viewmode,$LOCALIZE[535])">[COLOR text_sublabel]$LOCALIZE[31156][/COLOR]</value>
 	</variable>
 	<variable name="PlayerEpisodeName">
 		<value condition="Pvr.IsPlayingRadio + !String.StartsWith(MusicPlayer.Title,pvr) + !String.IsEqual(MusicPlayer.Artist,MusicPlayer.Channelname)">$INFO[MusicPlayer.Artist,, - ]$INFO[MusicPlayer.Title]</value>
 		<value condition="Player.HasAudio + !String.IsEmpty(MusicPlayer.Album)">$INFO[MusicPlayer.Album,$LOCALIZE[558]: ]$INFO[MusicPlayer.Year, (,)]</value>
-		<value condition="Player.HasVideo + !String.IsEmpty(VideoPlayer.EpisodeName)">$INFO[VideoPlayer.EpisodeName]</value>
-		<value condition="Player.HasVideo + !String.IsEmpty(VideoPlayer.Genre)">$LOCALIZE[515]: $INFO[VideoPlayer.Genre]</value>
+		<value condition="Player.HasVideo + !String.IsEmpty(VideoPlayer.EpisodeName)">$INFO[VideoPlayer.Season,S,:]$INFO[VideoPlayer.Episode,E, - ]$INFO[VideoPlayer.EpisodeName]</value>
+		<value condition="Player.HasVideo + !String.IsEmpty(VideoPlayer.Season) + !String.IsEmpty(VideoPlayer.Episode)">$INFO[VideoPlayer.Season,S,:]$INFO[VideoPlayer.Episode,E]</value>
+		<value condition="Player.HasVideo + !String.IsEmpty(VideoPlayer.Episode)">$INFO[VideoPlayer.Episode,E]</value>
 		<value>[COLOR text_sublabel]$LOCALIZE[31156][/COLOR]</value>
 	</variable>
 	<variable name="PlayerDiscArt">
@@ -917,6 +919,7 @@
 		<value condition="!String.IsEmpty(ListItem.Property(Album_Description))">$INFO[ListItem.Property(Album_Description)]</value>
 		<value condition="!String.IsEmpty(ListItem.Property(Artist_Description))">$INFO[ListItem.Property(Artist_Description)]</value>
 		<value condition="!String.IsEmpty(ListItem.AddonDescription)">$INFO[ListItem.AddonDescription]</value>
+		<value condition="String.StartsWith(ListItem.Path,pvr://) | String.IsEqual(ListItem.DBType,episode)">$VAR[ListItemEpisodeName,[B],[/B][CR][CR]]$INFO[ListItem.Plot]</value>
 		<value>$INFO[ListItem.Tagline,[B],[/B][CR][CR]]$INFO[ListItem.Plot]</value>
 	</variable>
 	<variable name="SetViewPlot">
@@ -1289,6 +1292,10 @@
 	<variable name="ListItemSeasonEpisode">
 		<value condition="String.StartsWith(ListItem.Episode,S)">$INFO[ListItem.Episode,, - ]</value>
 		<value>$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]</value>
+	</variable>
+	<variable name="ListItemSeasonEpisodeSolo">
+		<value condition="String.StartsWith(ListItem.Episode,S)">$INFO[ListItem.Episode,]</value>
+		<value>$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E]</value>
 	</variable>
 	<variable name="PlayerSeasonEpisode">
 		<value condition="String.StartsWith(VideoPlayer.Episode,S)">$INFO[VideoPlayer.Episode,, - ]</value>
