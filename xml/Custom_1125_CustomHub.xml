@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window id="1125">
+	<defaultcontrol always="true">10</defaultcontrol>
+	<menucontrol>6666</menucontrol>
+	<backgroundcolor>background</backgroundcolor>
+	<include content="PropertyIncludes">
+		<param name="ShowHeader" value="true"/>
+	</include>
+	<controls>
+		<!-- background -->
+		<include>Background</include>
+		<!-- hub -->
+		<control type="grouplist" id="10">
+			<include>Window_OpenClose</include>
+			<defaultcontrol>100</defaultcontrol>
+			<width>100%</width>
+			<height>100%</height>
+			<itemgap>-80</itemgap>
+			<orientation>vertical</orientation>
+			<usecontrolcoords>true</usecontrolcoords>
+			<include>ScrollTime</include>
+			<pagecontrol>17</pagecontrol>
+			<ondown>noop</ondown>
+			<include content="WidgetSpacer">
+				<param name="id" value="11"/>
+			</include>
+			<include content="WidgetSmallMenu">
+				<param name="id" value="100"/>
+				<param name="onup" value="6666"/>
+				<param name="ondown" value="200"/>
+				<param name="headline" value="$VAR[CustomHubHeadline]"/>
+				<param name="content" value="skinshortcuts-group-customhub"/>
+			</include>
+			<include content="WidgetCallTemplate">
+				<param name="onup" value="100"/>
+				<param name="type" value="WidgetCallCustomHub"/>
+			</include>
+		</control>
+		<!-- header bar -->
+		<include content="HeaderBar">
+			<param name="id">10</param>
+		</include>
+		<!-- side panel -->
+		<include content="SidePanel"/>
+	</controls>
+</window>

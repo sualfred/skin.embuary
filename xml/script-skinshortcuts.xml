@@ -2,9 +2,12 @@
 <window>
 	<defaultcontrol always="true">100</defaultcontrol>
 	<include>PropertyIncludes</include>
-	<onunload>RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=100&amp;mode=single&amp;group=mainmenu|moviehub|tvshowhub|musichub)</onunload>
+	<onunload>RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=100&amp;mode=single&amp;group=mainmenu|moviehub|tvshowhub|musichub|customhub)</onunload>
 	<controls>
 		<control type="button" id="308">
+			<include>HiddenObject</include>
+		</control>
+		<control type="button" id="305">
 			<include>HiddenObject</include>
 		</control>
 		<control type="button" id="306">
@@ -215,7 +218,7 @@
 						<visible>!String.IsEmpty(Container(211).ListItemNoWrap(1).Label)</visible>
 					</control>
 					<!-- Rename -->
-					<control type="button" id="305">
+					<control type="button" id="102">
 						<height>75</height>
 						<width>50</width>
 						<font>Material26</font>
@@ -228,6 +231,11 @@
 						<onup condition="!String.IsEmpty(Container(211).ListItemNoWrap(-1).Label)">Control.Move(211,-1)</onup>
 						<ondown condition="!String.IsEmpty(Container(211).ListItemNoWrap(1).Label)">Control.Move(211,1)</ondown>
 						<ondown condition="String.IsEmpty(Container(211).ListItemNoWrap(1).Label)">200</ondown>
+						<onclick condition="String.IsEmpty(Container(211).ListItem.Property(hasVARLabel.type))">SendClick(305)</onclick>
+						<onclick condition="!String.IsEmpty(Container(211).ListItem.Property(hasVARLabel.type))">SetProperty(ShowLabelNotification,1,home)</onclick>
+						<onclick condition="String.IsEqual(Container(211).ListItem.Property(hasVARLabel.type),allmovies)">Skin.SetString(MovieHubHeadline)</onclick>
+						<onclick condition="String.IsEqual(Container(211).ListItem.Property(hasVARLabel.type),allshows)">Skin.SetString(TVShowHubHeadline)</onclick>
+						<onclick condition="String.IsEqual(Container(211).ListItem.Property(hasVARLabel.type),customhub)">Skin.SetString(CustomHubHeadline)</onclick>
 						<visible>!String.StartsWith(Container(211).ListItem.Property(defaultID),embuary_emby)</visible>
 						<visible>!String.StartsWith(Container(211).ListItem.Property(defaultID),embuary_musichub_partymode)</visible>
 						<visible>!String.IsEqual(Container(211).ListItem.Property(path),noop)</visible>
@@ -350,6 +358,9 @@
 					<include>DarkGreyButton</include>
 					<label>$LOCALIZE[31204]</label>
 					<onclick>SendClick(308)</onclick>
+					<onclick>Skin.Reset(MovieHubHeadline)</onclick>
+					<onclick>Skin.Reset(TVShowHubHeadline)</onclick>
+					<onclick>Skin.Reset(CustomHubHeadline)</onclick>
 					<onclick>close</onclick>
 					<onclick>AlarmClock(restoremenu2,Notification(Embuary,$LOCALIZE[31207]),00:01,silent)</onclick>
 					<onup>SetFocus(100)</onup>
@@ -420,7 +431,7 @@
 						<onclick condition="!String.IsEqual(Container(211).ListItem.property(useFakeArt),true)">SetProperty(customValue,true)</onclick>
 						<onclick condition="!String.IsEqual(Container(211).ListItem.property(useFakeArt),true)">SendClick(404)</onclick>
 						<selected>String.IsEqual(Container(211).ListItem.property(useFakeArt),true)</selected>
-						<visible>!String.StartsWith(Container(211).ListItem.Property(defaultID),embuary_emby)</visible>
+						<visible>!String.StartsWith(Container(211).ListItem.Property(defaultID),embuary_emby) + !String.IsEqual(Container(211).ListItem.Property(list),-)</visible>
 					</control>
 					<control type="image" id="4004">
 						<width>100%</width>
