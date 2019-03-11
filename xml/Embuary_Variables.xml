@@ -741,7 +741,7 @@
 		<value condition="!String.IsEmpty(ListItem.Season) + !String.IsEmpty(ListItem.Episode)">$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E]</value>
 		<value condition="!String.IsEmpty(ListItem.Episode)">$INFO[ListItem.Episode,E]</value>
 		<value condition="ListItem.IsFolder + Window.IsVisible(MyPVRRecordings.xml)">$LOCALIZE[19076]</value>
-		<value condition="!Window.IsVisible(MyPVRGuide.xml) + !String.IsEqual(Container.Viewmode,$LOCALIZE[535])">[COLOR text_sublabel]$LOCALIZE[31156][/COLOR]</value>
+		<value condition="!Window.IsVisible(MyPVRGuide.xml) + !String.IsEqual(Container.Viewmode,$LOCALIZE[535]) + !Window.IsVisible(textviewer)">[COLOR text_sublabel]$LOCALIZE[31156][/COLOR]</value>
 	</variable>
 	<variable name="PlayerEpisodeName">
 		<value condition="Pvr.IsPlayingRadio + !String.StartsWith(MusicPlayer.Title,pvr) + !String.IsEqual(MusicPlayer.Artist,MusicPlayer.Channelname)">$INFO[MusicPlayer.Artist,, - ]$INFO[MusicPlayer.Title]</value>
@@ -749,7 +749,7 @@
 		<value condition="Player.HasVideo + !String.IsEmpty(VideoPlayer.EpisodeName)">$INFO[VideoPlayer.Season,S,:]$INFO[VideoPlayer.Episode,E, - ]$INFO[VideoPlayer.EpisodeName]</value>
 		<value condition="Player.HasVideo + !String.IsEmpty(VideoPlayer.Season) + !String.IsEmpty(VideoPlayer.Episode)">$INFO[VideoPlayer.Season,S,:]$INFO[VideoPlayer.Episode,E]</value>
 		<value condition="Player.HasVideo + !String.IsEmpty(VideoPlayer.Episode)">$INFO[VideoPlayer.Episode,E]</value>
-		<value>[COLOR text_sublabel]$LOCALIZE[31156][/COLOR]</value>
+		<value condition="!Window.IsVisible(textviewer)">[COLOR text_sublabel]$LOCALIZE[31156][/COLOR]</value>
 	</variable>
 	<variable name="PlayerDiscArt">
 		<value condition="!String.IsEmpty(Container(2000).ListItem.Art(discart))">$INFO[Container(2000).ListItem.Art(discart)]</value>
@@ -1592,12 +1592,13 @@
 		<value>$INFO[ListItem.Title]</value>
 	</variable>
 	<variable name="TinyInfoDialogPlot">
+		<value condition="String.StartsWith(Player.Filenameandpath,pvr://) + !String.IsEmpty(VideoPlayer.Plot)">$VAR[PlayerEpisodeName,,[CR][CR]]$VAR[PlayerDurationMinutes,$LOCALIZE[180]: ,[CR][CR]]$INFO[VideoPlayer.Plot]</value>
 		<value condition="Window.IsVisible(DialogFullScreenInfo.xml) + !String.IsEmpty(VideoPlayer.Plot)">$INFO[VideoPlayer.Season,S,:]$INFO[VideoPlayer.Episode,E, [CR][CR]]$VAR[PlayerDurationMinutes,$LOCALIZE[180]: ,[CR][CR]]$INFO[VideoPlayer.Plot]</value>
 		<value condition="String.IsEqual(ListItem.DBType,Episode)">$VAR[ListItemSeasonEpisode]$INFO[ListItem.Title,,[CR][CR]]$VAR[DurationMinutes,$LOCALIZE[180]: ,[CR][CR]]$INFO[ListItem.Plot]</value>
 		<value condition="String.IsEqual(ListItem.DBType,song)">$VAR[DurationMinutes,$LOCALIZE[180]: ,[CR][CR]]$INFO[ListItem.Artist]$INFO[ListItem.Album, - ,[CR][CR]]$INFO[ListItem.Property(Album_Description)]</value>
 		<value condition="String.IsEqual(ListItem.DBType,musicvideo)">$VAR[DurationMinutes,$LOCALIZE[180]: ]</value>
 		<value condition="String.IsEqual(ListItem.DBType,album) + !String.IsEmpty(ListItem.Property(Album_Description))">$INFO[ListItem.Property(Album_Description)]</value>
-		<value condition="!String.IsEmpty(ListItem.Plot)">$INFO[ListItem.Plot]</value>
+		<value condition="!String.IsEmpty(ListItem.Plot)">$VAR[ListItemEpisodeName,,[CR][CR]]$INFO[ListItem.Plot]</value>
 		<value>$LOCALIZE[19055]</value>
 	</variable>
 	<variable name="TinyGlobalSearchPlot">
@@ -1611,7 +1612,6 @@
 	</variable>
 	<variable name="ListViewPlot">
 		<value condition="String.IsEqual(ListItem.DBType,set)">$INFO[ListItem.Plot,,[CR][CR]]$INFO[Container(2001).ListItemAbsolute(0).Label,$LOCALIZE[31192]:[CR]]$INFO[Container(2001).ListItemAbsolute(0).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(1).Label]$INFO[Container(2001).ListItemAbsolute(1).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(2).Label]$INFO[Container(2001).ListItemAbsolute(2).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(3).Label]$INFO[Container(2001).ListItemAbsolute(3).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(4).Label]$INFO[Container(2001).ListItemAbsolute(4).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(5).Label]$INFO[Container(2001).ListItemAbsolute(5).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(6).Label]$INFO[Container(2001).ListItemAbsolute(6).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(7).Label]$INFO[Container(2001).ListItemAbsolute(7).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(8).Label]$INFO[Container(2001).ListItemAbsolute(8).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(9).Label]$INFO[Container(2001).ListItemAbsolute(9).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(10).Label]$INFO[Container(2001).ListItemAbsolute(10).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(11).Label]$INFO[Container(2001).ListItemAbsolute(11).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(12).Label]$INFO[Container(2001).ListItemAbsolute(12).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(13).Label]$INFO[Container(2001).ListItemAbsolute(13).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(14).Label]$INFO[Container(2001).ListItemAbsolute(14).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(15).Label]$INFO[Container(2001).ListItemAbsolute(15).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(16).Label]$INFO[Container(2001).ListItemAbsolute(16).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(17).Label]$INFO[Container(2001).ListItemAbsolute(17).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(18).Label]$INFO[Container(2001).ListItemAbsolute(18).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(19).Label]$INFO[Container(2001).ListItemAbsolute(19).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(20).Label]$INFO[Container(2001).ListItemAbsolute(20).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(21).Label]$INFO[Container(2001).ListItemAbsolute(21).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(22).Label]$INFO[Container(2001).ListItemAbsolute(22).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(23).Label]$INFO[Container(2001).ListItemAbsolute(23).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(24).Label]$INFO[Container(2001).ListItemAbsolute(24).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(25).Label]$INFO[Container(2001).ListItemAbsolute(25).Year, (,)[CR]]</value>
-		<value condition="Window.IsVisible(tvrecordings)">$INFO[ListItem.Plot]</value>
 		<value condition="!String.IsEmpty(ListItem.Property(Album_Description))">$INFO[ListItem.Property(Album_Description)]</value>
 		<value condition="!String.IsEmpty(ListItem.Property(Artist_Description))">$INFO[ListItem.Property(Artist_Description)]</value>
 		<value condition="!String.IsEmpty(ListItem.AddonDescription)">$INFO[ListItem.AddonDescription]</value>
