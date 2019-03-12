@@ -7,6 +7,12 @@
 		<param name="ShowHeader" value="true"/>
 	</include>
 	<controls>
+		<control type="list" id="9">
+			<include>HiddenObject</include>
+			<content>
+				<include>skinshortcuts-group-tvshowhub</include>
+			</content>
+		</control>
 		<!-- background -->
 		<include>Background</include>
 		<!-- hub -->
@@ -30,6 +36,7 @@
 				<param name="ondown" value="101"/>
 				<param name="headline" value="$VAR[TVShowHubHeadline]"/>
 				<param name="content" value="skinshortcuts-group-tvshowhub"/>
+				<param name="visible" value="Integer.IsGreater(Container(9).NumItems,0)"/>
 			</include>
 			<include content="W_SeasonalSpecial">
 				<param name="id" value="101"/>
