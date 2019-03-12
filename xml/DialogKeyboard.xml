@@ -4,6 +4,8 @@
 	<defaultcontrol always="true">300</defaultcontrol>
 	<zorder>999</zorder>
 	<onunload>ClearProperty(DisableSuggestions,home)</onunload>
+	<onunload condition="!String.IsEmpty(Window(home).Property(ShowLabelNotification))">AlarmClock(delay,RunScript(script.embuary.helper,action=dialogok,message=$LOCALIZE[31332]),00:01,silent)</onunload>
+	<onunload condition="!String.IsEmpty(Window(home).Property(ShowLabelNotification))">ClearProperty(ShowLabelNotification,home)</onunload>
 	<include>PropertyIncludes</include>
 	<controls>
 		<control type="label" id="311">

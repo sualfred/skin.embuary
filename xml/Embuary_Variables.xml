@@ -86,6 +86,19 @@
 		<value condition="!String.IsEmpty(Window.Property(colorstring)) + !String.IsEqual(Window.Property(colorstring),None)">$LOCALIZE[31265]$INFO[Window.Property(colorstring), #]</value>
 		<value>$LOCALIZE[31305]</value>
 	</variable>
+	<!-- Custom hub names -->
+	<variable name="CustomHubHeadline">
+		<value condition="!String.IsEmpty(Skin.String(CustomHubHeadline))">$INFO[Skin.String(CustomHubHeadline)]</value>
+		<value>$LOCALIZE[31232]</value>
+	</variable>
+	<variable name="MovieHubHeadline">
+		<value condition="!String.IsEmpty(Skin.String(MovieHubHeadline))">$INFO[Skin.String(MovieHubHeadline)]</value>
+		<value>$LOCALIZE[31180]</value>
+	</variable>
+	<variable name="TVShowHubHeadline">
+		<value condition="!String.IsEmpty(Skin.String(TVShowHubHeadline))">$INFO[Skin.String(TVShowHubHeadline)]</value>
+		<value>$LOCALIZE[31179]</value>
+	</variable>
 	<!-- Menu & widget vars -->
 	<variable name="MainMenuMovieHubIcon">
 		<value condition="Library.HasContent(movies)">DefaultVideo.png</value>
@@ -204,8 +217,10 @@
 		<value condition="String.IsEqual(Window.Property(groupname),moviehub)">$LOCALIZE[31173]</value>
 		<value condition="String.IsEqual(Window.Property(groupname),tvshowhub)">$LOCALIZE[31172]</value>
 		<value condition="String.IsEqual(Window.Property(groupname),musichub)">$LOCALIZE[31174]</value>
+		<value condition="String.IsEqual(Window.Property(groupname),customhub)">$LOCALIZE[31232]</value>
 	</variable>
 	<variable name="SkinshortcutsLabel">
+		<value condition="!String.IsEmpty(ListItem.Property(hasVARLabel.type))">$INFO[ListItem.Property(hasVARLabel)]</value>
 		<value condition="!String.IsEmpty(ListItem.Label)">$INFO[ListItem.Label]</value>
 		<value condition="!String.IsEmpty(ListItem.Label2)">$INFO[ListItem.Label2]</value>
 		<value>$LOCALIZE[31159]</value>
@@ -239,6 +254,7 @@
 		<value condition="String.IsEqual(Window(home).Property(SelectorContent),EmbyConMovieHubWidgets)">$LOCALIZE[31173] ($LOCALIZE[31208])</value>
 		<value condition="String.IsEqual(Window(home).Property(SelectorContent),EmbyConTVShowHubWidgets)">$LOCALIZE[31172] ($LOCALIZE[31208])</value>
 		<value condition="String.IsEqual(Window(home).Property(SelectorContent),EmbyConMusicHubWidgets)">$LOCALIZE[31174] ($LOCALIZE[31208])</value>
+		<value condition="String.IsEqual(Window(home).Property(SelectorContent),CustomHubWidgets)">$LOCALIZE[31232]</value>
 	</variable>
 	<variable name="PositionselectorGroup">
 		<value condition="String.IsEqual(Window(home).Property(SelectorContent),HomeWidgets)">home</value>
@@ -250,6 +266,7 @@
 		<value condition="String.IsEqual(Window(home).Property(SelectorContent),EmbyConMovieHubWidgets)">embyconmoviehub</value>
 		<value condition="String.IsEqual(Window(home).Property(SelectorContent),EmbyConTVShowHubWidgets)">embycontvshowhub</value>
 		<value condition="String.IsEqual(Window(home).Property(SelectorContent),EmbyConMusicHubWidgets)">embyconmusichub</value>
+		<value condition="String.IsEqual(Window(home).Property(SelectorContent),CustomHubWidgets)">customhub</value>
 	</variable>
 	<!-- Search -->
 	<variable name="EmbyCon.SearchMovies">
@@ -501,11 +518,12 @@
 		<value condition="Window.IsVisible(DialogAddonSettings.xml)">$INFO[Control.GetLabel(20)]</value>
 		<value condition="Window.IsVisible(SettingsCategory.xml)">$LOCALIZE[5]: $INFO[Control.GetLabel(2)]</value>
 		<value condition="Window.IsVisible(Settings.xml)">$LOCALIZE[5]</value>
-		<value condition="Window.IsVisible(1120)">$LOCALIZE[31173]</value>
-		<value condition="Window.IsVisible(1121)">$LOCALIZE[31172]</value>
+		<value condition="Window.IsVisible(1120)">$VAR[MovieHubHeadline]</value>
+		<value condition="Window.IsVisible(1121)">$VAR[TVShowHubHeadline]</value>
 		<value condition="Window.IsVisible(1122)">$LOCALIZE[31174]</value>
 		<value condition="Window.IsVisible(1123)">$LOCALIZE[31251]</value>
 		<value condition="Window.IsVisible(1124)">$LOCALIZE[31252]</value>
+		<value condition="Window.IsVisible(1125)">$VAR[CustomHubHeadline]</value>
 		<value condition="!String.IsEmpty(Container.ShowTitle)">$INFO[Container.ShowTitle]</value>
 		<value condition="Window.IsVisible(MyPVRGuide.xml)">$LOCALIZE[19069]</value>
 		<value condition="Window.IsVisible(MyPVRRecordings.xml)">$LOCALIZE[19017]</value>
