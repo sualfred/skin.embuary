@@ -145,7 +145,7 @@
 		</include>
 		<!-- Menu -->
 		<control type="group">
-			<visible>ControlGroup(700).HasFocus + !Window.IsVisible(DialogSettings.xml) + !Window.IsVisible(playerprocessinfo)</visible>
+			<visible>ControlGroup(700).HasFocus + !Window.IsVisible(DialogSettings.xml) + !Window.IsVisible(playerprocessinfo) + !Window.IsVisible(selectdialog)</visible>
 			<include>Visible_PopupOpenClose</include>
 			<centerleft>50%</centerleft>
 			<width>500</width>
@@ -164,6 +164,12 @@
 					<width>100%</width>
 					<height>61</height>
 					<texture border="65,0,65,0" colordiffuse="context_color">dialogs/context/top.png</texture>
+				</control>
+				<control type="button" id="706">
+					<include content="ContextButton"/>
+					<label>$LOCALIZE[169]</label>
+					<onclick>PlayerResolutionSelect</onclick>
+					<visible>Player.HasResolutions</visible>
 				</control>
 				<control type="button" id="701">
 					<include content="ContextButton"/>
