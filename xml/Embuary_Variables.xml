@@ -703,8 +703,8 @@
 		<value condition="String.StartsWith(ListItem.Path,pvr://)">$INFO[ListItem.Label]</value>
 		<value condition="String.IsEqual(ListItem.DBType,episode)">$VAR[ListItemSeasonEpisode]$INFO[ListItem.Title]</value>
 		<value condition="String.IsEqual(ListItem.DBType,season)">$INFO[ListItem.Label]</value>
-		<value condition="Container.Content(songs) + String.StartsWith(Container.Folderpath,musicdb://songs/)">$INFO[ListItem.Title]</value>
-		<value condition="Container.Content(songs) + Integer.IsGreater(ListItem.Tracknumber,0) + !String.IsEmpty(ListItem.title)">$INFO[ListItem.Tracknumber,,. ]$INFO[ListItem.Title]</value>
+		<value condition="Container.Content(songs) + Integer.IsGreater(ListItem.Tracknumber,0) + !String.IsEmpty(ListItem.title) + String.IsEqual(Container.Foldername,ListItemAbsolute(0).Album)">$INFO[ListItem.Tracknumber,,. ]$INFO[ListItem.Title]</value>
+		<value condition="Container.Content(songs) + Integer.IsGreater(ListItem.Tracknumber,0) + !String.IsEmpty(ListItem.title) + String.Contains(Container.Folderpath,plugin.video.embycon) + String.Contains(Container.Folderpath,media_type=MusicAlbum)">$INFO[ListItem.Tracknumber,,. ]$INFO[ListItem.Title]</value>
 		<value condition="Container.Content(songs) + !String.IsEmpty(ListItem.title)">$INFO[ListItem.Title]</value>
 		<value condition="String.IsEqual(ListItem.DBType,song) + !String.IsEmpty(ListItem.title)">$INFO[ListItem.Tracknumber,,. ]$INFO[ListItem.Title]</value>
 		<value condition="!String.IsEmpty(ListItem.Addonname)">$INFO[ListItem.Addonname]</value>
@@ -777,11 +777,11 @@
 	</variable>
 	<variable name="PlayerEpisodeName">
 		<value condition="Pvr.IsPlayingRadio + !String.StartsWith(MusicPlayer.Title,pvr) + !String.IsEqual(MusicPlayer.Artist,MusicPlayer.Channelname)">$INFO[MusicPlayer.Artist,, - ]$INFO[MusicPlayer.Title]</value>
-		<value condition="Player.HasAudio + !String.IsEmpty(MusicPlayer.Album)">$INFO[MusicPlayer.Album,$LOCALIZE[558]: ]$INFO[MusicPlayer.Year, (,)]</value>
+		<value condition="Player.HasAudio + !String.IsEmpty(MusicPlayer.Album)">$INFO[MusicPlayer.Album]$INFO[MusicPlayer.Year, (,)]</value>
 		<value condition="Player.HasVideo + !String.IsEmpty(VideoPlayer.EpisodeName)">$INFO[VideoPlayer.Season,S,:]$INFO[VideoPlayer.Episode,E, - ]$INFO[VideoPlayer.EpisodeName]</value>
 		<value condition="Player.HasVideo + !String.IsEmpty(VideoPlayer.Season) + !String.IsEmpty(VideoPlayer.Episode)">$INFO[VideoPlayer.Season,S,:]$INFO[VideoPlayer.Episode,E]</value>
 		<value condition="Player.HasVideo + !String.IsEmpty(VideoPlayer.Episode)">$INFO[VideoPlayer.Episode,E]</value>
-		<value condition="!Window.IsVisible(textviewer)">[COLOR text_sublabel]$LOCALIZE[31156][/COLOR]</value>
+		<value condition="[Pvr.IsPlayingRadio | Player.HasVideo] + !Window.IsVisible(textviewer)">[COLOR text_sublabel]$LOCALIZE[31156][/COLOR]</value>
 	</variable>
 	<variable name="PlayerDiscArt">
 		<value condition="!String.IsEmpty(Container(2000).ListItem.Art(discart))">$INFO[Container(2000).ListItem.Art(discart)]</value>
@@ -1116,7 +1116,7 @@
 		<value condition="String.Contains(Player.Art(thumb),KodiCinemaMode) + String.Contains(VideoPlayer.Title,Trailer)">$LOCALIZE[31255] - $INFO[VideoPlayer.Title]</value>
 		<value condition="String.Contains(Player.Art(thumb),KodiCinemaMode)">$LOCALIZE[31255]</value>
 		<value condition="String.IsEqual(VideoPlayer.Title,stream) + String.Contains(Player.Filenameandpath,/emby/videos/)">$LOCALIZE[31186]</value>
-		<value condition="!String.IsEmpty(MusicPlayer.Title) + !String.Contains(MusicPlayer.Title,pvr.hts_)">$INFO[MusicPlayer.Artist,, - ]$INFO[MusicPlayer.Tracknumber,,. ]$INFO[MusicPlayer.Title]</value>
+		<value condition="!String.IsEmpty(MusicPlayer.Title) + !String.Contains(MusicPlayer.Title,pvr.hts_)">$INFO[MusicPlayer.Artist,, - ]$INFO[MusicPlayer.Title]</value>
 		<value condition="!String.IsEmpty(MusicPlayer.Title)">$INFO[MusicPlayer.Artist]</value>
 		<value condition="VideoPlayer.Content(livetv) + String.IsEmpty(VideoPlayer.Title)">$INFO[VideoPlayer.Channelname]</value>
 		<value condition="VideoPlayer.Content(livetv) + Window.IsVisible(shutdownmenu)">$INFO[VideoPlayer.Channelname]$INFO[VideoPlayer.Title, - ]</value>
@@ -1387,6 +1387,7 @@
 	</variable>
 	<variable name="PlaylistMainLabel">
 		<value condition="!String.IsEmpty(ListItem.TvShowTitle)">$INFO[ListItem.TvShowTitle]</value>
+		<value condition="Window.IsVisible(musicplaylist)">$INFO[ListItem.Title]</value>
 		<value>$INFO[ListItem.Label]</value>
 	</variable>
 	<variable name="PlaylistSubLabel">
