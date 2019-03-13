@@ -329,6 +329,9 @@
 	<variable name="EmbyCon.SearchMusic">
 		<value condition="!String.IsEmpty(Skin.String(CustomSearchTerm)) + System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?item_type=audio&amp;mode=NEW_SEARCH&amp;query=$INFO[Skin.String(CustomSearchTerm)]</value>
 	</variable>
+	<variable name="YouTube.Search">
+		<value condition="!String.IsEmpty(Skin.String(CustomSearchTerm)) + System.HasAddon(plugin.video.youtube)">plugin://plugin.video.youtube/kodion/search/query/?q=$INFO[Skin.String(CustomSearchTerm)]&amp;search_type=videos</value>
+	</variable>
 	<!-- Emby Fav sources -->
 	<variable name="Emby.FavMovies">
 		<value condition="System.HasAddon(plugin.video.emby) + String.StartsWith(System.AddonVersion(plugin.video.emby),3.0)">library://video/emby_Favorite movies.xml</value>
@@ -1122,11 +1125,11 @@
 		<value>$INFO[VideoPlayer.Title]</value>
 	</variable>
 	<variable name="PlayerTitleLabel">
+		<value condition="String.StartsWith(Player.Filenameandpath,plugin://plugin.video.youtube)">YouTube</value>
 		<value condition="String.IsEqual(Player.Title,emby-loading.mp4)">$LOCALIZE[20186]</value>
 		<value condition="Pvr.IsPlayingRadio">$LOCALIZE[19021]</value>
 		<value condition="String.Contains(Player.Art(thumb),KodiTrailer)">$LOCALIZE[20410]</value>
 		<value condition="String.Contains(Player.Art(thumb),KodiCinemaMode)">$LOCALIZE[31255]</value>
-		<value condition="String.IsEqual(VideoPlayer.Filename,stream) + String.Contains(VideoPlayer.Filenameandpath,/emby/videos/)">$LOCALIZE[31186]</value>
 		<value condition="!String.IsEmpty(MusicPlayer.Title)">$INFO[MusicPlayer.Title]</value>
 		<value condition="VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)">$INFO[VideoPlayer.Channelname]</value>
 		<value condition="!String.IsEmpty(VideoPlayer.TVShowTitle)">$INFO[VideoPlayer.TVShowTitle]</value>
