@@ -1619,7 +1619,8 @@
 		<value condition="String.IsEqual(ListItem.DBType,song)">$VAR[DurationMinutes,$LOCALIZE[180]: ,[CR][CR]]$INFO[ListItem.Artist]$INFO[ListItem.Album, - ,[CR][CR]]$INFO[ListItem.Property(Album_Description)]</value>
 		<value condition="String.IsEqual(ListItem.DBType,musicvideo)">$VAR[DurationMinutes,$LOCALIZE[180]: ]</value>
 		<value condition="String.IsEqual(ListItem.DBType,album) + !String.IsEmpty(ListItem.Property(Album_Description))">$INFO[ListItem.Property(Album_Description)]</value>
-		<value condition="!String.IsEmpty(ListItem.Plot)">$VAR[ListItemEpisodeName,,[CR][CR]]$INFO[ListItem.Plot]</value>
+		<value condition="String.StartsWith(Player.Filenameandpath,pvr://) + !String.IsEmpty(ListItem.Plot)">$VAR[ListItemEpisodeName,,[CR][CR]]$INFO[ListItem.Plot]</value>
+		<value condition="!String.IsEmpty(ListItem.Plot)">$INFO[ListItem.Plot]</value>
 		<value>$LOCALIZE[19055]</value>
 	</variable>
 	<variable name="TinyGlobalSearchPlot">
