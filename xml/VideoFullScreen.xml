@@ -158,14 +158,26 @@
 						<aspectratio scalediffuse="false">stretch</aspectratio>
 						<visible>!String.IsEmpty(Player.Art(thumb)) + !String.StartsWith(Player.Art(thumb),Default)</visible>
 					</control>
-					<control type="image" id="99">
-						<bottom>29</bottom>
-						<left>29</left>
-						<width>250</width>
-						<height>141</height>
-						<texture>$VAR[WidePlayerIcon]</texture>
-						<aspectratio scalediffuse="false">keep</aspectratio>
+					<control type="group" id="99">
 						<visible>!String.IsEmpty(Player.Art(thumb)) + !String.StartsWith(Player.Art(thumb),Default)</visible>
+						<control type="image" id="99">
+							<bottom>29</bottom>
+							<left>29</left>
+							<width>250</width>
+							<height>141</height>
+							<texture>$VAR[WidePlayerIcon]</texture>
+							<aspectratio scalediffuse="false">scale</aspectratio>
+							<visible>String.Contains(Player.Art(thumb),i.ytimg.com)</visible>
+						</control>
+						<control type="image" id="99">
+							<bottom>29</bottom>
+							<left>29</left>
+							<width>250</width>
+							<height>141</height>
+							<texture>$VAR[WidePlayerIcon]</texture>
+							<aspectratio scalediffuse="false">keep</aspectratio>
+							<visible>!String.Contains(Player.Art(thumb),i.ytimg.com)</visible>
+						</control>
 					</control>
 				</control>
 				<!-- Emby loading -->
