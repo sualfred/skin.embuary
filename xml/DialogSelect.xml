@@ -213,7 +213,8 @@
 							<height>450</height>
 							<onup>noop</onup>
 							<onleft>200</onleft>
-							<onright>200</onright>
+							<onright condition="Integer.IsGreater(Container(6).NumItems,6)">60</onright>
+							<onright condition="!Integer.IsGreater(Numitems,6)">200</onright>
 							<ondown>200</ondown>
 							<pagecontrol>60</pagecontrol>
 							<scrolltime>200</scrolltime>
@@ -267,11 +268,16 @@
 							<top>0</top>
 							<bottom>0</bottom>
 							<width>4</width>
+							<onup>60</onup>
+							<ondown>60</ondown>
+							<onleft>6</onleft>
+							<onright>200</onright>
 							<orientation>vertical</orientation>
 							<showonepage>false</showonepage>
 							<texturesliderbackground colordiffuse="00ffffff">common/white.jpg</texturesliderbackground>
 							<texturesliderbar colordiffuse="scrollbar_slider">common/white.jpg</texturesliderbar>
-						</control>
+							<texturesliderbarfocus colordiffuse="$VAR[AccentColor]">common/white.jpg</texturesliderbarfocus>
+							</control>
 					</control>
 					<!-- Button -->
 					<control type="grouplist" id="200">
