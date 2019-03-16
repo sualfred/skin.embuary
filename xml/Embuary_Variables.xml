@@ -509,8 +509,9 @@
 		<value condition="Window.IsVisible(pvrgroupmanager)">$LOCALIZE[19048]</value>
 		<value condition="Window.IsVisible(skinsettings)">$LOCALIZE[31058]</value>
 		<value condition="Window.IsVisible(filemanager)">$LOCALIZE[7]</value>
-		<value condition="Window.IsVisible(musicplaylist)">$LOCALIZE[10500]</value>
-		<value condition="Window.IsVisible(videoplaylist)">$LOCALIZE[10028]</value>
+		<value condition="Window.IsVisible(MyPlaylist.xml)">$LOCALIZE[559]</value>
+		<!--<value condition="Window.IsVisible(musicplaylist)">$LOCALIZE[10500]</value>
+		<value condition="Window.IsVisible(videoplaylist)">$LOCALIZE[10028]</value>-->
 		<value condition="Window.IsVisible(videobookmarks)">$LOCALIZE[298]</value>
 		<value condition="Window.IsVisible(systeminfo)">$LOCALIZE[138]</value>
 		<value condition="Window.IsVisible(profiles)">$LOCALIZE[10130]</value>
@@ -1387,16 +1388,11 @@
 	</variable>
 	<variable name="PlaylistMainLabel">
 		<value condition="!String.IsEmpty(ListItem.TvShowTitle)">$INFO[ListItem.TvShowTitle]</value>
-		<value condition="Window.IsVisible(musicplaylist)">$INFO[ListItem.Title]</value>
-		<value>$INFO[ListItem.Label]</value>
+		<value>$INFO[ListItem.Title]</value>
 	</variable>
 	<variable name="PlaylistSubLabel">
 		<value condition="!String.IsEmpty(ListItem.Episode)">$VAR[ListItemSeasonEpisode]$INFO[ListItem.Title]</value>
-		<value condition="Window.IsVisible(musicplaylist)">$INFO[ListItem.AlbumArtist]$INFO[ListItem.Album, - ]</value>
-	</variable>
-	<variable name="PlaylistThumbLabel">
-		<value condition="Window.IsVisible(musicplaylist)">$INFO[ListItem.AlbumArtist]</value>
-		<value>$INFO[ListItem.Title]</value>
+		<value condition="!String.IsEmpty(ListItem.AlbumArtist)">$INFO[ListItem.AlbumArtist]$INFO[ListItem.Album, - ]</value>
 	</variable>
 	<variable name="TVShowStatus">
 		<value condition="String.IsEqual(ListItem.Status,Ended)">$LOCALIZE[31196]</value>

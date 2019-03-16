@@ -293,7 +293,7 @@
 								<onclick condition="MusicPartyMode.Enabled">Playercontrol(stop)</onclick>
 								<onclick condition="!MusicPartyMode.Enabled">Playercontrol(partymode(music))</onclick>
 								<onclick>close</onclick>
-								<visible>Window.IsVisible(musicplaylist)</visible>
+								<visible>Window.IsVisible(musicplaylist) + String.IsEqual(ListItemAbsolute(0).DBtype,song)</visible>
 							</control>
 							<control type="button" id="21">
 								<include>LightGreyButton</include>
