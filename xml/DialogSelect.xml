@@ -34,11 +34,14 @@
 				<control type="group">
 					<include>Dialog_PopupOpenClose</include>
 					<centerleft>50%</centerleft>
-					<include content="ParamWidth" condition="!Window.IsVisible(subtitlesearch)">
+					<include content="ParamWidth" condition="!Window.IsVisible(subtitlesearch) + !Window.IsVisible(osdsubtitlesettings) + !Window.IsVisible(osdaudiosettings)">
 						<param name="width" value="550"/>
 					</include>
 					<include content="ParamWidth" condition="Window.IsVisible(subtitlesearch)">
 						<param name="width" value="1000"/>
+					</include>
+					<include content="ParamWidth" condition="!Window.IsVisible(subtitlesearch) + [Window.IsVisible(osdsubtitlesettings) | Window.IsVisible(osdaudiosettings)]">
+						<param name="width" value="800"/>
 					</include>
 					<centertop>50%</centertop>
 					<height>982</height>
@@ -277,7 +280,7 @@
 							<texturesliderbackground colordiffuse="00ffffff">common/white.jpg</texturesliderbackground>
 							<texturesliderbar colordiffuse="scrollbar_slider">common/white.jpg</texturesliderbar>
 							<texturesliderbarfocus colordiffuse="$VAR[AccentColor]">common/white.jpg</texturesliderbarfocus>
-							</control>
+						</control>
 					</control>
 					<!-- Button -->
 					<control type="grouplist" id="200">
