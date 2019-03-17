@@ -31,12 +31,15 @@
 			<control type="group">
 				<include>Dialog_PopupOpenClose</include>
 				<centerleft>50%</centerleft>
-					<include content="ParamWidth" condition="!Window.IsVisible(subtitlesearch)">
-						<param name="width" value="550"/>
-					</include>
-					<include content="ParamWidth" condition="Window.IsVisible(subtitlesearch)">
-						<param name="width" value="1000"/>
-					</include>
+				<include content="ParamWidth" condition="!Window.IsVisible(subtitlesearch) + !Window.IsVisible(osdsubtitlesettings) + !Window.IsVisible(osdaudiosettings)">
+					<param name="width" value="550"/>
+				</include>
+				<include content="ParamWidth" condition="Window.IsVisible(subtitlesearch)">
+					<param name="width" value="1000"/>
+				</include>
+				<include content="ParamWidth" condition="!Window.IsVisible(subtitlesearch) + [Window.IsVisible(osdsubtitlesettings) | Window.IsVisible(osdaudiosettings)]">
+					<param name="width" value="800"/>
+				</include>
 				<centertop>50%</centertop>
 				<height>982</height>
 				<control type="grouplist">
