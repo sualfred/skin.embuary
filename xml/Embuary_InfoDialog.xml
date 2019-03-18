@@ -445,7 +445,8 @@
 							<include>LightGreyButton</include>
 							<label>$LOCALIZE[31011]</label>
 							<ondown>200</ondown>
-							<onclick condition="!String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">RunScript(script.embuary.helper,action=jumptoshow_by_episode,dbid=$INFO[ListItem.DBID])</onclick>
+							<onclick condition="!String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) + String.IsEqual(Container.Foldername,ListItem.TVShowTitle)">close</onclick>
+							<onclick condition="!String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) + !String.IsEqual(Container.Foldername,ListItem.TVShowTitle)">RunScript(script.embuary.helper,action=jumptoshow_by_episode,dbid=$INFO[ListItem.DBID])</onclick>
 							<onclick condition="String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)">RunScript(script.embuary.helper,action=goto,path='"plugin://plugin.video.embycon/?media_type=Series&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fShows%2f$INFO[ListItem.Property(series_id)]%2fSeasons%3fuserId%3d%7buserid%7d%26Fields%3d%7bfield_filters%7d%26format%3djson"',target=videos)</onclick>
 							<visible>!String.IsEmpty(ListItem.DBID) | !String.IsEmpty(ListItem.Property(series_id))</visible>
 						</control>
