@@ -46,26 +46,16 @@
 						<height>256</height>
 						<texture border="20,20,20,20">items/shadow.png</texture>
 					</control>
-					<control type="group">
+					<control type="image">
 						<visible>!Skin.HasSetting(HideDiscArt)</visible>
-						<visible>Window.IsVisible(musicosd) | Window.IsVisible(seekbar) | Player.Paused | [Window.IsVisible(volumebar) + !Player.Muted] | !String.IsEmpty(Window(home).Property(showvisinfo))</visible>
-						<animation effect="fade" start="100" end="0" time="400" delay="1700">Hidden</animation>
-						<animation type="WindowClose" reversible="false">
-							<effect type="slide" start="0,0" end="0,100" tween="sine" easing="out" time="600" delay="0" />
-						</animation>
-						<animation type="WindowOpen" reversible="false">
-							<effect type="slide" start="0,100" end="0,0" tween="sine" easing="out" time="700" delay="1000" />
-						</animation>
-						<control type="image">
-							<animation effect="rotate" center="auto" time="6000" end="-360" condition="true" loop="true">Conditional</animation>
-							<bottom>130</bottom>
-							<left>29</left>
-							<width>250</width>
-							<height>250</height>
-							<texture diffuse="views/player/cd.png" background="true">$VAR[PlayerDiscArt]</texture>
-							<fadetime>200</fadetime>
-							<aspectratio>scale</aspectratio>
-						</control>
+						<animation effect="rotate" center="auto" time="6000" end="-360" condition="true" loop="true">Conditional</animation>
+						<bottom>130</bottom>
+						<left>29</left>
+						<width>250</width>
+						<height>250</height>
+						<texture diffuse="views/player/cd.png" background="true">$VAR[PlayerDiscArt]</texture>
+						<fadetime>200</fadetime>
+						<aspectratio>scale</aspectratio>
 					</control>
 					<control type="image" id="99">
 						<bottom>29</bottom>
