@@ -783,6 +783,10 @@
 		<value condition="String.IsEqual(VideoPlayer.VideoResolution,480)">480p</value>
 		<value>$INFO[VideoPlayer.VideoResolution]</value>
 	</variable>
+	<variable name="ListItemEndTime">
+		<value condition="!String.IsEmpty(ListItem.EndTimeResume)">$INFO[ListItem.EndTimeResume]</value>
+		<value>$INFO[ListItem.EndTime]</value>
+	</variable>
 	<variable name="PlayerTimeRemaining">
 		<value condition="Integer.IsGreater(Player.TimeRemaining,59)">$INFO[Player.TimeRemaining]</value>
 		<value>$INFO[Player.TimeRemaining(ss)] $LOCALIZE[31077]</value>
