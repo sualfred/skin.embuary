@@ -618,19 +618,19 @@
 			<onclick>Skin.ToggleSetting(UseGlobalsearch)</onclick>
 			<enable>System.HasAddon(script.globalsearch)</enable>
 		</control>
-		<control type="radiobutton" id="$PARAM[id]22">
-			<include>SettingsButton</include>
-			<label>$LOCALIZE[31333]</label>
-			<onclick>Skin.ToggleSetting(HideYTResults)</onclick>
-			<selected>!Skin.HasSetting(HideYTResults)</selected>
-			<enable>!Skin.HasSetting(UseGlobalsearch)</enable>
-		</control>
-		<control type="button" id="$PARAM[id]23">
+		<control type="button" id="$PARAM[id]22">
 			<include>SettingsButton</include>
 			<label>$LOCALIZE[31238]</label>
 			<label2>[COLOR $VAR[AccentColor]]$VAR[CastSearchProvider][/COLOR]</label2>
 			<onclick>Skin.ToggleSetting(DoNotUseExtendedInfo)</onclick>
 			<enable>System.HasAddon(script.extendedinfo)</enable>
+		</control>
+		<control type="radiobutton" id="$PARAM[id]23">
+			<include>SettingsButton</include>
+			<label>$LOCALIZE[31333]</label>
+			<onclick>Skin.ToggleSetting(HideYTResults)</onclick>
+			<selected>!Skin.HasSetting(HideYTResults)</selected>
+			<enable>!Skin.HasSetting(UseGlobalsearch) | Skin.HasSetting(DoNotUseExtendedInfo)</enable>
 		</control>
 		<control type="radiobutton" id="$PARAM[id]24">
 			<include>SettingsButton</include>
