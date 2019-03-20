@@ -30,24 +30,40 @@
 					<label>$LOCALIZE[31076]</label>
 					<onclick>PlayerControl(stop)</onclick>
 					<onclick>close</onclick>
+					<visible>Player.HasMedia</visible>
 				</control>
 				<control type="button" id="102">
 					<include content="ContextButton"/>
 					<label>$VAR[PlayerPlayPauseLabel]</label>
 					<onclick>PlayerControl(Play)</onclick>
 					<onclick>close</onclick>
+					<visible>Player.HasMedia</visible>
 				</control>
 				<control type="button" id="103">
 					<include content="ContextButton"/>
 					<label>$LOCALIZE[209]</label>
 					<onclick>PlayerControl(Next)</onclick>
-					<visible>[!VideoPlayer.Content(livetv) + Integer.IsGreater(Playlist.Length(video),1)] | Integer.IsGreater(Playlist.Length(music),1)</visible>
+					<visible>Player.ChapterCount | Integer.IsGreater(Playlist.Length(video),1) | Integer.IsGreater(Playlist.Length(music),1) | Player.SeekEnabled</visible>
 				</control>
 				<control type="button" id="104">
 					<include content="ContextButton"/>
 					<label>$LOCALIZE[210]</label>
 					<onclick>PlayerControl(Previous)</onclick>
-					<visible>[!VideoPlayer.Content(livetv) + Integer.IsGreater(Playlist.Length(video),1)] | Integer.IsGreater(Playlist.Length(music),1)</visible>
+					<visible>Player.ChapterCount | Integer.IsGreater(Playlist.Length(video),1) | Integer.IsGreater(Playlist.Length(music),1) | Player.SeekEnabled</visible>
+				</control>
+				<control type="button" id="105">
+					<include content="ContextButton"/>
+					<label>$LOCALIZE[600]</label>
+					<onclick>close</onclick>
+					<onclick>RipCD</onclick>
+					<visible>System.HasMediaDVD</visible>
+				</control>
+				<control type="button" id="106">
+					<include content="ContextButton"/>
+					<label>$LOCALIZE[31335]</label>
+					<onclick>close</onclick>
+					<onclick>EjectTray()</onclick>
+					<visible>System.HasMediaDVD</visible>
 				</control>
 				<control type="image" id="111">
 					<width>100%</width>
