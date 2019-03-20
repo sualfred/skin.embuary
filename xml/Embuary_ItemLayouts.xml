@@ -928,6 +928,14 @@
 						</visible>
 					</control>
 					<control type="image">
+						<width>300</width>
+						<height>100</height>
+						<bottom>10</bottom>
+						<texture background="true" fallback="">$INFO[ListItem.Art(tvshow.clearlogo)]</texture>
+						<aspectratio align="left" aligny="bottom">keep</aspectratio>
+						<visible>[String.IsEqual(ListItem.DBType,episode) | Container.Content(episodes)] + [!String.IsEqual(ListItem.Art(thumb),OverlaySpoiler.png) | String.Contains(ListItem.Art(thumb),default) + String.IsEmpty(ListItem.Art(tvshow.landscape))]</visible>
+					</control>
+					<control type="image">
 						<width>430</width>
 						<height>242</height>
 						<texture background="true">$INFO[ListItem.Icon]</texture>
