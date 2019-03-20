@@ -22,7 +22,7 @@
 						<param name="type" value="previous"/>
 					</include>
 					<onclick>PlayerControl(Previous)</onclick>
-					<visible>!VideoPlayer.Content(livetv) + !String.StartsWith(Player.Filenameandpath,pvr://)</visible>
+					<visible>Player.ChapterCount | Integer.IsGreater(Playlist.Length(video),1) | Integer.IsGreater(Playlist.Length(music),1) | Player.SeekEnabled</visible>
 				</control>
 				<control type="button" id="602">
 					<include content="PlayerButtons">
@@ -57,7 +57,7 @@
 						<param name="type" value="next"/>
 					</include>
 					<onclick>PlayerControl(Next)</onclick>
-					<visible>!VideoPlayer.Content(livetv) + !String.StartsWith(Player.Filenameandpath,pvr://)</visible>
+					<visible>Player.ChapterCount | Integer.IsGreater(Playlist.Length(video),1) | Integer.IsGreater(Playlist.Length(music),1) | Player.SeekEnabled</visible>
 				</control>
 				<control type="button" id="607">
 					<colordiffuse>$VAR[PlayerRecordIconColor]</colordiffuse>
