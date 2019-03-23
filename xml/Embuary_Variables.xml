@@ -643,7 +643,7 @@
 		<value condition="[String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,set) | Container.Content(movies)] + !String.IsEmpty(ListItem.Art(landscape))">$INFO[ListItem.Art(landscape)]</value>
 		<value condition="[String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,set) | Container.Content(movies)] + !String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
 		<!-- other -->
-		<value condition="[Container.Content(videos) | String.IsEqual(ListItem.DBType,video)] + !String.StartsWith(ListItem.Icon,Default)">$INFO[ListItem.Icon]</value>
+		<value condition="[Container.Content(videos) | String.IsEqual(ListItem.DBType,video) | Container.Content(files)] + !String.StartsWith(ListItem.Icon,Default)">$INFO[ListItem.Icon]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(landscape)) + [!String.IsEmpty(ListItem.DBType) | ListItem.IsFolder | String.StartsWith(ListItem.Icon,Default) | String.StartsWith(ListItem.Path,plugin://) | Window.IsVisible(addonbrowser) | Window.IsVisible(programs) | Container.Content(addons)]">$INFO[ListItem.Art(landscape)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(fanart)) + [!String.IsEmpty(ListItem.DBType) | ListItem.IsFolder | String.StartsWith(ListItem.Icon,Default) | String.StartsWith(ListItem.Path,plugin://) | Window.IsVisible(addonbrowser) | Window.IsVisible(programs) | Container.Content(addons)]">$INFO[ListItem.Art(fanart)]</value>
 		<value condition="!String.IsEmpty(ListItem.Property(fanart))">$INFO[ListItem.Property(fanart)]</value>
@@ -738,6 +738,7 @@
 		<value condition="String.StartsWith(ListItem.Path,plugin://plugin.audio.prime_music) + String.Contains(ListItem.Filenameandpath,playTrack)">$INFO[ListItem.Artist]</value>
 	</variable>
 	<variable name="RightListLabel">
+		<value condition="String.StartsWith(Container.FolderPath,plugin://plugin.video.emby/) + String.Contains(Container.FolderPath,type=livetv)"></value>
 		<value condition="Window.IsVisible(addonbrowser) + !String.IsEmpty(ListItem.Label2)">$INFO[ListItem.Label2]</value>
 		<value condition="Window.IsVisible(addonbrowser) + !String.IsEmpty(ListItem.AddonVersion)">$INFO[ListItem.AddonVersion]</value>
 		<value condition="!String.IsEmpty(ListItem.Duration)">$VAR[DurationMinutes]</value>
@@ -749,6 +750,7 @@
 		<value condition="ListItem.IsFolder + !String.IsEqual(ListItem.Label,$LOCALIZE[35250])">$LOCALIZE[19076]</value>
 	</variable>
 	<variable name="RightListLabel2">
+		<value condition="String.StartsWith(Container.FolderPath,plugin://plugin.video.emby/) + String.Contains(Container.FolderPath,type=livetv)"></value>
 		<value condition="Container.Content(tvshows) + !String.IsEmpty(ListItem.Property(TotalSeasons))">$INFO[ListItem.Property(TotalSeasons),, $LOCALIZE[36905]]</value>
 		<value condition="!String.IsEmpty(ListItem.Duration) + !String.IsEmpty(ListItem.EndTimeResume)">$INFO[ListItem.EndTimeResume,$LOCALIZE[31037] ]</value>
 		<value condition="!String.IsEmpty(ListItem.Duration) + !String.IsEmpty(ListItem.EndTime)">$INFO[ListItem.EndTime,$LOCALIZE[31037] ]</value>
