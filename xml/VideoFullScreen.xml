@@ -342,6 +342,16 @@
 						<font>reg24</font>
 						<textcolor>softgrey</textcolor>
 						<label>$VAR[PlayerEpisodeName]</label>
+						<visible>!String.IsEmpty(VideoPlayer.EpisodeName) | !String.IsEmpty(VideoPlayer.Episode)</visible>
+					</control>
+					<control type="label" id="99">
+						<width>790</width>
+						<height>30</height>
+						<aligny>center</aligny>
+						<font>reg24</font>
+						<textcolor>softgrey</textcolor>
+						<label fallback="31156">$INFO[VideoPlayer.Genre]</label>
+						<visible>String.IsEmpty(VideoPlayer.EpisodeName) + String.IsEmpty(VideoPlayer.Episode)</visible>
 					</control>
 					<control type="label" id="99">
 						<width>790</width>
