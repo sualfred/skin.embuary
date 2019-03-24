@@ -1157,7 +1157,7 @@
 		<value>$VAR[PlayerTime]$VAR[PlayerDuration, / ]$VAR[PlayerFinishTime,  -  $LOCALIZE[31037] ]</value>
 	</variable>
 	<variable name="PlayerIcon">
-		<value condition="!VideoPlayer.Content(livetv) + String.StartsWith(Player.Filenameandpath,pvr://) + !String.IsEmpty(Window(home).Property(Player.Channellogo))">$INFO[Window(home).Property(Player.Channellogo)]</value>
+		<value condition="!VideoPlayer.Content(livetv) + String.StartsWith(Player.Filenameandpath,pvr://) + !String.IsEmpty(Window(home).Property(Player.Channellogo)) + [!Skin.HasSetting(ShowEPGThumbVideoOSD) | String.IsEmpty(Pvr.EPGEventIcon)]">$INFO[Window(home).Property(Player.Channellogo)]</value>
 		<value condition="!String.IsEmpty(Player.Art(tvshow.poster))">$INFO[Player.Art(tvshow.poster)]</value>
 		<value condition="!String.IsEmpty(Player.Art(poster))">$INFO[Player.Art(poster)]</value>
 		<value condition="!String.IsEmpty(Player.Icon) + !String.StartsWith(Player.Icon,default)">$INFO[Player.Icon]</value>
@@ -1165,7 +1165,7 @@
 		<value condition="!String.IsEmpty(MusicPlayer.Cover) + !String.StartsWith(MusicPlayer.Cover,default)">$INFO[MusicPlayer.Cover]</value>
 	</variable>
 	<variable name="WidePlayerIcon">
-		<value condition="String.IsEqual(Player.Title,emby-loading.mp4)">icons/player/waiting.gif</value>
+		<value condition="[VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)] + Skin.HasSetting(ShowEPGThumbVideoOSD) + !String.IsEmpty(Pvr.EPGEventIcon)">$INFO[Pvr.EPGEventIcon]</value>
 		<value condition="!String.StartsWith(Player.Art(thumb),special://home/addons/)">$INFO[Player.Art(thumb)]</value>
 		<value condition="!String.IsEmpty(Player.Art(landscape))">$INFO[Player.Art(landscape)]</value>
 		<value condition="!String.IsEmpty(Player.Art(fanart))">$INFO[Player.Art(fanart)]</value>

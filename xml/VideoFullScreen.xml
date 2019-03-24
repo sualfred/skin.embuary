@@ -87,7 +87,7 @@
 				<!-- Square -->
 				<control type="group" id="99">
 					<visible>!String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
-					<visible>VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)</visible>
+					<visible>[VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)] + [!Skin.HasSetting(ShowEPGThumbVideoOSD) | String.IsEmpty(Pvr.EPGEventIcon)]</visible>
 					<control type="image" id="99">
 						<bottom>25</bottom>
 						<left>27</left>
@@ -135,10 +135,42 @@
 						<aspectratio scalediffuse="false">keep</aspectratio>
 					</control>
 				</control>
+				<!-- Wide EPG Thumb -->
+				<control type="group" id="99">
+					<visible>[VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)] + !String.IsEmpty(Pvr.EPGEventIcon) + Skin.HasSetting(ShowEPGThumbVideoOSD)</visible>
+					<control type="image" id="99">
+						<bottom>25</bottom>
+						<left>27</left>
+						<width>256</width>
+						<height>172</height>
+						<texture border="20,20,20,20">items/shadow.png</texture>
+					</control>
+					<control type="image" id="99">
+						<bottom>29</bottom>
+						<left>29</left>
+						<width>250</width>
+						<height>166</height>
+						<texture colordiffuse="ff010202">common/white.jpg</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+					</control>
+					<control type="image" id="99">
+						<bottom>29</bottom>
+						<left>29</left>
+						<width>250</width>
+						<height>166</height>
+						<texture>$INFO[Pvr.EPGEventIcon]</texture>
+						<aspectratio scalediffuse="false">scale</aspectratio>
+					</control>
+				</control>
 				<!-- Wide -->
 				<control type="group" id="99">
 					<visible>!$EXP[EmbyLoading]</visible>
-					<visible>![VideoPlayer.Content(movies) | VideoPlayer.Content(episodes) | VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)] | VideoPlayer.Content(musicvideos) | [String.IsEmpty(Player.Art(poster)) + String.IsEmpty(Player.Art(tvshow.poster)) + !VideoPlayer.Content(livetv) + !String.StartsWith(Player.Filenameandpath,pvr://)] | String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
+					<visible>
+						![VideoPlayer.Content(movies) | VideoPlayer.Content(episodes) | VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)]
+						| [String.IsEmpty(Player.Art(poster)) + String.IsEmpty(Player.Art(tvshow.poster)) + !VideoPlayer.Content(livetv) + !String.StartsWith(Player.Filenameandpath,pvr://)]
+						| VideoPlayer.Content(musicvideos)
+						| String.Contains(Player.Art(thumb),KodiCinemaMode)
+					</visible>
 					<control type="image" id="99">
 						<bottom>25</bottom>
 						<left>27</left>
