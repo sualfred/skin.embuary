@@ -775,7 +775,7 @@
 		<value condition="[Pvr.IsPlayingRadio | Player.HasVideo] + !Window.IsVisible(textviewer)">[COLOR text_sublabel]$LOCALIZE[31156][/COLOR]</value>
 	</variable>
 	<variable name="PlayerDiscArt">
-		<value condition="!String.IsEmpty(Container(2000).ListItem.Art(discart))">$INFO[Container(2000).ListItem.Art(discart)]</value>
+		<value condition="!String.IsEmpty(Window(home).Property(MusicPlayer.Discart))">$INFO[Window(home).Property(MusicPlayer.Discart)]</value>
 		<value>common/white.jpg</value>
 	</variable>
 	<variable name="PlayerResolution">
@@ -1837,6 +1837,7 @@
 		<value condition="Pvr.IsPlayingRadio">$LOCALIZE[19021]</value>
 		<value condition="String.Contains(Player.Art(thumb),KodiTrailer)">$LOCALIZE[20410]</value>
 		<value condition="String.Contains(Player.Art(thumb),KodiCinemaMode)">$LOCALIZE[31255]</value>
+		<value condition="!String.IsEmpty(MusicPlayer.Artist)">$INFO[MusicPlayer.Artist]</value>
 		<value condition="!String.IsEmpty(MusicPlayer.Title)">$INFO[MusicPlayer.Title]</value>
 		<value condition="VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)">$INFO[VideoPlayer.Channelname]</value>
 		<value condition="!String.IsEmpty(VideoPlayer.TVShowTitle)">$INFO[VideoPlayer.TVShowTitle]</value>
@@ -1845,6 +1846,7 @@
 	<variable name="PlayerClearlogo">
 		<value condition="!String.IsEmpty(Player.Art(tvshow.clearlogo))">$INFO[Player.Art(tvshow.clearlogo)]</value>
 		<value condition="!String.IsEmpty(Player.Art(clearlogo))">$INFO[Player.Art(clearlogo)]</value>
+		<value condition="Player.HasAudio + !String.IsEmpty(Window(home).Property(MusicPlayer.Clearlogo))">$INFO[Window(home).Property(MusicPlayer.Clearlogo)]</value>
 	</variable>
 	<variable name="MusicPlayerCoverTitle">
 		<value condition="!String.IsEmpty(MusicPlayer.Album)">$INFO[MusicPlayer.Album]</value>
@@ -1861,6 +1863,7 @@
 		<value condition="!String.IsEmpty(Player.Art(poster))">$INFO[Player.Art(poster)]</value>
 		<value condition="!String.IsEmpty(VideoPlayer.Cover) + !String.StartsWith(VideoPlayer.Cover,default)">$INFO[VideoPlayer.Cover]</value>
 		<value condition="!String.IsEmpty(MusicPlayer.Cover) + !String.StartsWith(MusicPlayer.Cover,default)">$INFO[MusicPlayer.Cover]</value>
+		<value condition="Player.HasAudio + !String.IsEmpty(Window(home).Property(MusicPlayer.Cover))">$INFO[Window(home).Property(MusicPlayer.Cover)]</value>
 	</variable>
 	<variable name="WidePlayerIcon">
 		<value condition="String.IsEqual(Player.Title,emby-loading.mp4)">icons/player/waiting.gif</value>
@@ -1956,6 +1959,7 @@
 	</variable>
 	<variable name="MusicPlayerFanart">
 		<value condition="!String.IsEmpty(Player.Art(fanart))">$INFO[Player.Art(fanart)]</value>
+		<value condition="!String.IsEmpty(Window(home).Property(MusicPlayer.Fanart))">$INFO[Window(home).Property(MusicPlayer.Fanart)]</value>
 		<value>views/player/music_back.jpg</value>
 	</variable>
 	<variable name="ExtendedInfoFilmographyMovies">
