@@ -555,7 +555,11 @@
 				<font>Med34</font>
 				<textcolor>white</textcolor>
 				<label>$VAR[PlayerTitleLabel]</label>
-				<visible>[String.IsEmpty(Player.Art(tvshow.clearlogo)) + String.IsEmpty(Player.Art(clearlogo))] | String.Contains(Player.Art(thumb),KodiCinemaMode) | String.Contains(Player.Art(thumb),KodiTrailer)</visible>
+				<visible>
+					[String.IsEmpty(Player.Art(tvshow.clearlogo)) + String.IsEmpty(Player.Art(clearlogo)) + String.IsEmpty(Window(home).Property(MusicPlayer.Clearlogo))]
+					| String.Contains(Player.Art(thumb),KodiCinemaMode)
+					| String.Contains(Player.Art(thumb),KodiTrailer)
+				</visible>
 			</control>
 			<control type="grouplist" id="99">
 				<top>21</top>

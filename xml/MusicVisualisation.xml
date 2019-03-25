@@ -7,11 +7,6 @@
 	<backgroundcolor>background</backgroundcolor>
 	<include>PropertyIncludes</include>
 	<controls>
-		<!-- Hidden discart container -->
-		<control type="list" id="2000">
-			<include>HiddenObject</include>
-			<content limit="1">musicdb://albums/?xsp=%7b%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22artist%22%2c%22operator%22%3a%22is%22%2c%22value%22%3a%5b%22$INFO[MusicPlayer.Artist]%22%5d%7d%2c%7b%22field%22%3a%22album%22%2c%22operator%22%3a%22is%22%2c%22value%22%3a%5b%22$INFO[MusicPlayer.Album]%22%5d%7d%5d%7d%2c%22type%22%3a%22albums%22%7d</content>
-		</control>
 		<!-- Visualisation -->
 		<include>MusicBackground</include>
 		<!-- Busy spinner -->
@@ -58,54 +53,57 @@
 						<fadetime>200</fadetime>
 						<aspectratio>scale</aspectratio>
 					</control>
-					<control type="image" id="99">
-						<bottom>29</bottom>
-						<left>29</left>
-						<width>250</width>
-						<height>250</height>
-						<texture colordiffuse="$VAR[ThumbFallbackColor]">common/white.jpg</texture>
-						<aspectratio scalediffuse="false">stretch</aspectratio>
-						<visible>String.IsEmpty(MusicPlayer.Cover) | String.StartsWith(MusicPlayer.Cover,Default)</visible>
+					<control type="group" id="99">
+						<visible>[String.IsEmpty(MusicPlayer.Cover) | String.StartsWith(MusicPlayer.Cover,Default)] + String.IsEmpty(Window(home).Property(MusicPlayer.Cover))</visible>
+						<control type="image" id="99">
+							<bottom>29</bottom>
+							<left>29</left>
+							<width>250</width>
+							<height>250</height>
+							<texture colordiffuse="$VAR[ThumbFallbackColor]">common/white.jpg</texture>
+							<aspectratio scalediffuse="false">stretch</aspectratio>
+						</control>
+						<control type="textbox" id="99">
+							<bottom>39</bottom>
+							<left>39</left>
+							<width>230</width>
+							<height>230</height>
+							<font>Light24</font>
+							<textcolor>white</textcolor>
+							<align>center</align>
+							<aligny>center</aligny>
+							<label>$VAR[MusicPlayerCoverTitle]</label>
+						</control>
 					</control>
-					<control type="textbox" id="99">
-						<bottom>39</bottom>
-						<left>39</left>
-						<width>230</width>
-						<height>230</height>
-						<font>Light24</font>
-						<textcolor>white</textcolor>
-						<align>center</align>
-						<aligny>center</aligny>
-						<label>$VAR[MusicPlayerCoverTitle]</label>
-						<visible>String.IsEmpty(MusicPlayer.Cover) | String.StartsWith(MusicPlayer.Cover,Default)</visible>
-					</control>
-					<control type="image" id="99">
-						<bottom>29</bottom>
-						<left>29</left>
-						<width>250</width>
-						<height>250</height>
-						<texture colordiffuse="thumb_background_player">common/white.jpg</texture>
-						<aspectratio scalediffuse="false">stretch</aspectratio>
-						<visible>!String.IsEmpty(MusicPlayer.Cover) + !String.StartsWith(MusicPlayer.Cover,Default)</visible>
-					</control>
-					<control type="image" id="99">
-						<bottom>29</bottom>
-						<left>29</left>
-						<width>250</width>
-						<height>250</height>
-						<texture>$VAR[PlayerIcon]</texture>
-						<aspectratio scalediffuse="false">scale</aspectratio>
-						<visible>!String.StartsWith(MusicPlayer.Cover,Default) + !String.StartsWith(Player.Filenameandpath,pvr://)</visible>
-					</control>
-					<control type="image" id="99">
-						<bottom>29</bottom>
-						<left>29</left>
-						<width>250</width>
-						<height>250</height>
-						<texture>$VAR[PlayerIcon]</texture>
-						<aspectratio scalediffuse="false">keep</aspectratio>
-						<bordersize>20</bordersize>
-						<visible>!String.StartsWith(MusicPlayer.Cover,Default) + String.StartsWith(Player.Filenameandpath,pvr://)</visible>
+					<control type="group" id="99">
+						<visible>[!String.IsEmpty(MusicPlayer.Cover) + !String.StartsWith(MusicPlayer.Cover,Default)] | !String.IsEmpty(Window(home).Property(MusicPlayer.Cover))</visible>
+						<control type="image" id="99">
+							<bottom>29</bottom>
+							<left>29</left>
+							<width>250</width>
+							<height>250</height>
+							<texture colordiffuse="thumb_background_player">common/white.jpg</texture>
+							<aspectratio scalediffuse="false">stretch</aspectratio>
+						</control>
+						<control type="image" id="99">
+							<bottom>29</bottom>
+							<left>29</left>
+							<width>250</width>
+							<height>250</height>
+							<texture>$VAR[PlayerIcon]</texture>
+							<aspectratio scalediffuse="false">scale</aspectratio>
+							<visible>!String.StartsWith(Player.Filenameandpath,pvr://)</visible>
+						</control>
+						<control type="image" id="99">
+							<bottom>29</bottom>
+							<left>29</left>
+							<width>250</width>
+							<height>250</height>
+							<texture>$VAR[PlayerIcon]</texture>
+							<aspectratio scalediffuse="false">keep</aspectratio>
+							<bordersize>20</bordersize>
+							<visible>String.StartsWith(Player.Filenameandpath,pvr://)</visible>
+						</control>
 					</control>
 				</control>
 				<!-- Progress bars -->
