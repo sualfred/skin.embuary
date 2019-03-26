@@ -26,6 +26,7 @@
 					<top>-50</top>
 					<!-- clearlogo -->
 					<control type="image">
+						<top>1</top>
 						<right>0</right>
 						<width>400</width>
 						<height>100</height>
@@ -35,7 +36,6 @@
 					<!-- poster -->
 					<control type="group">
 						<visible>[!String.IsEmpty(Container.ShowTitle) | [String.Contains(Container.Folderpath,plugin.video.embycon) + [String.Contains(Container.Folderpath,media_type=season) | String.Contains(Container.Folderpath,media_type=series)]]] + !String.IsEmpty(ListItem.Art(tvshow.poster))</visible>
-						<top>-3</top>
 						<control type="image">
 							<top>-2</top>
 							<left>-2</left>
@@ -80,6 +80,7 @@
 					<control type="group">
 						<animation effect="slide" end="110,0" time="0" condition="[!String.IsEmpty(Container.ShowTitle) | [String.Contains(Container.Folderpath,plugin.video.embycon) + [String.Contains(Container.Folderpath,media_type=season) | String.Contains(Container.Folderpath,media_type=series)]]] + !String.IsEmpty(ListItem.Art(tvshow.poster))">Conditional</animation>
 						<control type="label">
+							<top>1</top>
 							<height>50</height>
 							<right>400</right>
 							<label>$VAR[View59Headline]</label>
@@ -87,7 +88,7 @@
 							<font>Reg37</font>
 						</control>
 						<control type="grouplist" id="100">
-							<top>50</top>
+							<top>55</top>
 							<height>70</height>
 							<orientation>horizontal</orientation>
 							<itemgap>5</itemgap>
