@@ -137,32 +137,39 @@
 				</control>
 				<control type="radiobutton" id="705">
 					<include content="ContextButton"/>
-					<label>$LOCALIZE[31056]</label>
+					<label>- $LOCALIZE[31056]</label>
 					<selected>Skin.HasSetting(VisRandomFanart)</selected>
 					<onclick>Skin.ToggleSetting(VisRandomFanart)</onclick>
-					<visible>!Skin.HasSetting(VisFanartDisabled) + System.HasAddon(script.artistslideshow)</visible>
+					<enable>!Skin.HasSetting(VisFanartDisabled) + System.HasAddon(script.artistslideshow)</enable>
 				</control>
 				<control type="radiobutton" id="706">
+					<include content="ContextButton"/>
+					<label>- $LOCALIZE[31339]</label>
+					<selected>!Skin.HasSetting(VisAnimationDisabled)</selected>
+					<onclick>Skin.ToggleSetting(VisAnimationDisabled)</onclick>
+					<enable>!Skin.HasSetting(VisFanartDisabled)</enable>
+				</control>
+				<control type="radiobutton" id="707">
 					<include content="ContextButton"/>
 					<label>$LOCALIZE[31177]</label>
 					<selected>!Skin.HasSetting(HideDiscArt)</selected>
 					<onclick>Skin.ToggleSetting(HideDiscArt)</onclick>
 				</control>
-				<control type="radiobutton" id="707">
+				<control type="radiobutton" id="708">
 					<include content="ContextButton"/>
 					<label>$LOCALIZE[590]</label>
 					<selected>Playlist.IsRandom</selected>
 					<onclick>PlayerControl(random)</onclick>
 					<visible>Integer.IsGreater(Playlist.Length(music),1)</visible>
 				</control>
-				<control type="button" id="708">
+				<control type="button" id="709">
 					<include content="ContextButton"/>
 					<label>$LOCALIZE[486]</label>
 					<label2>$VAR[PlaylistRepeatButtonLabel]</label2>
 					<onclick>PlayerControl(Repeat)</onclick>
 					<visible>Integer.IsGreater(Playlist.Length(music),1)</visible>
 				</control>
-				<control type="button" id="709">
+				<control type="button" id="710">
 					<include content="ContextButton"/>
 					<label>$LOCALIZE[31041]</label>
 					<onclick>ActivateWindow(playerprocessinfo)</onclick>
