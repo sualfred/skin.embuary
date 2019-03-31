@@ -154,6 +154,12 @@
 				<onclick condition="System.Platform.Android + !System.HasAddon(script.kodi.Android.update)">InstallAddon(script.kodi.android.update)</onclick>
 				<visible>System.Platform.Android | System.Platform.Windows</visible>
 			</item>
+			<item>
+				<label>$LOCALIZE[31337]</label>
+				<label2></label2>
+				<onclick condition="!System.HasAddon(script.kodi.loguploader)">InstallAddon(script.kodi.loguploader)</onclick>
+				<onclick>RunScript(script.kodi.loguploader)</onclick>
+			</item>
 		</content>
 	</include>
 	<include name="SettingsMedia">
@@ -179,10 +185,24 @@
 				<onclick>UpdateLibrary(video)</onclick>
 				<onclick>UpdateLibrary(music)</onclick>
 			</item>
+		</content>
+	</include>
+	<include name="SettingsAddons">
+		<content>
 			<item>
 				<label>$LOCALIZE[10040]</label>
 				<label2></label2>
-				<onclick>ActivateWindow(addonbrowser)</onclick>
+				<onclick>ActivateWindow(addonbrowser,return)</onclick>
+			</item>
+			<item>
+				<label>$LOCALIZE[31338]</label>
+				<label2></label2>
+				<onclick>ActivateWindow(addonbrowser,addons://running,return)</onclick>
+			</item>
+			<item>
+				<label>$LOCALIZE[39024]</label>
+				<label2></label2>
+				<onclick>ActivateWindow(addonbrowser,addons://dependencies,return)</onclick>
 			</item>
 			<item>
 				<label>$LOCALIZE[31129]</label>
