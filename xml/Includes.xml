@@ -63,34 +63,33 @@
 
 	<expression name="ScrollbarContainers">[Control.IsVisible(50) | Control.IsVisible(51) | Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(58) | Control.IsVisible(59)]</expression>
 
-	<expression name="IsGenre">String.StartsWith(Container.Folderpath,plugin://script.skin.helper.widgets/?action=browsegenres)</expression>
 	<expression name="IsPlugin">[String.StartsWith(Container.Folderpath,plugin://) + !String.StartsWith(Container.FolderPath,plugin://plugin.video.emby/)]</expression>
+
 	<expression name="IsEmbyConSource">[String.StartsWith(Container.Folderpath,plugin://plugin.video.embycon) | Window.IsVisible(1160) | Window.IsVisible(1161) | Window.IsVisible(1162) | Window.IsVisible(1163) | Window.IsVisible(1164) | Window.IsVisible(1165) | Window.IsVisible(1166) | Window.IsVisible(1167) | Window.IsVisible(1168) | Window.IsVisible(1169)]</expression>
 
 	<expression name="IsSearching">[Container(101).IsUpdating | Container(102).IsUpdating | Container(103).IsUpdating | Container(104).IsUpdating | Container(105).IsUpdating | Container(106).IsUpdating | Container(107).IsUpdating | Container(108).IsUpdating | Container(109).IsUpdating | Container(110).IsUpdating | Container(111).IsUpdating | Container(112).IsUpdating | Container(113).IsUpdating | Container(114).IsUpdating | Container(115).IsUpdating | Container(116).IsUpdating | Container(117).IsUpdating | Container(118).IsUpdating | Container(119).IsUpdating | Container(120).IsUpdating | Container(121).IsUpdating]</expression>
 
 	<expression name="AutoCloseInfoDialog">[
-				[String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) + [String.IsEqual(ListItem.DBType,season) + String.IsEqual(ListItem.Label,All)]]
-				| [!String.IsEqual(ListItem.DBType,movie) + !String.IsEqual(ListItem.DBType,tvshow) + !String.IsEqual(ListItem.DBType,episode) + !String.IsEqual(ListItem.DBType,season) + String.IsEmpty(ListItem.Plot)]
-				]
+		[String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) + [String.IsEqual(ListItem.DBType,season) + String.IsEqual(ListItem.Label,All)]]
+		| [!String.IsEqual(ListItem.DBType,movie) + !String.IsEqual(ListItem.DBType,tvshow) + !String.IsEqual(ListItem.DBType,episode) + !String.IsEqual(ListItem.DBType,season) + String.IsEmpty(ListItem.Plot)]
+		]
 	</expression>
 
 	<!-- Views -->
 	<expression name="WideViewVisible">[
 		[
-		!Container.Content(seasons)
-		+ !Container.Content(episodes)
-		+ !String.Contains(Container.Folderpath,setid)
-		+ ![String.Contains(Container.FolderPath,BoxSet) + !String.Contains(Container.FolderPath,CollapseBoxSet) + Container.Content(movies)]
-		+ !Container.Content(albums)
-		+ !Container.Content(songs) + !Container.Content(actors)
-		+ !Container.Content(directors)
-		+ !Window.IsVisible(MyPVRSearch.xml)
-		+ !Window.IsVisible(MyPVRTimers.xml)
-		+ !Window.IsVisible(MyPVRguide.xml)
-		+ !String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres)
-		+ !String.StartsWith(Container.FolderPath,pvr://channels/radio/)
-		+ !String.StartsWith(Container.Folderpath,androidapp://)
+			!Container.Content(seasons)
+			+ !Container.Content(episodes)
+			+ !String.Contains(Container.Folderpath,setid)
+			+ ![String.Contains(Container.FolderPath,BoxSet) + !String.Contains(Container.FolderPath,CollapseBoxSet) + Container.Content(movies)]
+			+ !Container.Content(albums)
+			+ !Container.Content(songs) + !Container.Content(actors)
+			+ !Container.Content(directors)
+			+ !Window.IsVisible(MyPVRSearch.xml)
+			+ !Window.IsVisible(MyPVRTimers.xml)
+			+ !Window.IsVisible(MyPVRguide.xml)
+			+ !String.StartsWith(Container.FolderPath,pvr://channels/radio/)
+			+ !String.StartsWith(Container.Folderpath,androidapp://)
 		]
 		| Window.IsVisible(MyPics.xml)
 		]
@@ -105,17 +104,16 @@
 
 	<expression name="SquareViewVisible">[
 		[
-		!Container.Content(seasons)
-		+ !Container.Content(episodes)
-		+ !Container.Content(movies)
-		+ !Container.Content(sets)
-		+ !Container.Content(tvshows)
-		+ !String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres)
-		+ !Window.IsVisible(MyPVRSearch.xml)
-		+ !Window.IsVisible(MyPVRTimers.xml)
-		+ !Window.IsVisible(MyPVRguide.xml)
-		+ !String.StartsWith(Container.Folderpath,androidapp://)
-		+ !String.StartsWith(Container.FolderPath,pvr://channels/radio/)
+			!Container.Content(seasons)
+			+ !Container.Content(episodes)
+			+ !Container.Content(movies)
+			+ !Container.Content(tvshows)
+			+ !Container.Content(sets)
+			+ !Window.IsVisible(MyPVRSearch.xml)
+			+ !Window.IsVisible(MyPVRTimers.xml)
+			+ !Window.IsVisible(MyPVRguide.xml)
+			+ !String.StartsWith(Container.Folderpath,androidapp://)
+			+ !String.StartsWith(Container.FolderPath,pvr://channels/radio/)
 		]
 		| Window.IsVisible(MyPics.xml)
 		]
@@ -129,12 +127,11 @@
 
 	<expression name="ListViewVisible">[
 		[
-		!Container.Content(seasons)
-		+ !Container.Content(episodes)
-		+ !String.Contains(Container.FolderPath,setid)
-		+ ![String.Contains(Container.FolderPath,BoxSet) + !String.Contains(Container.FolderPath,CollapseBoxSet) + Container.Content(movies)]
-		+ !String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres)
-		+ !Window.IsVisible(MyPVRguide.xml)
+			!Container.Content(seasons)
+			+ !Container.Content(episodes)
+			+ !String.Contains(Container.FolderPath,setid)
+			+ ![String.Contains(Container.FolderPath,BoxSet) + !String.Contains(Container.FolderPath,CollapseBoxSet) + Container.Content(movies)]
+			+ !Window.IsVisible(MyPVRguide.xml)
 		]
 		| [Container.Content(episodes) + String.StartsWith(Container.FolderPath,plugin://) + !String.StartsWith(Container.FolderPath,plugin://plugin.video.emby) + !String.StartsWith(Container.FolderPath,plugin://plugin.video.plexbmc)]
 		| [Container.Content(seasons) + String.StartsWith(Container.FolderPath,plugin://) + !String.StartsWith(Container.FolderPath,plugin://plugin.video.emby)]
@@ -153,17 +150,16 @@
 		[Container.Content(movies) | Container.Content(tvshows)]
 		+ !String.Contains(Container.FolderPath,setid)
 		+ ![String.Contains(Container.FolderPath,BoxSet) + !String.Contains(Container.FolderPath,CollapseBoxSet) + Container.Content(movies)]
-		+ !String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres)
 		]
 	</expression>
 
 	<expression name="SetViewVisible">[
 		[Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets)]
-		+ !String.StartsWith(Container.FolderPath,plugin://script.skin.helper.widgets/?action=browsegenres)
 		]
 	</expression>
 
-	<expression name="HideHeaderBasedOnContainer">[Control.IsVisible(56) + [Container(560).HasPrevious + !Integer.IsEqual(Container(560).CurrentItem,1)]]
+	<expression name="HideHeaderBasedOnContainer">[
+		Control.IsVisible(56) + [Container(560).HasPrevious + !Integer.IsEqual(Container(560).CurrentItem,1)]]
 		| [Control.IsVisible(54) + [Container(540).HasPrevious + !Integer.IsEqual(Container(540).CurrentItem,1)]]
 		| [Control.IsVisible(55) + [Container(550).HasPrevious + !Integer.IsEqual(Container(550).CurrentItem,1)]]
 		| [Control.IsVisible(59) + !Container.Content(episodes) + [Container(59).HasPrevious]]
@@ -174,22 +170,23 @@
 		| [Control.IsVisible(52) + [[Integer.IsGreaterOrEqual(Container(52).CurrentItem,10) + Container.HasParent] | Integer.IsGreaterOrEqual(Container(52).CurrentItem,13) | Container(52).HasPrevious]]
 		| [Control.IsVisible(58) + !Skin.HasSetting(HideBannerLabels) + [[Integer.IsGreaterOrEqual(Container(58).CurrentItem,8) + Container.HasParent] | Integer.IsGreaterOrEqual(Container(58).CurrentItem,9)| Container(58).HasPrevious]]
 		| [Control.IsVisible(58) + Skin.HasSetting(HideBannerLabels) + [[Integer.IsGreaterOrEqual(Container(58).CurrentItem,10) + Container.HasParent] | Integer.IsGreaterOrEqual(Container(58).CurrentItem,11) | Container(58).HasPrevious]]
-		| [Control.IsVisible(53) + [Integer.IsGreaterOrEqual(Container(53).NumItems,8) | [Integer.IsGreaterOrEqual(Container(53).NumItems,7) + Container.HasParent]] + [[Integer.IsGreaterOrEqual(Container(53).CurrentItem,4) + Container.HasParent] | Integer.IsGreaterOrEqual(Container(53).CurrentItem,5) | Container(53).HasPrevious]]
+		| [Control.IsVisible(53) + [Integer.IsGreaterOrEqual(Container(53).NumItems,8) | [Integer.IsGreaterOrEqual(Container(53).NumItems,7) + Container.HasParent]] + [[Integer.IsGreaterOrEqual(Container(53).CurrentItem,4) + Container.HasParent] | Integer.IsGreaterOrEqual(Container(53).CurrentItem,5) | Container(53).HasPrevious]
+		]
 	</expression>
 
 	<expression name="ListHasWideThumb">[
 		[
-		!String.IsEmpty(ListItem.Art(landscape))
-		| !String.IsEmpty(ListItem.Art(tvshow.landscape))
-		| !String.IsEmpty(ListItem.Art(fanart))
-		| !String.IsEmpty(ListItem.Art(tvshow.fanart))
-		| String.IsEqual(ListItem.DBType,episode)
-		| String.IsEqual(ListItem.DBType,set)
-		| String.IsEqual(ListItem.DBType,musicvideo)
-		| Container.Content(episodes)
-		| [String.StartsWith(ListItem.Path,pvr://) + !String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)]
-		| [String.StartsWith(Container.FolderPath,plugin://plugin.video.emby/) + String.Contains(Container.FolderPath,type=homevideos)]
-		| String.StartsWith(ListItem.Art(thumb),image://)
+			!String.IsEmpty(ListItem.Art(landscape))
+			| !String.IsEmpty(ListItem.Art(tvshow.landscape))
+			| !String.IsEmpty(ListItem.Art(fanart))
+			| !String.IsEmpty(ListItem.Art(tvshow.fanart))
+			| String.IsEqual(ListItem.DBType,episode)
+			| String.IsEqual(ListItem.DBType,set)
+			| String.IsEqual(ListItem.DBType,musicvideo)
+			| Container.Content(episodes)
+			| [String.StartsWith(ListItem.Path,pvr://) + !String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)]
+			| [String.StartsWith(Container.FolderPath,plugin://plugin.video.emby/) + String.Contains(Container.FolderPath,type=homevideos)]
+			| String.StartsWith(ListItem.Art(thumb),image://)
 		]
 		+ !ListItem.IsParentDir
 		+ !String.IsEqual(ListItem.Label,..)
