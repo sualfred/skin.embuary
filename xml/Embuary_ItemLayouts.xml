@@ -495,27 +495,31 @@
 		</control>
 	</include>
 	<include name="ScrollSortLetter">
-		<control type="group">
-			<visible>Container.Scrolling +  [[String.IsEqual(Container.SortMethod,$LOCALIZE[551]) + Control.IsEnabled(4)] | String.IsEqual(Container.SortMethod,$LOCALIZE[561]) | String.IsEqual(Container.SortMethod,$LOCALIZE[558]) | String.IsEqual(Container.SortMethod,$LOCALIZE[557]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556]) | String.IsEqual(Container.SortMethod,$LOCALIZE[563]) | String.IsEqual(Container.SortMethod,$LOCALIZE[549]) | String.IsEqual(Container.SortMethod,$LOCALIZE[20359])]</visible>
-			<animation effect="fade" start="0" end="100" time="120" reversible="true" delay="300">VisibleChange</animation>
-			<animation effect="slide" start="0,0" end="0,-58" time="0" reversible="true" condition="Window.IsVisible(extendedprogressdialog)">Conditional</animation>
+		<param name="visible">true</param>
+		<definition>
 			<control type="group">
-				<visible>String.IsEqual(Container.Viewmode,$LOCALIZE[31199]) | String.IsEqual(Container.Viewmode,$LOCALIZE[537]) | Window.IsVisible(videoplaylist)</visible>
-				<right>23</right>
-				<bottom>23</bottom>
-				<width>80</width>
-				<height>80</height>
-				<include>ScrollSortLetterLayout</include>
+				<visible>$PARAM[visible]</visible>
+				<visible>Container.Scrolling +  [[String.IsEqual(Container.SortMethod,$LOCALIZE[551]) + Control.IsEnabled(4)] | String.IsEqual(Container.SortMethod,$LOCALIZE[561]) | String.IsEqual(Container.SortMethod,$LOCALIZE[558]) | String.IsEqual(Container.SortMethod,$LOCALIZE[557]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556]) | String.IsEqual(Container.SortMethod,$LOCALIZE[563]) | String.IsEqual(Container.SortMethod,$LOCALIZE[549]) | String.IsEqual(Container.SortMethod,$LOCALIZE[20359])]</visible>
+				<animation effect="fade" start="0" end="100" time="120" reversible="true" delay="300">VisibleChange</animation>
+				<animation effect="slide" start="0,0" end="0,-58" time="0" reversible="true" condition="Window.IsVisible(extendedprogressdialog)">Conditional</animation>
+				<control type="group">
+					<visible>String.IsEqual(Container.Viewmode,$LOCALIZE[31199]) | String.IsEqual(Container.Viewmode,$LOCALIZE[537]) | Window.IsVisible(videoplaylist)</visible>
+					<right>23</right>
+					<bottom>23</bottom>
+					<width>80</width>
+					<height>80</height>
+					<include>ScrollSortLetterLayout</include>
+				</control>
+				<control type="group">
+					<visible>[!String.IsEqual(Container.Viewmode,$LOCALIZE[31199]) + !String.IsEqual(Container.Viewmode,$LOCALIZE[537])] | Window.IsVisible(musicplaylist)</visible>
+					<left>21</left>
+					<bottom>23</bottom>
+					<width>80</width>
+					<height>80</height>
+					<include>ScrollSortLetterLayout</include>
+				</control>
 			</control>
-			<control type="group">
-				<visible>[!String.IsEqual(Container.Viewmode,$LOCALIZE[31199]) + !String.IsEqual(Container.Viewmode,$LOCALIZE[537])] | Window.IsVisible(musicplaylist)</visible>
-				<left>21</left>
-				<bottom>23</bottom>
-				<width>80</width>
-				<height>80</height>
-				<include>ScrollSortLetterLayout</include>
-			</control>
-		</control>
+		</definition>
 	</include>
 	<!-- Poster -->
 	<include name="PosterLayout">
@@ -1454,7 +1458,7 @@
 					<include content="listitem_action_overlay">
 						<param name="focused" value="$PARAM[focused]"/>
 						<param name="id" value="$PARAM[id]"/>
-							<param name="visible_icon" value="$PARAM[visible_icon]"/>
+						<param name="visible_icon" value="$PARAM[visible_icon]"/>
 					</include>
 				</control>
 			</control>
