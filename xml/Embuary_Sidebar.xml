@@ -175,10 +175,19 @@
 						<param name="onright">$PARAM[onright]</param>
 						<param name="label">342</param>
 						<param name="icon">&#xE04A;</param>
-						<param name="condition1">Library.HasContent(movies) | System.HasAddon(plugin.video.embycon)</param>
-						<param name="condition2">!Library.HasContent(movies) + !System.HasAddon(plugin.video.embycon)</param>
-						<param name="action1">ActivateWindow(1120)</param>
-						<param name="action2">ActivateWindow(Videos,root)</param>
+
+						<param name="condition1">!Library.HasContent(movies) + !System.HasAddon(plugin.video.embycon)</param>
+						<param name="action1">ActivateWindow(Videos,root)</param>
+
+						<param name="condition2">!Skin.HasSetting(NoSPHubs) + [Library.HasContent(movies) | System.HasAddon(plugin.video.embycon)]</param>
+						<param name="action2">ActivateWindow(1120)</param>
+
+						<param name="condition3">Skin.HasSetting(NoSPHubs) + Library.HasContent(movies)</param>
+						<param name="action3">ActivateWindow(videos,videodb://movies/titles/,return)</param>
+
+						<param name="condition4">Skin.HasSetting(NoSPHubs) + !Library.HasContent(movies) + System.HasAddon(plugin.video.embycon)</param>
+						<param name="action4">ActivateWindow(videos,plugin://plugin.video.embycon/?media_type=Movies&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fFields%3dDateCreated%2cEpisodeCount%2cSeasonCount%2cPath%2cGenres%2cStudios%2cEtag%2cMediaStreams%2cOverview%26Recursive%3dtrue%26IncludeItemTypes%3dMovie%26ImageTypeLimit%3d1%26format%3djson,return)</param>
+
 						<param name="visible">!Skin.HasSetting(HideSPMovies)</param>
 					</include>
 					<include content="SideButton">
@@ -188,10 +197,19 @@
 						<param name="onright">$PARAM[onright]</param>
 						<param name="label">20343</param>
 						<param name="icon">&#xE04A;</param>
-						<param name="condition1">Library.HasContent(tvshows) | System.HasAddon(plugin.video.embycon)</param>
-						<param name="condition2">!Library.HasContent(tvshows) + !System.HasAddon(plugin.video.embycon)</param>
-						<param name="action1">ActivateWindow(1121)</param>
-						<param name="action2">ActivateWindow(Videos,root)</param>
+
+						<param name="condition1">!Library.HasContent(tvshows) + !System.HasAddon(plugin.video.embycon)</param>
+						<param name="action1">ActivateWindow(Videos,root)</param>
+
+						<param name="condition2">!Skin.HasSetting(NoSPHubs) + [Library.HasContent(tvshows) | System.HasAddon(plugin.video.embycon)]</param>
+						<param name="action2">ActivateWindow(1121)</param>
+
+						<param name="condition3">Skin.HasSetting(NoSPHubs) + Library.HasContent(tvshows)</param>
+						<param name="action3">ActivateWindow(videos,videodb://tvshows/titles/,return)</param>
+
+						<param name="condition4">Skin.HasSetting(NoSPHubs) + !Library.HasContent(tvshows) + System.HasAddon(plugin.video.embycon)</param>
+						<param name="action4">ActivateWindow(videos,plugin://plugin.video.embycon/?media_type=tvshows&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fFields%3dDateCreated%2cEpisodeCount%2cSeasonCount%2cPath%2cGenres%2cStudios%2cEtag%2cMediaStreams%2cOverview%26Recursive%3dtrue%26IncludeItemTypes%3dSeries%26ImageTypeLimit%3d1%26format%3djson,return)</param>
+
 						<param name="visible">!Skin.HasSetting(HideSPTVshows)</param>
 					</include>
 					<include content="SideButton">
@@ -211,7 +229,10 @@
 						<param name="onright">$PARAM[onright]</param>
 						<param name="label">$VAR[PVRLabel]</param>
 						<param name="icon">&#xE639;</param>
+						<param name="condition1">!Skin.HasSetting(NoSPHubs)</param>
 						<param name="action1">ActivateWindow(1124)</param>
+						<param name="condition2">Skin.HasSetting(NoSPHubs)</param>
+						<param name="action2">ActivateWindow(tvchannels)</param>
 						<param name="visible">!Skin.HasSetting(HideSPPVR) + [Pvr.HasTVChannels | Pvr.HasRadioChannels]</param>
 					</include>
 					<include content="SideButton">
@@ -221,10 +242,19 @@
 						<param name="onright">$PARAM[onright]</param>
 						<param name="label">2</param>
 						<param name="icon">&#xE030;</param>
-						<param name="condition1">Library.HasContent(music) | System.HasAddon(plugin.video.embycon)</param>
-						<param name="condition2">!Library.HasContent(music) + !System.HasAddon(plugin.video.embycon)</param>
-						<param name="action1">ActivateWindow(1122)</param>
-						<param name="action2">ActivateWindow(Music,root)</param>
+
+						<param name="condition1">!Library.HasContent(music) + !System.HasAddon(plugin.video.embycon)</param>
+						<param name="action1">ActivateWindow(music,root)</param>
+
+						<param name="condition2">!Skin.HasSetting(NoSPHubs) + [Library.HasContent(music) | System.HasAddon(plugin.video.embycon)]</param>
+						<param name="action2">ActivateWindow(1122)</param>
+
+						<param name="condition3">Skin.HasSetting(NoSPHubs) + Library.HasContent(music)</param>
+						<param name="action3">ActivateWindow(music,musicdb://root,return)</param>
+
+						<param name="condition4">Skin.HasSetting(NoSPHubs) + !Library.HasContent(music) + System.HasAddon(plugin.video.embycon)</param>
+						<param name="action4">ActivateWindow(music,plugin://plugin.video.embycon/?media_type=MusicArtists&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fArtists%2fAlbumArtists%3fRecursive%3dtrue%26ImageTypeLimit%3d1%26EnableImageTypes%3dPrimary%2cBackdrop%2cBanner%2cThumb%26format%3djson,return)</param>
+
 						<param name="visible">!Skin.HasSetting(HideSPMusic)</param>
 					</include>
 					<include content="SideButton">
@@ -234,7 +264,6 @@
 						<param name="onright">$PARAM[onright]</param>
 						<param name="label">$LOCALIZE[20389]</param>
 						<param name="icon">&#xE030;</param>
-						<param name="condition1">Library.HasContent(musicvideos)</param>
 						<param name="action1">ActivateWindow(videos,videodb://musicvideos/titles/,return)</param>
 						<param name="visible">!Skin.HasSetting(HideSPMusicvideos) + Library.HasContent(musicvideos)</param>
 					</include>
@@ -260,9 +289,15 @@
 						<param name="onup">907</param>
 						<param name="ondown">909</param>
 						<param name="onright">$PARAM[onright]</param>
-						<param name="label">24001</param>
+						<param name="label">$LOCALIZE[24001]</param>
 						<param name="icon">&#xE5C3;</param>
+
+						<param name="condition1">!Skin.HasSetting(NoSPHubs)</param>
 						<param name="action1">ActivateWindow(1123)</param>
+
+						<param name="condition2">Skin.HasSetting(NoSPHubs)</param>
+						<param name="action2">ActivateWindow(addonbrowser,return)</param>
+
 						<param name="visible">!Skin.HasSetting(HideSPAddons)</param>
 					</include>
 					<include content="SideButton">
@@ -270,7 +305,7 @@
 						<param name="onup">908</param>
 						<param name="ondown">910</param>
 						<param name="onright">$PARAM[onright]</param>
-						<param name="label">10134</param>
+						<param name="label">$LOCALIZE[10134]</param>
 						<param name="icon">&#xE838;</param>
 						<param name="action1">ActivateWindow(favourites)</param>
 						<param name="visible">!Skin.HasSetting(HideSPFavourites)</param>
@@ -280,12 +315,15 @@
 						<param name="onup">909</param>
 						<param name="ondown">911</param>
 						<param name="onright">$PARAM[onright]</param>
-						<param name="label">8</param>
+						<param name="label">$LOCALIZE[8]</param>
 						<param name="icon">&#xE430;</param>
+
 						<param name="condition1">!String.IsEmpty(Weather.Plugin)</param>
 						<param name="action1">ActivateWindow(Weather)</param>
+
 						<param name="condition2">String.IsEmpty(Weather.Plugin)</param>
 						<param name="action2">ReplaceWindow(servicesettings,weather)</param>
+
 						<param name="visible">!Skin.HasSetting(HideSPWeather) + !String.IsEmpty(Weather.Temperature) + !String.Contains(Weather.Temperature,$LOCALIZE[503]) + !String.IsEqual(Weather.fanartcode,na) + Weather.IsFetched</param>
 					</include>
 					<!-- seperator -->
@@ -337,7 +375,7 @@
 						<param name="onup">913</param>
 						<param name="ondown">915</param>
 						<param name="onright">$PARAM[onright]</param>
-						<param name="label">5</param>
+						<param name="label">$LOCALIZE[5]</param>
 						<param name="icon">&#xE8B8;</param>
 						<param name="action1">ActivateWindow(settings)</param>
 						<param name="visible">!Skin.HasSetting(KioskMode)</param>
@@ -347,7 +385,7 @@
 						<param name="onup">914</param>
 						<param name="ondown">916</param>
 						<param name="onright">$PARAM[onright]</param>
-						<param name="label">14260</param>
+						<param name="label">$LOCALIZE[14260]</param>
 						<param name="icon">&#xE868;</param>
 						<param name="action1">Skin.ToggleSetting(DebugInfo)</param>
 						<param name="visible">!Skin.HasSetting(KioskMode) + !Skin.HasSetting(HideSPDebug)</param>
@@ -357,7 +395,7 @@
 						<param name="onup">915</param>
 						<param name="ondown">917</param>
 						<param name="onright">$PARAM[onright]</param>
-						<param name="label">20183</param>
+						<param name="label">$LOCALIZE[20183]</param>
 						<param name="icon"></param>
 						<param name="action1">ReloadSkin()</param>
 						<param name="visible">!Skin.HasSetting(KioskMode) + !Skin.HasSetting(HideSPReload)</param>

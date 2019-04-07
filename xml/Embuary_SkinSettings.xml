@@ -661,49 +661,60 @@
 
 	<!-- side panel -->
 	<include name="SkinSettingsSidePanel">
+		<!-- general -->
+		<include content="SkinSettingsHeadlineLabel">
+			<param name="id" value="$PARAM[id]00"/>
+			<param name="label" value="$LOCALIZE[128]"/>
+		</include>
+		<control type="radiobutton" id="$PARAM[id]01">
+			<include>SettingsButton</include>
+			<onclick>Skin.ToggleSetting(NoSPHubs)</onclick>
+			<selected>!Skin.HasSetting(NoSPHubs)</selected>
+			<label>$LOCALIZE[31340]</label>
+		</control>
 		<!-- local / embycon source -->
 		<include content="SkinSettingsHeadlineLabel">
-			<param name="id" value="$PARAM[id]01"/>
+			<param name="id" value="$PARAM[id]10"/>
 			<param name="label" value="$LOCALIZE[14211]"/>
 		</include>
-		<control type="radiobutton" id="$PARAM[id]02">
+		<control type="radiobutton" id="$PARAM[id]11">
 			<include>SettingsButton</include>
 			<onclick>Skin.ToggleSetting(HideSPMovies)</onclick>
 			<selected>!Skin.HasSetting(HideSPMovies)</selected>
 			<label>$LOCALIZE[31135]</label>
 		</control>
-		<control type="radiobutton" id="$PARAM[id]03">
+		<control type="radiobutton" id="$PARAM[id]12">
 			<include>SettingsButton</include>
 			<onclick>Skin.ToggleSetting(HideSPTVshows)</onclick>
 			<selected>!Skin.HasSetting(HideSPTVshows)</selected>
 			<label>$LOCALIZE[31136]</label>
 		</control>
-		<control type="radiobutton" id="$PARAM[id]04">
+		<control type="radiobutton" id="$PARAM[id]13">
 			<include>SettingsButton</include>
 			<onclick>Skin.ToggleSetting(HideSPVideos)</onclick>
 			<selected>!Skin.HasSetting(HideSPVideos)</selected>
 			<label>$LOCALIZE[31137]</label>
 		</control>
-		<control type="radiobutton" id="$PARAM[id]05">
+		<control type="radiobutton" id="$PARAM[id]14">
 			<include>SettingsButton</include>
 			<onclick>Skin.ToggleSetting(HideSPPVR)</onclick>
 			<selected>!Skin.HasSetting(HideSPPVR)</selected>
 			<label>$LOCALIZE[31138]</label>
 			<enable>Pvr.HasTVChannels | Pvr.HasRadioChannels</enable>
 		</control>
-		<control type="radiobutton" id="$PARAM[id]06">
+		<control type="radiobutton" id="$PARAM[id]15">
 			<include>SettingsButton</include>
 			<onclick>Skin.ToggleSetting(HideSPMusic)</onclick>
 			<selected>!Skin.HasSetting(HideSPMusic)</selected>
 			<label>$LOCALIZE[31139]</label>
 		</control>
-		<control type="radiobutton" id="$PARAM[id]07">
+		<control type="radiobutton" id="$PARAM[id]16">
 			<include>SettingsButton</include>
 			<onclick>Skin.ToggleSetting(HideSPMusicvideos)</onclick>
 			<selected>!Skin.HasSetting(HideSPMusicvideos)</selected>
 			<label>$LOCALIZE[31168]</label>
 		</control>
-		<control type="radiobutton" id="$PARAM[id]08">
+		<control type="radiobutton" id="$PARAM[id]17">
 			<include>SettingsButton</include>
 			<onclick>Skin.ToggleSetting(HideSPPictures)</onclick>
 			<selected>!Skin.HasSetting(HideSPPictures)</selected>
@@ -711,22 +722,22 @@
 		</control>
 		<!-- misc -->
 		<include content="SkinSettingsHeadlineLabel">
-			<param name="id" value="$PARAM[id]09"/>
+			<param name="id" value="$PARAM[id]20"/>
 			<param name="label" value="$LOCALIZE[31001]"/>
 		</include>
-		<control type="radiobutton" id="$PARAM[id]10">
+		<control type="radiobutton" id="$PARAM[id]21">
 			<include>SettingsButton</include>
 			<onclick>Skin.ToggleSetting(HideSPAddons)</onclick>
 			<selected>!Skin.HasSetting(HideSPAddons)</selected>
 			<label>$LOCALIZE[31141]</label>
 		</control>
-		<control type="radiobutton" id="$PARAM[id]11">
+		<control type="radiobutton" id="$PARAM[id]22">
 			<include>SettingsButton</include>
 			<onclick>Skin.ToggleSetting(HideSPFavourites)</onclick>
 			<selected>!Skin.HasSetting(HideSPFavourites)</selected>
 			<label>$LOCALIZE[31142]</label>
 		</control>
-		<control type="radiobutton" id="$PARAM[id]12">
+		<control type="radiobutton" id="$PARAM[id]23">
 			<include>SettingsButton</include>
 			<onclick>Skin.ToggleSetting(HideSPWeather)</onclick>
 			<selected>!Skin.HasSetting(HideSPWeather)</selected>
@@ -735,35 +746,35 @@
 		</control>
 		<!-- system -->
 		<include content="SkinSettingsHeadlineLabel">
-			<param name="id" value="$PARAM[id]13"/>
+			<param name="id" value="$PARAM[id]30"/>
 			<param name="label" value="$LOCALIZE[13000]"/>
 		</include>
-		<control type="radiobutton" id="$PARAM[id]14">
+		<control type="radiobutton" id="$PARAM[id]31">
 			<include>SettingsButton</include>
 			<onclick>Skin.ToggleSetting(HideSPEmbyConUser)</onclick>
 			<selected>!Skin.HasSetting(HideSPEmbyConUser)</selected>
 			<label>$LOCALIZE[31113]</label>
 			<enable>System.HasAddon(plugin.video.embycon)</enable>
 		</control>
-		<control type="radiobutton" id="$PARAM[id]15">
+		<control type="radiobutton" id="$PARAM[id]32">
 			<include>SettingsButton</include>
 			<onclick>Skin.ToggleSetting(HideSPLibUpdate)</onclick>
 			<selected>!Skin.HasSetting(HideSPLibUpdate)</selected>
 			<label>$LOCALIZE[31114]</label>
 		</control>
-		<control type="radiobutton" id="$PARAM[id]16">
+		<control type="radiobutton" id="$PARAM[id]33">
 			<include>SettingsButton</include>
 			<onclick>Skin.ToggleSetting(HideSPAddonUpdate)</onclick>
 			<selected>!Skin.HasSetting(HideSPAddonUpdate)</selected>
 			<label>$LOCALIZE[31144]</label>
 		</control>
-		<control type="radiobutton" id="$PARAM[id]17">
+		<control type="radiobutton" id="$PARAM[id]34">
 			<include>SettingsButton</include>
 			<onclick>Skin.ToggleSetting(HideSPDebug)</onclick>
 			<selected>!Skin.HasSetting(HideSPDebug)</selected>
 			<label>$LOCALIZE[31145]</label>
 		</control>
-		<control type="radiobutton" id="$PARAM[id]18">
+		<control type="radiobutton" id="$PARAM[id]35">
 			<include>SettingsButton</include>
 			<onclick>Skin.ToggleSetting(HideSPReload)</onclick>
 			<selected>!Skin.HasSetting(HideSPReload)</selected>
