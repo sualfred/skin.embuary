@@ -919,8 +919,11 @@
 						<aspectratio scalediffuse="false">$PARAM[ar]</aspectratio>
 						<visible>
 							[
+							[
 							![String.StartsWith(ListItem.Path,pvr://) + String.IsEmpty(ListItem.EpgEventIcon) + [String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)]]
 							+ ![String.StartsWith(ListItem.Path,pvr://) + Skin.HasSetting(UseChannelLogo)]
+							]
+							| String.IsEqual(ListItem.Icon,ListItem.EpgEventIcon)
 							]
 							+ !String.StartsWith(ListItem.Icon,Default)
 							+ !String.StartsWith(ListItem.Art(thumb),image://picturefolder)
@@ -938,6 +941,7 @@
 							[String.StartsWith(ListItem.Path,pvr://) + String.IsEmpty(ListItem.EpgEventIcon) + [String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)]]
 							| [String.StartsWith(ListItem.Path,pvr://) + Skin.HasSetting(UseChannelLogo)]
 							]
+							+ !String.IsEqual(ListItem.Icon,ListItem.EpgEventIcon)
 							+ !String.StartsWith(ListItem.Art(thumb),image://picturefolder)
 							+ !String.EndsWith(ListItem.Art(thumb),folder.jpg)
 							+ !String.StartsWith(ListItem.Icon,Default)
@@ -1043,8 +1047,11 @@
 						<aspectratio scalediffuse="false">$PARAM[ar]</aspectratio>
 						<visible>
 							[
+							[
 							![String.StartsWith(ListItem.Path,pvr://) + String.IsEmpty(ListItem.EpgEventIcon) + [String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)]]
 							+ ![String.StartsWith(ListItem.Path,pvr://) + Skin.HasSetting(UseChannelLogo)]
+							]
+							| String.IsEqual(ListItem.Icon,ListItem.EpgEventIcon)
 							]
 							+ !String.StartsWith(ListItem.Icon,Default)
 							+ !String.StartsWith(ListItem.Art(thumb),image://picturefolder)
@@ -1062,6 +1069,7 @@
 							[String.StartsWith(ListItem.Path,pvr://) + String.IsEmpty(ListItem.EpgEventIcon) + [String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)]]
 							| [String.StartsWith(ListItem.Path,pvr://) + Skin.HasSetting(UseChannelLogo)]
 							]
+							+ !String.IsEqual(ListItem.Icon,ListItem.EpgEventIcon)
 							+ !String.StartsWith(ListItem.Art(thumb),image://picturefolder)
 							+ !String.EndsWith(ListItem.Art(thumb),folder.jpg)
 							+ !String.StartsWith(ListItem.Icon,Default)
@@ -1705,7 +1713,7 @@
 					<include content="listitem_action_overlay">
 						<param name="focused" value="$PARAM[focused]"/>
 						<param name="id" value="$PARAM[id]"/>
-							<param name="visible_icon" value="$PARAM[visible_icon]"/>
+						<param name="visible_icon" value="$PARAM[visible_icon]"/>
 					</include>
 				</control>
 			</control>
