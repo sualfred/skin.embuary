@@ -112,7 +112,7 @@
 		<control type="image">
 			<include>FullscreenDimensions</include>
 			<texture>views/player/music_back.jpg</texture>
-			<visible>Window.IsVisible(visualisation) + [Skin.HasSetting(VisFanartDisabled) | [String.IsEmpty(Player.Art(fanart)) + String.IsEmpty(Window(home).Property(MusicPlayer.Fanart))]]</visible>
+			<visible>Window.IsVisible(visualisation) + [Skin.HasSetting(VisFanartDisabled) | String.IsEmpty(Player.Art(fanart))]</visible>
 		</control>
 		<!-- Visualisation -->
 		<control type="visualisation">
@@ -126,7 +126,7 @@
 			<control type="image">
 				<include>FullscreenDimensions</include>
 				<fadetime>400</fadetime>
-				<texture background="true">$VAR[MusicPlayerFanart]</texture>
+				<texture background="true">$INFO[Player.Art(fanart)]</texture>
 				<include>VisAnimation</include>
 				<visible>!Skin.HasSetting(VisFanartDisabled) + !$EXP[ArtistSlideshow]</visible>
 			</control>
@@ -569,7 +569,7 @@
 				<textcolor>white</textcolor>
 				<label>$VAR[PlayerTitleLabel]</label>
 				<visible>
-					[String.IsEmpty(Player.Art(tvshow.clearlogo)) + String.IsEmpty(Player.Art(clearlogo)) + String.IsEmpty(Window(home).Property(MusicPlayer.Clearlogo))]
+					[String.IsEmpty(Player.Art(tvshow.clearlogo)) + String.IsEmpty(Player.Art(clearlogo))]
 					| String.Contains(Player.Art(thumb),KodiCinemaMode)
 					| String.Contains(Player.Art(thumb),KodiTrailer)
 				</visible>

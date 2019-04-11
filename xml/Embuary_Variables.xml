@@ -785,7 +785,7 @@
 		<value condition="[Pvr.IsPlayingRadio | Player.HasVideo] + !Window.IsVisible(textviewer)">[COLOR text_sublabel]$LOCALIZE[31156][/COLOR]</value>
 	</variable>
 	<variable name="PlayerDiscArt">
-		<value condition="!String.IsEmpty(Window(home).Property(MusicPlayer.Discart))">$INFO[Window(home).Property(MusicPlayer.Discart)]</value>
+		<value condition="!String.IsEmpty(Player.Art(discart))">$INFO[Player.Art(discart)]</value>
 		<value>common/white.jpg</value>
 	</variable>
 	<variable name="PlayerResolution">
@@ -1145,7 +1145,6 @@
 	<variable name="PlayerClearlogo">
 		<value condition="!String.IsEmpty(Player.Art(tvshow.clearlogo))">$INFO[Player.Art(tvshow.clearlogo)]</value>
 		<value condition="!String.IsEmpty(Player.Art(clearlogo))">$INFO[Player.Art(clearlogo)]</value>
-		<value condition="Player.HasAudio + !String.IsEmpty(Window(home).Property(MusicPlayer.Clearlogo))">$INFO[Window(home).Property(MusicPlayer.Clearlogo)]</value>
 	</variable>
 	<variable name="MusicPlayerCoverTitle">
 		<value condition="!String.IsEmpty(MusicPlayer.Album)">$INFO[MusicPlayer.Album]</value>
@@ -1164,7 +1163,6 @@
 		<value condition="!String.IsEmpty(Player.Icon) + !String.StartsWith(Player.Icon,default)">$INFO[Player.Icon]</value>
 		<value condition="!String.IsEmpty(VideoPlayer.Cover) + !String.StartsWith(VideoPlayer.Cover,default)">$INFO[VideoPlayer.Cover]</value>
 		<value condition="!String.IsEmpty(MusicPlayer.Cover) + !String.StartsWith(MusicPlayer.Cover,default)">$INFO[MusicPlayer.Cover]</value>
-		<value condition="Player.HasAudio + !String.IsEmpty(Window(home).Property(MusicPlayer.Cover))">$INFO[Window(home).Property(MusicPlayer.Cover)]</value>
 	</variable>
 	<variable name="WidePlayerIcon">
 		<value condition="[VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)] + Skin.HasSetting(ShowEPGThumbVideoOSD) + !String.IsEmpty(Pvr.EPGEventIcon)">$INFO[Pvr.EPGEventIcon]</value>
@@ -1260,10 +1258,6 @@
 	<variable name="BackgroundAlphaLabel">
 		<value condition="!String.IsEmpty(Skin.String(BackgroundAlpha.label))">$INFO[Skin.String(BackgroundAlpha.label)]</value>
 		<value>$LOCALIZE[31157]</value>
-	</variable>
-	<variable name="MusicPlayerFanart">
-		<value condition="!String.IsEmpty(Player.Art(fanart))">$INFO[Player.Art(fanart)]</value>
-		<value condition="!String.IsEmpty(Window(home).Property(MusicPlayer.Fanart))">$INFO[Window(home).Property(MusicPlayer.Fanart)]</value>
 	</variable>
 	<variable name="ExtendedInfoFilmographyMovies">
 		<value condition="Integer.IsGreater(Container(150).NumItems,1)">$INFO[Container(150).NumItems,, $LOCALIZE[342]]</value>
