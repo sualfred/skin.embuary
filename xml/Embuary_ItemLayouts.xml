@@ -923,6 +923,7 @@
 							![String.StartsWith(ListItem.Path,pvr://) + String.IsEmpty(ListItem.EpgEventIcon) + [String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)]]
 							+ ![String.StartsWith(ListItem.Path,pvr://) + Skin.HasSetting(UseChannelLogo)]
 							]
+							| [String.StartsWith(ListItem.Filenameandpath,pvr://recordings) + !String.IsEqual(ListItem.ActualIcon,ListItem.Icon)]
 							| String.IsEqual(ListItem.Icon,ListItem.EpgEventIcon)
 							]
 							+ !String.StartsWith(ListItem.Icon,Default)
@@ -942,6 +943,7 @@
 							| [String.StartsWith(ListItem.Path,pvr://) + Skin.HasSetting(UseChannelLogo)]
 							]
 							+ !String.IsEqual(ListItem.Icon,ListItem.EpgEventIcon)
+							+ ![String.StartsWith(ListItem.Filenameandpath,pvr://recordings) + !String.IsEqual(ListItem.ActualIcon,ListItem.Icon)]
 							+ !String.StartsWith(ListItem.Art(thumb),image://picturefolder)
 							+ !String.EndsWith(ListItem.Art(thumb),folder.jpg)
 							+ !String.StartsWith(ListItem.Icon,Default)
@@ -1051,6 +1053,7 @@
 							![String.StartsWith(ListItem.Path,pvr://) + String.IsEmpty(ListItem.EpgEventIcon) + [String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)]]
 							+ ![String.StartsWith(ListItem.Path,pvr://) + Skin.HasSetting(UseChannelLogo)]
 							]
+							| [String.StartsWith(ListItem.Filenameandpath,pvr://recordings) + !String.IsEqual(ListItem.ActualIcon,ListItem.Icon)]
 							| String.IsEqual(ListItem.Icon,ListItem.EpgEventIcon)
 							]
 							+ !String.StartsWith(ListItem.Icon,Default)
@@ -1070,6 +1073,7 @@
 							| [String.StartsWith(ListItem.Path,pvr://) + Skin.HasSetting(UseChannelLogo)]
 							]
 							+ !String.IsEqual(ListItem.Icon,ListItem.EpgEventIcon)
+							+ ![String.StartsWith(ListItem.Filenameandpath,pvr://recordings) + !String.IsEqual(ListItem.ActualIcon,ListItem.Icon)]
 							+ !String.StartsWith(ListItem.Art(thumb),image://picturefolder)
 							+ !String.EndsWith(ListItem.Art(thumb),folder.jpg)
 							+ !String.StartsWith(ListItem.Icon,Default)
@@ -1949,8 +1953,12 @@
 						<aspectratio scalediffuse="false">keep</aspectratio>
 						<visible>
 							[
+							[
 							![String.StartsWith(ListItem.Path,pvr://) + String.IsEmpty(ListItem.EpgEventIcon) + [String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)]]
 							+ ![String.StartsWith(ListItem.Path,pvr://) + Skin.HasSetting(UseChannelLogo)]
+							]
+							| [String.StartsWith(ListItem.Filenameandpath,pvr://recordings) + !String.IsEqual(ListItem.ActualIcon,ListItem.Icon)]
+							| String.IsEqual(ListItem.Icon,ListItem.EpgEventIcon)
 							]
 							+ !String.StartsWith(ListItem.Icon,Default)
 							+ !String.StartsWith(ListItem.Art(thumb),image://picturefolder)
@@ -1968,6 +1976,8 @@
 							[String.StartsWith(ListItem.Path,pvr://) + String.IsEmpty(ListItem.EpgEventIcon) + [String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)]]
 							| [String.StartsWith(ListItem.Path,pvr://) + Skin.HasSetting(UseChannelLogo)]
 							]
+							+ !String.IsEqual(ListItem.Icon,ListItem.EpgEventIcon)
+							+ ![String.StartsWith(ListItem.Filenameandpath,pvr://recordings) + !String.IsEqual(ListItem.ActualIcon,ListItem.Icon)]
 							+ !String.StartsWith(ListItem.Art(thumb),image://picturefolder)
 							+ !String.EndsWith(ListItem.Art(thumb),folder.jpg)
 							+ !String.StartsWith(ListItem.Icon,Default)
