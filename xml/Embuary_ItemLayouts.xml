@@ -844,6 +844,136 @@
 			</control>
 		</definition>
 	</include>
+	<!-- 4:3 -->
+	<include name="4to3Layout">
+		<param name="mainlabel">$VAR[MainListLabel]</param>
+		<param name="sublabel">$VAR[SubListLabel]</param>
+		<param name="thumblabel">$VAR[MainListLabel]</param>
+		<param name="ar">stretch</param>
+		<param name="focused">false</param>
+		<param name="visible">true</param>
+		<definition>
+			<control type="group">
+				<visible>$PARAM[visible]</visible>
+				<include content="widget_labels">
+					<param name="top">254</param>
+					<param name="width">340</param>
+					<param name="id">$PARAM[id]</param>
+					<param name="mainlabel">$PARAM[mainlabel]</param>
+					<param name="sublabel">$PARAM[sublabel]</param>
+					<param name="focused">$PARAM[focused]</param>
+					<param name="labels_visible">$PARAM[labels_visible]</param>
+				</include>
+				<control type="group">
+					<include content="Animation_FocusBounce">
+						<param name="id" value="$PARAM[id]"/>
+					</include>
+					<height>242</height>
+					<control type="image">
+						<top>-2</top>
+						<left>-2</left>
+						<width>346</width>
+						<height>248</height>
+						<texture border="20,20,20,20">items/shadow.png</texture>
+					</control>
+					<control type="image">
+						<left>-12</left>
+						<top>-7</top>
+						<width>364</width>
+						<height>266</height>
+						<texture border="20,20,20,20" colordiffuse="$VAR[AccentColor]">items/focus.png</texture>
+						<aspectratio>stretch</aspectratio>
+						<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
+						<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
+					</control>
+					<control type="image">
+						<width>340</width>
+						<height>242</height>
+						<texture colordiffuse="$VAR[ThumbFallbackColor]">common/white.jpg</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="image">
+						<width>340</width>
+						<height>242</height>
+						<texture colordiffuse="$VAR[ThumbBackgroundColor]">common/white.jpg</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="textbox">
+						<top>10</top>
+						<left>10</left>
+						<width>320</width>
+						<height>222</height>
+						<font>Light24</font>
+						<textcolor>white</textcolor>
+						<align>center</align>
+						<aligny>center</aligny>
+						<label>$PARAM[thumblabel]</label>
+						<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="image">
+						<width>340</width>
+						<height>242</height>
+						<texture background="true">$VAR[IconLandscape]</texture>
+						<aspectratio scalediffuse="false">$PARAM[ar]</aspectratio>
+						<visible>
+							[
+							[
+							![String.StartsWith(ListItem.Path,pvr://) + String.IsEmpty(ListItem.EpgEventIcon) + [String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)]]
+							+ ![String.StartsWith(ListItem.Path,pvr://) + Skin.HasSetting(UseChannelLogo)]
+							]
+							| [String.StartsWith(ListItem.Filenameandpath,pvr://recordings) + !String.IsEqual(ListItem.ActualIcon,ListItem.Icon)]
+							| String.IsEqual(ListItem.Icon,ListItem.EpgEventIcon)
+							]
+							+ !String.StartsWith(ListItem.Icon,Default)
+							+ !String.StartsWith(ListItem.Art(thumb),image://picturefolder)
+							+ !String.EndsWith(ListItem.Art(thumb),folder.jpg)
+						</visible>
+					</control>
+					<control type="image">
+						<width>340</width>
+						<height>242</height>
+						<texture background="true">$INFO[ListItem.Icon]</texture>
+						<aspectratio scalediffuse="false">keep</aspectratio>
+						<bordersize>20</bordersize>
+						<visible>
+							[
+							[String.StartsWith(ListItem.Path,pvr://) + String.IsEmpty(ListItem.EpgEventIcon) + [String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)]]
+							| [String.StartsWith(ListItem.Path,pvr://) + Skin.HasSetting(UseChannelLogo)]
+							]
+							+ !String.IsEqual(ListItem.Icon,ListItem.EpgEventIcon)
+							+ ![String.StartsWith(ListItem.Filenameandpath,pvr://recordings) + !String.IsEqual(ListItem.ActualIcon,ListItem.Icon)]
+							+ !String.StartsWith(ListItem.Art(thumb),image://picturefolder)
+							+ !String.EndsWith(ListItem.Art(thumb),folder.jpg)
+							+ !String.StartsWith(ListItem.Icon,Default)
+						</visible>
+					</control>
+					<control type="image">
+						<width>340</width>
+						<height>242</height>
+						<texture background="true">$INFO[ListItem.Art(thumb)]</texture>
+						<aspectratio scalediffuse="false">keep</aspectratio>
+						<visible>String.StartsWith(ListItem.Art(thumb),image://picturefolder) | String.EndsWith(ListItem.Art(thumb),folder.jpg)</visible>
+					</control>
+					<control type="group">
+						<width>340</width>
+						<height>242</height>
+						<include content="listitem_action_overlay">
+							<param name="focused" value="$PARAM[focused]"/>
+							<param name="id" value="$PARAM[id]"/>
+							<param name="visible_icon" value="$PARAM[visible_icon]"/>
+						</include>
+						<include>listitem_overlay</include>
+					</control>
+					<include content="progress">
+						<param name="top" value="238"/>
+						<param name="width" value="340"/>
+					</include>
+				</control>
+			</control>
+		</definition>
+	</include>
 	<!-- Landscape -->
 	<include name="LandscapeLayout">
 		<param name="mainlabel">$VAR[MainListLabel]</param>
@@ -919,8 +1049,12 @@
 						<aspectratio scalediffuse="false">$PARAM[ar]</aspectratio>
 						<visible>
 							[
+							[
 							![String.StartsWith(ListItem.Path,pvr://) + String.IsEmpty(ListItem.EpgEventIcon) + [String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)]]
 							+ ![String.StartsWith(ListItem.Path,pvr://) + Skin.HasSetting(UseChannelLogo)]
+							]
+							| [String.StartsWith(ListItem.Filenameandpath,pvr://recordings) + !String.IsEqual(ListItem.ActualIcon,ListItem.Icon)]
+							| String.IsEqual(ListItem.Icon,ListItem.EpgEventIcon)
 							]
 							+ !String.StartsWith(ListItem.Icon,Default)
 							+ !String.StartsWith(ListItem.Art(thumb),image://picturefolder)
@@ -938,6 +1072,8 @@
 							[String.StartsWith(ListItem.Path,pvr://) + String.IsEmpty(ListItem.EpgEventIcon) + [String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)]]
 							| [String.StartsWith(ListItem.Path,pvr://) + Skin.HasSetting(UseChannelLogo)]
 							]
+							+ !String.IsEqual(ListItem.Icon,ListItem.EpgEventIcon)
+							+ ![String.StartsWith(ListItem.Filenameandpath,pvr://recordings) + !String.IsEqual(ListItem.ActualIcon,ListItem.Icon)]
 							+ !String.StartsWith(ListItem.Art(thumb),image://picturefolder)
 							+ !String.EndsWith(ListItem.Art(thumb),folder.jpg)
 							+ !String.StartsWith(ListItem.Icon,Default)
@@ -1581,7 +1717,7 @@
 					<include content="listitem_action_overlay">
 						<param name="focused" value="$PARAM[focused]"/>
 						<param name="id" value="$PARAM[id]"/>
-							<param name="visible_icon" value="$PARAM[visible_icon]"/>
+						<param name="visible_icon" value="$PARAM[visible_icon]"/>
 					</include>
 				</control>
 			</control>
@@ -1817,8 +1953,12 @@
 						<aspectratio scalediffuse="false">keep</aspectratio>
 						<visible>
 							[
+							[
 							![String.StartsWith(ListItem.Path,pvr://) + String.IsEmpty(ListItem.EpgEventIcon) + [String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)]]
 							+ ![String.StartsWith(ListItem.Path,pvr://) + Skin.HasSetting(UseChannelLogo)]
+							]
+							| [String.StartsWith(ListItem.Filenameandpath,pvr://recordings) + !String.IsEqual(ListItem.ActualIcon,ListItem.Icon)]
+							| String.IsEqual(ListItem.Icon,ListItem.EpgEventIcon)
 							]
 							+ !String.StartsWith(ListItem.Icon,Default)
 							+ !String.StartsWith(ListItem.Art(thumb),image://picturefolder)
@@ -1836,6 +1976,8 @@
 							[String.StartsWith(ListItem.Path,pvr://) + String.IsEmpty(ListItem.EpgEventIcon) + [String.Contains(ListItem.Icon,imagecache) | !String.Contains(ListItem.Icon,.jpg)]]
 							| [String.StartsWith(ListItem.Path,pvr://) + Skin.HasSetting(UseChannelLogo)]
 							]
+							+ !String.IsEqual(ListItem.Icon,ListItem.EpgEventIcon)
+							+ ![String.StartsWith(ListItem.Filenameandpath,pvr://recordings) + !String.IsEqual(ListItem.ActualIcon,ListItem.Icon)]
 							+ !String.StartsWith(ListItem.Art(thumb),image://picturefolder)
 							+ !String.EndsWith(ListItem.Art(thumb),folder.jpg)
 							+ !String.StartsWith(ListItem.Icon,Default)

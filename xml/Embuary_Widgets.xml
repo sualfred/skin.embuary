@@ -57,6 +57,130 @@
 		</definition>
 	</include>
 
+	<!-- 4:3 -->
+	<include name="4to3Widget">
+		<param name="visible">true</param>
+		<param name="content_visible">true</param>
+		<param name="headline">$LOCALIZE[416]</param>
+		<param name="mainlabel">$VAR[MainListLabel]</param>
+		<param name="sublabel">$VAR[SubListLabel]</param>
+		<param name="use_custom_content">true</param>
+		<param name="use_custom_onclick">false</param>
+		<param name="height">468</param>
+		<param name="force_visible">false</param>
+		<param name="layout">4to3Layout</param>
+		<definition>
+			<control type="group">
+				<visible>$PARAM[visible]</visible>
+				<visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating | $PARAM[force_visible]</visible>
+				<width>100%</width>
+				<height>$PARAM[height]</height>
+				<control type="group">
+					<include content="widget_headline">
+						<param name="headline">$PARAM[headline]</param>
+						<param name="headline_icon">$PARAM[headline_icon]</param>
+						<param name="id">$PARAM[id]</param>
+					</include>
+					<include content="LoadingWidget">
+						<param name="id" value="$PARAM[id]"/>
+						<param name="shadow_width" value="346"/>
+						<param name="shadow_height" value="248"/>
+						<param name="width" value="340"/>
+						<param name="height" value="242"/>
+						<param name="focus_width" value="454"/>
+						<param name="focus_height" value="266"/>
+					</include>
+					<control type="fixedlist" id="$PARAM[id]">
+						<visible>$PARAM[content_visible]</visible>
+						<include>FocusBounce</include>
+						<movement>4</movement>
+						<top>30</top>
+						<width>100%</width>
+						<scrolltime>300</scrolltime>
+						<orientation>horizontal</orientation>
+						<preloaditems>4</preloaditems>
+						<ondown>$PARAM[ondown]</ondown>
+						<onup>$PARAM[onup]</onup>
+						<onback>$PARAM[onback]</onback>
+						<include content="Bounce_Right">
+							<param name="id">$PARAM[id]</param>
+						</include>
+						<onright>SetProperty(BounceRight,1,home)</onright>
+						<onright>noop</onright>
+						<onleft>900</onleft>
+						<include condition="$PARAM[use_custom_onclick]" content="ContainerOnClick">
+							<param name="onclick" value="$PARAM[onclick]"/>
+							<param name="onclick2" value="$PARAM[onclick2]"/>
+							<param name="onclick3" value="$PARAM[onclick3]"/>
+							<param name="onclick4" value="$PARAM[onclick4]"/>
+							<param name="onclick5" value="$PARAM[onclick5]"/>
+							<param name="onclick6" value="$PARAM[onclick6]"/>
+							<param name="onclick7" value="$PARAM[onclick7]"/>
+							<param name="onclick8" value="$PARAM[onclick8]"/>
+							<param name="onclick9" value="$PARAM[onclick9]"/>
+							<param name="onclick10" value="$PARAM[onclick10]"/>
+							<param name="onclick11" value="$PARAM[onclick11]"/>
+							<param name="onclick12" value="$PARAM[onclick12]"/>
+						</include>
+						<pagecontrol>$PARAM[id]1</pagecontrol>
+						<viewtype label="$PARAM[list_name]">list</viewtype>
+						<itemlayout width="360">
+							<control type="group">
+								<left>70</left>
+								<top>64</top>
+								<include content="$PARAM[layout]">
+									<param name="mainlabel" value="$PARAM[mainlabel]" />
+									<param name="sublabel" value="$PARAM[sublabel]" />
+									<param name="thumblabel" value="$PARAM[thumblabel]" />
+									<param name="labels_visible" value="$PARAM[labels_visible]" />
+									<param name="visible_icon" value="$PARAM[visible_icon]" />
+									<param name="focused" value="false" />
+									<param name="id" value="$PARAM[id]" />
+									<param name="ar" value="$PARAM[ar]" />
+								</include>
+							</control>
+						</itemlayout>
+						<focusedlayout width="360">
+							<include content="SetPropertyOnFocus">
+								<param name="id" value="$PARAM[id]"/>
+							</include>
+							<control type="group">
+								<left>70</left>
+								<top>64</top>
+								<include content="$PARAM[layout]">
+									<param name="mainlabel" value="$PARAM[mainlabel]" />
+									<param name="sublabel" value="$PARAM[sublabel]" />
+									<param name="thumblabel" value="$PARAM[thumblabel]" />
+									<param name="labels_visible" value="$PARAM[labels_visible]" />
+									<param name="visible_icon" value="$PARAM[visible_icon]" />
+									<param name="focused" value="true" />
+									<param name="id" value="$PARAM[id]" />
+									<param name="ar" value="$PARAM[ar]" />
+								</include>
+							</control>
+						</focusedlayout>
+						<include condition="$PARAM[use_custom_content]" content="ContainerContentPath">
+							<param name="widget_target">$PARAM[widget_target]</param>
+							<param name="showdummy">$PARAM[showdummy]</param>
+							<param name="sortby">$PARAM[sortby]</param>
+							<param name="sortorder">$PARAM[sortorder]</param>
+							<param name="limit">$PARAM[limit]</param>
+							<param name="content">$PARAM[content]</param>
+							<param name="widget_target2">$PARAM[widget_target2]</param>
+							<param name="sortby2">$PARAM[sortby2]</param>
+							<param name="sortorder2">$PARAM[sortorder2]</param>
+							<param name="limit2">$PARAM[limit2]</param>
+							<param name="content2">$PARAM[content2]</param>
+						</include>
+					</control>
+					<include content="list_mask">
+						<param name="height" value="242"/>
+						<param name="id" value="$PARAM[id]"/>
+					</include>
+				</control>
+			</control>
+		</definition>
+	</include>
 	<!-- Landscape -->
 	<include name="WideWidget">
 		<param name="visible">true</param>
@@ -934,7 +1058,12 @@
 					<include>FocusBounce</include>
 					<top>150</top>
 					<width>100%</width>
-					<movement>3</movement>
+					<include condition="!Skin.HasSetting(4to3PVRWidget)" content="ParamMovement">
+						<param name="nr" value="3"/>
+					</include>
+					<include condition="Skin.HasSetting(4to3PVRWidget)" content="ParamMovement">
+						<param name="nr" value="4"/>
+					</include>
 					<orientation>horizontal</orientation>
 					<preloaditems>4</preloaditems>
 					<ondown>$PARAM[ondown]</ondown>
@@ -959,7 +1088,7 @@
 						<param name="onclick11" value="$PARAM[onclick11]"/>
 						<param name="onclick12" value="$PARAM[onclick12]"/>
 					</include>
-					<itemlayout width="450">
+					<itemlayout condition="!Skin.HasSetting(4to3PVRWidget)" width="450">
 						<control type="group">
 							<left>70</left>
 							<top>64</top>
@@ -973,7 +1102,7 @@
 							</include>
 						</control>
 					</itemlayout>
-					<focusedlayout width="450">
+					<focusedlayout condition="!Skin.HasSetting(4to3PVRWidget)" width="450">
 						<include content="SetPropertyOnFocus">
 							<param name="id" value="$PARAM[id]"/>
 						</include>
@@ -981,6 +1110,37 @@
 							<left>70</left>
 							<top>64</top>
 							<include content="LandscapeLayout">
+								<param name="mainlabel" value="$PARAM[mainlabel]" />
+								<param name="sublabel" value="$PARAM[sublabel]" />
+								<param name="thumblabel" value="$INFO[ListItem.Channelname]" />
+								<param name="labels_visible" value="$PARAM[labels_visible]" />
+								<param name="focused" value="true" />
+								<param name="id" value="$PARAM[id]" />
+							</include>
+						</control>
+					</focusedlayout>
+					<itemlayout condition="Skin.HasSetting(4to3PVRWidget)" width="360">
+						<control type="group">
+							<left>70</left>
+							<top>64</top>
+							<include content="4to3Layout">
+								<param name="mainlabel" value="$PARAM[mainlabel]" />
+								<param name="sublabel" value="$PARAM[sublabel]" />
+								<param name="thumblabel" value="$INFO[ListItem.Channelname]" />
+								<param name="labels_visible" value="$PARAM[labels_visible]" />
+								<param name="focused" value="false" />
+								<param name="id" value="$PARAM[id]" />
+							</include>
+						</control>
+					</itemlayout>
+					<focusedlayout condition="Skin.HasSetting(4to3PVRWidget)" width="360">
+						<include content="SetPropertyOnFocus">
+							<param name="id" value="$PARAM[id]"/>
+						</include>
+						<control type="group">
+							<left>70</left>
+							<top>64</top>
+							<include content="4to3Layout">
 								<param name="mainlabel" value="$PARAM[mainlabel]" />
 								<param name="sublabel" value="$PARAM[sublabel]" />
 								<param name="thumblabel" value="$INFO[ListItem.Channelname]" />

@@ -18,7 +18,8 @@
 				<control type="group">
 					<top>128</top>
 					<!-- Thumb -->
-					<include>MetaThumbnail</include>
+					<include condition="!Skin.HasSetting(4to3PVRWidget)">MetaThumbnail</include>
+					<include condition="Skin.HasSetting(4to3PVRWidget)">Meta4to3Thumbnail</include>
 					<!-- meta -->
 					<control type="grouplist">
 						<left>524</left>
@@ -89,7 +90,18 @@
 				<control type="group">
 					<top>570</top>
 					<!-- list -->
-					<include content="WideWidget">
+					<include condition="!Skin.HasSetting(4to3PVRWidget)" content="WideWidget">
+						<param name="id" value="57"/>
+						<param name="onup" value="100"/>
+						<param name="ondown" value="200"/>
+						<param name="headline" value="$VAR[ContainerContent]"/>
+						<param name="mainlabel" value="$PARAM[mainlabel]"/>
+						<param name="sublabel" value="$PARAM[sublabel]"/>
+						<param name="thumblabel" value="$PARAM[thumblabel]"/>
+						<param name="use_custom_content" value="false"/>
+						<param name="list_name">$LOCALIZE[31199]</param>
+					</include>
+					<include condition="Skin.HasSetting(4to3PVRWidget)" content="4to3Widget">
 						<param name="id" value="57"/>
 						<param name="onup" value="100"/>
 						<param name="ondown" value="200"/>

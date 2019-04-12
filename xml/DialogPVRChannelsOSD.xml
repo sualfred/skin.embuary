@@ -18,7 +18,17 @@
 					<height>400</height>
 					<texture colordiffuse="black">views/player/mask_bottom.png</texture>
 				</control>
-				<include content="WideWidget">
+				<include condition="!Skin.HasSetting(4to3PVRWidget)" content="WideWidget">
+					<param name="id" value="11"/>
+					<param name="onup" value="PreviousChannelGroup"/>
+					<param name="ondown" value="NextChannelGroup"/>
+					<param name="headline" value="[COLOR white]$LOCALIZE[31070] - $INFO[VideoPlayer.ChannelGroup][/COLOR]"/>
+					<param name="mainlabel" value="$VAR[MainListLabel]"/>
+					<param name="thumblabel" value="$INFO[ListItem.Channelname]"/>
+					<param name="sublabel" value="$VAR[SubListLabel]"/>
+					<param name="use_custom_content" value="false"/>
+				</include>
+				<include condition="Skin.HasSetting(4to3PVRWidget)" content="4to3Widget">
 					<param name="id" value="11"/>
 					<param name="onup" value="PreviousChannelGroup"/>
 					<param name="ondown" value="NextChannelGroup"/>
