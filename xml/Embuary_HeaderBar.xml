@@ -132,6 +132,15 @@
 					</control>
 					<control type="label">
 						<font>Material24</font>
+						<label></label>
+						<include content="HeaderButton">
+							<param name="align" value="false"/>
+							<param name="color" value="$VAR[AccentColor]"/>
+						</include>
+						<visible>[Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(videos) | Container.Content(files) | Container.Content(episodes)] + !String.IsEqual(control.getlabel(10),$LOCALIZE[16100]) + Window.IsVisible(MyVideoNav.xml) + Control.IsEnabled(10) + !String.IsEmpty(Control.getLabel(10))</visible>
+					</control>
+					<control type="label">
+						<font>Material24</font>
 						<label></label>
 						<include content="HeaderButton">
 							<param name="align" value="false"/>
