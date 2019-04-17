@@ -47,8 +47,6 @@
 
 	<expression name="CinemaMode">[!String.IsEmpty(Skin.String(IntroPath)) | Integer.IsGreater(Skin.String(TrailerCount),0)]</expression>
 
-	<expression name="EmbyLoading">[String.IsEqual(Player.Title,emby-loading.mp4)]</expression>
-
 	<expression name="SkinSetup">[!Skin.HasSetting(SkinSetup) + !Window.IsVisible(startup) + !Window.IsVisible(1119)]</expression>
 
 	<expression name="HolidayTheme">[System.Date(12-01,01-07) + !Skin.HasSetting(HideHolidayTheme) + [[!Window.IsVisible(visualisation) + !VideoPlayer.IsFullscreen] | Window.IsActive(fullscreeninfo) | Window.IsActive(script-script.extendedinfo-DialogInfo.xml) | Window.IsActive(script-script.extendedinfo-DialogVideoInfo.xml)]]</expression>
@@ -91,13 +89,14 @@
 			+ !String.StartsWith(Container.FolderPath,pvr://channels/radio/)
 			+ !String.StartsWith(Container.Folderpath,androidapp://)
 			+ !Container.Content(games)
+			+ ![[String.StartsWith(Container.Folderpath,pvr://channels/tv) | String.StartsWith(Container.Folderpath,pvr://recordings/tv)] + String.IsEqual(Skin.String(EPGar),2to3)]
 		]
 		| Window.IsVisible(MyPics.xml)
 		]
 	</expression>
 
 	<expression name="PosterViewVisible">[
-		[Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets) | Container.Content(actors) | Container.Content(directors)]
+		[Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets) | Container.Content(actors) | Container.Content(directors) | [[String.StartsWith(Container.Folderpath,pvr://channels/tv) | String.StartsWith(Container.Folderpath,pvr://recordings/tv)] + String.IsEqual(Skin.String(EPGar),2to3)]]
 		+ !String.Contains(Container.Folderpath,setid)
 		+ ![String.Contains(Container.FolderPath,BoxSet) + !String.Contains(Container.FolderPath,CollapseBoxSet) + Container.Content(movies)]
 		]
@@ -167,8 +166,8 @@
 		| [Control.IsVisible(59) + !Container.Content(episodes) + [Container(59).HasPrevious]]
 		| [Control.IsVisible(59) + Container.Content(episodes) + Container.HasParent + [Container(59).HasPrevious | [Integer.IsGreater(Container(59).NumItems,1) + Integer.IsGreaterOrEqual(Container(59).CurrentItem,1)]]]
 		| [Control.IsVisible(59) + Container.Content(episodes) + !Container.HasParent + [Container(59).HasPrevious | [Integer.IsGreater(Container(59).NumItems,2) + Integer.IsGreaterOrEqual(Container(59).CurrentItem,2)]]]
-		| [Control.IsVisible(50) + [[Integer.IsGreaterOrEqual(Container(50).CurrentItem,12) + Container.HasParent] | Integer.IsGreaterOrEqual(Container(50).CurrentItem,13) | Container(50).HasPrevious] + ![Skin.HasSetting(4to3PVRWidget) + String.StartsWith(Container.Folderpath,pvr://)]]
-		| [Control.IsVisible(50) + [[Integer.IsGreaterOrEqual(Container(50).CurrentItem,15) + Container.HasParent] | Integer.IsGreaterOrEqual(Container(50).CurrentItem,16) | Container(50).HasPrevious] + Skin.HasSetting(4to3PVRWidget) + String.StartsWith(Container.Folderpath,pvr://)]
+		| [Control.IsVisible(50) + [[Integer.IsGreaterOrEqual(Container(50).CurrentItem,12) + Container.HasParent] | Integer.IsGreaterOrEqual(Container(50).CurrentItem,13) | Container(50).HasPrevious] + ![String.IsEqual(Skin.String(EPGar),4to3) + String.StartsWith(Container.Folderpath,pvr://)]]
+		| [Control.IsVisible(50) + [[Integer.IsGreaterOrEqual(Container(50).CurrentItem,15) + Container.HasParent] | Integer.IsGreaterOrEqual(Container(50).CurrentItem,16) | Container(50).HasPrevious] + String.IsEqual(Skin.String(EPGar),4to3) + String.StartsWith(Container.Folderpath,pvr://)]
 		| [Control.IsVisible(51) + [[Integer.IsGreaterOrEqual(Container(51).CurrentItem,14) + Container.HasParent] | Integer.IsGreaterOrEqual(Container(51).CurrentItem,15) | Container(51).HasPrevious]]
 		| [Control.IsVisible(52) + [[Integer.IsGreaterOrEqual(Container(52).CurrentItem,10) + Container.HasParent] | Integer.IsGreaterOrEqual(Container(52).CurrentItem,13) | Container(52).HasPrevious]]
 		| [Control.IsVisible(58) + !Skin.HasSetting(HideBannerLabels) + [[Integer.IsGreaterOrEqual(Container(58).CurrentItem,8) + Container.HasParent] | Integer.IsGreaterOrEqual(Container(58).CurrentItem,9)| Container(58).HasPrevious]]
@@ -177,8 +176,12 @@
 		]
 	</expression>
 
-	<expression name="ListHas4to3Thumb">
-		[String.StartsWith(Container.Folderpath,pvr://) + Skin.HasSetting(4to3PVRWidget)]
+	<expression name="PVR4to3Thumb">
+		[String.StartsWith(Container.Folderpath,pvr://) + String.IsEqual(Skin.String(EPGar),4to3)]
+	</expression>
+
+	<expression name="PVR2to3Thumb">
+		[String.StartsWith(Container.Folderpath,pvr://) + String.IsEqual(Skin.String(EPGar),2to3)]
 	</expression>
 
 	<expression name="ListHasWideThumb">[
@@ -214,6 +217,10 @@
 		+ !String.IsEqual(ListItem.DBType,song)
 		+ !String.IsEqual(ListItem.DBType,album)
 		+ !String.IsEqual(ListItem.ActualIcon,DefaultFile.png)
+	</expression>
+
+	<expression name="RecHasThumb">
+		[String.StartsWith(ListItem.Path,pvr://) + !String.StartsWith(ListItem.Icon,Default) + !String.IsEqual(ListItem.ActualIcon,ListItem.Icon)]
 	</expression>
 
 </includes>

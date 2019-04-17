@@ -31,7 +31,7 @@
 				<param name="headline" value="$VAR[PVRLabel]"/>
 				<param name="content" value="PVRHub_Menu"/>
 			</include>
-			<include condition="!Skin.HasSetting(4to3PVRWidget)" content="WideWidget">
+			<include condition="String.IsEmpty(Skin.String(EPGar))" content="WideWidget">
 				<param name="id" value="200"/>
 				<param name="onup" value="100"/>
 				<param name="ondown" value="201"/>
@@ -40,8 +40,9 @@
 				<param name="thumblabel" value="$INFO[ListItem.Channelname]"/>
 				<param name="sublabel" value="$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, - ]"/>
 				<param name="content" value="pvr://channels/tv/*"/>
+				<param name="layout" value="PVRLandscapeLayout"/>
 			</include>
-			<include condition="!Skin.HasSetting(4to3PVRWidget)" content="WideWidget">
+			<include condition="String.IsEmpty(Skin.String(EPGar))" content="WideWidget">
 				<param name="id" value="201"/>
 				<param name="onup" value="200"/>
 				<param name="ondown" value="202"/>
@@ -52,8 +53,9 @@
 				<param name="sortby" value="lastplayed"/>
 				<param name="sortorder" value="descending"/>
 				<param name="content" value="pvr://channels/tv/*?view=lastplayed"/>
+				<param name="layout" value="PVRLandscapeLayout"/>
 			</include>
-			<include condition="!Skin.HasSetting(4to3PVRWidget)" content="WideWidget">
+			<include condition="String.IsEmpty(Skin.String(EPGar))" content="WideWidget">
 				<param name="id" value="202"/>
 				<param name="onup" value="201"/>
 				<param name="ondown" value="203"/>
@@ -64,8 +66,9 @@
 				<param name="sortby" value="date"/>
 				<param name="sortorder" value="descending"/>
 				<param name="content" value="pvr://recordings/tv/active?view=flat"/>
+				<param name="layout" value="PVRLandscapeLayout"/>
 			</include>
-			<include condition="Skin.HasSetting(4to3PVRWidget)" content="4to3Widget">
+			<include condition="String.IsEqual(Skin.String(EPGar),4to3)" content="4to3Widget">
 				<param name="id" value="200"/>
 				<param name="onup" value="100"/>
 				<param name="ondown" value="201"/>
@@ -74,8 +77,9 @@
 				<param name="thumblabel" value="$INFO[ListItem.Channelname]"/>
 				<param name="sublabel" value="$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, - ]"/>
 				<param name="content" value="pvr://channels/tv/*"/>
+				<param name="layout" value="PVR4to3Layout"/>
 			</include>
-			<include condition="Skin.HasSetting(4to3PVRWidget)" content="4to3Widget">
+			<include condition="String.IsEqual(Skin.String(EPGar),4to3)" content="4to3Widget">
 				<param name="id" value="201"/>
 				<param name="onup" value="200"/>
 				<param name="ondown" value="202"/>
@@ -86,8 +90,9 @@
 				<param name="sortby" value="lastplayed"/>
 				<param name="sortorder" value="descending"/>
 				<param name="content" value="pvr://channels/tv/*?view=lastplayed"/>
+				<param name="layout" value="PVR4to3Layout"/>
 			</include>
-			<include condition="Skin.HasSetting(4to3PVRWidget)" content="4to3Widget">
+			<include condition="String.IsEqual(Skin.String(EPGar),4to3)" content="4to3Widget">
 				<param name="id" value="202"/>
 				<param name="onup" value="201"/>
 				<param name="ondown" value="203"/>
@@ -98,6 +103,44 @@
 				<param name="sortby" value="date"/>
 				<param name="sortorder" value="descending"/>
 				<param name="content" value="pvr://recordings/tv/active?view=flat"/>
+				<param name="layout" value="PVR4to3Layout"/>
+			</include>
+			<include condition="String.IsEqual(Skin.String(EPGar),2to3)" content="PosterWidget">
+				<param name="id" value="200"/>
+				<param name="onup" value="100"/>
+				<param name="ondown" value="201"/>
+				<param name="headline" value="$LOCALIZE[31256]"/>
+				<param name="mainlabel" value="$VAR[PVRWidgetMainListLabel]"/>
+				<param name="thumblabel" value="$INFO[ListItem.Channelname]"/>
+				<param name="sublabel" value="$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, - ]"/>
+				<param name="content" value="pvr://channels/tv/*"/>
+				<param name="layout" value="PVRPosterLayout"/>
+			</include>
+			<include condition="String.IsEqual(Skin.String(EPGar),2to3)" content="PosterWidget">
+				<param name="id" value="201"/>
+				<param name="onup" value="200"/>
+				<param name="ondown" value="202"/>
+				<param name="headline" value="$LOCALIZE[31030]"/>
+				<param name="mainlabel" value="$VAR[PVRWidgetMainListLabel]"/>
+				<param name="thumblabel" value="$INFO[ListItem.Channelname]"/>
+				<param name="sublabel" value="$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, - ]"/>
+				<param name="sortby" value="lastplayed"/>
+				<param name="sortorder" value="descending"/>
+				<param name="content" value="pvr://channels/tv/*?view=lastplayed"/>
+				<param name="layout" value="PVRPosterLayout"/>
+			</include>
+			<include condition="String.IsEqual(Skin.String(EPGar),2to3)" content="PosterWidget">
+				<param name="id" value="202"/>
+				<param name="onup" value="201"/>
+				<param name="ondown" value="203"/>
+				<param name="headline" value="$LOCALIZE[19017]"/>
+				<param name="mainlabel" value="$VAR[PVRWidgetMainListLabel]"/>
+				<param name="thumblabel" value="$INFO[ListItem.Channelname]"/>
+				<param name="sublabel" value="$VAR[ListItemEpisodeName]"/>
+				<param name="sortby" value="date"/>
+				<param name="sortorder" value="descending"/>
+				<param name="content" value="pvr://recordings/tv/active?view=flat"/>
+				<param name="layout" value="PVRPosterLayout"/>
 			</include>
 			<include content="SquareWidget">
 				<param name="id" value="203"/>

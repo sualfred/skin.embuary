@@ -11,14 +11,30 @@
 			<!--Bottom-->
 			<control type="group">
 				<bottom>0</bottom>
-				<height>440</height>
+				<include content="ParamHeight" condition="String.IsEqual(Skin.String(EPGar),2to3)">
+					<param name="height" value="553"/>
+				</include>
+				<include content="ParamHeight" condition="String.IsEqual(Skin.String(EPGar),4to3)">
+					<param name="height" value="425"/>
+				</include>
+				<include content="ParamHeight" condition="String.IsEmpty(Skin.String(EPGar))">
+					<param name="height" value="440"/>
+				</include>
 				<control type="image">
 					<bottom>0</bottom>
 					<width>100%</width>
-					<height>400</height>
+					<include content="ParamHeight" condition="String.IsEqual(Skin.String(EPGar),2to3)">
+						<param name="height" value="513"/>
+					</include>
+					<include content="ParamHeight" condition="String.IsEqual(Skin.String(EPGar),4to3)">
+						<param name="height" value="385"/>
+					</include>
+					<include content="ParamHeight" condition="String.IsEmpty(Skin.String(EPGar))">
+						<param name="height" value="400"/>
+					</include>
 					<texture colordiffuse="black">views/player/mask_bottom.png</texture>
 				</control>
-				<include condition="!Skin.HasSetting(4to3PVRWidget)" content="WideWidget">
+				<include condition="String.IsEmpty(Skin.String(EPGar))" content="WideWidget">
 					<param name="id" value="11"/>
 					<param name="onup" value="PreviousChannelGroup"/>
 					<param name="ondown" value="NextChannelGroup"/>
@@ -27,8 +43,9 @@
 					<param name="thumblabel" value="$INFO[ListItem.Channelname]"/>
 					<param name="sublabel" value="$VAR[SubListLabel]"/>
 					<param name="use_custom_content" value="false"/>
+					<param name="layout" value="PVRLandscapeLayout"/>
 				</include>
-				<include condition="Skin.HasSetting(4to3PVRWidget)" content="4to3Widget">
+				<include condition="String.IsEqual(Skin.String(EPGar),4to3)" content="4to3Widget">
 					<param name="id" value="11"/>
 					<param name="onup" value="PreviousChannelGroup"/>
 					<param name="ondown" value="NextChannelGroup"/>
@@ -37,6 +54,18 @@
 					<param name="thumblabel" value="$INFO[ListItem.Channelname]"/>
 					<param name="sublabel" value="$VAR[SubListLabel]"/>
 					<param name="use_custom_content" value="false"/>
+					<param name="layout" value="PVR4to3Layout"/>
+				</include>
+				<include condition="String.IsEqual(Skin.String(EPGar),2to3)" content="PosterWidget">
+					<param name="id" value="11"/>
+					<param name="onup" value="PreviousChannelGroup"/>
+					<param name="ondown" value="NextChannelGroup"/>
+					<param name="headline" value="[COLOR white]$LOCALIZE[31070] - $INFO[VideoPlayer.ChannelGroup][/COLOR]"/>
+					<param name="mainlabel" value="$VAR[MainListLabel]"/>
+					<param name="thumblabel" value="$INFO[ListItem.Channelname]"/>
+					<param name="sublabel" value="$VAR[SubListLabel]"/>
+					<param name="use_custom_content" value="false"/>
+					<param name="layout" value="PVRPosterLayout"/>
 				</include>
 			</control>
 			<!--Scrollletter-->

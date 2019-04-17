@@ -45,200 +45,25 @@
 				<control type="image" id="99">
 					<bottom>0</bottom>
 					<width>100%</width>
-					<height>180</height>
+					<height>170</height>
 					<texture colordiffuse="black">views/player/mask_bottom.png</texture>
 					<visible>!VideoPlayer.Content(livetv) + !String.StartsWith(Player.Filenameandpath,pvr://)</visible>
 				</control>
 				<control type="image" id="99">
 					<bottom>0</bottom>
 					<width>100%</width>
-					<height>216</height>
+					<height>201</height>
 					<texture colordiffuse="black">views/player/mask_bottom.png</texture>
 					<visible>VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)</visible>
 				</control>
-				<!-- Poster -->
-				<control type="group" id="99">
-					<visible>!String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
-					<visible>[VideoPlayer.Content(movies) | VideoPlayer.Content(episodes)] + !VideoPlayer.Content(musicvideos) + [!String.IsEmpty(Player.Art(poster)) | !String.IsEmpty(Player.Art(tvshow.poster))] + ![VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)]</visible>
-					<control type="image" id="99">
-						<bottom>25</bottom>
-						<left>27</left>
-						<width>256</width>
-						<height>381</height>
-						<texture border="20,20,20,20">items/shadow.png</texture>
-					</control>
-					<control type="image" id="99">
-						<bottom>29</bottom>
-						<left>29</left>
-						<width>250</width>
-						<height>375</height>
-						<texture colordiffuse="$VAR[ThumbBackgroundColor]">common/white.jpg</texture>
-						<aspectratio scalediffuse="false">stretch</aspectratio>
-					</control>
-					<control type="image" id="99">
-						<bottom>29</bottom>
-						<left>29</left>
-						<width>250</width>
-						<height>375</height>
-						<texture>$VAR[PlayerIcon]</texture>
-						<aspectratio scalediffuse="false">stretch</aspectratio>
-					</control>
-				</control>
-				<!-- Square -->
-				<control type="group" id="99">
-					<visible>!String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
-					<visible>[VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)] + [!Skin.HasSetting(ShowEPGThumbVideoOSD) | String.IsEmpty(Pvr.EPGEventIcon)]</visible>
-					<control type="image" id="99">
-						<bottom>25</bottom>
-						<left>27</left>
-						<width>256</width>
-						<height>256</height>
-						<texture border="20,20,20,20">items/shadow.png</texture>
-					</control>
-					<control type="image" id="99">
-						<bottom>29</bottom>
-						<left>29</left>
-						<width>250</width>
-						<height>250</height>
-						<texture colordiffuse="$VAR[ThumbFallbackColor]">common/white.jpg</texture>
-						<aspectratio scalediffuse="false">stretch</aspectratio>
-						<visible>[String.IsEmpty(Player.Icon) | String.StartsWith(Player.Icon,Default)] + [String.IsEmpty(VideoPlayer.Cover) | String.StartsWith(VideoPlayer.Cover,Default)]</visible>
-					</control>
-					<control type="textbox" id="99">
-						<bottom>39</bottom>
-						<left>39</left>
-						<width>230</width>
-						<height>230</height>
-						<font>Light24</font>
-						<textcolor>white</textcolor>
-						<align>center</align>
-						<aligny>center</aligny>
-						<label>$INFO[VideoPlayer.Channelname]</label>
-						<visible>[String.IsEmpty(Player.Icon) | String.StartsWith(Player.Icon,Default)] + [String.IsEmpty(VideoPlayer.Cover) | String.StartsWith(VideoPlayer.Cover,Default)]</visible>
-					</control>
-					<control type="image" id="99">
-						<bottom>29</bottom>
-						<left>29</left>
-						<width>250</width>
-						<height>250</height>
-						<texture colordiffuse="$VAR[ThumbBackgroundColor]">common/white.jpg</texture>
-						<aspectratio scalediffuse="false">stretch</aspectratio>
-						<visible>[!String.IsEmpty(Player.Icon) + !String.StartsWith(Player.Icon,Default)] | [!String.IsEmpty(VideoPlayer.Cover) + !String.StartsWith(VideoPlayer.Cover,Default)]</visible>
-					</control>
-					<control type="image" id="99">
-						<bottom>29</bottom>
-						<left>29</left>
-						<width>250</width>
-						<height>250</height>
-						<texture>$VAR[PlayerIcon]</texture>
-						<bordersize>20</bordersize>
-						<aspectratio scalediffuse="false">keep</aspectratio>
-					</control>
-				</control>
-				<!-- Wide EPG Thumb -->
-				<control type="group" id="99">
-					<visible>[VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)] + !String.IsEmpty(Pvr.EPGEventIcon) + Skin.HasSetting(ShowEPGThumbVideoOSD)</visible>
-					<control type="image" id="99">
-						<bottom>25</bottom>
-						<left>27</left>
-						<width>256</width>
-						<height>172</height>
-						<texture border="20,20,20,20">items/shadow.png</texture>
-					</control>
-					<control type="image" id="99">
-						<bottom>29</bottom>
-						<left>29</left>
-						<width>250</width>
-						<height>166</height>
-						<texture colordiffuse="ff010202">common/white.jpg</texture>
-						<aspectratio scalediffuse="false">stretch</aspectratio>
-					</control>
-					<control type="image" id="99">
-						<bottom>29</bottom>
-						<left>29</left>
-						<width>250</width>
-						<height>166</height>
-						<texture>$INFO[Pvr.EPGEventIcon]</texture>
-						<aspectratio scalediffuse="false">scale</aspectratio>
-					</control>
-				</control>
-				<!-- Wide -->
-				<control type="group" id="99">
-					<visible>!$EXP[EmbyLoading]</visible>
-					<visible>
-						![VideoPlayer.Content(movies) | VideoPlayer.Content(episodes) | VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)]
-						| [String.IsEmpty(Player.Art(poster)) + String.IsEmpty(Player.Art(tvshow.poster)) + !VideoPlayer.Content(livetv) + !String.StartsWith(Player.Filenameandpath,pvr://)]
-						| VideoPlayer.Content(musicvideos)
-						| String.Contains(Player.Art(thumb),KodiCinemaMode)
-					</visible>
-					<control type="image" id="99">
-						<bottom>25</bottom>
-						<left>27</left>
-						<width>256</width>
-						<height>147</height>
-						<texture border="20,20,20,20">items/shadow.png</texture>
-					</control>
-					<control type="image" id="99">
-						<bottom>29</bottom>
-						<left>29</left>
-						<width>250</width>
-						<height>141</height>
-						<texture colordiffuse="$VAR[ThumbFallbackColor]">common/white.jpg</texture>
-						<aspectratio scalediffuse="false">stretch</aspectratio>
-						<visible>[String.IsEmpty(Player.Art(thumb)) | String.StartsWith(Player.Art(thumb),Default)]</visible>
-					</control>
-					<control type="textbox" id="99">
-						<bottom>39</bottom>
-						<left>39</left>
-						<width>230</width>
-						<height>121</height>
-						<font>Material50</font>
-						<textcolor>white</textcolor>
-						<align>center</align>
-						<aligny>center</aligny>
-						<label></label>
-						<visible>[String.IsEmpty(Player.Art(thumb)) | String.StartsWith(Player.Art(thumb),Default)]</visible>
-					</control>
-					<control type="image" id="99">
-						<bottom>29</bottom>
-						<left>29</left>
-						<width>250</width>
-						<height>141</height>
-						<texture colordiffuse="ff010202">common/white.jpg</texture>
-						<aspectratio scalediffuse="false">stretch</aspectratio>
-						<visible>!String.IsEmpty(Player.Art(thumb)) + !String.StartsWith(Player.Art(thumb),Default)</visible>
-					</control>
-					<control type="group" id="99">
-						<visible>!String.IsEmpty(Player.Art(thumb)) + !String.StartsWith(Player.Art(thumb),Default)</visible>
-						<control type="image" id="99">
-							<bottom>29</bottom>
-							<left>29</left>
-							<width>250</width>
-							<height>141</height>
-							<texture>$VAR[WidePlayerIcon]</texture>
-							<aspectratio scalediffuse="false">scale</aspectratio>
-							<visible>String.Contains(Player.Art(thumb),i.ytimg.com)</visible>
-						</control>
-						<control type="image" id="99">
-							<bottom>29</bottom>
-							<left>29</left>
-							<width>250</width>
-							<height>141</height>
-							<texture>$VAR[WidePlayerIcon]</texture>
-							<aspectratio scalediffuse="false">keep</aspectratio>
-							<visible>!String.Contains(Player.Art(thumb),i.ytimg.com)</visible>
-						</control>
-					</control>
-				</control>
-				<!-- Emby loading -->
 				<control type="image" id="99">
-					<top>29</top>
-					<left>29</left>
-					<width>60</width>
-					<height>60</height>
-					<texture>special://skin/extras/spinner.apng</texture>
-					<aspectratio scalediffuse="false">keep</aspectratio>
-					<visible>$EXP[EmbyLoading]</visible>
+					<bottom>20</bottom>
+					<left>19</left>
+					<width>278</width>
+					<texture>$VAR[PlayerIcon]</texture>
+					<aspectratio scalediffuse="false" aligny="bottom">keep</aspectratio>
+					<bordersize>11</bordersize>
+					<bordertexture border="11,11,11,11">items/resp_shadow.png</bordertexture>
 				</control>
 				<!-- Progress bars -->
 				<control type="group" id="99">
@@ -249,7 +74,6 @@
 						<texturebg colordiffuse="grey">common/white.jpg</texturebg>
 						<midtexture colordiffuse="white">common/white.jpg</midtexture>
 						<visible>!VideoPlayer.HasEpg</visible>
-						<visible>!$EXP[EmbyLoading]</visible>
 					</control>
 					<!-- Video progress bar -->
 					<control type="progress" id="99">
@@ -258,7 +82,6 @@
 						<texturebg colordiffuse="00ffffff">common/white.jpg</texturebg>
 						<midtexture colordiffuse="$VAR[PlayerAccentColor]">common/white.jpg</midtexture>
 						<visible>!VideoPlayer.HasEpg</visible>
-						<visible>!$EXP[EmbyLoading]</visible>
 					</control>
 					<!-- LiveTV + timeshift progress bar -->
 					<control type="progress" id="99">
@@ -267,16 +90,14 @@
 						<texturebg colordiffuse="grey">common/white.jpg</texturebg>
 						<midtexture colordiffuse="$VAR[PlayerAccentColor]">common/white.jpg</midtexture>
 						<visible>VideoPlayer.HasEpg</visible>
-						<visible>!$EXP[EmbyLoading]</visible>
 					</control>
 				</control>
 				<!-- Label section -->
 				<control type="grouplist" id="99">
-					<visible>!$EXP[EmbyLoading]</visible>
-					<animation effect="slide" time="0" start="0,0" end="0,-36" condition="VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)">Conditional</animation>
+					<animation effect="slide" time="0" start="0,0" end="0,-31" condition="VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)">Conditional</animation>
 					<orientation>horizontal</orientation>
 					<height>31</height>
-					<bottom>125</bottom>
+					<bottom>115</bottom>
 					<left>309</left>
 					<right>30</right>
 					<itemgap>0</itemgap>
@@ -376,7 +197,7 @@
 					<visible>VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)</visible>
 					<orientation>horizontal</orientation>
 					<height>31</height>
-					<bottom>125</bottom>
+					<bottom>115</bottom>
 					<left>309</left>
 					<right>30</right>
 					<itemgap>0</itemgap>
@@ -413,7 +234,7 @@
 					<visible>!Window.IsVisible(VideoOSD)</visible>
 					<orientation>horizontal</orientation>
 					<height>50</height>
-					<bottom>30</bottom>
+					<bottom>20</bottom>
 					<left>309</left>
 					<right>20</right>
 					<itemgap>0</itemgap>

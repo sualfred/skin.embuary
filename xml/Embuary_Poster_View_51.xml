@@ -1,85 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 	<include name="Poster_View_51">
-		<control type="group">
-			<include>Visible_OpenClose</include>
-			<visible>Control.IsVisible(51)</visible>
-			<animation effect="slide" condition="Skin.HasSetting(HidePosterLabels) + Window.IsVisible(myvideonav.xml) + ![[Integer.IsGreaterOrEqual(Container(51).CurrentItem,14) + Container.HasParent] | Integer.IsGreaterOrEqual(Container(51).CurrentItem,15) | Container(51).HasPrevious]" time="200" end="0,-53">Conditional</animation>
-			<control id="51" type="panel">
-				<visible>$EXP[PosterViewVisible]</visible>
-				<include>FocusBounce</include>
-				<width>auto</width>
-				<height>1133</height>
-				<onright condition="Control.IsVisible(7000)">SetFocus(7000)</onright>
-				<onright condition="!Control.IsVisible(7000) + Control.IsVisible(17)">17</onright>
-				<onright>noop</onright>
-				<ondown>noop</ondown>
-				<onup>SetFocus(6666)</onup>
-				<onleft>900</onleft>
-				<include>ScrollTime</include>
-				<orientation>vertical</orientation>
-				<preloaditems>4</preloaditems>
-				<defaultcontrol always="true">0</defaultcontrol>
-				<viewtype label="$LOCALIZE[20021]">panel</viewtype>
-				<pagecontrol>17</pagecontrol>
-				<oninfo condition="String.IsEqual(ListItem.DBType,set) + !String.IsEmpty(Container(2001).ListItem.Label)">RunScript(script.embuary.helper,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCVAR[ListViewPlot]')</oninfo>
-				<itemlayout condition="[!Skin.HasSetting(HidePosterLabels) | !Window.IsVisible(myvideonav.xml)]" width="257" height="445">
-					<control type="group">
-						<left>70.5</left>
-						<top>122</top>
-						<include content="PosterLayout">
-							<param name="mainlabel" value="$VAR[MainListLabel]" />
-							<param name="sublabel" value="$VAR[SubListLabel]" />
-							<param name="focused" value="false" />
-							<param name="id" value="51" />
+		<param name="layout">PosterLayout</param>
+		<definition>
+			<control type="group">
+				<include>Visible_OpenClose</include>
+				<visible>Control.IsVisible(51)</visible>
+				<animation effect="slide" condition="Skin.HasSetting(HidePosterLabels) + Window.IsVisible(myvideonav.xml) + ![[Integer.IsGreaterOrEqual(Container(51).CurrentItem,14) + Container.HasParent] | Integer.IsGreaterOrEqual(Container(51).CurrentItem,15) | Container(51).HasPrevious]" time="200" end="0,-53">Conditional</animation>
+				<control id="51" type="panel">
+					<visible>$EXP[PosterViewVisible]</visible>
+					<include>FocusBounce</include>
+					<width>auto</width>
+					<height>1133</height>
+					<onright condition="Control.IsVisible(7000)">SetFocus(7000)</onright>
+					<onright condition="!Control.IsVisible(7000) + Control.IsVisible(17)">17</onright>
+					<onright>noop</onright>
+					<ondown>noop</ondown>
+					<onup>SetFocus(6666)</onup>
+					<onleft>900</onleft>
+					<include>ScrollTime</include>
+					<orientation>vertical</orientation>
+					<preloaditems>4</preloaditems>
+					<defaultcontrol always="true">0</defaultcontrol>
+					<viewtype label="$LOCALIZE[20021]">panel</viewtype>
+					<pagecontrol>17</pagecontrol>
+					<oninfo condition="String.IsEqual(ListItem.DBType,set) + !String.IsEmpty(Container(2001).ListItem.Label)">RunScript(script.embuary.helper,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCVAR[ListViewPlot]')</oninfo>
+					<itemlayout condition="[!Skin.HasSetting(HidePosterLabels) | !Window.IsVisible(myvideonav.xml)]" width="257" height="445">
+						<control type="group">
+							<left>70.5</left>
+							<top>122</top>
+							<include content="$PARAM[layout]">
+								<param name="mainlabel" value="$PARAM[mainlabel]" />
+								<param name="sublabel" value="$PARAM[sublabel]" />
+								<param name="thumblabel" value="$PARAM[thumblabel]" />
+								<param name="ar" value="$PARAM[ar]" />
+								<param name="focused" value="false" />
+								<param name="id" value="51" />
+							</include>
+						</control>
+					</itemlayout>
+					<focusedlayout condition="[!Skin.HasSetting(HidePosterLabels) | !Window.IsVisible(myvideonav.xml)]" width="257" height="445">
+						<include content="SetPropertyOnFocus">
+							<param name="id" value="51"/>
 						</include>
-					</control>
-				</itemlayout>
-				<focusedlayout condition="[!Skin.HasSetting(HidePosterLabels) | !Window.IsVisible(myvideonav.xml)]" width="257" height="445">
-					<include content="SetPropertyOnFocus">
-						<param name="id" value="51"/>
-					</include>
-					<control type="group">
-						<left>70.5</left>
-						<top>122</top>
-						<include content="PosterLayout">
-							<param name="mainlabel" value="$VAR[MainListLabel]" />
-							<param name="sublabel" value="$VAR[SubListLabel]" />
-							<param name="focused" value="true" />
-							<param name="id" value="51" />
-							<param name="visible_forced" value="true"/>
+						<control type="group">
+							<left>70.5</left>
+							<top>122</top>
+							<include content="$PARAM[layout]">
+								<param name="mainlabel" value="$PARAM[mainlabel]" />
+								<param name="sublabel" value="$PARAM[sublabel]" />
+								<param name="thumblabel" value="$PARAM[thumblabel]" />
+								<param name="ar" value="$PARAM[ar]" />
+								<param name="focused" value="true" />
+								<param name="id" value="51" />
+								<param name="visible_forced" value="true"/>
+							</include>
+						</control>
+					</focusedlayout>
+					<itemlayout condition="Skin.HasSetting(HidePosterLabels) + Window.IsVisible(myvideonav.xml)" width="257" height="378">
+						<control type="group">
+							<left>70.5</left>
+							<top>175</top>
+							<include content="$PARAM[layout]">
+								<param name="mainlabel" value="$PARAM[mainlabel]" />
+								<param name="sublabel" value="$PARAM[sublabel]" />
+								<param name="thumblabel" value="$PARAM[thumblabel]" />
+								<param name="ar" value="$PARAM[ar]" />
+								<param name="focused" value="false" />
+								<param name="id" value="51" />
+							</include>
+						</control>
+					</itemlayout>
+					<focusedlayout condition="Skin.HasSetting(HidePosterLabels) + Window.IsVisible(myvideonav.xml)" width="257" height="378">
+						<include content="SetPropertyOnFocus">
+							<param name="id" value="51"/>
 						</include>
-					</control>
-				</focusedlayout>
-				<itemlayout condition="Skin.HasSetting(HidePosterLabels) + Window.IsVisible(myvideonav.xml)" width="257" height="378">
-					<control type="group">
-						<left>70.5</left>
-						<top>175</top>
-						<include content="PosterLayout">
-							<param name="mainlabel" value="" />
-							<param name="sublabel" value="" />
-							<param name="focused" value="false" />
-							<param name="id" value="51" />
-						</include>
-					</control>
-				</itemlayout>
-				<focusedlayout condition="Skin.HasSetting(HidePosterLabels) + Window.IsVisible(myvideonav.xml)" width="257" height="378">
-					<include content="SetPropertyOnFocus">
-						<param name="id" value="51"/>
-					</include>
-					<control type="group">
-						<left>70.5</left>
-						<top>175</top>
-						<include content="PosterLayout">
-							<param name="mainlabel" value="" />
-							<param name="sublabel" value="" />
-							<param name="focused" value="true" />
-							<param name="id" value="51" />
-							<param name="visible_forced" value="true"/>
-						</include>
-					</control>
-				</focusedlayout>
+						<control type="group">
+							<left>70.5</left>
+							<top>175</top>
+							<include content="$PARAM[layout]">
+								<param name="mainlabel" value="$PARAM[mainlabel]" />
+								<param name="sublabel" value="$PARAM[sublabel]" />
+								<param name="thumblabel" value="$PARAM[thumblabel]" />
+								<param name="ar" value="$PARAM[ar]" />
+								<param name="focused" value="true" />
+								<param name="id" value="51" />
+								<param name="visible_forced" value="true"/>
+							</include>
+						</control>
+					</focusedlayout>
+				</control>
 			</control>
-		</control>
+		</definition>
 	</include>
 </includes>

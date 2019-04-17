@@ -30,85 +30,32 @@
 				<control type="image" id="99">
 					<bottom>0</bottom>
 					<width>100%</width>
-					<height>216</height>
+					<height>201</height>
 					<texture colordiffuse="black">views/player/mask_bottom.png</texture>
 				</control>
-				<!-- Square -->
-				<control type="group" id="99">
-					<control type="image" id="99">
-						<bottom>25</bottom>
-						<left>27</left>
-						<width>256</width>
-						<height>256</height>
-						<texture border="20,20,20,20">items/shadow.png</texture>
-					</control>
-					<control type="image">
-						<visible>!Skin.HasSetting(HideDiscArt)</visible>
-						<animation effect="rotate" center="auto" time="6000" end="-360" condition="true" loop="true">Conditional</animation>
-						<bottom>130</bottom>
-						<left>29</left>
-						<width>250</width>
-						<height>250</height>
-						<texture diffuse="views/player/cd.png" background="true">$VAR[PlayerDiscArt]</texture>
-						<fadetime>200</fadetime>
-						<aspectratio>scale</aspectratio>
-					</control>
-					<control type="group" id="99">
-						<visible>String.IsEmpty(MusicPlayer.Cover) | String.StartsWith(MusicPlayer.Cover,Default)</visible>
-						<control type="image" id="99">
-							<bottom>29</bottom>
-							<left>29</left>
-							<width>250</width>
-							<height>250</height>
-							<texture colordiffuse="$VAR[ThumbFallbackColor]">common/white.jpg</texture>
-							<aspectratio scalediffuse="false">stretch</aspectratio>
-						</control>
-						<control type="textbox" id="99">
-							<bottom>39</bottom>
-							<left>39</left>
-							<width>230</width>
-							<height>230</height>
-							<font>Light24</font>
-							<textcolor>white</textcolor>
-							<align>center</align>
-							<aligny>center</aligny>
-							<label>$VAR[MusicPlayerCoverTitle]</label>
-						</control>
-					</control>
-					<control type="group" id="99">
-						<visible>!String.IsEmpty(MusicPlayer.Cover) + !String.StartsWith(MusicPlayer.Cover,Default)</visible>
-						<control type="image" id="99">
-							<bottom>29</bottom>
-							<left>29</left>
-							<width>250</width>
-							<height>250</height>
-							<texture colordiffuse="thumb_background_player">common/white.jpg</texture>
-							<aspectratio scalediffuse="false">stretch</aspectratio>
-						</control>
-						<control type="image" id="99">
-							<bottom>29</bottom>
-							<left>29</left>
-							<width>250</width>
-							<height>250</height>
-							<texture>$VAR[PlayerIcon]</texture>
-							<aspectratio scalediffuse="false">scale</aspectratio>
-							<visible>!String.StartsWith(Player.Filenameandpath,pvr://)</visible>
-						</control>
-						<control type="image" id="99">
-							<bottom>29</bottom>
-							<left>29</left>
-							<width>250</width>
-							<height>250</height>
-							<texture>$VAR[PlayerIcon]</texture>
-							<aspectratio scalediffuse="false">keep</aspectratio>
-							<bordersize>20</bordersize>
-							<visible>String.StartsWith(Player.Filenameandpath,pvr://)</visible>
-						</control>
-					</control>
+				<control type="image">
+					<visible>!Skin.HasSetting(HideDiscArt)</visible>
+					<animation effect="rotate" center="auto" time="6000" end="-360" condition="true" loop="true">Conditional</animation>
+					<bottom>120</bottom>
+					<left>29</left>
+					<width>258</width>
+					<height>258</height>
+					<texture diffuse="views/player/cd.png" background="true">$VAR[PlayerDiscArt]</texture>
+					<fadetime>200</fadetime>
+					<aspectratio>scale</aspectratio>
+				</control>
+				<control type="image" id="99">
+					<bottom>20</bottom>
+					<left>19</left>
+					<width>278</width>
+					<texture>$VAR[PlayerIcon]</texture>
+					<aspectratio scalediffuse="false" aligny="bottom">keep</aspectratio>
+					<bordersize>11</bordersize>
+					<bordertexture border="11,11,11,11">items/resp_shadow.png</bordertexture>
 				</control>
 				<!-- Progress bars -->
 				<control type="group" id="99">
-					<!--  Cache bar -->
+					<!-- Cache bar -->
 					<control type="progress" id="99">
 						<include>PlayerProgressDimension</include>
 						<info>Player.ProgressCache</info>
@@ -127,7 +74,7 @@
 				<control type="grouplist" id="99">
 					<orientation>horizontal</orientation>
 					<height>31</height>
-					<bottom>161</bottom>
+					<bottom>146</bottom>
 					<left>309</left>
 					<right>30</right>
 					<itemgap>0</itemgap>
@@ -142,7 +89,7 @@
 				<control type="grouplist" id="99">
 					<orientation>horizontal</orientation>
 					<height>31</height>
-					<bottom>125</bottom>
+					<bottom>115</bottom>
 					<left>309</left>
 					<right>30</right>
 					<itemgap>0</itemgap>
@@ -170,7 +117,7 @@
 					<visible>!Window.IsVisible(musicosd)</visible>
 					<orientation>horizontal</orientation>
 					<height>50</height>
-					<bottom>30</bottom>
+					<bottom>20</bottom>
 					<left>309</left>
 					<right>20</right>
 					<itemgap>0</itemgap>
