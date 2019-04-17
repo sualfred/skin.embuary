@@ -91,13 +91,14 @@
 			+ !String.StartsWith(Container.FolderPath,pvr://channels/radio/)
 			+ !String.StartsWith(Container.Folderpath,androidapp://)
 			+ !Container.Content(games)
+			+ ![String.StartsWith(Container.Folderpath,pvr://channels/tv) + String.IsEqual(Skin.String(EPGar),2to3)]
 		]
 		| Window.IsVisible(MyPics.xml)
 		]
 	</expression>
 
 	<expression name="PosterViewVisible">[
-		[Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets) | Container.Content(actors) | Container.Content(directors)]
+		[Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets) | Container.Content(actors) | Container.Content(directors) | [String.StartsWith(Container.Folderpath,pvr://channels/tv) + String.IsEqual(Skin.String(EPGar),2to3)]]
 		+ !String.Contains(Container.Folderpath,setid)
 		+ ![String.Contains(Container.FolderPath,BoxSet) + !String.Contains(Container.FolderPath,CollapseBoxSet) + Container.Content(movies)]
 		]

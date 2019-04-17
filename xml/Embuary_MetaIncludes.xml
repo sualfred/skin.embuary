@@ -332,8 +332,16 @@
 				<control type="image">
 					<width>276</width>
 					<height>414</height>
-					<texture background="true">$VAR[IconPoster]</texture>
+					<texture background="true">$VAR[IconPVR]</texture>
 					<aspectratio scalediffuse="false">stretch</aspectratio>
+					<visible>!String.IsEmpty(ListItem.EpgEventIcon)</visible>
+				</control>
+				<control type="image">
+					<width>276</width>
+					<height>414</height>
+					<texture background="true">$VAR[IconPoster]</texture>
+					<aspectratio scalediffuse="false">keep</aspectratio>
+					<visible>String.IsEmpty(ListItem.EpgEventIcon)</visible>
 				</control>
 			</control>
 		</definition>
@@ -395,9 +403,16 @@
 			<control type="image">
 				<width>276</width>
 				<height>414</height>
+				<texture colordiffuse="$VAR[ThumbBackgroundColor]">common/white.jpg</texture>
+				<aspectratio scalediffuse="false">stretch</aspectratio>
+				<visible>![String.IsEmpty(Player.Art(poster)) + String.IsEmpty(Player.Art(tvshow.poster)) + String.IsEmpty(Pvr.EPGEventIcon) + String.StartsWith(VideoPlayer.Cover,Default)]</visible>
+			</control>
+			<control type="image">
+				<width>276</width>
+				<height>414</height>
 				<texture colordiffuse="$VAR[ThumbFallbackColor]">common/white.jpg</texture>
 				<aspectratio scalediffuse="false">stretch</aspectratio>
-				<visible>String.IsEmpty(Player.Art(poster)) + String.IsEmpty(Player.Art(tvshow.poster)) + String.StartsWith(VideoPlayer.Cover,Default)</visible>
+				<visible>String.IsEmpty(Player.Art(poster)) + String.IsEmpty(Player.Art(tvshow.poster)) + String.IsEmpty(Pvr.EPGEventIcon) + String.StartsWith(VideoPlayer.Cover,Default)</visible>
 			</control>
 			<control type="textbox">
 				<top>10</top>
@@ -409,13 +424,21 @@
 				<align>center</align>
 				<aligny>center</aligny>
 				<label>$VAR[PlayerTitleLabel]</label>
-				<visible>String.IsEmpty(Player.Art(poster)) + String.IsEmpty(Player.Art(tvshow.poster)) + String.StartsWith(VideoPlayer.Cover,Default)</visible>
+				<visible>String.IsEmpty(Player.Art(poster)) + String.IsEmpty(Player.Art(tvshow.poster)) + String.IsEmpty(Pvr.EPGEventIcon) + String.IString.StartsWith(VideoPlayer.Cover,Default)</visible>
 			</control>
 			<control type="image">
 				<width>276</width>
 				<height>414</height>
 				<texture background="true">$VAR[PlayerIcon]</texture>
-				<aspectratio scalediffuse="false">scale</aspectratio>
+				<aspectratio scalediffuse="false">stretch</aspectratio>
+				<visible>!VideoPlayer.Content(livetv) | !String.IsEmpty(Pvr.EPGEventIcon)</visible>
+			</control>
+			<control type="image">
+				<width>276</width>
+				<height>414</height>
+				<texture background="true">$VAR[PlayerIcon]</texture>
+				<aspectratio scalediffuse="false">keep</aspectratio>
+				<visible>VideoPlayer.Content(livetv) + String.IsEmpty(Pvr.EPGEventIcon)</visible>
 			</control>
 			<include content="PlayerProgress">
 				<param name="top" value="410"/>
@@ -483,31 +506,60 @@
 				<label>$INFO[ListItem.Label]</label>
 				<visible>ListItem.IsParentFolder</visible>
 			</control>
-			<control type="group">
-				<visible>!String.StartsWith(ListItem.Icon,Default) + String.StartsWith(ListItem.Path,pvr://)</visible>
-				<control type="image">
-					<width>430</width>
-					<height>242</height>
-					<texture background="true">$INFO[ListItem.Icon]</texture>
-					<aspectratio scalediffuse="false">keep</aspectratio>
-					<bordersize>20</bordersize>
-					<visible>[String.IsEmpty(ListItem.EpgEventIcon) + [String.Contains(ListItem.Icon,imagecache) | String.Contains(ListItem.Icon,.png)]]</visible>
-				</control>
-				<control type="image">
-					<width>430</width>
-					<height>242</height>
-					<texture background="true">$VAR[IconLandscape]</texture>
-					<aspectratio scalediffuse="false">keep</aspectratio>
-					<visible>![String.IsEmpty(ListItem.EpgEventIcon) + [String.Contains(ListItem.Icon,imagecache) | String.Contains(ListItem.Icon,.png)]]</visible>
-				</control>
+			<control type="image">
+				<width>430</width>
+				<height>242</height>
+				<texture background="true">$VAR[IconLandscape]</texture>
+				<aspectratio scalediffuse="false">keep</aspectratio>
+			</control>
+		</control>
+	</include>
+	<include name="MetaVideoThumbnail">
+		<control type="group">
+			<left>70</left>
+			<control type="image">
+				<top>-2</top>
+				<left>-2</left>
+				<width>436</width>
+				<height>248</height>
+				<texture border="20,20,20,20">items/shadow.png</texture>
 			</control>
 			<control type="image">
 				<width>430</width>
 				<height>242</height>
-				<texture background="true">$VAR[IconEpisodeThumb]</texture>
-				<aspectratio scalediffuse="false">scale</aspectratio>
-				<visible>!String.StartsWith(ListItem.Icon,Default) + !String.StartsWith(ListItem.Path,pvr://)</visible>
+				<texture colordiffuse="$VAR[ThumbFallbackColor]">common/white.jpg</texture>
+				<aspectratio scalediffuse="false">stretch</aspectratio>
+				<visible>String.IsEmpty(PVR.EpgEventIcon) + String.IsEmpty(Player.Icon)</visible>
 			</control>
+			<control type="image">
+				<width>430</width>
+				<height>242</height>
+				<texture colordiffuse="dark_button">common/white.jpg</texture>
+				<aspectratio scalediffuse="false">stretch</aspectratio>
+				<visible>!String.IsEmpty(PVR.EpgEventIcon) | !String.IsEmpty(Player.Icon)</visible>
+			</control>
+			<control type="textbox">
+				<top>10</top>
+				<left>10</left>
+				<width>410</width>
+				<height>222</height>
+				<font>Light24</font>
+				<textcolor>white</textcolor>
+				<align>center</align>
+				<aligny>center</aligny>
+				<label>$INFO[VideoPlayer.Channelname]</label>
+				<visible>String.IsEmpty(PVR.EpgEventIcon) + String.IsEmpty(Player.Icon)</visible>
+			</control>
+			<control type="image">
+				<width>430</width>
+				<height>242</height>
+				<texture background="true">$VAR[PlayerIcon]</texture>
+				<aspectratio scalediffuse="false">keep</aspectratio>
+			</control>
+			<include content="PlayerProgress">
+				<param name="top" value="239"/>
+				<param name="width" value="430"/>
+			</include>
 		</control>
 	</include>
 	<include name="Meta4to3Thumbnail">
@@ -517,19 +569,19 @@
 				<top>-2</top>
 				<left>-2</left>
 				<width>436</width>
-				<height>311</height>
+				<height>293</height>
 				<texture border="20,20,20,20">items/shadow.png</texture>
 			</control>
 			<control type="image">
 				<width>430</width>
-				<height>305</height>
+				<height>287</height>
 				<texture colordiffuse="$VAR[ThumbFallbackColor]">common/white.jpg</texture>
 				<aspectratio scalediffuse="false">stretch</aspectratio>
 				<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
 			</control>
 			<control type="image">
 				<width>430</width>
-				<height>305</height>
+				<height>287</height>
 				<texture colordiffuse="$VAR[ThumbBackgroundColor]">common/white.jpg</texture>
 				<aspectratio scalediffuse="false">stretch</aspectratio>
 				<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
@@ -538,7 +590,7 @@
 				<top>10</top>
 				<left>10</left>
 				<width>410</width>
-				<height>285</height>
+				<height>267</height>
 				<font>Light24</font>
 				<textcolor>white</textcolor>
 				<align>center</align>
@@ -550,7 +602,7 @@
 				<top>10</top>
 				<left>10</left>
 				<width>410</width>
-				<height>285</height>
+				<height>267</height>
 				<font>Light24</font>
 				<textcolor>white</textcolor>
 				<align>center</align>
@@ -562,7 +614,7 @@
 				<top>10</top>
 				<left>10</left>
 				<width>410</width>
-				<height>285</height>
+				<height>267</height>
 				<font>Light24</font>
 				<textcolor>white</textcolor>
 				<align>center</align>
@@ -570,31 +622,60 @@
 				<label>$INFO[ListItem.Label]</label>
 				<visible>ListItem.IsParentFolder</visible>
 			</control>
-			<control type="group">
-				<visible>!String.StartsWith(ListItem.Icon,Default) + String.StartsWith(ListItem.Path,pvr://)</visible>
-				<control type="image">
-					<width>430</width>
-					<height>305</height>
-					<texture background="true">$INFO[ListItem.Icon]</texture>
-					<aspectratio scalediffuse="false">keep</aspectratio>
-					<bordersize>20</bordersize>
-					<visible>[String.IsEmpty(ListItem.EpgEventIcon) + [String.Contains(ListItem.Icon,imagecache) | String.Contains(ListItem.Icon,.png)]]</visible>
-				</control>
-				<control type="image">
-					<width>430</width>
-					<height>305</height>
-					<texture background="true">$VAR[IconLandscape]</texture>
-					<aspectratio scalediffuse="false">stretch</aspectratio>
-					<visible>![String.IsEmpty(ListItem.EpgEventIcon) + [String.Contains(ListItem.Icon,imagecache) | String.Contains(ListItem.Icon,.png)]]</visible>
-				</control>
+			<control type="image">
+				<width>430</width>
+				<height>287</height>
+				<texture background="true">$VAR[IconLandscape]</texture>
+				<aspectratio scalediffuse="false">keep</aspectratio>
+			</control>
+		</control>
+	</include>
+	<include name="MetaVideo4to3Thumbnail">
+		<control type="group">
+			<left>70</left>
+			<control type="image">
+				<top>-2</top>
+				<left>-2</left>
+				<width>436</width>
+				<height>293</height>
+				<texture border="20,20,20,20">items/shadow.png</texture>
 			</control>
 			<control type="image">
 				<width>430</width>
-				<height>305</height>
-				<texture background="true">$VAR[IconEpisodeThumb]</texture>
-				<aspectratio scalediffuse="false">scale</aspectratio>
-				<visible>!String.StartsWith(ListItem.Icon,Default) + !String.StartsWith(ListItem.Path,pvr://)</visible>
+				<height>287</height>
+				<texture colordiffuse="$VAR[ThumbFallbackColor]">common/white.jpg</texture>
+				<aspectratio scalediffuse="false">stretch</aspectratio>
+				<visible>String.IsEmpty(PVR.EpgEventIcon) + String.IsEmpty(Player.Icon)</visible>
 			</control>
+			<control type="image">
+				<width>430</width>
+				<height>287</height>
+				<texture colordiffuse="dark_button">common/white.jpg</texture>
+				<aspectratio scalediffuse="false">stretch</aspectratio>
+				<visible>!String.IsEmpty(PVR.EpgEventIcon) | !String.IsEmpty(Player.Icon)</visible>
+			</control>
+			<control type="textbox">
+				<top>10</top>
+				<left>10</left>
+				<width>410</width>
+				<height>267</height>
+				<font>Light24</font>
+				<textcolor>white</textcolor>
+				<align>center</align>
+				<aligny>center</aligny>
+				<label>$INFO[VideoPlayer.Channelname]</label>
+				<visible>String.IsEmpty(PVR.EpgEventIcon) + String.IsEmpty(Player.Icon)</visible>
+			</control>
+			<control type="image">
+				<width>430</width>
+				<height>287</height>
+				<texture background="true">$VAR[PlayerIcon]</texture>
+				<aspectratio scalediffuse="false">keep</aspectratio>
+			</control>
+			<include content="PlayerProgress">
+				<param name="top" value="284"/>
+				<param name="width" value="430"/>
+			</include>
 		</control>
 	</include>
 	<include name="MetaSquareThumb">
@@ -640,133 +721,6 @@
 				<texture background="true">$INFO[ListItem.Icon]</texture>
 				<aspectratio scalediffuse="false">stretch</aspectratio>
 				<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
-			</control>
-		</control>
-	</include>
-	<include name="MetaBigThumb">
-		<param name="progress">true</param>
-		<definition>
-			<control type="group">
-				<left>70</left>
-				<width>590</width>
-				<control type="group">
-					<control type="image">
-						<top>-2</top>
-						<left>-2</left>
-						<width>596</width>
-						<height>338</height>
-						<texture border="20,20,20,20">items/shadow.png</texture>
-					</control>
-					<control type="image">
-						<width>590</width>
-						<height>332</height>
-						<texture colordiffuse="$VAR[ThumbFallbackColor]">common/white.jpg</texture>
-						<aspectratio scalediffuse="false">stretch</aspectratio>
-						<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
-					</control>
-					<control type="image">
-						<width>590</width>
-						<height>332</height>
-						<texture colordiffuse="$VAR[ThumbBackgroundColor]">common/white.jpg</texture>
-						<aspectratio scalediffuse="false">stretch</aspectratio>
-						<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
-					</control>
-					<control type="textbox">
-						<top>10</top>
-						<left>10</left>
-						<width>570</width>
-						<height>312</height>
-						<font>Light24</font>
-						<textcolor>white</textcolor>
-						<align>center</align>
-						<aligny>center</aligny>
-						<label>$VAR[MainListLabel]</label>
-						<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
-					</control>
-					<control type="image">
-						<width>590</width>
-						<height>332</height>
-						<texture background="true">$INFO[ListItem.Icon]</texture>
-						<aspectratio scalediffuse="false">keep</aspectratio>
-						<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
-					</control>
-					<control type="group">
-						<width>590</width>
-						<height>332</height>
-						<include>listitem_overlay</include>
-					</control>
-					<include condition="$PARAM[progress]" content="progress">
-						<param name="top" value="328"/>
-						<param name="width" value="590"/>
-					</include>
-				</control>
-			</control>
-		</definition>
-	</include>
-	<include name="MetaVideoBigThumb">
-		<control type="group">
-			<left>70</left>
-			<width>590</width>
-			<control type="group">
-				<control type="image">
-					<top>-2</top>
-					<left>-2</left>
-					<width>596</width>
-					<height>338</height>
-					<texture border="20,20,20,20">items/shadow.png</texture>
-				</control>
-				<control type="image">
-					<width>590</width>
-					<height>332</height>
-					<texture colordiffuse="$VAR[ThumbFallbackColor]">common/white.jpg</texture>
-					<aspectratio scalediffuse="false">stretch</aspectratio>
-					<visible>String.IsEmpty(PVR.EpgEventIcon) + String.IsEmpty(Player.Icon)</visible>
-				</control>
-				<control type="image">
-					<width>590</width>
-					<height>332</height>
-					<texture colordiffuse="dark_button">common/white.jpg</texture>
-					<aspectratio scalediffuse="false">stretch</aspectratio>
-					<visible>!String.IsEmpty(PVR.EpgEventIcon) | !String.IsEmpty(Player.Icon)</visible>
-				</control>
-				<control type="textbox">
-					<top>10</top>
-					<left>10</left>
-					<width>570</width>
-					<height>312</height>
-					<font>Light24</font>
-					<textcolor>white</textcolor>
-					<align>center</align>#
-					<aligny>center</aligny>
-					<label>$INFO[VideoPlayer.Channelname]</label>
-					<visible>String.IsEmpty(PVR.EpgEventIcon) + String.IsEmpty(Player.Icon)</visible>
-				</control>
-				<control type="group">
-					<visible>!String.StartsWith(Player.Icon,Default)</visible>
-					<control type="image">
-						<width>590</width>
-						<height>332</height>
-						<texture background="true">$INFO[Player.Icon]</texture>
-						<aspectratio scalediffuse="false">keep</aspectratio>
-						<visible>String.IsEmpty(PVR.EpgEventIcon)</visible>
-					</control>
-					<control type="image">
-						<width>590</width>
-						<height>332</height>
-						<texture background="true">$INFO[PVR.EpgEventIcon]</texture>
-						<aspectratio scalediffuse="false">keep</aspectratio>
-						<visible>!String.IsEmpty(PVR.EpgEventIcon)</visible>
-					</control>
-				</control>
-				<control type="group">
-					<width>590</width>
-					<height>332</height>
-					<include>listitem_overlay</include>
-				</control>
-				<include content="PlayerProgress">
-					<param name="top" value="328"/>
-					<param name="width" value="590"/>
-				</include>
 			</control>
 		</control>
 	</include>

@@ -18,16 +18,22 @@
 				<control type="group">
 					<top>128</top>
 					<!-- Thumb -->
-					<include condition="!Skin.HasSetting(4to3PVRWidget)">MetaThumbnail</include>
-					<include condition="Skin.HasSetting(4to3PVRWidget)">Meta4to3Thumbnail</include>
+					<include condition="String.IsEmpty(Skin.String(EPGar))">MetaThumbnail</include>
+					<include condition="String.IsEqual(Skin.String(EPGar),2to3)">MetaPoster</include>
+					<include condition="String.IsEqual(Skin.String(EPGar),4to3)">Meta4to3Thumbnail</include>
 					<!-- meta -->
 					<control type="grouplist">
-						<left>524</left>
-						<orientation>vertical</orientation>
+						<include condition="String.IsEqual(Skin.String(EPGar),2to3)" content="ParamLeft">
+							<param name="left" value="370"/>
+						</include>
+						<include condition="!String.IsEqual(Skin.String(EPGar),2to3)" content="ParamLeft">
+							<param name="left" value="524"/>
+						</include>
+						<right>70</right>
 						<height>920</height>
-						<width>1326</width>
 						<align>top</align>
 						<itemgap>0</itemgap>
+						<orientation>vertical</orientation>
 						<control type="label">
 							<height>55</height>
 							<label>$VAR[MainListLabel]</label>
@@ -78,7 +84,7 @@
 						<include>MetaGenre</include>
 						<!-- plot -->
 						<control type="textbox" id="19">
-							<height>130</height>
+							<height>105</height>
 							<align>justify</align>
 							<aligny>top</aligny>
 							<label>$INFO[ListItem.Plot]</label>
@@ -88,9 +94,9 @@
 					</control>
 				</control>
 				<control type="group">
-					<top>570</top>
+					<top>545</top>
 					<!-- list -->
-					<include condition="!Skin.HasSetting(4to3PVRWidget)" content="WideWidget">
+					<include condition="String.IsEmpty(Skin.String(EPGar))" content="WideWidget">
 						<param name="id" value="57"/>
 						<param name="onup" value="100"/>
 						<param name="ondown" value="200"/>
@@ -100,8 +106,9 @@
 						<param name="thumblabel" value="$PARAM[thumblabel]"/>
 						<param name="use_custom_content" value="false"/>
 						<param name="list_name">$LOCALIZE[31199]</param>
+						<param name="layout" value="PVRLandscapeLayout"/>
 					</include>
-					<include condition="Skin.HasSetting(4to3PVRWidget)" content="4to3Widget">
+					<include condition="String.IsEqual(Skin.String(EPGar),4to3)" content="4to3Widget">
 						<param name="id" value="57"/>
 						<param name="onup" value="100"/>
 						<param name="ondown" value="200"/>
@@ -111,6 +118,19 @@
 						<param name="thumblabel" value="$PARAM[thumblabel]"/>
 						<param name="use_custom_content" value="false"/>
 						<param name="list_name">$LOCALIZE[31199]</param>
+						<param name="layout" value="PVR4to3Layout"/>
+					</include>
+					<include condition="String.IsEqual(Skin.String(EPGar),2to3)" content="PosterWidget">
+						<param name="id" value="57"/>
+						<param name="onup" value="100"/>
+						<param name="ondown" value="200"/>
+						<param name="headline" value="$VAR[ContainerContent]"/>
+						<param name="mainlabel" value="$PARAM[mainlabel]"/>
+						<param name="sublabel" value=""/>
+						<param name="thumblabel" value="$PARAM[thumblabel]"/>
+						<param name="use_custom_content" value="false"/>
+						<param name="list_name">$LOCALIZE[31199]</param>
+						<param name="layout" value="PVRPosterLayout"/>
 					</include>
 				</control>
 			</control>

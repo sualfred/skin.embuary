@@ -15,12 +15,19 @@
 				<top>90</top>
 				<height>950</height>
 				<!-- Thumb -->
-				<include>MetaBigThumb</include>
+				<include condition="String.IsEmpty(Skin.String(EPGar))">MetaThumbnail</include>
+				<include condition="String.IsEqual(Skin.String(EPGar),2to3)">MetaPoster</include>
+				<include condition="String.IsEqual(Skin.String(EPGar),4to3)">Meta4to3Thumbnail</include>
 				<!-- meta -->
 				<control type="grouplist">
-					<left>684</left>
+					<include condition="String.IsEqual(Skin.String(EPGar),2to3)" content="ParamLeft">
+						<param name="left" value="370"/>
+					</include>
+					<include condition="!String.IsEqual(Skin.String(EPGar),2to3)" content="ParamLeft">
+						<param name="left" value="524"/>
+					</include>
+					<right>70</right>
 					<orientation>vertical</orientation>
-					<width>1166</width>
 					<align>top</align>
 					<itemgap>0</itemgap>
 					<control type="label">

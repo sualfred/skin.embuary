@@ -29,7 +29,7 @@
 					<include>ScrollTime</include>
 					<oninfo condition="String.IsEqual(ListItem.DBType,set) + !String.IsEmpty(Container(2001).ListItem.Label)">RunScript(script.embuary.helper,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCVAR[ListViewPlot]')</oninfo>
 					<oninfo condition="String.IsEqual(ListItem.DBType,musicvideo) + !String.IsEmpty(ListItem.Plot)">RunScript(script.embuary.helper,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCVAR[ListViewPlot]')</oninfo>
-					<itemlayout condition="[!Skin.HasSetting(HideWideLabels) | !Window.IsVisible(myvideonav.xml)] + ![Skin.HasSetting(4to3PVRWidget) + String.StartsWith(Container.Folderpath,pvr://)]" width="450" height="305">
+					<itemlayout condition="[!Skin.HasSetting(HideWideLabels) | !Window.IsVisible(myvideonav.xml)] + ![String.IsEqual(Skin.String(EPGar),4to3) + String.StartsWith(Container.Folderpath,pvr://)]" width="450" height="305">
 						<control type="group">
 							<left>70</left>
 							<top>122</top>
@@ -42,7 +42,7 @@
 							</include>
 						</control>
 					</itemlayout>
-					<focusedlayout condition="[!Skin.HasSetting(HideWideLabels) | !Window.IsVisible(myvideonav.xml)] + ![Skin.HasSetting(4to3PVRWidget) + String.StartsWith(Container.Folderpath,pvr://)]" width="450" height="305">
+					<focusedlayout condition="[!Skin.HasSetting(HideWideLabels) | !Window.IsVisible(myvideonav.xml)] + ![String.IsEqual(Skin.String(EPGar),4to3) + String.StartsWith(Container.Folderpath,pvr://)]" width="450" height="305">
 						<include content="SetPropertyOnFocus">
 							<param name="id" value="50"/>
 						</include>
@@ -87,11 +87,11 @@
 							</include>
 						</control>
 					</focusedlayout>
-					<itemlayout condition="Skin.HasSetting(4to3PVRWidget) + String.StartsWith(Container.Folderpath,pvr://)" width="360" height="305">
+					<itemlayout condition="String.IsEqual(Skin.String(EPGar),4to3) + String.StartsWith(Container.Folderpath,pvr://)" width="360" height="305">
 						<control type="group">
 							<left>70</left>
 							<top>122</top>
-							<include content="4to3Layout">
+							<include content="PVR4to3Layout">
 								<param name="mainlabel" value="$PARAM[mainlabel]" />
 								<param name="sublabel" value="" />
 								<param name="thumblabel" value="$PARAM[thumblabel]" />
@@ -100,14 +100,14 @@
 							</include>
 						</control>
 					</itemlayout>
-					<focusedlayout condition="Skin.HasSetting(4to3PVRWidget) + String.StartsWith(Container.Folderpath,pvr://)" width="360" height="305">
+					<focusedlayout condition="String.IsEqual(Skin.String(EPGar),4to3) + String.StartsWith(Container.Folderpath,pvr://)" width="360" height="305">
 						<include content="SetPropertyOnFocus">
 							<param name="id" value="50"/>
 						</include>
 						<control type="group">
 							<left>70</left>
 							<top>122</top>
-							<include content="4to3Layout">
+							<include content="PVR4to3Layout">
 								<param name="mainlabel" value="$PARAM[mainlabel]" />
 								<param name="sublabel" value="" />
 								<param name="thumblabel" value="$PARAM[thumblabel]" />
