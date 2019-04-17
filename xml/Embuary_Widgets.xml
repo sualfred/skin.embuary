@@ -66,7 +66,7 @@
 		<param name="sublabel">$VAR[SubListLabel]</param>
 		<param name="use_custom_content">true</param>
 		<param name="use_custom_onclick">false</param>
-		<param name="height">468</param>
+		<param name="height">453</param>
 		<param name="force_visible">false</param>
 		<param name="layout">4to3Layout</param>
 		<definition>
@@ -84,11 +84,11 @@
 					<include content="LoadingWidget">
 						<param name="id" value="$PARAM[id]"/>
 						<param name="shadow_width" value="346"/>
-						<param name="shadow_height" value="248"/>
+						<param name="shadow_height" value="233"/>
 						<param name="width" value="340"/>
-						<param name="height" value="242"/>
-						<param name="focus_width" value="454"/>
-						<param name="focus_height" value="266"/>
+						<param name="height" value="227"/>
+						<param name="focus_width" value="364"/>
+						<param name="focus_height" value="251"/>
 					</include>
 					<control type="fixedlist" id="$PARAM[id]">
 						<visible>$PARAM[content_visible]</visible>
@@ -174,7 +174,7 @@
 						</include>
 					</control>
 					<include content="list_mask">
-						<param name="height" value="242"/>
+						<param name="height" value="227"/>
 						<param name="id" value="$PARAM[id]"/>
 					</include>
 				</control>
@@ -987,7 +987,10 @@
 				<include condition="String.IsEqual(Skin.String(EPGar),2to3)" content="ParamHeight">
 					<param name="height" value="701"/>
 				</include>
-				<include condition="!String.IsEqual(Skin.String(EPGar),2to3)" content="ParamHeight">
+				<include condition="String.IsEqual(Skin.String(EPGar),4to3)" content="ParamHeight">
+					<param name="height" value="573"/>
+				</include>
+				<include condition="String.IsEmpty(Skin.String(EPGar))" content="ParamHeight">
 					<param name="height" value="588"/>
 				</include>
 				<include content="widget_headline">

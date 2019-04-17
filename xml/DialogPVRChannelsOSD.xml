@@ -11,11 +11,27 @@
 			<!--Bottom-->
 			<control type="group">
 				<bottom>0</bottom>
-				<height>440</height>
+				<include content="ParamHeight" condition="String.IsEqual(Skin.String(EPGar),2to3)">
+					<param name="height" value="553"/>
+				</include>
+				<include content="ParamHeight" condition="String.IsEqual(Skin.String(EPGar),4to3)">
+					<param name="height" value="425"/>
+				</include>
+				<include content="ParamHeight" condition="String.IsEmpty(Skin.String(EPGar))">
+					<param name="height" value="440"/>
+				</include>
 				<control type="image">
 					<bottom>0</bottom>
 					<width>100%</width>
-					<height>400</height>
+					<include content="ParamHeight" condition="String.IsEqual(Skin.String(EPGar),2to3)">
+						<param name="height" value="513"/>
+					</include>
+					<include content="ParamHeight" condition="String.IsEqual(Skin.String(EPGar),4to3)">
+						<param name="height" value="385"/>
+					</include>
+					<include content="ParamHeight" condition="String.IsEmpty(Skin.String(EPGar))">
+						<param name="height" value="400"/>
+					</include>
 					<texture colordiffuse="black">views/player/mask_bottom.png</texture>
 				</control>
 				<include condition="String.IsEmpty(Skin.String(EPGar))" content="WideWidget">
