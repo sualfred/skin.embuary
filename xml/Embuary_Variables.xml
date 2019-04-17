@@ -73,10 +73,6 @@
 		<value condition="!String.IsEmpty(Skin.String(button_focus_accent)) + !String.IsEqual(Skin.String(button_focus_accent),None)">$INFO[Skin.String(button_focus_accent)]</value>
 		<value>accent</value>
 	</variable>
-	<variable name="ThumbBackgroundColor">
-		<value condition="Window.IsVisible(fullscreenvideo) | Window.IsVisible(visualisation)">thumb_background_player</value>
-		<value>thumb_background</value>
-	</variable>
 	<variable name="SkinTheme">
 		<value condition="!String.IsEqual(Skin.CurrentColourTheme,SKINDEFAULT) + !String.StartsWith(Skin.CurrentColourTheme,Default)">$INFO[Skin.CurrentColourTheme]</value>
 		<value>Default</value>
@@ -1171,13 +1167,7 @@
 		<value condition="!String.IsEmpty(Player.Icon) + !String.StartsWith(Player.Icon,default)">$INFO[Player.Icon]</value>
 		<value condition="!String.IsEmpty(VideoPlayer.Cover) + !String.StartsWith(VideoPlayer.Cover,default)">$INFO[VideoPlayer.Cover]</value>
 		<value condition="!String.IsEmpty(MusicPlayer.Cover) + !String.StartsWith(MusicPlayer.Cover,default)">$INFO[MusicPlayer.Cover]</value>
-	</variable>
-	<variable name="WidePlayerIcon">
-		<value condition="[VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)] + Skin.HasSetting(ShowEPGThumbVideoOSD) + !String.IsEmpty(Pvr.EPGEventIcon)">$INFO[Pvr.EPGEventIcon]</value>
-		<value condition="!String.StartsWith(Player.Art(thumb),special://home/addons/)">$INFO[Player.Art(thumb)]</value>
-		<value condition="!String.IsEmpty(Player.Art(landscape))">$INFO[Player.Art(landscape)]</value>
-		<value condition="!String.IsEmpty(Player.Art(fanart))">$INFO[Player.Art(fanart)]</value>
-		<value>$INFO[Player.Art(thumb)]</value>
+		<value>defaultembuary.png</value>
 	</variable>
 	<variable name="PlayerCastContent">
 		<value condition="!String.IsEmpty(Window(home).Property(plugin.video.embycon-currently_playing_id))">plugin://plugin.video.embycon?mode=WIDGET_CONTENT_CAST&amp;id=$INFO[Window(home).Property(plugin.video.embycon-currently_playing_id)]</value>
@@ -1464,6 +1454,7 @@
 	<variable name="UpNextThumb">
 		<value condition="!String.IsEmpty(Window.Property(thumb))">$INFO[Window.Property(thumb)]</value>
 		<value condition="!String.IsEmpty(Window.Property(landscape))">$INFO[Window.Property(landscape)]</value>
+		<value>defaultembuary.png</value>
 	</variable>
 	<variable name="CWidgetReloadPath1">
 		<value condition="String.StartsWith(Skin.String(UserWidget1_path),plugin://) + String.Contains(Skin.String(UserWidget1_path),/?)">$INFO[Skin.String(UserWidget1_path)]&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]</value>
