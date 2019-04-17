@@ -47,8 +47,6 @@
 
 	<expression name="CinemaMode">[!String.IsEmpty(Skin.String(IntroPath)) | Integer.IsGreater(Skin.String(TrailerCount),0)]</expression>
 
-	<expression name="EmbyLoading">[String.IsEqual(Player.Title,emby-loading.mp4)]</expression>
-
 	<expression name="SkinSetup">[!Skin.HasSetting(SkinSetup) + !Window.IsVisible(startup) + !Window.IsVisible(1119)]</expression>
 
 	<expression name="HolidayTheme">[System.Date(12-01,01-07) + !Skin.HasSetting(HideHolidayTheme) + [[!Window.IsVisible(visualisation) + !VideoPlayer.IsFullscreen] | Window.IsActive(fullscreeninfo) | Window.IsActive(script-script.extendedinfo-DialogInfo.xml) | Window.IsActive(script-script.extendedinfo-DialogVideoInfo.xml)]]</expression>
@@ -91,14 +89,14 @@
 			+ !String.StartsWith(Container.FolderPath,pvr://channels/radio/)
 			+ !String.StartsWith(Container.Folderpath,androidapp://)
 			+ !Container.Content(games)
-			+ ![String.StartsWith(Container.Folderpath,pvr://channels/tv) + String.IsEqual(Skin.String(EPGar),2to3)]
+			+ ![[String.StartsWith(Container.Folderpath,pvr://channels/tv) | String.StartsWith(Container.Folderpath,pvr://recordings/tv)] + String.IsEqual(Skin.String(EPGar),2to3)]
 		]
 		| Window.IsVisible(MyPics.xml)
 		]
 	</expression>
 
 	<expression name="PosterViewVisible">[
-		[Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets) | Container.Content(actors) | Container.Content(directors) | [String.StartsWith(Container.Folderpath,pvr://channels/tv) + String.IsEqual(Skin.String(EPGar),2to3)]]
+		[Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets) | Container.Content(actors) | Container.Content(directors) | [[String.StartsWith(Container.Folderpath,pvr://channels/tv) | String.StartsWith(Container.Folderpath,pvr://recordings/tv)] + String.IsEqual(Skin.String(EPGar),2to3)]]
 		+ !String.Contains(Container.Folderpath,setid)
 		+ ![String.Contains(Container.FolderPath,BoxSet) + !String.Contains(Container.FolderPath,CollapseBoxSet) + Container.Content(movies)]
 		]
@@ -219,6 +217,10 @@
 		+ !String.IsEqual(ListItem.DBType,song)
 		+ !String.IsEqual(ListItem.DBType,album)
 		+ !String.IsEqual(ListItem.ActualIcon,DefaultFile.png)
+	</expression>
+
+	<expression name="RecHasThumb">
+		[String.StartsWith(ListItem.Path,pvr://) + !String.StartsWith(ListItem.Icon,Default) + !String.IsEqual(ListItem.ActualIcon,ListItem.Icon)]
 	</expression>
 
 </includes>

@@ -334,14 +334,14 @@
 					<height>414</height>
 					<texture background="true">$VAR[IconPVR]</texture>
 					<aspectratio scalediffuse="false">stretch</aspectratio>
-					<visible>!String.IsEmpty(ListItem.EpgEventIcon)</visible>
+					<visible>!String.IsEmpty(ListItem.EpgEventIcon) | $EXP[RecHasThumb]</visible>
 				</control>
 				<control type="image">
 					<width>276</width>
 					<height>414</height>
 					<texture background="true">$VAR[IconPoster]</texture>
 					<aspectratio scalediffuse="false">keep</aspectratio>
-					<visible>String.IsEmpty(ListItem.EpgEventIcon)</visible>
+					<visible>String.IsEmpty(ListItem.EpgEventIcon) + !$EXP[RecHasThumb]</visible>
 				</control>
 			</control>
 		</definition>

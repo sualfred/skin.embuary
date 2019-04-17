@@ -552,7 +552,6 @@
 	<!-- Player Top -->
 	<include name="PlayerTopBar">
 		<control type="group" id="99">
-			<visible>!$EXP[EmbyLoading]</visible>
 			<control type="image" id="99">
 				<top>0</top>
 				<width>100%</width>
@@ -689,13 +688,11 @@
 			<textcolor>white</textcolor>
 			<label>$VAR[PlayerTimeLabels]</label>
 			<visible>!String.IsEmpty(Player.Time)</visible>
-			<visible>!$EXP[EmbyLoading]</visible>
 		</control>
 		<control type="label" id="99">
 			<description>Spacer</description>
 			<width>15</width>
 			<visible>!String.IsEmpty(Player.Time)</visible>
-			<visible>!$EXP[EmbyLoading]</visible>
 		</control>
 		<control type="label" id="99">
 			<animation effect="slide" end="0,-1" time="0" condition="true">Conditional</animation>
@@ -706,13 +703,11 @@
 			<textcolor>white</textcolor>
 			<label>$VAR[PlaylistRepeatLabel]</label>
 			<visible>Playlist.IsRepeat | Playlist.IsRepeatOne</visible>
-			<visible>!$EXP[EmbyLoading]</visible>
 		</control>
 		<control type="label" id="99">
 			<description>Spacer</description>
 			<width>15</width>
 			<visible>Playlist.IsRepeat | Playlist.IsRepeatOne</visible>
-			<visible>!$EXP[EmbyLoading]</visible>
 		</control>
 		<control type="label" id="99">
 			<animation effect="slide" end="0,-1" time="0" condition="true">Conditional</animation>
@@ -722,13 +717,11 @@
 			<font>Material34</font>
 			<label></label>
 			<visible>Playlist.IsRandom</visible>
-			<visible>!$EXP[EmbyLoading]</visible>
 		</control>
 		<control type="label" id="99">
 			<description>Spacer</description>
 			<width>15</width>
 			<visible>Playlist.IsRandom</visible>
-			<visible>!$EXP[EmbyLoading]</visible>
 		</control>
 		<control type="label" id="99">
 			<animation effect="slide" end="0,-1" time="0" condition="true">Conditional</animation>
@@ -739,7 +732,6 @@
 			<textcolor>$VAR[AccentColor]</textcolor>
 			<label>$LOCALIZE[31038]$INFO[PVR.TimeshiftOffset, (-,)]</label>
 			<visible>Pvr.IsTimeShift</visible>
-			<visible>!$EXP[EmbyLoading]</visible>
 		</control>
 	</include>
 	<!-- Player OSD Volume -->
@@ -754,7 +746,6 @@
 			<font>Material34</font>
 			<textcolor>white</textcolor>
 			<label>$VAR[VolumeIcon]</label>
-			<visible>!$EXP[EmbyLoading]</visible>
 		</control>
 		<control type="progress" id="99">
 			<bottom>53</bottom>
@@ -768,7 +759,6 @@
 			<righttexture></righttexture>
 			<overlaytexture></overlaytexture>
 			<visible>Integer.IsGreater(player.volume,0)</visible>
-			<visible>!$EXP[EmbyLoading]</visible>
 		</control>
 		<control type="progress" id="99">
 			<bottom>53</bottom>
@@ -781,7 +771,6 @@
 			<righttexture></righttexture>
 			<overlaytexture></overlaytexture>
 			<visible>!Integer.IsGreater(player.volume,0)</visible>
-			<visible>!$EXP[EmbyLoading]</visible>
 		</control>
 	</include>
 	<!-- Player progress bar dimensions -->
