@@ -82,7 +82,7 @@
 						<width>590</width>
 						<!-- wide thumb -->
 						<control type="group">
-							<visible>$EXP[ListHasWideThumb] + !$EXP[ListHas4to3Thumb]</visible>
+							<visible>$EXP[ListHasWideThumb] + !$EXP[PVR4to3Thumb] + !$EXP[PVR2to3Thumb]</visible>
 							<control type="group">
 								<control type="image">
 									<top>-2</top>
@@ -149,7 +149,7 @@
 						</control>
 						<!-- poster thumb -->
 						<control type="group">
-							<visible>$EXP[ListHasPosterThumb] + !$EXP[ListHasWideThumb] + !$EXP[ListHas4to3Thumb]</visible>
+							<visible>[$EXP[ListHasPosterThumb] + !$EXP[ListHasWideThumb]] | $EXP[PVR2to3Thumb]</visible>
 							<centerleft>50%</centerleft>
 							<width>228</width>
 							<control type="group">
@@ -191,6 +191,14 @@
 									<height>332</height>
 									<texture background="true">$VAR[IconPoster]</texture>
 									<aspectratio scalediffuse="false">stretch</aspectratio>
+									<visible>!$EXP[PVR2to3Thumb]</visible>
+								</control>
+								<control type="image">
+									<width>222</width>
+									<height>332</height>
+									<texture background="true">$VAR[IconPoster]</texture>
+									<aspectratio scalediffuse="false">keep</aspectratio>
+									<visible>$EXP[PVR2to3Thumb]</visible>
 								</control>
 								<control type="group">
 									<width>222</width>
@@ -205,7 +213,7 @@
 						</control>
 						<!-- square thumb -->
 						<control type="group">
-							<visible>!$EXP[ListHasPosterThumb] + !$EXP[ListHasWideThumb] + !$EXP[ListHas4to3Thumb]</visible>
+							<visible>!$EXP[ListHasPosterThumb] + !$EXP[ListHasWideThumb] + !$EXP[ListHas4to3Thumb] + !$EXP[PVR2to3Thumb]</visible>
 							<centerleft>50%</centerleft>
 							<width>332</width>
 							<control type="group">
@@ -261,21 +269,21 @@
 						</control>
 						<!-- 4:3 thumb -->
 						<control type="group">
-							<visible>$EXP[ListHas4to3Thumb]</visible>
+							<visible>$EXP[PVR4to3Thumb]</visible>
 							<centerleft>50%</centerleft>
-							<width>474</width>
+							<width>498</width>
 							<control type="group">
 								<control type="image">
 									<top>-2</top>
 									<left>-2</left>
-									<width>474</width>
+									<width>504</width>
 									<height>338</height>
 									<texture border="20,20,20,20">items/shadow.png</texture>
 								</control>
 								<control type="group">
 									<visible>String.IsEmpty(ListItem.Art(fanart)) + String.IsEmpty(ListItem.Art(tvshow.fanart)) + String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape)) + [String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)]</visible>
 									<control type="image">
-										<width>468</width>
+										<width>498</width>
 										<height>332</height>
 										<texture colordiffuse="$VAR[ThumbFallbackColor]">common/white.jpg</texture>
 										<aspectratio scalediffuse="false">stretch</aspectratio>
@@ -283,7 +291,7 @@
 									<control type="textbox">
 										<top>10</top>
 										<left>10</left>
-										<width>448</width>
+										<width>478</width>
 										<height>312</height>
 										<font>Light24</font>
 										<textcolor>white</textcolor>
@@ -295,36 +303,26 @@
 								<control type="group">
 									<visible>![String.IsEmpty(ListItem.Art(fanart)) + String.IsEmpty(ListItem.Art(tvshow.fanart)) + String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape)) + [String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)]]</visible>
 									<control type="image">
-										<width>468</width>
+										<width>498</width>
 										<height>332</height>
 										<texture colordiffuse="$VAR[ThumbBackgroundColor]">common/white.jpg</texture>
 										<aspectratio scalediffuse="false">stretch</aspectratio>
 									</control>
 									<control type="image">
-										<width>468</width>
+										<width>498</width>
 										<height>332</height>
 										<texture background="true">$VAR[IconLandscape]</texture>
 										<aspectratio scalediffuse="false">keep</aspectratio>
-										<bordersize>20</bordersize>
-										<visible>!String.StartsWith(ListItem.Art(thumb),image://)</visible>
-										<visible>[String.StartsWith(ListItem.Path,pvr://) + String.IsEmpty(ListItem.EpgEventIcon) + [String.Contains(ListItem.Icon,imagecache) | String.Contains(ListItem.Icon,.png)]]</visible>
-									</control>
-									<control type="image">
-										<width>468</width>
-										<height>332</height>
-										<texture background="true">$VAR[IconLandscape]</texture>
-										<aspectratio scalediffuse="false">stretch</aspectratio>
-										<visible>![String.StartsWith(ListItem.Path,pvr://) + String.IsEmpty(ListItem.EpgEventIcon) + [String.Contains(ListItem.Icon,imagecache) | String.Contains(ListItem.Icon,.png)]] | String.StartsWith(ListItem.Art(thumb),image://)</visible>
 									</control>
 								</control>
 								<control type="group">
-									<width>468</width>
+									<width>498</width>
 									<height>332</height>
 									<include>listitem_overlay</include>
 								</control>
 								<include content="progress">
 									<param name="top" value="328"/>
-									<param name="width" value="468"/>
+									<param name="width" value="498"/>
 								</include>
 							</control>
 						</control>

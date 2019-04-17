@@ -177,8 +177,12 @@
 		]
 	</expression>
 
-	<expression name="ListHas4to3Thumb">
-		[String.StartsWith(Container.Folderpath,pvr://) + Skin.HasSetting(4to3PVRWidget)]
+	<expression name="PVR4to3Thumb">
+		[String.StartsWith(Container.Folderpath,pvr://) + String.IsEqual(Skin.String(EPGar),4to3)]
+	</expression>
+
+	<expression name="PVR2to3Thumb">
+		[String.StartsWith(Container.Folderpath,pvr://) + String.IsEqual(Skin.String(EPGar),2to3)]
 	</expression>
 
 	<expression name="ListHasWideThumb">[
