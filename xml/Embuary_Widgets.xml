@@ -984,7 +984,12 @@
 				<visible>$PARAM[visible]</visible>
 				<visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</visible>
 				<width>100%</width>
-				<height>588</height>
+				<include condition="String.IsEqual(Skin.String(EPGar),2to3)" content="ParamHeight">
+					<param name="height" value="701"/>
+				</include>
+				<include condition="!String.IsEqual(Skin.String(EPGar),2to3)" content="ParamHeight">
+					<param name="height" value="588"/>
+				</include>
 				<include content="widget_headline">
 					<param name="headline">$VAR[PVRLabel]</param>
 				</include>
@@ -1058,11 +1063,14 @@
 					<include>FocusBounce</include>
 					<top>150</top>
 					<width>100%</width>
-					<include condition="!Skin.HasSetting(4to3PVRWidget)" content="ParamMovement">
+					<include condition="String.IsEmpty(Skin.String(EPGar))" content="ParamMovement">
 						<param name="nr" value="3"/>
 					</include>
-					<include condition="Skin.HasSetting(4to3PVRWidget)" content="ParamMovement">
+					<include condition="String.IsEqual(Skin.String(EPGar),4to3)" content="ParamMovement">
 						<param name="nr" value="4"/>
+					</include>
+					<include condition="String.IsEqual(Skin.String(EPGar),2to3)" content="ParamMovement">
+						<param name="nr" value="6"/>
 					</include>
 					<orientation>horizontal</orientation>
 					<preloaditems>4</preloaditems>
@@ -1088,11 +1096,11 @@
 						<param name="onclick11" value="$PARAM[onclick11]"/>
 						<param name="onclick12" value="$PARAM[onclick12]"/>
 					</include>
-					<itemlayout condition="!Skin.HasSetting(4to3PVRWidget)" width="450">
+					<itemlayout condition="String.IsEmpty(Skin.String(EPGar))" width="450">
 						<control type="group">
 							<left>70</left>
 							<top>64</top>
-							<include content="LandscapeLayout">
+							<include content="PVRLandscapeLayout">
 								<param name="mainlabel" value="$PARAM[mainlabel]" />
 								<param name="sublabel" value="$PARAM[sublabel]" />
 								<param name="thumblabel" value="$INFO[ListItem.Channelname]" />
@@ -1102,14 +1110,14 @@
 							</include>
 						</control>
 					</itemlayout>
-					<focusedlayout condition="!Skin.HasSetting(4to3PVRWidget)" width="450">
+					<focusedlayout condition="String.IsEmpty(Skin.String(EPGar))" width="450">
 						<include content="SetPropertyOnFocus">
 							<param name="id" value="$PARAM[id]"/>
 						</include>
 						<control type="group">
 							<left>70</left>
 							<top>64</top>
-							<include content="LandscapeLayout">
+							<include content="PVRLandscapeLayout">
 								<param name="mainlabel" value="$PARAM[mainlabel]" />
 								<param name="sublabel" value="$PARAM[sublabel]" />
 								<param name="thumblabel" value="$INFO[ListItem.Channelname]" />
@@ -1119,11 +1127,11 @@
 							</include>
 						</control>
 					</focusedlayout>
-					<itemlayout condition="Skin.HasSetting(4to3PVRWidget)" width="360">
+					<itemlayout condition="String.IsEqual(Skin.String(EPGar),4to3)" width="360">
 						<control type="group">
 							<left>70</left>
 							<top>64</top>
-							<include content="4to3Layout">
+							<include content="PVR4to3Layout">
 								<param name="mainlabel" value="$PARAM[mainlabel]" />
 								<param name="sublabel" value="$PARAM[sublabel]" />
 								<param name="thumblabel" value="$INFO[ListItem.Channelname]" />
@@ -1133,14 +1141,45 @@
 							</include>
 						</control>
 					</itemlayout>
-					<focusedlayout condition="Skin.HasSetting(4to3PVRWidget)" width="360">
+					<focusedlayout condition="String.IsEqual(Skin.String(EPGar),4to3)" width="360">
 						<include content="SetPropertyOnFocus">
 							<param name="id" value="$PARAM[id]"/>
 						</include>
 						<control type="group">
 							<left>70</left>
 							<top>64</top>
-							<include content="4to3Layout">
+							<include content="PVR4to3Layout">
+								<param name="mainlabel" value="$PARAM[mainlabel]" />
+								<param name="sublabel" value="$PARAM[sublabel]" />
+								<param name="thumblabel" value="$INFO[ListItem.Channelname]" />
+								<param name="labels_visible" value="$PARAM[labels_visible]" />
+								<param name="focused" value="true" />
+								<param name="id" value="$PARAM[id]" />
+							</include>
+						</control>
+					</focusedlayout>
+					<itemlayout condition="String.IsEqual(Skin.String(EPGar),2to3)" width="257">
+						<control type="group">
+							<left>70</left>
+							<top>64</top>
+							<include content="PVRPosterLayout">
+								<param name="mainlabel" value="$PARAM[mainlabel]" />
+								<param name="sublabel" value="$PARAM[sublabel]" />
+								<param name="thumblabel" value="$INFO[ListItem.Channelname]" />
+								<param name="labels_visible" value="$PARAM[labels_visible]" />
+								<param name="focused" value="false" />
+								<param name="id" value="$PARAM[id]" />
+							</include>
+						</control>
+					</itemlayout>
+					<focusedlayout condition="String.IsEqual(Skin.String(EPGar),2to3)" width="257">
+						<include content="SetPropertyOnFocus">
+							<param name="id" value="$PARAM[id]"/>
+						</include>
+						<control type="group">
+							<left>70</left>
+							<top>64</top>
+							<include content="PVRPosterLayout">
 								<param name="mainlabel" value="$PARAM[mainlabel]" />
 								<param name="sublabel" value="$PARAM[sublabel]" />
 								<param name="thumblabel" value="$INFO[ListItem.Channelname]" />

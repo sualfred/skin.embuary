@@ -622,6 +622,7 @@
 	</variable>
 	<variable name="IconLandscape">
 		<value condition="Window.IsVisible(videobookmarks) + !String.StartsWith(ListItem.Icon,Default)">$INFO[ListItem.Icon]</value>
+		<value condition="String.StartsWith(ListItem.Art(thumb),image://picturefolder) | String.EndsWith(ListItem.Art(thumb),folder.jpg)">$INFO[ListItem.Art(thumb)]</value>
 		<!-- pvr -->
 		<value condition="!String.IsEmpty(ListItem.EpgEventIcon)">$INFO[ListItem.EpgEventIcon]</value>
 		<value condition="String.StartsWith(ListItem.Path,pvr://) + !String.StartsWith(ListItem.Icon,Default)">$INFO[ListItem.Icon]</value>
@@ -662,6 +663,10 @@
 	<variable name="IconListView">
 		<value condition="Window.IsVisible(MyPVRRecordings.xml) + !String.IsEqual(ListItem.ActualIcon,ListItem.Icon)">$INFO[ListItem.ActualIcon]</value>
 		<value>$INFO[ListItem.Icon]</value>
+	</variable>
+	<variable name="IconPVR">
+		<value condition="!String.IsEmpty(ListItem.EpgEventIcon)">$INFO[ListItem.EpgEventIcon]</value>
+		<value condition="!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)">$INFO[ListItem.Icon]</value>
 	</variable>
 	<variable name="IconPoster">
 		<value condition="!String.IsEmpty(ListItem.Art(tvshow.poster)) + String.IsEqual(ListItem.DBType,season) + String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) + String.IsEqual(ListItem.Label,All)">$INFO[ListItem.Art(tvshow.poster)]</value>
@@ -1287,7 +1292,8 @@
 		<value>$INFO[Control.GetLabel(311)]</value>
 	</variable>
 	<variable name="EPGThumbAR">
-		<value condition="Skin.HasSetting(4to3PVRWidget)">4:3</value>
+		<value condition="String.IsEqual(Skin.String(EPGar),4to3)">4:3</value>
+		<value condition="String.IsEqual(Skin.String(EPGar),2to3)">2:3</value>
 		<value>16:9</value>
 	</variable>
 	<variable name="SearchString">

@@ -664,7 +664,9 @@
 		</control>
 		<control type="button" id="$PARAM[id]33">
 			<include>SettingsButton</include>
-			<onclick>Skin.ToggleSetting(4to3PVRWidget)</onclick>
+			<onclick condition="String.IsEmpty(Skin.String(EPGar))">Skin.SetString(EPGar,4to3)</onclick>
+			<onclick condition="String.IsEqual(Skin.String(EPGar),4to3)">Skin.SetString(EPGar,2to3)</onclick>
+			<onclick condition="String.IsEqual(Skin.String(EPGar),2to3)">Skin.Reset(EPGar)</onclick>
 			<label2>[COLOR $VAR[AccentColor]]$VAR[EPGThumbAR][/COLOR]</label2>
 			<label>$LOCALIZE[31341]</label>
 		</control>
