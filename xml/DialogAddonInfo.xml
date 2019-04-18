@@ -3,6 +3,8 @@
 	<!-- mediasource -->
 	<defaultcontrol always="true">100</defaultcontrol>
 	<include>PropertyIncludes</include>
+	<onload>RunScript(script.embuary.helper,action=txtfile,path='"special://home/addons/$INFO[ListItem.Property(Addon.ID)]/changelog.txt"',property=LocalChangelog)</onload>
+	<onunload>ClearProperty(LocalChangelog,home)</onunload>
 	<controls>
 		<!-- Hidden -->
 		<control id="96" type="scrollbar">
@@ -59,26 +61,32 @@
 							<label>$LOCALIZE[24020]</label>
 							<visible>Control.IsEnabled(9)</visible>
 						</control>
-						<control type="button" id="111">
+						<control type="button" id="101">
 							<include>LightGreyButton</include>
 							<label>$LOCALIZE[24036]</label>
 							<onclick>RunScript(script.embuary.helper,action=textviewer,header=$LOCALIZE[24036],message='$ESCINFO[ListItem.AddonNews]')</onclick>
 							<visible>!String.IsEmpty(ListItem.AddonNews)</visible>
 						</control>
-						<control type="button" id="101">
+						<control type="button" id="102">
+							<include>LightGreyButton</include>
+							<label>Changelog.txt</label>
+							<onclick>RunScript(script.embuary.helper,action=textviewer,header=changelog.txt,message='$ESCINFO[Window(home).Property(LocalChangelog)]')</onclick>
+							<visible>!String.IsEmpty(Window(home).Property(LocalChangelog))</visible>
+						</control>
+						<control type="button" id="103">
 							<include>LightGreyButton</include>
 							<label>$LOCALIZE[24038]</label>
 							<onclick>SendClick(6)</onclick>
 							<visible>String.IsEqual(Control.GetLabel(6),$LOCALIZE[24038])</visible>
 						</control>
-						<control type="button" id="110">
+						<control type="button" id="104">
 							<include>LightGreyButtonRound</include>
 							<font>material24</font>
 							<label></label>
 							<onclick>RunScript(script.embuary.helper,action=textviewer,header='$ESCINFO[ListItem.Label]',message='$ESCINFO[ListItem.AddonDescription]')</onclick>
 							<visible>!String.IsEmpty(ListItem.AddonDescription)</visible>
 						</control>
-						<control type="button" id="103">
+						<control type="button" id="105">
 							<include>LightGreyButtonRound</include>
 							<font>material24</font>
 							<label></label>
