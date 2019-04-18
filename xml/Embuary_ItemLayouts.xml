@@ -2202,7 +2202,15 @@
 						<width>340</width>
 						<height>227</height>
 						<texture background="true">$VAR[IconPVR]</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<visible>!String.IsEmpty(ListItem.EpgEventIcon) | $EXP[RecHasThumb]</visible>
+					</control>
+					<control type="image">
+						<width>340</width>
+						<height>227</height>
+						<texture background="true">$VAR[IconPVR]</texture>
 						<aspectratio scalediffuse="false">keep</aspectratio>
+						<visible>String.IsEmpty(ListItem.EpgEventIcon) + !$EXP[RecHasThumb]</visible>
 					</control>
 					<control type="group">
 						<width>340</width>

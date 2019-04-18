@@ -1162,6 +1162,7 @@
 	</variable>
 	<variable name="PlayerIcon">
 		<value condition="[Window.IsVisible(fullscreeninfo) | Skin.HasSetting(ShowEPGThumbVideoOSD)] + !String.IsEmpty(Pvr.EPGEventIcon)">$INFO[Pvr.EPGEventIcon]</value>
+		<value condition="Window.IsVisible(fullscreeninfo) + String.StartsWith(Player.Filenameandpath,pvr://recordings)">$INFO[Player.Icon]</value>
 		<value condition="!VideoPlayer.Content(livetv) + String.StartsWith(Player.Filenameandpath,pvr://) + !String.IsEmpty(Window(home).Property(Player.Channellogo)) + [!Skin.HasSetting(ShowEPGThumbVideoOSD) | String.IsEmpty(Pvr.EPGEventIcon)]">$INFO[Window(home).Property(Player.Channellogo)]</value>
 		<value condition="!String.IsEmpty(Player.Art(tvshow.poster))">$INFO[Player.Art(tvshow.poster)]</value>
 		<value condition="!String.IsEmpty(Player.Art(poster))">$INFO[Player.Art(poster)]</value>

@@ -605,13 +605,6 @@
 			<onclick>Skin.ToggleSetting(FancyLyrics)</onclick>
 			<enable>System.HasAddon(script.cu.lrclyrics)</enable>
 		</control>
-		<control type="radiobutton" id="$PARAM[id]14">
-			<include>SettingsButton</include>
-			<label>$LOCALIZE[31336]</label>
-			<selected>Skin.HasSetting(ShowEPGThumbVideoOSD)</selected>
-			<onclick>Skin.ToggleSetting(ShowEPGThumbVideoOSD)</onclick>
-			<enable>Pvr.HasTVChannels</enable>
-		</control>
 		<!-- library and media -->
 		<include content="SkinSettingsHeadlineLabel">
 			<param name="id" value="$PARAM[id]20"/>
@@ -651,24 +644,33 @@
 		</include>
 		<control type="radiobutton" id="$PARAM[id]31">
 			<include>SettingsButton</include>
+			<label>$LOCALIZE[31336]</label>
+			<selected>Skin.HasSetting(ShowEPGThumbVideoOSD)</selected>
+			<onclick>Skin.ToggleSetting(ShowEPGThumbVideoOSD)</onclick>
+			<enable>Pvr.HasTVChannels</enable>
+		</control>
+		<control type="radiobutton" id="$PARAM[id]32">
+			<include>SettingsButton</include>
 			<onclick>Skin.ToggleSetting(UseChannelLogo)</onclick>
 			<selected>!Skin.HasSetting(UseChannelLogo)</selected>
 			<label>$LOCALIZE[31221]</label>
+			<enable>Pvr.HasTVChannels</enable>
 		</control>
-		<control type="radiobutton" id="$PARAM[id]32">
+		<control type="radiobutton" id="$PARAM[id]33">
 			<include>SettingsButton</include>
 			<onclick>Skin.ToggleSetting(HideEPGThumbOverlay)</onclick>
 			<selected>!Skin.HasSetting(HideEPGThumbOverlay)</selected>
 			<label>$LOCALIZE[31317]</label>
-			<enable>!Skin.HasSetting(UseChannelLogo)</enable>
+			<enable>!Skin.HasSetting(UseChannelLogo) + Pvr.HasTVChannels</enable>
 		</control>
-		<control type="button" id="$PARAM[id]33">
+		<control type="button" id="$PARAM[id]34">
 			<include>SettingsButton</include>
 			<onclick condition="String.IsEmpty(Skin.String(EPGar))">Skin.SetString(EPGar,4to3)</onclick>
 			<onclick condition="String.IsEqual(Skin.String(EPGar),4to3)">Skin.SetString(EPGar,2to3)</onclick>
 			<onclick condition="String.IsEqual(Skin.String(EPGar),2to3)">Skin.Reset(EPGar)</onclick>
 			<label2>[COLOR $VAR[AccentColor]]$VAR[EPGThumbAR][/COLOR]</label2>
 			<label>$LOCALIZE[31341]</label>
+			<enable>Pvr.HasTVChannels</enable>
 		</control>
 	</include>
 
