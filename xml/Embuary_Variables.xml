@@ -767,10 +767,8 @@
 		<value condition="Control.IsVisible(55)">55</value>
 	</variable>
 	<variable name="ListItemResolution">
-		<value condition="String.IsEqual(ListItem.VideoResolution,1080)">1080p</value>
-		<value condition="String.IsEqual(ListItem.VideoResolution,720)">720p</value>
-		<value condition="String.IsEqual(ListItem.VideoResolution,480)">480p</value>
-		<value>$INFO[ListItem.VideoResolution]</value>
+		<value condition="String.Contains(ListItem.VideoResolution,K)">$INFO[ListItem.VideoResolution]</value>
+		<value>$INFO[ListItem.VideoResolution,,p]</value>
 	</variable>
 	<variable name="ListItemEpisodeName">
 		<value condition="!String.IsEmpty(ListItem.EpisodeName)">$INFO[ListItem.Season,S,:]$INFO[ListItem.Episode,E, - ]$INFO[ListItem.EpisodeName]</value>
@@ -785,7 +783,8 @@
 		<value condition="Player.HasVideo + !String.IsEmpty(VideoPlayer.EpisodeName)">$INFO[VideoPlayer.Season,S,:]$INFO[VideoPlayer.Episode,E, - ]$INFO[VideoPlayer.EpisodeName]</value>
 		<value condition="Player.HasVideo + !String.IsEmpty(VideoPlayer.Season) + !String.IsEmpty(VideoPlayer.Episode)">$INFO[VideoPlayer.Season,S,:]$INFO[VideoPlayer.Episode,E]</value>
 		<value condition="Player.HasVideo + !String.IsEmpty(VideoPlayer.Episode)">$INFO[VideoPlayer.Episode,E]</value>
-		<value condition="[Pvr.IsPlayingRadio | Player.HasVideo] + !Window.IsVisible(textviewer)">[COLOR text_sublabel]$LOCALIZE[31156][/COLOR]</value>
+		<value condition="Pvr.IsPlayingRadio + !Window.IsVisible(textviewer)">[COLOR text_sublabel]$LOCALIZE[31156][/COLOR]</value>
+		<value condition="[Pvr.IsPlayingTv | Pvr.IsPlayingRecording] + Window.IsVisible(fullscreeninfo)">[COLOR text_sublabel]$LOCALIZE[31156][/COLOR]</value>
 	</variable>
 	<variable name="PlayerDiscArt">
 		<value condition="!String.IsEmpty(Player.Art(album.discart))">$INFO[Player.Art(album.discart)]</value>
@@ -793,10 +792,11 @@
 		<value>common/white.jpg</value>
 	</variable>
 	<variable name="PlayerResolution">
-		<value condition="String.IsEqual(VideoPlayer.VideoResolution,1080)">1080p</value>
-		<value condition="String.IsEqual(VideoPlayer.VideoResolution,720)">720p</value>
-		<value condition="String.IsEqual(VideoPlayer.VideoResolution,480)">480p</value>
-		<value>$INFO[VideoPlayer.VideoResolution]</value>
+		<value condition="VideoPlayer.Content(LiveTV) + Player.ShowInfo"></value>
+		<value condition="VideoPlayer.Content(LiveTV) + [String.Contains(VideoPlayer.VideoResolution,K) | Integer.IsGreater(VideoPlayer.VideoResolution,719)]">HD</value>
+		<value condition="VideoPlayer.Content(LiveTV) + ![String.Contains(VideoPlayer.VideoResolution,K) | Integer.IsGreater(VideoPlayer.VideoResolution,719)]">SD</value>
+		<value condition="String.Contains(VideoPlayer.VideoResolution,K)">$INFO[VideoPlayer.VideoResolution]</value>
+		<value>$INFO[VideoPlayer.VideoResolution,,p]</value>
 	</variable>
 	<variable name="ListItemEndTime">
 		<value condition="!String.IsEmpty(ListItem.EndTimeResume)">$INFO[ListItem.EndTimeResume]</value>
