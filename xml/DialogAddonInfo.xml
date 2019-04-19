@@ -63,7 +63,7 @@
 						</control>
 						<control type="button" id="101">
 							<include>LightGreyButton</include>
-							<label>$LOCALIZE[24036]</label>
+							<label>$LOCALIZE[31343]</label>
 							<onclick>RunScript(script.embuary.helper,action=textviewer,header=$LOCALIZE[24036],message='$ESCINFO[ListItem.AddonNews]')</onclick>
 							<visible>!String.IsEmpty(ListItem.AddonNews)</visible>
 						</control>
@@ -71,7 +71,7 @@
 							<include>LightGreyButton</include>
 							<label>Changelog.txt</label>
 							<onclick>RunScript(script.embuary.helper,action=textviewer,header=changelog.txt,message='$ESCINFO[Window(home).Property(LocalChangelog)]')</onclick>
-							<visible>!String.IsEmpty(Window(home).Property(LocalChangelog))</visible>
+							<visible>!String.IsEmpty(Window(home).Property(LocalChangelog)) + !String.IsEqual(ListItem.AddonNews,Window(home).Property(LocalChangelog))</visible>
 						</control>
 						<control type="button" id="103">
 							<include>LightGreyButton</include>
