@@ -35,50 +35,33 @@
 					</control>
 					<!-- poster -->
 					<control type="group">
-						<visible>[!String.IsEmpty(Container.ShowTitle) | [String.Contains(Container.Folderpath,plugin.video.embycon) + [String.Contains(Container.Folderpath,media_type=season) | String.Contains(Container.Folderpath,media_type=series)]]] + !String.IsEmpty(ListItem.Art(tvshow.poster))</visible>
+						<visible>[!String.IsEmpty(Container.ShowTitle) | [String.Contains(Container.Folderpath,plugin.video.embycon) + [String.Contains(Container.Folderpath,media_type=season) | String.Contains(Container.Folderpath,media_type=series)]]] + [[!Container.HasParent + !String.IsEmpty(ListItemAbsolute(0).Art(tvshow.poster))] | [Container.HasParent + !String.IsEmpty(ListItemAbsolute(1).Art(tvshow.poster))]]</visible>
 						<control type="image">
-							<top>-2</top>
-							<left>-2</left>
-							<width>86</width>
-							<height>126</height>
-							<texture border="20,20,20,20">items/shadow.png</texture>
-						</control>
-						<control type="image">
-							<width>80</width>
-							<height>120</height>
-							<texture colordiffuse="$VAR[ThumbFallbackColor]">common/white.jpg</texture>
+							<left>-4</left>
+							<top>-4</top>
+							<width>88</width>
+							<height>128</height>
+							<texture background="true">$INFO[ListItemAbsolute(0).Art(tvshow.poster)]</texture>
 							<aspectratio scalediffuse="false">stretch</aspectratio>
-							<visible>String.IsEmpty(ListItem.Art(poster)) + String.IsEmpty(ListItem.Art(tvshow.poster)) + String.StartsWith(ListItem.Icon,default)</visible>
+							<bordersize>4</bordersize>
+							<bordertexture border="4">items/shadow2.png</bordertexture>
+							<visible>!Container.HasParent</visible>
 						</control>
 						<control type="image">
-							<width>80</width>
-							<height>120</height>
-							<texture colordiffuse="thumb_background">common/white.jpg</texture>
+							<left>-4</left>
+							<top>-4</top>
+							<width>88</width>
+							<height>128</height>
+							<texture background="true">$INFO[ListItemAbsolute(1).Art(tvshow.poster)]</texture>
 							<aspectratio scalediffuse="false">stretch</aspectratio>
-							<visible>!String.IsEmpty(ListItem.Art(poster)) | !String.IsEmpty(ListItem.Art(tvshow.poster)) | !String.StartsWith(ListItem.Icon,default)</visible>
-						</control>
-						<control type="textbox">
-							<top>10</top>
-							<left>10</left>
-							<width>60</width>
-							<height>100</height>
-							<font>Light24</font>
-							<textcolor>white</textcolor>
-							<align>center</align>
-							<aligny>center</aligny>
-							<label>$VAR[ListItemTitleLabel]</label>
-							<visible>String.IsEmpty(ListItem.Art(poster)) + String.IsEmpty(ListItem.Art(tvshow.poster)) + String.StartsWith(ListItem.Icon,default)</visible>
-						</control>
-						<control type="image">
-							<width>80</width>
-							<height>120</height>
-							<texture background="true">$INFO[ListItem.Art(tvshow.poster)]</texture>
-							<aspectratio scalediffuse="false">stretch</aspectratio>
+							<bordersize>4</bordersize>
+							<bordertexture border="4">items/shadow2.png</bordertexture>
+							<visible>Container.HasParent</visible>
 						</control>
 					</control>
 					<!-- buttons -->
 					<control type="group">
-						<animation effect="slide" end="110,0" time="0" condition="[!String.IsEmpty(Container.ShowTitle) | [String.Contains(Container.Folderpath,plugin.video.embycon) + [String.Contains(Container.Folderpath,media_type=season) | String.Contains(Container.Folderpath,media_type=series)]]] + !String.IsEmpty(ListItem.Art(tvshow.poster))">Conditional</animation>
+						<animation effect="slide" end="110,0" time="0" condition="[!String.IsEmpty(Container.ShowTitle) | [String.Contains(Container.Folderpath,plugin.video.embycon) + [String.Contains(Container.Folderpath,media_type=season) | String.Contains(Container.Folderpath,media_type=series)]]] + [[!Container.HasParent + !String.IsEmpty(ListItemAbsolute(0).Art(tvshow.poster))] | [Container.HasParent + !String.IsEmpty(ListItemAbsolute(1).Art(tvshow.poster))]]">Conditional</animation>
 						<control type="label">
 							<top>1</top>
 							<height>50</height>
