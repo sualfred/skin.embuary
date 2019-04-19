@@ -150,7 +150,7 @@
 		<control type="group">
 			<visible>!String.IsEqual(ListItem.DBType,artist) + !String.IsEqual(ListItem.DBType,album) + !String.IsEqual(ListItem.DBType,song)</visible>
 			<control type="group">
-				<visible>String.StartsWith(ListItem.Path,pvr://)</visible>
+				<visible>String.StartsWith(ListItem.Path,pvr://) + !ListItem.IsFolder + !ListItem.IsParentFolder</visible>
 				<control type="image">
 					<right>10</right>
 					<top>10</top>
@@ -160,7 +160,7 @@
 					<aspectratio align="right">keep</aspectratio>
 				</control>
 				<control type="group">
-					<visible>!String.IsEmpty(ListItem.EpgEventIcon) | [Window.IsVisible(MyPVRrecordings.xml) + !String.IsEqual(ListItem.ActualIcon,ListItem.Icon)]</visible>
+					<visible>!String.IsEmpty(ListItem.EpgEventIcon) | [String.StartsWith(ListItem.Path,pvr://recordings) + !String.IsEqual(ListItem.ActualIcon,ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)]</visible>
 					<visible>!Skin.HasSetting(UseChannelLogo) + !Skin.HasSetting(HideEPGThumbOverlay) + !Window.IsVisible(fullscreeninfo) + !Window.IsVisible(pvrguideinfo) + !String.IsEqual(Container.ViewMode,$LOCALIZE[535]) + !String.IsEqual(Container.ViewMode,$LOCALIZE[31005])</visible>
 					<control type="image">
 						<bottom>0</bottom>
