@@ -660,6 +660,13 @@
 		<value>$INFO[ListItem.Icon]</value>
 	</variable>
 	<variable name="IconPVR">
+		<value condition="Skin.HasSetting(UseChannelLogo) + !String.StartsWith(ListItem.Icon,Default) + String.StartsWith(ListItem.Path,pvr://recordings)">$INFO[ListItem.ActualIcon]</value>
+		<value condition="Skin.HasSetting(UseChannelLogo) + !String.StartsWith(ListItem.Icon,Default)">$INFO[ListItem.Icon]</value>
+		<value>$VAR[IconPVRForced]</value>
+	</variable>
+	<variable name="IconPVRForced">
+		<value condition="String.StartsWith(ListItem.Path,pvr://recordings) + !String.StartsWith(ListItem.Icon,Default) + !String.IsEqual(ListItem.ActualIcon,ListItem.Icon)">$INFO[ListItem.Icon]</value>
+		<value condition="String.StartsWith(ListItem.Path,pvr://recordings) + !String.StartsWith(ListItem.Icon,Default)">$INFO[ListItem.ActualIcon]</value>
 		<value condition="!String.IsEmpty(ListItem.EpgEventIcon)">$INFO[ListItem.EpgEventIcon]</value>
 		<value condition="!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)">$INFO[ListItem.Icon]</value>
 	</variable>

@@ -376,16 +376,25 @@
 				<control type="image">
 					<width>276</width>
 					<height>414</height>
-					<texture background="true">$VAR[IconPVR]</texture>
+					<texture background="true">$VAR[IconPVRForced]</texture>
 					<aspectratio scalediffuse="false">stretch</aspectratio>
+					<visible>String.StartsWith(ListItem.Path,pvr://)</visible>
 					<visible>!String.IsEmpty(ListItem.EpgEventIcon) | $EXP[RecHasThumb]</visible>
+				</control>
+				<control type="image">
+					<width>276</width>
+					<height>414</height>
+					<texture background="true">$VAR[IconPVRForced]</texture>
+					<aspectratio scalediffuse="false">keep</aspectratio>
+					<visible>String.StartsWith(ListItem.Path,pvr://)</visible>
+					<visible>String.IsEmpty(ListItem.EpgEventIcon) + !$EXP[RecHasThumb]</visible>
 				</control>
 				<control type="image">
 					<width>276</width>
 					<height>414</height>
 					<texture background="true">$VAR[IconPoster]</texture>
 					<aspectratio scalediffuse="false">keep</aspectratio>
-					<visible>String.IsEmpty(ListItem.EpgEventIcon) + !$EXP[RecHasThumb]</visible>
+					<visible>!String.StartsWith(ListItem.Path,pvr://)</visible>
 				</control>
 			</control>
 		</definition>
@@ -635,16 +644,25 @@
 			<control type="image">
 				<width>430</width>
 				<height>287</height>
-				<texture background="true">$VAR[IconLandscape]</texture>
+				<texture background="true">$VAR[IconPVRForced]</texture>
 				<aspectratio scalediffuse="false">stretch</aspectratio>
+				<visible>String.StartsWith(ListItem.Path,pvr://)</visible>
 				<visible>!String.IsEmpty(ListItem.EpgEventIcon) | $EXP[RecHasThumb]</visible>
+			</control>
+			<control type="image">
+				<width>430</width>
+				<height>287</height>
+				<texture background="true">$VAR[IconPVRForced]</texture>
+				<aspectratio scalediffuse="false">keep</aspectratio>
+				<visible>String.StartsWith(ListItem.Path,pvr://)</visible>
+				<visible>String.IsEmpty(ListItem.EpgEventIcon) + !$EXP[RecHasThumb]</visible>
 			</control>
 			<control type="image">
 				<width>430</width>
 				<height>287</height>
 				<texture background="true">$VAR[IconLandscape]</texture>
 				<aspectratio scalediffuse="false">keep</aspectratio>
-				<visible>String.IsEmpty(ListItem.EpgEventIcon) + !$EXP[RecHasThumb]</visible>
+				<visible>!String.StartsWith(ListItem.Path,pvr://)</visible>
 			</control>
 		</control>
 	</include>
