@@ -860,7 +860,13 @@
 			<label>$LOCALIZE[31101]</label>
 			<label2>$INFO[Skin.String(UserWidget$PARAM[nr]_layout.label)]</label2>
 		</control>
-		<control type="button" id="104">
+		<control type="radiobutton" id="104">
+			<include>SettingsButton</include>
+			<onclick>Skin.ToggleSetting(UserWidget$PARAM[nr]_forceIcon)</onclick>
+			<label>$LOCALIZE[31344]</label>
+			<selected>Skin.HasSetting(UserWidget$PARAM[nr]_forceIcon)</selected>
+		</control>
+		<control type="button" id="105">
 			<include>SettingsButton</include>
 			<label>$LOCALIZE[581]</label>
 			<onclick>SetProperty(Dialog.1.Label,$LOCALIZE[571])</onclick>
@@ -896,7 +902,7 @@
 			<onclick>RunScript(script.embuary.helper,action=createselect,header=$LOCALIZE[581])</onclick>
 			<label2>$INFO[Skin.String(UserWidget$PARAM[nr]_sortby),',']</label2>
 		</control>
-		<control type="button" id="105">
+		<control type="button" id="106">
 			<include>SettingsButton</include>
 			<label>$LOCALIZE[580]</label>
 			<onclick>SetProperty(Dialog.1.Label,$LOCALIZE[571])</onclick>
@@ -908,7 +914,7 @@
 			<onclick>RunScript(script.embuary.helper,action=createselect,header=$LOCALIZE[580])</onclick>
 			<label2>$INFO[Skin.String(UserWidget$PARAM[nr]_sortorder),',']</label2>
 		</control>
-		<control type="button" id="106">
+		<control type="button" id="107">
 			<include>SettingsButton</include>
 			<label>$LOCALIZE[21427]</label>
 			<onclick>Skin.SetNumeric(UserWidget$PARAM[nr]_limit)</onclick>
