@@ -34,7 +34,7 @@
 					<texture colordiffuse="black">views/player/mask_bottom.png</texture>
 				</control>
 				<control type="image">
-					<visible>!Skin.HasSetting(HideDiscArt)</visible>
+					<visible>!Skin.HasSetting(HideDiscArt) + !String.StartsWith(Player.Filenameandpath,pvr://)</visible>
 					<animation effect="rotate" center="auto" time="6000" end="-360" condition="true" loop="true">Conditional</animation>
 					<bottom>120</bottom>
 					<left>29</left>
@@ -47,11 +47,22 @@
 				<control type="image" id="99">
 					<bottom>20</bottom>
 					<left>19</left>
+					<height>278</height>
 					<width>278</width>
 					<texture>$VAR[PlayerIcon]</texture>
-					<aspectratio scalediffuse="false" aligny="bottom">keep</aspectratio>
+					<aspectratio scalediffuse="false" aligny="center">keep</aspectratio>
 					<bordersize>11</bordersize>
 					<bordertexture border="11,11,11,11">items/resp_shadow.png</bordertexture>
+					<visible>!String.StartsWith(Player.Filenameandpath,pvr://)</visible>
+				</control>
+				<control type="image" id="99">
+					<bottom>31</bottom>
+					<left>30</left>
+					<width>256</width>
+					<height>144</height>
+					<texture>$VAR[PlayerIcon]</texture>
+					<aspectratio scalediffuse="false" aligny="center">keep</aspectratio>
+					<visible>String.StartsWith(Player.Filenameandpath,pvr://)</visible>
 				</control>
 				<!-- Progress bars -->
 				<control type="group" id="99">
