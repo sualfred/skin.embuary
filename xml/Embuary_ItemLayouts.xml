@@ -1946,6 +1946,111 @@
 		</definition>
 	</include>
 
+	<!-- Fake mini epg -->
+	<include name="MiniEPGLayout">
+		<param name="focused">false</param>
+		<definition>
+			<!-- channel layout -->
+			<control type="group">
+				<width>395</width>
+				<control type="image">
+					<width>395</width>
+					<height>83</height>
+					<texture border="3,3,3,3" colordiffuse="grid_border">views/guide/epg_tile.png</texture>
+				</control>
+				<control type="label">
+					<left>15</left>
+					<width>50</width>
+					<height>81</height>
+					<aligny>center</aligny>
+					<font>reg22</font>
+					<label>$INFO[ListItem.ChannelNumberLabel]</label>
+				</control>
+				<control type="label">
+					<left>68</left>
+					<right>110</right>
+					<height>81</height>
+					<aligny>center</aligny>
+					<font>reg22</font>
+					<label>$INFO[ListItem.ChannelName]</label>
+				</control>
+				<control type="image">
+					<right>10</right>
+					<width>100</width>
+					<height>81</height>
+					<texture background="true">$INFO[ListItem.Icon]</texture>
+					<aspectratio align="right">keep</aspectratio>
+					<bordersize>10</bordersize>
+				</control>
+			</control>
+			<!-- current programme -->
+			<control type="group">
+				<left>395</left>
+				<control type="group">
+					<width>50%</width>
+					<control type="image">
+						<height>83</height>
+						<texture colordiffuse="$VAR[AccentColor]">common/white.jpg</texture>
+						<visible>$PARAM[focused]</visible>
+					</control>
+					<control type="image">
+						<height>83</height>
+						<texture colordiffuse="cc282828">common/white.jpg</texture>
+						<include>FakeProgressAnimation</include>
+					</control>
+					<control type="image">
+						<height>83</height>
+						<texture border="3,3,3,3" colordiffuse="grid_border">views/guide/epg_tile.png</texture>
+					</control>
+					<control type="label">
+						<textoffsetx>25</textoffsetx>
+						<width>75%</width>
+						<height>81</height>
+						<aligny>center</aligny>
+						<font>reg22</font>
+						<label>$INFO[ListItem.Title]</label>
+					</control>
+					<control type="label">
+						<right>0</right>
+						<textoffsetx>25</textoffsetx>
+						<width>25%</width>
+						<height>81</height>
+						<aligny>center</aligny>
+						<align>right</align>
+						<font>reg22</font>
+						<label>$INFO[ListItem.EndTime]</label>
+					</control>
+				</control>
+				<control type="group">
+					<right>0</right>
+					<width>50%</width>
+					<control type="image">
+						<height>83</height>
+						<texture border="3,3,3,3" colordiffuse="grid_border">views/guide/epg_tile.png</texture>
+					</control>
+					<control type="label">
+						<textoffsetx>25</textoffsetx>
+						<width>75%</width>
+						<height>81</height>
+						<aligny>center</aligny>
+						<font>reg22</font>
+						<label>$INFO[ListItem.NextTitle]</label>
+					</control>
+					<control type="label">
+						<right>0</right>
+						<textoffsetx>25</textoffsetx>
+						<width>25%</width>
+						<height>81</height>
+						<aligny>center</aligny>
+						<align>right</align>
+						<font>reg22</font>
+						<label>$INFO[ListItem.NextEndTime]</label>
+					</control>
+				</control>
+			</control>
+		</definition>
+	</include>
+
 	<!-- PVR -->
 	<include name="PVRPosterLayout">
 		<param name="mainlabel">$VAR[MainListLabel]</param>
