@@ -473,7 +473,6 @@
 		<value>$INFO[Container.Foldername]</value>
 	</variable>
 	<variable name="ContainerContentPrefix">
-		<value condition="Window.IsVisible(script-globalsearch.xml) | Window.IsVisible(script-globalsearch-main.xml)">Globalsearch - </value>
 		<value condition="[String.StartsWith(Container.Folderpath,plugin://plugin.video.embycon) | Window.IsVisible(1131)] + !Skin.HasSetting(HideEmbyConLabel)">EmbyCon - </value>
 		<value condition="String.StartsWith(Container.FolderPath,plugin://plugin.video.emby/) | Window.IsVisible(1130)">Emby - </value>
 	</variable>
@@ -490,7 +489,6 @@
 		<value condition="Window.IsVisible(movieinformation) + String.IsEqual(ListItem.DBType,movie)">$LOCALIZE[10524]</value>
 		<value condition="Window.IsVisible(movieinformation) + String.IsEqual(ListItem.DBType,episode)">$LOCALIZE[20352]</value>
 		<value condition="Window.IsVisible(favourites)">$LOCALIZE[1036]</value>
-		<value condition="Window.IsVisible(script-globalsearch.xml) | Window.IsVisible(script-globalsearch-main.xml)">$LOCALIZE[283]</value>
 		<value condition="String.StartsWith(Container.FolderPath,plugin://plugin.video.emby/) + String.Contains(Container.FolderPath,type=playlists)">$LOCALIZE[136]</value>
 		<value condition="String.StartsWith(Container.FolderPath,plugin://plugin.video.emby/) + String.Contains(Container.FolderPath,type=homevideos)">$LOCALIZE[31187]</value>
 		<value condition="String.StartsWith(Container.FolderPath,plugin://plugin.video.emby/) + String.Contains(Container.FolderPath,type=books)">$LOCALIZE[31262]</value>
@@ -557,7 +555,6 @@
 		<value>$INFO[Container.Foldername]</value>
 	</variable>
 	<variable name="ContainerCountLabel">
-		<value condition="Window.IsVisible(script-globalsearch.xml)">$INFO[Container.NumItems]</value>
 		<value condition="Container.Content(seasons) + !Window.IsVisible(movieinformation)">$INFO[Container.NumItems]</value>
 		<value condition="Container.Content(episodes) + !Window.IsVisible(movieinformation)">$INFO[Container.NumItems]</value>
 		<value condition="String.StartsWith(Container.FolderPath,pvr://) + !Window.IsVisible(dialogpvrinfo.xml)">$INFO[Container.NumItems]</value>
@@ -614,10 +611,6 @@
 		<value condition="!String.IsEmpty(ListItem.Art(tvshow.clearlogo))">$INFO[ListItem.Art(tvshow.clearlogo)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(clearlogo))">$INFO[ListItem.Art(clearlogo)]</value>
 		<value condition="!String.IsEmpty(Container.ShowTitle) + !String.IsEmpty(ListItem(1).Art(tvshow.clearlogo))">$INFO[ListItem(1).Art(tvshow.clearlogo)]</value>
-	</variable>
-	<variable name="GlobalSearchIconTVShows">
-		<value condition="!String.IsEmpty(ListItem.Property(art(clearart)))">$INFO[ListItem.Property(art(landscape))]</value>
-		<value>ListItem.Art(fanart)</value>
 	</variable>
 	<variable name="IconBanner">
 		<value condition="!String.IsEmpty(ListItem.Art(banner))">$INFO[ListItem.Art(banner)]</value>
@@ -952,15 +945,6 @@
 		<value condition="String.StartsWith(Player.Filenameandpath,pvr://) + !String.IsEmpty(ListItem.Plot)">$VAR[ListItemEpisodeName,,[CR][CR]]$INFO[ListItem.Plot]</value>
 		<value condition="!String.IsEmpty(ListItem.Plot)">$INFO[ListItem.Plot]</value>
 		<value>$LOCALIZE[19055]</value>
-	</variable>
-	<variable name="TinyGlobalSearchPlot">
-		<value condition="!String.IsEmpty(Container(100).ListItem.Property(Plot))">$INFO[Container(100).ListItem.Property(Plot)]</value>
-		<value condition="!String.IsEmpty(Container(100).ListItem.Property(Artist_Description))">$INFO[Container(100).ListItem.Property(Artist_Description)]</value>
-		<value condition="!String.IsEmpty(Container(100).ListItem.Property(Album_Description))">$INFO[Container(100).ListItem.Property(Album_Description)]</value>
-		<value condition="!String.IsEmpty(Container(100).ListItem.Property(Comment))">$INFO[Container(100).ListItem.Property(Comment)]</value>
-	</variable>
-	<variable name="BoxSetItems">
-		<value></value>
 	</variable>
 	<variable name="ListViewPlot">
 		<value condition="String.IsEqual(ListItem.DBType,set)">$INFO[ListItem.Plot,,[CR][CR]]$INFO[Container(2001).ListItemAbsolute(0).Label,$LOCALIZE[31192]:[CR]]$INFO[Container(2001).ListItemAbsolute(0).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(1).Label]$INFO[Container(2001).ListItemAbsolute(1).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(2).Label]$INFO[Container(2001).ListItemAbsolute(2).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(3).Label]$INFO[Container(2001).ListItemAbsolute(3).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(4).Label]$INFO[Container(2001).ListItemAbsolute(4).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(5).Label]$INFO[Container(2001).ListItemAbsolute(5).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(6).Label]$INFO[Container(2001).ListItemAbsolute(6).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(7).Label]$INFO[Container(2001).ListItemAbsolute(7).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(8).Label]$INFO[Container(2001).ListItemAbsolute(8).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(9).Label]$INFO[Container(2001).ListItemAbsolute(9).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(10).Label]$INFO[Container(2001).ListItemAbsolute(10).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(11).Label]$INFO[Container(2001).ListItemAbsolute(11).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(12).Label]$INFO[Container(2001).ListItemAbsolute(12).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(13).Label]$INFO[Container(2001).ListItemAbsolute(13).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(14).Label]$INFO[Container(2001).ListItemAbsolute(14).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(15).Label]$INFO[Container(2001).ListItemAbsolute(15).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(16).Label]$INFO[Container(2001).ListItemAbsolute(16).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(17).Label]$INFO[Container(2001).ListItemAbsolute(17).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(18).Label]$INFO[Container(2001).ListItemAbsolute(18).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(19).Label]$INFO[Container(2001).ListItemAbsolute(19).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(20).Label]$INFO[Container(2001).ListItemAbsolute(20).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(21).Label]$INFO[Container(2001).ListItemAbsolute(21).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(22).Label]$INFO[Container(2001).ListItemAbsolute(22).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(23).Label]$INFO[Container(2001).ListItemAbsolute(23).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(24).Label]$INFO[Container(2001).ListItemAbsolute(24).Year, (,)[CR]]$INFO[Container(2001).ListItemAbsolute(25).Label]$INFO[Container(2001).ListItemAbsolute(25).Year, (,)[CR]]</value>
@@ -1311,10 +1295,6 @@
 	<variable name="SearchString">
 		<value condition="!String.IsEmpty(Skin.String(CustomSearchTerm))">$INFO[Skin.String(CustomSearchTerm)]</value>
 		<value>n/a</value>
-	</variable>
-	<variable name="SearchProvider">
-		<value condition="Skin.HasSetting(UseGlobalsearch) + System.HasAddon(script.globalsearch)">$INFO[System.AddonTitle(script.globalsearch)]</value>
-		<value>Embuary</value>
 	</variable>
 	<variable name="CastSearchProvider">
 		<value condition="Skin.HasSetting(DoNotUseExtendedInfo) | !System.HasAddon(script.extendedinfo)">$LOCALIZE[31237]</value>
