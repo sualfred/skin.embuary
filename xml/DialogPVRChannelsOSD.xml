@@ -11,30 +11,37 @@
 			<!--Bottom-->
 			<control type="group">
 				<bottom>0</bottom>
-				<include content="ParamHeight" condition="String.IsEqual(Skin.String(EPGar),2to3)">
+				<include content="ParamHeight" condition="!Skin.HasSetting(NoMiniEPG)">
+					<param name="height" value="474"/>
+				</include>
+				<include content="ParamHeight" condition="Skin.HasSetting(NoMiniEPG) + String.IsEqual(Skin.String(EPGar),2to3)">
 					<param name="height" value="553"/>
 				</include>
-				<include content="ParamHeight" condition="String.IsEqual(Skin.String(EPGar),4to3)">
+				<include content="ParamHeight" condition="Skin.HasSetting(NoMiniEPG) + String.IsEqual(Skin.String(EPGar),4to3)">
 					<param name="height" value="425"/>
 				</include>
-				<include content="ParamHeight" condition="String.IsEmpty(Skin.String(EPGar))">
+				<include content="ParamHeight" condition="Skin.HasSetting(NoMiniEPG) + String.IsEmpty(Skin.String(EPGar))">
 					<param name="height" value="440"/>
 				</include>
 				<control type="image">
 					<bottom>0</bottom>
 					<width>100%</width>
-					<include content="ParamHeight" condition="String.IsEqual(Skin.String(EPGar),2to3)">
-						<param name="height" value="513"/>
+					<include content="ParamHeight" condition="!Skin.HasSetting(NoMiniEPG)">
+						<param name="height" value="434"/>
 					</include>
-					<include content="ParamHeight" condition="String.IsEqual(Skin.String(EPGar),4to3)">
-						<param name="height" value="385"/>
+					<include content="ParamHeight" condition="Skin.HasSetting(NoMiniEPG) + String.IsEqual(Skin.String(EPGar),2to3)">
+						<param name="height" value="523"/>
 					</include>
-					<include content="ParamHeight" condition="String.IsEmpty(Skin.String(EPGar))">
-						<param name="height" value="400"/>
+					<include content="ParamHeight" condition="Skin.HasSetting(NoMiniEPG) + String.IsEqual(Skin.String(EPGar),4to3)">
+						<param name="height" value="395"/>
+					</include>
+					<include content="ParamHeight" condition="Skin.HasSetting(NoMiniEPG) + String.IsEmpty(Skin.String(EPGar))">
+						<param name="height" value="410"/>
 					</include>
 					<texture colordiffuse="black">views/player/mask_bottom.png</texture>
 				</control>
-				<include condition="String.IsEmpty(Skin.String(EPGar))" content="WideWidget">
+				<include condition="!Skin.HasSetting(NoMiniEPG)">MiniEPG</include>
+				<include condition="Skin.HasSetting(NoMiniEPG) + String.IsEmpty(Skin.String(EPGar))" content="WideWidget">
 					<param name="id" value="11"/>
 					<param name="onup" value="PreviousChannelGroup"/>
 					<param name="ondown" value="NextChannelGroup"/>
@@ -45,7 +52,7 @@
 					<param name="use_custom_content" value="false"/>
 					<param name="layout" value="PVRLandscapeLayout"/>
 				</include>
-				<include condition="String.IsEqual(Skin.String(EPGar),4to3)" content="4to3Widget">
+				<include condition="Skin.HasSetting(NoMiniEPG) + String.IsEqual(Skin.String(EPGar),4to3)" content="4to3Widget">
 					<param name="id" value="11"/>
 					<param name="onup" value="PreviousChannelGroup"/>
 					<param name="ondown" value="NextChannelGroup"/>
@@ -56,7 +63,7 @@
 					<param name="use_custom_content" value="false"/>
 					<param name="layout" value="PVR4to3Layout"/>
 				</include>
-				<include condition="String.IsEqual(Skin.String(EPGar),2to3)" content="PosterWidget">
+				<include condition="Skin.HasSetting(NoMiniEPG) + String.IsEqual(Skin.String(EPGar),2to3)" content="PosterWidget">
 					<param name="id" value="11"/>
 					<param name="onup" value="PreviousChannelGroup"/>
 					<param name="ondown" value="NextChannelGroup"/>
