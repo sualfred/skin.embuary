@@ -160,6 +160,7 @@
 					<aspectratio align="right">keep</aspectratio>
 				</control>
 				<control type="group">
+					<visible>!Window.IsVisible(pvrchannelguide)</visible>
 					<visible>!String.IsEmpty(ListItem.EpgEventIcon) | [String.StartsWith(ListItem.Path,pvr://recordings) + !String.IsEqual(ListItem.ActualIcon,ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)]</visible>
 					<visible>!Skin.HasSetting(UseChannelLogo) + !Skin.HasSetting(HideEPGThumbOverlay) + !Window.IsVisible(fullscreeninfo) + !Window.IsVisible(pvrguideinfo) + !String.IsEqual(Container.ViewMode,$LOCALIZE[535]) + !String.IsEqual(Container.ViewMode,$LOCALIZE[31005])</visible>
 					<control type="image">
@@ -1959,7 +1960,7 @@
 					<texture border="3,3,3,3" colordiffuse="grid_border">views/guide/epg_tile.png</texture>
 				</control>
 				<control type="label">
-					<left>15</left>
+					<left>25</left>
 					<width>50</width>
 					<height>81</height>
 					<aligny>center</aligny>
@@ -1967,8 +1968,8 @@
 					<label>$INFO[ListItem.ChannelNumberLabel]</label>
 				</control>
 				<control type="label">
-					<left>68</left>
-					<right>110</right>
+					<left>78</left>
+					<right>120</right>
 					<height>81</height>
 					<aligny>center</aligny>
 					<font>reg22</font>
@@ -1988,11 +1989,6 @@
 				<left>395</left>
 				<control type="group">
 					<width>50%</width>
-					<control type="image">
-						<height>83</height>
-						<texture colordiffuse="$VAR[AccentColor]">common/white.jpg</texture>
-						<visible>$PARAM[focused]</visible>
-					</control>
 					<control type="image">
 						<height>83</height>
 						<texture colordiffuse="cc282828">common/white.jpg</texture>
