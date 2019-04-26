@@ -1948,6 +1948,115 @@
 	</include>
 
 	<!-- Fake mini epg -->
+	<include name="MiniEPG">
+		<control type="group">
+			<!-- headlines -->
+			<control type="group">
+				<bottom>383</bottom>
+				<height>30</height>
+				<!-- channel layout -->
+				<control type="group">
+					<width>395</width>
+					<control type="label">
+						<height>30</height>
+						<font>Med20</font>
+						<label>$INFO[VideoPlayer.ChannelGroup]</label>
+						<aligny>center</aligny>
+						<textoffsetx>25</textoffsetx>
+					</control>
+				</control>
+				<control type="group">
+					<left>395</left>
+					<!-- on now -->
+					<control type="group">
+						<width>50%</width>
+						<control type="label">
+							<left>25</left>
+							<height>30</height>
+							<font>Med20</font>
+							<label>$LOCALIZE[31346]</label>
+							<aligny>center</aligny>
+						</control>
+						<control type="label">
+							<right>25</right>
+							<height>30</height>
+							<font>Med20</font>
+							<label>$LOCALIZE[19127]</label>
+							<aligny>center</aligny>
+							<align>right</align>
+						</control>
+					</control>
+					<!-- next up  -->
+					<control type="group">
+						<right>0</right>
+						<width>50%</width>
+						<control type="label">
+							<left>25</left>
+							<height>30</height>
+							<font>Med20</font>
+							<label>$LOCALIZE[31012]</label>
+							<aligny>center</aligny>
+						</control>
+						<control type="label">
+							<right>25</right>
+							<height>30</height>
+							<font>Med20</font>
+							<label>$LOCALIZE[19127]</label>
+							<aligny>center</aligny>
+							<align>right</align>
+						</control>
+					</control>
+				</control>
+			</control>
+			<!-- list -->
+			<control type="list" id="11">
+				<bottom>30</bottom>
+				<height>332</height>
+				<orientation>vertical</orientation>
+				<onleft>PreviousChannelGroup</onleft>
+				<onright>NextChannelGroup</onright>
+				<itemlayout height="83">
+					<include>MiniEPGLayout</include>
+				</itemlayout>
+				<focusedlayout height="83">
+					<include content="MiniEPGLayout">
+						<param name="focused" value="true"/>
+					</include>
+				</focusedlayout>
+			</control>
+			<!-- grid -->
+			<control type="image">
+				<texture colordiffuse="grid_border">common/white.jpg</texture>
+				<bottom>360</bottom>
+				<height>2</height>
+			</control>
+			<control type="image">
+				<texture colordiffuse="grid_border">common/white.jpg</texture>
+				<bottom>30</bottom>
+				<height>2</height>
+			</control>
+			<!-- fake focus -->
+			<control type="group">
+				<animation effect="slide" end="0,-83" time="0" condition="Container(11).Row(2)">Conditional</animation>
+				<animation effect="slide" end="0,-166" time="0" condition="Container(11).Row(1)">Conditional</animation>
+				<animation effect="slide" end="0,-249" time="0" condition="Container(11).Row(0)">Conditional</animation>
+				<bottom>12</bottom>
+				<left>395</left>
+				<height>101</height>
+				<control type="group">
+					<width>50%</width>
+					<control type="image">
+						<left>-12</left>
+						<right>-12</right>
+						<top>-7</top>
+						<height>105</height>
+						<texture border="20,20,20,20" colordiffuse="$VAR[AccentColor]">items/focus.png</texture>
+						<aspectratio>stretch</aspectratio>
+					</control>
+				</control>
+			</control>
+		</control>
+	</include>
 	<include name="MiniEPGLayout">
 		<param name="focused">false</param>
 		<definition>
@@ -2004,6 +2113,7 @@
 						<height>81</height>
 						<aligny>center</aligny>
 						<font>reg22</font>
+						<selectedcolor>text_white</selectedcolor>
 						<label>$INFO[ListItem.Title]</label>
 					</control>
 					<control type="label">
@@ -2014,6 +2124,7 @@
 						<aligny>center</aligny>
 						<align>right</align>
 						<font>reg22</font>
+						<selectedcolor>text_white</selectedcolor>
 						<label>$INFO[ListItem.EndTime]</label>
 					</control>
 				</control>
@@ -2030,6 +2141,7 @@
 						<height>81</height>
 						<aligny>center</aligny>
 						<font>reg22</font>
+						<selectedcolor>text_white</selectedcolor>
 						<label>$INFO[ListItem.NextTitle]</label>
 					</control>
 					<control type="label">
@@ -2040,6 +2152,7 @@
 						<aligny>center</aligny>
 						<align>right</align>
 						<font>reg22</font>
+						<selectedcolor>text_white</selectedcolor>
 						<label>$INFO[ListItem.NextEndTime]</label>
 					</control>
 				</control>

@@ -30,132 +30,18 @@
 						<param name="height" value="434"/>
 					</include>
 					<include content="ParamHeight" condition="Skin.HasSetting(NoMiniEPG) + String.IsEqual(Skin.String(EPGar),2to3)">
-						<param name="height" value="513"/>
+						<param name="height" value="523"/>
 					</include>
 					<include content="ParamHeight" condition="Skin.HasSetting(NoMiniEPG) + String.IsEqual(Skin.String(EPGar),4to3)">
-						<param name="height" value="385"/>
+						<param name="height" value="395"/>
 					</include>
 					<include content="ParamHeight" condition="Skin.HasSetting(NoMiniEPG) + String.IsEmpty(Skin.String(EPGar))">
-						<param name="height" value="400"/>
+						<param name="height" value="410"/>
 					</include>
 					<texture colordiffuse="black">views/player/mask_bottom.png</texture>
 				</control>
-
-
-				<control type="group">
-
-
-					<control type="group">
-						<bottom>383</bottom>
-						<height>30</height>
-						<!-- channel layout -->
-						<control type="group">
-							<width>395</width>
-							<control type="label">
-								<height>30</height>
-								<font>Med20</font>
-								<label>$INFO[VideoPlayer.ChannelGroup]</label>
-								<aligny>center</aligny>
-								<textoffsetx>25</textoffsetx>
-							</control>
-						</control>
-						<!-- current programme -->
-						<control type="group">
-							<left>395</left>
-							<control type="group">
-								<width>50%</width>
-								<control type="label">
-									<left>25</left>
-									<height>30</height>
-									<font>Med20</font>
-									<label>Current programme</label>
-									<aligny>center</aligny>
-								</control>
-								<control type="label">
-									<right>25</right>
-									<height>30</height>
-									<font>Med20</font>
-									<label>$LOCALIZE[19127]</label>
-									<aligny>center</aligny>
-									<align>right</align>
-								</control>
-							</control>
-							<control type="group">
-								<right>0</right>
-								<width>50%</width>
-								<control type="label">
-									<left>25</left>
-									<height>30</height>
-									<font>Med20</font>
-									<label>$LOCALIZE[31012]</label>
-									<aligny>center</aligny>
-								</control>
-								<control type="label">
-									<right>25</right>
-									<height>30</height>
-									<font>Med20</font>
-									<label>$LOCALIZE[19127]</label>
-									<aligny>center</aligny>
-									<align>right</align>
-								</control>
-							</control>
-						</control>
-					</control>
-
-
-					<control type="list" id="11">
-						<bottom>30</bottom>
-						<height>332</height>
-						<orientation>vertical</orientation>
-						<onleft>PreviousChannelGroup</onleft>
-						<onright>NextChannelGroup</onright>
-						<itemlayout height="83">
-							<include>MiniEPGLayout</include>
-						</itemlayout>
-						<focusedlayout height="83">
-							<include content="MiniEPGLayout">
-								<param name="focused" value="true"/>
-							</include>
-						</focusedlayout>
-					</control>
-
-					<control type="image">
-						<texture colordiffuse="grid_border">common/white.jpg</texture>
-						<bottom>360</bottom>
-						<height>2</height>
-					</control>
-					<control type="image">
-						<texture colordiffuse="grid_border">common/white.jpg</texture>
-						<bottom>30</bottom>
-						<height>2</height>
-					</control>
-
-					<control type="group">
-						<animation effect="slide" end="0,-83" time="0" condition="Container(11).Row(2)">Conditional</animation>
-						<animation effect="slide" end="0,-166" time="0" condition="Container(11).Row(1)">Conditional</animation>
-						<animation effect="slide" end="0,-249" time="0" condition="Container(11).Row(0)">Conditional</animation>
-						<bottom>12</bottom>
-						<left>395</left>
-						<height>101</height>
-						<control type="group">
-							<width>50%</width>
-							<control type="image">
-								<left>-12</left>
-								<right>-12</right>
-								<top>-7</top>
-								<height>105</height>
-								<texture border="20,20,20,20" colordiffuse="$VAR[AccentColor]">items/focus.png</texture>
-								<aspectratio>stretch</aspectratio>
-							</control>
-						</control>
-					</control>
-				</control>
-
-
-
-
-				<!--
-				<include condition="String.IsEmpty(Skin.String(EPGar))" content="WideWidget">
+				<include condition="!Skin.HasSetting(NoMiniEPG)">MiniEPG</include>
+				<include condition="Skin.HasSetting(NoMiniEPG) + String.IsEmpty(Skin.String(EPGar))" content="WideWidget">
 					<param name="id" value="11"/>
 					<param name="onup" value="PreviousChannelGroup"/>
 					<param name="ondown" value="NextChannelGroup"/>
@@ -166,7 +52,7 @@
 					<param name="use_custom_content" value="false"/>
 					<param name="layout" value="PVRLandscapeLayout"/>
 				</include>
-				<include condition="String.IsEqual(Skin.String(EPGar),4to3)" content="4to3Widget">
+				<include condition="Skin.HasSetting(NoMiniEPG) + String.IsEqual(Skin.String(EPGar),4to3)" content="4to3Widget">
 					<param name="id" value="11"/>
 					<param name="onup" value="PreviousChannelGroup"/>
 					<param name="ondown" value="NextChannelGroup"/>
@@ -177,7 +63,7 @@
 					<param name="use_custom_content" value="false"/>
 					<param name="layout" value="PVR4to3Layout"/>
 				</include>
-				<include condition="String.IsEqual(Skin.String(EPGar),2to3)" content="PosterWidget">
+				<include condition="Skin.HasSetting(NoMiniEPG) + String.IsEqual(Skin.String(EPGar),2to3)" content="PosterWidget">
 					<param name="id" value="11"/>
 					<param name="onup" value="PreviousChannelGroup"/>
 					<param name="ondown" value="NextChannelGroup"/>
@@ -187,7 +73,7 @@
 					<param name="sublabel" value="$VAR[SubListLabel]"/>
 					<param name="use_custom_content" value="false"/>
 					<param name="layout" value="PVRPosterLayout"/>
-				</include>-->
+				</include>
 			</control>
 			<!--Scrollletter-->
 			<control type="group">
