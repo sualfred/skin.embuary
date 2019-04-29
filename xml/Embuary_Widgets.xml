@@ -7,7 +7,7 @@
 		<param name="left">70</param>
 		<definition>
 			<control type="group">
-				<visible>Container($PARAM[id]).IsUpdating + !Integer.IsGreater(Container($PARAM[id]).NumItems,0)</visible>
+				<visible>[Container($PARAM[id]).IsUpdating | $EXP[OnLibaryUpdate]] + !Integer.IsGreater(Container($PARAM[id]).NumItems,0)</visible>
 				<left>$PARAM[left]</left>
 				<top>$PARAM[top]</top>
 				<control type="group">
@@ -72,7 +72,7 @@
 		<definition>
 			<control type="group">
 				<visible>$PARAM[visible]</visible>
-				<visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating | $PARAM[force_visible]</visible>
+				<visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating | $EXP[OnLibaryUpdate] | $PARAM[force_visible]</visible>
 				<width>100%</width>
 				<height>$PARAM[height]</height>
 				<control type="group">
@@ -196,7 +196,7 @@
 		<definition>
 			<control type="group">
 				<visible>$PARAM[visible]</visible>
-				<visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating | $PARAM[force_visible]</visible>
+				<visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating | $EXP[OnLibaryUpdate] | $PARAM[force_visible]</visible>
 				<width>100%</width>
 				<height>$PARAM[height]</height>
 				<control type="group">
@@ -322,7 +322,7 @@
 		<definition>
 			<control type="group">
 				<visible>$PARAM[visible]</visible>
-				<visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating | $PARAM[force_visible]</visible>
+				<visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating | $EXP[OnLibaryUpdate] | $PARAM[force_visible]</visible>
 				<width>100%</width>
 				<height>$PARAM[height]</height>
 				<control type="group">
@@ -616,7 +616,7 @@
 		<definition>
 			<control type="group">
 				<visible>$PARAM[visible]</visible>
-				<visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</visible>
+				<visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating | $EXP[OnLibaryUpdate]</visible>
 				<width>100%</width>
 				<height>$PARAM[height]</height>
 				<control type="group">
