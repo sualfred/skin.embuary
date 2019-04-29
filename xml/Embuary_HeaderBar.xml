@@ -110,16 +110,19 @@
 					<orientation>horizontal</orientation>
 					<itemgap>10</itemgap>
 					<align>right</align>
-					<control type="image">
-						<animation effect="slide" end="0,18" time="0" condition="true">Conditional</animation>
+					<control type="label">
 						<animation effect="fade" start="20" time="500" condition="true" pulse="true">Conditional</animation>
-						<height>58</height>
-						<width>71</width>
-						<bordersize>18</bordersize>
-						<texture>special://home/addons/plugin.video.emby/icon.png</texture>
-						<aspectratio align="left">keep</aspectratio>
-						<colordiffuse>$VAR[AccentColor]</colordiffuse>
+						<font>Material24</font>
+						<label></label>
+						<include content="HeaderButton">
+							<param name="align" value="false"/>
+							<param name="color" value="$VAR[AccentColor]"/>
+						</include>
 						<visible>!String.IsEmpty(Window(Home).Property(emby_sync))</visible>
+					</control>
+					<control type="label">
+						<visible>!String.IsEmpty(Window(Home).Property(emby_sync))</visible>
+						<width>0</width>
 					</control>
 					<control type="label">
 						<font>Material24</font>
