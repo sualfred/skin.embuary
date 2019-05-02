@@ -568,8 +568,10 @@
 	</variable>
 	<!-- background -->
 	<variable name="BackgroundSource">
-		<!-- global static -->
-		<value condition="Skin.HasSetting(ShowStaticBackgroundImage) + Skin.HasSetting(ShowStaticBackgroundImageGlobally) + !String.IsEmpty(Skin.String(StaticBackgroundImage))">$INFO[Skin.String(StaticBackgroundImage)]</value>
+		<!-- global custom or disabled bg -->
+		<value condition="Skin.HasSetting(HideBackground) + Skin.HasSetting(ShowStaticBackgroundImage) + !String.IsEmpty(Skin.String(StaticBackgroundImage))">$INFO[Skin.String(StaticBackgroundImage)]</value>
+		<value condition="Skin.HasSetting(HideBackground) + Skin.HasSetting(ShowRandomBackgroundImage) + !String.IsEmpty(Skin.String(RandomBackgroundImage))">$INFO[Control.GetLabel(100001)]</value>
+		<value condition="Skin.HasSetting(HideBackground)"></value>
 		<!-- based on listitems -->
 		<value condition="Window.IsVisible(script-script.extendedinfo-DialogInfo.xml)">$INFO[Container(750).ListItemAbsolute(0).Icon]</value>
 		<value condition="[Window.IsVisible(script-NextAired-TVGuide2.xml) | Window.IsVisible(script-NextAired-TVGuide.xml)] + !String.IsEmpty(Window(home).Property(TVGuide.BackgroundFanart)) + Control.HasFocus(200)">$INFO[Container(200).ListItem.Property(Fanart)]</value>
@@ -588,15 +590,19 @@
 		<value condition="[Window.IsVisible(script-NextAired-TVGuide2.xml) | Window.IsVisible(script-NextAired-TVGuide.xml)] + !String.IsEmpty(Window(home).Property(TVGuide.BackgroundFanart)) + Control.HasFocus(213)">$INFO[Container(213).ListItem.Property(Fanart)]</value>
 		<value condition="[Window.IsVisible(script-NextAired-TVGuide2.xml) | Window.IsVisible(script-NextAired-TVGuide.xml)] + !String.IsEmpty(Window(home).Property(TVGuide.BackgroundFanart)) + Control.HasFocus(214)">$INFO[Container(214).ListItem.Property(Fanart)]</value>
 		<value condition="[Window.IsVisible(script-NextAired-TVGuide2.xml) | Window.IsVisible(script-NextAired-TVGuide.xml)] + !String.IsEmpty(Window(home).Property(TVGuide.BackgroundFanart)) + Control.HasFocus(215)">$INFO[Container(215).ListItem.Property(Fanart)]</value>
-		<value condition="!String.IsEmpty(Window.Property(background))">$INFO[Window.Property(background)]</value>
 		<value condition="Window.IsVisible(DialogVideoInfo.xml) + !String.IsEmpty(Container(2003).ListItem.Icon) + !Container.OnNext + !Container.OnPrevious">$INFO[Container(2003).ListItem.Icon]</value>
-		<value condition="[Window.IsMedia | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml)] + !String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
-		<!-- static for non listitems -->
+		<value condition="[Window.IsMedia | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(fullscreeninfo) | Window.IsVisible(pvrguideinfo)] + !String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
+		<!-- static / custom for non listitems -->
 		<value condition="Skin.HasSetting(ShowStaticBackgroundImage) + !String.IsEmpty(Skin.String(StaticBackgroundImage))">$INFO[Skin.String(StaticBackgroundImage)]</value>
+		<value condition="Skin.HasSetting(ShowRandomBackgroundImage) + !String.IsEmpty(Control.GetLabel(100001))">$INFO[Control.GetLabel(100001)]</value>
 		<!-- non listitem fanarts -->
 		<value condition="String.StartsWith(Container.Folderpath,plugin://plugin.video.embycon) + !String.IsEmpty(Window(home).Property(plugin.video.embycon-random-gb))">$INFO[Window(home).Property(plugin.video.embycon-random-gb)]</value>
 		<value condition="!String.IsEmpty(Window(home).Property(EmbuaryBackground))">$INFO[Window(home).Property(EmbuaryBackground)]</value>
 		<value>$INFO[Window(home).Property(plugin.video.embycon-random-gb)]</value>
+	</variable>
+	<variable name="BackgroundImage">
+		<value condition="!Skin.HasSetting(BlurEnabled)">$VAR[BackgroundSource]</value>
+		<value>$INFO[Window(home).Property(listitem_blurred)]</value>
 	</variable>
 	<variable name="FakeButtonAddonInfo13">
 		<value condition="String.EndsWith(Control.GetLabel(13),(*))">$LOCALIZE[19074]</value>
@@ -1441,16 +1447,8 @@
 		<value condition="!String.IsEmpty(Container(5601).ListItemAbsolute(1).Year)">$INFO[Container(5601).ListItemAbsolute(1).Year]</value>
 	</variable>
 	<variable name="BackgroundOpacity">
-		<value condition="String.IsEqual(Skin.String(AlphaBackground),10)">10</value>
-		<value condition="String.IsEqual(Skin.String(AlphaBackground),20)">20</value>
-		<value condition="String.IsEqual(Skin.String(AlphaBackground),30)">30</value>
-		<value condition="String.IsEqual(Skin.String(AlphaBackground),40)">40</value>
-		<value condition="String.IsEqual(Skin.String(AlphaBackground),50)">50</value>
-		<value condition="String.IsEqual(Skin.String(AlphaBackground),60)">60</value>
-		<value condition="String.IsEqual(Skin.String(AlphaBackground),70)">70</value>
-		<value condition="String.IsEqual(Skin.String(AlphaBackground),80)">80</value>
-		<value condition="String.IsEqual(Skin.String(AlphaBackground),90)">90</value>
-		<value>100</value>
+		<value condition="!String.IsEmpty(Skin.String(BackgroundOpacity))">$INFO[Skin.String(BackgroundOpacity)]</value>
+		<value>$LOCALIZE[31349]</value>
 	</variable>
 	<variable name="GameSettingsHeadline">
 		<value condition="!String.IsEmpty(Control.GetLabel(12))">$INFO[Control.GetLabel(12)]</value>
