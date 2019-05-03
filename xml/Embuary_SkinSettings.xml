@@ -446,7 +446,7 @@
 		<control type="radiobutton" id="$PARAM[id]17">
 			<include>SettingsButton</include>
 			<onclick>Skin.ToggleSetting(BlurEnabled)</onclick>
-			<onclick condition="!Skin.HasSetting(BlurEnabled)">RunScript(script.embuary.helper,action=dialogok,header=$LOCALIZE[31131],message=$LOCALIZE[31355])</onclick>
+			<onclick condition="!Skin.HasSetting(BlurEnabled)">RunScript(script.embuary.helper,action=dialogok,header=$LOCALIZE[31131],message='"$LOCALIZE[31355]"')</onclick>
 			<selected>Skin.HasSetting(BlurEnabled)</selected>
 			<enable>!Skin.HasSetting(HideBackground) | [Skin.HasSetting(ShowStaticBackgroundImage) + !String.IsEmpty(Skin.String(StaticBackgroundImage))] | [Skin.HasSetting(ShowRandomBackgroundImage) + !String.IsEmpty(Skin.String(RandomBackgroundImage))]</enable>
 			<label>$LOCALIZE[31354]</label>
