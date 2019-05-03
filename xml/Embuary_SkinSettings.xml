@@ -397,23 +397,11 @@
 			<param name="id" value="$PARAM[id]10"/>
 			<param name="label" value="$LOCALIZE[33068]"/>
 		</include>
-		<control type="button" id="$PARAM[id]11">
+		<control type="radiobutton" id="$PARAM[id]11">
 			<include>SettingsButton</include>
-			<onclick>SetProperty(Dialog.1.Label,$LOCALIZE[31348])</onclick>
-			<onclick>SetProperty(Dialog.1.BuiltIn,Skin.SetString(BackgroundOpacity,darkest))</onclick>
-			<onclick>SetProperty(Dialog.2.Label,$LOCALIZE[31349])</onclick>
-			<onclick>SetProperty(Dialog.2.BuiltIn,Skin.SetString(BackgroundOpacity,darker))</onclick>
-			<onclick>SetProperty(Dialog.3.Label,$LOCALIZE[31350])</onclick>
-			<onclick>SetProperty(Dialog.3.BuiltIn,Skin.SetString(BackgroundOpacity,dark))</onclick>
-			<onclick>SetProperty(Dialog.4.Label,$LOCALIZE[31351])</onclick>
-			<onclick>SetProperty(Dialog.4.BuiltIn,Skin.SetString(BackgroundOpacity,bright))</onclick>
-			<onclick>SetProperty(Dialog.5.Label,$LOCALIZE[31352])</onclick>
-			<onclick>SetProperty(Dialog.5.BuiltIn,Skin.SetString(BackgroundOpacity,brighter))</onclick>
-			<onclick>SetProperty(Dialog.6.Label,$LOCALIZE[31353])</onclick>
-			<onclick>SetProperty(Dialog.7.BuiltIn,Skin.SetString(BackgroundOpacity,brightest))</onclick>
-			<onclick>RunScript(script.embuary.helper,action=createselect,header=$LOCALIZE[31271])</onclick>
-			<label>$LOCALIZE[31271]</label>
-			<label2>[COLOR $VAR[AccentColor]]$VAR[BackgroundOpacity][/COLOR]</label2>
+			<onclick>Skin.ToggleSetting(HideBackgroundPlayback)</onclick>
+			<selected>!Skin.HasSetting(HideBackgroundPlayback)</selected>
+			<label>$LOCALIZE[31088]</label>
 		</control>
 		<control type="radiobutton" id="$PARAM[id]12">
 			<include>SettingsButton</include>
@@ -421,7 +409,6 @@
 			<selected>!Skin.HasSetting(HideBackground)</selected>
 			<label>$LOCALIZE[31087]</label>
 		</control>
-
 		<control type="radiobutton" id="$PARAM[id]13">
 			<include>SettingsButton</include>
 			<onclick>Skin.ToggleSetting(ShowStaticBackgroundImage)</onclick>
@@ -456,7 +443,6 @@
 			<enable>Skin.HasSetting(ShowRandomBackgroundImage)</enable>
 			<visible>Skin.HasSetting(ShowRandomBackgroundImage)</visible>
 		</control>
-
 		<control type="radiobutton" id="$PARAM[id]17">
 			<include>SettingsButton</include>
 			<onclick>Skin.ToggleSetting(BlurEnabled)</onclick>
@@ -465,11 +451,24 @@
 			<enable>!Skin.HasSetting(HideBackground) | [Skin.HasSetting(ShowStaticBackgroundImage) + !String.IsEmpty(Skin.String(StaticBackgroundImage))] | [Skin.HasSetting(ShowRandomBackgroundImage) + !String.IsEmpty(Skin.String(RandomBackgroundImage))]</enable>
 			<label>$LOCALIZE[31354]</label>
 		</control>
-		<control type="radiobutton" id="$PARAM[id]18">
+		<control type="button" id="$PARAM[id]18">
 			<include>SettingsButton</include>
-			<onclick>Skin.ToggleSetting(HideBackgroundPlayback)</onclick>
-			<selected>!Skin.HasSetting(HideBackgroundPlayback)</selected>
-			<label>$LOCALIZE[31088]</label>
+			<onclick>SetProperty(Dialog.1.Label,$LOCALIZE[31348])</onclick>
+			<onclick>SetProperty(Dialog.1.BuiltIn,Skin.SetString(BackgroundOpacity,darkest))</onclick>
+			<onclick>SetProperty(Dialog.2.Label,$LOCALIZE[31349])</onclick>
+			<onclick>SetProperty(Dialog.2.BuiltIn,Skin.SetString(BackgroundOpacity,darker))</onclick>
+			<onclick>SetProperty(Dialog.3.Label,$LOCALIZE[31350])</onclick>
+			<onclick>SetProperty(Dialog.3.BuiltIn,Skin.SetString(BackgroundOpacity,dark))</onclick>
+			<onclick>SetProperty(Dialog.4.Label,$LOCALIZE[31351])</onclick>
+			<onclick>SetProperty(Dialog.4.BuiltIn,Skin.SetString(BackgroundOpacity,bright))</onclick>
+			<onclick>SetProperty(Dialog.5.Label,$LOCALIZE[31352])</onclick>
+			<onclick>SetProperty(Dialog.5.BuiltIn,Skin.SetString(BackgroundOpacity,brighter))</onclick>
+			<onclick>SetProperty(Dialog.6.Label,$LOCALIZE[31353])</onclick>
+			<onclick>SetProperty(Dialog.7.BuiltIn,Skin.SetString(BackgroundOpacity,brightest))</onclick>
+			<onclick>RunScript(script.embuary.helper,action=createselect,header=$LOCALIZE[31271])</onclick>
+			<label>$LOCALIZE[31271]</label>
+			<label2>[COLOR $VAR[AccentColor]]$VAR[BackgroundOpacity][/COLOR]</label2>
+			<enable>!Skin.HasSetting(HideBackground) | !Skin.HasSetting(HideBackgroundPlayback) | [Skin.HasSetting(ShowStaticBackgroundImage) + !String.IsEmpty(Skin.String(StaticBackgroundImage))] | [Skin.HasSetting(ShowRandomBackgroundImage) + !String.IsEmpty(Skin.String(RandomBackgroundImage))]</enable>
 		</control>
 
 		<!-- header -->
