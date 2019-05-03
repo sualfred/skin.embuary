@@ -155,14 +155,30 @@
 	<include name="Background">
 		<param name="forced_visible">false</param>
 		<definition>
-			<include>PlainBackground</include>
+			<!-- hidden -->
+			<control type="image" id="100000">
+				<include>HiddenObject</include>
+				<texture background="true">$VAR[BackgroundSource]</texture>
+			</control>
+			<control type="multiimage" id="100001">
+				<include>HiddenObject</include>
+				<imagepath background="true">$INFO[Skin.String(RandomBackgroundImage)]</imagepath>
+				<timeperimage>15000</timeperimage>
+				<fadetime>0</fadetime>
+				<pauseatend>10000</pauseatend>
+				<randomize>true</randomize>
+			</control>
 			<control type="videowindow">
 				<description>Workaround for Leia bug / video sound stuttering</description>
 				<include>HiddenObject</include>
-				<visible>Player.HasVideo + [Skin.HasSetting(HideBackgroundPlayback) | $EXP[HideBackground] | !$PARAM[forced_visible]]</visible>
+				<visible>Player.HasVideo + Skin.HasSetting(HideBackgroundPlayback)</visible>
 			</control>
+			<!-- plain color -->
+			<include>PlainBackground</include>
+			<!-- media -->
 			<control type="group">
-				<visible>Player.HasMedia + !Skin.HasSetting(HideBackgroundPlayback) + [!$EXP[HideBackground] | $PARAM[forced_visible]]</visible>
+				<visible>!$EXP[HideBackground] | $PARAM[forced_visible]</visible>
+				<visible>[Player.HasVideo | Player.HasGame] + !Skin.HasSetting(HideBackgroundPlayback)</visible>
 				<control type="videowindow">
 					<include>FullscreenDimensions</include>
 					<visible>Player.HasVideo</visible>
@@ -171,66 +187,52 @@
 					<include>FullscreenDimensions</include>
 					<visible>Player.HasGame</visible>
 				</control>
+			</control>
+			<!-- backgrounds -->
+			<control type="group">
+				<visible>!$EXP[HideBackground] | $PARAM[forced_visible]</visible>
+				<visible>[!Player.HasVideo + !Player.HasGame] | Skin.HasSetting(HideBackgroundPlayback)</visible>
+				<visible>!Window.Is(tvguide) + !String.IsEmpty(Control.GetLabel(100000))</visible>
+				<control type="image">
+					<include>FullscreenDimensions</include>
+					<texture>special://skin/extras/themes/$VAR[SkinTheme]/background.jpg</texture>
+				</control>
 				<control type="group">
-					<include>MusicBackground</include>
-					<visible>Player.HasAudio + Visualisation.Enabled</visible>
+					<include>Visible_Fade</include>
+					<control type="image">
+						<include>FullscreenDimensions</include>
+						<texture background="true">$VAR[BackgroundImage]</texture>
+						<fadetime>1000</fadetime>
+						<aspectratio>scale</aspectratio>
+					</control>
+					<control type="image">
+						<include>FullscreenDimensions</include>
+						<texture>common/white.jpg</texture>
+						<colordiffuse>$INFO[Window(home).Property(listitem_color)]</colordiffuse>
+						<animation effect="fade" start="100" end="30" time="0" condition="true">Conditional</animation>
+						<visible>Skin.HasSetting(BlurEnabled) + !String.IsEmpty(Window(home).Property(listitem_color))</visible>
+					</control>
 				</control>
 			</control>
+			<!-- diffuse and vignette -->
 			<control type="group">
-				<visible>!Player.HasMedia | [Player.HasAudio + !Visualisation.Enabled] | Skin.HasSetting(HideBackgroundPlayback)</visible>
-				<visible>!Skin.HasSetting(HideBackground) + [!Window.IsVisible(MyPVRGuide.xml) | $PARAM[forced_visible]] + [!$EXP[HideBackground] | $PARAM[forced_visible]]</visible>
-				<include>Visible_Fade</include>
+				<animation effect="fade" start="100" end="90" time="0" condition="Skin.HasSetting(BlurEnabled) + ![[Player.HasVideo | Player.HasGame] + !Skin.HasSetting(HideBackgroundPlayback)]">Conditional</animation>
 				<control type="image">
 					<include>FullscreenDimensions</include>
-					<texture background="true">$VAR[BackgroundSource]</texture>
-					<fadetime>1000</fadetime>
-					<aspectratio>scale</aspectratio>
-					<visible>!Skin.HasSetting(ShowRandomBackgroundImage)</visible>
-				</control>
-				<control type="multiimage">
-					<include>FullscreenDimensions</include>
-					<imagepath background="true">$INFO[Skin.String(RandomBackgroundImage)]</imagepath>
-					<timeperimage>15000</timeperimage>
-					<fadetime>1000</fadetime>
-					<pauseatend>10000</pauseatend>
-					<randomize>true</randomize>
-					<aspectratio>scale</aspectratio>
-					<visible>Skin.HasSetting(ShowRandomBackgroundImage)</visible>
+					<texture>special://skin/extras/themes/$VAR[SkinTheme]/background.jpg</texture>
+					<animation effect="fade" start="100" end="90" time="0" condition="String.IsEqual(Skin.String(BackgroundOpacity),darkest)">Conditional</animation>
+					<animation effect="fade" start="100" end="80" time="0" condition="String.IsEqual(Skin.String(BackgroundOpacity),darker) | String.IsEmpty(Skin.String(BackgroundOpacity))">Conditional</animation>
+					<animation effect="fade" start="100" end="70" time="0" condition="String.IsEqual(Skin.String(BackgroundOpacity),dark)">Conditional</animation>
+					<animation effect="fade" start="100" end="60" time="0" condition="String.IsEqual(Skin.String(BackgroundOpacity),bright)">Conditional</animation>
+					<animation effect="fade" start="100" end="50" time="0" condition="String.IsEqual(Skin.String(BackgroundOpacity),brighter)">Conditional</animation>
+					<animation effect="fade" start="100" end="40" time="0" condition="String.IsEqual(Skin.String(BackgroundOpacity),brightest)">Conditional</animation>
 				</control>
 			</control>
-			<control type="group">
-				<visible>
-					[$EXP[DefaultTheme]
-						+ [
-							[Player.HasMedia + [!Skin.HasSetting(HideBackgroundPlayback) | [Skin.HasSetting(HideBackgroundPlayback) + !Skin.HasSetting(HideBackground) + !Window.IsVisible(MyPVRGuide.xml)]]
-							| [!Player.HasMedia + !Skin.HasSetting(HideBackground) + !Window.IsVisible(MyPVRGuide.xml)]]
-						]
-					]
-					| !$EXP[DefaultTheme]
-					| $PARAM[forced_visible]
-				</visible>
-				<visible>
-					!$EXP[DefaultTheme]
-					| !$EXP[HideBackground]
-					| $PARAM[forced_visible]
-				</visible>
-				<control type="image">
-					<include>FullscreenDimensions</include>
-					<texture>special://skin/extras/themes/$VAR[SkinTheme]/background.png</texture>
-					<animation effect="fade" start="100" end="90" time="0" condition="String.IsEqual(Skin.String(AlphaBackground),90)">Conditional</animation>
-					<animation effect="fade" start="100" end="80" time="0" condition="String.IsEqual(Skin.String(AlphaBackground),80)">Conditional</animation>
-					<animation effect="fade" start="100" end="70" time="0" condition="String.IsEqual(Skin.String(AlphaBackground),70)">Conditional</animation>
-					<animation effect="fade" start="100" end="60" time="0" condition="String.IsEqual(Skin.String(AlphaBackground),60)">Conditional</animation>
-					<animation effect="fade" start="100" end="50" time="0" condition="String.IsEqual(Skin.String(AlphaBackground),50)">Conditional</animation>
-					<animation effect="fade" start="100" end="40" time="0" condition="String.IsEqual(Skin.String(AlphaBackground),40)">Conditional</animation>
-					<animation effect="fade" start="100" end="30" time="0" condition="String.IsEqual(Skin.String(AlphaBackground),30)">Conditional</animation>
-					<animation effect="fade" start="100" end="20" time="0" condition="String.IsEqual(Skin.String(AlphaBackground),20)">Conditional</animation>
-					<animation effect="fade" start="100" end="10" time="0" condition="String.IsEqual(Skin.String(AlphaBackground),10)">Conditional</animation>
-				</control>
-				<control type="image">
-					<include>FullscreenDimensions</include>
-					<texture>special://skin/extras/themes/$VAR[SkinTheme]/vignette.png</texture>
-				</control>
+			<control type="image">
+				<visible>!$EXP[HideBackground] | $PARAM[forced_visible]</visible>
+				<visible>[!Window.Is(tvguide) + !String.IsEmpty(Control.GetLabel(100000))] | [Player.HasMedia + !Skin.HasSetting(HideBackgroundPlayback)]</visible>
+				<include>FullscreenDimensions</include>
+				<texture>special://skin/extras/themes/$VAR[SkinTheme]/vignette.png</texture>
 			</control>
 			<control type="image">
 				<include>FullscreenDimensions</include>
@@ -1326,7 +1328,7 @@
 		<param name="art">fanart</param>
 		<definition>
 			<control type="list" id="2003">
-				<autoscroll time="5000">true</autoscroll>
+				<autoscroll time="15000">true</autoscroll>
 				<include>HiddenObject</include>
 				<content>
 					<item>
