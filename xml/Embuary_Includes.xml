@@ -230,7 +230,7 @@
 			</control>
 			<control type="image">
 				<visible>!$EXP[HideBackground] | $PARAM[forced_visible]</visible>
-				<visible>[!Window.Is(tvguide) + !String.IsEmpty(Control.GetLabel(100000))] | [Player.HasMedia + !Skin.HasSetting(HideBackgroundPlayback)]</visible>
+				<visible>[!Window.Is(tvguide) + !String.IsEmpty(Control.GetLabel(100000))] | [[Player.HasVideo | Player.HasGame] + !Skin.HasSetting(HideBackgroundPlayback)]</visible>
 				<include>FullscreenDimensions</include>
 				<texture>special://skin/extras/themes/$VAR[SkinTheme]/vignette.png</texture>
 			</control>
