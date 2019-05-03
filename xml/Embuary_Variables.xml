@@ -604,6 +604,10 @@
 		<value condition="!Skin.HasSetting(BlurEnabled)">$VAR[BackgroundSource]</value>
 		<value>$INFO[Window(home).Property(listitem_blurred)]</value>
 	</variable>
+	<variable name="BackgroundImageColor">
+		<value condition="String.IsEqual(Skin.CurrentColourTheme,SKINDEFAULT) | String.StartsWith(Skin.CurrentColourTheme,Default)">ff000000</value>
+		<value>$INFO[Window(home).Property(listitem_color)]</value>
+	</variable>
 	<variable name="FakeButtonAddonInfo13">
 		<value condition="String.EndsWith(Control.GetLabel(13),(*))">$LOCALIZE[19074]</value>
 		<value>$LOCALIZE[351]</value>
@@ -1447,7 +1451,12 @@
 		<value condition="!String.IsEmpty(Container(5601).ListItemAbsolute(1).Year)">$INFO[Container(5601).ListItemAbsolute(1).Year]</value>
 	</variable>
 	<variable name="BackgroundOpacity">
-		<value condition="!String.IsEmpty(Skin.String(BackgroundOpacity))">$INFO[Skin.String(BackgroundOpacity)]</value>
+		<value condition="String.IsEqual(Skin.String(BackgroundOpacity),darkest)">$LOCALIZE[31348]</value>
+		<value condition="String.IsEqual(Skin.String(BackgroundOpacity),darker)">$LOCALIZE[31349]</value>
+		<value condition="String.IsEqual(Skin.String(BackgroundOpacity),dark)">$LOCALIZE[31350]</value>
+		<value condition="String.IsEqual(Skin.String(BackgroundOpacity),bright)">$LOCALIZE[31351]</value>
+		<value condition="String.IsEqual(Skin.String(BackgroundOpacity),brighter)">$LOCALIZE[31352]</value>
+		<value condition="String.IsEqual(Skin.String(BackgroundOpacity),brightest)">$LOCALIZE[31353]</value>
 		<value>$LOCALIZE[31349]</value>
 	</variable>
 	<variable name="GameSettingsHeadline">

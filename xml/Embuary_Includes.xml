@@ -175,48 +175,47 @@
 			</control>
 			<!-- plain color -->
 			<include>PlainBackground</include>
-			<!-- media -->
+			<!-- background -->
 			<control type="group">
 				<visible>!$EXP[HideBackground] | $PARAM[forced_visible]</visible>
-				<visible>[Player.HasVideo | Player.HasGame] + !Skin.HasSetting(HideBackgroundPlayback)</visible>
-				<control type="videowindow">
-					<include>FullscreenDimensions</include>
-					<visible>Player.HasVideo</visible>
-				</control>
-				<control type="gamewindow">
-					<include>FullscreenDimensions</include>
-					<visible>Player.HasGame</visible>
-				</control>
-			</control>
-			<!-- backgrounds -->
-			<control type="group">
-				<visible>!$EXP[HideBackground] | $PARAM[forced_visible]</visible>
-				<visible>[!Player.HasVideo + !Player.HasGame] | Skin.HasSetting(HideBackgroundPlayback)</visible>
-				<visible>!Window.Is(tvguide) + !String.IsEmpty(Control.GetLabel(100000))</visible>
-				<control type="image">
-					<include>FullscreenDimensions</include>
-					<texture>special://skin/extras/themes/$VAR[SkinTheme]/background.jpg</texture>
-				</control>
+				<!-- media -->
 				<control type="group">
-					<include>Visible_Fade</include>
-					<control type="image">
+					<visible>[Player.HasVideo | Player.HasGame] + !Skin.HasSetting(HideBackgroundPlayback)</visible>
+					<control type="videowindow">
 						<include>FullscreenDimensions</include>
-						<texture background="true">$VAR[BackgroundImage]</texture>
-						<fadetime>1000</fadetime>
-						<aspectratio>scale</aspectratio>
+						<visible>Player.HasVideo</visible>
 					</control>
-					<control type="image">
+					<control type="gamewindow">
 						<include>FullscreenDimensions</include>
-						<texture>common/white.jpg</texture>
-						<colordiffuse>$INFO[Window(home).Property(listitem_color)]</colordiffuse>
-						<animation effect="fade" start="100" end="30" time="0" condition="true">Conditional</animation>
-						<visible>Skin.HasSetting(BlurEnabled) + !String.IsEmpty(Window(home).Property(listitem_color))</visible>
+						<visible>Player.HasGame</visible>
+					</control>
+				</control>
+				<!-- images -->
+				<control type="group">
+					<visible>[!Player.HasVideo + !Player.HasGame] | Skin.HasSetting(HideBackgroundPlayback)</visible>
+					<visible>!Window.Is(tvguide) + !String.IsEmpty(Control.GetLabel(100000))</visible>
+					<control type="group">
+						<include>Visible_Fade</include>
+						<control type="image">
+							<include>FullscreenDimensions</include>
+							<texture background="true">$VAR[BackgroundImage]</texture>
+							<fadetime>1000</fadetime>
+							<aspectratio>scale</aspectratio>
+						</control>
+						<control type="image">
+							<include>FullscreenDimensions</include>
+							<texture>common/white.jpg</texture>
+							<colordiffuse>ff000000</colordiffuse>
+							<colordiffuse>$VAR[BackgroundImageColor]</colordiffuse>
+							<animation effect="fade" start="100" end="30" time="0" condition="true">Conditional</animation>
+							<visible>Skin.HasSetting(BlurEnabled) + !String.IsEmpty(Window(home).Property(listitem_blurred))</visible>
+						</control>
 					</control>
 				</control>
 			</control>
 			<!-- diffuse and vignette -->
 			<control type="group">
-				<animation effect="fade" start="100" end="80" time="0" condition="Skin.HasSetting(BlurEnabled) + ![[Player.HasVideo | Player.HasGame] + !Skin.HasSetting(HideBackgroundPlayback)]">Conditional</animation>
+				<animation effect="fade" start="100" end="80" time="0" condition="$EXP[BlurVignette] + [!$EXP[HideBackground] | $PARAM[forced_visible]]">Conditional</animation>
 				<control type="image">
 					<include>FullscreenDimensions</include>
 					<texture>special://skin/extras/themes/$VAR[SkinTheme]/background.jpg</texture>
@@ -228,11 +227,26 @@
 					<animation effect="fade" start="100" end="40" time="0" condition="String.IsEqual(Skin.String(BackgroundOpacity),brightest)">Conditional</animation>
 				</control>
 			</control>
-			<control type="image">
-				<visible>!$EXP[HideBackground] | $PARAM[forced_visible]</visible>
-				<visible>[!Window.Is(tvguide) + !String.IsEmpty(Control.GetLabel(100000))] | [[Player.HasVideo | Player.HasGame] + !Skin.HasSetting(HideBackgroundPlayback)]</visible>
-				<include>FullscreenDimensions</include>
-				<texture>special://skin/extras/themes/$VAR[SkinTheme]/vignette.png</texture>
+			<control type="group">
+				<animation effect="fade" start="100" end="80" time="0" condition="$EXP[BlurVignette] + [!$EXP[HideBackground] | $PARAM[forced_visible]]">Conditional</animation>
+				<!-- no vignette for windows without background image in default skin -->
+				<control type="image">
+					<visible>$EXP[IsDefaultSkin]</visible>
+					<visible>!$EXP[HideBackground] | $PARAM[forced_visible]</visible>
+					<visible>
+						[!Window.Is(tvguide) + !String.IsEmpty(Control.GetLabel(100000))]
+						| [!Window.Is(tvguide) + Skin.HasSetting(BlurEnabled) + !String.IsEmpty(Window(home).Property(listitem_blurred))]
+						| [[Player.HasVideo | Player.HasGame] + !Skin.HasSetting(HideBackgroundPlayback)]
+					</visible>
+					<include>FullscreenDimensions</include>
+					<texture>special://skin/extras/themes/$VAR[SkinTheme]/vignette.png</texture>
+				</control>
+				<!-- always show vignette for all other skins -->
+				<control type="image">
+					<visible>!$EXP[IsDefaultSkin]</visible>
+					<include>FullscreenDimensions</include>
+					<texture>special://skin/extras/themes/$VAR[SkinTheme]/vignette.png</texture>
+				</control>
 			</control>
 			<control type="image">
 				<include>FullscreenDimensions</include>
