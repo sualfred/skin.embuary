@@ -248,17 +248,13 @@
 						<aligny>top</aligny>
 						<visible>String.IsEmpty(VideoPlayer.Title)</visible>
 					</control>
-					<control type="grouplist">
+					<control type="label">
+						<width>auto</width>
 						<height>55</height>
-						<itemgap>5</itemgap>
-						<orientation>horizontal</orientation>
-						<control type="label">
-							<width>auto</width>
-							<height>55</height>
-							<label>$VAR[PlayerEpisodeName]</label>
-							<font>Reg37</font>
-							<aligny>top</aligny>
-						</control>
+						<label>$VAR[PlayerEpisodeName]</label>
+						<font>Reg37</font>
+						<aligny>top</aligny>
+						<visible>!String.IsEmpty(VideoPlayer.EpisodeName) | !String.IsEmpty(VideoPlayer.Episode)</visible>
 					</control>
 					<!-- meta -->
 					<include>PlayerVideoInfos</include>
@@ -298,12 +294,22 @@
 					</include>
 					<!-- Plot -->
 					<control type="textbox">
-						<height>auto</height>
+						<height max="610">auto</height>
 						<align>justify</align>
 						<aligny>top</aligny>
-						<label>$INFO[VideoPlayer.Plot]</label>
+						<label fallback="31156">$INFO[VideoPlayer.Plot]</label>
 						<font>Light24</font>
 						<autoscroll>false</autoscroll>
+						<visible>!String.IsEmpty(VideoPlayer.EpisodeName) | !String.IsEmpty(VideoPlayer.Episode)</visible>
+					</control>
+					<control type="textbox">
+						<height max="670">auto</height>
+						<align>justify</align>
+						<aligny>top</aligny>
+						<label fallback="31156">$INFO[VideoPlayer.Plot]</label>
+						<font>Light24</font>
+						<autoscroll>false</autoscroll>
+						<visible>String.IsEmpty(VideoPlayer.EpisodeName) + String.IsEmpty(VideoPlayer.Episode)</visible>
 					</control>
 				</control>
 			</control>

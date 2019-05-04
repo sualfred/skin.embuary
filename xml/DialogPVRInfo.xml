@@ -41,6 +41,7 @@
 						<label>$VAR[ListItemEpisodeName]</label>
 						<font>Reg37</font>
 						<aligny>top</aligny>
+						<visible>!String.IsEmpty(ListItem.EpisodeName) | !String.IsEmpty(ListItem.Episode)</visible>
 					</control>
 					<!-- meta -->
 					<include>MetaPVRInfos</include>
@@ -95,12 +96,22 @@
 					<include>MetaGenre</include>
 					<!-- plot -->
 					<control type="textbox">
-						<height>auto</height>
+						<height max="610">auto</height>
 						<align>justify</align>
 						<aligny>top</aligny>
-						<label>$INFO[ListItem.Plot]</label>
+						<label fallback="31156">$INFO[ListItem.Plot]</label>
 						<font>Light24</font>
 						<autoscroll>false</autoscroll>
+						<visible>!String.IsEmpty(ListItem.EpisodeName) | !String.IsEmpty(ListItem.Episode)</visible>
+					</control>
+					<control type="textbox">
+						<height max="670">auto</height>
+						<align>justify</align>
+						<aligny>top</aligny>
+						<label fallback="31156">$INFO[ListItem.Plot]</label>
+						<font>Light24</font>
+						<autoscroll>false</autoscroll>
+						<visible>String.IsEmpty(ListItem.EpisodeName) + String.IsEmpty(ListItem.Episode)</visible>
 					</control>
 				</control>
 			</control>
