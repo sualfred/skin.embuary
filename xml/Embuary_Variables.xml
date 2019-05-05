@@ -737,6 +737,8 @@
 		<value condition="Window.IsVisible(DialogPVRChannelsOSD.xml)">$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, - ]</value>
 		<value condition="Window.IsVisible(script-NextAired-TVGuide.xml)">$INFO[ListItem.Property(NextSeasonNumber),S,]$INFO[ListItem.Property(NextEpisodeNumber),:E]$INFO[ListItem.Property(NextTitle), - ]</value>
 		<value condition="Window.IsVisible(script-NextAired-TVGuide2.xml)">$INFO[ListItem.Property(NextSeasonNumber),S,]$INFO[ListItem.Property(NextEpisodeNumber),:E]$INFO[ListItem.Property(NextTitle), - ]</value>
+		<value condition="String.StartsWith(ListItem.Path,pvr://recordings) + String.IsEqual(Container.Viewmode,$LOCALIZE[535]) + !String.IsEmpty(ListItem.ChannelName)">$INFO[ListItem.ChannelName]$VAR[ListItemEpisodeName, - ]</value>
+		<value condition="String.StartsWith(ListItem.Path,pvr://recordings) + String.IsEqual(Container.Viewmode,$LOCALIZE[535])">$VAR[ListItemEpisodeName]</value>
 		<value condition="String.StartsWith(ListItem.Path,pvr://) + ![String.IsEqual(ListItem.Title,ListItem.Label) | String.IsEmpty(ListItem.Title)]">$INFO[ListItem.Label]</value>
 		<value condition="String.IsEqual(ListItem.DBType,episode)">$INFO[ListItem.TvShowTitle]</value>
 		<value condition="String.IsEqual(ListItem.DBType,season)">$INFO[ListItem.TvShowTitle]</value>
