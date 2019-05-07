@@ -961,6 +961,11 @@
 		</control>
 		<control type="button">
 			<include>MetaFlagsButton</include>
+			<label>[UPPERCASE]HDR[/UPPERCASE]</label>
+			<visible>String.Contains(ListItem.Filename,.HDR.) | String.Contains(ListItem.Filename,-HDR-) | String.Contains(ListItem.Filename,- HDR -) | String.Contains(ListItem.Filename,(HDR))</visible>
+		</control>
+		<control type="button">
+			<include>MetaFlagsButton</include>
 			<label>$VAR[ListItemAudioChannels]</label>
 			<visible>!String.IsEmpty(ListItem.AudioChannels)</visible>
 		</control>
@@ -1005,6 +1010,11 @@
 			<include>MetaFlagsButton</include>
 			<label>[UPPERCASE]$INFO[VideoPlayer.VideoCodec][/UPPERCASE]</label>
 			<visible>!String.IsEmpty(VideoPlayer.VideoCodec)</visible>
+		</control>
+		<control type="button">
+			<include>MetaFlagsButton</include>
+			<label>[UPPERCASE]HDR[/UPPERCASE]</label>
+			<visible>String.Contains(Player.Filename,.HDR.) | String.Contains(Player.Filename,-HDR-) | String.Contains(Player.Filename,- HDR -) | String.Contains(Player.Filename,(HDR))</visible>
 		</control>
 		<control type="button">
 			<include>MetaFlagsButton</include>
