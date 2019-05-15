@@ -27,10 +27,10 @@
 				<include>HiddenObject</include>
 			</control>
 			<!-- Content -->
-			<include condition="String.IsEqual(ListItem.DBType,movie) + [!String.StartsWith(ListItem.Path,plugin://) | String.StartsWith(ListItem.Path,plugin://plugin.video.emby) | String.StartsWith(ListItem.Path,plugin://script.embuary.helper)]">MovieInfoLayout</include>
-			<include condition="String.IsEqual(ListItem.DBType,tvshow) + [!String.StartsWith(ListItem.Path,plugin://) | String.StartsWith(ListItem.Path,plugin://plugin.video.emby) | String.StartsWith(ListItem.Path,plugin://script.embuary.helper)]">TVShowInfoLayout</include>
-			<include condition="String.IsEqual(ListItem.DBType,episode) + [!String.StartsWith(ListItem.Path,plugin://) | String.StartsWith(ListItem.Path,plugin://plugin.video.emby) | String.StartsWith(ListItem.Path,plugin://script.embuary.helper)]">EpisodeInfoLayout</include>
-			<include condition="[!String.IsEqual(ListItem.DBType,movie) + !String.IsEqual(ListItem.DBType,tvshow) + !String.IsEqual(ListItem.DBType,episode)] | [String.StartsWith(ListItem.Path,plugin://) + !String.StartsWith(ListItem.Path,plugin://plugin.video.emby) + !String.StartsWith(ListItem.Path,plugin://script.embuary.helper)]">TinyInfoLayout</include>
+			<include condition="String.IsEqual(ListItem.DBType,movie) + [!String.StartsWith(ListItem.Path,plugin://) | String.StartsWith(ListItem.Path,plugin://plugin.video.emby) | String.StartsWith(ListItem.Path,plugin://script.embuary.helper) | String.StartsWith(ListItem.Path,plugin://plugin.video.plexkodiconnect)]">MovieInfoLayout</include>
+			<include condition="String.IsEqual(ListItem.DBType,tvshow) + [!String.StartsWith(ListItem.Path,plugin://) | String.StartsWith(ListItem.Path,plugin://plugin.video.emby) | String.StartsWith(ListItem.Path,plugin://script.embuary.helper) | String.StartsWith(ListItem.Path,plugin://plugin.video.plexkodiconnect)]">TVShowInfoLayout</include>
+			<include condition="String.IsEqual(ListItem.DBType,episode) + [!String.StartsWith(ListItem.Path,plugin://) | String.StartsWith(ListItem.Path,plugin://plugin.video.emby) | String.StartsWith(ListItem.Path,plugin://script.embuary.helper) | String.StartsWith(ListItem.Path,plugin://plugin.video.plexkodiconnect)]">EpisodeInfoLayout</include>
+			<include condition="[!String.IsEqual(ListItem.DBType,movie) + !String.IsEqual(ListItem.DBType,tvshow) + !String.IsEqual(ListItem.DBType,episode)] | [String.StartsWith(ListItem.Path,plugin://) + !String.StartsWith(ListItem.Path,plugin://plugin.video.emby) + !String.StartsWith(ListItem.Path,plugin://script.embuary.helper) + !String.StartsWith(ListItem.Path,plugin://plugin.video.plexkodiconnect)]">TinyInfoLayout</include>
 			<!-- Menu control -->
 			<control type="group">
 				<include>FullscreenDimensions</include>
