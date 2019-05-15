@@ -196,6 +196,16 @@
 				</control>
 			</control>
 			<control type="group">
+				<visible>$EXP[IsHDR]</visible>
+				<left>8</left>
+				<top>9</top>
+				<height>30</height>
+				<control type="image">>
+					<texture>items/hdr_overlay.png</texture>
+					<aspectratio align="left" aligny="top">keep</aspectratio>
+				</control>
+			</control>
+			<control type="group">
 				<visible>
 					Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0)
 					| [
@@ -210,16 +220,12 @@
 				<width>44</width>
 				<height>44</height>
 				<control type="image">
-					<width>44</width>
-					<height>44</height>
 					<texture colordiffuse="$VAR[AccentColor]">items/bubble_small.png</texture>
 					<aspectratio>keep</aspectratio>
 				</control>
 				<control type="label">
 					<top>-2</top>
 					<left>1</left>
-					<width>44</width>
-					<height>44</height>
 					<label>$INFO[ListItem.Property(UnWatchedEpisodes)]</label>
 					<font>BubbleFont</font>
 					<textcolor>white</textcolor>
@@ -231,8 +237,6 @@
 				<control type="label">
 					<top>9</top>
 					<left>1</left>
-					<width>44</width>
-					<height>44</height>
 					<label></label>
 					<font>FontAwesome20Light</font>
 					<textcolor>white</textcolor>
