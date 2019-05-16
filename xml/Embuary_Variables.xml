@@ -812,8 +812,9 @@
 		<value>common/white.jpg</value>
 	</variable>
 	<variable name="PlayerResolution">
-		<value condition="VideoPlayer.Content(LiveTV) + [String.Contains(VideoPlayer.VideoResolution,K) | Integer.IsGreater(VideoPlayer.VideoResolution,719)]">HD</value>
-		<value condition="VideoPlayer.Content(LiveTV) + ![String.Contains(VideoPlayer.VideoResolution,K) | Integer.IsGreater(VideoPlayer.VideoResolution,719)]">SD</value>
+		<value condition="[VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)] + String.Contains(VideoPlayer.VideoResolution,K)">UHD</value>
+		<value condition="[VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)] + Integer.IsGreater(VideoPlayer.VideoResolution,719)">HD</value>
+		<value condition="[VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)]">SD</value>
 		<value condition="String.Contains(VideoPlayer.VideoResolution,K)">$INFO[VideoPlayer.VideoResolution]</value>
 		<value>$INFO[VideoPlayer.VideoResolution,,p]</value>
 	</variable>
