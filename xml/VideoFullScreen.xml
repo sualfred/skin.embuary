@@ -67,7 +67,7 @@
 					<visible>
 						![
 						[VideoPlayer.Content(livetv) + [String.IsEmpty(Pvr.EPGEventIcon) | !Skin.HasSetting(ShowEPGThumbVideoOSD)]]
-						| [String.StartsWith(Player.Filenameandpath,pvr://recordings) + [String.IsEqual(Window(home).Property(Player.Channellogo),Player.Icon) | !Skin.HasSetting(ShowEPGThumbVideoOSD)]]
+						| [String.StartsWith(Player.Filenameandpath,pvr://recordings) + !String.IsEmpty(Window(home).Property(Player.Channellogo)) + [String.IsEqual(Window(home).Property(Player.Channellogo),Player.Icon) | !Skin.HasSetting(ShowEPGThumbVideoOSD)]]
 						]
 					</visible>
 				</control>
