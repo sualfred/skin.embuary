@@ -823,8 +823,7 @@
 		<value>$INFO[ListItem.EndTime]</value>
 	</variable>
 	<variable name="PlayerTimeRemaining">
-		<value condition="Integer.IsGreater(Player.TimeRemaining,59)">$INFO[Player.TimeRemaining]</value>
-		<value>$INFO[Player.TimeRemaining(ss)] $LOCALIZE[31077]</value>
+		<value condition="Integer.IsLessOrEqual(Player.TimeRemaining,59)">$INFO[Player.TimeRemaining(ss)] $LOCALIZE[31077]</value>
 	</variable>
 	<variable name="PlayerTime">
 		<value condition="VideoPlayer.HasEpg">$INFO[PVR.EpgEventElapsedTime]</value>
