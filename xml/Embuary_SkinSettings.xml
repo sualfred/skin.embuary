@@ -595,6 +595,19 @@
 			<label>$LOCALIZE[31327]</label>
 			<enable>$EXP[CinemaMode] + [Library.HasContent(movies) | Library.HasContent(tvshows)]</enable>
 		</control>
+		<control type="button" id="$PARAM[id]05">
+			<include>SettingsButton</include>
+			<label>$LOCALIZE[31358]</label>
+			<label2>[COLOR $VAR[AccentColor]]$VAR[CinemaModeForLabel][/COLOR]</label2>
+			<onclick condition="!String.IsEmpty(Skin.String(IntroPath))">SetProperty(Dialog.1.Label,$LOCALIZE[342] / $LOCALIZE[20360])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(IntroPath))">SetProperty(Dialog.1.BuiltIn,Skin.Reset(CinemaModeFor))</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(IntroPath))">SetProperty(Dialog.2.Label,$LOCALIZE[342])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(IntroPath))">SetProperty(Dialog.2.BuiltIn,Skin.SetString(CinemaModeFor,movies))</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(IntroPath))">SetProperty(Dialog.3.Label,$LOCALIZE[20360])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(IntroPath))">SetProperty(Dialog.3.BuiltIn,Skin.SetString(CinemaModeFor,episodes))</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(IntroPath))">RunScript(script.embuary.helper,action=createselect)</onclick>
+			<enable>$EXP[CinemaMode] + Skin.HasSetting(AlwaysCinemaMode) + [Library.HasContent(movies) | Library.HasContent(tvshows)]</enable>
+		</control>
 		<!-- playback -->
 		<include content="SkinSettingsHeadlineLabel">
 			<param name="id" value="$PARAM[id]10"/>

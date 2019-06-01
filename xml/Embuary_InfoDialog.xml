@@ -64,7 +64,7 @@
 							<onclick>RunScript(script.embuary.helper,action=playcinema,dbid=$INFO[ListItem.DBID],type=$INFO[ListItem.DBType],title='$ESCINFO[ListItem.Title]')</onclick>
 							<label>$VAR[VideoInfoButton8]</label>
 							<ondown>200</ondown>
-							<visible>Skin.HasSetting(AlwaysCinemaMode) + $EXP[CinemaMode]</visible>
+							<visible>$EXP[ForceCinemaMode] + !String.IsEmpty(ListItem.DBID) + !String.IsEqual(Skin.String(CinemaModeFor),episodes) + !Integer.IsGreater(ListItem.PercentPlayed,0)</visible>
 						</control>
 						<control type="button" id="11">
 							<visible>!String.IsEmpty(ListItem.Trailer)</visible>
@@ -439,7 +439,7 @@
 							<onclick>RunScript(script.embuary.helper,action=playcinema,dbid=$INFO[ListItem.DBID],type=$INFO[ListItem.DBType],title='$ESCINFO[ListItem.Label]')</onclick>
 							<label>$VAR[VideoInfoButton8]</label>
 							<ondown>200</ondown>
-							<visible>Skin.HasSetting(AlwaysCinemaMode) + $EXP[CinemaMode]</visible>
+							<visible>$EXP[ForceCinemaMode] + !String.IsEmpty(ListItem.DBID) + !String.IsEqual(Skin.String(CinemaModeFor),movies) + !Integer.IsGreater(ListItem.PercentPlayed,0)</visible>
 						</control>
 						<control type="button" id="102">
 							<include>LightGreyButton</include>

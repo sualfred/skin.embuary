@@ -1322,6 +1322,11 @@
 		<value condition="Skin.HasSetting(DoNotUseExtendedInfo) | !System.HasAddon(script.extendedinfo)">$LOCALIZE[31237]</value>
 		<value>$INFO[System.AddonTitle(script.extendedinfo)]</value>
 	</variable>
+	<variable name="CinemaModeForLabel">
+		<value condition="String.IsEqual(Skin.String(CinemaModeFor),episodes)">$LOCALIZE[20360]</value>
+		<value condition="String.IsEqual(Skin.String(CinemaModeFor),movies)">$LOCALIZE[342]</value>
+		<value>$LOCALIZE[342] / $LOCALIZE[20360]</value>
+	</variable>
 	<variable name="EpisodeListLabel">"
 		<value condition="ListItem.IsParentFolder">$INFO[ListItem.Label]</value>
 		<value condition="String.IsEqual(Container.Foldername,$LOCALIZE[20366]) | !String.Contains(Container.Foldername,$LOCALIZE[20373])">$VAR[ListItemSeasonEpisode]$INFO[ListItem.Title]</value>

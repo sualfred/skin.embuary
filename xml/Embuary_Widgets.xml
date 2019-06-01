@@ -108,20 +108,18 @@
 						<onright>SetProperty(BounceRight,1,home)</onright>
 						<onright>noop</onright>
 						<onleft>900</onleft>
-						<include condition="$PARAM[use_custom_onclick]" content="ContainerOnClick">
-							<param name="onclick" value="$PARAM[onclick]"/>
-							<param name="onclick2" value="$PARAM[onclick2]"/>
-							<param name="onclick3" value="$PARAM[onclick3]"/>
-							<param name="onclick4" value="$PARAM[onclick4]"/>
-							<param name="onclick5" value="$PARAM[onclick5]"/>
-							<param name="onclick6" value="$PARAM[onclick6]"/>
-							<param name="onclick7" value="$PARAM[onclick7]"/>
-							<param name="onclick8" value="$PARAM[onclick8]"/>
-							<param name="onclick9" value="$PARAM[onclick9]"/>
-							<param name="onclick10" value="$PARAM[onclick10]"/>
-							<param name="onclick11" value="$PARAM[onclick11]"/>
-							<param name="onclick12" value="$PARAM[onclick12]"/>
-						</include>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick]</onclick>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick2]</onclick>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick3]</onclick>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick4]</onclick>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick5]</onclick>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick6]</onclick>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick7]</onclick>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick8]</onclick>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick9]</onclick>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick10]</onclick>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick11]</onclick>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick12]</onclick>
 						<pagecontrol>$PARAM[id]1</pagecontrol>
 						<viewtype label="$PARAM[list_name]">list</viewtype>
 						<itemlayout width="360">
@@ -232,20 +230,19 @@
 						<onright>SetProperty(BounceRight,1,home)</onright>
 						<onright>noop</onright>
 						<onleft>900</onleft>
-						<include condition="$PARAM[use_custom_onclick]" content="ContainerOnClick">
-							<param name="onclick" value="$PARAM[onclick]"/>
-							<param name="onclick2" value="$PARAM[onclick2]"/>
-							<param name="onclick3" value="$PARAM[onclick3]"/>
-							<param name="onclick4" value="$PARAM[onclick4]"/>
-							<param name="onclick5" value="$PARAM[onclick5]"/>
-							<param name="onclick6" value="$PARAM[onclick6]"/>
-							<param name="onclick7" value="$PARAM[onclick7]"/>
-							<param name="onclick8" value="$PARAM[onclick8]"/>
-							<param name="onclick9" value="$PARAM[onclick9]"/>
-							<param name="onclick10" value="$PARAM[onclick10]"/>
-							<param name="onclick11" value="$PARAM[onclick11]"/>
-							<param name="onclick12" value="$PARAM[onclick12]"/>
-						</include>
+						<onclick condition="!$PARAM[use_custom_onclick] + [[!Window.IsMedia + !$EXP[InfoDialogActive]] | Window.IsVisible(1115)] + $EXP[ForceCinemaMode] + !String.IsEmpty(ListItem.DBID) + !Integer.IsGreater(ListItem.PercentPlayed,0) + [[String.IsEqual(ListItem.DBType,episode) + !String.IsEqual(Skin.String(CinemaModeFor),movies)] | [String.IsEqual(ListItem.DBType,movie) + !String.IsEqual(Skin.String(CinemaModeFor),episodes)]]">RunScript(script.embuary.helper,action=playcinema)</onclick>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick]</onclick>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick2]</onclick>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick3]</onclick>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick4]</onclick>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick5]</onclick>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick6]</onclick>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick7]</onclick>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick8]</onclick>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick9]</onclick>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick10]</onclick>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick11]</onclick>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick12]</onclick>
 						<pagecontrol>$PARAM[id]1</pagecontrol>
 						<viewtype label="$PARAM[list_name]">list</viewtype>
 						<itemlayout width="450">
@@ -359,20 +356,19 @@
 						<onright>noop</onright>
 						<onleft>900</onleft>
 						<oninfo condition="String.IsEqual(ListItem.DBType,set) + !String.IsEmpty(Container(2001).ListItem.Label)">RunScript(script.embuary.helper,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCVAR[ListViewPlot]')</oninfo>
-						<include condition="$PARAM[use_custom_onclick]" content="ContainerOnClick">
-							<param name="onclick" value="$PARAM[onclick]"/>
-							<param name="onclick2" value="$PARAM[onclick2]"/>
-							<param name="onclick3" value="$PARAM[onclick3]"/>
-							<param name="onclick4" value="$PARAM[onclick4]"/>
-							<param name="onclick5" value="$PARAM[onclick5]"/>
-							<param name="onclick6" value="$PARAM[onclick6]"/>
-							<param name="onclick7" value="$PARAM[onclick7]"/>
-							<param name="onclick8" value="$PARAM[onclick8]"/>
-							<param name="onclick9" value="$PARAM[onclick9]"/>
-							<param name="onclick10" value="$PARAM[onclick10]"/>
-							<param name="onclick11" value="$PARAM[onclick11]"/>
-							<param name="onclick12" value="$PARAM[onclick12]"/>
-						</include>
+						<onclick condition="!$PARAM[use_custom_onclick] + [[!Window.IsMedia + !$EXP[InfoDialogActive]] | Window.IsVisible(1115)] + $EXP[ForceCinemaMode] + !String.IsEmpty(ListItem.DBID) + !Integer.IsGreater(ListItem.PercentPlayed,0) + [[String.IsEqual(ListItem.DBType,episode) + !String.IsEqual(Skin.String(CinemaModeFor),movies)] | [String.IsEqual(ListItem.DBType,movie) + !String.IsEqual(Skin.String(CinemaModeFor),episodes)]]">RunScript(script.embuary.helper,action=playcinema)</onclick>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick]</onclick>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick2]</onclick>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick3]</onclick>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick4]</onclick>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick5]</onclick>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick6]</onclick>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick7]</onclick>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick8]</onclick>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick9]</onclick>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick10]</onclick>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick11]</onclick>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick12]</onclick>
 						<pagecontrol>$PARAM[id]1</pagecontrol>
 						<viewtype label="$PARAM[list_name]">list</viewtype>
 						<itemlayout width="257">
@@ -551,20 +547,18 @@
 					<onright>noop</onright>
 					<onleft>900</onleft>
 					<onup>$PARAM[onup]</onup>
-					<include condition="$PARAM[use_custom_onclick]" content="ContainerOnClick">
-						<param name="onclick" value="$PARAM[onclick]"/>
-						<param name="onclick2" value="$PARAM[onclick2]"/>
-						<param name="onclick3" value="$PARAM[onclick3]"/>
-						<param name="onclick4" value="$PARAM[onclick4]"/>
-						<param name="onclick5" value="$PARAM[onclick5]"/>
-						<param name="onclick6" value="$PARAM[onclick6]"/>
-						<param name="onclick7" value="$PARAM[onclick7]"/>
-						<param name="onclick8" value="$PARAM[onclick8]"/>
-						<param name="onclick9" value="$PARAM[onclick9]"/>
-						<param name="onclick10" value="$PARAM[onclick10]"/>
-						<param name="onclick11" value="$PARAM[onclick11]"/>
-						<param name="onclick12" value="$PARAM[onclick12]"/>
-					</include>
+					<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick]</onclick>
+					<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick2]</onclick>
+					<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick3]</onclick>
+					<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick4]</onclick>
+					<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick5]</onclick>
+					<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick6]</onclick>
+					<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick7]</onclick>
+					<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick8]</onclick>
+					<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick9]</onclick>
+					<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick10]</onclick>
+					<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick11]</onclick>
+					<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick12]</onclick>
 					<itemlayout width="296">
 						<control type="group">
 							<left>70</left>
@@ -651,20 +645,18 @@
 						<onright>SetProperty(BounceRight,1,home)</onright>
 						<onright>noop</onright>
 						<onleft>900</onleft>
-						<include condition="$PARAM[use_custom_onclick]" content="ContainerOnClick">
-							<param name="onclick" value="$PARAM[onclick]"/>
-							<param name="onclick2" value="$PARAM[onclick2]"/>
-							<param name="onclick3" value="$PARAM[onclick3]"/>
-							<param name="onclick4" value="$PARAM[onclick4]"/>
-							<param name="onclick5" value="$PARAM[onclick5]"/>
-							<param name="onclick6" value="$PARAM[onclick6]"/>
-							<param name="onclick7" value="$PARAM[onclick7]"/>
-							<param name="onclick8" value="$PARAM[onclick8]"/>
-							<param name="onclick9" value="$PARAM[onclick9]"/>
-							<param name="onclick10" value="$PARAM[onclick10]"/>
-							<param name="onclick11" value="$PARAM[onclick11]"/>
-							<param name="onclick12" value="$PARAM[onclick12]"/>
-						</include>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick]</onclick>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick2]</onclick>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick3]</onclick>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick4]</onclick>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick5]</onclick>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick6]</onclick>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick7]</onclick>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick8]</onclick>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick9]</onclick>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick10]</onclick>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick11]</onclick>
+						<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick12]</onclick>
 						<pagecontrol>$PARAM[id]1</pagecontrol>
 						<viewtype label="$PARAM[list_name]">list</viewtype>
 						<itemlayout width="300">
@@ -1091,20 +1083,18 @@
 					<onright>noop</onright>
 					<onleft>900</onleft>
 					<onup>$PARAM[id]01</onup>
-					<include condition="$PARAM[use_custom_onclick]" content="ContainerOnClick">
-						<param name="onclick" value="$PARAM[onclick]"/>
-						<param name="onclick2" value="$PARAM[onclick2]"/>
-						<param name="onclick3" value="$PARAM[onclick3]"/>
-						<param name="onclick4" value="$PARAM[onclick4]"/>
-						<param name="onclick5" value="$PARAM[onclick5]"/>
-						<param name="onclick6" value="$PARAM[onclick6]"/>
-						<param name="onclick7" value="$PARAM[onclick7]"/>
-						<param name="onclick8" value="$PARAM[onclick8]"/>
-						<param name="onclick9" value="$PARAM[onclick9]"/>
-						<param name="onclick10" value="$PARAM[onclick10]"/>
-						<param name="onclick11" value="$PARAM[onclick11]"/>
-						<param name="onclick12" value="$PARAM[onclick12]"/>
-					</include>
+					<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick]</onclick>
+					<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick2]</onclick>
+					<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick3]</onclick>
+					<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick4]</onclick>
+					<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick5]</onclick>
+					<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick6]</onclick>
+					<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick7]</onclick>
+					<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick8]</onclick>
+					<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick9]</onclick>
+					<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick10]</onclick>
+					<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick11]</onclick>
+					<onclick condition="$PARAM[use_custom_onclick]">$PARAM[onclick12]</onclick>
 					<itemlayout condition="String.IsEmpty(Skin.String(EPGar))" width="450">
 						<control type="group">
 							<left>70</left>
