@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
-	<visible>Player.Seeking | Player.DisplayAfterSeek | [Player.Paused + !Player.Caching] | Player.Forwarding | Player.Rewinding | Player.ShowInfo | Window.IsActive(fullscreeninfo) | Window.IsActive(videoosd) | Window.IsActive(musicosd) | Window.IsActive(playerprocessinfo) | !String.IsEmpty(Player.SeekNumeric)</visible>
+	<visible>$EXP[PlayerSeek] | [Player.Paused + !Player.Caching] | Player.Forwarding | Player.Rewinding | Player.ShowInfo | Window.IsActive(fullscreeninfo) | Window.IsActive(videoosd) | Window.IsActive(musicosd) | Window.IsActive(playerprocessinfo)</visible>
 	<visible>!Player.FrameAdvance + !Window.IsActive(sliderdialog) + String.IsEmpty(Window(home).Property(service.upnext.dialog))</visible>
 	<visible>[Window.IsActive(visualisation) | Window.IsActive(fullscreenvideo)] + !Player.HasGame</visible>
 	<zorder>0</zorder>
@@ -33,7 +33,7 @@
 				<textureslidernibfocus colordiffuse="$VAR[PlayerAccentColor]">views/player/nib_bubble.png</textureslidernibfocus>
 			</control>
 			<control type="group">
-				<visible>Player.Forwarding | Player.Rewinding | Player.Seeking | [Player.DisplayAfterSeek + !String.IsEmpty(Player.SeekOffset)] | !String.IsEmpty(Player.SeekNumeric)</visible>
+				<visible>Player.Forwarding | Player.Rewinding | $EXP[PlayerSeek]</visible>
 				<include condition="!VideoPlayer.HasEpg">OSD_Seek_Position</include>
 				<include condition="VideoPlayer.HasEpg" content="OSD_Seek_Position">
 					<param name="id" value="402"/>

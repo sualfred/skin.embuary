@@ -81,14 +81,14 @@
 					<onclick>action(AudioNextLanguage)</onclick>
 					<visible>!String.IsEmpty(Window(home).Property(EmbuaryPlayerAudioTracks))</visible>
 					<visible>!String.IsEmpty(VideoPlayer.AudioLanguage)</visible>
-					<visible>!VideoPlayer.Content(musicvideos)</visible>
+					<visible>!VideoPlayer.Content(musicvideos) + !$EXP[HideVideoOSD]</visible>
 				</control>
 				<control type="button" id="613">
 					<include content="PlayerButtons">
 						<param name="type" value="cc"/>
 					</include>
 					<onclick>ActivateWindow(osdsubtitlesettings)</onclick>
-					<visible>!VideoPlayer.Content(musicvideos)</visible>
+					<visible>!VideoPlayer.Content(musicvideos) + !$EXP[HideVideoOSD]</visible>
 				</control>
 				<control type="button" id="608">
 					<include content="PlayerButtons">
@@ -96,7 +96,7 @@
 					</include>
 					<onclick>close</onclick>
 					<onclick>ActivateWindow(fullscreeninfo)</onclick>
-					<visible>!VideoPlayer.Content(musicvideos)</visible>
+					<visible>!VideoPlayer.Content(musicvideos) + !$EXP[HideVideoOSD]</visible>
 				</control>
 				<control type="button" id="609">
 					<include content="PlayerButtons">
@@ -112,7 +112,7 @@
 					</include>
 					<onclick>close</onclick>
 					<onclick>ActivateWindow(videobookmarks)</onclick>
-					<visible>!VideoPlayer.Content(livetv) + !VideoPlayer.Content(musicvideos)</visible>
+					<visible>!VideoPlayer.Content(livetv) + !VideoPlayer.Content(musicvideos) + !$EXP[HideVideoOSD]</visible>
 				</control>
 				<control type="button" id="611">
 					<include content="PlayerButtons">
