@@ -954,8 +954,9 @@
 		<value>$INFO[ListItem.Title]</value>
 	</variable>
 	<variable name="TinyInfoDialogPlot">
-		<value condition="String.StartsWith(Player.Filenameandpath,pvr://) + !String.IsEmpty(VideoPlayer.Plot)">$VAR[PlayerEpisodeName,,[CR][CR]]$VAR[PlayerDurationMinutes,$LOCALIZE[180]: ,[CR][CR]]$INFO[VideoPlayer.Plot]</value>
-		<value condition="Window.IsVisible(DialogFullScreenInfo.xml) + !String.IsEmpty(VideoPlayer.Plot)">$INFO[VideoPlayer.Season,S,:]$INFO[VideoPlayer.Episode,E, [CR][CR]]$VAR[PlayerDurationMinutes,$LOCALIZE[180]: ,[CR][CR]]$INFO[VideoPlayer.Plot]</value>
+		<value condition="String.StartsWith(Player.Filenameandpath,pvr://) + Window.IsVisible(fullscreeninfo) + !String.IsEmpty(VideoPlayer.Plot)">$VAR[PlayerEpisodeName,,[CR][CR]]$VAR[PlayerDurationMinutes,$LOCALIZE[180]: ,[CR][CR]]$VAR[PVRPlot]</value>
+		<value condition="String.StartsWith(ListItem.Filenameandpath,pvr://) + Window.IsVisible(pvrguideinfo) + !String.IsEmpty(ListItem.Plot)">$VAR[ListItemEpisodeName,,[CR][CR]]$VAR[DurationMinutes,$LOCALIZE[180]: ,[CR][CR]]$VAR[PVRPlot]</value>
+		<value condition="Window.IsVisible(fullscreeninfo) + !String.IsEmpty(VideoPlayer.Plot)">$INFO[VideoPlayer.Season,S,:]$INFO[VideoPlayer.Episode,E, [CR][CR]]$VAR[PlayerDurationMinutes,$LOCALIZE[180]: ,[CR][CR]]$INFO[VideoPlayer.Plot]</value>
 		<value condition="String.IsEqual(ListItem.DBType,Episode)">$VAR[ListItemSeasonEpisode]$INFO[ListItem.Title,,[CR][CR]]$VAR[DurationMinutes,$LOCALIZE[180]: ,[CR][CR]]$INFO[ListItem.Plot]</value>
 		<value condition="String.IsEqual(ListItem.DBType,song)">$VAR[DurationMinutes,$LOCALIZE[180]: ,[CR][CR]]$INFO[ListItem.Artist]$INFO[ListItem.Album, - ,[CR][CR]]$INFO[ListItem.Property(Album_Description)]</value>
 		<value condition="String.IsEqual(ListItem.DBType,musicvideo)">$VAR[DurationMinutes,$LOCALIZE[180]: ]</value>
@@ -980,6 +981,10 @@
 	<variable name="ArtistInfoPlot">
 		<value condition="!String.IsEmpty(ListItem.Property(Artist_Description))">$INFO[ListItem.Property(Artist_Description)]</value>
 		<value>$LOCALIZE[19055]</value>
+	</variable>
+	<variable name="PVRPlot">
+		<value condition="Window.IsVisible(fullscreeninfo)">$INFO[VideoPlayer.Plot]$INFO[VideoPlayer.Year,[CR][CR]$LOCALIZE[345]: ]$INFO[VideoPlayer.Cast,[CR][CR]$LOCALIZE[206]:[CR]]$INFO[VideoPlayer.Director,[CR][CR]$LOCALIZE[31235]:[CR]]$INFO[VideoPlayer.Rating,[CR][CR]$LOCALIZE[563]: ]</value>
+		<value>$INFO[ListItem.Plot]$INFO[ListItem.Year,[CR][CR]$LOCALIZE[345]: ]$INFO[ListItem.Cast,[CR][CR]$LOCALIZE[206]:[CR]]$INFO[ListItem.Director,[CR][CR]$LOCALIZE[31235]:[CR]]$INFO[ListItem.Rating,[CR][CR]$LOCALIZE[563]: ]</value>
 	</variable>
 	<variable name="PVRTimerIcon">
 		<value condition="ListItem.IsRecording + ListItem.HasTimerSchedule">icons/pvr/icon_timer.png</value>
