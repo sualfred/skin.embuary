@@ -4,15 +4,7 @@
 	<onload>Skin.SetBool(ReloadOnLogin)</onload>
 	<onload>SetProperty(startup,1,home)</onload>
 	<onload>AlarmClock(startup,ClearProperty(startup,home),00:10,silent)</onload>
-	<onload condition="!Skin.HasSetting(EmbuaryFirstStartup) + !System.HasLoginScreen">AlarmClock(startupdelay,ReplaceWindow(1119),00:02,silent)</onload>
-	<onload condition="Skin.HasSetting(EmbuaryFirstStartup) + !System.HasLoginScreen">AlarmClock(startupdelay,ReplaceWindow($VAR[StartUpWindow]),00:02,silent)</onload>
-	<onload condition="System.HasLoginScreen">ReplaceWindow($VAR[StartUpWindow])</onload>
+	<onload>ReplaceWindow($VAR[StartUpWindow])</onload>
 	<include>PropertyIncludes</include>
-	<controls>
-		<control type="image">
-			<width>100%</width>
-			<height>100%</height>
-			<texture>special://skin/extras/themes/$VAR[SkinTheme]/splash.jpg</texture>
-		</control>
-	</controls>
+	<controls/>
 </window>
