@@ -266,6 +266,18 @@
 			<effect type="zoom" end="90.9090909" time="225" tween="sine" delay="100" easing="out" center="auto" />
 		</animation>
 	</include>
+	<include name="Animation_FocusBounceList">
+		<animation type="Focus" reversible="false" condition="!Skin.HasSetting(MinimalFocusAnimation) + [Container($PARAM[id]).OnNext | Container($PARAM[id]).OnPrevious | !String.IsEmpty(Window(home).Property(FocusBounce))]">
+			<effect type="zoom" end="103" time="75" tween="sine" easing="out" center="auto" />
+			<effect type="zoom" end="97.030303" time="225" tween="sine" delay="100" easing="out" center="auto" />
+		</animation>
+	</include>
+	<include name="Animation_FocusBounceBanner">
+		<animation type="Focus" reversible="false" condition="!Skin.HasSetting(MinimalFocusAnimation) + [Container($PARAM[id]).OnNext | Container($PARAM[id]).OnPrevious | !String.IsEmpty(Window(home).Property(FocusBounce))]">
+			<effect type="zoom" end="106" time="75" tween="sine" easing="out" center="auto" />
+			<effect type="zoom" end="94.090909" time="225" tween="sine" delay="100" easing="out" center="auto" />
+		</animation>
+	</include>
 	<include name="Animation_ScrollbarIsVisible">
 		<param name="condition">Control.IsVisible(17) + $EXP[ScrollbarContainers]</param>
 		<definition>

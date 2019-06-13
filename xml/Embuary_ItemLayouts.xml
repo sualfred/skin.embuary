@@ -769,7 +769,7 @@
 					<param name="labels_visible">$PARAM[labels_visible]</param>
 				</include>
 				<control type="group">
-					<include content="Animation_FocusBounce">
+					<include content="Animation_FocusBounceBanner">
 						<param name="id" value="$PARAM[id]"/>
 					</include>
 					<height>163</height>
@@ -1623,80 +1623,87 @@
 		<param name="rightlabel2">$VAR[RightListLabel2]</param>
 		<definition>
 			<control type="group">
-				<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
-				<control type="image">
-					<top>-2</top>
-					<left>-31</left>
-					<right>-33</right>
-					<height>126</height>
-					<texture border="20,20,20,20">items/shadow.png</texture>
-					<aspectratio>stretch</aspectratio>
-				</control>
-				<control type="image">
-					<left>-30</left>
-					<right>-30</right>
-					<height>120</height>
-					<texture colordiffuse="list_hover">common/white.jpg</texture>
-					<aspectratio>stretch</aspectratio>
-				</control>
-			</control>
-			<control type="group">
-				<top>10</top>
-				<control type="image">
-					<width>68</width>
-					<height>100</height>
-					<texture>DefaultIconError.png</texture>
-					<aspectratio aligny="center" align="center">keep</aspectratio>
-					<visible>String.IsEmpty(ListItem.Icon)</visible>
-				</control>
-				<control type="image">
-					<width>68</width>
-					<height>100</height>
-					<texture background="true">$VAR[IconListView]</texture>
-					<aspectratio aligny="center" align="center">keep</aspectratio>
-					<visible>!String.IsEmpty(ListItem.Icon)</visible>
-				</control>
-				<include content="listitem_overlay_small">
-					<param name="left" value="45"/>
-					<param name="top" value="5"/>
+				<include content="Animation_FocusBounceList">
+					<param name="id" value="$PARAM[id]"/>
 				</include>
-			</control>
-			<control type="group">
-				<visible>![Player.HasMedia + String.IsEqual(ListItem.Title,Player.Title)] + !ListItem.IsSelected</visible>
-				<control type="label">
-					<left>100</left>
-					<right>250</right>
-					<height>120</height>
-					<font>Reg24</font>
-					<scroll>$PARAM[focused]</scroll>
-					<label>$PARAM[mainlabel][CR][COLOR text_sublabel]$PARAM[sublabel][/COLOR]</label>
+				<control type="group">
+					<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
+					<control type="image">
+						<top>6</top>
+						<bottom>6</bottom>
+						<left>-12</left>
+						<right>-11</right>
+						<texture colordiffuse="thumb_background">common/white.jpg</texture>
+						<aspectratio>stretch</aspectratio>
+					</control>
+					<control type="image">
+						<left>-25</left>
+						<right>-24</right>
+						<top>-2</top>
+						<bottom>-12</bottom>
+						<texture border="20,20,20,20" colordiffuse="$VAR[AccentColor]">items/focus.png</texture>
+						<aspectratio>stretch</aspectratio>
+						<include>Animation_FocusTextureFade</include>
+					</control>
 				</control>
-				<control type="label">
-					<right>0</right>
-					<width>300</width>
-					<height>120</height>
-					<align>right</align>
-					<font>reg24</font>
-					<scroll>$PARAM[focused]</scroll>
-					<label>$PARAM[rightlabel][CR][COLOR text_sublabel]$PARAM[rightlabel2][/COLOR]</label>
+				<control type="group">
+					<top>10</top>
+					<control type="image">
+						<width>68</width>
+						<height>100</height>
+						<texture>DefaultIconError.png</texture>
+						<aspectratio aligny="center" align="center">keep</aspectratio>
+						<visible>String.IsEmpty(ListItem.Icon)</visible>
+					</control>
+					<control type="image">
+						<width>68</width>
+						<height>100</height>
+						<texture background="true">$VAR[IconListView]</texture>
+						<aspectratio aligny="center" align="center">keep</aspectratio>
+						<visible>!String.IsEmpty(ListItem.Icon)</visible>
+					</control>
+					<include content="listitem_overlay_small">
+						<param name="left" value="45"/>
+						<param name="top" value="5"/>
+					</include>
 				</control>
-			</control>
-			<control type="group">
-				<visible>[Player.HasMedia + String.IsEqual(ListItem.Title,Player.Title)] | ListItem.IsSelected</visible>
-				<control type="label">
-					<left>100</left>
-					<right>250</right>
-					<height>120</height>
-					<font>Reg24</font>
-					<label>$PARAM[mainlabel][CR]$PARAM[sublabel]</label>
+				<control type="group">
+					<visible>![Player.HasMedia + String.IsEqual(ListItem.Title,Player.Title)] + !ListItem.IsSelected</visible>
+					<control type="label">
+						<left>100</left>
+						<right>250</right>
+						<height>120</height>
+						<font>Reg24</font>
+						<scroll>$PARAM[focused]</scroll>
+						<label>$PARAM[mainlabel][CR][COLOR text_sublabel]$PARAM[sublabel][/COLOR]</label>
+					</control>
+					<control type="label">
+						<right>0</right>
+						<width>300</width>
+						<height>120</height>
+						<align>right</align>
+						<font>reg24</font>
+						<scroll>$PARAM[focused]</scroll>
+						<label>$PARAM[rightlabel][CR][COLOR text_sublabel]$PARAM[rightlabel2][/COLOR]</label>
+					</control>
 				</control>
-				<control type="label">
-					<right>0</right>
-					<width>300</width>
-					<height>120</height>
-					<align>right</align>
-					<font>reg24</font>
-					<label>$PARAM[rightlabel][CR]$PARAM[rightlabel2]</label>
+				<control type="group">
+					<visible>[Player.HasMedia + String.IsEqual(ListItem.Title,Player.Title)] | ListItem.IsSelected</visible>
+					<control type="label">
+						<left>100</left>
+						<right>250</right>
+						<height>120</height>
+						<font>Reg24</font>
+						<label>$PARAM[mainlabel][CR]$PARAM[sublabel]</label>
+					</control>
+					<control type="label">
+						<right>0</right>
+						<width>300</width>
+						<height>120</height>
+						<align>right</align>
+						<font>reg24</font>
+						<label>$PARAM[rightlabel][CR]$PARAM[rightlabel2]</label>
+					</control>
 				</control>
 			</control>
 		</definition>
@@ -1711,27 +1718,6 @@
 		<definition>
 			<control type="group">
 				<visible>$PARAM[visible]</visible>
-				<!-- bg -->
-				<control type="group">
-					<visible>false</visible>
-					<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
-					<control type="image">
-						<top>-37</top>
-						<left>-70</left>
-						<right>-70</right>
-						<height>313</height>
-						<texture border="0,10,0,10">items/list_shadow.png</texture>
-						<aspectratio>stretch</aspectratio>
-					</control>
-					<control type="image">
-						<top>-35</top>
-						<left>-70</left>
-						<right>-70</right>
-						<height>309</height>
-						<texture colordiffuse="list_hover">common/white.jpg</texture>
-						<aspectratio>stretch</aspectratio>
-					</control>
-				</control>
 				<!-- art -->
 				<control type="group">
 					<width>448</width>
