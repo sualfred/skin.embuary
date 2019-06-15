@@ -33,34 +33,36 @@
 					<height>201</height>
 					<texture colordiffuse="black">views/player/mask_bottom.png</texture>
 				</control>
-				<control type="image">
-					<visible>!Skin.HasSetting(HideDiscArt) + !String.StartsWith(Player.Filenameandpath,pvr://)</visible>
-					<animation effect="rotate" center="auto" time="6000" end="-360" condition="true" loop="true">Conditional</animation>
-					<bottom>120</bottom>
-					<left>29</left>
-					<width>258</width>
-					<height>258</height>
-					<texture diffuse="views/player/cd.png" background="true">$VAR[PlayerDiscArt]</texture>
-					<fadetime>200</fadetime>
-					<aspectratio>scale</aspectratio>
-				</control>
-				<control type="image" id="99">
-					<bottom>20</bottom>
-					<left>19</left>
-					<height>278</height>
-					<width>278</width>
-					<texture>$VAR[PlayerIcon]</texture>
-					<aspectratio scalediffuse="false" aligny="center">keep</aspectratio>
-					<bordersize>11</bordersize>
-					<bordertexture border="11,11,11,11">items/resp_shadow.png</bordertexture>
+				<control type="group">
 					<visible>!String.StartsWith(Player.Filenameandpath,pvr://)</visible>
+					<control type="image">
+						<visible>!Skin.HasSetting(HideDiscArt)</visible>
+						<animation effect="rotate" center="auto" time="6000" end="-360" condition="true" loop="true">Conditional</animation>
+						<bottom>120</bottom>
+						<left>29</left>
+						<width>258</width>
+						<height>258</height>
+						<texture diffuse="views/player/cd.png" background="true">$VAR[PlayerDiscArt]</texture>
+						<fadetime>200</fadetime>
+						<aspectratio>scale</aspectratio>
+					</control>
+					<control type="image" id="99">
+						<bottom>20</bottom>
+						<left>19</left>
+						<height>278</height>
+						<width>278</width>
+						<texture background="true">$VAR[PlayerIcon]</texture>
+						<aspectratio scalediffuse="false" aligny="center">scale</aspectratio>
+						<bordersize>11</bordersize>
+						<bordertexture border="11,11,11,11">items/resp_shadow.png</bordertexture>
+					</control>
 				</control>
 				<control type="image" id="99">
 					<bottom>31</bottom>
 					<left>30</left>
 					<width>256</width>
 					<height>144</height>
-					<texture>$VAR[PlayerIcon]</texture>
+					<texture background="true">$VAR[PlayerIcon]</texture>
 					<aspectratio scalediffuse="false" aligny="center">keep</aspectratio>
 					<visible>String.StartsWith(Player.Filenameandpath,pvr://)</visible>
 				</control>
@@ -94,6 +96,7 @@
 						<height>30</height>
 						<aligny>center</aligny>
 						<font>med24</font>
+						<textcolor>white</textcolor>
 						<label>$VAR[PlayerFullLabel]   </label>
 					</control>
 				</control>
@@ -109,7 +112,7 @@
 						<height>30</height>
 						<aligny>center</aligny>
 						<font>reg24</font>
-						<textcolor>softgrey</textcolor>
+						<textcolor>text_sublabel</textcolor>
 						<label fallback="19055">$VAR[PlayerEpisodeName]</label>
 					</control>
 					<control type="label" id="99">
@@ -118,7 +121,7 @@
 						<align>right</align>
 						<aligny>center</aligny>
 						<font>reg24</font>
-						<textcolor>softgrey</textcolor>
+						<textcolor>text_sublabel</textcolor>
 						<label>$INFO[MusicPlayer.PlaylistPosition,$LOCALIZE[554] , / ]$INFO[MusicPlayer.PlaylistLength]</label>
 						<visible>Integer.IsGreater(MusicPlayer.PlaylistLength,0)</visible>
 					</control>
