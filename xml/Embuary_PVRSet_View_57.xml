@@ -35,16 +35,24 @@
 						<itemgap>0</itemgap>
 						<orientation>vertical</orientation>
 						<control type="label">
-							<height>55</height>
+							<height>50</height>
 							<label>$VAR[MainListLabel]</label>
 							<font>Reg37</font>
 							<aligny>top</aligny>
 						</control>
 						<control type="label">
-							<height>55</height>
+							<height>60</height>
 							<label>$VAR[ListItemEpisodeName]</label>
 							<font>Reg37</font>
 							<aligny>top</aligny>
+							<visible>!String.IsEmpty(ListItem.EpisodeName) | !String.IsEmpty(ListItem.Episode)</visible>
+						</control>
+						<control type="label">
+							<height>10</height>
+							<label></label>
+							<font>Reg37</font>
+							<aligny>top</aligny>
+							<visible>String.IsEmpty(ListItem.EpisodeName) + String.IsEmpty(ListItem.Episode)</visible>
 						</control>
 						<!-- meta -->
 						<include>MetaPVRInfos</include>

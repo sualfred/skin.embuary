@@ -801,7 +801,6 @@
 		<param name="type">ListItem</param>
 		<definition>
 			<control type="label">
-				<animation effect="slide" end="0,1" time="0" condition="true">Conditional</animation>
 				<label></label>
 				<font>Material26</font>
 				<textcolor>red</textcolor>
@@ -814,7 +813,6 @@
 				<visible>!String.IsEmpty($PARAM[type].Rating)</visible>
 			</control>
 			<control type="label">
-				<animation effect="slide" end="0,1" time="0" condition="true">Conditional</animation>
 				<label></label>
 				<font>Material26</font>
 				<textcolor>red</textcolor>
@@ -827,7 +825,7 @@
 				<visible>String.IsEmpty($PARAM[type].Rating) + !String.IsEmpty(Window(home).Property(tvshow.rating))</visible>
 			</control>
 			<control type="image">
-				<animation effect="slide" end="0,3" time="0" condition="true">Conditional</animation>
+				<animation effect="slide" end="0,2" time="0" condition="true">Conditional</animation>
 				<width>24</width>
 				<height>20</height>
 				<texture>icons/rating/rotten_fresh.png</texture>
@@ -835,7 +833,7 @@
 				<visible>!String.IsEmpty($PARAM[type].UserRating) + Integer.IsGreater($PARAM[type].UserRating,59) + [System.HasAddon(plugin.video.emby) | String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) | String.Contains(Player.Filenameandpath,/emby/)]</visible>
 			</control>e
 			<control type="image">
-				<animation effect="slide" end="0,3" time="0" condition="true">Conditional</animation>
+				<animation effect="slide" end="0,2" time="0" condition="true">Conditional</animation>
 				<width>24</width>
 				<height>20</height>
 				<texture>icons/rating/rotten_rotten.png</texture>
@@ -853,11 +851,12 @@
 		<param name="type">ListItem</param>
 		<definition>
 			<control type="button">
+				<animation effect="slide" end="0,0" time="0" condition="true">Conditional</animation>
 				<width min="24">auto</width>
-				<height>28</height>
-				<font>med16</font>
+				<height>24</height>
+				<font>MpaaFont</font>
 				<label>$INFO[$PARAM[type].Mpaa]</label>
-				<textoffsetx>10</textoffsetx>
+				<textoffsetx>7</textoffsetx>
 				<align>center</align>
 				<textcolor>text_white</textcolor>
 				<disabledcolor>text_white</disabledcolor>
@@ -878,9 +877,10 @@
 		<param name="visible">!String.IsEmpty(ListItem.SubtitleLanguage)</param>
 		<definition>
 			<control type="button">
+				<animation effect="slide" end="0,-2" time="0" condition="true">Conditional</animation>
 				<width min="24">auto</width>
 				<height>28</height>
-				<font>med16</font>
+				<font>MpaaFont</font>
 				<label>CC</label>
 				<textoffsetx>10</textoffsetx>
 				<align>center</align>

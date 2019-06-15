@@ -45,7 +45,6 @@
 						<font>Material24</font>
 						<label></label>
 						<include content="HeaderButton">
-							<param name="align" value="false"/>
 							<param name="color" value="text_header_mainlabel"/>
 						</include>
 						<visible>!Window.IsVisible(loginscreen) + !Window.Is(home)</visible>
@@ -54,7 +53,6 @@
 						<font>Material24</font>
 						<label></label>
 						<include content="HeaderButton">
-							<param name="align" value="false"/>
 							<param name="color" value="text_header_mainlabel"/>
 						</include>
 						<visible>!Window.IsVisible(loginscreen)</visible>
@@ -115,7 +113,6 @@
 						<font>Material24</font>
 						<label></label>
 						<include content="HeaderButton">
-							<param name="align" value="false"/>
 							<param name="color" value="$VAR[AccentColor]"/>
 						</include>
 						<visible>!String.IsEmpty(Window(Home).Property(emby_sync))</visible>
@@ -128,7 +125,6 @@
 						<font>Material24</font>
 						<label></label>
 						<include content="HeaderButton">
-							<param name="align" value="false"/>
 							<param name="color" value="$VAR[AccentColor]"/>
 						</include>
 						<visible>[Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(videos) | Container.Content(files) | Container.Content(episodes)] + !String.IsEqual(control.getlabel(10),$LOCALIZE[16100]) + Window.IsVisible(MyVideoNav.xml) + Control.IsEnabled(10) + !String.IsEmpty(Control.getLabel(10)) + !$EXP[InfoDialogActive]</visible>
@@ -137,7 +133,6 @@
 						<font>Material24</font>
 						<label></label>
 						<include content="HeaderButton">
-							<param name="align" value="false"/>
 							<param name="color" value="text_header_mainlabel"/>
 						</include>
 						<visible>Player.HasMedia + !Player.HasGame + !Player.Paused</visible>
@@ -146,7 +141,6 @@
 						<font>Material24</font>
 						<label></label>
 						<include content="HeaderButton">
-							<param name="align" value="false"/>
 							<param name="color" value="text_header_mainlabel"/>
 						</include>
 						<visible>Player.HasMedia + !Player.HasGame + Player.Paused</visible>
@@ -159,7 +153,6 @@
 						<font>Material24</font>
 						<label></label>
 						<include content="HeaderButton">
-							<param name="align" value="false"/>
 							<param name="color" value="text_header_mainlabel"/>
 						</include>
 						<visible>Player.Muted</visible>
@@ -490,9 +483,7 @@
 		<control type="button" id="6609">
 			<font>Material24</font>
 			<label></label>
-			<include content="HeaderButton">
-				<param name="align" value="false"/>
-			</include>
+			<include>HeaderButton</include>
 			<onclick>SetFocus(4000)</onclick>
 			<visible>[
 				Window.IsVisible(videos)
@@ -514,27 +505,21 @@
 		<control type="button" id="6610">
 			<font>Material24</font>
 			<label></label>
-			<include content="HeaderButton">
-				<param name="align" value="false"/>
-			</include>
+			<include>HeaderButton</include>
 			<onclick>SetFocus(4100)</onclick>
 			<visible>Integer.IsGreater(Container(4100).NumItems,1) + !Skin.HasSetting(KioskMode)</visible>
 		</control>
 		<control type="button" id="6611">
 			<font>Material22</font>
 			<label></label>
-			<include content="HeaderButton">
-				<param name="align" value="false"/>
-			</include>
+			<include>HeaderButton</include>
 			<onclick>ActivateWindow(playercontrols)</onclick>
 			<visible>[Player.HasMedia + !Player.HasGame] | System.HasMediaAudioCD | System.HasMediaDVD</visible>
 		</control>
 		<control type="button" id="6612">
 			<font>Material24</font>
 			<label></label>
-			<include content="HeaderButton">
-				<param name="align" value="false"/>
-			</include>
+			<include>HeaderButton</include>
 			<onclick condition="Integer.IsGreater(Playlist.Length(video),1) + !Integer.IsGreater(Playlist.Length(music),1)">ActivateWindow(videoplaylist)</onclick>
 			<onclick condition="!Integer.IsGreater(Playlist.Length(video),1) + Integer.IsGreater(Playlist.Length(music),1)">ActivateWindow(musicplaylist)</onclick>
 			<visible>[
@@ -547,9 +532,7 @@
 		<control type="button" id="6620">
 			<font>Material24</font>
 			<label></label>
-			<include content="HeaderButton">
-				<param name="align" value="false"/>
-			</include>
+			<include>HeaderButton</include>
 			<onclick>fullscreen</onclick>
 			<visible>Player.HasMedia</visible>
 		</control>

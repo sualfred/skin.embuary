@@ -31,7 +31,7 @@
 						<width>1480</width>
 						<control type="label">
 							<width>1040</width>
-							<height>55</height>
+							<height>50</height>
 							<label>$INFO[VideoPlayer.TvShowTitle]</label>
 							<font>Reg37</font>
 							<aligny>top</aligny>
@@ -39,7 +39,7 @@
 						</control>
 						<control type="label">
 							<width>1040</width>
-							<height>55</height>
+							<height>60</height>
 							<label>$VAR[PlayerSeasonEpisode]$INFO[VideoPlayer.Title]</label>
 							<font>Reg37</font>
 							<aligny>top</aligny>
@@ -76,7 +76,7 @@
 						<!-- plot -->
 						<control type="textbox">
 							<width>100%</width>
-							<height max="130">auto</height>
+							<height max="135">auto</height>
 							<align>justify</align>
 							<aligny>top</aligny>
 							<label>$INFO[VideoPlayer.Tagline,[B],[/B][CR]]$INFO[VideoPlayer.Plot]</label>
@@ -235,14 +235,14 @@
 					<align>top</align>
 					<itemgap>0</itemgap>
 					<control type="label">
-						<height>55</height>
+						<height>50</height>
 						<label>$INFO[VideoPlayer.Title]</label>
 						<font>Reg37</font>
 						<aligny>top</aligny>
 						<visible>!String.IsEmpty(VideoPlayer.Title)</visible>
 					</control>
 					<control type="label">
-						<height>55</height>
+						<height>50</height>
 						<label>$INFO[VideoPlayer.ChannelName]</label>
 						<font>Reg37</font>
 						<aligny>top</aligny>
@@ -250,11 +250,19 @@
 					</control>
 					<control type="label">
 						<width>auto</width>
-						<height>55</height>
+						<height>60</height>
 						<label>$VAR[PlayerEpisodeName]</label>
 						<font>Reg37</font>
 						<aligny>top</aligny>
 						<visible>!String.IsEmpty(VideoPlayer.EpisodeName) | !String.IsEmpty(VideoPlayer.Episode)</visible>
+					</control>
+					<control type="label">
+						<width>auto</width>
+						<height>10</height>
+						<label></label>
+						<font>Reg37</font>
+						<aligny>top</aligny>
+						<visible>String.IsEmpty(VideoPlayer.EpisodeName) + String.IsEmpty(VideoPlayer.Episode)</visible>
 					</control>
 					<!-- meta -->
 					<include>PlayerVideoInfos</include>
@@ -294,7 +302,7 @@
 					</include>
 					<!-- Plot -->
 					<control type="textbox">
-						<height max="610">auto</height>
+						<height max="600">auto</height>
 						<align>justify</align>
 						<aligny>top</aligny>
 						<label fallback="31156">$VAR[PVRPlot]</label>
@@ -303,7 +311,7 @@
 						<visible>!String.IsEmpty(VideoPlayer.EpisodeName) | !String.IsEmpty(VideoPlayer.Episode)</visible>
 					</control>
 					<control type="textbox">
-						<height max="670">auto</height>
+						<height max="660">auto</height>
 						<align>justify</align>
 						<aligny>top</aligny>
 						<label fallback="31156">$VAR[PVRPlot]</label>

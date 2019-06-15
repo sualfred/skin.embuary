@@ -224,7 +224,7 @@
 					<aspectratio>keep</aspectratio>
 				</control>
 				<control type="label">
-					<top>-2</top>
+					<top>-4</top>
 					<left>1</left>
 					<label>$INFO[ListItem.Property(UnWatchedEpisodes)]</label>
 					<font>BubbleFont</font>
@@ -537,9 +537,9 @@
 				<texture diffuse="items/big_circle.png" colordiffuse="turquoise">common/white.jpg</texture>
 			</control>
 			<control type="textbox">
-				<top>-1</top>
+			    <animation effect="slide" start="0,0" end="1,0" time="0" condition="String.IsEqual(Skin.Font,Arial)">Conditional</animation>
 				<width>80</width>
-				<height>80</height>
+				<height>82</height>
 				<font>SortLetter</font>
 				<textcolor>EEFFFFFF</textcolor>
 				<align>center</align>
@@ -550,7 +550,7 @@
 	</include>
 	<include name="ScrollSortLetter">
 		<control type="group">
-			<visible>Container.Scrolling +  [[String.IsEqual(Container.SortMethod,$LOCALIZE[551]) + Control.IsEnabled(4)] | String.IsEqual(Container.SortMethod,$LOCALIZE[561]) | String.IsEqual(Container.SortMethod,$LOCALIZE[558]) | String.IsEqual(Container.SortMethod,$LOCALIZE[557]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556]) | String.IsEqual(Container.SortMethod,$LOCALIZE[563]) | String.IsEqual(Container.SortMethod,$LOCALIZE[549]) | String.IsEqual(Container.SortMethod,$LOCALIZE[20359])]</visible>
+			<visible>Container.Scrolling + [[String.IsEqual(Container.SortMethod,$LOCALIZE[551]) + Control.IsEnabled(4)] | String.IsEqual(Container.SortMethod,$LOCALIZE[561]) | String.IsEqual(Container.SortMethod,$LOCALIZE[558]) | String.IsEqual(Container.SortMethod,$LOCALIZE[557]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556]) | String.IsEqual(Container.SortMethod,$LOCALIZE[563]) | String.IsEqual(Container.SortMethod,$LOCALIZE[549]) | String.IsEqual(Container.SortMethod,$LOCALIZE[20359])]</visible>
 			<animation effect="fade" start="0" end="100" time="120" reversible="true" delay="300">VisibleChange</animation>
 			<animation effect="slide" start="0,0" end="0,-58" time="0" reversible="true" condition="Window.IsVisible(extendedprogressdialog)">Conditional</animation>
 			<control type="group">
@@ -1836,7 +1836,7 @@
 					<control type="textbox">
 						<top>100</top>
 						<width>100%</width>
-						<height max="130">auto</height>
+						<height max="135">auto</height>
 						<align>justify</align>
 						<aligny>top</aligny>
 						<label fallback="19055">$INFO[ListItem.EpisodeName,, - ]$INFO[ListItem.Plot]</label>
