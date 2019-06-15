@@ -115,6 +115,18 @@
 								<selected>String.IsEqual(ListItem.Overlay,OverlayWatched.png) | Integer.IsGreaterOrEqual(ListItem.PlayCount,1)</selected>
 							</control>
 							<control type="button" id="56106">
+								<visible>System.HasAddon(plugin.video.youtube) + [Container.Content(movies) | Container.Content(tvshows)]</visible>
+								<include>LightGreyButtonRound</include>
+								<font>FontAwesome22</font>
+								<label></label>
+								<onup>SetFocus(6666)</onup>
+								<ondown>50</ondown>
+								<onback>SetFocus(50)</onback>
+								<onclick>SetFocus(50)</onclick>
+								<onclick condition="Container.Content(tvshows)">RunScript(script.embuary.helper,action=goto,path='"plugin://plugin.video.youtube/kodion/search/query/?q=$INFO[ListItem.TVShowTitle]&amp;search_type=videos"',target=videos)</onclick>
+								<onclick condition="Container.Content(movies)">RunScript(script.embuary.helper,action=goto,path='"plugin://plugin.video.youtube/kodion/search/query/?q=$INFO[ListItem.Title]&amp;search_type=videos"',target=videos)</onclick>
+							</control>
+							<control type="button" id="56107">
 								<include>LightGreyButtonRound</include>
 								<font>material24</font>
 								<label></label>

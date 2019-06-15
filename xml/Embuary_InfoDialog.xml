@@ -87,6 +87,15 @@
 							<onclick>RunScript(script.embuary.helper,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCINFO[ListItem.Plot]')</onclick>
 							<ondown>200</ondown>
 						</control>
+						<control type="button" id="105">
+							<visible>System.HasAddon(plugin.video.youtube)</visible>
+							<include>LightGreyButtonRound</include>
+							<font>FontAwesome22</font>
+							<label></label>
+							<ondown>200</ondown>
+							<onclick>RunScript(script.embuary.helper,action=goto,path='"plugin://plugin.video.youtube/kodion/search/query/?q=$INFO[ListItem.Title]&amp;search_type=videos"',target=videos)</onclick>
+							<ondown>200</ondown>
+						</control>
 						<control type="button" id="103">
 							<include>LightGreyButtonRound</include>
 							<font>material24</font>
@@ -271,6 +280,15 @@
 							<font>material24</font>
 							<label></label>
 							<onclick>RunScript(script.embuary.helper,action=textviewer,header='$ESCINFO[ListItem.TVShowTitle]',message='$ESCVAR[TinyInfoDialogPlot]')</onclick>
+							<ondown>200</ondown>
+						</control>
+						<control type="button" id="105">
+							<visible>System.HasAddon(plugin.video.youtube)</visible>
+							<include>LightGreyButtonRound</include>
+							<font>FontAwesome22</font>
+							<label></label>
+							<ondown>200</ondown>
+							<onclick>RunScript(script.embuary.helper,action=goto,path='"plugin://plugin.video.youtube/kodion/search/query/?q=$INFO[ListItem.TVShowTitle]&amp;search_type=videos"',target=videos)</onclick>
 							<ondown>200</ondown>
 						</control>
 						<control type="button" id="103">
