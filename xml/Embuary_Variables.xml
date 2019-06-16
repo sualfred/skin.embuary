@@ -663,7 +663,7 @@
 		<value condition="!String.IsEmpty(ListItem.Art(landscape)) + [!String.IsEmpty(ListItem.DBType) | ListItem.IsFolder | String.StartsWith(ListItem.Icon,Default) | String.StartsWith(ListItem.Path,plugin://) | Window.IsVisible(addonbrowser) | Window.IsVisible(programs) | Container.Content(addons)]">$INFO[ListItem.Art(landscape)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(fanart)) + [!String.IsEmpty(ListItem.DBType) | ListItem.IsFolder | String.StartsWith(ListItem.Icon,Default) | String.StartsWith(ListItem.Path,plugin://) | Window.IsVisible(addonbrowser) | Window.IsVisible(programs) | Container.Content(addons)]">$INFO[ListItem.Art(fanart)]</value>
 		<value condition="!String.IsEmpty(ListItem.Property(fanart))">$INFO[ListItem.Property(fanart)]</value>
-		<value condition="!String.StartsWith(ListItem.Icon,Default)">$INFO[ListItem.Icon]</value>
+		<value condition="!String.StartsWith(ListItem.Icon,Default) | String.IsEqual(Container.Viewmode,$LOCALIZE[535])">$INFO[ListItem.Icon]</value>
 	</variable>
 	<variable name="IconEpisodeThumb">
 		<value condition="String.IsEqual(ListItem.Art(thumb),OverlaySpoiler.png)">special://skin/extras/themes/$VAR[SkinTheme]/unwatched.jpg</value>
@@ -716,6 +716,7 @@
 	<variable name="ThumbSubListLabel">
 		<value condition="Window.IsVisible(music) + !String.IsEmpty(ListItem.Album)">$INFO[ListItem.Album]</value>
 		<value condition="Window.IsVisible(music) + !String.IsEmpty(ListItem.Artist)">$LOCALIZE[557]</value>
+		<value condition="String.StartsWith(Container.Folderpath,plugin://plugin.video.youtube/) + !String.IsEmpty(ListItem.Premiered)">$INFO[ListItem.Premiered]</value>
 		<value>$VAR[SubListLabel]</value>
 	</variable>
 	<variable name="MainListLabel">
@@ -824,8 +825,8 @@
 		<value>$INFO[VideoPlayer.VideoResolution,,p]</value>
 	</variable>
 	<variable name="ListItemEndTime">
-		<value condition="!String.IsEmpty(ListItem.EndTimeResume)">$INFO[ListItem.EndTimeResume]</value>
-		<value>$INFO[ListItem.EndTime]</value>
+		<value condition="!String.IsEmpty(ListItem.Duration) + !String.IsEmpty(ListItem.EndTimeResume)">$INFO[ListItem.EndTimeResume]</value>
+		<value condition="!String.IsEmpty(ListItem.Duration)">$INFO[ListItem.EndTime]</value>
 	</variable>
 	<variable name="PlayerTimeRemaining">
 		<value condition="Integer.IsLessOrEqual(Player.TimeRemaining,59)">$INFO[Player.TimeRemaining(ss)] $LOCALIZE[31077]</value>
@@ -971,7 +972,7 @@
 		<value condition="!String.IsEmpty(ListItem.Property(Artist_Description))">$INFO[ListItem.Property(Artist_Description)]</value>
 		<value condition="!String.IsEmpty(ListItem.AddonDescription)">$INFO[ListItem.AddonDescription]</value>
 		<value condition="[String.StartsWith(ListItem.Path,pvr://) | String.IsEqual(ListItem.DBType,episode)] + !ListItem.IsFolder ">$VAR[ListItemEpisodeName,[B],[/B][CR][CR]]$INFO[ListItem.Plot]</value>
-		<value>$INFO[ListItem.Tagline,[B],[/B][CR][CR]]$INFO[ListItem.Plot]</value>
+		<value condition="!String.IsEqual(ListItem.Label,ListItem.Plot)">$INFO[ListItem.Tagline,[B],[/B][CR][CR]]$INFO[ListItem.Plot]</value>
 	</variable>
 	<variable name="SetViewPlot">
 		<value condition="String.IsEqual(ListItem.DBType,set)">$INFO[ListItem.Plot,,[CR][CR]]$INFO[Container(2001).ListItemAbsolute(0).Label,$LOCALIZE[31192]: ]$INFO[Container(2001).ListItemAbsolute(0).Year, (,)]$INFO[Container(2001).ListItemAbsolute(1).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(1).Year, (,)]$INFO[Container(2001).ListItemAbsolute(2).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(2).Year, (,)]$INFO[Container(2001).ListItemAbsolute(3).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(3).Year, (,)]$INFO[Container(2001).ListItemAbsolute(4).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(4).Year, (,)]$INFO[Container(2001).ListItemAbsolute(5).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(5).Year, (,)]$INFO[Container(2001).ListItemAbsolute(6).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(6).Year, (,)]$INFO[Container(2001).ListItemAbsolute(7).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(7).Year, (,)]$INFO[Container(2001).ListItemAbsolute(8).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(8).Year, (,)]$INFO[Container(2001).ListItemAbsolute(9).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(9).Year, (,)]$INFO[Container(2001).ListItemAbsolute(10).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(10).Year, (,)]$INFO[Container(2001).ListItemAbsolute(11).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(11).Year, (,)]$INFO[Container(2001).ListItemAbsolute(12).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(12).Year, (,)]$INFO[Container(2001).ListItemAbsolute(13).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(13).Year, (,)]$INFO[Container(2001).ListItemAbsolute(14).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(14).Year, (,)]$INFO[Container(2001).ListItemAbsolute(15).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(15).Year, (,)]$INFO[Container(2001).ListItemAbsolute(16).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(16).Year, (,)]$INFO[Container(2001).ListItemAbsolute(17).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(17).Year, (,)]$INFO[Container(2001).ListItemAbsolute(18).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(18).Year, (,)]$INFO[Container(2001).ListItemAbsolute(19).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(19).Year, (,)]$INFO[Container(2001).ListItemAbsolute(20).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(20).Year, (,)]$INFO[Container(2001).ListItemAbsolute(21).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(21).Year, (,)]$INFO[Container(2001).ListItemAbsolute(22).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(22).Year, (,)]$INFO[Container(2001).ListItemAbsolute(23).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(23).Year, (,)]$INFO[Container(2001).ListItemAbsolute(24).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(24).Year, (,)]$INFO[Container(2001).ListItemAbsolute(25).Label,  /  ]$INFO[Container(2001).ListItemAbsolute(25).Year, (,)]</value>

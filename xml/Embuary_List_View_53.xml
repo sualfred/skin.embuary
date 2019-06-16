@@ -80,240 +80,36 @@
 						<bottom>120</bottom>
 						<centerleft>50%</centerleft>
 						<width>590</width>
-						<!-- wide thumb -->
+						<!-- auto thumb -->
 						<control type="group">
-							<visible>$EXP[ListHasWideThumb] + !$EXP[PVR4to3Thumb] + !$EXP[PVR2to3Thumb]</visible>
 							<control type="group">
 								<control type="image">
-									<top>-2</top>
-									<left>-2</left>
-									<width>596</width>
-									<height>338</height>
-									<texture border="20,20,20,20">items/shadow.png</texture>
+									<top>-4</top>
+									<left>-4</left>
+									<width>598</width>
+									<height>340</height>
+									<aspectratio align="center" aligny="center">keep</aspectratio>
+									<texture>$VAR[IconLandscape]</texture>
+									<bordersize>4</bordersize>
+									<bordertexture colordiffuse="thumb_background" border="4">items/shadow3.png</bordertexture>
+									<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
 								</control>
-								<control type="group">
-									<visible>String.IsEmpty(ListItem.Art(fanart)) + String.IsEmpty(ListItem.Art(tvshow.fanart)) + String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape)) + [String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)]</visible>
-									<control type="image">
-										<width>590</width>
-										<height>332</height>
-										<texture colordiffuse="$VAR[ThumbFallbackColor]">common/white.jpg</texture>
-										<aspectratio scalediffuse="false">stretch</aspectratio>
-									</control>
-									<control type="textbox">
-										<top>10</top>
-										<left>10</left>
-										<width>570</width>
-										<height>312</height>
-										<font>Light24</font>
-										<textcolor>white</textcolor>
-										<align>center</align>
-										<aligny>center</aligny>
-										<label>$PARAM[thumblabel]</label>
-									</control>
-								</control>
-								<control type="group">
-									<visible>![String.IsEmpty(ListItem.Art(fanart)) + String.IsEmpty(ListItem.Art(tvshow.fanart)) + String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape)) + [String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)]]</visible>
-									<control type="image">
-										<width>590</width>
-										<height>332</height>
-										<texture colordiffuse="thumb_background">common/white.jpg</texture>
-										<aspectratio scalediffuse="false">stretch</aspectratio>
-									</control>
-									<control type="image">
-										<width>590</width>
-										<height>332</height>
-										<texture background="true">$VAR[IconLandscape]</texture>
-										<aspectratio scalediffuse="false">keep</aspectratio>
-									</control>
+								<control type="image">
+									<top>-4</top>
+									<left>-4</left>
+									<width>598</width>
+									<height>340</height>
+									<aspectratio align="center" aligny="center">keep</aspectratio>
+									<texture>$INFO[ListItem.Icon]</texture>
+									<bordersize>4</bordersize>
+									<bordertexture colordiffuse="thumb_background" border="4">items/shadow3.png</bordertexture>
+									<visible>String.StartsWith(ListItem.Icon,Default)</visible>
 								</control>
 								<control type="group">
 									<width>590</width>
 									<height>332</height>
 									<include>listitem_overlay</include>
 								</control>
-								<include content="progress">
-									<param name="top" value="328"/>
-									<param name="width" value="590"/>
-								</include>
-							</control>
-						</control>
-						<!-- poster thumb -->
-						<control type="group">
-							<visible>[$EXP[ListHasPosterThumb] + !$EXP[ListHasWideThumb]] | $EXP[PVR2to3Thumb]</visible>
-							<centerleft>50%</centerleft>
-							<width>228</width>
-							<control type="group">
-								<control type="image">
-									<top>-2</top>
-									<left>-2</left>
-									<width>228</width>
-									<height>338</height>
-									<texture border="20,20,20,20">items/shadow.png</texture>
-								</control>
-								<control type="image">
-									<width>222</width>
-									<height>332</height>
-									<texture colordiffuse="$VAR[ThumbFallbackColor]">common/white.jpg</texture>
-									<aspectratio scalediffuse="false">stretch</aspectratio>
-									<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
-								</control>
-								<control type="image">
-									<width>222</width>
-									<height>332</height>
-									<texture colordiffuse="thumb_background">common/white.jpg</texture>
-									<aspectratio scalediffuse="false">stretch</aspectratio>
-									<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
-								</control>
-								<control type="textbox">
-									<top>10</top>
-									<left>10</left>
-									<width>202</width>
-									<height>312</height>
-									<font>Light24</font>
-									<textcolor>white</textcolor>
-									<align>center</align>
-									<aligny>center</aligny>
-									<label>$PARAM[thumblabel]</label>
-									<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
-								</control>
-								<control type="image">
-									<width>222</width>
-									<height>332</height>
-									<texture background="true">$VAR[IconPoster]</texture>
-									<aspectratio scalediffuse="false">stretch</aspectratio>
-									<visible>!$EXP[PVR2to3Thumb] | !String.IsEmpty(ListItem.EpgEventIcon) | $EXP[RecHasThumb]</visible>
-								</control>
-								<control type="image">
-									<width>222</width>
-									<height>332</height>
-									<texture background="true">$VAR[IconPoster]</texture>
-									<aspectratio scalediffuse="false">keep</aspectratio>
-									<visible>$EXP[PVR2to3Thumb] + String.IsEmpty(ListItem.EpgEventIcon) + !$EXP[RecHasThumb]</visible>
-								</control>
-								<control type="group">
-									<width>222</width>
-									<height>332</height>
-									<include>listitem_overlay</include>
-								</control>
-								<include content="progress">
-									<param name="top" value="328"/>
-									<param name="width" value="222"/>
-								</include>
-							</control>
-						</control>
-						<!-- square thumb -->
-						<control type="group">
-							<visible>!$EXP[ListHasPosterThumb] + !$EXP[ListHasWideThumb] + !$EXP[PVR4to3Thumb] + !$EXP[PVR2to3Thumb]</visible>
-							<centerleft>50%</centerleft>
-							<width>332</width>
-							<control type="group">
-								<control type="image">
-									<top>-2</top>
-									<left>-2</left>
-									<width>338</width>
-									<height>338</height>
-									<texture border="20,20,20,20">items/shadow.png</texture>
-								</control>
-								<control type="image">
-									<width>332</width>
-									<height>332</height>
-									<texture colordiffuse="$VAR[ThumbFallbackColor]">common/white.jpg</texture>
-									<aspectratio scalediffuse="false">stretch</aspectratio>
-									<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
-								</control>
-								<control type="image">
-									<width>332</width>
-									<height>332</height>
-									<texture colordiffuse="thumb_background">common/white.jpg</texture>
-									<aspectratio scalediffuse="false">stretch</aspectratio>
-									<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
-								</control>
-								<control type="textbox">
-									<top>10</top>
-									<left>10</left>
-									<width>312</width>
-									<height>312</height>
-									<font>Light24</font>
-									<textcolor>white</textcolor>
-									<align>center</align>
-									<aligny>center</aligny>
-									<label>$PARAM[thumblabel]</label>
-									<visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)</visible>
-								</control>
-								<control type="image">
-									<width>332</width>
-									<height>332</height>
-									<texture background="true">$VAR[IconSquare]</texture>
-									<aspectratio scalediffuse="false">scale</aspectratio>
-								</control>
-								<control type="group">
-									<width>332</width>
-									<height>332</height>
-									<include>listitem_overlay</include>
-								</control>
-								<include content="progress">
-									<param name="top" value="328"/>
-									<param name="width" value="332"/>
-								</include>
-							</control>
-						</control>
-						<!-- 4:3 thumb -->
-						<control type="group">
-							<visible>$EXP[PVR4to3Thumb]</visible>
-							<centerleft>50%</centerleft>
-							<width>498</width>
-							<control type="group">
-								<control type="image">
-									<top>-2</top>
-									<left>-2</left>
-									<width>504</width>
-									<height>338</height>
-									<texture border="20,20,20,20">items/shadow.png</texture>
-								</control>
-								<control type="group">
-									<visible>String.IsEmpty(ListItem.Art(fanart)) + String.IsEmpty(ListItem.Art(tvshow.fanart)) + String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape)) + [String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)]</visible>
-									<control type="image">
-										<width>498</width>
-										<height>332</height>
-										<texture colordiffuse="$VAR[ThumbFallbackColor]">common/white.jpg</texture>
-										<aspectratio scalediffuse="false">stretch</aspectratio>
-									</control>
-									<control type="textbox">
-										<top>10</top>
-										<left>10</left>
-										<width>478</width>
-										<height>312</height>
-										<font>Light24</font>
-										<textcolor>white</textcolor>
-										<align>center</align>
-										<aligny>center</aligny>
-										<label>$PARAM[thumblabel]</label>
-									</control>
-								</control>
-								<control type="group">
-									<visible>![String.IsEmpty(ListItem.Art(fanart)) + String.IsEmpty(ListItem.Art(tvshow.fanart)) + String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape)) + [String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,Default)]]</visible>
-									<control type="image">
-										<width>498</width>
-										<height>332</height>
-										<texture colordiffuse="thumb_background">common/white.jpg</texture>
-										<aspectratio scalediffuse="false">stretch</aspectratio>
-									</control>
-									<control type="image">
-										<width>498</width>
-										<height>332</height>
-										<texture background="true">$VAR[IconLandscape]</texture>
-										<aspectratio scalediffuse="false">keep</aspectratio>
-									</control>
-								</control>
-								<control type="group">
-									<width>498</width>
-									<height>332</height>
-									<include>listitem_overlay</include>
-								</control>
-								<include content="progress">
-									<param name="top" value="328"/>
-									<param name="width" value="498"/>
-								</include>
 							</control>
 						</control>
 						<!-- desc -->
@@ -323,7 +119,7 @@
 							<param name="mainlabel">$PARAM[thumbmainlabel]</param>
 							<param name="sublabel">$PARAM[thumbsublabel]</param>
 						</include>
-						<!-- Buttons -->
+						<!-- buttons -->
 						<control type="grouplist" id="100">
 							<visible>Window.IsVisible(MyPlaylist.xml)</visible>
 							<top>431</top>
@@ -368,6 +164,13 @@
 								<visible>!String.IsEmpty(ListItem.Plot) + Window.IsVisible(videoplaylist)</visible>
 							</control>
 						</control>
+						<!-- progress -->
+						<include condition="!Window.IsVisible(MyPlaylist.xml)" content="progress">
+							<param name="top" value="425"/>
+							<param name="width" value="590"/>
+							<param name="height" value="5"/>
+							<param name="bgcolor" value="ff515151"/>
+						</include>
 						<!-- plot -->
 						<control type="textbox">
 							<top>510</top>
@@ -386,6 +189,17 @@
 							<label>$VAR[ListViewPlot]</label>
 							<font>Light24</font>
 							<visible>!Window.IsVisible(MyPlaylist.xml)</visible>
+							<visible>![String.StartsWith(ListItem.Path,pvr://channels) + Integer.IsGreater(ListItem.Progress,0)] + ![!String.StartsWith(ListItem.Path,pvr://channels) + Integer.IsGreater(ListItem.PercentPlayed,0)]</visible>
+						</control>
+						<control type="textbox">
+							<top>445</top>
+							<bottom>0</bottom>
+							<align>justify</align>
+							<aligny>top</aligny>
+							<label>$VAR[ListViewPlot]</label>
+							<font>Light24</font>
+							<visible>!Window.IsVisible(MyPlaylist.xml)</visible>
+							<visible>[String.StartsWith(ListItem.Path,pvr://channels) + Integer.IsGreater(ListItem.Progress,0)] | [!String.StartsWith(ListItem.Path,pvr://channels) + Integer.IsGreater(ListItem.PercentPlayed,0)]</visible>
 						</control>
 					</control>
 				</control>
