@@ -45,7 +45,7 @@
 			<align>left</align>
 			<aligny>center</aligny>
 			<textoffsetx>80</textoffsetx>
-			<font>med22</font>
+			<font>Button</font>
 			<textcolor>$PARAM[textcolor]</textcolor>
 			<focusedcolor>$PARAM[textcolor_focused]</focusedcolor>
 			<disabledcolor>grey</disabledcolor>
@@ -70,7 +70,7 @@
 			<align>left</align>
 			<aligny>center</aligny>
 			<textoffsetx>80</textoffsetx>
-			<font>med22</font>
+			<font>Button</font>
 			<textcolor>$PARAM[textcolor]</textcolor>
 			<focusedcolor>$PARAM[textcolor_focused]</focusedcolor>
 			<disabledcolor>disabled</disabledcolor>
@@ -205,7 +205,7 @@
 			<height>58</height>
 			<width>auto</width>
 			<aligny>center</aligny>
-			<font>med20</font>
+			<font>Med20</font>
 			<textcolor>$PARAM[color]</textcolor>
 			<focusedcolor>$VAR[AccentColor]</focusedcolor>
 			<textoffsetx>0</textoffsetx>
@@ -216,8 +216,9 @@
 		<param name="align-left">true</param>
 		<definition>
 			<animation effect="slide" time="0" end="-2,0" condition="$PARAM[align-left]">Conditional</animation>
-			<include>FocusBounce</include>
+			<include>Animation_FocusBounceButton</include>
 			<height>56</height>
+			<font>Button</font>
 			<textcolor>text_white</textcolor>
 			<focusedcolor>white</focusedcolor>
 			<selectedcolor>text_white</selectedcolor>
@@ -235,10 +236,11 @@
 		<param name="align-left">true</param>
 		<definition>
 			<animation effect="slide" time="0" end="-2,0" condition="$PARAM[align-left]">Conditional</animation>
-			<include>FocusBounce</include>
+			<include>Animation_FocusBounceButton</include>
 			<textoffsetx>0</textoffsetx>
 			<height>56</height>
 			<width>56</width>
+			<font>Button</font>
 			<textcolor>text_white</textcolor>
 			<focusedcolor>white</focusedcolor>
 			<selectedcolor>text_white</selectedcolor>
@@ -256,9 +258,9 @@
 	<include name="DarkGreyButton">
 		<param name="align-left">true</param>
 		<definition>
-			<include>FocusBounce</include>
+			<include>Animation_FocusBounceButton</include>
 			<height>50</height>
-			<font>med22</font>
+			<font>Button</font>
 			<textcolor>white</textcolor>
 			<focusedcolor>white</focusedcolor>
 			<selectedcolor>white</selectedcolor>
@@ -276,6 +278,7 @@
 	<include name="PlayerButtons">
 		<param name="alt">$PARAM[type]</param>
 		<definition>
+			<include>Animation_FocusBounceButton</include>
 			<texturenofocus>icons/player/$PARAM[type]_nf.png</texturenofocus>
 			<texturefocus colordiffuse="$VAR[PlayerAccentColor]">icons/player/$PARAM[type]_fo.png</texturefocus>
 			<alttexturenofocus>icons/player/$PARAM[alt]_nf.png</alttexturenofocus>

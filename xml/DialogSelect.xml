@@ -3,16 +3,13 @@
 	<defaultcontrol always="true">3</defaultcontrol>
 	<include>PropertyIncludes</include>
 	<controls>
-		<!-- Default dialog -->
 		<control type="group">
 			<visible>![Window.IsVisible(GameVideoFilter) | Window.IsVisible(GameStretchMode) | Window.IsVisible(GameVideoRotation)]</visible>
 			<control type="label" id="1">
 				<include>HiddenObject</include>
 			</control>
-			<!-- Small select dialog -->
 			<control type="group">
 				<visible>Control.IsVisible(3)</visible>
-				<!-- hidden container -->
 				<control type="list" id="3">
 					<top>-10</top>
 					<left>-10</left>
@@ -30,7 +27,6 @@
 				<include content="DiffuseMask">
 					<param name="visible">!VideoPlayer.IsFullscreen + !Window.IsVisible(1113)</param>
 				</include>
-				<!-- fake list with auto adjusted height -->
 				<control type="group">
 					<include>Dialog_PopupOpenClose</include>
 					<centerleft>50%</centerleft>
@@ -172,7 +168,6 @@
 					</control>
 				</control>
 			</control>
-			<!-- Big select dialog -->
 			<control type="group">
 				<visible>Control.IsVisible(6)</visible>
 				<include content="DiffuseMask">
@@ -202,7 +197,6 @@
 						</control>
 						<include>GreenBar</include>
 					</control>
-					<!-- list -->
 					<control type="group">
 						<height>470</height>
 						<control type="image">
@@ -282,7 +276,6 @@
 							<texturesliderbarfocus colordiffuse="$VAR[AccentColor]">common/white.jpg</texturesliderbarfocus>
 						</control>
 					</control>
-					<!-- Button -->
 					<control type="grouplist" id="200">
 						<height>50</height>
 						<width>100%</width>
@@ -305,7 +298,6 @@
 				</control>
 			</control>
 		</control>
-		<!-- Retroplayer dialog -->
 		<control type="group">
 			<visible>Window.IsVisible(GameVideoFilter) | Window.IsVisible(GameStretchMode) | Window.IsVisible(GameVideoRotation)</visible>
 			<control type="group">

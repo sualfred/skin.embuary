@@ -5,6 +5,21 @@
 	<include>PropertyIncludes</include>
 	<onload>Dialog.Close(pvrosdchannels)</onload>
 	<controls>
+		<control type="button" id="4">
+			<include>HiddenObject</include>
+		</control>
+		<control type="button" id="5">
+			<include>HiddenObject</include>
+		</control>
+		<control type="button" id="6">
+			<include>HiddenObject</include>
+		</control>
+		<control type="button" id="8">
+			<include>HiddenObject</include>
+		</control>
+		<control type="button" id="9">
+			<include>HiddenObject</include>
+		</control>
 		<!-- Background -->
 		<include>Background</include>
 		<!-- Thumb image -->
@@ -19,106 +34,122 @@
 				<include condition="String.IsEqual(Skin.String(EPGar),2to3)">MetaPoster</include>
 				<include condition="String.IsEqual(Skin.String(EPGar),4to3)">Meta4to3Thumbnail</include>
 				<!-- meta -->
-				<control type="grouplist">
+				<control type="group">
 					<include condition="String.IsEqual(Skin.String(EPGar),2to3)" content="ParamLeft">
 						<param name="left" value="370"/>
 					</include>
 					<include condition="!String.IsEqual(Skin.String(EPGar),2to3)" content="ParamLeft">
 						<param name="left" value="524"/>
 					</include>
+					<top>-5</top>
 					<right>70</right>
-					<orientation>vertical</orientation>
+					<height>920</height>
 					<align>top</align>
-					<itemgap>0</itemgap>
 					<control type="label">
 						<height>50</height>
-						<label>$INFO[ListItem.Title]</label>
+						<label>$VAR[MainListLabel]</label>
 						<font>Reg37</font>
 						<aligny>top</aligny>
 					</control>
 					<control type="label">
+						<top>50</top>
 						<height>60</height>
-						<label>$VAR[ListItemEpisodeName]</label>
+						<label fallback="-">$VAR[ListItemEpisodeName]</label>
 						<font>Reg37</font>
 						<aligny>top</aligny>
-						<visible>!String.IsEmpty(ListItem.EpisodeName) | !String.IsEmpty(ListItem.Episode)</visible>
-					</control>
-					<control type="label">
-						<height>10</height>
-						<label></label>
-						<font>Reg37</font>
-						<aligny>top</aligny>
-						<visible>String.IsEmpty(ListItem.EpisodeName) + String.IsEmpty(ListItem.Episode)</visible>
 					</control>
 					<!-- meta -->
-					<include>MetaPVRInfos</include>
+					<control type="group">
+						<top>110</top>
+						<height>40</height>
+						<include>MetaPVRInfos</include>
+					</control>
 					<!-- flags -->
-					<include content="MetaFlags">
-						<param name="type" value="PVRFlags"/>
-					</include>
+					<control type="group">
+						<top>150</top>
+						<include content="MetaFlags">
+							<param name="type" value="PVRFlags"/>
+						</include>
+					</control>
 					<!-- buttons -->
-					<control type="grouplist" id="100">
-						<height>70</height>
+					<control type="list" id="100">
+						<top>198</top>
+						<height>130</height>
+						<width>100%</width>
 						<orientation>horizontal</orientation>
-						<itemgap>5</itemgap>
-						<onleft>900</onleft>
+						<defaultcontrol always="true">0</defaultcontrol>
 						<onright>noop</onright>
-						<control type="button" id="101">
-							<visible>!Control.IsVisible(5) + !Control.IsVisible(8)</visible>
-							<include>LightGreyButton</include>
-							<label>$LOCALIZE[15067]</label>
-							<onclick>close</onclick>
-						</control>
-						<control type="button" id="5">
-							<include>LightGreyButton</include>
-							<label>$VAR[VideoInfoButton8]</label>
-							<visible>Window.IsVisible(PVRGuideInfo)</visible>
-						</control>
-						<control type="button" id="8">
-							<include>LightGreyButton</include>
-							<label>$VAR[PVRInfoButton8]</label>
-							<visible>Window.IsVisible(PVRRecordingInfo) | Window.IsVisible(PVRGuideInfo)</visible>
-						</control>
-						<control type="button" id="6">
-							<include>LightGreyButton</include>
-							<visible>!String.StartsWith(ListItem.Path,pvr://recordings)</visible>
-						</control>
-						<control type="button" id="9">
-							<include>LightGreyButton</include>
-							<label>19061</label>
-						</control>
-						<control type="button" id="4">
-							<include>LightGreyButton</include>
-							<label>$LOCALIZE[31021]</label>
-						</control>
-						<control type="button" id="102">
-							<visible>!String.IsEmpty(ListItem.Plot)</visible>
-							<include>LightGreyButtonRound</include>
-							<font>material24</font>
-							<label></label>
-							<onclick>RunScript(script.embuary.helper,action=textviewer,info=textviewer,header='$ESCVAR[TinyInfoDialogHeadline]',message='$ESCVAR[TinyInfoDialogPlot]')</onclick>
-						</control>
+						<onleft>900</onleft>
+						<onup>6666</onup>
+						<include>FocusBounce</include>
+						<itemlayout height="130" width="146">
+							<include content="icon_menu">
+								<param name="id" value="100"/>
+							</include>
+						</itemlayout>
+						<focusedlayout height="130" width="146">
+							<include content="icon_menu">
+								<param name="id" value="100"/>
+								<param name="focused" value="true"/>
+							</include>
+						</focusedlayout>
+						<content>
+							<item>
+								<visible>Window.IsVisible(PVRGuideInfo)</visible>
+								<label>$LOCALIZE[31020]</label>
+								<property name="icon">&#xf7f3;</property>
+								<onclick>SendClick(5)</onclick>
+							</item>
+							<item>
+								<visible>Control.IsVisible(8)</visible>
+								<visible>Window.IsVisible(PVRRecordingInfo) | Window.IsVisible(PVRGuideInfo)</visible>
+								<label>$VAR[PVRInfoButton8]</label>
+								<property name="icon">&#xf40a;</property>
+								<onclick>SendClick(8)</onclick>
+							</item>
+							<item>
+								<visible>Control.IsVisible(6)</visible>
+								<visible>!String.StartsWith(ListItem.Path,pvr://recordings)</visible>
+								<label>$VAR[RecToggleLabel]</label>
+								<property name="icon">&#xf44a;</property>
+								<property name="color">$VAR[RecToggleColor]</property>
+								<onclick>SendClick(6)</onclick>
+							</item>
+							<item>
+								<visible>Control.IsVisible(9)</visible>
+								<label>$LOCALIZE[31364]</label>
+								<property name="icon">&#xf51b;</property>
+								<onclick>SendClick(9)</onclick>
+							</item>
+							<item>
+								<visible>Control.IsVisible(4)</visible>
+								<label>$LOCALIZE[31021]</label>
+								<property name="icon">&#xf349;</property>
+								<onclick>SendClick(4)</onclick>
+							</item>
+							<item>
+								<visible>!String.IsEmpty(ListItem.Plot)</visible>
+								<label>$LOCALIZE[207]</label>
+								<property name="icon">&#xf9a9;</property>
+								<onclick>RunScript(script.embuary.helper,action=textviewer,info=textviewer,header='$ESCVAR[TinyInfoDialogHeadline]',message='$ESCVAR[TinyInfoDialogPlot]')</onclick>
+							</item>
+						</content>
 					</control>
 					<!-- genre -->
-					<include>MetaGenre</include>
+					<control type="group">
+						<top>319</top>
+						<include>MetaGenre</include>
+					</control>
 					<!-- plot -->
 					<control type="textbox">
+						<top>356</top>
+						<width>100%</width>
 						<height max="600">auto</height>
 						<align>justify</align>
 						<aligny>top</aligny>
 						<label fallback="31156">$VAR[PVRPlot]</label>
 						<font>Light24</font>
 						<autoscroll>false</autoscroll>
-						<visible>!String.IsEmpty(ListItem.EpisodeName) | !String.IsEmpty(ListItem.Episode)</visible>
-					</control>
-					<control type="textbox">
-						<height max="660">auto</height>
-						<align>justify</align>
-						<aligny>top</aligny>
-						<label fallback="31156">$VAR[PVRPlot]</label>
-						<font>Light24</font>
-						<autoscroll>false</autoscroll>
-						<visible>String.IsEmpty(ListItem.EpisodeName) + String.IsEmpty(ListItem.Episode)</visible>
 					</control>
 				</control>
 			</control>

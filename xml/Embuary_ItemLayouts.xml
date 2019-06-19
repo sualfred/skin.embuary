@@ -28,6 +28,70 @@
 			</control>
 		</definition>
 	</include>
+	<!-- Icon button menu -->
+	<include name="icon_menu">
+		<param name="focused">false</param>
+		<definition>
+			<control type="group">
+				<top>20</top>
+				<left>-1</left>
+				<width>140</width>
+				<height>105</height>
+				<visible>!$PARAM[focused] | !Control.HasFocus($PARAM[id])</visible>
+				<control type="group">
+					<height>62</height>
+					<control type="image">
+						<texture border="10" colordiffuse="$VAR[LightButtonAccentColor]">items/button.png</texture>
+					</control>
+					<control type="label">
+						<align>center</align>
+						<font>Material34</font>
+						<label>[COLOR $INFO[ListItem.Property(color)]]$INFO[ListItem.Property(icon)][/COLOR]</label>
+					</control>
+				</control>
+				<control type="label">
+					<bottom>0</bottom>
+					<height>60</height>
+					<align>center</align>
+					<font>med16</font>
+					<textoffsetx>2</textoffsetx>
+					<label>$INFO[ListItem.Label]</label>
+				</control>
+			</control>
+			<control type="group">
+				<top>20</top>
+				<left>-1</left>
+				<width>140</width>
+				<height>105</height>
+				<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
+				<control type="group">
+					<include content="Animation_FocusBounce">
+						<param name="id" value="$PARAM[id]"/>
+					</include>
+					<height>62</height>
+					<control type="image">
+						<texture border="10" colordiffuse="$VAR[ButtonAccentColor]">items/button.png</texture>
+					</control>
+					<control type="label">
+						<align>center</align>
+						<font>Material34</font>
+						<textcolor>white</textcolor>
+						<label>$INFO[ListItem.Property(icon)]</label>
+					</control>
+				</control>
+				<control type="label">
+					<bottom>0</bottom>
+					<height>60</height>
+					<align>center</align>
+					<font>med16</font>
+					<textoffsetx>2</textoffsetx>
+					<textcolor>white</textcolor>
+					<scroll>true</scroll>
+					<label>$INFO[ListItem.Label]</label>
+				</control>
+			</control>
+		</definition>
+	</include>
 	<!-- Widget labels -->
 	<include name="widget_labels">
 		<param name="labels_visible">true</param>
@@ -206,14 +270,7 @@
 				</control>
 			</control>
 			<control type="group">
-				<visible>
-					Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0)
-					| [
-					Integer.IsLess(ListItem.Property(UnWatchedEpisodes),1)
-					+ !String.IsEqual(ListItem.Overlay,OverlayUnwatched.png)
-					+ [String.IsEqual(ListItem.Overlay,OverlayWatched.png) | Integer.IsGreaterOrEqual(ListItem.PlayCount,1)]
-					]
-				</visible>
+				<visible>Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0) | $EXP[IsWatched]</visible>
 				<visible>![Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml)]</visible>
 				<right>8</right>
 				<top>9</top>
@@ -232,17 +289,29 @@
 					<selectedcolor>white</selectedcolor>
 					<align>center</align>
 					<aligny>center</aligny>
-					<visible>Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0)</visible>
+					<visible>Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0) + ![Integer.IsGreater(Window(home).Property(tvshow.unwatchedepisodes),0) + Window.IsVisible(movieinformation)]</visible>
 				</control>
 				<control type="label">
-					<top>9</top>
+					<top>-4</top>
 					<left>1</left>
-					<label></label>
-					<font>FontAwesome20</font>
+					<label>$INFO[Window(home).Property(tvshow.unwatchedepisodes)]</label>
+					<font>BubbleFont</font>
+					<textcolor>white</textcolor>
+					<selectedcolor>white</selectedcolor>
+					<align>center</align>
+					<aligny>center</aligny>
+					<visible>Integer.IsGreater(Window(home).Property(tvshow.unwatchedepisodes),0) + Window.IsVisible(movieinformation)</visible>
+				</control>
+				<control type="label">
+					<top>6</top>
+					<left>1</left>
+					<label>&#xfe6e;</label>
+					<font>Material24</font>
 					<textcolor>white</textcolor>
 					<selectedcolor>white</selectedcolor>
 					<align>center</align>
 					<aligny>top</aligny>
+					<visible>![Integer.IsGreater(Window(home).Property(tvshow.unwatchedepisodes),0) + Window.IsVisible(movieinformation)]</visible>
 					<visible>
 						Integer.IsLess(ListItem.Property(UnWatchedEpisodes),1)
 						+ !String.IsEqual(ListItem.Overlay,OverlayUnwatched.png)
@@ -263,12 +332,12 @@
 					<aspectratio>keep</aspectratio>
 				</control>
 				<control type="label">
-					<top>10</top>
+					<top>7</top>
 					<left>1</left>
 					<width>44</width>
 					<height>44</height>
-					<label></label>
-					<font>FontAwesome20</font>
+					<label>&#xfaa8;</label>
+					<font>Material24</font>
 					<textcolor>white</textcolor>
 					<selectedcolor>white</selectedcolor>
 					<align>center</align>
@@ -296,12 +365,9 @@
 					<visible>String.IsEqual(ListItem.Label2,$LOCALIZE[305])</visible>
 				</control>
 				<control type="label">
-					<top>9</top>
-					<left>1</left>
-					<width>44</width>
-					<height>44</height>
-					<label></label>
-					<font>FontAwesome20</font>
+					<top>7</top>
+					<font>Material24</font>
+					<label>[B]&#xf4db;[/B]</label>
 					<textcolor>white</textcolor>
 					<selectedcolor>white</selectedcolor>
 					<align>center</align>
@@ -309,12 +375,10 @@
 					<visible>String.IsEqual(ListItem.Label2,$LOCALIZE[24023])</visible>
 				</control>
 				<control type="label">
-					<top>9</top>
+					<top>6</top>
 					<left>1</left>
-					<width>44</width>
-					<height>44</height>
-					<label></label>
-					<font>FontAwesome20</font>
+					<font>Material24</font>
+					<label>&#xfe6e;</label>
 					<textcolor>white</textcolor>
 					<selectedcolor>white</selectedcolor>
 					<align>center</align>
@@ -338,12 +402,12 @@
 				<aspectratio>keep</aspectratio>
 			</control>
 			<control type="label">
-				<top>8</top>
-				<left>2</left>
+				<top>4</top>
+				<left>1</left>
 				<width>36</width>
 				<height>36</height>
-				<label></label>
-				<font>FontAwesome16</font>
+				<label>&#xfe6e;</label>
+				<font>Material20</font>
 				<textcolor>white</textcolor>
 				<selectedcolor>white</selectedcolor>
 				<align>center</align>
@@ -408,7 +472,7 @@
 					<right>8</right>
 					<width>60</width>
 					<height>$PARAM[height]</height>
-					<label></label>
+					<label>&#xf142;</label>
 					<font>Material60</font>
 					<textcolor>white</textcolor>
 					<shadowcolor>text_shadow</shadowcolor>
@@ -434,7 +498,7 @@
 					<left>8</left>
 					<width>60</width>
 					<height>$PARAM[height]</height>
-					<label></label>
+					<label>&#xf141;</label>
 					<font>Material60</font>
 					<textcolor>white</textcolor>
 					<shadowcolor>text_shadow</shadowcolor>
@@ -478,7 +542,7 @@
 				<midtexture colordiffuse="$VAR[AccentColor]" border="2">common/white.jpg</midtexture>
 				<righttexture></righttexture>
 				<info>ListItem.Progress</info>
-				<visible>String.StartsWith(ListItem.Path,pvr://channels) + Integer.IsGreater(ListItem.Progress,0)</visible>
+				<visible>String.StartsWith(ListItem.Path,pvr://) + !String.StartsWith(ListItem.Path,pvr://recordings) + Integer.IsGreater(ListItem.Progress,0)</visible>
 			</control>
 			<control type="progress">
 				<top>$PARAM[top]</top>
@@ -490,7 +554,7 @@
 				<midtexture colordiffuse="$VAR[AccentColor]" border="2">common/white.jpg</midtexture>
 				<righttexture></righttexture>
 				<info>ListItem.PercentPlayed</info>
-				<visible>!String.StartsWith(ListItem.Path,pvr://channels) + Integer.IsGreater(ListItem.PercentPlayed,0)</visible>
+				<visible>[!String.StartsWith(ListItem.Path,pvr://) | String.StartsWith(ListItem.Path,pvr://recordings)] + Integer.IsGreater(ListItem.PercentPlayed,0)</visible>
 			</control>
 		</definition>
 	</include>
@@ -538,7 +602,7 @@
 				<texture diffuse="items/big_circle.png" colordiffuse="turquoise">common/white.jpg</texture>
 			</control>
 			<control type="textbox">
-			    <animation effect="slide" start="0,0" end="1,0" time="0" condition="String.IsEqual(Skin.Font,Arial)">Conditional</animation>
+				<animation effect="slide" start="0,0" end="1,0" time="0" condition="String.IsEqual(Skin.Font,Arial)">Conditional</animation>
 				<width>80</width>
 				<height>82</height>
 				<font>SortLetter</font>
@@ -1577,7 +1641,7 @@
 					<control type="label">
 						<width>250</width>
 						<height>60</height>
-						<font>med22</font>
+						<font>Button</font>
 						<textcolor>white</textcolor>
 						<focusedcolor>white</focusedcolor>
 						<selectedcolor>white</selectedcolor>
@@ -1591,6 +1655,9 @@
 				</control>
 				<control type="group">
 					<visible>Control.HasFocus($PARAM[id]) + $PARAM[focused]</visible>
+					<include content="Animation_FocusBounce">
+						<param name="id" value="$PARAM[id]"/>
+					</include>
 					<control type="image">
 						<width>250</width>
 						<height>60</height>
@@ -1600,7 +1667,7 @@
 					<control type="label">
 						<width>250</width>
 						<height>60</height>
-						<font>med22</font>
+						<font>Button</font>
 						<textcolor>white</textcolor>
 						<focusedcolor>white</focusedcolor>
 						<selectedcolor>white</selectedcolor>
@@ -1803,7 +1870,7 @@
 					</control>
 					<control type="label">
 						<animation effect="slide" end="0,1" time="0" condition="true">Conditional</animation>
-						<label></label>
+						<label>&#xf4ce;</label>
 						<font>Material28</font>
 						<textcolor>red</textcolor>
 						<top>50</top>

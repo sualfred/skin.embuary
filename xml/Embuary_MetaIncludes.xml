@@ -1,5 +1,155 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+	<!-- Media -->
+	<include name="MetaMediaInfo">
+		<param name="right">1040</param>
+		<definition>
+			<control type="grouplist">
+				<height>40</height>
+				<width>$PARAM[width]</width>
+				<itemgap>5</itemgap>
+				<orientation>horizontal</orientation>
+				<control type="label">
+					<font>light22</font>
+					<textcolor>text_sublabel</textcolor>
+					<include>MetaLabel</include>
+					<label>3D   </label>
+					<visible>ListItem.IsStereoscopic</visible>
+				</control>
+				<control type="label">
+					<font>light22</font>
+					<textcolor>text_sublabel</textcolor>
+					<include>MetaLabel</include>
+					<label>[UPPERCASE]$VAR[ListItemResolution][/UPPERCASE]   </label>
+					<visible>!String.IsEmpty(ListItem.VideoResolution)</visible>
+				</control>
+				<control type="label">
+					<font>light22</font>
+					<textcolor>text_sublabel</textcolor>
+					<include>MetaLabel</include>
+					<label>[UPPERCASE]$INFO[ListItem.VideoCodec][/UPPERCASE]   </label>
+					<visible>!String.IsEmpty(ListItem.VideoCodec)</visible>
+				</control>
+				<control type="label">
+					<font>light22</font>
+					<textcolor>text_sublabel</textcolor>
+					<include>MetaLabel</include>
+					<label>[UPPERCASE]HDR[/UPPERCASE]   </label>
+					<visible>$EXP[IsHDR]</visible>
+				</control>
+				<control type="label">
+					<font>light22</font>
+					<textcolor>text_sublabel</textcolor>
+					<include>MetaLabel</include>
+					<label>$VAR[ListItemAudioChannels]   </label>
+					<visible>!String.IsEmpty(ListItem.AudioChannels)</visible>
+				</control>
+				<control type="label">
+					<font>light22</font>
+					<textcolor>text_sublabel</textcolor>
+					<include>MetaLabel</include>
+					<label>$VAR[ListItemAudio]   </label>
+					<visible>!String.IsEmpty(ListItem.AudioChannels) + !String.IsEmpty(ListItem.AudioCodec)</visible>
+				</control>
+				<control type="label">
+					<font>light22</font>
+					<textcolor>text_sublabel</textcolor>
+					<include>MetaLabel</include>
+					<label>$LOCALIZE[292] [UPPERCASE]$INFO[ListItem.AudioLanguage][/UPPERCASE]   </label>
+					<visible>!String.IsEmpty(ListItem.AudioLanguage)</visible>
+				</control>
+				<control type="label">
+					<font>light22</font>
+					<textcolor>text_sublabel</textcolor>
+					<include>MetaLabel</include>
+					<label>$LOCALIZE[287] [UPPERCASE]$INFO[ListItem.SubtitleLanguage][/UPPERCASE]   </label>
+					<visible>!String.IsEmpty(ListItem.SubtitleLanguage)</visible>
+				</control>
+				<control type="label">
+					<font>light22</font>
+					<textcolor>text_sublabel</textcolor>
+					<include>MetaLabel</include>
+					<label>$INFO[ListItem.DateAdded,$LOCALIZE[570]: ]   </label>
+					<visible>!String.IsEmpty(ListItem.DateAdded) + !String.IsEqual(ListItem.DBType,tvshow)</visible>
+				</control>
+				<control type="label">
+					<font>light22</font>
+					<textcolor>text_sublabel</textcolor>
+					<include>MetaLabel</include>
+					<label>$INFO[ListItem.DateAdded,$LOCALIZE[12014]: ]   </label>
+					<visible>!String.IsEmpty(ListItem.DateAdded) + String.IsEqual(ListItem.DBType,tvshow)</visible>
+				</control>
+			</control>
+		</definition>
+	</include>
+	<include name="MetaPlayerMediaInfo">
+		<param name="right">1040</param>
+		<definition>
+			<control type="grouplist">
+				<height>40</height>
+				<width>$PARAM[width]</width>
+				<itemgap>5</itemgap>
+				<orientation>horizontal</orientation>
+				<control type="label">
+					<font>light22</font>
+					<textcolor>text_sublabel</textcolor>
+					<include>MetaLabel</include>
+					<label>3D   </label>
+					<visible>VideoPlayer.IsStereoscopic</visible>
+				</control>
+				<control type="label">
+					<font>light22</font>
+					<textcolor>text_sublabel</textcolor>
+					<include>MetaLabel</include>
+					<label>[UPPERCASE]$VAR[PlayerResolution][/UPPERCASE]   </label>
+					<visible>!String.IsEmpty(VideoPlayer.VideoResolution)</visible>
+				</control>
+				<control type="label">
+					<font>light22</font>
+					<textcolor>text_sublabel</textcolor>
+					<include>MetaLabel</include>
+					<label>[UPPERCASE]$INFO[VideoPlayer.VideoCodec][/UPPERCASE]   </label>
+					<visible>!String.IsEmpty(VideoPlayer.VideoCodec)</visible>
+				</control>
+				<control type="label">
+					<font>light22</font>
+					<textcolor>text_sublabel</textcolor>
+					<include>MetaLabel</include>
+					<label>[UPPERCASE]HDR[/UPPERCASE]   </label>
+					<visible>String.Contains(Player.Filename,.HDR.) | String.Contains(Player.Filename,-HDR-) | String.Contains(Player.Filename,- HDR -) | String.Contains(Player.Filename,(HDR))</visible>
+				</control>
+				<control type="label">
+					<font>light22</font>
+					<textcolor>text_sublabel</textcolor>
+					<include>MetaLabel</include>
+					<label>$VAR[PlayerAudioChannels]   </label>
+					<visible>!String.IsEmpty(VideoPlayer.AudioChannels)</visible>
+				</control>
+				<control type="label">
+					<font>light22</font>
+					<textcolor>text_sublabel</textcolor>
+					<include>MetaLabel</include>
+					<label>$VAR[PlayerAudio]   </label>
+					<visible>!String.IsEmpty(VideoPlayer.AudioChannels) + !String.IsEmpty(VideoPlayer.AudioCodec)</visible>
+				</control>
+				<control type="label">
+					<font>light22</font>
+					<textcolor>text_sublabel</textcolor>
+					<include>MetaLabel</include>
+					<label>$LOCALIZE[292] [UPPERCASE]$INFO[VideoPlayer.AudioLanguage][/UPPERCASE]   </label>
+					<visible>!String.IsEmpty(VideoPlayer.AudioLanguage)</visible>
+				</control>
+				<control type="label">
+					<font>light22</font>
+					<textcolor>text_sublabel</textcolor>
+					<include>MetaLabel</include>
+					<include>MetaFlagsButton</include>
+					<label>$LOCALIZE[287] [UPPERCASE]$INFO[VideoPlayer.SubtitleLanguage][/UPPERCASE]   </label>
+					<visible>!String.IsEmpty(VideoPlayer.SubtitleLanguage)</visible>
+				</control>
+			</control>
+		</definition>
+	</include>
 	<!-- Set -->
 	<include name="MetaSetInfos">
 		<param name="width">1040</param>
@@ -396,6 +546,16 @@
 					<aspectratio scalediffuse="false">stretch</aspectratio>
 					<visible>!String.StartsWith(ListItem.Path,pvr://)</visible>
 				</control>
+				<control type="group">
+					<visible>Window.IsVisible(movieinformation) | Window.IsVisible(DialogPVRInfo.xml)</visible>
+					<width>276</width>
+					<height>414</height>
+					<include>listitem_overlay</include>
+					<include content="progress">
+						<param name="top" value="410"/>
+						<param name="width" value="276"/>
+					</include>
+				</control>
 			</control>
 		</definition>
 	</include>
@@ -531,6 +691,16 @@
 				<texture background="true">$VAR[IconLandscape]</texture>
 				<aspectratio scalediffuse="false">keep</aspectratio>
 			</control>
+			<control type="group">
+				<visible>Window.IsVisible(movieinformation) | Window.IsVisible(DialogPVRInfo.xml)</visible>
+				<width>430</width>
+				<height>242</height>
+				<include>listitem_overlay</include>
+				<include content="progress">
+					<param name="top" value="239"/>
+					<param name="width" value="430"/>
+				</include>
+			</control>
 		</control>
 	</include>
 	<include name="MetaVideoThumbnail">
@@ -664,6 +834,16 @@
 				<aspectratio scalediffuse="false">keep</aspectratio>
 				<visible>!String.StartsWith(ListItem.Path,pvr://)</visible>
 			</control>
+			<control type="group">
+				<visible>Window.IsVisible(movieinformation) | Window.IsVisible(DialogPVRInfo.xml)</visible>
+				<width>430</width>
+				<height>287</height>
+				<include>listitem_overlay</include>
+				<include content="progress">
+					<param name="top" value="284"/>
+					<param name="width" value="430"/>
+				</include>
+			</control>
 		</control>
 	</include>
 	<include name="MetaVideo4to3Thumbnail">
@@ -776,6 +956,12 @@
 				<aspectratio scalediffuse="false">stretch</aspectratio>
 				<visible>!String.StartsWith(ListItem.Icon,Default)</visible>
 			</control>
+			<control type="group">
+				<visible>Window.IsVisible(addoninformation)</visible>
+				<width>340</width>
+				<height>340</height>
+				<include>listitem_overlay</include>
+			</control>
 		</control>
 	</include>
 	<include name="MetaClearlogo">
@@ -801,7 +987,7 @@
 		<param name="type">ListItem</param>
 		<definition>
 			<control type="label">
-				<label></label>
+				<label>&#xf4ce;</label>
 				<font>Material26</font>
 				<textcolor>red</textcolor>
 				<include>MetaLabel</include>
@@ -813,7 +999,7 @@
 				<visible>!String.IsEmpty($PARAM[type].Rating)</visible>
 			</control>
 			<control type="label">
-				<label></label>
+				<label>&#xf4ce;</label>
 				<font>Material26</font>
 				<textcolor>red</textcolor>
 				<include>MetaLabel</include>
@@ -995,48 +1181,6 @@
 			<visible>!String.IsEmpty(ListItem.DateAdded) + String.IsEqual(ListItem.DBType,tvshow)</visible>
 		</control>
 	</include>
-	<include name="PlayerFlags">
-		<control type="button">
-			<include>MetaFlagsButton</include>
-			<label>3D</label>
-			<visible>VideoPlayer.IsStereoscopic</visible>
-		</control>
-		<control type="button">
-			<include>MetaFlagsButton</include>
-			<label>[UPPERCASE]$VAR[PlayerResolution][/UPPERCASE]</label>
-			<visible>!String.IsEmpty(VideoPlayer.VideoResolution)</visible>
-		</control>
-		<control type="button">
-			<include>MetaFlagsButton</include>
-			<label>[UPPERCASE]$INFO[VideoPlayer.VideoCodec][/UPPERCASE]</label>
-			<visible>!String.IsEmpty(VideoPlayer.VideoCodec)</visible>
-		</control>
-		<control type="button">
-			<include>MetaFlagsButton</include>
-			<label>[UPPERCASE]HDR[/UPPERCASE]</label>
-			<visible>String.Contains(Player.Filename,.HDR.) | String.Contains(Player.Filename,-HDR-) | String.Contains(Player.Filename,- HDR -) | String.Contains(Player.Filename,(HDR))</visible>
-		</control>
-		<control type="button">
-			<include>MetaFlagsButton</include>
-			<label>$VAR[PlayerAudioChannels]</label>
-			<visible>!String.IsEmpty(VideoPlayer.AudioChannels)</visible>
-		</control>
-		<control type="button">
-			<include>MetaFlagsButton</include>
-			<label>$VAR[PlayerAudio]</label>
-			<visible>!String.IsEmpty(VideoPlayer.AudioChannels) + !String.IsEmpty(VideoPlayer.AudioCodec)</visible>
-		</control>
-		<control type="button">
-			<include>MetaFlagsButton</include>
-			<label>$LOCALIZE[292] [UPPERCASE]$INFO[VideoPlayer.AudioLanguage][/UPPERCASE]</label>
-			<visible>!String.IsEmpty(VideoPlayer.AudioLanguage)</visible>
-		</control>
-		<control type="button">
-			<include>MetaFlagsButton</include>
-			<label>$LOCALIZE[287] [UPPERCASE]$INFO[VideoPlayer.SubtitleLanguage][/UPPERCASE]</label>
-			<visible>!String.IsEmpty(VideoPlayer.SubtitleLanguage)</visible>
-		</control>
-	</include>
 	<include name="PVRFlags">
 		<control type="button">
 			<include>MetaFlagsButton</include>
@@ -1067,15 +1211,8 @@
 	<include name="AddonFlags">
 		<control type="button">
 			<include>MetaFlagsButton</include>
-			<label>$LOCALIZE[449]</label>
-			<visible>ListItem.Property(Addon.IsInstalled) + ListItem.Property(Addon.IsEnabled)</visible>
-		</control>
-		<control type="button">
-			<texturefocus border="10" colordiffuse="red">items/button.png</texturefocus>
-			<texturenofocus border="10" colordiffuse="red">items/button.png</texturenofocus>
-			<include>MetaFlagsButton</include>
-			<label>$LOCALIZE[1223]</label>
-			<visible>ListItem.Property(Addon.IsInstalled) + !ListItem.Property(Addon.IsEnabled)</visible>
+			<label>$LOCALIZE[31366]</label>
+			<visible>!ListItem.Property(Addon.IsInstalled)</visible>
 		</control>
 		<control type="button">
 			<include>MetaFlagsButton</include>
@@ -1090,12 +1227,12 @@
 		<control type="button">
 			<include>MetaFlagsButton</include>
 			<label>$LOCALIZE[12013]: $INFO[ListItem.AddonInstallDate]</label>
-			<visible>!String.IsEmpty(ListItem.AddonInstallDate)</visible>
+			<visible>ListItem.Property(Addon.IsInstalled) + !String.IsEmpty(ListItem.AddonInstallDate)</visible>
 		</control>
 		<control type="button">
 			<include>MetaFlagsButton</include>
 			<label>$LOCALIZE[12014]: $INFO[ListItem.AddonLastUpdated]</label>
-			<visible>!String.IsEmpty(ListItem.AddonLastUpdated)</visible>
+			<visible>ListItem.Property(Addon.IsInstalled) + !String.IsEmpty(ListItem.AddonLastUpdated)</visible>
 		</control>
 		<control type="button">
 			<texturefocus border="10" colordiffuse="blue">items/button.png</texturefocus>

@@ -403,6 +403,7 @@
 					<onright>noop</onright>
 					<onup>100</onup>
 					<ondown>SetFocus(50)</ondown>
+					<onfocus condition="!Skin.HasSetting(MinimalFocusAnimation)">SetProperty(FocusBounce,1,home)</onfocus>
 					<scrolltime>0</scrolltime>
 					<orientation>horizontal</orientation>
 					<defaultcontrol>0</defaultcontrol>
@@ -617,7 +618,7 @@
 					<aligny>center</aligny>
 					<font>Material34</font>
 					<textcolor>white</textcolor>
-					<label></label>
+					<label>&#xf45f;</label>
 					<visible>Player.Rewinding</visible>
 				</control>
 				<control type="label" id="99">
@@ -635,7 +636,7 @@
 					<aligny>center</aligny>
 					<font>Material34</font>
 					<textcolor>white</textcolor>
-					<label></label>
+					<label>&#xf211;</label>
 					<visible>Player.Forwarding</visible>
 				</control>
 				<control type="label" id="99">
@@ -653,7 +654,7 @@
 					<aligny>center</aligny>
 					<font>Material34</font>
 					<textcolor>white</textcolor>
-					<label></label>
+					<label>&#xf3e4;</label>
 					<visible>Player.Paused</visible>
 				</control>
 				<control type="label" id="99">
@@ -712,7 +713,7 @@
 			<aligny>center</aligny>
 			<font>Material34</font>
 			<textcolor>white</textcolor>
-			<label></label>
+			<label>&#xf49d;</label>
 			<visible>Playlist.IsRandom</visible>
 		</control>
 		<control type="label" id="99">
@@ -999,7 +1000,7 @@
 					<align>left</align>
 					<aligny>center</aligny>
 					<textoffsetx>80</textoffsetx>
-					<font>med22</font>
+					<font>Med20</font>
 					<textcolor>context_textcolor_focused</textcolor>
 					<textshadow>text_shadow</textshadow>
 					<scroll>true</scroll>
@@ -1012,7 +1013,7 @@
 					<align>left</align>
 					<aligny>center</aligny>
 					<textoffsetx>80</textoffsetx>
-					<font>med22</font>
+					<font>Med20</font>
 					<textcolor>selected</textcolor>
 					<textshadow>text_shadow</textshadow>
 					<scroll>true</scroll>
@@ -1025,7 +1026,7 @@
 					<align>left</align>
 					<aligny>center</aligny>
 					<textoffsetx>80</textoffsetx>
-					<font>med22</font>
+					<font>Med20</font>
 					<textcolor>context_textcolor</textcolor>
 					<textshadow>text_shadow</textshadow>
 					<scroll>false</scroll>
@@ -1038,7 +1039,7 @@
 					<align>left</align>
 					<aligny>center</aligny>
 					<textoffsetx>80</textoffsetx>
-					<font>med22</font>
+					<font>Med20</font>
 					<textcolor>selected</textcolor>
 					<textshadow>text_shadow</textshadow>
 					<scroll>false</scroll>
@@ -1223,6 +1224,10 @@
 		<onup condition="!Skin.HasSetting(MinimalFocusAnimation)">SetProperty(FocusBounce,1,home)</onup>
 		<ondown condition="!Skin.HasSetting(MinimalFocusAnimation)">SetProperty(FocusBounce,1,home)</ondown>
 		<onright condition="!Skin.HasSetting(MinimalFocusAnimation)">SetProperty(FocusBounce,1,home)</onright>
+	</include>
+	<include name="ClearFocusBounceBefore">
+		<onclick>ClearProperty(FocusBounce,home)</onclick>
+		<onclick>SetFocus(50)</onclick>
 	</include>
 	<!-- widget placeholder -->
 	<include name="WidgetDummy">

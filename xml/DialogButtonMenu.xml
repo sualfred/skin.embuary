@@ -161,7 +161,7 @@
 				<content>
 					<item>
 						<label>$LOCALIZE[10000]</label>
-						<label2></label2>
+						<label2>&#xf2dc;</label2>
 						<onclick>Dialog.Close(all,true)</onclick>
 						<onclick>ActivateWindow(home)</onclick>
 						<property name="color">orange</property>
@@ -169,7 +169,7 @@
 					</item>
 					<item>
 						<label>$LOCALIZE[5]</label>
-						<label2></label2>
+						<label2>&#xf493;</label2>
 						<onclick>Dialog.Close(all,true)</onclick>
 						<onclick>ActivateWindow(settings)</onclick>
 						<property name="color">blue</property>
@@ -177,21 +177,21 @@
 					</item>
 					<item>
 						<label>$LOCALIZE[13012]</label>
-						<label2></label2>
+						<label2>&#xf206;</label2>
 						<onclick>Quit()</onclick>
 						<visible>System.Platform.Android | [System.ShowExitButton + [!Skin.HasSetting(HidePowerExit) | Window.IsVisible(loginscreen)]]</visible>
 						<property name="color">green</property>
 					</item>
 					<item>
 						<label>$LOCALIZE[13016]</label>
-						<label2></label2>
+						<label2>&#xf425;</label2>
 						<onclick>Powerdown()</onclick>
 						<visible>System.CanPowerDown + [!Skin.HasSetting(HidePowerOff) | Window.IsVisible(loginscreen)]</visible>
 						<property name="color">red</property>
 					</item>
 					<item>
 						<label>$LOCALIZE[20150]</label>
-						<label2></label2>
+						<label2>&#xf51b;</label2>
 						<onclick>AlarmClock(shutdowntimer,Shutdown())</onclick>
 						<visible>!System.HasAlarm(shutdowntimer) + !Skin.HasSetting(HidePowerTimer)</visible>
 						<visible>System.CanPowerDown | System.CanSuspend | System.CanHibernate</visible>
@@ -199,35 +199,35 @@
 					</item>
 					<item>
 						<label>$LOCALIZE[20151] $INFO[System.AlarmPos,(,)]</label>
-						<label2></label2>
+						<label2>&#xf51e;</label2>
 						<onclick>CancelAlarm(shutdowntimer)</onclick>
 						<visible>System.HasAlarm(shutdowntimer) + !Skin.HasSetting(HidePowerTimer)</visible>
 						<property name="color">grey</property>
 					</item>
 					<item>
 						<label>$LOCALIZE[13011]</label>
-						<label2></label2>
+						<label2>&#xf903;</label2>
 						<onclick>Suspend()</onclick>
 						<visible>System.CanSuspend + [!Skin.HasSetting(HidePowerSuspend) | Window.IsVisible(loginscreen)]</visible>
 						<property name="color">lila</property>
 					</item>
 					<item>
 						<label>$LOCALIZE[13010]</label>
-						<label2></label2>
+						<label2>&#xf903;</label2>
 						<onclick>Hibernate()</onclick>
 						<visible>System.CanHibernate + [!Skin.HasSetting(HidePowerHibernate) | Window.IsVisible(loginscreen)]</visible>
 						<property name="color">lila</property>
 					</item>
 					<item>
 						<label>$LOCALIZE[13013]</label>
-						<label2></label2>
+						<label2>&#xf708;</label2>
 						<onclick>Reset()</onclick>
 						<visible>System.CanReboot + [!Skin.HasSetting(HidePowerReboot) | Window.IsVisible(loginscreen)]</visible>
 						<property name="color">turquoise</property>
 					</item>
 					<item>
 						<label>$LOCALIZE[13013] (NAND)</label>
-						<label2></label2>
+						<label2>&#xf708;</label2>
 						<onclick>Dialog.Close(all,true)</onclick>
 						<onclick>System.ExecWait(&quot;/usr/sbin/rebootfromnand&quot;)</onclick>
 						<visible>System.CanReboot + [!Skin.HasSetting(HidePowerRebootNAND) | Window.IsVisible(loginscreen)] + [System.HasAddon(service.libreelec.settings) | System.HasAddon(service.coreelec.settings)]</visible>
@@ -235,21 +235,21 @@
 					</item>
 					<item>
 						<label>$LOCALIZE[13017]</label>
-						<label2></label2>
+						<label2>&#xf426;</label2>
 						<onclick>InhibitIdleShutdown(true)</onclick>
 						<visible>System.HasShutdown + !System.IsInhibit + !Skin.HasSetting(HidePowerIdleShutdown)</visible>
 						<property name="color">lightgrey</property>
 					</item>
 					<item>
 						<label>$LOCALIZE[13018]</label>
-						<label2></label2>
+						<label2>&#xf426;</label2>
 						<onclick>InhibitIdleShutdown(false)</onclick>
 						<visible>System.HasShutdown + System.IsInhibit + !Skin.HasSetting(HidePowerIdleShutdown)</visible>
 						<property name="color">lightgrey</property>
 					</item>
 					<item>
 						<label>$LOCALIZE[31226]</label>
-						<label2></label2>
+						<label2>&#xf004;</label2>
 						<onclick>Dialog.Close(all,true)</onclick>
 						<onclick>RunScript(plugin.video.embycon,0,?mode=CHANGE_USER)</onclick>
 						<visible>System.HasAddon(plugin.video.embycon) + !String.IsEmpty(Window(Home).Property(plugin.video.embycon-userid)) + !Window.IsVisible(loginscreen)</visible>
@@ -257,7 +257,7 @@
 					</item>
 					<item>
 						<label>$LOCALIZE[31225]</label>
-						<label2></label2>
+						<label2>&#xf004;</label2>
 						<onclick>Dialog.Close(all,true)</onclick>
 						<onclick>RunScript(plugin.video.embycon,0,?mode=CHANGE_USER)</onclick>
 						<visible>System.HasAddon(plugin.video.embycon) + String.IsEmpty(Window(Home).Property(plugin.video.embycon-userid)) + !Window.IsVisible(loginscreen)</visible>
@@ -265,7 +265,7 @@
 					</item>
 					<item>
 						<label>$LOCALIZE[20126] $INFO[system.profilename]</label>
-						<label2></label2>
+						<label2>&#xf5fd;</label2>
 						<onclick>Dialog.Close(all,true)</onclick>
 						<onclick>System.LogOff</onclick>
 						<visible>System.HasLoginScreen | Integer.IsGreater(System.ProfileCount,1)</visible>
@@ -274,14 +274,14 @@
 					</item>
 					<item>
 						<label>$LOCALIZE[20046]</label>
-						<label2></label2>
+						<label2>&#xf88e;</label2>
 						<onclick>mastermode</onclick>
 						<visible>System.HasLocks + System.IsMaster + !Window.IsVisible(loginscreen)</visible>
 						<property name="color">accent</property>
 					</item>
 					<item>
 						<label>$LOCALIZE[20045]</label>
-						<label2></label2>
+						<label2>&#xf88e;</label2>
 						<onclick>mastermode</onclick>
 						<visible>System.HasLocks + !System.IsMaster + !Window.IsVisible(loginscreen)</visible>
 						<property name="color">accent</property>

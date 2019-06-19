@@ -55,7 +55,7 @@
 
 	<expression name="HideVideoOSD">[String.Contains(Player.Icon,script.embuary.helper/resources/trailer.jpg) | [String.Contains(Player.Icon,KodiCinemaMode) + !String.Contains(VideoPlayer.Title,Trailer)]]</expression>
 
-	<expression name="PlayerSeek">[Player.Seeking | [Player.DisplayAfterSeek + !String.IsEmpty(Player.SeekOffset)] | !String.IsEmpty(Player.SeekNumeric)]</expression>
+	<expression name="PlayerSeek">[Player.Seeking | Player.DisplayAfterSeek | !String.IsEmpty(Player.SeekNumeric)]</expression>
 
 	<expression name="ForceCinemaMode">[Skin.HasSetting(AlwaysCinemaMode) + [!String.IsEmpty(Skin.String(IntroPath)) | Integer.IsGreater(Skin.String(TrailerCount),0)]]</expression>
 
@@ -199,6 +199,10 @@
 
 	<expression name="PlayerRecHasThumb">
 		[String.StartsWith(Player.Filenameandpath,pvr://recordings) + !String.IsEqual(Window(home).Property(Player.Channellogo),Player.Icon)]
+	</expression>
+
+	<expression name="IsWatched">
+		[Integer.IsLess(ListItem.Property(UnWatchedEpisodes),1) + !String.IsEqual(ListItem.Overlay,OverlayUnwatched.png) + [String.IsEqual(ListItem.Overlay,OverlayWatched.png) | Integer.IsGreaterOrEqual(ListItem.PlayCount,1)]]
 	</expression>
 
 </includes>
