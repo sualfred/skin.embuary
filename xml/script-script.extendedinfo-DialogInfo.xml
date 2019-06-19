@@ -27,45 +27,59 @@
 				<!-- poster -->
 				<include>MetaExtendedInfoThumb</include>
 				<!-- meta -->
-				<control type="grouplist">
+				<control type="group">
+					<top>-5</top>
 					<left>370</left>
-					<orientation>vertical</orientation>
+					<right>70</right>
 					<align>top</align>
-					<itemgap>0</itemgap>
-					<width>1480</width>
 					<control type="label">
-						<width>1040</width>
+						<right>440</right>
 						<height>60</height>
 						<label>$INFO[Window.Property(Label)]</label>
 						<font>Reg37</font>
 						<aligny>top</aligny>
 					</control>
 					<!-- buttons -->
-					<control type="grouplist" id="100">
-						<height>75</height>
+					<control type="list" id="100">
+						<top>48</top>
+						<height>130</height>
+						<width>100%</width>
 						<orientation>horizontal</orientation>
-						<itemgap>5</itemgap>
+						<defaultcontrol always="true">0</defaultcontrol>
 						<onright>noop</onright>
 						<onleft>900</onleft>
-						<control type="button" id="101">
-							<include>LightGreyButton</include>
-							<label>$LOCALIZE[15067]</label>
-							<onclick>Close</onclick>
-							<ondown>150</ondown>
-						</control>
-						<control type="button" id="102">
-							<visible>!String.IsEmpty(Window.Property(Biography))</visible>
-							<include>LightGreyButtonRound</include>
-							<font>material24</font>
-							<label></label>
-							<onclick>RunScript(script.embuary.helper,action=textviewer,header='$ESCINFO[Window.Property(Label)]',message='$ESCINFO[Window.Property(Biography)]')</onclick>
-							<ondown>150</ondown>
-						</control>
+						<ondown>150</ondown>
+						<include>FocusBounce</include>
+						<itemlayout height="130" width="146">
+							<include content="icon_menu">
+								<param name="id" value="100"/>
+							</include>
+						</itemlayout>
+						<focusedlayout height="130" width="146">
+							<include content="icon_menu">
+								<param name="id" value="100"/>
+								<param name="focused" value="true"/>
+							</include>
+						</focusedlayout>
+						<content>
+							<item>
+								<visible>String.IsEmpty(Window.Property(Biography))</visible>
+								<label>$LOCALIZE[15067]</label>
+								<property name="icon">&#xf5ad;</property>
+								<onclick>close</onclick>
+							</item>
+							<item>
+								<visible>!String.IsEmpty(Window.Property(Biography))</visible>
+								<label>$LOCALIZE[21887]</label>
+								<property name="icon">&#xf9a9;</property>
+								<onclick>RunScript(script.embuary.helper,action=textviewer,header='$ESCINFO[Window.Property(Label)]',message='$ESCINFO[Window.Property(Biography)]')</onclick>
+							</item>
+						</content>
 					</control>
 					<!-- plot -->
 					<control type="textbox">
-						<width>100%</width>
-						<height max="270">auto</height>
+						<top>171</top>
+						<height max="230">auto</height>
 						<align>justify</align>
 						<aligny>top</aligny>
 						<label>$INFO[Window.Property(Birthday),$LOCALIZE[21893]: ]$INFO[Window.Property(Deathday),   († ,) ]$INFO[Window.Property(Age),[CR]$LOCALIZE[31171]: ,[CR]]$INFO[Window.Property(PlaceOfBirth),$LOCALIZE[31170]: ,[CR]]$VAR[ExtendedInfoFilmographyCount,$LOCALIZE[31188]: ,[CR][CR]]$INFO[Window.Property(Biography)]</label>

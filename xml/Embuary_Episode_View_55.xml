@@ -23,115 +23,131 @@
 					<!-- thumb -->
 					<include>MetaPoster</include>
 					<!-- meta -->
-					<control type="grouplist">
+					<control type="group">
 						<visible>!ListItem.IsParentFolder</visible>
+						<top>-5</top>
 						<left>370</left>
-						<orientation>vertical</orientation>
-						<height>500</height>
-						<align>top</align>
-						<itemgap>0</itemgap>
 						<right>70</right>
+						<height>500</height>
 						<control type="label">
-							<width>886</width>
+							<right>440</right>
 							<height>50</height>
 							<label>$INFO[ListItem.TvShowTitle]</label>
 							<font>Reg37</font>
 							<aligny>top</aligny>
 						</control>
 						<control type="label">
-							<width>886</width>
+							<top>50</top>
+							<right>440</right>
 							<height>60</height>
 							<label>$VAR[ListItemSeasonEpisode]$INFO[ListItem.Title]</label>
 							<font>Reg37</font>
 							<aligny>top</aligny>
 						</control>
 						<!-- meta -->
-						<include content="MetaEpisodeInfos">
-							<param name="width" value="886"/>
-						</include>
+						<control type="group">
+							<top>110</top>
+							<right>440</right>
+							<height>40</height>
+							<include>MetaEpisodeInfos</include>
+						</control>
 						<!-- buttons -->
-						<control type="grouplist" id="100">
-							<height>70</height>
+						<control type="list" id="100">
+							<top>138</top>
+							<height>130</height>
+							<width>100%</width>
 							<orientation>horizontal</orientation>
-							<itemgap>5</itemgap>
+							<defaultcontrol always="true">0</defaultcontrol>
 							<onright>noop</onright>
 							<onleft>900</onleft>
-							<control type="button" id="55101">
-								<visible>!String.IsEmpty(ListItem.FileNameAndPath)</visible>
-								<include>LightGreyButton</include>
-								<label>$VAR[VideoInfoButton8]</label>
-								<onup>SetFocus(6666)</onup>
-								<onclick>SetFocus(55)</onclick>
-								<onclick condition="![$EXP[ForceCinemaMode] + !String.IsEmpty(ListItem.DBID) + !String.IsEqual(ListItem.DBType,movies) + !Integer.IsGreater(ListItem.PercentPlayed,0)]">Select</onclick>
-								<onclick condition="$EXP[ForceCinemaMode] + !String.IsEmpty(ListItem.DBID) + !String.IsEqual(ListItem.DBType,movies) + !Integer.IsGreater(ListItem.PercentPlayed,0)">RunScript(script.embuary.helper,action=playcinema)</onclick>
-								<ondown>SetFocus(55)</ondown>
-								<onback>SetFocus(55)</onback>
-							</control>
-							<control type="button" id="55102">
-								<include>LightGreyButton</include>
-								<label>$LOCALIZE[22083]</label>
-								<onup>SetFocus(6666)</onup>
-								<ondown>SetFocus(55)</ondown>
-								<onback>SetFocus(55)</onback>
-								<onclick>RunScript(script.embuary.helper,action=playall)</onclick>
-								<visible>String.StartsWith(Container.Folderpath,videodb://)</visible>
-							</control>
-							<control type="button" id="55103">
-								<include>LightGreyButton</include>
-								<label>$LOCALIZE[31323]</label>
-								<onup>SetFocus(6666)</onup>
-								<ondown>SetFocus(55)</ondown>
-								<onback>SetFocus(55)</onback>
-								<onclick>RunScript(script.embuary.helper,action=playall,method=shuffle)</onclick>
-							</control>
-							<control type="button" id="55104">
-								<visible>!String.IsEmpty(ListItem.Plot)</visible>
-								<include>LightGreyButtonRound</include>
-								<font>material24</font>
-								<label></label>
-								<onclick>RunScript(script.embuary.helper,action=textviewer,header='$ESCINFO[ListItem.TVShowTitle]',message='$ESCVAR[TinyInfoDialogPlot]')</onclick>
-								<onup>SetFocus(6666)</onup>
-								<ondown>SetFocus(55)</ondown>
-								<onback>SetFocus(55)</onback>
-							</control>
-							<control type="togglebutton" id="55105">
-								<textcolor>$VAR[WatchedToggleColor]</textcolor>
-								<include>LightGreyButtonRound</include>
-								<font>material24</font>
-								<label>[B][/B]</label>
-								<altlabel>[B][/B]</altlabel>
-								<include>ToggleWatchedAction</include>
-								<onup>SetFocus(6666)</onup>
-								<ondown>SetFocus(55)</ondown>
-								<onback>SetFocus(55)</onback>
-								<selected>!String.IsEqual(ListItem.Overlay,OverlayWatched.png)</selected>
-							</control>
-							<control type="button" id="55106">
-								<include>LightGreyButtonRound</include>
-								<font>material24</font>
-								<label></label>
-								<onup>SetFocus(6666)</onup>
-								<ondown>SetFocus(55)</ondown>
-								<onback>SetFocus(55)</onback>
-								<onclick condition="$EXP[HasEmbyContext]">RunScript(special://home/addons/plugin.video.emby/context.py)</onclick>
-								<onclick condition="$EXP[HasEmbyConContext]">RunPlugin(plugin://plugin.video.embycon?mode=SHOW_MENU&amp;item_id=$INFO[ListItem.Property(id)])</onclick>
-								<visible>$EXP[HasEmbyContext] | $EXP[HasEmbyConContext]</visible>
-							</control>
+							<onback>50</onback>
+							<ondown>50</ondown>
+							<onup>6666</onup>
+							<include>FocusBounce</include>
+							<itemlayout height="130" width="146">
+								<include content="icon_menu">
+									<param name="id" value="100"/>
+								</include>
+							</itemlayout>
+							<focusedlayout height="130" width="146">
+								<include content="icon_menu">
+									<param name="id" value="100"/>
+									<param name="focused" value="true"/>
+								</include>
+							</focusedlayout>
+							<content>
+								<item>
+									<visible>!String.IsEmpty(ListItem.FileNameAndPath)</visible>
+									<label>$LOCALIZE[208]</label>
+									<property name="icon">&#xf40a;</property>
+									<include>ClearFocusBounceBefore</include>
+									<onclick condition="![$EXP[ForceCinemaMode] + !String.IsEmpty(ListItem.DBID) + !String.IsEqual(Skin.String(CinemaModeFor,movies)) + !Integer.IsGreater(ListItem.PercentPlayed,0)]">Select</onclick>
+									<onclick condition="$EXP[ForceCinemaMode] + !String.IsEmpty(ListItem.DBID) + !String.IsEqual(Skin.String(CinemaModeFor,movies)) + !Integer.IsGreater(ListItem.PercentPlayed,0)">RunScript(script.embuary.helper,action=playcinema)</onclick>
+								</item>
+								<item>
+									<visible>String.StartsWith(Container.Folderpath,videodb://)</visible>
+									<label>$LOCALIZE[22083]</label>
+									<property name="icon">&#xf411;</property>
+									<include>ClearFocusBounceBefore</include>
+									<onclick>RunScript(script.embuary.helper,action=playall)</onclick>
+								</item>
+								<item>
+									<visible>String.StartsWith(Container.Folderpath,videodb://)</visible>
+									<label>$LOCALIZE[31323]</label>
+									<property name="icon">&#xf49d;</property>
+									<include>ClearFocusBounceBefore</include>
+									<onclick>RunScript(script.embuary.helper,action=playall,method=shuffle)</onclick>
+								</item>
+								<item>
+									<visible>!String.IsEmpty(ListItem.Plot)</visible>
+									<label>$LOCALIZE[207]</label>
+									<property name="icon">&#xf9a9;</property>
+									<onclick>RunScript(script.embuary.helper,action=textviewer,header='$ESCINFO[ListItem.TVShowTitle]',message='$ESCVAR[TinyInfoDialogPlot]')</onclick>>
+								</item>
+								<item>
+									<label>$LOCALIZE[16101]</label>
+									<property name="icon">&#xfe6e;</property>
+									<include>ToggleWatchedAction</include>
+									<visible>!$EXP[IsWatched]</visible>
+								</item>
+								<item>
+									<label>$LOCALIZE[16102]</label>
+									<property name="icon">&#xfe6e;</property>
+									<property name="color">red</property>
+									<include>ToggleWatchedAction</include>
+									<visible>$EXP[IsWatched]</visible>
+								</item>
+								<item>
+									<visible>$EXP[HasEmbyContext] | $EXP[HasEmbyConContext]</visible>
+									<label>$LOCALIZE[22082]</label>
+									<property name="icon">&#xf1d8;</property>
+									<onclick condition="$EXP[HasEmbyContext]">RunScript(special://home/addons/plugin.video.emby/context.py)</onclick>
+									<onclick condition="$EXP[HasEmbyConContext]">RunPlugin(plugin://plugin.video.embycon?mode=SHOW_MENU&amp;item_id=$INFO[ListItem.Property(id)])</onclick>
+								</item>
+							</content>
 						</control>
+						<!-- genre -->
+						<control type="group">
+							<top>259</top>
+							<include>MetaGenre</include>
+						</control>
+						<!-- plot -->
 						<control type="textbox">
+							<top>296</top>
 							<width>100%</width>
-							<height max="135">auto</height>
+							<height max="65">auto</height>
 							<align>justify</align>
 							<aligny>top</aligny>
-							<label>$INFO[ListItem.Plot]</label>
+							<label>$VAR[SetViewPlot]</label>
 							<font>Light24</font>
 							<autoscroll>false</autoscroll>
 						</control>
-						<control type="label">
-							<height>12</height>
+						<!-- video meta-->
+						<control type="group">
+							<top>390</top>
+							<height>40</height>
+							<include>MetaMediaInfo</include>
 						</control>
-						<!-- flags -->
-						<include>MetaFlags</include>
 					</control>
 					<!-- logo -->
 					<include>MetaClearlogo</include>

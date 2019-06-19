@@ -19,62 +19,82 @@
 				<top>90</top>
 				<height>480</height>
 				<!-- poster -->
-				<include>MetaVideoPoster</include>
+				<include condition="!VideoPlayer.Content(episodes)">MetaVideoPoster</include>
+				<!-- thumb -->
+				<include condition="VideoPlayer.Content(episodes)">MetaVideoThumbnail</include>
 				<!-- Meta -->
 				<control type="group">
-					<control type="grouplist">
+					<control type="group">
+						<visible>!VideoPlayer.Content(episodes)</visible>
+						<top>-5</top>
 						<left>370</left>
+						<right>70</right>
 						<orientation>vertical</orientation>
 						<height>500</height>
 						<align>top</align>
 						<itemgap>0</itemgap>
-						<width>1480</width>
 						<control type="label">
-							<width>1040</width>
-							<height>50</height>
-							<label>$INFO[VideoPlayer.TvShowTitle]</label>
-							<font>Reg37</font>
-							<aligny>top</aligny>
-							<visible>VideoPlayer.Content(episodes)</visible>
-						</control>
-						<control type="label">
-							<width>1040</width>
+							<right>440</right>
 							<height>60</height>
-							<label>$VAR[PlayerSeasonEpisode]$INFO[VideoPlayer.Title]</label>
+							<label>$INFO[VideoPlayer.Title]</label>
 							<font>Reg37</font>
 							<aligny>top</aligny>
 						</control>
 						<!-- meta -->
-						<include>PlayerVideoInfos</include>
+						<control type="group">
+							<top>60</top>
+							<right>440</right>
+							<height>40</height>
+							<include>PlayerVideoInfos</include>
+						</control>
 						<!-- buttons -->
-						<control type="grouplist" id="100">
-							<height>70</height>
+						<control type="list" id="100">
+							<include>FocusBounce</include>
+							<top>88</top>
+							<height>130</height>
+							<width>100%</width>
 							<orientation>horizontal</orientation>
-							<itemgap>5</itemgap>
+							<defaultcontrol always="true">0</defaultcontrol>
 							<onright>noop</onright>
 							<onleft>900</onleft>
-							<control type="button" id="8">
-								<include>LightGreyButton</include>
-								<label>$LOCALIZE[15067]</label>
-								<onclick>close</onclick>
-								<ondown>200</ondown>
-							</control>
-							<control type="button" id="97">
-								<visible>!String.IsEmpty(VideoPlayer.Plot)</visible>
-								<include>LightGreyButtonRound</include>
-								<font>material24</font>
-								<label></label>
-								<onclick>RunScript(script.embuary.helper,action=textviewer,header='$ESCVAR[TinyInfoDialogHeadline]',message='$ESCVAR[TinyInfoDialogPlot]')</onclick>
-								<ondown>200</ondown>
-							</control>
+							<ondown>200</ondown>
+							<itemlayout height="130" width="146">
+								<include content="icon_menu">
+									<param name="id" value="100"/>
+								</include>
+							</itemlayout>
+							<focusedlayout height="130" width="146">
+								<include content="icon_menu">
+									<param name="id" value="100"/>
+									<param name="focused" value="true"/>
+								</include>
+							</focusedlayout>
+							<content>
+								<item>
+									<visible>String.IsEmpty(VideoPlayer.Plot)</visible>
+									<label>$LOCALIZE[15067]</label>
+									<property name="icon">&#xf5ad;</property>
+									<onclick>close</onclick>
+								</item>
+								<item>
+									<visible>!String.IsEmpty(VideoPlayer.Plot)</visible>
+									<label>$LOCALIZE[207]</label>
+									<property name="icon">&#xf9a9;</property>
+									<onclick>RunScript(script.embuary.helper,action=textviewer,header='$ESCVAR[TinyInfoDialogHeadline]',message='$ESCVAR[TinyInfoDialogPlot]')</onclick>
+								</item>
+							</content>
 						</control>
 						<!-- genre -->
-						<include content="MetaGenre">
-							<param name="visible" value="!VideoPlayer.Content(episodes)"/>
-							<param name="type" value="VideoPlayer"/>
-						</include>
+						<control type="group">
+							<top>209</top>
+							<include content="MetaGenre">
+								<param name="visible" value="!VideoPlayer.Content(episodes)"/>
+								<param name="type" value="VideoPlayer"/>
+							</include>
+						</control>
 						<!-- plot -->
 						<control type="textbox">
+							<top>246</top>
 							<width>100%</width>
 							<height max="135">auto</height>
 							<align>justify</align>
@@ -82,26 +102,100 @@
 							<label>$INFO[VideoPlayer.Tagline,[B],[/B][CR]]$INFO[VideoPlayer.Plot]</label>
 							<font>Light24</font>
 							<autoscroll>false</autoscroll>
-							<visible>!VideoPlayer.Content(episodes) + !String.IsEmpty(VideoPlayer.Plot)</visible>
 						</control>
-						<control type="textbox">
+						<!-- video meta-->
+						<control type="group">
+							<top>390</top>
+							<height>40</height>
+							<include>MetaPlayerMediaInfo</include>
+						</control>
+					</control>
+					<control type="group">
+						<visible>VideoPlayer.Content(episodes)</visible>
+						<top>-5</top>
+						<left>524</left>
+						<right>70</right>
+						<orientation>vertical</orientation>
+						<height>500</height>
+						<align>top</align>
+						<itemgap>0</itemgap>
+						<control type="label">
+							<right>440</right>
+							<height>60</height>
+							<label>$INFO[VideoPlayer.TvShowTitle]</label>
+							<font>Reg37</font>
+							<aligny>top</aligny>
+							<visible>VideoPlayer.Content(episodes)</visible>
+						</control>
+						<control type="label">
+							<top>50</top>
+							<right>440</right>
+							<height>60</height>
+							<label>$VAR[PlayerSeasonEpisode]$INFO[VideoPlayer.Title]</label>
+							<font>Reg37</font>
+							<aligny>top</aligny>
+						</control>
+						<!-- meta -->
+						<control type="group">
+							<top>110</top>
+							<right>440</right>
+							<height>40</height>
+							<include>PlayerVideoInfos</include>
+						</control>
+						<!-- buttons -->
+						<control type="list" id="100">
+							<include>FocusBounce</include>
+							<top>138</top>
+							<height>130</height>
 							<width>100%</width>
-							<height max="100">auto</height>
+							<orientation>horizontal</orientation>
+							<defaultcontrol always="true">0</defaultcontrol>
+							<onright>noop</onright>
+							<onleft>900</onleft>
+							<ondown>200</ondown>
+							<itemlayout height="130" width="146">
+								<include content="icon_menu">
+									<param name="id" value="100"/>
+								</include>
+							</itemlayout>
+							<focusedlayout height="130" width="146">
+								<include content="icon_menu">
+									<param name="id" value="100"/>
+									<param name="focused" value="true"/>
+								</include>
+							</focusedlayout>
+							<content>
+								<item>
+									<visible>String.IsEmpty(VideoPlayer.Plot)</visible>
+									<label>$LOCALIZE[15067]</label>
+									<property name="icon">&#xf5ad;</property>
+									<onclick>close</onclick>
+								</item>
+								<item>
+									<visible>!String.IsEmpty(VideoPlayer.Plot)</visible>
+									<label>$LOCALIZE[207]</label>
+									<property name="icon">&#xf9a9;</property>
+									<onclick>RunScript(script.embuary.helper,action=textviewer,header='$ESCVAR[TinyInfoDialogHeadline]',message='$ESCVAR[TinyInfoDialogPlot]')</onclick>
+								</item>
+							</content>
+						</control>
+						<!-- plot -->
+						<control type="textbox">
+							<top>261</top>
+							<width>100%</width>
+							<height max="135">auto</height>
 							<align>justify</align>
 							<aligny>top</aligny>
 							<label>$INFO[VideoPlayer.Tagline,[B],[/B][CR]]$INFO[VideoPlayer.Plot]</label>
 							<font>Light24</font>
 							<autoscroll>false</autoscroll>
-							<visible>VideoPlayer.Content(episodes) + !String.IsEmpty(VideoPlayer.Plot)</visible>
 						</control>
-						<control type="label">
-							<height>20</height>
-							<visible>!String.IsEmpty(VideoPlayer.Plot)</visible>
+						<!-- video meta-->
+						<control type="group">
+							<top>405</top>
+							<height>40</height>
+							<include>MetaPlayerMediaInfo</include>
 						</control>
-						<!-- flags -->
-						<include content="MetaFlags">
-							<param name="type" value="PlayerFlags"/>
-						</include>
 					</control>
 					<!-- logo -->
 					<include>MetaPlayerClearlogo</include>
@@ -223,17 +317,17 @@
 				<include condition="String.IsEqual(Skin.String(EPGar),2to3)">MetaVideoPoster</include>
 				<include condition="String.IsEqual(Skin.String(EPGar),4to3)">MetaVideo4to3Thumbnail</include>
 				<!-- meta -->
-				<control type="grouplist" id="500">
+				<control type="group">
 					<include condition="String.IsEqual(Skin.String(EPGar),2to3)" content="ParamLeft">
 						<param name="left" value="370"/>
 					</include>
 					<include condition="!String.IsEqual(Skin.String(EPGar),2to3)" content="ParamLeft">
 						<param name="left" value="524"/>
 					</include>
-					<orientation>vertical</orientation>
+					<top>-5</top>
 					<right>70</right>
+					<height>920</height>
 					<align>top</align>
-					<itemgap>0</itemgap>
 					<control type="label">
 						<height>50</height>
 						<label>$INFO[VideoPlayer.Title]</label>
@@ -249,75 +343,80 @@
 						<visible>String.IsEmpty(VideoPlayer.Title)</visible>
 					</control>
 					<control type="label">
-						<width>auto</width>
+						<top>50</top>
 						<height>60</height>
-						<label>$VAR[PlayerEpisodeName]</label>
+						<label fallback="-">$VAR[PlayerEpisodeName]</label>
 						<font>Reg37</font>
 						<aligny>top</aligny>
-						<visible>!String.IsEmpty(VideoPlayer.EpisodeName) | !String.IsEmpty(VideoPlayer.Episode)</visible>
-					</control>
-					<control type="label">
-						<width>auto</width>
-						<height>10</height>
-						<label></label>
-						<font>Reg37</font>
-						<aligny>top</aligny>
-						<visible>String.IsEmpty(VideoPlayer.EpisodeName) + String.IsEmpty(VideoPlayer.Episode)</visible>
 					</control>
 					<!-- meta -->
-					<include>PlayerVideoInfos</include>
-					<!-- flags -->
-					<include content="MetaFlags">
-						<param name="type" value="PlayerFlags"/>
-					</include>
-					<!-- buttons -->
-					<control type="grouplist" id="100">
-						<height>70</height>
-						<orientation>horizontal</orientation>
-						<itemgap>5</itemgap>
-						<onleft>900</onleft>
-						<onright>noop</onright>
-						<control type="button" id="101">
-							<include>LightGreyButton</include>
-							<label>$LOCALIZE[15067]</label>
-							<onclick>close</onclick>
-						</control>
-						<control type="button" id="102">
-							<include>LightGreyButton</include>
-							<label>$VAR[PlayerRecordingLabel]</label>
-							<onclick>PlayerControl(record)</onclick>
-							<visible>PVR.CanRecordPlayingChannel</visible>
-						</control>
-						<control type="button" id="103">
-							<visible>!String.IsEmpty(VideoPlayer.Plot)</visible>
-							<include>LightGreyButtonRound</include>
-							<font>material24</font>
-							<label></label>
-							<onclick>RunScript(script.embuary.helper,action=textviewer,header='$ESCINFO[VideoPlayer.Title]',message='$ESCVAR[TinyInfoDialogPlot]')</onclick>
-						</control>
+					<control type="group">
+						<top>110</top>
+						<height>40</height>
+						<include>PlayerVideoInfos</include>
 					</control>
-					<!-- Genre -->
-					<include content="MetaGenre">
-						<param name="type" value="VideoPlayer"/>
-					</include>
-					<!-- Plot -->
+					<!-- flags -->
+					<control type="group">
+						<top>150</top>
+						<include content="MetaFlags">
+							<param name="type" value="PVRFlags"/>
+						</include>
+					</control>
+					<!-- buttons -->
+					<control type="list" id="100">
+						<top>198</top>
+						<height>130</height>
+						<width>100%</width>
+						<orientation>horizontal</orientation>
+						<defaultcontrol always="true">0</defaultcontrol>
+						<onright>noop</onright>
+						<onleft>900</onleft>
+						<onup>6666</onup>
+						<include>FocusBounce</include>
+						<itemlayout height="130" width="146">
+							<include content="icon_menu">
+								<param name="id" value="100"/>
+							</include>
+						</itemlayout>
+						<focusedlayout height="130" width="146">
+							<include content="icon_menu">
+								<param name="id" value="100"/>
+								<param name="focused" value="true"/>
+							</include>
+						</focusedlayout>
+						<content>
+							<item>
+								<visible>PVR.CanRecordPlayingChannel</visible>
+								<label>$VAR[RecToggleLabel]</label>
+								<property name="icon">&#xf44a;</property>
+								<property name="color">$VAR[RecToggleColor]</property>
+								<onclick>Action(record)</onclick>
+							</item>
+							<item>
+								<visible>!String.IsEmpty(VideoPlayer.Plot)</visible>
+								<label>$LOCALIZE[207]</label>
+								<property name="icon">&#xf9a9;</property>
+								<onclick>RunScript(script.embuary.helper,action=textviewer,header='$ESCINFO[VideoPlayer.Title]',message='$ESCVAR[TinyInfoDialogPlot]')</onclick>
+							</item>
+						</content>
+					</control>
+					<!-- genre -->
+					<control type="group">
+						<top>319</top>
+						<include content="MetaGenre">
+							<param name="type" value="VideoPlayer"/>
+						</include>
+					</control>
+					<!-- plot -->
 					<control type="textbox">
+						<top>356</top>
+						<width>100%</width>
 						<height max="600">auto</height>
 						<align>justify</align>
 						<aligny>top</aligny>
 						<label fallback="31156">$VAR[PVRPlot]</label>
 						<font>Light24</font>
 						<autoscroll>false</autoscroll>
-						<visible>!String.IsEmpty(VideoPlayer.EpisodeName) | !String.IsEmpty(VideoPlayer.Episode)</visible>
-					</control>
-					<control type="textbox">
-						<height max="660">auto</height>
-						<align>justify</align>
-						<aligny>top</aligny>
-						<label fallback="31156">$VAR[PVRPlot]</label>
-						<font>Light24</font>
-						<autoscroll>false</autoscroll>
-						<visible>String.IsEmpty(VideoPlayer.EpisodeName) + String.IsEmpty(VideoPlayer.Episode)</visible>
 					</control>
 				</control>
 			</control>

@@ -17,6 +17,18 @@
 		<control type="button" id="6">
 			<include>HiddenObject</include>
 		</control>
+		<control type="button" id="7">
+			<include>HiddenObject</include>
+		</control>
+		<control type="button" id="8">
+			<include>HiddenObject</include>
+		</control>
+		<control type="button" id="9">
+			<include>HiddenObject</include>
+		</control>
+		<control type="button" id="12">
+			<include>HiddenObject</include>
+		</control>
 		<!-- Background -->
 		<include>Background</include>
 		<!-- Info -->
@@ -28,11 +40,12 @@
 				<!-- Thumb image -->
 				<include>MetaSquareThumb</include>
 				<!-- meta -->
-				<control type="grouplist">
+				<control type="group">
+					<top>-5</top>
 					<left>434</left>
 					<orientation>vertical</orientation>
 					<height>1020</height>
-					<width>1416</width>
+					<right>70</right>
 					<align>top</align>
 					<itemgap>0</itemgap>
 					<control type="label">
@@ -43,68 +56,100 @@
 						<aligny>top</aligny>
 					</control>
 					<!-- meta -->
-					<include>MetaAddonInfos</include>
-					<!-- buttons -->
-					<control type="grouplist" id="100">
-						<height>70</height>
-						<orientation>horizontal</orientation>
-						<itemgap>5</itemgap>
-						<onleft>900</onleft>
-						<onright>noop</onright>
-						<control type="button" id="12">
-							<include>LightGreyButton</include>
-							<label>$LOCALIZE[518]</label>
-							<visible>Control.IsEnabled(12)</visible>
-						</control>
-						<control type="button" id="9">
-							<include>LightGreyButton</include>
-							<label>$LOCALIZE[24020]</label>
-							<visible>Control.IsEnabled(9)</visible>
-						</control>
-						<control type="button" id="101">
-							<include>LightGreyButton</include>
-							<label>$LOCALIZE[31343]</label>
-							<onclick>RunScript(script.embuary.helper,action=textviewer,header=$LOCALIZE[24036],message='$ESCINFO[ListItem.AddonNews]')</onclick>
-							<visible>!String.IsEmpty(ListItem.AddonNews)</visible>
-						</control>
-						<control type="button" id="102">
-							<include>LightGreyButton</include>
-							<label>Changelog.txt</label>
-							<onclick>RunScript(script.embuary.helper,action=textviewer,header=changelog.txt,message='$ESCINFO[Window(home).Property(LocalChangelog)]')</onclick>
-							<visible>!String.IsEmpty(Window(home).Property(LocalChangelog)) + !String.IsEqual(ListItem.AddonNews,Window(home).Property(LocalChangelog))</visible>
-						</control>
-						<control type="button" id="103">
-							<include>LightGreyButton</include>
-							<label>$LOCALIZE[24038]</label>
-							<onclick>SendClick(6)</onclick>
-							<visible>String.IsEqual(Control.GetLabel(6),$LOCALIZE[24038])</visible>
-						</control>
-						<control type="button" id="104">
-							<include>LightGreyButtonRound</include>
-							<font>material24</font>
-							<label></label>
-							<onclick>RunScript(script.embuary.helper,action=textviewer,header='$ESCINFO[ListItem.Label]',message='$ESCINFO[ListItem.AddonDescription]')</onclick>
-							<visible>!String.IsEmpty(ListItem.AddonDescription)</visible>
-						</control>
-						<control type="button" id="105">
-							<include>LightGreyButtonRound</include>
-							<font>material24</font>
-							<label></label>
-							<ondown>SetFocus(200)</ondown>
-							<onclick>SetFocus(4000)</onclick>
-							<visible>Control.IsEnabled(7) | Control.IsEnabled(8) | Control.IsEnabled(13)</visible>
-						</control>
+					<control type="group">
+						<top>60</top>
+						<height>40</height>
+						<include>MetaAddonInfos</include>
 					</control>
 					<!-- flags -->
-					<include content="MetaFlags">
-						<param name="type" value="AddonFlags"/>
-					</include>
+					<control type="group">
+						<top>100</top>
+						<include content="MetaFlags">
+							<param name="type" value="AddonFlags"/>
+						</include>
+					</control>
+					<!-- buttons -->
+					<control type="list" id="100">
+						<top>148</top>
+						<height>130</height>
+						<width>100%</width>
+						<orientation>horizontal</orientation>
+						<defaultcontrol always="true">0</defaultcontrol>
+						<onright>noop</onright>
+						<onleft>900</onleft>
+						<include>FocusBounce</include>
+						<itemlayout height="130" width="146">
+							<include content="icon_menu">
+								<param name="id" value="100"/>
+							</include>
+						</itemlayout>
+						<focusedlayout height="130" width="146">
+							<include content="icon_menu">
+								<param name="id" value="100"/>
+								<param name="focused" value="true"/>
+							</include>
+						</focusedlayout>
+						<content>
+							<item>
+								<visible>Control.IsEnabled(12)</visible>
+								<label>$LOCALIZE[518]</label>
+								<property name="icon">&#xf327;</property>
+								<onclick>SendClick(12)</onclick>
+							</item>
+							<item>
+								<visible>Control.IsEnabled(9)</visible>
+								<label>$LOCALIZE[24020]</label>
+								<property name="icon">&#xf493;</property>
+								<onclick>SendClick(9)</onclick>
+							</item>
+							<item>
+								<visible>String.IsEqual(Control.GetLabel(6),$LOCALIZE[24038])</visible>
+								<label>$LOCALIZE[24038]</label>
+								<property name="icon">&#xf1da;</property>
+								<onclick>SendClick(6)</onclick>
+							</item>
+							<item>
+								<visible>Control.IsEnabled(8)</visible>
+								<label>$LOCALIZE[24069]</label>
+								<property name="icon">&#xf1da;</property>
+								<onclick>SendClick(8)</onclick>
+							</item>
+							<item>
+								<visible>!String.IsEmpty(ListItem.AddonNews)</visible>
+								<label>$LOCALIZE[31343]</label>
+								<property name="icon">&#xf394;</property>
+								<onclick>RunScript(script.embuary.helper,action=textviewer,header=$LOCALIZE[24036],message='$ESCINFO[ListItem.AddonNews]')</onclick>
+							</item>
+							<item>
+								<visible>!String.IsEmpty(Window(home).Property(LocalChangelog)) + !String.IsEqual(ListItem.AddonNews,Window(home).Property(LocalChangelog))</visible>
+								<label>Changelog.txt</label>
+								<property name="icon">&#xfb54;</property>
+								<onclick>RunScript(script.embuary.helper,action=textviewer,header=changelog.txt,message='$ESCINFO[Window(home).Property(LocalChangelog)]')</onclick>
+							</item>
+							<item>
+								<visible>!String.IsEmpty(ListItem.AddonDescription)</visible>
+								<label>$LOCALIZE[21821]</label>
+								<property name="icon">&#xf9a9;</property>
+								<onclick>RunScript(script.embuary.helper,action=textviewer,header='$ESCINFO[ListItem.Label]',message='$ESCINFO[ListItem.AddonDescription]')</onclick>
+							</item>
+							<item>
+								<visible>Control.IsEnabled(7) | Control.IsEnabled(13)</visible>
+								<label>$LOCALIZE[22082]</label>
+								<property name="icon">&#xf1d8;</property>
+								<onclick>SetFocus(4000)</onclick>
+							</item>
+						</content>
+					</control>
 					<!-- type -->
-					<include>MetaGenre</include>
+					<control type="group">
+						<top>269</top>
+						<include>MetaGenre</include>
+					</control>
 					<!-- Desc -->
 					<control type="textbox">
+						<top>306</top>
 						<width>100%</width>
-						<height max="660">auto</height>
+						<height max="630">auto</height>
 						<align>justify</align>
 						<aligny>top</aligny>
 						<label>$INFO[ListItem.AddonSummary,[B],[/B][CR][CR]]$INFO[ListItem.AddonDisclaimer,,[CR][CR]]$INFO[ListItem.AddonDescription]</label>
@@ -141,17 +186,15 @@
 						<height>61</height>
 						<texture border="65,0,65,0" colordiffuse="context_color">dialogs/context/top.png</texture>
 					</control>
-					<control type="button" id="8">
-						<include content="ContextButton"/>
-						<label>$LOCALIZE[24069]</label>
-						<visible>Control.IsEnabled(8)</visible>
-					</control>
 					<control type="radiobutton" id="13">
 						<include content="ContextButton"/>
 						<visible>Control.IsEnabled(13)</visible>
 					</control>
-					<control type="button" id="7">
+					<control type="button" id="4003">
 						<include content="ContextButton"/>
+						<label>$INFO[Control.GetLabel(7)]</label>
+						<onclick>SendClick(7)</onclick>
+						<onclick>Dialog.Close(addoninformation)</onclick>
 						<visible>Control.IsEnabled(7)</visible>
 					</control>
 					<control type="button" id="10">

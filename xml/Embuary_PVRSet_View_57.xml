@@ -22,13 +22,14 @@
 					<include condition="String.IsEqual(Skin.String(EPGar),2to3)">MetaPoster</include>
 					<include condition="String.IsEqual(Skin.String(EPGar),4to3)">Meta4to3Thumbnail</include>
 					<!-- meta -->
-					<control type="grouplist">
+					<control type="group">
 						<include condition="String.IsEqual(Skin.String(EPGar),2to3)" content="ParamLeft">
 							<param name="left" value="370"/>
 						</include>
 						<include condition="!String.IsEqual(Skin.String(EPGar),2to3)" content="ParamLeft">
 							<param name="left" value="524"/>
 						</include>
+						<top>-5</top>
 						<right>70</right>
 						<height>920</height>
 						<align>top</align>
@@ -41,68 +42,78 @@
 							<aligny>top</aligny>
 						</control>
 						<control type="label">
+							<top>50</top>
 							<height>60</height>
-							<label>$VAR[ListItemEpisodeName]</label>
+							<label fallback="-">$VAR[ListItemEpisodeName]</label>
 							<font>Reg37</font>
 							<aligny>top</aligny>
-							<visible>!String.IsEmpty(ListItem.EpisodeName) | !String.IsEmpty(ListItem.Episode)</visible>
-						</control>
-						<control type="label">
-							<height>10</height>
-							<label></label>
-							<font>Reg37</font>
-							<aligny>top</aligny>
-							<visible>String.IsEmpty(ListItem.EpisodeName) + String.IsEmpty(ListItem.Episode)</visible>
 						</control>
 						<!-- meta -->
-						<include>MetaPVRInfos</include>
-						<!-- flags -->
-						<include content="MetaFlags">
-							<param name="type" value="PVRFlags"/>
-						</include>
+						<control type="group">
+							<top>110</top>
+							<height>40</height>
+							<include>MetaPVRInfos</include>
+						</control>
 						<!-- buttons -->
-						<control type="grouplist" id="100">
-							<height>70</height>
+						<control type="list" id="100">
+							<top>138</top>
+							<height>130</height>
+							<width>100%</width>
 							<orientation>horizontal</orientation>
-							<itemgap>5</itemgap>
-							<onleft>900</onleft>
+							<defaultcontrol always="true">0</defaultcontrol>
 							<onright>noop</onright>
-							<control type="button" id="57101">
-								<visible>!String.IsEmpty(ListItem.FileNameAndPath)</visible>
-								<include>LightGreyButton</include>
-								<label>$VAR[VideoInfoButton8]</label>
-								<onup>SetFocus(6666)</onup>
-								<onclick>SetFocus(57)</onclick>
-								<onclick>Select</onclick>
-								<ondown>SetFocus(57)</ondown>
-								<onback>SetFocus(57)</onback>
-							</control>
-							<control type="button" id="57103">
-								<visible>!String.IsEmpty(ListItem.Plot)</visible>
-								<include>LightGreyButtonRound</include>
-								<font>material24</font>
-								<label></label>
-								<onclick>RunScript(script.embuary.helper,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCINFO[ListItem.Plot]')</onclick>
-								<onup>SetFocus(6666)</onup>
-								<ondown>SetFocus(57)</ondown>
-								<onback>SetFocus(57)</onback>
-							</control>
+							<onleft>900</onleft>
+							<onback>50</onback>
+							<ondown>50</ondown>
+							<onup>6666</onup>
+							<onfocus condition="!Skin.HasSetting(MinimalFocusAnimation)">SetProperty(FocusBounce,1,home)</onfocus>
+							<itemlayout height="130" width="146">
+								<include content="icon_menu">
+									<param name="id" value="100"/>
+								</include>
+							</itemlayout>
+							<focusedlayout height="130" width="146">
+								<include content="icon_menu">
+									<param name="id" value="100"/>
+									<param name="focused" value="true"/>
+								</include>
+							</focusedlayout>
+							<content>
+								<item>
+									<visible>!String.IsEmpty(ListItem.FileNameAndPath)</visible>
+									<label>$LOCALIZE[208]</label>
+									<property name="icon">&#xf40a;</property>
+									<include>ClearFocusBounceBefore</include>
+									<onclick>select</onclick>
+								</item>
+								<item>
+									<visible>!String.IsEmpty(ListItem.Plot)</visible>
+									<label>$LOCALIZE[207]</label>
+									<property name="icon">&#xf9a9;</property>
+									<onclick>RunScript(script.embuary.helper,action=textviewer,header='$ESCINFO[ListItem.Channelname]',message='$ESCVAR[PVRPlot]')</onclick>
+								</item>
+							</content>
 						</control>
 						<!-- genre -->
-						<include>MetaGenre</include>
+						<control type="group">
+							<top>259</top>
+							<include>MetaGenre</include>
+						</control>
 						<!-- plot -->
-						<control type="textbox" id="19">
-							<height>105</height>
+						<control type="textbox">
+							<top>296</top>
+							<width>100%</width>
+							<height max="200">auto</height>
 							<align>justify</align>
 							<aligny>top</aligny>
-							<label>$INFO[ListItem.Plot]</label>
+							<label fallback="31156">$VAR[PVRPlot]</label>
 							<font>Light24</font>
 							<autoscroll>false</autoscroll>
 						</control>
 					</control>
 				</control>
 				<control type="group">
-					<top>545</top>
+					<top>610</top>
 					<!-- list -->
 					<include condition="String.IsEmpty(Skin.String(EPGar))" content="WideWidget">
 						<param name="id" value="57"/>
