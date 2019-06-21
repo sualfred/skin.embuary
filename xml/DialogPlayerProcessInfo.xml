@@ -2,9 +2,23 @@
 <window>
 	<defaultcontrol always="true">5550</defaultcontrol>
 	<include>PropertyIncludes</include>
-	<onload condition="Window.IsVisible(fullscreeninfo)">Dialog.Close(fullscreeninfo)</onload>
+	<onload condition="!Window.IsVisible(fullscreenvideo) + !Window.IsVisible(visualisation)">close</onload>
+	<onload>Dialog.Close(fullscreeninfo)</onload>
+	<onload>Dialog.Close(videoosd)</onload>
+	<onload>Dialog.Close(musicosd)</onload>
+	<onload>Dialog.Close(selectdialog)</onload>
+	<onload>Dialog.Close(osdvideosettings)</onload>
+	<onload>Dialog.Close(osdaudiosettings)</onload>
+	<onload>Dialog.Close(videobookmarks)</onload>
+	<onload>Dialog.Close(textviewer)</onload>
+	<onload>Dialog.Close(subtitlesearch)</onload>
+	<onload>Dialog.Close(osdsubtitlesettings)</onload>
+	<onload>Dialog.Close(osdcmssettings)</onload>
+	<onload>Dialog.Close(musicplaylist)</onload>
+	<onload>Dialog.Close(videoplaylist)</onload>
 	<controls>
 		<control type="grouplist" id="9000">
+			<visible>Window.IsVisible(fullscreenvideo) | Window.IsVisible(visualisation)</visible>
 			<include content="Dialog_PopupOpenClose">
 				<param name="center" value="auto"/>
 			</include>
@@ -232,6 +246,5 @@
 				<texture border="65,0,65,0" colordiffuse="99000000">dialogs/context/bottom.png</texture>
 			</control>
 		</control>
-
 	</controls>
 </window>

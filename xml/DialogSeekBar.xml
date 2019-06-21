@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<visible>$EXP[PlayerSeek] | [Player.Paused + !Player.Caching] | Player.Forwarding | Player.Rewinding | Player.ShowInfo | Window.IsActive(fullscreeninfo) | Window.IsActive(videoosd) | Window.IsActive(musicosd)</visible>
-	<visible>!Player.FrameAdvance + !Window.IsActive(sliderdialog) + String.IsEmpty(Window(home).Property(service.upnext.dialog))</visible>
+	<visible>!Player.FrameAdvance + !Window.IsActive(sliderdialog) + String.IsEmpty(Window(home).Property(service.upnext.dialog)) + !Window.IsVisible(playerprocessinfo)</visible>
 	<visible>[Window.IsActive(visualisation) | Window.IsActive(fullscreenvideo)] + !Player.HasGame</visible>
 	<zorder>0</zorder>
 	<include>PropertyIncludes</include>
