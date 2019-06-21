@@ -98,7 +98,7 @@
 								<onclick>RunScript(script.embuary.helper,action=goto,path='"plugin://plugin.video.youtube/kodion/search/query/?q=$INFO[ListItem.Title]&amp;search_type=videos"',target=videos)</onclick>
 							</item>
 							<item>
-								<visible>$EXP[HasEmbyContext] | $EXP[HasEmbyConContext]</visible>
+								<visible>$EXP[HasEmbyContext] | $EXP[HasEmbyConContext] | $EXP[HasLibraryEditButton]</visible>
 								<label>$LOCALIZE[22082]</label>
 								<property name="icon">&#xf1d8;</property>
 								<onclick condition="!$EXP[HasEmbyContext] + $EXP[HasLibraryEditButton]">SetFocus(4000)</onclick>
@@ -301,7 +301,7 @@
 								<onclick>RunScript(script.embuary.helper,action=goto,path='"plugin://plugin.video.youtube/kodion/search/query/?q=$INFO[ListItem.TVShowTitle]&amp;search_type=videos"',target=videos)</onclick>
 							</item>
 							<item>
-								<visible>$EXP[HasEmbyContext] | $EXP[HasEmbyConContext]</visible>
+								<visible>$EXP[HasEmbyContext] | $EXP[HasEmbyConContext] | $EXP[HasLibraryEditButton]</visible>
 								<label>$LOCALIZE[22082]</label>
 								<property name="icon">&#xf1d8;</property>
 								<onclick condition="!$EXP[HasEmbyContext] + $EXP[HasLibraryEditButton]">SetFocus(4000)</onclick>
@@ -405,6 +405,7 @@
 							<ondown>200</ondown>
 						</control>
 						<control type="button" id="103">
+							<visible>$EXP[HasEmbyContext] | $EXP[HasLibraryEditButton] | $EXP[HasEmbyConContext]</visible>
 							<include>LightGreyButtonRound</include>
 							<font>Material24</font>
 							<label>&#xf1d8;</label>
@@ -412,7 +413,6 @@
 							<onclick condition="!$EXP[HasEmbyContext] + $EXP[HasLibraryEditButton]">SetFocus(4000)</onclick>
 							<onclick condition="$EXP[HasEmbyContext]">RunScript(special://home/addons/plugin.video.emby/context.py)</onclick>
 							<onclick condition="$EXP[HasEmbyConContext]">RunPlugin(plugin://plugin.video.embycon?mode=SHOW_MENU&amp;item_id=$INFO[ListItem.Property(id)])</onclick>
-							<visible>$EXP[HasEmbyContext] | $EXP[HasLibraryEditButton] | $EXP[HasEmbyConContext]</visible>
 						</control>
 					</control>
 					<!-- genre -->
@@ -701,6 +701,7 @@
 							<ondown>200</ondown>
 						</control>
 						<control type="button" id="103">
+							<visible>$EXP[HasEmbyContext] | $EXP[HasLibraryEditButton] | $EXP[HasEmbyConContext]</visible>
 							<include>LightGreyButtonRound</include>
 							<font>Material24</font>
 							<label>&#xf1d8;</label>
@@ -708,7 +709,6 @@
 							<onclick condition="!$EXP[HasEmbyContext] + $EXP[HasLibraryEditButton]">SetFocus(4000)</onclick>
 							<onclick condition="$EXP[HasEmbyContext]">RunScript(special://home/addons/plugin.video.emby/context.py)</onclick>
 							<onclick condition="$EXP[HasEmbyConContext]">RunPlugin(plugin://plugin.video.embycon?mode=SHOW_MENU&amp;item_id=$INFO[ListItem.Property(id)])</onclick>
-							<visible>$EXP[HasEmbyContext] | $EXP[HasLibraryEditButton] | $EXP[HasEmbyConContext]</visible>
 						</control>
 					</control>
 					<control type="textbox">
