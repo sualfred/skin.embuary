@@ -351,10 +351,26 @@
 			<visible>[
 				String.IsEqual(Container.FolderPath,library://video/movies/)
 				| String.StartsWith(Container.FolderPath,videodb://movies/sets)
-				| [String.IsEqual(Container(102).ListItem.DBType,movie) + !String.StartsWith(Container(102).ListItem.FolderPath,plugin) + Window.IsVisible(1114)]
+				| Window.IsVisible(1126)
+				| [Window.IsVisible(1114) + String.Contains(Window(home).Property(ListGenres),videodb://movies/)]
 				]
 				+ Library.HasContent(Movies)
 				+ !Window.IsVisible(favourites)
+				+ !$EXP[IsPlugin]
+			</visible>
+		</control>
+		<control type="button" id="6621">
+			<include>HeaderButton</include>
+			<label>$LOCALIZE[31017]</label>
+			<onclick>ActivateWindow(1126,return)</onclick>
+			<visible>[
+				String.IsEqual(Container.FolderPath,library://video/movies/)
+				| String.StartsWith(Container.FolderPath,videodb://movies/titles)
+				| String.StartsWith(Container.FolderPath,videodb://movies/sets)
+				| String.StartsWith(Container.FolderPath,videodb://movies/sets)
+				| [Window.IsVisible(1114) + String.Contains(Window(home).Property(ListGenres),videodb://movies/)]
+				]
+				+ Library.HasContent(Movies)
 				+ !$EXP[IsPlugin]
 			</visible>
 		</control>
@@ -363,7 +379,9 @@
 			<label>$LOCALIZE[31179]</label>
 			<onclick>ActivateWindow(videos,library://video/tvshows/titles.xml/,return)</onclick>
 			<visible>[
-				String.IsEqual(Container.FolderPath,library://video/tvshows/) | [String.IsEqual(Container(102).LIstItem.DBType,tvshow) + !String.StartsWith(Container(102).ListItem.FolderPath,plugin) + Window.IsVisible(1114)] | Window.IsVisible(script-NextAired-TVGuide.xml)
+				String.IsEqual(Container.FolderPath,library://video/tvshows/)
+				| [Window.IsVisible(1114) + String.Contains(Window(home).Property(ListGenres),videodb://tvshows/)]
+				| Window.IsVisible(script-NextAired-TVGuide.xml)
 				]
 				+ Library.HasContent(tvshows)
 				+ !Window.IsVisible(favourites)
@@ -378,7 +396,8 @@
 				String.IsEqual(Container.FolderPath,library://video/movies/)
 				| String.StartsWith(Container.FolderPath,videodb://movies/titles)
 				| String.StartsWith(Container.FolderPath,videodb://movies/sets)
-				| [String.IsEqual(Container(102).LIstItem.DBType,movie) + !String.StartsWith(Container(102).ListItem.FolderPath,plugin) + Window.IsVisible(1114)]
+				| [Window.IsVisible(1114) + String.Contains(Window(home).Property(ListGenres),videodb://movies/)]
+				| Window.IsVisible(1126)
 				]
 				+ Library.HasContent(MovieSets)
 				+ !Container.Content(sets)
@@ -389,7 +408,7 @@
 		<control type="button" id="6613">
 			<include>HeaderButton</include>
 			<label>$LOCALIZE[135]</label>
-			<onclick condition="String.IsEqual(Container.FolderPath,library://video/movies/) | Container.Content(movies) | Container.Content(sets)">SetProperty(ListGenres,videodb://movies/genres,home)</onclick>
+			<onclick condition="String.IsEqual(Container.FolderPath,library://video/movies/) | Container.Content(movies) | Container.Content(sets) | Window.IsVisible(1126)">SetProperty(ListGenres,videodb://movies/genres,home)</onclick>
 			<onclick condition="String.IsEqual(Container.FolderPath,library://video/tvshows/) | Container.Content(tvshows) | Window.IsVisible(script-NextAired-TVGuide.xml)">SetProperty(ListGenres,videodb://tvshows/genres,home)</onclick>
 			<onclick>ActivateWindow(1114)</onclick>
 			<visible>[
@@ -399,6 +418,7 @@
 				| Container.Content(tvshows)
 				| Container.Content(sets)
 				| Window.IsVisible(script-NextAired-TVGuide.xml)
+				| Window.IsVisible(1126)
 				]
 				+ !Window.IsVisible(1114)
 				+ !Window.IsVisible(favourites)

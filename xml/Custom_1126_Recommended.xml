@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window id="1126">
+	<defaultcontrol always="true">10</defaultcontrol>
+	<menucontrol>6666</menucontrol>
+	<backgroundcolor>background</backgroundcolor>
+	<include content="PropertyIncludes">
+		<param name="ShowHeader" value="true"/>
+	</include>
+	<controls>
+		<!-- background -->
+		<include>Background</include>
+		<!-- hub -->
+		<control type="grouplist" id="10">
+			<include>Window_OpenClose</include>
+			<defaultcontrol>100</defaultcontrol>
+			<width>100%</width>
+			<height>100%</height>
+			<itemgap>-80</itemgap>
+			<orientation>vertical</orientation>
+			<usecontrolcoords>true</usecontrolcoords>
+			<include>ScrollTime</include>
+			<pagecontrol>17</pagecontrol>
+			<ondown>noop</ondown>
+			<include content="WidgetSpacer">
+				<param name="id" value="11"/>
+			</include>
+			<control type="group">
+				<visible>!Container(100).IsUpdating + !Container(101).IsUpdating + !Container(102).IsUpdating + !Container(103).IsUpdating + !Container(104).IsUpdating + !Container(105).IsUpdating + !Container(106).IsUpdating + !Container(107).IsUpdating + !Container(108).IsUpdating + !Container(109).IsUpdating</visible>
+				<visible>Integer.IsLess(Container(100).NumItems,1) + Integer.IsLess(Container(101).NumItems,1) + Integer.IsLess(Container(102).NumItems,1) + Integer.IsLess(Container(103).NumItems,1) + Integer.IsLess(Container(104).NumItems,1) + Integer.IsLess(Container(105).NumItems,1) + Integer.IsLess(Container(106).NumItems,1) + Integer.IsLess(Container(107).NumItems,1) + Integer.IsLess(Container(108).NumItems,1) + Integer.IsLess(Container(109).NumItems,1)</visible>
+				<height>150</height>
+				<include content="widget_headline">
+					<param name="headline">$LOCALIZE[31284]</param>
+				</include>
+			</control>
+			<include content="PosterWidget">
+				<param name="id" value="100"/>
+				<param name="onup" value="6666"/>
+				<param name="ondown" value="101"/>
+				<param name="headline" value="$LOCALIZE[31018] $INFO[Container(100).ListItem.Property(searchstring)]"/>
+				<param name="mainlabel" value="$INFO[ListItem.Title]"/>
+				<param name="sublabel" value="$INFO[ListItem.Year]"/>
+				<param name="widget_target" value="videos"/>
+				<param name="limit" value="$VAR[PosterWidgetLimit]"/>
+				<param name="content" value="plugin://script.embuary.helper/?info=getsimilar&amp;type=movie&amp;pos=0&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
+			</include>
+			<include content="PosterWidget">
+				<param name="id" value="101"/>
+				<param name="onup" value="100"/>
+				<param name="ondown" value="102"/>
+				<param name="headline" value="$LOCALIZE[31018] $INFO[Container(101).ListItem.Property(searchstring)]"/>
+				<param name="mainlabel" value="$INFO[ListItem.Title]"/>
+				<param name="sublabel" value="$INFO[ListItem.Year]"/>
+				<param name="widget_target" value="videos"/>
+				<param name="limit" value="$VAR[PosterWidgetLimit]"/>
+				<param name="content" value="plugin://script.embuary.helper/?info=getsimilar&amp;type=movie&amp;pos=1&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
+			</include>
+			<include content="PosterWidget">
+				<param name="id" value="102"/>
+				<param name="onup" value="101"/>
+				<param name="ondown" value="103"/>
+				<param name="headline" value="$LOCALIZE[31018] $INFO[Container(102).ListItem.Property(searchstring)]"/>
+				<param name="mainlabel" value="$INFO[ListItem.Title]"/>
+				<param name="sublabel" value="$INFO[ListItem.Year]"/>
+				<param name="widget_target" value="videos"/>
+				<param name="limit" value="$VAR[PosterWidgetLimit]"/>
+				<param name="content" value="plugin://script.embuary.helper/?info=getsimilar&amp;type=movie&amp;pos=2&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
+			</include>
+			<include content="PosterWidget">
+				<param name="id" value="103"/>
+				<param name="onup" value="102"/>
+				<param name="ondown" value="104"/>
+				<param name="headline" value="$LOCALIZE[31018] $INFO[Container(103).ListItem.Property(searchstring)]"/>
+				<param name="mainlabel" value="$INFO[ListItem.Title]"/>
+				<param name="sublabel" value="$INFO[ListItem.Year]"/>
+				<param name="widget_target" value="videos"/>
+				<param name="limit" value="$VAR[PosterWidgetLimit]"/>
+				<param name="content" value="plugin://script.embuary.helper/?info=getsimilar&amp;type=movie&amp;pos=3&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
+			</include>
+			<include content="PosterWidget">
+				<param name="id" value="104"/>
+				<param name="onup" value="103"/>
+				<param name="ondown" value="105"/>
+				<param name="headline" value="$LOCALIZE[31018] $INFO[Container(104).ListItem.Property(searchstring)]"/>
+				<param name="mainlabel" value="$INFO[ListItem.Title]"/>
+				<param name="sublabel" value="$INFO[ListItem.Year]"/>
+				<param name="widget_target" value="videos"/>
+				<param name="limit" value="$VAR[PosterWidgetLimit]"/>
+				<param name="content" value="plugin://script.embuary.helper/?info=getsimilar&amp;type=movie&amp;pos=4&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
+			</include>
+			<include content="PosterWidget">
+				<param name="id" value="105"/>
+				<param name="onup" value="104"/>
+				<param name="ondown" value="106"/>
+				<param name="headline" value="$LOCALIZE[31018] $INFO[Container(105).ListItem.Property(searchstring)]"/>
+				<param name="mainlabel" value="$INFO[ListItem.Title]"/>
+				<param name="sublabel" value="$INFO[ListItem.Year]"/>
+				<param name="widget_target" value="videos"/>
+				<param name="limit" value="$VAR[PosterWidgetLimit]"/>
+				<param name="content" value="plugin://script.embuary.helper/?info=getsimilar&amp;type=movie&amp;pos=5&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
+			</include>
+			<include content="PosterWidget">
+				<param name="id" value="106"/>
+				<param name="onup" value="105"/>
+				<param name="ondown" value="107"/>
+				<param name="headline" value="$LOCALIZE[31018] $INFO[Container(106).ListItem.Property(searchstring)]"/>
+				<param name="mainlabel" value="$INFO[ListItem.Title]"/>
+				<param name="sublabel" value="$INFO[ListItem.Year]"/>
+				<param name="widget_target" value="videos"/>
+				<param name="limit" value="$VAR[PosterWidgetLimit]"/>
+				<param name="content" value="plugin://script.embuary.helper/?info=getsimilar&amp;type=movie&amp;pos=6&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
+			</include>
+			<include content="PosterWidget">
+				<param name="id" value="107"/>
+				<param name="onup" value="106"/>
+				<param name="ondown" value="108"/>
+				<param name="headline" value="$LOCALIZE[31018] $INFO[Container(106).ListItem.Property(searchstring)]"/>
+				<param name="mainlabel" value="$INFO[ListItem.Title]"/>
+				<param name="sublabel" value="$INFO[ListItem.Year]"/>
+				<param name="widget_target" value="videos"/>
+				<param name="limit" value="$VAR[PosterWidgetLimit]"/>
+				<param name="content" value="plugin://script.embuary.helper/?info=getsimilar&amp;type=movie&amp;pos=6&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
+			</include>
+			<include content="PosterWidget">
+				<param name="id" value="108"/>
+				<param name="onup" value="107"/>
+				<param name="ondown" value="109"/>
+				<param name="headline" value="$LOCALIZE[31018] $INFO[Container(108).ListItem.Property(searchstring)]"/>
+				<param name="mainlabel" value="$INFO[ListItem.Title]"/>
+				<param name="sublabel" value="$INFO[ListItem.Year]"/>
+				<param name="widget_target" value="videos"/>
+				<param name="limit" value="$VAR[PosterWidgetLimit]"/>
+				<param name="content" value="plugin://script.embuary.helper/?info=getsimilar&amp;type=movie&amp;pos=8&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
+			</include>
+			<include content="PosterWidget">
+				<param name="id" value="109"/>
+				<param name="onup" value="108"/>
+				<param name="ondown" value="110"/>
+				<param name="headline" value="$LOCALIZE[31018] $INFO[Container(109).ListItem.Property(searchstring)]"/>
+				<param name="mainlabel" value="$INFO[ListItem.Title]"/>
+				<param name="sublabel" value="$INFO[ListItem.Year]"/>
+				<param name="widget_target" value="videos"/>
+				<param name="limit" value="$VAR[PosterWidgetLimit]"/>
+				<param name="content" value="plugin://script.embuary.helper/?info=getsimilar&amp;type=movie&amp;pos=9&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
+			</include>
+		</control>
+		<!-- header bar -->
+		<include content="HeaderBar">
+			<param name="id">10</param>
+		</include>
+		<!-- side panel -->
+		<include content="SidePanel"/>
+	</controls>
+</window>
