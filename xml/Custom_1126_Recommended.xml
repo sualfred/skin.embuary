@@ -6,13 +6,36 @@
 	<include content="PropertyIncludes">
 		<param name="ShowHeader" value="true"/>
 	</include>
+	<onload condition="!String.IsEmpty(Window(home).Property(ForceFocusReset))">Control.Move(100,$INFO[Container(100).CurrentItem,-])</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(ForceFocusReset))">Control.Move(100,1)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(ForceFocusReset))">Control.Move(101,$INFO[Container(101).CurrentItem,-])</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(ForceFocusReset))">Control.Move(101,1)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(ForceFocusReset))">Control.Move(102,$INFO[Container(102).CurrentItem,-])</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(ForceFocusReset))">Control.Move(102,1)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(ForceFocusReset))">Control.Move(103,$INFO[Container(103).CurrentItem,-])</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(ForceFocusReset))">Control.Move(103,1)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(ForceFocusReset))">Control.Move(104,$INFO[Container(104).CurrentItem,-])</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(ForceFocusReset))">Control.Move(104,1)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(ForceFocusReset))">Control.Move(105,$INFO[Container(105).CurrentItem,-])</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(ForceFocusReset))">Control.Move(105,1)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(ForceFocusReset))">Control.Move(106,$INFO[Container(106).CurrentItem,-])</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(ForceFocusReset))">Control.Move(106,1)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(ForceFocusReset))">Control.Move(107,$INFO[Container(107).CurrentItem,-])</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(ForceFocusReset))">Control.Move(107,1)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(ForceFocusReset))">Control.Move(108,$INFO[Container(108).CurrentItem,-])</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(ForceFocusReset))">Control.Move(108,1)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(ForceFocusReset))">Control.Move(109,$INFO[Container(109).CurrentItem,-])</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(ForceFocusReset))">Control.Move(109,1)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(ForceFocusReset)) + Integer.IsGreater(Container(100).NumItems,0)">SetFocus(100)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(ForceFocusReset)) + !Integer.IsGreater(Container(100).NumItems,0) + Integer.IsGreater(Container(101).NumItems,0)">SetFocus(101)</onload>
+	<onload condition="!String.IsEmpty(Window(home).Property(ForceFocusReset)) + !Integer.IsGreater(Container(100).NumItems,0) + !Integer.IsGreater(Container(101).NumItems,0) + Integer.IsGreater(Container(102).NumItems,0)">SetFocus(102)</onload>
+	<onload>AlarmClock(ClearForceFocusReset,ClearProperty(ForceFocusReset,home),00:01,silent)</onload>
 	<controls>
 		<!-- background -->
 		<include>Background</include>
 		<!-- hub -->
 		<control type="grouplist" id="10">
 			<include>Window_OpenClose</include>
-			<defaultcontrol>100</defaultcontrol>
 			<width>100%</width>
 			<height>100%</height>
 			<itemgap>-80</itemgap>
@@ -41,7 +64,7 @@
 				<param name="sublabel" value="$INFO[ListItem.Year]"/>
 				<param name="widget_target" value="videos"/>
 				<param name="limit" value="$VAR[PosterWidgetLimit]"/>
-				<param name="content" value="plugin://script.embuary.helper/?info=getsimilar&amp;type=movie&amp;pos=0&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
+				<param name="content" value="plugin://script.embuary.helper/?info=getsimilar&amp;type=$INFO[Window(home).Property(RecommendedType)]&amp;tag=$INFO[Window(home).Property(RecommendedTag)]&amp;tag=$INFO[Window(home).Property(RecommendedTag)]&amp;pos=0&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 			</include>
 			<include content="PosterWidget">
 				<param name="id" value="101"/>
@@ -52,7 +75,7 @@
 				<param name="sublabel" value="$INFO[ListItem.Year]"/>
 				<param name="widget_target" value="videos"/>
 				<param name="limit" value="$VAR[PosterWidgetLimit]"/>
-				<param name="content" value="plugin://script.embuary.helper/?info=getsimilar&amp;type=movie&amp;pos=1&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
+				<param name="content" value="plugin://script.embuary.helper/?info=getsimilar&amp;type=$INFO[Window(home).Property(RecommendedType)]&amp;tag=$INFO[Window(home).Property(RecommendedTag)]&amp;pos=1&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 			</include>
 			<include content="PosterWidget">
 				<param name="id" value="102"/>
@@ -63,7 +86,7 @@
 				<param name="sublabel" value="$INFO[ListItem.Year]"/>
 				<param name="widget_target" value="videos"/>
 				<param name="limit" value="$VAR[PosterWidgetLimit]"/>
-				<param name="content" value="plugin://script.embuary.helper/?info=getsimilar&amp;type=movie&amp;pos=2&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
+				<param name="content" value="plugin://script.embuary.helper/?info=getsimilar&amp;type=$INFO[Window(home).Property(RecommendedType)]&amp;tag=$INFO[Window(home).Property(RecommendedTag)]&amp;pos=2&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 			</include>
 			<include content="PosterWidget">
 				<param name="id" value="103"/>
@@ -74,7 +97,7 @@
 				<param name="sublabel" value="$INFO[ListItem.Year]"/>
 				<param name="widget_target" value="videos"/>
 				<param name="limit" value="$VAR[PosterWidgetLimit]"/>
-				<param name="content" value="plugin://script.embuary.helper/?info=getsimilar&amp;type=movie&amp;pos=3&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
+				<param name="content" value="plugin://script.embuary.helper/?info=getsimilar&amp;type=$INFO[Window(home).Property(RecommendedType)]&amp;tag=$INFO[Window(home).Property(RecommendedTag)]&amp;pos=3&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 			</include>
 			<include content="PosterWidget">
 				<param name="id" value="104"/>
@@ -85,7 +108,7 @@
 				<param name="sublabel" value="$INFO[ListItem.Year]"/>
 				<param name="widget_target" value="videos"/>
 				<param name="limit" value="$VAR[PosterWidgetLimit]"/>
-				<param name="content" value="plugin://script.embuary.helper/?info=getsimilar&amp;type=movie&amp;pos=4&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
+				<param name="content" value="plugin://script.embuary.helper/?info=getsimilar&amp;type=$INFO[Window(home).Property(RecommendedType)]&amp;tag=$INFO[Window(home).Property(RecommendedTag)]&amp;pos=4&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 			</include>
 			<include content="PosterWidget">
 				<param name="id" value="105"/>
@@ -96,7 +119,7 @@
 				<param name="sublabel" value="$INFO[ListItem.Year]"/>
 				<param name="widget_target" value="videos"/>
 				<param name="limit" value="$VAR[PosterWidgetLimit]"/>
-				<param name="content" value="plugin://script.embuary.helper/?info=getsimilar&amp;type=movie&amp;pos=5&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
+				<param name="content" value="plugin://script.embuary.helper/?info=getsimilar&amp;type=$INFO[Window(home).Property(RecommendedType)]&amp;tag=$INFO[Window(home).Property(RecommendedTag)]&amp;pos=5&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 			</include>
 			<include content="PosterWidget">
 				<param name="id" value="106"/>
@@ -107,18 +130,18 @@
 				<param name="sublabel" value="$INFO[ListItem.Year]"/>
 				<param name="widget_target" value="videos"/>
 				<param name="limit" value="$VAR[PosterWidgetLimit]"/>
-				<param name="content" value="plugin://script.embuary.helper/?info=getsimilar&amp;type=movie&amp;pos=6&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
+				<param name="content" value="plugin://script.embuary.helper/?info=getsimilar&amp;type=$INFO[Window(home).Property(RecommendedType)]&amp;tag=$INFO[Window(home).Property(RecommendedTag)]&amp;pos=6&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 			</include>
 			<include content="PosterWidget">
 				<param name="id" value="107"/>
 				<param name="onup" value="106"/>
 				<param name="ondown" value="108"/>
-				<param name="headline" value="$LOCALIZE[31018] $INFO[Container(106).ListItem.Property(searchstring)]"/>
+				<param name="headline" value="$LOCALIZE[31018] $INFO[Container(107).ListItem.Property(searchstring)]"/>
 				<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 				<param name="sublabel" value="$INFO[ListItem.Year]"/>
 				<param name="widget_target" value="videos"/>
 				<param name="limit" value="$VAR[PosterWidgetLimit]"/>
-				<param name="content" value="plugin://script.embuary.helper/?info=getsimilar&amp;type=movie&amp;pos=6&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
+				<param name="content" value="plugin://script.embuary.helper/?info=getsimilar&amp;type=$INFO[Window(home).Property(RecommendedType)]&amp;tag=$INFO[Window(home).Property(RecommendedTag)]&amp;pos=7&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 			</include>
 			<include content="PosterWidget">
 				<param name="id" value="108"/>
@@ -129,7 +152,7 @@
 				<param name="sublabel" value="$INFO[ListItem.Year]"/>
 				<param name="widget_target" value="videos"/>
 				<param name="limit" value="$VAR[PosterWidgetLimit]"/>
-				<param name="content" value="plugin://script.embuary.helper/?info=getsimilar&amp;type=movie&amp;pos=8&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
+				<param name="content" value="plugin://script.embuary.helper/?info=getsimilar&amp;type=$INFO[Window(home).Property(RecommendedType)]&amp;tag=$INFO[Window(home).Property(RecommendedTag)]&amp;pos=8&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 			</include>
 			<include content="PosterWidget">
 				<param name="id" value="109"/>
@@ -140,12 +163,17 @@
 				<param name="sublabel" value="$INFO[ListItem.Year]"/>
 				<param name="widget_target" value="videos"/>
 				<param name="limit" value="$VAR[PosterWidgetLimit]"/>
-				<param name="content" value="plugin://script.embuary.helper/?info=getsimilar&amp;type=movie&amp;pos=9&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
+				<param name="content" value="plugin://script.embuary.helper/?info=getsimilar&amp;type=$INFO[Window(home).Property(RecommendedType)]&amp;tag=$INFO[Window(home).Property(RecommendedTag)]&amp;pos=9&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 			</include>
 		</control>
 		<!-- header bar -->
 		<include content="HeaderBar">
 			<param name="id">10</param>
+		</include>
+		<!-- busy spinner -->
+		<include content="CustomBusySpinner">
+			<param name="diffuse" value="false"/>
+			<param name="visible" value="![!Container(100).IsUpdating + !Container(101).IsUpdating + !Container(102).IsUpdating + !Container(103).IsUpdating + !Container(104).IsUpdating + !Container(105).IsUpdating + !Container(106).IsUpdating + !Container(107).IsUpdating + !Container(108).IsUpdating + !Container(109).IsUpdating] | !String.IsEmpty(Window(home).Property(ForceFocusReset))"/>
 		</include>
 		<!-- side panel -->
 		<include content="SidePanel"/>

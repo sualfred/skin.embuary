@@ -33,12 +33,29 @@
 
 	<override action="tvshows_genre">
 		<action>SetProperty(ListGenres,videodb://tvshows/genres,home)</action>
+		<action>SetProperty(ForceFocusReset,1,home)</action>
 		<action>ActivateWindow(1114)</action>
 	</override>
 
 	<override action="movies_genre">
 		<action>SetProperty(ListGenres,videodb://movies/genres,home)</action>
+		<action>SetProperty(ForceFocusReset,1,home)</action>
 		<action>ActivateWindow(1114)</action>
+	</override>
+
+	<override action="recommended">
+		<condition>Window.IsVisible(1121)</condition>
+		<action>ClearProperty(RecommendedTag,home)</action>
+		<action>SetProperty(RecommendedType,tvshow,home)</action>
+		<action>SetProperty(ForceFocusReset,1,home)</action>
+		<action>ActivateWindow(1126,return)</action>
+	</override>
+	<override action="recommended">
+		<condition>Window.IsVisible(1120)</condition>
+		<action>ClearProperty(RecommendedTag,home)</action>
+		<action>SetProperty(RecommendedType,movie,home)</action>
+		<action>SetProperty(ForceFocusReset,1,home)</action>
+		<action>ActivateWindow(1126,return)</action>
 	</override>
 
 	<!-- emby overrides -->
