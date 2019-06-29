@@ -1204,7 +1204,7 @@
 		<value>$INFO[MusicPlayer.Title]</value>
 	</variable>
 	<variable name="PlayerTimeLabels">
-		<value condition="Window.IsVisible(fullscreeninfo)">$VAR[PlayerTime]$VAR[PlayerDuration, / ]</value>
+		<value condition="Window.IsVisible(fullscreeninfo) | [VideoPlayer.Content(livetv) + !VideoPlayer.HasEpg]">$VAR[PlayerTime]$VAR[PlayerDuration, / ]</value>
 		<value>$VAR[PlayerTime]$VAR[PlayerDuration, / ]$VAR[PlayerFinishTime,  -  $LOCALIZE[31037] ]</value>
 	</variable>
 	<variable name="PlayerIcon">
