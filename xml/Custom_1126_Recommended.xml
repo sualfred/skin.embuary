@@ -6,6 +6,10 @@
 	<include content="PropertyIncludes">
 		<param name="ShowHeader" value="true"/>
 	</include>
+	<!-- force visibility to all on entering to trigger a refresh -->
+	<onload>SetProperty(EmbuaryForceWidgetUpdate,1,home)</onload>
+	<onload>AlarmClock(EmbuaryForceWidgetUpdate,ClearProperty(EmbuaryForceWidgetUpdate,home),00:01,silent)</onload>
+	<!-- force focus -->
 	<onload condition="!String.IsEmpty(Window(home).Property(ForceFocusReset))">Control.Move(100,$INFO[Container(100).CurrentItem,-])</onload>
 	<onload condition="!String.IsEmpty(Window(home).Property(ForceFocusReset))">Control.Move(100,1)</onload>
 	<onload condition="!String.IsEmpty(Window(home).Property(ForceFocusReset))">Control.Move(101,$INFO[Container(101).CurrentItem,-])</onload>
@@ -29,7 +33,6 @@
 	<onload condition="!String.IsEmpty(Window(home).Property(ForceFocusReset)) + Integer.IsGreater(Container(100).NumItems,0)">SetFocus(100)</onload>
 	<onload condition="!String.IsEmpty(Window(home).Property(ForceFocusReset)) + !Integer.IsGreater(Container(100).NumItems,0) + Integer.IsGreater(Container(101).NumItems,0)">SetFocus(101)</onload>
 	<onload condition="!String.IsEmpty(Window(home).Property(ForceFocusReset)) + !Integer.IsGreater(Container(100).NumItems,0) + !Integer.IsGreater(Container(101).NumItems,0) + Integer.IsGreater(Container(102).NumItems,0)">SetFocus(102)</onload>
-	<onload>AlarmClock(ClearForceFocusReset,ClearProperty(ForceFocusReset,home),00:01,silent)</onload>
 	<controls>
 		<!-- background -->
 		<include>Background</include>
