@@ -40,7 +40,7 @@
 					<width>1920</width>
 					<top>0</top>
 					<orientation>horizontal</orientation>
-					<itemgap>20</itemgap>
+					<itemgap>15</itemgap>
 					<control type="label">
 						<font>Material24</font>
 						<label>&#xf04d;</label>
@@ -87,7 +87,7 @@
 					<top>0</top>
 					<align>center</align>
 					<orientation>horizontal</orientation>
-					<itemgap>25</itemgap>
+					<itemgap>15</itemgap>
 					<ondown>SetFocus($PARAM[id])</ondown>
 					<onleft>900</onleft>
 					<onright>6667</onright>
@@ -100,7 +100,7 @@
 					<right>20</right>
 					<orientation>horizontal</orientation>
 					<defaultcontrol always="true">6668</defaultcontrol>
-					<itemgap>20</itemgap>
+					<itemgap>15</itemgap>
 					<align>right</align>
 					<onleft>6666</onleft>
 					<ondown>SetFocus($PARAM[id])</ondown>
@@ -224,11 +224,9 @@
 						<visible>!Skin.HasSetting(HideHeaderWeather) + !String.IsEmpty(Weather.Temperature) + !String.Contains(Weather.Temperature,$LOCALIZE[503]) + !String.IsEqual(Weather.fanartcode,na) + Weather.IsFetched</visible>
 					</control>
 					<control type="image">
-						<animation effect="slide" end="0,10" time="0" condition="true">Conditional</animation>
-						<height>38</height>
-						<width>43</width>
+						<width>34</width>
 						<texture colordiffuse="text_header_mainlabel">$INFO[Weather.fanartcode,resource://resource.images.weathericons.outline-hd/,.png]</texture>
-						<aspectratio scalediffuse="false" align="left">stretch</aspectratio>
+						<aspectratio scalediffuse="false" align="left">keep</aspectratio>
 						<visible>!Skin.HasSetting(HideHeaderWeather) + !String.IsEmpty(Weather.Temperature) + !String.Contains(Weather.Temperature,$LOCALIZE[503]) + !String.IsEqual(Weather.fanartcode,na) + Weather.IsFetched</visible>
 					</control>
 					<control type="label">
