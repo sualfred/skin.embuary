@@ -5,7 +5,7 @@
 		<param name="id">10</param>
 		<param name="auto_hide">true</param>
 		<param name="hide_header">false</param>
-		<param name="header_label">$VAR[ContainerContentPrefix]$VAR[ContainerContent]$VAR[ContainerCountLabel,[COLOR text_header_sublabel]  |  ,[/COLOR]]</param>
+		<param name="header_label">$VAR[ContainerContentPrefix]$VAR[ContainerContent][LIGHT]$VAR[ContainerCountLabel,[COLOR text_header_sublabel]  |  ,[/COLOR]][/LIGHT]</param>
 		<param name="content">HeaderDefault</param>
 		<definition>
 			<!-- Top bar -->
@@ -58,7 +58,7 @@
 						<visible>Window.Is(home) | Window.IsVisible(loginscreen)</visible>
 					</control>
 					<control type="label">
-						<animation effect="slide" end="-12,20" time="0" condition="true">Conditional</animation>
+						<animation effect="slide" end="-5,20" time="0" condition="true">Conditional</animation>
 						<height>17</height>
 						<width>auto</width>
 						<font>Med17</font>
@@ -72,10 +72,20 @@
 					<control type="label">
 						<width>520</width>
 						<scroll>true</scroll>
+						<label>$PARAM[header_label][LIGHT][COLOR text_header_sublabel]$INFO[control.getlabel(10),  |  ][/COLOR][/LIGHT]</label>
+						<include content="HeaderButton">
+							<param name="color" value="text_header_mainlabel"/>
+						</include>
+						<visible>[Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(videos) | Container.Content(files) | Container.Content(episodes)] + !String.IsEqual(control.getlabel(10),$LOCALIZE[16100]) + Window.IsVisible(MyVideoNav.xml) + Control.IsEnabled(10) + !String.IsEmpty(Control.getLabel(10)) + !$EXP[InfoDialogActive]</visible>
+					</control>
+					<control type="label">
+						<width>520</width>
+						<scroll>true</scroll>
 						<label>$PARAM[header_label]</label>
 						<include content="HeaderButton">
 							<param name="color" value="text_header_mainlabel"/>
 						</include>
+						<visible>![[Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(videos) | Container.Content(files) | Container.Content(episodes)] + !String.IsEqual(control.getlabel(10),$LOCALIZE[16100]) + Window.IsVisible(MyVideoNav.xml) + Control.IsEnabled(10) + !String.IsEmpty(Control.getLabel(10)) + !$EXP[InfoDialogActive]]</visible>
 					</control>
 				</control>
 				<control type="grouplist" id="6666">
@@ -87,7 +97,7 @@
 					<top>0</top>
 					<align>center</align>
 					<orientation>horizontal</orientation>
-					<itemgap>15</itemgap>
+					<itemgap>20</itemgap>
 					<ondown>SetFocus($PARAM[id])</ondown>
 					<onleft>900</onleft>
 					<onright>6667</onright>
@@ -144,14 +154,6 @@
 						<visible>!Window.IsVisible(loginscreen) + !$EXP[InfoDialogActive]</visible>
 						<visible>Integer.IsGreater(Container(4100).NumItems,1) + !Skin.HasSetting(KioskMode)</visible>
 					</control>
-					<control type="button" id="6671">
-						<font>Material22</font>
-						<label>&#xf454;</label>
-						<include>HeaderButton</include>
-						<onclick>ActivateWindow(playercontrols)</onclick>
-						<visible>!Window.IsVisible(loginscreen) + !$EXP[InfoDialogActive]</visible>
-						<visible>[Player.HasMedia + !Player.HasGame] | System.HasMediaAudioCD | System.HasMediaDVD</visible>
-					</control>
 					<control type="button" id="6672">
 						<font>Material24</font>
 						<label>&#xf279;</label>
@@ -166,6 +168,14 @@
 							+ !Window.IsVisible(MyPlaylist.xml)
 						</visible>
 					</control>
+					<control type="button" id="6671">
+						<font>Material22</font>
+						<label>&#xf454;</label>
+						<include>HeaderButton</include>
+						<onclick>ActivateWindow(playercontrols)</onclick>
+						<visible>!Window.IsVisible(loginscreen) + !$EXP[InfoDialogActive]</visible>
+						<visible>[Player.HasMedia + !Player.HasGame] | System.HasMediaAudioCD | System.HasMediaDVD</visible>
+					</control>
 					<control type="button" id="6620">
 						<font>Material24</font>
 						<label>&#xfa23;</label>
@@ -175,23 +185,6 @@
 						<visible>Player.HasMedia</visible>
 					</control>
 					<!-- info -->
-					<control type="label">
-						<animation effect="fade" start="20" time="500" condition="true" pulse="true">Conditional</animation>
-						<font>Material24</font>
-						<label>&#xf4e6;</label>
-						<include content="HeaderButton">
-							<param name="color" value="$VAR[AccentColor]"/>
-						</include>
-						<visible>!String.IsEmpty(Window(Home).Property(emby_sync))</visible>
-					</control>
-					<control type="label">
-						<font>Material24</font>
-						<label>&#xf205;</label>
-						<include content="HeaderButton">
-							<param name="color" value="$VAR[AccentColor]"/>
-						</include>
-						<visible>[Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(videos) | Container.Content(files) | Container.Content(episodes)] + !String.IsEqual(control.getlabel(10),$LOCALIZE[16100]) + Window.IsVisible(MyVideoNav.xml) + Control.IsEnabled(10) + !String.IsEmpty(Control.getLabel(10)) + !$EXP[InfoDialogActive]</visible>
-					</control>
 					<control type="label">
 						<font>Material24</font>
 						<label>&#xf40d;</label>
@@ -223,12 +216,6 @@
 						<label>$INFO[Weather.Temperature]</label>
 						<visible>!Skin.HasSetting(HideHeaderWeather) + !String.IsEmpty(Weather.Temperature) + !String.Contains(Weather.Temperature,$LOCALIZE[503]) + !String.IsEqual(Weather.fanartcode,na) + Weather.IsFetched</visible>
 					</control>
-					<control type="image">
-						<width>34</width>
-						<texture colordiffuse="text_header_mainlabel">$INFO[Weather.fanartcode,resource://resource.images.weathericons.outline-hd/,.png]</texture>
-						<aspectratio scalediffuse="false" align="left">keep</aspectratio>
-						<visible>!Skin.HasSetting(HideHeaderWeather) + !String.IsEmpty(Weather.Temperature) + !String.Contains(Weather.Temperature,$LOCALIZE[503]) + !String.IsEqual(Weather.fanartcode,na) + Weather.IsFetched</visible>
-					</control>
 					<control type="label">
 						<include content="HeaderButton">
 							<param name="color" value="text_header_mainlabel"/>
@@ -240,16 +227,38 @@
 						<animation effect="slide" end="0,10" time="0" condition="true">Conditional</animation>
 						<height>38</height>
 						<width>38</width>
-						<control type="image">
-							<height>38</height>
-							<width>38</width>
-							<texture colordiffuse="thumb_background_fallback_secondary">common/avatar_diffuse.png</texture>
+						<control type="group">
+							<visible>String.IsEmpty(Window(Home).Property(emby_sync))</visible>
+							<control type="image">
+								<height>38</height>
+								<width>38</width>
+								<texture colordiffuse="thumb_background_fallback_secondary">common/avatar_diffuse.png</texture>
+							</control>
+							<control type="image">
+								<height>38</height>
+								<width>38</width>
+								<texture diffuse="common/avatar_diffuse.png">$VAR[UserAvatar]</texture>
+								<aspectratio scalediffuse="false">stretch</aspectratio>
+							</control>
 						</control>
-						<control type="image">
-							<height>38</height>
-							<width>38</width>
-							<texture diffuse="common/avatar_diffuse.png">$VAR[UserAvatar]</texture>
-							<aspectratio scalediffuse="false">stretch</aspectratio>
+						<control type="group">
+							<visible>!String.IsEmpty(Window(Home).Property(emby_sync))</visible>
+							<control type="image">
+								<height>38</height>
+								<width>38</width>
+								<texture colordiffuse="$VAR[AccentColor]">common/avatar_diffuse.png</texture>
+							</control>
+							<control type="label">
+								<animation effect="fade" start="20" time="1000" condition="true" pulse="true">Conditional</animation>
+								<font>Material24</font>
+								<label>&#xf4e6;</label>
+								<height>38</height>
+								<width>38</width>
+								<align>center</align>
+								<include content="HeaderButton">
+									<param name="color" value="text_white"/>
+								</include>
+							</control>
 						</control>
 					</control>
 				</control>
@@ -310,7 +319,7 @@
 					<width>1920</width>
 					<bottom>0</bottom>
 					<orientation>horizontal</orientation>
-					<itemgap>20</itemgap>
+					<itemgap>15</itemgap>
 					<control type="image">
 						<animation effect="slide" end="0,10" time="0" condition="true">Conditional</animation>
 						<height>38</height>
