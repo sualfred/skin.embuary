@@ -1328,4 +1328,93 @@
 			<param name="ondown" value="$PARAM[ondown]"/>
 		</include>
 	</include>
+
+	<!-- PVR Hub -->
+	<include name="W_PVR_Template">
+		<include condition="String.IsEmpty(Skin.String(EPGar))" content="WideWidget">
+			<param name="visible" value="$PARAM[visible]"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$PARAM[headline]"/>
+			<param name="mainlabel" value="$PARAM[mainlabel]"/>
+			<param name="sublabel" value="$PARAM[sublabel]"/>
+			<param name="thumblabel" value="$PARAM[thumblabel]"/>
+			<param name="sortby" value="$PARAM[sortby]"/>
+			<param name="sortorder" value="$PARAM[sortorder]"/>
+			<param name="content" value="$PARAM[content]"/>
+			<param name="layout" value="PVRLandscapeLayout"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(EPGar),4to3)" content="4to3Widget">
+			<param name="visible" value="$PARAM[visible]"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$PARAM[headline]"/>
+			<param name="mainlabel" value="$PARAM[mainlabel]"/>
+			<param name="sublabel" value="$PARAM[sublabel]"/>
+			<param name="thumblabel" value="$PARAM[thumblabel]"/>
+			<param name="sortby" value="$PARAM[sortby]"/>
+			<param name="sortorder" value="$PARAM[sortorder]"/>
+			<param name="content" value="$PARAM[content]"/>
+			<param name="layout" value="PVR4to3Layout"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(EPGar),2to3)" content="PosterWidget">
+			<param name="visible" value="$PARAM[visible]"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$PARAM[headline]"/>
+			<param name="mainlabel" value="$PARAM[mainlabel]"/>
+			<param name="sublabel" value="$PARAM[sublabel]"/>
+			<param name="thumblabel" value="$PARAM[thumblabel]"/>
+			<param name="sortby" value="$PARAM[sortby]"/>
+			<param name="sortorder" value="$PARAM[sortorder]"/>
+			<param name="content" value="$PARAM[content]"/>
+			<param name="layout" value="PVRPosterLayout"/>
+		</include>
+	</include>
+	<include name="W_PVR_OnNow">
+		<include content="W_PVR_Template">
+			<param name="visible" value="$PARAM[visible]"/>
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$PARAM[headline]"/>
+			<param name="mainlabel" value="$VAR[PVRWidgetMainListLabel]"/>
+			<param name="thumblabel" value="$INFO[ListItem.Channelname]"/>
+			<param name="sublabel" value="$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, - ]"/>
+			<param name="content" value="pvr://channels/tv/$PARAM[group]"/>
+		</include>
+	</include>
+	<include name="W_PVR_LastPlayed">
+		<include content="WideWidget">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$LOCALIZE[31030]"/>
+			<param name="mainlabel" value="$VAR[PVRWidgetMainListLabel]"/>
+			<param name="thumblabel" value="$INFO[ListItem.Channelname]"/>
+			<param name="sublabel" value="$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, - ]"/>
+			<param name="sortby" value="lastplayed"/>
+			<param name="sortorder" value="descending"/>
+			<param name="content" value="pvr://channels/tv/*?view=lastplayed"/>
+			<param name="layout" value="PVRLandscapeLogoLayout"/>
+		</include>
+	</include>
+	<include name="W_PVR_Recordings">
+		<include content="W_PVR_Template">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$LOCALIZE[19017]"/>
+			<param name="mainlabel" value="$VAR[PVRWidgetMainListLabel]"/>
+			<param name="thumblabel" value="$INFO[ListItem.Channelname]"/>
+			<param name="sublabel" value="$VAR[ListItemEpisodeName]"/>
+			<param name="sortby" value="date"/>
+			<param name="sortorder" value="descending"/>
+			<param name="content" value="pvr://recordings/tv/active?view=flat"/>
+		</include>
+	</include>
+
 </includes>

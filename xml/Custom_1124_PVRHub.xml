@@ -8,6 +8,10 @@
 		<param name="ShowHeader" value="true"/>
 	</include>
 	<controls>
+		<control type="list" id="2000">
+			<include>HiddenObject</include>
+			<content>$VAR[PVRWidgetGroup]</content>
+		</control>
 		<!-- background -->
 		<include>Background</include>
 		<!-- hub -->
@@ -31,130 +35,285 @@
 				<param name="headline" value="$VAR[PVRLabel]"/>
 				<param name="content" value="PVRHub_Menu"/>
 			</include>
-			<include condition="String.IsEmpty(Skin.String(EPGar))" content="WideWidget">
+			<include content="W_PVR_OnNow">
 				<param name="id" value="200"/>
 				<param name="onup" value="100"/>
 				<param name="ondown" value="201"/>
-				<param name="headline" value="$LOCALIZE[31256]"/>
-				<param name="mainlabel" value="$VAR[PVRWidgetMainListLabel]"/>
-				<param name="thumblabel" value="$INFO[ListItem.Channelname]"/>
-				<param name="sublabel" value="$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, - ]"/>
-				<param name="content" value="pvr://channels/tv/*"/>
-				<param name="layout" value="PVRLandscapeLayout"/>
+				<param name="headline" value="$LOCALIZE[31346]"/>
+				<param name="group" value="*"/>
 			</include>
-			<include condition="String.IsEmpty(Skin.String(EPGar))" content="WideWidget">
+			<include content="W_PVR_LastPlayed">
 				<param name="id" value="201"/>
 				<param name="onup" value="200"/>
 				<param name="ondown" value="202"/>
-				<param name="headline" value="$LOCALIZE[31030]"/>
-				<param name="mainlabel" value="$VAR[PVRWidgetMainListLabel]"/>
-				<param name="thumblabel" value="$INFO[ListItem.Channelname]"/>
-				<param name="sublabel" value="$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, - ]"/>
-				<param name="sortby" value="lastplayed"/>
-				<param name="sortorder" value="descending"/>
-				<param name="content" value="pvr://channels/tv/*?view=lastplayed"/>
-				<param name="layout" value="PVRLandscapeLayout"/>
 			</include>
-			<include condition="String.IsEmpty(Skin.String(EPGar))" content="WideWidget">
+			<include content="W_PVR_Recordings">
 				<param name="id" value="202"/>
 				<param name="onup" value="201"/>
 				<param name="ondown" value="203"/>
-				<param name="headline" value="$LOCALIZE[19017]"/>
-				<param name="mainlabel" value="$VAR[PVRWidgetMainListLabel]"/>
-				<param name="thumblabel" value="$INFO[ListItem.Channelname]"/>
-				<param name="sublabel" value="$VAR[ListItemEpisodeName]"/>
-				<param name="sortby" value="date"/>
-				<param name="sortorder" value="descending"/>
-				<param name="content" value="pvr://recordings/tv/active?view=flat"/>
-				<param name="layout" value="PVRLandscapeLayout"/>
 			</include>
-			<include condition="String.IsEqual(Skin.String(EPGar),4to3)" content="4to3Widget">
-				<param name="id" value="200"/>
-				<param name="onup" value="100"/>
-				<param name="ondown" value="201"/>
-				<param name="headline" value="$LOCALIZE[31256]"/>
-				<param name="mainlabel" value="$VAR[PVRWidgetMainListLabel]"/>
-				<param name="thumblabel" value="$INFO[ListItem.Channelname]"/>
-				<param name="sublabel" value="$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, - ]"/>
-				<param name="content" value="pvr://channels/tv/*"/>
-				<param name="layout" value="PVR4to3Layout"/>
-			</include>
-			<include condition="String.IsEqual(Skin.String(EPGar),4to3)" content="4to3Widget">
-				<param name="id" value="201"/>
-				<param name="onup" value="200"/>
-				<param name="ondown" value="202"/>
-				<param name="headline" value="$LOCALIZE[31030]"/>
-				<param name="mainlabel" value="$VAR[PVRWidgetMainListLabel]"/>
-				<param name="thumblabel" value="$INFO[ListItem.Channelname]"/>
-				<param name="sublabel" value="$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, - ]"/>
-				<param name="sortby" value="lastplayed"/>
-				<param name="sortorder" value="descending"/>
-				<param name="content" value="pvr://channels/tv/*?view=lastplayed"/>
-				<param name="layout" value="PVR4to3Layout"/>
-			</include>
-			<include condition="String.IsEqual(Skin.String(EPGar),4to3)" content="4to3Widget">
-				<param name="id" value="202"/>
-				<param name="onup" value="201"/>
-				<param name="ondown" value="203"/>
-				<param name="headline" value="$LOCALIZE[19017]"/>
-				<param name="mainlabel" value="$VAR[PVRWidgetMainListLabel]"/>
-				<param name="thumblabel" value="$INFO[ListItem.Channelname]"/>
-				<param name="sublabel" value="$VAR[ListItemEpisodeName]"/>
-				<param name="sortby" value="date"/>
-				<param name="sortorder" value="descending"/>
-				<param name="content" value="pvr://recordings/tv/active?view=flat"/>
-				<param name="layout" value="PVR4to3Layout"/>
-			</include>
-			<include condition="String.IsEqual(Skin.String(EPGar),2to3)" content="PosterWidget">
-				<param name="id" value="200"/>
-				<param name="onup" value="100"/>
-				<param name="ondown" value="201"/>
-				<param name="headline" value="$LOCALIZE[31256]"/>
-				<param name="mainlabel" value="$VAR[PVRWidgetMainListLabel]"/>
-				<param name="thumblabel" value="$INFO[ListItem.Channelname]"/>
-				<param name="sublabel" value="$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, - ]"/>
-				<param name="content" value="pvr://channels/tv/*"/>
-				<param name="layout" value="PVRPosterLayout"/>
-			</include>
-			<include condition="String.IsEqual(Skin.String(EPGar),2to3)" content="PosterWidget">
-				<param name="id" value="201"/>
-				<param name="onup" value="200"/>
-				<param name="ondown" value="202"/>
-				<param name="headline" value="$LOCALIZE[31030]"/>
-				<param name="mainlabel" value="$VAR[PVRWidgetMainListLabel]"/>
-				<param name="thumblabel" value="$INFO[ListItem.Channelname]"/>
-				<param name="sublabel" value="$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, - ]"/>
-				<param name="sortby" value="lastplayed"/>
-				<param name="sortorder" value="descending"/>
-				<param name="content" value="pvr://channels/tv/*?view=lastplayed"/>
-				<param name="layout" value="PVRPosterLayout"/>
-			</include>
-			<include condition="String.IsEqual(Skin.String(EPGar),2to3)" content="PosterWidget">
-				<param name="id" value="202"/>
-				<param name="onup" value="201"/>
-				<param name="ondown" value="203"/>
-				<param name="headline" value="$LOCALIZE[19017]"/>
-				<param name="mainlabel" value="$VAR[PVRWidgetMainListLabel]"/>
-				<param name="thumblabel" value="$INFO[ListItem.Channelname]"/>
-				<param name="sublabel" value="$VAR[ListItemEpisodeName]"/>
-				<param name="sortby" value="date"/>
-				<param name="sortorder" value="descending"/>
-				<param name="content" value="pvr://recordings/tv/active?view=flat"/>
-				<param name="layout" value="PVRPosterLayout"/>
-			</include>
-			<include content="SquareWidget">
+			<include content="W_PVR_OnNow">
 				<param name="id" value="203"/>
 				<param name="onup" value="202"/>
 				<param name="ondown" value="204"/>
+				<param name="headline" value="$INFO[Container(2000).ListItemAbsolute(1).Label]"/>
+				<param name="group" value="$INFO[Container(2000).ListItemAbsolute(1).Label]"/>
+				<param name="visible" value="!String.IsEmpty(Container(2000).ListItemAbsolute(1).Label)"/>
+			</include>
+			<include content="W_PVR_OnNow">
+				<param name="id" value="204"/>
+				<param name="onup" value="203"/>
+				<param name="ondown" value="205"/>
+				<param name="headline" value="$INFO[Container(2000).ListItemAbsolute(2).Label]"/>
+				<param name="group" value="$INFO[Container(2000).ListItemAbsolute(2).Label]"/>
+				<param name="visible" value="!String.IsEmpty(Container(2000).ListItemAbsolute(2).Label)"/>
+			</include>
+			<include content="W_PVR_OnNow">
+				<param name="id" value="205"/>
+				<param name="onup" value="204"/>
+				<param name="ondown" value="206"/>
+				<param name="headline" value="$INFO[Container(2000).ListItemAbsolute(3).Label]"/>
+				<param name="group" value="$INFO[Container(2000).ListItemAbsolute(3).Label]"/>
+				<param name="visible" value="!String.IsEmpty(Container(2000).ListItemAbsolute(3).Label)"/>
+			</include>
+			<include content="W_PVR_OnNow">
+				<param name="id" value="206"/>
+				<param name="onup" value="205"/>
+				<param name="ondown" value="207"/>
+				<param name="headline" value="$INFO[Container(2000).ListItemAbsolute(4).Label]"/>
+				<param name="group" value="$INFO[Container(2000).ListItemAbsolute(4).Label]"/>
+				<param name="visible" value="!String.IsEmpty(Container(2000).ListItemAbsolute(4).Label)"/>
+			</include>
+			<include content="W_PVR_OnNow">
+				<param name="id" value="207"/>
+				<param name="onup" value="206"/>
+				<param name="ondown" value="208"/>
+				<param name="headline" value="$INFO[Container(2000).ListItemAbsolute(5).Label]"/>
+				<param name="group" value="$INFO[Container(2000).ListItemAbsolute(5).Label]"/>
+				<param name="visible" value="!String.IsEmpty(Container(2000).ListItemAbsolute(5).Label)"/>
+			</include>
+			<include content="W_PVR_OnNow">
+				<param name="id" value="208"/>
+				<param name="onup" value="207"/>
+				<param name="ondown" value="209"/>
+				<param name="headline" value="$INFO[Container(2000).ListItemAbsolute(6).Label]"/>
+				<param name="group" value="$INFO[Container(2000).ListItemAbsolute(6).Label]"/>
+				<param name="visible" value="!String.IsEmpty(Container(2000).ListItemAbsolute(6).Label)"/>
+			</include>
+			<include content="W_PVR_OnNow">
+				<param name="id" value="209"/>
+				<param name="onup" value="208"/>
+				<param name="ondown" value="210"/>
+				<param name="headline" value="$INFO[Container(2000).ListItemAbsolute(7).Label]"/>
+				<param name="group" value="$INFO[Container(2000).ListItemAbsolute(7).Label]"/>
+				<param name="visible" value="!String.IsEmpty(Container(2000).ListItemAbsolute(7).Label)"/>
+			</include>
+			<include content="W_PVR_OnNow">
+				<param name="id" value="210"/>
+				<param name="onup" value="209"/>
+				<param name="ondown" value="211"/>
+				<param name="headline" value="$INFO[Container(2000).ListItemAbsolute(8).Label]"/>
+				<param name="group" value="$INFO[Container(2000).ListItemAbsolute(8).Label]"/>
+				<param name="visible" value="!String.IsEmpty(Container(2000).ListItemAbsolute(8).Label)"/>
+			</include>
+			<include content="W_PVR_OnNow">
+				<param name="id" value="211"/>
+				<param name="onup" value="210"/>
+				<param name="ondown" value="212"/>
+				<param name="headline" value="$INFO[Container(2000).ListItemAbsolute(9).Label]"/>
+				<param name="group" value="$INFO[Container(2000).ListItemAbsolute(9).Label]"/>
+				<param name="visible" value="!String.IsEmpty(Container(2000).ListItemAbsolute(9).Label)"/>
+			</include>
+			<include content="W_PVR_OnNow">
+				<param name="id" value="212"/>
+				<param name="onup" value="211"/>
+				<param name="ondown" value="213"/>
+				<param name="headline" value="$INFO[Container(2000).ListItemAbsolute(10).Label]"/>
+				<param name="group" value="$INFO[Container(2000).ListItemAbsolute(10).Label]"/>
+				<param name="visible" value="!String.IsEmpty(Container(2000).ListItemAbsolute(10).Label)"/>
+			</include>
+			<include content="W_PVR_OnNow">
+				<param name="id" value="213"/>
+				<param name="onup" value="212"/>
+				<param name="ondown" value="214"/>
+				<param name="headline" value="$INFO[Container(2000).ListItemAbsolute(11).Label]"/>
+				<param name="group" value="$INFO[Container(2000).ListItemAbsolute(11).Label]"/>
+				<param name="visible" value="!String.IsEmpty(Container(2000).ListItemAbsolute(11).Label)"/>
+			</include>
+			<include content="W_PVR_OnNow">
+				<param name="id" value="214"/>
+				<param name="onup" value="213"/>
+				<param name="ondown" value="215"/>
+				<param name="headline" value="$INFO[Container(2000).ListItemAbsolute(12).Label]"/>
+				<param name="group" value="$INFO[Container(2000).ListItemAbsolute(12).Label]"/>
+				<param name="visible" value="!String.IsEmpty(Container(2000).ListItemAbsolute(12).Label)"/>
+			</include>
+			<include content="W_PVR_OnNow">
+				<param name="id" value="215"/>
+				<param name="onup" value="214"/>
+				<param name="ondown" value="216"/>
+				<param name="headline" value="$INFO[Container(2000).ListItemAbsolute(13).Label]"/>
+				<param name="group" value="$INFO[Container(2000).ListItemAbsolute(13).Label]"/>
+				<param name="visible" value="!String.IsEmpty(Container(2000).ListItemAbsolute(13).Label)"/>
+			</include>
+			<include content="W_PVR_OnNow">
+				<param name="id" value="216"/>
+				<param name="onup" value="215"/>
+				<param name="ondown" value="217"/>
+				<param name="headline" value="$INFO[Container(2000).ListItemAbsolute(14).Label]"/>
+				<param name="group" value="$INFO[Container(2000).ListItemAbsolute(14).Label]"/>
+				<param name="visible" value="!String.IsEmpty(Container(2000).ListItemAbsolute(14).Label)"/>
+			</include>
+			<include content="W_PVR_OnNow">
+				<param name="id" value="217"/>
+				<param name="onup" value="216"/>
+				<param name="ondown" value="218"/>
+				<param name="headline" value="$INFO[Container(2000).ListItemAbsolute(15).Label]"/>
+				<param name="group" value="$INFO[Container(2000).ListItemAbsolute(15).Label]"/>
+				<param name="visible" value="!String.IsEmpty(Container(2000).ListItemAbsolute(15).Label)"/>
+			</include>
+			<include content="W_PVR_OnNow">
+				<param name="id" value="218"/>
+				<param name="onup" value="217"/>
+				<param name="ondown" value="219"/>
+				<param name="headline" value="$INFO[Container(2000).ListItemAbsolute(16).Label]"/>
+				<param name="group" value="$INFO[Container(2000).ListItemAbsolute(16).Label]"/>
+				<param name="visible" value="!String.IsEmpty(Container(2000).ListItemAbsolute(16).Label)"/>
+			</include>
+			<include content="W_PVR_OnNow">
+				<param name="id" value="219"/>
+				<param name="onup" value="218"/>
+				<param name="ondown" value="220"/>
+				<param name="headline" value="$INFO[Container(2000).ListItemAbsolute(17).Label]"/>
+				<param name="group" value="$INFO[Container(2000).ListItemAbsolute(17).Label]"/>
+				<param name="visible" value="!String.IsEmpty(Container(2000).ListItemAbsolute(17).Label)"/>
+			</include>
+			<include content="W_PVR_OnNow">
+				<param name="id" value="220"/>
+				<param name="onup" value="219"/>
+				<param name="ondown" value="221"/>
+				<param name="headline" value="$INFO[Container(2000).ListItemAbsolute(18).Label]"/>
+				<param name="group" value="$INFO[Container(2000).ListItemAbsolute(18).Label]"/>
+				<param name="visible" value="!String.IsEmpty(Container(2000).ListItemAbsolute(18).Label)"/>
+			</include>
+			<include content="W_PVR_OnNow">
+				<param name="id" value="221"/>
+				<param name="onup" value="220"/>
+				<param name="ondown" value="222"/>
+				<param name="headline" value="$INFO[Container(2000).ListItemAbsolute(19).Label]"/>
+				<param name="group" value="$INFO[Container(2000).ListItemAbsolute(19).Label]"/>
+				<param name="visible" value="!String.IsEmpty(Container(2000).ListItemAbsolute(19).Label)"/>
+			</include>
+			<include content="W_PVR_OnNow">
+				<param name="id" value="222"/>
+				<param name="onup" value="221"/>
+				<param name="ondown" value="223"/>
+				<param name="headline" value="$INFO[Container(2000).ListItemAbsolute(19).Label]"/>
+				<param name="group" value="$INFO[Container(2000).ListItemAbsolute(19).Label]"/>
+				<param name="visible" value="!String.IsEmpty(Container(2000).ListItemAbsolute(19).Label)"/>
+			</include>
+			<include content="W_PVR_OnNow">
+				<param name="id" value="223"/>
+				<param name="onup" value="222"/>
+				<param name="ondown" value="224"/>
+				<param name="headline" value="$INFO[Container(2000).ListItemAbsolute(20).Label]"/>
+				<param name="group" value="$INFO[Container(2000).ListItemAbsolute(20).Label]"/>
+				<param name="visible" value="!String.IsEmpty(Container(2000).ListItemAbsolute(20).Label)"/>
+			</include>
+			<include content="W_PVR_OnNow">
+				<param name="id" value="224"/>
+				<param name="onup" value="223"/>
+				<param name="ondown" value="225"/>
+				<param name="headline" value="$INFO[Container(2000).ListItemAbsolute(21).Label]"/>
+				<param name="group" value="$INFO[Container(2000).ListItemAbsolute(21).Label]"/>
+				<param name="visible" value="!String.IsEmpty(Container(2000).ListItemAbsolute(21).Label)"/>
+			</include>
+			<include content="W_PVR_OnNow">
+				<param name="id" value="225"/>
+				<param name="onup" value="224"/>
+				<param name="ondown" value="226"/>
+				<param name="headline" value="$INFO[Container(2000).ListItemAbsolute(22).Label]"/>
+				<param name="group" value="$INFO[Container(2000).ListItemAbsolute(22).Label]"/>
+				<param name="visible" value="!String.IsEmpty(Container(2000).ListItemAbsolute(22).Label)"/>
+			</include>
+			<include content="W_PVR_OnNow">
+				<param name="id" value="226"/>
+				<param name="onup" value="225"/>
+				<param name="ondown" value="227"/>
+				<param name="headline" value="$INFO[Container(2000).ListItemAbsolute(23).Label]"/>
+				<param name="group" value="$INFO[Container(2000).ListItemAbsolute(23).Label]"/>
+				<param name="visible" value="!String.IsEmpty(Container(2000).ListItemAbsolute(23).Label)"/>
+			</include>
+			<include content="W_PVR_OnNow">
+				<param name="id" value="227"/>
+				<param name="onup" value="226"/>
+				<param name="ondown" value="228"/>
+				<param name="headline" value="$INFO[Container(2000).ListItemAbsolute(24).Label]"/>
+				<param name="group" value="$INFO[Container(2000).ListItemAbsolute(24).Label]"/>
+				<param name="visible" value="!String.IsEmpty(Container(2000).ListItemAbsolute(24).Label)"/>
+			</include>
+			<include content="W_PVR_OnNow">
+				<param name="id" value="228"/>
+				<param name="onup" value="227"/>
+				<param name="ondown" value="229"/>
+				<param name="headline" value="$INFO[Container(2000).ListItemAbsolute(25).Label]"/>
+				<param name="group" value="$INFO[Container(2000).ListItemAbsolute(25).Label]"/>
+				<param name="visible" value="!String.IsEmpty(Container(2000).ListItemAbsolute(25).Label)"/>
+			</include>
+			<include content="W_PVR_OnNow">
+				<param name="id" value="229"/>
+				<param name="onup" value="228"/>
+				<param name="ondown" value="230"/>
+				<param name="headline" value="$INFO[Container(2000).ListItemAbsolute(26).Label]"/>
+				<param name="group" value="$INFO[Container(2000).ListItemAbsolute(26).Label]"/>
+				<param name="visible" value="!String.IsEmpty(Container(2000).ListItemAbsolute(26).Label)"/>
+			</include>
+			<include content="W_PVR_OnNow">
+				<param name="id" value="230"/>
+				<param name="onup" value="229"/>
+				<param name="ondown" value="231"/>
+				<param name="headline" value="$INFO[Container(2000).ListItemAbsolute(27).Label]"/>
+				<param name="group" value="$INFO[Container(2000).ListItemAbsolute(27).Label]"/>
+				<param name="visible" value="!String.IsEmpty(Container(2000).ListItemAbsolute(27).Label)"/>
+			</include>
+			<include content="W_PVR_OnNow">
+				<param name="id" value="231"/>
+				<param name="onup" value="230"/>
+				<param name="ondown" value="232"/>
+				<param name="headline" value="$INFO[Container(2000).ListItemAbsolute(28).Label]"/>
+				<param name="group" value="$INFO[Container(2000).ListItemAbsolute(28).Label]"/>
+				<param name="visible" value="!String.IsEmpty(Container(2000).ListItemAbsolute(28).Label)"/>
+			</include>
+			<include content="W_PVR_OnNow">
+				<param name="id" value="232"/>
+				<param name="onup" value="231"/>
+				<param name="ondown" value="233"/>
+				<param name="headline" value="$INFO[Container(2000).ListItemAbsolute(29).Label]"/>
+				<param name="group" value="$INFO[Container(2000).ListItemAbsolute(29).Label]"/>
+				<param name="visible" value="!String.IsEmpty(Container(2000).ListItemAbsolute(29).Label)"/>
+			</include>
+			<include content="W_PVR_OnNow">
+				<param name="id" value="233"/>
+				<param name="onup" value="232"/>
+				<param name="ondown" value="234"/>
+				<param name="headline" value="$INFO[Container(2000).ListItemAbsolute(30).Label]"/>
+				<param name="group" value="$INFO[Container(2000).ListItemAbsolute(30).Label]"/>
+				<param name="visible" value="!String.IsEmpty(Container(2000).ListItemAbsolute(30).Label)"/>
+			</include>
+			<include content="WideWidget">
+				<param name="id" value="234"/>
+				<param name="onup" value="233"/>
+				<param name="ondown" value="235"/>
 				<param name="headline" value="$LOCALIZE[10705]"/>
 				<param name="mainlabel" value="$VAR[PVRWidgetMainListLabel]"/>
 				<param name="thumblabel" value="$INFO[ListItem.Channelname]"/>
 				<param name="sublabel" value="$INFO[ListItem.StartTime]$INFO[ListItem.EndTime - ]"/>
 				<param name="content" value="pvr://channels/radio/*"/>
+				<param name="layout" value="PVRLandscapeLogoLayout"/>
 			</include>
-			<include content="SquareWidget">
-				<param name="id" value="204"/>
-				<param name="onup" value="203"/>
+			<include content="WideWidget">
+				<param name="id" value="235"/>
+				<param name="onup" value="234"/>
 				<param name="ondown" value="noop"/>
 				<param name="headline" value="$LOCALIZE[31082]"/>
 				<param name="mainlabel" value="$VAR[PVRWidgetMainListLabel]"/>
@@ -163,6 +322,7 @@
 				<param name="sortby" value="lastplayed"/>
 				<param name="sortorder" value="descending"/>
 				<param name="content" value="pvr://channels/radio/*?view=lastplayed"/>
+				<param name="layout" value="PVRLandscapeLogoLayout"/>
 			</include>
 		</control>
 		<!-- header bar -->

@@ -211,183 +211,186 @@
 	</include>
 	<!-- ListItem overlay -->
 	<include name="listitem_overlay">
-		<control type="group">
-			<visible>!String.IsEqual(ListItem.DBType,artist) + !String.IsEqual(ListItem.DBType,album) + !String.IsEqual(ListItem.DBType,song)</visible>
+		<param name="pvr_overlay">true</param>
+		<definition>
 			<control type="group">
-				<visible>String.StartsWith(ListItem.Path,pvr://) + !ListItem.IsFolder + !ListItem.IsParentFolder</visible>
-				<control type="image">
-					<right>10</right>
-					<top>10</top>
-					<width>32</width>
-					<height>28</height>
-					<texture colordiffuse="red">$VAR[PVRTimerIcon]</texture>
-					<aspectratio align="right">keep</aspectratio>
+				<visible>!String.IsEqual(ListItem.DBType,artist) + !String.IsEqual(ListItem.DBType,album) + !String.IsEqual(ListItem.DBType,song)</visible>
+				<control type="group">
+					<visible>String.StartsWith(ListItem.Path,pvr://) + !ListItem.IsFolder + !ListItem.IsParentFolder + $PARAM[pvr_overlay]</visible>
+					<control type="image">
+						<right>10</right>
+						<top>10</top>
+						<width>32</width>
+						<height>28</height>
+						<texture colordiffuse="red">$VAR[PVRTimerIcon]</texture>
+						<aspectratio align="right">keep</aspectratio>
+					</control>
+					<control type="group">
+						<visible>!Window.IsVisible(pvrchannelguide)</visible>
+						<visible>!String.IsEmpty(ListItem.EpgEventIcon) | [String.StartsWith(ListItem.Path,pvr://recordings) + !String.IsEqual(ListItem.ActualIcon,ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)]</visible>
+						<visible>!Skin.HasSetting(UseChannelLogo) + !Skin.HasSetting(HideEPGThumbOverlay) + !Window.IsVisible(fullscreeninfo) + !Window.IsVisible(pvrguideinfo) + !String.IsEqual(Container.ViewMode,$LOCALIZE[535]) + !String.IsEqual(Container.ViewMode,$LOCALIZE[31005])</visible>
+						<control type="image">
+							<bottom>0</bottom>
+							<width>100%</width>
+							<height>60</height>
+							<texture colordiffuse="f2141414">views/player/mask_bottom.png</texture>
+						</control>
+						<control type="image">
+							<animation effect="slide" end="0,-2" time="0" condition="[String.StartsWith(ListItem.Path,pvr://channels) + Integer.IsGreater(ListItem.Progress,0)] | [!String.StartsWith(ListItem.Path,pvr://channels) + Integer.IsGreater(ListItem.PercentPlayed,0)]">Conditional</animation>
+							<bottom>0</bottom>
+							<width>40%</width>
+							<height>60</height>
+							<texture background="true">$INFO[ListItem.ActualIcon]</texture>
+							<aspectratio align="left">keep</aspectratio>
+							<bordersize>10</bordersize>
+							<visible>!String.StartsWith(ListItem.ActualIcon,Default)</visible>
+						</control>
+						<control type="label">
+							<animation effect="slide" end="0,-2" time="0" condition="[String.StartsWith(ListItem.Path,pvr://channels) + Integer.IsGreater(ListItem.Progress,0)] | [!String.StartsWith(ListItem.Path,pvr://channels) + Integer.IsGreater(ListItem.PercentPlayed,0)]">Conditional</animation>
+							<bottom>0</bottom>
+							<right>10</right>
+							<width>60%</width>
+							<height>60</height>
+							<aligny>center</aligny>
+							<label>$INFO[ListItem.Channelname]</label>
+							<font>BubbleFont</font>
+							<textcolor>ffdfdfdf</textcolor>
+							<shadowcolor>text_shadow</shadowcolor>
+							<selectedcolor>ffcfcfcf</selectedcolor>
+							<align>right</align>
+							<aligny>top</aligny>
+						</control>
+					</control>
 				</control>
 				<control type="group">
-					<visible>!Window.IsVisible(pvrchannelguide)</visible>
-					<visible>!String.IsEmpty(ListItem.EpgEventIcon) | [String.StartsWith(ListItem.Path,pvr://recordings) + !String.IsEqual(ListItem.ActualIcon,ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)]</visible>
-					<visible>!Skin.HasSetting(UseChannelLogo) + !Skin.HasSetting(HideEPGThumbOverlay) + !Window.IsVisible(fullscreeninfo) + !Window.IsVisible(pvrguideinfo) + !String.IsEqual(Container.ViewMode,$LOCALIZE[535]) + !String.IsEqual(Container.ViewMode,$LOCALIZE[31005])</visible>
-					<control type="image">
-						<bottom>0</bottom>
-						<width>100%</width>
-						<height>60</height>
-						<texture colordiffuse="f2141414">views/player/mask_bottom.png</texture>
+					<visible>$EXP[IsHDR]</visible>
+					<left>8</left>
+					<top>9</top>
+					<height>30</height>
+					<control type="image">>
+						<texture>items/hdr_overlay.png</texture>
+						<aspectratio align="left" aligny="top">keep</aspectratio>
 					</control>
+				</control>
+				<control type="group">
+					<visible>Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0) | $EXP[IsWatched]</visible>
+					<visible>![Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml)]</visible>
+					<right>8</right>
+					<top>9</top>
+					<width>44</width>
+					<height>44</height>
 					<control type="image">
-						<animation effect="slide" end="0,-2" time="0" condition="[String.StartsWith(ListItem.Path,pvr://channels) + Integer.IsGreater(ListItem.Progress,0)] | [!String.StartsWith(ListItem.Path,pvr://channels) + Integer.IsGreater(ListItem.PercentPlayed,0)]">Conditional</animation>
-						<bottom>0</bottom>
-						<width>40%</width>
-						<height>60</height>
-						<texture background="true">$INFO[ListItem.ActualIcon]</texture>
-						<aspectratio align="left">keep</aspectratio>
-						<bordersize>10</bordersize>
-						<visible>!String.StartsWith(ListItem.ActualIcon,Default)</visible>
+						<texture colordiffuse="$VAR[AccentColor]">items/bubble_small.png</texture>
+						<aspectratio>keep</aspectratio>
 					</control>
 					<control type="label">
-						<animation effect="slide" end="0,-2" time="0" condition="[String.StartsWith(ListItem.Path,pvr://channels) + Integer.IsGreater(ListItem.Progress,0)] | [!String.StartsWith(ListItem.Path,pvr://channels) + Integer.IsGreater(ListItem.PercentPlayed,0)]">Conditional</animation>
-						<bottom>0</bottom>
-						<right>10</right>
-						<width>60%</width>
-						<height>60</height>
-						<aligny>center</aligny>
-						<label>$INFO[ListItem.Channelname]</label>
+						<top>-4</top>
+						<left>1</left>
+						<label>$INFO[ListItem.Property(UnWatchedEpisodes)]</label>
 						<font>BubbleFont</font>
-						<textcolor>ffdfdfdf</textcolor>
-						<shadowcolor>text_shadow</shadowcolor>
-						<selectedcolor>ffcfcfcf</selectedcolor>
-						<align>right</align>
+						<textcolor>white</textcolor>
+						<selectedcolor>white</selectedcolor>
+						<align>center</align>
+						<aligny>center</aligny>
+						<visible>Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0) + ![Integer.IsGreater(Window(home).Property(tvshow.unwatchedepisodes),0) + Window.IsVisible(movieinformation)]</visible>
+					</control>
+					<control type="label">
+						<top>-4</top>
+						<left>1</left>
+						<label>$INFO[Window(home).Property(tvshow.unwatchedepisodes)]</label>
+						<font>BubbleFont</font>
+						<textcolor>white</textcolor>
+						<selectedcolor>white</selectedcolor>
+						<align>center</align>
+						<aligny>center</aligny>
+						<visible>Integer.IsGreater(Window(home).Property(tvshow.unwatchedepisodes),0) + Window.IsVisible(movieinformation)</visible>
+					</control>
+					<control type="label">
+						<top>6</top>
+						<left>1</left>
+						<label>&#xfe6e;</label>
+						<font>Material24</font>
+						<textcolor>white</textcolor>
+						<selectedcolor>white</selectedcolor>
+						<align>center</align>
+						<aligny>top</aligny>
+						<visible>![Integer.IsGreater(Window(home).Property(tvshow.unwatchedepisodes),0) + Window.IsVisible(movieinformation)]</visible>
+						<visible>
+							Integer.IsLess(ListItem.Property(UnWatchedEpisodes),1)
+							+ !String.IsEqual(ListItem.Overlay,OverlayUnwatched.png)
+							+ [String.IsEqual(ListItem.Overlay,OverlayWatched.png) | Integer.IsGreaterOrEqual(ListItem.PlayCount,1)]
+						</visible>
+					</control>
+				</control>
+				<control type="group">
+					<visible>[Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml)] + !String.IsEmpty(ListItem.DBID)</visible>
+					<right>8</right>
+					<top>9</top>
+					<width>44</width>
+					<height>44</height>
+					<control type="image">
+						<width>44</width>
+						<height>44</height>
+						<texture colordiffuse="$VAR[AccentColor]">items/bubble_small.png</texture>
+						<aspectratio>keep</aspectratio>
+					</control>
+					<control type="label">
+						<top>7</top>
+						<left>1</left>
+						<width>44</width>
+						<height>44</height>
+						<label>&#xfaa8;</label>
+						<font>Material24</font>
+						<textcolor>white</textcolor>
+						<selectedcolor>white</selectedcolor>
+						<align>center</align>
 						<aligny>top</aligny>
 					</control>
 				</control>
-			</control>
-			<control type="group">
-				<visible>$EXP[IsHDR]</visible>
-				<left>8</left>
-				<top>9</top>
-				<height>30</height>
-				<control type="image">>
-					<texture>items/hdr_overlay.png</texture>
-					<aspectratio align="left" aligny="top">keep</aspectratio>
-				</control>
-			</control>
-			<control type="group">
-				<visible>Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0) | $EXP[IsWatched]</visible>
-				<visible>![Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml)]</visible>
-				<right>8</right>
-				<top>9</top>
-				<width>44</width>
-				<height>44</height>
-				<control type="image">
-					<texture colordiffuse="$VAR[AccentColor]">items/bubble_small.png</texture>
-					<aspectratio>keep</aspectratio>
-				</control>
-				<control type="label">
-					<top>-4</top>
-					<left>1</left>
-					<label>$INFO[ListItem.Property(UnWatchedEpisodes)]</label>
-					<font>BubbleFont</font>
-					<textcolor>white</textcolor>
-					<selectedcolor>white</selectedcolor>
-					<align>center</align>
-					<aligny>center</aligny>
-					<visible>Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0) + ![Integer.IsGreater(Window(home).Property(tvshow.unwatchedepisodes),0) + Window.IsVisible(movieinformation)]</visible>
-				</control>
-				<control type="label">
-					<top>-4</top>
-					<left>1</left>
-					<label>$INFO[Window(home).Property(tvshow.unwatchedepisodes)]</label>
-					<font>BubbleFont</font>
-					<textcolor>white</textcolor>
-					<selectedcolor>white</selectedcolor>
-					<align>center</align>
-					<aligny>center</aligny>
-					<visible>Integer.IsGreater(Window(home).Property(tvshow.unwatchedepisodes),0) + Window.IsVisible(movieinformation)</visible>
-				</control>
-				<control type="label">
-					<top>6</top>
-					<left>1</left>
-					<label>&#xfe6e;</label>
-					<font>Material24</font>
-					<textcolor>white</textcolor>
-					<selectedcolor>white</selectedcolor>
-					<align>center</align>
-					<aligny>top</aligny>
-					<visible>![Integer.IsGreater(Window(home).Property(tvshow.unwatchedepisodes),0) + Window.IsVisible(movieinformation)]</visible>
-					<visible>
-						Integer.IsLess(ListItem.Property(UnWatchedEpisodes),1)
-						+ !String.IsEqual(ListItem.Overlay,OverlayUnwatched.png)
-						+ [String.IsEqual(ListItem.Overlay,OverlayWatched.png) | Integer.IsGreaterOrEqual(ListItem.PlayCount,1)]
-					</visible>
-				</control>
-			</control>
-			<control type="group">
-				<visible>[Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml)] + !String.IsEmpty(ListItem.DBID)</visible>
-				<right>8</right>
-				<top>9</top>
-				<width>44</width>
-				<height>44</height>
-				<control type="image">
+				<control type="group">
+					<visible>Window.IsVisible(addonbrowser) + [String.IsEqual(ListItem.Label2,$LOCALIZE[24023]) | String.IsEqual(ListItem.Label2,$LOCALIZE[305])]</visible>
+					<right>8</right>
+					<top>9</top>
 					<width>44</width>
 					<height>44</height>
-					<texture colordiffuse="$VAR[AccentColor]">items/bubble_small.png</texture>
-					<aspectratio>keep</aspectratio>
-				</control>
-				<control type="label">
-					<top>7</top>
-					<left>1</left>
-					<width>44</width>
-					<height>44</height>
-					<label>&#xfaa8;</label>
-					<font>Material24</font>
-					<textcolor>white</textcolor>
-					<selectedcolor>white</selectedcolor>
-					<align>center</align>
-					<aligny>top</aligny>
-				</control>
-			</control>
-			<control type="group">
-				<visible>Window.IsVisible(addonbrowser) + [String.IsEqual(ListItem.Label2,$LOCALIZE[24023]) | String.IsEqual(ListItem.Label2,$LOCALIZE[305])]</visible>
-				<right>8</right>
-				<top>9</top>
-				<width>44</width>
-				<height>44</height>
-				<control type="image">
-					<width>44</width>
-					<height>44</height>
-					<texture colordiffuse="red">items/bubble_small.png</texture>
-					<aspectratio>keep</aspectratio>
-					<visible>String.IsEqual(ListItem.Label2,$LOCALIZE[24023])</visible>
-				</control>
-				<control type="image">
-					<width>44</width>
-					<height>44</height>
-					<texture colordiffuse="$VAR[AccentColor]">items/bubble_small.png</texture>
-					<aspectratio>keep</aspectratio>
-					<visible>String.IsEqual(ListItem.Label2,$LOCALIZE[305])</visible>
-				</control>
-				<control type="label">
-					<top>7</top>
-					<font>Material24</font>
-					<label>[B]&#xf4db;[/B]</label>
-					<textcolor>white</textcolor>
-					<selectedcolor>white</selectedcolor>
-					<align>center</align>
-					<aligny>top</aligny>
-					<visible>String.IsEqual(ListItem.Label2,$LOCALIZE[24023])</visible>
-				</control>
-				<control type="label">
-					<top>6</top>
-					<left>1</left>
-					<font>Material24</font>
-					<label>&#xfe6e;</label>
-					<textcolor>white</textcolor>
-					<selectedcolor>white</selectedcolor>
-					<align>center</align>
-					<aligny>top</aligny>
-					<visible>String.IsEqual(ListItem.Label2,$LOCALIZE[305])</visible>
+					<control type="image">
+						<width>44</width>
+						<height>44</height>
+						<texture colordiffuse="red">items/bubble_small.png</texture>
+						<aspectratio>keep</aspectratio>
+						<visible>String.IsEqual(ListItem.Label2,$LOCALIZE[24023])</visible>
+					</control>
+					<control type="image">
+						<width>44</width>
+						<height>44</height>
+						<texture colordiffuse="$VAR[AccentColor]">items/bubble_small.png</texture>
+						<aspectratio>keep</aspectratio>
+						<visible>String.IsEqual(ListItem.Label2,$LOCALIZE[305])</visible>
+					</control>
+					<control type="label">
+						<top>7</top>
+						<font>Material24</font>
+						<label>[B]&#xf4db;[/B]</label>
+						<textcolor>white</textcolor>
+						<selectedcolor>white</selectedcolor>
+						<align>center</align>
+						<aligny>top</aligny>
+						<visible>String.IsEqual(ListItem.Label2,$LOCALIZE[24023])</visible>
+					</control>
+					<control type="label">
+						<top>6</top>
+						<left>1</left>
+						<font>Material24</font>
+						<label>&#xfe6e;</label>
+						<textcolor>white</textcolor>
+						<selectedcolor>white</selectedcolor>
+						<align>center</align>
+						<aligny>top</aligny>
+						<visible>String.IsEqual(ListItem.Label2,$LOCALIZE[305])</visible>
+					</control>
 				</control>
 			</control>
-		</control>
+		</definition>
 	</include>
 	<include name="listitem_overlay_small">
 		<control type="group">
@@ -1225,7 +1228,9 @@
 							<param name="id" value="$PARAM[id]"/>
 							<param name="visible_icon" value="$PARAM[visible_icon]"/>
 						</include>
-						<include>listitem_overlay</include>
+						<include content="listitem_overlay">
+							<param name="pvr_overlay" value="false"/>
+						</include>
 					</control>
 					<include content="progress">
 						<param name="top" value="277"/>
@@ -2413,6 +2418,99 @@
 							<param name="visible_icon" value="$PARAM[visible_icon]"/>
 						</include>
 						<include>listitem_overlay</include>
+					</control>
+					<include content="progress">
+						<param name="top" value="238"/>
+						<param name="width" value="430"/>
+					</include>
+				</control>
+			</control>
+		</definition>
+	</include>
+	<include name="PVRLandscapeLogoLayout">
+		<param name="mainlabel">$VAR[MainListLabel]</param>
+		<param name="sublabel">$VAR[SubListLabel]</param>
+		<param name="thumblabel">$VAR[MainListLabel]</param>
+		<param name="focused">false</param>
+		<param name="visible">true</param>
+		<definition>
+			<control type="group">
+				<visible>$PARAM[visible]</visible>
+				<include content="widget_labels">
+					<param name="top">254</param>
+					<param name="width">430</param>
+					<param name="id">$PARAM[id]</param>
+					<param name="mainlabel">$PARAM[mainlabel]</param>
+					<param name="sublabel">$PARAM[sublabel]</param>
+					<param name="focused">$PARAM[focused]</param>
+					<param name="labels_visible">$PARAM[labels_visible]</param>
+				</include>
+				<control type="group">
+					<include content="Animation_FocusBounce">
+						<param name="id" value="$PARAM[id]"/>
+					</include>
+					<height>242</height>
+					<control type="image">
+						<top>-2</top>
+						<left>-2</left>
+						<width>436</width>
+						<height>248</height>
+						<texture border="20,20,20,20">items/shadow.png</texture>
+					</control>
+					<control type="image">
+						<left>-12</left>
+						<top>-7</top>
+						<width>454</width>
+						<height>266</height>
+						<texture border="20,20,20,20" colordiffuse="$VAR[AccentColor]">items/focus.png</texture>
+						<aspectratio>stretch</aspectratio>
+						<visible>$PARAM[focused] + Control.HasFocus($PARAM[id])</visible>
+						<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
+					</control>
+					<control type="image">
+						<width>430</width>
+						<height>242</height>
+						<texture colordiffuse="$VAR[ThumbFallbackColor]">common/white.jpg</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<visible>String.StartsWith(ListItem.Icon,Default) | String.IsEmpty(ListItem.Icon)</visible>
+					</control>
+					<control type="image">
+						<width>430</width>
+						<height>242</height>
+						<texture colordiffuse="thumb_background">common/white.jpg</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="textbox">
+						<top>10</top>
+						<left>10</left>
+						<width>410</width>
+						<height>222</height>
+						<font>Light24</font>
+						<textcolor>white</textcolor>
+						<align>center</align>
+						<aligny>center</aligny>
+						<label fallback="10006">$PARAM[thumblabel]</label>
+						<visible>String.StartsWith(ListItem.Icon,Default) | String.IsEmpty(ListItem.Icon)</visible>
+					</control>
+					<control type="image">
+						<width>430</width>
+						<height>242</height>
+						<texture background="true">$INFO[ListItem.Icon]</texture>
+						<aspectratio scalediffuse="false">keep</aspectratio>
+						<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="group">
+						<width>430</width>
+						<height>242</height>
+						<include content="listitem_action_overlay">
+							<param name="focused" value="$PARAM[focused]"/>
+							<param name="id" value="$PARAM[id]"/>
+							<param name="visible_icon" value="$PARAM[visible_icon]"/>
+						</include>
+						<include content="listitem_overlay">
+							<param name="pvr_overlay" value="false"/>
+						</include>
 					</control>
 					<include content="progress">
 						<param name="top" value="238"/>
