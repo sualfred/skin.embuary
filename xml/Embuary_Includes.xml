@@ -496,10 +496,10 @@
 			<texturefocus></texturefocus>
 			<texturenofocus></texturenofocus>
 			<onfocus>ClearProperty(FocusBounce,home)</onfocus>
-			<onfocus condition="String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,season) | String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,tvshow)">SetProperty(ListItemDBID,$INFO[ListItem.DBID],home)</onfocus>
-			<onfocus condition="String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,season) | String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,tvshow)">SetProperty(ListItemDBType,$INFO[ListItem.DBType],home)</onfocus>
-			<onfocus condition="[!String.IsEqual(ListItem.DBType,movie) + !String.IsEqual(ListItem.DBType,season) + !String.IsEqual(ListItem.DBType,episode) + !String.IsEqual(ListItem.DBType,tvshow)] | String.IsEqual(ListItem.Label,$LOCALIZE[20366])">ClearProperty(ListItemDBID,home)</onfocus>
-			<onfocus condition="[!String.IsEqual(ListItem.DBType,movie) + !String.IsEqual(ListItem.DBType,season) + !String.IsEqual(ListItem.DBType,episode) + !String.IsEqual(ListItem.DBType,tvshow)] | String.IsEqual(ListItem.Label,$LOCALIZE[20366])">ClearProperty(ListItemDBType,home)</onfocus>
+			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,movie) | String.IsEqual(Container($PARAM[id]).ListItem.DBType,season) | String.IsEqual(Container($PARAM[id]).ListItem.DBType,episode) | String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow)">SetProperty(ListItemDBID,$INFO[Container($PARAM[id]).ListItem.DBID],home)</onfocus>
+			<onfocus condition="String.IsEqual(Container($PARAM[id]).ListItem.DBType,movie) | String.IsEqual(Container($PARAM[id]).ListItem.DBType,season) | String.IsEqual(Container($PARAM[id]).ListItem.DBType,episode) | String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow)">SetProperty(ListItemDBType,$INFO[Container($PARAM[id]).ListItem.DBType],home)</onfocus>
+			<onfocus condition="[!String.IsEqual(Container($PARAM[id]).ListItem.DBType,movie) + !String.IsEqual(Container($PARAM[id]).ListItem.DBType,season) + !String.IsEqual(Container($PARAM[id]).ListItem.DBType,episode) + !String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow)] | String.IsEqual(Container($PARAM[id]).ListItem.Label,$LOCALIZE[20366])">ClearProperty(ListItemDBID,home)</onfocus>
+			<onfocus condition="[!String.IsEqual(Container($PARAM[id]).ListItem.DBType,movie) + !String.IsEqual(Container($PARAM[id]).ListItem.DBType,season) + !String.IsEqual(Container($PARAM[id]).ListItem.DBType,episode) + !String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow)] | String.IsEqual(Container($PARAM[id]).ListItem.Label,$LOCALIZE[20366])">ClearProperty(ListItemDBType,home)</onfocus>
 		</control>
 	</include>
 	<!-- Global property onload unload -->
