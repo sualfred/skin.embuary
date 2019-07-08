@@ -212,6 +212,7 @@
 	<!-- ListItem overlay -->
 	<include name="listitem_overlay">
 		<param name="pvr_overlay">true</param>
+		<param name="use_unwatched_property">false</param>
 		<definition>
 			<control type="group">
 				<visible>!String.IsEqual(ListItem.DBType,artist) + !String.IsEqual(ListItem.DBType,album) + !String.IsEqual(ListItem.DBType,song)</visible>
@@ -282,46 +283,65 @@
 						<texture colordiffuse="$VAR[AccentColor]">items/bubble_small.png</texture>
 						<aspectratio>keep</aspectratio>
 					</control>
-					<control type="label">
-						<top>-4</top>
-						<left>1</left>
-						<label>$INFO[ListItem.Property(UnWatchedEpisodes)]</label>
-						<font>BubbleFont</font>
-						<textcolor>white</textcolor>
-						<shadowcolor>text_shadow</shadowcolor>
-						<selectedcolor>white</selectedcolor>
-						<align>center</align>
-						<aligny>center</aligny>
-						<visible>Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0) + ![Integer.IsGreater(Window(home).Property(tvshow.unwatchedepisodes),0) + Window.IsVisible(movieinformation)]</visible>
+					<!-- with fake property -->
+					<control type="group">
+						<visible>$PARAM[use_unwatched_property]</visible>
+						<control type="label">
+							<top>-4</top>
+							<left>1</left>
+							<label>$INFO[Window(home).Property(tvshow.unwatchedepisodes)]</label>
+							<font>BubbleFont</font>
+							<textcolor>white</textcolor>
+							<shadowcolor>text_shadow</shadowcolor>
+							<selectedcolor>white</selectedcolor>
+							<align>center</align>
+							<aligny>center</aligny>
+							<visible>Integer.IsGreater(Window(home).Property(tvshow.unwatchedepisodes),0)</visible>
+						</control>
+						<control type="label">
+							<top>6</top>
+							<left>1</left>
+							<label>&#xfe6e;</label>
+							<font>Material24</font>
+							<textcolor>white</textcolor>
+							<shadowcolor>text_shadow</shadowcolor>
+							<selectedcolor>white</selectedcolor>
+							<align>center</align>
+							<aligny>top</aligny>
+							<visible>!Integer.IsGreater(Window(home).Property(tvshow.unwatchedepisodes),0)</visible>
+						</control>
 					</control>
-					<control type="label">
-						<top>-4</top>
-						<left>1</left>
-						<label>$INFO[Window(home).Property(tvshow.unwatchedepisodes)]</label>
-						<font>BubbleFont</font>
-						<textcolor>white</textcolor>
-						<shadowcolor>text_shadow</shadowcolor>
-						<selectedcolor>white</selectedcolor>
-						<align>center</align>
-						<aligny>center</aligny>
-						<visible>Integer.IsGreater(Window(home).Property(tvshow.unwatchedepisodes),0) + Window.IsVisible(movieinformation)</visible>
-					</control>
-					<control type="label">
-						<top>6</top>
-						<left>1</left>
-						<label>&#xfe6e;</label>
-						<font>Material24</font>
-						<textcolor>white</textcolor>
-						<shadowcolor>text_shadow</shadowcolor>
-						<selectedcolor>white</selectedcolor>
-						<align>center</align>
-						<aligny>top</aligny>
-						<visible>![Integer.IsGreater(Window(home).Property(tvshow.unwatchedepisodes),0) + Window.IsVisible(movieinformation)]</visible>
-						<visible>
-							Integer.IsLess(ListItem.Property(UnWatchedEpisodes),1)
-							+ !String.IsEqual(ListItem.Overlay,OverlayUnwatched.png)
-							+ [String.IsEqual(ListItem.Overlay,OverlayWatched.png) | Integer.IsGreaterOrEqual(ListItem.PlayCount,1)]
-						</visible>
+					<!-- with real property -->
+					<control type="group">
+						<visible>!$PARAM[use_unwatched_property]</visible>
+						<control type="label">
+							<top>-4</top>
+							<left>1</left>
+							<label>$INFO[ListItem.Property(UnWatchedEpisodes)]</label>
+							<font>BubbleFont</font>
+							<textcolor>white</textcolor>
+							<shadowcolor>text_shadow</shadowcolor>
+							<selectedcolor>white</selectedcolor>
+							<align>center</align>
+							<aligny>center</aligny>
+							<visible>Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0)</visible>
+						</control>
+						<control type="label">
+							<top>6</top>
+							<left>1</left>
+							<label>&#xfe6e;</label>
+							<font>Material24</font>
+							<textcolor>white</textcolor>
+							<shadowcolor>text_shadow</shadowcolor>
+							<selectedcolor>white</selectedcolor>
+							<align>center</align>
+							<aligny>top</aligny>
+							<visible>
+								Integer.IsLess(ListItem.Property(UnWatchedEpisodes),1)
+								+ !String.IsEqual(ListItem.Overlay,OverlayUnwatched.png)
+								+ [String.IsEqual(ListItem.Overlay,OverlayWatched.png) | Integer.IsGreaterOrEqual(ListItem.PlayCount,1)]
+							</visible>
+						</control>
 					</control>
 				</control>
 				<control type="group">
