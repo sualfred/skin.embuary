@@ -108,6 +108,20 @@
 									<onclick>Select</onclick>
 								</item>
 								<item>
+									<label>$LOCALIZE[208]</label>
+									<property name="icon">&#xf40a;</property>
+									<include>ClearFocusBounceBefore</include>
+									<onclick>RunScript(script.embuary.helper,action=playfolder,dbid=$INFO[ListItem.DBID])</onclick>
+									<visible>!String.IsEmpty(ListItem.DBID) + String.IsEqual(ListItem.DBType,tvshow)</visible>
+								</item>
+								<item>
+									<label>$LOCALIZE[31323]</label>
+									<property name="icon">&#xf49d;</property>
+									<include>ClearFocusBounceBefore</include>
+									<onclick>RunScript(script.embuary.helper,action=playfolder,dbid=$INFO[ListItem.DBID],shuffle=true)</onclick>
+									<visible>!String.IsEmpty(ListItem.DBID) + String.IsEqual(ListItem.DBType,tvshow)</visible>
+								</item>
+								<item>
 									<visible>!String.IsEmpty(ListItem.Trailer)</visible>
 									<label>$LOCALIZE[20410]</label>
 									<property name="icon">&#xf230;</property>

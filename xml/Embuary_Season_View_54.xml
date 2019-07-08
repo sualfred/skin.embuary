@@ -103,6 +103,20 @@
 									<onclick>Select</onclick>
 								</item>
 								<item>
+									<label>$LOCALIZE[208]</label>
+									<property name="icon">&#xf40a;</property>
+									<include>ClearFocusBounceBefore</include>
+									<onclick>RunScript(script.embuary.helper,action=playfolder,dbid=$INFO[ListItem.DBID],type=season)</onclick>
+									<visible>!String.IsEmpty(ListItem.DBID) + String.IsEqual(ListItem.DBType,season) + !String.IsEqual(ListItem.Label,$LOCALIZE[20366])</visible>
+								</item>
+								<item>
+									<label>$LOCALIZE[31323]</label>
+									<property name="icon">&#xf49d;</property>
+									<include>ClearFocusBounceBefore</include>
+									<onclick>RunScript(script.embuary.helper,action=playfolder,dbid=$INFO[ListItem.DBID],type=season,shuffle=true)</onclick>
+									<visible>!String.IsEmpty(ListItem.DBID) + String.IsEqual(ListItem.DBType,season) + !String.IsEqual(ListItem.Label,$LOCALIZE[20366])</visible>
+								</item>
+								<item>
 									<visible>!String.IsEmpty(ListItem.Plot)</visible>
 									<label>$LOCALIZE[207]</label>
 									<property name="icon">&#xf9a9;</property>

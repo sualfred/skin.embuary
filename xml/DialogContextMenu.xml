@@ -27,8 +27,21 @@
 					<include content="ContextButton"/>
 					<label>$LOCALIZE[31326]</label>
 					<onclick>RunScript(script.embuary.helper,action=playcinema)</onclick>
-					<visible>!String.IsEmpty(Window(home).Property(ListItemDBID)) + $EXP[CinemaMode]</visible>
+					<visible>!String.IsEmpty(Window(home).Property(ListItemDBID)) + [String.IsEqual(Window(home).Property(ListItemDBType),movie) | String.IsEqual(Window(home).Property(ListItemDBType),episode)] + $EXP[CinemaMode]</visible>
 					<visible>!String.IsEqual(Control.GetLabel(1002),$LOCALIZE[12021]) + String.IsEqual(Control.GetLabel(1001),$LOCALIZE[208])</visible>
+				</control>
+				<control type="button" id="1998">
+					<include content="ContextButton"/>
+					<label>$LOCALIZE[22083]</label>
+					<onclick>RunScript(script.embuary.helper,action=playfolder,dbid=$INFO[Window(home).Property(ListItemDBID)],type=Window(home).Property(ListItemDBType))</onclick>
+					<visible>!String.IsEqual(Control.GetLabel(1004),$LOCALIZE[208])</visible>
+					<visible>!String.IsEmpty(Window(home).Property(ListItemDBID)) + [String.IsEqual(Window(home).Property(ListItemDBType),tvshow) | String.IsEqual(Window(home).Property(ListItemDBType),season)]</visible>
+				</control>
+				<control type="button" id="1997">
+					<include content="ContextButton"/>
+					<label>$LOCALIZE[22083] ($LOCALIZE[31323])</label>
+					<onclick>RunScript(script.embuary.helper,action=playfolder,dbid=$INFO[Window(home).Property(ListItemDBID)],type=Window(home).Property(ListItemDBType),shuffle=true)</onclick>
+					<visible>!String.IsEmpty(Window(home).Property(ListItemDBID)) + [String.IsEqual(Window(home).Property(ListItemDBType),tvshow) | String.IsEqual(Window(home).Property(ListItemDBType),season)]</visible>
 				</control>
 				<control type="button" id="1000">
 					<include content="ContextButton"/>
