@@ -2,6 +2,9 @@
 <window>
 	<defaultcontrol>1999</defaultcontrol>
 	<include>PropertyIncludes</include>
+	<onload condition="Control.IsVisible(1999)">SetFocus(1999)</onload>
+	<onload condition="!Control.IsVisible(1999) + Control.IsVisible(1998)">SetFocus(1998)</onload>
+	<onload condition="!Control.IsVisible(1999) + !Control.IsVisible(1998) + Control.IsVisible(1997)">SetFocus(1997)</onload>
 	<controls>
 		<include content="DiffuseMask"/>
 		<control type="group">
