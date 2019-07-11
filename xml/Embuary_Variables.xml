@@ -609,6 +609,10 @@
 		<value condition="!Skin.HasSetting(BlurEnabled)">$VAR[BackgroundSource]</value>
 		<value>$INFO[Window(home).Property(listitem_blurred)]</value>
 	</variable>
+	<variable name="BackgroundBlurRadius">
+		<value condition="!String.IsEmpty(Skin.String(BlurRadius)) + !String.IsEqual(Skin.String(BlurRadius),2)">$INFO[Skin.String(BlurRadius)]</value>
+		<value>2 ($LOCALIZE[571])</value>
+	</variable>
 	<variable name="BackgroundImageColor">
 		<value condition="String.IsEqual(Skin.CurrentColourTheme,SKINDEFAULT) | String.StartsWith(Skin.CurrentColourTheme,Default)">ff000000</value>
 		<value>$INFO[Window(home).Property(listitem_color)]</value>
