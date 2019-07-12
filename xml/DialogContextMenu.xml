@@ -51,7 +51,7 @@
 				<control type="button" id="1999">
 					<include content="ContextButton"/>
 					<label>$LOCALIZE[31326]</label>
-					<onclick>RunScript(script.embuary.helper,action=playcinema,dbid=$INFO[Window(home).Property(ListItemDBID)],type=$INFO[Window(home).Property(ListItemDBType)],title='$ESCINFO[Window(home).Property(ListItemLabel)]')</onclick>
+					<onclick>RunScript(script.embuary.helper,action=playcinema,dbid=$INFO[Window(home).Property(ListItemDBID)],type=$INFO[Window(home).Property(ListItemDBType)])</onclick>
 					<visible>!String.IsEmpty(Window(home).Property(ListItemDBID)) + [String.IsEqual(Window(home).Property(ListItemDBType),movie) | String.IsEqual(Window(home).Property(ListItemDBType),episode)] + $EXP[CinemaMode]</visible>
 					<visible>!String.IsEqual(Control.GetLabel(1002),$LOCALIZE[12021]) + String.IsEqual(Control.GetLabel(1001),$LOCALIZE[208])</visible>
 				</control>
