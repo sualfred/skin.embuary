@@ -602,7 +602,10 @@
 		<value condition="Skin.HasSetting(ShowRandomBackgroundImage) + !String.IsEmpty(Control.GetLabel(100001))">$INFO[Control.GetLabel(100001)]</value>
 		<!-- non listitem fanarts -->
 		<value condition="String.StartsWith(Container.Folderpath,plugin://plugin.video.embycon) + !String.IsEmpty(Window(home).Property(plugin.video.embycon-random-gb))">$INFO[Window(home).Property(plugin.video.embycon-random-gb)]</value>
-		<value condition="!String.IsEmpty(Window(home).Property(EmbuaryBackground))">$INFO[Window(home).Property(EmbuaryBackground)]</value>
+		<value condition="[Window.IsVisible(1120) | Containter.Content(sets) | Container.Content(movies) | [Window.IsVisible(1130) + String.IsEqual(Control.Getlabel(198),movies)]] + !String.IsEmpty(Window(home).Property(EmbuaryBackgroundMovies))">$INFO[Window(home).Property(EmbuaryBackgroundMovies)]</value>
+		<value condition="[Window.IsVisible(1121) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | [Window.IsVisible(1130) + String.IsEqual(Control.Getlabel(198),tvshows)]] + !String.IsEmpty(Window(home).Property(EmbuaryBackgroundTVShows))">$INFO[Window(home).Property(EmbuaryBackgroundTVShows)]</value>
+		<value condition="[Window.IsVisible(1122) | Window.IsVisible(MyMusicNav.xml)] + !String.IsEmpty(Window(home).Property(EmbuaryBackgroundMusic))">$INFO[Window(home).Property(EmbuaryBackgroundMusic)]</value>
+		<value condition="!String.IsEmpty(Window(home).Property(EmbuaryBackgroundVideos))">$INFO[Window(home).Property(EmbuaryBackgroundVideos)]</value>
 		<value>$INFO[Window(home).Property(plugin.video.embycon-random-gb)]</value>
 	</variable>
 	<variable name="BackgroundImage">
