@@ -35,35 +35,30 @@
 					</control>
 					<!-- poster -->
 					<control type="group">
-						<visible>[!String.IsEmpty(Container.ShowTitle) | [String.Contains(Container.Folderpath,plugin.video.embycon) + [String.Contains(Container.Folderpath,media_type=season) | String.Contains(Container.Folderpath,media_type=series)]]] + [[!Container.HasParent + !String.IsEmpty(ListItemAbsolute(0).Art(tvshow.poster))] | [Container.HasParent + !String.IsEmpty(ListItemAbsolute(1).Art(tvshow.poster))]]</visible>
+						<visible>
+							!String.IsEmpty(Container.ShowTitle)
+							| [String.Contains(Container.Folderpath,plugin.video.embycon) + [String.Contains(Container.Folderpath,media_type=season) | String.Contains(Container.Folderpath,media_type=series)]]
+						</visible>
+						<visible>
+							[!Container.HasParent + [!String.IsEmpty(ListItemAbsolute(0).Art(tvshow.poster)) | !String.IsEmpty(ListItemAbsolute(0).Art(season.poster))]]
+							| [Container.HasParent + [!String.IsEmpty(ListItemAbsolute(1).Art(tvshow.poster)) | !String.IsEmpty(ListItemAbsolute(1).Art(season.poster))]]
+						</visible>
 						<control type="image">
 							<left>-4</left>
 							<top>-4</top>
 							<width>88</width>
 							<height>128</height>
-							<texture background="true">$INFO[ListItemAbsolute(0).Art(tvshow.poster)]</texture>
+							<texture background="true">$VAR[IconBigList]</texture>
 							<aspectratio scalediffuse="false">stretch</aspectratio>
 							<bordersize>4</bordersize>
 							<bordertexture border="4">items/shadow2.png</bordertexture>
-							<visible>!Container.HasParent</visible>
-						</control>
-						<control type="image">
-							<left>-4</left>
-							<top>-4</top>
-							<width>88</width>
-							<height>128</height>
-							<texture background="true">$INFO[ListItemAbsolute(1).Art(tvshow.poster)]</texture>
-							<aspectratio scalediffuse="false">stretch</aspectratio>
-							<bordersize>4</bordersize>
-							<bordertexture border="4">items/shadow2.png</bordertexture>
-							<visible>Container.HasParent</visible>
 						</control>
 					</control>
 					<!-- buttons -->
 					<control type="group">
 						<animation effect="slide" end="110,0" time="0" condition="[!String.IsEmpty(Container.ShowTitle) | [String.Contains(Container.Folderpath,plugin.video.embycon) + [String.Contains(Container.Folderpath,media_type=season) | String.Contains(Container.Folderpath,media_type=series)]]] + [[!Container.HasParent + !String.IsEmpty(ListItemAbsolute(0).Art(tvshow.poster))] | [Container.HasParent + !String.IsEmpty(ListItemAbsolute(1).Art(tvshow.poster))]]">Conditional</animation>
 						<control type="label">
-							<top>1</top>
+							<top>-4</top>
 							<height>50</height>
 							<right>400</right>
 							<label>$VAR[View59Headline]</label>
@@ -71,7 +66,7 @@
 							<font>Reg37</font>
 						</control>
 						<control type="grouplist" id="100">
-							<top>55</top>
+							<top>58</top>
 							<height>70</height>
 							<orientation>horizontal</orientation>
 							<itemgap>5</itemgap>

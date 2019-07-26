@@ -705,6 +705,12 @@
 		<value condition="!String.IsEmpty(ListItem.Art(thumb)) + !String.StartsWith(ListItem.Icon,Default)">$INFO[ListItem.Art(thumb)]</value>
 		<value condition="!String.StartsWith(ListItem.Icon,Default)">$INFO[ListItem.Icon]</value>
 	</variable>
+	<variable name="IconBigList">
+		<value condition="Container.HasParent + !String.IsEmpty(ListItemAbsolute(1).Art(season.poster))">$INFO[ListItemAbsolute(1).Art(season.poster)]</value>
+		<value condition="Container.HasParent">$INFO[ListItemAbsolute(1).Art(tvshow.poster)]</value>
+		<value condition="!String.IsEmpty(ListItemAbsolute(0).Art(season.poster))">$INFO[ListItemAbsolute(0).Art(season.poster)]</value>
+		<value>$INFO[ListItemAbsolute(0).Art(tvshow.poster)]</value>
+	</variable>
 	<variable name="PVRWidgetMainListLabel">
 		<value condition="!String.IsEmpty(ListItem.Property(IsDummy))">$INFO[ListItem.Label2]</value>
 		<value condition="!String.IsEmpty(ListItem.Title)">$INFO[ListItem.Title]</value>
