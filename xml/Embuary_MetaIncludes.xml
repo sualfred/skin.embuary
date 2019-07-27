@@ -1016,22 +1016,14 @@
 				<animation effect="slide" end="0,2" time="0" condition="true">Conditional</animation>
 				<width>24</width>
 				<height>20</height>
-				<texture>icons/rating/rotten_fresh.png</texture>
+				<texture>$VAR[RottenIcon]</texture>
 				<aspectratio>keep</aspectratio>
-				<visible>!String.IsEmpty($PARAM[type].UserRating) + Integer.IsGreater($PARAM[type].UserRating,59) + [System.HasAddon(plugin.video.emby) | String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) | String.Contains(Player.Filenameandpath,/emby/)]</visible>
-			</control>e
-			<control type="image">
-				<animation effect="slide" end="0,2" time="0" condition="true">Conditional</animation>
-				<width>24</width>
-				<height>20</height>
-				<texture>icons/rating/rotten_rotten.png</texture>
-				<aspectratio>keep</aspectratio>
-				<visible>!String.IsEmpty($PARAM[type].UserRating) + !Integer.IsGreater($PARAM[type].UserRating,59) + [System.HasAddon(plugin.video.emby) | String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) | String.Contains(Player.Filenameandpath,/emby/)]</visible>
+				<visible>[[System.HasAddon(plugin.video.emby) | System.HasAddon(plugin.video.embycon)] + !String.IsEmpty(ListItem.UserRating)] | !String.IsEmpty(ListItem.Rating(rottentomatoes)) | !String.IsEmpty(Container(2003).ListItem.Rating(rottentomatoes))</visible>
 			</control>
 			<control type="label">
-				<label>$INFO[$PARAM[type].UserRating]   </label>
+				<label>$VAR[RottenRating,,   ]</label>
 				<include>MetaLabel</include>
-				<visible>!String.IsEmpty($PARAM[type].UserRating) + [System.HasAddon(plugin.video.emby) | String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) | String.Contains(Player.Filenameandpath,/emby/)]</visible>
+				<visible>[[System.HasAddon(plugin.video.emby) | System.HasAddon(plugin.video.embycon)] + !String.IsEmpty(ListItem.UserRating)] | !String.IsEmpty(ListItem.Rating(rottentomatoes)) | !String.IsEmpty(Container(2003).ListItem.Rating(rottentomatoes))</visible>
 			</control>
 		</definition>
 	</include>

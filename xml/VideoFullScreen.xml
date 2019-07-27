@@ -5,6 +5,11 @@
 	<onload>AlarmClock(PreloadTimeout,ClearProperty(showvideoinfo,home),00:02,silent)</onload>
 	<include>PropertyIncludes</include>
 	<controls>
+		<control type="list" id="2003">
+			<visible>VideoPlayer.Content(movies)</visible>
+			<include>HiddenObject</include>
+			<content limit="1">$VAR[RottenSource]</content>
+		</control>
 		<include content="DiffuseMask">
 			<param name="visible">Player.Caching | !String.IsEmpty(PVR.ChannelNumberInput)</param>
 			<param name="colordiffuse" value="AA000000"/>
@@ -187,28 +192,17 @@
 							<animation effect="slide" end="-4,4" time="0" condition="true">Conditional</animation>
 							<width>24</width>
 							<height>20</height>
-							<texture>icons/rating/rotten_fresh.png</texture>
+							<texture>$VAR[RottenIcon]</texture>
 							<aspectratio>keep</aspectratio>
-							<visible>!String.IsEmpty(VideoPlayer.UserRating) + Integer.IsGreater(VideoPlayer.UserRating,59) + [System.HasAddon(plugin.video.emby) | String.Contains(Player.Filenameandpath,/emby/)]</visible>
-							<visible>!String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
-						</control>
-						<control type="image" id="99">
-							<animation effect="slide" end="-4,4" time="0" condition="true">Conditional</animation>
-							<width>24</width>
-							<height>20</height>
-							<texture>icons/rating/rotten_rotten.png</texture>
-							<aspectratio>keep</aspectratio>
-							<visible>!String.IsEmpty(VideoPlayer.UserRating) + !Integer.IsGreater(VideoPlayer.UserRating,59) + [System.HasAddon(plugin.video.emby) | String.Contains(Player.Filenameandpath,/emby/)]</visible>
 							<visible>!String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
 						</control>
 						<control type="label" id="99">
 							<width>auto</width>
 							<height>30</height>
 							<aligny>center</aligny>
-							<label>$INFO[VideoPlayer.UserRating]   </label>
+							<label>$VAR[RottenRating,,   ]</label>
 							<font>Reg24</font>
 							<textcolor>white</textcolor>
-							<visible>!String.IsEmpty(VideoPlayer.UserRating) + [System.HasAddon(plugin.video.emby) | String.Contains(Player.Filenameandpath,/emby/)]</visible>
 							<visible>!String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
 						</control>
 					</control>
