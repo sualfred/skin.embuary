@@ -1907,6 +1907,7 @@
 	<variable name="RottenSource">
 		<value condition="!Skin.HasSetting(DisableEmbyUserRating) + [System.HasAddon(plugin.video.emby) | String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) | String.Contains(Player.Filenameandpath,/emby/)] + !String.IsEmpty(ListItem.UserRating)">-</value>
 		<value condition="!Skin.HasSetting(DisableEmbyUserRating) + [System.HasAddon(plugin.video.emby) | String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) | String.Contains(Player.Filenameandpath,/emby/)] + !String.IsEmpty(VideoPlayer.UserRating)">-</value>
+		<value condition="String.IsEmpty(ListItem.DBID) + String.IsEmpty(VideoPlayer.DBID)">-</value>
 		<value condition="Container.Content(movies) + String.IsEmpty(ListItem.Rating(rottentomatoes))">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[ListItem.DBID]&amp;type=movie</value>
 		<value condition="Container.Content(tvshows) + String.IsEmpty(ListItem.Rating(rottentomatoes))">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[ListItem.DBID]&amp;type=tvshow</value>
 		<value condition="VideoPlayer.Content(movies) + [Window.IsVisible(fullscreenvideo) | Window.IsVisible(fullscreeninfo)]">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[VideoPlayer.DBID]&amp;type=movie</value>

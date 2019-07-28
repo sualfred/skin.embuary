@@ -1018,12 +1018,24 @@
 				<height>20</height>
 				<texture>$VAR[RottenIcon]</texture>
 				<aspectratio>keep</aspectratio>
-				<visible>[[System.HasAddon(plugin.video.emby) | System.HasAddon(plugin.video.embycon)] + !String.IsEmpty(ListItem.UserRating)] | !String.IsEmpty(ListItem.Rating(rottentomatoes)) | !String.IsEmpty(Container(2003).ListItem.Rating(rottentomatoes))</visible>
+				<visible>
+					[
+					[System.HasAddon(plugin.video.emby) | System.HasAddon(plugin.video.embycon)] + !String.IsEmpty(ListItem.UserRating) + !Skin.HasSetting(DisableEmbyUserRating)
+					]
+					| !String.IsEmpty(ListItem.Rating(rottentomatoes))
+					| !String.IsEmpty(Container(2003).ListItem.Rating(rottentomatoes))
+				</visible>
 			</control>
 			<control type="label">
 				<label>$VAR[RottenRating,,   ]</label>
 				<include>MetaLabel</include>
-				<visible>[[System.HasAddon(plugin.video.emby) | System.HasAddon(plugin.video.embycon)] + !String.IsEmpty(ListItem.UserRating)] | !String.IsEmpty(ListItem.Rating(rottentomatoes)) | !String.IsEmpty(Container(2003).ListItem.Rating(rottentomatoes))</visible>
+				<visible>
+					[
+					[System.HasAddon(plugin.video.emby) | System.HasAddon(plugin.video.embycon)] + !String.IsEmpty(ListItem.UserRating) + !Skin.HasSetting(DisableEmbyUserRating)
+					]
+					| !String.IsEmpty(ListItem.Rating(rottentomatoes))
+					| !String.IsEmpty(Container(2003).ListItem.Rating(rottentomatoes))
+				</visible>
 			</control>
 		</definition>
 	</include>

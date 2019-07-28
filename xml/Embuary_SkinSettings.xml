@@ -691,6 +691,13 @@
 			<selected>!Skin.HasSetting(HideLibraryEditButtons)</selected>
 			<label>$LOCALIZE[31155]</label>
 		</control>
+		<control type="radiobutton" id="$PARAM[id]24">
+			<include>SettingsButton</include>
+			<onclick>Skin.ToggleSetting(DisableEmbyUserRating)</onclick>
+			<selected>!Skin.HasSetting(DisableEmbyUserRating)</selected>
+			<label>$LOCALIZE[31370]</label>
+			<enable>[System.HasAddon(plugin.video.emby) | System.HasAddon(plugin://plugin.video.embycon)]</enable>
+		</control>
 		<!-- PVR -->
 		<include content="SkinSettingsHeadlineLabel">
 			<param name="id" value="$PARAM[id]30"/>
