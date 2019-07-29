@@ -453,14 +453,15 @@
 		<value condition="!String.IsEmpty(ListItem.DBID)">plugin://script.embuary.helper/?info=getseasons&amp;title=$INFO[ListItem.TVShowTitle]&amp;allseasons=false</value>
 		<value>-</value>
 	</variable>
-	<!-- Embcon widget vars -->
 	<variable name="EmbyConLabel">
 		<value condition="!Skin.HasSetting(HideEmbyConLabel)"> [COLOR text_sublabel](EmbyCon)[/COLOR]</value>
 	</variable>
-	<variable name="RecentEpisodes_Mainlabel">
-		<value>$INFO[ListItem.TVShowTitle]</value>
+	<variable name="MediaMainlabel">
+		<value condition="String.IsEqual(ListItem.DBType,episode)">$INFO[ListItem.TVShowTitle]</value>
+		<value condition="String.IsEqual(ListItem.DBType,tvshow)">$INFO[ListItem.TVShowTitle]</value>
+		<value>$INFO[ListItem.Title]</value>
 	</variable>
-	<variable name="RecentEpisodes_Sublabel">
+	<variable name="MediaSublabel">
 		<value condition="String.IsEqual(ListItem.DBType,episode)">$VAR[ListItemSeasonEpisode]$INFO[ListItem.Title]</value>
 		<value>$INFO[ListItem.Year]</value>
 	</variable>
