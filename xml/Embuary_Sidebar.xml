@@ -1,5 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+	<include name="SidebarItemLayout">
+		<param name="focused">false</param>
+		<definition>
+			<control type="group">
+				<width>$PARAM[width]</width>
+				<height>50</height>
+				<control type="image">
+					<height>50</height>
+					<width>$PARAM[width]</width>
+					<texture colordiffuse="sidepanel_focus">common/white.jpg</texture>
+					<aspectratio>stretch</aspectratio>
+					<visible>Control.HasFocus($PARAM[id]) + $PARAM[focused]</visible>
+				</control>
+				<control type="label">
+					<top>6</top>
+					<left>45</left>
+					<height>40</height>
+					<aligny>center</aligny>
+					<align>left</align>
+					<font>Material20</font>
+					<textcolor>sidepanel_textcolor</textcolor>
+					<label>$VAR[SidebarIcon]</label>
+				</control>
+				<control type="label">
+					<top>5</top>
+					<left>90</left>
+					<right>15</right>
+					<height>40</height>
+					<align>left</align>
+					<aligny>center</aligny>
+					<font>Reg22</font>
+					<textcolor>sidepanel_textcolor</textcolor>
+					<label>$INFO[ListItem.Label]</label>
+				</control>
+			</control>
+		</definition>
+	</include>
 
 	<!-- Side Menu Button Layout -->
 	<include name="SideButton">
@@ -55,6 +92,8 @@
 				</control>
 				<control type="button" id="$PARAM[id]">
 					<top>5</top>
+					<onfocus>Control.Move(902,$INFO[Container(902).CurrentItem,-])</onfocus>
+					<onfocus>Control.Move(902,1)</onfocus>
 					<onback>$PARAM[onright]</onback>
 					<onup>$PARAM[onup]</onup>
 					<onright>$PARAM[onright]</onright>
@@ -94,17 +133,19 @@
 		<definition>
 			<control type="group" id="99$PARAM[nr]">
 				<visible>$PARAM[visible]</visible>
-				<height>54</height>
+				<height>50</height>
+				<top>$PARAM[top]</top>
 				<control type="image">
 					<top>9</top>
 					<height>1</height>
 					<width>$PARAM[width]</width>
 					<texture colordiffuse="grid_border">common/white.jpg</texture>
 					<aspectratio>stretch</aspectratio>
+					<visible>false</visible>
 				</control>
 				<!-- headline -->
 				<control type="label">
-					<top>20</top>
+					<top>10</top>
 					<width>$PARAM[width]</width>
 					<height>50</height>
 					<font>Med22</font>
@@ -113,12 +154,214 @@
 					<textoffsetx>15</textoffsetx>
 					<aligny>top</aligny>
 				</control>
+				<control type="label">
+					<top>10</top>
+					<width>$PARAM[width]</width>
+					<height>50</height>
+					<font>Med22</font>
+					<textcolor>$PARAM[color]</textcolor>
+					<label>$PARAM[label2]</label>
+					<textoffsetx>15</textoffsetx>
+					<aligny>top</aligny>
+					<align>right</align>
+				</control>
 			</control>
 		</definition>
 	</include>
 
-	<!-- Side Menu -->
+	<!-- Side Panel -->
 	<include name="SidePanel">
+		<param name="width">450</param>
+		<param name="onright">10</param>
+		<definition>
+			<include content="DiffuseMask">
+				<param name="visible">ControlGroup(9999).HasFocus</param>
+			</include>
+			<control type="group" id="9999">
+				<animation type="Conditional" condition="ControlGroup(9999).HasFocus" reversible="true">
+					<effect type="slide" start="0,0" end="$PARAM[width],0" time="400" tween="cubic" easing="inout" />
+				</animation>
+				<animation type="WindowClose" condition="ControlGroup(9999).HasFocus" reversible="true">
+					<effect type="slide" start="0,0" end="-$PARAM[width],0" time="400" tween="cubic" easing="out" />
+				</animation>
+				<top>15</top>
+				<left>-$PARAM[width]</left>
+				<width>$PARAM[width]</width>
+
+				<!-- background -->
+				<control type="image">
+					<left>400</left>
+					<width>100</width>
+					<height>100%</height>
+					<texture colordiffuse="black">common/panel_shadow.png</texture>
+					<aspectratio>stretch</aspectratio>
+					<visible>ControlGroup(9999).HasFocus</visible>
+				</control>
+				<include content="ContentPanel">
+					<param name="width">$PARAM[width]</param>
+					<param name="height">100%</param>
+					<param name="color">sidepanel_background</param>
+				</include>
+
+				<!-- home -->
+				<control type="list" id="900">
+					<orientation>vertical</orientation>
+					<height>50</height>
+					<width>$PARAM[width]</width>
+					<scrolltime>0</scrolltime>
+					<onup>noop</onup>
+					<ondown>SetFocus(901)</ondown>
+					<onright>$PARAM[onright]</onright>
+					<onback>$PARAM[onright]</onback>
+					<onfocus>Control.Move(901,$INFO[Container(901).CurrentItem,-])</onfocus>
+					<onfocus>Control.Move(901,1)</onfocus>
+					<itemlayout height="50" width="$PARAM[width]">
+						<include content="SidebarItemLayout">
+							<param name="id" value="900"/>
+							<param name="width" value="$PARAM[width]"/>
+						</include>
+					</itemlayout>
+					<focusedlayout height="50" width="$PARAM[width]">
+						<include content="SidebarItemLayout">
+							<param name="id" value="900"/>
+							<param name="width" value="$PARAM[width]"/>
+							<param name="focused" value="true"/>
+						</include>
+					</focusedlayout>
+					<content>
+						<item>
+							<label>$LOCALIZE[31000]</label>
+							<onclick>ActivateWindow(home)</onclick>
+							<icon>&#xf2dc;</icon>
+						</item>
+					</content>
+				</control>
+
+
+				<!-- menu -->
+				<include content="SideHeadline">
+					<param name="top">50</param>
+					<param name="label">14211</param>
+					<param name="label2">$INFO[Container(901).CurrentPage] / $INFO[Container(901).NumPages]</param>
+				</include>
+
+				<control type="list" id="901">
+					<top>100</top>
+					<orientation>vertical</orientation>
+					<height>650</height>
+					<width>$PARAM[width]</width>
+					<scrolltime>0</scrolltime>
+					<onup>SetFocus(900)</onup>
+					<ondown>SetFocus(902,0)</ondown>
+					<onright>$PARAM[onright]</onright>
+					<onback>$PARAM[onright]</onback>
+					<itemlayout height="50" width="$PARAM[width]">
+						<include content="SidebarItemLayout">
+							<param name="id" value="901"/>
+							<param name="width" value="$PARAM[width]"/>
+						</include>
+					</itemlayout>
+					<focusedlayout height="50" width="$PARAM[width]">
+						<include content="SidebarItemLayout">
+							<param name="id" value="901"/>
+							<param name="width" value="$PARAM[width]"/>
+							<param name="focused" value="true"/>
+						</include>
+					</focusedlayout>
+					<content><include>skinshortcuts-mainmenu</include></content>
+				</control>
+
+
+				<!-- seperator -->
+				<include content="SideHeadline">
+					<param name="top">750</param>
+					<param name="label">$LOCALIZE[13000]</param>
+				</include>
+
+				<control type="list" id="902">
+					<top>800</top>
+					<orientation>vertical</orientation>
+					<height>650</height>
+					<width>$PARAM[width]</width>
+					<scrolltime>0</scrolltime>
+					<onup>SetFocus(900)</onup>
+					<ondown>SetFocus(911)</ondown>
+					<onright>$PARAM[onright]</onright>
+					<onback>$PARAM[onright]</onback>
+					<itemlayout height="50" width="$PARAM[width]">
+						<include content="SidebarItemLayout">
+							<param name="id" value="902"/>
+							<param name="width" value="$PARAM[width]"/>
+						</include>
+					</itemlayout>
+					<focusedlayout height="50" width="$PARAM[width]">
+						<include content="SidebarItemLayout">
+							<param name="id" value="902"/>
+							<param name="width" value="$PARAM[width]"/>
+							<param name="focused" value="true"/>
+						</include>
+					</focusedlayout>
+					<content>
+						<item>
+							<label>$LOCALIZE[31226]</label>
+							<icon>&#xf342;</icon>
+							<onclick>RunScript(plugin.video.embycon,0,?mode=CHANGE_USER)</onclick>
+							<property name="forced_icon">true</property>
+							<visible>!Skin.HasSetting(KioskMode) + !Skin.HasSetting(HideSPEmbyConUser) + System.HasAddon(plugin.video.embycon)</visible>
+						</item>
+						<item>
+							<label>$LOCALIZE[31129]</label>
+							<icon>&#xf450;</icon>
+							<onclick>Notification($LOCALIZE[24001],$LOCALIZE[31162])</onclick>
+							<onclick>UpdateAddonRepos</onclick>
+							<onclick>UpdateLocalAddons</onclick>
+							<property name="forced_icon">true</property>
+							<visible>!Skin.HasSetting(KioskMode) + !Skin.HasSetting(HideSPAddonUpdate)</visible>
+						</item>
+						<item>
+							<label>$LOCALIZE[799]</label>
+							<icon>&#xfcdb;</icon>
+							<onclick>SetFocus($PARAM[onright])</onclick>
+							<onclick>SetProperty(Dialog.1.Label,$LOCALIZE[3])</onclick>
+							<onclick>SetProperty(Dialog.1.BuiltIn,UpdateLibrary(video))</onclick>
+							<onclick>SetProperty(Dialog.2.Label,$LOCALIZE[2])</onclick>
+							<onclick>SetProperty(Dialog.2.BuiltIn,UpdateLibrary(music))</onclick>
+							<onclick>SetProperty(Dialog.3.Label,$LOCALIZE[593])</onclick>
+							<onclick>SetProperty(Dialog.3.BuiltIn,UpdateLibrary(music)||UpdateLibrary(video))</onclick>
+							<onclick>RunScript(script.embuary.helper,action=createselect,header=$LOCALIZE[653])</onclick>
+							<property name="forced_icon">true</property>
+							<visible>!Skin.HasSetting(KioskMode) + !Skin.HasSetting(HideSPLibUpdate)</visible>
+						</item>
+						<item>
+							<label>$LOCALIZE[5]</label>
+							<icon>&#xf493;</icon>
+							<onclick>ActivateWindow(settings)</onclick>
+							<property name="forced_icon">true</property>
+							<visible>!Skin.HasSetting(KioskMode)</visible>
+						</item>
+						<item>
+							<label>$LOCALIZE[20183]</label>
+							<icon>&#xf0e4;</icon>
+							<onclick>ReloadSkin()</onclick>
+							<property name="forced_icon">true</property>
+							<visible>!Skin.HasSetting(HideSPReload)</visible>
+						</item>
+						<item>
+							<label>$LOCALIZE[33060]</label>
+							<icon>&#xf425;</icon>
+							<onclick>ActivateWindow(shutdownmenu)</onclick>
+							<property name="forced_icon">true</property>
+						</item>
+
+					</content>
+				</control>
+			</control>
+
+		</definition>
+	</include>
+
+	<!-- Side Menu -->
+	<include name="SidePanel2">
 		<param name="width">450</param>
 		<param name="onright">10</param>
 		<definition>
@@ -128,6 +371,9 @@
 			<control type="group">
 				<animation type="Conditional" condition="ControlGroup(9999).HasFocus" reversible="true">
 					<effect type="slide" start="0,0" end="$PARAM[width],0" time="400" tween="cubic" easing="inout" />
+				</animation>
+				<animation type="WindowClose" condition="ControlGroup(9999).HasFocus" reversible="true">
+					<effect type="slide" start="0,0" end="-$PARAM[width],0" time="400" tween="cubic" easing="out" />
 				</animation>
 				<left>-$PARAM[width]</left>
 				<!-- background -->
@@ -151,186 +397,6 @@
 					<height>1062</height>
 					<orientation>vertical</orientation>
 					<itemgap>0</itemgap>
-					<!--top-->
-					<include content="SideButton">
-						<param name="id">900</param>
-						<param name="onup">917</param>
-						<param name="ondown">901</param>
-						<param name="onright">$PARAM[onright]</param>
-						<param name="label">31000</param>
-						<param name="icon">&#xf2dc;</param>
-						<param name="action1">ActivateWindow(Home)</param>
-					</include>
-					<!-- seperator -->
-					<include content="SideHeadline">
-						<param name="nr">1</param>
-						<param name="label">14211</param>
-						<param name="visible">!Skin.HasSetting(HideSPMovies) | !Skin.HasSetting(HideSPTVshows) | !Skin.HasSetting(HideSPVideos) | !Skin.HasSetting(HideSPPVR) | !Skin.HasSetting(HideSPMusic) | !Skin.HasSetting(HideSPPictures)</param>
-					</include>
-					<!--media-->
-					<include content="SideButton">
-						<param name="id">901</param>
-						<param name="onup">900</param>
-						<param name="ondown">902</param>
-						<param name="onright">$PARAM[onright]</param>
-						<param name="label">342</param>
-						<param name="icon">&#xf230;</param>
-
-						<param name="condition1">!Library.HasContent(movies) + !System.HasAddon(plugin.video.embycon)</param>
-						<param name="action1">ActivateWindow(Videos,root)</param>
-
-						<param name="condition2">!Skin.HasSetting(NoSPHubs) + [Library.HasContent(movies) | System.HasAddon(plugin.video.embycon)]</param>
-						<param name="action2">ActivateWindow(1120)</param>
-
-						<param name="condition3">Skin.HasSetting(NoSPHubs) + Library.HasContent(movies)</param>
-						<param name="action3">ActivateWindow(videos,videodb://movies/titles/,return)</param>
-
-						<param name="condition4">Skin.HasSetting(NoSPHubs) + !Library.HasContent(movies) + System.HasAddon(plugin.video.embycon)</param>
-						<param name="action4">ActivateWindow(videos,plugin://plugin.video.embycon/?media_type=Movies&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fFields%3dDateCreated%2cEpisodeCount%2cSeasonCount%2cPath%2cGenres%2cStudios%2cEtag%2cMediaStreams%2cOverview%26Recursive%3dtrue%26IncludeItemTypes%3dMovie%26ImageTypeLimit%3d1%26format%3djson,return)</param>
-
-						<param name="visible">!Skin.HasSetting(HideSPMovies)</param>
-					</include>
-					<include content="SideButton">
-						<param name="id">902</param>
-						<param name="onup">901</param>
-						<param name="ondown">903</param>
-						<param name="onright">$PARAM[onright]</param>
-						<param name="label">20343</param>
-						<param name="icon">&#xf502;</param>
-
-						<param name="condition1">!Library.HasContent(tvshows) + !System.HasAddon(plugin.video.embycon)</param>
-						<param name="action1">ActivateWindow(Videos,root)</param>
-
-						<param name="condition2">!Skin.HasSetting(NoSPHubs) + [Library.HasContent(tvshows) | System.HasAddon(plugin.video.embycon)]</param>
-						<param name="action2">ActivateWindow(1121)</param>
-
-						<param name="condition3">Skin.HasSetting(NoSPHubs) + Library.HasContent(tvshows)</param>
-						<param name="action3">ActivateWindow(videos,videodb://tvshows/titles/,return)</param>
-
-						<param name="condition4">Skin.HasSetting(NoSPHubs) + !Library.HasContent(tvshows) + System.HasAddon(plugin.video.embycon)</param>
-						<param name="action4">ActivateWindow(videos,plugin://plugin.video.embycon/?media_type=tvshows&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fFields%3dDateCreated%2cEpisodeCount%2cSeasonCount%2cPath%2cGenres%2cStudios%2cEtag%2cMediaStreams%2cOverview%26Recursive%3dtrue%26IncludeItemTypes%3dSeries%26ImageTypeLimit%3d1%26format%3djson,return)</param>
-
-						<param name="visible">!Skin.HasSetting(HideSPTVshows)</param>
-					</include>
-					<include content="SideButton">
-						<param name="id">903</param>
-						<param name="onup">902</param>
-						<param name="ondown">904</param>
-						<param name="onright">$PARAM[onright]</param>
-						<param name="label">3</param>
-						<param name="icon">&#xfcf5;</param>
-						<param name="action1">ActivateWindow(Videos,root)</param>
-						<param name="visible">!Skin.HasSetting(HideSPVideos)</param>
-					</include>
-					<include content="SideButton">
-						<param name="id">904</param>
-						<param name="onup">903</param>
-						<param name="ondown">905</param>
-						<param name="onright">$PARAM[onright]</param>
-						<param name="label">$VAR[PVRLabel]</param>
-						<param name="icon">&#xf7f3;</param>
-						<param name="condition1">!Skin.HasSetting(NoSPHubs)</param>
-						<param name="action1">ActivateWindow(1124)</param>
-						<param name="condition2">Skin.HasSetting(NoSPHubs)</param>
-						<param name="action2">ActivateWindow(tvchannels)</param>
-						<param name="visible">!Skin.HasSetting(HideSPPVR) + [Pvr.HasTVChannels | Pvr.HasRadioChannels]</param>
-					</include>
-					<include content="SideButton">
-						<param name="id">905</param>
-						<param name="onup">904</param>
-						<param name="ondown">906</param>
-						<param name="onright">$PARAM[onright]</param>
-						<param name="label">2</param>
-						<param name="icon">&#xf333;</param>
-
-						<param name="condition1">!Library.HasContent(music) + !System.HasAddon(plugin.video.embycon)</param>
-						<param name="action1">ActivateWindow(music,root)</param>
-
-						<param name="condition2">!Skin.HasSetting(NoSPHubs) + [Library.HasContent(music) | System.HasAddon(plugin.video.embycon)]</param>
-						<param name="action2">ActivateWindow(1122)</param>
-
-						<param name="condition3">Skin.HasSetting(NoSPHubs) + Library.HasContent(music)</param>
-						<param name="action3">ActivateWindow(music,musicdb://root,return)</param>
-
-						<param name="condition4">Skin.HasSetting(NoSPHubs) + !Library.HasContent(music) + System.HasAddon(plugin.video.embycon)</param>
-						<param name="action4">ActivateWindow(music,plugin://plugin.video.embycon/?media_type=MusicArtists&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fArtists%2fAlbumArtists%3fRecursive%3dtrue%26ImageTypeLimit%3d1%26EnableImageTypes%3dPrimary%2cBackdrop%2cBanner%2cThumb%26format%3djson,return)</param>
-
-						<param name="visible">!Skin.HasSetting(HideSPMusic)</param>
-					</include>
-					<include content="SideButton">
-						<param name="id">906</param>
-						<param name="onup">905</param>
-						<param name="ondown">907</param>
-						<param name="onright">$PARAM[onright]</param>
-						<param name="label">$LOCALIZE[20389]</param>
-						<param name="icon">&#xf333;</param>
-						<param name="action1">ActivateWindow(videos,videodb://musicvideos/titles/,return)</param>
-						<param name="visible">!Skin.HasSetting(HideSPMusicvideos) + Library.HasContent(musicvideos)</param>
-					</include>
-					<include content="SideButton">
-						<param name="id">907</param>
-						<param name="onup">906</param>
-						<param name="ondown">908</param>
-						<param name="onright">$PARAM[onright]</param>
-						<param name="label">1</param>
-						<param name="icon">&#xf2e9;</param>
-						<param name="action1">ActivateWindow(Pictures,root)</param>
-						<param name="visible">!Skin.HasSetting(HideSPPictures)</param>
-					</include>
-					<!-- seperator -->
-					<include content="SideHeadline">
-						<param name="nr">2</param>
-						<param name="label">31001</param>
-						<param name="visible">!Skin.HasSetting(HideSPAddons) | !Skin.HasSetting(HideSPFavourites) | !Skin.HasSetting(HideSPWeather) | System.HasMediaDVD</param>
-					</include>
-					<!-- misc -->
-					<include content="SideButton">
-						<param name="id">908</param>
-						<param name="onup">907</param>
-						<param name="ondown">909</param>
-						<param name="onright">$PARAM[onright]</param>
-						<param name="label">$LOCALIZE[24001]</param>
-						<param name="icon">&#xf03b;</param>
-
-						<param name="condition1">!Skin.HasSetting(NoSPHubs)</param>
-						<param name="action1">ActivateWindow(1123)</param>
-
-						<param name="condition2">Skin.HasSetting(NoSPHubs)</param>
-						<param name="action2">ActivateWindow(addonbrowser,return)</param>
-
-						<param name="visible">!Skin.HasSetting(HideSPAddons)</param>
-					</include>
-					<include content="SideButton">
-						<param name="id">909</param>
-						<param name="onup">908</param>
-						<param name="ondown">910</param>
-						<param name="onright">$PARAM[onright]</param>
-						<param name="label">$LOCALIZE[10134]</param>
-						<param name="icon">&#xf4ce;</param>
-						<param name="action1">ActivateWindow(favourites)</param>
-						<param name="visible">!Skin.HasSetting(HideSPFavourites)</param>
-					</include>
-					<include content="SideButton">
-						<param name="id">910</param>
-						<param name="onup">909</param>
-						<param name="ondown">911</param>
-						<param name="onright">$PARAM[onright]</param>
-						<param name="label">$LOCALIZE[8]</param>
-						<param name="icon">&#xf595;</param>
-
-						<param name="condition1">!String.IsEmpty(Weather.Plugin)</param>
-						<param name="action1">ActivateWindow(Weather)</param>
-
-						<param name="condition2">String.IsEmpty(Weather.Plugin)</param>
-						<param name="action2">ReplaceWindow(servicesettings,weather)</param>
-
-						<param name="visible">!Skin.HasSetting(HideSPWeather) + !String.IsEmpty(Weather.Temperature) + !String.Contains(Weather.Temperature,$LOCALIZE[503]) + !String.IsEqual(Weather.fanartcode,na) + Weather.IsFetched</param>
-					</include>
-					<!-- seperator -->
-					<include content="SideHeadline">
-						<param name="nr">3</param>
-						<param name="label">13000</param>
-					</include>
 					<!-- system -->
 					<include content="SideButton">
 						<param name="id">911</param>

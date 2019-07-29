@@ -1914,4 +1914,17 @@
 		<value condition="VideoPlayer.Content(movies) + [Window.IsVisible(fullscreenvideo) | Window.IsVisible(fullscreeninfo)]">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[VideoPlayer.DBID]&amp;type=movie</value>
 		<value>-</value>
 	</variable>
+	<variable name="SidebarIcon">
+		<value condition="!String.IsEmpty(ListItem.Property(forced_icon))">$INFO[ListItem.Icon]</value>
+		<value condition="String.StartsWith(ListItem.Property(defaultID),embuary_emby)">&#xf6b3;</value>
+		<value condition="String.StartsWith(ListItem.Property(defaultID),embuary_) + String.Contains(ListItem.Property(defaultID),movies)">&#xf230;</value>
+		<value condition="String.StartsWith(ListItem.Property(defaultID),embuary_) + String.Contains(ListItem.Property(defaultID),shows)">&#xf502;</value>
+		<value condition="String.StartsWith(ListItem.Property(defaultID),embuary_) + String.Contains(ListItem.Property(defaultID),collection)">&#xfcf4;</value>
+		<value condition="String.StartsWith(ListItem.Property(defaultID),embuary_) + String.Contains(ListItem.Property(defaultID),pvr)">&#xf7f3;</value>
+		<value condition="String.StartsWith(ListItem.Property(defaultID),embuary_) + String.Contains(ListItem.Property(defaultID),recordings)">&#xf7f3;</value>
+		<value condition="String.StartsWith(ListItem.Property(defaultID),embuary_) + String.Contains(ListItem.Property(defaultID),music)">&#xf759;</value>
+		<value condition="String.StartsWith(ListItem.Property(defaultID),embuary_) + String.Contains(ListItem.Property(defaultID),games)">&#xfb5e;</value>
+		<value condition="String.StartsWith(ListItem.Property(defaultID),embuary_) + String.Contains(ListItem.Property(defaultID),customhub)">&#xf337;</value>
+		<value condition="String.StartsWith(ListItem.Property(defaultID),embuary_) + String.Contains(ListItem.Property(defaultID),addons)">&#xf03b;</value>
+	</variable>
 </includes>
