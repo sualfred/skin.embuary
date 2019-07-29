@@ -1,5 +1,298 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+
+	<!-- Side Menu Headline -->
+	<include name="SideBarHeadline">
+		<param name="width">100%</param>
+		<param name="visible">true</param>
+		<param name="color">panel_textcolor</param>
+		<definition>
+			<control type="group" id="99$PARAM[nr]">
+				<visible>$PARAM[visible]</visible>
+				<height>50</height>
+				<top>$PARAM[top]</top>
+				<!-- headline -->
+				<control type="label">
+					<top>10</top>
+					<width>$PARAM[width]</width>
+					<height>50</height>
+					<font>Med22</font>
+					<textcolor>$PARAM[color]</textcolor>
+					<label>$PARAM[label]</label>
+					<textoffsetx>15</textoffsetx>
+					<aligny>top</aligny>
+				</control>
+				<control type="label">
+					<top>10</top>
+					<width>$PARAM[width]</width>
+					<height>50</height>
+					<font>Med22</font>
+					<textcolor>30FFFFFF</textcolor>
+					<label>[LIGHT]$PARAM[label2][/LIGHT]</label>
+					<textoffsetx>15</textoffsetx>
+					<aligny>top</aligny>
+					<align>right</align>
+				</control>
+			</control>
+		</definition>
+	</include>
+	<include name="SideHeadline">
+		<param name="width">100%</param>
+		<param name="visible">true</param>
+		<param name="color">panel_textcolor</param>
+		<definition>
+			<control type="group" id="99$PARAM[nr]">
+				<visible>$PARAM[visible]</visible>
+				<height>54</height>
+				<top>$PARAM[top]</top>
+				<control type="image">
+					<top>9</top>
+					<height>1</height>
+					<width>$PARAM[width]</width>
+					<texture colordiffuse="grid_border">common/white.jpg</texture>
+					<aspectratio>stretch</aspectratio>
+				</control>
+				<!-- headline -->
+				<control type="label">
+					<top>20</top>
+					<width>$PARAM[width]</width>
+					<height>50</height>
+					<font>Med22</font>
+					<textcolor>$PARAM[color]</textcolor>
+					<label>$PARAM[label]</label>
+					<textoffsetx>15</textoffsetx>
+					<aligny>top</aligny>
+				</control>
+			</control>
+		</definition>
+	</include>
+
+	<!-- Side Panel -->
+	<include name="SidePanel">
+		<param name="width">450</param>
+		<param name="onright">10</param>
+		<definition>
+			<include content="DiffuseMask">
+				<param name="visible">ControlGroup(9999).HasFocus</param>
+			</include>
+			<control type="group" id="9999">
+				<animation type="Conditional" condition="ControlGroup(9999).HasFocus" reversible="true">
+					<effect type="slide" start="0,0" end="$PARAM[width],0" time="400" tween="cubic" easing="inout" />
+				</animation>
+				<animation type="WindowClose" condition="ControlGroup(9999).HasFocus" reversible="true">
+					<effect type="slide" start="0,0" end="-$PARAM[width],0" time="0" tween="cubic" easing="out" />
+				</animation>
+				<left>-$PARAM[width]</left>
+				<width>$PARAM[width]</width>
+
+				<!-- background -->
+				<control type="image">
+					<left>400</left>
+					<width>100</width>
+					<height>100%</height>
+					<texture colordiffuse="black">common/panel_shadow.png</texture>
+					<aspectratio>stretch</aspectratio>
+					<visible>ControlGroup(9999).HasFocus</visible>
+				</control>
+				<include content="ContentPanel">
+					<param name="width">$PARAM[width]</param>
+					<param name="height">100%</param>
+					<param name="color">sidepanel_background</param>
+				</include>
+
+				<control type="group">
+					<top>5</top>
+
+					<!-- home -->
+					<control type="list" id="900">
+						<top>5</top>
+						<height>50</height>
+						<width>$PARAM[width]</width>
+						<scrolltime>0</scrolltime>
+						<onup>noop</onup>
+						<onfocus condition="String.IsEmpty(Window(home).Property(SideBarReset)) + !Integer.IsEqual(Container(901).CurrentItem,1)">Control.Move(901,$INFO[Container(901).CurrentItem,-])</onfocus>
+						<onfocus condition="String.IsEmpty(Window(home).Property(SideBarReset)) + !Integer.IsEqual(Container(901).CurrentItem,1)">Control.Move(901,1)</onfocus>
+						<onfocus>SetProperty(SideBarReset,1,home)</onfocus>
+						<ondown condition="!Integer.IsEqual(Container(901).CurrentItem,1)">Control.Move(901,$INFO[Container(901).CurrentItem,-])</ondown>
+						<ondown condition="!Integer.IsEqual(Container(901).CurrentItem,1)">Control.Move(901,1)</ondown>
+						<ondown>SetFocus(901)</ondown>
+						<onright>ClearProperty(SideBarReset,home)</onright>
+						<onback>ClearProperty(SideBarReset,home)</onback>
+						<onright>$PARAM[onright]</onright>
+						<onback>$PARAM[onright]</onback>
+						<onup>Control.Move(902,$INFO[Container(902).CurrentItem,-])</onup>
+						<onup>902</onup>
+						<onfocus>Control.Move(902,$INFO[Container(902).CurrentItem,-])</onfocus>
+						<onfocus>Control.Move(902,1)</onfocus>
+						<orientation>vertical</orientation>
+						<itemlayout height="50" width="$PARAM[width]">
+							<include content="SidebarItemLayout">
+								<param name="id" value="900"/>
+								<param name="width" value="$PARAM[width]"/>
+							</include>
+						</itemlayout>
+						<focusedlayout height="50" width="$PARAM[width]">
+							<include content="SidebarItemLayout">
+								<param name="id" value="900"/>
+								<param name="width" value="$PARAM[width]"/>
+								<param name="focused" value="true"/>
+							</include>
+						</focusedlayout>
+						<content>
+							<item>
+								<label>$LOCALIZE[31000]</label>
+								<onclick>ActivateWindow(home)</onclick>
+								<icon>&#xf2dc;</icon>
+								<property name="forced_icon">true</property>
+							</item>
+						</content>
+					</control>
+
+					<!-- media -->
+					<control type="group">
+						<top>55</top>
+						<include content="SideBarHeadline">
+							<param name="label">14211</param>
+							<param name="label2">$INFO[Container(901).CurrentPage] | $INFO[Container(901).NumPages]</param>
+						</include>
+						<control type="list" id="901">
+							<top>50</top>
+							<include condition="System.HasAddon(plugin.video.embycon) + $EXP[HasLibrary]" content="ParamHeight">
+								<param name="height" value="600"/>
+							</include>
+							<height>650</height>
+							<width>$PARAM[width]</width>
+							<scrolltime>200</scrolltime>
+							<onup>SetFocus(900)</onup>
+							<ondown>SetFocus(902,0)</ondown>
+							<onright>ClearProperty(SideBarReset,home)</onright>
+							<onback>ClearProperty(SideBarReset,home)</onback>
+							<onright>$PARAM[onright]</onright>
+							<onback>$PARAM[onright]</onback>
+							<orientation>vertical</orientation>
+							<itemlayout height="50" width="$PARAM[width]">
+								<include content="SidebarItemLayout">
+									<param name="id" value="901"/>
+									<param name="width" value="$PARAM[width]"/>
+								</include>
+							</itemlayout>
+							<focusedlayout height="50" width="$PARAM[width]">
+								<include content="SidebarItemLayout">
+									<param name="id" value="901"/>
+									<param name="width" value="$PARAM[width]"/>
+									<param name="focused" value="true"/>
+								</include>
+							</focusedlayout>
+							<content><include>skinshortcuts-mainmenu</include></content>
+						</control>
+					</control>
+
+					<!-- system -->
+					<control type="group">
+						<animation effect="slide" end="0,-50" condition="System.HasAddon(plugin.video.embycon) + $EXP[HasLibrary]">Conditional</animation>
+						<animation effect="slide" end="0,-50" condition="Integer.IsLess(Container(901).NumItems,1)">Conditional</animation>
+						<animation effect="slide" end="0,-50" condition="Integer.IsLess(Container(901).NumItems,2)">Conditional</animation>
+						<animation effect="slide" end="0,-50" condition="Integer.IsLess(Container(901).NumItems,3)">Conditional</animation>
+						<animation effect="slide" end="0,-50" condition="Integer.IsLess(Container(901).NumItems,4)">Conditional</animation>
+						<animation effect="slide" end="0,-50" condition="Integer.IsLess(Container(901).NumItems,5)">Conditional</animation>
+						<animation effect="slide" end="0,-50" condition="Integer.IsLess(Container(901).NumItems,6)">Conditional</animation>
+						<animation effect="slide" end="0,-50" condition="Integer.IsLess(Container(901).NumItems,7)">Conditional</animation>
+						<animation effect="slide" end="0,-50" condition="Integer.IsLess(Container(901).NumItems,8)">Conditional</animation>
+						<animation effect="slide" end="0,-50" condition="Integer.IsLess(Container(901).NumItems,9)">Conditional</animation>
+						<animation effect="slide" end="0,-50" condition="Integer.IsLess(Container(901).NumItems,10)">Conditional</animation>
+						<animation effect="slide" end="0,-50" condition="Integer.IsLess(Container(901).NumItems,11)">Conditional</animation>
+						<animation effect="slide" end="0,-50" condition="Integer.IsLess(Container(901).NumItems,12)">Conditional</animation>
+						<animation effect="slide" end="0,-50" condition="Integer.IsLess(Container(901).NumItems,13)">Conditional</animation>
+						<top>760</top>
+						<include content="SideBarHeadline">
+							<param name="label">$LOCALIZE[13000]</param>
+						</include>
+						<control type="list" id="902">
+							<top>50</top>
+							<include condition="System.HasAddon(plugin.video.embycon) + $EXP[HasLibrary]" content="ParamHeight">
+								<param name="height" value="300"/>
+							</include>
+							<height>250</height>
+							<width>$PARAM[width]</width>
+							<scrolltime>0</scrolltime>
+							<ondown>900</ondown>
+							<onright>ClearProperty(SideBarReset,home)</onright>
+							<onback>ClearProperty(SideBarReset,home)</onback>
+							<onright>$PARAM[onright]</onright>
+							<onback>$PARAM[onright]</onback>
+							<onup>SetFocus(901,99999999)</onup>
+							<orientation>vertical</orientation>
+							<itemlayout height="50" width="$PARAM[width]">
+								<include content="SidebarItemLayout">
+									<param name="id" value="902"/>
+									<param name="width" value="$PARAM[width]"/>
+								</include>
+							</itemlayout>
+							<focusedlayout height="50" width="$PARAM[width]">
+								<include content="SidebarItemLayout">
+									<param name="id" value="902"/>
+									<param name="width" value="$PARAM[width]"/>
+									<param name="focused" value="true"/>
+								</include>
+							</focusedlayout>
+							<content>
+								<item>
+									<label>$LOCALIZE[31226]</label>
+									<icon>&#xf342;</icon>
+									<onclick>RunScript(plugin.video.embycon,0,?mode=CHANGE_USER)</onclick>
+									<property name="forced_icon">true</property>
+									<visible>System.HasAddon(plugin.video.embycon)</visible>
+								</item>
+								<item>
+									<label>$LOCALIZE[31129]</label>
+									<icon>&#xf450;</icon>
+									<onclick>Notification($LOCALIZE[24001],$LOCALIZE[31162])</onclick>
+									<onclick>UpdateAddonRepos</onclick>
+									<onclick>UpdateLocalAddons</onclick>
+									<property name="forced_icon">true</property>
+								</item>
+								<item>
+									<label>$LOCALIZE[799]</label>
+									<icon>&#xfcdb;</icon>
+									<onclick>SetFocus($PARAM[onright])</onclick>
+									<onclick>SetProperty(Dialog.1.Label,$LOCALIZE[3])</onclick>
+									<onclick>SetProperty(Dialog.1.BuiltIn,UpdateLibrary(video))</onclick>
+									<onclick>SetProperty(Dialog.2.Label,$LOCALIZE[2])</onclick>
+									<onclick>SetProperty(Dialog.2.BuiltIn,UpdateLibrary(music))</onclick>
+									<onclick>SetProperty(Dialog.3.Label,$LOCALIZE[593])</onclick>
+									<onclick>SetProperty(Dialog.3.BuiltIn,UpdateLibrary(music)||UpdateLibrary(video))</onclick>
+									<onclick>RunScript(script.embuary.helper,action=createselect,header=$LOCALIZE[653])</onclick>
+									<property name="forced_icon">true</property>
+									<visible>$EXP[HasLibrary]</visible>
+								</item>
+								<item>
+									<label>$LOCALIZE[5]</label>
+									<icon>&#xf493;</icon>
+									<onclick>ActivateWindow(settings)</onclick>
+									<property name="forced_icon">true</property>
+								</item>
+								<item>
+									<label>$LOCALIZE[20183]</label>
+									<icon>&#xf453;</icon>
+									<onclick>ReloadSkin()</onclick>
+									<property name="forced_icon">true</property>
+								</item>
+								<item>
+									<label>$LOCALIZE[33060]</label>
+									<icon>&#xf425;</icon>
+									<onclick>ActivateWindow(shutdownmenu)</onclick>
+									<property name="forced_icon">true</property>
+								</item>
+							</content>
+						</control>
+					</control>
+
+				</control>
+			</control>
+
+		</definition>
+	</include>
+
 	<include name="SidebarItemLayout">
 		<param name="focused">false</param>
 		<definition>
@@ -11,12 +304,13 @@
 					<width>$PARAM[width]</width>
 					<texture colordiffuse="sidepanel_focus">common/white.jpg</texture>
 					<aspectratio>stretch</aspectratio>
+					<aligny>center</aligny>
 					<visible>Control.HasFocus($PARAM[id]) + $PARAM[focused]</visible>
 				</control>
 				<control type="label">
 					<top>6</top>
 					<left>45</left>
-					<height>40</height>
+					<height>37</height>
 					<aligny>center</aligny>
 					<align>left</align>
 					<font>Material20</font>
@@ -38,445 +332,4 @@
 		</definition>
 	</include>
 
-	<!-- Side Menu Button Layout -->
-	<include name="SideButton">
-		<param name="width">100%</param>
-		<param name="icon"></param>
-		<param name="icon_left">55</param>
-		<param name="label_left">100</param>
-		<param name="focused">false</param>
-		<param name="condition1">true</param>
-		<param name="condition2">true</param>
-		<param name="condition3">true</param>
-		<param name="condition4">true</param>
-		<param name="condition5">true</param>
-		<param name="condition6">true</param>
-		<param name="condition7">true</param>
-		<param name="condition8">true</param>
-		<param name="condition9">true</param>
-		<param name="condition10">true</param>
-		<param name="action1">noop</param>
-		<param name="action2">noop</param>
-		<param name="action3">noop</param>
-		<param name="action4">noop</param>
-		<param name="action5">noop</param>
-		<param name="action6">noop</param>
-		<param name="action7">noop</param>
-		<param name="action8">noop</param>
-		<param name="action9">noop</param>
-		<param name="action10">noop</param>
-		<param name="onright">10</param>
-		<param name="visible">true</param>
-		<param name="closepanel">true</param>
-		<definition>
-			<control type="group">
-				<visible>$PARAM[visible]</visible>
-				<width>$PARAM[width]</width>
-				<height>50</height>
-				<control type="image">
-					<height>50</height>
-					<width>$PARAM[width]</width>
-					<texture colordiffuse="sidepanel_focus">common/white.jpg</texture>
-					<aspectratio>stretch</aspectratio>
-					<visible>Control.HasFocus($PARAM[id])</visible>
-				</control>
-				<control type="label">
-					<top>6</top>
-					<left>$PARAM[icon_left]</left>
-					<height>40</height>
-					<aligny>center</aligny>
-					<align>left</align>
-					<font>Material20</font>
-					<textcolor>sidepanel_textcolor</textcolor>
-					<label>$PARAM[icon]</label>
-				</control>
-				<control type="button" id="$PARAM[id]">
-					<top>5</top>
-					<onfocus>Control.Move(902,$INFO[Container(902).CurrentItem,-])</onfocus>
-					<onfocus>Control.Move(902,1)</onfocus>
-					<onback>$PARAM[onright]</onback>
-					<onup>$PARAM[onup]</onup>
-					<onright>$PARAM[onright]</onright>
-					<ondown>$PARAM[ondown]</ondown>
-					<left>$PARAM[label_left]</left>
-					<height>40</height>
-					<include>NoTextures</include>
-					<align>left</align>
-					<aligny>center</aligny>
-					<font>Reg22</font>
-					<textcolor>sidepanel_textcolor</textcolor>
-					<focusedcolor>sidepanel_textcolor</focusedcolor>
-					<selectedcolor>sidepanel_textcolor</selectedcolor>
-					<label>$PARAM[label]</label>
-					<onclick condition="$PARAM[closepanel]">right</onclick>
-					<onclick>Dialog.Close(all,true)</onclick>
-					<onclick condition="$PARAM[condition1]">$PARAM[action1]</onclick>
-					<onclick condition="$PARAM[condition2]">$PARAM[action2]</onclick>
-					<onclick condition="$PARAM[condition3]">$PARAM[action3]</onclick>
-					<onclick condition="$PARAM[condition4]">$PARAM[action4]</onclick>
-					<onclick condition="$PARAM[condition5]">$PARAM[action5]</onclick>
-					<onclick condition="$PARAM[condition6]">$PARAM[action6]</onclick>
-					<onclick condition="$PARAM[condition7]">$PARAM[action7]</onclick>
-					<onclick condition="$PARAM[condition8]">$PARAM[action8]</onclick>
-					<onclick condition="$PARAM[condition9]">$PARAM[action9]</onclick>
-					<onclick condition="$PARAM[condition10]">$PARAM[action10]</onclick>
-				</control>
-			</control>
-		</definition>
-	</include>
-
-	<!-- Side Menu Headline -->
-	<include name="SideHeadline">
-		<param name="width">100%</param>
-		<param name="visible">true</param>
-		<param name="color">panel_textcolor</param>
-		<definition>
-			<control type="group" id="99$PARAM[nr]">
-				<visible>$PARAM[visible]</visible>
-				<height>50</height>
-				<top>$PARAM[top]</top>
-				<control type="image">
-					<top>9</top>
-					<height>1</height>
-					<width>$PARAM[width]</width>
-					<texture colordiffuse="grid_border">common/white.jpg</texture>
-					<aspectratio>stretch</aspectratio>
-					<visible>false</visible>
-				</control>
-				<!-- headline -->
-				<control type="label">
-					<top>10</top>
-					<width>$PARAM[width]</width>
-					<height>50</height>
-					<font>Med22</font>
-					<textcolor>$PARAM[color]</textcolor>
-					<label>$PARAM[label]</label>
-					<textoffsetx>15</textoffsetx>
-					<aligny>top</aligny>
-				</control>
-				<control type="label">
-					<top>10</top>
-					<width>$PARAM[width]</width>
-					<height>50</height>
-					<font>Med22</font>
-					<textcolor>$PARAM[color]</textcolor>
-					<label>$PARAM[label2]</label>
-					<textoffsetx>15</textoffsetx>
-					<aligny>top</aligny>
-					<align>right</align>
-				</control>
-			</control>
-		</definition>
-	</include>
-
-	<!-- Side Panel -->
-	<include name="SidePanel">
-		<param name="width">450</param>
-		<param name="onright">10</param>
-		<definition>
-			<include content="DiffuseMask">
-				<param name="visible">ControlGroup(9999).HasFocus</param>
-			</include>
-			<control type="group" id="9999">
-				<animation type="Conditional" condition="ControlGroup(9999).HasFocus" reversible="true">
-					<effect type="slide" start="0,0" end="$PARAM[width],0" time="400" tween="cubic" easing="inout" />
-				</animation>
-				<animation type="WindowClose" condition="ControlGroup(9999).HasFocus" reversible="true">
-					<effect type="slide" start="0,0" end="-$PARAM[width],0" time="400" tween="cubic" easing="out" />
-				</animation>
-				<top>15</top>
-				<left>-$PARAM[width]</left>
-				<width>$PARAM[width]</width>
-
-				<!-- background -->
-				<control type="image">
-					<left>400</left>
-					<width>100</width>
-					<height>100%</height>
-					<texture colordiffuse="black">common/panel_shadow.png</texture>
-					<aspectratio>stretch</aspectratio>
-					<visible>ControlGroup(9999).HasFocus</visible>
-				</control>
-				<include content="ContentPanel">
-					<param name="width">$PARAM[width]</param>
-					<param name="height">100%</param>
-					<param name="color">sidepanel_background</param>
-				</include>
-
-				<!-- home -->
-				<control type="list" id="900">
-					<orientation>vertical</orientation>
-					<height>50</height>
-					<width>$PARAM[width]</width>
-					<scrolltime>0</scrolltime>
-					<onup>noop</onup>
-					<ondown>SetFocus(901)</ondown>
-					<onright>$PARAM[onright]</onright>
-					<onback>$PARAM[onright]</onback>
-					<onfocus>Control.Move(901,$INFO[Container(901).CurrentItem,-])</onfocus>
-					<onfocus>Control.Move(901,1)</onfocus>
-					<itemlayout height="50" width="$PARAM[width]">
-						<include content="SidebarItemLayout">
-							<param name="id" value="900"/>
-							<param name="width" value="$PARAM[width]"/>
-						</include>
-					</itemlayout>
-					<focusedlayout height="50" width="$PARAM[width]">
-						<include content="SidebarItemLayout">
-							<param name="id" value="900"/>
-							<param name="width" value="$PARAM[width]"/>
-							<param name="focused" value="true"/>
-						</include>
-					</focusedlayout>
-					<content>
-						<item>
-							<label>$LOCALIZE[31000]</label>
-							<onclick>ActivateWindow(home)</onclick>
-							<icon>&#xf2dc;</icon>
-						</item>
-					</content>
-				</control>
-
-
-				<!-- menu -->
-				<include content="SideHeadline">
-					<param name="top">50</param>
-					<param name="label">14211</param>
-					<param name="label2">$INFO[Container(901).CurrentPage] / $INFO[Container(901).NumPages]</param>
-				</include>
-
-				<control type="list" id="901">
-					<top>100</top>
-					<orientation>vertical</orientation>
-					<height>650</height>
-					<width>$PARAM[width]</width>
-					<scrolltime>0</scrolltime>
-					<onup>SetFocus(900)</onup>
-					<ondown>SetFocus(902,0)</ondown>
-					<onright>$PARAM[onright]</onright>
-					<onback>$PARAM[onright]</onback>
-					<itemlayout height="50" width="$PARAM[width]">
-						<include content="SidebarItemLayout">
-							<param name="id" value="901"/>
-							<param name="width" value="$PARAM[width]"/>
-						</include>
-					</itemlayout>
-					<focusedlayout height="50" width="$PARAM[width]">
-						<include content="SidebarItemLayout">
-							<param name="id" value="901"/>
-							<param name="width" value="$PARAM[width]"/>
-							<param name="focused" value="true"/>
-						</include>
-					</focusedlayout>
-					<content><include>skinshortcuts-mainmenu</include></content>
-				</control>
-
-
-				<!-- seperator -->
-				<include content="SideHeadline">
-					<param name="top">750</param>
-					<param name="label">$LOCALIZE[13000]</param>
-				</include>
-
-				<control type="list" id="902">
-					<top>800</top>
-					<orientation>vertical</orientation>
-					<height>650</height>
-					<width>$PARAM[width]</width>
-					<scrolltime>0</scrolltime>
-					<onup>SetFocus(900)</onup>
-					<ondown>SetFocus(911)</ondown>
-					<onright>$PARAM[onright]</onright>
-					<onback>$PARAM[onright]</onback>
-					<itemlayout height="50" width="$PARAM[width]">
-						<include content="SidebarItemLayout">
-							<param name="id" value="902"/>
-							<param name="width" value="$PARAM[width]"/>
-						</include>
-					</itemlayout>
-					<focusedlayout height="50" width="$PARAM[width]">
-						<include content="SidebarItemLayout">
-							<param name="id" value="902"/>
-							<param name="width" value="$PARAM[width]"/>
-							<param name="focused" value="true"/>
-						</include>
-					</focusedlayout>
-					<content>
-						<item>
-							<label>$LOCALIZE[31226]</label>
-							<icon>&#xf342;</icon>
-							<onclick>RunScript(plugin.video.embycon,0,?mode=CHANGE_USER)</onclick>
-							<property name="forced_icon">true</property>
-							<visible>!Skin.HasSetting(KioskMode) + !Skin.HasSetting(HideSPEmbyConUser) + System.HasAddon(plugin.video.embycon)</visible>
-						</item>
-						<item>
-							<label>$LOCALIZE[31129]</label>
-							<icon>&#xf450;</icon>
-							<onclick>Notification($LOCALIZE[24001],$LOCALIZE[31162])</onclick>
-							<onclick>UpdateAddonRepos</onclick>
-							<onclick>UpdateLocalAddons</onclick>
-							<property name="forced_icon">true</property>
-							<visible>!Skin.HasSetting(KioskMode) + !Skin.HasSetting(HideSPAddonUpdate)</visible>
-						</item>
-						<item>
-							<label>$LOCALIZE[799]</label>
-							<icon>&#xfcdb;</icon>
-							<onclick>SetFocus($PARAM[onright])</onclick>
-							<onclick>SetProperty(Dialog.1.Label,$LOCALIZE[3])</onclick>
-							<onclick>SetProperty(Dialog.1.BuiltIn,UpdateLibrary(video))</onclick>
-							<onclick>SetProperty(Dialog.2.Label,$LOCALIZE[2])</onclick>
-							<onclick>SetProperty(Dialog.2.BuiltIn,UpdateLibrary(music))</onclick>
-							<onclick>SetProperty(Dialog.3.Label,$LOCALIZE[593])</onclick>
-							<onclick>SetProperty(Dialog.3.BuiltIn,UpdateLibrary(music)||UpdateLibrary(video))</onclick>
-							<onclick>RunScript(script.embuary.helper,action=createselect,header=$LOCALIZE[653])</onclick>
-							<property name="forced_icon">true</property>
-							<visible>!Skin.HasSetting(KioskMode) + !Skin.HasSetting(HideSPLibUpdate)</visible>
-						</item>
-						<item>
-							<label>$LOCALIZE[5]</label>
-							<icon>&#xf493;</icon>
-							<onclick>ActivateWindow(settings)</onclick>
-							<property name="forced_icon">true</property>
-							<visible>!Skin.HasSetting(KioskMode)</visible>
-						</item>
-						<item>
-							<label>$LOCALIZE[20183]</label>
-							<icon>&#xf0e4;</icon>
-							<onclick>ReloadSkin()</onclick>
-							<property name="forced_icon">true</property>
-							<visible>!Skin.HasSetting(HideSPReload)</visible>
-						</item>
-						<item>
-							<label>$LOCALIZE[33060]</label>
-							<icon>&#xf425;</icon>
-							<onclick>ActivateWindow(shutdownmenu)</onclick>
-							<property name="forced_icon">true</property>
-						</item>
-
-					</content>
-				</control>
-			</control>
-
-		</definition>
-	</include>
-
-	<!-- Side Menu -->
-	<include name="SidePanel2">
-		<param name="width">450</param>
-		<param name="onright">10</param>
-		<definition>
-			<include content="DiffuseMask">
-				<param name="visible">ControlGroup(9999).HasFocus</param>
-			</include>
-			<control type="group">
-				<animation type="Conditional" condition="ControlGroup(9999).HasFocus" reversible="true">
-					<effect type="slide" start="0,0" end="$PARAM[width],0" time="400" tween="cubic" easing="inout" />
-				</animation>
-				<animation type="WindowClose" condition="ControlGroup(9999).HasFocus" reversible="true">
-					<effect type="slide" start="0,0" end="-$PARAM[width],0" time="400" tween="cubic" easing="out" />
-				</animation>
-				<left>-$PARAM[width]</left>
-				<!-- background -->
-				<control type="image">
-					<left>400</left>
-					<width>100</width>
-					<height>100%</height>
-					<texture colordiffuse="black">common/panel_shadow.png</texture>
-					<aspectratio>stretch</aspectratio>
-					<visible>ControlGroup(9999).HasFocus</visible>
-				</control>
-				<include content="ContentPanel">
-					<param name="width">$PARAM[width]</param>
-					<param name="height">100%</param>
-					<param name="color">sidepanel_background</param>
-				</include>
-				<!-- grouplist -->
-				<control type="grouplist" id="9999">
-					<top>9</top>
-					<width>$PARAM[width]</width>
-					<height>1062</height>
-					<orientation>vertical</orientation>
-					<itemgap>0</itemgap>
-					<!-- system -->
-					<include content="SideButton">
-						<param name="id">911</param>
-						<param name="onup">910</param>
-						<param name="ondown">912</param>
-						<param name="onright">$PARAM[onright]</param>
-						<param name="label">$LOCALIZE[31226]</param>
-						<param name="icon">&#xf342;</param>
-						<param name="action1">RunScript(plugin.video.embycon,0,?mode=CHANGE_USER)</param>
-						<param name="visible">!Skin.HasSetting(KioskMode) + !Skin.HasSetting(HideSPEmbyConUser) + System.HasAddon(plugin.video.embycon)</param>
-					</include>
-					<include content="SideButton">
-						<param name="id">912</param>
-						<param name="onup">911</param>
-						<param name="ondown">913</param>
-						<param name="onright">$PARAM[onright]</param>
-						<param name="label">$LOCALIZE[799]</param>
-						<param name="icon">&#xfcdb;</param>
-						<param name="action1">SetProperty(Dialog.1.Label,$LOCALIZE[3])</param>
-						<param name="action2">SetProperty(Dialog.1.BuiltIn,UpdateLibrary(video))</param>
-						<param name="action3">SetProperty(Dialog.2.Label,$LOCALIZE[2])</param>
-						<param name="action4">SetProperty(Dialog.2.BuiltIn,UpdateLibrary(music))</param>
-						<param name="action5">SetProperty(Dialog.3.Label,$LOCALIZE[593])</param>
-						<param name="action6">SetProperty(Dialog.3.BuiltIn,UpdateLibrary(music)||UpdateLibrary(video))</param>
-						<param name="action7">RunScript(script.embuary.helper,action=createselect,header=$LOCALIZE[653])</param>
-						<param name="visible">!Skin.HasSetting(KioskMode) + !Skin.HasSetting(HideSPLibUpdate)</param>
-					</include>
-					<include content="SideButton">
-						<param name="id">913</param>
-						<param name="onup">912</param>
-						<param name="ondown">914</param>
-						<param name="onright">$PARAM[onright]</param>
-						<param name="label">$LOCALIZE[31129]</param>
-						<param name="icon">&#xf450;</param>
-						<param name="action1">Notification($LOCALIZE[24001],$LOCALIZE[31162])</param>
-						<param name="action2">UpdateAddonRepos</param>
-						<param name="action3">UpdateLocalAddons</param>
-						<param name="visible">!Skin.HasSetting(KioskMode) + !Skin.HasSetting(HideSPAddonUpdate)</param>
-					</include>
-					<include content="SideButton">
-						<param name="id">914</param>
-						<param name="onup">913</param>
-						<param name="ondown">915</param>
-						<param name="onright">$PARAM[onright]</param>
-						<param name="label">$LOCALIZE[5]</param>
-						<param name="icon">&#xf493;</param>
-						<param name="action1">ActivateWindow(settings)</param>
-						<param name="visible">!Skin.HasSetting(KioskMode)</param>
-					</include>
-					<include content="SideButton">
-						<param name="id">915</param>
-						<param name="onup">914</param>
-						<param name="ondown">916</param>
-						<param name="onright">$PARAM[onright]</param>
-						<param name="label">$LOCALIZE[14260]</param>
-						<param name="icon">&#xf0e4;</param>
-						<param name="action1">Skin.ToggleSetting(DebugInfo)</param>
-						<param name="visible">!Skin.HasSetting(KioskMode) + !Skin.HasSetting(HideSPDebug)</param>
-					</include>
-					<include content="SideButton">
-						<param name="id">916</param>
-						<param name="onup">915</param>
-						<param name="ondown">917</param>
-						<param name="onright">$PARAM[onright]</param>
-						<param name="label">$LOCALIZE[20183]</param>
-						<param name="icon">&#xf453;</param>
-						<param name="action1">ReloadSkin()</param>
-						<param name="visible">!Skin.HasSetting(KioskMode) + !Skin.HasSetting(HideSPReload)</param>
-					</include>
-					<include content="SideButton">
-						<param name="id">917</param>
-						<param name="onup">916</param>
-						<param name="ondown">900</param>
-						<param name="onright">$PARAM[onright]</param>
-						<param name="label">$LOCALIZE[33060]</param>
-						<param name="icon">&#xf425;</param>
-						<param name="action1">ActivateWindow(shutdownmenu)</param>
-					</include>
-				</control>
-			</control>
-		</definition>
-	</include>
 </includes>
