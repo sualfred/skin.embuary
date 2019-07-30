@@ -158,9 +158,9 @@
 						<control type="list" id="901">
 							<top>50</top>
 							<include condition="System.HasAddon(plugin.video.embycon) + $EXP[HasLibrary]" content="ParamHeight">
-								<param name="height" value="600"/>
+								<param name="height" value="550"/>
 							</include>
-							<height>650</height>
+							<height>600</height>
 							<width>$PARAM[width]</width>
 							<scrolltime>200</scrolltime>
 							<onup>SetFocus(900)</onup>
@@ -187,9 +187,8 @@
 						</control>
 					</control>
 
-					<!-- system -->
+					<!-- misc -->
 					<control type="group">
-						<animation effect="slide" end="0,-50" condition="System.HasAddon(plugin.video.embycon) + $EXP[HasLibrary]">Conditional</animation>
 						<animation effect="slide" end="0,-50" condition="Integer.IsLess(Container(901).NumItems,1)">Conditional</animation>
 						<animation effect="slide" end="0,-50" condition="Integer.IsLess(Container(901).NumItems,2)">Conditional</animation>
 						<animation effect="slide" end="0,-50" condition="Integer.IsLess(Container(901).NumItems,3)">Conditional</animation>
@@ -201,18 +200,17 @@
 						<animation effect="slide" end="0,-50" condition="Integer.IsLess(Container(901).NumItems,9)">Conditional</animation>
 						<animation effect="slide" end="0,-50" condition="Integer.IsLess(Container(901).NumItems,10)">Conditional</animation>
 						<animation effect="slide" end="0,-50" condition="Integer.IsLess(Container(901).NumItems,11)">Conditional</animation>
-						<animation effect="slide" end="0,-50" condition="Integer.IsLess(Container(901).NumItems,12)">Conditional</animation>
-						<animation effect="slide" end="0,-50" condition="Integer.IsLess(Container(901).NumItems,13)">Conditional</animation>
-						<top>760</top>
+						<animation effect="slide" end="0,-50" condition="Integer.IsLess(Container(901).NumItems,12) | [System.HasAddon(plugin.video.embycon) + $EXP[HasLibrary]]">Conditional</animation>
+						<top>710</top>
 						<include content="SideBarHeadline">
-							<param name="label">$LOCALIZE[13000]</param>
+							<param name="label">$LOCALIZE[31001]</param>
 						</include>
 						<control type="list" id="902">
 							<top>50</top>
 							<include condition="System.HasAddon(plugin.video.embycon) + $EXP[HasLibrary]" content="ParamHeight">
-								<param name="height" value="300"/>
+								<param name="height" value="350"/>
 							</include>
-							<height>250</height>
+							<height>300</height>
 							<width>$PARAM[width]</width>
 							<scrolltime>0</scrolltime>
 							<ondown>900</ondown>
@@ -237,11 +235,11 @@
 							</focusedlayout>
 							<content>
 								<item>
-									<label>$LOCALIZE[31226]</label>
-									<icon>&#xf342;</icon>
-									<onclick>RunScript(plugin.video.embycon,0,?mode=CHANGE_USER)</onclick>
+									<label>$LOCALIZE[8]</label>
+									<icon>&#xf595;</icon>
+									<onclick condition="String.IsEmpty(Weather.Plugin) | String.IsEqual(Weather.fanartcode,na)">ReplaceWindow(servicesettings,weather)</onclick>
+									<onclick condition="!String.IsEmpty(Weather.Plugin) + !String.IsEqual(Weather.fanartcode,na)">ActivateWindow(Weather)</onclick>
 									<property name="forced_icon">true</property>
-									<visible>System.HasAddon(plugin.video.embycon)</visible>
 								</item>
 								<item>
 									<label>$LOCALIZE[31129]</label>
@@ -276,6 +274,13 @@
 									<icon>&#xf453;</icon>
 									<onclick>ReloadSkin()</onclick>
 									<property name="forced_icon">true</property>
+								</item>
+								<item>
+									<label>$LOCALIZE[31226]</label>
+									<icon>&#xf342;</icon>
+									<onclick>RunScript(plugin.video.embycon,0,?mode=CHANGE_USER)</onclick>
+									<property name="forced_icon">true</property>
+									<visible>System.HasAddon(plugin.video.embycon)</visible>
 								</item>
 								<item>
 									<label>$LOCALIZE[33060]</label>
