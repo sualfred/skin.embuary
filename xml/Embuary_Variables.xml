@@ -1313,7 +1313,6 @@
 		<value condition="ControlGroup(100).HasFocus(102)">$LOCALIZE[31229]</value>
 		<value condition="ControlGroup(100).HasFocus(103)">$LOCALIZE[31105]</value>
 		<value condition="ControlGroup(100).HasFocus(104)">$LOCALIZE[31329]</value>
-		<value condition="ControlGroup(100).HasFocus(105)">$LOCALIZE[31147]</value>
 		<value condition="ControlGroup(100).HasFocus(106)">$LOCALIZE[31328]</value>
 		<value condition="ControlGroup(100).HasFocus(107)">$LOCALIZE[31275]</value>
 		<value condition="ControlGroup(100).HasFocus(108)">$LOCALIZE[31296]</value>
@@ -1913,5 +1912,23 @@
 		<value condition="Container.Content(tvshows) + String.IsEmpty(ListItem.Rating(rottentomatoes))">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[ListItem.DBID]&amp;type=tvshow</value>
 		<value condition="VideoPlayer.Content(movies) + [Window.IsVisible(fullscreenvideo) | Window.IsVisible(fullscreeninfo)]">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[VideoPlayer.DBID]&amp;type=movie</value>
 		<value>-</value>
+	</variable>
+	<variable name="SidebarIcon">
+		<value condition="!String.IsEmpty(ListItem.Property(forced_icon))">$INFO[ListItem.Icon]</value>
+		<value condition="String.StartsWith(ListItem.Property(defaultID),embuary_emby)">&#xf6b3;</value>
+		<value condition="String.StartsWith(ListItem.Property(defaultID),embuary_) + String.Contains(ListItem.Property(defaultID),movies)">&#xf230;</value>
+		<value condition="String.StartsWith(ListItem.Property(defaultID),embuary_) + String.Contains(ListItem.Property(defaultID),shows)">&#xf502;</value>
+		<value condition="String.StartsWith(ListItem.Property(defaultID),embuary_) + String.Contains(ListItem.Property(defaultID),collection)">&#xfcf4;</value>
+		<value condition="String.StartsWith(ListItem.Property(defaultID),embuary_) + String.Contains(ListItem.Property(defaultID),pvr)">&#xf7f3;</value>
+		<value condition="String.StartsWith(ListItem.Property(defaultID),embuary_) + String.Contains(ListItem.Property(defaultID),recordings)">&#xf7f3;</value>
+		<value condition="String.StartsWith(ListItem.Property(defaultID),embuary_) + String.Contains(ListItem.Property(defaultID),music)">&#xf759;</value>
+		<value condition="String.StartsWith(ListItem.Property(defaultID),embuary_) + String.Contains(ListItem.Property(defaultID),games)">&#xfb5e;</value>
+		<value condition="String.StartsWith(ListItem.Property(defaultID),embuary_) + String.Contains(ListItem.Property(defaultID),customhub)">&#xf337;</value>
+		<value condition="String.StartsWith(ListItem.Property(defaultID),embuary_) + String.Contains(ListItem.Property(defaultID),addons)">&#xf03b;</value>
+		<value condition="String.Contains(ListItem.Property(path),library://video) | String.Contains(ListItem.Property(path),videodb://) | String.Contains(ListItem.Property(list),videodb://)">&#xfcf5;</value>
+		<value condition="String.Contains(ListItem.Property(path),library://music) | String.Contains(ListItem.Property(path),musicdb://) | String.Contains(ListItem.Property(list),musicdb://)">&#xf333;</value>
+		<value condition="String.Contains(ListItem.Property(path),androidapp) | String.Contains(ListItem.Property(path),programs) | String.Contains(ListItem.Property(path),addonbrowser) | String.Contains(ListItem.Property(path),plugin://) | String.Contains(ListItem.Property(list),plugin://)">&#xf03b;</value>
+		<value condition="String.Contains(ListItem.Property(path),sources://)">&#xf62c;</value>
+		<value>&#xf337;</value>
 	</variable>
 </includes>

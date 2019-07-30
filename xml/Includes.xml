@@ -84,6 +84,8 @@
 
 	<expression name="OnLibaryUpdate">[!String.IsEmpty(Window(home).Property(EmbuaryForceWidgetUpdate)) + [Window.IsVisible(home) | Window.IsVisible(1114) | Window.IsVisible(1120) | Window.IsVisible(1121) | Window.IsVisible(1122) | Window.IsVisible(1126) | Window.IsVisible(1130) | Window.IsVisible(1125)]]</expression>
 
+	<expression name="HasLibrary">[Library.HasContent(movies) | Library.HasContent(tvshows) | Library.HasContent(music) | Library.HasContent(musicvideos) | Library.HasContent(video)]</expression>
+
 	<expression name="AutoCloseInfoDialog">[
 		[String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) + [String.IsEqual(ListItem.DBType,season) + String.IsEqual(ListItem.Label,All)]]
 		| [!String.IsEqual(ListItem.DBType,movie) + !String.IsEqual(ListItem.DBType,tvshow) + !String.IsEqual(ListItem.DBType,episode) + !String.IsEqual(ListItem.DBType,season) + String.IsEmpty(ListItem.Plot)]
