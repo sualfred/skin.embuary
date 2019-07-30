@@ -6,7 +6,13 @@
 		<param name="width">100%</param>
 		<param name="visible">true</param>
 		<param name="color">panel_textcolor</param>
+		<param name="spacer">false</param>
 		<definition>
+			<control type="label" id="98$PARAM[nr]">
+				<height>10</height>
+				<label/>
+				<visible>$PARAM[spacer]</visible>
+			</control>
 			<control type="group" id="99$PARAM[nr]">
 				<visible>$PARAM[visible]</visible>
 				<height>50</height>
@@ -14,47 +20,6 @@
 				<!-- headline -->
 				<control type="label">
 					<top>10</top>
-					<width>$PARAM[width]</width>
-					<height>50</height>
-					<font>Med22</font>
-					<textcolor>$PARAM[color]</textcolor>
-					<label>$PARAM[label]</label>
-					<textoffsetx>15</textoffsetx>
-					<aligny>top</aligny>
-				</control>
-				<control type="label">
-					<top>10</top>
-					<width>$PARAM[width]</width>
-					<height>50</height>
-					<font>Med22</font>
-					<textcolor>30FFFFFF</textcolor>
-					<label>[LIGHT]$PARAM[label2][/LIGHT]</label>
-					<textoffsetx>15</textoffsetx>
-					<aligny>top</aligny>
-					<align>right</align>
-				</control>
-			</control>
-		</definition>
-	</include>
-	<include name="SideHeadline">
-		<param name="width">100%</param>
-		<param name="visible">true</param>
-		<param name="color">panel_textcolor</param>
-		<definition>
-			<control type="group" id="99$PARAM[nr]">
-				<visible>$PARAM[visible]</visible>
-				<height>54</height>
-				<top>$PARAM[top]</top>
-				<control type="image">
-					<top>9</top>
-					<height>1</height>
-					<width>$PARAM[width]</width>
-					<texture colordiffuse="grid_border">common/white.jpg</texture>
-					<aspectratio>stretch</aspectratio>
-				</control>
-				<!-- headline -->
-				<control type="label">
-					<top>20</top>
 					<width>$PARAM[width]</width>
 					<height>50</height>
 					<font>Med22</font>
@@ -153,8 +118,19 @@
 						<top>55</top>
 						<include content="SideBarHeadline">
 							<param name="label">14211</param>
-							<param name="label2">$INFO[Container(901).CurrentPage] | $INFO[Container(901).NumPages]</param>
 						</include>
+						<control type="label">
+							<top>10</top>
+							<width>$PARAM[width]</width>
+							<height>50</height>
+							<font>Light22</font>
+							<textcolor>30FFFFFF</textcolor>
+							<label>$INFO[Container(901).CurrentPage] | $INFO[Container(901).NumPages]</label>
+							<textoffsetx>15</textoffsetx>
+							<aligny>top</aligny>
+							<align>right</align>
+							<visible>Integer.IsGreater(Container(901).NumPages,1)</visible>
+						</control>
 						<control type="list" id="901">
 							<top>50</top>
 							<include condition="System.HasAddon(plugin.video.embycon) + $EXP[HasLibrary]" content="ParamHeight">

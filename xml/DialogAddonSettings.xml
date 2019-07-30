@@ -1,156 +1,174 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
-	<defaultcontrol always="true">9</defaultcontrol>
+	<defaultcontrol always="true">3</defaultcontrol>
 	<include>PropertyIncludes</include>
 	<controls>
 		<control type="label" id="2">
 			<include>HiddenObject</include>
 		</control>
+		<control type="button" id="28">
+			<include>HiddenObject</include>
+		</control>
+		<control type="button" id="29">
+			<include>HiddenObject</include>
+		</control>
+		<control type="button" id="30">
+			<include>HiddenObject</include>
+		</control>
 		<include>Background</include>
 		<control type="group">
 			<include>Window_OpenClose</include>
-			<!-- left -->
-			<include content="ContentPanel"/>
-			<control type="group">
+			<!-- hint and borders -->
+			<control type="image">
 				<top>112</top>
-				<include content="SideHeadline">
-					<param name="nr">1</param>
-					<param name="width">400</param>
-					<param name="label">$LOCALIZE[5]</param>
-				</include>
-				<control type="grouplist" id="3">
-					<left>0</left>
-					<top>55</top>
-					<bottom>130</bottom>
-					<width>400</width>
-					<usecontrolcoords>true</usecontrolcoords>
-					<onleft>900</onleft>
-					<onright>5</onright>
-					<onup>6666</onup>
-					<ondown>1000</ondown>
-				</control>
-				<control type="button" id="10">
-					<width>400</width>
-					<height>50</height>
-					<align>left</align>
-					<aligny>center</aligny>
-					<font>Reg22</font>
-					<textoffsetx>50</textoffsetx>
-					<textcolor>panel_textcolor</textcolor>
-					<focusedcolor>panel_textcolor</focusedcolor>
-					<selectedcolor>panel_textcolor</selectedcolor>
-					<texturefocus colordiffuse="panel_focus">common/white.jpg</texturefocus>
-					<include>NoTextures</include>
-				</control>
-			</control>
-		</control>
-		<!-- right -->
-		<control type="group">
-			<include>Window_OpenClose</include>
-			<top>122</top>
-			<bottom>122</bottom>
-			<control type="group">
-				<left>400</left>
+				<left>450</left>
 				<right>0</right>
-				<bottom>0</bottom>
-				<control type="image">
-					<top>-1</top>
-					<height>1</height>
-					<texture colordiffuse="panel_focus">common/white.jpg</texture>
-					<aspectratio>stretch</aspectratio>
-				</control>
-				<control type="image">
-					<bottom>-1</bottom>
-					<height>1</height>
-					<texture colordiffuse="panel_focus">common/white.jpg</texture>
-					<aspectratio>stretch</aspectratio>
-				</control>
+				<height>1</height>
+				<texture colordiffuse="grid_border">common/white.jpg</texture>
+				<aspectratio>stretch</aspectratio>
+			</control>
+			<control type="image">
+				<bottom>112</bottom>
+				<left>450</left>
+				<right>0</right>
+				<height>1</height>
+				<texture colordiffuse="grid_border">common/white.jpg</texture>
+				<aspectratio>stretch</aspectratio>
 			</control>
 			<control type="textbox" id="6">
-				<bottom>0</bottom>
-				<left>500</left>
-				<right>100</right>
-				<height>76</height>
+				<bottom>6</bottom>
+				<left>510</left>
+				<right>30</right>
+				<height>100</height>
+				<aligny>center</aligny>
 				<font>Reg22</font>
 			</control>
-			<!-- Buttons -->
-			<control type="grouplist" id="1000">
-				<bottom>-60</bottom>
-				<left>500</left>
+			<include content="ContentPanel">
+				<param name="top" value="0"/>
+				<param name="bottom" value="0"/>
+				<param name="width" value="450"/>
+			</include>
+			<!-- left -->
+			<control type="group">
+				<width>450</width>
+				<control type="group">
+					<left>0</left>
+					<top>100</top>
+					<include content="SideBarHeadline">
+						<param name="label" value="$LOCALIZE[5]"/>
+					</include>
+					<control type="grouplist" id="3">
+						<left>0</left>
+						<top>50</top>
+						<bottom>220</bottom>
+						<usecontrolcoords>true</usecontrolcoords>
+						<onleft>900</onleft>
+						<onright>5</onright>
+						<onup>6666</onup>
+						<ondown>1000</ondown>
+					</control>
+					<control type="togglebutton" id="10">
+						<alttexturefocus/>
+						<include>SettingsButtonSidePanel</include>
+					</control>
+				</control>
+				<control type="group">
+					<animation effect="slide" end="0,50" time="0" condition="Integer.IsGreater(Container(3).NumItems,1)">Conditional</animation>
+					<animation effect="slide" end="0,50" time="0" condition="Integer.IsGreater(Container(3).NumItems,2)">Conditional</animation>
+					<animation effect="slide" end="0,50" time="0" condition="Integer.IsGreater(Container(3).NumItems,3)">Conditional</animation>
+					<animation effect="slide" end="0,50" time="0" condition="Integer.IsGreater(Container(3).NumItems,4)">Conditional</animation>
+					<animation effect="slide" end="0,50" time="0" condition="Integer.IsGreater(Container(3).NumItems,5)">Conditional</animation>
+					<animation effect="slide" end="0,50" time="0" condition="Integer.IsGreater(Container(3).NumItems,6)">Conditional</animation>
+					<animation effect="slide" end="0,50" time="0" condition="Integer.IsGreater(Container(3).NumItems,7)">Conditional</animation>
+					<animation effect="slide" end="0,50" time="0" condition="Integer.IsGreater(Container(3).NumItems,8)">Conditional</animation>
+					<animation effect="slide" end="0,50" time="0" condition="Integer.IsGreater(Container(3).NumItems,9)">Conditional</animation>
+					<animation effect="slide" end="0,50" time="0" condition="Integer.IsGreater(Container(3).NumItems,10)">Conditional</animation>
+					<animation effect="slide" end="0,50" time="0" condition="Integer.IsGreater(Container(3).NumItems,11)">Conditional</animation>
+					<animation effect="slide" end="0,50" time="0" condition="Integer.IsGreater(Container(3).NumItems,12)">Conditional</animation>
+					<animation effect="slide" end="0,50" time="0" condition="Integer.IsGreater(Container(3).NumItems,13)">Conditional</animation>
+					<left>0</left>
+					<top>210</top>
+					<include content="SideBarHeadline">
+						<param name="label" value="$LOCALIZE[10140]"/>
+					</include>
+					<control type="grouplist" id="1000">
+						<left>0</left>
+						<top>50</top>
+						<usecontrolcoords>true</usecontrolcoords>
+						<onleft>900</onleft>
+						<onright>5</onright>
+						<onup>3</onup>
+						<ondown>noop</ondown>
+						<control type="button" id="1001">
+							<label>$LOCALIZE[732]</label>
+							<onclick>SendClick(28)</onclick>
+							<include>SettingsButtonSidePanel</include>
+						</control>
+						<control type="button" id="1003">
+							<label>$LOCALIZE[31135]</label>
+							<onclick>SendClick(30)</onclick>
+							<include>SettingsButtonSidePanel</include>
+						</control>
+						<control type="button" id="1002">
+							<label>$LOCALIZE[222]</label>
+							<onclick>SendClick(29)</onclick>
+							<include>SettingsButtonSidePanel</include>
+						</control>
+					</control>
+				</control>
+			</control>
+			<!-- right -->
+			<control type="group">
+				<left>510</left>
 				<right>50</right>
-				<height>50</height>
-				<orientation>horizontal</orientation>
-				<itemgap>5</itemgap>
-				<align>left</align>
-				<onright>noop</onright>
-				<onleft>3</onleft>
-				<onup>5</onup>
-				<control type="button" id="28">
-					<include>DarkGreyButton</include>
-					<onup>SetFocus(5)</onup>
+				<top>113</top>
+				<bottom>113</bottom>
+				<!-- list -->
+				<control type="grouplist" id="5">
+					<height>100%</height>
+					<onup>6666</onup>
+					<onleft>3</onleft>
+					<onright>noop</onright>
+					<ondown>noop</ondown>
+					<pagecontrol>60</pagecontrol>
+					<scrolltime>200</scrolltime>
+					<itemgap>0</itemgap>
 				</control>
-				<control type="button" id="29">
-					<include>DarkGreyButton</include>
-					<onup>SetFocus(5)</onup>
+				<control type="edit" id="12">
+					<description>Default Button</description>
+					<include>SettingsButton</include>
 				</control>
-				<control type="button" id="30">
-					<include>DarkGreyButton</include>
-					<onup>SetFocus(5)</onup>
+				<control type="button" id="7">
+					<description>Default Button</description>
+					<include>SettingsButton</include>
 				</control>
-			</control>
-			<!-- list -->
-			<control type="grouplist" id="5">
-				<left>500</left>
-				<right>100</right>
-				<height>100%</height>
-				<onup>6666</onup>
-				<onleft>3</onleft>
-				<onright>noop</onright>
-				<ondown>1000</ondown>
-				<pagecontrol>60</pagecontrol>
-				<scrolltime>200</scrolltime>
-				<itemgap>0</itemgap>
-			</control>
-			<control type="edit" id="12">
-				<description>Default Button</description>
-				<include>SettingsButton</include>
-			</control>
-			<control type="button" id="7">
-				<description>Default Button</description>
-				<include>SettingsButton</include>
-			</control>
-			<control type="radiobutton" id="8">
-				<description>Default RadioButton</description>
-				<include>SettingsButton</include>
-			</control>
-			<control type="spincontrolex" id="9">
-				<description>Default SpinControlex</description>
-				<include>SettingsButton</include>
-			</control>
-			<control type="sliderex" id="13">
-				<description>Default Slider</description>
-				<include>SettingsButton</include>
-			</control>
-			<control type="image" id="11">
-				<description>separator image</description>
-				<visible>false</visible>
-			</control>
-			<control type="label" id="14">
-				<description>Default Label</description>
-				<height>70</height>
-				<font>Med22</font>
-				<textoffsetx>0</textoffsetx>
-				<textcolor>panel_textcolor</textcolor>
-				<aligny>center</aligny>
-				<animation effect="slide" end="0,10" time="0" condition="true">Conditional</animation>
+				<control type="radiobutton" id="8">
+					<description>Default RadioButton</description>
+					<include>SettingsButton</include>
+				</control>
+				<control type="spincontrolex" id="9">
+					<description>Default SpinControlex</description>
+					<include>SettingsButton</include>
+				</control>
+				<control type="sliderex" id="13">
+					<description>Default Slider</description>
+					<include>SettingsButton</include>
+				</control>
+				<control type="image" id="11">
+					<description>separator image</description>
+					<visible>false</visible>
+				</control>
+				<include content="SkinSettingsHeadlineLabel">
+					<param name="id" value="14"/>
+				</include>
 			</control>
 		</control>
 		<!-- scrollbar -->
 		<include content="Scrollbar">
 			<param name="id" value="60"/>
 			<param name="visible" value="true"/>
-			<param name="top" value="122"/>
-			<param name="bottom" value="122"/>
+			<param name="top" value="112"/>
+			<param name="bottom" value="112"/>
 			<param name="width" value="10"/>
 		</include>
 		<!-- header bar -->
