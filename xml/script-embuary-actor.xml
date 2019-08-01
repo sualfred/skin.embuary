@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<defaultcontrol always="true">100</defaultcontrol>
+	<backgroundcolor>background</backgroundcolor>
+	<include>PropertyIncludes</include>
+	<controls>
+		<!-- hidden -->
+		<control type="list" id="100">
+			<include>HiddenObject</include>
+		</control>
+		<!-- background -->
+		<include>Background</include>
+		<!-- views -->
+		<control type="grouplist" id="50">
+			<include>Window_OpenClose</include>
+			<width>100%</width>
+			<height>100%</height>
+			<orientation>vertical</orientation>
+			<usecontrolcoords>true</usecontrolcoords>
+			<include>ScrollTime</include>
+			<pagecontrol>17</pagecontrol>
+			<itemgap>-80</itemgap>
+			<!-- Meta -->
+			<control type="group">
+				<top>90</top>
+				<height>480</height>
+				<!-- poster -->
+
+				<control type="group">
+					<left>70</left>
+					<control type="image">
+						<top>-2</top>
+						<left>-2</left>
+						<width>282</width>
+						<height>420</height>
+						<texture border="20,20,20,20">items/shadow.png</texture>
+					</control>
+					<control type="image">
+						<width>276</width>
+						<height>414</height>
+						<texture colordiffuse="$VAR[ThumbFallbackColor]">common/white.jpg</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<visible>String.IsEmpty(Container(100).ListItem.Art(thumb))</visible>
+					</control>
+					<control type="image">
+						<width>276</width>
+						<height>414</height>
+						<texture colordiffuse="thumb_background">common/white.jpg</texture>
+						<aspectratio scalediffuse="false">stretch</aspectratio>
+						<visible>!String.IsEmpty(Container(100).ListItem.Art(thumb))</visible>
+					</control>
+					<control type="textbox">
+						<top>10</top>
+						<left>10</left>
+						<width>256</width>
+						<height>394</height>
+						<font>Light24</font>
+						<textcolor>white</textcolor>
+						<align>center</align>
+						<aligny>center</aligny>
+						<label>$INFO[Container(100).ListItem.Label]</label>
+						<visible>String.IsEmpty(Container(100).ListItem.Art(thumb))</visible>
+					</control>
+					<control type="image">
+						<width>276</width>
+						<height>414</height>
+						<texture background="true">$INFO[Container(100).ListItem.Art(thumb)]</texture>
+						<aspectratio scalediffuse="false">scale</aspectratio>
+					</control>
+				</control>
+
+				<!-- meta -->
+				<control type="group">
+					<top>-5</top>
+					<left>370</left>
+					<right>70</right>
+					<control type="label">
+						<right>440</right>
+						<height>60</height>
+						<label>$INFO[Container(100).ListItem.Label]</label>
+						<font>Reg37</font>
+						<aligny>top</aligny>
+					</control>
+					<!-- buttons -->
+					<control type="list" id="1000">
+						<top>48</top>
+						<height>130</height>
+						<width>100%</width>
+						<orientation>horizontal</orientation>
+						<defaultcontrol always="true">0</defaultcontrol>
+						<onright>noop</onright>
+						<onleft>900</onleft>
+						<ondown>200</ondown>
+						<include>FocusBounce</include>
+						<itemlayout height="130" width="146">
+							<include content="IconMenu">
+								<param name="id" value="1000"/>
+							</include>
+						</itemlayout>
+						<focusedlayout height="130" width="146">
+							<include content="IconMenu">
+								<param name="id" value="1000"/>
+								<param name="focused" value="true"/>
+							</include>
+						</focusedlayout>
+						<content>
+							<item>
+								<visible>String.IsEmpty(Container(100).ListItem.Property(Biography))</visible>
+								<label>$LOCALIZE[15067]</label>
+								<property name="icon">&#xf5ad;</property>
+								<onclick>close</onclick>
+							</item>
+							<item>
+								<visible>!String.IsEmpty(Container(100).ListItem.Property(Biography))</visible>
+								<label>$LOCALIZE[21887]</label>
+								<property name="icon">&#xf9a9;</property>
+								<onclick>RunScript(script.embuary.helper,action=textviewer,header='$ESCINFO[Container(100).ListItem.Label]',message='$ESCINFO[Container(100).ListItem.Property(Biography)]')</onclick>
+							</item>
+						</content>
+					</control>
+					<!-- plot -->
+					<control type="textbox">
+						<top>171</top>
+						<height max="230">auto</height>
+						<align>justify</align>
+						<aligny>top</aligny>
+						<label>$INFO[Container(100).ListItem.Property(Birthday),$LOCALIZE[21893]: ]$INFO[WContainer(100).ListItem.Property(Deathday),   († ,) ]$INFO[Container(100).ListItem.Property(Age),[CR]$LOCALIZE[31171]: ,[CR]]$INFO[Container(100).ListItem.Property(place_of_birth),$LOCALIZE[31170]: ,[CR]]$VAR[ExtendedInfoFilmographyCount,$LOCALIZE[31188]: ,[CR][CR]]$INFO[Container(100).ListItem.Property(Biography)]</label>
+						<font>Light24</font>
+						<autoscroll>false</autoscroll>
+					</control>
+				</control>
+				<!-- logo -->
+				<include>MetaClearlogo</include>
+			</control>
+			<!-- movies -->
+			<include content="PosterWidget">
+				<param name="id" value="200"/>
+				<param name="onup" value="1000"/>
+				<param name="ondown" value="300"/>
+				<param name="headline" value="$LOCALIZE[342]"/>
+				<param name="mainlabel" value="$INFO[ListItem.Label]"/>
+				<param name="sublabel" value="$INFO[ListItem.Year]"/>
+				<param name="visible_icon" value="false"/>
+				<param name="use_custom_content" value="false"/>
+			</include>
+			<!-- shows -->
+			<include content="PosterWidget">
+				<param name="id" value="300"/>
+				<param name="onup" value="200"/>
+				<param name="ondown" value="400"/>
+				<param name="onback" value="100"/>
+				<param name="headline" value="$LOCALIZE[36903]"/>
+				<param name="mainlabel" value="$INFO[ListItem.Label]"/>
+				<param name="sublabel" value="$INFO[ListItem.Year]"/>
+				<param name="visible_icon" value="false"/>
+				<param name="use_custom_content" value="false"/>
+			</include>
+			<!-- images -->
+			<include content="PosterWidget">
+				<param name="id" value="400"/>
+				<param name="onup" value="300"/>
+				<param name="ondown" value="noop"/>
+				<param name="onback" value="100"/>
+				<param name="headline" value="$LOCALIZE[1]"/>
+				<param name="mainlabel" value="$INFO[ListItem.ID]"/>
+				<param name="sublabel" value="$INFO[ListItem.Year]"/>
+				<param name="visible_icon" value="false"/>
+				<param name="use_custom_content" value="false"/>
+				<param name="height" value="516"/>
+			</include>
+		</control>
+		<!-- header bar -->
+		<include content="HeaderBar">
+			<param name="id">50</param>
+			<param name="header_label">$LOCALIZE[29934]</param>
+		</include>
+		<!-- side panel -->
+		<include content="SidePanel">
+			<param name="onright">50</param>
+		</include>
+	</controls>
+</window>
