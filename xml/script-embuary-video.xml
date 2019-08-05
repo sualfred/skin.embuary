@@ -79,9 +79,92 @@
 						<font>Reg37</font>
 						<aligny>top</aligny>
 					</control>
+
+					<control type="group">
+						<top>60</top>
+						<right>440</right>
+						<height>40</height>
+						<control type="grouplist">
+							<height>40</height>
+							<itemgap>5</itemgap>
+							<orientation>horizontal</orientation>
+							<control type="label">
+								<label>$INFO[Container(10051).ListItem.Premiered,$LOCALIZE[31318]: ]   </label>
+								<include>MetaLabel</include>
+								<visible>!String.IsEmpty(Container(10051).ListItem.Premiered)</visible>
+							</control>
+							<control type="label">
+								<label>$INFO[Container(10051).ListItem.Status,$LOCALIZE[126]: ]   </label>
+								<include>MetaLabel</include>
+								<visible>!String.IsEmpty(Container(10051).ListItem.Status)</visible>
+							</control>
+							<control type="label">
+								<label>$INFO[Container(10051).ListItem.Season,$LOCALIZE[33054]: ]   </label>
+								<include>MetaLabel</include>
+								<visible>!String.IsEmpty(Container(10051).ListItem.Season)</visible>
+							</control>
+							<control type="label">
+								<label>$INFO[Container(10051).ListItem.Episode,$LOCALIZE[20360]: ]   </label>
+								<include>MetaLabel</include>
+								<visible>!String.IsEmpty(Container(10051).ListItem.Episode)</visible>
+							</control>
+							<control type="label">
+								<label>&#xf4ce;</label>
+								<font>Material26</font>
+								<textcolor>red</textcolor>
+								<include>MetaLabel</include>
+								<visible>!String.IsEmpty(Container(10051).ListItem.Rating)</visible>
+							</control>
+							<control type="label">
+								<label>$INFO[Container(10051).ListItem.Rating]   </label>
+								<include>MetaLabel</include>
+								<visible>!String.IsEmpty(Container(10051).ListItem.Rating)</visible>
+							</control>
+							<control type="image">
+								<animation effect="slide" end="0,2" time="0" condition="true">Conditional</animation>
+								<width>24</width>
+								<height>20</height>
+								<texture>$VAR[RottenIcon]</texture>
+								<aspectratio>keep</aspectratio>
+								<visible>!String.IsEmpty(Container(10051).ListItem.Property(rating.rotten))	</visible>
+							</control>
+							<control type="label">
+								<label>$INFO[Container(10051).ListItem.Property(rating.rotten),,   ]</label>
+								<include>MetaLabel</include>
+								<visible>!String.IsEmpty(Container(10051).ListItem.Property(rating.rotten))	</visible>
+							</control>
+							<control type="image">
+								<animation effect="slide" end="0,2" time="0" condition="true">Conditional</animation>
+								<width>24</width>
+								<height>20</height>
+								<texture>icons/rating/metacritic.png</texture>
+								<aspectratio>keep</aspectratio>
+								<visible>!String.IsEmpty(Container(10051).ListItem.Property(rating.metacritic))	</visible>
+							</control>
+							<control type="label">
+								<label>$INFO[Container(10051).ListItem.Property(rating.metacritic),,   ]</label>
+								<include>MetaLabel</include>
+								<visible>!String.IsEmpty(Container(10051).ListItem.Property(rating.metacritic))	</visible>
+							</control>
+							<control type="image">
+								<animation effect="slide" end="0,2" time="0" condition="true">Conditional</animation>
+								<width>44</width>
+								<height>20</height>
+								<texture>icons/rating/imdb.png</texture>
+								<aspectratio>keep</aspectratio>
+								<visible>!String.IsEmpty(Container(10051).ListItem.Property(rating.imdb))	</visible>
+							</control>
+							<control type="label">
+								<label>$INFO[Container(10051).ListItem.Property(rating.imdb),,   ]</label>
+								<include>MetaLabel</include>
+								<visible>!String.IsEmpty(Container(10051).ListItem.Property(rating.imdb))	</visible>
+							</control>
+						</control>
+					</control>
+
 					<!-- buttons -->
 					<control type="list" id="100">
-						<top>48</top>
+						<top>88</top>
 						<height>130</height>
 						<width>100%</width>
 						<orientation>horizontal</orientation>
@@ -130,11 +213,11 @@
 					</control>
 					<!-- plot -->
 					<control type="textbox">
-						<top>171</top>
-						<height max="230">auto</height>
+						<top>211</top>
+						<height max="200">auto</height>
 						<align>justify</align>
 						<aligny>top</aligny>
-						<label>$INFO[Container(10051).ListItem.Premiered,$LOCALIZE[31318]: ,[CR]]$INFO[Container(10051).ListItem.Status,$LOCALIZE[126]: ,[CR]]$INFO[Container(10051).ListItem.Season,$LOCALIZE[33054]: ]$INFO[Container(10051).ListItem.Episode,$LOCALIZE[20360]: ,[CR]]$INFO[Container(10051).ListItem.Property(Budget),$LOCALIZE[31319]: ,[CR]]$INFO[Container(10051).ListItem.Property(Revenue),$LOCALIZE[31320]: ,[CR]]$INFO[Container(10051).ListItem.Rating,$LOCALIZE[563]: ,[CR][CR]]$INFO[Container(10051).ListItem.Plot]</label>
+						<label>$VAR[TmdbBudget,,[CR]]$INFO[Container(10051).ListItem.Property(release),$LOCALIZE[31138]: ,[CR]]$INFO[Container(10051).ListItem.Property(awards),$LOCALIZE[31137]: ,[CR]]$INFO[Container(10051).ListItem.Plot]</label>
 						<font>Light24</font>
 						<autoscroll>false</autoscroll>
 					</control>

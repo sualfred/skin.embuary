@@ -1320,18 +1320,23 @@
 		<value condition="!String.IsEmpty(Skin.String(BackgroundAlpha.label))">$INFO[Skin.String(BackgroundAlpha.label)]</value>
 		<value>$LOCALIZE[31157]</value>
 	</variable>
-	<variable name="ExtendedInfoFilmographyMovies">
+	<variable name="TmdbFilmographyMovies">
 		<value condition="Integer.IsGreater(Container(150).NumItems,1)">$INFO[Container(150).NumItems,, $LOCALIZE[342]]</value>
 		<value condition="Integer.IsEqual(Container(150).NumItems,1)">$INFO[Container(150).NumItems,, $LOCALIZE[20338]]</value>
 	</variable>
-	<variable name="ExtendedInfoFilmographyTVShows">
+	<variable name="TmdbFilmographyTVShows">
 		<value condition="Integer.IsGreater(Container(250).NumItems,1)">$INFO[Container(250).NumItems,, $LOCALIZE[20343]]</value>
 		<value condition="Integer.IsEqual(Container(250).NumItems,1)">$INFO[Container(250).NumItems,, $LOCALIZE[20364]]</value>
 	</variable>
-	<variable name="ExtendedInfoFilmographyCount">
+	<variable name="TmdbFilmographyCount">
 		<value condition="Integer.IsGreater(Container(150).NumItems,0) + Integer.IsGreater(Container(250).NumItems,0)">$VAR[ExtendedInfoFilmographyMovies] &amp; $VAR[ExtendedInfoFilmographyTVShows]</value>
 		<value condition="Integer.IsGreater(Container(150).NumItems,0) + !Integer.IsGreater(Container(250).NumItems,0)">$VAR[ExtendedInfoFilmographyMovies]</value>
 		<value condition="!Integer.IsGreater(Container(150).NumItems,0) + Integer.IsGreater(Container(250).NumItems,0)">$VAR[ExtendedInfoFilmographyTVShows]</value>
+	</variable>
+	<variable name="TmdbBudget">
+		<value condition="!String.IsEmpty(Container(10051).ListItem.Property(Budget)) + !String.IsEmpty(Container(10051).ListItem.Property(Revenue))">$LOCALIZE[31319]/$LOCALIZE[31320]: $INFO[Container(10051).ListItem.Property(Budget),$], $INFO[Container(10051).ListItem.Property(Revenue),$]</value>
+		<value condition="!String.IsEmpty(Container(10051).ListItem.Property(Budget))">$LOCALIZE[31319]: $INFO[Container(10051).ListItem.Property(Budget),$]</value>
+		<value condition="!String.IsEmpty(Container(10051).ListItem.Property(Revenue))">$LOCALIZE[31320]: $INFO[Container(10051).ListItem.Property(Revenue),$]</value>
 	</variable>
 	<variable name="SortLetterLabel">
 		<value condition="Window.IsVisible(MyPlaylist.xml)">$INFO[Container(50).CurrentItem]</value>
@@ -1887,11 +1892,13 @@
 	</variable>
 	<variable name="RottenIcon">
 		<!-- fresh -->
+		<value condition="Window.IsVisible(script-embuary-video.xml) + Integer.IsGreaterOrEqual(Container(10051).ListItem.Property(rating.rotten),60)">icons/rating/rotten_fresh.png</value>
 		<value condition="!Skin.HasSetting(DisableEmbyUserRating) + [System.HasAddon(plugin.video.emby) | String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) | String.Contains(Player.Filenameandpath,/emby/)] + Integer.IsGreaterOrEqual(ListItem.UserRating,60)">icons/rating/rotten_fresh.png</value>
 		<value condition="!Skin.HasSetting(DisableEmbyUserRating) + [System.HasAddon(plugin.video.emby) | String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) | String.Contains(Player.Filenameandpath,/emby/)] + Integer.IsGreaterOrEqual(VideoPlayer.UserRating,60)">icons/rating/rotten_fresh.png</value>
 		<value condition="!String.IsEmpty(ListItem.Rating(rottentomatoes)) + Integer.IsGreaterOrEqual(ListItem.Rating(rottentomatoes),6)">icons/rating/rotten_fresh.png</value>
 		<value condition="!String.IsEmpty(Container(2003).ListItem.Rating(rottentomatoes)) + Integer.IsGreaterOrEqual(Container(2003).ListItem.Rating(rottentomatoes),6)">icons/rating/rotten_fresh.png</value>
 		<!-- rotten -->
+		<value condition="Window.IsVisible(script-embuary-video.xml) + !String.IsEmpty(Container(10051).ListItem.Property(rating.rotten))">icons/rating/rotten_rotten.png</value>
 		<value condition="!Skin.HasSetting(DisableEmbyUserRating) + [System.HasAddon(plugin.video.emby) | String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) | String.Contains(Player.Filenameandpath,/emby/)] + !String.IsEmpty(ListItem.UserRating)">icons/rating/rotten_rotten.png</value>
 		<value condition="!Skin.HasSetting(DisableEmbyUserRating) + [System.HasAddon(plugin.video.emby) | String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) | String.Contains(Player.Filenameandpath,/emby/)] + !String.IsEmpty(VideoPlayer.UserRating)">icons/rating/rotten_rotten.png</value>
 		<value condition="!String.IsEmpty(ListItem.Rating(rottentomatoes)) + !String.IsEmpty(ListItem.Rating)">icons/rating/rotten_rotten.png</value>
