@@ -578,7 +578,6 @@
 		<value condition="Skin.HasSetting(HideBackground) + Skin.HasSetting(ShowRandomBackgroundImage) + !String.IsEmpty(Skin.String(RandomBackgroundImage))">$INFO[Control.GetLabel(100001)]</value>
 		<value condition="Skin.HasSetting(HideBackground)"></value>
 		<!-- based on listitems -->
-		<value condition="Window.IsVisible(script-embuary-person.xml)">$INFO[Container(750).ListItemAbsolute(0).Icon]</value>
 		<value condition="[Window.IsVisible(script-NextAired-TVGuide2.xml) | Window.IsVisible(script-NextAired-TVGuide.xml)] + !String.IsEmpty(Window(home).Property(TVGuide.BackgroundFanart)) + Control.HasFocus(200)">$INFO[Container(200).ListItem.Property(Fanart)]</value>
 		<value condition="[Window.IsVisible(script-NextAired-TVGuide2.xml) | Window.IsVisible(script-NextAired-TVGuide.xml)] + !String.IsEmpty(Window(home).Property(TVGuide.BackgroundFanart)) + Control.HasFocus(201)">$INFO[Container(201).ListItem.Property(Fanart)]</value>
 		<value condition="[Window.IsVisible(script-NextAired-TVGuide2.xml) | Window.IsVisible(script-NextAired-TVGuide.xml)] + !String.IsEmpty(Window(home).Property(TVGuide.BackgroundFanart)) + Control.HasFocus(202)">$INFO[Container(202).ListItem.Property(Fanart)]</value>
@@ -595,7 +594,8 @@
 		<value condition="[Window.IsVisible(script-NextAired-TVGuide2.xml) | Window.IsVisible(script-NextAired-TVGuide.xml)] + !String.IsEmpty(Window(home).Property(TVGuide.BackgroundFanart)) + Control.HasFocus(213)">$INFO[Container(213).ListItem.Property(Fanart)]</value>
 		<value condition="[Window.IsVisible(script-NextAired-TVGuide2.xml) | Window.IsVisible(script-NextAired-TVGuide.xml)] + !String.IsEmpty(Window(home).Property(TVGuide.BackgroundFanart)) + Control.HasFocus(214)">$INFO[Container(214).ListItem.Property(Fanart)]</value>
 		<value condition="[Window.IsVisible(script-NextAired-TVGuide2.xml) | Window.IsVisible(script-NextAired-TVGuide.xml)] + !String.IsEmpty(Window(home).Property(TVGuide.BackgroundFanart)) + Control.HasFocus(215)">$INFO[Container(215).ListItem.Property(Fanart)]</value>
-		<value condition="Window.IsVisible(DialogVideoInfo.xml) + !String.IsEmpty(Container(2003).ListItem.Icon) + !Container.OnNext + !Container.OnPrevious">$INFO[Container(2003).ListItem.Icon]</value>
+		<value condition="Window.IsVisible(script-embuary-video.xml) + !String.IsEmpty(Container(10051).ListItem.Art(fanart))">$INFO[Container(10051).ListItem.Art(fanart)]</value>
+		<value condition="[Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(script-embuary-person.xml)] + !String.IsEmpty(Container(2003).ListItem.Icon) + !Container.OnNext + !Container.OnPrevious">$INFO[Container(2003).ListItem.Icon]</value>
 		<value condition="[Window.IsMedia | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(fullscreeninfo) | Window.IsVisible(pvrguideinfo)] + !String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
 		<!-- static / custom for non listitems -->
 		<value condition="Skin.HasSetting(ShowStaticBackgroundImage) + !String.IsEmpty(Skin.String(StaticBackgroundImage))">$INFO[Skin.String(StaticBackgroundImage)]</value>
