@@ -15,6 +15,10 @@
 		<control type="button" id="30">
 			<include>HiddenObject</include>
 		</control>
+		<control type="button" id="1100">
+			<include>HiddenObject</include>
+			<onfocus>RunScript(script.embuary.helper,action=dialogyesno,header=$LOCALIZE[31140],message=$LOCALIZE[31139],yesaction=SendClick(28),noaction=Sendclick(29))</onfocus>
+		</control>
 		<include>Background</include>
 		<control type="group">
 			<include>Window_OpenClose</include>
@@ -76,6 +80,7 @@
 						<onright>5</onright>
 						<onup>6666</onup>
 						<ondown>1000</ondown>
+						<onback>1100</onback>
 					</control>
 					<control type="togglebutton" id="10">
 						<alttexturefocus/>
@@ -109,6 +114,7 @@
 						<onright>5</onright>
 						<onup>3</onup>
 						<ondown>noop</ondown>
+						<onback>1100</onback>
 						<control type="button" id="1001">
 							<label>$LOCALIZE[732]</label>
 							<onclick>SendClick(28)</onclick>
@@ -139,10 +145,11 @@
 					<onup>6666</onup>
 					<onleft>3</onleft>
 					<onright>noop</onright>
-					<ondown>noop</ondown>
+					<ondown>1001</ondown>
 					<pagecontrol>60</pagecontrol>
 					<scrolltime>200</scrolltime>
 					<itemgap>0</itemgap>
+					<onback>1100</onback>
 				</control>
 				<control type="edit" id="12">
 					<description>Default Button</description>
