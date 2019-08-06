@@ -211,13 +211,20 @@
 							</item>
 						</content>
 					</control>
+					<!-- genre -->
+					<control type="group">
+						<top>209</top>
+						<include content="MetaGenre">
+							<param name="type" value="Container(10051).ListItem"/>
+						</include>
+					</control>
 					<!-- plot -->
 					<control type="textbox">
-						<top>211</top>
-						<height max="200">auto</height>
+						<top>246</top>
+						<height max="165">auto</height>
 						<align>justify</align>
 						<aligny>top</aligny>
-						<label>$VAR[TmdbBudget,,[CR]]$INFO[Container(10051).ListItem.Property(release),$LOCALIZE[31138]: ,[CR]]$INFO[Container(10051).ListItem.Property(awards),$LOCALIZE[31137]: ,[CR]]$INFO[Container(10051).ListItem.Plot]</label>
+						<label>$VAR[TmdbBudget,,[CR]]$VAR[TmdbReleaseAwards,,[CR]]$VAR[TmdbPlotSpacer]$INFO[Container(10051).ListItem.Tagline,[B],[/B][CR]]$INFO[Container(10051).ListItem.Plot]</label>
 						<font>Light24</font>
 						<autoscroll>false</autoscroll>
 					</control>
@@ -273,7 +280,7 @@
 		<!-- header bar -->
 		<include content="HeaderBar">
 			<param name="id">50</param>
-			<param name="header_label">$LOCALIZE[29934]</param>
+			<param name="header_label">The Movie Database (TMDb)</param>
 		</include>
 		<!-- side panel -->
 		<include content="SidePanel">

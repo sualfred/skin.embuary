@@ -1321,22 +1321,30 @@
 		<value>$LOCALIZE[31157]</value>
 	</variable>
 	<variable name="TmdbFilmographyMovies">
-		<value condition="Integer.IsGreater(Container(150).NumItems,1)">$INFO[Container(150).NumItems,, $LOCALIZE[342]]</value>
-		<value condition="Integer.IsEqual(Container(150).NumItems,1)">$INFO[Container(150).NumItems,, $LOCALIZE[20338]]</value>
+		<value condition="Integer.IsGreater(Container(1152).NumItems,1)">$INFO[Container(1152).NumItems,, $LOCALIZE[342]]</value>
+		<value condition="Integer.IsEqual(Container(1152).NumItems,1)">$INFO[Container(1152).NumItems,, $LOCALIZE[20338]]</value>
 	</variable>
 	<variable name="TmdbFilmographyTVShows">
-		<value condition="Integer.IsGreater(Container(250).NumItems,1)">$INFO[Container(250).NumItems,, $LOCALIZE[20343]]</value>
-		<value condition="Integer.IsEqual(Container(250).NumItems,1)">$INFO[Container(250).NumItems,, $LOCALIZE[20364]]</value>
+		<value condition="Integer.IsGreater(Container(1153).NumItems,1)">$INFO[Container(1153).NumItems,, $LOCALIZE[20343]]</value>
+		<value condition="Integer.IsEqual(Container(1153).NumItems,1)">$INFO[Container(1153).NumItems,, $LOCALIZE[20364]]</value>
 	</variable>
 	<variable name="TmdbFilmographyCount">
-		<value condition="Integer.IsGreater(Container(150).NumItems,0) + Integer.IsGreater(Container(250).NumItems,0)">$VAR[ExtendedInfoFilmographyMovies] &amp; $VAR[ExtendedInfoFilmographyTVShows]</value>
-		<value condition="Integer.IsGreater(Container(150).NumItems,0) + !Integer.IsGreater(Container(250).NumItems,0)">$VAR[ExtendedInfoFilmographyMovies]</value>
-		<value condition="!Integer.IsGreater(Container(150).NumItems,0) + Integer.IsGreater(Container(250).NumItems,0)">$VAR[ExtendedInfoFilmographyTVShows]</value>
+		<value condition="Integer.IsGreater(Container(1152).NumItems,0) + Integer.IsGreater(Container(1153).NumItems,0)">$VAR[ExtendedInfoFilmographyMovies] &amp; $VAR[ExtendedInfoFilmographyTVShows]</value>
+		<value condition="Integer.IsGreater(Container(1152).NumItems,0) + !Integer.IsGreater(Container(1153).NumItems,0)">$VAR[ExtendedInfoFilmographyMovies]</value>
+		<value condition="!Integer.IsGreater(Container(1152).NumItems,0) + Integer.IsGreater(Container(1153).NumItems,0)">$VAR[ExtendedInfoFilmographyTVShows]</value>
 	</variable>
 	<variable name="TmdbBudget">
-		<value condition="!String.IsEmpty(Container(10051).ListItem.Property(Budget)) + !String.IsEmpty(Container(10051).ListItem.Property(Revenue))">$LOCALIZE[31319]/$LOCALIZE[31320]: $INFO[Container(10051).ListItem.Property(Budget),$], $INFO[Container(10051).ListItem.Property(Revenue),$]</value>
+		<value condition="!String.IsEmpty(Container(10051).ListItem.Property(Budget)) + !String.IsEmpty(Container(10051).ListItem.Property(Revenue))">$LOCALIZE[31319]: $INFO[Container(10051).ListItem.Property(Budget),$]    $LOCALIZE[31320]: $INFO[Container(10051).ListItem.Property(Revenue),$]</value>
 		<value condition="!String.IsEmpty(Container(10051).ListItem.Property(Budget))">$LOCALIZE[31319]: $INFO[Container(10051).ListItem.Property(Budget),$]</value>
 		<value condition="!String.IsEmpty(Container(10051).ListItem.Property(Revenue))">$LOCALIZE[31320]: $INFO[Container(10051).ListItem.Property(Revenue),$]</value>
+	</variable>
+	<variable name="TmdbReleaseAwards">
+		<value condition="!String.IsEmpty(Container(10051).ListItem.Property(release)) + !String.IsEmpty(Container(10051).ListItem.Property(awards))">$INFO[Container(10051).ListItem.Property(release),$LOCALIZE[31138]: ]    $INFO[Container(10051).ListItem.Property(awards),$LOCALIZE[31137]: ]</value>
+		<value condition="!String.IsEmpty(Container(10051).ListItem.Property(release))">$INFO[Container(10051).ListItem.Property(release),$LOCALIZE[31138]: ]</value>
+		<value condition="!String.IsEmpty(Container(10051).ListItem.Property(awards))">$INFO[Container(10051).ListItem.Property(awards),$LOCALIZE[31138]: ]</value>
+	</variable>
+	<variable name="TmdbPlotSpacer">
+		<value condition="!String.IsEmpty(Container(10051).ListItem.Property(release)) | !String.IsEmpty(Container(10051).ListItem.Property(awards)) | !String.IsEmpty(Container(10051).ListItem.Property(Budget)) | !String.IsEmpty(Container(10051).ListItem.Property(Revenue))">[CR]</value>
 	</variable>
 	<variable name="SortLetterLabel">
 		<value condition="Window.IsVisible(MyPlaylist.xml)">$INFO[Container(50).CurrentItem]</value>
@@ -1471,6 +1479,16 @@
 	</variable>
 	<variable name="TVShowStatus">
 		<value condition="String.IsEqual(ListItem.Status,Ended)">$LOCALIZE[31196]</value>
+	</variable>
+	<variable name="TmdbStatus">
+		<value condition="String.IsEqual(Container(10051).ListItem.Status,Ended)">$LOCALIZE[31196]</value>
+		<value condition="String.IsEqual(Container(10051).ListItem.Status,Rumored)">$LOCALIZE[31141]</value>
+		<value condition="String.IsEqual(Container(10051).ListItem.Status,Planned)">$LOCALIZE[31142]</value>
+		<value condition="String.IsEqual(Container(10051).ListItem.Status,In Production)">$LOCALIZE[31143]</value>
+		<value condition="String.IsEqual(Container(10051).ListItem.Status,Post Production)">$LOCALIZE[31144]</value>
+		<value condition="String.IsEqual(Container(10051).ListItem.Status,Released)">$LOCALIZE[31145]</value>
+		<value condition="String.IsEqual(Container(10051).ListItem.Status,Canceled)">$LOCALIZE[31146]</value>
+		<value condition="String.IsEqual(Container(10051).ListItem.Status,Returning Series)">$LOCALIZE[31147]</value>
 	</variable>
 	<variable name="SetLastYear">
 		<value condition="!String.IsEmpty(Container(5601).ListItemAbsolute(30).Year)">$INFO[Container(5601).ListItemAbsolute(30).Year]</value>
