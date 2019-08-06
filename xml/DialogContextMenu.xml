@@ -5,6 +5,7 @@
 	<onload condition="Control.IsVisible(1999)">SetFocus(1999)</onload>
 	<onload condition="!Control.IsVisible(1999) + Control.IsVisible(1998)">SetFocus(1998)</onload>
 	<onload condition="!Control.IsVisible(1999) + !Control.IsVisible(1998) + Control.IsVisible(1997)">SetFocus(1997)</onload>
+	<onload condition="!Control.IsVisible(1999) + !Control.IsVisible(1998) + !Control.IsVisible(1997) + Control.IsVisible(1996)">SetFocus(1996)</onload>
 	<controls>
 		<include content="DiffuseMask"/>
 		<control type="group">
@@ -67,6 +68,13 @@
 					<label>$LOCALIZE[22083] ($LOCALIZE[31323])</label>
 					<onclick>RunScript(script.embuary.helper,action=playfolder,dbid=$INFO[Window(home).Property(ListItemDBID)],type=$INFO[Window(home).Property(ListItemDBType)],shuffle=true)</onclick>
 					<visible>!String.IsEmpty(Window(home).Property(ListItemDBID)) + [String.IsEqual(Window(home).Property(ListItemDBType),tvshow) | String.IsEqual(Window(home).Property(ListItemDBType),season)]</visible>
+				</control>
+				<control type="button" id="1996">
+					<include content="ContextButton"/>
+					<label>The Movie Database (TMDb)</label>
+					<onclick condition="!String.IsEqual(Window(home).Property(ListItemDBType),movie)">RunScript(script.embuary.info,call=tv,query=$INFO[Window(home).Property(ListItemTitle)],year=$INFO[Window(home).Property(ListItemYear)],external_id=$INFO[Window(home).Property(ListItemImdbnumber)])</onclick>
+					<onclick condition="String.IsEqual(Window(home).Property(ListItemDBType),movie)">RunScript(script.embuary.info,call=movie,query=$INFO[Window(home).Property(ListItemTitle)],year=$INFO[Window(home).Property(ListItemYear)],external_id=$INFO[Window(home).Property(ListItemImdbnumber)])</onclick>
+					<visible>[!String.IsEmpty(Window(home).Property(ListItemImdbnumber)) | !String.IsEmpty(Window(home).Property(ListItemTitle))] + [String.IsEqual(Window(home).Property(ListItemDBType),tvshow) | String.IsEqual(Window(home).Property(ListItemDBType),season) | String.IsEqual(Window(home).Property(ListItemDBType),episode) | String.IsEqual(Window(home).Property(ListItemDBType),movie)]</visible>
 				</control>
 				<control type="group" id="4">
 					<visible>Control.IsVisible(1997) | Control.IsVisible(1998) | Control.IsVisible(1999)</visible>
