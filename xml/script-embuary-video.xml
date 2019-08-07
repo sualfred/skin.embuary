@@ -79,7 +79,7 @@
 						<font>Reg37</font>
 						<aligny>top</aligny>
 					</control>
-
+					<!-- meta -->
 					<control type="group">
 						<top>60</top>
 						<right>440</right>
@@ -89,14 +89,14 @@
 							<itemgap>5</itemgap>
 							<orientation>horizontal</orientation>
 							<control type="label">
-								<label>$INFO[Container(10051).ListItem.Premiered,$LOCALIZE[31318]: ]   </label>
+								<label>$INFO[Container(10051).ListItem.Year]   </label>
 								<include>MetaLabel</include>
-								<visible>!String.IsEmpty(Container(10051).ListItem.Premiered)</visible>
+								<visible>!String.IsEmpty(Container(10051).ListItem.Year)</visible>
 							</control>
 							<control type="label">
-								<label>$INFO[Container(10051).ListItem.Status,$LOCALIZE[126]: ]   </label>
+								<label>$INFO[Container(10051).ListItem.Duration(mins),, $LOCALIZE[31089]]   </label>
 								<include>MetaLabel</include>
-								<visible>!String.IsEmpty(Container(10051).ListItem.Status)</visible>
+								<visible>!String.IsEmpty(Container(10051).ListItem.Duration)</visible>
 							</control>
 							<control type="label">
 								<label>$INFO[Container(10051).ListItem.Season,$LOCALIZE[33054]: ]   </label>
@@ -108,6 +108,9 @@
 								<include>MetaLabel</include>
 								<visible>!String.IsEmpty(Container(10051).ListItem.Episode)</visible>
 							</control>
+							<include content="MpaaIcon">
+								<param name="type" value="Container(10051).ListItem"/>
+							</include>
 							<control type="label">
 								<label>&#xf4ce;</label>
 								<font>Material26</font>
@@ -161,7 +164,6 @@
 							</control>
 						</control>
 					</control>
-
 					<!-- buttons -->
 					<control type="list" id="100">
 						<top>88</top>
@@ -186,9 +188,8 @@
 						</focusedlayout>
 						<content>
 							<item>
-								<visible>String.IsEmpty(Container(10051).ListItem.Plot) + String.IsEmpty(Container(10051).ListItem.DBID)</visible>
 								<label>$LOCALIZE[15067]</label>
-								<property name="icon">&#xf5ad;</property>
+								<property name="icon">&#xf206;</property>
 								<onclick>close</onclick>
 							</item>
 							<item>
@@ -211,22 +212,86 @@
 							</item>
 						</content>
 					</control>
-					<!-- genre -->
+					<!-- plot without facts -->
 					<control type="group">
-						<top>209</top>
-						<include content="MetaGenre">
-							<param name="type" value="Container(10051).ListItem"/>
-						</include>
+						<visible>![!String.IsEmpty(Container(10051).ListItem.Premiered) | !String.IsEmpty(Container(10051).ListItem.Property(release)) | !String.IsEmpty(Container(10051).ListItem.Property(Budget)) | !String.IsEmpty(Container(10051).ListItem.Property(Revenue))]</visible>
+						<control type="group">
+							<top>209</top>
+							<include content="MetaGenre">
+								<param name="type" value="Container(10051).ListItem"/>
+							</include>
+						</control>
+						<control type="textbox">
+							<top>246</top>
+							<height max="165">auto</height>
+							<align>justify</align>
+							<aligny>top</aligny>
+							<label fallback="19055">$INFO[Container(10051).ListItem.Tagline,[B],[/B][CR]]$INFO[Container(10051).ListItem.Plot]</label>
+							<font>Light24</font>
+							<autoscroll>false</autoscroll>
+						</control>
 					</control>
-					<!-- plot -->
-					<control type="textbox">
-						<top>246</top>
-						<height max="165">auto</height>
-						<align>justify</align>
-						<aligny>top</aligny>
-						<label>$VAR[TmdbBudget,,[CR]]$VAR[TmdbReleaseAwards,,[CR]]$VAR[TmdbPlotSpacer]$INFO[Container(10051).ListItem.Tagline,[B],[/B][CR]]$INFO[Container(10051).ListItem.Plot]</label>
-						<font>Light24</font>
-						<autoscroll>false</autoscroll>
+					<!-- plot with facts -->
+					<control type="group">
+						<visible>!String.IsEmpty(Container(10051).ListItem.Premiered) | !String.IsEmpty(Container(10051).ListItem.Property(release)) | !String.IsEmpty(Container(10051).ListItem.Property(Budget)) | !String.IsEmpty(Container(10051).ListItem.Property(Revenue))</visible>
+						<right>360</right>
+						<control type="group">
+							<top>209</top>
+							<include content="MetaGenre">
+								<param name="type" value="Container(10051).ListItem"/>
+							</include>
+						</control>
+						<control type="textbox">
+							<top>246</top>
+							<height max="165">auto</height>
+							<align>justify</align>
+							<aligny>top</aligny>
+							<label fallback="19055">$INFO[Container(10051).ListItem.Tagline,[B],[/B][CR]]$INFO[Container(10051).ListItem.Plot]</label>
+							<font>Light24</font>
+							<autoscroll>false</autoscroll>
+						</control>
+					</control>
+					<!-- facts -->
+					<control type="group">
+						<visible>!String.IsEmpty(Container(10051).ListItem.Premiered) | !String.IsEmpty(Container(10051).ListItem.Property(release)) | !String.IsEmpty(Container(10051).ListItem.Property(Budget)) | !String.IsEmpty(Container(10051).ListItem.Property(Revenue))</visible>
+						<top>209</top>
+						<right>0</right>
+						<width>320</width>
+						<control type="label">
+							<animation effect="slide" end="0,2" time="0" condition="true">Conditional</animation>
+							<width>auto</width>
+							<height>40</height>
+							<label>Facts</label>
+							<font>Reg22</font>
+							<aligny>top</aligny>
+							<textcolor>$VAR[AccentColor]</textcolor>
+						</control>
+						<control type="textbox">
+							<top>3</top>
+							<right>0</right>
+							<height>165</height>
+							<align>left</align>
+							<aligny>top</aligny>
+							<label>$INFO[Container(10051).ListItem.Premiered,[CR]$LOCALIZE[31318]:   ]$INFO[Container(10051).ListItem.Property(release),[CR]$LOCALIZE[31138]:   ]$INFO[Container(10051).ListItem.Property(Budget),[CR]$LOCALIZE[31319]:   $]$INFO[Container(10051).ListItem.Property(Revenue),[CR]$LOCALIZE[31320]:   $]</label>
+							<font>Light24</font>
+							<autoscroll>false</autoscroll>
+							<include content="FakeFadeLabel">
+								<param name="condition" value="!String.IsEmpty(Container(10051).ListItem.Property(Awards))"/>
+							</include>
+						</control>
+						<control type="textbox">
+							<top>3</top>
+							<right>0</right>
+							<height>165</height>
+							<align>left</align>
+							<aligny>top</aligny>
+							<label>$INFO[Container(10051).ListItem.Property(awards),[CR]$LOCALIZE[31137]:   ]</label>
+							<font>Light24</font>
+							<autoscroll>false</autoscroll>
+							<include content="FakeFadeLabel2">
+								<param name="condition" value="!String.IsEmpty(Container(10051).ListItem.Property(awards))"/>
+							</include>
+						</control>
 					</control>
 				</control>
 				<!-- logo -->
@@ -239,7 +304,7 @@
 				<param name="ondown" value="10053"/>
 				<param name="headline" value="$LOCALIZE[206]"/>
 				<param name="mainlabel" value="$INFO[ListItem.Label]"/>
-				<param name="sublabel" value="$INFO[ListItem.Label2]"/>
+				<param name="sublabel" value="$INFO[ListItem.Label2,$LOCALIZE[20347] ]"/>
 				<param name="visible_icon" value="false"/>
 				<param name="use_custom_content" value="false"/>
 			</include>

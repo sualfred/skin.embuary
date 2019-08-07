@@ -80,9 +80,23 @@
 						<font>Reg37</font>
 						<aligny>top</aligny>
 					</control>
+					<control type="group">
+						<top>60</top>
+						<right>440</right>
+						<height>40</height>
+						<control type="grouplist">
+							<height>40</height>
+							<itemgap>5</itemgap>
+							<orientation>horizontal</orientation>
+							<control type="label">
+								<label>$VAR[TmdbFilmographyCount,$LOCALIZE[31188]: ]   </label>
+								<include>MetaLabel</include>
+							</control>
+						</control>
+					</control>
 					<!-- buttons -->
 					<control type="list" id="100">
-						<top>48</top>
+						<top>88</top>
 						<height>130</height>
 						<width>100%</width>
 						<orientation>horizontal</orientation>
@@ -104,9 +118,8 @@
 						</focusedlayout>
 						<content>
 							<item>
-								<visible>String.IsEmpty(Container(10051).ListItem.Property(Biography))</visible>
 								<label>$LOCALIZE[15067]</label>
-								<property name="icon">&#xf5ad;</property>
+								<property name="icon">&#xf206;</property>
 								<onclick>close</onclick>
 							</item>
 							<item>
@@ -119,13 +132,40 @@
 					</control>
 					<!-- plot -->
 					<control type="textbox">
-						<top>171</top>
-						<height max="230">auto</height>
+						<top>211</top>
+						<right>360</right>
+						<height max="200">auto</height>
 						<align>justify</align>
 						<aligny>top</aligny>
-						<label>$INFO[Container(10051).ListItem.Property(Birthday),$LOCALIZE[21893]: ]$INFO[Container(10051).ListItem.Property(Deathday),   († ,) ]$INFO[Container(10051).ListItem.Property(Age),[CR]$LOCALIZE[31171]: ,[CR]]$INFO[Container(10051).ListItem.Property(place_of_birth),$LOCALIZE[31170]: ,[CR]]$VAR[ExtendedInfoFilmographyCount,$LOCALIZE[31188]: ,[CR][CR]]$INFO[Container(10051).ListItem.Property(Biography)]</label>
+						<label fallback="19055">$INFO[Container(10051).ListItem.Property(Biography)]</label>
 						<font>Light24</font>
 						<autoscroll>false</autoscroll>
+					</control>
+					<!-- facts -->
+					<control type="group">
+						<visible>!String.IsEmpty(Container(10051).ListItem.Property(Age)) | !String.IsEmpty(Container(10051).ListItem.Property(Birthday)) | !String.IsEmpty(Container(10051).ListItem.Property(Deathday)) | !String.IsEmpty(Container(10051).ListItem.Property(place_of_birth))</visible>
+						<top>208</top>
+						<right>0</right>
+						<width>320</width>
+						<control type="label">
+							<animation effect="slide" end="0,2" time="0" condition="true">Conditional</animation>
+							<width>auto</width>
+							<height>40</height>
+							<label>Facts</label>
+							<font>Reg22</font>
+							<aligny>top</aligny>
+							<textcolor>$VAR[AccentColor]</textcolor>
+						</control>
+						<control type="textbox">
+							<top>3</top>
+							<right>0</right>
+							<height>200</height>
+							<align>left</align>
+							<aligny>top</aligny>
+							<label>$INFO[Container(10051).ListItem.Property(Age),[CR]$LOCALIZE[31171]:   ]$INFO[Container(10051).ListItem.Property(Birthday),[CR]$LOCALIZE[21893]:   ]$INFO[Container(10051).ListItem.Property(Deathday),[CR]$LOCALIZE[21897]:   ]$INFO[Container(10051).ListItem.Property(place_of_birth),[CR]$LOCALIZE[31170]:   ]</label>
+							<font>Light24</font>
+							<autoscroll>false</autoscroll>
+						</control>
 					</control>
 				</control>
 				<!-- logo -->
