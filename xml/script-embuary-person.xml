@@ -3,6 +3,8 @@
 	<backgroundcolor>background</backgroundcolor>
 	<include>PropertyIncludes</include>
 	<defaultcontrol>100</defaultcontrol>
+	<onunload>SetProperty(ShowHeader,1,home)</onunload>
+	<onunload>AlarmClock(ShowHeader,ClearProperty(ShowHeader,home),00:02,silent)</onunload>
 	<controls>
 		<!-- hidden -->
 		<control type="list" id="10051">
@@ -26,48 +28,7 @@
 				<top>90</top>
 				<height>480</height>
 				<!-- poster -->
-				<control type="group">
-					<left>70</left>
-					<control type="image">
-						<top>-2</top>
-						<left>-2</left>
-						<width>282</width>
-						<height>420</height>
-						<texture border="20,20,20,20">items/shadow.png</texture>
-					</control>
-					<control type="image">
-						<width>276</width>
-						<height>414</height>
-						<texture colordiffuse="$VAR[ThumbFallbackColor]">common/white.jpg</texture>
-						<aspectratio scalediffuse="false">stretch</aspectratio>
-						<visible>String.IsEmpty(Container(10051).ListItem.Art(thumb))</visible>
-					</control>
-					<control type="image">
-						<width>276</width>
-						<height>414</height>
-						<texture colordiffuse="thumb_background">common/white.jpg</texture>
-						<aspectratio scalediffuse="false">stretch</aspectratio>
-						<visible>!String.IsEmpty(Container(10051).ListItem.Art(thumb))</visible>
-					</control>
-					<control type="textbox">
-						<top>10</top>
-						<left>10</left>
-						<width>256</width>
-						<height>394</height>
-						<font>Light24</font>
-						<textcolor>white</textcolor>
-						<align>center</align>
-						<aligny>center</aligny>
-						<label>$INFO[Container(10051).ListItem.Label]</label>
-						<visible>String.IsEmpty(Container(10051).ListItem.Art(thumb))</visible>
-					</control>
-					<control type="image">
-						<width>276</width>
-						<height>414</height>
-						<texture background="true">$INFO[Container(10051).ListItem.Art(thumb)]</texture>
-						<aspectratio scalediffuse="false">scale</aspectratio>
-					</control>
-				</control>
+				<include>MetaTmdbPoster</include>
 				<!-- meta -->
 				<control type="group">
 					<top>-5</top>
@@ -89,7 +50,11 @@
 							<itemgap>5</itemgap>
 							<orientation>horizontal</orientation>
 							<control type="label">
-								<label>$VAR[TmdbFilmographyCount,$LOCALIZE[31188]: ]   </label>
+								<label>$VAR[TmdbFilmographyMovies]   </label>
+								<include>MetaLabel</include>
+							</control>
+							<control type="label">
+								<label>$VAR[TmdbFilmographyTVShows]   </label>
 								<include>MetaLabel</include>
 							</control>
 						</control>
@@ -120,7 +85,7 @@
 							<item>
 								<label>$LOCALIZE[15067]</label>
 								<property name="icon">&#xf206;</property>
-								<onclick>close</onclick>
+								<onclick>Dialog.Close(all)</onclick>
 							</item>
 							<item>
 								<visible>!String.IsEmpty(Container(10051).ListItem.Property(Biography))</visible>
@@ -130,20 +95,17 @@
 							</item>
 						</content>
 					</control>
-					<!-- plot -->
-					<control type="textbox">
-						<top>211</top>
-						<right>360</right>
-						<height max="200">auto</height>
-						<align>justify</align>
-						<aligny>top</aligny>
-						<label fallback="19055">$INFO[Container(10051).ListItem.Property(Biography)]</label>
-						<font>Light24</font>
-						<autoscroll>false</autoscroll>
-					</control>
+					<!-- bio -->
+					<include content="MetaTmdbPersonBio">
+						<param name="visible" value="!$EXP[TmbdPersonFacts]"/>
+					</include>
+					<include content="MetaTmdbPersonBio">
+						<param name="visible" value="$EXP[TmbdPersonFacts]"/>
+						<param name="right" value="360"/>
+					</include>
 					<!-- facts -->
 					<control type="group">
-						<visible>!String.IsEmpty(Container(10051).ListItem.Property(Age)) | !String.IsEmpty(Container(10051).ListItem.Property(Birthday)) | !String.IsEmpty(Container(10051).ListItem.Property(Deathday)) | !String.IsEmpty(Container(10051).ListItem.Property(place_of_birth))</visible>
+						<visible>$EXP[TmbdPersonFacts]</visible>
 						<top>208</top>
 						<right>0</right>
 						<width>320</width>
@@ -208,7 +170,7 @@
 		<!-- header bar -->
 		<include content="HeaderBar">
 			<param name="id">50</param>
-			<param name="header_label">The Movie Database (TMDb)</param>
+			<param name="header_label">TMDb - $INFO[Container(10051).ListItem.Label]</param>
 		</include>
 		<!-- side panel -->
 		<include content="SidePanel">

@@ -1328,29 +1328,6 @@
 		<value condition="Integer.IsGreater(Container(10053).NumItems,1)">$INFO[Container(10053).NumItems,, $LOCALIZE[20343]]</value>
 		<value condition="Integer.IsEqual(Container(10053).NumItems,1)">$INFO[Container(10053).NumItems,, $LOCALIZE[20364]]</value>
 	</variable>
-	<variable name="TmdbFilmographyCount">
-		<value condition="Integer.IsGreater(Container(10052).NumItems,0) + Integer.IsGreater(Container(10053).NumItems,0)">$VAR[TmdbFilmographyMovies] &amp; $VAR[TmdbFilmographyTVShows]</value>
-		<value condition="Integer.IsGreater(Container(10052).NumItems,0) + !Integer.IsGreater(Container(10053).NumItems,0)">$VAR[TmdbFilmographyMovies]</value>
-		<value condition="!Integer.IsGreater(Container(10052).NumItems,0) + Integer.IsGreater(Container(10053).NumItems,0)">$VAR[TmdbFilmographyTVShows]</value>
-		<value>$LOCALIZE[31284]</value>
-	</variable>
-	<variable name="TmdbBudget">
-		<value condition="!String.IsEmpty(Container(10051).ListItem.Property(Budget)) + !String.IsEmpty(Container(10051).ListItem.Property(Revenue))">$INFO[Container(10051).ListItem.Property(Budget),$LOCALIZE[31319]: $,    ]$INFO[Container(10051).ListItem.Property(Revenue),$LOCALIZE[31320]: $]</value>
-		<value condition="!String.IsEmpty(Container(10051).ListItem.Property(Budget))">$LOCALIZE[31319]: $INFO[Container(10051).ListItem.Property(Budget),$]</value>
-		<value condition="!String.IsEmpty(Container(10051).ListItem.Property(Revenue))">$LOCALIZE[31320]: $INFO[Container(10051).ListItem.Property(Revenue),$]</value>
-	</variable>
-	<variable name="TmdbReleaseAwards">
-		<value condition="!String.IsEmpty(Container(10051).ListItem.Premiered) + !String.IsEmpty(Container(10051).ListItem.Property(release)) + !String.IsEmpty(Container(10051).ListItem.Property(awards))">$INFO[Container(10051).ListItem.Premiered,$LOCALIZE[31318]: ,    ]$INFO[Container(10051).ListItem.Property(release),$LOCALIZE[31138]: ,    ]$INFO[Container(10051).ListItem.Property(awards),$LOCALIZE[31137]: ]</value>
-		<value condition="!String.IsEmpty(Container(10051).ListItem.Property(release)) + !String.IsEmpty(Container(10051).ListItem.Property(awards))">$INFO[Container(10051).ListItem.Property(release),$LOCALIZE[31138]: ]    $INFO[Container(10051).ListItem.Property(awards),$LOCALIZE[31137]: ]</value>
-		<value condition="!String.IsEmpty(Container(10051).ListItem.Property(release))">$INFO[Container(10051).ListItem.Property(release),$LOCALIZE[31138]: ]</value>
-		<value condition="!String.IsEmpty(Container(10051).ListItem.Property(awards))">$INFO[Container(10051).ListItem.Property(awards),$LOCALIZE[31138]: ]</value>
-	</variable>
-	<variable name="TmdbPlotSpacer1">
-		<value condition="!String.IsEmpty(Container(10051).ListItem.Property(Budget)) | !String.IsEmpty(Container(10051).ListItem.Property(Revenue))">[CR]</value>
-	</variable>
-	<variable name="TmdbPlotSpacer2">
-		<value condition="!String.IsEmpty(Container(10051).ListItem.premiered) | !String.IsEmpty(Container(10051).ListItem.Property(release)) | !String.IsEmpty(Container(10051).ListItem.Property(awards)) | !String.IsEmpty(Container(10051).ListItem.Property(Budget)) | !String.IsEmpty(Container(10051).ListItem.Property(Revenue))">[CR]</value>
-	</variable>
 	<variable name="SortLetterLabel">
 		<value condition="Window.IsVisible(MyPlaylist.xml)">$INFO[Container(50).CurrentItem]</value>
 		<value condition="Window.IsVisible(DialogPVRChannelsOSD.xml)">$INFO[Container(11).ListItem.ChannelNumberLabel]</value>
@@ -1373,8 +1350,8 @@
 		<value>n/a</value>
 	</variable>
 	<variable name="CastSearchProvider">
-		<value condition="Skin.HasSetting(DoNotUseExtendedInfo) | !System.HasAddon(script.extendedinfo)">$LOCALIZE[31237]</value>
-		<value>$INFO[System.AddonTitle(script.extendedinfo)]</value>
+		<value condition="Skin.HasSetting(DoNotUseTmbdbInfo) | !System.HasAddon(script.embuary.info)">$LOCALIZE[31237]</value>
+		<value>$INFO[System.AddonTitle(script.embuary.info)]</value>
 	</variable>
 	<variable name="CinemaModeForLabel">
 		<value condition="String.IsEqual(Skin.String(CinemaModeFor),episodes)">$LOCALIZE[20360]</value>
