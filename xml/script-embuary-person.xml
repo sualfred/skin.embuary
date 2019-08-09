@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
-	<defaultcontrol always="true">100</defaultcontrol>
 	<backgroundcolor>background</backgroundcolor>
 	<include>PropertyIncludes</include>
+	<defaultcontrol>100</defaultcontrol>
+	<onunload>SetProperty(ShowHeader,1,home)</onunload>
+	<onunload>AlarmClock(ShowHeader,ClearProperty(ShowHeader,home),00:02,silent)</onunload>
 	<controls>
 		<!-- hidden -->
-		<control type="button" id="2">
+		<control type="list" id="10051">
 			<include>HiddenObject</include>
 		</control>
 		<!-- background -->
+		<include>MultiFanartTmdbPerson</include>
 		<include>Background</include>
 		<!-- views -->
 		<control type="grouplist" id="50">
@@ -25,7 +28,7 @@
 				<top>90</top>
 				<height>480</height>
 				<!-- poster -->
-				<include>MetaExtendedInfoThumb</include>
+				<include>MetaTmdbPoster</include>
 				<!-- meta -->
 				<control type="group">
 					<top>-5</top>
@@ -34,20 +37,38 @@
 					<control type="label">
 						<right>440</right>
 						<height>60</height>
-						<label>$INFO[Window.Property(Label)]</label>
+						<label>$INFO[Container(10051).ListItem.Label]</label>
 						<font>Reg37</font>
 						<aligny>top</aligny>
 					</control>
+					<control type="group">
+						<top>60</top>
+						<right>440</right>
+						<height>40</height>
+						<control type="grouplist">
+							<height>40</height>
+							<itemgap>5</itemgap>
+							<orientation>horizontal</orientation>
+							<control type="label">
+								<label>$VAR[TmdbFilmographyMovies]   </label>
+								<include>MetaLabel</include>
+							</control>
+							<control type="label">
+								<label>$VAR[TmdbFilmographyTVShows]   </label>
+								<include>MetaLabel</include>
+							</control>
+						</control>
+					</control>
 					<!-- buttons -->
 					<control type="list" id="100">
-						<top>48</top>
+						<top>88</top>
 						<height>130</height>
 						<width>100%</width>
 						<orientation>horizontal</orientation>
 						<defaultcontrol always="true">0</defaultcontrol>
 						<onright>noop</onright>
 						<onleft>900</onleft>
-						<ondown>150</ondown>
+						<ondown>10052</ondown>
 						<include>FocusBounce</include>
 						<itemlayout height="130" width="146">
 							<include content="IconMenu">
@@ -62,28 +83,51 @@
 						</focusedlayout>
 						<content>
 							<item>
-								<visible>String.IsEmpty(Window.Property(Biography))</visible>
 								<label>$LOCALIZE[15067]</label>
-								<property name="icon">&#xf5ad;</property>
-								<onclick>close</onclick>
+								<property name="icon">&#xf206;</property>
+								<onclick>Dialog.Close(all)</onclick>
 							</item>
 							<item>
-								<visible>!String.IsEmpty(Window.Property(Biography))</visible>
+								<visible>!String.IsEmpty(Container(10051).ListItem.Property(Biography))</visible>
 								<label>$LOCALIZE[21887]</label>
 								<property name="icon">&#xf9a9;</property>
-								<onclick>RunScript(script.embuary.helper,action=textviewer,header='$ESCINFO[Window.Property(Label)]',message='$ESCINFO[Window.Property(Biography)]')</onclick>
+								<onclick>RunScript(script.embuary.helper,action=textviewer,header='$ESCINFO[Container(10051).ListItem.Label]',message='$ESCINFO[Container(10051).ListItem.Property(Biography)]')</onclick>
 							</item>
 						</content>
 					</control>
-					<!-- plot -->
-					<control type="textbox">
-						<top>171</top>
-						<height max="230">auto</height>
-						<align>justify</align>
-						<aligny>top</aligny>
-						<label>$INFO[Window.Property(Birthday),$LOCALIZE[21893]: ]$INFO[Window.Property(Deathday),   († ,) ]$INFO[Window.Property(Age),[CR]$LOCALIZE[31171]: ,[CR]]$INFO[Window.Property(PlaceOfBirth),$LOCALIZE[31170]: ,[CR]]$VAR[ExtendedInfoFilmographyCount,$LOCALIZE[31188]: ,[CR][CR]]$INFO[Window.Property(Biography)]</label>
-						<font>Light24</font>
-						<autoscroll>false</autoscroll>
+					<!-- bio -->
+					<include content="MetaTmdbPersonBio">
+						<param name="visible" value="!$EXP[TmbdPersonFacts]"/>
+					</include>
+					<include content="MetaTmdbPersonBio">
+						<param name="visible" value="$EXP[TmbdPersonFacts]"/>
+						<param name="right" value="360"/>
+					</include>
+					<!-- facts -->
+					<control type="group">
+						<visible>$EXP[TmbdPersonFacts]</visible>
+						<top>208</top>
+						<right>0</right>
+						<width>320</width>
+						<control type="label">
+							<animation effect="slide" end="0,2" time="0" condition="true">Conditional</animation>
+							<width>auto</width>
+							<height>40</height>
+							<label>Facts</label>
+							<font>Reg22</font>
+							<aligny>top</aligny>
+							<textcolor>$VAR[AccentColor]</textcolor>
+						</control>
+						<control type="textbox">
+							<top>3</top>
+							<right>0</right>
+							<height>200</height>
+							<align>left</align>
+							<aligny>top</aligny>
+							<label>$INFO[Container(10051).ListItem.Property(Age),[CR]$LOCALIZE[31171]:   ]$INFO[Container(10051).ListItem.Property(Birthday),[CR]$LOCALIZE[21893]:   ]$INFO[Container(10051).ListItem.Property(Deathday),[CR]$LOCALIZE[21897]:   ]$INFO[Container(10051).ListItem.Property(place_of_birth),[CR]$LOCALIZE[31170]:   ]</label>
+							<font>Light24</font>
+							<autoscroll>false</autoscroll>
+						</control>
 					</control>
 				</control>
 				<!-- logo -->
@@ -91,9 +135,9 @@
 			</control>
 			<!-- movies -->
 			<include content="PosterWidget">
-				<param name="id" value="150"/>
+				<param name="id" value="10052"/>
 				<param name="onup" value="100"/>
-				<param name="ondown" value="250"/>
+				<param name="ondown" value="10053"/>
 				<param name="headline" value="$LOCALIZE[342]"/>
 				<param name="mainlabel" value="$INFO[ListItem.Label]"/>
 				<param name="sublabel" value="$INFO[ListItem.Year]"/>
@@ -102,10 +146,9 @@
 			</include>
 			<!-- shows -->
 			<include content="PosterWidget">
-				<param name="id" value="250"/>
-				<param name="onup" value="150"/>
-				<param name="ondown" value="450"/>
-				<param name="onback" value="100"/>
+				<param name="id" value="10053"/>
+				<param name="onup" value="10052"/>
+				<param name="ondown" value="10054"/>
 				<param name="headline" value="$LOCALIZE[36903]"/>
 				<param name="mainlabel" value="$INFO[ListItem.Label]"/>
 				<param name="sublabel" value="$INFO[ListItem.Year]"/>
@@ -114,34 +157,20 @@
 			</include>
 			<!-- images -->
 			<include content="PosterWidget">
-				<param name="id" value="450"/>
-				<param name="onup" value="250"/>
-				<param name="ondown" value="750"/>
-				<param name="onback" value="100"/>
-				<param name="headline" value="$LOCALIZE[1]"/>
-				<param name="mainlabel" value="$INFO[ListItem.ID]"/>
-				<param name="sublabel" value="$INFO[ListItem.Year]"/>
-				<param name="visible_icon" value="false"/>
-				<param name="use_custom_content" value="false"/>
-				<param name="height" value="516"/>
-			</include>
-			<!-- fanart -->
-			<include content="WideWidget">
-				<param name="id" value="750"/>
-				<param name="onup" value="450"/>
+				<param name="id" value="10054"/>
+				<param name="onup" value="10053"/>
 				<param name="ondown" value="noop"/>
-				<param name="onback" value="100"/>
-				<param name="headline" value="$LOCALIZE[20445]"/>
+				<param name="headline" value="$LOCALIZE[1]"/>
 				<param name="mainlabel" value="$INFO[ListItem.Label]"/>
 				<param name="visible_icon" value="false"/>
 				<param name="use_custom_content" value="false"/>
-				<param name="height" value="448"/>
+				<param name="height" value="551"/>
 			</include>
 		</control>
 		<!-- header bar -->
 		<include content="HeaderBar">
 			<param name="id">50</param>
-			<param name="header_label">$LOCALIZE[29934]</param>
+			<param name="header_label">TMDb - $INFO[Container(10051).ListItem.Label]</param>
 		</include>
 		<!-- side panel -->
 		<include content="SidePanel">

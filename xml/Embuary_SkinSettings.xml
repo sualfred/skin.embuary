@@ -673,7 +673,7 @@
 			<include>SettingsButton</include>
 			<label>$LOCALIZE[31238]</label>
 			<label2>[COLOR $VAR[AccentColor]]$VAR[CastSearchProvider][/COLOR]</label2>
-			<onclick>Skin.ToggleSetting(DoNotUseExtendedInfo)</onclick>
+			<onclick>Skin.ToggleSetting(DoNotUseTmbdbInfo)</onclick>
 			<enable>System.HasAddon(script.extendedinfo)</enable>
 		</control>
 		<control type="radiobutton" id="$PARAM[id]22">
@@ -681,7 +681,6 @@
 			<label>$LOCALIZE[31333]</label>
 			<onclick>Skin.ToggleSetting(HideYTResults)</onclick>
 			<selected>!Skin.HasSetting(HideYTResults)</selected>
-			<enable>Skin.HasSetting(DoNotUseExtendedInfo)</enable>
 		</control>
 		<control type="radiobutton" id="$PARAM[id]23">
 			<include>SettingsButton</include>
@@ -832,6 +831,14 @@
 			<selected>System.HasAddon(script.embuary.helper)</selected>
 			<label>Embuary Helper</label>
 		</control>
+		<control type="radiobutton" id="$PARAM[id]14">
+			<include>SettingsButton</include>
+			<onclick condition="System.HasAddon(script.embuary.info)">RunScript(script.embuary.helper,action=toggleaddons,addonid=script.embuary.info,enable=false)</onclick>
+			<onclick condition="!System.HasAddon(script.embuary.info)">RunScript(script.embuary.helper,action=toggleaddons,addonid=script.embuary.info,enable=true)</onclick>
+			<onclick condition="!System.HasAddon(script.embuary.info)">InstallAddon(script.embuary.info)</onclick>
+			<selected>System.HasAddon(script.embuary.info)</selected>
+			<label>Embuary Info Script</label>
+		</control>
 		<control type="radiobutton" id="$PARAM[id]12">
 			<include>SettingsButton</include>
 			<onclick condition="System.HasAddon(script.skinshortcuts)">RunScript(script.embuary.helper,action=dialogok,message=$LOCALIZE[24091])</onclick>
@@ -894,21 +901,13 @@
 		</control>
 		<control type="radiobutton" id="$PARAM[id]07">
 			<include>SettingsButton</include>
-			<onclick condition="System.HasAddon(script.extendedinfo)">RunScript(script.embuary.helper,action=toggleaddons,addonid=script.extendedinfo,enable=false)</onclick>
-			<onclick condition="!System.HasAddon(script.extendedinfo)">RunScript(script.embuary.helper,action=toggleaddons,addonid=script.extendedinfo,enable=true)</onclick>
-			<onclick condition="!System.HasAddon(script.extendedinfo)">InstallAddon(script.extendedinfo)</onclick>
-			<selected>System.HasAddon(script.extendedinfo)</selected>
-			<label>ExtendedInfo Script</label>
-		</control>
-		<control type="radiobutton" id="$PARAM[id]08">
-			<include>SettingsButton</include>
 			<onclick condition="System.HasAddon(script.cu.lrclyrics)">RunScript(script.embuary.helper,action=toggleaddons,addonid=script.cu.lrclyrics,enable=false)</onclick>
 			<onclick condition="!System.HasAddon(script.cu.lrclyrics)">RunScript(script.embuary.helper,action=toggleaddons,addonid=script.cu.lrclyrics,enable=true)</onclick>
 			<onclick condition="!System.HasAddon(script.cu.lrclyrics)">InstallAddon(script.cu.lrclyrics)</onclick>
 			<selected>System.HasAddon(script.cu.lrclyrics)</selected>
 			<label>CU LRC Lyrics</label>
 		</control>
-		<control type="radiobutton" id="$PARAM[id]09">
+		<control type="radiobutton" id="$PARAM[id]08">
 			<include>SettingsButton</include>
 			<onclick condition="System.HasAddon(plugin.video.youtube)">RunScript(script.embuary.helper,action=toggleaddons,addonid=plugin.video.youtube,enable=false)</onclick>
 			<onclick condition="!System.HasAddon(plugin.video.youtube)">RunScript(script.embuary.helper,action=toggleaddons,addonid=plugin.video.youtube,enable=true)</onclick>

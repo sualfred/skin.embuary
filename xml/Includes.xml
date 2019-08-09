@@ -62,17 +62,17 @@
 
 	<expression name="SkinSetup">[!Skin.HasSetting(SkinSetup) + !Window.IsVisible(startup) + !Window.IsVisible(1119)]</expression>
 
-	<expression name="HolidayTheme">[System.Date(12-01,01-07) + !Skin.HasSetting(HideHolidayTheme) + [[!Window.IsVisible(visualisation) + !VideoPlayer.IsFullscreen] | Window.IsActive(fullscreeninfo) | Window.IsActive(script-script.extendedinfo-DialogInfo.xml) | Window.IsActive(script-script.extendedinfo-DialogVideoInfo.xml)]]</expression>
+	<expression name="HolidayTheme">[System.Date(12-01,01-07) + !Skin.HasSetting(HideHolidayTheme) + [[!Window.IsVisible(visualisation) + !VideoPlayer.IsFullscreen] | Window.IsActive(fullscreeninfo) | Window.IsActive(script-embuary-person.xml) | Window.IsActive(script-embuary-video.xml)]]</expression>
 
-	<expression name="HolidayTheme2">[System.Date(10-30,11-01) + !Skin.HasSetting(HideHolidayTheme) + [[!Window.IsVisible(visualisation) + !VideoPlayer.IsFullscreen] | Window.IsActive(fullscreeninfo) | Window.IsActive(script-script.extendedinfo-DialogInfo.xml) | Window.IsActive(script-script.extendedinfo-DialogVideoInfo.xml)]]</expression>
+	<expression name="HolidayTheme2">[System.Date(10-30,11-01) + !Skin.HasSetting(HideHolidayTheme) + [[!Window.IsVisible(visualisation) + !VideoPlayer.IsFullscreen] | Window.IsActive(fullscreeninfo) | Window.IsActive(script-embuary-person.xml) | Window.IsActive(script-embuary-video.xml)]]</expression>
 
-	<expression name="HolidayTheme3">[System.Date(05-04,05-05) + !Skin.HasSetting(HideHolidayTheme) + [[!Window.IsVisible(visualisation) + !VideoPlayer.IsFullscreen] | Window.IsActive(fullscreeninfo) | Window.IsActive(script-script.extendedinfo-DialogInfo.xml) | Window.IsActive(script-script.extendedinfo-DialogVideoInfo.xml)]]</expression>
+	<expression name="HolidayTheme3">[System.Date(05-04,05-05) + !Skin.HasSetting(HideHolidayTheme) + [[!Window.IsVisible(visualisation) + !VideoPlayer.IsFullscreen] | Window.IsActive(fullscreeninfo) | Window.IsActive(script-embuary-person.xml) | Window.IsActive(script-embuary-video.xml)]]</expression>
 
-	<expression name="HolidayTheme4">[System.Date(09-08,09-09) + !Skin.HasSetting(HideHolidayTheme) + [[!Window.IsVisible(visualisation) + !VideoPlayer.IsFullscreen] | Window.IsActive(fullscreeninfo) | Window.IsActive(script-script.extendedinfo-DialogInfo.xml) | Window.IsActive(script-script.extendedinfo-DialogVideoInfo.xml)]]</expression>
+	<expression name="HolidayTheme4">[System.Date(09-08,09-09) + !Skin.HasSetting(HideHolidayTheme) + [[!Window.IsVisible(visualisation) + !VideoPlayer.IsFullscreen] | Window.IsActive(fullscreeninfo) | Window.IsActive(script-embuary-person.xml) | Window.IsActive(script-embuary-video.xml)]]</expression>
 
 	<expression name="HideBackground">[Window.IsVisible(eventlog) | Window.IsVisible(settingscategory.xml) | Window.IsVisible(systeminfo) | Window.IsVisible(skinsettings) | Window.IsVisible(addonsettings) | Window.IsVisible(filemanager) | Window.IsVisible(profiles) | Window.IsVisible(weather) | Window.IsVisible(pvrguideinfo)]</expression>
 
-	<expression name="InfoDialogActive">[Window.IsVisible(musicinformation) | Window.IsVisible(movieinformation) | Window.IsVisible(addoninformation) | Window.IsVisible(pvrguideinfo) | Window.IsVisible(pvrrecordinginfo) | Window.IsVisible(fullscreeninfo) | Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(script-script.extendedinfo-VideoList.xml) | Window.IsVisible(1115) | Window.IsVisible(subtitlesearch) | Window.IsVisible(favourites)]</expression>
+	<expression name="InfoDialogActive">[Window.IsVisible(musicinformation) | Window.IsVisible(movieinformation) | Window.IsVisible(addoninformation) | Window.IsVisible(pvrguideinfo) | Window.IsVisible(pvrrecordinginfo) | Window.IsVisible(fullscreeninfo) | Window.IsVisible(script-embuary-video.xml) | Window.IsVisible(script-embuary-person.xml) | Window.IsVisible(1115) | Window.IsVisible(subtitlesearch) | Window.IsVisible(favourites)]</expression>
 
 	<expression name="ScrollbarContainers">[Control.IsVisible(50) | Control.IsVisible(51) | Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(58) | Control.IsVisible(59)]</expression>
 
@@ -88,8 +88,16 @@
 
 	<expression name="AutoCloseInfoDialog">[
 		[String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) + [String.IsEqual(ListItem.DBType,season) + String.IsEqual(ListItem.Label,All)]]
-		| [!String.IsEqual(ListItem.DBType,movie) + !String.IsEqual(ListItem.DBType,tvshow) + !String.IsEqual(ListItem.DBType,episode) + !String.IsEqual(ListItem.DBType,season) + String.IsEmpty(ListItem.Plot)]
+		| [!String.IsEqual(ListItem.DBType,movie) + !String.IsEqual(ListItem.DBType,tvshow) + !String.IsEqual(ListItem.DBType,episode) + !String.IsEqual(ListItem.DBType,season) + !String.IsEqual(ListItem.DBType,video) + String.IsEmpty(ListItem.Plot)]
 		]
+	</expression>
+
+	<expression name="TmbdVideoFacts">
+		[!String.IsEmpty(Container(10051).ListItem.Premiered) | !String.IsEmpty(Container(10051).ListItem.Property(release)) | !String.IsEmpty(Container(10051).ListItem.Property(Budget)) | !String.IsEmpty(Container(10051).ListItem.Property(Revenue))]
+	</expression>
+
+	<expression name="TmbdPersonFacts">
+		[!String.IsEmpty(Container(10051).ListItem.Property(Age)) | !String.IsEmpty(Container(10051).ListItem.Property(Birthday)) | !String.IsEmpty(Container(10051).ListItem.Property(Deathday)) | !String.IsEmpty(Container(10051).ListItem.Property(place_of_birth))]
 	</expression>
 
 	<!-- Views -->

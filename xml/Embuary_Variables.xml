@@ -578,7 +578,6 @@
 		<value condition="Skin.HasSetting(HideBackground) + Skin.HasSetting(ShowRandomBackgroundImage) + !String.IsEmpty(Skin.String(RandomBackgroundImage))">$INFO[Control.GetLabel(100001)]</value>
 		<value condition="Skin.HasSetting(HideBackground)"></value>
 		<!-- based on listitems -->
-		<value condition="Window.IsVisible(script-script.extendedinfo-DialogInfo.xml)">$INFO[Container(750).ListItemAbsolute(0).Icon]</value>
 		<value condition="[Window.IsVisible(script-NextAired-TVGuide2.xml) | Window.IsVisible(script-NextAired-TVGuide.xml)] + !String.IsEmpty(Window(home).Property(TVGuide.BackgroundFanart)) + Control.HasFocus(200)">$INFO[Container(200).ListItem.Property(Fanart)]</value>
 		<value condition="[Window.IsVisible(script-NextAired-TVGuide2.xml) | Window.IsVisible(script-NextAired-TVGuide.xml)] + !String.IsEmpty(Window(home).Property(TVGuide.BackgroundFanart)) + Control.HasFocus(201)">$INFO[Container(201).ListItem.Property(Fanart)]</value>
 		<value condition="[Window.IsVisible(script-NextAired-TVGuide2.xml) | Window.IsVisible(script-NextAired-TVGuide.xml)] + !String.IsEmpty(Window(home).Property(TVGuide.BackgroundFanart)) + Control.HasFocus(202)">$INFO[Container(202).ListItem.Property(Fanart)]</value>
@@ -595,7 +594,8 @@
 		<value condition="[Window.IsVisible(script-NextAired-TVGuide2.xml) | Window.IsVisible(script-NextAired-TVGuide.xml)] + !String.IsEmpty(Window(home).Property(TVGuide.BackgroundFanart)) + Control.HasFocus(213)">$INFO[Container(213).ListItem.Property(Fanart)]</value>
 		<value condition="[Window.IsVisible(script-NextAired-TVGuide2.xml) | Window.IsVisible(script-NextAired-TVGuide.xml)] + !String.IsEmpty(Window(home).Property(TVGuide.BackgroundFanart)) + Control.HasFocus(214)">$INFO[Container(214).ListItem.Property(Fanart)]</value>
 		<value condition="[Window.IsVisible(script-NextAired-TVGuide2.xml) | Window.IsVisible(script-NextAired-TVGuide.xml)] + !String.IsEmpty(Window(home).Property(TVGuide.BackgroundFanart)) + Control.HasFocus(215)">$INFO[Container(215).ListItem.Property(Fanart)]</value>
-		<value condition="Window.IsVisible(DialogVideoInfo.xml) + !String.IsEmpty(Container(2003).ListItem.Icon) + !Container.OnNext + !Container.OnPrevious">$INFO[Container(2003).ListItem.Icon]</value>
+		<value condition="Window.IsVisible(script-embuary-video.xml) + !String.IsEmpty(Container(10051).ListItem.Art(fanart))">$INFO[Container(10051).ListItem.Art(fanart)]</value>
+		<value condition="[Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(script-embuary-person.xml)] + !String.IsEmpty(Container(2003).ListItem.Icon) + !Container.OnNext + !Container.OnPrevious">$INFO[Container(2003).ListItem.Icon]</value>
 		<value condition="[Window.IsMedia | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(fullscreeninfo) | Window.IsVisible(pvrguideinfo)] + !String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
 		<!-- static / custom for non listitems -->
 		<value condition="Skin.HasSetting(ShowStaticBackgroundImage) + !String.IsEmpty(Skin.String(StaticBackgroundImage))">$INFO[Skin.String(StaticBackgroundImage)]</value>
@@ -629,7 +629,7 @@
 		<value>$LOCALIZE[589]</value>
 	</variable>
 	<variable name="ListItemClearlogo">
-		<value condition="Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml)">icons/misc/tmdb.png</value>
+		<value condition="Window.IsVisible(script-embuary-video.xml) | Window.IsVisible(script-embuary-person.xml)">icons/misc/tmdb.png</value>
 		<value condition="!String.IsEmpty(ListItem.Art(tvshow.clearlogo))">$INFO[ListItem.Art(tvshow.clearlogo)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(clearlogo))">$INFO[ListItem.Art(clearlogo)]</value>
 		<value condition="!String.IsEmpty(Container.ShowTitle) + !String.IsEmpty(ListItem(1).Art(tvshow.clearlogo))">$INFO[ListItem(1).Art(tvshow.clearlogo)]</value>
@@ -1320,18 +1320,13 @@
 		<value condition="!String.IsEmpty(Skin.String(BackgroundAlpha.label))">$INFO[Skin.String(BackgroundAlpha.label)]</value>
 		<value>$LOCALIZE[31157]</value>
 	</variable>
-	<variable name="ExtendedInfoFilmographyMovies">
-		<value condition="Integer.IsGreater(Container(150).NumItems,1)">$INFO[Container(150).NumItems,, $LOCALIZE[342]]</value>
-		<value condition="Integer.IsEqual(Container(150).NumItems,1)">$INFO[Container(150).NumItems,, $LOCALIZE[20338]]</value>
+	<variable name="TmdbFilmographyMovies">
+		<value condition="Integer.IsGreater(Container(10052).NumItems,1)">$INFO[Container(10052).NumItems,, $LOCALIZE[342]]</value>
+		<value condition="Integer.IsEqual(Container(10052).NumItems,1)">$INFO[Container(10052).NumItems,, $LOCALIZE[20338]]</value>
 	</variable>
-	<variable name="ExtendedInfoFilmographyTVShows">
-		<value condition="Integer.IsGreater(Container(250).NumItems,1)">$INFO[Container(250).NumItems,, $LOCALIZE[20343]]</value>
-		<value condition="Integer.IsEqual(Container(250).NumItems,1)">$INFO[Container(250).NumItems,, $LOCALIZE[20364]]</value>
-	</variable>
-	<variable name="ExtendedInfoFilmographyCount">
-		<value condition="Integer.IsGreater(Container(150).NumItems,0) + Integer.IsGreater(Container(250).NumItems,0)">$VAR[ExtendedInfoFilmographyMovies] &amp; $VAR[ExtendedInfoFilmographyTVShows]</value>
-		<value condition="Integer.IsGreater(Container(150).NumItems,0) + !Integer.IsGreater(Container(250).NumItems,0)">$VAR[ExtendedInfoFilmographyMovies]</value>
-		<value condition="!Integer.IsGreater(Container(150).NumItems,0) + Integer.IsGreater(Container(250).NumItems,0)">$VAR[ExtendedInfoFilmographyTVShows]</value>
+	<variable name="TmdbFilmographyTVShows">
+		<value condition="Integer.IsGreater(Container(10053).NumItems,1)">$INFO[Container(10053).NumItems,, $LOCALIZE[20343]]</value>
+		<value condition="Integer.IsEqual(Container(10053).NumItems,1)">$INFO[Container(10053).NumItems,, $LOCALIZE[20364]]</value>
 	</variable>
 	<variable name="SortLetterLabel">
 		<value condition="Window.IsVisible(MyPlaylist.xml)">$INFO[Container(50).CurrentItem]</value>
@@ -1355,8 +1350,8 @@
 		<value>n/a</value>
 	</variable>
 	<variable name="CastSearchProvider">
-		<value condition="Skin.HasSetting(DoNotUseExtendedInfo) | !System.HasAddon(script.extendedinfo)">$LOCALIZE[31237]</value>
-		<value>$INFO[System.AddonTitle(script.extendedinfo)]</value>
+		<value condition="Skin.HasSetting(DoNotUseTmbdbInfo) | !System.HasAddon(script.embuary.info)">$LOCALIZE[31237]</value>
+		<value>$INFO[System.AddonTitle(script.embuary.info)]</value>
 	</variable>
 	<variable name="CinemaModeForLabel">
 		<value condition="String.IsEqual(Skin.String(CinemaModeFor),episodes)">$LOCALIZE[20360]</value>
@@ -1466,6 +1461,16 @@
 	</variable>
 	<variable name="TVShowStatus">
 		<value condition="String.IsEqual(ListItem.Status,Ended)">$LOCALIZE[31196]</value>
+	</variable>
+	<variable name="TmdbStatus">
+		<value condition="String.IsEqual(Container(10051).ListItem.Status,Ended)">$LOCALIZE[31196]</value>
+		<value condition="String.IsEqual(Container(10051).ListItem.Status,Rumored)">$LOCALIZE[31141]</value>
+		<value condition="String.IsEqual(Container(10051).ListItem.Status,Planned)">$LOCALIZE[31142]</value>
+		<value condition="String.IsEqual(Container(10051).ListItem.Status,In Production)">$LOCALIZE[31143]</value>
+		<value condition="String.IsEqual(Container(10051).ListItem.Status,Post Production)">$LOCALIZE[31144]</value>
+		<value condition="String.IsEqual(Container(10051).ListItem.Status,Released)">$LOCALIZE[31145]</value>
+		<value condition="String.IsEqual(Container(10051).ListItem.Status,Canceled)">$LOCALIZE[31146]</value>
+		<value condition="String.IsEqual(Container(10051).ListItem.Status,Returning Series)">$LOCALIZE[31147]</value>
 	</variable>
 	<variable name="SetLastYear">
 		<value condition="!String.IsEmpty(Container(5601).ListItemAbsolute(30).Year)">$INFO[Container(5601).ListItemAbsolute(30).Year]</value>
@@ -1887,28 +1892,30 @@
 	</variable>
 	<variable name="RottenIcon">
 		<!-- fresh -->
+		<value condition="Window.IsVisible(script-embuary-video.xml) + Integer.IsGreaterOrEqual(Container(10051).ListItem.Property(rating.rotten),60)">icons/rating/rotten_fresh.png</value>
 		<value condition="!Skin.HasSetting(DisableEmbyUserRating) + [System.HasAddon(plugin.video.emby) | String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) | String.Contains(Player.Filenameandpath,/emby/)] + Integer.IsGreaterOrEqual(ListItem.UserRating,60)">icons/rating/rotten_fresh.png</value>
 		<value condition="!Skin.HasSetting(DisableEmbyUserRating) + [System.HasAddon(plugin.video.emby) | String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) | String.Contains(Player.Filenameandpath,/emby/)] + Integer.IsGreaterOrEqual(VideoPlayer.UserRating,60)">icons/rating/rotten_fresh.png</value>
-		<value condition="!String.IsEmpty(ListItem.Rating(rottentomatoes)) + Integer.IsGreaterOrEqual(ListItem.Rating(rottentomatoes),6)">icons/rating/rotten_fresh.png</value>
-		<value condition="!String.IsEmpty(Container(2003).ListItem.Rating(rottentomatoes)) + Integer.IsGreaterOrEqual(Container(2003).ListItem.Rating(rottentomatoes),6)">icons/rating/rotten_fresh.png</value>
+		<value condition="!String.IsEmpty(ListItem.Rating(tomatometerallcritics)) + Integer.IsGreaterOrEqual(ListItem.Rating(tomatometerallcritics),6)">icons/rating/rotten_fresh.png</value>
+		<value condition="!String.IsEmpty(Container(2003).ListItem.Rating(tomatometerallcritics)) + Integer.IsGreaterOrEqual(Container(2003).ListItem.Rating(tomatometerallcritics),6)">icons/rating/rotten_fresh.png</value>
 		<!-- rotten -->
+		<value condition="Window.IsVisible(script-embuary-video.xml) + !String.IsEmpty(Container(10051).ListItem.Property(rating.rotten))">icons/rating/rotten_rotten.png</value>
 		<value condition="!Skin.HasSetting(DisableEmbyUserRating) + [System.HasAddon(plugin.video.emby) | String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) | String.Contains(Player.Filenameandpath,/emby/)] + !String.IsEmpty(ListItem.UserRating)">icons/rating/rotten_rotten.png</value>
 		<value condition="!Skin.HasSetting(DisableEmbyUserRating) + [System.HasAddon(plugin.video.emby) | String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) | String.Contains(Player.Filenameandpath,/emby/)] + !String.IsEmpty(VideoPlayer.UserRating)">icons/rating/rotten_rotten.png</value>
-		<value condition="!String.IsEmpty(ListItem.Rating(rottentomatoes)) + !String.IsEmpty(ListItem.Rating)">icons/rating/rotten_rotten.png</value>
-		<value condition="!String.IsEmpty(Container(2003).ListItem.Rating(rottentomatoes)) + !String.IsEmpty(Container(2003).ListItem.Rating(rottentomatoes))">icons/rating/rotten_rotten.png</value>
+		<value condition="!String.IsEmpty(ListItem.Rating(tomatometerallcritics)) + !String.IsEmpty(ListItem.Rating)">icons/rating/rotten_rotten.png</value>
+		<value condition="!String.IsEmpty(Container(2003).ListItem.Rating(tomatometerallcritics)) + !String.IsEmpty(Container(2003).ListItem.Rating(tomatometerallcritics))">icons/rating/rotten_rotten.png</value>
 	</variable>
 	<variable name="RottenRating">
 		<value condition="!Skin.HasSetting(DisableEmbyUserRating) + [System.HasAddon(plugin.video.emby) | String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) | String.Contains(Player.Filenameandpath,/emby/)] + !String.IsEmpty(ListItem.UserRating)">$INFO[ListItem.UserRating]</value>
 		<value condition="!Skin.HasSetting(DisableEmbyUserRating) + [System.HasAddon(plugin.video.emby) | String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) | String.Contains(Player.Filenameandpath,/emby/)] + !String.IsEmpty(VideoPlayer.UserRating)">$INFO[VideoPlayer.UserRating]</value>
-		<value condition="!String.IsEmpty(ListItem.Rating(rottentomatoes))">$INFO[ListItem.Rating(rottentomatoes)]</value>
-		<value condition="!String.IsEmpty(Container(2003).ListItem.Rating(rottentomatoes))">$INFO[Container(2003).ListItem.Rating(rottentomatoes)]</value>
+		<value condition="!String.IsEmpty(ListItem.Rating(tomatometerallcritics))">$INFO[ListItem.Rating(tomatometerallcritics)]</value>
+		<value condition="!String.IsEmpty(Container(2003).ListItem.Rating(tomatometerallcritics))">$INFO[Container(2003).ListItem.Rating(tomatometerallcritics)]</value>
 	</variable>
 	<variable name="RottenSource">
 		<value condition="!Skin.HasSetting(DisableEmbyUserRating) + [System.HasAddon(plugin.video.emby) | String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) | String.Contains(Player.Filenameandpath,/emby/)] + !String.IsEmpty(ListItem.UserRating)">-</value>
 		<value condition="!Skin.HasSetting(DisableEmbyUserRating) + [System.HasAddon(plugin.video.emby) | String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) | String.Contains(Player.Filenameandpath,/emby/)] + !String.IsEmpty(VideoPlayer.UserRating)">-</value>
 		<value condition="String.IsEmpty(ListItem.DBID) + String.IsEmpty(VideoPlayer.DBID)">-</value>
-		<value condition="Container.Content(movies) + String.IsEmpty(ListItem.Rating(rottentomatoes))">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[ListItem.DBID]&amp;type=movie</value>
-		<value condition="Container.Content(tvshows) + String.IsEmpty(ListItem.Rating(rottentomatoes))">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[ListItem.DBID]&amp;type=tvshow</value>
+		<value condition="Container.Content(movies) + String.IsEmpty(ListItem.Rating(tomatometerallcritics))">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[ListItem.DBID]&amp;type=movie</value>
+		<value condition="Container.Content(tvshows) + String.IsEmpty(ListItem.Rating(tomatometerallcritics))">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[ListItem.DBID]&amp;type=tvshow</value>
 		<value condition="VideoPlayer.Content(movies) + [Window.IsVisible(fullscreenvideo) | Window.IsVisible(fullscreeninfo)]">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[VideoPlayer.DBID]&amp;type=movie</value>
 		<value>-</value>
 	</variable>
