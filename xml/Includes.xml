@@ -86,6 +86,8 @@
 
 	<expression name="HasLibrary">[Library.HasContent(movies) | Library.HasContent(tvshows) | Library.HasContent(music) | Library.HasContent(musicvideos) | Library.HasContent(video)]</expression>
 
+	<expression name="HasWeather">[String.IsEmpty(Weather.Plugin) | String.IsEqual(Weather.fanartcode,na)]</expression>
+
 	<expression name="AutoCloseInfoDialog">[
 		[String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) + [String.IsEqual(ListItem.DBType,season) + String.IsEqual(ListItem.Label,All)]]
 		| [!String.IsEqual(ListItem.DBType,movie) + !String.IsEqual(ListItem.DBType,tvshow) + !String.IsEqual(ListItem.DBType,episode) + !String.IsEqual(ListItem.DBType,season) + !String.IsEqual(ListItem.DBType,video) + String.IsEmpty(ListItem.Plot)]

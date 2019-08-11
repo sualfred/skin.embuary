@@ -50,12 +50,24 @@
 							<itemgap>5</itemgap>
 							<orientation>horizontal</orientation>
 							<control type="label">
+								<label>$VAR[Gender,[CAPITALIZE],[/CAPITALIZE]]   </label>
+								<include>MetaLabel</include>
+								<visible>!String.IsEmpty(Container(10051).ListItem.Property(gender))</visible>
+							</control>
+							<control type="label">
+								<label>$INFO[Container(10051).ListItem.Property(known_for_department),$LOCALIZE[31372]: ]   </label>
+								<include>MetaLabel</include>
+								<visible>!String.IsEmpty(Container(10051).ListItem.Property(known_for_department))</visible>
+							</control>
+							<control type="label">
 								<label>$VAR[TmdbFilmographyMovies]   </label>
 								<include>MetaLabel</include>
+								<visible>Integer.IsGreater(Container(10052).NumItems,0)</visible>
 							</control>
 							<control type="label">
 								<label>$VAR[TmdbFilmographyTVShows]   </label>
 								<include>MetaLabel</include>
+								<visible>Integer.IsGreater(Container(10053).NumItems,0)</visible>
 							</control>
 						</control>
 					</control>
