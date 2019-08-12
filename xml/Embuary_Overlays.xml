@@ -155,32 +155,73 @@
 		</control>
 	</include>
 	<include name="ListItemOverlayTmbdbIsLocal">
-		<control type="group">
-			<visible>[Window.IsVisible(script-embuary-video.xml) | Window.IsVisible(script-embuary-person.xml)] + !String.IsEmpty(ListItem.DBID)</visible>
-			<right>8</right>
-			<top>9</top>
-			<width>44</width>
-			<height>44</height>
-			<control type="image">
-				<width>44</width>
-				<height>44</height>
-				<texture colordiffuse="$VAR[AccentColor]">items/bubble_small.png</texture>
-				<aspectratio>keep</aspectratio>
+		<param name="type">ListItem</param>
+		<definition>
+			<control type="group">
+				<visible>[Window.IsVisible(script-embuary-video.xml) | Window.IsVisible(script-embuary-person.xml)] + !String.IsEmpty($PARAM[type].DBID)</visible>
+				<control type="group">
+					<animation effect="slide" end="-48,0" time="0" condition="Integer.IsGreater($PARAM[type].Property(UnWatchedEpisodes),0) | Integer.IsGreaterOrEqual($PARAM[type].PlayCount,1)">Conditional</animation>
+					<right>8</right>
+					<top>9</top>
+					<width>44</width>
+					<height>44</height>
+					<control type="image">
+						<width>44</width>
+						<height>44</height>
+						<texture colordiffuse="thumb_background_fallback_secondary">items/bubble_small.png</texture>
+						<aspectratio>keep</aspectratio>
+					</control>
+					<control type="label">
+						<top>7</top>
+						<left>1</left>
+						<width>44</width>
+						<height>44</height>
+						<label>&#xfaa8;</label>
+						<font>Material24</font>
+						<textcolor>white</textcolor>
+						<shadowcolor>text_shadow</shadowcolor>
+						<selectedcolor>white</selectedcolor>
+						<align>center</align>
+						<aligny>top</aligny>
+					</control>
+				</control>
+				<control type="group">
+					<visible>Integer.IsGreater($PARAM[type].Property(UnWatchedEpisodes),0) | Integer.IsGreaterOrEqual($PARAM[type].PlayCount,1)</visible>
+					<right>8</right>
+					<top>9</top>
+					<width>44</width>
+					<height>44</height>
+					<control type="image">
+						<texture colordiffuse="$VAR[AccentColor]">items/bubble_small.png</texture>
+						<aspectratio>keep</aspectratio>
+					</control>
+					<control type="label">
+						<top>-4</top>
+						<left>1</left>
+						<label>$INFO[$PARAM[type].Property(UnWatchedEpisodes)]</label>
+						<font>BubbleFont</font>
+						<textcolor>white</textcolor>
+						<shadowcolor>text_shadow</shadowcolor>
+						<selectedcolor>white</selectedcolor>
+						<align>center</align>
+						<aligny>center</aligny>
+						<visible>Integer.IsGreater($PARAM[type].Property(UnWatchedEpisodes),0)</visible>
+					</control>
+					<control type="label">
+						<top>6</top>
+						<left>1</left>
+						<label>&#xfe6e;</label>
+						<font>Material24</font>
+						<textcolor>white</textcolor>
+						<shadowcolor>text_shadow</shadowcolor>
+						<selectedcolor>white</selectedcolor>
+						<align>center</align>
+						<aligny>top</aligny>
+						<visible>Integer.IsGreaterOrEqual($PARAM[type].PlayCount,1)</visible>
+					</control>
+				</control>
 			</control>
-			<control type="label">
-				<top>7</top>
-				<left>1</left>
-				<width>44</width>
-				<height>44</height>
-				<label>&#xfaa8;</label>
-				<font>Material24</font>
-				<textcolor>white</textcolor>
-				<shadowcolor>text_shadow</shadowcolor>
-				<selectedcolor>white</selectedcolor>
-				<align>center</align>
-				<aligny>top</aligny>
-			</control>
-		</control>
+		</definition>
 	</include>
 	<include name="ListItemOverlayAddonStatus">
 		<control type="group">
