@@ -116,6 +116,7 @@
 
 					<!-- media -->
 					<control type="group">
+						<visible>Integer.IsGreater(Container(901).NumItems,0)</visible>
 						<top>55</top>
 						<include content="SideBarHeadline">
 							<param name="label">14211</param>
@@ -134,10 +135,10 @@
 						</control>
 						<control type="list" id="901">
 							<top>50</top>
-							<include condition="System.HasAddon(plugin.video.embycon) + $EXP[HasLibrary]" content="ParamHeight">
-								<param name="height" value="550"/>
+							<include condition="System.HasAddon(plugin.video.embycon)" content="ParamHeight">
+								<param name="height" value="650"/>
 							</include>
-							<height>600</height>
+							<height>700</height>
 							<width>$PARAM[width]</width>
 							<scrolltime>200</scrolltime>
 							<onup>SetFocus(900)</onup>
@@ -160,7 +161,7 @@
 									<param name="focused" value="true"/>
 								</include>
 							</focusedlayout>
-							<content><include>skinshortcuts-mainmenu</include></content>
+							<content><include>skinshortcuts-group-sidepanel</include></content>
 						</control>
 					</control>
 
@@ -177,17 +178,19 @@
 						<animation effect="slide" end="0,-50" condition="Integer.IsLess(Container(901).NumItems,9)">Conditional</animation>
 						<animation effect="slide" end="0,-50" condition="Integer.IsLess(Container(901).NumItems,10)">Conditional</animation>
 						<animation effect="slide" end="0,-50" condition="Integer.IsLess(Container(901).NumItems,11)">Conditional</animation>
-						<animation effect="slide" end="0,-50" condition="Integer.IsLess(Container(901).NumItems,12) | [System.HasAddon(plugin.video.embycon) + $EXP[HasLibrary]]">Conditional</animation>
-						<top>710</top>
+						<animation effect="slide" end="0,-50" condition="Integer.IsLess(Container(901).NumItems,12)">Conditional</animation>
+						<animation effect="slide" end="0,-50" condition="Integer.IsLess(Container(901).NumItems,13)">Conditional</animation>
+						<animation effect="slide" end="0,-50" condition="Integer.IsLess(Container(901).NumItems,14) | System.HasAddon(plugin.video.embycon)">Conditional</animation>
+						<top>810</top>
 						<include content="SideBarHeadline">
 							<param name="label">$LOCALIZE[31001]</param>
 						</include>
 						<control type="list" id="902">
 							<top>50</top>
-							<include condition="System.HasAddon(plugin.video.embycon) + $EXP[HasLibrary]" content="ParamHeight">
-								<param name="height" value="350"/>
+							<include condition="System.HasAddon(plugin.video.embycon)" content="ParamHeight">
+								<param name="height" value="250"/>
 							</include>
-							<height>300</height>
+							<height>200</height>
 							<width>$PARAM[width]</width>
 							<scrolltime>0</scrolltime>
 							<ondown>900</ondown>
@@ -212,34 +215,12 @@
 							</focusedlayout>
 							<content>
 								<item>
-									<label>$LOCALIZE[8]</label>
-									<icon>&#xf595;</icon>
-									<onclick>Dialog.Close(all,true)</onclick>
-									<onclick condition="String.IsEmpty(Weather.Plugin) | String.IsEqual(Weather.fanartcode,na)">ReplaceWindow(servicesettings,weather)</onclick>
-									<onclick condition="!String.IsEmpty(Weather.Plugin) + !String.IsEqual(Weather.fanartcode,na)">ActivateWindow(Weather)</onclick>
-									<property name="forced_icon">true</property>
-								</item>
-								<item>
 									<label>$LOCALIZE[31129]</label>
 									<icon>&#xf450;</icon>
 									<onclick>Notification($LOCALIZE[24001],$LOCALIZE[31162])</onclick>
 									<onclick>UpdateAddonRepos</onclick>
 									<onclick>UpdateLocalAddons</onclick>
 									<property name="forced_icon">true</property>
-								</item>
-								<item>
-									<label>$LOCALIZE[799]</label>
-									<icon>&#xfcdb;</icon>
-									<onclick>SetFocus($PARAM[onright])</onclick>
-									<onclick>SetProperty(Dialog.1.Label,$LOCALIZE[3])</onclick>
-									<onclick>SetProperty(Dialog.1.BuiltIn,UpdateLibrary(video))</onclick>
-									<onclick>SetProperty(Dialog.2.Label,$LOCALIZE[2])</onclick>
-									<onclick>SetProperty(Dialog.2.BuiltIn,UpdateLibrary(music))</onclick>
-									<onclick>SetProperty(Dialog.3.Label,$LOCALIZE[593])</onclick>
-									<onclick>SetProperty(Dialog.3.BuiltIn,UpdateLibrary(music)||UpdateLibrary(video))</onclick>
-									<onclick>RunScript(script.embuary.helper,action=createselect,header=$LOCALIZE[653])</onclick>
-									<property name="forced_icon">true</property>
-									<visible>$EXP[HasLibrary]</visible>
 								</item>
 								<item>
 									<label>$LOCALIZE[5]</label>

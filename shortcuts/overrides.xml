@@ -9,9 +9,19 @@
 	<propertyfallback group="mainmenu" property="useFakeArt">true</propertyfallback>
 	<propertyfallback group="mainmenu" property="aspectRatio">keep</propertyfallback>
 
-	<groupoverride group="mainmenu" condition="true">Dialog.Close(all,true)</groupoverride>
+	<groupoverride group="sidepanel" condition="true">Dialog.Close(all,true)</groupoverride>
 
 	<!-- action overrides -->
+	<override action="library_update">
+		<action>SetProperty(Dialog.1.Label,$LOCALIZE[3])</action>
+		<action>SetProperty(Dialog.1.BuiltIn,UpdateLibrary(video))</action>
+		<action>SetProperty(Dialog.2.Label,$LOCALIZE[2])</action>
+		<action>SetProperty(Dialog.2.BuiltIn,UpdateLibrary(music))</action>
+		<action>SetProperty(Dialog.3.Label,$LOCALIZE[593])</action>
+		<action>SetProperty(Dialog.3.BuiltIn,UpdateLibrary(music)||UpdateLibrary(video))</action>
+		<action>RunScript(script.embuary.helper,action=createselect,header=$LOCALIZE[653])</action>
+	</override>
+
 	<override action="start_search">
 		<action>SetProperty(CustomSearch,1,home)</action>
 		<action>Skin.Reset(CustomSearchTerm)</action>
@@ -727,6 +737,21 @@
 		<action>ActivateWindow(videos,plugin://plugin.video.embycon/?media_type=boxsets&amp;mode=GET_CONTENT&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fParentId%3d$INFO[Window(home).Property(plugin.video.embycon-view_item.29.id)]&amp;%26IsVirtualUnaired%3dfalse%26IncludeItemTypes%3dBoxset%26CollapseBoxSetItems%3dTrue%26GroupItemsIntoCollections%3dTrue%26Recursive%3dtrue%26IsMissing%3dFalse%26Fields%3d%7bfield_filters%7d%26ImageTypeLimit%3d1%26SortBy%3dName%26SortOrder%3dAscending%26format%3djson,return)</action>
 	</override>
 
+	<!-- sidepanel -->
+	<propertydefault defaultID="embuary_videos" group="sidepanel" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_all_movies" group="sidepanel" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_collections" group="sidepanel" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_all_shows" group="sidepanel" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_all_music" group="sidepanel" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_musicvideos" group="sidepanel" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_pvr" group="sidepanel" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_recordings" group="sidepanel" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_addons" group="sidepanel" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_customhub" group="sidepanel" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_games" group="sidepanel" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_weather" group="sidepanel" property="isDefault">true</propertydefault>
+	<propertydefault defaultID="embuary_library_update" group="sidepanel" property="isDefault">true</propertydefault>
+
 	<!-- moviehub -->
 	<propertydefault defaultID="embuary_moviehub_movies" group="moviehub" property="isDefault">true</propertydefault>
 	<propertydefault defaultID="embuary_moviehub_embycon_movies" group="moviehub" property="isDefault">true</propertydefault>
@@ -736,7 +761,7 @@
 	<propertydefault defaultID="embuary_moviehub_library" group="moviehub" property="isDefault">true</propertydefault>
 	<propertydefault defaultID="embuary_moviehub_search" group="moviehub" property="isDefault">true</propertydefault>
 
-	<!-- moviehub -->
+	<!-- tvshowhub -->
 	<propertydefault defaultID="embuary_tvshowhub_tvshows" group="tvshowhub" property="isDefault">true</propertydefault>
 	<propertydefault defaultID="embuary_tvshowhub_embycon_tvshows" group="tvshowhub" property="isDefault">true</propertydefault>
 	<propertydefault defaultID="embuary_tvshowhub_genres" group="tvshowhub" property="isDefault">true</propertydefault>
