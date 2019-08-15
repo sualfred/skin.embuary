@@ -460,6 +460,7 @@
 				<param name="sortby" value="playcount"/>
 				<param name="sortorder" value="ascending"/>
 				<param name="limit" value="1"/>
+				<param name="icon" value="$VAR[IconEpisodeThumb]"/>
 				<param name="use_custom_onclick" value="true"/>
 				<param name="onclick" value="RunScript(script.embuary.helper,action=playitem,item='$ESCINFO[ListItem.Filenameandpath]')"/>
 				<param name="content" value="$VAR[InfoDialog_NextUp_Content]"/>
@@ -847,11 +848,14 @@
 					<align>center</align>
 					<onright>noop</onright>
 					<onleft>noop</onleft>
-					<control type="button" id="8">
+					<control type="button" id="102">
 						<include>DarkGreyButton</include>
 						<label>$VAR[VideoInfoButton8]</label>
 						<onup>PageUp(3000)</onup>
 						<ondown>PageDown(3000)</ondown>
+						<onclick>SendClick(8)</onclick>
+						<visible>Control.IsVisible(8)</visible>
+						<visible>!String.IsEqual(ListItem.DBType,season)</visible>
 					</control>
 					<control type="button" id="101">
 						<include>DarkGreyButton</include>
