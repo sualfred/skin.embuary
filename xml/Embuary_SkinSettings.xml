@@ -51,30 +51,37 @@
 			<param name="id" value="$PARAM[id]06"/>
 			<param name="label" value="$LOCALIZE[31134]"/>
 		</include>
+		<!-- sidepanel -->
 		<control type="button" id="$PARAM[id]07">
 			<include>SettingsButton</include>
 			<label>$LOCALIZE[31244]</label>
 			<onclick>RunScript(script.skinshortcuts,type=manage&amp;group=sidepanel)</onclick>
-			<enable>!Skin.HasSetting(HideMainMenu)</enable>
+			<enable>!Skin.HasSetting(SidePanelMainMenu)</enable>
+		</control>
+		<control type="radiobutton" id="$PARAM[id]08">
+			<include>SettingsButton</include>
+			<onclick>Skin.ToggleSetting(SidePanelMainMenu)</onclick>
+			<selected>Skin.HasSetting(SidePanelMainMenu)</selected>
+			<label>$LOCALIZE[31341]</label>
 		</control>
 		<!-- widget limits -->
 		<include content="SkinSettingsHeadlineLabel">
-			<param name="id" value="$PARAM[id]08"/>
+			<param name="id" value="$PARAM[id]09"/>
 			<param name="label" value="$LOCALIZE[31286] (1-25)"/>
 		</include>
-		<control type="button" id="$PARAM[id]09">
+		<control type="button" id="$PARAM[id]10">
 			<include>SettingsButton</include>
 			<onclick>Skin.SetNumeric(poster_widget_limit)</onclick>
 			<label>$LOCALIZE[31099] '$LOCALIZE[20021]'</label>
 			<label2>$VAR[PosterWidgetLimit]</label2>
 		</control>
-		<control type="button" id="$PARAM[id]10">
+		<control type="button" id="$PARAM[id]11">
 			<include>SettingsButton</include>
 			<onclick>Skin.SetNumeric(wide_widget_limit)</onclick>
 			<label>$LOCALIZE[31099] '$LOCALIZE[31004]'</label>
 			<label2>$VAR[WideWidgetLimit]</label2>
 		</control>
-		<control type="button" id="$PARAM[id]11">
+		<control type="button" id="$PARAM[id]12">
 			<include>SettingsButton</include>
 			<onclick>Skin.SetNumeric(square_widget_limit)</onclick>
 			<label>$LOCALIZE[31099] '$LOCALIZE[31005]'</label>
@@ -82,7 +89,7 @@
 		</control>
 	</include>
 
-	<!-- side panel -->
+	<!-- hubs -->
 	<include name="SkinSettingsSidePanel">
 		<!-- movie -->
 		<include content="SkinSettingsHeadlineLabel">

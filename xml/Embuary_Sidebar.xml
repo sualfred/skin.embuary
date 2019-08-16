@@ -161,7 +161,10 @@
 									<param name="focused" value="true"/>
 								</include>
 							</focusedlayout>
-							<content><include>skinshortcuts-group-sidepanel</include></content>
+							<content>
+								<include condition="!Skin.HasSetting(SidePanelMainMenu)">skinshortcuts-group-sidepanel</include>
+								<include condition="Skin.HasSetting(SidePanelMainMenu)">skinshortcuts-mainmenu</include>
+							</content>
 						</control>
 					</control>
 
