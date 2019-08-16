@@ -150,7 +150,7 @@
 				<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
 				<param name="id" value="209"/>
 				<param name="onup" value="208"/>
-				<param name="ondown" value="noop"/>
+				<param name="ondown" value="210"/>
 				<param name="headline" value="$LOCALIZE[31214]$VAR[EmbyConLabel]"/>
 				<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 				<param name="sublabel" value="$INFO[ListItem.Artist]"/>
@@ -159,6 +159,21 @@
 				<param name="onclick" value="RunScript(script.embuary.helper,action=playitem,item='$ESCINFO[ListItem.Filenameandpath]')"/>
 				<param name="widget_target" value="music"/>
 				<param name="content" value="$VAR[EmbyCon.FavSongs]"/>
+			</include>
+			<!-- fav person -->
+			<include content="CastWidget">
+				<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
+				<param name="id" value="210"/>
+				<param name="onup" value="209"/>
+				<param name="ondown" value="noop"/>
+				<param name="height" value="551"/>
+				<param name="headline" value="$LOCALIZE[31212]$VAR[EmbyConLabel]"/>
+				<param name="mainlabel" value="$INFO[ListItem.Label]"/>
+				<param name="sublabel" value=""/>
+				<param name="use_custom_onclick" value="true"/>
+				<param name="force_search" value="true"/>
+				<param name="onclick" value="RunScript(script.embuary.helper,action=goto,path='$ESCINFO[ListItem.FolderPath]',target=videos)"/>
+				<param name="content" value="$VAR[EmbyCon.FavPerson]"/>
 			</include>
 
 		</control>

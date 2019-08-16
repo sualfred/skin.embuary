@@ -351,6 +351,9 @@
 		<value condition="System.HasAddon(plugin.video.emby)">library://video/emby_Favoriteepisodes.xml</value>
 	</variable>
 	<!-- EmbyCon sources -->
+	<variable name="EmbyCon.FavPerson">
+		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?media_type=Person&amp;mode=GET_CONTENT&amp;use_cache=false&amp;url=%7Bserver%7D%2Femby%2FPersons%3FSortBy%3DSortName%26SortOrder%3DAscending%26Filters%3DIsFavorite%26Recursive%3Dtrue%26Fields%3DPrimaryImageAspectRatio%252CBasicSyncInfo%26CollapseBoxSetItems%3Dfalse%26ExcludeLocationTypes%3DVirtual%26EnableTotalRecordCount%3Dfalse%26Limit%3D20%26userId%3D%7Buserid%7D&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]$INFO[Window(home).Property(EmbuaryWidgetUpdate)]</value>
+	</variable>
 	<variable name="EmbyCon.FavMovies">
 		<value condition="System.HasAddon(plugin.video.embycon)">plugin://plugin.video.embycon/?media_type=Movies&amp;mode=GET_CONTENT&amp;use_cache=false&amp;url=%7bserver%7d%2femby%2fUsers%2f%7buserid%7d%2fItems%3fFields%3d%7bfield_filters%7d%26Recursive%3dtrue%26Filters%3dIsFavorite%26IncludeItemTypes%3dMovie%26ImageTypeLimit%3d1%26format%3djson&amp;reload=$INFO[Window(home).Property(plugin.video.embycon-embycon_widget_reload)]$INFO[Window(home).Property(EmbuaryWidgetUpdate)]</value>
 	</variable>
