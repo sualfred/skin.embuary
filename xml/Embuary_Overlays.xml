@@ -2,18 +2,21 @@
 <includes>
 	<!-- Main listItem overlay -->
 	<include name="ListitemOverlay">
-		<control type="group">
-			<visible>!String.IsEqual(ListItem.DBType,artist) + !String.IsEqual(ListItem.DBType,album) + !String.IsEqual(ListItem.DBType,song)</visible>
-			<include content="ListItemOverlayWatchedStatus">
-				<param name="use_unwatched_property" value="$PARAM[use_unwatched_property]"/>
-			</include>
-			<include content="ListItemOverlayPVR">
-				<param name="pvr_overlay" value="$PARAM[pvr_overlay]"/>
-			</include>
-			<include>ListItemOverlayHDR</include>
-			<include>ListItemOverlayTmbdbIsLocal</include>
-			<include>ListItemOverlayAddonStatus</include>
-		</control>
+		<param name="pvr_overlay">true</param>
+		<definition>
+			<control type="group">
+				<visible>!String.IsEqual(ListItem.DBType,artist) + !String.IsEqual(ListItem.DBType,album) + !String.IsEqual(ListItem.DBType,song)</visible>
+				<include content="ListItemOverlayWatchedStatus">
+					<param name="use_unwatched_property" value="$PARAM[use_unwatched_property]"/>
+				</include>
+				<include content="ListItemOverlayPVR">
+					<param name="pvr_overlay" value="$PARAM[pvr_overlay]"/>
+				</include>
+				<include>ListItemOverlayHDR</include>
+				<include>ListItemOverlayTmbdbIsLocal</include>
+				<include>ListItemOverlayAddonStatus</include>
+			</control>
+		</definition>
 	</include>
 	<include name="ListItemOverlayWatchedStatus">
 		<param name="use_unwatched_property">false</param>
