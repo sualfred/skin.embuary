@@ -92,10 +92,17 @@
 								<onclick>RunScript(script.embuary.helper,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCINFO[ListItem.Plot]')</onclick>
 							</item>
 							<item>
-								<visible>System.HasAddon(plugin.video.youtube) + [Container.Content(movies) | Container.Content(tvshows)]</visible>
+								<visible>System.HasAddon(plugin.video.youtube)</visible>
 								<label>YouTube</label>
 								<property name="icon">&#xf5c3;</property>
 								<onclick>RunScript(script.embuary.helper,action=goto,path='"plugin://plugin.video.youtube/kodion/search/query/?q=$INFO[ListItem.Title]&amp;search_type=videos"',target=videos)</onclick>
+							</item>
+							<item>
+								<visible>System.HasAddon(script.embuary.info)</visible>
+								<label>TMDb</label>
+								<property name="icon">&#xF64E;</property>
+								<onclick condition="String.IsEqual(ListItem.DBType,movie) + !String.IsEmpty(ListItem.IMDBNumber) + !String.StartsWith(ListItem.IMDBNumber,xx)">RunScript(script.embuary.info,call=movie,external_id=$INFO[ListItem.IMDBNumber])</onclick>
+								<onclick condition="String.IsEqual(ListItem.DBType,movie) + [String.IsEmpty(ListItem.IMDBNumber) | String.StartsWith(ListItem.IMDBNumber,xx)]">RunScript(script.embuary.info,call=movie,query='$ESCINFO[ListItem.Title]',year=$INFO[ListItem.Year])</onclick>
 							</item>
 							<item>
 								<visible>$EXP[HasEmbyContext] | $EXP[HasEmbyConContext] | $EXP[HasLibraryEditButton]</visible>
@@ -309,10 +316,17 @@
 								<onclick>RunScript(script.embuary.helper,action=textviewer,header='$ESCINFO[ListItem.TVShowTitle]',message='$ESCVAR[TinyInfoDialogPlot]')</onclick>
 							</item>
 							<item>
-								<visible>System.HasAddon(plugin.video.youtube) + [Container.Content(movies) | Container.Content(tvshows)]</visible>
+								<visible>System.HasAddon(plugin.video.youtube)</visible>
 								<label>YouTube</label>
 								<property name="icon">&#xf5c3;</property>
 								<onclick>RunScript(script.embuary.helper,action=goto,path='"plugin://plugin.video.youtube/kodion/search/query/?q=$INFO[ListItem.TVShowTitle]&amp;search_type=videos"',target=videos)</onclick>
+							</item>
+							<item>
+								<visible>System.HasAddon(script.embuary.info)</visible>
+								<label>TMDb</label>
+								<property name="icon">&#xF64E;</property>
+								<onclick condition="String.IsEqual(ListItem.DBType,tvshow) + !String.IsEmpty(ListItem.IMDBNumber) + !String.StartsWith(ListItem.IMDBNumber,xx)">RunScript(script.embuary.info,call=tv,external_id=$INFO[ListItem.IMDBNumber])</onclick>
+								<onclick condition="String.IsEqual(ListItem.DBType,tvshow) + [String.IsEmpty(ListItem.IMDBNumber) | String.StartsWith(ListItem.IMDBNumber,xx)]">runscript(script.embuary.info,call=tv,query='$ESCINFO[ListItem.TVShowTitle]',year=$INFO[ListItem.Year])</onclick>
 							</item>
 							<item>
 								<visible>$EXP[HasEmbyContext] | $EXP[HasEmbyConContext] | $EXP[HasLibraryEditButton]</visible>
