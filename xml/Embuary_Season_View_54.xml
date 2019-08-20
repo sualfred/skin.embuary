@@ -148,10 +148,11 @@
 			</control>
 			<!-- Next Up -->
 			<include content="WideWidget">
+				<param name="visible" value="!String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)"/>
 				<param name="force_visible" value="Integer.IsGreater(Container(2002).NumItems,0)"/>
 				<param name="id" value="200"/>
 				<param name="onup" value="54"/>
-				<param name="ondown" value="300"/>
+				<param name="ondown" value="201"/>
 				<param name="onback" value="54"/>
 				<param name="height" value="438"/>
 				<param name="sublabel" value=""/>
@@ -163,11 +164,26 @@
 				<param name="onclick" value="RunScript(script.embuary.helper,action=playitem,item='$ESCINFO[ListItem.Filenameandpath]')"/>
 				<param name="content" value="$VAR[View54_NextUp_Content]"/>
 			</include>
+			<include content="WideWidget">
+				<param name="visible" value="String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)"/>
+				<param name="force_visible" value="Integer.IsGreater(Container(2002).NumItems,0)"/>
+				<param name="id" value="201"/>
+				<param name="onup" value="200"/>
+				<param name="ondown" value="202"/>
+				<param name="onback" value="54"/>
+				<param name="height" value="438"/>
+				<param name="sublabel" value=""/>
+				<param name="limit" value="1"/>
+				<param name="headline" value="$LOCALIZE[31012]"/>
+				<param name="use_custom_onclick" value="true"/>
+				<param name="onclick" value="RunScript(script.embuary.helper,action=playitem,item='$ESCINFO[ListItem.Filenameandpath]')"/>
+				<param name="content" value="$VAR[View54_NextUp_Content]"/>
+			</include>
 			<!-- Cast -->
 			<include content="CastWidget">
 				<param name="visible" value="Integer.IsGreater(Container(2000).NumItems,0)"/>
-				<param name="id" value="300"/>
-				<param name="onup" value="200"/>
+				<param name="id" value="202"/>
+				<param name="onup" value="201"/>
 				<param name="ondown" value="noop"/>
 				<param name="onback" value="54"/>
 				<param name="content" value="$VAR[View_Cast_Content]"/>
