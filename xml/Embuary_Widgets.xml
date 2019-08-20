@@ -474,14 +474,20 @@
 						<onright>SetProperty(BounceRight,1,home)</onright>
 						<onright>noop</onright>
 						<onleft>900</onleft>
-						<onclick condition="$PARAM[use_custom_onclick] + [!$PARAM[force_search] + !Skin.HasSetting(DoNotUseTmbdbInfo) + System.HasAddon(script.embuary.info)]">RunScript(script.embuary.info,call=person,query=$INFO[ListItem.Label])</onclick>
-						<onclick condition="$PARAM[use_custom_onclick] + [$PARAM[force_search] | Skin.HasSetting(DoNotUseTmbdbInfo) | !System.HasAddon(script.embuary.info)] + Window.IsVisible(fullscreeninfo)">SetProperty(DoNotUnpause,1,home)</onclick>
-						<onclick condition="$PARAM[use_custom_onclick] + [$PARAM[force_search] | Skin.HasSetting(DoNotUseTmbdbInfo) | !System.HasAddon(script.embuary.info)] + [Window.IsVisible(movieinformation) | Window.IsVisible(fullscreeninfo) | Window.IsVisible(favourites)]">close</onclick>
-						<onclick condition="$PARAM[use_custom_onclick] + [$PARAM[force_search] | Skin.HasSetting(DoNotUseTmbdbInfo) | !System.HasAddon(script.embuary.info)]">SetProperty(CustomSearch,1,home)</onclick>
-						<onclick condition="$PARAM[use_custom_onclick] + [$PARAM[force_search] | Skin.HasSetting(DoNotUseTmbdbInfo) | !System.HasAddon(script.embuary.info)]">Skin.SetString(CustomSearchTerm,$INFO[ListItem.Label])</onclick>
-						<onclick condition="$PARAM[use_custom_onclick] + [$PARAM[force_search] | Skin.HasSetting(DoNotUseTmbdbInfo) | !System.HasAddon(script.embuary.info)]">Skin.SetString(CustomSearchEmbyID,$INFO[ListItem.Property(id)])</onclick>
-						<onclick condition="$PARAM[use_custom_onclick] + [$PARAM[force_search] | Skin.HasSetting(DoNotUseTmbdbInfo) | !System.HasAddon(script.embuary.info)]">ActivateWindow(1115)</onclick>
-						<onclick condition="$PARAM[use_custom_onclick] + [$PARAM[force_search] | Skin.HasSetting(DoNotUseTmbdbInfo) | !System.HasAddon(script.embuary.info)]">AlarmClock(Wait,ClearProperty(CustomSearch,home),00:01,silent)</onclick>
+						<!-- select action -->
+						<onclick condition="!$PARAM[force_search]">SetProperty(Dialog.1.Label,$LOCALIZE[31378])</onclick>
+						<onclick condition="!$PARAM[force_search]">SetProperty(Dialog.1.BuiltIn,RunScript(script.embuary.info,call=person,query=$INFO[ListItem.Label]))</onclick>
+						<onclick condition="!$PARAM[force_search]">SetProperty(Dialog.2.Label,$LOCALIZE[31379])</onclick>
+						<onclick condition="!$PARAM[force_search] + Window.IsVisible(fullscreeninfo)">SetProperty(Dialog.2.BuiltIn,SetProperty(DoNotUnpause,1,home)||SetProperty(CustomSearch,1,home)||Skin.SetString(CustomSearchTerm,$INFO[ListItem.Label])||Skin.SetString(CustomSearchEmbyID,$INFO[ListItem.Property(id)])||Dialog.Close(all)||ActivateWindow(1115)||AlarmClock(Wait,ClearProperty(CustomSearch,home),00:01,silent))</onclick>
+						<onclick condition="!$PARAM[force_search] + !Window.IsVisible(fullscreeninfo)">SetProperty(Dialog.2.BuiltIn,SetProperty(CustomSearch,1,home)||Skin.SetString(CustomSearchTerm,$INFO[ListItem.Label])||Skin.SetString(CustomSearchEmbyID,$INFO[ListItem.Property(id)])||Dialog.Close(all)||ActivateWindow(1115)||AlarmClock(Wait,ClearProperty(CustomSearch,home),00:01,silent))</onclick>
+						<onclick condition="!$PARAM[force_search]">RunScript(script.embuary.helper,action=createselect,header=$LOCALIZE[15111])</onclick>
+						<!-- non select action -->
+						<onclick condition="$PARAM[force_search]">Dialog.Close(all)</onclick>
+						<onclick condition="$PARAM[force_search]">SetProperty(CustomSearch,1,home)</onclick>
+						<onclick condition="$PARAM[force_search]">Skin.SetString(CustomSearchTerm,$INFO[ListItem.Label])</onclick>
+						<onclick condition="$PARAM[force_search]">Skin.SetString(CustomSearchEmbyID,$INFO[ListItem.Property(id)])</onclick>
+						<onclick condition="$PARAM[force_search]">ActivateWindow(1115)</onclick>
+						<onclick condition="$PARAM[force_search]">AlarmClock(Wait,ClearProperty(CustomSearch,home),00:01,silent)</onclick>
 						<pagecontrol>$PARAM[id]1</pagecontrol>
 						<viewtype label="$LOCALIZE[31006]">list</viewtype>
 						<itemlayout width="257">
