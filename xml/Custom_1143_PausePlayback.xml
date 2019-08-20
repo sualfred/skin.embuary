@@ -3,21 +3,15 @@
 	<visible>!Skin.HasSetting(DoNotPauseOnInfo) + !VideoPlayer.Content(livetv)</visible>
 	<visible>
 		[
-		[
-		Window.IsVisible(fullscreeninfo)
-		| [Window.IsVisible(fullscreeninfo) + Window.IsVisible(selectdialog)]
-		| Window.IsVisible(script-embuary-video.xml)
-		| Window.IsVisible(script-embuary-person.xml)
-		| Window.IsVisible(busydialog)
-		| Window.IsVisible(busydialognocancel)
-		]
+		[Window.IsVisible(fullscreeninfo) | [Window.IsVisible(fullscreeninfo) + Window.IsVisible(selectdialog)] | Window.IsVisible(script-embuary-video.xml) | Window.IsVisible(script-embuary-person.xml) | Window.IsVisible(busydialog) | Window.IsVisible(busydialognocancel)]
 		+ Window.IsVisible(fullscreenvideo)
 		+ Window.IsVisible(fullscreeninfo)
 		]
-		| [Window.IsVisible(1115) + !String.IsEmpty(Window(home).Property(DoNotUnpause))]
+		| [!String.IsEmpty(Window(home).Property(DoNotUnpause)) + !Window.IsVisible(fullscreenvideo)]
 	</visible>
 	<onload condition="!Player.Paused">Pause</onload>
 	<onunload condition="Player.Paused">Play</onunload>
+	<onunload>ClearProperty(DoNotUnpause,home)</onunload>
 	<animation effect="fade" start="100" end="0" time="300">WindowClose</animation>
 	<controls />
 </window>
