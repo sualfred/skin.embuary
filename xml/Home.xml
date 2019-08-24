@@ -3,10 +3,16 @@
 	<defaultcontrol always="true">10</defaultcontrol>
 	<backgroundcolor>background</backgroundcolor>
 	<menucontrol>6666</menucontrol>
+	<!-- first run -->
+	<onload condition="!Skin.HasSetting(EmbuaryFirstStartup)">ReplaceWindow(1119)</onload>
+	<!-- script actions -->
 	<onload condition="!Skin.HasSetting(FontCheck)">RunScript(script.embuary.helper,action=fontchange,locales=ja+zh+ar+he+ko+vi+bn+my+hi+ks+km+ms,font=Arial)</onload>
 	<onload condition="!Skin.HasSetting(FontCheck)">Skin.ToggleSetting(FontCheck)</onload>
-	<onload condition="!String.IsEmpty(Window(home).Property(pvrhub))">ActivateWindow(1124)</onload>
 	<onload condition="System.HasAddon(plugin.video.embycon) + String.IsEmpty(Window(home).property(plugin.video.embycon-group_movies))">RunScript(script.embuary.helper,action=getaddonsetting,addon=plugin.video.embycon,setting=group_movies)</onload>
+	<onload>RunScript(script.embuary.helper,action=copyskinnodes)</onload>
+	<onload>RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=100&amp;levels=0&amp;group=mainmenu|moviehub|tvshowhub|musichub|customhub|sidepanel)</onload>
+	<!-- fake pvr hub window history workaroung -->
+	<onload condition="!String.IsEmpty(Window(home).Property(pvrhub))">ActivateWindow(1124)</onload>
 	<onload>ClearProperty(pvrhub,home)</onload>
 	<!-- winter theme -->
 	<onload condition="!Skin.HasSetting(DoNotUseHolidayThemeSound) + Window.Previous(startup) + !Player.HasMedia + $EXP[HolidayTheme] + System.Date(12-01,12-27)">RunScript(script.embuary.helper,action=playsfx,path='"special://skin/extras/holiday/winterintro.wav"')</onload>
@@ -16,12 +22,9 @@
 	<onload condition="!Skin.HasSetting(DoNotUseHolidayThemeSound) + Window.Previous(startup) + !Player.HasMedia + $EXP[HolidayTheme3]">RunScript(script.embuary.helper,action=playsfx,path='"special://skin/extras/holiday/swtheme_short.wav"')</onload>
 	<!-- st theme -->
 	<onload condition="!Skin.HasSetting(DoNotUseHolidayThemeSound) + Window.Previous(startup) + !Player.HasMedia + $EXP[HolidayTheme4]">RunScript(script.embuary.helper,action=playsfx,path='"special://skin/extras/holiday/sttheme_short.wav"')</onload>
-	<!-- first run -->
-	<onload condition="!Skin.HasSetting(EmbuaryFirstStartup)">ReplaceWindow(1119)</onload>
 	<include content="PropertyIncludes">
 		<param name="ShowHeader" value="true"/>
 	</include>
-	<onload>RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=100&amp;levels=0&amp;group=mainmenu|moviehub|tvshowhub|musichub|customhub|sidepanel)</onload>
 	<controls>
 		<control type="group">
 			<visible>String.IsEmpty(Window(home).Property(pvrhub))</visible>
