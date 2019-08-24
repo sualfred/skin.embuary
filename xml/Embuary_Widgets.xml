@@ -482,10 +482,10 @@
 						<onclick condition="!$PARAM[force_search] + !Window.IsVisible(fullscreeninfo)">SetProperty(Dialog.2.BuiltIn,SetProperty(CustomSearch,1,home)||Skin.SetString(CustomSearchTerm,$INFO[ListItem.Label])||Skin.SetString(CustomSearchEmbyID,$INFO[ListItem.Property(id)])||Dialog.Close(all)||ActivateWindow(1115)||AlarmClock(Wait,ClearProperty(CustomSearch,home),00:01,silent))</onclick>
 						<onclick condition="!$PARAM[force_search]">RunScript(script.embuary.helper,action=createselect,header=$LOCALIZE[137])</onclick>
 						<!-- non select action -->
-						<onclick condition="$PARAM[force_search]">Dialog.Close(all)</onclick>
 						<onclick condition="$PARAM[force_search]">SetProperty(CustomSearch,1,home)</onclick>
 						<onclick condition="$PARAM[force_search]">Skin.SetString(CustomSearchTerm,$INFO[ListItem.Label])</onclick>
 						<onclick condition="$PARAM[force_search]">Skin.SetString(CustomSearchEmbyID,$INFO[ListItem.Property(id)])</onclick>
+						<onclick condition="$PARAM[force_search]">Dialog.Close(all)</onclick>
 						<onclick condition="$PARAM[force_search]">ActivateWindow(1115)</onclick>
 						<onclick condition="$PARAM[force_search]">AlarmClock(Wait,ClearProperty(CustomSearch,home),00:01,silent)</onclick>
 						<pagecontrol>$PARAM[id]1</pagecontrol>
