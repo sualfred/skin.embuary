@@ -14,12 +14,7 @@
 
 	<!-- action overrides -->
 	<override action="tvshows_path">
-		<condition>!System.GetBool(videolibrary.showemptytvshows)</condition>
-		<action>ActivateWindow(videos,library://skin.embuary-leia/tvshows.xml/,return)</action>
-	</override>
-	<override action="tvshows_path">
-		<condition>System.GetBool(videolibrary.showemptytvshows)</condition>
-		<action>ActivateWindow(videos,library://video/tvshows/titles.xml/,return)</action>
+		<action>RunScript(script.embuary.helper,action=tvshowsroot)</action>
 	</override>
 
 	<override action="embycon_movies">
