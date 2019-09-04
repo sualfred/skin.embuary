@@ -490,7 +490,7 @@
 			<param name="mainlabel" value="$VAR[MainListLabel]"/>
 			<param name="thumblabel" value="$INFO[ListItem.Channelname]"/>
 			<param name="sublabel" value="$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, - ]"/>
-			<param name="content" value="pvr://channels/tv/*"/>
+			<param name="content" value="pvr://channels/tv/*?refresh=$VAR[RefreshEPG]"/>
 		</include>
 	</include>
 	<include name="W_RecentPVR">
@@ -506,7 +506,7 @@
 			<param name="sortby" value="lastplayed"/>
 			<param name="sortorder" value="descending"/>
 			<param name="limit" value="$VAR[WideWidgetLimit]"/>
-			<param name="content" value="pvr://channels/tv/*?view=lastplayed"/>
+			<param name="content" value="pvr://channels/tv/*?view=lastplayed&amp;refresh=$VAR[RefreshEPG]"/>
 		</include>
 	</include>
 	<!-- NextUp -->
@@ -1388,7 +1388,7 @@
 			<param name="mainlabel" value="$VAR[PVRWidgetMainListLabel]"/>
 			<param name="thumblabel" value="$INFO[ListItem.Channelname]"/>
 			<param name="sublabel" value="$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, - ]"/>
-			<param name="content" value="pvr://channels/tv/$PARAM[group]"/>
+			<param name="content" value="pvr://channels/tv/$PARAM[group]?refresh=$VAR[RefreshEPG]"/>
 		</include>
 	</include>
 	<include name="W_PVR_LastPlayed">
@@ -1402,7 +1402,7 @@
 			<param name="sublabel" value="$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, - ]"/>
 			<param name="sortby" value="lastplayed"/>
 			<param name="sortorder" value="descending"/>
-			<param name="content" value="pvr://channels/tv/*?view=lastplayed"/>
+			<param name="content" value="pvr://channels/tv/*?view=lastplayed&amp;refresh=$VAR[RefreshEPG]"/>
 		</include>
 	</include>
 	<include name="W_PVR_Recordings">
@@ -1416,7 +1416,7 @@
 			<param name="sublabel" value="$VAR[ListItemEpisodeName]"/>
 			<param name="sortby" value="date"/>
 			<param name="sortorder" value="descending"/>
-			<param name="content" value="pvr://recordings/tv/active?view=flat"/>
+			<param name="content" value="pvr://recordings/tv/active?view=flat&amp;refresh=$VAR[RefreshEPG]"/>
 		</include>
 	</include>
 
