@@ -155,7 +155,8 @@
 										<param name="align-left" value="false"/>
 									</include>
 									<label>$LOCALIZE[222]</label>
-									<onclick>SendClick(7)</onclick>
+									<onclick condition="!Window.IsVisible(movieinformation)">SendClick(7)</onclick>
+									<onclick condition="Window.IsVisible(movieinformation)">close</onclick>
 									<onup>SetFocus(3)</onup>
 								</control>
 							</control>
