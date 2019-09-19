@@ -8,14 +8,16 @@
 		<!--Player Controls-->
 		<control type="group" id="1">
 			<visible>!Window.IsVisible(sliderdialog) + !Window.IsVisible(shutdownmenu)</visible>
-			<bottom>0</bottom>
+			<bottom>10</bottom>
 			<control type="grouplist" id="600">
 				<orientation>horizontal</orientation>
 				<height>50</height>
-				<bottom>20</bottom>
-				<left>298</left>
+				<bottom>10</bottom>
+				<left>220</left>
 				<right>20</right>
 				<itemgap>5</itemgap>
+				<onright>614</onright>
+				<onleft>noop</onleft>
 				<control type="button" id="601">
 					<include content="PlayerButtons">
 						<param name="type" value="previous"/>
@@ -70,10 +72,16 @@
 					<visible>PVR.CanRecordPlayingChannel</visible>
 					<visible>VideoPlayer.Content(livetv)</visible>
 				</control>
-				<control type="label" id="630">
-					<description>Spacer</description>
-					<width>10</width>
-				</control>
+			</control>
+			<control type="grouplist" id="650">
+				<orientation>horizontal</orientation>
+				<align>right</align>
+				<height>50</height>
+				<bottom>10</bottom>
+				<right>5</right>
+				<itemgap>5</itemgap>
+				<onleft>607</onleft>
+				<onright>noop</onright>
 				<control type="button" id="614">
 					<include content="PlayerButtons">
 						<param name="type" value="audio"/>
@@ -134,7 +142,6 @@
 					<description>Spacer</description>
 					<width>10</width>
 				</control>
-				<include>PlayerBottomLabels</include>
 			</control>
 		</control>
 		<!-- Diffuse -->

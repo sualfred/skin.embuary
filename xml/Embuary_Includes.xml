@@ -786,24 +786,23 @@
 			<control type="image" id="99">
 				<top>0</top>
 				<width>100%</width>
-				<height>224</height>
+				<height>150</height>
 				<texture colordiffuse="black">views/player/mask_top.png</texture>
 			</control>
 			<control type="image" id="99">
 				<top>29</top>
 				<left>29</left>
 				<height>60</height>
-				<width>400</width>
+				<width>250</width>
 				<texture>$VAR[PlayerClearlogo]</texture>
 				<aspectratio align="left" aligny="top">keep</aspectratio>
 				<visible>!String.Contains(Player.Art(thumb),KodiCinemaMode) + !String.Contains(Player.Art(thumb),KodiTrailer)</visible>
 			</control>
 			<control type="label" id="99">
-				<top>21</top>
+				<top>26</top>
 				<left>29</left>
 				<right>960</right>
-				<height>50</height>
-				<aligny>top</aligny>
+				<height>35</height>
 				<font>OSDTopFont</font>
 				<textcolor>white</textcolor>
 				<label>$VAR[PlayerTitleLabel]</label>
@@ -814,26 +813,24 @@
 				</visible>
 			</control>
 			<control type="grouplist" id="99">
-				<top>21</top>
+				<top>26</top>
 				<left>960</left>
 				<right>29</right>
-				<height>50</height>
+				<height>35</height>
 				<align>right</align>
 				<orientation>horizontal</orientation>
 				<itemgap>10</itemgap>
 				<control type="label" id="99">
 					<width>auto</width>
 					<align>right</align>
-					<aligny>center</aligny>
 					<textcolor>white</textcolor>
-					<font>Material34</font>
+					<font>Material28</font>
 					<label>$VAR[PlayerSeekStepIcon]</label>
 					<visible>!String.IsEmpty(Player.SeekStepSize) | !String.IsEmpty(Player.SeekOffset) | [Integer.IsGreater(Player.ChapterCount,1) + !String.IsEqual(Player.Chapter,00) + !String.IsEqual(Player.Chapter,-1)]</visible>
 				</control>
 				<control type="label" id="99">
 					<width>auto</width>
 					<align>right</align>
-					<aligny>top</aligny>
 					<font>OSDTopFont</font>
 					<textcolor>white</textcolor>
 					<label>$VAR[TopPlayerSeekStepLabel,,     ]</label>
@@ -842,16 +839,14 @@
 				<control type="label" id="99">
 					<width>auto</width>
 					<align>right</align>
-					<aligny>center</aligny>
 					<textcolor>white</textcolor>
-					<font>Material34</font>
+					<font>Material28</font>
 					<label>&#xf46e;</label>
 					<visible>Player.IsTempo + !Player.Rewinding + !Player.Forwarding + !Player.Paused</visible>
 				</control>
 				<control type="label" id="99">
 					<width>auto</width>
 					<align>right</align>
-					<aligny>top</aligny>
 					<font>OSDTopFont</font>
 					<textcolor>white</textcolor>
 					<label>$INFO[Player.Playspeed,,     ]</label>
@@ -860,8 +855,7 @@
 				<control type="label" id="99">
 					<width>auto</width>
 					<align>right</align>
-					<aligny>center</aligny>
-					<font>Material34</font>
+					<font>Material28</font>
 					<textcolor>white</textcolor>
 					<label>&#xf45f;</label>
 					<visible>Player.Rewinding</visible>
@@ -869,7 +863,6 @@
 				<control type="label" id="99">
 					<width>auto</width>
 					<align>right</align>
-					<aligny>top</aligny>
 					<font>OSDTopFont</font>
 					<textcolor>white</textcolor>
 					<label>$LOCALIZE[31121]$VAR[PlayerForwardRewind, ]     </label>
@@ -878,8 +871,7 @@
 				<control type="label" id="99">
 					<width>auto</width>
 					<align>right</align>
-					<aligny>center</aligny>
-					<font>Material34</font>
+					<font>Material28</font>
 					<textcolor>white</textcolor>
 					<label>&#xf211;</label>
 					<visible>Player.Forwarding</visible>
@@ -887,7 +879,6 @@
 				<control type="label" id="99">
 					<width>auto</width>
 					<align>right</align>
-					<aligny>top</aligny>
 					<font>OSDTopFont</font>
 					<textcolor>white</textcolor>
 					<label>$LOCALIZE[31122]$VAR[PlayerForwardRewind, ]     </label>
@@ -896,8 +887,7 @@
 				<control type="label" id="99">
 					<width>auto</width>
 					<align>right</align>
-					<aligny>center</aligny>
-					<font>Material34</font>
+					<font>Material28</font>
 					<textcolor>white</textcolor>
 					<label>&#xf3e4;</label>
 					<visible>Player.Paused</visible>
@@ -905,7 +895,6 @@
 				<control type="label" id="99">
 					<width>auto</width>
 					<align>right</align>
-					<aligny>top</aligny>
 					<font>OSDTopFont</font>
 					<textcolor>white</textcolor>
 					<label>$LOCALIZE[112]     </label>
@@ -914,7 +903,6 @@
 				<control type="label" id="99">
 					<align>right</align>
 					<width>auto</width>
-					<aligny>top</aligny>
 					<font>OSDTopFont</font>
 					<textcolor>white</textcolor>
 					<label>$INFO[System.Time]</label>
@@ -922,22 +910,8 @@
 			</control>
 		</control>
 	</include>
-	<!-- Player bottom labels -->
-	<include name="PlayerBottomLabels">
-		<control type="label" id="99">
-			<width>auto</width>
-			<height>50</height>
-			<aligny>center</aligny>
-			<font>Reg24</font>
-			<textcolor>white</textcolor>
-			<label>$VAR[PlayerTimeLabels]</label>
-			<visible>!String.IsEmpty(Player.Time)</visible>
-		</control>
-		<control type="label" id="99">
-			<description>Spacer</description>
-			<width>15</width>
-			<visible>!String.IsEmpty(Player.Time)</visible>
-		</control>
+	<!-- Player extended labels -->
+	<include name="PlayerExtLabels">
 		<control type="label" id="99">
 			<height>50</height>
 			<width>auto</width>
@@ -945,11 +919,6 @@
 			<font>Material34</font>
 			<textcolor>white</textcolor>
 			<label>$VAR[PlaylistRepeatLabel]</label>
-			<visible>Playlist.IsRepeat | Playlist.IsRepeatOne</visible>
-		</control>
-		<control type="label" id="99">
-			<description>Spacer</description>
-			<width>15</width>
 			<visible>Playlist.IsRepeat | Playlist.IsRepeatOne</visible>
 		</control>
 		<control type="label" id="99">
@@ -962,16 +931,19 @@
 			<visible>Playlist.IsRandom</visible>
 		</control>
 		<control type="label" id="99">
-			<description>Spacer</description>
-			<width>15</width>
-			<visible>Playlist.IsRandom</visible>
+			<width>auto</width>
+			<height>50</height>
+			<aligny>center</aligny>
+			<font>Reg24</font>
+			<textcolor>white</textcolor>
+			<label>$VAR[PlayerFinishTime,$LOCALIZE[31037] ]</label>
 		</control>
 		<control type="label" id="99">
 			<width>auto</width>
 			<height>50</height>
 			<aligny>center</aligny>
 			<font>Reg24</font>
-			<textcolor>$VAR[AccentColor]</textcolor>
+			<textcolor>white</textcolor>
 			<label>$LOCALIZE[31038]$INFO[PVR.TimeshiftOffset, (-,)]</label>
 			<visible>Pvr.IsTimeShift</visible>
 		</control>
@@ -1017,9 +989,9 @@
 	</include>
 	<!-- Player progress bar dimensions -->
 	<include name="PlayerProgressDimension">
-		<bottom>85</bottom>
-		<left>309</left>
-		<right>31</right>
+		<centertop>50%</centertop>
+		<left>119</left>
+		<right>119</right>
 		<height>5</height>
 		<reveal>true</reveal>
 		<righttexture></righttexture>

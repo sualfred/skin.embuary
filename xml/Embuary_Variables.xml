@@ -864,6 +864,16 @@
 		<value condition="Integer.IsGreater(Player.Duration(h),0)">$INFO[Player.Duration(h:mm:ss)]</value>
 		<value>$INFO[Player.Duration(mm:ss)]</value>
 	</variable>
+	<variable name="PlayerTimeFull">
+		<value condition="VideoPlayer.HasEpg">$INFO[PVR.EpgEventElapsedTime(hh:mm:ss)]</value>
+		<value condition="!String.IsEmpty(Player.Time)">$INFO[Player.Time(hh:mm:ss)]</value>
+		<value>--:--:--</value>
+	</variable>
+	<variable name="PlayerDurationFull">
+		<value condition="VideoPlayer.HasEpg">$INFO[PVR.EpgEventDuration(hh:mm:ss)]</value>
+		<value condition="!String.IsEmpty(Player.Duration)">$INFO[Player.Duration(hh:mm:ss)]</value>
+		<value>--:--:--</value>
+	</variable>
 	<variable name="PlayerFinishTime">
 		<value condition="!String.Contains(Player.Art(thumb),KodiCinemaMode) + VideoPlayer.HasEpg + !String.IsEmpty(PVR.EpgEventFinishTime)">$INFO[PVR.EpgEventFinishTime]</value>
 		<value condition="!String.Contains(Player.Art(thumb),KodiCinemaMode) + !VideoPlayer.HasEpg + !String.IsEmpty(VideoPlayer.FinishTime)">$INFO[VideoPlayer.FinishTime]</value>
@@ -1190,10 +1200,9 @@
 		<value condition="!Control.HasFocus(607)">white</value>
 	</variable>
 	<variable name="PlayerFullLabel">
-		<value condition="String.IsEqual(Player.Title,emby-loading.mp4)">$LOCALIZE[20186]</value>
 		<value condition="Pvr.IsPlayingRadio">$INFO[MusicPlayer.Channelname]$INFO[Player.Title, - ]</value>
-		<value condition="String.Contains(Player.Art(thumb),KodiCinemaMode) + String.Contains(VideoPlayer.Title,Trailer)">$LOCALIZE[31255] - $INFO[VideoPlayer.Title]</value>
-		<value condition="String.Contains(Player.Art(thumb),KodiCinemaMode)">$LOCALIZE[31255]</value>
+		<value condition="String.Contains(Player.Art(thumb),KodiCinemaMode) + String.Contains(VideoPlayer.Title,Trailer)">$LOCALIZE[20410] - $INFO[VideoPlayer.Title]</value>
+		<value condition="String.Contains(Player.Art(thumb),KodiCinemaMode)">$LOCALIZE[31369]</value>
 		<value condition="String.IsEqual(VideoPlayer.Title,stream) + String.Contains(Player.Filenameandpath,/emby/videos/)">$LOCALIZE[31186]</value>
 		<value condition="!String.IsEmpty(MusicPlayer.Title) + !String.Contains(MusicPlayer.Title,pvr.hts_)">$INFO[MusicPlayer.Artist,, - ]$INFO[MusicPlayer.Title]</value>
 		<value condition="!String.IsEmpty(MusicPlayer.Title)">$INFO[MusicPlayer.Artist]</value>
@@ -1201,7 +1210,7 @@
 		<value condition="VideoPlayer.Content(livetv) + Window.IsVisible(shutdownmenu)">$INFO[VideoPlayer.Channelname]$INFO[VideoPlayer.Title, - ]</value>
 		<value condition="VideoPlayer.Content(livetv)">$INFO[VideoPlayer.Title]</value>
 		<value condition="!String.IsEmpty(VideoPlayer.TVShowTitle) + [!VideoPlayer.IsFullscreen | Window.IsVisible(shutdownmenu)]">$INFO[VideoPlayer.TVShowTitle,, - ]$VAR[PlayerSeasonEpisode]$INFO[VideoPlayer.Title]</value>
-		<value condition="!String.IsEmpty(VideoPlayer.TVShowTitle)">$VAR[PlayerSeasonEpisode]$INFO[VideoPlayer.Title]</value>
+		<value condition="!String.IsEmpty(VideoPlayer.TVShowTitle)">$INFO[VideoPlayer.TVShowTitle]</value>
 		<value>$INFO[VideoPlayer.Title]</value>
 	</variable>
 	<variable name="PlayerTitleLabel">
@@ -1237,14 +1246,10 @@
 		<value condition="Window.Is(fullscreeninfo) + VideoPlayer.Content(episodes) + !String.IsEmpty(Player.Art(landscape))">$INFO[Player.Art(landscape)]</value>
 		<value condition="Window.Is(fullscreeninfo) + VideoPlayer.Content(episodes) + !String.IsEmpty(Player.Art(fanart))">$INFO[Player.Art(fanart)]</value>
 		<value condition="Window.Is(fullscreeninfo) + VideoPlayer.Content(episodes)">views/player/playericon.jpg</value>
-		<value condition="String.StartsWith(Player.Filenameandpath,pvr://recordings) + !String.IsEmpty(Window(home).Property(Player.Channellogo)) + !Skin.HasSetting(ShowEPGThumbVideoOSD)">$INFO[Window(home).Property(Player.Channellogo)]</value>
-		<value condition="!String.IsEmpty(Player.Art(tvshow.poster))">$INFO[Player.Art(tvshow.poster)]</value>
 		<value condition="!String.IsEmpty(Player.Art(poster))">$INFO[Player.Art(poster)]</value>
-		<value condition="String.Contains(Player.Icon,special://home/addons/plugin.video.emby/fanart.jpg)">views/player/playericon.jpg</value>
-		<value condition="Window.IsVisible(visualisation) + [String.IsEmpty(Player.Icon) | String.StartsWith(Player.Icon,default)]">defaultembuary.png</value>
+		<value condition="!String.IsEmpty(Player.Art(tvshow.poster))">$INFO[Player.Art(tvshow.poster)]</value>
+		<value condition="String.StartsWith(Player.Filenameandpath,pvr://recordings) + !String.IsEmpty(Window(home).Property(Player.Channellogo)) + !Skin.HasSetting(ShowEPGThumbVideoOSD)">$INFO[Window(home).Property(Player.Channellogo)]</value>
 		<value condition="!String.IsEmpty(Player.Icon) + !String.StartsWith(Player.Icon,default)">$INFO[Player.Icon]</value>
-		<value condition="!String.IsEmpty(VideoPlayer.Cover) + !String.StartsWith(VideoPlayer.Cover,default)">$INFO[VideoPlayer.Cover]</value>
-		<value condition="!String.IsEmpty(MusicPlayer.Cover) + !String.StartsWith(MusicPlayer.Cover,default)">$INFO[MusicPlayer.Cover]</value>
 		<value>views/player/playericon.jpg</value>
 	</variable>
 	<variable name="PlayerCastContent">
@@ -1264,14 +1269,14 @@
 		<value condition="Player.Rewinding32x">32x</value>
 	</variable>
 	<variable name="PlayerSeekStepIcon">
-		<value condition="[!String.IsEmpty(Player.SeekOffset) + !String.Contains(Player.SeekOffset,-)] | [!String.IsEmpty(Player.SeekStepSize) + !String.Contains(Player.SeekStepSize,-)]">&#xf4ac;</value>
-		<value condition="[!String.IsEmpty(Player.SeekOffset) + String.Contains(Player.SeekOffset,-)] | [!String.IsEmpty(Player.SeekStepSize) + String.Contains(Player.SeekStepSize,-)]">&#xf4ab;</value>
-		<value condition="!String.IsEmpty(Player.Chapter)">&#xf0c0;</value>
+		<value condition="[[!String.IsEmpty(Player.SeekOffset) + !String.Contains(Player.SeekOffset,-)] | [!String.IsEmpty(Player.SeekStepSize) + !String.Contains(Player.SeekStepSize,-)]] + Player.Seeking">&#xf4ac;</value>
+		<value condition="[[!String.IsEmpty(Player.SeekOffset) + String.Contains(Player.SeekOffset,-)] | [!String.IsEmpty(Player.SeekStepSize) + String.Contains(Player.SeekStepSize,-)]] + Player.Seeking">&#xf4ab;</value>
+		<value condition="!String.IsEmpty(Player.Chapter) + !String.IsEqual(Player.Chapter,00)">&#xf0c0;</value>
 	</variable>
 	<variable name="TopPlayerSeekStepLabel">
-		<value condition="!String.IsEmpty(Player.SeekStepSize)">$INFO[Player.SeekStepSize]</value>
-		<value condition="!String.IsEmpty(Player.SeekOffset)">$INFO[Player.SeekOffset]</value>
-		<value condition="!String.IsEmpty(Player.Chapter)">$INFO[Player.Chapter,$LOCALIZE[21396] ]</value>
+		<value condition="!String.IsEmpty(Player.SeekStepSize) + Player.Seeking">$INFO[Player.SeekStepSize]</value>
+		<value condition="!String.IsEmpty(Player.SeekOffset) + Player.Seeking">$INFO[Player.SeekOffset]</value>
+		<value condition="!String.IsEmpty(Player.Chapter) + !String.IsEqual(Player.Chapter,00)">$INFO[Player.Chapter,$LOCALIZE[21396] ]</value>
 	</variable>
 	<variable name="PlayerSeekStepLabel">
 		<value condition="!String.IsEmpty(PVR.EpgEventSeekTime) + VideoPlayer.HasEpg">$INFO[PVR.EpgEventSeekTime]</value>

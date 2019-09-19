@@ -2,8 +2,6 @@
 <window>
 	<defaultcontrol></defaultcontrol>
 	<onload>ClearProperty(DoNotUnpause,home)</onload>
-	<onload>SetProperty(showvideoinfo,1,home)</onload>
-	<onload>AlarmClock(PreloadTimeout,ClearProperty(showvideoinfo,home),00:02,silent)</onload>
 	<include>PropertyIncludes</include>
 	<controls>
 		<control type="list" id="2003">
@@ -16,7 +14,7 @@
 			<param name="colordiffuse" value="AA000000"/>
 			<param name="id" value="99"/>
 		</include>1
-		<!-- Busy spinner -->
+		<!-- busy spinner -->
 		<control type="group" id="99">
 			<visible>Player.Caching + !Window.IsVisible(busydialog)</visible>
 			<include content="BusySpinner">
@@ -24,7 +22,7 @@
 				<param name="colordiffuse" value="white"/>
 			</include>
 		</control>
-		<!-- Numeric Input -->
+		<!-- numeric Input -->
 		<control type="label" id="99">
 			<top>0</top>
 			<bottom>0</bottom>
@@ -39,58 +37,112 @@
 		<!-- OSD -->
 		<control type="group" id="99">
 			<visible>!Player.HasGame</visible>
-			<visible>[Window.IsVisible(videoosd) | Window.IsVisible(seekbar) | Player.Paused | Player.ShowTime | [Window.IsVisible(volumebar) + !Player.Muted + !Skin.HasSetting(DefaultVolume)] | !String.IsEmpty(Window(home).Property(showvideoinfo))] + !Window.IsVisible(sliderdialog)</visible>
+			<visible>[Window.IsVisible(videoosd) | Window.IsVisible(seekbar) | Player.Paused | Player.ShowTime | $EXP[PlayerSeek]]</visible>
 			<animation effect="fade" start="0" end="100" time="0">Visible</animation>
-			<animation effect="fade" start="100" end="0" time="400" delay="2000">Hidden</animation>
+			<animation effect="fade" start="100" end="0" time="200" delay="1500">Hidden</animation>
 			<animation effect="fade" start="100" end="0" time="0" condition="Window.IsVisible(playerprocessinfo) | Window.IsVisible(pvrosdchannels) | Window.IsVisible(Teletext) | Window.IsVisible(sliderdialog) | Window.IsVisible(shutdownmenu) | Window.IsVisible(videobookmarks) | !String.IsEmpty(Window(home).Property(service.upnext.dialog)) | [$EXP[HideVideoOSD] + !$EXP[PlayerSeek] + !Window.IsVisible(videoosd)]">Conditional</animation>
-			<!--Top-->
+			<!-- top -->
 			<include>PlayerTopBar</include>
-			<!--Bottom-->
+			<!-- bottom -->
+			<control type="image" id="99">
+				<bottom>0</bottom>
+				<width>100%</width>
+				<height>470</height>
+				<texture colordiffuse="black" flipy="true">views/player/mask_top.png</texture>
+			</control>
+			<!-- icon -->
 			<control type="group" id="99">
-				<!-- mask -->
+				<bottom>20</bottom>
+				<!--
 				<control type="image" id="99">
 					<bottom>0</bottom>
-					<width>100%</width>
-					<height>170</height>
-					<texture colordiffuse="black">views/player/mask_bottom.png</texture>
-					<visible>!VideoPlayer.Content(livetv) + !String.StartsWith(Player.Filenameandpath,pvr://)</visible>
-				</control>
-				<control type="image" id="99">
-					<bottom>0</bottom>
-					<width>100%</width>
-					<height>201</height>
-					<texture colordiffuse="black">views/player/mask_bottom.png</texture>
-					<visible>VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)</visible>
-				</control>
-				<control type="image" id="99">
-					<bottom>20</bottom>
 					<left>19</left>
-					<width>278</width>
+					<width>200</width>
+					<texture background="true">$VAR[PlayerIcon]</texture>
+					<aspectratio scalediffuse="false" aligny="bottom">keep</aspectratio>
+					<bordersize>11</bordersize>
+					<bordertexture border="11,11,11,11">items/resp_shadow.png</bordertexture>
+					<visible>!VideoPlayer.Content(livetv) + !String.StartsWith(Player.Filenameandpath,pvr://recordings)</visible>
+				</control>
+				<control type="image" id="99">
+					<bottom>0</bottom>
+					<left>19</left>
+					<width>200</width>
+					<height>140</height>
+					<texture background="true">$VAR[PlayerIcon]</texture>
+					<aspectratio scalediffuse="false" aligny="center">keep</aspectratio>
+					<bordersize>11</bordersize>
+					<visible>VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://recordings)</visible>
+					<animation effect="slide" time="0" start="0,0" end="0,-30" condition="Window.IsVisible(videoosd)">Conditional</animation>
+				</control>-->
+				<control type="image" id="99">
+					<bottom>0</bottom>
+					<left>19</left>
+					<width>200</width>
 					<texture background="true">$VAR[PlayerIcon]</texture>
 					<aspectratio scalediffuse="false" aligny="bottom">keep</aspectratio>
 					<bordersize>11</bordersize>
 					<bordertexture border="11,11,11,11">items/resp_shadow.png</bordertexture>
 					<visible>
-						![
-						[VideoPlayer.Content(livetv) + [String.IsEmpty(Pvr.EPGEventIcon) | !Skin.HasSetting(ShowEPGThumbVideoOSD)]]
-						| [String.StartsWith(Player.Filenameandpath,pvr://recordings) + !String.IsEmpty(Window(home).Property(Player.Channellogo)) + [String.IsEqual(Window(home).Property(Player.Channellogo),Player.Icon) | !Skin.HasSetting(ShowEPGThumbVideoOSD)]]
-						]
+						[!String.IsEmpty(Player.Art(poster)) + !String.StartsWith(Window(home).Property(Player.Art(poster).ar),1)]
+						| [!String.IsEmpty(Player.Art(tvshow.poster)) + !String.StartsWith(Window(home).Property(Player.Art(tvshow.poster).ar),1)]
 					</visible>
 				</control>
 				<control type="image" id="99">
-					<bottom>31</bottom>
-					<left>30</left>
-					<width>256</width>
-					<height>144</height>
+					<animation effect="slide" time="0" start="0,0" end="0,-30" condition="Window.IsVisible(videoosd)">Conditional</animation>
+					<bottom>0</bottom>
+					<left>19</left>
+					<width>200</width>
+					<height>140</height>
 					<texture background="true">$VAR[PlayerIcon]</texture>
 					<aspectratio scalediffuse="false" aligny="center">keep</aspectratio>
-					<visible>
-						[VideoPlayer.Content(livetv) + [String.IsEmpty(Pvr.EPGEventIcon) | !Skin.HasSetting(ShowEPGThumbVideoOSD)]]
-						| [String.StartsWith(Player.Filenameandpath,pvr://recordings) + !String.IsEmpty(Window(home).Property(Player.Channellogo)) + [String.IsEqual(Window(home).Property(Player.Channellogo),Player.Icon) | !Skin.HasSetting(ShowEPGThumbVideoOSD)]]
+					<bordersize>11</bordersize>
+					<visible>![
+						[!String.IsEmpty(Player.Art(poster)) + !String.StartsWith(Window(home).Property(Player.Art(poster).ar),1)]
+						| [!String.IsEmpty(Player.Art(tvshow.poster)) + !String.StartsWith(Window(home).Property(Player.Art(tvshow.poster).ar),1)]
+						]
 					</visible>
 				</control>
-				<!-- Progress bars -->
+			</control>
+			<!-- osd -->
+			<control type="group" id="99">
+				<animation effect="slide" time="0" start="0,0" end="0,60" condition="!Window.IsVisible(videoosd)">Conditional</animation>
+				<!-- progress bars -->
 				<control type="group" id="99">
+					<height>50</height>
+					<left>230</left>
+					<right>30</right>
+					<bottom>75</bottom>
+					<control type="label" id="99">
+						<width>100</width>
+						<height>50</height>
+						<aligny>center</aligny>
+						<align>left</align>
+						<font>Reg24</font>
+						<textcolor>white</textcolor>
+						<label>$VAR[PlayerTimeFull]</label>
+						<visible>!String.IsEmpty(Player.Time)</visible>
+					</control>
+					<control type="label" id="99">
+						<width>100</width>
+						<right>0</right>
+						<height>50</height>
+						<align>right</align>
+						<aligny>center</aligny>
+						<font>Reg24</font>
+						<textcolor>white</textcolor>
+						<label>$VAR[PlayerDurationFull]</label>
+					</control>
+					<control type="grouplist" id="99">
+						<top>-50</top>
+						<right>0</right>
+						<width>500</width>
+						<height>50</height>
+						<align>right</align>
+						<orientation>horizontal</orientation>
+						<itemgap>25</itemgap>
+						<include>PlayerExtLabels</include>
+					</control>
 					<!-- Cache bar -->
 					<control type="progress" id="99">
 						<include>PlayerProgressDimension</include>
@@ -116,157 +168,181 @@
 						<visible>VideoPlayer.HasEpg</visible>
 					</control>
 				</control>
-				<!-- Label section -->
+				<!-- label section -->
 				<control type="group" id="99">
-					<animation effect="slide" time="0" start="0,0" end="0,-31" condition="VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)">Conditional</animation>
-					<height>31</height>
-					<bottom>115</bottom>
-					<left>309</left>
+					<left>230</left>
 					<right>30</right>
-					<control type="grouplist" id="99">
-						<orientation>horizontal</orientation>
+					<control type="group" id="99">
 						<height>31</height>
-						<itemgap>0</itemgap>
-						<control type="label" id="99">
-							<width>auto</width>
-							<height>30</height>
-							<aligny>center</aligny>
-							<font>Med24</font>
-							<textcolor>white</textcolor>
-							<label>$VAR[PlayerFullLabel]   </label>
-						</control>
-						<control type="label" id="99">
-							<width>auto</width>
-							<height>30</height>
-							<aligny>center</aligny>
-							<label>$INFO[VideoPlayer.Year]   </label>
-							<font>Reg24</font>
-							<textcolor>white</textcolor>
-							<visible>!String.IsEmpty(VideoPlayer.Year) + !VideoPlayer.Content(livetv)</visible>
-							<visible>!String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
-						</control>
-						<control type="button" id="99">
-							<animation effect="slide" end="0,2" time="0" condition="true">Conditional</animation>
-							<width min="24">auto</width>
-							<height>24</height>
-							<font>MpaaFont</font>
-							<label>$INFO[VideoPlayer.Mpaa]</label>
-							<textoffsetx>7</textoffsetx>
-							<align>center</align>
-							<textcolor>white</textcolor>
-							<disabledcolor>white</disabledcolor>
-							<texturefocus border="10" colordiffuse="white">icons/rating/mpaa.png</texturefocus>
-							<texturenofocus border="10" colordiffuse="white">icons/rating/mpaa.png</texturenofocus>
-							<enable>false</enable>
-							<visible>!String.IsEmpty(VideoPlayer.Mpaa)</visible>
-							<visible>!String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
-						</control>
-						<control type="label" id="99">
-							<width>20</width>
-							<height>24</height>
-							<label/>
-							<visible>!String.IsEmpty(VideoPlayer.Mpaa)</visible>
-							<visible>!String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
-						</control>
-						<control type="label" id="99">
-							<animation effect="slide" end="-3,0" time="0" condition="true">Conditional</animation>
-							<width>auto</width>
-							<height>30</height>
-							<aligny>center</aligny>
-							<label>&#xf4ce;</label>
-							<font>Material26</font>
-							<textcolor>red</textcolor>
-							<visible>!String.IsEmpty(VideoPlayer.Rating)</visible>
-							<visible>!String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
-						</control>
-						<control type="label" id="99">
-							<width>auto</width>
-							<height>30</height>
-							<aligny>center</aligny>
-							<label>$INFO[VideoPlayer.Rating]   </label>
-							<font>Reg24</font>
-							<textcolor>white</textcolor>
-							<visible>!String.IsEmpty(VideoPlayer.Rating)</visible>
-							<visible>!String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
-						</control>
-						<control type="image" id="99">
-							<animation effect="slide" end="-4,4" time="0" condition="true">Conditional</animation>
-							<width>24</width>
-							<height>20</height>
-							<texture>$VAR[RottenIcon]</texture>
-							<aspectratio>keep</aspectratio>
-							<visible>!String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
-						</control>
-						<control type="label" id="99">
-							<width>auto</width>
-							<height>30</height>
-							<aligny>center</aligny>
-							<label>$VAR[RottenRating,,   ]</label>
-							<font>Reg24</font>
-							<textcolor>white</textcolor>
-							<visible>!String.Contains(Player.Art(thumb),KodiCinemaMode)</visible>
+						<bottom>185</bottom>
+						<control type="grouplist" id="99">
+							<orientation>horizontal</orientation>
+							<height>31</height>
+							<itemgap>0</itemgap>
+							<control type="label" id="99">
+								<include>NoTextures</include>
+								<width>auto</width>
+								<height>30</height>
+								<aligny>center</aligny>
+								<align>left</align>
+								<font>Reg24</font>
+								<textcolor>white</textcolor>
+								<label>$LOCALIZE[31255]</label>
+								<visible>$EXP[PlayingCinemaMode]</visible>
+							</control>
+							<control type="label" id="99">
+								<include>NoTextures</include>
+								<width>auto</width>
+								<height>30</height>
+								<aligny>center</aligny>
+								<align>left</align>
+								<font>Reg24</font>
+								<textcolor>white</textcolor>
+								<label>$VAR[PlayerEpisodeName,,   ]$INFO[VideoPlayer.Genre,,   ]</label>
+								<visible>VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)</visible>
+							</control>
+							<control type="label" id="99">
+								<include>NoTextures</include>
+								<width>auto</width>
+								<height>30</height>
+								<aligny>center</aligny>
+								<align>left</align>
+								<font>Reg24</font>
+								<textcolor>white</textcolor>
+								<label>$VAR[PlayerEpisodeName,, - ]$INFO[VideoPlayer.Title,,   ]</label>
+								<visible>!String.IsEmpty(VideoPlayer.TvShowTitle)</visible>
+							</control>
+							<control type="label" id="99">
+								<include>NoTextures</include>
+								<width>auto</width>
+								<height>30</height>
+								<aligny>center</aligny>
+								<align>right</align>
+								<font>Reg24</font>
+								<textcolor>white</textcolor>
+								<label>$INFO[VideoPlayer.ChannelNumberLabel,$LOCALIZE[19029] ,   ]</label>
+								<scroll>true</scroll>
+							</control>
+							<control type="label" id="99">
+								<width>auto</width>
+								<height>30</height>
+								<aligny>center</aligny>
+								<label>$INFO[VideoPlayer.Year]   </label>
+								<font>Reg24</font>
+								<textcolor>white</textcolor>
+								<visible>!String.IsEmpty(VideoPlayer.Year) + !VideoPlayer.Content(livetv)</visible>
+								<visible>!$EXP[PlayingCinemaMode]</visible>
+							</control>
+							<control type="label" id="99">
+								<include>NoTextures</include>
+								<width>auto</width>
+								<height>30</height>
+								<aligny>center</aligny>
+								<align>right</align>
+								<font>Reg24</font>
+								<textcolor>white</textcolor>
+								<label>$VAR[PlayerResolution,,   ]</label>
+								<visible>!Player.ShowInfo</visible>
+								<visible>VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://) | VideoPlayer.Content(files)</visible>
+								<visible>!$EXP[PlayingCinemaMode]</visible>
+							</control>
+							<control type="button" id="99">
+								<animation effect="slide" end="0,2" time="0" condition="true">Conditional</animation>
+								<width min="24">auto</width>
+								<height>24</height>
+								<font>MpaaFont</font>
+								<label>$INFO[VideoPlayer.Mpaa]</label>
+								<textoffsetx>7</textoffsetx>
+								<align>center</align>
+								<textcolor>white</textcolor>
+								<disabledcolor>white</disabledcolor>
+								<texturefocus border="10" colordiffuse="white">icons/rating/mpaa.png</texturefocus>
+								<texturenofocus border="10" colordiffuse="white">icons/rating/mpaa.png</texturenofocus>
+								<enable>false</enable>
+								<visible>!String.IsEmpty(VideoPlayer.Mpaa)</visible>
+								<visible>!$EXP[PlayingCinemaMode]</visible>
+							</control>
+							<control type="label" id="99">
+								<width>20</width>
+								<height>24</height>
+								<label/>
+								<visible>!String.IsEmpty(VideoPlayer.Mpaa)</visible>
+								<visible>!$EXP[PlayingCinemaMode]</visible>
+							</control>
+							<control type="label" id="99">
+								<animation effect="slide" end="-3,0" time="0" condition="true">Conditional</animation>
+								<width>auto</width>
+								<height>30</height>
+								<aligny>center</aligny>
+								<label>&#xf4ce;</label>
+								<font>Material26</font>
+								<textcolor>red</textcolor>
+								<visible>!String.IsEmpty(VideoPlayer.Rating)</visible>
+								<visible>!$EXP[PlayingCinemaMode]</visible>
+							</control>
+							<control type="label" id="99">
+								<width>auto</width>
+								<height>30</height>
+								<aligny>center</aligny>
+								<label>$INFO[VideoPlayer.Rating]   </label>
+								<font>Reg24</font>
+								<textcolor>white</textcolor>
+								<visible>!String.IsEmpty(VideoPlayer.Rating)</visible>
+								<visible>!$EXP[PlayingCinemaMode]</visible>
+							</control>
+							<control type="image" id="99">
+								<animation effect="slide" end="-4,4" time="0" condition="true">Conditional</animation>
+								<width>24</width>
+								<height>20</height>
+								<texture>$VAR[RottenIcon]</texture>
+								<aspectratio>keep</aspectratio>
+								<visible>!$EXP[PlayingCinemaMode]</visible>
+							</control>
+							<control type="label" id="99">
+								<width>auto</width>
+								<height>30</height>
+								<aligny>center</aligny>
+								<label>$VAR[RottenRating,,   ]</label>
+								<font>Reg24</font>
+								<textcolor>white</textcolor>
+								<visible>!$EXP[PlayingCinemaMode]</visible>
+							</control>
 						</control>
 					</control>
 					<control type="label" id="99">
-						<include>NoTextures</include>
-						<height>30</height>
-						<right>0</right>
-						<aligny>center</aligny>
-						<align>right</align>
-						<font>Reg24</font>
-						<textcolor>text_sublabel</textcolor>
-						<label>$VAR[PlayerResolution]</label>
-						<textoffsetx>0</textoffsetx>
-						<scroll>true</scroll>
-						<visible>!Player.ShowInfo</visible>
-						<visible>VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)</visible>
-					</control>
-				</control>
-				<!-- PVR EpisodeName -->
-				<control type="group" id="99">
-					<visible>VideoPlayer.Content(livetv) | String.StartsWith(Player.Filenameandpath,pvr://)</visible>
-					<height>31</height>
-					<bottom>115</bottom>
-					<left>309</left>
-					<right>30</right>
-					<control type="label" id="99">
-						<include>NoTextures</include>
-						<height>30</height>
+						<height>50</height>
+						<bottom>130</bottom>
 						<left>0</left>
-						<right>130</right>
+						<right>500</right>
 						<aligny>center</aligny>
-						<align>left</align>
-						<font>Reg24</font>
-						<textcolor>text_sublabel</textcolor>
-						<label>$VAR[PlayerEpisodeName,,  |  ]$INFO[VideoPlayer.Genre]</label>
-						<textoffsetx>0</textoffsetx>
+						<font>Med40</font>
+						<textcolor>white</textcolor>
+						<label>$VAR[PlayerFullLabel]</label>
+						<visible>Pvr.IsTimeShift</visible>
 					</control>
 					<control type="label" id="99">
-						<include>NoTextures</include>
-						<height>30</height>
-						<right>0</right>
+						<height>50</height>
+						<bottom>130</bottom>
+						<left>0</left>
+						<right>400</right>
 						<aligny>center</aligny>
-						<align>right</align>
-						<font>Reg24</font>
-						<textcolor>text_sublabel</textcolor>
-						<label>$INFO[VideoPlayer.ChannelNumberLabel,$LOCALIZE[19029] ,]</label>
-						<textoffsetx>0</textoffsetx>
-						<scroll>true</scroll>
+						<font>Med40</font>
+						<textcolor>white</textcolor>
+						<label>$VAR[PlayerFullLabel]</label>
+						<visible>Player.IsRandom | Playlist.IsRepeat | Playlist.IsRepeatOne</visible>
+					</control>
+					<control type="label" id="99">
+						<height>50</height>
+						<bottom>130</bottom>
+						<left>0</left>
+						<right>300</right>
+						<aligny>center</aligny>
+						<font>Med40</font>
+						<textcolor>white</textcolor>
+						<label>$VAR[PlayerFullLabel]</label>
+						<visible>![Pvr.IsTimeShift | Player.IsRandom | Playlist.IsRepeat | Playlist.IsRepeatOne]</visible>
 					</control>
 				</control>
-				<!-- Bottom label section -->
-				<control type="grouplist" id="99">
-					<visible>!Window.IsVisible(VideoOSD)</visible>
-					<orientation>horizontal</orientation>
-					<height>50</height>
-					<bottom>20</bottom>
-					<left>309</left>
-					<right>20</right>
-					<itemgap>0</itemgap>
-					<include>PlayerBottomLabels</include>
-				</control>
-				<!-- Volume -->
-				<include>PlayerOSDVolume</include>
 			</control>
 		</control>
 	</controls>
