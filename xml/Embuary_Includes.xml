@@ -508,7 +508,7 @@
 				<width>$PARAM[width]</width>
 				<height>$PARAM[height]</height>
 				<font>invisible</font>
-				<label></label>
+				<label>$PARAM[label]</label>
 				<visible>$PARAM[visible]</visible>
 			</control>
 		</definition>
@@ -819,7 +819,7 @@
 				<height>35</height>
 				<align>right</align>
 				<orientation>horizontal</orientation>
-				<itemgap>10</itemgap>
+				<itemgap>0</itemgap>
 				<control type="label" id="99">
 					<width>auto</width>
 					<align>right</align>
@@ -833,7 +833,7 @@
 					<align>right</align>
 					<font>OSDTopFont</font>
 					<textcolor>white</textcolor>
-					<label>$VAR[TopPlayerSeekStepLabel,,     ]</label>
+					<label>$VAR[TopPlayerSeekStepLabel, ]</label>
 					<visible>!String.IsEmpty(Player.SeekStepSize) | !String.IsEmpty(Player.SeekOffset) | [Integer.IsGreater(Player.ChapterCount,1) + !String.IsEqual(Player.Chapter,00) + !String.IsEqual(Player.Chapter,-1)]</visible>
 				</control>
 				<control type="label" id="99">
@@ -841,7 +841,7 @@
 					<align>right</align>
 					<textcolor>white</textcolor>
 					<font>Material28</font>
-					<label>&#xf46e;</label>
+					<label>                        &#xf46e;</label>
 					<visible>Player.IsTempo + !Player.Rewinding + !Player.Forwarding + !Player.Paused</visible>
 				</control>
 				<control type="label" id="99">
@@ -849,7 +849,7 @@
 					<align>right</align>
 					<font>OSDTopFont</font>
 					<textcolor>white</textcolor>
-					<label>$INFO[Player.Playspeed,,     ]</label>
+					<label>$INFO[Player.Playspeed, ]</label>
 					<visible>Player.IsTempo + !Player.Rewinding + !Player.Forwarding + !Player.Paused</visible>
 				</control>
 				<control type="label" id="99">
@@ -857,7 +857,7 @@
 					<align>right</align>
 					<font>Material28</font>
 					<textcolor>white</textcolor>
-					<label>&#xf45f;</label>
+					<label>                        &#xf45f;</label>
 					<visible>Player.Rewinding</visible>
 				</control>
 				<control type="label" id="99">
@@ -865,7 +865,7 @@
 					<align>right</align>
 					<font>OSDTopFont</font>
 					<textcolor>white</textcolor>
-					<label>$LOCALIZE[31121]$VAR[PlayerForwardRewind, ]     </label>
+					<label>$VAR[PlayerForwardRewind, ]</label>
 					<visible>Player.Rewinding</visible>
 				</control>
 				<control type="label" id="99">
@@ -873,7 +873,7 @@
 					<align>right</align>
 					<font>Material28</font>
 					<textcolor>white</textcolor>
-					<label>&#xf211;</label>
+					<label>                        &#xf211;</label>
 					<visible>Player.Forwarding</visible>
 				</control>
 				<control type="label" id="99">
@@ -881,7 +881,7 @@
 					<align>right</align>
 					<font>OSDTopFont</font>
 					<textcolor>white</textcolor>
-					<label>$LOCALIZE[31122]$VAR[PlayerForwardRewind, ]     </label>
+					<label>$VAR[PlayerForwardRewind, ]</label>
 					<visible>Player.Forwarding</visible>
 				</control>
 				<control type="label" id="99">
@@ -889,23 +889,23 @@
 					<align>right</align>
 					<font>Material28</font>
 					<textcolor>white</textcolor>
-					<label>&#xf3e4;</label>
+					<label>                        &#xf3e4;</label>
 					<visible>Player.Paused</visible>
 				</control>
 				<control type="label" id="99">
 					<width>auto</width>
 					<align>right</align>
-					<font>OSDTopFont</font>
+					<font>Material28</font>
 					<textcolor>white</textcolor>
-					<label>$LOCALIZE[112]     </label>
-					<visible>Player.Paused</visible>
+					<label>                        &#xf75e;</label>
+					<visible>Player.Muted</visible>
 				</control>
 				<control type="label" id="99">
 					<align>right</align>
 					<width>auto</width>
 					<font>OSDTopFont</font>
 					<textcolor>white</textcolor>
-					<label>$INFO[System.Time]</label>
+					<label>   $INFO[System.Time]</label>
 				</control>
 			</control>
 		</control>
