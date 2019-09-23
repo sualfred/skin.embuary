@@ -463,7 +463,12 @@
 			<control type="label">
 				<label>$INFO[Container(10051).ListItem.Season,$LOCALIZE[33054]: ]   </label>
 				<include>MetaLabel</include>
-				<visible>!String.IsEmpty(Container(10051).ListItem.Season)</visible>
+				<visible>!String.IsEmpty(Container(10051).ListItem.Season) + !String.IsEqual(Container(10051).ListItem.DBType,season)</visible>
+			</control>
+			<control type="label">
+				<label>$INFO[Container(10051).ListItem.Season,$LOCALIZE[20373] ]   </label>
+				<include>MetaLabel</include>
+				<visible>!String.IsEmpty(Container(10051).ListItem.Season) + String.IsEqual(Container(10051).ListItem.DBType,season)</visible>
 			</control>
 			<control type="label">
 				<label>$INFO[Container(10051).ListItem.Episode,$LOCALIZE[20360]: ]   </label>

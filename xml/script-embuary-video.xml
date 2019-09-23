@@ -98,7 +98,7 @@
 					</control>
 					<!-- plot -->
 					<include content="MetaTmdbVideoPlot">
-					    <param name="visible" value="!$EXP[TmbdVideoFacts]"/>
+						<param name="visible" value="!$EXP[TmbdVideoFacts]"/>
 					</include>
 					<include content="MetaTmdbVideoPlot">
 						<param name="visible" value="$EXP[TmbdVideoFacts]"/>
@@ -162,14 +162,40 @@
 				<param name="use_custom_content" value="false"/>
 				<param name="property_button" value="false"/>
 			</include>
-			<!-- crew -->
+			<!-- crew / guest stars-->
 			<include content="PosterWidget">
 				<param name="id" value="10056"/>
 				<param name="onup" value="10052"/>
-				<param name="ondown" value="10053"/>
-				<param name="headline" value="$LOCALIZE[31321]"/>
+				<param name="ondown" value="10057"/>
+				<param name="headline" value="$VAR[TmdbCrewLabel]"/>
 				<param name="mainlabel" value="$INFO[ListItem.Label]"/>
 				<param name="sublabel" value="$INFO[ListItem.Label2]"/>
+				<param name="visible_icon" value="false"/>
+				<param name="use_custom_content" value="false"/>
+				<param name="property_button" value="false"/>
+			</include>
+			<!-- sets -->
+			<include content="PosterWidget">
+				<param name="visible" value="Integer.IsGreater(Container(10057).NumItems,1)"/>
+				<param name="id" value="10057"/>
+				<param name="onup" value="10056"/>
+				<param name="ondown" value="10058"/>
+				<param name="headline" value="$INFO[Container(10051).ListItem.Property(collection)]"/>
+				<param name="mainlabel" value="$INFO[ListItem.Label]"/>
+				<param name="sublabel" value="$INFO[ListItem.Year]"/>
+				<param name="visible_icon" value="false"/>
+				<param name="use_custom_content" value="false"/>
+				<param name="property_button" value="false"/>
+			</include>
+			<!-- seasons -->
+			<include content="PosterWidget">
+				<param name="visible" value="Integer.IsGreater(Container(10058).NumItems,1)"/>
+				<param name="id" value="10058"/>
+				<param name="onup" value="10057"/>
+				<param name="ondown" value="10053"/>
+				<param name="headline" value="$LOCALIZE[33054]"/>
+				<param name="mainlabel" value="$INFO[ListItem.Title]"/>
+				<param name="sublabel" value="$INFO[ListItem.Year]"/>
 				<param name="visible_icon" value="false"/>
 				<param name="use_custom_content" value="false"/>
 				<param name="property_button" value="false"/>
@@ -177,7 +203,7 @@
 			<!-- similar -->
 			<include content="PosterWidget">
 				<param name="id" value="10053"/>
-				<param name="onup" value="10056"/>
+				<param name="onup" value="10058"/>
 				<param name="ondown" value="10054"/>
 				<param name="headline" value="$LOCALIZE[31021]"/>
 				<param name="mainlabel" value="$INFO[ListItem.Label]"/>

@@ -161,7 +161,7 @@
 		<param name="type">ListItem</param>
 		<definition>
 			<control type="group">
-				<visible>[Window.IsVisible(script-embuary-video.xml) | Window.IsVisible(script-embuary-person.xml)] + !String.IsEmpty($PARAM[type].DBID)</visible>
+				<visible>[Window.IsVisible(script-embuary-video.xml) | Window.IsVisible(script-embuary-person.xml) | String.Contains($PARAM[type].filenameandpath,script.embuary.info)] + !String.IsEmpty($PARAM[type].DBID)</visible>
 				<control type="group">
 					<animation effect="slide" end="-48,0" time="0" condition="Integer.IsGreater($PARAM[type].Property(UnWatchedEpisodes),0) | Integer.IsGreaterOrEqual($PARAM[type].PlayCount,1)">Conditional</animation>
 					<right>8</right>

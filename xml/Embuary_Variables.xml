@@ -553,7 +553,7 @@
 		<value condition="Window.IsVisible(MyPVRRecordings.xml)">$LOCALIZE[19017]</value>
 		<value condition="Window.IsVisible(MyPVRSearch.xml)">$LOCALIZE[19142]</value>
 		<value condition="String.StartsWith(Container.Folderpath,androidapp://)">$LOCALIZE[20244]</value>
-		<value condition="!String.IsEmpty(Container.Foldername) + String.StartsWith(Container.Folderpath,plugin://) + !String.StartsWith(Container.Folderpath,plugin://plugin.video.emby)">$INFO[Container.Foldername]</value>
+		<value condition="!String.IsEmpty(Container.Foldername) + String.StartsWith(Container.Folderpath,plugin://) + !String.StartsWith(Container.Folderpath,plugin://plugin.video.emby)">$INFO[Container.Foldername]$INFO[Container.PluginCategory, - ]</value>
 		<value condition="String.StartsWith(Container.Folderpath,videodb://movies/sets/)">$INFO[Container.Foldername]</value>
 		<value condition="Container.Content(sets)">$LOCALIZE[31169]</value>
 		<value condition="Container.Content(movies)">$LOCALIZE[342]</value>
@@ -673,8 +673,8 @@
 		<value condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)] + !String.IsEmpty(ListItem.Art(tvshow.fanart))">$INFO[ListItem.Art(tvshow.fanart)]</value>
 		<value condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)] + !String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
 		<!-- movies -->
-		<value condition="[String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,set) | Container.Content(movies)] + !String.IsEmpty(ListItem.Art(landscape))">$INFO[ListItem.Art(landscape)]</value>
-		<value condition="[String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,set) | Container.Content(movies)] + !String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
+		<value condition="[String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,video) | String.IsEqual(ListItem.DBType,set) | Container.Content(movies)] + !String.IsEmpty(ListItem.Art(landscape))">$INFO[ListItem.Art(landscape)]</value>
+		<value condition="[String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,video) | String.IsEqual(ListItem.DBType,set) | Container.Content(movies)] + !String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
 		<!-- other -->
 		<value condition="[Container.Content(videos) | String.IsEqual(ListItem.DBType,video) | Container.Content(files)] + !String.StartsWith(ListItem.Icon,Default)">$INFO[ListItem.Icon]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(landscape)) + [!String.IsEmpty(ListItem.DBType) | ListItem.IsFolder | String.StartsWith(ListItem.Icon,Default) | String.StartsWith(ListItem.Path,plugin://) | Window.IsVisible(addonbrowser) | Window.IsVisible(programs) | Container.Content(addons)]">$INFO[ListItem.Art(landscape)]</value>
@@ -772,6 +772,7 @@
 		<value condition="String.IsEqual(ListItem.DBType,episode)">$INFO[ListItem.TvShowTitle]</value>
 		<value condition="String.IsEqual(ListItem.DBType,season)">$INFO[ListItem.TvShowTitle]</value>
 		<value condition="String.IsEqual(ListItem.DBType,movie)">$INFO[ListItem.Year]</value>
+		<value condition="String.IsEqual(ListItem.DBType,video) + !String.IsEmpty(ListItem.Year)">$INFO[ListItem.Year]</value>
 		<value condition="String.IsEqual(ListItem.DBType,set)">[CAPITALIZE]$LOCALIZE[31189][/CAPITALIZE]</value>
 		<value condition="String.IsEqual(ListItem.DBType,tvshow)">$INFO[ListItem.Year]</value>
 		<value condition="String.IsEqual(ListItem.DBType,album) + !String.IsEmpty(ListItem.AlbumArtist)">$INFO[ListItem.AlbumArtist]</value>
@@ -793,6 +794,10 @@
 	</variable>
 	<variable name="RightListLabel">
 		<value condition="String.StartsWith(Container.FolderPath,plugin://plugin.video.emby/) + String.Contains(Container.FolderPath,type=livetv)"></value>
+		<value condition="String.Contains(Container.Folderpath,script.embuary.info) + String.Contains(Container.Folderpath,call=upcoming)">$INFO[ListItem.Premiered]</value>
+		<value condition="String.Contains(Container.Folderpath,script.embuary.info) + String.Contains(Container.Folderpath,call=now_playing)">$INFO[ListItem.Premiered]</value>
+		<value condition="String.Contains(Container.Folderpath,script.embuary.info) + String.Contains(Container.Folderpath,call=top_rated)">$INFO[ListItem.Rating,$LOCALIZE[563]: ]</value>
+		<value condition="String.Contains(Container.Folderpath,script.embuary.info) + String.Contains(Container.Folderpath,call=popular)">$INFO[ListItem.Rating,$LOCALIZE[563]: ]</value>
 		<value condition="Window.IsVisible(addonbrowser) + !String.IsEmpty(ListItem.Label2)">$INFO[ListItem.Label2]</value>
 		<value condition="Window.IsVisible(addonbrowser) + !String.IsEmpty(ListItem.AddonVersion)">$INFO[ListItem.AddonVersion]</value>
 		<value condition="!String.IsEmpty(ListItem.Duration)">$VAR[DurationMinutes]</value>
@@ -805,6 +810,7 @@
 	</variable>
 	<variable name="RightListLabel2">
 		<value condition="String.StartsWith(Container.FolderPath,plugin://plugin.video.emby/) + String.Contains(Container.FolderPath,type=livetv)"></value>
+		<value condition="String.Contains(Container.Folderpath,script.embuary.info) + String.Contains(Container.Folderpath,call=now_playing)">$INFO[ListItem.Rating,$LOCALIZE[563]: ]</value>
 		<value condition="Container.Content(tvshows) + !String.IsEmpty(ListItem.Property(TotalSeasons))">$INFO[ListItem.Property(TotalSeasons),, $LOCALIZE[36905]]</value>
 		<value condition="!String.IsEmpty(ListItem.Duration) + !String.IsEmpty(ListItem.EndTimeResume)">$INFO[ListItem.EndTimeResume,$LOCALIZE[31037] ]</value>
 		<value condition="!String.IsEmpty(ListItem.Duration) + !String.IsEmpty(ListItem.EndTime)">$INFO[ListItem.EndTime,$LOCALIZE[31037] ]</value>
@@ -1355,6 +1361,10 @@
 	<variable name="TmdbDatabaseEntries">
 		<value condition="Integer.IsGreater(Container(10051).ListItem.Property(LocalMedia),1)">$INFO[Container(10051).ListItem.Property(LocalMedia),, $LOCALIZE[31380]]</value>
 		<value condition="Integer.IsEqual(Container(10051).ListItem.Property(LocalMedia),1)">$INFO[Container(10051).ListItem.Property(LocalMedia),, $LOCALIZE[31381]]</value>
+	</variable>
+	<variable name="TmdbCrewLabel">
+		<value condition="String.IsEqual(Container(10051).ListItem.DBType,season)">$LOCALIZE[31382]</value>
+		<value>$LOCALIZE[31321]</value>
 	</variable>
 	<variable name="SortLetterLabel">
 		<value condition="Window.IsVisible(MyPlaylist.xml)">$INFO[Container(50).CurrentItem]</value>
