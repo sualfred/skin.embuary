@@ -1366,6 +1366,10 @@
 		<value condition="String.IsEqual(Container(10051).ListItem.DBType,season)">$LOCALIZE[31382]</value>
 		<value>$LOCALIZE[31321]</value>
 	</variable>
+	<variable name="TmdbFacts">
+		<value condition="String.IsEmpty(Container(10051).ListItem.Property(region_release))">$INFO[Container(10051).ListItem.Premiered,[CR]$LOCALIZE[31318]:   ]$INFO[Container(10051).ListItem.Property(release),[CR]$LOCALIZE[31138]:   ]$INFO[Container(10051).ListItem.Property(Budget),[CR]$LOCALIZE[31319]:   $]$INFO[Container(10051).ListItem.Property(Revenue),[CR]$LOCALIZE[31320]:   $]</value>
+		<value>$INFO[Container(10051).ListItem.Premiered,[CR]$LOCALIZE[31318]:   ]$INFO[Window(home).Property(script.embuary.info-country_code),[CR],-$LOCALIZE[31318]:   ]$INFO[Container(10051).ListItem.Property(region_release)]$INFO[Container(10051).ListItem.Property(release),[CR]$LOCALIZE[31138]:   ]$INFO[Container(10051).ListItem.Property(Budget),[CR]$LOCALIZE[31319]:   $]$INFO[Container(10051).ListItem.Property(Revenue),[CR]$LOCALIZE[31320]:   $]</value>
+	</variable>
 	<variable name="SortLetterLabel">
 		<value condition="Window.IsVisible(MyPlaylist.xml)">$INFO[Container(50).CurrentItem]</value>
 		<value condition="Window.IsVisible(DialogPVRChannelsOSD.xml)">$INFO[Container(11).ListItem.ChannelNumberLabel]</value>
