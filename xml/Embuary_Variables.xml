@@ -673,8 +673,8 @@
 		<value condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)] + !String.IsEmpty(ListItem.Art(tvshow.fanart))">$INFO[ListItem.Art(tvshow.fanart)]</value>
 		<value condition="[String.IsEqual(ListItem.DBType,tvshow) | Container.Content(tvshows)] + !String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
 		<!-- movies -->
-		<value condition="[String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,video) | String.IsEqual(ListItem.DBType,set) | Container.Content(movies)] + !String.IsEmpty(ListItem.Art(landscape))">$INFO[ListItem.Art(landscape)]</value>
-		<value condition="[String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,video) | String.IsEqual(ListItem.DBType,set) | Container.Content(movies)] + !String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
+		<value condition="[String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,set) | Container.Content(movies)] + !String.IsEmpty(ListItem.Art(landscape))">$INFO[ListItem.Art(landscape)]</value>
+		<value condition="[String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,set) | Container.Content(movies)] + !String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
 		<!-- other -->
 		<value condition="[Container.Content(videos) | String.IsEqual(ListItem.DBType,video) | Container.Content(files)] + !String.StartsWith(ListItem.Icon,Default)">$INFO[ListItem.Icon]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(landscape)) + [!String.IsEmpty(ListItem.DBType) | ListItem.IsFolder | String.StartsWith(ListItem.Icon,Default) | String.StartsWith(ListItem.Path,plugin://) | Window.IsVisible(addonbrowser) | Window.IsVisible(programs) | Container.Content(addons)]">$INFO[ListItem.Art(landscape)]</value>
@@ -712,11 +712,12 @@
 		<value condition="!String.IsEmpty(ListItem.Art(poster))">$INFO[ListItem.Art(poster)]</value>
 		<value condition="!String.IsEmpty(ListItem.Art(tvshow.poster))">$INFO[ListItem.Art(tvshow.poster)]</value>
 		<value condition="String.StartsWith(ListItem.Path,pvr://)">$VAR[IconPVR]</value>
+		<value condition="!String.IsEmpty(ListItem.Art(thumb)) + !String.StartsWith(ListItem.Art(thumb),Default)">$INFO[ListItem.Art(thumb)]</value>
 		<value condition="!String.StartsWith(ListItem.Icon,Default)">$INFO[ListItem.Icon]</value>
 	</variable>
 	<variable name="IconSquare">
 		<value condition="Window.IsVisible(MyPVRRecordings.xml) + !String.IsEqual(ListItem.ActualIcon,ListItem.Icon)">$INFO[ListItem.ActualIcon]</value>
-		<value condition="!String.IsEmpty(ListItem.Art(thumb)) + !String.StartsWith(ListItem.Icon,Default)">$INFO[ListItem.Art(thumb)]</value>
+		<value condition="!String.IsEmpty(ListItem.Art(thumb)) + !String.StartsWith(ListItem.Art(thumb),Default)">$INFO[ListItem.Art(thumb)]</value>
 		<value condition="!String.StartsWith(ListItem.Icon,Default)">$INFO[ListItem.Icon]</value>
 	</variable>
 	<variable name="IconBigList">
