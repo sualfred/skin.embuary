@@ -1944,18 +1944,15 @@
 		<value condition="!String.IsEmpty(Container(2003).ListItem.Rating(tomatometerallcritics)) + !String.IsEmpty(Container(2003).ListItem.Rating(tomatometerallcritics))">icons/rating/rotten_rotten.png</value>
 	</variable>
 	<variable name="RottenRating">
-		<value condition="!Skin.HasSetting(DisableEmbyUserRating) + [System.HasAddon(plugin.video.emby) | String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) | String.Contains(Player.Filenameandpath,/emby/)] + !String.IsEmpty(ListItem.UserRating)">$INFO[ListItem.UserRating]</value>
-		<value condition="!Skin.HasSetting(DisableEmbyUserRating) + [System.HasAddon(plugin.video.emby) | String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) | String.Contains(Player.Filenameandpath,/emby/)] + !String.IsEmpty(VideoPlayer.UserRating)">$INFO[VideoPlayer.UserRating]</value>
+		<value condition="!Skin.HasSetting(DisableEmbyUserRating) + [System.HasAddon(plugin.video.emby) | String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)] + !String.IsEmpty(ListItem.UserRating)">$INFO[ListItem.UserRating]</value>
+		<value condition="!Skin.HasSetting(DisableEmbyUserRating) + [System.HasAddon(plugin.video.emby) | String.Contains(Player.Filenameandpath,/emby/)] + !String.IsEmpty(VideoPlayer.UserRating)">$INFO[VideoPlayer.UserRating]</value>
 		<value condition="!String.IsEmpty(ListItem.Rating(tomatometerallcritics))">$INFO[ListItem.Rating(tomatometerallcritics)]</value>
 		<value condition="!String.IsEmpty(Container(2003).ListItem.Rating(tomatometerallcritics))">$INFO[Container(2003).ListItem.Rating(tomatometerallcritics)]</value>
 	</variable>
 	<variable name="RottenSource">
-		<value condition="!Skin.HasSetting(DisableEmbyUserRating) + [System.HasAddon(plugin.video.emby) | String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) | String.Contains(Player.Filenameandpath,/emby/)] + !String.IsEmpty(ListItem.UserRating)">-</value>
-		<value condition="!Skin.HasSetting(DisableEmbyUserRating) + [System.HasAddon(plugin.video.emby) | String.StartsWith(ListItem.Path,plugin://plugin.video.embycon) | String.Contains(Player.Filenameandpath,/emby/)] + !String.IsEmpty(VideoPlayer.UserRating)">-</value>
-		<value condition="String.IsEmpty(ListItem.DBID) + String.IsEmpty(VideoPlayer.DBID)">-</value>
-		<value condition="Container.Content(movies) + String.IsEmpty(ListItem.Rating(tomatometerallcritics))">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[ListItem.DBID]&amp;type=movie</value>
-		<value condition="Container.Content(tvshows) + String.IsEmpty(ListItem.Rating(tomatometerallcritics))">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[ListItem.DBID]&amp;type=tvshow</value>
-		<value condition="VideoPlayer.Content(movies) + [Window.IsVisible(fullscreenvideo) | Window.IsVisible(fullscreeninfo)]">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[VideoPlayer.DBID]&amp;type=movie</value>
+		<value condition="Container.Content(movies) + !String.IsEmpty(ListItem.DBID) + String.IsEmpty(ListItem.Rating(tomatometerallcritics))">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[ListItem.DBID]&amp;type=movie</value>
+		<value condition="Container.Content(tvshows) + !String.IsEmpty(ListItem.DBID) + String.IsEmpty(ListItem.Rating(tomatometerallcritics))">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[ListItem.DBID]&amp;type=tvshow</value>
+		<value condition="VideoPlayer.Content(movies) + !String.IsEmpty(VideoPlayer.DBID) + [Window.IsVisible(fullscreenvideo) | Window.IsVisible(fullscreeninfo)]">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[VideoPlayer.DBID]&amp;type=movie</value>
 		<value>-</value>
 	</variable>
 	<variable name="SidebarIcon">
