@@ -87,12 +87,6 @@
 	<!--<expression name="OnLibaryUpdate">[!String.IsEmpty(Window(home).Property(EmbuaryForceWidgetUpdate)) + [Window.IsVisible(home) | Window.IsVisible(1114) | Window.IsVisible(1120) | Window.IsVisible(1121) | Window.IsVisible(1122) | Window.IsVisible(1126) | Window.IsVisible(1130) | Window.IsVisible(1125)]]</expression>-->
 	<expression name="OnLibaryUpdate">false</expression>
 
-	<expression name="EmbyListItemRotten">[
-		[!Skin.HasSetting(DisableEmbyUserRating) + [System.HasAddon(plugin.video.emby) | String.StartsWith(ListItem.Path,plugin://plugin.video.embycon)] + !String.IsEmpty(ListItem.UserRating)]
-		| [!Skin.HasSetting(DisableEmbyUserRating) + [System.HasAddon(plugin.video.emby) | String.Contains(Player.Filenameandpath,/emby/)] + !String.IsEmpty(VideoPlayer.UserRating)]
-		]
-	</expression>
-
 	<expression name="HasLibrary">[Library.HasContent(movies) | Library.HasContent(tvshows) | Library.HasContent(music) | Library.HasContent(musicvideos) | Library.HasContent(video)]</expression>
 
 	<expression name="HasWeather">[String.IsEmpty(Weather.Plugin) | String.IsEqual(Weather.fanartcode,na)]</expression>

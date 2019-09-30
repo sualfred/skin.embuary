@@ -13,9 +13,9 @@
 			<include>HiddenObject</include>
 		</control>
 		<control type="list" id="2000">
-			<visible>Control.IsVisible(54) | Control.IsVisible(55) | Control.IsVisible(56)</visible>
+			<visible>[String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,episode)] + Integer.IsGreater(ListItem.DBID,0)</visible>
 			<include>HiddenObject</include>
-			<content limit="1">$VAR[View_Cast_Content]</content>
+			<content limit="1">$VAR[ListItemFullInfo]</content>
 		</control>
 		<control type="list" id="2001">
 			<include>HiddenObject</include>
@@ -26,11 +26,6 @@
 			<visible>Control.IsVisible(54) + Container.Content(seasons)</visible>
 			<include>HiddenObject</include>
 			<content limit="1">$VAR[View54_NextUp_Content]</content>
-		</control>
-		<control type="list" id="2003">
-			<visible>Container.Content(movies) + !$EXP[EmbyListItemRotten]</visible>
-			<include>HiddenObject</include>
-			<content limit="1">$VAR[RottenSource]</content>
 		</control>
 		<!-- background -->
 		<include>Background</include>
