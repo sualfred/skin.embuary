@@ -1167,7 +1167,7 @@
 				<aspectratio>keep</aspectratio>
 				<visible>
 					[
-					[System.HasAddon(plugin.video.emby) | System.HasAddon(plugin.video.embycon)] + !String.IsEmpty(ListItem.UserRating) + !Skin.HasSetting(DisableEmbyUserRating)
+					[System.HasAddon(plugin.video.emby) | System.HasAddon(plugin.video.embycon)] + !String.IsEmpty($PARAM[type].UserRating) + !Skin.HasSetting(DisableEmbyUserRating)
 					]
 					| !String.IsEmpty(ListItem.Rating(tomatometerallcritics))
 					| !String.IsEmpty(Container(2003).ListItem.Rating(tomatometerallcritics))
@@ -1178,7 +1178,7 @@
 				<include>MetaLabel</include>
 				<visible>
 					[
-					[System.HasAddon(plugin.video.emby) | System.HasAddon(plugin.video.embycon)] + !String.IsEmpty(ListItem.UserRating) + !Skin.HasSetting(DisableEmbyUserRating)
+					[System.HasAddon(plugin.video.emby) | System.HasAddon(plugin.video.embycon)] + !String.IsEmpty($PARAM[type].UserRating) + !Skin.HasSetting(DisableEmbyUserRating)
 					]
 					| !String.IsEmpty(ListItem.Rating(tomatometerallcritics))
 					| !String.IsEmpty(Container(2003).ListItem.Rating(tomatometerallcritics))
