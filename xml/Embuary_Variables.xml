@@ -1949,12 +1949,6 @@
 		<value condition="!String.IsEmpty(ListItem.Rating(tomatometerallcritics))">$INFO[ListItem.Rating(tomatometerallcritics)]</value>
 		<value condition="!String.IsEmpty(Container(2000).ListItem.Rating(tomatometerallcritics))">$INFO[Container(2000).ListItem.Rating(tomatometerallcritics)]</value>
 	</variable>
-	<variable name="RottenSource">
-		<value condition="Container.Content(movies) + !String.IsEmpty(ListItem.DBID) + String.IsEmpty(ListItem.Rating(tomatometerallcritics))">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[ListItem.DBID]&amp;type=movie</value>
-		<value condition="Container.Content(tvshows) + !String.IsEmpty(ListItem.DBID) + String.IsEmpty(ListItem.Rating(tomatometerallcritics))">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[ListItem.DBID]&amp;type=tvshow</value>
-		<value condition="VideoPlayer.Content(movies) + !String.IsEmpty(VideoPlayer.DBID) + [Window.IsVisible(fullscreenvideo) | Window.IsVisible(fullscreeninfo)]">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[VideoPlayer.DBID]&amp;type=movie</value>
-		<value>-</value>
-	</variable>
 	<variable name="ListItemFullInfo">
 		<value condition="String.IsEqual(ListItem.DBType,movie) + Integer.IsGreater(ListItem.DBID,0)">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[ListItem.DBID]&amp;type=movie</value>
 		<value condition="String.IsEqual(ListItem.DBType,tvshow) + Integer.IsGreater(ListItem.DBID,0)">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[ListItem.DBID]&amp;type=tvshow</value>
