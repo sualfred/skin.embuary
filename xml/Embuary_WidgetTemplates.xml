@@ -84,6 +84,20 @@
 			<param name="content" value="$INFO[Window(home).Property(emby.wnodes.$PARAM[nr].index),,random.xml]"/>
 		</include>
 	</include>
+	<!-- Genres -->
+	<include name="W_EmbyHub_MovieGenres">
+		<include content="PosterWidget">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$LOCALIZE[135]"/>
+			<param name="mainlabel" value="$INFO[ListItem.Title]"/>
+			<param name="sublabel" value="$INFO[ListItem.Year]"/>
+			<param name="widget_target" value="videos"/>
+			<param name="limit" value="$VAR[PosterWidgetLimit]"/>
+			<param name="content" value="plugin://script.embuary.helper/?info=getgenre&amp;type=movie&amp;tag='$ESCINFO[Window(home).Property(emby.wnodes.$PARAM[nr].cleantitle)]'&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
+		</include>
+	</include>
 
 
 	<!-- In progress shows -->
@@ -180,6 +194,20 @@
 			<param name="widget_target" value="videos"/>
 			<param name="limit" value="$VAR[WideWidgetLimit]"/>
 			<param name="content" value="$INFO[Window(home).Property(emby.wnodes.$PARAM[nr].index),,random.xml]"/>
+		</include>
+	</include>
+	<!-- Genres -->
+	<include name="W_EmbyHub_TVShowGenres">
+		<include content="PosterWidget">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="headline" value="$LOCALIZE[135]"/>
+			<param name="mainlabel" value="$INFO[ListItem.Title]"/>
+			<param name="sublabel" value="$INFO[ListItem.Year]"/>
+			<param name="widget_target" value="videos"/>
+			<param name="limit" value="$VAR[PosterWidgetLimit]"/>
+			<param name="content" value="plugin://script.embuary.helper/?info=getgenre&amp;type=tvshow&amp;tag='$ESCINFO[Window(home).Property(emby.wnodes.$PARAM[nr].cleantitle)]'&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 		</include>
 	</include>
 
