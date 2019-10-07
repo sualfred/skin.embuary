@@ -69,15 +69,43 @@
 					<font>Light22</font>
 					<textcolor>text_sublabel</textcolor>
 					<include>MetaLabel</include>
-					<label>$INFO[ListItem.DateAdded,$LOCALIZE[570]: ]   </label>
+					<label>$INFO[ListItem.DateAdded,$LOCALIZE[31385]: ]   </label>
 					<visible>!String.IsEmpty(ListItem.DateAdded) + !String.IsEqual(ListItem.DBType,tvshow)</visible>
 				</control>
 				<control type="label">
 					<font>Light22</font>
 					<textcolor>text_sublabel</textcolor>
 					<include>MetaLabel</include>
-					<label>$INFO[ListItem.DateAdded,$LOCALIZE[12014]: ]   </label>
+					<label>$INFO[ListItem.DateAdded,$LOCALIZE[31386]: ]   </label>
 					<visible>!String.IsEmpty(ListItem.DateAdded) + String.IsEqual(ListItem.DBType,tvshow)</visible>
+				</control>
+				<control type="button">
+					<animation effect="slide" end="0,-4" time="0" condition="true">Conditional</animation>
+					<width min="24">auto</width>
+					<height>32</height>
+					<font>MpaaFont</font>
+					<label>$LOCALIZE[20459]: $INFO[ListItem.Tag]</label>
+					<textoffsetx>10</textoffsetx>
+					<align>center</align>
+					<disabledcolor>text_white</disabledcolor>
+					<texturefocus border="10" colordiffuse="grey_button">items/button.png</texturefocus>
+					<texturenofocus border="10" colordiffuse="grey_button">items/button.png</texturenofocus>
+					<enable>false</enable>
+					<visible>!String.IsEmpty(ListItem.Tag) + [String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow)]</visible>
+				</control>
+				<control type="button">
+					<animation effect="slide" end="0,-4" time="0" condition="true">Conditional</animation>
+					<width min="24">auto</width>
+					<height>32</height>
+					<font>MpaaFont</font>
+					<label>•  $INFO[Container(2000).ListItem.Tag]</label>
+					<textoffsetx>10</textoffsetx>
+					<align>center</align>
+					<disabledcolor>text_white</disabledcolor>
+					<texturefocus border="10" colordiffuse="grey_button">items/button.png</texturefocus>
+					<texturenofocus border="10" colordiffuse="grey_button">items/button.png</texturenofocus>
+					<enable>false</enable>
+					<visible>String.IsEmpty(ListItem.Tag) + !String.IsEmpty(Container(2000).ListItem.Tag) + [String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow)]</visible>
 				</control>
 			</control>
 		</definition>
