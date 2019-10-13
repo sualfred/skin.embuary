@@ -4,15 +4,38 @@
 	<other include="itemArt">
 		<condition tag="property" attribute="name|group">mainmenu</condition>
 		<condition tag="property" attribute="name|useFakeArt">true</condition>
-		<condition tag="property" attribute="name|list"/>
+		<condition tag="property" attribute="name|tagNr"/>
 		<match>all</match>
-		<property name="list" tag="property" attribute="name|fakeArtSource" />
-		<property name="list" tag="property" attribute="name|list" />
+		<property name="tagNr" tag="property" attribute="name|tagNr" />
 		<property name="id" tag="mainmenuid" />
 		<controls>
 			<control type="list" id="4343$SKINSHORTCUTS[id]">
 				<include>HiddenObject</include>
-				<content limit="4" sortby="random">$SKINSHORTCUTS[list]</content>
+				<content sortby="random" limit="1">videodb://movies/tags/$INFO[Window(home).Property(library.tags.$SKINSHORTCUTS[tagNr].id)]/</content>
+				<content sortby="random" limit="1">videodb://tvshows/tags/$INFO[Window(home).Property(library.tags.$SKINSHORTCUTS[tagNr].id)]/</content>
+				<content sortby="random" limit="1">videodb://movies/tags/$INFO[Window(home).Property(library.tags.$SKINSHORTCUTS[tagNr].id)]/</content>
+				<content sortby="random" limit="1">videodb://tvshows/tags/$INFO[Window(home).Property(library.tags.$SKINSHORTCUTS[tagNr].id)]/</content>
+				<content sortby="random" limit="1">videodb://movies/tags/$INFO[Window(home).Property(library.tags.$SKINSHORTCUTS[tagNr].id)]/</content>
+				<content sortby="random" limit="1">videodb://tvshows/tags/$INFO[Window(home).Property(library.tags.$SKINSHORTCUTS[tagNr].id)]/</content>
+				<content sortby="random" limit="1">videodb://movies/tags/$INFO[Window(home).Property(library.tags.$SKINSHORTCUTS[tagNr].id)]/</content>
+				<content sortby="random" limit="1">videodb://tvshows/tags/$INFO[Window(home).Property(library.tags.$SKINSHORTCUTS[tagNr].id)]/</content>
+			</control>
+		</controls>
+	</other>
+
+	<other include="itemArt">
+		<condition tag="property" attribute="name|group">mainmenu</condition>
+		<condition tag="property" attribute="name|useFakeArt">true</condition>
+		<condition tag="property" attribute="name|list"/>
+		<match>all</match>
+		<property name="list" tag="property" attribute="name|list" />
+		<property name="list2" tag="property" attribute="name|list2" />
+		<property name="tagNr" tag="property" attribute="name|tagNr" />
+		<property name="id" tag="mainmenuid" />
+		<controls>
+			<control type="list" id="4343$SKINSHORTCUTS[id]">
+				<include>HiddenObject</include>
+				<content sortby="random" limit="4">$SKINSHORTCUTS[list]</content>
 			</control>
 		</controls>
 	</other>

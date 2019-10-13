@@ -226,12 +226,15 @@
 	</variable>
 	<variable name="SkinshortcutsLabel">
 		<value condition="!String.IsEmpty(ListItem.Property(hasVARLabel.type))">$INFO[ListItem.Property(hasVARLabel)]</value>
+		<value condition="!String.IsEmpty(ListItem.Property(tagNr)) + !String.IsEqual(ListItem.Label,ListItem.Property(tagName))">$LOCALIZE[31390]: $INFO[ListItem.Label] ($INFO[ListItem.Property(tagName)])</value>
+		<value condition="!String.IsEmpty(ListItem.Property(tagNr)) + String.IsEqual(ListItem.Label,ListItem.Property(tagName))">$LOCALIZE[31390]: $INFO[ListItem.Label]</value>
 		<value condition="!String.IsEmpty(ListItem.Label)">$INFO[ListItem.Label]</value>
 		<value condition="!String.IsEmpty(ListItem.Label2)">$INFO[ListItem.Label2]</value>
 		<value>$LOCALIZE[31159]</value>
 	</variable>
 	<variable name="SkinshortcutsIcon">
 		<value condition="String.Contains(ListItem.Property(defaultID),embuary_emby)">DefaultEmby.png</value>
+		<value condition="!String.IsEmpty(ListItem.Property(tagNr))">DefaultVideo.png</value>
 		<value condition="String.Contains(ListItem.Property(list),library://video) | String.Contains(ListItem.Property(list),videodb://)">DefaultVideo.png</value>
 		<value condition="String.Contains(ListItem.Property(list),library://music) | String.Contains(ListItem.Property(list),musicdb://)">DefaultMusic.png</value>
 		<value condition="String.Contains(ListItem.Property(path),RunAddOn) | String.Contains(ListItem.Property(path),RunScript) | String.Contains(ListItem.Property(list),addons://)">DefaultAddon.png</value>
@@ -254,8 +257,9 @@
 		<value condition="String.IsEqual(Window(home).Property(SelectorContent),MovieHubWidgets)">$LOCALIZE[31173]</value>
 		<value condition="String.IsEqual(Window(home).Property(SelectorContent),TVShowHubWidgets)">$LOCALIZE[31172]</value>
 		<value condition="String.IsEqual(Window(home).Property(SelectorContent),MusicHubWidgets)">$LOCALIZE[31174]</value>
-		<value condition="String.IsEqual(Window(home).Property(SelectorContent),EmbyMovieHubWidgets)">$LOCALIZE[31173] ($LOCALIZE[31181])</value>
-		<value condition="String.IsEqual(Window(home).Property(SelectorContent),EmbyTVShowHubWidgets)">$LOCALIZE[31172] ($LOCALIZE[31181])</value>
+		<value condition="String.IsEqual(Window(home).Property(SelectorContent),TagMovieHubWidgets)">$LOCALIZE[31173] ($LOCALIZE[31390])</value>
+		<value condition="String.IsEqual(Window(home).Property(SelectorContent),TagTVShowHubWidgets)">$LOCALIZE[31172] ($LOCALIZE[31390])</value>
+		<value condition="String.IsEqual(Window(home).Property(SelectorContent),TagMixedHubWidgets)">$LOCALIZE[31389] ($LOCALIZE[31390])</value>
 		<value condition="String.IsEqual(Window(home).Property(SelectorContent),EmbyConMovieHubWidgets)">$LOCALIZE[31173] ($LOCALIZE[31208])</value>
 		<value condition="String.IsEqual(Window(home).Property(SelectorContent),EmbyConTVShowHubWidgets)">$LOCALIZE[31172] ($LOCALIZE[31208])</value>
 		<value condition="String.IsEqual(Window(home).Property(SelectorContent),EmbyConMusicHubWidgets)">$LOCALIZE[31174] ($LOCALIZE[31208])</value>
@@ -266,8 +270,9 @@
 		<value condition="String.IsEqual(Window(home).Property(SelectorContent),MovieHubWidgets)">moviehub</value>
 		<value condition="String.IsEqual(Window(home).Property(SelectorContent),TVShowHubWidgets)">tvshowhub</value>
 		<value condition="String.IsEqual(Window(home).Property(SelectorContent),MusicHubWidgets)">musichub</value>
-		<value condition="String.IsEqual(Window(home).Property(SelectorContent),EmbyMovieHubWidgets)">embymoviehub</value>
-		<value condition="String.IsEqual(Window(home).Property(SelectorContent),EmbyTVShowHubWidgets)">embytvshowhub</value>
+		<value condition="String.IsEqual(Window(home).Property(SelectorContent),TagMovieHubWidgets)">tagmoviehub</value>
+		<value condition="String.IsEqual(Window(home).Property(SelectorContent),TagTVShowHubWidgets)">tagtvshowhub</value>
+		<value condition="String.IsEqual(Window(home).Property(SelectorContent),TagMixedHubWidgets)">tagmixedhub</value>
 		<value condition="String.IsEqual(Window(home).Property(SelectorContent),EmbyConMovieHubWidgets)">embyconmoviehub</value>
 		<value condition="String.IsEqual(Window(home).Property(SelectorContent),EmbyConTVShowHubWidgets)">embycontvshowhub</value>
 		<value condition="String.IsEqual(Window(home).Property(SelectorContent),EmbyConMusicHubWidgets)">embyconmusichub</value>
@@ -429,12 +434,11 @@
 		<value condition="!Window.IsVisible(movieinformation) + Container.Content(seasons) + Integer.IsGreater(ListItemAbsolute(0).DBID) + !String.IsEqual(ListItemAbsolute(0).Label,$LOCALIZE[20366]) + !ListItem.IsParentFolder">plugin://script.embuary.helper?info=getcast&amp;type=tvshow&amp;dbid=$INFO[ListItemAbsolute(0).DBID]&amp;idtype=season</value>
 		<value condition="!Window.IsVisible(movieinformation) + Container.Content(seasons) + Integer.IsGreater(ListItemAbsolute(1).DBID) + !String.IsEqual(ListItemAbsolute(1).Label,$LOCALIZE[20366])">plugin://script.embuary.helper?info=getcast&amp;type=tvshow&amp;dbid=$INFO[ListItemAbsolute(1).DBID]&amp;idtype=season</value>
 		<value condition="!Window.IsVisible(movieinformation) + Container.Content(seasons) + Integer.IsGreater(ListItemAbsolute(2).DBID)">plugin://script.embuary.helper?info=getcast&amp;type=tvshow&amp;dbid=$INFO[ListItemAbsolute(2).DBID]&amp;idtype=season</value>
-		<value condition="!Window.IsVisible(movieinformation) + Container.Content(episodes) + Integer.IsGreater(ListItemAbsolute(0).DBID) + !ListItem.IsParentFolder">plugin://script.embuary.helper?info=getcast&amp;type=tvshow&amp;dbid=$INFO[ListItemAbsolute(0).DBID]&amp;idtype=episode</value>
-		<value condition="!Window.IsVisible(movieinformation) + Container.Content(episodes) + Integer.IsGreater(ListItemAbsolute(1).DBID)">plugin://script.embuary.helper?info=getcast&amp;type=tvshow&amp;dbid=$INFO[ListItemAbsolute(1).DBID]&amp;idtype=episode</value>
+		<value condition="!Window.IsVisible(movieinformation) + Container.Content(episodes) + Integer.IsGreater(ListItemAbsolute(1).DBID) + ListItem.IsParentFolder">plugin://script.embuary.helper?info=getcast&amp;type=tvshow&amp;dbid=$INFO[ListItemAbsolute(1).DBID]&amp;idtype=episode</value>
 		<!-- based on listitem -->
 		<value condition="String.IsEqual(ListItem.DBType,movie) + Integer.IsGreater(ListItem.DBID,0)">plugin://script.embuary.helper?info=getcast&amp;type=movie&amp;dbid=$INFO[ListItem.DBID]</value>
 		<value condition="String.IsEqual(ListItem.DBType,tvshow) + Integer.IsGreater(ListItem.DBID,0)">plugin://script.embuary.helper?info=getcast&amp;type=tvshow&amp;dbid=$INFO[ListItem.DBID]</value>
-		<value condition="String.IsEqual(ListItem.DBType,episode) + Integer.IsGreater(ListItem.DBID,0)">plugin://script.embuary.helper?info=getcast&amp;type=tvshow&amp;dbid=$INFO[ListItem.DBID]&amp;idtype=episode</value>
+		<value condition="String.IsEqual(ListItem.DBType,episode) + Integer.IsGreater(ListItem.DBID,0)">plugin://script.embuary.helper?info=getcast&amp;type=episode&amp;dbid=$INFO[ListItem.DBID]</value>
 		<value condition="String.IsEqual(ListItem.DBType,season) + Integer.IsGreater(ListItem.DBID,0)">plugin://script.embuary.helper?info=getcast&amp;type=tvshow&amp;dbid=$INFO[ListItem.DBID]&amp;idtype=season</value>
 		<value>-</value>
 	</variable>
@@ -493,7 +497,7 @@
 	</variable>
 	<variable name="ContainerContentPrefix">
 		<value condition="[String.StartsWith(Container.Folderpath,plugin://plugin.video.embycon) | Window.IsVisible(1131)] + !Skin.HasSetting(HideEmbyConLabel)">EmbyCon - </value>
-		<value condition="String.StartsWith(Container.FolderPath,plugin://plugin.video.emby/) | Window.IsVisible(1130)">Emby - </value>
+		<value condition="String.StartsWith(Container.FolderPath,plugin://plugin.video.emby/)">Emby - </value>
 	</variable>
 	<variable name="EpisodesSpecialsHeadline">
 		<value condition="String.StartsWith(ListItem.Episode,S) | ListItem.Property(IsSpecial)">$LOCALIZE[20381]</value>
@@ -1950,6 +1954,13 @@
 		<value condition="!String.IsEmpty(Container(2000).ListItem.Rating(tomatometerallcritics))">$INFO[Container(2000).ListItem.Rating(tomatometerallcritics)]</value>
 	</variable>
 	<variable name="ListItemFullInfo">
+		<value condition="ListItem.IsParentFolder + String.IsEqual(ListItemAbsolute(1).DBType,movie) + Integer.IsGreater(ListItemAbsolute(1).DBID,0)">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[ListItemAbsolute(1).DBID]&amp;type=movie</value>
+		<value condition="ListItem.IsParentFolder + String.IsEqual(ListItemAbsolute(1).DBType,tvshow) + Integer.IsGreater(ListItemAbsolute(1).DBID,0)">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[ListItemAbsolute(1).DBID]&amp;type=tvshow</value>
+		<value condition="ListItem.IsParentFolder + String.IsEqual(ListItemAbsolute(1).DBType,season) + Integer.IsGreater(ListItemAbsolute(1).DBID,0)">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[ListItemAbsolute(1).DBID]&amp;type=tvshow&amp;idtype=season</value>
+		<value condition="ListItem.IsParentFolder + String.IsEqual(ListItemAbsolute(1).DBType,season) + Integer.IsGreater(ListItemAbsolute(1).DBID,0)">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[ListItemAbsolute(1).DBID]&amp;type=tvshow&amp;idtype=season</value>
+		<value condition="!Container.HasParent + String.IsEqual(ListItem.Label,$LOCALIZE[20366]) + String.IsEqual(ListItemAbsolute(1).DBType,season) + Integer.IsGreater(ListItemAbsolute(1).DBID,0)">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[ListItemAbsolute(1).DBID]&amp;type=tvshow&amp;idtype=season</value>
+		<value condition="Container.HasParent + String.IsEqual(ListItem.Label,$LOCALIZE[20366]) + String.IsEqual(ListItemAbsolute(2).DBType,season) + Integer.IsGreater(ListItemAbsolute(2).DBID,0)">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[ListItemAbsolute(2).DBID]&amp;type=tvshow&amp;idtype=season</value>
+		<value condition="ListItem.IsParentFolder + String.IsEqual(ListItemAbsolute(1).DBType,episode) + Integer.IsGreater(ListItemAbsolute(1).DBID,0)">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[ListItem.DBID]&amp;type=tvshow&amp;idtype=episode</value>
 		<value condition="String.IsEqual(ListItem.DBType,movie) + Integer.IsGreater(ListItem.DBID,0)">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[ListItem.DBID]&amp;type=movie</value>
 		<value condition="String.IsEqual(ListItem.DBType,tvshow) + Integer.IsGreater(ListItem.DBID,0)">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[ListItem.DBID]&amp;type=tvshow</value>
 		<value condition="String.IsEqual(ListItem.DBType,season) + Integer.IsGreater(ListItem.DBID,0)">plugin://script.embuary.helper/?info=getbydbid&amp;dbid=$INFO[ListItem.DBID]&amp;type=tvshow&amp;idtype=season</value>
@@ -1986,5 +1997,13 @@
 	<variable name="RefreshEPG">
 		<value condition="String.IsEqual(System.Time(ss),00) | !String.IsEmpty(Window(home).Property(PVRWidgetRefresh))">1</value>
 		<value>0</value>
+	</variable>
+	<variable name="AvailableTags">
+		<value condition="!String.IsEmpty(Window(home).Property(library.tags.all))">$INFO[Window(home).Property(library.tags.all)]</value>
+		<value>$LOCALIZE[231]</value>
+	</variable>
+	<variable name="SetTags">
+		<value condition="!String.IsEmpty(Window(home).Property(library.tags))">$INFO[Window(home).Property(library.tags)]</value>
+		<value>$LOCALIZE[231]</value>
 	</variable>
 </includes>

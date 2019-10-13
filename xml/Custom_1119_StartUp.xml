@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window id="1119">
 	<zorder>999</zorder>
-	<defaultcontrol>101</defaultcontrol>
+	<defaultcontrol always="true">101</defaultcontrol>
 	<onload>Skin.SetBool(ClearPlaylist)</onload>
 	<include>PropertyIncludes</include>
 	<controls>
@@ -14,70 +14,277 @@
 			<control type="scrollbar" id="3000">
 				<include>HiddenObject</include>
 			</control>
+			<!-- progress -->
 			<control type="grouplist">
-				<include>Dialog_PopupOpenClose</include>
-				<centerleft>50%</centerleft>
-				<centertop>50%</centertop>
-				<width>800</width>
-				<height max="940">auto</height>
-				<orientation>vertical</orientation>
-				<itemgap>20</itemgap>
+				<visible>!Window.IsVisible(selectdialog)</visible>
+				<include>Visible_Fade</include>
+				<height>8</height>
+				<bottom>0</bottom>
+				<left>0</left>
+				<right>0</right>
 				<align>center</align>
-				<!-- headline -->
-				<control type="label">
-					<centerleft>50%</centerleft>
-					<width>100%</width>
-					<height>26</height>
-					<font>Med28</font>
-					<textcolor>$VAR[AccentColor]</textcolor>
-					<scroll>false</scroll>
-					<align>center</align>
-					<aligny>top</aligny>
-					<label>$LOCALIZE[31091]</label>
-				</control>
-				<!-- message -->
-				<control id="5" type="textbox">
-					<centerleft>50%</centerleft>
-					<width>100%</width>
-					<height max="760">auto</height>
-					<font>PopUpText</font>
-					<autoscroll>false</autoscroll>
-					<align>center</align>
-					<aligny>top</aligny>
-					<pagecontrol>3000</pagecontrol>
-					<label>$LOCALIZE[31092][CR][CR][COLOR blue]• $LOCALIZE[31359][CR]• $LOCALIZE[31360][CR]• $LOCALIZE[31361][CR]• $LOCALIZE[31362][CR]• $LOCALIZE[31312][/COLOR][CR][CR]$LOCALIZE[31363][CR]</label>
-				</control>
-				<!-- Button -->
-				<control type="grouplist" id="100">
-					<height>50</height>
-					<width>100%</width>
-					<orientation>horizontal</orientation>
-					<itemgap>5</itemgap>
-					<align>center</align>
-					<onright>noop</onright>
-					<onleft>noop</onleft>
-					<control type="button" id="101">
-						<include>DarkGreyButton</include>
-						<label>$LOCALIZE[31093]</label>
-						<onclick>Skin.SetBool(EmbuaryFirstStartup)</onclick>
-						<onclick condition="System.GetBool(filelists.showparentdiritems)">RunScript(script.embuary.helper,action=togglekodisetting,setting=filelists.showparentdiritems)</onclick>
-						<onclick condition="System.GetBool(input.enablemouse)">RunScript(script.embuary.helper,action=togglekodisetting,setting=input.enablemouse)</onclick>
-						<onclick condition="System.HasAddon(resource.uisounds.embuary)">RunScript(script.embuary.helper,action=setkodisetting,setting=lookandfeel.soundskin,value=resource.uisounds.embuary)</onclick>
-						<onclick>RunScript(script.embuary.helper,action=toggleaddons,addonid=script.module.metadatautils+script.skin.helper.service+script.skin.helper.widgets+script.skin.helper.backgrounds,enable=false)</onclick>
-						<onclick>RunScript(script.embuary.helper,action=setkodisetting,setting=videolibrary.tvshowsselectfirstunwatcheditem,value=1)</onclick>
-						<onclick>ReplaceWindow($VAR[StartUpWindow])</onclick>
-						<onup>PageUp(3000)</onup>
-						<ondown>PageDown(3000)</ondown>
+				<itemgap>0</itemgap>
+				<orientation>horizontal</orientation>
+				<usecontrolcoords>true</usecontrolcoords>
+				<control type="group">
+					<width>640</width>
+					<control type="image">
+						<height>8</height>
+						<texture>common/white.jpg</texture>
+						<colordiffuse>grey</colordiffuse>
+						<aspectratio>stretch</aspectratio>
+						<visible>!ControlGroup(100).HasFocus</visible>
 					</control>
-					<control type="button" id="102">
-						<include>DarkGreyButton</include>
-						<label>$LOCALIZE[31094]</label>
-						<onclick>Skin.SetBool(EmbuaryFirstStartup)</onclick>
-						<onclick>ReplaceWindow($VAR[StartUpWindow])</onclick>
-						<onup>PageUp(3000)</onup>
-						<ondown>PageDown(3000)</ondown>
+					<control type="image">
+						<height>8</height>
+						<texture>common/white.jpg</texture>
+						<colordiffuse>$VAR[AccentColor]</colordiffuse>
+						<aspectratio>stretch</aspectratio>
+						<visible>ControlGroup(100).HasFocus</visible>
 					</control>
 				</control>
+				<control type="group">
+					<width>640</width>
+					<control type="image">
+						<height>8</height>
+						<texture>common/white.jpg</texture>
+						<colordiffuse>grey</colordiffuse>
+						<aspectratio>stretch</aspectratio>
+						<visible>!ControlGroup(200).HasFocus</visible>
+					</control>
+					<control type="image">
+						<height>8</height>
+						<texture>common/white.jpg</texture>
+						<colordiffuse>$VAR[AccentColor]</colordiffuse>
+						<aspectratio>stretch</aspectratio>
+						<visible>ControlGroup(200).HasFocus</visible>
+					</control>
+				</control>
+				<control type="group">
+					<width>640</width>
+					<control type="image">
+						<height>8</height>
+						<texture>common/white.jpg</texture>
+						<colordiffuse>grey</colordiffuse>
+						<aspectratio>stretch</aspectratio>
+						<visible>!ControlGroup(300).HasFocus</visible>
+					</control>
+					<control type="image">
+						<height>8</height>
+						<texture>common/white.jpg</texture>
+						<colordiffuse>$VAR[AccentColor]</colordiffuse>
+						<aspectratio>stretch</aspectratio>
+						<visible>ControlGroup(300).HasFocus</visible>
+					</control>
+				</control>
+			</control>
+			<control type="group">
+				<visible>!Window.IsVisible(selectdialog) + !Window.IsVisible(1112)</visible>
+				<include>Visible_PopupOpenClose</include>
+				<include>Dialog_PopupOpenClose</include>
+
+				<!-- #1 -->
+				<control type="grouplist">
+					<visible allowhiddenfocus="true">ControlGroup(100).HasFocus</visible>
+					<include>Visible_PopupOpenClose</include>
+					<centerleft>50%</centerleft>
+					<centertop>50%</centertop>
+					<width>1200</width>
+					<height max="940">auto</height>
+					<orientation>vertical</orientation>
+					<itemgap>40</itemgap>
+					<align>center</align>
+					<!-- headline -->
+					<control type="label">
+						<centerleft>50%</centerleft>
+						<width>100%</width>
+						<height>26</height>
+						<font>Med34</font>
+						<textcolor>$VAR[AccentColor]</textcolor>
+						<scroll>false</scroll>
+						<align>center</align>
+						<aligny>top</aligny>
+						<label>$LOCALIZE[31091]</label>
+					</control>
+					<!-- message -->
+					<control type="textbox">
+						<centerleft>50%</centerleft>
+						<width>100%</width>
+						<height max="760">auto</height>
+						<font>PopUpText</font>
+						<autoscroll>false</autoscroll>
+						<align>center</align>
+						<aligny>top</aligny>
+						<pagecontrol>3000</pagecontrol>
+						<label>$LOCALIZE[31092][CR][CR][COLOR $VAR[AccentColor]]• $LOCALIZE[31359][CR]• $LOCALIZE[31360][CR]• $LOCALIZE[31361][CR]• $LOCALIZE[31362][CR]• $LOCALIZE[31312][/COLOR][CR][CR]$LOCALIZE[31363]</label>
+					</control>
+					<!-- buttons -->
+					<control type="grouplist" id="100">
+						<height>50</height>
+						<width>100%</width>
+						<orientation>horizontal</orientation>
+						<itemgap>5</itemgap>
+						<align>center</align>
+						<onright>noop</onright>
+						<onleft>noop</onleft>
+						<control type="button" id="101">
+							<include>DarkGreyButton</include>
+							<label>$LOCALIZE[31093]</label>
+							<onclick condition="System.GetBool(filelists.showparentdiritems)">RunScript(script.embuary.helper,action=togglekodisetting,setting=filelists.showparentdiritems)</onclick>
+							<onclick condition="System.GetBool(input.enablemouse)">RunScript(script.embuary.helper,action=togglekodisetting,setting=input.enablemouse)</onclick>
+							<onclick condition="System.HasAddon(resource.uisounds.embuary)">RunScript(script.embuary.helper,action=setkodisetting,setting=lookandfeel.soundskin,value=resource.uisounds.embuary)</onclick>
+							<onclick>RunScript(script.embuary.helper,action=toggleaddons,addonid=script.module.metadatautils+script.skin.helper.service+script.skin.helper.widgets+script.skin.helper.backgrounds,enable=false)</onclick>
+							<onclick>RunScript(script.embuary.helper,action=setkodisetting,setting=videolibrary.tvshowsselectfirstunwatcheditem,value=1)</onclick>
+							<onclick>SetFocus(200)</onclick>
+							<onup>PageUp(3000)</onup>
+							<ondown>PageDown(3000)</ondown>
+						</control>
+						<control type="button" id="102">
+							<include>DarkGreyButton</include>
+							<label>$LOCALIZE[31094]</label>
+							<onclick>SetFocus(200)</onclick>
+							<onup>PageUp(3000)</onup>
+							<ondown>PageDown(3000)</ondown>
+						</control>
+					</control>
+				</control>
+
+				<!-- #2 -->
+				<control type="grouplist">
+					<visible allowhiddenfocus="true">ControlGroup(200).HasFocus</visible>
+					<include>Visible_PopupOpenClose</include>
+					<centerleft>50%</centerleft>
+					<centertop>50%</centertop>
+					<width>1200</width>
+					<height max="940">auto</height>
+					<orientation>vertical</orientation>
+					<itemgap>40</itemgap>
+					<align>center</align>
+					<!-- headline -->
+					<control type="label">
+						<centerleft>50%</centerleft>
+						<width>100%</width>
+						<height>26</height>
+						<font>Med34</font>
+						<textcolor>$VAR[AccentColor]</textcolor>
+						<scroll>false</scroll>
+						<align>center</align>
+						<aligny>top</aligny>
+						<label>$LOCALIZE[31405]</label>
+					</control>
+					<!-- message -->
+					<control type="textbox">
+						<centerleft>50%</centerleft>
+						<width>100%</width>
+						<height max="760">auto</height>
+						<font>PopUpText</font>
+						<autoscroll>false</autoscroll>
+						<align>center</align>
+						<aligny>top</aligny>
+						<pagecontrol>3000</pagecontrol>
+						<label>$LOCALIZE[31402][CR][CR][B]$LOCALIZE[31403][/B][CR]$LOCALIZE[31404]</label>
+					</control>
+					<!-- buttons -->
+					<control type="grouplist" id="200">
+						<height>50</height>
+						<width>100%</width>
+						<orientation>horizontal</orientation>
+						<itemgap>5</itemgap>
+						<align>center</align>
+						<onright>noop</onright>
+						<onleft>noop</onleft>
+						<control type="button" id="201">
+							<include>DarkGreyButton</include>
+							<label>$LOCALIZE[31093]</label>
+							<onclick>RunScript(script.skinshortcuts,type=resetall&amp;warning=false)</onclick>
+							<onclick>SetProperty(DefaultsReset,1,home)</onclick>
+							<onclick>ActivateWindow(1112)</onclick>
+							<onclick>SetFocus(300)</onclick>
+							<onup>PageUp(3000)</onup>
+							<ondown>PageDown(3000)</ondown>
+						</control>
+						<control type="button" id="202">
+							<include>DarkGreyButton</include>
+							<label>$LOCALIZE[106] ($LOCALIZE[31394])</label>
+							<onclick>SetFocus(300)</onclick>
+							<onup>PageUp(3000)</onup>
+							<ondown>PageDown(3000)</ondown>
+						</control>
+					</control>
+				</control>
+
+				<!-- #3 -->
+				<control type="grouplist">
+					<visible allowhiddenfocus="true">ControlGroup(300).HasFocus</visible>
+					<include>Visible_PopupOpenClose</include>
+					<centerleft>50%</centerleft>
+					<centertop>50%</centertop>
+					<width>1200</width>
+					<height max="940">auto</height>
+					<orientation>vertical</orientation>
+					<itemgap>40</itemgap>
+					<align>center</align>
+					<!-- headline -->
+					<control type="label">
+						<centerleft>50%</centerleft>
+						<width>100%</width>
+						<height>26</height>
+						<font>Med34</font>
+						<textcolor>$VAR[AccentColor]</textcolor>
+						<scroll>false</scroll>
+						<align>center</align>
+						<aligny>top</aligny>
+						<label>$LOCALIZE[31395]</label>
+					</control>
+					<!-- message -->
+					<control type="textbox">
+						<centerleft>50%</centerleft>
+						<width>100%</width>
+						<height max="760">auto</height>
+						<font>PopUpText</font>
+						<autoscroll>false</autoscroll>
+						<align>center</align>
+						<aligny>top</aligny>
+						<pagecontrol>3000</pagecontrol>
+						<label>$LOCALIZE[31398][CR][CR]$LOCALIZE[31399][CR][CR][B]$LOCALIZE[31400]: [/B] [COLOR $VAR[AccentColor]]$VAR[AvailableTags][/COLOR][CR][B]$LOCALIZE[31401]: [/B] [COLOR $VAR[AccentColor]]$VAR[SetTags][/COLOR]</label>
+					</control>
+					<!-- buttons -->
+					<control type="grouplist" id="300">
+						<height>50</height>
+						<width>100%</width>
+						<orientation>horizontal</orientation>
+						<itemgap>5</itemgap>
+						<align>center</align>
+						<onright>noop</onright>
+						<onleft>noop</onleft>
+						<control type="button" id="301">
+							<include>DarkGreyButton</include>
+							<label>$LOCALIZE[186]</label>
+							<onclick condition="!Skin.HasSetting(AutoLibraryTags)">Skin.ToggleSetting(AutoLibraryTags)</onclick>
+							<onclick>Skin.SetBool(EmbuaryInitMessage)</onclick>
+							<onclick>ReplaceWindow($VAR[StartUpWindow])</onclick>
+							<onup>PageUp(3000)</onup>
+							<ondown>PageDown(3000)</ondown>
+						</control>
+						<control type="button" id="302">
+							<include>DarkGreyButton</include>
+							<label>$LOCALIZE[31396]</label>
+							<onclick condition="Skin.HasSetting(AutoLibraryTags)">Skin.ToggleSetting(AutoLibraryTags)</onclick>
+							<onclick>Skin.SetBool(EmbuaryInitMessage)</onclick>
+							<onclick>ReplaceWindow($VAR[StartUpWindow])</onclick>
+							<onup>PageUp(3000)</onup>
+							<ondown>PageDown(3000)</ondown>
+						</control>
+						<control type="button" id="303">
+							<include>DarkGreyButton</include>
+							<label>$LOCALIZE[31397]</label>
+							<onclick>RunScript(script.embuary.helper,action=selecttags)</onclick>
+							<onup>PageUp(3000)</onup>
+							<ondown>PageDown(3000)</ondown>
+						</control>
+					</control>
+				</control>
+
 			</control>
 		</control>
 	</controls>

@@ -47,11 +47,18 @@
 			<enable>!Skin.HasSetting(HomePanelLayout)</enable>
 			<label>$LOCALIZE[31254]</label>
 		</control>
+		<control type="button" id="$PARAM[id]13">
+			<include>SettingsButton</include>
+			<onclick>RunScript(script.embuary.helper,action=selecttags)</onclick>
+			<label>$LOCALIZE[31393]</label>
+			<label2>[COLOR $VAR[AccentColor]]$VAR[SetTags][/COLOR]</label2>
+			<visible>Library.HasContent(movies) | Library.HasContent(tvshows)</visible>
+		</control>
+		<!-- sidepanel -->
 		<include content="SkinSettingsHeadlineLabel">
 			<param name="id" value="$PARAM[id]06"/>
 			<param name="label" value="$LOCALIZE[31134]"/>
 		</include>
-		<!-- sidepanel -->
 		<control type="button" id="$PARAM[id]07">
 			<include>SettingsButton</include>
 			<label>$LOCALIZE[31244]</label>
@@ -86,6 +93,17 @@
 			<onclick>Skin.SetNumeric(square_widget_limit)</onclick>
 			<label>$LOCALIZE[31099] '$LOCALIZE[31005]'</label>
 			<label2>$VAR[SquareWidgetLimit]</label2>
+		</control>
+		<!-- widget limits -->
+		<include content="SkinSettingsHeadlineLabel">
+			<param name="id" value="$PARAM[id]14"/>
+			<param name="label" value="$LOCALIZE[31391]"/>
+		</include>
+		<control type="button" id="$PARAM[id]15">
+			<include>SettingsButton</include>
+			<onclick condition="Skin.HasSetting(EmbuaryInitMessage)">Skin.ToggleSetting(EmbuaryInitMessage)</onclick>
+			<onclick>ActivateWindow(1119)</onclick>
+			<label>$LOCALIZE[31392]</label>
 		</control>
 	</include>
 
@@ -124,6 +142,37 @@
 			<onclick>SetProperty(SelectorContent,TVShowHubWidgets,home)</onclick>
 			<onclick>ActivateWindow(1110)</onclick>
 			<label>$LOCALIZE[31245]</label>
+		</control>
+		<!-- library tag hubs -->
+		<include content="SkinSettingsHeadlineLabel">
+			<param name="id" value="$PARAM[id]14"/>
+			<param name="label" value="$LOCALIZE[31279]"/>
+			<param name="visible" value="Library.HasContent(movies) | Library.HasContent(tvshows)"/>
+		</include>
+		<control type="button" id="$PARAM[id]16">
+			<include>SettingsButton</include>
+			<onclick>SetProperty(PositionCount,7,home)</onclick>
+			<onclick>SetProperty(SelectorContent,TagMovieHubWidgets,home)</onclick>
+			<onclick>ActivateWindow(1110)</onclick>
+			<label>$LOCALIZE[31281]</label>
+			<visible>Library.HasContent(movies)</visible>
+		</control>
+		<control type="button" id="$PARAM[id]17">
+			<include>SettingsButton</include>
+			<onclick>SetProperty(PositionCount,8,home)</onclick>
+			<onclick>SetProperty(SelectorContent,TagTVShowHubWidgets,home)</onclick>
+			<onclick>ActivateWindow(1110)</onclick>
+			<label>$LOCALIZE[31280]</label>
+			<visible>Library.HasContent(tvshows)</visible>
+		</control>
+		<control type="button" id="$PARAM[id]18">
+			<include>SettingsButton</include>
+			<onclick>SetProperty(PositionCount,13,home)</onclick>
+			<onclick>SetProperty(SelectorContent,TagMixedHubWidgets,home)</onclick>
+			<onclick>ActivateWindow(1110)</onclick>
+			<label>Edit mixed library widget configuration</label>
+			<label>$LOCALIZE[31280]</label>
+			<visible>Library.HasContent(movies) + Library.HasContent(tvshows)</visible>
 		</control>
 		<!-- music -->
 		<include content="SkinSettingsHeadlineLabel">
@@ -167,35 +216,13 @@
 			<label>$LOCALIZE[31245]</label>
 			<enable>Skin.HasSetting(ShowCustomHub)</enable>
 		</control>
-		<!-- emby hubs -->
-		<include content="SkinSettingsHeadlineLabel">
-			<param name="id" value="$PARAM[id]14"/>
-			<param name="label" value="$LOCALIZE[31279]"/>
-			<param name="visible" value="System.HasAddon(plugin.video.emby)"/>
-		</include>
-		<control type="button" id="$PARAM[id]15">
-			<include>SettingsButton</include>
-			<onclick>SetProperty(PositionCount,7,home)</onclick>
-			<onclick>SetProperty(SelectorContent,EmbyMovieHubWidgets,home)</onclick>
-			<onclick>ActivateWindow(1110)</onclick>
-			<label>$LOCALIZE[31281]</label>
-			<visible>System.HasAddon(plugin.video.emby)</visible>
-		</control>
-		<control type="button" id="$PARAM[id]16">
-			<include>SettingsButton</include>
-			<onclick>SetProperty(PositionCount,8,home)</onclick>
-			<onclick>SetProperty(SelectorContent,EmbyTVShowHubWidgets,home)</onclick>
-			<onclick>ActivateWindow(1110)</onclick>
-			<label>$LOCALIZE[31280]</label>
-			<visible>System.HasAddon(plugin.video.emby)</visible>
-		</control>
 		<!-- embycon hubs -->
 		<include content="SkinSettingsHeadlineLabel">
-			<param name="id" value="$PARAM[id]17"/>
+			<param name="id" value="$PARAM[id]19"/>
 			<param name="label" value="$LOCALIZE[31282]"/>
 			<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
 		</include>
-		<control type="button" id="$PARAM[id]18">
+		<control type="button" id="$PARAM[id]20">
 			<include>SettingsButton</include>
 			<onclick>SetProperty(PositionCount,5,home)</onclick>
 			<onclick>SetProperty(SelectorContent,EmbyConMovieHubWidgets,home)</onclick>
@@ -203,7 +230,7 @@
 			<label>$LOCALIZE[31281]</label>
 			<visible>System.HasAddon(plugin.video.embycon)</visible>
 		</control>
-		<control type="button" id="$PARAM[id]19">
+		<control type="button" id="$PARAM[id]21">
 			<include>SettingsButton</include>
 			<onclick>SetProperty(PositionCount,6,home)</onclick>
 			<onclick>SetProperty(SelectorContent,EmbyConTVShowHubWidgets,home)</onclick>
@@ -211,7 +238,7 @@
 			<label>$LOCALIZE[31280]</label>
 			<visible>System.HasAddon(plugin.video.embycon)</visible>
 		</control>
-		<control type="button" id="$PARAM[id]20">
+		<control type="button" id="$PARAM[id]22">
 			<include>SettingsButton</include>
 			<onclick>SetProperty(PositionCount,6,home)</onclick>
 			<onclick>SetProperty(SelectorContent,EmbyConMusicHubWidgets,home)</onclick>
@@ -219,7 +246,7 @@
 			<label>$LOCALIZE[31283]</label>
 			<visible>System.HasAddon(plugin.video.embycon)</visible>
 		</control>
-		<control type="radiobutton" id="$PARAM[id]21">
+		<control type="radiobutton" id="$PARAM[id]23">
 			<include>SettingsButton</include>
 			<onclick>Skin.ToggleSetting(HideEmbyConLabel)</onclick>
 			<selected>!Skin.HasSetting(HideEmbyConLabel)</selected>

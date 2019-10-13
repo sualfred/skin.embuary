@@ -748,51 +748,51 @@
 		</include>
 	</include>
 
-	<!-- Emby movie hub widgets -->
-	<include name="WidgetCallEmbyMovies">
-		<include condition="String.IsEmpty(Skin.String(embymoviehub_widget_pos_$PARAM[pos]))" content="WidgetDummy">
+	<!-- Tag movie hub widgets -->
+	<include name="WidgetCallTagMovies">
+		<include condition="String.IsEmpty(Skin.String(tagmoviehub_widget_pos_$PARAM[pos]))" content="WidgetDummy">
 			<param name="id" value="$PARAM[id]"/>
 			<param name="onup" value="$PARAM[onup]"/>
 			<param name="ondown" value="$PARAM[ondown]"/>
 			<param name="nr" value="$PARAM[nr]"/>
 		</include>
-		<include condition="String.IsEqual(Skin.String(embymoviehub_widget_pos_$PARAM[pos]),W_EmbyHub_InProgressMovies)" content="W_EmbyHub_InProgressMovies">
+		<include condition="String.IsEqual(Skin.String(tagmoviehub_widget_pos_$PARAM[pos]),W_TagHub_InProgressMovies)" content="W_TagHub_InProgressMovies">
 			<param name="id" value="$PARAM[id]"/>
 			<param name="onup" value="$PARAM[onup]"/>
 			<param name="ondown" value="$PARAM[ondown]"/>
 			<param name="nr" value="$PARAM[nr]"/>
 		</include>
-		<include condition="String.IsEqual(Skin.String(embymoviehub_widget_pos_$PARAM[pos]),W_EmbyHub_NewMovies)" content="W_EmbyHub_NewMovies">
+		<include condition="String.IsEqual(Skin.String(tagmoviehub_widget_pos_$PARAM[pos]),W_TagHub_NewMovies)" content="W_TagHub_NewMovies">
 			<param name="id" value="$PARAM[id]"/>
 			<param name="onup" value="$PARAM[onup]"/>
 			<param name="ondown" value="$PARAM[ondown]"/>
 			<param name="nr" value="$PARAM[nr]"/>
 		</include>
-		<include condition="String.IsEqual(Skin.String(embymoviehub_widget_pos_$PARAM[pos]),W_EmbyHub_RecommendedMovies)" content="W_EmbyHub_RecommendedMovies">
+		<include condition="String.IsEqual(Skin.String(tagmoviehub_widget_pos_$PARAM[pos]),W_TagHub_RecommendedMovies)" content="W_TagHub_RecommendedMovies">
 			<param name="id" value="$PARAM[id]"/>
 			<param name="onup" value="$PARAM[onup]"/>
 			<param name="ondown" value="$PARAM[ondown]"/>
 			<param name="nr" value="$PARAM[nr]"/>
 		</include>
-		<include condition="String.IsEqual(Skin.String(embymoviehub_widget_pos_$PARAM[pos]),W_EmbyHub_SimilarMovies)" content="W_EmbyHub_SimilarMovies">
+		<include condition="String.IsEqual(Skin.String(tagmoviehub_widget_pos_$PARAM[pos]),W_TagHub_SimilarMovies)" content="W_TagHub_SimilarMovies">
 			<param name="id" value="$PARAM[id]"/>
 			<param name="onup" value="$PARAM[onup]"/>
 			<param name="ondown" value="$PARAM[ondown]"/>
 			<param name="nr" value="$PARAM[nr]"/>
 		</include>
-		<include condition="String.IsEqual(Skin.String(embymoviehub_widget_pos_$PARAM[pos]),W_EmbyHub_MoviesByGenre)" content="W_EmbyHub_MoviesByGenre">
+		<include condition="String.IsEqual(Skin.String(tagmoviehub_widget_pos_$PARAM[pos]),W_TagHub_MoviesByGenre)" content="W_TagHub_MoviesByGenre">
 			<param name="id" value="$PARAM[id]"/>
 			<param name="onup" value="$PARAM[onup]"/>
 			<param name="ondown" value="$PARAM[ondown]"/>
 			<param name="nr" value="$PARAM[nr]"/>
 		</include>
-		<include condition="String.IsEqual(Skin.String(embymoviehub_widget_pos_$PARAM[pos]),W_EmbyHub_RandomMovies)" content="W_EmbyHub_RandomMovies">
+		<include condition="String.IsEqual(Skin.String(tagmoviehub_widget_pos_$PARAM[pos]),W_TagHub_RandomMovies)" content="W_TagHub_RandomMovies">
 			<param name="id" value="$PARAM[id]"/>
 			<param name="onup" value="$PARAM[onup]"/>
 			<param name="ondown" value="$PARAM[ondown]"/>
 			<param name="nr" value="$PARAM[nr]"/>
 		</include>
-		<include condition="String.IsEqual(Skin.String(embymoviehub_widget_pos_$PARAM[pos]),W_EmbyHub_MovieGenres)" content="W_EmbyHub_MovieGenres">
+		<include condition="String.IsEqual(Skin.String(tagmoviehub_widget_pos_$PARAM[pos]),W_TagHub_MovieGenres)" content="W_TagHub_MovieGenres">
 			<param name="id" value="$PARAM[id]"/>
 			<param name="onup" value="$PARAM[onup]"/>
 			<param name="ondown" value="$PARAM[ondown]"/>
@@ -800,57 +800,159 @@
 		</include>
 	</include>
 
-	<!-- Emby tvshow hub widgets -->
-	<include name="WidgetCallEmbyShows">
-		<include condition="String.IsEmpty(Skin.String(embytvshowhub_widget_pos_$PARAM[pos]))" content="WidgetDummy">
+	<!-- Tag tvshow hub widgets -->
+	<include name="WidgetCallTagTVShows">
+		<include condition="String.IsEmpty(Skin.String(tagtvshowhub_widget_pos_$PARAM[pos]))" content="WidgetDummy">
 			<param name="id" value="$PARAM[id]"/>
 			<param name="onup" value="$PARAM[onup]"/>
 			<param name="ondown" value="$PARAM[ondown]"/>
 			<param name="nr" value="$PARAM[nr]"/>
 		</include>
-		<include condition="String.IsEqual(Skin.String(embytvshowhub_widget_pos_$PARAM[pos]),W_EmbyHub_InprogressEpisodes)" content="W_EmbyHub_InprogressEpisodes">
+		<include condition="String.IsEqual(Skin.String(tagtvshowhub_widget_pos_$PARAM[pos]),W_TagHub_InprogressEpisodes)" content="W_TagHub_InprogressEpisodes">
 			<param name="id" value="$PARAM[id]"/>
 			<param name="onup" value="$PARAM[onup]"/>
 			<param name="ondown" value="$PARAM[ondown]"/>
 			<param name="nr" value="$PARAM[nr]"/>
 		</include>
-		<include condition="String.IsEqual(Skin.String(embytvshowhub_widget_pos_$PARAM[pos]),W_EmbyHub_NewEpisodes)" content="W_EmbyHub_NewEpisodes">
+		<include condition="String.IsEqual(Skin.String(tagtvshowhub_widget_pos_$PARAM[pos]),W_TagHub_NewEpisodes)" content="W_TagHub_NewEpisodes">
 			<param name="id" value="$PARAM[id]"/>
 			<param name="onup" value="$PARAM[onup]"/>
 			<param name="ondown" value="$PARAM[ondown]"/>
 			<param name="nr" value="$PARAM[nr]"/>
 		</include>
-		<include condition="String.IsEqual(Skin.String(embytvshowhub_widget_pos_$PARAM[pos]),W_EmbyHub_NextUp)" content="W_EmbyHub_NextUp">
+		<include condition="String.IsEqual(Skin.String(tagtvshowhub_widget_pos_$PARAM[pos]),W_TagHub_NextUp)" content="W_TagHub_NextUp">
 			<param name="id" value="$PARAM[id]"/>
 			<param name="onup" value="$PARAM[onup]"/>
 			<param name="ondown" value="$PARAM[ondown]"/>
 			<param name="nr" value="$PARAM[nr]"/>
 		</include>
-		<include condition="String.IsEqual(Skin.String(embytvshowhub_widget_pos_$PARAM[pos]),W_EmbyHub_RecommendedShows)" content="W_EmbyHub_RecommendedShows">
+		<include condition="String.IsEqual(Skin.String(tagtvshowhub_widget_pos_$PARAM[pos]),W_TagHub_RecommendedShows)" content="W_TagHub_RecommendedShows">
 			<param name="id" value="$PARAM[id]"/>
 			<param name="onup" value="$PARAM[onup]"/>
 			<param name="ondown" value="$PARAM[ondown]"/>
 			<param name="nr" value="$PARAM[nr]"/>
 		</include>
-		<include condition="String.IsEqual(Skin.String(embytvshowhub_widget_pos_$PARAM[pos]),W_EmbyHub_SimilarShows)" content="W_EmbyHub_SimilarShows">
+		<include condition="String.IsEqual(Skin.String(tagtvshowhub_widget_pos_$PARAM[pos]),W_TagHub_SimilarShows)" content="W_TagHub_SimilarShows">
 			<param name="id" value="$PARAM[id]"/>
 			<param name="onup" value="$PARAM[onup]"/>
 			<param name="ondown" value="$PARAM[ondown]"/>
 			<param name="nr" value="$PARAM[nr]"/>
 		</include>
-		<include condition="String.IsEqual(Skin.String(embytvshowhub_widget_pos_$PARAM[pos]),W_EmbyHub_TVShowsByGenre)" content="W_EmbyHub_TVShowsByGenre">
+		<include condition="String.IsEqual(Skin.String(tagtvshowhub_widget_pos_$PARAM[pos]),W_TagHub_TVShowsByGenre)" content="W_TagHub_TVShowsByGenre">
 			<param name="id" value="$PARAM[id]"/>
 			<param name="onup" value="$PARAM[onup]"/>
 			<param name="ondown" value="$PARAM[ondown]"/>
 			<param name="nr" value="$PARAM[nr]"/>
 		</include>
-		<include condition="String.IsEqual(Skin.String(embytvshowhub_widget_pos_$PARAM[pos]),W_EmbyHub_RandomShows)" content="W_EmbyHub_RandomShows">
+		<include condition="String.IsEqual(Skin.String(tagtvshowhub_widget_pos_$PARAM[pos]),W_TagHub_RandomShows)" content="W_TagHub_RandomShows">
 			<param name="id" value="$PARAM[id]"/>
 			<param name="onup" value="$PARAM[onup]"/>
 			<param name="ondown" value="$PARAM[ondown]"/>
 			<param name="nr" value="$PARAM[nr]"/>
 		</include>
-		<include condition="String.IsEqual(Skin.String(embytvshowhub_widget_pos_$PARAM[pos]),W_EmbyHub_TVShowGenres)" content="W_EmbyHub_TVShowGenres">
+		<include condition="String.IsEqual(Skin.String(tagtvshowhub_widget_pos_$PARAM[pos]),W_TagHub_TVShowGenres)" content="W_TagHub_TVShowGenres">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="nr" value="$PARAM[nr]"/>
+		</include>
+	</include>
+
+	<!-- Tag mixed hub widgets -->
+	<include name="WidgetCallTagMixed">
+		<include condition="String.IsEmpty(Skin.String(tagmixedhub_widget_pos_$PARAM[pos]))" content="WidgetDummy">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="nr" value="$PARAM[nr]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(tagmixedhub_widget_pos_$PARAM[pos]),W_TagHub_InProgress)" content="W_TagHub_InProgress">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="nr" value="$PARAM[nr]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(tagmixedhub_widget_pos_$PARAM[pos]),W_TagHub_NewMovies)" content="W_TagHub_NewMovies">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="nr" value="$PARAM[nr]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(tagmixedhub_widget_pos_$PARAM[pos]),W_TagHub_RecommendedMovies)" content="W_TagHub_RecommendedMovies">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="nr" value="$PARAM[nr]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(tagmixedhub_widget_pos_$PARAM[pos]),W_TagHub_SimilarMovies)" content="W_TagHub_SimilarMovies">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="nr" value="$PARAM[nr]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(tagmixedhub_widget_pos_$PARAM[pos]),W_TagHub_MoviesByGenre)" content="W_TagHub_MoviesByGenre">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="nr" value="$PARAM[nr]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(tagmixedhub_widget_pos_$PARAM[pos]),W_TagHub_RandomMovies)" content="W_TagHub_RandomMovies">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="nr" value="$PARAM[nr]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(tagmixedhub_widget_pos_$PARAM[pos]),W_TagHub_MovieGenres)" content="W_TagHub_MovieGenres">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="nr" value="$PARAM[nr]"/>
+			<param name="headline" value="$LOCALIZE[31387]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(tagmixedhub_widget_pos_$PARAM[pos]),W_TagHub_NewEpisodes)" content="W_TagHub_NewEpisodes">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="nr" value="$PARAM[nr]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(tagmixedhub_widget_pos_$PARAM[pos]),W_TagHub_NextUp)" content="W_TagHub_NextUp">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="nr" value="$PARAM[nr]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(tagmixedhub_widget_pos_$PARAM[pos]),W_TagHub_RecommendedShows)" content="W_TagHub_RecommendedShows">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="nr" value="$PARAM[nr]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(tagmixedhub_widget_pos_$PARAM[pos]),W_TagHub_SimilarShows)" content="W_TagHub_SimilarShows">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="nr" value="$PARAM[nr]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(tagmixedhub_widget_pos_$PARAM[pos]),W_TagHub_TVShowsByGenre)" content="W_TagHub_TVShowsByGenre">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="nr" value="$PARAM[nr]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(tagmixedhub_widget_pos_$PARAM[pos]),W_TagHub_RandomShows)" content="W_TagHub_RandomShows">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="nr" value="$PARAM[nr]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(tagmixedhub_widget_pos_$PARAM[pos]),W_TagHub_TVShowGenres)" content="W_TagHub_TVShowGenres">
+			<param name="id" value="$PARAM[id]"/>
+			<param name="onup" value="$PARAM[onup]"/>
+			<param name="ondown" value="$PARAM[ondown]"/>
+			<param name="nr" value="$PARAM[nr]"/>
+			<param name="headline" value="$LOCALIZE[31388]"/>
+		</include>
+		<include condition="String.IsEqual(Skin.String(tagmixedhub_widget_pos_$PARAM[pos]),W_TagHub_MixedByGenre)" content="W_TagHub_MixedByGenre">
 			<param name="id" value="$PARAM[id]"/>
 			<param name="onup" value="$PARAM[onup]"/>
 			<param name="ondown" value="$PARAM[ondown]"/>

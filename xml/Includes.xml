@@ -23,7 +23,7 @@
 	<include file="Embuary_BigList_View_59.xml" />
 	<include file="Embuary_Genre_View.xml" />
 	<include file="Embuary_Lyrics.xml" />
-	<include file="Embuary_EmbyHubIncludes.xml" />
+	<include file="Embuary_TagHubIncludes.xml" />
 	<include file="Embuary_EmbyConHubIncludes.xml" />
 	<include file="Embuary_Settings.xml" />
 	<include file="Embuary_WidgetTemplates.xml" />
@@ -44,6 +44,12 @@
 
 	<expression name="IsHDR">[[String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)] + [String.Contains(ListItem.Label,(HDR)) | String.Contains(ListItem.Filename,.HDR.) | String.Contains(ListItem.Filename,-HDR-) | String.Contains(ListItem.Filename,- HDR -) | String.Contains(ListItem.Filename,(HDR))]]</expression>
 
+	<expression name="HasHDRTag">[
+		[[String.Contains(ListItem.Tag, / ) | String.Contains(Container(2000).ListItem.Tag, / )] + [String.Contains(ListItem.Tag,HDR ) | String.Contains(Container(2000).ListItem.Tag,HDR ) | String.Contains(ListItem.Tag, HDR) | String.Contains(Container(2000).ListItem.Tag, HDR)]]
+		| [!String.Contains(ListItem.Tag, / ) + !String.Contains(Container(2000).ListItem.Tag, / ) + [String.IsEqual(ListItem.Tag,HDR) | String.IsEqual(Container(2000).ListItem.Tag,HDR)]]
+		]
+	</expression>
+
 	<expression name="ArtistSlideshow">[Skin.HasSetting(VisRandomFanart) + !Skin.HasSetting(VisFanartDisabled) + System.HasAddon(script.artistslideshow) + !String.IsEmpty(Window(Visualisation).Property(ArtistSlideshow)) + !String.EndsWith(Window(Visualisation).Property(ArtistSlideshow),black)]</expression>
 
 	<expression name="HasEmbyContext">[[!String.IsEmpty(ListItem.DBID) + !String.IsEqual(ListItem.DBID,-1) | !String.IsEmpty(ListItem.Property(embyid))] + !String.IsEmpty(Window(10000).Property(emby_context)) + !Skin.HasSetting(KioskMode) + !String.StartsWith(ListItem.FolderPath,plugin://plugin.video.embycon)]</expression>
@@ -62,7 +68,7 @@
 
 	<expression name="ForceCinemaMode">[Skin.HasSetting(AlwaysCinemaMode) + [!String.IsEmpty(Skin.String(IntroPath)) | Integer.IsGreater(Skin.String(TrailerCount),0)]]</expression>
 
-	<expression name="SkinSetup">[!Skin.HasSetting(SkinSetup) + !Window.IsVisible(startup) + !Window.IsVisible(1119)]</expression>
+	<expression name="SkinSetup">[Skin.HasSetting(ApplySkinDefaults) + !Window.IsVisible(startup)]</expression>
 
 	<expression name="HolidayTheme">[System.Date(12-01,01-07) + !Skin.HasSetting(HideHolidayTheme) + [[!Window.IsVisible(visualisation) + !VideoPlayer.IsFullscreen] | Window.IsActive(fullscreeninfo) | Window.IsActive(script-embuary-person.xml) | Window.IsActive(script-embuary-video.xml)]]</expression>
 

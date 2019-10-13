@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+	<!-- Mixed template -->
+	<include name="TagHub_MixedMenu">
+		<item>
+			<label>$LOCALIZE[342]</label>
+			<onclick>ActivateWindow(videos,videodb://movies/tags/$INFO[Window(home).Property(library.tags.$PARAM[nr].id)]/?force_root=$INFO[System.Time(mm)]$INFO[System.Time(ss)],return)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[31169]</label>
+			<onclick>ActivateWindow(videos,&quot;videodb://movies/sets/?xsp=%7b%22group%22%3a%7b%22mixed%22%3afalse%2c%22type%22%3a%22sets%22%7d%2c%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22tag%22%2c%22operator%22%3a%22is%22%2c%22value%22%3a%5b%22$INFO[Window(home).Property(library.tags.$PARAM[nr].title)]%22%5d%7d%5d%7d%2c%22type%22%3a%22movies%22%7d&quot;,return)</onclick>
+			<visible>Integer.IsGreater(Container(197).NumItems,0)</visible>
+		</item>
+		<item>
+			<label>$LOCALIZE[20343]</label>
+			<onclick>ActivateWindow(videos,videodb://tvshows/tags/$INFO[Window(home).Property(library.tags.$PARAM[nr].id)]/?force_root=$INFO[System.Time(mm)]$INFO[System.Time(ss)],return)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[31209]</label>
+			<onclick>ActivateWindow(videos,&quot;videodb://movies/titles/?xsp=%7b%22order%22%3a%7b%22direction%22%3a%22ascending%22%2c%22ignorefolders%22%3a0%2c%22method%22%3a%22sorttitle%22%7d%2c%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22tag%22%2c%22operator%22%3a%22is%22%2c%22value%22%3a%5b%22$INFO[Window(home).Property(library.tags.$PARAM[nr].title)]%22%5d%7d%2c%7b%22field%22%3a%22playcount%22%2c%22operator%22%3a%22is%22%2c%22value%22%3a%5b%220%22%5d%7d%5d%7d%2c%22type%22%3a%22movies%22%7d&amp;force_root=$INFO[System.Time(mm)]$INFO[System.Time(ss)]&quot;,return)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[31210]</label>
+			<onclick>ActivateWindow(videos,&quot;videodb://tvshows/titles/?xsp=%7b%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22tag%22%2c%22operator%22%3a%22is%22%2c%22value%22%3a%5b%22$INFO[Window(home).Property(library.tags.$PARAM[nr].title)]%22%5d%7d%2c%7b%22field%22%3a%22numwatched%22%2c%22operator%22%3a%22is%22%2c%22value%22%3a%5b%220%22%5d%7d%5d%7d%2c%22type%22%3a%22tvshows%22%7d&amp;force_root=$INFO[System.Time(mm)]$INFO[System.Time(ss)]&quot;,return)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[31387]</label>
+			<include>ForceReloadAction</include>
+			<onclick>SetProperty(ListGenres,&quot;videodb://movies/genres/?xsp=%7b%22group%22%3a%7b%22mixed%22%3afalse%2c%22type%22%3a%22genres%22%7d%2c%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22tag%22%2c%22operator%22%3a%22is%22%2c%22value%22%3a%5b%22$INFO[Window(home).Property(library.tags.$PARAM[nr].title)]%22%5d%7d%5d%7d%2c%22type%22%3a%22movies%22%7d&quot;,home)</onclick>
+			<onclick>ActivateWindow(1114)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[31388]</label>
+			<include>ForceReloadAction</include>
+			<onclick>SetProperty(ListGenres,&quot;videodb://tvshows/genres/?xsp=%7b%22group%22%3a%7b%22mixed%22%3afalse%2c%22type%22%3a%22genres%22%7d%2c%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22tag%22%2c%22operator%22%3a%22is%22%2c%22value%22%3a%5b%22$INFO[Window(home).Property(library.tags.$PARAM[nr].title)]%22%5d%7d%5d%7d%2c%22type%22%3a%22tvshows%22%7d&quot;,home)</onclick>
+			<onclick>ActivateWindow(1114)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[31183]</label>
+			<include>ForceReloadAction</include>
+			<onclick>SetProperty(RecommendedTag,'$ESCINFO[Window(home).Property(library.tags.$PARAM[nr].title)]',home)</onclick>
+			<onclick>SetProperty(RecommendedType,movie,home)</onclick>
+			<onclick>ActivateWindow(1126,return)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[31182]</label>
+			<include>ForceReloadAction</include>
+			<onclick>SetProperty(RecommendedTag,'$ESCINFO[Window(home).Property(library.tags.$PARAM[nr].title)]',home)</onclick>
+			<onclick>SetProperty(RecommendedType,tvshow,home)</onclick>
+			<onclick>ActivateWindow(1126,return)</onclick>
+		</item>
+	</include>
+	<include name="TagHubMixedTemplate">
+		<!-- hidden controls -->
+		<control type="list" id="197">
+			<include>HiddenObject</include>
+			<content limit="1">videodb://movies/sets/?xsp=%7b%22group%22%3a%7b%22mixed%22%3afalse%2c%22type%22%3a%22sets%22%7d%2c%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22tag%22%2c%22operator%22%3a%22is%22%2c%22value%22%3a%5b%22$INFO[Window(home).Property(library.tags.$PARAM[nr].title)]%22%5d%7d%5d%7d%2c%22type%22%3a%22movies%22%7d</content>
+		</control>
+		<control type="label" id="198">
+			<include>HiddenObject</include>
+			<label>$INFO[Window(home).Property(library.tags.$PARAM[nr].type)]</label>
+		</control>
+		<control type="label" id="199">
+			<include>HiddenObject</include>
+			<label>$INFO[Window(home).Property(library.tags.$PARAM[nr].title)]</label>
+		</control>
+		<!-- hub -->
+		<control type="grouplist" id="10">
+			<include>Window_OpenClose</include>
+			<defaultcontrol>10000</defaultcontrol>
+			<width>100%</width>
+			<height>100%</height>
+			<itemgap>-80</itemgap>
+			<orientation>vertical</orientation>
+			<usecontrolcoords>true</usecontrolcoords>
+			<include>ScrollTime</include>
+			<pagecontrol>17</pagecontrol>
+			<ondown>noop</ondown>
+			<include content="WidgetSpacer">
+				<param name="id" value="101"/>
+			</include>
+			<!-- menu -->
+			<include content="WidgetSmallMenu">
+				<param name="id" value="100"/>
+				<param name="onup" value="6666"/>
+				<param name="ondown" value="200"/>
+				<param name="headline" value="$INFO[Window(home).Property(library.tags.$PARAM[nr].title),','] $LOCALIZE[14211]"/>
+				<param name="content" value="TagHub_MixedMenu"/>
+				<param name="nr" value="$PARAM[nr]"/>
+			</include>
+			<include content="WidgetCallTemplate">
+				<param name="type" value="WidgetCallTagMixed"/>
+				<param name="nr" value="$PARAM[nr]"/>
+			</include>
+		</control>
+		<!-- header bar -->
+		<include content="HeaderBar">
+			<param name="id">10</param>
+		</include>
+		<!-- side panel -->
+		<include content="SidePanel"/>
+	</include>
+
+	<!-- Movie template -->
+	<include name="TagHub_MovieMenu">
+		<item>
+			<label>$LOCALIZE[342]</label>
+			<onclick>ActivateWindow(videos,videodb://movies/tags/$INFO[Window(home).Property(library.tags.$PARAM[nr].id)]/?force_root=$INFO[System.Time(mm)]$INFO[System.Time(ss)],return)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[31169]</label>
+			<onclick>ActivateWindow(videos,&quot;videodb://movies/sets/?xsp=%7b%22group%22%3a%7b%22mixed%22%3afalse%2c%22type%22%3a%22sets%22%7d%2c%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22tag%22%2c%22operator%22%3a%22is%22%2c%22value%22%3a%5b%22$INFO[Window(home).Property(library.tags.$PARAM[nr].title)]%22%5d%7d%5d%7d%2c%22type%22%3a%22movies%22%7d&quot;,return)</onclick>
+			<visible>Integer.IsGreater(Container(197).NumItems,0)</visible>
+		</item>
+		<item>
+			<label>$LOCALIZE[31209]</label>
+			<onclick>ActivateWindow(videos,&quot;videodb://movies/titles/?xsp=%7b%22order%22%3a%7b%22direction%22%3a%22ascending%22%2c%22ignorefolders%22%3a0%2c%22method%22%3a%22sorttitle%22%7d%2c%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22tag%22%2c%22operator%22%3a%22is%22%2c%22value%22%3a%5b%22$INFO[Window(home).Property(library.tags.$PARAM[nr].title)]%22%5d%7d%2c%7b%22field%22%3a%22playcount%22%2c%22operator%22%3a%22is%22%2c%22value%22%3a%5b%220%22%5d%7d%5d%7d%2c%22type%22%3a%22movies%22%7d&quot;,return)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[135]</label>
+			<include>ForceReloadAction</include>
+			<onclick>SetProperty(ListGenres,&quot;videodb://movies/genres/?xsp=%7b%22group%22%3a%7b%22mixed%22%3afalse%2c%22type%22%3a%22genres%22%7d%2c%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22tag%22%2c%22operator%22%3a%22is%22%2c%22value%22%3a%5b%22$INFO[Window(home).Property(library.tags.$PARAM[nr].title)]%22%5d%7d%5d%7d%2c%22type%22%3a%22movies%22%7d&quot;,home)</onclick>
+			<onclick>ActivateWindow(1114)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[31017]</label>
+			<include>ForceReloadAction</include>
+			<onclick>SetProperty(RecommendedTag,'$ESCINFO[Window(home).Property(library.tags.$PARAM[nr].title)]',home)</onclick>
+			<onclick>SetProperty(RecommendedType,movie,home)</onclick>
+			<onclick>ActivateWindow(1126,return)</onclick>
+		</item>
+	</include>
+	<include name="TagHubMovieTemplate">
+		<!-- hidden controls -->
+		<control type="list" id="197">
+			<include>HiddenObject</include>
+			<content limit="1">videodb://movies/sets/?xsp=%7b%22group%22%3a%7b%22mixed%22%3afalse%2c%22type%22%3a%22sets%22%7d%2c%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22tag%22%2c%22operator%22%3a%22is%22%2c%22value%22%3a%5b%22$INFO[Window(home).Property(library.tags.$PARAM[nr].title)]%22%5d%7d%5d%7d%2c%22type%22%3a%22movies%22%7d</content>
+		</control>
+		<control type="label" id="198">
+			<include>HiddenObject</include>
+			<label>$INFO[Window(home).Property(library.tags.$PARAM[nr].type)]</label>
+		</control>
+		<control type="label" id="199">
+			<include>HiddenObject</include>
+			<label>$INFO[Window(home).Property(library.tags.$PARAM[nr].title)]</label>
+		</control>
+		<!-- hub -->
+		<control type="grouplist" id="10">
+			<include>Window_OpenClose</include>
+			<defaultcontrol>10000</defaultcontrol>
+			<width>100%</width>
+			<height>100%</height>
+			<itemgap>-80</itemgap>
+			<orientation>vertical</orientation>
+			<usecontrolcoords>true</usecontrolcoords>
+			<include>ScrollTime</include>
+			<pagecontrol>17</pagecontrol>
+			<ondown>noop</ondown>
+			<include content="WidgetSpacer">
+				<param name="id" value="101"/>
+			</include>
+			<!-- menu -->
+			<include content="WidgetSmallMenu">
+				<param name="id" value="100"/>
+				<param name="onup" value="6666"/>
+				<param name="ondown" value="200"/>
+				<param name="headline" value="$INFO[Window(home).Property(library.tags.$PARAM[nr].title),','] $LOCALIZE[14211]"/>
+				<param name="content" value="TagHub_MovieMenu"/>
+				<param name="nr" value="$PARAM[nr]"/>
+			</include>
+			<include content="WidgetCallTemplate">
+				<param name="type" value="WidgetCallTagMovies"/>
+				<param name="nr" value="$PARAM[nr]"/>
+			</include>
+		</control>
+		<!-- header bar -->
+		<include content="HeaderBar">
+			<param name="id">10</param>
+		</include>
+		<!-- side panel -->
+		<include content="SidePanel"/>
+	</include>
+
+	<!-- TV show template -->
+	<include name="TagHub_TVshowMenu">
+		<item>
+			<label>$LOCALIZE[20343]</label>
+			<onclick>ActivateWindow(videos,videodb://$INFO[Window(home).Property(library.tags.$PARAM[nr].type)]/tags/$INFO[Window(home).Property(library.tags.$PARAM[nr].id)]/?force_root=$INFO[System.Time(mm)]$INFO[System.Time(ss)],return)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[31210]</label>
+			<onclick>ActivateWindow(videos,&quot;videodb://tvshows/titles/?xsp=%7b%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22tag%22%2c%22operator%22%3a%22is%22%2c%22value%22%3a%5b%22$INFO[Window(home).Property(library.tags.$PARAM[nr].title)]%22%5d%7d%2c%7b%22field%22%3a%22numwatched%22%2c%22operator%22%3a%22is%22%2c%22value%22%3a%5b%220%22%5d%7d%5d%7d%2c%22type%22%3a%22tvshows%22%7d&amp;force_root=$INFO[System.Time(mm)]$INFO[System.Time(ss)]&quot;,return)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[135]</label>
+			<include>ForceReloadAction</include>
+			<onclick>SetProperty(ListGenres,&quot;videodb://tvshows/genres/?xsp=%7b%22group%22%3a%7b%22mixed%22%3afalse%2c%22type%22%3a%22genres%22%7d%2c%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22tag%22%2c%22operator%22%3a%22is%22%2c%22value%22%3a%5b%22$INFO[Window(home).Property(library.tags.$PARAM[nr].title)]%22%5d%7d%5d%7d%2c%22type%22%3a%22tvshows%22%7d&quot;,home)</onclick>
+			<onclick>ActivateWindow(1114)</onclick>
+		</item>
+		<item>
+			<label>$LOCALIZE[31017]</label>
+			<include>ForceReloadAction</include>
+			<onclick>SetProperty(RecommendedTag,'$ESCINFO[Window(home).Property(library.tags.$PARAM[nr].title)]',home)</onclick>
+			<onclick>SetProperty(RecommendedType,tvshow,home)</onclick>
+			<onclick>ActivateWindow(1126,return)</onclick>
+		</item>
+	</include>
+	<include name="TagHubTVShowTemplate">
+		<!-- hidden controls -->
+		<control type="label" id="198">
+			<include>HiddenObject</include>
+			<label>$INFO[Window(home).Property(library.tags.$PARAM[nr].type)]</label>
+		</control>
+		<control type="label" id="199">
+			<include>HiddenObject</include>
+			<label>$INFO[Window(home).Property(library.tags.$PARAM[nr].title)]</label>
+		</control>
+		<!-- hub -->
+		<control type="grouplist" id="10">
+			<include>Window_OpenClose</include>
+			<defaultcontrol>10000</defaultcontrol>
+			<width>100%</width>
+			<height>100%</height>
+			<itemgap>-80</itemgap>
+			<orientation>vertical</orientation>
+			<usecontrolcoords>true</usecontrolcoords>
+			<include>ScrollTime</include>
+			<pagecontrol>17</pagecontrol>
+			<include content="WidgetSpacer">
+				<param name="id" value="101"/>
+			</include>
+			<!-- menu -->
+			<include content="WidgetSmallMenu">
+				<param name="id" value="100"/>
+				<param name="onup" value="6666"/>
+				<param name="ondown" value="200"/>
+				<param name="headline" value="$INFO[Window(home).Property(library.tags.$PARAM[nr].title),','] $LOCALIZE[14211]"/>
+				<param name="content" value="TagHub_TVshowMenu"/>
+				<param name="nr" value="$PARAM[nr]"/>
+			</include>
+			<include content="WidgetCallTemplate">
+				<param name="type" value="WidgetCallTagTVShows"/>
+				<param name="nr" value="$PARAM[nr]"/>
+			</include>
+		</control>
+		<!-- header bar -->
+		<include content="HeaderBar">
+			<param name="id">10</param>
+		</include>
+		<!-- side panel -->
+		<include content="SidePanel"/>
+	</include>
+</includes>
