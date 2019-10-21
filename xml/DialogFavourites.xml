@@ -28,31 +28,54 @@
 			<include content="SquareWidget">
 				<param name="id" value="450"/>
 				<param name="onup" value="noop"/>
-				<param name="ondown" value="201"/>
+				<param name="ondown" value="202"/>
 				<param name="height" value="476"/>
 				<param name="layout" value="SquareFavourites"/>
 				<param name="mainlabel" value="$INFO[ListItem.Label]"/>
 				<param name="headline" value="$LOCALIZE[31063]"/>
 				<param name="use_custom_content" value="false"/>
 			</include>
-			<!-- emby movies -->
 			<include content="PosterWidget">
-				<param name="visible" value="System.HasAddon(plugin.video.emby)"/>
-				<param name="id" value="201"/>
+				<param name="id" value="202"/>
 				<param name="onup" value="450"/>
-				<param name="ondown" value="202"/>
-				<param name="headline" value="$LOCALIZE[31062]"/>
+				<param name="ondown" value="203"/>
+				<param name="headline" value="$LOCALIZE[31407]"/>
 				<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 				<param name="sublabel" value="$INFO[ListItem.Year]"/>
 				<param name="use_custom_onclick" value="true"/>
 				<param name="onclick" value="RunScript(script.embuary.helper,action=playitem,item='$ESCINFO[ListItem.Filenameandpath]')"/>
+				<param name="content" value="videodb://movies/titles/?xsp=%7b%22group%22%3a%7b%22mixed%22%3afalse%2c%22type%22%3a%22none%22%7d%2c%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22tag%22%2c%22operator%22%3a%22contains%22%2c%22value%22%3a%5b%22Fav.%20Kodi%20Movies%22%5d%7d%5d%7d%2c%22type%22%3a%22movies%22%7d&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
+			</include>
+			<include content="PosterWidget">
+				<param name="id" value="203"/>
+				<param name="onup" value="202"/>
+				<param name="ondown" value="204"/>
+				<param name="headline" value="$LOCALIZE[31408]"/>
+				<param name="mainlabel" value="$INFO[ListItem.Title]"/>
+				<param name="sublabel" value="$INFO[ListItem.Year]"/>
+				<param name="use_custom_onclick" value="true"/>
+				<param name="onclick" value="RunScript(script.embuary.helper,action=goto,path='$ESCINFO[ListItem.FolderPath]',target=videos)"/>
+				<param name="content" value="videodb://tvshows/titles/?xsp=%7b%22group%22%3a%7b%22mixed%22%3afalse%2c%22type%22%3a%22none%22%7d%2c%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22tag%22%2c%22operator%22%3a%22contains%22%2c%22value%22%3a%5b%22Fav.%20Kodi%20TV%20Shows%22%5d%7d%5d%7d%2c%22type%22%3a%22tvshows%22%7d&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
+			</include>
+			<!-- emby movies -->
+			<include content="PosterWidget">
+				<param name="visible" value="System.HasAddon(plugin.video.emby)"/>
+				<param name="id" value="204"/>
+				<param name="onup" value="203"/>
+				<param name="ondown" value="205"/>
+				<param name="headline" value="$LOCALIZE[31062] [COLOR text_sublabel](Emby)[/COLOR]"/>
+				<param name="mainlabel" value="$INFO[ListItem.Title]"/>
+				<param name="sublabel" value="$INFO[ListItem.Year]"/>
+				<param name="use_custom_onclick" value="true"/>
+				<param name="onclick" value="RunScript(script.embuary.helper,action=playitem,item='$ESCINFO[ListItem.Filenameandpath]')"/>
+				<param name="content" value="videodb://movies/titles/?xsp=%7b%22group%22%3a%7b%22mixed%22%3afalse%2c%22type%22%3a%22none%22%7d%2c%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22tag%22%2c%22operator%22%3a%22contains%22%2c%22value%22%3a%5b%22Favorite%20movies%22%5d%7d%5d%7d%2c%22type%22%3a%22movies%22%7d&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 				<param name="content" value="$VAR[Emby.FavMovies]"/>
 			</include>
 			<include content="PosterWidget">
 				<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
-				<param name="id" value="202"/>
-				<param name="onup" value="201"/>
-				<param name="ondown" value="203"/>
+				<param name="id" value="205"/>
+				<param name="onup" value="204"/>
+				<param name="ondown" value="206"/>
 				<param name="headline" value="$LOCALIZE[31062]$VAR[EmbyConLabel]"/>
 				<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 				<param name="sublabel" value="$INFO[ListItem.Year]"/>
@@ -64,21 +87,21 @@
 			<!-- emby shows -->
 			<include content="PosterWidget">
 				<param name="visible" value="System.HasAddon(plugin.video.emby)"/>
-				<param name="id" value="203"/>
-				<param name="onup" value="202"/>
-				<param name="ondown" value="204"/>
-				<param name="headline" value="$LOCALIZE[31064]"/>
+				<param name="id" value="206"/>
+				<param name="onup" value="205"/>
+				<param name="ondown" value="207"/>
+				<param name="headline" value="$LOCALIZE[31064] [COLOR text_sublabel](Emby)[/COLOR]"/>
 				<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 				<param name="sublabel" value="$INFO[ListItem.Year]"/>
 				<param name="use_custom_onclick" value="true"/>
 				<param name="onclick" value="RunScript(script.embuary.helper,action=goto,path='$ESCINFO[ListItem.FolderPath]',target=videos)"/>
-				<param name="content" value="$VAR[Emby.FavShows]"/>
+				<param name="content" value="videodb://tvshows/titles/?xsp=%7b%22group%22%3a%7b%22mixed%22%3afalse%2c%22type%22%3a%22none%22%7d%2c%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22tag%22%2c%22operator%22%3a%22contains%22%2c%22value%22%3a%5b%22Favorite%20tvshows%22%5d%7d%5d%7d%2c%22type%22%3a%22tvshows%22%7d&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]"/>
 			</include>
 			<include content="PosterWidget">
 				<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
-				<param name="id" value="204"/>
-				<param name="onup" value="203"/>
-				<param name="ondown" value="205"/>
+				<param name="id" value="207"/>
+				<param name="onup" value="206"/>
+				<param name="ondown" value="208"/>
 				<param name="headline" value="$LOCALIZE[31064]$VAR[EmbyConLabel]"/>
 				<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 				<param name="sublabel" value="$INFO[ListItem.Year]"/>
@@ -90,22 +113,22 @@
 			<!-- emby episodes -->
 			<include content="WideWidget">
 				<param name="visible" value="System.HasAddon(plugin.video.emby)"/>
-				<param name="id" value="205"/>
-				<param name="onup" value="204"/>
-				<param name="ondown" value="206"/>
-				<param name="headline" value="$LOCALIZE[31065]"/>
+				<param name="id" value="208"/>
+				<param name="onup" value="207"/>
+				<param name="ondown" value="209"/>
+				<param name="headline" value="$LOCALIZE[31065] [COLOR text_sublabel](Emby)[/COLOR]"/>
 				<param name="sublabel" value="$INFO[ListItem.TvShowTitle]"/>
 				<param name="mainlabel" value="$VAR[ListItemSeasonEpisode]$INFO[ListItem.Title]"/>
 				<param name="icon" value="$VAR[IconEpisodeThumb]"/>
 				<param name="use_custom_onclick" value="true"/>
 				<param name="onclick" value="RunScript(script.embuary.helper,action=playitem,item='$ESCINFO[ListItem.Filenameandpath]')"/>
-				<param name="content" value="$VAR[Emby.FavEpisodes]"/>
+				<param name="content" value="library://video/emby_Favoriteepisodes.xml"/>
 			</include>
 			<include content="WideWidget">
 				<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
-				<param name="id" value="206"/>
-				<param name="onup" value="205"/>
-				<param name="ondown" value="207"/>
+				<param name="id" value="209"/>
+				<param name="onup" value="208"/>
+				<param name="ondown" value="210"/>
 				<param name="headline" value="$LOCALIZE[31065]$VAR[EmbyConLabel]"/>
 				<param name="sublabel" value="$INFO[ListItem.TvShowTitle]"/>
 				<param name="mainlabel" value="$VAR[ListItemSeasonEpisode]$INFO[ListItem.Title]"/>
@@ -118,9 +141,9 @@
 			<!-- Fav artist -->
 			<include content="SquareWidget">
 				<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
-				<param name="id" value="207"/>
-				<param name="onup" value="206"/>
-				<param name="ondown" value="208"/>
+				<param name="id" value="210"/>
+				<param name="onup" value="209"/>
+				<param name="ondown" value="211"/>
 				<param name="headline" value="$LOCALIZE[31212]$VAR[EmbyConLabel]"/>
 				<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 				<param name="sublabel" value="$INFO[ListItem.Year]"/>
@@ -133,9 +156,9 @@
 			<!-- fav album -->
 			<include content="SquareWidget">
 				<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
-				<param name="id" value="208"/>
-				<param name="onup" value="207"/>
-				<param name="ondown" value="209"/>
+				<param name="id" value="211"/>
+				<param name="onup" value="210"/>
+				<param name="ondown" value="212"/>
 				<param name="headline" value="$LOCALIZE[31213]$VAR[EmbyConLabel]"/>
 				<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 				<param name="sublabel" value="$INFO[ListItem.Artist]"/>
@@ -148,9 +171,9 @@
 			<!-- fav song -->
 			<include content="SquareWidget">
 				<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
-				<param name="id" value="209"/>
-				<param name="onup" value="208"/>
-				<param name="ondown" value="210"/>
+				<param name="id" value="212"/>
+				<param name="onup" value="211"/>
+				<param name="ondown" value="213"/>
 				<param name="headline" value="$LOCALIZE[31214]$VAR[EmbyConLabel]"/>
 				<param name="mainlabel" value="$INFO[ListItem.Title]"/>
 				<param name="sublabel" value="$INFO[ListItem.Artist]"/>
@@ -163,8 +186,8 @@
 			<!-- fav person -->
 			<include content="CastWidget">
 				<param name="visible" value="System.HasAddon(plugin.video.embycon)"/>
-				<param name="id" value="210"/>
-				<param name="onup" value="209"/>
+				<param name="id" value="213"/>
+				<param name="onup" value="212"/>
 				<param name="ondown" value="noop"/>
 				<param name="height" value="551"/>
 				<param name="headline" value="$LOCALIZE[31212]$VAR[EmbyConLabel]"/>
