@@ -70,8 +70,8 @@
 								<visible>!String.IsEmpty(ListItem.FileNameAndPath)</visible>
 								<label>$VAR[VideoInfoButton8]</label>
 								<property name="icon">&#xf40a;</property>
-								<onclick condition="![$EXP[ForceCinemaMode] + !String.IsEmpty(ListItem.DBID) + !String.IsEqual(Skin.String(CinemaModeFor,episodes)) + !Integer.IsGreater(ListItem.PercentPlayed,0)]">SendClick(8)</onclick>
-								<onclick condition="$EXP[ForceCinemaMode] + !String.IsEmpty(ListItem.DBID) + !String.IsEqual(Skin.String(CinemaModeFor,episodes)) + !Integer.IsGreater(ListItem.PercentPlayed,0)">RunScript(script.embuary.helper,action=playcinema,dbid=$INFO[ListItem.DBID],type=$INFO[ListItem.DBType],title='$ESCINFO[ListItem.Title]')</onclick>
+								<onclick condition="![$EXP[ForceCinemaMode] + !String.IsEmpty(ListItem.DBID) + !String.IsEqual(Skin.String(CinemaModeFor),episodes) + !Integer.IsGreater(ListItem.PercentPlayed,0)]">SendClick(8)</onclick>
+								<onclick condition="$EXP[ForceCinemaMode] + !String.IsEmpty(ListItem.DBID) + !String.IsEqual(Skin.String(CinemaModeFor),episodes) + !Integer.IsGreater(ListItem.PercentPlayed,0)">RunScript(script.embuary.helper,action=playcinema,dbid=$INFO[ListItem.DBID],type=$INFO[ListItem.DBType],title='$ESCINFO[ListItem.Title]')</onclick>
 							</item>
 							<item>
 								<visible>!String.IsEmpty(ListItem.SetId) + !String.IsEmpty(ListItem.DBID)</visible>
@@ -616,8 +616,8 @@
 								<visible>!String.IsEmpty(ListItem.FileNameAndPath)</visible>
 								<label>$VAR[VideoInfoButton8]</label>
 								<property name="icon">&#xf40a;</property>
-								<onclick condition="![$EXP[ForceCinemaMode] + !String.IsEmpty(ListItem.DBID) + !String.IsEqual(Skin.String(CinemaModeFor,movies)) + !Integer.IsGreater(ListItem.PercentPlayed,0)]">SendClick(8)</onclick>
-								<onclick condition="$EXP[ForceCinemaMode] + !String.IsEmpty(ListItem.DBID) + !String.IsEqual(Skin.String(CinemaModeFor,movies)) + !Integer.IsGreater(ListItem.PercentPlayed,0)">RunScript(script.embuary.helper,action=playcinema,dbid=$INFO[ListItem.DBID],type=$INFO[ListItem.DBType],title='$ESCINFO[ListItem.Label]')</onclick>
+								<onclick condition="![$EXP[ForceCinemaMode] + !String.IsEmpty(ListItem.DBID) + !String.IsEqual(Skin.String(CinemaModeFor),movies) + !Integer.IsGreater(ListItem.PercentPlayed,0)]">SendClick(8)</onclick>
+								<onclick condition="$EXP[ForceCinemaMode] + !String.IsEmpty(ListItem.DBID) + !String.IsEqual(Skin.String(CinemaModeFor),movies) + !Integer.IsGreater(ListItem.PercentPlayed,0)">RunScript(script.embuary.helper,action=playcinema,dbid=$INFO[ListItem.DBID],type=$INFO[ListItem.DBType],title='$ESCINFO[ListItem.Label]')</onclick>
 							</item>
 							<item>
 								<visible>!String.IsEmpty(ListItem.DBID) | !String.IsEmpty(ListItem.Property(series_id))</visible>
