@@ -246,7 +246,7 @@
 						<align>center</align>
 						<aligny>top</aligny>
 						<pagecontrol>3000</pagecontrol>
-						<label>$LOCALIZE[31398][CR][CR]$LOCALIZE[31399][CR][CR][B]$LOCALIZE[31400]: [/B] [COLOR $VAR[AccentColor]]$VAR[AvailableTags][/COLOR][CR][B]$LOCALIZE[31401]: [/B] [COLOR $VAR[AccentColor]]$VAR[SetTags][/COLOR]</label>
+						<label>$LOCALIZE[31398][CR][CR]$LOCALIZE[31399][CR][CR][B]$LOCALIZE[31400]: [/B] [COLOR $VAR[AccentColor]]$VAR[AvailableTags][/COLOR]</label>
 					</control>
 					<!-- buttons -->
 					<control type="grouplist" id="300">
@@ -259,8 +259,9 @@
 						<onleft>noop</onleft>
 						<control type="button" id="301">
 							<include>DarkGreyButton</include>
-							<label>$LOCALIZE[186]</label>
-							<onclick condition="!Skin.HasSetting(AutoLibraryTags)">Skin.ToggleSetting(AutoLibraryTags)</onclick>
+							<label>$LOCALIZE[31411]</label>
+							<onclick>RunScript(script.embuary.helper,action=whitelisttags)</onclick>
+							<onclick>Skin.SetBool(AutoLibraryTags)</onclick>
 							<onclick>Skin.SetBool(EmbuaryInitMessage)</onclick>
 							<onclick>ReplaceWindow($VAR[StartUpWindow])</onclick>
 							<onup>PageUp(3000)</onup>
@@ -272,13 +273,6 @@
 							<onclick condition="Skin.HasSetting(AutoLibraryTags)">Skin.ToggleSetting(AutoLibraryTags)</onclick>
 							<onclick>Skin.SetBool(EmbuaryInitMessage)</onclick>
 							<onclick>ReplaceWindow($VAR[StartUpWindow])</onclick>
-							<onup>PageUp(3000)</onup>
-							<ondown>PageDown(3000)</ondown>
-						</control>
-						<control type="button" id="303">
-							<include>DarkGreyButton</include>
-							<label>$LOCALIZE[31397]</label>
-							<onclick>RunScript(script.embuary.helper,action=selecttags)</onclick>
 							<onup>PageUp(3000)</onup>
 							<ondown>PageDown(3000)</ondown>
 						</control>
