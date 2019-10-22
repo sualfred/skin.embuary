@@ -197,7 +197,7 @@
 			</control>
 			<!-- Cast -->
 			<include content="CastWidget">
-				<param name="visible" value="!String.IsEmpty(VideoPlayer.Cast) | !String.IsEmpty(Container(2000).ListItem.Cast)"/>
+				<param name="visible" value="[!String.IsEmpty(VideoPlayer.Cast) | !String.IsEmpty(Container(2000).ListItem.Cast)] + [Container(200).IsUpdating | Integer.IsGreater(Container(200).NumItems,0)]"/>
 				<param name="id" value="200"/>
 				<param name="onup" value="100"/>
 				<param name="ondown" value="300"/>
