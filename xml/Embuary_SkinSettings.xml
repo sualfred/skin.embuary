@@ -393,15 +393,15 @@
 		</include>
 		<control type="button" id="$PARAM[id]06">
 			<include>SettingsButton</include>
-			<onclick>SetProperty(Dialog.1.Label,$LOCALIZE[571])</onclick>
-			<onclick>SetProperty(Dialog.1.BuiltIn,RunScript(script.embuary.helper,action=setkodisetting,setting=lookandfeel.skincolors,value=Default))</onclick>
-			<onclick>SetProperty(Dialog.2.Label,Blue Radiance)</onclick>
-			<onclick>SetProperty(Dialog.2.BuiltIn,RunScript(script.embuary.helper,action=setkodisetting,setting=lookandfeel.skincolors,value=Blue Radiance))</onclick>
-			<onclick>SetProperty(Dialog.3.Label,Material)</onclick>
-			<onclick>SetProperty(Dialog.3.BuiltIn,RunScript(script.embuary.helper,action=setkodisetting,setting=lookandfeel.skincolors,value=Material))</onclick>
-			<onclick>SetProperty(Dialog.4.Label,Blex)</onclick>
-			<onclick>SetProperty(Dialog.4.BuiltIn,RunScript(script.embuary.helper,action=setkodisetting,setting=lookandfeel.skincolors,value=Blex))</onclick>
-			<onclick>RunScript(script.embuary.helper,action=createselect,header=$LOCALIZE[15111])</onclick>
+			<onclick>SetProperty(Context.1.Label,$LOCALIZE[571])</onclick>
+			<onclick>SetProperty(Context.1.BuiltIn,RunScript(script.embuary.helper,action=setkodisetting,setting=lookandfeel.skincolors,value=Default))</onclick>
+			<onclick>SetProperty(Context.2.Label,Blue Radiance)</onclick>
+			<onclick>SetProperty(Context.2.BuiltIn,RunScript(script.embuary.helper,action=setkodisetting,setting=lookandfeel.skincolors,value=Blue Radiance))</onclick>
+			<onclick>SetProperty(Context.3.Label,Material)</onclick>
+			<onclick>SetProperty(Context.3.BuiltIn,RunScript(script.embuary.helper,action=setkodisetting,setting=lookandfeel.skincolors,value=Material))</onclick>
+			<onclick>SetProperty(Context.4.Label,Blex)</onclick>
+			<onclick>SetProperty(Context.4.BuiltIn,RunScript(script.embuary.helper,action=setkodisetting,setting=lookandfeel.skincolors,value=Blex))</onclick>
+			<onclick>RunScript(script.embuary.helper,action=createcontext,header=$LOCALIZE[15111])</onclick>
 			<label>$LOCALIZE[15111]</label>
 			<label2>[COLOR $VAR[AccentColor]]$VAR[SkinTheme][/COLOR]</label2>
 		</control>
@@ -510,19 +510,19 @@
 		</control>
 		<control type="button" id="$PARAM[id]17">
 			<include>SettingsButton</include>
-			<onclick>SetProperty(Dialog.1.Label,$LOCALIZE[31348])</onclick>
-			<onclick>SetProperty(Dialog.1.BuiltIn,Skin.SetString(BackgroundOpacity,darkest))</onclick>
-			<onclick>SetProperty(Dialog.2.Label,$LOCALIZE[31349])</onclick>
-			<onclick>SetProperty(Dialog.2.BuiltIn,Skin.SetString(BackgroundOpacity,darker))</onclick>
-			<onclick>SetProperty(Dialog.3.Label,$LOCALIZE[31350])</onclick>
-			<onclick>SetProperty(Dialog.3.BuiltIn,Skin.SetString(BackgroundOpacity,dark))</onclick>
-			<onclick>SetProperty(Dialog.4.Label,$LOCALIZE[31351])</onclick>
-			<onclick>SetProperty(Dialog.4.BuiltIn,Skin.SetString(BackgroundOpacity,bright))</onclick>
-			<onclick>SetProperty(Dialog.5.Label,$LOCALIZE[31352])</onclick>
-			<onclick>SetProperty(Dialog.5.BuiltIn,Skin.SetString(BackgroundOpacity,brighter))</onclick>
-			<onclick>SetProperty(Dialog.6.Label,$LOCALIZE[31353])</onclick>
-			<onclick>SetProperty(Dialog.6.BuiltIn,Skin.SetString(BackgroundOpacity,brightest))</onclick>
-			<onclick>RunScript(script.embuary.helper,action=createselect,header=$LOCALIZE[31271])</onclick>
+			<onclick>SetProperty(Context.1.Label,$LOCALIZE[31348])</onclick>
+			<onclick>SetProperty(Context.1.BuiltIn,Skin.SetString(BackgroundOpacity,darkest))</onclick>
+			<onclick>SetProperty(Context.2.Label,$LOCALIZE[31349])</onclick>
+			<onclick>SetProperty(Context.2.BuiltIn,Skin.SetString(BackgroundOpacity,darker))</onclick>
+			<onclick>SetProperty(Context.3.Label,$LOCALIZE[31350])</onclick>
+			<onclick>SetProperty(Context.3.BuiltIn,Skin.SetString(BackgroundOpacity,dark))</onclick>
+			<onclick>SetProperty(Context.4.Label,$LOCALIZE[31351])</onclick>
+			<onclick>SetProperty(Context.4.BuiltIn,Skin.SetString(BackgroundOpacity,bright))</onclick>
+			<onclick>SetProperty(Context.5.Label,$LOCALIZE[31352])</onclick>
+			<onclick>SetProperty(Context.5.BuiltIn,Skin.SetString(BackgroundOpacity,brighter))</onclick>
+			<onclick>SetProperty(Context.6.Label,$LOCALIZE[31353])</onclick>
+			<onclick>SetProperty(Context.6.BuiltIn,Skin.SetString(BackgroundOpacity,brightest))</onclick>
+			<onclick>RunScript(script.embuary.helper,action=createcontext)</onclick>
 			<label>$LOCALIZE[31271]</label>
 			<label2>[COLOR $VAR[AccentColor]]$VAR[BackgroundOpacity][/COLOR]</label2>
 			<enable>!Skin.HasSetting(HideBackground) | !Skin.HasSetting(HideBackgroundPlayback) | [Skin.HasSetting(ShowStaticBackgroundImage) + !String.IsEmpty(Skin.String(StaticBackgroundImage))] | [Skin.HasSetting(ShowRandomBackgroundImage) + !String.IsEmpty(Skin.String(RandomBackgroundImage))]</enable>
@@ -538,27 +538,27 @@
 		</control>
 		<control type="button" id="$PARAM[id]19">
 			<include>SettingsButton</include>
-			<onclick>SetProperty(Dialog.1.Label,1 &#x00D8;)</onclick>
-			<onclick>SetProperty(Dialog.1.BuiltIn,Skin.SetString(BlurRadius,1)||RunScript(script.embuary.helper,action=restartservice))</onclick>
-			<onclick>SetProperty(Dialog.2.Label,2 &#x00D8; ($LOCALIZE[571]))</onclick>
-			<onclick>SetProperty(Dialog.2.BuiltIn,Skin.SetString(BlurRadius,2)||RunScript(script.embuary.helper,action=restartservice))</onclick>
-			<onclick>SetProperty(Dialog.3.Label,3 &#x00D8;)</onclick>
-			<onclick>SetProperty(Dialog.3.BuiltIn,Skin.SetString(BlurRadius,3)||RunScript(script.embuary.helper,action=restartservice))</onclick>
-			<onclick>SetProperty(Dialog.4.Label,4 &#x00D8;)</onclick>
-			<onclick>SetProperty(Dialog.4.BuiltIn,Skin.SetString(BlurRadius,4)||RunScript(script.embuary.helper,action=restartservice))</onclick>
-			<onclick>SetProperty(Dialog.5.Label,5 &#x00D8;)</onclick>
-			<onclick>SetProperty(Dialog.5.BuiltIn,Skin.SetString(BlurRadius,5)||RunScript(script.embuary.helper,action=restartservice))</onclick>
-			<onclick>SetProperty(Dialog.6.Label,6 &#x00D8;)</onclick>
-			<onclick>SetProperty(Dialog.6.BuiltIn,Skin.SetString(BlurRadius,6)||RunScript(script.embuary.helper,action=restartservice))</onclick>
-			<onclick>SetProperty(Dialog.7.Label,7 &#x00D8;)</onclick>
-			<onclick>SetProperty(Dialog.7.BuiltIn,Skin.SetString(BlurRadius,7)||RunScript(script.embuary.helper,action=restartservice))</onclick>
-			<onclick>SetProperty(Dialog.8.Label,8 &#x00D8;)</onclick>
-			<onclick>SetProperty(Dialog.8.BuiltIn,Skin.SetString(BlurRadius,8)||RunScript(script.embuary.helper,action=restartservice))</onclick>
-			<onclick>SetProperty(Dialog.9.Label,9 &#x00D8;)</onclick>
-			<onclick>SetProperty(Dialog.9.BuiltIn,Skin.SetString(BlurRadius,9)||RunScript(script.embuary.helper,action=restartservice))</onclick>
-			<onclick>SetProperty(Dialog.10.Label,10 &#x00D8;)</onclick>
-			<onclick>SetProperty(Dialog.10.BuiltIn,Skin.SetString(BlurRadius,10)||RunScript(script.embuary.helper,action=restartservice))</onclick>
-			<onclick>RunScript(script.embuary.helper,action=createselect,header=$LOCALIZE[31368])</onclick>
+			<onclick>SetProperty(Context.1.Label,1 &#x00D8;)</onclick>
+			<onclick>SetProperty(Context.1.BuiltIn,Skin.SetString(BlurRadius,1)||RunScript(script.embuary.helper,action=restartservice))</onclick>
+			<onclick>SetProperty(Context.2.Label,2 &#x00D8; ($LOCALIZE[571]))</onclick>
+			<onclick>SetProperty(Context.2.BuiltIn,Skin.SetString(BlurRadius,2)||RunScript(script.embuary.helper,action=restartservice))</onclick>
+			<onclick>SetProperty(Context.3.Label,3 &#x00D8;)</onclick>
+			<onclick>SetProperty(Context.3.BuiltIn,Skin.SetString(BlurRadius,3)||RunScript(script.embuary.helper,action=restartservice))</onclick>
+			<onclick>SetProperty(Context.4.Label,4 &#x00D8;)</onclick>
+			<onclick>SetProperty(Context.4.BuiltIn,Skin.SetString(BlurRadius,4)||RunScript(script.embuary.helper,action=restartservice))</onclick>
+			<onclick>SetProperty(Context.5.Label,5 &#x00D8;)</onclick>
+			<onclick>SetProperty(Context.5.BuiltIn,Skin.SetString(BlurRadius,5)||RunScript(script.embuary.helper,action=restartservice))</onclick>
+			<onclick>SetProperty(Context.6.Label,6 &#x00D8;)</onclick>
+			<onclick>SetProperty(Context.6.BuiltIn,Skin.SetString(BlurRadius,6)||RunScript(script.embuary.helper,action=restartservice))</onclick>
+			<onclick>SetProperty(Context.7.Label,7 &#x00D8;)</onclick>
+			<onclick>SetProperty(Context.7.BuiltIn,Skin.SetString(BlurRadius,7)||RunScript(script.embuary.helper,action=restartservice))</onclick>
+			<onclick>SetProperty(Context.8.Label,8 &#x00D8;)</onclick>
+			<onclick>SetProperty(Context.8.BuiltIn,Skin.SetString(BlurRadius,8)||RunScript(script.embuary.helper,action=restartservice))</onclick>
+			<onclick>SetProperty(Context.9.Label,9 &#x00D8;)</onclick>
+			<onclick>SetProperty(Context.9.BuiltIn,Skin.SetString(BlurRadius,9)||RunScript(script.embuary.helper,action=restartservice))</onclick>
+			<onclick>SetProperty(Context.10.Label,10 &#x00D8;)</onclick>
+			<onclick>SetProperty(Context.10.BuiltIn,Skin.SetString(BlurRadius,10)||RunScript(script.embuary.helper,action=restartservice))</onclick>
+			<onclick>RunScript(script.embuary.helper,action=createcontext)</onclick>
 			<enable>Skin.HasSetting(BlurEnabled)</enable>
 			<label>$LOCALIZE[31368]</label>
 			<label2>[COLOR $VAR[AccentColor]]$VAR[BackgroundBlurRadius][/COLOR]</label2>
@@ -627,15 +627,15 @@
 		</control>
 		<control type="button" id="$PARAM[id]52">
 			<include>SettingsButton</include>
-			<onclick>SetProperty(Dialog.1.Label,$LOCALIZE[571])</onclick>
-			<onclick>SetProperty(Dialog.1.BuiltIn,Skin.Reset(StartUpWindow))</onclick>
-			<onclick>SetProperty(Dialog.2.Label,$LOCALIZE[31173])</onclick>
-			<onclick>SetProperty(Dialog.2.BuiltIn,Skin.SetString(StartUpWindow,1120))</onclick>
-			<onclick>SetProperty(Dialog.3.Label,$LOCALIZE[31172])</onclick>
-			<onclick>SetProperty(Dialog.3.BuiltIn,Skin.SetString(StartUpWindow,1121))</onclick>
-			<onclick>SetProperty(Dialog.4.Label,$LOCALIZE[31174])</onclick>
-			<onclick>SetProperty(Dialog.4.BuiltIn,Skin.SetString(StartUpWindow,1122))</onclick>
-			<onclick>RunScript(script.embuary.helper,action=createselect,header=$LOCALIZE[512])</onclick>
+			<onclick>SetProperty(Context.1.Label,$LOCALIZE[571])</onclick>
+			<onclick>SetProperty(Context.1.BuiltIn,Skin.Reset(StartUpWindow))</onclick>
+			<onclick>SetProperty(Context.2.Label,$LOCALIZE[31173])</onclick>
+			<onclick>SetProperty(Context.2.BuiltIn,Skin.SetString(StartUpWindow,1120))</onclick>
+			<onclick>SetProperty(Context.3.Label,$LOCALIZE[31172])</onclick>
+			<onclick>SetProperty(Context.3.BuiltIn,Skin.SetString(StartUpWindow,1121))</onclick>
+			<onclick>SetProperty(Context.4.Label,$LOCALIZE[31174])</onclick>
+			<onclick>SetProperty(Context.4.BuiltIn,Skin.SetString(StartUpWindow,1122))</onclick>
+			<onclick>RunScript(script.embuary.helper,action=createcontext)</onclick>
 			<label>$LOCALIZE[512]</label>
 			<label2>[COLOR $VAR[AccentColor]]ID: $VAR[StartUpWindow][/COLOR]</label2>
 		</control>
@@ -650,11 +650,11 @@
 		</include>
 		<control type="button" id="$PARAM[id]02">
 			<include>SettingsButton</include>
-			<onclick condition="!String.IsEmpty(Skin.String(IntroPath))">SetProperty(Dialog.1.Label,$LOCALIZE[192])</onclick>
-			<onclick condition="!String.IsEmpty(Skin.String(IntroPath))">SetProperty(Dialog.1.BuiltIn,Skin.Reset(IntroPath))</onclick>
-			<onclick condition="!String.IsEmpty(Skin.String(IntroPath))">SetProperty(Dialog.2.Label,$LOCALIZE[748])</onclick>
-			<onclick condition="!String.IsEmpty(Skin.String(IntroPath))">SetProperty(Dialog.2.BuiltIn,Skin.SetPath(IntroPath))</onclick>
-			<onclick condition="!String.IsEmpty(Skin.String(IntroPath))">RunScript(script.embuary.helper,action=createselect)</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(IntroPath))">SetProperty(Context.1.Label,$LOCALIZE[192])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(IntroPath))">SetProperty(Context.1.BuiltIn,Skin.Reset(IntroPath))</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(IntroPath))">SetProperty(Context.2.Label,$LOCALIZE[748])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(IntroPath))">SetProperty(Context.2.BuiltIn,Skin.SetPath(IntroPath))</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(IntroPath))">RunScript(script.embuary.helper,action=createcontext)</onclick>
 			<onclick condition="String.IsEmpty(Skin.String(IntroPath))">Skin.SetPath(IntroPath)</onclick>
 			<label>$LOCALIZE[31324]</label>
 			<label2>[COLOR $VAR[AccentColor]]$INFO[Skin.String(IntroPath)][/COLOR]</label2>
@@ -678,13 +678,13 @@
 			<include>SettingsButton</include>
 			<label>$LOCALIZE[31358]</label>
 			<label2>[COLOR $VAR[AccentColor]]$VAR[CinemaModeForLabel][/COLOR]</label2>
-			<onclick condition="!String.IsEmpty(Skin.String(IntroPath))">SetProperty(Dialog.1.Label,$LOCALIZE[342] / $LOCALIZE[20360])</onclick>
-			<onclick condition="!String.IsEmpty(Skin.String(IntroPath))">SetProperty(Dialog.1.BuiltIn,Skin.Reset(CinemaModeFor))</onclick>
-			<onclick condition="!String.IsEmpty(Skin.String(IntroPath))">SetProperty(Dialog.2.Label,$LOCALIZE[342])</onclick>
-			<onclick condition="!String.IsEmpty(Skin.String(IntroPath))">SetProperty(Dialog.2.BuiltIn,Skin.SetString(CinemaModeFor,movies))</onclick>
-			<onclick condition="!String.IsEmpty(Skin.String(IntroPath))">SetProperty(Dialog.3.Label,$LOCALIZE[20360])</onclick>
-			<onclick condition="!String.IsEmpty(Skin.String(IntroPath))">SetProperty(Dialog.3.BuiltIn,Skin.SetString(CinemaModeFor,episodes))</onclick>
-			<onclick condition="!String.IsEmpty(Skin.String(IntroPath))">RunScript(script.embuary.helper,action=createselect)</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(IntroPath))">SetProperty(Context.1.Label,$LOCALIZE[342] / $LOCALIZE[20360])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(IntroPath))">SetProperty(Context.1.BuiltIn,Skin.Reset(CinemaModeFor))</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(IntroPath))">SetProperty(Context.2.Label,$LOCALIZE[342])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(IntroPath))">SetProperty(Context.2.BuiltIn,Skin.SetString(CinemaModeFor,movies))</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(IntroPath))">SetProperty(Context.3.Label,$LOCALIZE[20360])</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(IntroPath))">SetProperty(Context.3.BuiltIn,Skin.SetString(CinemaModeFor,episodes))</onclick>
+			<onclick condition="!String.IsEmpty(Skin.String(IntroPath))">RunScript(script.embuary.helper,action=createcontext)</onclick>
 			<enable>$EXP[CinemaMode] + Skin.HasSetting(AlwaysCinemaMode) + [Library.HasContent(movies) | Library.HasContent(tvshows)]</enable>
 		</control>
 		<!-- playback -->
