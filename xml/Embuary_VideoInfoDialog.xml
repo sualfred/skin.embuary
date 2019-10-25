@@ -79,6 +79,12 @@
 									<property name="icon">&#xf9a9;</property>
 									<onclick>RunScript(script.embuary.helper,action=textviewer,header='$ESCVAR[TinyInfoDialogHeadline]',message='$ESCVAR[TinyInfoDialogPlot]')</onclick>
 								</item>
+								<item>
+									<visible>System.HasAddon(script.embuary.info) + VideoPlayer.Content(movies)</visible>
+									<label>TMDb</label>
+									<property name="icon">&#xF64E;</property>
+									<onclick>RunScript(script.embuary.info,call=movie,query='$ESCINFO[VideoPlayer.Title]',year=$INFO[VideoPlayer.Year])</onclick>
+								</item>
 							</content>
 						</control>
 						<!-- genre -->
@@ -170,6 +176,12 @@
 									<label>$LOCALIZE[207]</label>
 									<property name="icon">&#xf9a9;</property>
 									<onclick>RunScript(script.embuary.helper,action=textviewer,header='$ESCVAR[TinyInfoDialogHeadline]',message='$ESCVAR[TinyInfoDialogPlot]')</onclick>
+								</item>
+								<item>
+									<visible>System.HasAddon(script.embuary.info) + !String.IsEmpty(VideoPlayer.TVShowTitle)</visible>
+									<label>TMDb</label>
+									<property name="icon">&#xF64E;</property>
+									<onclick>RunScript(script.embuary.info,call=tv,query='$ESCINFO[VideoPlayer.TVShowTitle]')</onclick>
 								</item>
 							</content>
 						</control>
