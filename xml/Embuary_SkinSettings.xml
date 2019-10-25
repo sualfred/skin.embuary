@@ -844,12 +844,19 @@
 		</control>
 		<control type="radiobutton" id="$PARAM[id]09">
 			<include>SettingsButton</include>
+			<onclick>Skin.ToggleSetting(HideKodiReset)</onclick>
+			<selected>!Skin.HasSetting(HideKodiReset)</selected>
+			<label>$LOCALIZE[31412]</label>
+			<visible>System.CanReboot + [System.HasAddon(service.libreelec.settings) | System.HasAddon(service.coreelec.settings)]</visible>
+		</control>
+		<control type="radiobutton" id="$PARAM[id]10">
+			<include>SettingsButton</include>
 			<onclick>Skin.ToggleSetting(HidePowerRebootNAND)</onclick>
 			<selected>!Skin.HasSetting(HidePowerRebootNAND)</selected>
 			<label>$LOCALIZE[13013] (NAND)</label>
 			<visible>System.CanReboot + [System.HasAddon(service.libreelec.settings) | System.HasAddon(service.coreelec.settings)]</visible>
 		</control>
-		<control type="radiobutton" id="$PARAM[id]10">
+		<control type="radiobutton" id="$PARAM[id]11">
 			<include>SettingsButton</include>
 			<onclick>Skin.ToggleSetting(HidePowerIdleShutdown)</onclick>
 			<selected>!Skin.HasSetting(HidePowerIdleShutdown)</selected>

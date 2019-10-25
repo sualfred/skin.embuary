@@ -217,10 +217,18 @@
 						<property name="color">turquoise</property>
 					</item>
 					<item>
+						<label>$LOCALIZE[31412]</label>
+						<label2>&#xf708;</label2>
+						<onclick>RestartApp()</onclick>
+						<visible>System.CanReboot + [!Skin.HasSetting(HidePowerReboot) | Window.IsVisible(loginscreen)]</visible>
+						<vibible>[System.HasAddon(service.libreelec.settings) | System.HasAddon(service.coreelec.settings)]</vibible>
+						<property name="color">turquoise</property>
+					</item>
+					<item>
 						<label>$LOCALIZE[13013] (NAND)</label>
 						<label2>&#xf708;</label2>
 						<onclick>Dialog.Close(all,true)</onclick>
-						<onclick>System.ExecWait(&quot;/usr/sbin/rebootfromnand&quot;)</onclick>
+						<onclick>System.ExecWait("/usr/sbin/rebootfromnand")</onclick>
 						<visible>System.CanReboot + [!Skin.HasSetting(HidePowerRebootNAND) | Window.IsVisible(loginscreen)] + [System.HasAddon(service.libreelec.settings) | System.HasAddon(service.coreelec.settings)]</visible>
 						<property name="color">turquoise</property>
 					</item>
