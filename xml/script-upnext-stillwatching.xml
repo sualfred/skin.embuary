@@ -73,7 +73,7 @@
 						<label>&#xf4ce;</label>
 						<font>Material26</font>
 						<textcolor>red</textcolor>
-						<visible>!String.IsEmpty(Window.Property(rating))</visible>
+						<visible>!String.IsEmpty(Window.Property(rating)) + !String.StartsWith(Window(home).Property(rating),0)</visible>
 					</control>
 					<control type="label">
 						<width>auto</width>
@@ -82,7 +82,7 @@
 						<label>$INFO[Window.Property(rating),,   ]</label>
 						<font>Reg24</font>
 						<textcolor>white</textcolor>
-						<visible>!String.IsEmpty(Window.Property(rating))</visible>
+						<visible>!String.IsEmpty(Window.Property(rating)) + !String.StartsWith(Window(home).Property(rating),0)</visible>
 					</control>
 					<control type="label">
 						<width>auto</width>
