@@ -1018,7 +1018,7 @@
 		<value condition="!String.IsEmpty(ListItem.Property(Album_Description))">$INFO[ListItem.Property(Album_Description)]</value>
 		<value condition="!String.IsEmpty(ListItem.Property(Artist_Description))">$INFO[ListItem.Property(Artist_Description)]</value>
 		<value condition="!String.IsEmpty(ListItem.AddonDescription)">$INFO[ListItem.AddonDescription]</value>
-		<value condition="[String.StartsWith(ListItem.Path,pvr://) | String.IsEqual(ListItem.DBType,episode)] + !ListItem.IsFolder ">$VAR[ListItemEpisodeName,[B],[/B][CR][CR]]$INFO[ListItem.Plot]</value>
+		<value condition="String.StartsWith(ListItem.Path,pvr://) + !ListItem.IsFolder ">$VAR[ListItemEpisodeName,[B],[/B][CR][CR]]$INFO[ListItem.Plot]</value>
 		<value condition="!String.IsEqual(ListItem.Label,ListItem.Plot)">$INFO[ListItem.Tagline,[B],[/B][CR][CR]]$INFO[ListItem.Plot]</value>
 	</variable>
 	<variable name="SetViewPlot">
