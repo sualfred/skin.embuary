@@ -1275,12 +1275,12 @@
 	<variable name="PlayerSeekStepIcon">
 		<value condition="[[!String.IsEmpty(Player.SeekOffset) + !String.Contains(Player.SeekOffset,-)] | [!String.IsEmpty(Player.SeekStepSize) + !String.Contains(Player.SeekStepSize,-)]] + Player.Seeking">&#xf4ac;</value>
 		<value condition="[[!String.IsEmpty(Player.SeekOffset) + String.Contains(Player.SeekOffset,-)] | [!String.IsEmpty(Player.SeekStepSize) + String.Contains(Player.SeekStepSize,-)]] + Player.Seeking">&#xf4ab;</value>
-		<value condition="!String.IsEmpty(Player.Chapter) + !String.IsEqual(Player.Chapter,00)">&#xf0c0;</value>
+		<value condition="!String.IsEmpty(Player.Chapter) + !String.IsEqual(Player.Chapter,00) + !String.IsEqual(Player.Chapter,-1)">&#xf0c0;</value>
 	</variable>
 	<variable name="TopPlayerSeekStepLabel">
 		<value condition="!String.IsEmpty(Player.SeekStepSize) + Player.Seeking">$INFO[Player.SeekStepSize]</value>
 		<value condition="!String.IsEmpty(Player.SeekOffset) + Player.Seeking">$INFO[Player.SeekOffset]</value>
-		<value condition="!String.IsEmpty(Player.Chapter) + !String.IsEqual(Player.Chapter,00)">$INFO[Player.Chapter,$LOCALIZE[21396] ]</value>
+		<value condition="!String.IsEmpty(Player.Chapter) + !String.IsEqual(Player.Chapter,00) + !String.IsEqual(Player.Chapter,-1)">$INFO[Player.Chapter,$LOCALIZE[21396] ]</value>
 	</variable>
 	<variable name="PlayerSeekStepLabel">
 		<value condition="!String.IsEmpty(PVR.EpgEventSeekTime) + VideoPlayer.HasEpg">$INFO[PVR.EpgEventSeekTime]</value>
