@@ -6,7 +6,6 @@
 	<onload condition="!String.IsEqual(Control.GetLabel(1002),$LOCALIZE[12021]) + !Control.IsVisible(1999) + Control.IsVisible(1998)">SetFocus(1998)</onload>
 	<onload condition="!String.IsEqual(Control.GetLabel(1002),$LOCALIZE[12021]) + !Control.IsVisible(1999) + !Control.IsVisible(1998) + Control.IsVisible(1997)">SetFocus(1997)</onload>
 	<onload condition="!String.IsEqual(Control.GetLabel(1002),$LOCALIZE[12021]) + !Control.IsVisible(1999) + !Control.IsVisible(1998) + !Control.IsVisible(1997) + Control.IsVisible(1996)">SetFocus(1996)</onload>
-	<onload condition="!String.IsEqual(Control.GetLabel(1002),$LOCALIZE[12021]) + !Control.IsVisible(1999) + !Control.IsVisible(1998) + !Control.IsVisible(1997) + !Control.IsVisible(1996) + Control.IsVisible(1995)">SetFocus(1995)</onload>
 	<controls>
 		<include content="DiffuseMask"/>
 		<control type="group">
@@ -83,15 +82,6 @@
 					<visible>[!String.IsEmpty(Window(home).Property(ListItemImdbnumber)) | !String.IsEmpty(Window(home).Property(ListItemTitle))] + [String.IsEqual(Window(home).Property(ListItemDBType),tvshow) | String.IsEqual(Window(home).Property(ListItemDBType),season) | String.IsEqual(Window(home).Property(ListItemDBType),episode) | String.IsEqual(Window(home).Property(ListItemDBType),movie)]</visible>
 					<visible>!String.IsEqual(Control.GetLabel(1001),$LOCALIZE[16105])</visible>
 					<visible>String.IsEqual(Control.GetLabel(1001),$LOCALIZE[14116]) | String.IsEqual(Control.GetLabel(1002),$LOCALIZE[14116]) | String.IsEqual(Control.GetLabel(1003),$LOCALIZE[14116])</visible>
-				</control>
-				<control type="button" id="1995">
-					<include content="ContextButton"/>
-					<label>$LOCALIZE[31410]</label>
-					<onclick>RunScript(script.embuary.helper,action=togglefav,dbid=$INFO[Window(home).Property(ListItemDBID)],type=$INFO[Window(home).Property(ListItemDBType)])</onclick>
-					<visible>!String.IsEqual(Control.GetLabel(1001),$LOCALIZE[16105])</visible>
-					<visible>[String.IsEqual(Window(home).Property(ListItemDBType),movie) | String.IsEqual(Window(home).Property(ListItemDBType),tvshow)] + !String.IsEmpty(Window(home).Property(ListItemDBID))</visible>
-					<visible>String.IsEqual(Control.GetLabel(1001),$LOCALIZE[14116]) | String.IsEqual(Control.GetLabel(1002),$LOCALIZE[14116]) | String.IsEqual(Control.GetLabel(1003),$LOCALIZE[14116])</visible>
-					<visible>!System.HasAddon(plugin.video.emby)</visible>
 				</control>
 				<!-- kodi context -->
 				<control type="group" id="4">
