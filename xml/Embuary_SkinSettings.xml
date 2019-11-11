@@ -963,6 +963,14 @@
 			<selected>System.HasAddon(plugin.video.youtube)</selected>
 			<label>YouTube</label>
 		</control>
+		<control type="radiobutton" id="$PARAM[id]09">
+			<include>SettingsButton</include>
+			<onclick condition="System.HasAddon(script.metadata.editor)">RunScript(script.embuary.helper,action=toggleaddons,addonid=script.metadata.editor,enable=false)</onclick>
+			<onclick condition="!System.HasAddon(script.metadata.editor)">RunScript(script.embuary.helper,action=toggleaddons,addonid=script.metadata.editor,enable=true)</onclick>
+			<onclick condition="!System.HasAddon(script.metadata.editor)">InstallAddon(script.metadata.editor)</onclick>
+			<selected>System.HasAddon(script.metadata.editor)</selected>
+			<label>Metadata Editor</label>
+		</control>
 		<include content="SkinSettingsHeadlineLabel">
 			<param name="id" value="$PARAM[id]20"/>
 			<param name="label" value="$LOCALIZE[31001]"/>
