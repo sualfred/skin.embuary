@@ -78,7 +78,7 @@
 					<include content="ContextButton"/>
 					<label>$LOCALIZE[31378]</label>
 					<onclick condition="String.IsEqual(Window(home).Property(ListItemDBType),season) | String.IsEqual(Window(home).Property(ListItemDBType),episode)">RunScript(script.embuary.info,call=tv,query=$INFO[Window(home).Property(ListItemTitle)])</onclick>
-					<onclick condition="String.IsEqual(Window(home).Property(ListItemDBType),tvshow)">RunScript(script.embuary.info,call=tv,query=$INFO[Window(home).Property(ListItemTitle)],year=$INFO[Window(home).Property(ListItemYear)],external_id=$INFO[Window(home).Property(ListItemImdbnumber)])</onclick>
+					<onclick condition="String.IsEqual(Window(home).Property(ListItemDBType),tvshow)">RunScript(script.embuary.info,call=tv,dbid=$INFO[Window(home).Property(ListItemDBID)])</onclick>
 					<onclick condition="String.IsEqual(Window(home).Property(ListItemDBType),movie)">RunScript(script.embuary.info,call=movie,query=$INFO[Window(home).Property(ListItemTitle)],year=$INFO[Window(home).Property(ListItemYear)],external_id=$INFO[Window(home).Property(ListItemImdbnumber)])</onclick>
 					<visible>[!String.IsEmpty(Window(home).Property(ListItemImdbnumber)) | !String.IsEmpty(Window(home).Property(ListItemTitle))] + [String.IsEqual(Window(home).Property(ListItemDBType),tvshow) | String.IsEqual(Window(home).Property(ListItemDBType),season) | String.IsEqual(Window(home).Property(ListItemDBType),episode) | String.IsEqual(Window(home).Property(ListItemDBType),movie)]</visible>
 					<visible>!String.IsEqual(Control.GetLabel(1001),$LOCALIZE[16105])</visible>

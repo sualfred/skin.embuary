@@ -326,8 +326,7 @@
 								<visible>System.HasAddon(script.embuary.info)</visible>
 								<label>TMDb</label>
 								<property name="icon">&#xF64E;</property>
-								<onclick condition="String.IsEqual(ListItem.DBType,tvshow) + !String.IsEmpty(ListItem.IMDBNumber) + !String.StartsWith(ListItem.IMDBNumber,xx)">RunScript(script.embuary.info,call=tv,external_id=$INFO[ListItem.IMDBNumber])</onclick>
-								<onclick condition="String.IsEqual(ListItem.DBType,tvshow) + [String.IsEmpty(ListItem.IMDBNumber) | String.StartsWith(ListItem.IMDBNumber,xx)]">runscript(script.embuary.info,call=tv,query='$ESCINFO[ListItem.TVShowTitle]',year=$INFO[ListItem.Year])</onclick>
+								<onclick condition="String.IsEqual(ListItem.DBType,tvshow)">RunScript(script.embuary.info,call=tv,dbid=$INFO[ListItem.DBID])</onclick>
 							</item>
 							<item>
 								<visible>$EXP[HasEmbyContext] | $EXP[HasEmbyConContext] | $EXP[HasLibraryEditButton]</visible>
