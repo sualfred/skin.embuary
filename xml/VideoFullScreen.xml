@@ -120,7 +120,41 @@
 						<align>right</align>
 						<orientation>horizontal</orientation>
 						<itemgap>25</itemgap>
-						<include>PlayerExtLabels</include>
+						<control type="label" id="99">
+							<height>50</height>
+							<width>auto</width>
+							<aligny>center</aligny>
+							<font>Material34</font>
+							<textcolor>white</textcolor>
+							<label>$VAR[PlaylistRepeatLabel]</label>
+							<visible>Playlist.IsRepeat | Playlist.IsRepeatOne</visible>
+						</control>
+						<control type="label" id="99">
+							<height>50</height>
+							<width>auto</width>
+							<aligny>center</aligny>
+							<font>Material34</font>
+							<textcolor>white</textcolor>
+							<label>&#xf49d;</label>
+							<visible>Playlist.IsRandom</visible>
+						</control>
+						<control type="label" id="99">
+							<width>auto</width>
+							<height>50</height>
+							<aligny>center</aligny>
+							<font>Reg24</font>
+							<textcolor>white</textcolor>
+							<label>$VAR[PlayerFinishTime,$LOCALIZE[31037] ]</label>
+						</control>
+						<control type="label" id="99">
+							<width>auto</width>
+							<height>50</height>
+							<aligny>center</aligny>
+							<font>Reg24</font>
+							<textcolor>white</textcolor>
+							<label>$LOCALIZE[31038]$INFO[PVR.TimeshiftOffset, (-,)]</label>
+							<visible>Pvr.IsTimeShift</visible>
+						</control>
 					</control>
 					<!-- Cache bar -->
 					<control type="progress" id="99">

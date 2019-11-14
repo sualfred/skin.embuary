@@ -61,6 +61,27 @@
 				</control>
 				<control type="button" id="609">
 					<include content="PlayerButtons">
+						<param name="type" value="shuffle"/>
+						<param name="colordiffuse" value="$VAR[PlayerButtonRandomColor]"/>
+					</include>
+					<onclick>PlayerControl(random)</onclick>
+					<visible>Integer.IsGreater(Playlist.Length(music),1)</visible>
+				</control>
+				<control type="togglebutton" id="610">
+					<include content="PlayerButtons">
+						<param name="type" value="repeat"/>
+						<param name="alt" value="repeat1"/>
+						<param name="colordiffuse" value="$VAR[PlayerButtonRepeatColor]"/>
+					</include>
+					<onclick>PlayerControl(Repeat)</onclick>
+					<selected>Playlist.IsRepeatOne</selected>
+				</control>
+				<control type="label" id="611">
+					<description>Spacer</description>
+					<width>10</width>
+				</control>
+				<control type="button" id="612">
+					<include content="PlayerButtons">
 						<param name="type" value="playlist"/>
 					</include>
 					<onclick>Dialog.Close(all,true)</onclick>
@@ -68,7 +89,7 @@
 					<onclick condition="!Integer.IsGreater(Playlist.Length(video),1) + Integer.IsGreater(Playlist.Length(music),1)">ActivateWindow(musicplaylist)</onclick>
 					<visible>Integer.IsGreater(Playlist.Length(music),1) | Integer.IsGreater(Playlist.Lenght(video),1)</visible>
 				</control>
-				<control type="button" id="6080">
+				<control type="button" id="613">
 					<include content="PlayerButtons">
 						<param name="type" value="config"/>
 					</include>
@@ -98,9 +119,9 @@
 				<height>auto</height>
 				<align>center</align>
 				<itemgap>0</itemgap>
-				<onright>612</onright>
-				<onleft>612</onleft>
-				<onback>612</onback>
+				<onright>613</onright>
+				<onleft>613</onleft>
+				<onback>613</onback>
 				<usecontrolcoords>true</usecontrolcoords>
 				<control type="image">
 					<width>100%</width>
@@ -159,20 +180,7 @@
 					<selected>!Skin.HasSetting(HideDiscArt)</selected>
 					<onclick>Skin.ToggleSetting(HideDiscArt)</onclick>
 				</control>
-				<control type="radiobutton" id="708">
-					<include content="ContextButton"/>
-					<label>$LOCALIZE[590]</label>
-					<selected>Playlist.IsRandom</selected>
-					<onclick>PlayerControl(random)</onclick>
-					<visible>Integer.IsGreater(Playlist.Length(music),1)</visible>
-				</control>
-				<control type="button" id="709">
-					<include content="ContextButton"/>
-					<label>$LOCALIZE[486]</label>
-					<label2>$VAR[PlaylistRepeatButtonLabel]</label2>
-					<onclick>PlayerControl(Repeat)</onclick>
-				</control>
-				<control type="button" id="710">
+				<control type="button" id="708">
 					<include content="ContextButton"/>
 					<label>$LOCALIZE[31041]</label>
 					<onclick>ActivateWindow(playerprocessinfo)</onclick>
