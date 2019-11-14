@@ -4,6 +4,7 @@
 	<defaultcontrol always="true">300</defaultcontrol>
 	<zorder>999</zorder>
 	<onunload>ClearProperty(DisableSuggestions,home)</onunload>
+	<onunload>ClearProperty(ShowPreviewText,home)</onunload>
 	<onunload condition="!String.IsEmpty(Window(home).Property(ShowLabelNotification))">AlarmClock(delay,RunScript(script.embuary.helper,action=dialogok,message=$LOCALIZE[31332]),00:01,silent)</onunload>
 	<onunload condition="!String.IsEmpty(Window(home).Property(ShowLabelNotification))">ClearProperty(ShowLabelNotification,home)</onunload>
 	<include>PropertyIncludes</include>
@@ -69,10 +70,10 @@
 				<font>Reg28</font>
 				<align>center</align>
 				<label>$LOCALIZE[31003]</label>
-				<visible>Integer.IsGreater(Container(9091).NumItems,0) + String.IsEmpty(Window(Home).Property(DisableSuggestions))</visible>
+				<visible>Integer.IsGreater(Container(9091).NumItems,0) + String.IsEmpty(Window(Home).Property(DisableSuggestions)) + String.IsEmpty(Window(Home).Property(ShowPreviewText))</visible>
 			</control>
 			<control type="list" id="9091">
-				<visible>String.IsEmpty(Window(Home).Property(DisableSuggestions))</visible>
+				<visible>String.IsEmpty(Window(Home).Property(DisableSuggestions)) + String.IsEmpty(Window(Home).Property(ShowPreviewText))</visible>
 				<top>240</top>
 				<width>1188</width>
 				<height>382</height>
@@ -113,6 +114,24 @@
 						<visible>!Control.HasFocus(9091)</visible>
 					</control>
 				</focusedlayout>
+			</control>
+			<!-- Auto Completion -->
+			<control type="label">
+				<top>190</top>
+				<width>auto</width>
+				<height>50</height>
+				<font>Reg28</font>
+				<align>center</align>
+				<label>$LOCALIZE[1000]</label>
+				<textcolor>$VAR[AccentColor]</textcolor>
+				<visible>!String.IsEmpty(Control.GetLabel(312).index(1)) + String.IsEmpty(Window(Home).Property(DisableSuggestions)) + !String.IsEmpty(Window(Home).Property(ShowPreviewText))</visible>
+			</control>
+			<control type="textbox">
+				<top>240</top>
+				<width>1188</width>
+				<height>350</height>
+				<label>$INFO[Control.GetLabel(312).index(1)]</label>
+				<visible>String.IsEmpty(Window(Home).Property(DisableSuggestions)) + !String.IsEmpty(Window(Home).Property(ShowPreviewText))</visible>
 			</control>
 			<!-- Keys -->
 			<control type="group">
@@ -907,6 +926,7 @@
 			<left>60</left>
 			<height>40</height>
 			<itemgap>0</itemgap>
+			<onup>50</onup>
 			<onright>304</onright>
 			<orientation>horizontal</orientation>
 			<control type="label">
@@ -921,7 +941,7 @@
 				<width>24</width>
 				<height>24</height>
 				<font>Material24</font>
-				<label></label>
+				<label>&#xf5ca;</label>
 				<textcolor>$VAR[AccentColor]</textcolor>
 				<aligny>center</aligny>
 				<visible>Control.HasFocus(309)</visible>
@@ -932,10 +952,67 @@
 				<align>left</align>
 				<width>auto</width>
 				<height>24</height>
-				<onup>5000</onup>
+				<onup>50</onup>
 				<aligny>center</aligny>
 				<textcolor>text_sublabel</textcolor>
 				<focusedcolor>$VAR[AccentColor]</focusedcolor>
+			</control>
+		</control>
+		<!-- Preview -->
+		<control id="50" type="button">
+			<include>HiddenObject</include>
+			<texturefocus/>
+			<texturenofocus/>
+			<onup>5000</onup>
+			<ondown>309</ondown>
+			<onright>304</onright>
+			<onclick condition="String.IsEmpty(Window(home).Property(ShowPreviewText))">SetProperty(ShowPreviewText,1,home)</onclick>
+			<onclick condition="!String.IsEmpty(Window(home).Property(ShowPreviewText))">ClearProperty(ShowPreviewText,home)</onclick>
+		</control>
+		<control type="grouplist">
+			<animation condition="Window.IsVisible(numericinput)" easing="inout" effect="fade" end="0" start="100" time="120" tween="sine">Conditional</animation>
+			<include>Dialog_PopupOpenClose</include>
+			<bottom>100</bottom>
+			<left>60</left>
+			<height>40</height>
+			<itemgap>0</itemgap>
+			<orientation>horizontal</orientation>
+			<control type="label">
+				<width>24</width>
+				<height>24</height>
+				<font>Material24</font>
+				<label>&#xF9A7;</label>
+				<textcolor>selected_button</textcolor>
+				<aligny>center</aligny>
+				<visible>!Control.HasFocus(50) + !String.IsEmpty(Window(home).Property(ShowPreviewText))</visible>
+			</control>
+			<control type="label">
+				<width>24</width>
+				<height>24</height>
+				<font>Material24</font>
+				<label>&#xF9A7;</label>
+				<textcolor>text_sublabel</textcolor>
+				<visible>!Control.HasFocus(50) + String.IsEmpty(Window(home).Property(ShowPreviewText))</visible>
+			</control>
+			<control type="label">
+				<width>24</width>
+				<height>24</height>
+				<font>Material24</font>
+				<label>&#xF9A7;</label>
+				<textcolor>$VAR[AccentColor]</textcolor>
+				<aligny>center</aligny>
+				<visible>Control.HasFocus(50)</visible>
+			</control>
+			<control type="button">
+				<texturefocus/>
+				<texturenofocus/>
+				<align>left</align>
+				<width>auto</width>
+				<height>24</height>
+				<aligny>center</aligny>
+				<disabledcolor>$VAR[PreviewButtonColor]</disabledcolor>
+				<label>$LOCALIZE[1000]</label>
+				<enable>false</enable>
 			</control>
 		</control>
 	</controls>
