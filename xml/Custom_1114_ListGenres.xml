@@ -1,37 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window id="1114">
-	<defaultcontrol always="true">10</defaultcontrol>
+	<defaultcontrol always="true">70</defaultcontrol>
+	<onload condition="String.IsEmpty(Window(home).Property(SkipFocusReset))">SetFocus(51,0)</onload>
+	<onunload condition="String.IsEmpty(Window(home).Property(SkipFocusReset))">SetFocus(51,0)</onunload>
 	<backgroundcolor>background</backgroundcolor>
 	<menucontrol>6666</menucontrol>
 	<include content="PropertyIncludes">
 		<param name="ShowHeader" value="true"/>
 	</include>
-	<!-- force visibility to all on entering to trigger a refresh -->
-	<onload>SetProperty(EmbuaryForceWidgetUpdate,1,home)</onload>
-	<onload>AlarmClock(EmbuaryForceWidgetUpdate,ClearProperty(EmbuaryForceWidgetUpdate,home),00:01,silent)</onload>
-	<!-- force focus -->
-	<onload condition="!String.IsEmpty(Window(home).Property(ForceFocusReset)) + Integer.IsGreater(Container(101).NumItems,1)">SetFocus(101)</onload>
-	<onload condition="!String.IsEmpty(Window(home).Property(ForceFocusReset)) + !Integer.IsGreater(Container(101).NumItems,1) + Integer.IsGreater(Container(102).NumItems,1)">SetFocus(102)</onload>
-	<onload condition="!String.IsEmpty(Window(home).Property(ForceFocusReset)) + !Integer.IsGreater(Container(102).NumItems,1) + !Integer.IsGreater(Container(102).NumItems,1) + Integer.IsGreater(Container(103).NumItems,0)">SetFocus(103)</onload>
 	<controls>
 		<!-- background -->
 		<include>Background</include>
 		<!-- Genres -->
-		<include content="Genre_View">
-			<param name="content" value="$INFO[Window(home).Property(ListGenres)]"/>
-		</include>
+		<control type="group" id="70">
+			<include content="Genre_View">
+				<param name="content" value="$INFO[Window(home).Property(ListGenres)]"/>
+			</include>
+		</control>
+		<!-- scrollbar -->
+		<include>Scrollbar</include>
 		<!-- header bar -->
 		<include content="HeaderBar">
-			<param name="id">10</param>
-		</include>
-		<!-- busy spinner -->
-		<include content="CustomBusySpinner">
-			<param name="diffuse" value="false"/>
-			<param name="visible" value="![!Container(101).IsUpdating + !Container(102).IsUpdating + !Container(103).IsUpdating + !Container(104).IsUpdating + !Container(105).IsUpdating + !Container(106).IsUpdating + !Container(107).IsUpdating + !Container(108).IsUpdating + !Container(109).IsUpdating + !Container(110).IsUpdating + !Container(111).IsUpdating + !Container(112).IsUpdating + !Container(113).IsUpdating + !Container(114).IsUpdating + !Container(115).IsUpdating + !Container(116).IsUpdating + !Container(117).IsUpdating + !Container(118).IsUpdating + !Container(119).IsUpdating + !Container(120).IsUpdating + !Container(121).IsUpdating + !Container(122).IsUpdating + !Container(123).IsUpdating + !Container(124).IsUpdating + !Container(125).IsUpdating + !Container(126).IsUpdating + !Container(127).IsUpdating + !Container(128).IsUpdating + !Container(129).IsUpdating + !Container(130).IsUpdating + !Container(131).IsUpdating + !Container(132).IsUpdating + !Container(133).IsUpdating + !Container(134).IsUpdating + !Container(135).IsUpdating + !Container(136).IsUpdating + !Container(137).IsUpdating + !Container(138).IsUpdating + !Container(139).IsUpdating + !Container(140).IsUpdating + !Container(141).IsUpdating + !Container(142).IsUpdating + !Container(143).IsUpdating + !Container(144).IsUpdating + !Container(145).IsUpdating + !Container(146).IsUpdating + !Container(147).IsUpdating + !Container(148).IsUpdating + !Container(149).IsUpdating + !Container(150).IsUpdating] | !String.IsEmpty(Window(home).Property(ForceFocusReset))"/>
+			<param name="id">70</param>
 		</include>
 		<!-- side panel -->
 		<include content="SidePanel">
-			<param name="onright">10</param>
+			<param name="onright">70</param>
 		</include>
 	</controls>
 </window>

@@ -482,8 +482,8 @@
 			<include>HeaderButton</include>
 			<label>$LOCALIZE[135]</label>
 			<include>ForceReloadAction</include>
-			<onclick condition="String.IsEqual(Container.FolderPath,library://video/movies/) | Container.Content(movies) | Container.Content(sets) | [Window.IsVisible(1126) + String.IsEqual(Window(home).Property(RecommendedType),movie)]">SetProperty(ListGenres,videodb://movies/genres,home)</onclick>
-			<onclick condition="String.IsEqual(Container.FolderPath,library://video/tvshows/) | Container.Content(tvshows) | Window.IsVisible(script-NextAired-TVGuide.xml) | [Window.IsVisible(1126) + String.IsEqual(Window(home).Property(RecommendedType),tvshow)]">SetProperty(ListGenres,videodb://tvshows/genres,home)</onclick>
+			<onclick condition="String.IsEqual(Container.FolderPath,library://video/movies/) | Container.Content(movies) | Container.Content(sets) | [Window.IsVisible(1126) + String.IsEqual(Window(home).Property(RecommendedType),movie)]">SetProperty(ListGenres,plugin://script.embuary.helper/?info=getgenre&amp;type=movie,home)</onclick>
+			<onclick condition="String.IsEqual(Container.FolderPath,library://video/tvshows/) | Container.Content(tvshows) | Window.IsVisible(script-NextAired-TVGuide.xml) | [Window.IsVisible(1126) + String.IsEqual(Window(home).Property(RecommendedType),tvshow)]">SetProperty(ListGenres,plugin://script.embuary.helper/?info=getgenre&amp;type=tvshow,home)</onclick>
 			<onclick>ActivateWindow(1114)</onclick>
 			<visible>[
 				String.StartsWith(Container.FolderPath,videodb://movies)

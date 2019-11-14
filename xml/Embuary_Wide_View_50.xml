@@ -8,7 +8,7 @@
 		<definition>
 			<control type="group">
 				<include>Visible_OpenClose</include>
-				<animation effect="slide" condition="Skin.HasSetting(HideWideLabels) + ![[Integer.IsGreaterOrEqual(Container(50).CurrentItem,12) + Container.HasParent] | Integer.IsGreaterOrEqual(Container(50).CurrentItem,13) | Container(50).HasPrevious] + Window.IsVisible(myvideonav.xml)" time="200" end="0,90">Conditional</animation>
+				<animation effect="slide" condition="Skin.HasSetting(HideWideLabels) + !$EXP[ForceLabels] + ![[Integer.IsGreaterOrEqual(Container(50).CurrentItem,12) + Container.HasParent] | Integer.IsGreaterOrEqual(Container(50).CurrentItem,13) | Container(50).HasPrevious] + Window.IsVisible(myvideonav.xml)" time="200" end="0,90">Conditional</animation>
 				<visible>Control.IsVisible(50)</visible>
 				<control id="50" type="panel">
 					<visible>$EXP[WideViewVisible]</visible>
@@ -29,7 +29,7 @@
 					<include>ScrollTime</include>
 					<oninfo condition="String.IsEqual(ListItem.DBType,set) + !String.IsEmpty(Container(2001).ListItem.Label)">RunScript(script.embuary.helper,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCVAR[ListViewPlot]')</oninfo>
 					<oninfo condition="String.IsEqual(ListItem.DBType,musicvideo) + !String.IsEmpty(ListItem.Plot)">RunScript(script.embuary.helper,action=textviewer,header='$ESCINFO[ListItem.Title]',message='$ESCVAR[ListViewPlot]')</oninfo>
-					<itemlayout condition="[!Skin.HasSetting(HideWideLabels) | !Window.IsVisible(myvideonav.xml)] + ![String.IsEqual(Skin.String(EPGar),4to3) + String.StartsWith(Container.Folderpath,pvr://)]" width="450" height="305">
+					<itemlayout condition="[!Skin.HasSetting(HideWideLabels) | !Window.IsVisible(myvideonav.xml) | $EXP[ForceLabels]] + ![String.IsEqual(Skin.String(EPGar),4to3) + String.StartsWith(Container.Folderpath,pvr://)]" width="450" height="305">
 						<control type="group">
 							<left>70</left>
 							<top>122</top>
@@ -42,7 +42,7 @@
 							</include>
 						</control>
 					</itemlayout>
-					<focusedlayout condition="[!Skin.HasSetting(HideWideLabels) | !Window.IsVisible(myvideonav.xml)] + ![String.IsEqual(Skin.String(EPGar),4to3) + String.StartsWith(Container.Folderpath,pvr://)]" width="450" height="305">
+					<focusedlayout condition="[!Skin.HasSetting(HideWideLabels) | !Window.IsVisible(myvideonav.xml) | $EXP[ForceLabels]] + ![String.IsEqual(Skin.String(EPGar),4to3) + String.StartsWith(Container.Folderpath,pvr://)]" width="450" height="305">
 						<include content="SetPropertyOnFocus">
 							<param name="id" value="50"/>
 						</include>
@@ -58,7 +58,7 @@
 							</include>
 						</control>
 					</focusedlayout>
-					<itemlayout condition="Skin.HasSetting(HideWideLabels) + Window.IsVisible(myvideonav.xml)" width="450" height="259">
+					<itemlayout condition="Skin.HasSetting(HideWideLabels) + Window.IsVisible(myvideonav.xml) + !$EXP[ForceLabels]" width="450" height="259">
 						<control type="group">
 							<left>70</left>
 							<top>32</top>
@@ -72,7 +72,7 @@
 							</include>
 						</control>
 					</itemlayout>
-					<focusedlayout condition="Skin.HasSetting(HideWideLabels) + Window.IsVisible(myvideonav.xml)" width="450" height="259">
+					<focusedlayout condition="Skin.HasSetting(HideWideLabels) + Window.IsVisible(myvideonav.xml) + !$EXP[ForceLabels]" width="450" height="259">
 						<include content="SetPropertyOnFocus">
 							<param name="id" value="50"/>
 						</include>
