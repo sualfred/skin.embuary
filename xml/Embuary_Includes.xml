@@ -151,6 +151,7 @@
 				<include>VisAnimation</include>
 				<visible>!Skin.HasSetting(VisFanartDisabled) + !$EXP[ArtistSlideshow]</visible>
 			</control>
+			<!-- Artist Slideshow v2 -->
 			<control type="multiimage">
 				<include>FullscreenDimensions</include>
 				<fadetime>400</fadetime>
@@ -159,7 +160,16 @@
 				<timeperimage>10000</timeperimage>
 				<imagepath background="true">$INFO[Window(Visualisation).Property(ArtistSlideshow)]</imagepath>
 				<include>VisAnimation</include>
-				<visible>$EXP[ArtistSlideshow]</visible>
+				<visible>$EXP[ArtistSlideshow] + String.IsEmpty(Window(Visualisation).Property(ArtistSlideshow.Image))</visible>
+			</control>
+			<!-- Artist Slideshow v3 -->
+			<control type="image">
+				<include>FullscreenDimensions</include>
+				<fadetime>400</fadetime>
+				<texture background="true">$INFO[Window(Visualisation).Property(ArtistSlideshow.Image)]</texture>
+				<aspectratio>keep</aspectratio>
+				<include>VisAnimation</include>
+				<visible>$EXP[ArtistSlideshow] + !String.IsEmpty(Window(Visualisation).Property(ArtistSlideshow.Image))</visible>
 			</control>
 		</control>
 	</include>
