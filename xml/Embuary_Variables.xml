@@ -18,19 +18,41 @@
 		<value condition="System.Date(10-30,11-01)">holiday/halloween/halloween4.png</value>
 		<value condition="System.Date(09-08,09-09)">holiday/startrek/vulcansign.png</value>
 	</variable>
+	<variable name="5MinuteReload">
+		<value condition="String.IsEqual(System.Time(mm),00)">$INFO[System.Time]</value>
+		<value condition="String.IsEqual(System.Time(mm),05)">$INFO[System.Time]</value>
+		<value condition="String.IsEqual(System.Time(mm),10)">$INFO[System.Time]</value>
+		<value condition="String.IsEqual(System.Time(mm),15)">$INFO[System.Time]</value>
+		<value condition="String.IsEqual(System.Time(mm),20)">$INFO[System.Time]</value>
+		<value condition="String.IsEqual(System.Time(mm),25)">$INFO[System.Time]</value>
+		<value condition="String.IsEqual(System.Time(mm),30)">$INFO[System.Time]</value>
+		<value condition="String.IsEqual(System.Time(mm),35)">$INFO[System.Time]</value>
+		<value condition="String.IsEqual(System.Time(mm),40)">$INFO[System.Time]</value>
+		<value condition="String.IsEqual(System.Time(mm),45)">$INFO[System.Time]</value>
+		<value condition="String.IsEqual(System.Time(mm),50)">$INFO[System.Time]</value>
+		<value condition="String.IsEqual(System.Time(mm),55)">$INFO[System.Time]</value>
+	</variable>
+	<variable name="10MinuteReload">
+		<value condition="String.IsEqual(System.Time(mm),00)">$INFO[System.Time]</value>
+		<value condition="String.IsEqual(System.Time(mm),10)">$INFO[System.Time]</value>
+		<value condition="String.IsEqual(System.Time(mm),20)">$INFO[System.Time]</value>
+		<value condition="String.IsEqual(System.Time(mm),30)">$INFO[System.Time]</value>
+		<value condition="String.IsEqual(System.Time(mm),40)">$INFO[System.Time]</value>
+		<value condition="String.IsEqual(System.Time(mm),50)">$INFO[System.Time]</value>
+	</variable>
 	<variable name="SeasonalSpecial">
-		<value condition="!Skin.HasSetting(HideSeasonalWidgets) + System.Date(05-04,05-05) + Window.IsVisible(home)">plugin://script.embuary.helper/?info=getseasonal&amp;list=starwars&amp;limit=15&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]</value>
-		<value condition="!Skin.HasSetting(HideSeasonalWidgets) + System.Date(05-04,05-05) + Window.IsVisible(1120)">plugin://script.embuary.helper/?info=getseasonal&amp;list=starwars&amp;type=movie&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]</value>
-		<value condition="!Skin.HasSetting(HideSeasonalWidgets) + System.Date(05-04,05-05) + Window.IsVisible(1121)">plugin://script.embuary.helper/?info=getseasonal&amp;list=starwars&amp;type=tvshow&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]</value>
-		<value condition="!Skin.HasSetting(HideSeasonalWidgets) + System.Date(12-01,12-27) + Window.IsVisible(home)">plugin://script.embuary.helper/?info=getseasonal&amp;list=xmas&amp;limit=15&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]</value>
-		<value condition="!Skin.HasSetting(HideSeasonalWidgets) + System.Date(12-01,12-27) + Window.IsVisible(1120)">plugin://script.embuary.helper/?info=getseasonal&amp;list=xmas&amp;type=movie&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]</value>
-		<value condition="!Skin.HasSetting(HideSeasonalWidgets) + System.Date(12-01,12-27) + Window.IsVisible(1121)">plugin://script.embuary.helper/?info=getseasonal&amp;list=xmas&amp;type=tvshow&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]</value>
-		<value condition="!Skin.HasSetting(HideSeasonalWidgets) + System.Date(10-30,11-01) + Window.IsVisible(home)">plugin://script.embuary.helper/?info=getseasonal&amp;list=horror&amp;limit=15&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]</value>
-		<value condition="!Skin.HasSetting(HideSeasonalWidgets) + System.Date(10-30,11-01) + Window.IsVisible(1120)">plugin://script.embuary.helper/?info=getseasonal&amp;list=horror&amp;type=movie&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]</value>
-		<value condition="!Skin.HasSetting(HideSeasonalWidgets) + System.Date(10-30,11-01) + Window.IsVisible(1121)">plugin://script.embuary.helper/?info=getseasonal&amp;list=horror&amp;type=tvshow&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]</value>
-		<value condition="!Skin.HasSetting(HideSeasonalWidgets) + System.Date(09-08,09-09) + Window.IsVisible(home)">plugin://script.embuary.helper/?info=getseasonal&amp;list=startrek&amp;limit=15&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]</value>
-		<value condition="!Skin.HasSetting(HideSeasonalWidgets) + System.Date(09-08,09-09) + Window.IsVisible(1120)">plugin://script.embuary.helper/?info=getseasonal&amp;list=startrek&amp;type=movie&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]</value>
-		<value condition="!Skin.HasSetting(HideSeasonalWidgets) + System.Date(09-08,09-09) + Window.IsVisible(1121)">plugin://script.embuary.helper/?info=getseasonal&amp;list=startrek&amp;type=tvshow&amp;reload=$INFO[Window(home).Property(EmbuaryWidgetUpdate)]</value>
+		<value condition="!Skin.HasSetting(HideSeasonalWidgets) + System.Date(05-04,05-05) + Window.IsVisible(home)">plugin://script.embuary.helper/?info=getseasonal&amp;list=starwars&amp;limit=15&amp;reload=$VAR[10MinuteReload]</value>
+		<value condition="!Skin.HasSetting(HideSeasonalWidgets) + System.Date(05-04,05-05) + Window.IsVisible(1120)">plugin://script.embuary.helper/?info=getseasonal&amp;list=starwars&amp;type=movie&amp;reload=$VAR[10MinuteReload]</value>
+		<value condition="!Skin.HasSetting(HideSeasonalWidgets) + System.Date(05-04,05-05) + Window.IsVisible(1121)">plugin://script.embuary.helper/?info=getseasonal&amp;list=starwars&amp;type=tvshow&amp;reload=$VAR[10MinuteReload]</value>
+		<value condition="!Skin.HasSetting(HideSeasonalWidgets) + System.Date(12-01,12-27) + Window.IsVisible(home)">plugin://script.embuary.helper/?info=getseasonal&amp;list=xmas&amp;limit=15&amp;reload=$VAR[10MinuteReload]</value>
+		<value condition="!Skin.HasSetting(HideSeasonalWidgets) + System.Date(12-01,12-27) + Window.IsVisible(1120)">plugin://script.embuary.helper/?info=getseasonal&amp;list=xmas&amp;type=movie&amp;reload=$VAR[10MinuteReload]</value>
+		<value condition="!Skin.HasSetting(HideSeasonalWidgets) + System.Date(12-01,12-27) + Window.IsVisible(1121)">plugin://script.embuary.helper/?info=getseasonal&amp;list=xmas&amp;type=tvshow&amp;reload=$VAR[10MinuteReload]</value>
+		<value condition="!Skin.HasSetting(HideSeasonalWidgets) + System.Date(10-30,11-01) + Window.IsVisible(home)">plugin://script.embuary.helper/?info=getseasonal&amp;list=horror&amp;limit=15&amp;reload=$VAR[10MinuteReload]</value>
+		<value condition="!Skin.HasSetting(HideSeasonalWidgets) + System.Date(10-30,11-01) + Window.IsVisible(1120)">plugin://script.embuary.helper/?info=getseasonal&amp;list=horror&amp;type=movie&amp;reload=$VAR[10MinuteReload]</value>
+		<value condition="!Skin.HasSetting(HideSeasonalWidgets) + System.Date(10-30,11-01) + Window.IsVisible(1121)">plugin://script.embuary.helper/?info=getseasonal&amp;list=horror&amp;type=tvshow&amp;reload=$VAR[10MinuteReload]</value>
+		<value condition="!Skin.HasSetting(HideSeasonalWidgets) + System.Date(09-08,09-09) + Window.IsVisible(home)">plugin://script.embuary.helper/?info=getseasonal&amp;list=startrek&amp;limit=15&amp;reload=$VAR[10MinuteReload]</value>
+		<value condition="!Skin.HasSetting(HideSeasonalWidgets) + System.Date(09-08,09-09) + Window.IsVisible(1120)">plugin://script.embuary.helper/?info=getseasonal&amp;list=startrek&amp;type=movie&amp;reload=$VAR[10MinuteReload]</value>
+		<value condition="!Skin.HasSetting(HideSeasonalWidgets) + System.Date(09-08,09-09) + Window.IsVisible(1121)">plugin://script.embuary.helper/?info=getseasonal&amp;list=startrek&amp;type=tvshow&amp;reload=$VAR[10MinuteReload]</value>
 	</variable>
 	<!-- Widget count -->
 	<variable name="PosterWidgetLimit">
