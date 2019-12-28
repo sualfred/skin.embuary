@@ -85,6 +85,12 @@
 									<property name="icon">&#xF64E;</property>
 									<onclick>RunScript(script.embuary.info,call=movie,query='$ESCINFO[VideoPlayer.Title]',year=$INFO[VideoPlayer.Year])</onclick>
 								</item>
+								<item>
+									<visible>System.HasAddon(script.embuary.info) + VideoPlayer.Content(episodes) + !String.IsEmpty(VideoPlayer.TVShowTitle)</visible>
+									<label>TMDb</label>
+									<property name="icon">&#xF64E;</property>
+									<onclick>RunScript(script.embuary.info,call=tv,query=$INFO[VideoPlayer.TVShowTitle])</onclick>
+								</item>
 							</content>
 						</control>
 						<!-- genre -->

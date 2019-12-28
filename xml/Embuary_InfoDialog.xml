@@ -633,6 +633,12 @@
 								<onclick>RunScript(script.embuary.helper,action=textviewer,header='$ESCINFO[ListItem.TVShowTitle]',message='$ESCVAR[TinyInfoDialogPlot]')</onclick>>
 							</item>
 							<item>
+								<visible>System.HasAddon(script.embuary.info)</visible>
+								<label>TMDb</label>
+								<property name="icon">&#xF64E;</property>
+								<onclick>RunScript(script.embuary.info,call=tv,query=$INFO[ListItem.TVShowTitle])</onclick>
+							</item>
+							<item>
 								<visible>$EXP[HasEmbyContext] | $EXP[HasLibraryEditButton] | $EXP[HasEmbyConContext]</visible>
 								<label>$LOCALIZE[31366]</label>
 								<property name="icon">&#xf1d8;</property>
