@@ -1299,23 +1299,23 @@
 					<control type="image">
 						<width>68</width>
 						<height>100</height>
-						<texture>DefaultIconError.png</texture>
-						<aspectratio aligny="center" align="center">keep</aspectratio>
-						<visible>String.IsEmpty(ListItem.Icon)</visible>
-					</control>
-					<control type="image">
-						<width>68</width>
-						<height>100</height>
 						<texture background="true">$VAR[IconListView]</texture>
 						<aspectratio aligny="center" align="center">keep</aspectratio>
-						<visible>!String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
+						<visible>$EXP[HasArtwork]</visible>
 					</control>
 					<control type="image">
 						<width>68</width>
 						<height>100</height>
-						<texture colordiffuse="text_white" background="true">$VAR[IconListView]</texture>
+						<texture>DefaultIconError.png</texture>
 						<aspectratio aligny="center" align="center">keep</aspectratio>
-						<visible>String.StartsWith(ListItem.Icon,Default)</visible>
+						<visible>!$EXP[HasArtwork] + !String.StartsWith(ListItem.Icon,Default)</visible>
+					</control>
+					<control type="image">
+						<width>68</width>
+						<height>100</height>
+						<texture colordiffuse="text_white" background="true">$INFO[ListItem.Icon]</texture>
+						<aspectratio aligny="center" align="center">keep</aspectratio>
+						<visible>!$EXP[HasArtwork] + String.StartsWith(ListItem.Icon,Default)</visible>
 					</control>
 					<include content="ListitemOverlaySmall">
 						<param name="left" value="45"/>

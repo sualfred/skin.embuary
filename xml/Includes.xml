@@ -36,6 +36,14 @@
 	<include file="script-skinshortcuts-includes.xml" />
 
 	<!-- General -->
+	<expression name="HasArtwork">[!String.IsEmpty(ListItem.Art(poster)) | !String.IsEmpty(ListItem.Art(tvshow.poster)) | !String.IsEmpty(ListItem.Art(landscape)) | [!String.IsEmpty(ListItem.Art(thumb)) + !String.StartsWith(ListItem.Art(thumb),Default)]]</expression>
+
+	<expression name="HasPoster">[!String.IsEmpty(ListItem.Art(poster)) | !String.IsEmpty(ListItem.Art(tvshow.poster)) | !String.IsEmpty(ListItem.Art(season.poster))]</expression>
+
+	<expression name="HasLandscape">[!String.IsEmpty(ListItem.Art(landscape)) | !String.IsEmpty(ListItem.Art(tvshow.landscape)) | !String.IsEmpty(ListItem.Art(season.landscape))]</expression>
+
+	<expression name="HasFanart">[!String.IsEmpty(ListItem.Art(fanart)) | !String.IsEmpty(ListItem.Art(tvshow.fanart)) | !String.IsEmpty(ListItem.Art(season.fanart))]</expression>
+
 	<expression name="DefaultTheme">[String.IsEqual(Skin.CurrentColourTheme,SKINDEFAULT) | String.StartsWith(Skin.CurrentColourTheme,Default)]</expression>
 
 	<expression name="BlurVignette">[Skin.HasSetting(BlurEnabled) + !String.IsEmpty(Window(home).Property(listitem_blurred)) + ![[Player.HasVideo | Player.HasGame] + !Skin.HasSetting(HideBackgroundPlayback)]]</expression>
