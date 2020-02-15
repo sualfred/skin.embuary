@@ -70,7 +70,7 @@
 
 	<expression name="HideVideoOSD">[String.Contains(Player.Icon,script.embuary.helper/resources/trailer.jpg) | [String.Contains(Player.Icon,KodiCinemaMode) + !String.Contains(VideoPlayer.Title,Trailer)]]</expression>
 
-	<expression name="PlayerSeek">[Player.Seeking | Player.DisplayAfterSeek | !String.IsEmpty(Player.SeekNumeric)]</expression>
+	<expression name="PlayerSeek">[Player.Seeking | [!Player.Paused + Player.DisplayAfterSeek] | !String.IsEmpty(Player.SeekNumeric)]</expression>
 
 	<expression name="ForceCinemaMode">[Skin.HasSetting(AlwaysCinemaMode) + [!String.IsEmpty(Skin.String(IntroPath)) | Integer.IsGreater(Skin.String(TrailerCount),0)]]</expression>
 
