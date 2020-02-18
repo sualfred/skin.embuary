@@ -282,8 +282,7 @@
 					| Window.IsVisible(1130)
 					| Window.IsVisible(1131)
 					| Window.IsVisible(1114)
-					| Window.IsVisible(script-NextAired-TVGuide.xml)
-					| Window.IsVisible(script-NextAired-TVGuide2.xml)
+					| Window.IsVisible(1132)
 					| Window.IsVisible(MyPVRGuide.xml)
 					| Window.IsVisible(settings)
 					| Window.IsVisible(favourites)
@@ -435,7 +434,7 @@
 				String.StartsWith(Container.FolderPath,videodb://tvshows)
 				| [Window.IsVisible(1126) + String.IsEqual(Window(home).Property(RecommendedType),tvshow)]
 				| [Window.IsVisible(1114) + String.Contains(Window(home).Property(ListGenres),videodb://tvshows/)]
-				| Window.IsVisible(script-NextAired-TVGuide.xml)
+				| Window.IsVisible(1132)
 				]
 				+ Library.HasContent(tvshows)
 				+ !Window.IsVisible(favourites)
@@ -448,7 +447,7 @@
 			<onclick>ClearProperty(RecommendedTag,homne)</onclick>
 			<include>ForceReloadAction</include>
 			<onclick condition="String.IsEqual(Container.FolderPath,library://video/movies/) | Container.Content(movies) | Container.Content(sets) | [Window.IsVisible(1114) + String.Contains(Window(home).Property(ListGenres),videodb://movies/)] | [Window.IsVisible(1126) + String.IsEqual(Window(home).Property(RecommendedType),movie)]">SetProperty(RecommendedType,movie,home)</onclick>
-			<onclick condition="String.IsEqual(Container.FolderPath,library://video/tvshows/) | Container.Content(tvshows) | Window.IsVisible(script-NextAired-TVGuide.xml) | [Window.IsVisible(1114) + String.Contains(Window(home).Property(ListGenres),videodb://tvshows/)] | [Window.IsVisible(1126) + String.IsEqual(Window(home).Property(RecommendedType),tvshow)]">SetProperty(RecommendedType,tvshow,home)</onclick>
+			<onclick condition="String.IsEqual(Container.FolderPath,library://video/tvshows/) | Container.Content(tvshows) | Window.IsVisible(1132) | [Window.IsVisible(1114) + String.Contains(Window(home).Property(ListGenres),videodb://tvshows/)] | [Window.IsVisible(1126) + String.IsEqual(Window(home).Property(RecommendedType),tvshow)]">SetProperty(RecommendedType,tvshow,home)</onclick>
 			<onclick>ActivateWindow(1126)</onclick>
 			<visible>[
 				String.StartsWith(Container.FolderPath,videodb://movies)
@@ -456,7 +455,7 @@
 				| Window.IsVisible(1126)
 				| [Window.IsVisible(1114) + String.Contains(Window(home).Property(ListGenres),videodb://movies/)]
 				| [Window.IsVisible(1114) + String.Contains(Window(home).Property(ListGenres),videodb://tvshows/)]
-				| Window.IsVisible(script-NextAired-TVGuide.xml)
+				| Window.IsVisible(1132)
 				]
 				+ Library.HasContent(Movies)
 				+ !Window.IsVisible(favourites)
@@ -483,7 +482,7 @@
 			<label>$LOCALIZE[135]</label>
 			<include>ForceReloadAction</include>
 			<onclick condition="String.IsEqual(Container.FolderPath,library://video/movies/) | Container.Content(movies) | Container.Content(sets) | [Window.IsVisible(1126) + String.IsEqual(Window(home).Property(RecommendedType),movie)]">SetProperty(ListGenres,plugin://script.embuary.helper/?info=getgenre&amp;type=movie,home)</onclick>
-			<onclick condition="String.IsEqual(Container.FolderPath,library://video/tvshows/) | Container.Content(tvshows) | Window.IsVisible(script-NextAired-TVGuide.xml) | [Window.IsVisible(1126) + String.IsEqual(Window(home).Property(RecommendedType),tvshow)]">SetProperty(ListGenres,plugin://script.embuary.helper/?info=getgenre&amp;type=tvshow,home)</onclick>
+			<onclick condition="String.IsEqual(Container.FolderPath,library://video/tvshows/) | Container.Content(tvshows) | Window.IsVisible(1132) | [Window.IsVisible(1126) + String.IsEqual(Window(home).Property(RecommendedType),tvshow)]">SetProperty(ListGenres,plugin://script.embuary.helper/?info=getgenre&amp;type=tvshow,home)</onclick>
 			<onclick>ActivateWindow(1114)</onclick>
 			<visible>[
 				String.StartsWith(Container.FolderPath,videodb://movies)
@@ -491,7 +490,7 @@
 				| Window.IsVisible(1126)
 				| [Window.IsVisible(1114) + String.Contains(Window(home).Property(ListGenres),videodb://movies/)]
 				| [Window.IsVisible(1114) + String.Contains(Window(home).Property(ListGenres),videodb://tvshows/)]
-				| Window.IsVisible(script-NextAired-TVGuide.xml)
+				| Window.IsVisible(1132)
 				]
 				+ !Window.IsVisible(favourites)
 				+ !$EXP[IsPlugin]
@@ -500,15 +499,15 @@
 		<control type="button" id="6615">
 			<include>HeaderButton</include>
 			<label>$LOCALIZE[31154]</label>
-			<onclick>RunScript(script.tv.show.next.aired)</onclick>
+			<onclick>ActivateWindow(1132,return)</onclick>
 			<visible>[
 				String.StartsWith(Container.FolderPath,videodb://tvshows)
 				| [Window.IsVisible(1126) + String.IsEqual(Window(home).Property(RecommendedType),tvshow)]
 				| [Window.IsVisible(1114) + String.Contains(Window(home).Property(ListGenres),videodb://tvshows/)]
-				| Window.IsVisible(script-NextAired-TVGuide.xml)
+				| Window.IsVisible(1132)
 				]
 				+ Library.HasContent(tvshows)
-				+ System.HasAddon(script.tv.show.next.aired)
+				+ System.HasAddon(script.embuary.info)
 				+ !$EXP[IsPlugin]
 			</visible>
 		</control>

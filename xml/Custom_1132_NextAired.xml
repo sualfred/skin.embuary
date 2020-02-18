@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<window id="1120">
+<window id="1132">
 	<menucontrol>6666</menucontrol>
 	<backgroundcolor>background</backgroundcolor>
-	<onload>AlarmClock(jumptobeginning,SetFocus(10,8),00:01,silent)</onload>
+	<defaultcontrol always="true">10</defaultcontrol>
 	<include content="PropertyIncludes">
 		<param name="ShowHeader" value="true"/>
 	</include>
@@ -23,80 +23,54 @@
 			<include content="WidgetSpacer">
 				<param name="id" value="101"/>
 			</include>
-			<control type="group">
-				<width>1920</width>
-				<height>239</height>
-				<control type="group">
-					<include content="WidgetHeadline">
-						<param name="headline">$LOCALIZE[31154]</param>
-					</include>
-					<control type="grouplist" id="100">
-						<top>90</top>
-						<left>69</left>
-						<height>60</height>
-						<orientation>horizontal</orientation>
-						<itemgap>5</itemgap>
-						<onright>noop</onright>
-						<onleft>900</onleft>
-						<onup>6666</onup>
-						<ondown>200</ondown>
-						<control type="button" id="8">
-							<height>60</height>
-							<label>$LOCALIZE[5]</label>
-							<onup>6666</onup>
-							<ondown>200</ondown>
-						</control>
-					</control>
-				</control>
-			</control>
 			<include content="WideWidget">
 				<param name="id" value="200"/>
 				<param name="onup" value="100"/>
 				<param name="ondown" value="201"/>
-				<param name="headline" value="$LOCALIZE[11]"/>
-				<param name="use_custom_content" value="false"/>
+				<param name="headline" value="$LOCALIZE[11]$INFO[Container(200).ListItemAbsolute(0).Premiered, - ]"/>
+				<param name="content" value="plugin://script.embuary.info/nextaired/0"/>
 			</include>
 			<include content="WideWidget">
 				<param name="id" value="201"/>
 				<param name="onup" value="200"/>
 				<param name="ondown" value="202"/>
-				<param name="headline" value="$LOCALIZE[12]"/>
-				<param name="use_custom_content" value="false"/>
+				<param name="headline" value="$LOCALIZE[12]$INFO[Container(201).ListItemAbsolute(0).Premiered, - ]"/>
+				<param name="content" value="plugin://script.embuary.info/nextaired/1"/>
 			</include>
 			<include content="WideWidget">
 				<param name="id" value="202"/>
 				<param name="onup" value="201"/>
 				<param name="ondown" value="203"/>
-				<param name="headline" value="$LOCALIZE[13]"/>
-				<param name="use_custom_content" value="false"/>
+				<param name="headline" value="$LOCALIZE[13]$INFO[Container(202).ListItemAbsolute(0).Premiered, - ]"/>
+				<param name="content" value="plugin://script.embuary.info/nextaired/2"/>
 			</include>
 			<include content="WideWidget">
 				<param name="id" value="203"/>
 				<param name="onup" value="202"/>
 				<param name="ondown" value="204"/>
-				<param name="headline" value="$LOCALIZE[14]"/>
-				<param name="use_custom_content" value="false"/>
+				<param name="headline" value="$LOCALIZE[14]$INFO[Container(203).ListItemAbsolute(0).Premiered, - ]"/>
+				<param name="content" value="plugin://script.embuary.info/nextaired/3"/>
 			</include>
 			<include content="WideWidget">
 				<param name="id" value="204"/>
 				<param name="onup" value="203"/>
 				<param name="ondown" value="205"/>
-				<param name="headline" value="$LOCALIZE[15]"/>
-				<param name="use_custom_content" value="false"/>
+				<param name="headline" value="$LOCALIZE[15]$INFO[Container(204).ListItemAbsolute(0).Premiered, - ]"/>
+				<param name="content" value="plugin://script.embuary.info/nextaired/4"/>
 			</include>
 			<include content="WideWidget">
 				<param name="id" value="205"/>
 				<param name="onup" value="204"/>
 				<param name="ondown" value="206"/>
-				<param name="headline" value="$LOCALIZE[16]"/>
-				<param name="use_custom_content" value="false"/>
+				<param name="headline" value="$LOCALIZE[16]$INFO[Container(205).ListItemAbsolute(0).Premiered, - ]"/>
+				<param name="content" value="plugin://script.embuary.info/nextaired/5"/>
 			</include>
 			<include content="WideWidget">
 				<param name="id" value="206"/>
 				<param name="onup" value="205"/>
 				<param name="ondown" value="noop"/>
-				<param name="headline" value="$LOCALIZE[17]"/>
-				<param name="use_custom_content" value="false"/>
+				<param name="headline" value="$LOCALIZE[17]$INFO[Container(206).ListItemAbsolute(0).Premiered, - ]"/>
+				<param name="content" value="plugin://script.embuary.info/nextaired/6"/>
 			</include>
 		</control>
 		<!-- header bar -->
@@ -105,5 +79,10 @@
 		</include>
 		<!-- side panel -->
 		<include content="SidePanel"/>
+		<!-- busy spinner -->
+		<include content="CustomBusySpinner">
+			<param name="diffuse" value="false"/>
+			<param name="visible" value="Container(200).IsUpdating | Container(201).IsUpdating | Container(202).IsUpdating | Container(203).IsUpdating | Container(204).IsUpdating | Container(205).IsUpdating | Container(206).IsUpdating"/>
+		</include>
 	</controls>
 </window>
