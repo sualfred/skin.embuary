@@ -7,6 +7,10 @@
 		<param name="ShowHeader" value="true"/>
 	</include>
 	<controls>
+		<control type="label" id="11">
+			<label>$INFO[System.Date(DDD)]</label>
+			<include>HiddenObject</include>
+		</control>
 		<!-- background -->
 		<include>Background</include>
 		<!-- hub -->
@@ -24,53 +28,54 @@
 				<param name="id" value="101"/>
 			</include>
 			<include content="WideWidget">
+				<param name="visible" value="true"/>
 				<param name="id" value="200"/>
 				<param name="onup" value="100"/>
 				<param name="ondown" value="201"/>
-				<param name="headline" value="$LOCALIZE[11]$INFO[Container(200).ListItemAbsolute(0).Premiered, - ]"/>
-				<param name="content" value="plugin://script.embuary.info/nextaired/0"/>
+				<param name="headline" value="$INFO[Container(200).ListItemAbsolute(0).Property(AirDay),, - ]$INFO[Container(200).ListItemAbsolute(0).Premiered]"/>
+				<param name="content" value="$VAR[NextAired0]"/>
 			</include>
 			<include content="WideWidget">
 				<param name="id" value="201"/>
 				<param name="onup" value="200"/>
 				<param name="ondown" value="202"/>
-				<param name="headline" value="$LOCALIZE[12]$INFO[Container(201).ListItemAbsolute(0).Premiered, - ]"/>
-				<param name="content" value="plugin://script.embuary.info/nextaired/1"/>
+				<param name="headline" value="$INFO[Container(201).ListItemAbsolute(0).Property(AirDay),, - ]$INFO[Container(201).ListItemAbsolute(0).Premiered]"/>
+				<param name="content" value="$VAR[NextAired1]"/>
 			</include>
 			<include content="WideWidget">
 				<param name="id" value="202"/>
 				<param name="onup" value="201"/>
 				<param name="ondown" value="203"/>
-				<param name="headline" value="$LOCALIZE[13]$INFO[Container(202).ListItemAbsolute(0).Premiered, - ]"/>
-				<param name="content" value="plugin://script.embuary.info/nextaired/2"/>
+				<param name="headline" value="$INFO[Container(202).ListItemAbsolute(0).Property(AirDay),, - ]$INFO[Container(202).ListItemAbsolute(0).Premiered]"/>
+				<param name="content" value="$VAR[NextAired2]"/>
 			</include>
 			<include content="WideWidget">
 				<param name="id" value="203"/>
 				<param name="onup" value="202"/>
 				<param name="ondown" value="204"/>
-				<param name="headline" value="$LOCALIZE[14]$INFO[Container(203).ListItemAbsolute(0).Premiered, - ]"/>
-				<param name="content" value="plugin://script.embuary.info/nextaired/3"/>
+				<param name="headline" value="$INFO[Container(203).ListItemAbsolute(0).Property(AirDay),, - ]$INFO[Container(203).ListItemAbsolute(0).Premiered]"/>
+				<param name="content" value="$VAR[NextAired3]"/>
 			</include>
 			<include content="WideWidget">
 				<param name="id" value="204"/>
 				<param name="onup" value="203"/>
 				<param name="ondown" value="205"/>
-				<param name="headline" value="$LOCALIZE[15]$INFO[Container(204).ListItemAbsolute(0).Premiered, - ]"/>
-				<param name="content" value="plugin://script.embuary.info/nextaired/4"/>
+				<param name="headline" value="$INFO[Container(204).ListItemAbsolute(0).Property(AirDay),, - ]$INFO[Container(204).ListItemAbsolute(0).Premiered]"/>
+				<param name="content" value="$VAR[NextAired4]"/>
 			</include>
 			<include content="WideWidget">
 				<param name="id" value="205"/>
 				<param name="onup" value="204"/>
 				<param name="ondown" value="206"/>
-				<param name="headline" value="$LOCALIZE[16]$INFO[Container(205).ListItemAbsolute(0).Premiered, - ]"/>
-				<param name="content" value="plugin://script.embuary.info/nextaired/5"/>
+				<param name="headline" value="$INFO[Container(205).ListItemAbsolute(0).Property(AirDay),, - ]$INFO[Container(205).ListItemAbsolute(0).Premiered]"/>
+				<param name="content" value="$VAR[NextAired5]"/>
 			</include>
 			<include content="WideWidget">
 				<param name="id" value="206"/>
 				<param name="onup" value="205"/>
 				<param name="ondown" value="noop"/>
-				<param name="headline" value="$LOCALIZE[17]$INFO[Container(206).ListItemAbsolute(0).Premiered, - ]"/>
-				<param name="content" value="plugin://script.embuary.info/nextaired/6"/>
+				<param name="headline" value="$INFO[Container(206).ListItemAbsolute(0).Property(AirDay),, - ]$INFO[Container(206).ListItemAbsolute(0).Premiered]"/>
+				<param name="content" value="$VAR[NextAired6]"/>
 			</include>
 		</control>
 		<!-- header bar -->
@@ -79,10 +84,10 @@
 		</include>
 		<!-- side panel -->
 		<include content="SidePanel"/>
-		<!-- busy spinner -->
+		<!-- busy spinner
 		<include content="CustomBusySpinner">
 			<param name="diffuse" value="false"/>
 			<param name="visible" value="Container(200).IsUpdating | Container(201).IsUpdating | Container(202).IsUpdating | Container(203).IsUpdating | Container(204).IsUpdating | Container(205).IsUpdating | Container(206).IsUpdating"/>
-		</include>
+		</include>-->
 	</controls>
 </window>
