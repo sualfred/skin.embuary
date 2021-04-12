@@ -1121,7 +1121,7 @@
 				</control>
 				<!-- emby styled art -->
 				<control type="group">
-					<visible>String.IsEqual(ListItem.Property(useFakeArt),true) + !String.IsEmpty(ListItem.Property(Art1)) + !String.IsEmpty(ListItem.Property(Art2)) + !String.IsEmpty(ListItem.Property(Art3)) + !String.IsEmpty(ListItem.Property(Art4))</visible>
+					<visible>String.IsEqual(ListItem.Property(useFakeArt),true) + [!String.IsEmpty(ListItem.Property(Art1)) | !String.IsEmpty(ListItem.Property(Icon1))] + [!String.IsEmpty(ListItem.Property(Art2)) | !String.IsEmpty(ListItem.Property(Icon2))] + [!String.IsEmpty(ListItem.Property(Art3)) | !String.IsEmpty(ListItem.Property(Icon3))] + [!String.IsEmpty(ListItem.Property(Art4)) | !String.IsEmpty(ListItem.Property(Icon4))]</visible>
 					<top>2</top>
 					<width>280</width>
 					<control type="image">
