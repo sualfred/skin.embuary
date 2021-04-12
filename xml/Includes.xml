@@ -58,6 +58,15 @@
 		]
 	</expression>
 
+	<expression name="HasPoster">[!String.IsEmpty(ListItem.Art(poster)) | !String.IsEmpty(ListItem.Art(tvshow.poster))]</expression>
+	<expression name="HasLandscape">[!String.IsEmpty(ListItem.Art(landscape))]</expression>
+	<expression name="HasFanart">[!String.IsEmpty(ListItem.Art(fanart))]</expression>
+	<expression name="HasThumb">[!String.IsEmpty(ListItem.Art(thumb))]</expression>
+	<expression name="HasArt">[$EXP[HasPoster] | $EXP[HasLandscape] | $EXP[HasFanart] | $EXP[HasThumb]]</expression>
+	<expression name="DefaultIcon">[String.StartsWith(ListItem.Icon,Default)]</expression>
+
+
+
 	<expression name="ArtistSlideshow">[
 		Skin.HasSetting(VisRandomFanart)
 		+ !Skin.HasSetting(VisFanartDisabled)

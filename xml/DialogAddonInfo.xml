@@ -15,18 +15,27 @@
 			<orientation>vertical</orientation>
 		</control>
 		<control type="button" id="6">
+			<onfocus>SetFocus(100)</onfocus>
 			<include>HiddenObject</include>
 		</control>
 		<control type="button" id="7">
+			<onfocus>SetFocus(100)</onfocus>
 			<include>HiddenObject</include>
 		</control>
 		<control type="button" id="8">
+			<onfocus>SetFocus(100)</onfocus>
 			<include>HiddenObject</include>
 		</control>
 		<control type="button" id="9">
+			<onfocus>SetFocus(100)</onfocus>
 			<include>HiddenObject</include>
 		</control>
 		<control type="button" id="12">
+			<onfocus>SetFocus(100)</onfocus>
+			<include>HiddenObject</include>
+		</control>
+		<control type="button" id="14">
+			<onfocus>SetFocus(100)</onfocus>
 			<include>HiddenObject</include>
 		</control>
 		<!-- Background -->
@@ -107,9 +116,16 @@
 							</item>
 							<item>
 								<visible>Control.IsEnabled(8)</visible>
-								<label>$LOCALIZE[24069]</label>
+								<label>$LOCALIZE[24138]</label>
 								<property name="icon">&#xf1da;</property>
 								<onclick>SendClick(8)</onclick>
+								<visible>ListItem.Property(Addon.HasUpdate)</visible>
+							</item>
+							<item>
+								<visible>Control.IsEnabled(14)</visible>
+								<label>$LOCALIZE[24069]</label>
+								<property name="icon">&#xf327;</property>
+								<onclick>SendClick(14)</onclick>
 							</item>
 							<item>
 								<visible>!String.IsEmpty(ListItem.AddonNews)</visible>

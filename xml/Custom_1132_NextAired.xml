@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window id="1132">
+	<menucontrol>6666</menucontrol>
+	<backgroundcolor>background</backgroundcolor>
+	<defaultcontrol always="true">10</defaultcontrol>
+	<include content="PropertyIncludes">
+		<param name="ShowHeader" value="true"/>
+	</include>
+	<controls>
+		<control type="label" id="11">
+			<label>$INFO[System.Date(DDD)]</label>
+			<include>HiddenObject</include>
+		</control>
+		<!-- background -->
+		<include>Background</include>
+		<!-- hub -->
+		<control type="grouplist" id="10">
+			<include>Window_OpenClose</include>
+			<defaultcontrol>10000</defaultcontrol>
+			<width>100%</width>
+			<height>100%</height>
+			<itemgap>-80</itemgap>
+			<orientation>vertical</orientation>
+			<usecontrolcoords>true</usecontrolcoords>
+			<include>ScrollTime</include>
+			<pagecontrol>17</pagecontrol>
+			<include content="WidgetSpacer">
+				<param name="id" value="101"/>
+			</include>
+			<include content="WideWidget">
+				<param name="visible" value="true"/>
+				<param name="id" value="200"/>
+				<param name="onup" value="100"/>
+				<param name="ondown" value="201"/>
+				<param name="headline" value="$INFO[Container(200).ListItemAbsolute(0).Property(AirDay),, - ]$INFO[Container(200).ListItemAbsolute(0).Premiered]"/>
+				<param name="content" value="$VAR[NextAired0]"/>
+			</include>
+			<include content="WideWidget">
+				<param name="id" value="201"/>
+				<param name="onup" value="200"/>
+				<param name="ondown" value="202"/>
+				<param name="headline" value="$INFO[Container(201).ListItemAbsolute(0).Property(AirDay),, - ]$INFO[Container(201).ListItemAbsolute(0).Premiered]"/>
+				<param name="content" value="$VAR[NextAired1]"/>
+			</include>
+			<include content="WideWidget">
+				<param name="id" value="202"/>
+				<param name="onup" value="201"/>
+				<param name="ondown" value="203"/>
+				<param name="headline" value="$INFO[Container(202).ListItemAbsolute(0).Property(AirDay),, - ]$INFO[Container(202).ListItemAbsolute(0).Premiered]"/>
+				<param name="content" value="$VAR[NextAired2]"/>
+			</include>
+			<include content="WideWidget">
+				<param name="id" value="203"/>
+				<param name="onup" value="202"/>
+				<param name="ondown" value="204"/>
+				<param name="headline" value="$INFO[Container(203).ListItemAbsolute(0).Property(AirDay),, - ]$INFO[Container(203).ListItemAbsolute(0).Premiered]"/>
+				<param name="content" value="$VAR[NextAired3]"/>
+			</include>
+			<include content="WideWidget">
+				<param name="id" value="204"/>
+				<param name="onup" value="203"/>
+				<param name="ondown" value="205"/>
+				<param name="headline" value="$INFO[Container(204).ListItemAbsolute(0).Property(AirDay),, - ]$INFO[Container(204).ListItemAbsolute(0).Premiered]"/>
+				<param name="content" value="$VAR[NextAired4]"/>
+			</include>
+			<include content="WideWidget">
+				<param name="id" value="205"/>
+				<param name="onup" value="204"/>
+				<param name="ondown" value="206"/>
+				<param name="headline" value="$INFO[Container(205).ListItemAbsolute(0).Property(AirDay),, - ]$INFO[Container(205).ListItemAbsolute(0).Premiered]"/>
+				<param name="content" value="$VAR[NextAired5]"/>
+			</include>
+			<include content="WideWidget">
+				<param name="id" value="206"/>
+				<param name="onup" value="205"/>
+				<param name="ondown" value="noop"/>
+				<param name="headline" value="$INFO[Container(206).ListItemAbsolute(0).Property(AirDay),, - ]$INFO[Container(206).ListItemAbsolute(0).Premiered]"/>
+				<param name="content" value="$VAR[NextAired6]"/>
+			</include>
+		</control>
+		<!-- header bar -->
+		<include content="HeaderBar">
+			<param name="id">10</param>
+		</include>
+		<!-- side panel -->
+		<include content="SidePanel"/>
+		<!-- busy spinner
+		<include content="CustomBusySpinner">
+			<param name="diffuse" value="false"/>
+			<param name="visible" value="Container(200).IsUpdating | Container(201).IsUpdating | Container(202).IsUpdating | Container(203).IsUpdating | Container(204).IsUpdating | Container(205).IsUpdating | Container(206).IsUpdating"/>
+		</include>-->
+	</controls>
+</window>

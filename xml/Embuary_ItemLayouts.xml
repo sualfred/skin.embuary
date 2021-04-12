@@ -988,6 +988,49 @@
 		</definition>
 	</include>-->
 	<!-- Main Menu -->
+	<include name="EmbyFakeArt">
+		<control type="group">
+			<width>66</width>
+			<left>$PARAM[left]</left>
+			<control type="image">
+				<height>110</height>
+				<texture colordiffuse="thumb_background">common/white.jpg</texture>
+				<aspectratio>scale</aspectratio>
+			</control>
+			<control type="image">
+				<height>110</height>
+				<texture background="true">$INFO[ListItem.Property(Art$PARAM[pos])]</texture>
+				<aspectratio>scale</aspectratio>
+				<visible>!String.IsEmpty(ListItem.Property(Art$PARAM[pos]))</visible>
+			</control>
+			<control type="image">
+				<height>110</height>
+				<texture background="true">$INFO[ListItem.Property(Icon$PARAM[pos])]</texture>
+				<aspectratio>scale</aspectratio>
+				<visible>String.IsEmpty(ListItem.Property(Art$PARAM[pos])) + !String.IsEmpty(ListItem.Property(Icon$PARAM[pos]))</visible>
+			</control>
+			<control type="image">
+				<top>112</top>
+				<height>110</height>
+				<texture flipy="true" diffuse="items/mirror_mask.png" colordiffuse="thumb_background">common/white.jpg</texture>
+				<aspectratio scalediffuse="false">scale</aspectratio>
+			</control>
+			<control type="image">
+				<top>112</top>
+				<height>110</height>
+				<texture flipy="true" diffuse="items/mirror_mask.png" background="true">$INFO[ListItem.Property(Art$PARAM[pos])]</texture>
+				<aspectratio scalediffuse="false">scale</aspectratio>
+				<visible>!String.IsEmpty(ListItem.Property(Art$PARAM[pos]))</visible>
+			</control>
+			<control type="image">
+				<top>112</top>
+				<height>110</height>
+				<texture flipy="true" diffuse="items/mirror_mask.png" background="true">!String.IsEmpty(ListItem.Property(Icon$PARAM[pos]))</texture>
+				<aspectratio scalediffuse="false">scale</aspectratio>
+				<visible>String.IsEmpty(ListItem.Property(Art$PARAM[pos])) + !String.IsEmpty(ListItem.Property(Icon$PARAM[pos]))</visible>
+			</control>
+		</control>
+	</include>
 	<include name="MainMenuLayout">
 		<param name="focused">false</param>
 		<definition>
@@ -1088,113 +1131,25 @@
 						<texture colordiffuse="ff010202">common/white.jpg</texture>
 					</control>
 					<!-- art 1 -->
-					<control type="group">
-						<width>66</width>
-						<left>3</left>
-						<control type="image">
-							<height>110</height>
-							<texture colordiffuse="thumb_background">common/white.jpg</texture>
-							<aspectratio>scale</aspectratio>
-						</control>
-						<control type="image">
-							<height>110</height>
-							<texture background="true">$INFO[ListItem.Property(Art1)]</texture>
-							<aspectratio>scale</aspectratio>
-						</control>
-						<control type="image">
-							<top>112</top>
-							<height>110</height>
-							<texture flipy="true" diffuse="items/mirror_mask.png" colordiffuse="thumb_background">common/white.jpg</texture>
-							<aspectratio scalediffuse="false">scale</aspectratio>
-						</control>
-						<control type="image">
-							<top>112</top>
-							<height>110</height>
-							<texture flipy="true" diffuse="items/mirror_mask.png" background="true">$INFO[ListItem.Property(Art1)]</texture>
-							<aspectratio scalediffuse="false">scale</aspectratio>
-						</control>
-					</control>
+					<include content="EmbyFakeArt">
+						<param name="left" value="3"/>
+						<param name="pos" value="1"/>
+					</include>
 					<!-- art 2 -->
-					<control type="group">
-						<width>65</width>
-						<left>73</left>
-						<control type="image">
-							<height>110</height>
-							<texture colordiffuse="thumb_background">common/white.jpg</texture>
-							<aspectratio>scale</aspectratio>
-						</control>
-						<control type="image">
-							<height>110</height>
-							<texture background="true">$INFO[ListItem.Property(Art2)]</texture>
-							<aspectratio>scale</aspectratio>
-						</control>
-						<control type="image">
-							<top>112</top>
-							<height>110</height>
-							<texture flipy="true" diffuse="items/mirror_mask.png" colordiffuse="thumb_background">common/white.jpg</texture>
-							<aspectratio scalediffuse="false">scale</aspectratio>
-						</control>
-						<control type="image">
-							<top>112</top>
-							<height>110</height>
-							<texture flipy="true" diffuse="items/mirror_mask.png" background="true">$INFO[ListItem.Property(Art2)]</texture>
-							<aspectratio scalediffuse="false">scale</aspectratio>
-						</control>
-					</control>
+					<include content="EmbyFakeArt">
+						<param name="left" value="73"/>
+						<param name="pos" value="2"/>
+					</include>
 					<!-- art 3 -->
-					<control type="group">
-						<width>65</width>
-						<left>142</left>
-						<control type="image">
-							<height>110</height>
-							<texture colordiffuse="thumb_background">common/white.jpg</texture>
-							<aspectratio>scale</aspectratio>
-						</control>
-						<control type="image">
-							<height>110</height>
-							<texture background="true">$INFO[ListItem.Property(Art3)]</texture>
-							<aspectratio>scale</aspectratio>
-						</control>
-						<control type="image">
-							<top>112</top>
-							<height>110</height>
-							<texture flipy="true" diffuse="items/mirror_mask.png" colordiffuse="thumb_background">common/white.jpg</texture>
-							<aspectratio scalediffuse="false">scale</aspectratio>
-						</control>
-						<control type="image">
-							<top>112</top>
-							<height>110</height>
-							<texture flipy="true" diffuse="items/mirror_mask.png" background="true">$INFO[ListItem.Property(Art3)]</texture>
-							<aspectratio scalediffuse="false">scale</aspectratio>
-						</control>
-					</control>
+					<include content="EmbyFakeArt">
+						<param name="left" value="142"/>
+						<param name="pos" value="3"/>
+					</include>
 					<!-- art 4 -->
-					<control type="group">
-						<width>66</width>
-						<left>211</left>
-						<control type="image">
-							<height>110</height>
-							<texture colordiffuse="thumb_background">common/white.jpg</texture>
-							<aspectratio>scale</aspectratio>
-						</control>
-						<control type="image">
-							<height>110</height>
-							<texture background="true">$INFO[ListItem.Property(Art4)]</texture>
-							<aspectratio>scale</aspectratio>
-						</control>
-						<control type="image">
-							<top>112</top>
-							<height>110</height>
-							<texture flipy="true" diffuse="items/mirror_mask.png" colordiffuse="thumb_background">common/white.jpg</texture>
-							<aspectratio scalediffuse="false">scale</aspectratio>
-						</control>
-						<control type="image">
-							<top>112</top>
-							<height>110</height>
-							<texture flipy="true" diffuse="items/mirror_mask.png" background="true">$INFO[ListItem.Property(Art4)]</texture>
-							<aspectratio scalediffuse="false">scale</aspectratio>
-						</control>
-					</control>
+					<include content="EmbyFakeArt">
+						<param name="left" value="211"/>
+						<param name="pos" value="4"/>
+					</include>
 				</control>
 				<control type="group">
 					<width>280</width>
@@ -1299,23 +1254,23 @@
 					<control type="image">
 						<width>68</width>
 						<height>100</height>
-						<texture background="true">$VAR[IconListView]</texture>
-						<aspectratio aligny="center" align="center">keep</aspectratio>
-						<visible>$EXP[HasArtwork]</visible>
-					</control>
-					<control type="image">
-						<width>68</width>
-						<height>100</height>
 						<texture>DefaultIconError.png</texture>
 						<aspectratio aligny="center" align="center">keep</aspectratio>
-						<visible>!$EXP[HasArtwork] + !String.StartsWith(ListItem.Icon,Default)</visible>
+						<visible>String.IsEmpty(ListItem.Icon) + !$EXP[HasArt]</visible>
 					</control>
 					<control type="image">
 						<width>68</width>
 						<height>100</height>
-						<texture colordiffuse="text_white" background="true">$INFO[ListItem.Icon]</texture>
+						<texture background="true">$VAR[IconListView]</texture>
 						<aspectratio aligny="center" align="center">keep</aspectratio>
-						<visible>!$EXP[HasArtwork] + String.StartsWith(ListItem.Icon,Default)</visible>
+						<visible>$EXP[HasArt]</visible>
+					</control>
+					<control type="image">
+						<width>68</width>
+						<height>100</height>
+						<texture colordiffuse="text_white" background="true">$VAR[IconListView]</texture>
+						<aspectratio aligny="center" align="center">keep</aspectratio>
+						<visible>!$EXP[HasArt] + $EXP[DefaultIcon]</visible>
 					</control>
 					<include content="ListitemOverlaySmall">
 						<param name="left" value="45"/>

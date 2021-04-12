@@ -7,8 +7,6 @@
 	<onload condition="!Skin.HasSetting(EmbuaryInitMessage)">ReplaceWindow(1119)</onload>
 	<onload condition="Skin.HasSetting(EmbuaryInitMessage)">RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=100&amp;levels=0&amp;group=mainmenu|moviehub|tvshowhub|musichub|customhub|sidepanel)</onload>
 	<!-- script actions -->
-	<onload condition="!Skin.HasSetting(FontCheck)">RunScript(script.embuary.helper,action=fontchange,locales=ja+zh+ar+he+ko+vi+bn+my+hi+ks+km+ms,font=Arial)</onload>
-	<onload condition="!Skin.HasSetting(FontCheck)">Skin.ToggleSetting(FontCheck)</onload>
 	<onload condition="System.HasAddon(plugin.video.embycon) + String.IsEmpty(Window(home).property(plugin.video.embycon-group_movies))">RunScript(script.embuary.helper,action=getaddonsetting,addon=plugin.video.embycon,setting=group_movies)</onload>
 	<!-- fake pvr hub window history workaround -->
 	<onload condition="!String.IsEmpty(Window(home).Property(pvrhub))">ActivateWindow(1124)</onload>
