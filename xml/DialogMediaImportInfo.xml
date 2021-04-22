@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<defaultcontrol>3</defaultcontrol>
+	<backgroundcolor>background</backgroundcolor>
+	<menucontrol>6666</menucontrol>
+	<include>PropertyIncludes</include>
+	<controls>
+		<control type="label" id="2">
+			<include>HiddenObject</include>
+		</control>
+		<include>Background</include>
+		<control type="group">
+			<include>Window_OpenClose</include>
+			<!-- hint and borders -->
+			<control type="image">
+				<top>112</top>
+				<left>450</left>
+				<right>0</right>
+				<height>1</height>
+				<texture colordiffuse="grid_border">common/white.jpg</texture>
+				<aspectratio>stretch</aspectratio>
+			</control>
+			<control type="image">
+				<bottom>112</bottom>
+				<left>450</left>
+				<right>0</right>
+				<height>1</height>
+				<texture colordiffuse="grid_border">common/white.jpg</texture>
+				<aspectratio>stretch</aspectratio>
+			</control>
+			<control type="textbox" id="6">
+				<bottom>6</bottom>
+				<left>510</left>
+				<right>30</right>
+				<height>100</height>
+				<aligny>center</aligny>
+				<font>Reg22</font>
+			</control>
+			<include content="ContentPanel">
+				<param name="top" value="0"/>
+				<param name="bottom" value="0"/>
+				<param name="width" value="450"/>
+			</include>
+			<!-- left -->
+			<control type="group">
+				<width>450</width>
+				<control type="group">
+					<left>0</left>
+					<top>100</top>
+					<include content="SideBarHeadline">
+						<param name="label" value="$LOCALIZE[31414]"/>
+					</include>
+					<control type="grouplist" id="3">
+						<left>0</left>
+						<top>50</top>
+						<bottom>70</bottom>
+						<usecontrolcoords>true</usecontrolcoords>
+						<onleft>900</onleft>
+						<onright>5</onright>
+						<onup>6666</onup>
+						<ondown>1000</ondown>
+					</control>
+					<control type="button" id="10">
+						<include>SettingsButtonSidePanel</include>
+					</control>
+				</control>
+				<control type="group">
+					<top>260</top>
+					<include content="SideBarHeadline">
+						<param name="label" value="$LOCALIZE[5]"/>
+					</include>
+					<control type="grouplist" id="1000">
+						<left>0</left>
+						<top>50</top>
+						<usecontrolcoords>true</usecontrolcoords>
+						<onleft>900</onleft>
+						<onright>5</onright>
+						<onup>3</onup>
+						<ondown>noop</ondown>
+						<onback>1100</onback>
+						<control type="button" id="28">
+							<label>$LOCALIZE[186]</label>
+							<include>SettingsButtonSidePanel</include>
+						</control>
+						<control type="button" id="29">
+							<label>$LOCALIZE[222]</label>
+							<include>SettingsButtonSidePanel</include>
+						</control>
+						<control type="button" id="30">
+							<label>$LOCALIZE[409]</label>
+							<include>SettingsButtonSidePanel</include>
+						</control>
+					</control>
+				</control>
+			</control>
+			<!-- right -->
+			<control type="group">
+				<left>510</left>
+				<right>50</right>
+				<top>113</top>
+				<bottom>113</bottom>
+				<control type="grouplist" id="1234">
+					<top>0</top>
+					<height>350</height>
+					<onleft>3</onleft>
+					<onright>noop</onright>
+					<ondown>noop</ondown>
+					<scrolltime>200</scrolltime>
+					<itemgap>0</itemgap>
+					<include content="SkinSettingsHeadlineLabel">
+						<param name="label" value="$LOCALIZE[33029]"/>
+					</include>
+					<control type="button">
+						<label>$LOCALIZE[31415]: $INFO[ListItem.Property(Source.Name)]</label>
+						<include>SettingsButton</include>
+						<visible>!IsEmpty(ListItem.Property(Import.Path)) + !String.IsEmpty(ListItem.Property(Source.Name))</visible>
+					</control>
+					<control type="button">
+						<label>$LOCALIZE[31416]: $INFO[ListItem.Property(Import.MediaTypesLabel)]</label>
+						<include>SettingsButton</include>
+						<visible>!IsEmpty(ListItem.Property(Import.Path)) + !String.IsEmpty(ListItem.Property(Import.MediaTypesLabel))</visible>
+					</control>
+					<control type="button">
+						<label>$INFO[ListItem.Property(Source.MediaTypesLabel)]</label>
+						<include>SettingsButton</include>
+						<visible>IsEmpty(ListItem.Property(Import.Path)) + !String.IsEmpty(ListItem.Property(Source.MediaTypesLabel))</visible>
+					</control>
+					<control type="button">
+						<label>$LOCALIZE[573]: $INFO[ListItem.Property(Import.Path)]</label>
+						<include>SettingsButton</include>
+						<visible>!IsEmpty(ListItem.Property(Import.Path)) + !String.IsEmpty(ListItem.Property(Import.Path))</visible>
+					</control>
+					<control type="button">
+						<label>$LOCALIZE[126]: $INFO[ListItem.Property(Source.ActiveLabel)]</label>
+						<include>SettingsButton</include>
+						<visible>!String.IsEmpty(ListItem.Property(Source.ActiveLabel))</visible>
+					</control>
+					<control type="button">
+						<label>$LOCALIZE[579]: $INFO[ListItem.DateTime]</label>
+						<include>SettingsButton</include>
+					</control>
+				</control>
+				<!-- settings list -->
+				<control type="group">
+					<animation effect="slide" end="0,50" time="0" condition="Integer.IsGreater(Container(1234).NumItems,0)">Conditional</animation>
+					<animation effect="slide" end="0,50" time="0" condition="Integer.IsGreater(Container(1234).NumItems,1)">Conditional</animation>
+					<animation effect="slide" end="0,50" time="0" condition="Integer.IsGreater(Container(1234).NumItems,2)">Conditional</animation>
+					<animation effect="slide" end="0,50" time="0" condition="Integer.IsGreater(Container(1234).NumItems,3)">Conditional</animation>
+					<animation effect="slide" end="0,50" time="0" condition="Integer.IsGreater(Container(1234).NumItems,4)">Conditional</animation>
+					<animation effect="slide" end="0,50" time="0" condition="Integer.IsGreater(Container(1234).NumItems,5)">Conditional</animation>
+					<animation effect="slide" end="0,50" time="0" condition="Integer.IsGreater(Container(1234).NumItems,6)">Conditional</animation>
+					<top>80</top>
+					<include content="SkinSettingsHeadlineLabel">
+						<param name="label" value="$LOCALIZE[5]"/>
+					</include>
+					<control type="grouplist" id="5">
+						<top>80</top>
+						<onup>6666</onup>
+						<onleft>3</onleft>
+						<onright>noop</onright>
+						<ondown>noop</ondown>
+						<pagecontrol>60</pagecontrol>
+						<scrolltime>200</scrolltime>
+						<itemgap>0</itemgap>
+					</control>
+					<control type="button" id="7">
+						<include>SettingsButton</include>
+					</control>
+					<control type="radiobutton" id="8">
+						<include>SettingsButton</include>
+						<textwidth>900</textwidth>
+					</control>
+					<control type="spincontrolex" id="9">
+						<description>Default SpinControlex</description>
+						<include>SettingsButton</include>
+						<textwidth>900</textwidth>
+					</control>
+					<control type="image" id="11">
+						<visible>false</visible>
+					</control>
+					<control type="edit" id="12">
+						<include>SettingsButton</include>
+					</control>
+					<control type="sliderex" id="13">
+						<include>SettingsButton</include>
+					</control>
+					<control type="label" id="14">
+						<include>SettingsButton</include>
+					</control>
+					<include content="SkinSettingsHeadlineLabel">
+						<param name="id" value="14"/>
+					</include>
+				</control>
+			</control>
+		</control>
+		<!-- scrollbar -->
+		<include content="Scrollbar">
+			<param name="id" value="60"/>
+			<param name="visible" value="true"/>
+			<param name="top" value="112"/>
+			<param name="bottom" value="112"/>
+			<param name="width" value="10"/>
+		</include>
+		<!-- header bar -->
+		<include content="HeaderBar">
+			<param name="id">3</param>
+			<param name="auto_hide">false</param>
+		</include>
+		<!-- side panel -->
+		<include content="SidePanel">
+			<param name="onright">3</param>
+		</include>
+	</controls>
+</window>
